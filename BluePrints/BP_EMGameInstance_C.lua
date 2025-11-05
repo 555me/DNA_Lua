@@ -1234,6 +1234,9 @@ function BP_EMGameInstance_C:ReceiveShutdown()
   if IsDedicatedServer(self) then
     return
   end
+  local ShundownCount = EMCache:Get("ShundownCount") or 0
+  EMCache:Set("ShundownCount", ShundownCount + 1)
+  ShundownCount = EMCache:Get("ShundownCount") or 0
   ReddotManager._Close()
   EMCache:SaveAll(true)
   if Const.bNullNetWorkMgr then
@@ -1241,7 +1244,7 @@ function BP_EMGameInstance_C:ReceiveShutdown()
   end
   if not URuntimeCommonFunctionLibrary.IsPlayInEditor(self) then
     local Platform = UE4.UUIFunctionLibrary.GetDevicePlatformName(self)
-    if "Windows" == Platform then
+    if "Windows" == Platform and ShundownCount > 3 then
       UEMGameInstance.ForceQuitGame()
     end
   end
@@ -1889,6 +1892,80 @@ function BP_EMGameInstance_C:InitFloatVerifyArray()
     self.FloatVerifyArray:Add(TotalValues.SkillIntensity)
     self.FloatVerifyArray:Add(TotalValues.SkillSustain)
     self.FloatVerifyArray:Add(TotalValues.SkillRange)
+  end
+end
+
+function BP_EMGameInstance_C:SetDynamicResolution(Tag, bEnable)
+  if not Const.bUseDynamicResolution then
+    return
+  end
+  local PlatformName = UE4.UUIFunctionLibrary.GetDevicePlatformName(self)
+  if "PC" == PlatformName then
+    return
+  end
+  if UEMGameInstance.IsLowMemoryDevice() then
+    return
+  end
+  if not rawget(self, "DynamicResolution") then
+    if "Android" == PlatformName then
+      rawset(self, "DynamicResolution", {
+        [1] = {
+          100,
+          80,
+          648
+        },
+        [2] = {
+          110,
+          90,
+          720
+        },
+        [3] = {
+          150,
+          100,
+          1260
+        }
+      })
+    elseif "IOS" == PlatformName then
+      rawset(self, "DynamicResolution", {
+        [1] = {
+          75,
+          75,
+          0
+        },
+        [2] = {
+          80,
+          80,
+          0
+        },
+        [3] = {
+          105,
+          105,
+          0
+        }
+      })
+    else
+      return
+    end
+  end
+  if not rawget(self, "DynamicResolutionTags") then
+    rawset(self, "DynamicResolutionTags", {})
+  end
+  self.DynamicResolutionTags[Tag] = bEnable and true or nil
+  if 0 ~= CommonUtils.TableLength(self.DynamicResolutionTags) then
+    local CacheName = "MobileResolution"
+    local OptionIndex = EMCache:Get(CacheName)
+    if nil == OptionIndex then
+      local OptionInfo = DataMgr.Option[CacheName]
+      OptionIndex = tonumber(OptionInfo.DefaultValue)
+    end
+    local ResolutionInfo = self.DynamicResolution[OptionIndex]
+    if not ResolutionInfo then
+      OptionIndex = 3
+    end
+    ResolutionInfo = self.DynamicResolution[OptionIndex]
+    GWorld.GameInstance.SetScreenPercentageLevel(ResolutionInfo[1], ResolutionInfo[2], ResolutionInfo[3])
+  else
+    SettingUtils.ResetMobileResolution()
   end
 end
 

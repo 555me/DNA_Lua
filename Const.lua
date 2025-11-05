@@ -1117,4 +1117,5 @@ Const.DefaultAttributeMaster = {
 Const.SkipShadowBudgetConfig = {3102}
 Const.OpenVerifyArray = true
 Const.bNullNetWorkMgr = true
+Const.bUseDynamicResolution = true
 return Const

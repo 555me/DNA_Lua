@@ -44,6 +44,10 @@ function M:OnBtnClickInSkin()
   if ChatView.IsBeginToClose then
     return
   end
+  if IsClient(self) then
+    UIManager(self):ShowUITip("CommonToastMain", GText("UI_COMMONPOP_TITLE_100059"))
+    return
+  end
   ChatView:Close()
   UIManager(self):LoadUINew("ArmorySkin", {
     Type = self.SkinType,

@@ -189,6 +189,7 @@ function M:OnOpened(Duration)
     local Controller = UE4.UGameplayStatics.GetPlayerController(self.ViewUI, 0)
     Controller:SetViewTargetWithBlend(self.ArmoryHelper, 0, UE4.EViewTargetBlendFunction.VTBlend_Linear, 0, false)
   end
+  GWorld.GameInstance:SetDynamicResolution(self.UIName, true)
 end
 
 function M:InitActors()
@@ -734,6 +735,7 @@ function M:OnDestruct()
     self.ArmoryHelper:K2_DestroyActor()
   end
   self.ViewUI = nil
+  GWorld.GameInstance:SetDynamicResolution(self.UIName, false)
 end
 
 function M:Component_OnDestruct()
