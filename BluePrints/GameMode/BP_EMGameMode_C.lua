@@ -1398,6 +1398,11 @@ function BP_EMGameMode_C:TriggerPlayerFailed(AvatarEids)
   self.LevelGameMode:TriggerPlayerFinish(false, AvatarEids)
 end
 
+function BP_EMGameMode_C:ForceFinishPlayerByFailed(AvatarEids)
+  DebugPrint("BP_EMGameMode_C:ForceFinishPlayerByFailed 强制玩家以失败结算")
+  self.LevelGameMode:TriggerPlayerFinish(false, AvatarEids)
+end
+
 function BP_EMGameMode_C:TriggerDungeFinish(IsWin)
   GWorld:DSBLog("Info", "TriggerDungeFinish IsWin:" .. tostring(IsWin), "GameMode")
   self:TriggerDungeonOnEnd(IsWin)

@@ -17,6 +17,7 @@ function WalnutComponent:TriggerShowWalnutReward()
   if IsStandAlone(self) then
     self:AddDungeonEvent("ShowWalnutReward")
   elseif IsDedicatedServer(self) then
+    self:KickPlayerNotInGame()
     if self:IsAllPlayerNotChoosedNextWalnut() then
       DebugPrint("WalnutComponent: 所有玩家都没装备核桃")
       self:ExecuteNextStepOfWalnutReward()
@@ -83,6 +84,9 @@ end
 
 function WalnutComponent:GetLastChooseWalnutId(AvatarEidStr)
   if 0 == self.EMGameState.NextWalnutPlayer:Length() then
+    if not self.AvatarInfos[AvatarEidStr] then
+      return nil
+    end
     return self.AvatarInfos[AvatarEidStr].PlayerInfo.Walnuts.WalnutId
   else
     return self.EMGameState.NextWalnutPlayer:Find(AvatarEidStr)
@@ -147,6 +151,21 @@ end
 
 function WalnutComponent:ExecuteWalutLogicOnEnd()
   self:TriggerShowWalnutReward()
+end
+
+function WalnutComponent:KickPlayerNotInGame()
+  local KickedAvatarEids = {}
+  for _, Player in pairs(self:GetAllPlayer()) do
+    local AvatarEidStr = Player:GetOwner().AvatarEidStr
+    local PlayerState = Player.PlayerState
+    if PlayerState and not PlayerState:IsInGame() then
+      table.insert(KickedAvatarEids, AvatarEidStr)
+      DebugPrint("WalnutComponent:KickPlayerNotInGame, 踢掉未连进来的玩家 AvatarEidStr", AvatarEidStr)
+    end
+  end
+  if #KickedAvatarEids > 0 then
+    self:ForceFinishPlayerByFailed(KickedAvatarEids)
+  end
 end
 
 function WalnutComponent:TriggerShowNextWalnut()

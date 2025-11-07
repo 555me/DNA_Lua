@@ -171,11 +171,13 @@ function Component:ExitDungeon()
     self:UnregisterLS()
   end
   local PlayerController = UE4.UGameplayStatics.GetPlayerController(GWorld.GameInstance, 0)
-  PlayerController = PlayerController:Cast(UE4.ASinglePlayerController)
   if PlayerController then
-    local Player = PlayerController:GetMyPawn()
-    if Player then
-      Player:SetCanInteractiveTrigger(true)
+    PlayerController = PlayerController:Cast(UE4.ASinglePlayerController)
+    if PlayerController then
+      local Player = PlayerController:GetMyPawn()
+      if Player then
+        Player:SetCanInteractiveTrigger(true)
+      end
     end
   end
   if (GWorld:IsStandAlone() or GWorld:IsClient()) and PlayerController then
