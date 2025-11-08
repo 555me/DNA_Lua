@@ -71,6 +71,10 @@ function M:OnPatchFinished(bFrist)
     if RegionDataMgrSubSystem then
       RegionDataMgrSubSystem:Initialize_Lua()
     end
+    local EMLuaConst = USubsystemBlueprintLibrary.GetGameInstanceSubsystem(self, UEMLuaConst)
+    if EMLuaConst then
+      EMLuaConst:RefreshVars()
+    end
   end
   local LoginMainPage = GWorld.GameInstance:GetGameUIManager():GetUIObj("LoginMainPage")
   if LoginMainPage then
