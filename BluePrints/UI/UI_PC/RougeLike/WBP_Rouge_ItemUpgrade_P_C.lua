@@ -124,7 +124,9 @@ function WBP_Rouge_ItemUpgrade_P_C:RefreshOpInfoByInputDevice(CurInputType, CurG
 end
 
 function WBP_Rouge_ItemUpgrade_P_C:InitKeyboardView()
-  self.Switch_Key:SetActiveWidgetIndex(0)
+  if self.Switch_Key then
+    self.Switch_Key:SetActiveWidgetIndex(0)
+  end
   self.Item_Now.ScrollBox_Desc:SetVisibility(UIConst.VisibilityOp.Visible)
   self.Item_Before.ScrollBox_Desc:SetVisibility(UIConst.VisibilityOp.Visible)
 end

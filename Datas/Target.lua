@@ -118,8 +118,8 @@ T.RT_45 = {"Benefit"}
 T.RT_46 = {"Wisdom"}
 T.RT_47 = {"Morality"}
 T.RT_48 = {"Empathy"}
-T.RT_49 = {"Weapon"}
-T.RT_50 = {"100"}
+T.RT_49 = {"100"}
+T.RT_50 = {"Weapon"}
 T.RT_51 = {1000006}
 T.RT_52 = {1000006, 1000205}
 T.RT_53 = {"108001"}
@@ -1131,7 +1131,7 @@ return ReadOnly("Target", {
     TargetId = 9500,
     TargetParam = {
       [1] = T.RT_5,
-      [2] = T.RT_50
+      [2] = T.RT_49
     },
     TargetType = 9009
   },
@@ -2944,7 +2944,7 @@ return ReadOnly("Target", {
   [90103] = {
     TargetId = 90103,
     TargetParam = {
-      [1] = T.RT_49,
+      [1] = T.RT_50,
       [2] = T.RT_33
     },
     TargetType = 10901
@@ -2952,7 +2952,7 @@ return ReadOnly("Target", {
   [90104] = {
     TargetId = 90104,
     TargetParam = {
-      [1] = T.RT_49,
+      [1] = T.RT_50,
       [2] = T.RT_26
     },
     TargetType = 10901
@@ -3052,7 +3052,8 @@ return ReadOnly("Target", {
     TargetId = 200207,
     TargetParam = {
       [1] = T.RT_43,
-      [2] = T.RT_45
+      [2] = T.RT_45,
+      [3] = T.RT_49
     },
     TargetType = 12002
   },
@@ -3060,7 +3061,8 @@ return ReadOnly("Target", {
     TargetId = 200208,
     TargetParam = {
       [1] = T.RT_43,
-      [2] = T.RT_46
+      [2] = T.RT_46,
+      [3] = T.RT_49
     },
     TargetType = 12002
   },
@@ -3068,7 +3070,8 @@ return ReadOnly("Target", {
     TargetId = 200209,
     TargetParam = {
       [1] = T.RT_43,
-      [2] = T.RT_47
+      [2] = T.RT_47,
+      [3] = T.RT_49
     },
     TargetType = 12002
   },
@@ -3076,7 +3079,8 @@ return ReadOnly("Target", {
     TargetId = 200210,
     TargetParam = {
       [1] = T.RT_43,
-      [2] = T.RT_48
+      [2] = T.RT_48,
+      [3] = T.RT_49
     },
     TargetType = 12002
   },
@@ -3084,7 +3088,8 @@ return ReadOnly("Target", {
     TargetId = 200211,
     TargetParam = {
       [1] = T.RT_43,
-      [2] = T.RT_44
+      [2] = T.RT_44,
+      [3] = T.RT_49
     },
     TargetType = 12002
   },
@@ -3105,7 +3110,7 @@ return ReadOnly("Target", {
         "Empathy",
         "Chaos"
       },
-      [3] = T.RT_50
+      [3] = T.RT_49
     },
     TargetType = 12002
   },
@@ -3988,7 +3993,7 @@ return ReadOnly("Target", {
   [20022803] = {
     TargetId = 20022803,
     TargetParam = {
-      [1] = T.RT_49,
+      [1] = T.RT_50,
       [2] = {"4", "5"}
     },
     TargetType = 10901

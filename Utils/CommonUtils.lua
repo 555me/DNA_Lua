@@ -861,6 +861,9 @@ function CommonUtils:GetMonsterExp(ExtraInfo)
   if not MonsterInfo then
     return 0
   end
+  if not DataMgr.LevelUp[MonsterLevel] then
+    return 0
+  end
   local ExpBasic = MonsterInfo.ExpBasic
   if not ExpBasic then
     return 0
@@ -1186,7 +1189,7 @@ function CommonUtils.IsInContent(Content, Word, NeedHighlightWord)
   for _, Char in ipairs(SpecialCharacters) do
     Word = string.gsub(Word, "%" .. Char, "%%%1")
   end
-  for Char in string.gmatch(Word, ".[\128-\191]*") do
+  for Char in string.gmatch(Word, ".[-¿]*") do
     table.insert(WordArray, Char)
   end
   local Ranges = {}
