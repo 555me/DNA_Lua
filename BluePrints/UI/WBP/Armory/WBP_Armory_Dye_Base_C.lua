@@ -1,1873 +1,1935 @@
+-- filename: @E:/Pack/Branch/OBT10_Geili\Content/Script/BluePrints\UI\WBP\Armory\WBP_Armory_Dye_Base_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local ArmoryUtils = require("BluePrints.UI.WBP.Armory.ArmoryUtils")
-local ActorController = require("BluePrints.UI.WBP.Armory.ActorController.Armory_ActorController")
-local EMCache = require("EMCache.EMCache")
-local DyeDraftModel = Class()
-
-function DyeDraftModel:Init(Uuid)
-  local AllCache = EMCache:Get("DyeDraft", true) or {}
-  local UuidStr = Uuid
-  if type(Uuid) == "string" and CommonUtils.IsObjId(Uuid) then
-    UuidStr = CommonUtils.ObjId2Str(Uuid)
+local r0_0 = require("BluePrints.UI.WBP.Armory.ArmoryUtils")
+local r1_0 = require("BluePrints.UI.WBP.Armory.ActorController.Armory_ActorController")
+local r2_0 = require("EMCache.EMCache")
+local r3_0 = Class()
+function r3_0.Init(r0_1, r1_1)
+  -- line: [14, 24] id: 1
+  local r2_1 = r2_0:Get("DyeDraft", true) and {}
+  local r3_1 = r1_1
+  if type(r1_1) == "string" and CommonUtils.IsObjId(r1_1) then
+    r3_1 = CommonUtils.ObjId2Str(r1_1)
   end
-  AllCache[UuidStr] = AllCache[UuidStr] or {}
-  rawset(self, "AllCache", AllCache)
-  rawset(self, "Cache", AllCache[UuidStr])
-  return self.Cache
+  r2_1[r3_1] = r2_1[r3_1] and {}
+  rawset(r0_1, "AllCache", r2_1)
+  rawset(r0_1, "Cache", r2_1[r3_1])
+  return r0_1.Cache
 end
-
-function DyeDraftModel:GetSkinDyeDraft(SkinId)
-  self.Cache[SkinId] = self.Cache[SkinId] or {}
-  return self.Cache[SkinId]
+function r3_0.GetSkinDyeDraft(r0_2, r1_2)
+  -- line: [26, 29] id: 2
+  r0_2.Cache[r1_2] = r0_2.Cache[r1_2] and {}
+  return r0_2.Cache[r1_2]
 end
-
-function DyeDraftModel:SaveDyeDraft()
-  if rawget(self, "AllCache") then
-    EMCache:Set("DyeDraft", self.AllCache, true)
+function r3_0.SaveDyeDraft(r0_3)
+  -- line: [31, 35] id: 3
+  if rawget(r0_3, "AllCache") then
+    r2_0:Set("DyeDraft", r0_3.AllCache, true)
   end
 end
-
-function DyeDraftModel:DeleteDyeDraft(SkinId, PlanIndex)
-  self.Cache[SkinId][PlanIndex] = nil
+function r3_0.DeleteDyeDraft(r0_4, r1_4, r2_4)
+  -- line: [37, 39] id: 4
+  r0_4.Cache[r1_4][r2_4] = nil
 end
-
-function DyeDraftModel:GetDyeDraftPlan(SkinId, PlanIndex)
-  return self:GetSkinDyeDraft(SkinId)[PlanIndex]
+function r3_0.GetDyeDraftPlan(r0_5, r1_5, r2_5)
+  -- line: [41, 43] id: 5
+  return r0_5:GetSkinDyeDraft(r1_5)[r2_5]
 end
-
-local M = Class("BluePrints.UI.BP_UIState_C")
-M._components = {
+local r4_0 = Class("BluePrints.UI.BP_UIState_C")
+r4_0._components = {
   "BluePrints.UI.WBP.Armory.MainComponent.Armory_PointerInputComponent"
 }
-
-function M:Construct()
-  self.IsLoaded = false
-  M.Super.Construct(self)
-  self.Image_Click.OnMouseButtonDownEvent:Unbind()
-  self.Image_Click.OnMouseButtonDownEvent:Bind(self, self.On_Image_Click_MouseButtonDown)
-  self:UnbindAllFromAnimationFinished(self.In)
-  self:UnbindAllFromAnimationFinished(self.Out)
-  self:BindToAnimationFinished(self.In, {
-    self,
-    self.OnInAnimFinished
+function r4_0.Construct(r0_6)
+  -- line: [51, 117] id: 6
+  r0_6.IsLoaded = false
+  r4_0.Super.Construct(r0_6)
+  r0_6.Image_Click.OnMouseButtonDownEvent:Unbind()
+  r0_6.Image_Click.OnMouseButtonDownEvent:Bind(r0_6, r0_6.On_Image_Click_MouseButtonDown)
+  r0_6:UnbindAllFromAnimationFinished(r0_6.In)
+  r0_6:UnbindAllFromAnimationFinished(r0_6.Out)
+  r0_6:BindToAnimationFinished(r0_6.In, {
+    r0_6,
+    r0_6.OnInAnimFinished
   })
-  self:BindToAnimationFinished(self.Out, {
-    self,
-    self.OnOutAnimFinished
+  r0_6:BindToAnimationFinished(r0_6.Out, {
+    r0_6,
+    r0_6.OnOutAnimFinished
   })
-  self:SetRenderOpacity(1)
-  self.Image_Click.Slot:SetZOrder(-1)
-  self.Panel_Cost:SetVisibility(UIConst.VisibilityOp.Collapsed)
-  self.Text_Default:SetText(GText("UI_Dye_Default"))
-  self.Text_Default_1:SetText(GText("UI_Armory_Dye_Default"))
-  self.Text_Title_R:SetText(GText("UI_Dye_Total"))
-  rawset(self, "AllPlanNames", {
+  r0_6:SetRenderOpacity(1)
+  r0_6.Image_Click.Slot:SetZOrder(-1)
+  r0_6.Panel_Cost:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  r0_6.Text_Default:SetText(GText("UI_Dye_Default"))
+  r0_6.Text_Default_1:SetText(GText("UI_Armory_Dye_Default"))
+  r0_6.Text_Title_R:SetText(GText("UI_Dye_Total"))
+  rawset(r0_6, "AllPlanNames", {
     "UI_Squad_Appearance_TITLE1",
     "UI_Squad_Appearance_TITLE2",
     "UI_Squad_Appearance_TITLE3"
   })
-  self.Btn_Done:BindEventOnClicked(self, self.OnDoneBtnClicked)
-  self.Btn_Done:BindForbidStateExecuteEvent(self, self.OnForbiddenDoneBtnClicked)
-  self.Btn_Save:BindEventOnClicked(self, self.OnSaveBtnClicked)
-  self.Btn_Save:BindForbidStateExecuteEvent(self, self.OnForbiddenSaveBtnClicked)
-  self.Btn_Share:BindEventOnClicked(self, self.OnShareBtnClicked)
-  self.Btn_PreviewSave:BindEventOnClicked(self, self.OnPreviewSaveBtnClicked)
-  self.Btn_Hide:BindEvents(self, {
-    OnClicked = self.OnHideUIKeyDown,
-    OnAddedToFocusPath = self.OnFunctionBtnAddedToFocusPath,
-    OnRemovedFromFocusPath = self.OnFunctionBtnRemovedFromFocusPath
+  r0_6.Btn_Done:BindEventOnClicked(r0_6, r0_6.OnDoneBtnClicked)
+  r0_6.Btn_Done:BindForbidStateExecuteEvent(r0_6, r0_6.OnForbiddenDoneBtnClicked)
+  r0_6.Btn_Save:BindEventOnClicked(r0_6, r0_6.OnSaveBtnClicked)
+  r0_6.Btn_Save:BindForbidStateExecuteEvent(r0_6, r0_6.OnForbiddenSaveBtnClicked)
+  r0_6.Btn_Share:BindEventOnClicked(r0_6, r0_6.OnShareBtnClicked)
+  r0_6.Btn_PreviewSave:BindEventOnClicked(r0_6, r0_6.OnPreviewSaveBtnClicked)
+  r0_6.Btn_Hide:BindEvents(r0_6, {
+    OnClicked = r0_6.OnHideUIKeyDown,
+    OnAddedToFocusPath = r0_6.OnFunctionBtnAddedToFocusPath,
+    OnRemovedFromFocusPath = r0_6.OnFunctionBtnRemovedFromFocusPath,
   })
-  self.Btn_Hide.Text_Name:SetText(GText("UI_Dye_HideUI"))
-  self.Btn_Compare:BindEvents(self, {
-    OnPressed = self.OnContrastKeyDown,
-    OnReleased = self.OnContrastKeyUp,
-    OnAddedToFocusPath = self.OnFunctionBtnAddedToFocusPath,
-    OnRemovedFromFocusPath = self.OnFunctionBtnRemovedFromFocusPath
+  r0_6.Btn_Hide.Text_Name:SetText(GText("UI_Dye_HideUI"))
+  r0_6.Btn_Compare:BindEvents(r0_6, {
+    OnPressed = r0_6.OnContrastKeyDown,
+    OnReleased = r0_6.OnContrastKeyUp,
+    OnAddedToFocusPath = r0_6.OnFunctionBtnAddedToFocusPath,
+    OnRemovedFromFocusPath = r0_6.OnFunctionBtnRemovedFromFocusPath,
   })
-  self.Btn_Compare.Text_Name:SetText(GText("UI_Dye_Compare"))
-  self.Btn_Delete:BindEvents(self, {
-    OnClicked = self.OnDeleteBtnClicked,
-    OnAddedToFocusPath = self.OnFunctionBtnAddedToFocusPath,
-    OnRemovedFromFocusPath = self.OnFunctionBtnRemovedFromFocusPath
+  r0_6.Btn_Compare.Text_Name:SetText(GText("UI_Dye_Compare"))
+  r0_6.Btn_Delete:BindEvents(r0_6, {
+    OnClicked = r0_6.OnDeleteBtnClicked,
+    OnAddedToFocusPath = r0_6.OnFunctionBtnAddedToFocusPath,
+    OnRemovedFromFocusPath = r0_6.OnFunctionBtnRemovedFromFocusPath,
   })
-  self.Btn_Delete.Text_Name:SetText(GText("UI_RegionMap_Delete"))
-  self.Btn_Import:BindEvents(self, {
-    OnClicked = self.OnImportBtnClicked,
-    OnAddedToFocusPath = self.OnFunctionBtnAddedToFocusPath,
-    OnRemovedFromFocusPath = self.OnFunctionBtnRemovedFromFocusPath
+  r0_6.Btn_Delete.Text_Name:SetText(GText("UI_RegionMap_Delete"))
+  r0_6.Btn_Import:BindEvents(r0_6, {
+    OnClicked = r0_6.OnImportBtnClicked,
+    OnAddedToFocusPath = r0_6.OnFunctionBtnAddedToFocusPath,
+    OnRemovedFromFocusPath = r0_6.OnFunctionBtnRemovedFromFocusPath,
   })
-  self.Btn_Import.Text_Name:SetText(GText("UI_Dye_Input_Title"))
-  self.List_Tab.BP_OnEntryInitialized:Clear()
-  self.List_Tab.BP_OnEntryInitialized:Add(self, self.OnNormalDyeTabInitialized)
-  self:AddDispatcher(EventID.OnWeaponColorsChanged, self, self.OnColorsChanged)
-  self:AddDispatcher(EventID.OnCharColorsChanged, self, self.OnColorsChanged)
-  self:AddDispatcher(EventID.OnResourcesChanged, self, self.OnResourcesChanged)
-  self:AddDispatcher(EventID.OnCharSkinColorPlanChanged, self, self.OnCharSkinColorPlanChanged)
-  self:AddDispatcher(EventID.OnWeaponSkinColorPlanChanged, self, self.OnWeaponSkinColorPlanChanged)
-  rawset(self, "NormalColorTabIdx", 1)
-  rawset(self, "SpecialColorTabIdx", 2)
-  rawset(self, "ColorPerRow", 3)
-  rawset(self, "SpecialColorContents", {})
-  rawset(self, "SpecialColorContentsMap", {})
-  rawset(self, "NormalDefaultColorContents", {})
-  rawset(self, "NormalCurrentContents", {})
-  rawset(self, "NormalComparedContents", {})
-  rawset(self, "ColorContents", {})
-  rawset(self, "ColorContentsMap", {})
-  rawset(self, "HighLightColor", self.WPHighLightColor.Color)
-  rawset(self, "NeedRegenerateAllEntries", true)
-  rawset(self, "bCanSavePlan", true)
-  rawset(self, "bShowPlan", true)
-  self.Tab_Dye:Init(self.TabConfig)
+  r0_6.Btn_Import.Text_Name:SetText(GText("UI_Dye_Input_Title"))
+  r0_6.List_Tab.BP_OnEntryInitialized:Clear()
+  r0_6.List_Tab.BP_OnEntryInitialized:Add(r0_6, r0_6.OnNormalDyeTabInitialized)
+  r0_6:AddDispatcher(EventID.OnWeaponColorsChanged, r0_6, r0_6.OnColorsChanged)
+  r0_6:AddDispatcher(EventID.OnCharColorsChanged, r0_6, r0_6.OnColorsChanged)
+  r0_6:AddDispatcher(EventID.OnResourcesChanged, r0_6, r0_6.OnResourcesChanged)
+  r0_6:AddDispatcher(EventID.OnCharSkinColorPlanChanged, r0_6, r0_6.OnCharSkinColorPlanChanged)
+  r0_6:AddDispatcher(EventID.OnWeaponSkinColorPlanChanged, r0_6, r0_6.OnWeaponSkinColorPlanChanged)
+  rawset(r0_6, "NormalColorTabIdx", 1)
+  rawset(r0_6, "SpecialColorTabIdx", 2)
+  rawset(r0_6, "ColorPerRow", 3)
+  rawset(r0_6, "SpecialColorContents", {})
+  rawset(r0_6, "SpecialColorContentsMap", {})
+  rawset(r0_6, "NormalDefaultColorContents", {})
+  rawset(r0_6, "NormalCurrentContents", {})
+  rawset(r0_6, "NormalComparedContents", {})
+  rawset(r0_6, "ColorContents", {})
+  rawset(r0_6, "ColorContentsMap", {})
+  rawset(r0_6, "HighLightColor", r0_6.WPHighLightColor.Color)
+  rawset(r0_6, "NeedRegenerateAllEntries", true)
+  rawset(r0_6, "bCanSavePlan", true)
+  rawset(r0_6, "bShowPlan", true)
+  r0_6.Tab_Dye:Init(r0_6.TabConfig)
 end
-
-function M:ReceiveEnterState(StackAction)
-  M.Super.ReceiveEnterState(self, StackAction)
-  if self.ActorController then
-    if self.UsingWeapon then
-      self.UsingWeapon = self.ArmoryPlayer and self.ArmoryPlayer.UsingWeapon
-      if self.SkinId then
-        self.UsingWeapon:InitWeaponSkin(self.SkinId)
+function r4_0.ReceiveEnterState(r0_7, r1_7)
+  -- line: [119, 130] id: 7
+  r4_0.Super.ReceiveEnterState(r0_7, r1_7)
+  if r0_7.ActorController then
+    if r0_7.UsingWeapon then
+      r0_7.UsingWeapon = r0_7.ArmoryPlayer and r0_7.ArmoryPlayer.UsingWeapon
+      if r0_7.SkinId then
+        r0_7.UsingWeapon:InitWeaponSkin(r0_7.SkinId)
       end
     end
-    self:OnContrastKeyUp()
+    r0_7:OnContrastKeyUp()
   end
 end
-
-function M:Destruct()
-  M.Super.Destruct(self)
-  self.ActorController:StopSkinWeaponVFX()
+function r4_0.Destruct(r0_8)
+  -- line: [132, 135] id: 8
+  r4_0.Super.Destruct(r0_8)
+  r0_8.ActorController:StopSkinWeaponVFX()
 end
-
-function M:On_Image_Click_MouseButtonDown(MyGeometry, MouseEvent)
-  return self:OnPointerDown(MyGeometry, MouseEvent)
+function r4_0.On_Image_Click_MouseButtonDown(r0_9, r1_9, r2_9)
+  -- line: [138, 140] id: 9
+  return r0_9:OnPointerDown(r1_9, r2_9)
 end
-
-function M:OnMouseWheel(MyGeometry, MouseEvent)
-  return self:OnMouseWheelScroll(MyGeometry, MouseEvent)
+function r4_0.OnMouseWheel(r0_10, r1_10, r2_10)
+  -- line: [142, 144] id: 10
+  return r0_10:OnMouseWheelScroll(r1_10, r2_10)
 end
-
-function M:OnMouseButtonUp(MyGeometry, MouseEvent)
-  return self:OnPointerUp(MyGeometry, MouseEvent)
+function r4_0.OnMouseButtonUp(r0_11, r1_11, r2_11)
+  -- line: [146, 148] id: 11
+  return r0_11:OnPointerUp(r1_11, r2_11)
 end
-
-function M:OnMouseMove(MyGeometry, MouseEvent)
-  return self:OnPointerMove(MyGeometry, MouseEvent)
+function r4_0.OnMouseMove(r0_12, r1_12, r2_12)
+  -- line: [150, 152] id: 12
+  return r0_12:OnPointerMove(r1_12, r2_12)
 end
-
-function M:OnTouchEnded(MyGeometry, InTouchEvent)
-  return self:OnPointerUp(MyGeometry, InTouchEvent)
+function r4_0.OnTouchEnded(r0_13, r1_13, r2_13)
+  -- line: [154, 156] id: 13
+  return r0_13:OnPointerUp(r1_13, r2_13)
 end
-
-function M:OnTouchMoved(MyGeometry, InTouchEvent)
-  return self:OnPointerMove(MyGeometry, InTouchEvent)
+function r4_0.OnTouchMoved(r0_14, r1_14, r2_14)
+  -- line: [158, 160] id: 14
+  return r0_14:OnPointerMove(r1_14, r2_14)
 end
-
-function M:OnMouseCaptureLost()
-  self:OnPointerCaptureLost()
+function r4_0.OnMouseCaptureLost(r0_15)
+  -- line: [162, 164] id: 15
+  r0_15:OnPointerCaptureLost()
 end
-
-function M:OnBackgroundClicked()
-  if self.bSelfHidden then
-    self:OnHideUIKeyDown()
+function r4_0.OnBackgroundClicked(r0_16)
+  -- line: [166, 170] id: 16
+  if r0_16.bSelfHidden then
+    r0_16:OnHideUIKeyDown()
   end
 end
-
-function M:OnBackKeyDown()
-  if self.bSelfHidden then
-    self:OnHideUIKeyDown()
-  elseif self.Btn_Save:IsBtnForbidden() or self.OpenPreviewDyeFromChat then
-    self:PlayOutAnim()
+function r4_0.OnBackKeyDown(r0_17)
+  -- line: [172, 190] id: 17
+  if r0_17.bSelfHidden then
+    r0_17:OnHideUIKeyDown()
+  elseif r0_17.Btn_Save:IsBtnForbidden() or r0_17.OpenPreviewDyeFromChat then
+    r0_17:PlayOutAnim()
   else
-    UIManager(self):ShowCommonPopupUI(100231, {
+    UIManager(r0_17):ShowCommonPopupUI(100231, {
       LeftCallbackFunction = function()
-        self:PlayOutAnim()
+        -- line: [180, 182] id: 18
+        r0_17:PlayOutAnim()
       end,
       RightCallbackFunction = function()
-        self:SaveCurrentDraft()
-        self:PlayOutAnim()
-      end
-    }, self)
+        -- line: [183, 186] id: 19
+        r0_17:SaveCurrentDraft()
+        r0_17:PlayOutAnim()
+      end,
+    }, r0_17)
   end
 end
-
-function M:OnDeleteBtnClicked()
-  UIManager(self):ShowCommonPopupUI(100230, {
+function r4_0.OnDeleteBtnClicked(r0_20)
+  -- line: [192, 205] id: 20
+  UIManager(r0_20):ShowCommonPopupUI(100230, {
     RightCallbackFunction = function()
-      self:DeleteCurrentDraft()
-      self:UpdateComparedContentsByDraft()
-      local CurrentTabIdx = self.CurrentTabIdx
-      self.CurrentTabIdx = nil
-      self.JumpToSubTabIdx = self.CurNormalDyeTab and self.CurNormalDyeTab.Idx or 1
-      self:SelectDyePlan(self.CurrentPlan, CurrentTabIdx)
-      self:OnContrastKeyUp()
-    end
-  }, self)
-end
-
-function M:ClearComparedContents()
-  for key, value in pairs(self.NormalComparedContents) do
-    value.IsClicked = false
-    if value.Widget then
-      value.Widget:SetIsClicked(false)
-    end
-  end
-  self.NormalComparedContents = {}
-  if self.SpecialComparedContent then
-    self.SpecialComparedContent.IsClicked = false
-    if self.SpecialComparedContent.Widget then
-      self.SpecialComparedContent.Widget:SetIsClicked(false)
-    end
-    self.SpecialComparedContent = nil
-  end
-  for i, Obj in pairs(self.NormalDyeTabs) do
-    local Content = self.NormalCurrentContents[i]
-    Obj.Color = Content.Color
-    Obj.Color = Content.ResourceId and Content.Color
-    if Obj.Widget then
-      Obj.Widget:SetColor(Content.ResourceId and Content.Color)
-    end
-    Obj.IsSelected = i == (self.CurNormalDyeTab and self.CurNormalDyeTab.Idx)
-  end
-end
-
-function M:OnImportBtnClicked()
-  local Params = {}
-  Params.TextLenMax = 200
-  Params.MultilineType = 1
-  Params.HintText = GText("UI_Dye_Input_Content")
-  Params.UseGenaral = true
-  
-  function Params.RightCallbackFunction(self2, Data)
-    local shareCode = Data.ComDialogInput.Text
-    if shareCode and "" ~= shareCode then
-      local ModModel = ModController:GetModel()
-      local dyePlanInfo = ModModel:AnalysisShareCommunityCopyCode(shareCode)
-      local TargetToastText = ""
-      if not dyePlanInfo then
-        TargetToastText = GText("UI_Dye_Input_Invaluable")
-        UIManager(self):ShowUITip(UIConst.Tip_CommonToast, TargetToastText)
-        return
+      -- line: [194, 203] id: 21
+      r0_20:DeleteCurrentDraft()
+      r0_20:UpdateComparedContentsByDraft()
+      local r0_21 = r0_20.CurrentTabIdx
+      r0_20.CurrentTabIdx = nil
+      local r1_21 = r0_20.CurNormalDyeTab
+      if r1_21 then
+        r1_21 = r0_20.CurNormalDyeTab.Idx and 1
+      else
+        goto label_15	-- block#2 is visited secondly
       end
-      if dyePlanInfo.SkinId ~= self.SkinId then
-        local TargetName
-        if dyePlanInfo.SkinType == "Char" then
-          TargetName = DataMgr.Skin[dyePlanInfo.SkinId].SkinName
-        else
-          TargetName = DataMgr.WeaponSkin[dyePlanInfo.SkinId] and DataMgr.WeaponSkin[dyePlanInfo.SkinId].Name or DataMgr.Weapon[dyePlanInfo.SkinId].WeaponName
+      r0_20.JumpToSubTabIdx = r1_21
+      r0_20:SelectDyePlan(r0_20.CurrentPlan, r0_21)
+      r0_20:OnContrastKeyUp()
+    end,
+  }, r0_20)
+end
+function r4_0.ClearComparedContents(r0_22)
+  -- line: [207, 231] id: 22
+  for r5_22, r6_22 in pairs(r0_22.NormalComparedContents) do
+    r6_22.IsClicked = false
+    if r6_22.Widget then
+      r6_22.Widget:SetIsClicked(false)
+    end
+  end
+  -- close: r1_22
+  r0_22.NormalComparedContents = {}
+  if r0_22.SpecialComparedContent then
+    r0_22.SpecialComparedContent.IsClicked = false
+    if r0_22.SpecialComparedContent.Widget then
+      r0_22.SpecialComparedContent.Widget:SetIsClicked(false)
+    end
+    r0_22.SpecialComparedContent = nil
+  end
+  for r5_22, r6_22 in pairs(r0_22.NormalDyeTabs) do
+    local r7_22 = r0_22.NormalCurrentContents[r5_22]
+    r6_22.Color = r7_22.Color
+    r6_22.Color = r7_22.ResourceId and r7_22.Color
+    if r6_22.Widget then
+      r6_22.Widget:SetColor(r7_22.ResourceId and r7_22.Color)
+    end
+    r6_22.IsSelected = r5_22 == (r0_22.CurNormalDyeTab and r0_22.CurNormalDyeTab.Idx)
+  end
+  -- close: r1_22
+end
+function r4_0.OnImportBtnClicked(r0_23)
+  -- line: [233, 272] id: 23
+  UIManager(r0_23):ShowCommonPopupUI(100232, {
+    TextLenMax = 200,
+    MultilineType = 1,
+    HintText = GText("UI_Dye_Input_Content"),
+    UseGenaral = true,
+    RightCallbackFunction = function(r0_24, r1_24)
+      -- line: [239, 270] id: 24
+      local r2_24 = r1_24.ComDialogInput.Text
+      if r2_24 and r2_24 ~= "" then
+        local r4_24 = ModController:GetModel():AnalysisShareCommunityCopyCode(r2_24)
+        local r5_24 = ""
+        if not r4_24 then
+          UIManager(r0_23):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Dye_Input_Invaluable"))
+          return 
         end
-        TargetName = GText(TargetName)
-        TargetToastText = string.format(GText("UI_Dye_Input_Other"), TargetName)
-        UIManager(self):ShowUITip(UIConst.Tip_CommonToast, TargetToastText)
-        return
+        if r4_24.SkinId ~= r0_23.SkinId then
+          local r6_24 = nil
+          if r4_24.SkinType == "Char" then
+            r6_24 = DataMgr.Skin[r4_24.SkinId].SkinName
+          elseif DataMgr.WeaponSkin[r4_24.SkinId] then
+            r6_24 = DataMgr.WeaponSkin[r4_24.SkinId].Name and DataMgr.Weapon[r4_24.SkinId].WeaponName
+          else
+            goto label_55	-- block#9 is visited secondly
+          end
+          UIManager(r0_23):ShowUITip(UIConst.Tip_CommonToast, string.format(GText("UI_Dye_Input_Other"), GText(r6_24)))
+          return 
+        end
+        UIManager(r0_23):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Dye_Input_Success"))
+        r0_23:ApplyColorsToComparedColors(r4_24.Colors)
+        r0_23:ApplyColorsToNormalDyeTabs(r4_24.Colors)
+        r0_23:SaveCurrentDraft()
+        r0_23:UpdateItemConsume()
+        r0_23:UpdateDraftBtn()
       end
-      TargetToastText = GText("UI_Dye_Input_Success")
-      UIManager(self):ShowUITip(UIConst.Tip_CommonToast, TargetToastText)
-      self:ApplyColorsToComparedColors(dyePlanInfo.Colors)
-      self:ApplyColorsToNormalDyeTabs(dyePlanInfo.Colors)
-      self:SaveCurrentDraft()
-      self:UpdateItemConsume()
-      self:UpdateDraftBtn()
-    end
-  end
-  
-  UIManager(self):ShowCommonPopupUI(100232, Params, self)
+    end,
+  }, r0_23)
 end
-
-function M:OnSaveBtnClicked()
-  self:SaveCurrentDraft()
-  UIManager(self):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Dye_Save_Success"))
+function r4_0.OnSaveBtnClicked(r0_25)
+  -- line: [275, 278] id: 25
+  r0_25:SaveCurrentDraft()
+  UIManager(r0_25):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Dye_Save_Success"))
 end
-
-function M:OnShareBtnClicked()
-  self:OpenOrCloseDyeShareUI()
-  self:ShareCurrentDraft()
+function r4_0.OnShareBtnClicked(r0_26)
+  -- line: [280, 283] id: 26
+  r0_26:OpenOrCloseDyeShareUI()
+  r0_26:ShareCurrentDraft()
 end
-
-function M:OpenOrCloseDyeShareUI()
-  if self.DyeShare and self.DyeShare:GetVisibility() == UIConst.VisibilityOp.Collapsed then
-    self.DyeShare:SetVisibility(UIConst.VisibilityOp.Visible)
-    local Params = {}
-    Params.Parent = self
-    Params.DyeDraftModel = DyeDraftModel
-    self.DyeShare:InitUIInfo(Params)
-  elseif self.DyeShare and self.DyeShare:GetVisibility() == UIConst.VisibilityOp.Visible then
-    self.DyeShare:SetVisibility(UIConst.VisibilityOp.Collapsed)
+function r4_0.OpenOrCloseDyeShareUI(r0_27)
+  -- line: [285, 295] id: 27
+  if r0_27.DyeShare and r0_27.DyeShare:GetVisibility() == UIConst.VisibilityOp.Collapsed then
+    r0_27.DyeShare:SetVisibility(UIConst.VisibilityOp.Visible)
+    r0_27.DyeShare:InitUIInfo({
+      Parent = r0_27,
+      DyeDraftModel = r3_0,
+    })
+  elseif r0_27.DyeShare and r0_27.DyeShare:GetVisibility() == UIConst.VisibilityOp.Visible then
+    r0_27.DyeShare:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
 end
-
-function M:OnForbiddenSaveBtnClicked()
+function r4_0.OnForbiddenSaveBtnClicked(r0_28)
+  -- line: [297, 298] id: 28
 end
-
-function M:InitUIInfo(Name, IsInUIMode, EventList, Params)
-  M.Super.InitUIInfo(self, Name, IsInUIMode, EventList, Params)
-  local ArmoryMain = UIManager(self):GetArmoryUIObj()
-  if ArmoryMain then
-    self.ActorController = ArmoryMain.ActorController
-    self.ArmoryHelper = ArmoryMain.ActorController.ArmoryHelper
-    self.ArmoryPlayer = ArmoryMain.ActorController.ArmoryPlayer
+function r4_0.InitUIInfo(r0_29, r1_29, r2_29, r3_29, r4_29)
+  -- line: [302, 366] id: 29
+  r4_0.Super.InitUIInfo(r0_29, r1_29, r2_29, r3_29, r4_29)
+  local r5_29 = UIManager(r0_29):GetArmoryUIObj()
+  if r5_29 then
+    r0_29.ActorController = r5_29.ActorController
+    r0_29.ArmoryHelper = r5_29.ActorController.ArmoryHelper
+    r0_29.ArmoryPlayer = r5_29.ActorController.ArmoryPlayer
   end
-  Params = Params or {}
-  self.Parent = Params.Parent
-  self.SkinId = Params.SkinId
-  self.IsPreviewMode = Params.IsPreviewMode
-  self.Type = Params.Type
-  self.Target = Params.Target
-  self.OnCloseCallback = Params.OnCloseCallback
-  self.ContrastKeyDownCount = 0
-  self.CurrentTabIdx = nil
-  self.bRealCharOrWeapon = Params.bRealCharOrWeapon
-  self.OpenPreviewDyeFromShopItem = Params.OpenPreviewDyeFromShopItem
-  self.OpenPreviewDyeFromChat = self.Parent.OpenPreviewDyeFromChat
-  self:StopAnimation(self.SwitcherState)
-  local Avatar = GWorld:GetAvatar()
-  self.bOwnTargetSkin = false
-  if self.Target:GetSkin(self.SkinId, Avatar) then
-    self.bOwnTargetSkin = true
+  if not r4_29 then
+    r4_29 = {}
   end
-  if self.Type == CommonConst.ArmoryType.Char then
-    self.DefaultColorId = DataMgr.GlobalConstant.CharDefaultColor.ConstantValue
-    self.ColorPartCount = DataMgr.GlobalConstant.CharColorPart.ConstantValue
-    local CommonChar = Avatar.CommonChars[self.Target.CharId]
-    if CommonChar then
-      self.CurrentSkin = CommonChar.OwnedSkins[self.SkinId] or self:CreateDefaultSkin(self.SkinId)
+  r0_29.Parent = r4_29.Parent
+  r0_29.SkinId = r4_29.SkinId
+  r0_29.IsPreviewMode = r4_29.IsPreviewMode
+  r0_29.Type = r4_29.Type
+  r0_29.Target = r4_29.Target
+  r0_29.OnCloseCallback = r4_29.OnCloseCallback
+  r0_29.ContrastKeyDownCount = 0
+  r0_29.CurrentTabIdx = nil
+  r0_29.bRealCharOrWeapon = r4_29.bRealCharOrWeapon
+  r0_29.OpenPreviewDyeFromShopItem = r4_29.OpenPreviewDyeFromShopItem
+  r0_29.OpenPreviewDyeFromChat = r0_29.Parent.OpenPreviewDyeFromChat
+  r0_29:StopAnimation(r0_29.SwitcherState)
+  local r6_29 = GWorld:GetAvatar()
+  r0_29.bOwnTargetSkin = false
+  if r0_29.Target:GetSkin(r0_29.SkinId, r6_29) then
+    r0_29.bOwnTargetSkin = true
+  end
+  if r0_29.Type == CommonConst.ArmoryType.Char then
+    r0_29.DefaultColorId = DataMgr.GlobalConstant.CharDefaultColor.ConstantValue
+    r0_29.ColorPartCount = DataMgr.GlobalConstant.CharColorPart.ConstantValue
+    local r7_29 = r6_29.CommonChars[r0_29.Target.CharId]
+    if r7_29 then
+      r0_29.CurrentSkin = r7_29.OwnedSkins[r0_29.SkinId] and r0_29:CreateDefaultSkin(r0_29.SkinId)
     else
-      self.CurrentSkin = self:CreateDefaultSkin(self.SkinId)
+      r0_29.CurrentSkin = r0_29:CreateDefaultSkin(r0_29.SkinId)
     end
   else
-    self.DefaultColorId = DataMgr.GlobalConstant.WeaponDefaultColor.ConstantValue
-    self.ColorPartCount = DataMgr.GlobalConstant.WeaponColorPart.ConstantValue
-    self.UsingWeapon = self.ArmoryPlayer and self.ArmoryPlayer.UsingWeapon
-    self.WeaponEnhanceLevel = self.Target.EnhanceLevel or 0
-    self.CurrentSkin = self.Target:GetSkin(self.SkinId) or self:CreateDefaultSkin(self.SkinId)
-    self:CreateSpecialDefaultColorMat()
-    self:CreateSpecialColorContents()
+    r0_29.DefaultColorId = DataMgr.GlobalConstant.WeaponDefaultColor.ConstantValue
+    r0_29.ColorPartCount = DataMgr.GlobalConstant.WeaponColorPart.ConstantValue
+    r0_29.UsingWeapon = r0_29.ArmoryPlayer and r0_29.ArmoryPlayer.UsingWeapon
+    r0_29.WeaponEnhanceLevel = r0_29.Target.EnhanceLevel and 0
+    r0_29.CurrentSkin = r0_29.Target:GetSkin(r0_29.SkinId) and r0_29:CreateDefaultSkin(r0_29.SkinId)
+    r0_29:CreateSpecialDefaultColorMat()
+    r0_29:CreateSpecialColorContents()
   end
-  if not self.ActorController then
-    self.ActorController = self.Parent.ActorController
+  if not r0_29.ActorController then
+    r0_29.ActorController = r0_29.Parent.ActorController
   end
-  if self.ActorController then
-    self.ArmoryHelper = self.ActorController.ArmoryHelper
-    self.ArmoryHelper.EnableCameraScrolling = true
-    self.ArmoryPlayer = self.ActorController.ArmoryPlayer
-    local WeaponActor = self.ActorController:GetWeaponActor()
-    if nil == WeaponActor then
-      self.WaitForCreateActor = true
-      self.ActorController:GetWeaponActorAsync(self.OnActorCreated, self)
+  if r0_29.ActorController then
+    r0_29.ArmoryHelper = r0_29.ActorController.ArmoryHelper
+    r0_29.ArmoryHelper.EnableCameraScrolling = true
+    r0_29.ArmoryPlayer = r0_29.ActorController.ArmoryPlayer
+    local r7_29 = r0_29.ActorController:GetWeaponActor()
+    if r7_29 == nil then
+      r0_29.WaitForCreateActor = true
+      r0_29.ActorController:GetWeaponActorAsync(r0_29.OnActorCreated, r0_29)
     else
-      self:OnActorCreated(WeaponActor)
+      r0_29:OnActorCreated(r7_29)
     end
   end
 end
-
-function M:OnActorCreated(WeaponActor)
-  self.WaitForCreateActor = false
-  self.UsingWeapon = WeaponActor
-  self.bStandaloneWeapon = self.ActorController.bStandaloneWeapon
-  if not self.bStandaloneWeapon then
-    self.bStandaloneWeapon = not self.ActorController.ArmoryPlayer
+function r4_0.OnActorCreated(r0_30, r1_30)
+  -- line: [368, 386] id: 30
+  r0_30.WaitForCreateActor = false
+  r0_30.UsingWeapon = r1_30
+  r0_30.bStandaloneWeapon = r0_30.ActorController.bStandaloneWeapon
+  if not r0_30.bStandaloneWeapon then
+    r0_30.bStandaloneWeapon = not r0_30.ActorController.ArmoryPlayer
   end
-  self.LastCameraTags = self.ActorController.LastCameraTags
-  if self.Type == CommonConst.ArmoryType.Char then
-    self.ActorController:SetArmoryCameraTag("Char_Dye")
-  elseif self.Type == CommonConst.ArmoryType.Weapon and self.ArmoryPlayer and not self.bStandaloneWeapon then
-    self.ActorController:SetArmoryCameraTag("Weapon", "0", "Dye")
-  elseif self.Type == CommonConst.ArmoryType.Weapon and (not self.ArmoryPlayer or self.bStandaloneWeapon) then
-  else
-    self.ActorController:SetArmoryCameraTag("Default")
+  r0_30.LastCameraTags = r0_30.ActorController.LastCameraTags
+  if r0_30.Type == CommonConst.ArmoryType.Char then
+    r0_30.ActorController:SetArmoryCameraTag("Char_Dye")
+  elseif r0_30.Type == CommonConst.ArmoryType.Weapon and r0_30.ArmoryPlayer and not r0_30.bStandaloneWeapon then
+    r0_30.ActorController:SetArmoryCameraTag("Weapon", "0", "Dye")
+  elseif r0_30.Type ~= CommonConst.ArmoryType.Weapon then
+    r0_30.ActorController:SetArmoryCameraTag("Default")
   end
-  self:InitUI()
+  r0_30:InitUI()
+  -- warn: not visited block [11]
+  -- block#11:
+  -- goto label_62
 end
-
-function M:InitUI()
-  self:CreateNormalDefaultColor()
-  self:CreateNormalColorContents()
-  
-  local function IsCacheValid()
-    if not self.Cache then
+function r4_0.InitUI(r0_31)
+  -- line: [388, 439] id: 31
+  r0_31:CreateNormalDefaultColor()
+  r0_31:CreateNormalColorContents()
+  r0_31.Cache = r3_0:Init(r0_31.Target.Uuid)
+  if not (function()
+    -- line: [393, 402] id: 32
+    if not r0_31.Cache then
       return false
-    elseif not self.Cache[self.SkinId] then
+    elseif not r0_31.Cache[r0_31.SkinId] then
       return false
-    elseif #self.Cache[self.SkinId] <= 0 then
+    elseif #r0_31.Cache[r0_31.SkinId] <= 0 then
       return false
     end
     return true
+  end)() then
+    r0_31.Cache = r3_0:Init(r0_31.SkinId)
   end
-  
-  self.Cache = DyeDraftModel:Init(self.Target.Uuid)
-  if not IsCacheValid() then
-    self.Cache = DyeDraftModel:Init(self.SkinId)
+  r0_31.CurrentPlan = r0_31.CurrentSkin.CurrentPlanIndex and 1
+  local r2_31 = false
+  if r0_31.OpenPreviewDyeFromShopItem then
+    r0_31.Btn_PreviewSave:SetText(GText("UI_SkinPreview_PreSave"))
+    r0_31.Btn_PreviewSave:ForbidBtn(true)
+  elseif r0_31.OpenPreviewDyeFromChat then
+    r0_31.OpenPreviewDyeFromChatColors = r0_31.Parent.OpenPreviewDyeFromChatColors
+    r0_31.Btn_PreviewSave:SetText(GText("UI_Dye_Input_Title"))
+    r0_31.Btn_PreviewSave:ForbidBtn(false)
   end
-  self.CurrentPlan = self.CurrentSkin.CurrentPlanIndex or 1
-  local bApplyDraft = false
-  if self.OpenPreviewDyeFromShopItem then
-    self.Btn_PreviewSave:SetText(GText("UI_SkinPreview_PreSave"))
-    self.Btn_PreviewSave:ForbidBtn(true)
-  elseif self.OpenPreviewDyeFromChat then
-    self.OpenPreviewDyeFromChatColors = self.Parent.OpenPreviewDyeFromChatColors
-    self.Btn_PreviewSave:SetText(GText("UI_Dye_Input_Title"))
-    self.Btn_PreviewSave:ForbidBtn(false)
-  end
-  if self.OpenPreviewDyeFromChatColors then
-    self:ApplyColorsToComparedColors(self.OpenPreviewDyeFromChatColors)
-    bApplyDraft = true
+  if r0_31.OpenPreviewDyeFromChatColors then
+    r0_31:ApplyColorsToComparedColors(r0_31.OpenPreviewDyeFromChatColors)
+    r2_31 = true
   else
-    bApplyDraft = self:UpdateComparedContentsByDraft()
-    if bApplyDraft then
-      UIManager(self):ShowUITip(UIConst.Tip_CommonToast, string.format(GText("UI_Armory_Dye_Toast"), self.CurrentPlan))
+    r2_31 = r0_31:UpdateComparedContentsByDraft()
+    if r2_31 then
+      UIManager(r0_31):ShowUITip(UIConst.Tip_CommonToast, string.format(GText("UI_Armory_Dye_Toast"), r0_31.CurrentPlan))
     end
   end
-  self:SelectDyePlan(self.CurrentPlan, self.JumpToTabIdx)
-  self:ResetPlanName()
-  self:UpdateDraftBtn()
-  if bApplyDraft then
-    self:OnContrastKeyUp()
+  r0_31:SelectDyePlan(r0_31.CurrentPlan, r0_31.JumpToTabIdx)
+  r0_31:ResetPlanName()
+  r0_31:UpdateDraftBtn()
+  if r2_31 then
+    r0_31:OnContrastKeyUp()
   end
-  self:PlayInAnim()
+  r0_31:PlayInAnim()
 end
-
-function M:ApplyColorsToComparedColors(TargetColors)
-  for Idx, ColorId in ipairs(TargetColors) do
-    local ColorContent
-    if -1 ~= tonumber(ColorId) then
-      ColorContent = self.ColorContentsMap[tonumber(ColorId)]
+function r4_0.ApplyColorsToComparedColors(r0_33, r1_33)
+  -- line: [441, 466] id: 33
+  for r6_33, r7_33 in ipairs(r1_33) do
+    local r8_33 = nil
+    if tonumber(r7_33) ~= -1 then
+      r8_33 = r0_33.ColorContentsMap[tonumber(r7_33)]
     else
-      ColorContent = self.NormalDefaultColorContents[Idx]
+      r8_33 = r0_33.NormalDefaultColorContents[r6_33]
     end
-    if ColorContent then
-      self:ChangePartColor(Idx, ColorContent.Color)
-      local CmpContent = self.NormalComparedContents[Idx]
-      if CmpContent and CmpContent ~= ColorContent then
-        CmpContent.IsClicked = false
-        if CmpContent.Widget then
-          CmpContent.Widget:SetIsClicked(CmpContent.IsClicked)
+    if r8_33 then
+      r0_33:ChangePartColor(r6_33, r8_33.Color)
+      local r9_33 = r0_33.NormalComparedContents[r6_33]
+      if r9_33 and r9_33 ~= r8_33 then
+        r9_33.IsClicked = false
+        if r9_33.Widget then
+          r9_33.Widget:SetIsClicked(r9_33.IsClicked)
         end
       end
-      local CurTabIdx = self.CurNormalDyeTab and self.CurNormalDyeTab.Idx or 1
-      ColorContent.IsClicked = CurTabIdx == Idx
-      if ColorContent.Widget then
-        ColorContent.Widget:SetIsClicked(ColorContent.IsClicked)
-      end
-      self.NormalComparedContents[Idx] = ColorContent
-    end
-  end
-end
-
-function M:ApplyColorsToNormalDyeTabs(TargetColors)
-  local AllDyeTabItems = self.List_Tab:GetListItems()
-  for Idx, DyeTabItem in pairs(AllDyeTabItems) do
-    if not TargetColors[Idx] then
-    else
-      local ColorContent
-      if -1 ~= tonumber(TargetColors[Idx]) then
-        ColorContent = self.ColorContentsMap[tonumber(TargetColors[Idx])]
-        DyeTabItem.Color = ColorContent.Color
+      local r10_33 = r0_33.CurNormalDyeTab
+      if r10_33 then
+        r10_33 = r0_33.CurNormalDyeTab.Idx and 1
       else
-        ColorContent = self.NormalDefaultColorContents[Idx]
-        DyeTabItem.Color = nil
+        goto label_45	-- block#11 is visited secondly
       end
-      if not ColorContent then
-      elseif DyeTabItem.Widget then
-        DyeTabItem.Widget:SetColor(DyeTabItem.Color)
+      r8_33.IsClicked = r10_33 == r6_33
+      if r8_33.Widget then
+        r8_33.Widget:SetIsClicked(r8_33.IsClicked)
+      end
+      r0_33.NormalComparedContents[r6_33] = r8_33
+    end
+  end
+  -- close: r2_33
+end
+function r4_0.ApplyColorsToNormalDyeTabs(r0_34, r1_34)
+  -- line: [468, 490] id: 34
+  for r7_34, r8_34 in pairs(r0_34.List_Tab:GetListItems()) do
+    if r1_34[r7_34] then
+      local r9_34 = nil
+      if tonumber(r1_34[r7_34]) ~= -1 then
+        r9_34 = r0_34.ColorContentsMap[tonumber(r1_34[r7_34])]
+        r8_34.Color = r9_34.Color
+      else
+        r9_34 = r0_34.NormalDefaultColorContents[r7_34]
+        r8_34.Color = nil
+      end
+      if r9_34 and r8_34.Widget then
+        r8_34.Widget:SetColor(r8_34.Color)
       end
     end
   end
+  -- close: r3_34
 end
-
-function M:SelectDyePlan(PlanIndex, TabIdx)
-  self.CurrentPlan = PlanIndex
-  TabIdx = TabIdx or 1
-  self:OnDyeingTypeTabClicked({Idx = TabIdx})
-  if self.Type == CommonConst.ArmoryType.Char then
-    self.Panel_SubTab:SetVisibility(UIConst.VisibilityOp.Collapsed)
-  else
-    self.Panel_SubTab:SetVisibility(UIConst.VisibilityOp.Collapsed)
+function r4_0.SelectDyePlan(r0_35, r1_35, r2_35)
+  -- line: [492, 515] id: 35
+  r0_35.CurrentPlan = r1_35
+  if not r2_35 then
+    r2_35 = 1
   end
-  self:UpdateItemConsume()
+  r0_35:OnDyeingTypeTabClicked({
+    Idx = r2_35,
+  })
+  if r0_35.Type == CommonConst.ArmoryType.Char then
+    r0_35.Panel_SubTab:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  else
+    r0_35.Panel_SubTab:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  end
+  r0_35:UpdateItemConsume()
 end
-
-function M:ResetPlanName()
-  if self.bShowPlan then
-    self.Plan_Dye:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+function r4_0.ResetPlanName(r0_36)
+  -- line: [518, 534] id: 36
+  if r0_36.bShowPlan then
+    r0_36.Plan_Dye:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
   else
-    self.Plan_Dye:SetVisibility(UIConst.VisibilityOp.Collapsed)
-    return
+    r0_36.Plan_Dye:SetVisibility(UIConst.VisibilityOp.Collapsed)
+    return 
   end
-  local PlanNames = self:GetPlanNames()
-  local Params = {
-    Owner = self,
-    OnPlanChanged = self.SwitchColorPlan,
-    PlanNames = PlanNames,
-    SelectedItemIndex = self.CurrentPlan
+  local r2_36 = {
+    Owner = r0_36,
+    OnPlanChanged = r0_36.SwitchColorPlan,
+    PlanNames = r0_36:GetPlanNames(),
+    SelectedItemIndex = r0_36.CurrentPlan,
   }
-  self:OnModifyPlanParams(Params)
-  self.Plan_Dye:Init(Params)
+  r0_36:OnModifyPlanParams(r2_36)
+  r0_36.Plan_Dye:Init(r2_36)
 end
-
-function M:OnModifyPlanParams(Params)
+function r4_0.OnModifyPlanParams(r0_37, r1_37)
+  -- line: [536, 538] id: 37
 end
-
-function M:GetPlanNames()
-  return self.AllPlanNames
+function r4_0.GetPlanNames(r0_38)
+  -- line: [540, 542] id: 38
+  return r0_38.AllPlanNames
 end
-
-function M:SwitchColorPlan(NewPlanIndex)
-  if NewPlanIndex == self.CurrentPlan then
-    return
+function r4_0.SwitchColorPlan(r0_39, r1_39)
+  -- line: [545, 575] id: 39
+  if r1_39 == r0_39.CurrentPlan then
+    return 
   end
-  
-  local function CallServerSwitchPlan()
-    self:BlockAllUIInput(true)
-    local Avatar = GWorld:GetAvatar()
-    if self.Type == CommonConst.ArmoryType.Char then
-      Avatar:SwitchCurrentCharSkinColorPlan(self.CurrentSkin.SkinId, NewPlanIndex)
+  local function r2_39()
+    -- line: [549, 557] id: 40
+    r0_39:BlockAllUIInput(true)
+    local r0_40 = GWorld:GetAvatar()
+    if r0_39.Type == CommonConst.ArmoryType.Char then
+      r0_40:SwitchCurrentCharSkinColorPlan(r0_39.CurrentSkin.SkinId, r1_39)
     else
-      Avatar:SwitchCurrentWeaponSkinColorPlan(self.Target.Uuid, self.CurrentSkin.SkinId, NewPlanIndex)
+      r0_40:SwitchCurrentWeaponSkinColorPlan(r0_39.Target.Uuid, r0_39.CurrentSkin.SkinId, r1_39)
     end
   end
-  
-  if self.Btn_Save:IsBtnForbidden() or self.OpenPreviewDyeFromChat then
-    CallServerSwitchPlan()
+  if r0_39.Btn_Save:IsBtnForbidden() or r0_39.OpenPreviewDyeFromChat then
+    r2_39()
   else
-    UIManager(self):ShowCommonPopupUI(100231, {
+    UIManager(r0_39):ShowCommonPopupUI(100231, {
       OnCloseCallbackFunction = function()
-        self:ResetPlanName()
+        -- line: [563, 565] id: 41
+        r0_39:ResetPlanName()
       end,
       LeftCallbackFunction = function()
-        CallServerSwitchPlan()
+        -- line: [566, 568] id: 42
+        r2_39()
       end,
       RightCallbackFunction = function()
-        self:SaveCurrentDraft()
-        CallServerSwitchPlan()
-      end
-    }, self)
+        -- line: [569, 572] id: 43
+        r0_39:SaveCurrentDraft()
+        r2_39()
+      end,
+    }, r0_39)
   end
 end
-
-function M:UpdateComparedContentsByDraft()
-  local CurrentPlanDraft = DyeDraftModel:GetDyeDraftPlan(self.CurrentSkin.SkinId, self.CurrentPlan) or {}
-  local bApplyDraft = false
-  if self.SpecialComparedContent then
-    self.SpecialComparedContent.IsClicked = false
-    self.SpecialComparedContent = nil
+function r4_0.UpdateComparedContentsByDraft(r0_44)
+  -- line: [579, 620] id: 44
+  local r1_44 = r3_0:GetDyeDraftPlan(r0_44.CurrentSkin.SkinId, r0_44.CurrentPlan) and {}
+  local r2_44 = false
+  if r0_44.SpecialComparedContent then
+    r0_44.SpecialComparedContent.IsClicked = false
+    r0_44.SpecialComparedContent = nil
   end
-  if self.NormalComparedContents then
-    for key, value in pairs(self.NormalComparedContents) do
-      value.IsClicked = false
+  if r0_44.NormalComparedContents then
+    for r7_44, r8_44 in pairs(r0_44.NormalComparedContents) do
+      r8_44.IsClicked = false
     end
-    self.NormalComparedContents = {}
+    -- close: r3_44
+    r0_44.NormalComparedContents = {}
   end
-  if CurrentPlanDraft.SpecialColor then
-    self.SpecialComparedContent = self.SpecialColorContentsMap[CurrentPlanDraft.SpecialColor]
-    if self.SpecialComparedContent then
-      self.JumpToTabIdx = self.SpecialColorTabIdx
-      local CurrentSpecialColor = self.CurrentSkin:GetSpecialColor(self.CurrentPlan)
-      bApplyDraft = CurrentSpecialColor ~= CurrentPlanDraft.SpecialColor
+  if r1_44.SpecialColor then
+    r0_44.SpecialComparedContent = r0_44.SpecialColorContentsMap[r1_44.SpecialColor]
+    if r0_44.SpecialComparedContent then
+      r0_44.JumpToTabIdx = r0_44.SpecialColorTabIdx
+      r2_44 = r0_44.CurrentSkin:GetSpecialColor(r0_44.CurrentPlan) ~= r1_44.SpecialColor
     end
   else
-    self.JumpToTabIdx = self.NormalColorTabIdx
-    local bHasDraftColor = false
-    for key, value in pairs(CurrentPlanDraft) do
-      if self.ColorContentsMap[value] then
-        self.NormalComparedContents[key] = self.ColorContentsMap[value]
-        bHasDraftColor = true
+    r0_44.JumpToTabIdx = r0_44.NormalColorTabIdx
+    local r3_44 = false
+    for r8_44, r9_44 in pairs(r1_44) do
+      if r0_44.ColorContentsMap[r9_44] then
+        r0_44.NormalComparedContents[r8_44] = r0_44.ColorContentsMap[r9_44]
+        r3_44 = true
       end
     end
-    if bHasDraftColor then
-      local Colors = self.CurrentSkin:GetColors(self.CurrentPlan)
-      for PartIdx, DraftColorId in pairs(CurrentPlanDraft) do
-        local CurrentColorId = Colors[PartIdx] or self.DefaultColorId
-        if CurrentColorId ~= DraftColorId then
-          bApplyDraft = true
+    -- close: r4_44
+    if r3_44 then
+      local r4_44 = r0_44.CurrentSkin:GetColors(r0_44.CurrentPlan)
+      for r9_44, r10_44 in pairs(r1_44) do
+        if (r4_44[r9_44] and r0_44.DefaultColorId) ~= r10_44 then
+          r2_44 = true
           break
         end
       end
+      -- close: r5_44
     end
   end
-  return bApplyDraft
+  return r2_44
 end
-
-function M:UpdateDraftBtn()
-  if DyeDraftModel:GetDyeDraftPlan(self.CurrentSkin.SkinId, self.CurrentPlan) then
-    self.Btn_Delete:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-    self.Btn_Delete:SetForbidden(false)
+function r4_0.UpdateDraftBtn(r0_45)
+  -- line: [623, 638] id: 45
+  if r3_0:GetDyeDraftPlan(r0_45.CurrentSkin.SkinId, r0_45.CurrentPlan) then
+    r0_45.Btn_Delete:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+    r0_45.Btn_Delete:SetForbidden(false)
   else
-    self.Btn_Delete:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
-    self.Btn_Delete:SetForbidden(true)
+    r0_45.Btn_Delete:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
+    r0_45.Btn_Delete:SetForbidden(true)
   end
-  if self.Btn_Compare.IsForbidden or self:IsSameDyeDraft() then
-    self.Btn_Save:ForbidBtn(true)
+  if r0_45.Btn_Compare.IsForbidden or r0_45:IsSameDyeDraft() then
+    r0_45.Btn_Save:ForbidBtn(true)
   else
-    self.Btn_Save:ForbidBtn(false)
+    r0_45.Btn_Save:ForbidBtn(false)
   end
-  self:UpdatePreviewOrNotUI()
+  r0_45:UpdatePreviewOrNotUI()
 end
-
-function M:SaveCurrentDraft()
-  local SkinDraft = DyeDraftModel:GetSkinDyeDraft(self.CurrentSkin.SkinId)
-  local DyePlanDraft = SkinDraft[self.CurrentPlan] or {}
-  if self.CurrentTabIdx == self.NormalColorTabIdx then
-    for PartIdx, value in pairs(self.NormalComparedContents) do
-      DyePlanDraft[PartIdx] = value.ColorId
+function r4_0.SaveCurrentDraft(r0_46)
+  -- line: [641, 655] id: 46
+  local r1_46 = r3_0:GetSkinDyeDraft(r0_46.CurrentSkin.SkinId)
+  local r2_46 = r1_46[r0_46.CurrentPlan] and {}
+  if r0_46.CurrentTabIdx == r0_46.NormalColorTabIdx then
+    for r7_46, r8_46 in pairs(r0_46.NormalComparedContents) do
+      r2_46[r7_46] = r8_46.ColorId
     end
+    -- close: r3_46
   else
-    DyePlanDraft.SpecialColor = self.SpecialComparedContent and self.SpecialComparedContent.ColorId
+    r2_46.SpecialColor = r0_46.SpecialComparedContent and r0_46.SpecialComparedContent.ColorId
   end
-  SkinDraft[self.CurrentPlan] = DyePlanDraft
-  DyeDraftModel:SaveDyeDraft()
-  self:UpdateCurrentDyeTabSaveOrSelect()
-  self:UpdateDraftBtn()
+  r1_46[r0_46.CurrentPlan] = r2_46
+  r3_0:SaveDyeDraft()
+  r0_46:UpdateCurrentDyeTabSaveOrSelect()
+  r0_46:UpdateDraftBtn()
 end
-
-function M:UpdatePreviewOrNotUI()
-  local TargetVisiblity = UIConst.VisibilityOp.Collapsed
-  if not self.IsPreviewMode then
-    TargetVisiblity = UIConst.VisibilityOp.Visible
-    self.WidgetSwitcher_Preview:SetActiveWidgetIndex(0)
+function r4_0.UpdatePreviewOrNotUI(r0_47)
+  -- line: [658, 684] id: 47
+  local r1_47 = UIConst.VisibilityOp.Collapsed
+  if not r0_47.IsPreviewMode then
+    r1_47 = UIConst.VisibilityOp.Visible
+    r0_47.WidgetSwitcher_Preview:SetActiveWidgetIndex(0)
   else
-    self.WidgetSwitcher_Preview:SetActiveWidgetIndex(1)
+    r0_47.WidgetSwitcher_Preview:SetActiveWidgetIndex(1)
   end
-  
-  local function ProcessUIVisibility(Target, InTargetVisiblity)
-    if Target and Target:GetVisibility() ~= InTargetVisiblity then
-      Target:SetVisibility(InTargetVisiblity)
+  local function r2_47(r0_48, r1_48)
+    -- line: [666, 670] id: 48
+    if r0_48 and r0_48:GetVisibility() ~= r1_48 then
+      r0_48:SetVisibility(r1_48)
     end
   end
-  
-  ProcessUIVisibility(self.Btn_Share, TargetVisiblity)
-  ProcessUIVisibility(self.Btn_Import, TargetVisiblity)
-  ProcessUIVisibility(self.Btn_Save, TargetVisiblity)
-  if self.IsPreviewMode then
-    ProcessUIVisibility(self.Btn_Delete, TargetVisiblity)
-    ProcessUIVisibility(self.Panel_Cost, TargetVisiblity)
+  r2_47(r0_47.Btn_Share, r1_47)
+  r2_47(r0_47.Btn_Import, r1_47)
+  r2_47(r0_47.Btn_Save, r1_47)
+  if r0_47.IsPreviewMode then
+    r2_47(r0_47.Btn_Delete, r1_47)
+    r2_47(r0_47.Panel_Cost, r1_47)
   end
-  ProcessUIVisibility(self.DyeSharePanel, TargetVisiblity)
-  if not self.IsPreviewMode or self.OpenPreviewDyeFromShopItem then
-    ProcessUIVisibility(self.Panel_Plan, TargetVisiblity)
-  elseif self.OpenPreviewDyeFromChat then
-    ProcessUIVisibility(self.Panel_Plan, UIConst.VisibilityOp.SelfHitTestInvisible)
+  r2_47(r0_47.DyeSharePanel, r1_47)
+  if not r0_47.IsPreviewMode or r0_47.OpenPreviewDyeFromShopItem then
+    r2_47(r0_47.Panel_Plan, r1_47)
+  elseif r0_47.OpenPreviewDyeFromChat then
+    r2_47(r0_47.Panel_Plan, UIConst.VisibilityOp.SelfHitTestInvisible)
   end
 end
-
-function M:DeleteCurrentDraft()
-  DyeDraftModel:DeleteDyeDraft(self.CurrentSkin.SkinId, self.CurrentPlan)
-  self:UpdateDraftBtn()
+function r4_0.DeleteCurrentDraft(r0_49)
+  -- line: [686, 689] id: 49
+  r3_0:DeleteDyeDraft(r0_49.CurrentSkin.SkinId, r0_49.CurrentPlan)
+  r0_49:UpdateDraftBtn()
 end
-
-function M:ShareCurrentDraft()
+function r4_0.ShareCurrentDraft(r0_50)
+  -- line: [691, 704] id: 50
 end
-
-function M:ImportDraft(DraftInfo)
-  if self.IsPreviewMode and self.OpenPreviewDyeFromChat then
-    if not self:HasRealTargetAndSkin() then
-      return
+function r4_0.ImportDraft(r0_51, r1_51)
+  -- line: [706, 721] id: 51
+  if r0_51.IsPreviewMode and r0_51.OpenPreviewDyeFromChat then
+    if not r0_51:HasRealTargetAndSkin() then
+      return 
     end
-    local CommonDialogParams = {}
-    CommonDialogParams.ShortText = GText("UI_Dye_Save_Content")
-    
-    function CommonDialogParams.RightCallbackFunction()
-      self:SaveCurrentDraft()
-      self:UpdatePreviewOrNotUI()
-    end
-    
-    CommonDialogParams.Title = GText("UI_Dye_Save_Title")
-    UIManager(self):ShowCommonPopupUI(100231, CommonDialogParams, self)
-  elseif not self.IsPreviewMode then
-    self:SaveCurrentDraft()
-    self:UpdatePreviewOrNotUI()
+    UIManager(r0_51):ShowCommonPopupUI(100231, {
+      ShortText = GText("UI_Dye_Save_Content"),
+      RightCallbackFunction = function()
+        -- line: [711, 714] id: 52
+        r0_51:SaveCurrentDraft()
+        r0_51:UpdatePreviewOrNotUI()
+      end,
+      Title = GText("UI_Dye_Save_Title"),
+    }, r0_51)
+  elseif not r0_51.IsPreviewMode then
+    r0_51:SaveCurrentDraft()
+    r0_51:UpdatePreviewOrNotUI()
   end
 end
-
-function M:HasRealTargetAndSkin()
-  local TargetToastText = ""
-  if self.bRealCharOrWeapon then
-    if self.bOwnTargetSkin then
+function r4_0.HasRealTargetAndSkin(r0_53)
+  -- line: [723, 740] id: 53
+  local r1_53 = ""
+  if r0_53.bRealCharOrWeapon then
+    if r0_53.bOwnTargetSkin then
       return true
     else
-      TargetToastText = "UI_Dye_Input_NoSkin"
+      r1_53 = "UI_Dye_Input_NoSkin"
     end
-  elseif self.Type == CommonConst.ArmoryType.Char then
-    TargetToastText = "UI_Dye_Input_NoChar"
-  elseif self.Type == CommonConst.ArmoryType.Weapon then
-    TargetToastText = "UI_Dye_Input_NoWeapon"
+  elseif r0_53.Type == CommonConst.ArmoryType.Char then
+    r1_53 = "UI_Dye_Input_NoChar"
+  elseif r0_53.Type == CommonConst.ArmoryType.Weapon then
+    r1_53 = "UI_Dye_Input_NoWeapon"
   end
-  UIManager(self):ShowUITip(UIConst.Tip_CommonToast, GText(TargetToastText))
+  UIManager(r0_53):ShowUITip(UIConst.Tip_CommonToast, GText(r1_53))
   return false
 end
-
-function M:CreateDefaultSkin(SkinId)
-  local Skin = {
-    SkinId = SkinId,
+function r4_0.CreateDefaultSkin(r0_54, r1_54)
+  -- line: [746, 762] id: 54
+  local r2_54 = {
+    SkinId = r1_54,
     Colors = {},
-    SpecialColor = self.DefaultColorId,
-    GetColors = function(self, CurrentPlan)
-      return self.Colors
+    SpecialColor = r0_54.DefaultColorId,
+    GetColors = function(r0_55, r1_55)
+      -- line: [751, 753] id: 55
+      return r0_55.Colors
     end,
-    GetWeaponSpecialColor = function(self, CurrentPlan)
-      return self.SpecialColor
-    end
+    GetWeaponSpecialColor = function(r0_56, r1_56)
+      -- line: [754, 756] id: 56
+      return r0_56.SpecialColor
+    end,
   }
-  for i = 1, self.ColorPartCount do
-    Skin.Colors[i] = self.DefaultColorId
+  for r6_54 = 1, r0_54.ColorPartCount, 1 do
+    r2_54.Colors[r6_54] = r0_54.DefaultColorId
   end
-  return Skin
+  return r2_54
 end
-
-function M:OnLoaded(...)
-  M.Super.OnLoaded(self, ...)
-  self.IsLoaded = true
+function r4_0.OnLoaded(r0_57, ...)
+  -- line: [764, 767] id: 57
+  r4_0.Super.OnLoaded(r0_57, ...)
+  r0_57.IsLoaded = true
 end
-
-function M:OnDyeingTypeTabClicked(TabWidget)
-  if TabWidget.Idx == self.CurrentTabIdx then
-    return
+function r4_0.OnDyeingTypeTabClicked(r0_58, r1_58)
+  -- line: [770, 788] id: 58
+  if r1_58.Idx == r0_58.CurrentTabIdx then
+    return 
   end
-  if TabWidget.Idx == self.NormalColorTabIdx then
-    if self:IsAnimationPlaying(self.SwitcherState) then
-      self:PlayAnimationReverse(self.SwitcherState)
+  if r1_58.Idx == r0_58.NormalColorTabIdx then
+    if r0_58:IsAnimationPlaying(r0_58.SwitcherState) then
+      r0_58:PlayAnimationReverse(r0_58.SwitcherState)
     else
-      self:PlayAnimation(self.SwitcherState, 0, 1, 1)
+      r0_58:PlayAnimation(r0_58.SwitcherState, 0, 1, 1)
     end
-  elseif self:IsAnimationPlaying(self.SwitcherState) then
-    self:PlayAnimationForward(self.SwitcherState)
+  elseif r0_58:IsAnimationPlaying(r0_58.SwitcherState) then
+    r0_58:PlayAnimationForward(r0_58.SwitcherState)
   else
-    self:PlayAnimation(self.SwitcherState)
+    r0_58:PlayAnimation(r0_58.SwitcherState)
   end
-  self:SelectDyeingTypeTab(TabWidget.Idx)
+  r0_58:SelectDyeingTypeTab(r1_58.Idx)
 end
-
-function M:SelectDyeingTypeTab(TabIdx)
-  self:RecoverActorColor()
-  self.CurrentTabIdx = TabIdx
-  if self.CurrentTabIdx == self.NormalColorTabIdx then
-    self:ClearSpecialColorStates()
-    self.WidgetSwitcher_State:SetActiveWidgetIndex(0)
-    self:InitNormalDyeing(self.JumpToSubTabIdx)
-    self.JumpToSubTabIdx = nil
+function r4_0.SelectDyeingTypeTab(r0_59, r1_59)
+  -- line: [790, 803] id: 59
+  r0_59:RecoverActorColor()
+  r0_59.CurrentTabIdx = r1_59
+  if r0_59.CurrentTabIdx == r0_59.NormalColorTabIdx then
+    r0_59:ClearSpecialColorStates()
+    r0_59.WidgetSwitcher_State:SetActiveWidgetIndex(0)
+    r0_59:InitNormalDyeing(r0_59.JumpToSubTabIdx)
+    r0_59.JumpToSubTabIdx = nil
   else
-    self:ClearNormalColorStates()
-    self.WidgetSwitcher_State:SetActiveWidgetIndex(1)
-    self:InitSpecialDyeing()
+    r0_59:ClearNormalColorStates()
+    r0_59.WidgetSwitcher_State:SetActiveWidgetIndex(1)
+    r0_59:InitSpecialDyeing()
   end
 end
-
-function M:OnColorListItemClicked(Content)
-  AudioManager(self):PlayUISound(self, "event:/ui/common/click_btn_color", nil, nil)
-  if self.Parent and self.OpenPreviewDyeFromChat then
-    UIManager(self):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Dye_Previewing"))
-    if Content.Widget then
-      Content.Widget.OpenPreviewDyeFromChat = true
+function r4_0.OnColorListItemClicked(r0_60, r1_60)
+  -- line: [805, 831] id: 60
+  AudioManager(r0_60):PlayUISound(r0_60, "event:/ui/common/click_btn_color", nil, nil)
+  if r0_60.Parent and r0_60.OpenPreviewDyeFromChat then
+    UIManager(r0_60):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Dye_Previewing"))
+    if r1_60.Widget then
+      r1_60.Widget.OpenPreviewDyeFromChat = true
     end
-    return
+    return 
   end
-  if self.CurrentTabIdx == self.NormalColorTabIdx then
-    if not self.NormalColorHoveredContent then
-      self:OnNormalColorListItemHovered(Content)
+  if r0_60.CurrentTabIdx == r0_60.NormalColorTabIdx then
+    if not r0_60.NormalColorHoveredContent then
+      r0_60:OnNormalColorListItemHovered(r1_60)
     end
-    self:OnNormalColorListItemClicked(Content)
-    self.NormalColorHoveredContent = nil
+    r0_60:OnNormalColorListItemClicked(r1_60)
+    r0_60.NormalColorHoveredContent = nil
   else
-    if not self.SpecialColorHoveredContent then
-      self:OnSpecialColorListItemHovered(Content)
+    if not r0_60.SpecialColorHoveredContent then
+      r0_60:OnSpecialColorListItemHovered(r1_60)
     end
-    self:OnSpecialColorListItemClicked(Content)
-    self.SpecialColorHoveredContent = nil
+    r0_60:OnSpecialColorListItemClicked(r1_60)
+    r0_60.SpecialColorHoveredContent = nil
   end
-  if self.OpenPreviewDyeFromShopItem then
-    self.Btn_PreviewSave:ForbidBtn(false)
+  if r0_60.OpenPreviewDyeFromShopItem then
+    r0_60.Btn_PreviewSave:ForbidBtn(false)
   end
 end
-
-function M:OnColorListItemHovered(Content)
-  if self.CurrentTabIdx == self.NormalColorTabIdx then
-    self:OnNormalColorListItemHovered(Content)
+function r4_0.OnColorListItemHovered(r0_61, r1_61)
+  -- line: [833, 839] id: 61
+  if r0_61.CurrentTabIdx == r0_61.NormalColorTabIdx then
+    r0_61:OnNormalColorListItemHovered(r1_61)
   else
-    self:OnSpecialColorListItemHovered(Content)
+    r0_61:OnSpecialColorListItemHovered(r1_61)
   end
 end
-
-function M:OnColorListItemUnhovered(Content)
-  if self.CurrentTabIdx == self.NormalColorTabIdx then
-    self:OnNormalColorListItemUnhovered(Content)
+function r4_0.OnColorListItemUnhovered(r0_62, r1_62)
+  -- line: [841, 847] id: 62
+  if r0_62.CurrentTabIdx == r0_62.NormalColorTabIdx then
+    r0_62:OnNormalColorListItemUnhovered(r1_62)
   else
-    self:OnSpecialColorListItemUnhovered(Content)
+    r0_62:OnSpecialColorListItemUnhovered(r1_62)
   end
 end
-
-function M:CreateNormalColorContents()
-  self.BP_NormalColorContents:Clear()
-  local SwatchData = DataMgr.Swatch
-  rawset(self, "ColorContents", {})
-  rawset(self, "ColorContentsMap", {})
-  rawset(self, "NormalColorHoveredContent", nil)
-  for key, value in pairs(SwatchData) do
-    local Obj = {}
-    Obj.ColorId = key
-    Obj.Fresnel = value.Fresnel
-    local Color = value.ColorNumber or {}
-    Obj.Color = FLinearColor()
-    UKismetMathLibrary.LinearColor_SetFromSRGB(Obj.Color, FColor(Color[1] or 0, Color[2] or 0, Color[3] or 0))
-    if value.ActualR and value.ActualG and value.ActualB then
-      Obj.ActualColor = FLinearColor(value.ActualR, value.ActualG, value.ActualB)
+function r4_0.CreateNormalColorContents(r0_63)
+  -- line: [852, 925] id: 63
+  r0_63.BP_NormalColorContents:Clear()
+  local r1_63 = DataMgr.Swatch
+  rawset(r0_63, "ColorContents", {})
+  rawset(r0_63, "ColorContentsMap", {})
+  rawset(r0_63, "NormalColorHoveredContent", nil)
+  for r6_63, r7_63 in pairs(r1_63) do
+    local r8_63 = {
+      ColorId = r6_63,
+      Fresnel = r7_63.Fresnel,
+    }
+    local r9_63 = r7_63.ColorNumber and {}
+    r8_63.Color = FLinearColor()
+    local r10_63 = UKismetMathLibrary.LinearColor_SetFromSRGB
+    local r11_63 = r8_63.Color
+    local r12_63 = FColor
+    local r13_63 = r9_63[1] and 0
+    local r14_63 = r9_63[2] and 0
+    r10_63(r11_63, r12_63(r13_63, r14_63, r9_63[3] and 0))
+    if r7_63.ActualR and r7_63.ActualG and r7_63.ActualB then
+      r8_63.ActualColor = FLinearColor(r7_63.ActualR, r7_63.ActualG, r7_63.ActualB)
     else
-      Obj.ActualColor = Obj.Color
+      r8_63.ActualColor = r8_63.Color
     end
-    Obj.ResourceId = value.ResourceID
-    Obj.Event_OnClicked = self.OnColorListItemClicked
-    Obj.Event_OnHovered = self.OnColorListItemHovered
-    Obj.Event_OnUnhovered = self.OnColorListItemUnhovered
-    Obj.Owner = self
-    table.insert(self.ColorContents, Obj)
-    self.ColorContentsMap[Obj.ColorId] = Obj
+    r8_63.ResourceId = r7_63.ResourceID
+    r8_63.Event_OnClicked = r0_63.OnColorListItemClicked
+    r8_63.Event_OnHovered = r0_63.OnColorListItemHovered
+    r8_63.Event_OnUnhovered = r0_63.OnColorListItemUnhovered
+    r8_63.Owner = r0_63
+    table.insert(r0_63.ColorContents, r8_63)
+    r0_63.ColorContentsMap[r8_63.ColorId] = r8_63
   end
-  table.sort(self.ColorContents, function(a, b)
-    return a.ColorId < b.ColorId
+  -- close: r2_63
+  table.sort(r0_63.ColorContents, function(r0_64, r1_64)
+    -- line: [879, 881] id: 64
+    return r0_64.ColorId < r1_64.ColorId
   end)
-  local Obj
-  rawset(self, "ListContents", {})
-  for index, value in ipairs(self.ColorContents) do
-    if 1 == index % self.ColorPerRow then
-      Obj = NewObject(UIUtils.GetCommonItemContentClass())
-      Obj.Owner = self
-      Obj.ColorContents = {}
-      self.BP_NormalColorContents:Add(Obj)
-      table.insert(self.ListContents, Obj)
-      self:OnNormalColorListContentCreated(Obj)
+  local r2_63 = nil
+  rawset(r0_63, "ListContents", {})
+  for r7_63, r8_63 in ipairs(r0_63.ColorContents) do
+    if r7_63 % r0_63.ColorPerRow == 1 then
+      r2_63 = NewObject(UIUtils.GetCommonItemContentClass())
+      r2_63.Owner = r0_63
+      r2_63.ColorContents = {}
+      r0_63.BP_NormalColorContents:Add(r2_63)
+      table.insert(r0_63.ListContents, r2_63)
+      r0_63:OnNormalColorListContentCreated(r2_63)
     end
-    value.ListContent = Obj
-    value.Idx = index
-    table.insert(Obj.ColorContents, value)
+    r8_63.ListContent = r2_63
+    r8_63.Idx = r7_63
+    table.insert(r2_63.ColorContents, r8_63)
   end
-  for index, value in ipairs(self.ColorContents) do
-    self:OnNormalColorContentCreated(value)
+  -- close: r3_63
+  for r7_63, r8_63 in ipairs(r0_63.ColorContents) do
+    r0_63:OnNormalColorContentCreated(r8_63)
   end
-  rawset(self, "NormalDefaultColorContents", {})
-  rawset(self, "NormalCurrentContents", {})
-  rawset(self, "NormalComparedContents", {})
-  local Colors = self.CurrentSkin:GetColors(self.CurrentPlan)
-  for i = 1, self.ColorPartCount do
-    local ColorId = Colors[i] or self.DefaultColorId
-    local Color, Fresnel = self:GetDefaultColor(i)
-    local Content = {
-      ColorId = self.DefaultColorId,
-      Owner = self,
-      Color = Color,
-      ActualColor = Color,
-      Fresnel = Fresnel,
-      Event_OnClicked = self.OnColorListItemClicked,
-      Event_OnHovered = self.OnColorListItemHovered,
-      Event_OnUnhovered = self.OnColorListItemUnhovered
+  -- close: r3_63
+  rawset(r0_63, "NormalDefaultColorContents", {})
+  rawset(r0_63, "NormalCurrentContents", {})
+  rawset(r0_63, "NormalComparedContents", {})
+  local r3_63 = r0_63.CurrentSkin:GetColors(r0_63.CurrentPlan)
+  for r7_63 = 1, r0_63.ColorPartCount, 1 do
+    local r8_63 = r3_63[r7_63] and r0_63.DefaultColorId
+    local r9_63, r10_63 = r0_63:GetDefaultColor(r7_63)
+    local r11_63 = {
+      ColorId = r0_63.DefaultColorId,
+      Owner = r0_63,
+      Color = r9_63,
+      ActualColor = r9_63,
+      Fresnel = r10_63,
+      Event_OnClicked = r0_63.OnColorListItemClicked,
+      Event_OnHovered = r0_63.OnColorListItemHovered,
+      Event_OnUnhovered = r0_63.OnColorListItemUnhovered,
     }
-    if ColorId == self.DefaultColorId then
-      self.NormalCurrentContents[i] = self.NormalDefaultColorContents[i]
+    if r8_63 == r0_63.DefaultColorId then
+      r0_63.NormalCurrentContents[r7_63] = r0_63.NormalDefaultColorContents[r7_63]
     else
-      self.NormalCurrentContents[i] = self.ColorContentsMap[ColorId]
+      r0_63.NormalCurrentContents[r7_63] = r0_63.ColorContentsMap[r8_63]
     end
-    table.insert(self.NormalDefaultColorContents, Content)
-    self:OnNormalColorContentCreated(Content)
+    table.insert(r0_63.NormalDefaultColorContents, r11_63)
+    r0_63:OnNormalColorContentCreated(r11_63)
   end
 end
-
-function M:InitNormalDyeing(JumpToTabIdx)
-  self:ResetNormalCurrentContens()
-  self:InitNormalDyeTabs(JumpToTabIdx)
-  self.CurNormalDyeTab = nil
-  local Tab = self.NormalDyeTabs[JumpToTabIdx] or self.NormalDyeTabs[1]
-  self:OnNormalDyeTabInit(Tab)
-  self:UpdateItemConsume()
+function r4_0.InitNormalDyeing(r0_65, r1_65)
+  -- line: [928, 935] id: 65
+  r0_65:ResetNormalCurrentContens()
+  r0_65:InitNormalDyeTabs(r1_65)
+  r0_65.CurNormalDyeTab = nil
+  r0_65:OnNormalDyeTabInit(r0_65.NormalDyeTabs[r1_65] and r0_65.NormalDyeTabs[1])
+  r0_65:UpdateItemConsume()
 end
-
-function M:ClearNormalColorStates()
-  self.NormalComparedContents = {}
-  for _, value in ipairs(self.NormalDefaultColorContents) do
-    value.IsSelected = false
-    value.IsClicked = false
+function r4_0.ClearNormalColorStates(r0_66)
+  -- line: [937, 947] id: 66
+  r0_66.NormalComparedContents = {}
+  for r5_66, r6_66 in ipairs(r0_66.NormalDefaultColorContents) do
+    r6_66.IsSelected = false
+    r6_66.IsClicked = false
   end
-  for _, value in ipairs(self.ColorContents) do
-    value.IsSelected = false
-    value.IsClicked = false
+  -- close: r1_66
+  for r5_66, r6_66 in ipairs(r0_66.ColorContents) do
+    r6_66.IsSelected = false
+    r6_66.IsClicked = false
   end
+  -- close: r1_66
 end
-
-function M:ResetNormalCurrentContens()
-  self.NormalCurrentContents = {}
-  local Colors = self.CurrentSkin:GetColors(self.CurrentPlan)
-  for Idx = 1, self.ColorPartCount do
-    local ColorId = Colors[Idx] or self.DefaultColorId
-    if ColorId == self.DefaultColorId then
-      self.NormalCurrentContents[Idx] = self.NormalDefaultColorContents[Idx]
+function r4_0.ResetNormalCurrentContens(r0_67)
+  -- line: [949, 960] id: 67
+  r0_67.NormalCurrentContents = {}
+  local r1_67 = r0_67.CurrentSkin:GetColors(r0_67.CurrentPlan)
+  for r5_67 = 1, r0_67.ColorPartCount, 1 do
+    local r6_67 = r1_67[r5_67] and r0_67.DefaultColorId
+    if r6_67 == r0_67.DefaultColorId then
+      r0_67.NormalCurrentContents[r5_67] = r0_67.NormalDefaultColorContents[r5_67]
     else
-      self.NormalCurrentContents[Idx] = self.ColorContentsMap[ColorId] or self.NormalDefaultColorContents[Idx]
+      r0_67.NormalCurrentContents[r5_67] = r0_67.ColorContentsMap[r6_67] and r0_67.NormalDefaultColorContents[r5_67]
     end
   end
 end
-
-function M:CreateNormalDefaultColor()
-  if self.Type == CommonConst.ArmoryType.Char then
-    self.DefaultColors = {
-      self:GetCharDefaultColorsFromDataTable(self.ArmoryPlayer)
+function r4_0.CreateNormalDefaultColor(r0_68)
+  -- line: [962, 972] id: 68
+  if r0_68.Type == CommonConst.ArmoryType.Char then
+    r0_68.DefaultColors = {
+      r0_68:GetCharDefaultColorsFromDataTable(r0_68.ArmoryPlayer)
     }
-    self.DefaultFresnel = {
-      [8] = self.DefaultColors[#self.DefaultColors]
+    r0_68.DefaultFresnel = {
+      [8] = r0_68.DefaultColors[#r0_68.DefaultColors],
     }
-    local ArmoryPlayer = self.ArmoryPlayer
-    self.DefaultColors[9] = ArmoryPlayer.CharacterFashion:GetEffectColor()
+    r0_68.DefaultColors[9] = r0_68.ArmoryPlayer.CharacterFashion:GetEffectColor()
   else
-    self.DefaultColors = {
-      self:GetWeaponDefaultColorsFromDataTable(self.UsingWeapon)
+    r0_68.DefaultColors = {
+      r0_68:GetWeaponDefaultColorsFromDataTable(r0_68.UsingWeapon)
     }
-    self.DefaultFresnel = {}
+    r0_68.DefaultFresnel = {}
   end
 end
-
-function M:GetDefaultColor(PartIdx)
-  if self.DefaultColors[PartIdx] then
-    return self.DefaultColors[PartIdx], self.DefaultFresnel[PartIdx]
+function r4_0.GetDefaultColor(r0_69, r1_69)
+  -- line: [974, 980] id: 69
+  if r0_69.DefaultColors[r1_69] then
+    return r0_69.DefaultColors[r1_69], r0_69.DefaultFresnel[r1_69]
   else
     return FLinearColor()
   end
 end
-
-function M:InitNormalDyeTabs(JumpToTabIdx)
-  self.NormalDyeTabs = {}
-  local SwatchData = DataMgr.Swatch
-  self.List_Tab:ClearListItems()
-  local Colors
-  if self.NormalComparedContents and next(self.NormalComparedContents) then
-    Colors = {}
-    for key, value in pairs(self.NormalComparedContents) do
-      Colors[key] = value.ColorId
+function r4_0.InitNormalDyeTabs(r0_70, r1_70)
+  -- line: [983, 1016] id: 70
+  r0_70.NormalDyeTabs = {}
+  local r2_70 = DataMgr.Swatch
+  r0_70.List_Tab:ClearListItems()
+  local r3_70 = nil
+  if r0_70.NormalComparedContents and next(r0_70.NormalComparedContents) then
+    r3_70 = {}
+    for r8_70, r9_70 in pairs(r0_70.NormalComparedContents) do
+      r3_70[r8_70] = r9_70.ColorId
     end
+    -- close: r4_70
   else
-    Colors = self.CurrentSkin:GetColors(self.CurrentPlan)
+    r3_70 = r0_70.CurrentSkin:GetColors(r0_70.CurrentPlan)
   end
-  for i = 1, self.ColorPartCount do
-    local ColorId = Colors[i]
-    local ColorData = SwatchData[ColorId]
-    ColorData = ColorData and ColorData.ColorNumber
-    local Color
-    if ColorData then
-      Color = FLinearColor()
-      UKismetMathLibrary.LinearColor_SetFromSRGB(Color, FColor(ColorData[1] or 0, ColorData[2] or 0, ColorData[3] or 0))
+  for r7_70 = 1, r0_70.ColorPartCount, 1 do
+    local r9_70 = r2_70[r3_70[r7_70]] and r9_70.ColorNumber
+    local r10_70 = nil
+    if r9_70 then
+      r10_70 = FLinearColor()
+      local r11_70 = UKismetMathLibrary.LinearColor_SetFromSRGB
+      local r12_70 = r10_70
+      local r13_70 = FColor
+      local r14_70 = r9_70[1] and 0
+      local r15_70 = r9_70[2] and 0
+      r11_70(r12_70, r13_70(r14_70, r15_70, r9_70[3] and 0))
     end
-    local Obj = NewObject(UIUtils.GetCommonItemContentClass())
-    Obj.Owner = self
-    Obj.Text = i
-    Obj.Color = Color
-    Obj.Idx = i
-    Obj.IsSelected = i == (JumpToTabIdx or 1)
-    table.insert(self.NormalDyeTabs, Obj)
-    self:OnNoramlDyeTabContentCreated(Obj)
-    self.List_Tab:AddItem(Obj)
+    local r11_70 = NewObject(UIUtils.GetCommonItemContentClass())
+    r11_70.Owner = r0_70
+    r11_70.Text = r7_70
+    r11_70.Color = r10_70
+    r11_70.Idx = r7_70
+    r11_70.IsSelected = r7_70 == (r1_70 and 1)
+    table.insert(r0_70.NormalDyeTabs, r11_70)
+    r0_70:OnNoramlDyeTabContentCreated(r11_70)
+    r0_70.List_Tab:AddItem(r11_70)
   end
 end
-
-function M:OnNoramlDyeTabContentCreated(Content)
+function r4_0.OnNoramlDyeTabContentCreated(r0_71, r1_71)
+  -- line: [1018, 1019] id: 71
 end
-
-function M:OnNormalDyeTabInitialized(Content, Widget)
-  if IsValid(Widget) then
-    Widget:BindEventOnClicked(self, self.OnNormalDyeTabClicked)
+function r4_0.OnNormalDyeTabInitialized(r0_72, r1_72, r2_72)
+  -- line: [1021, 1026] id: 72
+  if IsValid(r2_72) then
+    r2_72:BindEventOnClicked(r0_72, r0_72.OnNormalDyeTabClicked)
   end
 end
-
-function M:OnNormalColorListItemClicked(Content)
-  self:NormalColorClickLogic(Content)
+function r4_0.OnNormalColorListItemClicked(r0_73, r1_73)
+  -- line: [1029, 1031] id: 73
+  r0_73:NormalColorClickLogic(r1_73)
 end
-
-function M:NormalColorClickLogic(Content)
-  local CurTabIdx = self.CurNormalDyeTab.Idx
-  local CurTabComparedContent = self.NormalComparedContents[CurTabIdx]
-  if Content and Content == CurTabComparedContent then
-    return
+function r4_0.NormalColorClickLogic(r0_74, r1_74)
+  -- line: [1033, 1054] id: 74
+  local r2_74 = r0_74.CurNormalDyeTab.Idx
+  local r3_74 = r0_74.NormalComparedContents[r2_74]
+  if r1_74 and r1_74 == r3_74 then
+    return 
   end
-  if CurTabComparedContent then
-    CurTabComparedContent.IsClicked = false
-    if CurTabComparedContent.Widget then
-      CurTabComparedContent.Widget:SetIsClicked(false)
+  if r3_74 then
+    r3_74.IsClicked = false
+    if r3_74.Widget then
+      r3_74.Widget:SetIsClicked(false)
     end
   end
-  self.NormalComparedContents[CurTabIdx] = Content
-  self:UpdateItemConsume()
-  self.CurNormalDyeTab.Color = Content.ResourceId and Content.Color
-  if self.CurNormalDyeTab.Widget then
-    self.CurNormalDyeTab.Widget:SetColor(Content.ResourceId and Content.Color)
+  r0_74.NormalComparedContents[r2_74] = r1_74
+  r0_74:UpdateItemConsume()
+  r0_74.CurNormalDyeTab.Color = r1_74.ResourceId and r1_74.Color
+  if r0_74.CurNormalDyeTab.Widget then
+    r0_74.CurNormalDyeTab.Widget:SetColor(r1_74.ResourceId and r1_74.Color)
   end
-  if 9 == CurTabIdx then
-    self.ActorController:ChangeSkinWeaponVFXColor(Content.Color)
-  end
-end
-
-function M:OnNormalColorListItemHovered(Content)
-  self.NormalColorHoveredContent = Content
-  if self.bContrastKeyDown then
-    return
-  end
-  AudioManager(self):PlayUISound(self, "event:/ui/common/color_change", nil, nil)
-  self:NormalColorHoverLogic(Content)
-end
-
-function M:NormalColorHoverLogic(Content)
-  if self.WaitForCreateActor then
-    return
-  end
-  if self.CurrentSkin:GetWeaponSpecialColor(self.CurrentPlan) ~= self.DefaultColorId and not next(self.NormalComparedContents) and self.SpecialDefaultContent then
-    self:ChangeSpecialColor(self.SpecialDefaultContent)
-  end
-  self:ChangePartColor(self.CurNormalDyeTab.Idx, Content.ActualColor, Content.Fresnel)
-  if 9 == self.CurNormalDyeTab.Idx then
-    self.ActorController:ChangeSkinWeaponVFXColor(Content.Color)
+  if r2_74 == 9 then
+    r0_74.ActorController:ChangeSkinWeaponVFXColor(r1_74.Color)
   end
 end
-
-function M:OnNormalColorListItemUnhovered()
-  if self.WaitForCreateActor then
-    return
+function r4_0.OnNormalColorListItemHovered(r0_75, r1_75)
+  -- line: [1056, 1063] id: 75
+  r0_75.NormalColorHoveredContent = r1_75
+  if r0_75.bContrastKeyDown then
+    return 
   end
-  self.NormalColorHoveredContent = nil
-  if self.bContrastKeyDown then
-    return
+  AudioManager(r0_75):PlayUISound(r0_75, "event:/ui/common/color_change", nil, nil)
+  r0_75:NormalColorHoverLogic(r1_75)
+end
+function r4_0.NormalColorHoverLogic(r0_76, r1_76)
+  -- line: [1065, 1078] id: 76
+  if r0_76.WaitForCreateActor then
+    return 
   end
-  local CurNormalDyeTabIdx = self.CurNormalDyeTab.Idx
-  local Content = self.NormalComparedContents[CurNormalDyeTabIdx] or self.NormalCurrentContents[CurNormalDyeTabIdx]
-  if 9 == self.CurNormalDyeTab.Idx then
-    self.ActorController:ChangeSkinWeaponVFXColor(Content.Color)
+  if r0_76.CurrentSkin:GetWeaponSpecialColor(r0_76.CurrentPlan) ~= r0_76.DefaultColorId and not next(r0_76.NormalComparedContents) and r0_76.SpecialDefaultContent then
+    r0_76:ChangeSpecialColor(r0_76.SpecialDefaultContent)
   end
-  if not next(self.NormalComparedContents) and self.CurrentSkin:GetWeaponSpecialColor(self.CurrentPlan) ~= self.DefaultColorId and self.SpecialCurrentContent then
-    self:ChangeSpecialColor(self.SpecialCurrentContent)
+  r0_76:ChangePartColor(r0_76.CurNormalDyeTab.Idx, r1_76.ActualColor, r1_76.Fresnel)
+  if r0_76.CurNormalDyeTab.Idx == 9 then
+    r0_76.ActorController:ChangeSkinWeaponVFXColor(r1_76.Color)
+  end
+end
+function r4_0.OnNormalColorListItemUnhovered(r0_77)
+  -- line: [1080, 1100] id: 77
+  if r0_77.WaitForCreateActor then
+    return 
+  end
+  r0_77.NormalColorHoveredContent = nil
+  if r0_77.bContrastKeyDown then
+    return 
+  end
+  local r1_77 = r0_77.CurNormalDyeTab.Idx
+  local r2_77 = r0_77.NormalComparedContents[r1_77] and r0_77.NormalCurrentContents[r1_77]
+  if r0_77.CurNormalDyeTab.Idx == 9 then
+    r0_77.ActorController:ChangeSkinWeaponVFXColor(r2_77.Color)
+  end
+  if not next(r0_77.NormalComparedContents) and r0_77.CurrentSkin:GetWeaponSpecialColor(r0_77.CurrentPlan) ~= r0_77.DefaultColorId and r0_77.SpecialCurrentContent then
+    r0_77:ChangeSpecialColor(r0_77.SpecialCurrentContent)
   else
-    self:ChangePartColor(CurNormalDyeTabIdx, Content.ActualColor, Content.Fresnel)
+    r0_77:ChangePartColor(r1_77, r2_77.ActualColor, r2_77.Fresnel)
   end
 end
-
-function M:OnNormalDyeTabClicked(TabContent)
-  AudioManager(self):PlayUISound(self, "event:/ui/common/click_level_03", nil, nil)
-  self:OnNormalDyeTabInit(TabContent)
+function r4_0.OnNormalDyeTabClicked(r0_78, r1_78)
+  -- line: [1103, 1106] id: 78
+  AudioManager(r0_78):PlayUISound(r0_78, "event:/ui/common/click_level_03", nil, nil)
+  r0_78:OnNormalDyeTabInit(r1_78)
 end
-
-function M:OnNormalDyeTabInit(TabContent)
-  if TabContent and TabContent == self.CurNormalDyeTab then
-    return
+function r4_0.OnNormalDyeTabInit(r0_79, r1_79)
+  -- line: [1108, 1195] id: 79
+  if r1_79 and r1_79 == r0_79.CurNormalDyeTab then
+    return 
   end
-  if 9 == TabContent.Idx then
-    self.ActorController:SkinWeaponVFX(TabContent.Color or self.DefaultColors[9])
+  if r1_79.Idx == 9 then
+    r0_79.ActorController:SkinWeaponVFX(r1_79.Color and r0_79.DefaultColors[9])
   else
-    self.ActorController:StopSkinWeaponVFX()
+    r0_79.ActorController:StopSkinWeaponVFX()
   end
-  self.NormalDefaultContent = self.NormalDefaultColorContents[TabContent.Idx]
-  if self.CurNormalDyeTab then
-    self.CurNormalDyeTab.IsSelected = false
-    if self.CurNormalDyeTab.Widget then
-      self.CurNormalDyeTab.Widget:OnUnclicked()
+  r0_79.NormalDefaultContent = r0_79.NormalDefaultColorContents[r1_79.Idx]
+  if r0_79.CurNormalDyeTab then
+    r0_79.CurNormalDyeTab.IsSelected = false
+    if r0_79.CurNormalDyeTab.Widget then
+      r0_79.CurNormalDyeTab.Widget:OnUnclicked()
     end
   end
-  TabContent.IsSelected = true
-  self.EMList_Normal:ScrollToTop()
-  self.CurNormalDyeTab = TabContent
-  local CurPartTabIdx = TabContent.Idx
-  local CurTabSelectedColorContent = self.NormalCurrentContents[CurPartTabIdx]
-  local CurTabComparedColorContent = self.NormalComparedContents[CurPartTabIdx]
-  local DyePlanDraft = DyeDraftModel:GetDyeDraftPlan(self.CurrentSkin.SkinId, self.CurrentPlan) or {}
-  for _, Content in ipairs(self.ColorContents) do
-    Content.IsSelected = CurTabSelectedColorContent == Content
-    Content.IsClicked = CurTabComparedColorContent == Content
-    Content.IsSaveInDraft = DyePlanDraft[CurPartTabIdx] == Content.ColorId
-    if Content.IsSaveInDraft then
-      self.CurrentDyeTabDraftContent = Content
+  r1_79.IsSelected = true
+  r0_79.EMList_Normal:ScrollToTop()
+  r0_79.CurNormalDyeTab = r1_79
+  local r2_79 = r1_79.Idx
+  local r3_79 = r0_79.NormalCurrentContents[r2_79]
+  local r4_79 = r0_79.NormalComparedContents[r2_79]
+  local r5_79 = r3_0:GetDyeDraftPlan(r0_79.CurrentSkin.SkinId, r0_79.CurrentPlan) and {}
+  for r10_79, r11_79 in ipairs(r0_79.ColorContents) do
+    r11_79.IsSelected = r3_79 == r11_79
+    r11_79.IsClicked = r4_79 == r11_79
+    r11_79.IsSaveInDraft = r5_79[r2_79] == r11_79.ColorId
+    if r11_79.IsSaveInDraft then
+      r0_79.CurrentDyeTabDraftContent = r11_79
     end
   end
-  self.NormalDefaultContent.IsSelected = self.NormalDefaultContent == CurTabSelectedColorContent
-  self.NormalDefaultContent.IsClicked = self.NormalDefaultContent == CurTabComparedColorContent
-  self.ColorLump_Default:OnListItemObjectSet(self.NormalDefaultContent)
-  local PartColorIds
-  if self.Type == CommonConst.ArmoryType.Char then
-    local DyePartData = DataMgr.DyePart[CurPartTabIdx] or {}
-    PartColorIds = DyePartData.ColorID
+  -- close: r6_79
+  r0_79.NormalDefaultContent.IsSelected = r0_79.NormalDefaultContent == r3_79
+  r0_79.NormalDefaultContent.IsClicked = r0_79.NormalDefaultContent == r4_79
+  r0_79.ColorLump_Default:OnListItemObjectSet(r0_79.NormalDefaultContent)
+  local r6_79 = nil
+  if r0_79.Type == CommonConst.ArmoryType.Char then
+    r6_79 = (DataMgr.DyePart[r2_79] and {}).ColorID
   else
-    local HighLightPartColorContent = CurTabComparedColorContent or CurTabSelectedColorContent
-    self:ChangePartColor(CurPartTabIdx, HighLightPartColorContent.ActualColor, HighLightPartColorContent.Fresnel)
-    self:StartWeaponPartHighLight(HighLightPartColorContent.ActualColor, CurPartTabIdx)
+    local r7_79 = r4_79 and r3_79
+    r0_79:ChangePartColor(r2_79, r7_79.ActualColor, r7_79.Fresnel)
+    r0_79:StartWeaponPartHighLight(r7_79.ActualColor, r2_79)
   end
-  self.EMList_Normal:ClearListItems()
-  local AddedContents = {}
-  if PartColorIds then
-    for index, value in ipairs(PartColorIds) do
-      local Obj = self.ColorContentsMap[value]
-      if Obj and not AddedContents[Obj.ListContent] then
-        Obj.ListContent.bPreviewMode = self.IsPreviewMode
-        self.EMList_Normal:AddItem(Obj.ListContent)
-        AddedContents[Obj.ListContent] = true
-        Obj.ListContent.OnlyShowColor = {}
+  r0_79.EMList_Normal:ClearListItems()
+  local r7_79 = {}
+  if r6_79 then
+    for r12_79, r13_79 in ipairs(r6_79) do
+      local r14_79 = r0_79.ColorContentsMap[r13_79]
+      if r14_79 and not r7_79[r14_79.ListContent] then
+        r14_79.ListContent.bPreviewMode = r0_79.IsPreviewMode
+        r0_79.EMList_Normal:AddItem(r14_79.ListContent)
+        r7_79[r14_79.ListContent] = true
+        r14_79.ListContent.OnlyShowColor = {}
       end
-      table.insert(Obj.ListContent.OnlyShowColor, Obj)
+      table.insert(r14_79.ListContent.OnlyShowColor, r14_79)
     end
+    -- close: r8_79
   else
-    for _, Obj in ipairs(self.ColorContents) do
-      if Obj and not AddedContents[Obj.ListContent] then
-        Obj.ListContent.bPreviewMode = self.IsPreviewMode
-        self.EMList_Normal:AddItem(Obj.ListContent)
-        AddedContents[Obj.ListContent] = true
-        Obj.ListContent.OnlyShowColor = nil
+    for r12_79, r13_79 in ipairs(r0_79.ColorContents) do
+      if r13_79 and not r7_79[r13_79.ListContent] then
+        r13_79.ListContent.bPreviewMode = r0_79.IsPreviewMode
+        r0_79.EMList_Normal:AddItem(r13_79.ListContent)
+        r7_79[r13_79.ListContent] = true
+        r13_79.ListContent.OnlyShowColor = nil
       end
     end
+    -- close: r8_79
   end
-  if self.IsPreviewMode then
-    self.TabConfig = {
+  if r0_79.IsPreviewMode then
+    r0_79.TabConfig = {
       TitleName = GText("UI_Dye_Name"),
-      DynamicNode = {"Back", "BottomKey"},
+      DynamicNode = {
+        "Back",
+        "BottomKey"
+      },
       BottomKeyInfo = {},
       OverridenTopResouces = {
         DataMgr.GlobalConstant.AdvanceColorId.ConstantValue
       },
       StyleName = "Text",
-      BackCallback = self.OnBackKeyDown,
-      OwnerPanel = self,
-      GetReplyOnBack = self.OnResourceGetReply
+      BackCallback = r0_79.OnBackKeyDown,
+      OwnerPanel = r0_79,
+      GetReplyOnBack = r0_79.OnResourceGetReply,
     }
-    self.Tab_Dye:Init(self.TabConfig)
+    r0_79.Tab_Dye:Init(r0_79.TabConfig)
   end
-  self.EMList_Normal:RegenerateAllEntries()
+  r0_79.EMList_Normal:RegenerateAllEntries()
 end
-
-function M:StartWeaponPartHighLight(LastColor, PartIdx)
-  self.ActorController:StartWeaponPartHighLight(LastColor, PartIdx, self.HighLightColor, self.Curve_WPHighLight)
+function r4_0.StartWeaponPartHighLight(r0_80, r1_80, r2_80)
+  -- line: [1198, 1200] id: 80
+  r0_80.ActorController:StartWeaponPartHighLight(r1_80, r2_80, r0_80.HighLightColor, r0_80.Curve_WPHighLight)
 end
-
-function M:StopWeaponPartHighLight(PartIdx)
-  self.ActorController:StopWeaponPartHighLight(PartIdx)
+function r4_0.StopWeaponPartHighLight(r0_81, r1_81)
+  -- line: [1203, 1205] id: 81
+  r0_81.ActorController:StopWeaponPartHighLight(r1_81)
 end
-
-function M:ChangePartColor(PartIdx, Color, Fresnel)
-  if self.Type == CommonConst.ArmoryType.Char then
-    self:ChangeCharPartColor(PartIdx, Color, Fresnel)
+function r4_0.ChangePartColor(r0_82, r1_82, r2_82, r3_82)
+  -- line: [1209, 1216] id: 82
+  if r0_82.Type == CommonConst.ArmoryType.Char then
+    r0_82:ChangeCharPartColor(r1_82, r2_82, r3_82)
   else
-    self:StopWeaponPartHighLight(PartIdx)
-    self:ChangeWeaponPartColor(PartIdx, Color)
+    r0_82:StopWeaponPartHighLight(r1_82)
+    r0_82:ChangeWeaponPartColor(r1_82, r2_82)
   end
 end
-
-function M:ChangeWeaponPartColor(PartIdx, Color)
-  self.ActorController:ChangeWeaponPartColor(PartIdx, Color)
+function r4_0.ChangeWeaponPartColor(r0_83, r1_83, r2_83)
+  -- line: [1218, 1220] id: 83
+  r0_83.ActorController:ChangeWeaponPartColor(r1_83, r2_83)
 end
-
-function M:ChangeToNormalCurrentColors()
-  for Idx, Content in pairs(self.NormalCurrentContents) do
-    self:ChangePartColor(Idx, Content.ActualColor, Content.Fresnel)
+function r4_0.ChangeToNormalCurrentColors(r0_84)
+  -- line: [1222, 1226] id: 84
+  for r5_84, r6_84 in pairs(r0_84.NormalCurrentContents) do
+    r0_84:ChangePartColor(r5_84, r6_84.ActualColor, r6_84.Fresnel)
   end
+  -- close: r1_84
 end
-
-function M:ChangeCharPartColor(PartIdx, Color, Fresnel)
-  self.ActorController:ChangeCharPartColor(PartIdx, Color, Fresnel)
+function r4_0.ChangeCharPartColor(r0_85, r1_85, r2_85, r3_85)
+  -- line: [1228, 1230] id: 85
+  r0_85.ActorController:ChangeCharPartColor(r1_85, r2_85, r3_85)
 end
-
-function M:CreateSpecialColorContents()
-  self.EMList_Special:ClearListItems()
-  local SpecialSwatchData = DataMgr.SpecialSwatch
-  self.SpecialColorContents = {}
-  self.SpecialColorContentsMap = {}
-  for key, value in pairs(SpecialSwatchData) do
-    local Obj = NewObject(UIUtils.GetCommonItemContentClass())
-    Obj.ColorId = key
-    Obj.MaterialName = value.LinkedMaterial
-    Obj.ResourceId = value.ResourceID
-    Obj.Event_OnClicked = self.OnColorListItemClicked
-    Obj.Event_OnHovered = self.OnColorListItemHovered
-    Obj.Event_OnUnhovered = self.OnColorListItemUnhovered
-    Obj.Owner = self
-    table.insert(self.SpecialColorContents, Obj)
-    self:OnSpecialColorContentCreated(Obj)
-    self.SpecialColorContentsMap[Obj.ColorId] = Obj
+function r4_0.CreateSpecialColorContents(r0_86)
+  -- line: [1236, 1272] id: 86
+  r0_86.EMList_Special:ClearListItems()
+  r0_86.SpecialColorContents = {}
+  r0_86.SpecialColorContentsMap = {}
+  for r6_86, r7_86 in pairs(DataMgr.SpecialSwatch) do
+    local r8_86 = NewObject(UIUtils.GetCommonItemContentClass())
+    r8_86.ColorId = r6_86
+    r8_86.MaterialName = r7_86.LinkedMaterial
+    r8_86.ResourceId = r7_86.ResourceID
+    r8_86.Event_OnClicked = r0_86.OnColorListItemClicked
+    r8_86.Event_OnHovered = r0_86.OnColorListItemHovered
+    r8_86.Event_OnUnhovered = r0_86.OnColorListItemUnhovered
+    r8_86.Owner = r0_86
+    table.insert(r0_86.SpecialColorContents, r8_86)
+    r0_86:OnSpecialColorContentCreated(r8_86)
+    r0_86.SpecialColorContentsMap[r8_86.ColorId] = r8_86
   end
-  table.sort(self.SpecialColorContents, function(a, b)
-    return a.ColorId < b.ColorId
+  -- close: r2_86
+  table.sort(r0_86.SpecialColorContents, function(r0_87, r1_87)
+    -- line: [1254, 1256] id: 87
+    return r0_87.ColorId < r1_87.ColorId
   end)
-  for _, value in ipairs(self.SpecialColorContents) do
-    self.EMList_Special:AddItem(value)
+  for r6_86, r7_86 in ipairs(r0_86.SpecialColorContents) do
+    r0_86.EMList_Special:AddItem(r7_86)
   end
-  self.SpecialDefaultContent = {
-    ColorId = self.DefaultColorId,
-    MaterialSoftRef = self.SpecialDefaultColorMat,
-    Event_OnClicked = self.OnColorListItemClicked,
-    Event_OnHovered = self.OnColorListItemHovered,
-    Event_OnUnhovered = self.OnColorListItemUnhovered,
-    Owner = self
+  -- close: r2_86
+  r0_86.SpecialDefaultContent = {
+    ColorId = r0_86.DefaultColorId,
+    MaterialSoftRef = r0_86.SpecialDefaultColorMat,
+    Event_OnClicked = r0_86.OnColorListItemClicked,
+    Event_OnHovered = r0_86.OnColorListItemHovered,
+    Event_OnUnhovered = r0_86.OnColorListItemUnhovered,
+    Owner = r0_86,
   }
-  self:OnSpecialColorContentCreated(self.SpecialDefaultContent)
-  self.SpecialComparedContent = nil
-  self.SpecialCurrentContent = self.SpecialColorContentsMap[self.CurrentSkin:GetWeaponSpecialColor(self.CurrentPlan)] or self.SpecialDefaultContent
+  r0_86:OnSpecialColorContentCreated(r0_86.SpecialDefaultContent)
+  r0_86.SpecialComparedContent = nil
+  r0_86.SpecialCurrentContent = r0_86.SpecialColorContentsMap[r0_86.CurrentSkin:GetWeaponSpecialColor(r0_86.CurrentPlan)] and r0_86.SpecialDefaultContent
 end
-
-function M:InitSpecialDyeing()
-  self:ResetSpecialCurrentContent()
-  self.ColorLump_Default_Sp:OnListItemObjectSet(self.SpecialDefaultContent)
-  self.EMList_Special:RegenerateAllEntries()
-  self:UpdateItemConsume()
+function r4_0.InitSpecialDyeing(r0_88)
+  -- line: [1274, 1279] id: 88
+  r0_88:ResetSpecialCurrentContent()
+  r0_88.ColorLump_Default_Sp:OnListItemObjectSet(r0_88.SpecialDefaultContent)
+  r0_88.EMList_Special:RegenerateAllEntries()
+  r0_88:UpdateItemConsume()
 end
-
-function M:ClearSpecialColorStates()
-  self.SpecialComparedContent = nil
-  if self.Type == CommonConst.ArmoryType.Char then
-    return
+function r4_0.ClearSpecialColorStates(r0_89)
+  -- line: [1281, 1292] id: 89
+  r0_89.SpecialComparedContent = nil
+  if r0_89.Type == CommonConst.ArmoryType.Char then
+    return 
   end
-  self.SpecialDefaultContent.IsSelected = self.SpecialCurrentContent == self.SpecialDefaultContent
-  self.SpecialDefaultContent.IsClicked = false
-  for _, Content in ipairs(self.SpecialColorContents) do
-    Content.IsSelected = Content == self.SpecialCurrentContent
-    Content.IsClicked = false
+  r0_89.SpecialDefaultContent.IsSelected = r0_89.SpecialCurrentContent == r0_89.SpecialDefaultContent
+  r0_89.SpecialDefaultContent.IsClicked = false
+  for r5_89, r6_89 in ipairs(r0_89.SpecialColorContents) do
+    r6_89.IsSelected = r6_89 == r0_89.SpecialCurrentContent
+    r6_89.IsClicked = false
   end
+  -- close: r1_89
 end
-
-function M:ResetSpecialCurrentContent()
-  self.SpecialCurrentContent = self.SpecialColorContentsMap[self.CurrentSkin:GetWeaponSpecialColor(self.CurrentPlan)] or self.SpecialDefaultContent
+function r4_0.ResetSpecialCurrentContent(r0_90)
+  -- line: [1294, 1297] id: 90
+  r0_90.SpecialCurrentContent = r0_90.SpecialColorContentsMap[r0_90.CurrentSkin:GetWeaponSpecialColor(r0_90.CurrentPlan)] and r0_90.SpecialDefaultContent
 end
-
-function M:CreateSpecialDefaultColorMat()
-  self.SpecialDefaultColorMat = self:GetWeaponSpecialDefaultMatFromDataTable(self.UsingWeapon)
+function r4_0.CreateSpecialDefaultColorMat(r0_91)
+  -- line: [1299, 1301] id: 91
+  r0_91.SpecialDefaultColorMat = r0_91:GetWeaponSpecialDefaultMatFromDataTable(r0_91.UsingWeapon)
 end
-
-function M:OnSpecialColorListItemClicked(Content)
-  if self.SpecialComparedContent == Content then
-    return
+function r4_0.OnSpecialColorListItemClicked(r0_92, r1_92)
+  -- line: [1304, 1317] id: 92
+  if r0_92.SpecialComparedContent == r1_92 then
+    return 
   end
-  if self.SpecialComparedContent then
-    self.SpecialComparedContent.IsClicked = false
-    if self.SpecialComparedContent.Widget then
-      self.SpecialComparedContent.Widget:SetIsClicked(false)
+  if r0_92.SpecialComparedContent then
+    r0_92.SpecialComparedContent.IsClicked = false
+    if r0_92.SpecialComparedContent.Widget then
+      r0_92.SpecialComparedContent.Widget:SetIsClicked(false)
     end
   end
-  self.SpecialComparedContent = Content
-  self:ChangeSpecialColor(Content)
-  self:UpdateItemConsume()
+  r0_92.SpecialComparedContent = r1_92
+  r0_92:ChangeSpecialColor(r1_92)
+  r0_92:UpdateItemConsume()
 end
-
-function M:ChangeSpecialColor(Content)
-  if self.SpecialDefaultContent == Content and self.UsingWeapon then
-    local Material = UKismetSystemLibrary.LoadAsset_Blocking(self.SpecialDefaultContent.MaterialSoftRef)
-    self.UsingWeapon.WeaponFashion:OverrideMaterial(Material)
-    if self.UsingWeapon.ChildWeapon then
-      self.UsingWeapon.ChildWeapon.WeaponFashion:OverrideMaterial(Material)
-    end
-    local LastDefaultContent = self.NormalDefaultColorContents[self.ColorPartCount]
-    self:ChangePartColor(self.ColorPartCount, LastDefaultContent.ActualColor, LastDefaultContent.Fresnel)
-    self.UsingWeapon:InitWeaponBreakMI()
-  elseif self.UsingWeapon then
-    self.UsingWeapon:InitWeaponBreakMI()
-    self.UsingWeapon:ChangeWPMaterial(Content.MaterialName)
-    if self.UsingWeapon.ChildWeapon then
-      self.UsingWeapon.ChildWeapon:ChangeWPMaterial(Content.MaterialName)
+function r4_0.ChangeSpecialColor(r0_93, r1_93)
+  -- line: [1319, 1336] id: 93
+  if r0_93.SpecialDefaultContent == r1_93 and r0_93.UsingWeapon then
+    local r2_93 = r0_93.NormalDefaultColorContents[r0_93.ColorPartCount]
+    r0_93:ChangePartColor(r0_93.ColorPartCount, r2_93.ActualColor, r2_93.Fresnel)
+    r0_93.UsingWeapon:InitWeaponBreakMI()
+  elseif r0_93.UsingWeapon then
+    r0_93.UsingWeapon:InitWeaponBreakMI()
+    r0_93.UsingWeapon:ChangeWPMaterial(r1_93.MaterialName)
+    if r0_93.UsingWeapon.ChildWeapon then
+      r0_93.UsingWeapon.ChildWeapon:ChangeWPMaterial(r1_93.MaterialName)
     end
   end
 end
-
-function M:OnSpecialColorListItemHovered(Content)
-  self.SpecialColorHoveredContent = Content
-  if self.bContrastKeyDown then
-    return
+function r4_0.OnSpecialColorListItemHovered(r0_94, r1_94)
+  -- line: [1338, 1345] id: 94
+  r0_94.SpecialColorHoveredContent = r1_94
+  if r0_94.bContrastKeyDown then
+    return 
   end
-  AudioManager(self):PlayUISound(self, "event:/ui/common/color_change", nil, nil)
-  self:ChangeSpecialColor(Content)
+  AudioManager(r0_94):PlayUISound(r0_94, "event:/ui/common/color_change", nil, nil)
+  r0_94:ChangeSpecialColor(r1_94)
 end
-
-function M:OnSpecialColorListItemUnhovered()
-  self.SpecialColorHoveredContent = nil
-  if self.bContrastKeyDown then
-    return
+function r4_0.OnSpecialColorListItemUnhovered(r0_95)
+  -- line: [1347, 1357] id: 95
+  r0_95.SpecialColorHoveredContent = nil
+  if r0_95.bContrastKeyDown then
+    return 
   end
-  local Content = self.SpecialComparedContent or self.SpecialCurrentContent
-  self:ChangeSpecialColor(Content)
-  if Content == self.SpecialCurrentContent and Content == self.SpecialDefaultContent then
-    self:ChangeToNormalCurrentColors()
+  local r1_95 = r0_95.SpecialComparedContent and r0_95.SpecialCurrentContent
+  r0_95:ChangeSpecialColor(r1_95)
+  if r1_95 == r0_95.SpecialCurrentContent and r1_95 == r0_95.SpecialDefaultContent then
+    r0_95:ChangeToNormalCurrentColors()
   end
 end
-
-function M:UpdateItemConsume()
-  if self.CurrentTabIdx == self.NormalColorTabIdx then
-    self:UpdateItemConsumeManual(self.NormalCurrentContents, self.NormalComparedContents)
+function r4_0.UpdateItemConsume(r0_96)
+  -- line: [1362, 1368] id: 96
+  if r0_96.CurrentTabIdx == r0_96.NormalColorTabIdx then
+    r0_96:UpdateItemConsumeManual(r0_96.NormalCurrentContents, r0_96.NormalComparedContents)
   else
-    self:UpdateItemConsumeManual({
-      self.SpecialCurrentContent
+    r0_96:UpdateItemConsumeManual({
+      r0_96.SpecialCurrentContent
     }, {
-      self.SpecialComparedContent
+      r0_96.SpecialComparedContent
     })
   end
 end
-
-function M:UpdateItemConsumeManual(CurrentContents, ComparedContents)
-  self:PlayAnimation(self.In_2)
-  local HasAnyComparedContent = false
-  local CanApplyColors = true
-  local UseItems_Map = {}
-  local UseItems_Array = {}
-  local Avatar = GWorld:GetAvatar()
-  for Idx, Content in pairs(ComparedContents) do
-    if Content and Content ~= CurrentContents[Idx] then
-      HasAnyComparedContent = true
-      local ResourceId = Content.ResourceId
-      local Data = DataMgr.Resource[ResourceId]
-      if Data then
-        if not UseItems_Map[ResourceId] then
-          local ResourceServerData = Avatar.Resources[ResourceId] or {Count = 0}
-          local Obj = {}
-          Obj.Count = ResourceServerData.Count
-          Obj.NeedCount = 1
-          Obj.NotEnoughCount = 0
-          if Obj.NeedCount > Obj.Count then
-            CanApplyColors = false
-            Obj.NotEnoughCount = 1
+function r4_0.UpdateItemConsumeManual(r0_97, r1_97, r2_97)
+  -- line: [1370, 1517] id: 97
+  r0_97:PlayAnimation(r0_97.In_2)
+  local r3_97 = false
+  local r4_97 = true
+  local r5_97 = {}
+  local r6_97 = {}
+  local r7_97 = GWorld:GetAvatar()
+  for r12_97, r13_97 in pairs(r2_97) do
+    if r13_97 and r13_97 ~= r1_97[r12_97] then
+      r3_97 = true
+      local r14_97 = r13_97.ResourceId
+      local r15_97 = DataMgr.Resource[r14_97]
+      if r15_97 then
+        if not r5_97[r14_97] then
+          local r16_97 = r7_97.Resources[r14_97]
+          if not r16_97 then
+            r16_97 = {}
+            r16_97.Count = 0
           end
-          Obj.Id = ResourceId
-          Obj.Rarity = Data.Rarity
-          Obj.Icon = Data.Icon
-          Obj.ItemType = CommonConst.ItemType.Resource
-          Obj.IsShowDetails = true
-          UseItems_Map[ResourceId] = Obj
-          table.insert(UseItems_Array, Obj)
+          local r17_97 = {
+            Count = r16_97.Count,
+            NeedCount = 1,
+            NotEnoughCount = 0,
+          }
+          if r17_97.Count < r17_97.NeedCount then
+            r4_97 = false
+            r17_97.NotEnoughCount = 1
+          end
+          r17_97.Id = r14_97
+          r17_97.Rarity = r15_97.Rarity
+          r17_97.Icon = r15_97.Icon
+          r17_97.ItemType = CommonConst.ItemType.Resource
+          r17_97.IsShowDetails = true
+          r5_97[r14_97] = r17_97
+          table.insert(r6_97, r17_97)
         else
-          local Obj = UseItems_Map[ResourceId]
-          Obj.NeedCount = Obj.NeedCount + 1
-          if Obj.NeedCount > Obj.Count then
-            CanApplyColors = false
-            Obj.NotEnoughCount = Obj.NotEnoughCount + 1
+          local r16_97 = r5_97[r14_97]
+          r16_97.NeedCount = r16_97.NeedCount + 1
+          if r16_97.Count < r16_97.NeedCount then
+            r4_97 = false
+            r16_97.NotEnoughCount = r16_97.NotEnoughCount + 1
           end
         end
       end
     end
   end
-  rawset(self, "bNeedCommonDye", false)
-  rawset(self, "NotEnoughResource", {})
-  rawset(self, "CommonDyeResource", {})
-  if not CanApplyColors then
-    local TotalNotEnoughResourceCount = 0
-    local NotEnoughResourceMap = {}
-    for ResourceId, value in pairs(UseItems_Map) do
-      if value.NotEnoughCount > 0 then
-        local Obj = {
-          ItemId = ResourceId,
-          Count = value.NotEnoughCount,
-          ItemType = CommonConst.ItemType.Resource
+  -- close: r8_97
+  rawset(r0_97, "bNeedCommonDye", false)
+  rawset(r0_97, "NotEnoughResource", {})
+  rawset(r0_97, "CommonDyeResource", {})
+  if not r4_97 then
+    local r8_97 = 0
+    local r9_97 = {}
+    for r14_97, r15_97 in pairs(r5_97) do
+      if r15_97.NotEnoughCount > 0 then
+        local r16_97 = {
+          ItemId = r14_97,
+          Count = r15_97.NotEnoughCount,
+          ItemType = CommonConst.ItemType.Resource,
         }
-        table.insert(self.NotEnoughResource, Obj)
-        NotEnoughResourceMap[ResourceId] = Obj
-        TotalNotEnoughResourceCount = TotalNotEnoughResourceCount + value.NotEnoughCount
+        table.insert(r0_97.NotEnoughResource, r16_97)
+        r9_97[r14_97] = r16_97
+        r8_97 = r8_97 + r15_97.NotEnoughCount
       end
     end
-    if not rawget(self, "ResourceId2CommonDyeIds") then
-      self:CreateResourceId2CommonDyeIds()
+    -- close: r10_97
+    if not rawget(r0_97, "ResourceId2CommonDyeIds") then
+      r0_97:CreateResourceId2CommonDyeIds()
     end
-    local NewUseItems_Array = {}
-    local NewUseItems_Map = {}
-    for index, NotEnoughResource in ipairs(self.NotEnoughResource) do
-      if self.ResourceId2CommonDyeIds[NotEnoughResource.ItemId] then
-        for CommonDyeId, _ in pairs(self.ResourceId2CommonDyeIds[NotEnoughResource.ItemId]) do
-          local CommonDyeResource = Avatar.Resources[CommonDyeId] or {Count = 0}
-          local CommonDyeObj = NewUseItems_Map[CommonDyeId]
-          if not CommonDyeObj then
-            local Data = DataMgr.Resource[CommonDyeId]
-            CommonDyeObj = {
-              Count = CommonDyeResource.Count,
-              NeedCount = 0,
-              Icon = Data.Icon,
-              Id = CommonDyeId,
-              Rarity = Data.Rarity,
-              ItemType = CommonConst.ItemType.Resource,
-              IsShowDetails = true
-            }
-            table.insert(NewUseItems_Array, CommonDyeObj)
-            NewUseItems_Map[CommonDyeId] = CommonDyeObj
+    local r10_97 = {}
+    local r11_97 = {}
+    for r16_97, r17_97 in ipairs(r0_97.NotEnoughResource) do
+      if r0_97.ResourceId2CommonDyeIds[r17_97.ItemId] then
+        for r22_97, r23_97 in pairs(r0_97.ResourceId2CommonDyeIds[r17_97.ItemId]) do
+          local r24_97 = r7_97.Resources[r22_97]
+          if not r24_97 then
+            r24_97 = {}
+            r24_97.Count = 0
           end
-          if CommonDyeResource.Count >= CommonDyeObj.NeedCount + NotEnoughResource.Count then
-            CommonDyeObj.NeedCount = CommonDyeObj.NeedCount + NotEnoughResource.Count
-            TotalNotEnoughResourceCount = TotalNotEnoughResourceCount - NotEnoughResource.Count
+          local r25_97 = r11_97[r22_97]
+          if not r25_97 then
+            local r26_97 = DataMgr.Resource[r22_97]
+            r25_97 = {
+              Count = r24_97.Count,
+              NeedCount = 0,
+              Icon = r26_97.Icon,
+              Id = r22_97,
+              Rarity = r26_97.Rarity,
+              ItemType = CommonConst.ItemType.Resource,
+              IsShowDetails = true,
+            }
+            table.insert(r10_97, r25_97)
+            r11_97[r22_97] = r25_97
+          end
+          if r25_97.NeedCount + r17_97.Count <= r24_97.Count then
+            r25_97.NeedCount = r25_97.NeedCount + r17_97.Count
+            r8_97 = r8_97 - r17_97.Count
           else
-            local AddCount = CommonDyeResource.Count - CommonDyeObj.NeedCount
-            CommonDyeObj.NeedCount = CommonDyeObj.NeedCount + AddCount
-            TotalNotEnoughResourceCount = TotalNotEnoughResourceCount - AddCount
+            local r26_97 = r24_97.Count - r25_97.NeedCount
+            r25_97.NeedCount = r25_97.NeedCount + r26_97
+            r8_97 = r8_97 - r26_97
           end
         end
+        -- close: r18_97
       end
     end
-    if 0 == TotalNotEnoughResourceCount then
-      for index, value in ipairs(NewUseItems_Array) do
-        table.insert(self.CommonDyeResource, {
-          ItemId = value.Id,
-          Count = value.NeedCount,
-          ItemType = CommonConst.ItemType.Resource
+    -- close: r12_97
+    if r8_97 == 0 then
+      for r16_97, r17_97 in ipairs(r10_97) do
+        table.insert(r0_97.CommonDyeResource, {
+          ItemId = r17_97.Id,
+          Count = r17_97.NeedCount,
+          ItemType = CommonConst.ItemType.Resource,
         })
       end
-      for key, value in pairs(UseItems_Map) do
-        if value.Count >= value.NeedCount then
-          NewUseItems_Map[key] = value
-          table.insert(NewUseItems_Array, value)
-        elseif value.Count > 0 then
-          NewUseItems_Map[key] = value
-          value.NeedCount = value.Count
-          table.insert(NewUseItems_Array, value)
+      -- close: r12_97
+      for r16_97, r17_97 in pairs(r5_97) do
+        if r17_97.NeedCount <= r17_97.Count then
+          r11_97[r16_97] = r17_97
+          table.insert(r10_97, r17_97)
+        elseif r17_97.Count > 0 then
+          r11_97[r16_97] = r17_97
+          r17_97.NeedCount = r17_97.Count
+          table.insert(r10_97, r17_97)
         end
       end
-      UseItems_Array = NewUseItems_Array
-      UseItems_Map = NewUseItems_Map
-      CanApplyColors = true
-      self.bNeedCommonDye = true
+      -- close: r12_97
+      r6_97 = r10_97
+      r5_97 = r11_97
+      r4_97 = true
+      r0_97.bNeedCommonDye = true
     end
   end
-  for index, value in ipairs(UseItems_Array) do
-    self:OnConsumItemContentCreated(value)
+  for r12_97, r13_97 in ipairs(r6_97) do
+    r0_97:OnConsumItemContentCreated(r13_97)
   end
-  self.ItemConsume = UseItems_Map
-  self:UpdateConsumItemWidgets(UseItems_Array, UseItems_Map)
-  if HasAnyComparedContent then
-    self.Btn_Compare:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-    self.Btn_Compare:SetForbidden(false)
+  -- close: r8_97
+  r0_97.ItemConsume = r5_97
+  r0_97:UpdateConsumItemWidgets(r6_97, r5_97)
+  if r3_97 then
+    r0_97.Btn_Compare:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+    r0_97.Btn_Compare:SetForbidden(false)
   else
-    self.Btn_Compare:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
-    self.Btn_Compare:SetForbidden(true)
+    r0_97.Btn_Compare:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
+    r0_97.Btn_Compare:SetForbidden(true)
   end
-  if HasAnyComparedContent and not self:IsSameDyeDraft() then
-    self.Btn_Save:ForbidBtn(false)
+  if r3_97 and not r0_97:IsSameDyeDraft() then
+    r0_97.Btn_Save:ForbidBtn(false)
   else
-    self.Btn_Save:ForbidBtn(true)
+    r0_97.Btn_Save:ForbidBtn(true)
   end
-  if CanApplyColors and HasAnyComparedContent then
-    self.Btn_Done:SetText(GText("UI_Dye_Apply"))
-    self.Btn_Done:ForbidBtn(false)
+  if r4_97 and r3_97 then
+    r0_97.Btn_Done:SetText(GText("UI_Dye_Apply"))
+    r0_97.Btn_Done:ForbidBtn(false)
   else
-    self.Btn_Done:ForbidBtn(true)
-    if not CanApplyColors then
-      self.Btn_Done:SetText(GText("UI_Dye_Apply"))
+    r0_97.Btn_Done:ForbidBtn(true)
+    if not r4_97 then
+      r0_97.Btn_Done:SetText(GText("UI_Dye_Apply"))
     else
-      self.Btn_Done:SetText(GText("UI_Dye_Done"))
+      r0_97.Btn_Done:SetText(GText("UI_Dye_Done"))
     end
   end
-  if self.IsPreviewMode then
-    self:UpdatePreviewOrNotUI()
+  if r0_97.IsPreviewMode then
+    r0_97:UpdatePreviewOrNotUI()
   end
 end
-
-function M:CreateResourceId2CommonDyeIds()
-  rawset(self, "ResourceId2CommonDyeIds", {})
-  for CommonDyeId, v in pairs(DataMgr.CommonDye) do
-    for index, ResourceId in ipairs(v.DyeID or {}) do
-      self.ResourceId2CommonDyeIds[ResourceId] = self.ResourceId2CommonDyeIds[ResourceId] or {}
-      self.ResourceId2CommonDyeIds[ResourceId][CommonDyeId] = true
+function r4_0.CreateResourceId2CommonDyeIds(r0_98)
+  -- line: [1519, 1527] id: 98
+  rawset(r0_98, "ResourceId2CommonDyeIds", {})
+  for r5_98, r6_98 in pairs(DataMgr.CommonDye) do
+    for r11_98, r12_98 in ipairs(r6_98.DyeID and {}) do
+      r0_98.ResourceId2CommonDyeIds[r12_98] = r0_98.ResourceId2CommonDyeIds[r12_98] and {}
+      r0_98.ResourceId2CommonDyeIds[r12_98][r5_98] = true
     end
+    -- close: r7_98
   end
+  -- close: r1_98
 end
-
-function M:IsSameDyeDraft()
-  local DyePlanDraft = DyeDraftModel:GetDyeDraftPlan(self.CurrentSkin.SkinId, self.CurrentPlan) or {}
-  for PartIdx, value in pairs(self.NormalComparedContents or {}) do
-    if value.ColorId ~= DyePlanDraft[PartIdx] then
+function r4_0.IsSameDyeDraft(r0_99)
+  -- line: [1529, 1537] id: 99
+  local r1_99 = r3_0:GetDyeDraftPlan(r0_99.CurrentSkin.SkinId, r0_99.CurrentPlan) and {}
+  for r6_99, r7_99 in pairs(r0_99.NormalComparedContents and {}) do
+    if r7_99.ColorId ~= r1_99[r6_99] then
       return false
     end
   end
+  -- close: r2_99
   return true
 end
-
-function M:UpdateConsumItemWidgets(Contents)
-  if 0 == #Contents then
-    if self.Panel_Cost:GetVisibility() == UIConst.VisibilityOp.Visible then
-      self.Panel_Cost:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
-      self:StopAnimation(self.In_2)
-      self:PlayAnimation(self.Out_2)
+function r4_0.UpdateConsumItemWidgets(r0_100, r1_100)
+  -- line: [1539, 1597] id: 100
+  if #r1_100 == 0 then
+    if r0_100.Panel_Cost:GetVisibility() == UIConst.VisibilityOp.Visible then
+      r0_100.Panel_Cost:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
+      r0_100:StopAnimation(r0_100.In_2)
+      r0_100:PlayAnimation(r0_100.Out_2)
     else
-      self.Panel_Cost:SetVisibility(UIConst.VisibilityOp.Collapsed)
+      r0_100.Panel_Cost:SetVisibility(UIConst.VisibilityOp.Collapsed)
     end
   else
-    self.Panel_Cost:SetVisibility(UIConst.VisibilityOp.Visible)
-    self:StopAnimation(self.Out_2)
-    self:PlayAnimation(self.In_2)
-    local AllChildren = self.WB_Consume:GetAllChildren():ToTable()
-    local ChildrenNum = #AllChildren
-    local ContentNum = #Contents
-    local ItemPerRow = 3
-    local WidgetClass = UGameplayStatics.GetObjectClass(AllChildren[2])
-    local UIManager = UIManager(self)
-    if ContentNum < ChildrenNum - 1 then
-      local ShouldKeepCount = ContentNum + 1
-      if 0 ~= ShouldKeepCount % ItemPerRow then
-        ShouldKeepCount = ShouldKeepCount + ItemPerRow - ShouldKeepCount % ItemPerRow
+    r0_100.Panel_Cost:SetVisibility(UIConst.VisibilityOp.Visible)
+    r0_100:StopAnimation(r0_100.Out_2)
+    r0_100:PlayAnimation(r0_100.In_2)
+    local r2_100 = r0_100.WB_Consume:GetAllChildren():ToTable()
+    local r3_100 = #r2_100
+    local r4_100 = #r1_100
+    local r5_100 = 3
+    local r6_100 = UGameplayStatics.GetObjectClass(r2_100[2])
+    local r7_100 = UIManager(r0_100)
+    if r4_100 < r3_100 + -1 then
+      local r8_100 = r4_100 + 1
+      if r8_100 % r5_100 ~= 0 then
+        r8_100 = r8_100 + r5_100 - r8_100 % r5_100
       end
-      if 3 == ShouldKeepCount and 1 == ContentNum then
-        ShouldKeepCount = 2
+      if r8_100 == 3 and r4_100 == 1 then
+        r8_100 = 2
       end
-      if ChildrenNum > ShouldKeepCount then
-        for i = ChildrenNum, ShouldKeepCount + 1, -1 do
-          AllChildren[i]:RemoveFromParent()
+      if r8_100 < r3_100 then
+        for r12_100 = r3_100, r8_100 + 1, -1 do
+          r2_100[r12_100]:RemoveFromParent()
         end
-      elseif ChildrenNum < ShouldKeepCount then
-        for i = ChildrenNum, ShouldKeepCount do
-          self.WB_Consume:AddChild(UIManager:CreateWidget(WidgetClass, false))
+      elseif r3_100 < r8_100 then
+        for r12_100 = r3_100, r8_100, 1 do
+          r0_100.WB_Consume:AddChild(r7_100:CreateWidget(r6_100, false))
         end
       end
-    elseif ContentNum > ChildrenNum - 1 then
-      for i = ChildrenNum, ContentNum do
-        self.WB_Consume:AddChild(UIManager:CreateWidget(WidgetClass, false))
+    elseif r3_100 + -1 < r4_100 then
+      for r11_100 = r3_100, r4_100, 1 do
+        r0_100.WB_Consume:AddChild(r7_100:CreateWidget(r6_100, false))
       end
-      if 0 ~= (ContentNum + 1) % ItemPerRow then
-        for i = 1, ItemPerRow - (ContentNum + 1) % ItemPerRow do
-          self.WB_Consume:AddChild(UIManager:CreateWidget(WidgetClass, false))
+      if (r4_100 + 1) % r5_100 ~= 0 then
+        for r11_100 = 1, r5_100 - (r4_100 + 1) % r5_100, 1 do
+          r0_100.WB_Consume:AddChild(r7_100:CreateWidget(r6_100, false))
         end
       end
     end
-    AllChildren = self.WB_Consume:GetAllChildren():ToTable()
-    for i = 2, #AllChildren do
-      if Contents[i - 1] then
-        AllChildren[i]:OnListItemObjectSet(Contents[i - 1])
-        AllChildren[i]:SetVisibility(UIConst.VisibilityOp.Visible)
+    r2_100 = r0_100.WB_Consume:GetAllChildren():ToTable()
+    for r11_100 = 2, #r2_100, 1 do
+      if r1_100[r11_100 + -1] then
+        r2_100[r11_100]:OnListItemObjectSet(r1_100[r11_100 + -1])
+        r2_100[r11_100]:SetVisibility(UIConst.VisibilityOp.Visible)
       else
-        AllChildren[i]:OnListItemObjectSet({})
-        AllChildren[i]:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
+        r2_100[r11_100]:OnListItemObjectSet({})
+        r2_100[r11_100]:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
       end
     end
   end
 end
-
-function M:OnConsumItemContentCreated(Content)
+function r4_0.OnConsumItemContentCreated(r0_101, r1_101)
+  -- line: [1599, 1600] id: 101
 end
-
-function M:OnContrastKeyDown()
-  if self.bContrastKeyDown then
-    return
+function r4_0.OnContrastKeyDown(r0_102)
+  -- line: [1603, 1609] id: 102
+  if r0_102.bContrastKeyDown then
+    return 
   end
-  self.bContrastKeyDown = true
-  self:RecoverActorColor()
+  r0_102.bContrastKeyDown = true
+  r0_102:RecoverActorColor()
 end
-
-function M:OnContrastKeyUp()
-  self.bContrastKeyDown = false
-  if self.CurrentTabIdx == self.NormalColorTabIdx then
-    if self.SpecialDefaultContent and (next(self.NormalComparedContents) or self.NormalColorHoveredContent) then
-      self:ChangeSpecialColor(self.SpecialDefaultContent)
+function r4_0.OnContrastKeyUp(r0_103)
+  -- line: [1612, 1639] id: 103
+  r0_103.bContrastKeyDown = false
+  if r0_103.CurrentTabIdx == r0_103.NormalColorTabIdx then
+    if r0_103.SpecialDefaultContent and (next(r0_103.NormalComparedContents) or r0_103.NormalColorHoveredContent) then
+      r0_103:ChangeSpecialColor(r0_103.SpecialDefaultContent)
     end
-    for Idx, Content in pairs(self.NormalCurrentContents) do
-      if self.NormalComparedContents[Idx] then
-        self:ChangePartColor(Idx, self.NormalComparedContents[Idx].ActualColor, self.NormalComparedContents[Idx].Fresnel)
+    for r5_103, r6_103 in pairs(r0_103.NormalCurrentContents) do
+      if r0_103.NormalComparedContents[r5_103] then
+        r0_103:ChangePartColor(r5_103, r0_103.NormalComparedContents[r5_103].ActualColor, r0_103.NormalComparedContents[r5_103].Fresnel)
       else
-        self:ChangePartColor(Idx, Content.ActualColor, Content.Fresnel)
+        r0_103:ChangePartColor(r5_103, r6_103.ActualColor, r6_103.Fresnel)
       end
     end
-    if self.NormalColorHoveredContent then
-      self:ChangePartColor(self.CurNormalDyeTab.Idx, self.NormalColorHoveredContent.ActualColor, self.NormalColorHoveredContent.Fresnel)
+    -- close: r1_103
+    if r0_103.NormalColorHoveredContent then
+      r0_103:ChangePartColor(r0_103.CurNormalDyeTab.Idx, r0_103.NormalColorHoveredContent.ActualColor, r0_103.NormalColorHoveredContent.Fresnel)
     else
-      local Content = self.SpecialCurrentContent
-      if self.SpecialCurrentContent ~= self.SpecialDefaultContent and next(self.NormalComparedContents) == nil then
-        self:ChangeSpecialColor(Content)
+      local r1_103 = r0_103.SpecialCurrentContent
+      if r0_103.SpecialCurrentContent ~= r0_103.SpecialDefaultContent and next(r0_103.NormalComparedContents) == nil then
+        r0_103:ChangeSpecialColor(r1_103)
       end
     end
   else
-    local Content = self.SpecialColorHoveredContent or self.SpecialComparedContent or self.SpecialCurrentContent
-    if Content then
-      self:ChangeSpecialColor(Content)
+    local r1_103 = r0_103.SpecialColorHoveredContent and r0_103.SpecialComparedContent and r0_103.SpecialCurrentContent
+    if r1_103 then
+      r0_103:ChangeSpecialColor(r1_103)
     end
   end
 end
-
-function M:OnHideUIKeyDown()
-  self.bSelfHidden = not self.bSelfHidden
-  if self.bSelfHidden then
-    self:SetRenderOpacity(0)
-    self.Image_Click.Slot:SetZOrder(10)
+function r4_0.OnHideUIKeyDown(r0_104)
+  -- line: [1642, 1651] id: 104
+  r0_104.bSelfHidden = not r0_104.bSelfHidden
+  if r0_104.bSelfHidden then
+    r0_104:SetRenderOpacity(0)
+    r0_104.Image_Click.Slot:SetZOrder(10)
   else
-    self:SetRenderOpacity(1)
-    self.Image_Click.Slot:SetZOrder(-1)
+    r0_104:SetRenderOpacity(1)
+    r0_104.Image_Click.Slot:SetZOrder(-1)
   end
 end
-
-function M:UpdateCurrentDyeTabSaveOrSelect()
-  if self.CurrentDyeTabDraftContent then
-    self.CurrentDyeTabDraftContent.IsSaveInDraft = false
-    self.CurrentDyeTabDraftContent.Widget:SetIsSaveInDraft(false)
-    self.CurrentDyeTabDraftContent.Widget:SetIsSelected(self.CurrentDyeTabDraftContent.IsSelected)
+function r4_0.UpdateCurrentDyeTabSaveOrSelect(r0_105)
+  -- line: [1653, 1665] id: 105
+  if r0_105.CurrentDyeTabDraftContent then
+    r0_105.CurrentDyeTabDraftContent.IsSaveInDraft = false
+    r0_105.CurrentDyeTabDraftContent.Widget:SetIsSaveInDraft(false)
+    r0_105.CurrentDyeTabDraftContent.Widget:SetIsSelected(r0_105.CurrentDyeTabDraftContent.IsSelected)
   end
-  self.CurrentDyeTabDraftContent = self.NormalComparedContents[self.CurNormalDyeTab.Idx]
-  if self.CurrentDyeTabDraftContent then
-    self.CurrentDyeTabDraftContent.IsSaveInDraft = true
-    self.CurrentDyeTabDraftContent.Widget:SetIsSaveInDraft(true)
-    self.CurrentDyeTabDraftContent.Widget:SetIsSelected(self.CurrentDyeTabDraftContent.IsSelected)
+  r0_105.CurrentDyeTabDraftContent = r0_105.NormalComparedContents[r0_105.CurNormalDyeTab.Idx]
+  if r0_105.CurrentDyeTabDraftContent then
+    r0_105.CurrentDyeTabDraftContent.IsSaveInDraft = true
+    r0_105.CurrentDyeTabDraftContent.Widget:SetIsSaveInDraft(true)
+    r0_105.CurrentDyeTabDraftContent.Widget:SetIsSelected(r0_105.CurrentDyeTabDraftContent.IsSelected)
   end
 end
-
-function M:OnDoneBtnClicked()
-  local Avatar = GWorld:GetAvatar()
-  
-  local function Confirm()
-    if self.CurrentTabIdx == self.NormalColorTabIdx then
-      local t = {}
-      for Idx, Content in pairs(self.NormalComparedContents) do
-        if Content ~= self.NormalCurrentContents[Idx] then
-          t[Idx] = Content.ColorId
+function r4_0.OnDoneBtnClicked(r0_106)
+  -- line: [1668, 1718] id: 106
+  local r1_106 = GWorld:GetAvatar()
+  local function r2_106()
+    -- line: [1670, 1691] id: 107
+    if r0_106.CurrentTabIdx == r0_106.NormalColorTabIdx then
+      local r0_107 = {}
+      for r5_107, r6_107 in pairs(r0_106.NormalComparedContents) do
+        if r6_107 ~= r0_106.NormalCurrentContents[r5_107] then
+          r0_107[r5_107] = r6_107.ColorId
         end
       end
-      self:BlockAllUIInput(true)
-      if self.Type == CommonConst.ArmoryType.Char then
-        Avatar:ChangeCharSkinColors(self.CurrentSkin.SkinId, t, self.CurrentPlan)
+      -- close: r1_107
+      r0_106:BlockAllUIInput(true)
+      if r0_106.Type == CommonConst.ArmoryType.Char then
+        r1_106:ChangeCharSkinColors(r0_106.CurrentSkin.SkinId, r0_107, r0_106.CurrentPlan)
       else
-        Avatar:ChangeWeaponSkinColors(self.Target.Uuid, self.CurrentSkin.SkinId, self.CurrentPlan, t)
+        r1_106:ChangeWeaponSkinColors(r0_106.Target.Uuid, r0_106.CurrentSkin.SkinId, r0_106.CurrentPlan, r0_107)
       end
     else
-      local NewColor = self.SpecialComparedContent.ColorId
-      if NewColor then
-        self:BlockAllUIInput(true)
-        Avatar:ChangeWeaponSkinSpecialColor(self.Target.Uuid, self.CurrentSkin.SkinId, self.CurrentPlan, NewColor)
+      local r0_107 = r0_106.SpecialComparedContent.ColorId
+      if r0_107 then
+        r0_106:BlockAllUIInput(true)
+        r1_106:ChangeWeaponSkinSpecialColor(r0_106.Target.Uuid, r0_106.CurrentSkin.SkinId, r0_106.CurrentPlan, r0_107)
       end
     end
   end
-  
-  local ItemList = {}
-  local UseItems = self.ItemConsume
-  for _, Item in pairs(UseItems) do
-    if Item.Id then
-      table.insert(ItemList, {
-        ItemId = Item.Id,
+  local r3_106 = {}
+  for r9_106, r10_106 in pairs(r0_106.ItemConsume) do
+    if r10_106.Id then
+      local r11_106 = table.insert
+      local r12_106 = r3_106
+      local r13_106 = {
+        ItemId = r10_106.Id,
         ItemType = CommonConst.ItemType.Resource,
-        ItemNum = Item.Count or 0,
-        ItemNeed = Item.NeedCount
-      })
-    end
-  end
-  local Params = {RightCallbackFunction = Confirm, ItemList = ItemList}
-  if #ItemList > 0 then
-    if self.bNeedCommonDye then
-      Params.LeftItems = self.CommonDyeResource
-      Params.RightItems = self.NotEnoughResource
-      Params.ShortTextParams = {
-        ItemList[1].ItemNeed
+        ItemNum = r10_106.Count and 0,
+        ItemNeed = r10_106.NeedCount,
       }
-      UIManager(self):ShowCommonPopupUI(100228, Params, self)
+      r11_106(r12_106, r13_106)
+    end
+  end
+  -- close: r5_106
+  local r5_106 = {
+    RightCallbackFunction = r2_106,
+    ItemList = r3_106,
+  }
+  if #r3_106 > 0 then
+    if r0_106.bNeedCommonDye then
+      r5_106.LeftItems = r0_106.CommonDyeResource
+      r5_106.RightItems = r0_106.NotEnoughResource
+      r5_106.ShortTextParams = {
+        r3_106[1].ItemNeed
+      }
+      UIManager(r0_106):ShowCommonPopupUI(100228, r5_106, r0_106)
     else
-      UIManager(self):ShowCommonPopupUI(100100, Params, self)
+      UIManager(r0_106):ShowCommonPopupUI(100100, r5_106, r0_106)
     end
   else
-    UIManager(self):ShowCommonPopupUI(100135, Params, self)
+    UIManager(r0_106):ShowCommonPopupUI(100135, r5_106, r0_106)
   end
 end
-
-function M:OnPreviewSaveBtnClicked()
-  if not self.IsPreviewMode then
-    return
+function r4_0.OnPreviewSaveBtnClicked(r0_108)
+  -- line: [1720, 1730] id: 108
+  if not r0_108.IsPreviewMode then
+    return 
   end
-  if self.OpenPreviewDyeFromShopItem then
-    UIManager(self):ShowUITip(UIConst.Tip_CommonToast, GText("UI_SkinPreview_DyeDraft"))
-    self:SaveCurrentDraft()
-    self:UpdatePreviewOrNotUI()
-    self.Btn_PreviewSave:ForbidBtn(true)
-  elseif self.OpenPreviewDyeFromChat then
-    self:ImportDraft()
+  if r0_108.OpenPreviewDyeFromShopItem then
+    UIManager(r0_108):ShowUITip(UIConst.Tip_CommonToast, GText("UI_SkinPreview_DyeDraft"))
+    r0_108:SaveCurrentDraft()
+    r0_108:UpdatePreviewOrNotUI()
+    r0_108.Btn_PreviewSave:ForbidBtn(true)
+  elseif r0_108.OpenPreviewDyeFromChat then
+    r0_108:ImportDraft()
   end
 end
-
-function M:OnForbiddenDoneBtnClicked()
-  local bHasComparedContent = false
-  for Idx, Content in pairs(self.NormalComparedContents) do
-    if Content ~= self.NormalCurrentContents[Idx] then
-      bHasComparedContent = true
+function r4_0.OnForbiddenDoneBtnClicked(r0_109)
+  -- line: [1732, 1742] id: 109
+  local r1_109 = false
+  for r6_109, r7_109 in pairs(r0_109.NormalComparedContents) do
+    if r7_109 ~= r0_109.NormalCurrentContents[r6_109] then
+      r1_109 = true
     end
   end
-  if bHasComparedContent then
-    UIManager(self):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Dye_Insufficient"), 1.5)
+  -- close: r2_109
+  if r1_109 then
+    UIManager(r0_109):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Dye_Insufficient"), 1.5)
   end
 end
-
-function M:OnColorsChanged(Ret)
-  self:BlockAllUIInput(false)
-  if not ErrorCode:Check(Ret) then
-    return
+function r4_0.OnColorsChanged(r0_110, r1_110)
+  -- line: [1745, 1794] id: 110
+  r0_110:BlockAllUIInput(false)
+  if not ErrorCode:Check(r1_110) then
+    return 
   end
-  AudioManager(self):PlayUISound(self, "event:/ui/common/color_change_confirm", nil, nil)
-  UIManager(self):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Dye_Success"), 1.5)
-  self:ResetTargetData()
-  self:ResetSkinData()
-  if self.RecoverColorWhenSeverCallback then
-    self.RecoverColorWhenSeverCallback = false
-    self:ResetNormalCurrentContens()
-    self:SelectDyeingTypeTab(self.CurrentTabIdx)
-    return
+  AudioManager(r0_110):PlayUISound(r0_110, "event:/ui/common/color_change_confirm", nil, nil)
+  UIManager(r0_110):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Dye_Success"), 1.5)
+  r0_110:ResetTargetData()
+  r0_110:ResetSkinData()
+  if r0_110.RecoverColorWhenSeverCallback then
+    r0_110.RecoverColorWhenSeverCallback = false
+    r0_110:ResetNormalCurrentContens()
+    r0_110:SelectDyeingTypeTab(r0_110.CurrentTabIdx)
+    return 
   end
-  if self.CurrentTabIdx == self.NormalColorTabIdx then
-    local CurrentTabIdx = self.CurNormalDyeTab.Idx
-    local CurrentContent = self.NormalCurrentContents[CurrentTabIdx]
-    local ComparedContent = self.NormalComparedContents[CurrentTabIdx]
-    if ComparedContent and ComparedContent ~= CurrentContent then
-      CurrentContent.IsSelected = false
-      if CurrentContent.Widget then
-        CurrentContent.Widget:SetIsSelected(false)
+  if r0_110.CurrentTabIdx == r0_110.NormalColorTabIdx then
+    local r2_110 = r0_110.CurNormalDyeTab.Idx
+    local r3_110 = r0_110.NormalCurrentContents[r2_110]
+    local r4_110 = r0_110.NormalComparedContents[r2_110]
+    if r4_110 and r4_110 ~= r3_110 then
+      r3_110.IsSelected = false
+      if r3_110.Widget then
+        r3_110.Widget:SetIsSelected(false)
       end
-      ComparedContent.IsSelected = true
-      if ComparedContent.Widget then
-        ComparedContent.Widget:SetIsSelected(true)
+      r4_110.IsSelected = true
+      if r4_110.Widget then
+        r4_110.Widget:SetIsSelected(true)
       end
     end
-    self:ResetNormalCurrentContens()
-    self:ResetSpecialCurrentContent()
-    self:UpdateItemConsume()
+    r0_110:ResetNormalCurrentContens()
+    r0_110:ResetSpecialCurrentContent()
+    r0_110:UpdateItemConsume()
   else
-    self.SpecialCurrentContent.IsSelected = false
-    if self.SpecialCurrentContent.Widget then
-      self.SpecialCurrentContent.Widget:SetIsSelected(false)
+    r0_110.SpecialCurrentContent.IsSelected = false
+    if r0_110.SpecialCurrentContent.Widget then
+      r0_110.SpecialCurrentContent.Widget:SetIsSelected(false)
     end
-    self.SpecialComparedContent.IsSelected = true
-    if self.SpecialComparedContent.Widget then
-      self.SpecialComparedContent.Widget:SetIsSelected(true)
+    r0_110.SpecialComparedContent.IsSelected = true
+    if r0_110.SpecialComparedContent.Widget then
+      r0_110.SpecialComparedContent.Widget:SetIsSelected(true)
     end
-    self:ResetNormalCurrentContens()
-    self:ResetSpecialCurrentContent()
-    self:UpdateItemConsume()
+    r0_110:ResetNormalCurrentContens()
+    r0_110:ResetSpecialCurrentContent()
+    r0_110:UpdateItemConsume()
   end
-  self:UpdateCurrentDyeTabSaveOrSelect()
-  self:DeleteCurrentDraft()
-  self.Btn_Compare:SetForbidden(true)
-  self.Btn_Save:ForbidBtn(true)
+  r0_110:UpdateCurrentDyeTabSaveOrSelect()
+  r0_110:DeleteCurrentDraft()
+  r0_110.Btn_Compare:SetForbidden(true)
+  r0_110.Btn_Save:ForbidBtn(true)
 end
-
-function M:OnCharSkinColorPlanChanged(Ret, SkinId, NewPlanIndex)
-  self:BlockAllUIInput(false)
-  if not ErrorCode:Check(Ret) then
-    return
+function r4_0.OnCharSkinColorPlanChanged(r0_111, r1_111, r2_111, r3_111)
+  -- line: [1797, 1817] id: 111
+  r0_111:BlockAllUIInput(false)
+  if not ErrorCode:Check(r1_111) then
+    return 
   end
-  self:ResetTargetData()
-  self:ResetSkinData()
-  self.CurrentPlan = self.CurrentSkin.CurrentPlanIndex
-  self:ResetPlanName()
-  self:ResetNormalCurrentContens()
-  self:UpdateComparedContentsByDraft()
-  local CurrentTabIdx = self.CurrentTabIdx
-  self.CurrentTabIdx = nil
-  self:SelectDyePlan(NewPlanIndex, CurrentTabIdx)
-  self:UpdateDraftBtn()
-  if self.Parent and self.OpenPreviewDyeFromChat then
-    self:ApplyColorsToComparedColors(self.OpenPreviewDyeFromChatColors)
-    self:ApplyColorsToNormalDyeTabs(self.OpenPreviewDyeFromChatColors)
+  r0_111:ResetTargetData()
+  r0_111:ResetSkinData()
+  r0_111.CurrentPlan = r0_111.CurrentSkin.CurrentPlanIndex
+  r0_111:ResetPlanName()
+  r0_111:ResetNormalCurrentContens()
+  r0_111:UpdateComparedContentsByDraft()
+  r0_111.CurrentTabIdx = nil
+  r0_111:SelectDyePlan(r3_111, r0_111.CurrentTabIdx)
+  r0_111:UpdateDraftBtn()
+  if r0_111.Parent and r0_111.OpenPreviewDyeFromChat then
+    r0_111:ApplyColorsToComparedColors(r0_111.OpenPreviewDyeFromChatColors)
+    r0_111:ApplyColorsToNormalDyeTabs(r0_111.OpenPreviewDyeFromChatColors)
   end
-  self:OnContrastKeyUp()
+  r0_111:OnContrastKeyUp()
 end
-
-function M:OnWeaponSkinColorPlanChanged(Ret, WeaponUuid, SkinId, NewPlanIndex)
-  self:BlockAllUIInput(false)
-  if not ErrorCode:Check(Ret) then
-    return
+function r4_0.OnWeaponSkinColorPlanChanged(r0_112, r1_112, r2_112, r3_112, r4_112)
+  -- line: [1820, 1844] id: 112
+  r0_112:BlockAllUIInput(false)
+  if not ErrorCode:Check(r1_112) then
+    return 
   end
-  self:ResetTargetData()
-  self:ResetSkinData()
-  self.CurrentPlan = self.CurrentSkin.CurrentPlanIndex
-  self:ResetPlanName()
-  self:ResetNormalCurrentContens()
-  self:ResetSpecialCurrentContent()
-  self:UpdateComparedContentsByDraft()
-  local CurrentTabIdx = self.CurrentTabIdx
-  self.CurrentTabIdx = nil
-  self:SelectDyePlan(NewPlanIndex, CurrentTabIdx)
-  self:UpdateDraftBtn()
-  if self.Parent and self.OpenPreviewDyeFromChat then
-    self:ApplyColorsToComparedColors(self.OpenPreviewDyeFromChatColors)
-    self:ApplyColorsToNormalDyeTabs(self.OpenPreviewDyeFromChatColors)
+  r0_112:ResetTargetData()
+  r0_112:ResetSkinData()
+  r0_112.CurrentPlan = r0_112.CurrentSkin.CurrentPlanIndex
+  r0_112:ResetPlanName()
+  r0_112:ResetNormalCurrentContens()
+  r0_112:ResetSpecialCurrentContent()
+  r0_112:UpdateComparedContentsByDraft()
+  r0_112.CurrentTabIdx = nil
+  r0_112:SelectDyePlan(r4_112, r0_112.CurrentTabIdx)
+  r0_112:UpdateDraftBtn()
+  if r0_112.Parent and r0_112.OpenPreviewDyeFromChat then
+    r0_112:ApplyColorsToComparedColors(r0_112.OpenPreviewDyeFromChatColors)
+    r0_112:ApplyColorsToNormalDyeTabs(r0_112.OpenPreviewDyeFromChatColors)
   end
-  self:OnContrastKeyUp()
-  if self.SpecialCurrentContent == self.SpecialDefaultContent then
-    self:ChangeToNormalCurrentColors()
+  r0_112:OnContrastKeyUp()
+  if r0_112.SpecialCurrentContent == r0_112.SpecialDefaultContent then
+    r0_112:ChangeToNormalCurrentColors()
   end
 end
-
-function M:OnResourcesChanged(ResourceId)
-  if self.CurrentTabIdx == self.NormalColorTabIdx then
-    if self.NormalComparedContents then
-      if DataMgr.CommonDye[ResourceId] then
-        self:UpdateItemConsume()
-      else
-        for key, value in pairs(self.NormalComparedContents) do
-          if value.ResourceId == ResourceId then
-            self:UpdateItemConsume()
-            break
-          end
+function r4_0.OnResourcesChanged(r0_113, r1_113)
+  -- line: [1847, 1868] id: 113
+  if r0_113.CurrentTabIdx == r0_113.NormalColorTabIdx and r0_113.NormalComparedContents then
+    if DataMgr.CommonDye[r1_113] then
+      r0_113:UpdateItemConsume()
+    else
+      for r6_113, r7_113 in pairs(r0_113.NormalComparedContents) do
+        if r7_113.ResourceId == r1_113 then
+          r0_113:UpdateItemConsume()
+          break
         end
       end
+      -- close: r2_113
     end
-  elseif self.SpecialComparedContent and self.SpecialComparedContent.ResourceId == ResourceId then
-    self:UpdateItemConsume()
+  elseif r0_113.SpecialComparedContent and r0_113.SpecialComparedContent.ResourceId == r1_113 then
+    r0_113:UpdateItemConsume()
   end
 end
-
-function M:PlayInAnim()
-  self:BlockAllUIInput(true)
-  self:StopAnimation(self.Out)
-  self:PlayAnimation(self.In)
+function r4_0.PlayInAnim(r0_114)
+  -- line: [1870, 1874] id: 114
+  r0_114:BlockAllUIInput(true)
+  r0_114:StopAnimation(r0_114.Out)
+  r0_114:PlayAnimation(r0_114.In)
 end
-
-function M:PlayOutAnim()
-  self:RecoverActorColor()
-  self:StopAnimation(self.In)
-  self:PlayAnimation(self.Out)
-  self:BlockAllUIInput(true)
-  if self.LastCameraTags and self.ActorController and not self.bStandaloneWeapon then
-    self.ActorController:SetArmoryCameraTag(table.unpack(self.LastCameraTags))
+function r4_0.PlayOutAnim(r0_115)
+  -- line: [1876, 1884] id: 115
+  r0_115:RecoverActorColor()
+  r0_115:StopAnimation(r0_115.In)
+  r0_115:PlayAnimation(r0_115.Out)
+  r0_115:BlockAllUIInput(true)
+  if r0_115.LastCameraTags and r0_115.ActorController and not r0_115.bStandaloneWeapon then
+    r0_115.ActorController:SetArmoryCameraTag(table.unpack(r0_115.LastCameraTags))
   end
 end
-
-function M:OnInAnimFinished()
-  self:BlockAllUIInput(false)
+function r4_0.OnInAnimFinished(r0_116)
+  -- line: [1886, 1888] id: 116
+  r0_116:BlockAllUIInput(false)
 end
-
-function M:OnOutAnimFinished()
-  self:Close()
-  if self.Parent and self.OpenPreviewDyeFromChat then
-    self.Parent:OnBackKeyDown()
+function r4_0.OnOutAnimFinished(r0_117)
+  -- line: [1890, 1895] id: 117
+  r0_117:Close()
+  if r0_117.Parent and r0_117.OpenPreviewDyeFromChat then
+    r0_117.Parent:OnBackKeyDown()
   end
 end
-
-function M:Close()
-  M.Super.Close(self)
-  if self.OnCloseCallback then
-    self.OnCloseCallback(self.ParentWidget)
+function r4_0.Close(r0_118)
+  -- line: [1897, 1902] id: 118
+  r4_0.Super.Close(r0_118)
+  if r0_118.OnCloseCallback then
+    r0_118.OnCloseCallback(r0_118.ParentWidget)
   end
 end
-
-function M:RecoverActorColor()
-  if not self.CurrentSkin then
-    return
+function r4_0.RecoverActorColor(r0_119)
+  -- line: [1904, 1920] id: 119
+  if not r0_119.CurrentSkin then
+    return 
   end
-  if self.Type == CommonConst.ArmoryType.Char then
-    self:ChangeToNormalCurrentColors()
-  elseif self.CurrentSkin:GetWeaponSpecialColor(self.CurrentPlan) == self.DefaultColorId then
-    self:ChangeSpecialColor(self.SpecialCurrentContent)
-    self:ChangeToNormalCurrentColors()
+  if r0_119.Type == CommonConst.ArmoryType.Char then
+    r0_119:ChangeToNormalCurrentColors()
+  elseif r0_119.CurrentSkin:GetWeaponSpecialColor(r0_119.CurrentPlan) == r0_119.DefaultColorId then
+    r0_119:ChangeSpecialColor(r0_119.SpecialCurrentContent)
+    r0_119:ChangeToNormalCurrentColors()
   else
-    self:ChangeToNormalCurrentColors()
-    self:ChangeSpecialColor(self.SpecialCurrentContent)
+    r0_119:ChangeToNormalCurrentColors()
+    r0_119:ChangeSpecialColor(r0_119.SpecialCurrentContent)
   end
 end
-
-function M:ResetTargetData()
-  local Avatar = GWorld:GetAvatar()
-  if self.Type == CommonConst.ArmoryType.Char then
-    self.Target = Avatar.Chars[self.Target.Uuid]
+function r4_0.ResetTargetData(r0_120)
+  -- line: [1922, 1929] id: 120
+  local r1_120 = GWorld:GetAvatar()
+  if r0_120.Type == CommonConst.ArmoryType.Char then
+    r0_120.Target = r1_120.Chars[r0_120.Target.Uuid]
   else
-    self.Target = Avatar.Weapons[self.Target.Uuid]
+    r0_120.Target = r1_120.Weapons[r0_120.Target.Uuid]
   end
 end
-
-function M:ResetSkinData()
-  local Avatar = GWorld:GetAvatar()
-  if self.Type == CommonConst.ArmoryType.Char then
-    local CommonChar = Avatar.CommonChars[self.Target.CharId]
-    self.CurrentSkin = CommonChar.OwnedSkins[self.SkinId] or self:CreateDefaultSkin(self.SkinId)
+function r4_0.ResetSkinData(r0_121)
+  -- line: [1931, 1939] id: 121
+  local r1_121 = GWorld:GetAvatar()
+  if r0_121.Type == CommonConst.ArmoryType.Char then
+    r0_121.CurrentSkin = r1_121.CommonChars[r0_121.Target.CharId].OwnedSkins[r0_121.SkinId] and r0_121:CreateDefaultSkin(r0_121.SkinId)
   else
-    self.CurrentSkin = self.Target:GetSkin(self.SkinId)
+    r0_121.CurrentSkin = r0_121.Target:GetSkin(r0_121.SkinId)
   end
 end
-
-function M:OnNormalColorContentCreated(Content)
+function r4_0.OnNormalColorContentCreated(r0_122, r1_122)
+  -- line: [1941, 1942] id: 122
 end
-
-function M:OnNormalColorListContentCreated(Content)
+function r4_0.OnNormalColorListContentCreated(r0_123, r1_123)
+  -- line: [1944, 1945] id: 123
 end
-
-function M:OnSpecialColorContentCreated(Content)
+function r4_0.OnSpecialColorContentCreated(r0_124, r1_124)
+  -- line: [1947, 1948] id: 124
 end
-
-function M:OnFunctionBtnAddedToFocusPath()
+function r4_0.OnFunctionBtnAddedToFocusPath(r0_125)
+  -- line: [1950, 1951] id: 125
 end
-
-function M:OnFunctionBtnRemovedFromFocusPath()
+function r4_0.OnFunctionBtnRemovedFromFocusPath(r0_126)
+  -- line: [1953, 1954] id: 126
 end
-
-AssembleComponents(M)
-return M
+AssembleComponents(r4_0)
+return r4_0
