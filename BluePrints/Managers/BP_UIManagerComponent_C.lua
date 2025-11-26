@@ -1,2943 +1,3162 @@
+-- filename: @E:/Pack/Branch/OBT10_Geili\Content/Script/BluePrints\Managers\BP_UIManagerComponent_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local StrLib = require("BluePrints.Common.DataStructure")
-local Deque = StrLib.Deque
-local Stack = StrLib.Stack
-local EMCache = require("EMCache.EMCache")
-local GMVariable = require("BluePrints.UI.GMInterface.GMVariable")
-local CommonUtils = require("Utils.CommonUtils")
-local BP_UIManagerComponent_C = Class({
+local r0_0 = require("BluePrints.Common.DataStructure")
+local r1_0 = r0_0.Deque
+local r2_0 = r0_0.Stack
+local r3_0 = require("EMCache.EMCache")
+local r4_0 = require("BluePrints.UI.GMInterface.GMVariable")
+local r5_0 = require("Utils.CommonUtils")
+local r6_0 = Class({
   "BluePrints.Common.TimerMgr"
 })
-local EUIManageLoadStateTags = {
+local r7_0 = {
   NormalMode = "Normal",
   StoryMode = Const.TalkHideTag,
   SkillFeatureMode = Const.SkillFeatureHideTag,
-  GMMode = "GM"
+  GMMode = "GM",
 }
-local ENormalModeSubState = {
+local r8_0 = {
   ExclusiveMode = "Exclusive",
   ConditionMode = "Condition",
-  BlockedMode = "Blocked"
+  BlockedMode = "Blocked",
 }
-
-function BP_UIManagerComponent_C:Initialize(Initializer)
-  self.UniqueCount = {}
-  self.AllNotRenderWorldUI = {}
-  self.WidgetComponentList = {}
-  self.WaitToTriggerTipsInfo = {}
-  self.HideByStateTagUIList = {}
-  self.AllUIStateTagsCluster = {}
-  self.PopUpUIWidgetRecord = {}
-  self.ShortCutHudKeys = {}
-  self.BanActionCallbackMap = {}
-  self.GMShowUIOnly = nil
-  self.ShowInStoryUINames = {}
-  self.AllUIActorCameraHelper = {}
-  self.AllUINpcActor = {}
-  self.CacheModifyHiddenEntity = {}
-  self.IsMenuAnchorOpen = false
-  self.GameInputModeSubsystem = nil
-  self.FlowList = {}
-  self.AsyncLoadHandlers = {}
-  self.AsyncGetUIContexts = {}
-  self.AsyncUnloadFlags = {}
-  self.SystemOpenFrameFlag = 0
-  self:InitAllContainerData()
-  self:InitUIConfigBySetting()
+function r6_0.Initialize(r0_1, r1_1)
+  -- line: [46, 75] id: 1
+  r0_1.UniqueCount = {}
+  r0_1.AllNotRenderWorldUI = {}
+  r0_1.WidgetComponentList = {}
+  r0_1.WaitToTriggerTipsInfo = {}
+  r0_1.HideByStateTagUIList = {}
+  r0_1.AllUIStateTagsCluster = {}
+  r0_1.PopUpUIWidgetRecord = {}
+  r0_1.ShortCutHudKeys = {}
+  r0_1.BanActionCallbackMap = {}
+  r0_1.GMShowUIOnly = nil
+  r0_1.ShowInStoryUINames = {}
+  r0_1.AllUIActorCameraHelper = {}
+  r0_1.AllUINpcActor = {}
+  r0_1.CacheModifyHiddenEntity = {}
+  r0_1.IsMenuAnchorOpen = false
+  r0_1.GameInputModeSubsystem = nil
+  r0_1.FlowList = {}
+  r0_1.AsyncLoadHandlers = {}
+  r0_1.AsyncGetUIContexts = {}
+  r0_1.AsyncUnloadFlags = {}
+  r0_1.SystemOpenFrameFlag = 0
+  r0_1:InitAllContainerData()
+  r0_1:InitUIConfigBySetting()
 end
-
-function BP_UIManagerComponent_C:InitUIConfigBySetting()
-  if EMCache then
-    local GMInfo = EMCache:Get("GMInfo")
-    if GMInfo and GMInfo.DisableScreenMessages then
+function r6_0.InitUIConfigBySetting(r0_2)
+  -- line: [79, 88] id: 2
+  if r3_0 then
+    local r1_2 = r3_0:Get("GMInfo")
+    if r1_2 and r1_2.DisableScreenMessages then
       UE4.UKismetSystemLibrary.ExecuteConsoleCommand(nil, "DisableAllScreenMessages")
     else
       UE4.UKismetSystemLibrary.ExecuteConsoleCommand(nil, "EnableAllScreenMessages")
     end
   end
 end
-
-function BP_UIManagerComponent_C:InitAllContainerData()
-  self.UILoadingDeque = Deque.New()
-  self.UIJumpToDeque = Deque.New()
-  self._CommonToastQueue = Deque.New()
-  self._CommonToastTimer = "UIManager_CommonToastTimer"
-  self._CommonToastSet = {}
-  self._StoryToastQueue = Deque.New()
-  self._StoryToastTimer = "UIManager_StoryToastTimer"
-  self._StoryToastSet = {}
-  self.UIManagerModeTagsStack = Stack.New()
-  self:PushCurrentModeStateTag(EUIManageLoadStateTags.NormalMode)
+function r6_0.InitAllContainerData(r0_3)
+  -- line: [91, 105] id: 3
+  r0_3.UILoadingDeque = r1_0.New()
+  r0_3.UIJumpToDeque = r1_0.New()
+  r0_3._CommonToastQueue = r1_0.New()
+  r0_3._CommonToastTimer = "UIManager_CommonToastTimer"
+  r0_3._CommonToastSet = {}
+  r0_3._StoryToastQueue = r1_0.New()
+  r0_3._StoryToastTimer = "UIManager_StoryToastTimer"
+  r0_3._StoryToastSet = {}
+  r0_3.UIManagerModeTagsStack = r2_0.New()
+  r0_3:PushCurrentModeStateTag(r7_0.NormalMode)
 end
-
-function BP_UIManagerComponent_C:InitUIStates()
-  self:_InitGameDPI()
-  local SceneManager = GWorld.GameInstance:GetSceneManager()
-  local IsPIE = UE4.URuntimeCommonFunctionLibrary.IsPlayInEditor(GWorld.GameInstance)
-  if not IsPIE and not UUCloudGameInstanceSubsystem.IsCloudGame() then
-    if SceneManager then
-      SceneManager:SetWindowDeactivatedEventDelegate()
-      SceneManager:SetOnWindowResizedDelegate()
-      SceneManager:SetOnWindowMovedDelegate()
-    end
-  elseif SceneManager then
-    local UInputSettings = UE4.UInputSettings.GetInputSettings()
-    if UInputSettings.GetInputSettings().bUseMouseForTouch then
-      SceneManager:UpdateUIDPIStandValue(UIConst.DPIBaseOnSize.Mobile.X, UIConst.DPIBaseOnSize.Mobile.Y)
+function r6_0.InitUIStates(r0_4)
+  -- line: [108, 135] id: 4
+  r0_4:_InitGameDPI()
+  local r1_4 = GWorld.GameInstance:GetSceneManager()
+  if not UE4.URuntimeCommonFunctionLibrary.IsPlayInEditor(GWorld.GameInstance) and not UUCloudGameInstanceSubsystem.IsCloudGame() and r1_4 then
+    r1_4:SetWindowDeactivatedEventDelegate()
+    r1_4:SetOnWindowResizedDelegate()
+    r1_4:SetOnWindowMovedDelegate()
+  elseif r1_4 then
+    if UE4.UInputSettings.GetInputSettings().GetInputSettings().bUseMouseForTouch then
+      r1_4:UpdateUIDPIStandValue(UIConst.DPIBaseOnSize.Mobile.X, UIConst.DPIBaseOnSize.Mobile.Y)
     else
-      SceneManager:UpdateUIDPIStandValue(UIConst.DPIBaseOnSize.PC.X, UIConst.DPIBaseOnSize.PC.Y)
+      r1_4:UpdateUIDPIStandValue(UIConst.DPIBaseOnSize.PC.X, UIConst.DPIBaseOnSize.PC.Y)
     end
   end
-  self.Overridden.InitUIStates(self)
+  r0_4.Overridden.InitUIStates(r0_4)
   UE4.UMainBar.SetIsForbidenShowBloodUI(false)
-  self:InitGlobalVersionDisplay()
+  r0_4:InitGlobalVersionDisplay()
 end
-
-function BP_UIManagerComponent_C:PreloadUI()
-  local bMobile = CommonUtils.GetDeviceTypeByPlatformName(self) == "Mobile"
-  for UIName, UIData in pairs(DataMgr.SystemUI) do
-    if UIData.IsPreloadBP then
-      local Class
-      if bMobile then
-        Class = LoadClass(UIData.MobileBPPath)
+function r6_0.PreloadUI(r0_5)
+  -- line: [138, 166] id: 5
+  local r1_5 = r5_0.GetDeviceTypeByPlatformName(r0_5) == "Mobile"
+  for r6_5, r7_5 in pairs(DataMgr.SystemUI) do
+    if r7_5.IsPreloadBP then
+      local r8_5 = nil
+      if r1_5 then
+        r8_5 = LoadClass(r7_5.MobileBPPath)
       else
-        Class = LoadClass(UIData.PCBPPath)
+        r8_5 = LoadClass(r7_5.PCBPPath)
       end
-      if Class then
-        self.PreLoadUIStates:Add(UIName, Class)
+      if r8_5 then
+        r0_5.PreLoadUIStates:Add(r6_5, r8_5)
       end
     end
   end
-  for UIName, UIData in pairs(DataMgr.WidgetUI) do
-    if UIData.PreCreateNum and UIData.PreCreateNum > 0 then
-      local Class
-      if bMobile then
-        Class = LoadClass(UIData.MobileBPPath)
+  -- close: r2_5
+  for r6_5, r7_5 in pairs(DataMgr.WidgetUI) do
+    if r7_5.PreCreateNum and r7_5.PreCreateNum > 0 then
+      local r8_5 = nil
+      if r1_5 then
+        r8_5 = LoadClass(r7_5.MobileBPPath)
       else
-        Class = LoadClass(UIData.BPPath)
+        r8_5 = LoadClass(r7_5.BPPath)
       end
-      if Class then
-        self:PreCreateWidgetUI(UIName, Class, UIData.PreCreateNum)
+      if r8_5 then
+        r0_5:PreCreateWidgetUI(r6_5, r8_5, r7_5.PreCreateNum)
       end
     end
   end
+  -- close: r2_5
 end
-
-function BP_UIManagerComponent_C:_InitGameDPI()
-  local HUDSizeConf = DataMgr.Option.HUDSize
-  if not HUDSizeConf then
-    return
+function r6_0._InitGameDPI(r0_6)
+  -- line: [169, 183] id: 6
+  local r1_6 = DataMgr.Option.HUDSize
+  if not r1_6 then
+    return 
   end
-  local HUDSizeVal = EMCache:Get(HUDSizeConf.EMCacheName)
-  if not HUDSizeVal or 0 == HUDSizeVal then
-    for i, ValStr in ipairs(HUDSizeConf.UnFoldText) do
-      if i == math.floor(tonumber(HUDSizeConf.DefaultValue)) then
-        HUDSizeVal = tonumber(table.pack(string.gsub(ValStr, "%%", ""))[1]) * 0.01
-        EMCache:Set(HUDSizeConf.EMCacheName, HUDSizeVal)
+  local r2_6 = r3_0:Get(r1_6.EMCacheName)
+  if not r2_6 or r2_6 == 0 then
+    for r7_6, r8_6 in ipairs(r1_6.UnFoldText) do
+      if r7_6 == math.floor(tonumber(r1_6.DefaultValue)) then
+        r2_6 = tonumber(table.pack(string.gsub(r8_6, "%%", ""))[1]) * 0.01
+        r3_0:Set(r1_6.EMCacheName, r2_6)
         break
       end
     end
+    -- close: r3_6
   end
-  UE.UUIFunctionLibrary.SetGameDPI(HUDSizeVal)
+  UE.UUIFunctionLibrary.SetGameDPI(r2_6)
 end
-
-function BP_UIManagerComponent_C:AddWidgetComponentToList(ActorEid, WidgetName, WidgetComp)
-  if not self.WidgetComponentList[ActorEid] then
-    self.WidgetComponentList[ActorEid] = {}
+function r6_0.AddWidgetComponentToList(r0_7, r1_7, r2_7, r3_7)
+  -- line: [198, 216] id: 7
+  if not r0_7.WidgetComponentList[r1_7] then
+    r0_7.WidgetComponentList[r1_7] = {}
   end
-  self.WidgetComponentList[ActorEid][WidgetName] = WidgetComp
-  EventManager:FireEvent(EventID.OnAddWidgetComponent, {WidgetName = WidgetName, WidgetComponent = WidgetComp})
-  if self:CheckUIMgrIsInSpecialState() == EUIManageLoadStateTags.GMMode and WidgetName ~= self.GMShowUIOnly then
-    if type(WidgetComp.SetWidgetHiddenByTag) == "function" then
-      WidgetComp:SetWidgetHiddenByTag(true, UIConst.CommonHideTagName.GMShowUIOnly)
+  r0_7.WidgetComponentList[r1_7][r2_7] = r3_7
+  EventManager:FireEvent(EventID.OnAddWidgetComponent, {
+    WidgetName = r2_7,
+    WidgetComponent = r3_7,
+  })
+  if r0_7:CheckUIMgrIsInSpecialState() == r7_0.GMMode and r2_7 ~= r0_7.GMShowUIOnly then
+    if type(r3_7.SetWidgetHiddenByTag) == "function" then
+      r3_7:SetWidgetHiddenByTag(true, UIConst.CommonHideTagName.GMShowUIOnly)
     else
-      local Widget = WidgetComp:GetWidget()
-      if Widget then
-        Widget:Hide(UIConst.CommonHideTagName.GMShowUIOnly)
+      local r4_7 = r3_7:GetWidget()
+      if r4_7 then
+        r4_7:Hide(UIConst.CommonHideTagName.GMShowUIOnly)
       end
     end
   end
 end
-
-function BP_UIManagerComponent_C:RemoveWidgetComponentToList(ActorEid, WidgetName)
-  if self.WidgetComponentList[ActorEid] ~= nil then
-    self.WidgetComponentList[ActorEid][WidgetName] = nil
-    if IsEmptyTable(self.WidgetComponentList[ActorEid]) then
-      self.WidgetComponentList[ActorEid] = nil
+function r6_0.RemoveWidgetComponentToList(r0_8, r1_8, r2_8)
+  -- line: [219, 226] id: 8
+  if r0_8.WidgetComponentList[r1_8] ~= nil then
+    r0_8.WidgetComponentList[r1_8][r2_8] = nil
+    if IsEmptyTable(r0_8.WidgetComponentList[r1_8]) then
+      r0_8.WidgetComponentList[r1_8] = nil
     end
   end
 end
-
-function BP_UIManagerComponent_C:CreateAndAttachToParentWidget(BPClassPath, UIName, ParentWidget, IsWrapChildWithPanel)
-  local UIConfig = UIConst.AllUIConfig[UIName] or {}
-  local ExistUIObj = self:GetUI(UIName)
-  if nil ~= ExistUIObj and not UIConfig.allowmulti then
-    return ExistUIObj
+function r6_0.CreateAndAttachToParentWidget(r0_9, r1_9, r2_9, r3_9, r4_9)
+  -- line: [229, 252] id: 9
+  local r5_9 = UIConst.AllUIConfig[r2_9] and {}
+  local r6_9 = r0_9:GetUI(r2_9)
+  if r6_9 ~= nil and not r5_9.allowmulti then
+    return r6_9
   end
-  if nil == BPClassPath then
-    print(self:GetLogMask(), "The UI Whitch Named " .. UIName .. "BPClass is nil !!!!!!!")
-    return
+  if r1_9 == nil then
+    print(r0_9:GetLogMask(), "The UI Whitch Named " .. r2_9 .. "BPClass is nil !!!!!!!")
+    return 
   end
-  local UMG_Class
-  if type(BPClassPath) == "string" then
-    UMG_Class = UE4.UClass.Load(BPClassPath)
-  elseif type(BPClassPath) == "userdata" then
-    UMG_Class = BPClassPath
-  elseif type(BPClassPath) == "table" then
-    UMG_Class = BPClassPath
+  local r7_9 = nil
+  if type(r1_9) == "string" then
+    r7_9 = UE4.UClass.Load(r1_9)
+  elseif type(r1_9) == "userdata" then
+    r7_9 = r1_9
+  elseif type(r1_9) == "table" then
+    r7_9 = r1_9
   else
-    print(self:GetLogMask(), "BPClassPath is not valid")
-    return
+    print(r0_9:GetLogMask(), "BPClassPath is not valid")
+    return 
   end
-  local UIObj = self.Overridden.CreateAndAttachToParentWidget(self, UMG_Class, UIName, ParentWidget, IsWrapChildWithPanel)
-  return UIObj
+  return r0_9.Overridden.CreateAndAttachToParentWidget(r0_9, r7_9, r2_9, r3_9, r4_9)
 end
-
-function BP_UIManagerComponent_C:_CreateWidgetNew(UIName)
-  local WidgetUIConfig = DataMgr.WidgetUI[UIName]
-  assert(WidgetUIConfig, "UI:" .. UIName .. "不在WidgetUI表中")
-  local PlatformName, BPClassPath = (CommonUtils.GetDeviceTypeByPlatformName(self))
-  if PlatformName == CommonConst.CLIENT_DEVICE_TYPE.PC then
-    BPClassPath = WidgetUIConfig.BPPath
-  elseif PlatformName == CommonConst.CLIENT_DEVICE_TYPE.MOBILE then
-    BPClassPath = WidgetUIConfig.MobileBPPath or WidgetUIConfig.BPPath
+function r6_0._CreateWidgetNew(r0_10, r1_10)
+  -- line: [256, 273] id: 10
+  local r2_10 = DataMgr.WidgetUI[r1_10]
+  assert(r2_10, "UI:" .. r1_10 .. "不在WidgetUI表中")
+  local r3_10 = r5_0.GetDeviceTypeByPlatformName(r0_10)
+  local r4_10 = nil
+  if r3_10 == CommonConst.CLIENT_DEVICE_TYPE.PC then
+    r4_10 = r2_10.BPPath
+  elseif r3_10 == CommonConst.CLIENT_DEVICE_TYPE.MOBILE then
+    r4_10 = r2_10.MobileBPPath and r2_10.BPPath
   else
-    BPClassPath = WidgetUIConfig.BPPath
+    r4_10 = r2_10.BPPath
   end
-  local bIsAddToCachePool = UIConst.OptimizeSwitch[PlatformName].UI_ADD_IN_CACHE and WidgetUIConfig.IsAddToCachePool
-  local Widget = self:CreateWidget(BPClassPath, WidgetUIConfig.NeedShowInWindow, WidgetUIConfig.ZOrder, nil, bIsAddToCachePool)
-  self:UpdateArgs(Widget, WidgetUIConfig.Params)
-  return Widget
+  local r6_10 = r0_10:CreateWidget(r4_10, r2_10.NeedShowInWindow, r2_10.ZOrder, nil, UIConst.OptimizeSwitch[r3_10].UI_ADD_IN_CACHE and r2_10.IsAddToCachePool)
+  r0_10:UpdateArgs(r6_10, r2_10.Params)
+  return r6_10
 end
-
-function BP_UIManagerComponent_C:CreateWidgetAsync(UIName, CoroutineOrCBFunc, BPPath, ...)
-  if not CoroutineOrCBFunc then
-    if UIName then
-      return self:_CreateWidgetNew(UIName)
-    elseif BPPath then
-      return self:CreateWidget(BPPath, ...)
+function r6_0.CreateWidgetAsync(r0_11, r1_11, r2_11, r3_11, ...)
+  -- line: [280, 350] id: 11
+  if not r2_11 then
+    if r1_11 then
+      return r0_11:_CreateWidgetNew(r1_11)
+    elseif r3_11 then
+      return r0_11:CreateWidget(r3_11, ...)
     end
   end
-  local WidgetUIConfig, BPClassPath
-  local PlatformName = CommonUtils.GetDeviceTypeByPlatformName(self)
-  if BPPath then
-    BPClassPath = BPPath
-    local NeedShowInWindow, ZOrder, ExUIName, bIsAddToCachePool = ...
-    WidgetUIConfig = UIConst.AllUIConfig[UIName] or {
-      NeedShowInWindow = NeedShowInWindow,
-      ZOrder = ZOrder,
-      IsAddToCachePool = bIsAddToCachePool and UIConst.OptimizeSwitch[PlatformName].UI_ADD_IN_CACHE
-    }
+  local r4_11 = nil
+  local r5_11 = nil
+  local r6_11 = r5_0.GetDeviceTypeByPlatformName(r0_11)
+  local r7_11 = nil	-- notice: implicit variable refs by block#[7]
+  local r8_11 = nil	-- notice: implicit variable refs by block#[7]
+  local r10_11 = nil	-- notice: implicit variable refs by block#[7]
+  if r3_11 then
+    r5_11 = r3_11
+    ... = ... -- error: untaken top expr
+    r4_11 = UIConst.AllUIConfig[r1_11]
+    if r4_11 then
+      local r11_11 = {
+        NeedShowInWindow = r7_11,
+        ZOrder = r8_11,
+        IsAddToCachePool = r10_11 and UIConst.OptimizeSwitch[r6_11].UI_ADD_IN_CACHE,
+      }
+      r4_11 = r11_11
+    end
   else
-    WidgetUIConfig = DataMgr.WidgetUI[UIName]
-    assert(WidgetUIConfig, "UI:" .. UIName .. "不在WidgetUI表中")
-    if PlatformName == CommonConst.CLIENT_DEVICE_TYPE.PC then
-      BPClassPath = WidgetUIConfig.BPPath
-    elseif PlatformName == CommonConst.CLIENT_DEVICE_TYPE.MOBILE then
-      BPClassPath = WidgetUIConfig.MobileBPPath or WidgetUIConfig.BPPath
+    r4_11 = DataMgr.WidgetUI[r1_11]
+    r10_11 = r1_11
+    assert(r4_11, "UI:" .. r10_11 .. "不在WidgetUI表中")
+    r7_11 = CommonConst.CLIENT_DEVICE_TYPE.PC
+    if r6_11 == r7_11 then
+      r5_11 = r4_11.BPPath
     else
-      BPClassPath = WidgetUIConfig.BPPath
+      r7_11 = CommonConst.CLIENT_DEVICE_TYPE.MOBILE
+      if r6_11 == r7_11 then
+        r7_11 = r4_11.MobileBPPath
+        r5_11 = r7_11 and r4_11.BPPath
+      else
+        r5_11 = r4_11.BPPath
+      end
     end
   end
-  
-  local function AfterLoadUMGClassDone(UMG_Class, CbFunc)
-    local UMG_Widget_Ins = self:_CreateWidgetByUMGClass(UMG_Class, WidgetUIConfig.NeedShowInWindow, WidgetUIConfig.ZOrder, nil, WidgetUIConfig.IsAddToCachePool)
-    if nil == UMG_Widget_Ins then
-      DebugPrint(ErrorTag, "BP_UIManagerComponent_C: CreateWidget Error, BPClassPath is ", BPClassPath)
+  function r7_11(r0_12, r1_12)
+    -- line: [314, 321] id: 12
+    local r2_12 = r0_11:_CreateWidgetByUMGClass(r0_12, r4_11.NeedShowInWindow, r4_11.ZOrder, nil, r4_11.IsAddToCachePool)
+    if r2_12 == nil then
+      DebugPrint(ErrorTag, "BP_UIManagerComponent_C: CreateWidget Error, BPClassPath is ", r5_11)
     end
-    if CbFunc then
-      CbFunc(UMG_Widget_Ins)
+    if r1_12 then
+      r1_12(r2_12)
     end
-    return UMG_Widget_Ins
+    return r2_12
   end
-  
-  local UMG_Class
-  DebugPrint("CreateWidget 开始异步加载UMGCLass", UIName)
-  local Handler
-  Handler = UE.UResourceLibrary.LoadClassAsync(self, BPClassPath, {
-    self,
-    function(self, UIClass)
-      DebugPrint("CreateWidget 异步加载UMGCLass完成", UIName)
-      UMG_Class = UIClass
-      if type(CoroutineOrCBFunc) == "function" then
-        if Handler then
-          AfterLoadUMGClassDone(UIClass, CoroutineOrCBFunc)
-        end
-      elseif type(CoroutineOrCBFunc) == "thread" and coroutine.status(CoroutineOrCBFunc) == "suspended" then
-        coroutine.resume(CoroutineOrCBFunc, UIClass)
+  r8_11 = nil
+  DebugPrint("CreateWidget 开始异步加载UMGCLass", r1_11)
+  local r9_11 = nil
+  r10_11 = UE.UResourceLibrary.LoadClassAsync
+  r10_11 = r10_11(r0_11, r5_11, {
+    r0_11,
+    function(r0_13, r1_13)
+      -- line: [325, 337] id: 13
+      DebugPrint("CreateWidget 异步加载UMGCLass完成", r1_11)
+      r8_11 = r1_13
+      if type(r2_11) == "function" and r9_11 then
+        r7_11(r1_13, r2_11)
+      elseif type(r2_11) == "thread" and coroutine.status(r2_11) == "suspended" then
+        coroutine.resume(r2_11, r1_13)
       end
     end
   })
-  if not UMG_Class then
-    if not UResourceLibrary.IsValidResource(self, Handler) then
-      return
+  r9_11 = r10_11
+  if not r8_11 then
+    r10_11 = UResourceLibrary.IsValidResource(r0_11, r9_11)
+    if not r10_11 then
+      return 
     end
-    DebugPrint("CreateWidget 等待异步加载UMGCLass...", UIName)
-    if type(CoroutineOrCBFunc) == "thread" then
-      UMG_Class = coroutine.yield()
-    elseif type(CoroutineOrCBFunc) == "function" then
-      return
-    end
-  end
-  return AfterLoadUMGClassDone(UMG_Class)
-end
-
-function BP_UIManagerComponent_C:CreateWidget(BPClassPath, NeedShowInWindow, ZOrder, UIName, bIsAddToCachePool)
-  local UMG_Class
-  if type(BPClassPath) == "string" then
-    UMG_Class = LoadClass(BPClassPath)
-  else
-    UMG_Class = BPClassPath
-  end
-  local PlatformName = CommonUtils.GetDeviceTypeByPlatformName(self)
-  bIsAddToCachePool = UIConst.OptimizeSwitch[PlatformName].UI_ADD_IN_CACHE and bIsAddToCachePool
-  local Widget = self:_CreateWidgetByUMGClass(UMG_Class, NeedShowInWindow, ZOrder, UIName, bIsAddToCachePool)
-  if nil == Widget then
-    DebugPrint(ErrorTag, "BP_UIManagerComponent_C: CreateWidget fail, Maybe The Current World is Null or tearing down, BPClassPath is ", BPClassPath)
-  end
-  return Widget
-end
-
-function BP_UIManagerComponent_C:_CreateWidgetByUMGClass(UMG_Class, NeedShowInWindow, ZOrder, UIName, bIsAddToCachePool)
-  if nil == UMG_Class then
-    return
-  end
-  local UMG_Widget_Ins
-  if nil ~= UIName then
-    UMG_Widget_Ins = self:CreateWidgetAndAddToMgr(UMG_Class, UIName, bIsAddToCachePool)
-  else
-    UMG_Widget_Ins = self:CreateWidgetWithParams(UMG_Class, nil, nil, bIsAddToCachePool)
-  end
-  if nil ~= UMG_Widget_Ins then
-    if NeedShowInWindow then
-      UMG_Widget_Ins:AddToViewport(ZOrder)
-    elseif nil ~= ZOrder then
-      UMG_Widget_Ins:SetZOrder(ZOrder)
-    end
-  end
-  return UMG_Widget_Ins
-end
-
-function BP_UIManagerComponent_C:AddUIToStateTagsCluster(UIStateTag, UIName, IsAdd)
-  if IsAdd then
-    if self.AllUIStateTagsCluster[UIStateTag] == nil then
-      self.AllUIStateTagsCluster[UIStateTag] = {}
-    end
-    self.AllUIStateTagsCluster[UIStateTag][UIName] = 1
-  elseif self.AllUIStateTagsCluster[UIStateTag] ~= nil then
-    self.AllUIStateTagsCluster[UIStateTag][UIName] = nil
-  end
-end
-
-function BP_UIManagerComponent_C:GenerateSpecialUIListBeforeUICreate(UIName, KeyInList)
-  local ResultStateTag, ResultList = ENormalModeSubState.ConditionMode, {}
-  if KeyInList == UIConst.WidgetAllStateTag.Queue then
-    for k, v in pairs(self.AllUIStateTagsCluster[KeyInList]) do
-      table.insert(ResultList, k)
-    end
-  elseif KeyInList == UIConst.WidgetAllStateTag.Precedence then
-    for k, v in pairs(self.AllUIStateTagsCluster[KeyInList]) do
-      local SystemUIConfig = DataMgr.SystemUI[k]
-      if nil ~= SystemUIConfig and nil ~= SystemUIConfig.SpecialUINameList then
-        for _, CheckUIName in ipairs(SystemUIConfig.SpecialUINameList) do
-          if nil == ResultList[CheckUIName] then
-            ResultList[CheckUIName] = {k}
-          else
-            table.insert(ResultList[CheckUIName], k)
-          end
-        end
-      end
-    end
-  elseif KeyInList == UIConst.WidgetAllStateTag.Mutual then
-    local SystemUIConfig = DataMgr.SystemUI[UIName]
-    if nil ~= SystemUIConfig and nil ~= SystemUIConfig.SpecialUINameList then
-      for _, CheckUIName in ipairs(SystemUIConfig.SpecialUINameList) do
-        table.insert(ResultList, CheckUIName)
-      end
-    end
-  elseif KeyInList == UIConst.WidgetAllStateTag.Group then
-    for k, v in pairs(self.AllUIStateTagsCluster[KeyInList]) do
-      local SystemUIConfig = DataMgr.SystemUI[k]
-      if nil ~= SystemUIConfig and nil ~= SystemUIConfig.SpecialUINameList then
-        for _, CheckUIName in ipairs(SystemUIConfig.SpecialUINameList) do
-          if nil == ResultList[k] then
-            ResultList[k] = {CheckUIName}
-          else
-            table.insert(ResultList[k], CheckUIName)
-          end
-        end
-      end
-    end
-  end
-  return ResultStateTag, ResultList
-end
-
-function BP_UIManagerComponent_C:CheckUIMgrIsInSpecialState()
-  local CurrentLevelName = UGameplayStatics.GetCurrentLevelName(self)
-  if "Login" == CurrentLevelName or "Game_Start" == CurrentLevelName then
-    return EUIManageLoadStateTags.NormalMode
-  end
-  if self.GMShowUIOnly then
-    return EUIManageLoadStateTags.GMMode
-  end
-  local CurrentUIMgrStateTag = self:GetCurrentModeStateTag()
-  return CurrentUIMgrStateTag
-end
-
-function BP_UIManagerComponent_C:GetSubTagInNormalState(UIName)
-  local SubTag, SpecialUINameList = nil, {}
-  if self:CheckUIMgrIsInSpecialState() == EUIManageLoadStateTags.GMMode then
-    return SubTag, SpecialUINameList
-  end
-  if not IsEmptyTable(self.AllUIStateTagsCluster) then
-    local SubWidgetList
-    if not IsEmptyTable(self.AllUIStateTagsCluster[UIConst.WidgetAllStateTag.Exclusive]) then
-      SubTag = ENormalModeSubState.ExclusiveMode
-    elseif not IsEmptyTable(self.AllUIStateTagsCluster[UIConst.WidgetAllStateTag.Blocked]) then
-      SubTag = ENormalModeSubState.BlockedMode
+    DebugPrint("CreateWidget 等待异步加载UMGCLass...", r1_11)
+    r10_11 = type(r2_11)
+    if r10_11 == "thread" then
+      r10_11 = coroutine.yield()
+      r8_11 = r10_11
     else
-      if not IsEmptyTable(self.AllUIStateTagsCluster[UIConst.WidgetAllStateTag.Precedence]) then
-        SubTag, SubWidgetList = self:GenerateSpecialUIListBeforeUICreate(UIName, UIConst.WidgetAllStateTag.Precedence)
-        SpecialUINameList[UIConst.WidgetAllStateTag.Precedence] = SubWidgetList
-      end
-      if not IsEmptyTable(self.AllUIStateTagsCluster[UIConst.WidgetAllStateTag.Mutual]) and self.AllUIStateTagsCluster[UIConst.WidgetAllStateTag.Mutual][UIName] ~= nil then
-        SubTag, SubWidgetList = self:GenerateSpecialUIListBeforeUICreate(UIName, UIConst.WidgetAllStateTag.Mutual)
-        SpecialUINameList[UIConst.WidgetAllStateTag.Mutual] = SubWidgetList
-      end
-      if not IsEmptyTable(self.AllUIStateTagsCluster[UIConst.WidgetAllStateTag.Queue]) then
-        SubTag, SubWidgetList = self:GenerateSpecialUIListBeforeUICreate(UIName, UIConst.WidgetAllStateTag.Queue)
-        SpecialUINameList[UIConst.WidgetAllStateTag.Queue] = SubWidgetList
-      end
-      if not IsEmptyTable(self.AllUIStateTagsCluster[UIConst.WidgetAllStateTag.Group]) then
-        SubTag, SubWidgetList = self:GenerateSpecialUIListBeforeUICreate(UIName, UIConst.WidgetAllStateTag.Group)
-        SpecialUINameList[UIConst.WidgetAllStateTag.Group] = SubWidgetList
+      r10_11 = type(r2_11)
+      if r10_11 == "function" then
+        return 
       end
     end
   end
-  return SubTag, SpecialUINameList
+  return r7_11(r8_11)
 end
-
-function BP_UIManagerComponent_C:AddUIManagerCurrentModeTag(ModeStateTag)
-  self:PushCurrentModeStateTag(ModeStateTag)
-  if ModeStateTag == EUIManageLoadStateTags.SkillFeatureMode or ModeStateTag == EUIManageLoadStateTags.StoryMode then
-    self:RefreshAllUIVisibilityBySpecialTag(true, ModeStateTag)
-    local Objs = MissionIndicatorManager:GetAllIndicatorUIObjs()
-    if not IsEmptyTable(Objs) then
-      for Name, UIObj in pairs(Objs) do
-        UIObj:Hide(ModeStateTag)
-      end
-    end
-  end
-end
-
-function BP_UIManagerComponent_C:RemoveUIManagerCurrentModeTag(ModeStateTag)
-  if nil == ModeStateTag then
-    ModeStateTag = self:GetCurrentModeStateTag()
-  end
-  local Result = self:PopCurrentModeStateTag(ModeStateTag)
-  if nil ~= Result and (ModeStateTag == EUIManageLoadStateTags.SkillFeatureMode or ModeStateTag == EUIManageLoadStateTags.StoryMode) then
-    self:RefreshAllUIVisibilityBySpecialTag(false, ModeStateTag)
-    local Objs = MissionIndicatorManager:GetAllIndicatorUIObjs()
-    if not IsEmptyTable(Objs) then
-      for Name, UIObj in pairs(Objs) do
-        UIObj:Show(ModeStateTag)
-      end
-    end
-  end
-end
-
-function BP_UIManagerComponent_C:GetCurrentModeStateTag()
-  return self.UIManagerModeTagsStack:Peek()
-end
-
-function BP_UIManagerComponent_C:PushCurrentModeStateTag(ModeStateTag)
-  self.UIManagerModeTagsStack:Push(ModeStateTag)
-end
-
-function BP_UIManagerComponent_C:PopCurrentModeStateTag(ModeStateTag)
-  local Result
-  if nil ~= ModeStateTag then
-    Result = self.UIManagerModeTagsStack:FindAndRemove(ModeStateTag)
+function r6_0.CreateWidget(r0_14, r1_14, r2_14, r3_14, r4_14, r5_14)
+  -- line: [357, 371] id: 14
+  local r6_14 = nil
+  if type(r1_14) == "string" then
+    r6_14 = LoadClass(r1_14)
   else
-    Result = self.UIManagerModeTagsStack:Pop()
+    r6_14 = r1_14
   end
-  return Result
+  r5_14 = UIConst.OptimizeSwitch[r5_0.GetDeviceTypeByPlatformName(r0_14)].UI_ADD_IN_CACHE and r5_14
+  local r8_14 = r0_14:_CreateWidgetByUMGClass(r6_14, r2_14, r3_14, r4_14, r5_14)
+  if r8_14 == nil then
+    DebugPrint(ErrorTag, "BP_UIManagerComponent_C: CreateWidget fail, Maybe The Current World is Null or tearing down, BPClassPath is ", r1_14)
+  end
+  return r8_14
 end
-
-function BP_UIManagerComponent_C:PlaceJumpUIToTop(JumpUIObj, JumpUIName)
-  self:PlaceItemToQueueBack(JumpUIObj)
-  self:PlaceUIStateToTop(JumpUIName)
+function r6_0._CreateWidgetByUMGClass(r0_15, r1_15, r2_15, r3_15, r4_15, r5_15)
+  -- line: [373, 391] id: 15
+  if r1_15 == nil then
+    return 
+  end
+  local r6_15 = nil
+  if r4_15 ~= nil then
+    r6_15 = r0_15:CreateWidgetAndAddToMgr(r1_15, r4_15, r5_15)
+  else
+    r6_15 = r0_15:CreateWidgetWithParams(r1_15, nil, nil, r5_15)
+  end
+  if r6_15 ~= nil then
+    if r2_15 then
+      r6_15:AddToViewport(r3_15)
+    elseif r3_15 ~= nil then
+      r6_15:SetZOrder(r3_15)
+    end
+  end
+  return r6_15
 end
-
-function BP_UIManagerComponent_C:PrintJumpPageDequeInfo()
-  local DequeSize = self.UIJumpToDeque:Size()
-  for i = 1, DequeSize do
-    local CurrentFirstUIObj = self.UIJumpToDeque:Get(i)
-    DebugPrint("BP_UIManagerComponent_C: PrintJumpPageDequeInfo, The Info is: ", CurrentFirstUIObj:GetName(), CurrentFirstUIObj:GetCameraViewCurrentTarget():GetName())
+function r6_0.AddUIToStateTagsCluster(r0_16, r1_16, r2_16, r3_16)
+  -- line: [395, 406] id: 16
+  if r3_16 then
+    if r0_16.AllUIStateTagsCluster[r1_16] == nil then
+      r0_16.AllUIStateTagsCluster[r1_16] = {}
+    end
+    r0_16.AllUIStateTagsCluster[r1_16][r2_16] = 1
+  elseif r0_16.AllUIStateTagsCluster[r1_16] ~= nil then
+    r0_16.AllUIStateTagsCluster[r1_16][r2_16] = nil
   end
 end
-
-function BP_UIManagerComponent_C:AddToJumpPageDeque(UIObj)
-  if not UIObj then
-    return
+function r6_0.GenerateSpecialUIListBeforeUICreate(r0_17, r1_17, r2_17)
+  -- line: [408, 454] id: 17
+  local r3_17 = r8_0.ConditionMode
+  local r4_17 = {}
+  if r2_17 == UIConst.WidgetAllStateTag.Queue then
+    for r9_17, r10_17 in pairs(r0_17.AllUIStateTagsCluster[r2_17]) do
+      table.insert(r4_17, r9_17)
+    end
+    -- close: r5_17
+  elseif r2_17 == UIConst.WidgetAllStateTag.Precedence then
+    for r9_17, r10_17 in pairs(r0_17.AllUIStateTagsCluster[r2_17]) do
+      local r11_17 = DataMgr.SystemUI[r9_17]
+      if r11_17 ~= nil and r11_17.SpecialUINameList ~= nil then
+        for r16_17, r17_17 in ipairs(r11_17.SpecialUINameList) do
+          if r4_17[r17_17] == nil then
+            r4_17[r17_17] = {
+              r9_17
+            }
+          else
+            table.insert(r4_17[r17_17], r9_17)
+          end
+        end
+        -- close: r12_17
+      end
+    end
+    -- close: r5_17
+  elseif r2_17 == UIConst.WidgetAllStateTag.Mutual then
+    local r5_17 = DataMgr.SystemUI[r1_17]
+    if r5_17 ~= nil and r5_17.SpecialUINameList ~= nil then
+      for r10_17, r11_17 in ipairs(r5_17.SpecialUINameList) do
+        table.insert(r4_17, r11_17)
+      end
+      -- close: r6_17
+    end
+  elseif r2_17 == UIConst.WidgetAllStateTag.Group then
+    for r9_17, r10_17 in pairs(r0_17.AllUIStateTagsCluster[r2_17]) do
+      local r11_17 = DataMgr.SystemUI[r9_17]
+      if r11_17 ~= nil and r11_17.SpecialUINameList ~= nil then
+        for r16_17, r17_17 in ipairs(r11_17.SpecialUINameList) do
+          if r4_17[r9_17] == nil then
+            r4_17[r9_17] = {
+              r17_17
+            }
+          else
+            table.insert(r4_17[r9_17], r17_17)
+          end
+        end
+        -- close: r12_17
+      end
+    end
+    -- close: r5_17
   end
-  local DequeSize = self.UIJumpToDeque:Size()
-  if DequeSize >= 3 then
-    local FirstUIObj = self.UIJumpToDeque:PopFront()
-    if IsValid(FirstUIObj) then
-      if type(FirstUIObj.Close) == "function" then
-        FirstUIObj:Close()
+  return r3_17, r4_17
+end
+function r6_0.CheckUIMgrIsInSpecialState(r0_18)
+  -- line: [457, 470] id: 18
+  local r1_18 = UGameplayStatics.GetCurrentLevelName(r0_18)
+  if r1_18 == "Login" or r1_18 == "Game_Start" then
+    return r7_0.NormalMode
+  end
+  if r0_18.GMShowUIOnly then
+    return r7_0.GMMode
+  end
+  return r0_18:GetCurrentModeStateTag()
+end
+function r6_0.GetSubTagInNormalState(r0_19, r1_19)
+  -- line: [473, 514] id: 19
+  local r2_19 = nil
+  local r3_19 = {}
+  if r0_19:CheckUIMgrIsInSpecialState() == r7_0.GMMode then
+    return r2_19, r3_19
+  end
+  if not IsEmptyTable(r0_19.AllUIStateTagsCluster) then
+    local r4_19 = nil
+    if not IsEmptyTable(r0_19.AllUIStateTagsCluster[UIConst.WidgetAllStateTag.Exclusive]) then
+      r2_19 = r8_0.ExclusiveMode
+    elseif not IsEmptyTable(r0_19.AllUIStateTagsCluster[UIConst.WidgetAllStateTag.Blocked]) then
+      r2_19 = r8_0.BlockedMode
+    else
+      if not IsEmptyTable(r0_19.AllUIStateTagsCluster[UIConst.WidgetAllStateTag.Precedence]) then
+        r2_19, r4_19 = r0_19:GenerateSpecialUIListBeforeUICreate(r1_19, UIConst.WidgetAllStateTag.Precedence)
+        r3_19[UIConst.WidgetAllStateTag.Precedence] = r4_19
+      end
+      if not IsEmptyTable(r0_19.AllUIStateTagsCluster[UIConst.WidgetAllStateTag.Mutual]) and r0_19.AllUIStateTagsCluster[UIConst.WidgetAllStateTag.Mutual][r1_19] ~= nil then
+        r2_19, r4_19 = r0_19:GenerateSpecialUIListBeforeUICreate(r1_19, UIConst.WidgetAllStateTag.Mutual)
+        r3_19[UIConst.WidgetAllStateTag.Mutual] = r4_19
+      end
+      if not IsEmptyTable(r0_19.AllUIStateTagsCluster[UIConst.WidgetAllStateTag.Queue]) then
+        r2_19, r4_19 = r0_19:GenerateSpecialUIListBeforeUICreate(r1_19, UIConst.WidgetAllStateTag.Queue)
+        r3_19[UIConst.WidgetAllStateTag.Queue] = r4_19
+      end
+      if not IsEmptyTable(r0_19.AllUIStateTagsCluster[UIConst.WidgetAllStateTag.Group]) then
+        r2_19, r4_19 = r0_19:GenerateSpecialUIListBeforeUICreate(r1_19, UIConst.WidgetAllStateTag.Group)
+        r3_19[UIConst.WidgetAllStateTag.Group] = r4_19
+      end
+    end
+  end
+  return r2_19, r3_19
+end
+function r6_0.AddUIManagerCurrentModeTag(r0_20, r1_20)
+  -- line: [517, 530] id: 20
+  r0_20:PushCurrentModeStateTag(r1_20)
+  if r1_20 == r7_0.SkillFeatureMode or r1_20 == r7_0.StoryMode then
+    r0_20:RefreshAllUIVisibilityBySpecialTag(true, r1_20)
+    local r2_20 = MissionIndicatorManager:GetAllIndicatorUIObjs()
+    if not IsEmptyTable(r2_20) then
+      for r7_20, r8_20 in pairs(r2_20) do
+        r8_20:Hide(r1_20)
+      end
+      -- close: r3_20
+    end
+  end
+end
+function r6_0.RemoveUIManagerCurrentModeTag(r0_21, r1_21)
+  -- line: [533, 551] id: 21
+  if r1_21 == nil then
+    r1_21 = r0_21:GetCurrentModeStateTag()
+  end
+  if r0_21:PopCurrentModeStateTag(r1_21) ~= nil and (r1_21 == r7_0.SkillFeatureMode or r1_21 == r7_0.StoryMode) then
+    r0_21:RefreshAllUIVisibilityBySpecialTag(false, r1_21)
+    local r3_21 = MissionIndicatorManager:GetAllIndicatorUIObjs()
+    if not IsEmptyTable(r3_21) then
+      for r8_21, r9_21 in pairs(r3_21) do
+        r9_21:Show(r1_21)
+      end
+      -- close: r4_21
+    end
+  end
+end
+function r6_0.GetCurrentModeStateTag(r0_22)
+  -- line: [554, 556] id: 22
+  return r0_22.UIManagerModeTagsStack:Peek()
+end
+function r6_0.PushCurrentModeStateTag(r0_23, r1_23)
+  -- line: [559, 561] id: 23
+  r0_23.UIManagerModeTagsStack:Push(r1_23)
+end
+function r6_0.PopCurrentModeStateTag(r0_24, r1_24)
+  -- line: [564, 572] id: 24
+  local r2_24 = nil
+  if r1_24 ~= nil then
+    r2_24 = r0_24.UIManagerModeTagsStack:FindAndRemove(r1_24)
+  else
+    r2_24 = r0_24.UIManagerModeTagsStack:Pop()
+  end
+  return r2_24
+end
+function r6_0.PlaceJumpUIToTop(r0_25, r1_25, r2_25)
+  -- line: [576, 579] id: 25
+  r0_25:PlaceItemToQueueBack(r1_25)
+  r0_25:PlaceUIStateToTop(r2_25)
+end
+function r6_0.PrintJumpPageDequeInfo(r0_26)
+  -- line: [581, 588] id: 26
+  for r5_26 = 1, r0_26.UIJumpToDeque:Size(), 1 do
+    local r6_26 = r0_26.UIJumpToDeque:Get(r5_26)
+    DebugPrint("BP_UIManagerComponent_C: PrintJumpPageDequeInfo, The Info is: ", r6_26:GetName(), r6_26:GetCameraViewCurrentTarget():GetName())
+  end
+end
+function r6_0.AddToJumpPageDeque(r0_27, r1_27)
+  -- line: [591, 613] id: 27
+  if not r1_27 then
+    return 
+  end
+  if r0_27.UIJumpToDeque:Size() >= 3 then
+    local r3_27 = r0_27.UIJumpToDeque:PopFront()
+    if IsValid(r3_27) then
+      if type(r3_27.Close) == "function" then
+        r3_27:Close()
       else
-        self:UnLoadUI(FirstUIObj.ConfigName, FirstUIObj.WidgetName)
+        r0_27:UnLoadUI(r3_27.ConfigName, r3_27.WidgetName)
       end
     end
   end
-  UIObj.IsAddInDeque = true
-  self.UIJumpToDeque:PushBack(UIObj)
-  EventManager:FireEvent(EventID.OnJumpToPage, self:GetLastJumpPage(), UIObj)
+  r1_27.IsAddInDeque = true
+  r0_27.UIJumpToDeque:PushBack(r1_27)
+  EventManager:FireEvent(EventID.OnJumpToPage, r0_27:GetLastJumpPage(), r1_27)
 end
-
-function BP_UIManagerComponent_C:RemoveToJumpPageDeque(UIObj)
-  local CurrentLastUIObj = self.UIJumpToDeque:Back()
-  if CurrentLastUIObj == UIObj then
-    self.UIJumpToDeque:PopBack()
-    EventManager:FireEvent(EventID.OnJumpBackToPage, UIObj, self:GetLastJumpPage())
+function r6_0.RemoveToJumpPageDeque(r0_28, r1_28)
+  -- line: [616, 622] id: 28
+  if r0_28.UIJumpToDeque:Back() == r1_28 then
+    r0_28.UIJumpToDeque:PopBack()
+    EventManager:FireEvent(EventID.OnJumpBackToPage, r1_28, r0_28:GetLastJumpPage())
   end
 end
-
-function BP_UIManagerComponent_C:GetLastJumpPage()
-  return self.UIJumpToDeque:Back()
+function r6_0.GetLastJumpPage(r0_29)
+  -- line: [625, 627] id: 29
+  return r0_29.UIJumpToDeque:Back()
 end
-
-function BP_UIManagerComponent_C:PlaceItemToQueueBack(Element)
-  if nil == Element then
-    return
+function r6_0.PlaceItemToQueueBack(r0_30, r1_30)
+  -- line: [630, 646] id: 30
+  if r1_30 == nil then
+    return 
   end
-  local Index = self:CheckIsInJumpPageDeque(Element)
-  local DequeSize = self.UIJumpToDeque:Size()
-  if nil == Index then
-    self:AddToJumpPageDeque(Element)
+  local r2_30 = r0_30:CheckIsInJumpPageDeque(r1_30)
+  local r3_30 = r0_30.UIJumpToDeque:Size()
+  if r2_30 == nil then
+    r0_30:AddToJumpPageDeque(r1_30)
   else
-    for i = Index, DequeSize - 1 do
-      local NextUIObj = self.UIJumpToDeque:Get(i + 1)
-      self.UIJumpToDeque:Set(i, NextUIObj)
+    for r7_30 = r2_30, r3_30 + -1, 1 do
+      r0_30.UIJumpToDeque:Set(r7_30, r0_30.UIJumpToDeque:Get(r7_30 + 1))
     end
-    self.UIJumpToDeque:Set(DequeSize, Element)
+    r0_30.UIJumpToDeque:Set(r3_30, r1_30)
   end
 end
-
-function BP_UIManagerComponent_C:CheckIsInJumpPageDeque(UIObj)
-  local DequeSize, SearchIndex = (self.UIJumpToDeque:Size())
-  for i = 1, DequeSize do
-    local TargetUIObj = self.UIJumpToDeque:Get(i)
-    if TargetUIObj == UIObj then
-      SearchIndex = i
+function r6_0.CheckIsInJumpPageDeque(r0_31, r1_31)
+  -- line: [649, 660] id: 31
+  local r2_31 = r0_31.UIJumpToDeque:Size()
+  local r3_31 = nil
+  for r7_31 = 1, r2_31, 1 do
+    if r0_31.UIJumpToDeque:Get(r7_31) == r1_31 then
+      r3_31 = r7_31
       break
     end
   end
-  return SearchIndex
+  return r3_31
 end
-
-function BP_UIManagerComponent_C:CheckIsInLoadingDeque(CheckList, UIName)
-  if 1 == #CheckList and CheckList[1] == UIName then
+function r6_0.CheckIsInLoadingDeque(r0_32, r1_32, r2_32)
+  -- line: [663, 678] id: 32
+  if #r1_32 == 1 and r1_32[1] == r2_32 then
     return true
   end
-  local DequeSize, IsInDeque = self.UILoadingDeque:Size(), false
-  for i = 1, DequeSize do
-    local UIInfo = self.UILoadingDeque:Get(i)
-    if UIInfo and UIInfo.UIName == UIName then
-      IsInDeque = true
+  local r3_32 = r0_32.UILoadingDeque:Size()
+  local r4_32 = false
+  for r8_32 = 1, r3_32, 1 do
+    local r9_32 = r0_32.UILoadingDeque:Get(r8_32)
+    if r9_32 and r9_32.UIName == r2_32 then
+      r4_32 = true
       break
     end
   end
-  return IsInDeque
+  return r4_32
 end
-
-function BP_UIManagerComponent_C:LoadUINew(UIName, ...)
-  local SystemUIConfig = DataMgr.SystemUI[UIName]
-  assert(SystemUIConfig, "UI:" .. UIName .. "不在SystemUI表中")
-  return self:LoadUI(UIConst.LoadInConfig, UIName, SystemUIConfig.ZOrder, ...)
+function r6_0.LoadUINew(r0_33, r1_33, ...)
+  -- line: [685, 689] id: 33
+  local r2_33 = DataMgr.SystemUI[r1_33]
+  assert(r2_33, "UI:" .. r1_33 .. "不在SystemUI表中")
+  return r0_33:LoadUI(UIConst.LoadInConfig, r1_33, r2_33.ZOrder, ...)
 end
-
-function BP_UIManagerComponent_C:LoadUIAsync(UIName, CoroutineOrCBFunc, ...)
-  local SystemUIConfig = DataMgr.SystemUI[UIName]
-  assert(SystemUIConfig, "UI:" .. UIName .. "不在SystemUI表中")
-  local Param = {
+function r6_0.LoadUIAsync(r0_34, r1_34, r2_34, ...)
+  -- line: [694, 701] id: 34
+  local r3_34 = DataMgr.SystemUI[r1_34]
+  assert(r3_34, "UI:" .. r1_34 .. "不在SystemUI表中")
+  local r4_34 = {
     ...
   }
-  table.insert(Param, CoroutineOrCBFunc)
-  table.insert(Param, "Async")
-  return self:LoadUI(UIConst.LoadInConfig, UIName, SystemUIConfig.ZOrder, table.unpack(Param))
+  table.insert(r4_34, r2_34)
+  table.insert(r4_34, "Async")
+  return r0_34:LoadUI(UIConst.LoadInConfig, r1_34, r3_34.ZOrder, table.unpack(r4_34))
 end
-
-function BP_UIManagerComponent_C:LoadUI(BPClassPath, UIName, ZOrder, ...)
-  if IsDedicatedServer(self) then
-    return
+function r6_0.LoadUI(r0_35, r1_35, r2_35, r3_35, ...)
+  -- line: [709, 904] id: 35
+  if IsDedicatedServer(r0_35) then
+    return 
   end
-  local FinalName, ExistUIObj, UIConfig = UIName
-  local SpecialSignPos = string.find(UIName, "#")
-  if nil ~= SpecialSignPos then
-    local UINameDataArray = Split(UIName, "#")
-    UIName = UINameDataArray[1]
-    FinalName = UINameDataArray[2]
+  local r4_35 = r2_35
+  local r5_35 = nil
+  local r6_35 = nil
+  if string.find(r2_35, "#") ~= nil then
+    local r8_35 = Split(r2_35, "#")
+    r2_35 = r8_35[1]
+    r4_35 = r8_35[2]
   end
-  ExistUIObj = self:GetUI(FinalName)
-  if IsValid(ExistUIObj) then
-    DebugPrint("The Widget is Already Exist, Name is ", UIName)
-    return ExistUIObj
+  r5_35 = r0_35:GetUI(r4_35)
+  if IsValid(r5_35) then
+    DebugPrint("The Widget is Already Exist, Name is ", r2_35)
+    return r5_35
   end
-  if UIUtils.CheckCdnHide(UIName, true) then
-    return
+  if UIUtils.CheckCdnHide(r2_35, true) then
+    return 
   end
-  local SystemUI = DataMgr.SystemUI[UIName]
-  if nil ~= SystemUI then
-    local IsConditionSuccess, ShowConditiontext = self:CheckCombatcondition(SystemUI.CombatconditionIdList, SystemUI.ConditiontextList)
-    if not IsConditionSuccess then
-      if ShowConditiontext then
-        self:ShowUITip(UIConst.Tip_CommonTop, GText(ShowConditiontext))
-        return
+  local r8_35 = DataMgr.SystemUI[r2_35]
+  if r8_35 ~= nil then
+    local r9_35, r10_35 = r0_35:CheckCombatcondition(r8_35.CombatconditionIdList, r8_35.ConditiontextList)
+    if not r9_35 then
+      if r10_35 then
+        r0_35:ShowUITip(UIConst.Tip_CommonTop, GText(r10_35))
+        return 
       else
-        DebugPrint("The UI Load in fail, Because Combatcondition is not met, UIName is", UIName)
-        return
+        DebugPrint("The UI Load in fail, Because Combatcondition is not met, UIName is", r2_35)
+        return 
       end
     end
-    if SystemUI.IfDevOnly and not GMVariable.IsInDebugMode then
-      DebugPrint("The UI Load in fail, Because IfDevOnly Set in SystemUI Config, UIName is", UIName)
-      return
+    if r8_35.IfDevOnly and not r4_0.IsInDebugMode then
+      DebugPrint("The UI Load in fail, Because IfDevOnly Set in SystemUI Config, UIName is", r2_35)
+      return 
     end
   end
-  UIConfig, BPClassPath = self:SetUIConfig(BPClassPath, UIName, SystemUI)
-  if UIConfig.allowmulti then
-    local UICount = self.UniqueCount[UIName] or 0
-    local LimitCount = UIConfig.limitcount or UIConst.MAXEXISTNUM
-    if LimitCount >= UICount + 1 then
-      self.UniqueCount[UIName] = UICount + 1
+  r6_35, r1_35 = r0_35:SetUIConfig(r1_35, r2_35, r8_35)
+  if r6_35.allowmulti then
+    local r9_35 = r0_35.UniqueCount[r2_35] and 0
+    if r9_35 + 1 <= (r6_35.limitcount and UIConst.MAXEXISTNUM) then
+      r0_35.UniqueCount[r2_35] = r9_35 + 1
     else
-      self.UniqueCount[UIName] = 1
+      r0_35.UniqueCount[r2_35] = 1
     end
-    FinalName = UIName .. tostring(self.UniqueCount[UIName])
+    r4_35 = r2_35 .. tostring(r0_35.UniqueCount[r2_35])
   end
-  if nil ~= UIConfig.statetag then
-    self:AddUIToStateTagsCluster(UIConfig.statetag, UIName, true)
+  if r6_35.statetag ~= nil then
+    r0_35:AddUIToStateTagsCluster(r6_35.statetag, r2_35, true)
   end
-  local Params = {
+  local r9_35 = {
     ...
   }
-  local NormalStateSubTag, SpecialUINameList = self:GetSubTagInNormalState(UIName)
-  if UIConfig.specialvisiblemode ~= "forceshow" then
-    if NormalStateSubTag == ENormalModeSubState.BlockedMode then
-      DebugPrint("The UI Whitch Named " .. UIName .. " Create Fail, It has been Blocked")
-      return
-    elseif NormalStateSubTag == ENormalModeSubState.ConditionMode and UIConfig.statetag == UIConst.WidgetAllStateTag.Queue then
-      local AllLoadingListUI = SpecialUINameList[UIConst.WidgetAllStateTag.Queue]
-      if nil ~= AllLoadingListUI and #AllLoadingListUI > 0 and not self:CheckIsInLoadingDeque(AllLoadingListUI, UIName) then
-        self.UILoadingDeque:PushBack({UIName = UIName, Params = Params})
-        DebugPrint("The UI Whitch Named " .. UIName .. " Create Fail, It has been Added in Loading Queue, It Will show when Condition met")
-        return
+  local r10_35, r11_35 = r0_35:GetSubTagInNormalState(r2_35)
+  if r6_35.specialvisiblemode ~= "forceshow" then
+    if r10_35 == r8_0.BlockedMode then
+      DebugPrint("The UI Whitch Named " .. r2_35 .. " Create Fail, It has been Blocked")
+      return 
+    elseif r10_35 == r8_0.ConditionMode and r6_35.statetag == UIConst.WidgetAllStateTag.Queue then
+      local r12_35 = r11_35[UIConst.WidgetAllStateTag.Queue]
+      if r12_35 ~= nil and #r12_35 > 0 and not r0_35:CheckIsInLoadingDeque(r12_35, r2_35) then
+        r0_35.UILoadingDeque:PushBack({
+          UIName = r2_35,
+          Params = r9_35,
+        })
+        DebugPrint("The UI Whitch Named " .. r2_35 .. " Create Fail, It has been Added in Loading Queue, It Will show when Condition met")
+        return 
       end
     end
   end
-  if type(BPClassPath) == "table" and UIConfig.haschildBP then
-    local SubChildrenName = Params[1]
-    BPClassPath = BPClassPath[SubChildrenName]
-    table.remove(Params, 1)
+  if type(r1_35) == "table" and r6_35.haschildBP then
+    r1_35 = r1_35[r9_35[1]]
+    table.remove(r9_35, 1)
   end
-  if nil == BPClassPath then
-    DebugPrint("The UI Whitch Named " .. UIName .. " BPClass is nil !!!!!!!")
-    return
+  if r1_35 == nil then
+    DebugPrint("The UI Whitch Named " .. r2_35 .. " BPClass is nil !!!!!!!")
+    return 
   end
-  if nil == ZOrder then
-    ZOrder = UIConfig.zorder or UIConst.ZORDER_FOR_ZERO
+  if r3_35 == nil then
+    r3_35 = r6_35.zorder and UIConst.ZORDER_FOR_ZERO
   end
-  
-  local function AfterLoadUMGClassDone(UMG_Class, CbFunc)
-    local UIObj
-    if not self.AsyncUnloadFlags[UIName] and UMG_Class then
-      if UIConfig.IsGlobalUI then
-        local GameInstance = UE4.UGameplayStatics.GetGameInstance(self)
-        UIObj = GameInstance:LoadGlobalUI(UMG_Class, FinalName, ZOrder)
-        if nil ~= UIObj then
-          UIObj.IsGlobalUI = true
+  local function r12_35(r0_36, r1_36)
+    -- line: [802, 849] id: 36
+    local r2_36 = nil
+    if not r0_35.AsyncUnloadFlags[r2_35] and r0_36 then
+      if r6_35.IsGlobalUI then
+        r2_36 = UE4.UGameplayStatics.GetGameInstance(r0_35):LoadGlobalUI(r0_36, r4_35, r3_35)
+        if r2_36 ~= nil then
+          r2_36.IsGlobalUI = true
         end
       else
-        local IsAddToStack = not not UIConfig.addtostack
-        UIObj = self.Overridden.LoadUI(self, UMG_Class, FinalName, ZOrder, IsAddToStack)
+        r2_36 = r0_35.Overridden.LoadUI(r0_35, r0_36, r4_35, r3_35, not not r6_35.addtostack)
       end
-      if nil ~= UIObj then
-        local NowUIMgrStateTag = self:CheckUIMgrIsInSpecialState()
-        self:UpdateUIObjByConfig(UIObj, UIConfig, UIName, FinalName, Params, NowUIMgrStateTag, NormalStateSubTag, SpecialUINameList)
-        self:OnUIObjLoadCompleted(UIName, UIConfig)
+      if r2_36 ~= nil then
+        r0_35:UpdateUIObjByConfig(r2_36, r6_35, r2_35, r4_35, r9_35, r0_35:CheckUIMgrIsInSpecialState(), r10_35, r11_35)
+        r0_35:OnUIObjLoadCompleted(r2_35, r6_35)
       end
     end
-    if not UMG_Class then
+    if not r0_36 then
       DebugPrint(ErrorTag, "BPClassPath is not valid")
     end
-    if self.AsyncLoadHandlers[UIName] then
-      self.AsyncLoadHandlers[UIName] = nil
+    if r0_35.AsyncLoadHandlers[r2_35] then
+      r0_35.AsyncLoadHandlers[r2_35] = nil
     end
-    if self.AsyncGetUIContexts[UIName] then
-      self:AddTimer(0.01, function()
+    if r0_35.AsyncGetUIContexts[r2_35] then
+      r0_35:AddTimer(0.01, function()
+        -- line: [831, 843] id: 37
         DebugPrint(LXYTag, "GetUIObjAsync异步回调处理")
-        for _, CoroutineOrCBFunc in ipairs(self.AsyncGetUIContexts[UIName]) do
-          if type(CoroutineOrCBFunc) == "function" then
-            CoroutineOrCBFunc(UIObj)
-          elseif type(CoroutineOrCBFunc) == "thread" and coroutine.status(CoroutineOrCBFunc) == "suspended" then
-            coroutine.resume(CoroutineOrCBFunc, UIObj)
+        for r4_37, r5_37 in ipairs(r0_35.AsyncGetUIContexts[r2_35]) do
+          if type(r5_37) == "function" then
+            r5_37(r2_36)
+          elseif type(r5_37) == "thread" and coroutine.status(r5_37) == "suspended" then
+            coroutine.resume(r5_37, r2_36)
           end
         end
-        self.AsyncGetUIContexts[UIName] = nil
+        -- close: r0_37
+        r0_35.AsyncGetUIContexts[r2_35] = nil
       end, false, 0, nil, true)
     end
-    self.AsyncUnloadFlags[UIName] = nil
-    if CbFunc then
-      CbFunc(UIObj)
+    r0_35.AsyncUnloadFlags[r2_35] = nil
+    if r1_36 then
+      r1_36(r2_36)
     end
-    return UIObj
+    return r2_36
   end
-  
-  local UMG_Class = self:GetPreloadUIClass(UIName)
-  if nil == UMG_Class then
-    if "string" == type(BPClassPath) then
-      local CoroutineOrCBFunc
-      if "Async" == Params[#Params] then
-        table.remove(Params, #Params)
-        CoroutineOrCBFunc = Params[#Params]
-        table.remove(Params, #Params)
+  local r13_35 = r0_35:GetPreloadUIClass(r2_35)
+  if r13_35 == nil then
+    if type(r1_35) == "string" then
+      local r14_35 = nil
+      if r9_35[#r9_35] == "Async" then
+        table.remove(r9_35, #r9_35)
+        r14_35 = r9_35[#r9_35]
+        table.remove(r9_35, #r9_35)
       end
-      if CoroutineOrCBFunc then
-        DebugPrint(LXYTag, "开始异步加载UMGClass", UIName, BPClassPath)
-        local Handler = UE.UResourceLibrary.LoadClassAsync(self, BPClassPath, {
-          self,
-          function(self, UIClass)
-            if not IsValid(UIClass) then
-              DebugPrint(LXYTag, "回调内，异步加载UMGCLass失败", UIName, BPClassPath)
-              return
+      if r14_35 then
+        DebugPrint(LXYTag, "开始异步加载UMGClass", r2_35, r1_35)
+        local r15_35 = UE.UResourceLibrary.LoadClassAsync(r0_35, r1_35, {
+          r0_35,
+          function(r0_38, r1_38)
+            -- line: [863, 879] id: 38
+            if not IsValid(r1_38) then
+              DebugPrint(LXYTag, "回调内，异步加载UMGCLass失败", r2_35, r1_35)
+              return 
             end
-            DebugPrint(LXYTag, "异步加载UMGCLass完成", UIName, BPClassPath)
-            UMG_Class = UIClass
-            if type(CoroutineOrCBFunc) == "function" or type(CoroutineOrCBFunc) == "nil" then
-              if self.AsyncLoadHandlers[UIName] then
-                AfterLoadUMGClassDone(UIClass, CoroutineOrCBFunc)
-              end
-            elseif type(CoroutineOrCBFunc) == "thread" and coroutine.status(CoroutineOrCBFunc) == "suspended" then
-              coroutine.resume(CoroutineOrCBFunc, UIClass)
+            DebugPrint(LXYTag, "异步加载UMGCLass完成", r2_35, r1_35)
+            r13_35 = r1_38
+            if (type(r14_35) == "function" or type(r14_35) == "nil") and r0_38.AsyncLoadHandlers[r2_35] then
+              r12_35(r1_38, r14_35)
+            elseif type(r14_35) == "thread" and coroutine.status(r14_35) == "suspended" then
+              coroutine.resume(r14_35, r1_38)
             end
           end
         })
-        if not UMG_Class then
-          if UResourceLibrary.IsValidResource(self, Handler) then
-            DebugPrint(LXYTag, "等待异步加载UMGCLass...", UIName)
-            self.AsyncLoadHandlers[UIName] = Handler
+        if not r13_35 then
+          if UResourceLibrary.IsValidResource(r0_35, r15_35) then
+            DebugPrint(LXYTag, "等待异步加载UMGCLass...", r2_35)
+            r0_35.AsyncLoadHandlers[r2_35] = r15_35
           else
-            DebugPrint(LXYTag, "异步加载UMGCLass失败，估计路径有问题", UIName, BPClassPath)
-            return
+            DebugPrint(LXYTag, "异步加载UMGCLass失败，估计路径有问题", r2_35, r1_35)
+            return 
           end
-          if type(CoroutineOrCBFunc) == "thread" then
-            UMG_Class = coroutine.yield()
-          elseif type(CoroutineOrCBFunc) == "function" then
-            return
+          if type(r14_35) == "thread" then
+            r13_35 = coroutine.yield()
+          elseif type(r14_35) == "function" then
+            return 
           end
         end
       else
-        UMG_Class = UE4.UClass.Load(BPClassPath)
+        r13_35 = UE4.UClass.Load(r1_35)
       end
-    elseif type(BPClassPath) == "userdata" then
-      UMG_Class = BPClassPath
-    elseif "table" == type(BPClassPath) then
-      UMG_Class = BPClassPath
+      -- close: r14_35
+    elseif type(r1_35) == "userdata" then
+      r13_35 = r1_35
+    elseif type(r1_35) == "table" then
+      r13_35 = r1_35
     end
   end
-  return AfterLoadUMGClassDone(UMG_Class)
+  return r12_35(r13_35)
 end
-
-function BP_UIManagerComponent_C:RevertRealStopGame(IsStopGame)
-  if nil == IsStopGame then
+function r6_0.RevertRealStopGame(r0_39, r1_39)
+  -- line: [907, 919] id: 39
+  if r1_39 == nil then
     return false
   end
-  if true == IsStopGame then
+  if r1_39 == true then
     return true
   end
-  local Avatar = GWorld:GetAvatar()
-  if Avatar and Avatar.CurrentOnlineType and -1 ~= Avatar.CurrentOnlineType then
-    return IsStopGame > 0 and IsStopGame < 2
-  end
-  return nil ~= IsStopGame and false ~= IsStopGame and IsStopGame > 0
-end
-
-function BP_UIManagerComponent_C:SetUIConfig(BPClassPath, UIName, SystemUI)
-  local UIConfig = UIConst.AllUIConfig[UIName] or {}
-  BPClassPath = BPClassPath or UIConfig.resource
-  if BPClassPath == UIConst.LoadInConfig and nil ~= SystemUI then
-    UIConfig.zorder = SystemUI.ZOrder
-    UIConfig.popup = SystemUI.Popup
-    UIConfig.statetag = SystemUI.StateTag
-    UIConfig.ExtraArgs = SystemUI.Params
-    UIConfig.IsStopGame = self:RevertRealStopGame(SystemUI.IsStopGame)
-    UIConfig.GlobalGameUITag = SystemUI.GlobalGameUITag
-    UIConfig.IsHideBattleUnit = SystemUI.IsHideBattleUnit
-    UIConfig.IgnoreHideTags = SystemUI.IgnoreHideTags
-    UIConfig.KeyboardSetName = SystemUI.KeyboardSetName
-    UIConfig.IsHideDrop = SystemUI.IsHideDrop
-    UIConfig.ShowInStory = SystemUI.ShowInStory
-    UIConfig.ConditionShowStateTags = SystemUI.ConditionShowStateTags
-    UIConfig.System = SystemUI.System
-    UIConfig.PauseAfterLoadingState = SystemUI.PauseAfterLoadingState
-    UIConfig.IsHideInImmersionMode = SystemUI.IsHideInImmersionMode
-    if SystemUI.ConfigName then
-      local SystemUIConfig = DataMgr.SystemUIConfig[SystemUI.ConfigName]
-      if SystemUIConfig then
-        UIConfig.addtostack = SystemUIConfig.AddToStack
-        UIConfig.allowmulti = nil ~= SystemUIConfig.AllowMulti and SystemUIConfig.AllowMulti or false
-        UIConfig.haschildBP = nil ~= SystemUIConfig.HasChildBP and SystemUIConfig.HasChildBP or false
-        UIConfig.limitcount = SystemUIConfig.limitcount or UIConst.MAXEXISTNUM
-        UIConfig.specialvisiblemode = SystemUIConfig.SpecialVisibleMode
-        UIConfig.StopWorldRender = SystemUIConfig.StopWorldRender
-        UIConfig.eventlist = SystemUIConfig.EventList
-        UIConfig.needuimode = nil ~= SystemUIConfig.NeedUIMode and SystemUIConfig.NeedUIMode or false
-      end
-    end
-    local PlatformName = CommonUtils.GetDeviceTypeByPlatformName(self)
-    if UIConfig.haschildBP then
-      BPClassPath = UIConfig.resource
-    elseif "PC" == PlatformName then
-      BPClassPath = SystemUI.PCBPPath
-      UIConfig.resource = BPClassPath
-    elseif "Mobile" == PlatformName then
-      BPClassPath = SystemUI.MobileBPPath or SystemUI.PCBPPath
-      UIConfig.resource = BPClassPath
-    end
-  end
-  self:RecordShowInStoryConfig(UIConfig, UIName)
-  return UIConfig, BPClassPath
-end
-
-function BP_UIManagerComponent_C:UpdateUIObjByConfig(UIObj, UIConfig, UIName, FinalName, Params, NowUIMgrStateTag, NormalStateSubState, SpecialUINameList)
-  if UIConfig.popup == true then
-    UIObj.IsUIPopUp = true
-    self:CloseResidentUI(FinalName)
-  end
-  if UIConfig.IgnoreHideTags then
-    UIObj.IgnoreHideTags = UIConfig.IgnoreHideTags
-  end
-  local IsHideCurUIObj = false
-  if UIConfig.specialvisiblemode ~= "forceshow" then
-    IsHideCurUIObj = self:HideUIByAllFlag(UIObj)
-  end
-  self:UpdateArgs(UIObj, UIConfig.ExtraArgs)
-  if type(UIObj.InitUIInfo) == "function" then
-    UIObj:InitUIInfo(UIName, UIConfig.needuimode, UIConfig.eventlist, table.unpack(Params, 1, 15))
-  end
-  if UIConfig.StopWorldRender then
-    UIObj:SetIsPauseWorldRendering(true)
-    self:SetPauseWorldRenderingSwitch(UIName, true)
-  end
-  if UIConfig.statetag ~= nil then
-    UIObj:SetUIStateTag(UIConfig.statetag)
-  end
-  if UIConfig.System == "Battle" or UIConfig.System == "Common" then
-    UIObj:SetIsFrequentlyUI(true)
-  end
-  if UIConfig.IsHideInImmersionMode then
-    IsHideCurUIObj = self:SetIsHideInImmersionMode(UIObj)
-  end
-  IsHideCurUIObj = IsHideCurUIObj or self:DealWithOtherWidgetsVisibilityByUIShow(UIName, UIObj, UIConfig, NowUIMgrStateTag, NormalStateSubState, SpecialUINameList)
-  if UIConfig.IsStopGame then
-    UIObj.IsStopGame = true
-    if not IsHideCurUIObj then
-      UIObj:UISetGamePaused(UIName, true)
-    end
-  end
-  if UIConfig.GlobalGameUITag then
-    local GameInstance = UE4.UGameplayStatics.GetGameInstance(self)
-    GameInstance:SetGlobalGameUITag(UIConfig.GlobalGameUITag)
-    UIObj.GlobalGameUITag = UIConfig.GlobalGameUITag
-  end
-  if UIConfig.KeyboardSetName then
-    UIObj.KeyboardSetName = UIConfig.KeyboardSetName
-    UIManager(self):SetBannedActionCallback(UIConfig.KeyboardSetName, true, UIObj:GetName())
-    UIObj.IsBanningAction = true
-  end
-  if UIConfig.PauseAfterLoadingState and UIObj then
-    self:TryPauseAfterLoadingMgr(UIConfig.PauseAfterLoadingState)
-  end
-end
-
-function BP_UIManagerComponent_C:DealWithOtherWidgetsVisibilityByUIShow(UIName, UIObj, UIConfig, NowUIMgrStateTag, NormalStateSubState, SpecialUINameList)
-  local IsHideCurUIObj = false
-  if UIConfig.specialvisiblemode ~= "forceshow" then
-    if NowUIMgrStateTag == EUIManageLoadStateTags.GMMode then
-      if UIName ~= self.GMShowUIOnly then
-        IsHideCurUIObj = true
-        UIObj:Hide(UIConst.CommonHideTagName.GMShowUIOnly)
-        if self.HideByStateTagUIList[NowUIMgrStateTag] == nil then
-          self.HideByStateTagUIList[NowUIMgrStateTag] = {UIObj}
+  local r2_39 = GWorld:GetAvatar()
+  local r3_39 = nil	-- notice: implicit variable refs by block#[17]
+  if r2_39 then
+    r3_39 = r2_39.CurrentOnlineType
+    if r3_39 then
+      r3_39 = r2_39.CurrentOnlineType
+      if r3_39 ~= -1 then
+        if r1_39 > 0 then
+          r3_39 = r1_39 < 2
         else
-          table.insert(self.HideByStateTagUIList[NowUIMgrStateTag], UIObj)
+          goto label_23	-- block#9 is visited secondly
         end
+        return r3_39
       end
-    elseif NowUIMgrStateTag ~= EUIManageLoadStateTags.NormalMode then
-      local ConditionShowStateTags, IsInHideList = UIConfig.ConditionShowStateTags, true
-      if ConditionShowStateTags then
-        for index, value in ipairs(ConditionShowStateTags) do
-          if value == NowUIMgrStateTag then
-            IsInHideList = false
+    end
+  end
+  if r1_39 ~= nil and r1_39 ~= false then
+    r3_39 = r1_39 > 0
+  else
+    goto label_32	-- block#15 is visited secondly
+  end
+  return r3_39
+end
+function r6_0.SetUIConfig(r0_40, r1_40, r2_40, r3_40)
+  -- line: [922, 974] id: 40
+  local r4_40 = UIConst.AllUIConfig[r2_40] and {}
+  if not r1_40 then
+    r1_40 = r4_40.resource
+  end
+  if r1_40 == UIConst.LoadInConfig and r3_40 ~= nil then
+    r4_40.zorder = r3_40.ZOrder
+    r4_40.popup = r3_40.Popup
+    r4_40.statetag = r3_40.StateTag
+    r4_40.ExtraArgs = r3_40.Params
+    r4_40.IsStopGame = r0_40:RevertRealStopGame(r3_40.IsStopGame)
+    r4_40.GlobalGameUITag = r3_40.GlobalGameUITag
+    r4_40.IsHideBattleUnit = r3_40.IsHideBattleUnit
+    r4_40.IgnoreHideTags = r3_40.IgnoreHideTags
+    r4_40.KeyboardSetName = r3_40.KeyboardSetName
+    r4_40.IsHideDrop = r3_40.IsHideDrop
+    r4_40.ShowInStory = r3_40.ShowInStory
+    r4_40.ConditionShowStateTags = r3_40.ConditionShowStateTags
+    r4_40.System = r3_40.System
+    r4_40.PauseAfterLoadingState = r3_40.PauseAfterLoadingState
+    r4_40.IsHideInImmersionMode = r3_40.IsHideInImmersionMode
+    if r3_40.ConfigName then
+      local r5_40 = DataMgr.SystemUIConfig[r3_40.ConfigName]
+      if r5_40 then
+        r4_40.addtostack = r5_40.AddToStack
+        local r6_40 = r5_40.AllowMulti
+        if r6_40 ~= nil then
+          r6_40 = r5_40.AllowMulti and false
+        else
+          goto label_65	-- block#10 is visited secondly
+        end
+        r4_40.allowmulti = r6_40
+        r6_40 = r5_40.HasChildBP
+        if r6_40 ~= nil then
+          r6_40 = r5_40.HasChildBP and false
+        else
+          goto label_73	-- block#13 is visited secondly
+        end
+        r4_40.haschildBP = r6_40
+        r4_40.limitcount = r5_40.limitcount and UIConst.MAXEXISTNUM
+        r4_40.specialvisiblemode = r5_40.SpecialVisibleMode
+        r4_40.StopWorldRender = r5_40.StopWorldRender
+        r4_40.eventlist = r5_40.EventList
+        r6_40 = r5_40.NeedUIMode
+        if r6_40 ~= nil then
+          r6_40 = r5_40.NeedUIMode and false
+        else
+          goto label_93	-- block#18 is visited secondly
+        end
+        r4_40.needuimode = r6_40
+      end
+    end
+    local r5_40 = r5_0.GetDeviceTypeByPlatformName(r0_40)
+    if r4_40.haschildBP then
+      r1_40 = r4_40.resource
+    elseif r5_40 == "PC" then
+      r1_40 = r3_40.PCBPPath
+      r4_40.resource = r1_40
+    elseif r5_40 == "Mobile" then
+      r1_40 = r3_40.MobileBPPath and r3_40.PCBPPath
+      r4_40.resource = r1_40
+    end
+  end
+  r0_40:RecordShowInStoryConfig(r4_40, r2_40)
+  return r4_40, r1_40
+end
+function r6_0.UpdateUIObjByConfig(r0_41, r1_41, r2_41, r3_41, r4_41, r5_41, r6_41, r7_41, r8_41)
+  -- line: [977, 1041] id: 41
+  if r2_41.popup == true then
+    r1_41.IsUIPopUp = true
+    r0_41:CloseResidentUI(r4_41)
+  end
+  if r2_41.IgnoreHideTags then
+    r1_41.IgnoreHideTags = r2_41.IgnoreHideTags
+  end
+  local r9_41 = false
+  if r2_41.specialvisiblemode ~= "forceshow" then
+    r9_41 = r0_41:HideUIByAllFlag(r1_41)
+  end
+  r0_41:UpdateArgs(r1_41, r2_41.ExtraArgs)
+  if type(r1_41.InitUIInfo) == "function" then
+    r1_41:InitUIInfo(r3_41, r2_41.needuimode, r2_41.eventlist, table.unpack(r5_41, 1, 15))
+  end
+  if r2_41.StopWorldRender then
+    r1_41:SetIsPauseWorldRendering(true)
+    r0_41:SetPauseWorldRenderingSwitch(r3_41, true)
+  end
+  if r2_41.statetag ~= nil then
+    r1_41:SetUIStateTag(r2_41.statetag)
+  end
+  if r2_41.System == "Battle" or r2_41.System == "Common" then
+    r1_41:SetIsFrequentlyUI(true)
+  end
+  if r2_41.IsHideInImmersionMode then
+    r9_41 = r0_41:SetIsHideInImmersionMode(r1_41)
+  end
+  if not r9_41 then
+    r9_41 = r0_41:DealWithOtherWidgetsVisibilityByUIShow(r3_41, r1_41, r2_41, r6_41, r7_41, r8_41)
+  end
+  if r2_41.IsStopGame then
+    r1_41.IsStopGame = true
+    if not r9_41 then
+      r1_41:UISetGamePaused(r3_41, true)
+    end
+  end
+  if r2_41.GlobalGameUITag then
+    UE4.UGameplayStatics.GetGameInstance(r0_41):SetGlobalGameUITag(r2_41.GlobalGameUITag)
+    r1_41.GlobalGameUITag = r2_41.GlobalGameUITag
+  end
+  if r2_41.KeyboardSetName then
+    r1_41.KeyboardSetName = r2_41.KeyboardSetName
+    UIManager(r0_41):SetBannedActionCallback(r2_41.KeyboardSetName, true, r1_41:GetName())
+    r1_41.IsBanningAction = true
+  end
+  if r2_41.PauseAfterLoadingState and r1_41 then
+    r0_41:TryPauseAfterLoadingMgr(r2_41.PauseAfterLoadingState)
+  end
+end
+function r6_0.DealWithOtherWidgetsVisibilityByUIShow(r0_42, r1_42, r2_42, r3_42, r4_42, r5_42, r6_42)
+  -- line: [1044, 1082] id: 42
+  local r7_42 = false
+  if r3_42.specialvisiblemode ~= "forceshow" then
+    if r4_42 ~= r7_0.NormalMode then
+      local r8_42 = r3_42.ConditionShowStateTags
+      local r9_42 = true
+      if r8_42 then
+        for r14_42, r15_42 in ipairs(r8_42) do
+          if r15_42 == r4_42 then
+            r9_42 = false
             break
           end
         end
+        -- close: r10_42
       end
-      if IsInHideList then
-        DebugPrint("The UI Whitch Named " .. UIName .. " Will Hide And delay to Show, Now is in " .. NowUIMgrStateTag .. " State!")
-        IsHideCurUIObj = true
-        UIObj:Hide(NowUIMgrStateTag)
-        self:HandleUIWidgetsVisibilityByUIShow(UIName, UIObj, NormalStateSubState, SpecialUINameList)
+      if r9_42 then
+        DebugPrint("The UI Whitch Named " .. r1_42 .. " Will Hide And delay to Show, Now is in " .. r4_42 .. " State!")
+        r7_42 = true
+        r2_42:Hide(r4_42)
+        r0_42:HandleUIWidgetsVisibilityByUIShow(r1_42, r2_42, r5_42, r6_42)
       end
     else
-      IsHideCurUIObj = self:HandleUIWidgetsVisibilityByUIShow(UIName, UIObj, NormalStateSubState, SpecialUINameList)
+      r7_42 = r0_42:HandleUIWidgetsVisibilityByUIShow(r1_42, r2_42, r5_42, r6_42)
     end
   end
-  return IsHideCurUIObj
+  return r7_42
+  -- warn: not visited block [3, 4, 5]
+  -- block#3:
+  -- r7_42 = true
+  -- r2_42:Hide(_ENV.UIConst.CommonHideTagName.GMShowUIOnly)
+  -- if r0_42.HideByStateTagUIList[r4_42] == nil
+  -- block#4:
+  -- r8_42 = r0_42.HideByStateTagUIList
+  -- r9_42 = {} -- #list: 1 #map: 0
+  -- r10_42 = r2_42
+  -- -- error: unreachable: SetList { t: Reg { index: 9, flags: 0, version: 0 }, from: 0, count: 1 }
+  -- r8_42[r4_42] = r9_42
+  -- goto label_80
+  -- block#5:
+  -- _ENV.table.insert(r0_42.HideByStateTagUIList[r4_42], r2_42)
+  -- goto label_80
 end
-
-function BP_UIManagerComponent_C:HandleUIWidgetsVisibilityByUIShow(UIName, UIObj, NormalStateSubState, SpecialUINameList)
-  local ReasonString, IsHideCurUIObj = "InUIConfigure", false
-  if NormalStateSubState == ENormalModeSubState.ExclusiveMode then
-    IsHideCurUIObj = true
-    UIObj:Hide(ReasonString .. NormalStateSubState)
-    if self.HideByStateTagUIList[NormalStateSubState] == nil then
-      self.HideByStateTagUIList[NormalStateSubState] = {UIObj}
+function r6_0.HandleUIWidgetsVisibilityByUIShow(r0_43, r1_43, r2_43, r3_43, r4_43)
+  -- line: [1085, 1167] id: 43
+  local r5_43 = "InUIConfigure"
+  local r6_43 = false
+  if r3_43 == r8_0.ExclusiveMode then
+    r6_43 = true
+    r2_43:Hide(r5_43 .. r3_43)
+    if r0_43.HideByStateTagUIList[r3_43] == nil then
+      r0_43.HideByStateTagUIList[r3_43] = {
+        r2_43
+      }
     else
-      table.insert(self.HideByStateTagUIList[NormalStateSubState], UIObj)
+      table.insert(r0_43.HideByStateTagUIList[r3_43], r2_43)
     end
-  elseif NormalStateSubState == ENormalModeSubState.ConditionMode then
-    local function HideUIWithConditionMode(UIObjInst, UINameText, ReasonStr, SubState)
-      UIObjInst:Hide(ReasonStr .. UINameText)
-      
-      if self.HideByStateTagUIList[SubState] == nil then
-        self.HideByStateTagUIList[SubState] = {}
-        self.HideByStateTagUIList[SubState][UINameText] = {UIObjInst}
-      elseif self.HideByStateTagUIList[SubState][UINameText] == nil then
-        self.HideByStateTagUIList[SubState][UINameText] = {UIObjInst}
+  elseif r3_43 == r8_0.ConditionMode then
+    local function r7_43(r0_44, r1_44, r2_44, r3_44)
+      -- line: [1098, 1108] id: 44
+      r0_44:Hide(r2_44 .. r1_44)
+      if r0_43.HideByStateTagUIList[r3_44] == nil then
+        r0_43.HideByStateTagUIList[r3_44] = {}
+        r0_43.HideByStateTagUIList[r3_44][r1_44] = {
+          r0_44
+        }
+      elseif r0_43.HideByStateTagUIList[r3_44][r1_44] == nil then
+        r0_43.HideByStateTagUIList[r3_44][r1_44] = {
+          r0_44
+        }
       else
-        table.insert(self.HideByStateTagUIList[SubState][UINameText], UIObjInst)
+        table.insert(r0_43.HideByStateTagUIList[r3_44][r1_44], r0_44)
       end
     end
-    
-    if SpecialUINameList[UIConst.WidgetAllStateTag.Precedence] ~= nil then
-      for CheckUIName, Value in pairs(SpecialUINameList[UIConst.WidgetAllStateTag.Precedence]) do
-        if CheckUIName == UIName then
-          IsHideCurUIObj = true
-          for _, v in ipairs(Value) do
-            if nil ~= self:GetUIObj(CheckUIName) then
-              DebugPrint("UIManagerComponent PrecedenceMode: The UI Which Named " .. UIName .. " Hide, The Reason is Effected by " .. v)
-              HideUIWithConditionMode(UIObj, v, ReasonString, NormalStateSubState)
+    local r12_43 = nil	-- notice: implicit variable refs by block#[33]
+    local r13_43 = nil	-- notice: implicit variable refs by block#[33]
+    if r4_43[UIConst.WidgetAllStateTag.Precedence] ~= nil then
+      for r12_43, r13_43 in pairs(r4_43[UIConst.WidgetAllStateTag.Precedence]) do
+        if r12_43 == r1_43 then
+          r6_43 = true
+          for r18_43, r19_43 in ipairs(r13_43) do
+            if r0_43:GetUIObj(r12_43) ~= nil then
+              DebugPrint("UIManagerComponent PrecedenceMode: The UI Which Named " .. r1_43 .. " Hide, The Reason is Effected by " .. r19_43)
+              r7_43(r2_43, r19_43, r5_43, r3_43)
             end
           end
+          -- close: r14_43
         else
-          local IsInEffectList, CheckUIObj = false, self:GetUIObj(CheckUIName)
-          for _, v in ipairs(Value) do
-            if v == UIName then
-              IsInEffectList = true
+          local r14_43 = false
+          local r15_43 = r0_43:GetUIObj(r12_43)
+          for r20_43, r21_43 in ipairs(r13_43) do
+            if r21_43 == r1_43 then
+              r14_43 = true
               break
             end
           end
-          if IsInEffectList then
-            if nil == CheckUIObj then
-              self:GetUIObjAsync(CheckUIName, function(UIObjInst)
-                if UIObjInst then
-                  DebugPrint("UIManagerComponent PrecedenceMode: The UI Which Named " .. CheckUIName .. " Hide, The Reason is Effected by " .. UIName)
-                  HideUIWithConditionMode(UIObjInst, UIName, ReasonString, NormalStateSubState)
+          -- close: r16_43
+          if r14_43 then
+            if r15_43 == nil then
+              r0_43:GetUIObjAsync(r12_43, function(r0_45)
+                -- line: [1131, 1136] id: 45
+                if r0_45 then
+                  DebugPrint("UIManagerComponent PrecedenceMode: The UI Which Named " .. r12_43 .. " Hide, The Reason is Effected by " .. r1_43)
+                  r7_43(r0_45, r1_43, r5_43, r3_43)
                 end
               end)
             else
-              DebugPrint("UIManagerComponent PrecedenceMode: The UI Which Named " .. CheckUIName .. " Hide, The Reason is Effected by " .. UIName)
-              HideUIWithConditionMode(CheckUIObj, UIName, ReasonString, NormalStateSubState)
+              DebugPrint("UIManagerComponent PrecedenceMode: The UI Which Named " .. r12_43 .. " Hide, The Reason is Effected by " .. r1_43)
+              r7_43(r15_43, r1_43, r5_43, r3_43)
             end
           end
         end
+        -- close: r12_43
       end
+      -- close: r8_43
     end
-    if nil ~= SpecialUINameList[UIConst.WidgetAllStateTag.Mutual] then
-      for _, CheckUIName in ipairs(SpecialUINameList[UIConst.WidgetAllStateTag.Mutual]) do
-        local CheckUIObj = self:GetUIObj(CheckUIName)
-        if nil == CheckUIObj then
-          self:GetUIObjAsync(CheckUIName, function(UIObjInst)
-            if UIObjInst then
-              DebugPrint("UIManagerComponent MutualMode: The UI Which Named " .. CheckUIName .. " Hide, The Reason is Effected by " .. UIName)
-              HideUIWithConditionMode(UIObjInst, UIName, ReasonString, NormalStateSubState)
+    if r4_43[UIConst.WidgetAllStateTag.Mutual] ~= nil then
+      for r12_43, r13_43 in ipairs(r4_43[UIConst.WidgetAllStateTag.Mutual]) do
+        local r14_43 = r0_43:GetUIObj(r13_43)
+        if r14_43 == nil then
+          r0_43:GetUIObjAsync(r13_43, function(r0_46)
+            -- line: [1150, 1155] id: 46
+            if r0_46 then
+              DebugPrint("UIManagerComponent MutualMode: The UI Which Named " .. r13_43 .. " Hide, The Reason is Effected by " .. r1_43)
+              r7_43(r0_46, r1_43, r5_43, r3_43)
             end
           end)
         else
-          DebugPrint("UIManagerComponent MutualMode: The UI Which Named " .. CheckUIName .. " Hide, The Reason is Effected by " .. UIName)
-          HideUIWithConditionMode(CheckUIObj, UIName, ReasonString, NormalStateSubState)
+          DebugPrint("UIManagerComponent MutualMode: The UI Which Named " .. r13_43 .. " Hide, The Reason is Effected by " .. r1_43)
+          r7_43(r14_43, r1_43, r5_43, r3_43)
         end
+        -- close: r12_43
       end
+      -- close: r8_43
     end
-    if nil ~= SpecialUINameList[UIConst.WidgetAllStateTag.Group] then
-      IsHideCurUIObj = self:DealWithGroupUIVisibility(SpecialUINameList[UIConst.WidgetAllStateTag.Group], UIName, UIObj, NormalStateSubState, ReasonString)
+    if r4_43[UIConst.WidgetAllStateTag.Group] ~= nil then
+      r12_43 = r2_43
+      r13_43 = r3_43
+      r6_43 = r0_43:DealWithGroupUIVisibility(r4_43[UIConst.WidgetAllStateTag.Group], r1_43, r12_43, r13_43, r5_43)
     end
+    -- close: r7_43
   end
-  return IsHideCurUIObj
+  return r6_43
 end
-
-function BP_UIManagerComponent_C:SetIsHideInImmersionMode(UIObj)
-  local PlayerCharacter = UE4.UGameplayStatics.GetPlayerCharacter(self, 0)
-  if PlayerCharacter and PlayerCharacter.IsImmersionModel then
-    UIObj:Hide("ImmersionMode")
-    UIObj:SetRenderOpacity(0)
+function r6_0.SetIsHideInImmersionMode(r0_47, r1_47)
+  -- line: [1169, 1175] id: 47
+  local r2_47 = UE4.UGameplayStatics.GetPlayerCharacter(r0_47, 0)
+  if r2_47 and r2_47.IsImmersionModel then
+    r1_47:Hide("ImmersionMode")
+    r1_47:SetRenderOpacity(0)
   end
 end
-
-function BP_UIManagerComponent_C:LoadGuideIconAsync(BPClassPath, UIName, ZOrder, CoroutineOrCBFunc, ...)
-  local Param = {
+function r6_0.LoadGuideIconAsync(r0_48, r1_48, r2_48, r3_48, r4_48, ...)
+  -- line: [1178, 1183] id: 48
+  local r5_48 = {
     ...
   }
-  table.insert(Param, CoroutineOrCBFunc)
-  table.insert(Param, "Async")
-  return self:LoadUI(BPClassPath, UIName, ZOrder, table.unpack(Param))
+  table.insert(r5_48, r4_48)
+  table.insert(r5_48, "Async")
+  return r0_48:LoadUI(r1_48, r2_48, r3_48, table.unpack(r5_48))
 end
-
-function BP_UIManagerComponent_C:UpdateArgs(UIObj, Args)
-  if not UIObj or not UIObj.UpdateArgs then
-    return
+function r6_0.UpdateArgs(r0_49, r1_49, r2_49)
+  -- line: [1186, 1195] id: 49
+  if not r1_49 or not r1_49.UpdateArgs then
+    return 
   end
-  if not Args then
-    return
+  if not r2_49 then
+    return 
   end
-  UIObj:UpdateArgs(Args)
+  r1_49:UpdateArgs(r2_49)
 end
-
-function BP_UIManagerComponent_C:GetBannedActionNameList(KeyboardSetName)
-  local KeyboardSetData = DataMgr.UIKeyboardSet[KeyboardSetName]
-  if not KeyboardSetData then
-    DebugPrint("Tianyi@ 找不到按键禁用组: " .. KeyboardSetName)
+function r6_0.GetBannedActionNameList(r0_50, r1_50)
+  -- line: [1199, 1223] id: 50
+  local r2_50 = DataMgr.UIKeyboardSet[r1_50]
+  if not r2_50 then
+    DebugPrint("Tianyi@ 找不到按键禁用组: " .. r1_50)
     return nil
   end
-  if KeyboardSetData.IsWhiteList then
-    local AllActionList = DataMgr.KeyboardMap
-    local ActionNameList = {}
-    for Key, _ in pairs(AllActionList) do
-      for _, ActionName in ipairs(KeyboardSetData.ActionNameList or {}) do
-        if Key ~= ActionName then
-          goto lbl_35
+  if r2_50.IsWhiteList then
+    local r4_50 = {}
+    for r9_50, r10_50 in pairs(DataMgr.KeyboardMap) do
+      for r15_50, r16_50 in ipairs(r2_50.ActionNameList and {}) do
+        if r9_50 == r16_50 then
+          goto label_42
         end
-        goto lbl_43
-        ::lbl_35::
       end
-      table.insert(ActionNameList, Key)
-      ::lbl_43::
+      -- close: r11_50
+      table.insert(r4_50, r9_50)
+      ::label_42::
+      -- close: r11_50
     end
-    return ActionNameList
+    -- close: r5_50
+    return r4_50
   else
-    return KeyboardSetData.ActionNameList
+    return r2_50.ActionNameList
   end
 end
-
-function BP_UIManagerComponent_C:CheckCombatcondition(CombatconditionIdList, ConditiontextList)
-  if nil == CombatconditionIdList then
+function r6_0.CheckCombatcondition(r0_51, r1_51, r2_51)
+  -- line: [1226, 1243] id: 51
+  if r1_51 == nil then
     return true
   end
-  ConditiontextList = ConditiontextList or {}
-  local PlayerCharacter = UE4.UGameplayStatics.GetPlayerCharacter(self, 0)
-  local IsConditionSuccess, ShowConditiontext = true
-  local TraceInfo = "From BP_UIManagerComponent_C:CheckCombatcondition"
-  for i, v in ipairs(CombatconditionIdList) do
-    local ConditionSucc = Battle(self):CheckConditionNew(v, PlayerCharacter, nil, TraceInfo)
-    if not ConditionSucc then
-      IsConditionSuccess = false
-      ShowConditiontext = ConditiontextList[i]
+  if not r2_51 then
+    r2_51 = {}
+  end
+  local r3_51 = UE4.UGameplayStatics.GetPlayerCharacter(r0_51, 0)
+  local r4_51 = true
+  local r5_51 = nil
+  local r6_51 = "From BP_UIManagerComponent_C:CheckCombatcondition"
+  for r11_51, r12_51 in ipairs(r1_51) do
+    if not Battle(r0_51):CheckConditionNew(r12_51, r3_51, nil, r6_51) then
+      r4_51 = false
+      r5_51 = r2_51[r11_51]
       break
     end
   end
-  return IsConditionSuccess, ShowConditiontext
+  -- close: r7_51
+  return r4_51, r5_51
 end
-
-function BP_UIManagerComponent_C:SetBannedActionCallback(KeyboardSetName, IsBanned, UIName)
-  UIName = UIName or "Common"
-  self.ActivateBannedUI = self.ActivateBannedUI or {}
-  if self.ActivateBannedUI[UIName] and true == IsBanned then
-    return
+function r6_0.SetBannedActionCallback(r0_52, r1_52, r2_52, r3_52)
+  -- line: [1247, 1310] id: 52
+  if not r3_52 then
+    r3_52 = "Common"
   end
-  self.ActivateBannedUI[UIName] = true
-  local Player = UE4.UGameplayStatics.GetPlayerCharacter(self, 0)
-  if not Player then
+  r0_52.ActivateBannedUI = r0_52.ActivateBannedUI and {}
+  if r0_52.ActivateBannedUI[r3_52] and r2_52 == true then
+    return 
+  end
+  r0_52.ActivateBannedUI[r3_52] = true
+  local r4_52 = UE4.UGameplayStatics.GetPlayerCharacter(r0_52, 0)
+  if not r4_52 then
     DebugPrint("Tianyi@ Player is not valid")
-    return
+    return 
   end
-  local ActionList = self:GetBannedActionNameList(KeyboardSetName)
-  if not ActionList then
-    return
+  local r5_52 = r0_52:GetBannedActionNameList(r1_52)
+  if not r5_52 then
+    return 
   end
-  if IsBanned then
-    local AllActionList = DataMgr.KeyboardMap
-    local AllowedList = TArray(FName)
-    for _, Action in pairs(AllActionList) do
-      local Flag = false
-      for _, BannedAction in ipairs(ActionList) do
-        if Action.ActionName == BannedAction then
-          Flag = true
+  if r2_52 then
+    local r7_52 = TArray(FName)
+    for r12_52, r13_52 in pairs(DataMgr.KeyboardMap) do
+      local r14_52 = false
+      for r19_52, r20_52 in ipairs(r5_52) do
+        if r13_52.ActionName == r20_52 then
+          r14_52 = true
           break
         end
       end
-      if not Flag then
-        AllowedList:Add(Action.ActionName)
+      -- close: r15_52
+      if not r14_52 then
+        r7_52:Add(r13_52.ActionName)
       end
     end
-    Player:FlushInputKeyExcept(AllowedList)
+    -- close: r8_52
+    r4_52:FlushInputKeyExcept(r7_52)
   end
-  DebugPrint("Tianyi@ 设置禁用Action: , IsBanned = " .. tostring(IsBanned))
-  self.BanActionCallbackMap = self.BanActionCallbackMap or {}
-  for _, Action in ipairs(ActionList) do
-    if IsBanned then
-      Player:AddToActionGroups("UI", Action)
-      self.BanActionCallbackMap[Action] = (self.BanActionCallbackMap[Action] or 0) + 1
+  DebugPrint("Tianyi@ 设置禁用Action: , IsBanned = " .. tostring(r2_52))
+  r0_52.BanActionCallbackMap = r0_52.BanActionCallbackMap and {}
+  for r10_52, r11_52 in ipairs(r5_52) do
+    if r2_52 then
+      r4_52:AddToActionGroups("UI", r11_52)
+      r0_52.BanActionCallbackMap[r11_52] = (r0_52.BanActionCallbackMap[r11_52] and 0) + 1
     else
-      Player:RemoveFromGroups("UI", Action)
-      self.BanActionCallbackMap[Action] = (self.BanActionCallbackMap[Action] or 0) - 1
-      if self.BanActionCallbackMap[Action] <= 0 then
-        self.BanActionCallbackMap[Action] = nil
+      r4_52:RemoveFromGroups("UI", r11_52)
+      r0_52.BanActionCallbackMap[r11_52] = (r0_52.BanActionCallbackMap[r11_52] and 0) + -1
+      if r0_52.BanActionCallbackMap[r11_52] <= 0 then
+        r0_52.BanActionCallbackMap[r11_52] = nil
       end
     end
   end
-  if IsBanned then
-    Player:AddForbidTag("UI")
+  -- close: r6_52
+  if r2_52 then
+    r4_52:AddForbidTag("UI")
   else
-    Player:MinusForbidTag("UI")
-    self.ActivateBannedUI[UIName] = nil
+    r4_52:MinusForbidTag("UI")
+    r0_52.ActivateBannedUI[r3_52] = nil
   end
 end
-
-function BP_UIManagerComponent_C:SetAllBattleEntityHidden(bHidden, TagName, UnitType)
-  local Entities = Battle(self):GetAllEntities()
-  if bHidden then
-    for _, Entity in pairs(Entities) do
-      if IsValid(Entity) and Entity.UnitType == UnitType and not Entity.bHidden then
-        Entity:SetActorHiddenInGame(true)
+function r6_0.SetAllBattleEntityHidden(r0_53, r1_53, r2_53, r3_53)
+  -- line: [1313, 1334] id: 53
+  local r4_53 = Battle(r0_53):GetAllEntities()
+  if r1_53 then
+    for r9_53, r10_53 in pairs(r4_53) do
+      if IsValid(r10_53) and r10_53.UnitType == r3_53 and not r10_53.bHidden then
+        r10_53:SetActorHiddenInGame(true)
       end
     end
-    self.CacheModifyHiddenEntity[TagName] = 1
+    -- close: r5_53
+    r0_53.CacheModifyHiddenEntity[r2_53] = 1
   else
-    self.CacheModifyHiddenEntity[TagName] = nil
-    if IsEmptyTable(self.CacheModifyHiddenEntity) then
-      for _, Entity in pairs(Entities) do
-        if IsValid(Entity) and Entity.UnitType == UnitType and Entity.bHidden then
-          Entity:SetActorHiddenInGame(false)
+    r0_53.CacheModifyHiddenEntity[r2_53] = nil
+    if IsEmptyTable(r0_53.CacheModifyHiddenEntity) then
+      for r9_53, r10_53 in pairs(r4_53) do
+        if IsValid(r10_53) and r10_53.UnitType == r3_53 and r10_53.bHidden then
+          r10_53:SetActorHiddenInGame(false)
         end
       end
+      -- close: r5_53
     end
   end
 end
-
-function BP_UIManagerComponent_C:CheckIsActionBanned(ActionName)
-  local IsActionBanned = self.BanActionCallbackMap and self.BanActionCallbackMap[ActionName]
-  return IsActionBanned
+function r6_0.CheckIsActionBanned(r0_54, r1_54)
+  -- line: [1337, 1340] id: 54
+  return r0_54.BanActionCallbackMap and r0_54.BanActionCallbackMap[r1_54]
 end
-
-function BP_UIManagerComponent_C:DealWithGroupUIVisibility(CheckList, UIName, UIObj, NormalStateSubState, ReasonString)
-  local IsHideCurUIObj = false
-  for CheckUIName, Value in pairs(CheckList) do
-    if type(Value) == "table" then
-      if UIName == CheckUIName then
-        local AllUI = self.UIInstances:ToTable()
-        for _UIName, TargetWidget in pairs(AllUI) do
-          local IsNeedHide = true
-          for _, _CheckUIName in ipairs(Value) do
-            if _UIName == _CheckUIName or _UIName == UIName then
-              IsNeedHide = false
+function r6_0.DealWithGroupUIVisibility(r0_55, r1_55, r2_55, r3_55, r4_55, r5_55)
+  -- line: [1343, 1398] id: 55
+  local r6_55 = false
+  for r11_55, r12_55 in pairs(r1_55) do
+    if type(r12_55) == "table" then
+      if r2_55 == r11_55 then
+        for r18_55, r19_55 in pairs(r0_55.UIInstances:ToTable()) do
+          local r20_55 = true
+          for r25_55, r26_55 in ipairs(r12_55) do
+            if r18_55 == r26_55 or r18_55 == r2_55 then
+              r20_55 = false
               break
             end
           end
-          if IsNeedHide then
-            DebugPrint("UIManagerComponent GroupMode: The UI Which Named " .. _UIName .. " Hide, The Reason is Effected by " .. UIName)
-            TargetWidget:Hide(ReasonString .. UIName)
-            if self.HideByStateTagUIList[NormalStateSubState] == nil then
-              self.HideByStateTagUIList[NormalStateSubState] = {}
-              self.HideByStateTagUIList[NormalStateSubState][UIName] = {TargetWidget}
-            elseif self.HideByStateTagUIList[NormalStateSubState][UIName] == nil then
-              self.HideByStateTagUIList[NormalStateSubState][UIName] = {TargetWidget}
+          -- close: r21_55
+          if r20_55 then
+            DebugPrint("UIManagerComponent GroupMode: The UI Which Named " .. r18_55 .. " Hide, The Reason is Effected by " .. r2_55)
+            r19_55:Hide(r5_55 .. r2_55)
+            if r0_55.HideByStateTagUIList[r4_55] == nil then
+              r0_55.HideByStateTagUIList[r4_55] = {}
+              r0_55.HideByStateTagUIList[r4_55][r2_55] = {
+                r19_55
+              }
+            elseif r0_55.HideByStateTagUIList[r4_55][r2_55] == nil then
+              r0_55.HideByStateTagUIList[r4_55][r2_55] = {
+                r19_55
+              }
             else
-              table.insert(self.HideByStateTagUIList[NormalStateSubState][UIName], TargetWidget)
+              table.insert(r0_55.HideByStateTagUIList[r4_55][r2_55], r19_55)
             end
           end
         end
+        -- close: r14_55
       else
-        local IsNeedHide = true
-        for _, _CheckUIName in ipairs(Value) do
-          if _CheckUIName == UIName then
-            IsNeedHide = false
+        local r13_55 = true
+        for r18_55, r19_55 in ipairs(r12_55) do
+          if r19_55 == r2_55 then
+            r13_55 = false
           end
         end
-        if IsNeedHide then
-          DebugPrint("UIManagerComponent GroupMode: The UI Which Named " .. UIName .. " Hide, The Reason is Effected by " .. CheckUIName)
-          IsHideCurUIObj = true
-          UIObj:Hide(ReasonString .. CheckUIName)
-          if self.HideByStateTagUIList[NormalStateSubState] == nil then
-            self.HideByStateTagUIList[NormalStateSubState] = {}
-            self.HideByStateTagUIList[NormalStateSubState][CheckUIName] = {UIObj}
-          elseif self.HideByStateTagUIList[NormalStateSubState][CheckUIName] == nil then
-            self.HideByStateTagUIList[NormalStateSubState][CheckUIName] = {UIObj}
+        -- close: r14_55
+        if r13_55 then
+          DebugPrint("UIManagerComponent GroupMode: The UI Which Named " .. r2_55 .. " Hide, The Reason is Effected by " .. r11_55)
+          r6_55 = true
+          r3_55:Hide(r5_55 .. r11_55)
+          if r0_55.HideByStateTagUIList[r4_55] == nil then
+            r0_55.HideByStateTagUIList[r4_55] = {}
+            r0_55.HideByStateTagUIList[r4_55][r11_55] = {
+              r3_55
+            }
+          elseif r0_55.HideByStateTagUIList[r4_55][r11_55] == nil then
+            r0_55.HideByStateTagUIList[r4_55][r11_55] = {
+              r3_55
+            }
           else
-            table.insert(self.HideByStateTagUIList[NormalStateSubState][CheckUIName], UIObj)
+            table.insert(r0_55.HideByStateTagUIList[r4_55][r11_55], r3_55)
           end
         end
       end
     end
   end
-  return IsHideCurUIObj
+  -- close: r7_55
+  return r6_55
 end
-
-function BP_UIManagerComponent_C:OnUIObjLoadCompleted(UIName, UIConfig)
-  self:SetEntitiesVisibility(UIName, UIConfig.IsHideBattleUnit == UIConst.EnumHideBattleUnitStyle.NormalShowAndHideAll, UIConfig.IsHideBattleUnit == UIConst.EnumHideBattleUnitStyle.NormalShowAndHideAllExceptSelf, true)
-  if UIConfig.IsHideDrop then
-    self:SetAllBattleEntityHidden(true, UIName, "Drop")
+function r6_0.OnUIObjLoadCompleted(r0_56, r1_56, r2_56)
+  -- line: [1460, 1499] id: 56
+  local r5_56 = r1_56
+  local r6_56 = r2_56.IsHideBattleUnit == UIConst.EnumHideBattleUnitStyle.NormalShowAndHideAll
+  r0_56:SetEntitiesVisibility(r5_56, r6_56, r2_56.IsHideBattleUnit == UIConst.EnumHideBattleUnitStyle.NormalShowAndHideAllExceptSelf, true)
+  if r2_56.IsHideDrop then
+    r0_56:SetAllBattleEntityHidden(true, r1_56, "Drop")
   end
-  EventManager:FireEvent(EventID.LoadUI, UIName)
+  EventManager:FireEvent(EventID.LoadUI, r1_56)
 end
-
-function BP_UIManagerComponent_C:UnLoadUINew(UIName)
-  local SystemUIConfig = DataMgr.SystemUI[UIName]
-  assert(SystemUIConfig, "UI:" .. UIName .. "不在SystemUI表中")
-  if UIConst.AllUIConfig[UIName] then
-    UIConst.AllUIConfig[UIName] = {
-      resource = UIConst.LoadInConfig
+function r6_0.UnLoadUINew(r0_57, r1_57)
+  -- line: [1501, 1510] id: 57
+  assert(DataMgr.SystemUI[r1_57], "UI:" .. r1_57 .. "不在SystemUI表中")
+  if UIConst.AllUIConfig[r1_57] then
+    UIConst.AllUIConfig[r1_57] = {
+      resource = UIConst.LoadInConfig,
     }
   end
-  return self:UnLoadUI(UIName, UIName)
+  return r0_57:UnLoadUI(r1_57, r1_57)
 end
-
-function BP_UIManagerComponent_C:UnLoadUI(UIConfigName, UIName)
-  if IsDedicatedServer(self) then
-    return
+function r6_0.UnLoadUI(r0_58, r1_58, r2_58)
+  -- line: [1512, 1617] id: 58
+  if IsDedicatedServer(r0_58) then
+    return 
   end
-  UIName = UIName or UIConfigName
-  local UIConfig = UIConst.AllUIConfig[UIConfigName] or {}
-  local SystemUI = DataMgr.SystemUI[UIName]
-  if nil == SystemUI then
-    SystemUI = DataMgr.SystemUI[UIConfigName]
+  if not r2_58 then
+    r2_58 = r1_58
   end
-  if nil ~= SystemUI then
-    UIConfig.popup = SystemUI.Popup or UIConfig.popup
-    UIConfig.statetag = SystemUI.StateTag
-    UIConfig.IsStopGame = self:RevertRealStopGame(SystemUI.IsStopGame)
-    UIConfig.GlobalGameUITag = SystemUI.GlobalGameUITag
-    UIConfig.IsHideBattleUnit = SystemUI.IsHideBattleUnit
-    UIConfig.IsHideDrop = SystemUI.IsHideDrop
-    UIConfig.PauseAfterLoadingState = SystemUI.PauseAfterLoadingState
-    if SystemUI.ConfigName then
-      local SystemUIConfig = DataMgr.SystemUIConfig[SystemUI.ConfigName]
-      if SystemUIConfig then
-        UIConfig.addtostack = SystemUIConfig.AddToStack
-        UIConfig.StopWorldRender = SystemUIConfig.StopWorldRender
+  local r3_58 = UIConst.AllUIConfig[r1_58] and {}
+  local r4_58 = DataMgr.SystemUI[r2_58]
+  if r4_58 == nil then
+    r4_58 = DataMgr.SystemUI[r1_58]
+  end
+  if r4_58 ~= nil then
+    r3_58.popup = r4_58.Popup and r3_58.popup
+    r3_58.statetag = r4_58.StateTag
+    r3_58.IsStopGame = r0_58:RevertRealStopGame(r4_58.IsStopGame)
+    r3_58.GlobalGameUITag = r4_58.GlobalGameUITag
+    r3_58.IsHideBattleUnit = r4_58.IsHideBattleUnit
+    r3_58.IsHideDrop = r4_58.IsHideDrop
+    r3_58.PauseAfterLoadingState = r4_58.PauseAfterLoadingState
+    if r4_58.ConfigName then
+      local r5_58 = DataMgr.SystemUIConfig[r4_58.ConfigName]
+      if r5_58 then
+        r3_58.addtostack = r5_58.AddToStack
+        r3_58.StopWorldRender = r5_58.StopWorldRender
       end
     end
   end
-  if UIConfig.popup == true then
-    self:OpenResidentUI(UIName)
+  if r3_58.popup == true then
+    r0_58:OpenResidentUI(r2_58)
   end
-  self:DealWithOtherWidgetsVisibilityByUIHide(UIConfigName, UIName, UIConfig.statetag)
-  local UIObj = self:GetUIObj(UIName)
-  if UIObj and UIObj.IsAddInDeque then
-    self:RemoveToJumpPageDeque(UIObj)
+  r0_58:DealWithOtherWidgetsVisibilityByUIHide(r1_58, r2_58, r3_58.statetag)
+  local r5_58 = r0_58:GetUIObj(r2_58)
+  if r5_58 and r5_58.IsAddInDeque then
+    r0_58:RemoveToJumpPageDeque(r5_58)
   end
-  self:SetEntitiesVisibility(UIName, UIConfig.IsHideBattleUnit == UIConst.EnumHideBattleUnitStyle.NormalShowAndHideAll, UIConfig.IsHideBattleUnit == UIConst.EnumHideBattleUnitStyle.NormalShowAndHideAllExceptSelf, false)
-  if UIConfig.IsHideDrop then
-    self:SetAllBattleEntityHidden(false, UIName, "Drop")
+  local r8_58 = r2_58
+  local r9_58 = r3_58.IsHideBattleUnit == UIConst.EnumHideBattleUnitStyle.NormalShowAndHideAll
+  r0_58:SetEntitiesVisibility(r8_58, r9_58, r3_58.IsHideBattleUnit == UIConst.EnumHideBattleUnitStyle.NormalShowAndHideAllExceptSelf, false)
+  if r3_58.IsHideDrop then
+    r0_58:SetAllBattleEntityHidden(false, r2_58, "Drop")
   end
-  if UIConfig.PauseAfterLoadingState and UIObj then
-    self:TryResumeAfterLoadingMgr(UIConfig.PauseAfterLoadingState)
+  if r3_58.PauseAfterLoadingState and r5_58 then
+    r0_58:TryResumeAfterLoadingMgr(r3_58.PauseAfterLoadingState)
   end
-  if UIConfig.IsGlobalUI then
-    local GameInstance = UE4.UGameplayStatics.GetGameInstance(self)
-    GameInstance:CloseGlobalUI(UIName)
+  if r3_58.IsGlobalUI then
+    UE4.UGameplayStatics.GetGameInstance(r0_58):CloseGlobalUI(r2_58)
   else
-    local bIsRemoveInStack = not not UIConfig.addtostack
-    self:UnLoadUI_CPP(UIName, bIsRemoveInStack, UIObj and UIObj.IsNeedSearchInStack)
+    r0_58:UnLoadUI_CPP(r2_58, not not r3_58.addtostack, r5_58 and r5_58.IsNeedSearchInStack)
   end
-  if self.AsyncLoadHandlers[UIName] then
-    self.AsyncUnloadFlags[UIName] = true
+  if r0_58.AsyncLoadHandlers[r2_58] then
+    r0_58.AsyncUnloadFlags[r2_58] = true
   end
-  if self.FlowList[UIName] then
-    local flow = self.FlowList[UIName]
-    self.FlowList[UIName] = nil
-    local FlowManager = USubsystemBlueprintLibrary.GetWorldSubsystem(GWorld.GameInstance, UGameFlowManager)
-    FlowManager:RemoveFlow(flow)
-    DebugPrint("WXT UIManagerComponent_C:RemoveFlow", UIName)
+  if r0_58.FlowList[r2_58] then
+    r0_58.FlowList[r2_58] = nil
+    USubsystemBlueprintLibrary.GetWorldSubsystem(GWorld.GameInstance, UGameFlowManager):RemoveFlow(r0_58.FlowList[r2_58])
+    DebugPrint("WXT UIManagerComponent_C:RemoveFlow", r2_58)
   end
-  EventManager:FireEvent(EventID.UnLoadUI, UIName)
+  EventManager:FireEvent(EventID.UnLoadUI, r2_58)
 end
-
-function BP_UIManagerComponent_C:DealWithOtherWidgetsVisibilityByUIHide(UIConfigName, UIName, UIStatetag)
-  if nil == UIStatetag or UIStatetag == UIConst.WidgetAllStateTag.Blocked then
-    return
+function r6_0.DealWithOtherWidgetsVisibilityByUIHide(r0_59, r1_59, r2_59, r3_59)
+  -- line: [1622, 1636] id: 59
+  if r3_59 == nil or r3_59 == UIConst.WidgetAllStateTag.Blocked then
+    return 
   end
-  self:AddUIToStateTagsCluster(UIStatetag, UIName, false)
-  if UIStatetag == UIConst.WidgetAllStateTag.Queue then
-    if self.UILoadingDeque:Size() > 0 then
-      local NextLoadUI = self.UILoadingDeque:PopFront()
-      self:AddTimer(0.1, self.LoadUINew, false, 0, "LoadUIInQueue", nil, NextLoadUI.UIName, table.unpack(NextLoadUI.Params))
+  r0_59:AddUIToStateTagsCluster(r3_59, r2_59, false)
+  if r3_59 == UIConst.WidgetAllStateTag.Queue then
+    if r0_59.UILoadingDeque:Size() > 0 then
+      local r4_59 = r0_59.UILoadingDeque:PopFront()
+      r0_59:AddTimer(0.1, r0_59.LoadUINew, false, 0, "LoadUIInQueue", nil, r4_59.UIName, table.unpack(r4_59.Params))
     end
   else
-    self:HandleUIWidgetsVisibilityByUIHide(UIConfigName, UIName, UIStatetag)
+    r0_59:HandleUIWidgetsVisibilityByUIHide(r1_59, r2_59, r3_59)
   end
 end
-
-function BP_UIManagerComponent_C:HandleUIWidgetsVisibilityByUIHide(UIConfigName, UIName, UIStatetag)
-  local HideUIList, ReShowUIWithReasonStr = nil, "InUIConfigure"
-  if UIStatetag == UIConst.WidgetAllStateTag.Exclusive then
-    local AllExclusiveUI = self.AllUIStateTagsCluster[UIStatetag]
-    if IsEmptyTable(AllExclusiveUI) then
-      HideUIList = self.HideByStateTagUIList[ENormalModeSubState.ExclusiveMode]
-      self:ReShowUIWithReason(HideUIList, ReShowUIWithReasonStr .. ENormalModeSubState.ExclusiveMode)
-      self.HideByStateTagUIList[ENormalModeSubState.ExclusiveMode] = nil
+function r6_0.HandleUIWidgetsVisibilityByUIHide(r0_60, r1_60, r2_60, r3_60)
+  -- line: [1639, 1689] id: 60
+  local r4_60 = nil
+  local r5_60 = "InUIConfigure"
+  if r3_60 == UIConst.WidgetAllStateTag.Exclusive then
+    if IsEmptyTable(r0_60.AllUIStateTagsCluster[r3_60]) then
+      r0_60:ReShowUIWithReason(r0_60.HideByStateTagUIList[r8_0.ExclusiveMode], r5_60 .. r8_0.ExclusiveMode)
+      r0_60.HideByStateTagUIList[r8_0.ExclusiveMode] = nil
     end
-    return
+    return 
   end
-  local ConditionUIList = self.HideByStateTagUIList[ENormalModeSubState.ConditionMode]
-  if (UIStatetag == UIConst.WidgetAllStateTag.Precedence or UIStatetag == UIConst.WidgetAllStateTag.Group) and nil ~= ConditionUIList then
-    if nil ~= UIConfigName then
-      HideUIList = ConditionUIList[UIConfigName]
-      ConditionUIList[UIConfigName] = nil
-      self:ReShowUIWithReason(HideUIList, ReShowUIWithReasonStr .. UIConfigName)
+  local r6_60 = r0_60.HideByStateTagUIList[r8_0.ConditionMode]
+  if (r3_60 == UIConst.WidgetAllStateTag.Precedence or r3_60 == UIConst.WidgetAllStateTag.Group) and r6_60 ~= nil then
+    if r1_60 ~= nil then
+      r6_60[r1_60] = nil
+      r0_60:ReShowUIWithReason(r6_60[r1_60], r5_60 .. r1_60)
     else
-      HideUIList = ConditionUIList[UIName]
-      ConditionUIList[UIName] = nil
-      self:ReShowUIWithReason(HideUIList, ReShowUIWithReasonStr .. UIName)
+      r6_60[r2_60] = nil
+      r0_60:ReShowUIWithReason(r6_60[r2_60], r5_60 .. r2_60)
     end
   end
-  if not IsEmptyTable(ConditionUIList) then
-    for k, v in pairs(ConditionUIList) do
-      if type(v) == "table" then
-        local NeedRemoveIndex
-        for Index, CheckName in ipairs(v) do
-          if CheckName == UIConfigName then
-            NeedRemoveIndex = Index
+  if not IsEmptyTable(r6_60) then
+    for r11_60, r12_60 in pairs(r6_60) do
+      if type(r12_60) == "table" then
+        local r13_60 = nil
+        for r18_60, r19_60 in ipairs(r12_60) do
+          if r19_60 == r1_60 then
+            r13_60 = r18_60
             break
           end
         end
-        if NeedRemoveIndex then
-          local NeedShowUI = self:GetUIObj(k)
-          if NeedShowUI then
-            NeedShowUI:Show(ReShowUIWithReasonStr .. v[NeedRemoveIndex])
+        -- close: r14_60
+        if r13_60 then
+          local r14_60 = r0_60:GetUIObj(r11_60)
+          if r14_60 then
+            r14_60:Show(r5_60 .. r12_60[r13_60])
           end
-          table.remove(v, NeedRemoveIndex)
+          table.remove(r12_60, r13_60)
         end
       end
     end
+    -- close: r7_60
   end
 end
-
-function BP_UIManagerComponent_C:ReShowUIWithReason(UIList, ReasonString)
-  if nil == UIList or type(UIList) ~= "table" then
-    return
+function r6_0.ReShowUIWithReason(r0_61, r1_61, r2_61)
+  -- line: [1692, 1705] id: 61
+  if r1_61 == nil or type(r1_61) ~= "table" then
+    return 
   end
-  for i, v in ipairs(UIList) do
-    local UIWidget = v
-    if type(v) == "string" then
-      UIWidget = self:GetUIObj(v)
+  for r7_61, r8_61 in ipairs(r1_61) do
+    local r9_61 = r8_61
+    if type(r8_61) == "string" then
+      r9_61 = r0_61:GetUIObj(r8_61)
     end
-    if IsValid(UIWidget) then
-      UIWidget:Show(ReasonString)
+    if IsValid(r9_61) then
+      r9_61:Show(r2_61)
     end
   end
+  -- close: r3_61
 end
-
-function BP_UIManagerComponent_C:GetUIObj(UIName, bUseRegularMatch)
-  if bUseRegularMatch then
-    local UIPathes = self:GetUIPathFromString(UIName)
-    local len = #UIPathes
-    if len > 1 then
-      local root_ui = self:GetUI(UIPathes[1])
-      for i = 2, len do
-        root_ui = root_ui[UIPathes[i]]
+function r6_0.GetUIObj(r0_62, r1_62, r2_62)
+  -- line: [1708, 1721] id: 62
+  if r2_62 then
+    local r3_62 = r0_62:GetUIPathFromString(r1_62)
+    local r4_62 = #r3_62
+    if r4_62 > 1 then
+      local r5_62 = r0_62:GetUI(r3_62[1])
+      for r9_62 = 2, r4_62, 1 do
+        r5_62 = r5_62[r3_62[r9_62]]
       end
-      return root_ui
+      return r5_62
     end
   end
-  return self:GetUI(UIName)
+  return r0_62:GetUI(r1_62)
 end
-
-function BP_UIManagerComponent_C:GetUIObjAsync(UIName, CoroutineOrCBFunc)
-  local UI = self:GetUIObj(UIName)
-  if not UI and self.AsyncLoadHandlers[UIName] then
-    DebugPrint(LXYTag, "开始异步GetUIObj...", UIName)
-    if not self.AsyncGetUIContexts[UIName] then
-      self.AsyncGetUIContexts[UIName] = {}
+function r6_0.GetUIObjAsync(r0_63, r1_63, r2_63)
+  -- line: [1726, 1743] id: 63
+  local r3_63 = r0_63:GetUIObj(r1_63)
+  if not r3_63 and r0_63.AsyncLoadHandlers[r1_63] then
+    DebugPrint(LXYTag, "开始异步GetUIObj...", r1_63)
+    if not r0_63.AsyncGetUIContexts[r1_63] then
+      r0_63.AsyncGetUIContexts[r1_63] = {}
     end
-    table.insert(self.AsyncGetUIContexts[UIName], CoroutineOrCBFunc)
-    if type(CoroutineOrCBFunc) == "thread" then
-      UI = coroutine.yield()
-      return UI
+    table.insert(r0_63.AsyncGetUIContexts[r1_63], r2_63)
+    if type(r2_63) == "thread" then
+      r3_63 = coroutine.yield()
+      return r3_63
     end
   end
-  if type(CoroutineOrCBFunc) == "function" then
-    CoroutineOrCBFunc(UI)
+  if type(r2_63) == "function" then
+    r2_63(r3_63)
   end
-  return UI
+  return r3_63
 end
-
-function BP_UIManagerComponent_C:GetUIObjIsAsyncLoading(UIName)
-  return self.AsyncLoadHandlers[UIName] ~= nil
+function r6_0.GetUIObjIsAsyncLoading(r0_64, r1_64)
+  -- line: [1746, 1748] id: 64
+  return r0_64.AsyncLoadHandlers[r1_64] ~= nil
 end
-
-function BP_UIManagerComponent_C:GetUIPathFromString(InputString)
-  if not InputString then
+function r6_0.GetUIPathFromString(r0_65, r1_65)
+  -- line: [1751, 1760] id: 65
+  if not r1_65 then
     return nil
   end
-  local Parents = {}
-  for v in string.gmatch(InputString, "%a+[_%a+%d*]*") do
-    table.insert(Parents, v)
+  local r2_65 = {}
+  for r7_65 in string.gmatch(r1_65, "%a+[_%a+%d*]*") do
+    table.insert(r2_65, r7_65)
   end
-  return Parents
+  -- close: r3_65
+  return r2_65
 end
-
-function BP_UIManagerComponent_C:GetUIObjCountByBaseName(UIName)
-  return self.Overridden.GetUIObjCountByBaseName(self, UIName)
+function r6_0.GetUIObjCountByBaseName(r0_66, r1_66)
+  -- line: [1763, 1765] id: 66
+  return r0_66.Overridden.GetUIObjCountByBaseName(r0_66, r1_66)
 end
-
-function BP_UIManagerComponent_C:HideOrShowUIByBaseName(UIName, IsShow)
-  local UIConfig = UIConst.AllUIConfig[UIName] or {}
-  if UIConfig.allowmulti then
-    local UICount = self.UniqueCount[UIName] or 1
-    for i = 1, UICount do
-      local FinalName = UIName .. tostring(i)
-      local ExistUIObj = self:GetUI(FinalName)
-      if nil ~= ExistUIObj then
-        if IsShow then
-          ExistUIObj:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+function r6_0.HideOrShowUIByBaseName(r0_67, r1_67, r2_67)
+  -- line: [1768, 1793] id: 67
+  if (UIConst.AllUIConfig[r1_67] and {}).allowmulti then
+    for r8_67 = 1, r0_67.UniqueCount[r1_67] and 1, 1 do
+      local r10_67 = r0_67:GetUI(r1_67 .. tostring(r8_67))
+      if r10_67 ~= nil then
+        if r2_67 then
+          r10_67:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
         else
-          ExistUIObj:SetVisibility(UE4.ESlateVisibility.Collapsed)
+          r10_67:SetVisibility(UE4.ESlateVisibility.Collapsed)
         end
       end
     end
   else
-    local ExistUIObj = self:GetUI(UIName)
-    if nil ~= ExistUIObj then
-      if IsShow then
-        ExistUIObj:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    local r4_67 = r0_67:GetUI(r1_67)
+    if r4_67 ~= nil then
+      if r2_67 then
+        r4_67:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
       else
-        ExistUIObj:SetVisibility(UE4.ESlateVisibility.Collapsed)
+        r4_67:SetVisibility(UE4.ESlateVisibility.Collapsed)
       end
     end
   end
 end
-
-function BP_UIManagerComponent_C:GetTexture2DResource(TexturePath)
-  if string.find(TexturePath, "/Game/") == nil then
-    TexturePath = "/Game/" .. TexturePath
+function r6_0.GetTexture2DResource(r0_68, r1_68)
+  -- line: [1796, 1802] id: 68
+  if string.find(r1_68, "/Game/") == nil then
+    r1_68 = "/Game/" .. r1_68
   end
-  local ImageResource = LoadObject(TexturePath)
-  return ImageResource
+  return LoadObject(r1_68)
 end
-
-function BP_UIManagerComponent_C:GetLogMask()
+function r6_0.GetLogMask(r0_69)
+  -- line: [1805, 1807] id: 69
   return _G.LogTag
 end
-
-function BP_UIManagerComponent_C:CloseResidentUI(PopUIName)
-  if not IsEmptyTable(self.PopUpUIWidgetRecord) then
-    return
+function r6_0.CloseResidentUI(r0_70, r1_70)
+  -- line: [1827, 1881] id: 70
+  if not IsEmptyTable(r0_70.PopUpUIWidgetRecord) then
+    return 
   end
-  local Player = UE4.UGameplayStatics.GetPlayerCharacter(self, 0)
-  if Player then
-    Player:SetCanInteractiveTrigger(false)
+  local r2_70 = UE4.UGameplayStatics.GetPlayerCharacter(r0_70, 0)
+  if r2_70 then
+    r2_70:SetCanInteractiveTrigger(false)
   end
-  local GameInstance = UE4.UGameplayStatics.GetGameInstance(self)
-  local SceneMgrComponent = GameInstance:GetSceneManager()
-  if IsValid(SceneMgrComponent) then
-    SceneMgrComponent:ShowOrHideAllSceneGuideIcon(false, "UIPopUp")
+  local r4_70 = UE4.UGameplayStatics.GetGameInstance(r0_70):GetSceneManager()
+  if IsValid(r4_70) then
+    r4_70:ShowOrHideAllSceneGuideIcon(false, "UIPopUp")
   end
-  self:HideAllComponentUI(true, "UIPopUp")
-  local Result = self:GetCurrnetAllUIBySystem(UIConst.PopUpUIName.SpecificSystemList)
-  for i, v in ipairs(UIConst.PopUpUIName.SpecificUIList) do
-    if nil == Result[v] then
-      local UIWidget = self:GetUI(v)
-      if nil ~= UIWidget then
-        Result[v] = UIWidget
+  r0_70:HideAllComponentUI(true, "UIPopUp")
+  local r5_70 = r0_70:GetCurrnetAllUIBySystem(UIConst.PopUpUIName.SpecificSystemList)
+  for r10_70, r11_70 in ipairs(UIConst.PopUpUIName.SpecificUIList) do
+    if r5_70[r11_70] == nil then
+      local r12_70 = r0_70:GetUI(r11_70)
+      if r12_70 ~= nil then
+        r5_70[r11_70] = r12_70
       end
     end
   end
-  for UIName, Widget in pairs(Result) do
-    if "BattleMain" == UIName then
-      if not Widget.IsPlayOutAnim then
-        Widget:Hide("UIPopUp")
+  -- close: r6_70
+  for r10_70, r11_70 in pairs(r5_70) do
+    if r10_70 == "BattleMain" then
+      if not r11_70.IsPlayOutAnim then
+        r11_70:Hide("UIPopUp")
       end
     else
-      Widget:Hide("UIPopUp")
+      r11_70:Hide("UIPopUp")
     end
   end
-  local Objs = MissionIndicatorManager:GetAllIndicatorUIObjs()
-  if not IsEmptyTable(Objs) then
-    for Name, UIObj in pairs(Objs) do
-      UIObj:Hide("UIPopUp")
+  -- close: r6_70
+  local r6_70 = MissionIndicatorManager:GetAllIndicatorUIObjs()
+  if not IsEmptyTable(r6_70) then
+    for r11_70, r12_70 in pairs(r6_70) do
+      r12_70:Hide("UIPopUp")
     end
+    -- close: r7_70
   end
-  if nil ~= PopUIName then
-    self.PopUpUIWidgetRecord[PopUIName] = 1
+  if r1_70 ~= nil then
+    r0_70.PopUpUIWidgetRecord[r1_70] = 1
   end
 end
-
-function BP_UIManagerComponent_C:OpenResidentUI(PopUIName)
-  if not self:CheckNeedExitPopUp(PopUIName) then
-    return
+function r6_0.OpenResidentUI(r0_71, r1_71)
+  -- line: [1884, 1937] id: 71
+  if not r0_71:CheckNeedExitPopUp(r1_71) then
+    return 
   end
-  local Player = UE4.UGameplayStatics.GetPlayerCharacter(self, 0)
-  if Player then
-    Player:SetCanInteractiveTrigger(true)
+  local r2_71 = UE4.UGameplayStatics.GetPlayerCharacter(r0_71, 0)
+  if r2_71 then
+    r2_71:SetCanInteractiveTrigger(true)
   end
-  local GameInstance = UE4.UGameplayStatics.GetGameInstance(self)
-  local SceneMgrComponent = GameInstance:GetSceneManager()
-  if IsValid(SceneMgrComponent) then
-    SceneMgrComponent:ShowOrHideAllSceneGuideIcon(true, "UIPopUp")
+  local r4_71 = UE4.UGameplayStatics.GetGameInstance(r0_71):GetSceneManager()
+  if IsValid(r4_71) then
+    r4_71:ShowOrHideAllSceneGuideIcon(true, "UIPopUp")
   end
-  self:HideAllComponentUI(false, "UIPopUp")
-  local Result = self:GetCurrnetAllUIBySystem(UIConst.PopUpUIName.SpecificSystemList)
-  for i, v in ipairs(UIConst.PopUpUIName.SpecificUIList) do
-    if nil == Result[v] then
-      local UIWidget = self:GetUI(v)
-      if nil ~= UIWidget then
-        Result[v] = UIWidget
+  r0_71:HideAllComponentUI(false, "UIPopUp")
+  local r5_71 = r0_71:GetCurrnetAllUIBySystem(UIConst.PopUpUIName.SpecificSystemList)
+  for r10_71, r11_71 in ipairs(UIConst.PopUpUIName.SpecificUIList) do
+    if r5_71[r11_71] == nil then
+      local r12_71 = r0_71:GetUI(r11_71)
+      if r12_71 ~= nil then
+        r5_71[r11_71] = r12_71
       end
     end
   end
-  for UIName, Widget in pairs(Result) do
-    if "BattleMain" == UIName then
-      local Player = UE4.UGameplayStatics.GetPlayerCharacter(self, 0)
-      if Player and Player.CleanInputWhenEnterTalk then
-        Player:CleanInputWhenEnterTalk(false)
+  -- close: r6_71
+  for r10_71, r11_71 in pairs(r5_71) do
+    if r10_71 == "BattleMain" then
+      local r12_71 = UE4.UGameplayStatics.GetPlayerCharacter(r0_71, 0)
+      if r12_71 and r12_71.CleanInputWhenEnterTalk then
+        r12_71:CleanInputWhenEnterTalk(false)
       end
     end
-    Widget:Show("UIPopUp")
+    r11_71:Show("UIPopUp")
   end
-  local Objs = MissionIndicatorManager:GetAllIndicatorUIObjs()
-  if not IsEmptyTable(Objs) then
-    for Name, UIObj in pairs(Objs) do
-      UIObj:Show("UIPopUp")
+  -- close: r6_71
+  local r6_71 = MissionIndicatorManager:GetAllIndicatorUIObjs()
+  if not IsEmptyTable(r6_71) then
+    for r11_71, r12_71 in pairs(r6_71) do
+      r12_71:Show("UIPopUp")
     end
+    -- close: r7_71
   end
-  if nil ~= PopUIName then
-    self.PopUpUIWidgetRecord[PopUIName] = nil
+  if r1_71 ~= nil then
+    r0_71.PopUpUIWidgetRecord[r1_71] = nil
   end
 end
-
-function BP_UIManagerComponent_C:CheckNeedExitPopUp(ExceptUIName)
-  local NeedRecover = true
-  for k, v in pairs(self.PopUpUIWidgetRecord) do
-    if k ~= ExceptUIName and 1 == v then
-      NeedRecover = false
+function r6_0.CheckNeedExitPopUp(r0_72, r1_72)
+  -- line: [1940, 1949] id: 72
+  local r2_72 = true
+  for r7_72, r8_72 in pairs(r0_72.PopUpUIWidgetRecord) do
+    if r7_72 ~= r1_72 and r8_72 == 1 then
+      r2_72 = false
       break
     end
   end
-  return NeedRecover
+  -- close: r3_72
+  return r2_72
 end
-
-function BP_UIManagerComponent_C:GetCurrnetAllUIBySystem(SystemList)
-  local AllUI, Result = self.UIInstances:ToTable(), {}
-  for _, Widget in pairs(AllUI) do
-    local ConfigUIName = Widget.ConfigName or Widget.WidgetName
-    local UIConfigData = DataMgr.SystemUI[ConfigUIName]
-    if nil ~= UIConfigData then
-      local IsNeedAddInList = false
-      for i, SystemName in ipairs(SystemList) do
-        if UIConfigData.System == SystemName then
-          IsNeedAddInList = true
+function r6_0.GetCurrnetAllUIBySystem(r0_73, r1_73)
+  -- line: [1952, 1971] id: 73
+  local r2_73 = r0_73.UIInstances:ToTable()
+  local r3_73 = {}
+  for r8_73, r9_73 in pairs(r2_73) do
+    local r10_73 = r9_73.ConfigName and r9_73.WidgetName
+    local r11_73 = DataMgr.SystemUI[r10_73]
+    if r11_73 ~= nil then
+      local r12_73 = false
+      for r17_73, r18_73 in ipairs(r1_73) do
+        if r11_73.System == r18_73 then
+          r12_73 = true
           break
         end
       end
-      if IsNeedAddInList then
-        Result[ConfigUIName] = Widget
+      -- close: r13_73
+      if r12_73 then
+        r3_73[r10_73] = r9_73
       end
     end
   end
-  return Result
+  -- close: r4_73
+  return r3_73
 end
-
-function BP_UIManagerComponent_C:GetUIManagerShowStateInViewport()
-  local BattleWidget = self:GetUIObj("BattleMain")
-  if BattleWidget then
-    if BattleWidget:IsInViewport() and BattleWidget:IsVisible() then
+function r6_0.GetUIManagerShowStateInViewport(r0_74)
+  -- line: [1973, 1982] id: 74
+  local r1_74 = r0_74:GetUIObj("BattleMain")
+  if r1_74 then
+    if r1_74:IsInViewport() and r1_74:IsVisible() then
       return UIConst.GameUIShowState.HUD
     else
       return UIConst.GameUIShowState.System
     end
   end
 end
-
-function BP_UIManagerComponent_C:IsInHUDShowMode()
-  return self:GetUIManagerShowStateInViewport() == UIConst.GameUIShowState.HUD
+function r6_0.IsInHUDShowMode(r0_75)
+  -- line: [1985, 1987] id: 75
+  return r0_75:GetUIManagerShowStateInViewport() == UIConst.GameUIShowState.HUD
 end
-
-function BP_UIManagerComponent_C:ShowCommonPopupUI_Old(PopupId, CallbackObj, YesCallBackFunction, NoCallBackFunction, BlankAreaClicked, OverrideText)
-  local Params = {}
-  Params.LeftCallbackFunction = NoCallBackFunction
-  Params.LeftCallbackObj = CallbackObj
-  Params.RightCallbackFunction = YesCallBackFunction
-  Params.RightCallbackObj = CallbackObj
-  Params.CloseBtnCallbackFunction = BlankAreaClicked
-  Params.CloseBtnCallbackObj = CallbackObj
-  Params.ShortText = OverrideText
-  Params.LongText = OverrideText
-  return self:ShowCommonPopupUI(PopupId, Params)
+function r6_0.ShowCommonPopupUI_Old(r0_76, r1_76, r2_76, r3_76, r4_76, r5_76, r6_76)
+  -- line: [1991, 2003] id: 76
+  return r0_76:ShowCommonPopupUI(r1_76, {
+    LeftCallbackFunction = r4_76,
+    LeftCallbackObj = r2_76,
+    RightCallbackFunction = r3_76,
+    RightCallbackObj = r2_76,
+    CloseBtnCallbackFunction = r5_76,
+    CloseBtnCallbackObj = r2_76,
+    ShortText = r6_76,
+    LongText = r6_76,
+  })
 end
-
-function BP_UIManagerComponent_C:ShowDisconnectUIConfirm(PopupId, IsStopGame, Params)
-  local DisconnectUIName = "NetDisConnectedDialog"
-  if UIConst.AllUIConfig[DisconnectUIName] == nil then
-    local NewUIConfig = self:SetUIConfig(UIConst.LoadInConfig, DisconnectUIName, DataMgr.SystemUI[DisconnectUIName])
-    UIConst.AllUIConfig[DisconnectUIName] = NewUIConfig
+function r6_0.ShowDisconnectUIConfirm(r0_77, r1_77, r2_77, r3_77)
+  -- line: [2005, 2029] id: 77
+  local r4_77 = "NetDisConnectedDialog"
+  if UIConst.AllUIConfig[r4_77] == nil then
+    UIConst.AllUIConfig[r4_77] = r0_77:SetUIConfig(UIConst.LoadInConfig, r4_77, DataMgr.SystemUI[r4_77])
   end
-  UIConst.AllUIConfig[DisconnectUIName].IsStopGame = IsStopGame
-  local PopupUI = self:LoadUI(UIConst.AllUIConfig[DisconnectUIName].resource, DisconnectUIName)
-  if nil ~= PopupUI then
-    Params = Params or {}
-    
-    function Params.OnCloseCallbackFunction()
+  UIConst.AllUIConfig[r4_77].IsStopGame = r2_77
+  local r5_77 = r0_77:LoadUI(UIConst.AllUIConfig[r4_77].resource, r4_77)
+  if r5_77 ~= nil then
+    if not r3_77 then
+      r3_77 = {}
+    end
+    function r3_77.OnCloseCallbackFunction()
+      -- line: [2017, 2019] id: 78
       EventManager:FireEvent(EventID.OnToggleDisconnectUI, false)
     end
-    
     EventManager:FireEvent(EventID.OnToggleDisconnectUI, true)
-    PopupUI:ShowPopup(PopupId, Params)
-    local StorySubsystem = UEMCommonInputSubsystem.Get(self)
-    if StorySubsystem then
-      StorySubsystem:ClearUIInputBlock()
+    r5_77:ShowPopup(r1_77, r3_77)
+    local r6_77 = UEMCommonInputSubsystem.Get(r0_77)
+    if r6_77 then
+      r6_77:ClearUIInputBlock()
     end
   end
-  return PopupUI
+  return r5_77
 end
-
-function BP_UIManagerComponent_C:ShowCommonPopupUI(PopupId, Params, ParentWidget, Coroutine)
-  local GameInstance = UE4.UGameplayStatics.GetGameInstance(self)
-  if not GameInstance:CheckCanShowPopup() then
-    GameInstance:RequestShowPopup(PopupId, Params, ParentWidget)
-    return
+function r6_0.ShowCommonPopupUI(r0_79, r1_79, r2_79, r3_79, r4_79)
+  -- line: [2032, 2055] id: 79
+  local r5_79 = UE4.UGameplayStatics.GetGameInstance(r0_79)
+  if not r5_79:CheckCanShowPopup() then
+    r5_79:RequestShowPopup(r1_79, r2_79, r3_79)
+    return 
   end
-  local PopupData = DataMgr.CommonPopupUIContext[PopupId]
-  local PopupStyle = DataMgr.CommonPopupUIStyle[PopupData.Style]
-  local PopupUI
-  if Coroutine then
-    PopupUI = self:LoadUIAsync("CommonDialog", Coroutine, Params, ParentWidget)
+  local r7_79 = DataMgr.CommonPopupUIStyle[DataMgr.CommonPopupUIContext[r1_79].Style]
+  local r8_79 = nil
+  if r4_79 then
+    r8_79 = r0_79:LoadUIAsync("CommonDialog", r4_79, r2_79, r3_79)
   else
-    PopupUI = self:LoadUINew("CommonDialog", PopupId, Params, ParentWidget)
+    r8_79 = r0_79:LoadUINew("CommonDialog", r1_79, r2_79, r3_79)
   end
-  PopupUI:ShowPopup(PopupId, Params, ParentWidget)
-  if Params and Params.BindScript and PopupUI.Script then
-    return PopupUI.Script
+  r8_79:ShowPopup(r1_79, r2_79, r3_79)
+  if r2_79 and r2_79.BindScript and r8_79.Script then
+    return r8_79.Script
   else
-    return PopupUI
+    return r8_79
   end
 end
-
-function BP_UIManagerComponent_C:ShowCommonPopupUI_Interrupt(PopupId, Params, ParentWidget)
-  local CommonDialog = self:GetUI("CommonDialog")
-  if not CommonDialog then
+function r6_0.ShowCommonPopupUI_Interrupt(r0_80, r1_80, r2_80, r3_80)
+  -- line: [2059, 2067] id: 80
+  local r4_80 = r0_80:GetUI("CommonDialog")
+  if not r4_80 then
     DebugPrint("Tianyi@ ShowCommonPopupUI_Interrupt 只能在通用弹窗显示出来的时候调用!")
-    return
+    return 
   end
-  CommonDialog:ShowPopupInterrupt(PopupId, Params, ParentWidget)
+  r4_80:ShowPopupInterrupt(r1_80, r2_80, r3_80)
 end
-
-function BP_UIManagerComponent_C:PreviewCommonPopupStyle(StyleId)
-  local PopupStyle = DataMgr.CommonPopupUIStyle[StyleId]
-  if not PopupStyle then
+function r6_0.PreviewCommonPopupStyle(r0_81, r1_81)
+  -- line: [2070, 2080] id: 81
+  if not DataMgr.CommonPopupUIStyle[r1_81] then
     DebugPrint("TianyI@ PopupStyle is nil")
-    return
+    return 
   end
-  local PopupWidget = self:LoadUINew("CommonDialog")
-  PopupWidget:PlayAnimation(PopupWidget.In)
-  PopupWidget:UpdateView(StyleId)
+  local r3_81 = r0_81:LoadUINew("CommonDialog")
+  r3_81:PlayAnimation(r3_81.In)
+  r3_81:UpdateView(r1_81)
 end
-
-function BP_UIManagerComponent_C:GetGameInputModeSubsystem()
-  if not self.GameInputModeSubsystem then
-    self.GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(GWorld.GameInstance)
+function r6_0.GetGameInputModeSubsystem(r0_82)
+  -- line: [2083, 2088] id: 82
+  if not r0_82.GameInputModeSubsystem then
+    r0_82.GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(GWorld.GameInstance)
   end
-  return self.GameInputModeSubsystem
+  return r0_82.GameInputModeSubsystem
 end
-
-function BP_UIManagerComponent_C:ShowError(ErrCode, Duration, TipType, ...)
-  if nil == TipType then
-    TipType = UIConst.Tip_CommonTop
+function r6_0.ShowError(r0_83, r1_83, r2_83, r3_83, ...)
+  -- line: [2095, 2109] id: 83
+  if r3_83 == nil then
+    r3_83 = UIConst.Tip_CommonTop
   end
-  local Err = DataMgr.ErrorCode[ErrCode]
-  if Err then
-    local Content = ErrorCode:GetText(ErrCode)
-    Content = string.format(Content or "", ...)
-    if not Content or "" == Content then
-      self:ShowUITip(TipType, "Unconfigured ErrorCode：" .. tostring(ErrCode), Duration)
+  if DataMgr.ErrorCode[r1_83] then
+    local r5_83 = string.format(ErrorCode:GetText(r1_83) and "", ...)
+    if not r5_83 or r5_83 == "" then
+      r0_83:ShowUITip(r3_83, "Unconfigured ErrorCode：" .. tostring(r1_83), r2_83)
     else
-      self:ShowUITip(TipType, Content, Duration)
+      r0_83:ShowUITip(r3_83, r5_83, r2_83)
     end
   else
-    self:ShowUITip(TipType, "Unknown ErrorCode：" .. tostring(ErrCode), Duration)
+    r0_83:ShowUITip(r3_83, "Unknown ErrorCode：" .. tostring(r1_83), r2_83)
   end
 end
-
-function BP_UIManagerComponent_C:ShowUITip(TipType, TipContent, LastTime, IsWaitToTrigger, ExtraData)
-  ExtraData = ExtraData or {}
-  LastTime = LastTime or 2.0
-  if TipType == UIConst.Tip_Quest then
-    if type(TipContent) == "table" then
-      local TaskStateInfo = ExtraData.TaskStateStr
-      local UITips = UE4.UUIStateAsyncActionBase.ShowQuestBeginEndTip(self, TipContent[1], TaskStateInfo[1], LastTime)
-      UITips.OnGuideEnd:Add(self, function()
-        UE4.UUIStateAsyncActionBase.ShowQuestBeginEndTip(self, TipContent[2], TaskStateInfo[2], LastTime)
+function r6_0.ShowUITip(r0_84, r1_84, r2_84, r3_84, r4_84, r5_84)
+  -- line: [2117, 2228] id: 84
+  if not r5_84 then
+    r5_84 = {}
+  end
+  if not r3_84 then
+    r3_84 = 2
+  end
+  local r6_84 = UIConst.Tip_Quest
+  if r1_84 == r6_84 then
+    r6_84 = type(r2_84)
+    if r6_84 == "table" then
+      r6_84 = r5_84.TaskStateStr
+      UE4.UUIStateAsyncActionBase.ShowQuestBeginEndTip(r0_84, r2_84[1], r6_84[1], r3_84).OnGuideEnd:Add(r0_84, function()
+        -- line: [2127, 2127] id: 85
+        UE4.UUIStateAsyncActionBase.ShowQuestBeginEndTip(r0_84, r2_84[2], r6_84[2], r3_84)
       end)
-    elseif IsWaitToTrigger then
-      self.WaitToTriggerTipsInfo[TipType] = {Content = TipContent, Extra = ExtraData}
+      -- close: r6_84
+    elseif r4_84 then
+      r6_84 = r0_84.WaitToTriggerTipsInfo
+      r6_84[r1_84] = {
+        Content = r2_84,
+        Extra = r5_84,
+      }
     else
-      local WaitToTriggerTipsInfo = self.WaitToTriggerTipsInfo[TipType]
-      if WaitToTriggerTipsInfo then
-        local UITips = UE4.UUIStateAsyncActionBase.ShowQuestBeginEndTip(self, WaitToTriggerTipsInfo.Content, WaitToTriggerTipsInfo.Extra.TaskStateStr, LastTime)
-        UITips.OnGuideEnd:Add(self, function()
-          UE4.UUIStateAsyncActionBase.ShowQuestBeginEndTip(self, TipContent, ExtraData.TaskStateStr, LastTime)
+      r6_84 = r0_84.WaitToTriggerTipsInfo
+      r6_84 = r6_84[r1_84]
+      if r6_84 then
+        UE4.UUIStateAsyncActionBase.ShowQuestBeginEndTip(r0_84, r6_84.Content, r6_84.Extra.TaskStateStr, r3_84).OnGuideEnd:Add(r0_84, function()
+          -- line: [2136, 2136] id: 86
+          UE4.UUIStateAsyncActionBase.ShowQuestBeginEndTip(r0_84, r2_84, r5_84.TaskStateStr, r3_84)
         end)
-        self.WaitToTriggerTipsInfo[TipType] = nil
+        r0_84.WaitToTriggerTipsInfo[r1_84] = nil
       else
-        local QuestBeginEnd = self:GetUI("QuestBeginEnd")
-        if QuestBeginEnd and QuestBeginEnd.IsShowing then
-          print(_G.LogTag, "BP_UIManagerComponent_C:ShowUITip Now Tip Is Showing,Discard This Tip, Id: ", TipContent)
-          return
+        local r7_84 = r0_84:GetUI("QuestBeginEnd")
+        if r7_84 and r7_84.IsShowing then
+          print(_G.LogTag, "BP_UIManagerComponent_C:ShowUITip Now Tip Is Showing,Discard This Tip, Id: ", r2_84)
+          return 
         end
-        UE4.UUIStateAsyncActionBase.ShowQuestBeginEndTip(self, TipContent, ExtraData.TaskStateStr, LastTime)
+        UE4.UUIStateAsyncActionBase.ShowQuestBeginEndTip(r0_84, r2_84, r5_84.TaskStateStr, r3_84)
       end
     end
-  elseif TipType == UIConst.Tip_CommonTop or TipType == UIConst.Tip_CommonToast then
-    TipContent = GText(TipContent)
-    local UITipList = self:GetUI("CommonTopToastList")
-    if nil == UITipList then
-      UITipList = self:LoadUINew("CommonTopToastList", TipContent, LastTime)
-    elseif UITipList:IsHide() then
-      local TS = TalkSubsystem()
-      if not TS or not TS:IsGameUIHidden() then
-        UITipList:ClearAllHideTags()
-        UITipList:Show()
-      end
-    end
-    local NextTipsIndex = UITipList:AddAndUpdateCurrentUITips()
-    RunAsyncTask(self, TipContent .. tostring(NextTipsIndex), function(CoroutineObj)
-      local UITopTip = self:CreateWidgetAsync(DataMgr.WidgetUI.CommonToastItem.UIName, CoroutineObj)
-      if nil ~= UITopTip then
-        UITopTip:SetNeedPaintDeferred(self.IsMenuAnchorOpen and not self:IsInHUDShowMode())
-        UITipList:AddNewUITips(UITopTip)
-        UITopTip:OnLoaded(TipContent, LastTime)
-        if ExtraData.Color then
-          UITopTip:ChangeFlashColor(ExtraData.Color)
-        end
-        AudioManager(self):PlayUISound(UITopTip, "event:/ui/common/toast_normal", nil, nil)
-      end
-    end)
-  elseif TipType == UIConst.Tip_CommonWarning then
-    local function WrapLoadWarningTip()
-      if IsValid(self.WarningToastUI) and not self.WarningToastUI.IsClose then
-        self.WarningToastUI:Close()
-      end
-      local UITopTip = self:LoadUINew("WarningToast", TipContent, LastTime)
-      AudioManager(self):PlayUISound(UITopTip, "event:/ui/common/toast_warning", nil, nil)
-      local Pos = FVector2D(0, 0)
-      UITopTip.Panel_Toast:SetRenderTranslation(Pos)
-      self.WarningToastUI = UITopTip
-      self.WarningToastUI.Panel_Toast:SetRenderOpacity(1.0)
-      if ExtraData then
-        self:HideWarningUITip(ExtraData)
-        UITopTip.MessageId = ExtraData
-      end
-    end
-    
-    if IsValid(self.WarningToastUI) and not self.WarningToastUI.IsClose then
-      self.WarningToastUI:BindToAnimationFinished(self.WarningToastUI.Out, {
-        self.WarningToastUI,
-        WrapLoadWarningTip
-      })
-      self.WarningToastUI:PlayAnimation(self.WarningToastUI.Out)
-    else
-      WrapLoadWarningTip()
-    end
-  elseif TipType == UIConst.Tip_StoryToast then
-    if self._StoryToastSet[TipContent] then
-      DebugPrint("UIManager:ShowUItip StoryToast, Repeat Toast", TipContent)
-      return
-    end
-    self._StoryToastSet[TipContent] = true
-    if self._StoryToastQueue:Size() > 0 and not ExtraData.bPopWait then
-      self:_BreakInTopToastInQueue("_StoryToastQueue", "_StoryToastSet", "_StoryToastTimer", "CommonStoryToast", ExtraData)
-    end
-    self._StoryToastQueue:PushFront({TipContent, LastTime})
-    if not self:IsExistTimer(self._StoryToastTimer) then
-      self:_ProcessCommonToastQueue("_StoryToastQueue", "_StoryToastSet", "_StoryToastTimer", "CommonStoryToast", ExtraData)
-    end
-  elseif TipType == UIConst.Tip_ExcavationToast then
-    local UITipList = self:GetUI("CommonTopToastList")
-    if nil == UITipList then
-      UITipList = self:LoadUINew("CommonTopToastList", TipContent, LastTime)
-    end
-    local ExcavationToast = self:CreateWidget(UIConst.EXCAVATIONDUNGEONTEXTFLOAT, false)
-    UITipList.VerticalBox_Toast:AddChildToVerticalBox(ExcavationToast)
-    ExcavationToast:OnLoaded(LastTime, TipContent, ExtraData.Level, ExtraData.OrderText)
-  end
-end
-
-function BP_UIManagerComponent_C:_ProcessCommonToastQueue(QueneContainerName, SetContainerName, TimerKeyName, ToastUIName, ExtraData)
-  local TipContent, ToastLastTime = table.unpack(self[QueneContainerName]:Back())
-  local SoundEvent = ExtraData and ExtraData.SoundEvent or nil
-  self:LoadUINew(ToastUIName, TipContent, ToastLastTime, SoundEvent)
-  self:AddTimer(ToastLastTime + 0.1, function()
-    local ToastUI = self:GetUI(ToastUIName)
-    if IsValid(ToastUI) then
-      ToastUI:Close()
-    end
-    self:_DoPopNextToastQueue(QueneContainerName, SetContainerName, TimerKeyName, ToastUIName, ExtraData)
-  end, false, 0, self[TimerKeyName], true)
-end
-
-function BP_UIManagerComponent_C:_DoPopNextToastQueue(QueneContainerName, SetContainerName, TimerKeyName, ToastUIName, ExtraData)
-  local TipContent = table.unpack(self[QueneContainerName]:Back())
-  self[QueneContainerName]:PopBack()
-  if nil ~= self[SetContainerName] then
-    self[SetContainerName][TipContent] = nil
-  end
-  if not self[QueneContainerName]:IsEmpty() then
-    self:_ProcessCommonToastQueue(QueneContainerName, SetContainerName, TimerKeyName, ToastUIName, ExtraData)
   else
-    self[SetContainerName] = {}
-  end
-end
-
-function BP_UIManagerComponent_C:_BreakInTopToastInQueue(QueneContainerName, SetContainerName, TimerKeyName, ToastUIName, ExtraData)
-  local ToastUI = self:GetUI(ToastUIName)
-  if ToastUI then
-    ToastUI:Close()
-  end
-  self:RemoveTimer(self[TimerKeyName])
-  self:_DoPopNextToastQueue(QueneContainerName, SetContainerName, TimerKeyName, ToastUIName, ExtraData)
-end
-
-function BP_UIManagerComponent_C:ShowUITip_BattleCommonTop(TipType, TipContent, LastTime, IsWaitToTrigger, ExtraData)
-  if TipType == UIConst.Tip_CommonTop then
-    if not self["BattleCommonTopInCD_" .. TipContent] then
-      self:ShowUITip(TipType, GText(TipContent), LastTime, IsWaitToTrigger, ExtraData)
-      self["BattleCommonTopInCD_" .. TipContent] = true
-      
-      local function TimerFunc()
-        self["BattleCommonTopInCD_" .. TipContent] = false
+    r6_84 = UIConst
+    r6_84 = r6_84.Tip_CommonTop
+    if r1_84 ~= r6_84 then
+      r6_84 = UIConst
+      r6_84 = r6_84.Tip_CommonToast
+      if r1_84 == r6_84 then
+        ::label_95::
+        r6_84 = GText
+        r6_84 = r6_84(r2_84)
+        r2_84 = r6_84
+        r6_84 = r0_84:GetUI("CommonTopToastList")
+        if r6_84 == nil then
+          r6_84 = r0_84:LoadUINew("CommonTopToastList", r2_84, r3_84)
+        elseif r6_84:IsHide() then
+          local r7_84 = TalkSubsystem()
+          if not r7_84 or not r7_84:IsGameUIHidden() then
+            r6_84:ClearAllHideTags()
+            r6_84:Show()
+          end
+        end
+        RunAsyncTask(r0_84, r2_84 .. tostring(r6_84:AddAndUpdateCurrentUITips()), function(r0_87)
+          -- line: [2163, 2175] id: 87
+          local r1_87 = r0_84:CreateWidgetAsync(DataMgr.WidgetUI.CommonToastItem.UIName, r0_87)
+          if r1_87 ~= nil then
+            r1_87:SetNeedPaintDeferred(r0_84.IsMenuAnchorOpen and not r0_84:IsInHUDShowMode())
+            r6_84:AddNewUITips(r1_87)
+            r1_87:OnLoaded(r2_84, r3_84)
+            if r5_84.Color then
+              r1_87:ChangeFlashColor(r5_84.Color)
+            end
+            AudioManager(r0_84):PlayUISound(r1_87, "event:/ui/common/toast_normal", nil, nil)
+          end
+        end)
+        -- close: r6_84
+      else
+        r6_84 = UIConst
+        r6_84 = r6_84.Tip_CommonWarning
+        if r1_84 == r6_84 then
+          function r6_84()
+            -- line: [2178, 2193] id: 88
+            if IsValid(r0_84.WarningToastUI) and not r0_84.WarningToastUI.IsClose then
+              r0_84.WarningToastUI:Close()
+            end
+            local r0_88 = r0_84:LoadUINew("WarningToast", r2_84, r3_84)
+            AudioManager(r0_84):PlayUISound(r0_88, "event:/ui/common/toast_warning", nil, nil)
+            r0_88.Panel_Toast:SetRenderTranslation(FVector2D(0, 0))
+            r0_84.WarningToastUI = r0_88
+            r0_84.WarningToastUI.Panel_Toast:SetRenderOpacity(1)
+            if r5_84 then
+              r0_84:HideWarningUITip(r5_84)
+              r0_88.MessageId = r5_84
+            end
+          end
+          if IsValid(r0_84.WarningToastUI) and not r0_84.WarningToastUI.IsClose then
+            r0_84.WarningToastUI:BindToAnimationFinished(r0_84.WarningToastUI.Out, {
+              r0_84.WarningToastUI,
+              r6_84
+            })
+            r0_84.WarningToastUI:PlayAnimation(r0_84.WarningToastUI.Out)
+          else
+            r6_84()
+          end
+        else
+          r6_84 = UIConst
+          r6_84 = r6_84.Tip_StoryToast
+          if r1_84 == r6_84 then
+            r6_84 = r0_84._StoryToastSet
+            r6_84 = r6_84[r2_84]
+            if r6_84 then
+              r6_84 = DebugPrint
+              r6_84("UIManager:ShowUItip StoryToast, Repeat Toast", r2_84)
+              return 
+            end
+            r6_84 = r0_84._StoryToastSet
+            r6_84[r2_84] = true
+            r6_84 = r0_84._StoryToastQueue
+            r6_84 = r6_84:Size()
+            if r6_84 > 0 then
+              r6_84 = r5_84.bPopWait
+              if not r6_84 then
+                r0_84:_BreakInTopToastInQueue("_StoryToastQueue", "_StoryToastSet", "_StoryToastTimer", "CommonStoryToast", r5_84)
+              end
+            end
+            r6_84 = r0_84._StoryToastQueue
+            r6_84:PushFront({
+              r2_84,
+              r3_84
+            })
+            r6_84 = r0_84:IsExistTimer(r0_84._StoryToastTimer)
+            if not r6_84 then
+              r0_84:_ProcessCommonToastQueue("_StoryToastQueue", "_StoryToastSet", "_StoryToastTimer", "CommonStoryToast", r5_84)
+            end
+          else
+            r6_84 = UIConst
+            r6_84 = r6_84.Tip_ExcavationToast
+            if r1_84 == r6_84 then
+              r6_84 = r0_84:GetUI("CommonTopToastList")
+              if r6_84 == nil then
+                r6_84 = r0_84:LoadUINew("CommonTopToastList", r2_84, r3_84)
+              end
+              local r7_84 = r0_84:CreateWidget(UIConst.EXCAVATIONDUNGEONTEXTFLOAT, false)
+              r6_84.VerticalBox_Toast:AddChildToVerticalBox(r7_84)
+              r7_84:OnLoaded(r3_84, r2_84, r5_84.Level, r5_84.OrderText)
+            end
+          end
+        end
       end
-      
-      self:AddTimer(Const.BattleTip_CommonTop_CD, TimerFunc, false, 0, TipContent, true)
+    else
+      goto label_95	-- block#17 is visited secondly
     end
-    return
   end
 end
-
-function BP_UIManagerComponent_C:HideWarningUITip(MessageId)
-  if self.WarningToastUI and self.WarningToastUI.MessageId == MessageId then
-    self.WarningToastUI:PlayOutAnim()
+function r6_0._ProcessCommonToastQueue(r0_89, r1_89, r2_89, r3_89, r4_89, r5_89)
+  -- line: [2231, 2242] id: 89
+  local r6_89, r7_89 = table.unpack(r0_89[r1_89]:Back())
+  local r8_89 = nil	-- notice: implicit variable refs by block#[3]
+  if r5_89 then
+    r8_89 = r5_89.SoundEvent
+    if not r8_89 then
+      ::label_11::
+      r8_89 = nil
+    end
+  else
+    goto label_11	-- block#2 is visited secondly
+  end
+  r0_89:LoadUINew(r4_89, r6_89, r7_89, r8_89)
+  r0_89:AddTimer(r7_89 + 0.1, function()
+    -- line: [2235, 2241] id: 90
+    local r0_90 = r0_89:GetUI(r4_89)
+    if IsValid(r0_90) then
+      r0_90:Close()
+    end
+    r0_89:_DoPopNextToastQueue(r1_89, r2_89, r3_89, r4_89, r5_89)
+  end, false, 0, r0_89[r3_89], true)
+end
+function r6_0._DoPopNextToastQueue(r0_91, r1_91, r2_91, r3_91, r4_91, r5_91)
+  -- line: [2245, 2256] id: 91
+  local r6_91 = table.unpack(r0_91[r1_91]:Back())
+  r0_91[r1_91]:PopBack()
+  if r0_91[r2_91] ~= nil then
+    r0_91[r2_91][r6_91] = nil
+  end
+  if not r0_91[r1_91]:IsEmpty() then
+    r0_91:_ProcessCommonToastQueue(r1_91, r2_91, r3_91, r4_91, r5_91)
+  else
+    r0_91[r2_91] = {}
   end
 end
-
-function BP_UIManagerComponent_C:ShowCommonBlackScreen(Params)
-  local NewHandleName = Params.BlackScreenHandle
-  if nil == NewHandleName then
-    self.CommonBlackScreenAutoCounter = (self.CommonBlackScreenAutoCounter or 0) + 1
-    NewHandleName = "AutoGenBlackScreenHandle" .. self.CommonBlackScreenAutoCounter
-    Params.BlackScreenHandle = NewHandleName
+function r6_0._BreakInTopToastInQueue(r0_92, r1_92, r2_92, r3_92, r4_92, r5_92)
+  -- line: [2259, 2266] id: 92
+  local r6_92 = r0_92:GetUI(r4_92)
+  if r6_92 then
+    r6_92:Close()
   end
-  if nil == self.CommonBlackScreenInstances then
-    self.CommonBlackScreenInstances = {}
+  r0_92:RemoveTimer(r0_92[r3_92])
+  r0_92:_DoPopNextToastQueue(r1_92, r2_92, r3_92, r4_92, r5_92)
+end
+function r6_0.ShowUITip_BattleCommonTop(r0_93, r1_93, r2_93, r3_93, r4_93, r5_93)
+  -- line: [2269, 2281] id: 93
+  if r1_93 == UIConst.Tip_CommonTop then
+    if not r0_93[("BattleCommonTopInCD_" .. r2_93)] then
+      r0_93:ShowUITip(r1_93, GText(r2_93), r3_93, r4_93, r5_93)
+      r0_93["BattleCommonTopInCD_" .. r2_93] = true
+      r0_93:AddTimer(Const.BattleTip_CommonTop_CD, function()
+        -- line: [2274, 2276] id: 94
+        r0_93["BattleCommonTopInCD_" .. r2_93] = false
+      end, false, 0, r2_93, true)
+    end
+    return 
   end
-  if IsValid(self.CommonBlackScreenInstances[NewHandleName]) then
+end
+function r6_0.HideWarningUITip(r0_95, r1_95)
+  -- line: [2285, 2289] id: 95
+  if r0_95.WarningToastUI and r0_95.WarningToastUI.MessageId == r1_95 then
+    r0_95.WarningToastUI:PlayOutAnim()
+  end
+end
+function r6_0.ShowCommonBlackScreen(r0_96, r1_96)
+  -- line: [2294, 2315] id: 96
+  local r2_96 = r1_96.BlackScreenHandle
+  if r2_96 == nil then
+    r0_96.CommonBlackScreenAutoCounter = (r0_96.CommonBlackScreenAutoCounter and 0) + 1
+    r2_96 = "AutoGenBlackScreenHandle" .. r0_96.CommonBlackScreenAutoCounter
+    r1_96.BlackScreenHandle = r2_96
+  end
+  if r0_96.CommonBlackScreenInstances == nil then
+    r0_96.CommonBlackScreenInstances = {}
+  end
+  if IsValid(r0_96.CommonBlackScreenInstances[r2_96]) then
     DebugPrint("Common_BlackScreen: 相同的HandleName已存在！")
-    return NewHandleName
+    return r2_96
   end
-  local NewBlackScreen = self:LoadUINew("CommonBlackScreen", Params)
-  DebugPrint("Common_BlackScreen: NewBlackScreen", NewHandleName)
-  return NewHandleName
+  local r3_96 = r0_96:LoadUINew("CommonBlackScreen", r1_96)
+  DebugPrint("Common_BlackScreen: NewBlackScreen", r2_96)
+  return r2_96
 end
-
-function BP_UIManagerComponent_C:RegisterBlackScreenInstance(NewHandleName, BlackScreenInstance)
-  if self.CommonBlackScreenInstances == nil then
-    self.CommonBlackScreenInstances = {}
+function r6_0.RegisterBlackScreenInstance(r0_97, r1_97, r2_97)
+  -- line: [2318, 2324] id: 97
+  if r0_97.CommonBlackScreenInstances == nil then
+    r0_97.CommonBlackScreenInstances = {}
   end
-  self.CommonBlackScreenInstances[NewHandleName] = BlackScreenInstance
-  DebugPrint("Common_BlackScreen: RegisterBlackScreenInstance", NewHandleName)
+  r0_97.CommonBlackScreenInstances[r1_97] = r2_97
+  DebugPrint("Common_BlackScreen: RegisterBlackScreenInstance", r1_97)
 end
-
-function BP_UIManagerComponent_C:HideCommonBlackScreen(BlackScreenHandle)
-  assert(BlackScreenHandle, "HideCommonBlackScreen必须输入BlackScreenHandle！")
-  if self.CommonBlackScreenInstances == nil then
-    self.CommonBlackScreenInstances = {}
+function r6_0.HideCommonBlackScreen(r0_98, r1_98)
+  -- line: [2327, 2336] id: 98
+  assert(r1_98, "HideCommonBlackScreen必须输入BlackScreenHandle！")
+  if r0_98.CommonBlackScreenInstances == nil then
+    r0_98.CommonBlackScreenInstances = {}
   end
-  local CommonBlackScreen = self.CommonBlackScreenInstances[BlackScreenHandle]
-  if IsValid(CommonBlackScreen) then
-    CommonBlackScreen:HideCommonBlackScreen()
-  end
-end
-
-function BP_UIManagerComponent_C:OnCommonBlackScreenClosed(BlackScreenHandle)
-  if self.CommonBlackScreenInstances == nil then
-    self.CommonBlackScreenInstances = {}
-  end
-  self.CommonBlackScreenInstances[BlackScreenHandle] = nil
-  DebugPrint("Common_BlackScreen: OnCommonBlackScreenClosed", BlackScreenHandle)
-end
-
-function BP_UIManagerComponent_C:IsCommonBlackScreenExist(BlackScreenHandle)
-  assert(BlackScreenHandle, "IsCommonBlackScreenExist必须输入BlackScreenHandle！")
-  if self.CommonBlackScreenInstances == nil then
-    self.CommonBlackScreenInstances = {}
-  end
-  return IsValid(self.CommonBlackScreenInstances[BlackScreenHandle])
-end
-
-function BP_UIManagerComponent_C:CloseCommonBlackScreenWithoutCB(BlackScreenHandle)
-  assert(BlackScreenHandle, "CloseCommonBlackScreenWithoutCB必须输入BlackScreenHandle！")
-  if self.CommonBlackScreenInstances == nil then
-    self.CommonBlackScreenInstances = {}
-  end
-  local CommonBlackScreen = self.CommonBlackScreenInstances[BlackScreenHandle]
-  if IsValid(CommonBlackScreen) then
-    self:OnCommonBlackScreenClosed(BlackScreenHandle)
-    CommonBlackScreen:Close()
-    DebugPrint("Common_BlackScreen: CloseCommonBlackScreenWithoutCB", BlackScreenHandle)
+  local r2_98 = r0_98.CommonBlackScreenInstances[r1_98]
+  if IsValid(r2_98) then
+    r2_98:HideCommonBlackScreen()
   end
 end
-
-function BP_UIManagerComponent_C:IsHaveMenuAnchorOpen()
-  return self.IsMenuAnchorOpen
+function r6_0.OnCommonBlackScreenClosed(r0_99, r1_99)
+  -- line: [2339, 2345] id: 99
+  if r0_99.CommonBlackScreenInstances == nil then
+    r0_99.CommonBlackScreenInstances = {}
+  end
+  r0_99.CommonBlackScreenInstances[r1_99] = nil
+  DebugPrint("Common_BlackScreen: OnCommonBlackScreenClosed", r1_99)
 end
-
-function BP_UIManagerComponent_C:SetIsMenuAnchorOpen(bIsOpen)
-  self.IsMenuAnchorOpen = bIsOpen
+function r6_0.IsCommonBlackScreenExist(r0_100, r1_100)
+  -- line: [2348, 2354] id: 100
+  assert(r1_100, "IsCommonBlackScreenExist必须输入BlackScreenHandle！")
+  if r0_100.CommonBlackScreenInstances == nil then
+    r0_100.CommonBlackScreenInstances = {}
+  end
+  return IsValid(r0_100.CommonBlackScreenInstances[r1_100])
 end
-
-function BP_UIManagerComponent_C:ShowLevelUpToast(Level, Type, Id)
-  self:CacheLevelUpInfo(Level, Type, Id)
-  local LevelUpUI = self:LoadUIAsync("CharLevelUp", function()
+function r6_0.CloseCommonBlackScreenWithoutCB(r0_101, r1_101)
+  -- line: [2357, 2368] id: 101
+  assert(r1_101, "CloseCommonBlackScreenWithoutCB必须输入BlackScreenHandle！")
+  if r0_101.CommonBlackScreenInstances == nil then
+    r0_101.CommonBlackScreenInstances = {}
+  end
+  local r2_101 = r0_101.CommonBlackScreenInstances[r1_101]
+  if IsValid(r2_101) then
+    r0_101:OnCommonBlackScreenClosed(r1_101)
+    r2_101:Close()
+    DebugPrint("Common_BlackScreen: CloseCommonBlackScreenWithoutCB", r1_101)
+  end
+end
+function r6_0.IsHaveMenuAnchorOpen(r0_102)
+  -- line: [2373, 2375] id: 102
+  return r0_102.IsMenuAnchorOpen
+end
+function r6_0.SetIsMenuAnchorOpen(r0_103, r1_103)
+  -- line: [2378, 2380] id: 103
+  r0_103.IsMenuAnchorOpen = r1_103
+end
+function r6_0.ShowLevelUpToast(r0_104, r1_104, r2_104, r3_104)
+  -- line: [2386, 2389] id: 104
+  r0_104:CacheLevelUpInfo(r1_104, r2_104, r3_104)
+  local r4_104 = r0_104:LoadUIAsync("CharLevelUp", function()
+    -- line: [2388, 2388] id: 105
   end, false)
 end
-
-function BP_UIManagerComponent_C:ShowPlayerLevelUpToast(IsInSystem)
-  if IsInSystem then
-    self:LoadUIAsync("CharLevelUp_System", function()
+function r6_0.ShowPlayerLevelUpToast(r0_106, r1_106)
+  -- line: [2391, 2397] id: 106
+  if r1_106 then
+    r0_106:LoadUIAsync("CharLevelUp_System", function()
+      -- line: [2393, 2393] id: 107
     end, true)
   else
-    self:LoadUIAsync("CharLevelUp", function()
+    r0_106:LoadUIAsync("CharLevelUp", function()
+      -- line: [2395, 2395] id: 108
     end, true)
   end
 end
-
-function BP_UIManagerComponent_C:CacheLevelUpInfo(Level, Type, Id)
-  local GameInstance = UE4.UGameplayStatics.GetGameInstance(self)
-  if GameInstance.LevelUpToastQueue == nil then
-    GameInstance.LevelUpToastQueue = {
+function r6_0.CacheLevelUpInfo(r0_109, r1_109, r2_109, r3_109)
+  -- line: [2400, 2411] id: 109
+  local r4_109 = UE4.UGameplayStatics.GetGameInstance(r0_109)
+  if r4_109.LevelUpToastQueue == nil then
+    r4_109.LevelUpToastQueue = {
       Player = nil,
       Role = nil,
       MeleeWeapon = nil,
-      RangedWeapon = nil
+      RangedWeapon = nil,
     }
   end
-  GameInstance.LevelUpToastQueue[Type] = {
-    Level,
-    Type,
-    Id
+  r4_109.LevelUpToastQueue[r2_109] = {
+    r1_109,
+    r2_109,
+    r3_109
   }
 end
-
-function BP_UIManagerComponent_C:TryShowPlayerLevelUpInfo(LevelUpInfo)
-  local Avatar = GWorld:GetAvatar()
-  local GameInstance = UE4.UGameplayStatics.GetGameInstance(self)
-  if not Avatar then
-    return
+function r6_0.TryShowPlayerLevelUpInfo(r0_110, r1_110)
+  -- line: [2414, 2455] id: 110
+  local r2_110 = GWorld:GetAvatar()
+  local r3_110 = UE4.UGameplayStatics.GetGameInstance(r0_110)
+  if not r2_110 then
+    return 
   end
-  if not GameInstance.LevelUpToastQueue then
-    GameInstance.LevelUpToastQueue = {}
+  if not r3_110.LevelUpToastQueue then
+    r3_110.LevelUpToastQueue = {}
   end
-  GameInstance.LevelUpToastQueue.Player = LevelUpInfo
-  if Avatar:IsInDungeon() and LevelUpInfo.ShowProgressBar then
-    return
+  r3_110.LevelUpToastQueue.Player = r1_110
+  if r2_110:IsInDungeon() and r1_110.ShowProgressBar then
+    return 
   end
-  if not self:IsInHUDShowMode() then
-    local SupportUIName = DataMgr.SystemUI.CharLevelUp_System.Params.SupportUIName
-    if SupportUIName then
-      for _, UIName in ipairs(SupportUIName) do
-        local UIObj = self:GetUI(UIName)
-        if UIObj then
-          self:ShowPlayerLevelUpToast(true)
-          return
+  if not r0_110:IsInHUDShowMode() then
+    local r4_110 = DataMgr.SystemUI.CharLevelUp_System.Params.SupportUIName
+    if r4_110 then
+      for r9_110, r10_110 in ipairs(r4_110) do
+        if r0_110:GetUI(r10_110) then
+          r0_110:ShowPlayerLevelUpToast(true)
+          return 
         end
       end
+      -- close: r5_110
     end
-    if not self.WaitToShowPlayerLevelUpTimerHandle then
-      self.WaitToShowPlayerLevelUpTimerHandle = self:AddTimer(1, function()
-        if self:IsInHUDShowMode() then
-          self:ShowPlayerLevelUpToast()
-          if self.WaitToShowPlayerLevelUpTimerHandle then
-            self:RemoveTimer(self.WaitToShowPlayerLevelUpTimerHandle)
-            self.WaitToShowPlayerLevelUpTimerHandle = nil
+    if not r0_110.WaitToShowPlayerLevelUpTimerHandle then
+      r0_110.WaitToShowPlayerLevelUpTimerHandle = r0_110:AddTimer(1, function()
+        -- line: [2440, 2448] id: 111
+        if r0_110:IsInHUDShowMode() then
+          r0_110:ShowPlayerLevelUpToast()
+          if r0_110.WaitToShowPlayerLevelUpTimerHandle then
+            r0_110:RemoveTimer(r0_110.WaitToShowPlayerLevelUpTimerHandle)
+            r0_110.WaitToShowPlayerLevelUpTimerHandle = nil
           end
         end
       end, true)
     end
-    return
+    return 
   end
-  self:ShowPlayerLevelUpToast()
+  r0_110:ShowPlayerLevelUpToast()
 end
-
-function BP_UIManagerComponent_C:CreateOrGetArmoryPlayerActor(Char, InAvatar)
-  local IsCreated = false
-  if not self.ArmoryPlayer or not self.ArmoryPlayer:IsValid() then
-    local Player = UE4.UGameplayStatics.GetPlayerCharacter(self, 0)
-    local actor = self:GetWorld():SpawnActor(LoadClass("/Game/BluePrints/Char/BP_PlayerCharacter.BP_PlayerCharacter_C"), Player:GetTransform(), UE4.ESpawnActorCollisionHandlingMethod.Default, Player, Player, nil)
-    if actor then
-      actor:RemoveBuffManager()
-      actor:SetTickableWhenPaused(true)
-      local Avatar = InAvatar or GWorld:GetAvatar()
-      Char = Char or Avatar.Chars[Avatar.CurrentChar]
-      local AvatarBattleInfo = AvatarUtils:GetDefaultBattleInfo(Avatar, {Char = Char})
-      local GameMode = UE4.UGameplayStatics.GetGameMode(self)
-      if GameMode then
-        AvatarBattleInfo = GameMode:SimplifyInfoForInit(AvatarBattleInfo)
-        AvatarBattleInfo.FromOtherWorld = true
-        AvatarBattleInfo.FromArmory = true
-        actor:InitCharacterInfo(AvatarBattleInfo)
+function r6_0.CreateOrGetArmoryPlayerActor(r0_112, r1_112, r2_112)
+  -- line: [2461, 2493] id: 112
+  local r3_112 = false
+  if not r0_112.ArmoryPlayer or not r0_112.ArmoryPlayer:IsValid() then
+    local r4_112 = UE4.UGameplayStatics.GetPlayerCharacter(r0_112, 0)
+    local r5_112 = r0_112:GetWorld():SpawnActor(LoadClass("/Game/BluePrints/Char/BP_PlayerCharacter.BP_PlayerCharacter_C"), r4_112:GetTransform(), UE4.ESpawnActorCollisionHandlingMethod.Default, r4_112, r4_112, nil)
+    if r5_112 then
+      r5_112:RemoveBuffManager()
+      r5_112:SetTickableWhenPaused(true)
+      local r6_112 = r2_112 and GWorld:GetAvatar()
+      if not r1_112 then
+        r1_112 = r6_112.Chars[r6_112.CurrentChar]
       end
-      actor:ForceClearActorHideTag()
-      actor.CapsuleComponent:SetCollisionEnabled(ECollisionEnabled.NoCollision)
-      actor.Mesh:SetCollisionEnabled(ECollisionEnabled.NoCollision)
-      actor.Mesh:SetTickableWhenPaused(true)
-      actor.DitherDisabled = true
+      local r7_112 = AvatarUtils:GetDefaultBattleInfo(r6_112, {
+        Char = r1_112,
+      })
+      local r8_112 = UE4.UGameplayStatics.GetGameMode(r0_112)
+      if r8_112 then
+        r7_112 = r8_112:SimplifyInfoForInit(r7_112)
+        r7_112.FromOtherWorld = true
+        r7_112.FromArmory = true
+        r5_112:InitCharacterInfo(r7_112)
+      end
+      r5_112:ForceClearActorHideTag()
+      r5_112.CapsuleComponent:SetCollisionEnabled(ECollisionEnabled.NoCollision)
+      r5_112.Mesh:SetCollisionEnabled(ECollisionEnabled.NoCollision)
+      r5_112.Mesh:SetTickableWhenPaused(true)
+      r5_112.DitherDisabled = true
     end
-    self.ArmoryPlayer = actor
-    IsCreated = true
+    r0_112.ArmoryPlayer = r5_112
+    r3_112 = true
   end
-  return self.ArmoryPlayer, IsCreated
+  return r0_112.ArmoryPlayer, r3_112
 end
-
-function BP_UIManagerComponent_C:CreateShowWeapon(Owner, Params, Callback)
-  self.ShowWeaponOwners = self.ShowWeaponOwners or {}
-  self.ShowWeaponOwners[Owner] = Params
-  if self.ShowWeapon then
-    self.ShowWeapon:SetActorHideTag("CreateShowWeapon", true)
+function r6_0.CreateShowWeapon(r0_113, r1_113, r2_113, r3_113)
+  -- line: [2496, 2519] id: 113
+  r0_113.ShowWeaponOwners = r0_113.ShowWeaponOwners and {}
+  r0_113.ShowWeaponOwners[r1_113] = r2_113
+  if r0_113.ShowWeapon then
+    r0_113.ShowWeapon:SetActorHideTag("CreateShowWeapon", true)
   end
-  local PlayerCharacter = UE4.UGameplayStatics.GetPlayerCharacter(self, 0)
-  PlayerCharacter:SpawnShowWeaponAsync(Params.WeaponId, Params.Transform, Params.ReplaceAttrs, Params.SkillInfos, Params.AppearanceInfo, Params.WeaponInfo, function(WeaponActor)
-    self:ForceDestroyShowWeapon()
-    self.ShowWeapon = WeaponActor
-    if not self.ShowWeaponOwners[Owner] then
-      self:DestroyShowWeapon(Owner)
-      return
+  UE4.UGameplayStatics.GetPlayerCharacter(r0_113, 0):SpawnShowWeaponAsync(r2_113.WeaponId, r2_113.Transform, r2_113.ReplaceAttrs, r2_113.SkillInfos, r2_113.AppearanceInfo, r2_113.WeaponInfo, function(r0_114)
+    -- line: [2505, 2518] id: 114
+    r0_113:ForceDestroyShowWeapon()
+    r0_113.ShowWeapon = r0_114
+    if not r0_113.ShowWeaponOwners[r1_113] then
+      r0_113:DestroyShowWeapon(r1_113)
+      return 
     end
-    if self.ShowWeapon then
-      self.ShowWeapon:SetActorHideTag("CreateShowWeapon", false)
+    if r0_113.ShowWeapon then
+      r0_113.ShowWeapon:SetActorHideTag("CreateShowWeapon", false)
     end
-    if Callback then
-      Callback(self.ShowWeapon)
+    if r3_113 then
+      r3_113(r0_113.ShowWeapon)
     end
   end)
 end
-
-function BP_UIManagerComponent_C:DestroyShowWeapon(Owner)
-  self.ShowWeaponOwners = self.ShowWeaponOwners or {}
-  if Owner then
-    self.ShowWeaponOwners[Owner] = nil
+function r6_0.DestroyShowWeapon(r0_115, r1_115)
+  -- line: [2521, 2531] id: 115
+  r0_115.ShowWeaponOwners = r0_115.ShowWeaponOwners and {}
+  if r1_115 then
+    r0_115.ShowWeaponOwners[r1_115] = nil
   end
-  if next(self.ShowWeaponOwners) then
-    return
+  if next(r0_115.ShowWeaponOwners) then
+    return 
   end
-  self:ForceDestroyShowWeapon()
+  r0_115:ForceDestroyShowWeapon()
 end
-
-function BP_UIManagerComponent_C:ForceDestroyShowWeapon()
-  if IsValid(self.ShowWeapon) then
-    if self.ShowWeapon.ChildWeapon then
-      self.ShowWeapon.ChildWeapon:K2_DestroyActor()
+function r6_0.ForceDestroyShowWeapon(r0_116)
+  -- line: [2534, 2542] id: 116
+  if IsValid(r0_116.ShowWeapon) then
+    if r0_116.ShowWeapon.ChildWeapon then
+      r0_116.ShowWeapon.ChildWeapon:K2_DestroyActor()
     end
-    self.ShowWeapon:K2_DestroyActor()
-    self.ShowWeapon = nil
+    r0_116.ShowWeapon:K2_DestroyActor()
+    r0_116.ShowWeapon = nil
   end
 end
-
-function BP_UIManagerComponent_C:CreateAndGetUINpcActor(NpcId)
-  local ToCreateUIActor = self.AllUINpcActor[NpcId]
-  if nil ~= ToCreateUIActor and IsValid(ToCreateUIActor) and ToCreateUIActor.NpcId == NpcId then
-    if ToCreateUIActor.IsInOutAnim then
-      ToCreateUIActor:DestroyActorTemp()
+function r6_0.CreateAndGetUINpcActor(r0_117, r1_117)
+  -- line: [2547, 2634] id: 117
+  local r2_117 = r0_117.AllUINpcActor[r1_117]
+  if r2_117 ~= nil and IsValid(r2_117) and r2_117.NpcId == r1_117 then
+    if r2_117.IsInOutAnim then
+      r2_117:DestroyActorTemp()
     else
-      return ToCreateUIActor
+      return r2_117
     end
   end
-  local SpawnNpcConfig = DataMgr.SpawnNPC[NpcId]
-  if nil == SpawnNpcConfig then
-    return
+  local r3_117 = DataMgr.SpawnNPC[r1_117]
+  if r3_117 == nil then
+    return 
   end
-  local DistanceRadius = SpawnNpcConfig.SpawnRadius
-  local DistanceAngle = tonumber(SpawnNpcConfig.SpawnAngle)
-  local PlayerCharacter = UE4.UGameplayStatics.GetPlayerCharacter(self, 0)
-  local PlayerForwardVector = PlayerCharacter:GetActorForwardVector()
-  PlayerForwardVector:Normalize()
-  local PlayerTransform = PlayerCharacter:GetTransform()
-  local NPCPointVector = UE4.UKismetMathLibrary.RotateAngleAxis(PlayerForwardVector, DistanceAngle, PlayerCharacter:GetActorUpVector())
-  PlayerTransform.Translation.X = PlayerTransform.Translation.X + DistanceRadius * NPCPointVector.X
-  PlayerTransform.Translation.Y = PlayerTransform.Translation.Y + DistanceRadius * NPCPointVector.Y
-  local PlayerBackVector = UE4.UKismetMathLibrary.RotateAngleAxis(PlayerForwardVector, 180, PlayerCharacter:GetActorUpVector())
-  local TraceEndPos = PlayerTransform.Translation + PlayerBackVector * SpawnNpcConfig.DetectionDiatance
-  local HitWallResult = FHitResult()
-  local bHitWall = UE4.UKismetSystemLibrary.LineTraceSingle(self, PlayerTransform.Translation, TraceEndPos, ETraceTypeQuery.TraceExceptChar, false, nil, 0, HitWallResult, true)
-  local NewNpcRotation = PlayerTransform.Rotation:ToRotator()
-  if bHitWall then
-    NewNpcRotation.Pitch, NewNpcRotation.Yaw, NewNpcRotation.Roll = 0, NewNpcRotation.Yaw - 90, 0
+  local r4_117 = r3_117.SpawnRadius
+  local r5_117 = tonumber(r3_117.SpawnAngle)
+  local r6_117 = UE4.UGameplayStatics.GetPlayerCharacter(r0_117, 0)
+  local r7_117 = r6_117:GetActorForwardVector()
+  r7_117:Normalize()
+  local r8_117 = r6_117:GetTransform()
+  local r9_117 = UE4.UKismetMathLibrary.RotateAngleAxis(r7_117, r5_117, r6_117:GetActorUpVector())
+  r8_117.Translation.X = r8_117.Translation.X + r4_117 * r9_117.X
+  r8_117.Translation.Y = r8_117.Translation.Y + r4_117 * r9_117.Y
+  local r13_117 = UE4.UKismetSystemLibrary.LineTraceSingle(r0_117, r8_117.Translation, r8_117.Translation + UE4.UKismetMathLibrary.RotateAngleAxis(r7_117, 180, r6_117:GetActorUpVector()) * r3_117.DetectionDiatance, ETraceTypeQuery.TraceExceptChar, false, nil, 0, FHitResult(), true)
+  local r14_117 = r8_117.Rotation:ToRotator()
+  if r13_117 then
+    r14_117.Roll = 0
+    r14_117.Yaw = r14_117.Yaw + -90
+    r14_117.Pitch = 0
   else
-    NewNpcRotation.Pitch, NewNpcRotation.Yaw, NewNpcRotation.Roll = 0, NewNpcRotation.Yaw + 90, 0
+    r14_117.Roll = 0
+    r14_117.Yaw = r14_117.Yaw + 90
+    r14_117.Pitch = 0
   end
-  PlayerTransform.Rotation = NewNpcRotation:ToQuat()
-  ToCreateUIActor = self:GetWorld():SpawnActor(LoadClass(SpawnNpcConfig.BPPath), PlayerTransform, UE4.ESpawnActorCollisionHandlingMethod.AdjustIfPossibleButAlwaysSpawn, PlayerCharacter, PlayerCharacter, nil)
-  
-  local function TryGetActorOverlapImpactLocation(Actor)
-    local ActorCapsuleRaduis = Actor.CapsuleComponent:GetUnscaledCapsuleRadius()
-    local Start = Actor.CapsuleComponent:K2_GetComponentLocation()
-    local End = Actor.CapsuleComponent:K2_GetComponentLocation()
-    Start.Z = Start.Z + Actor.CapsuleComponent:GetUnscaledCapsuleHalfHeight()
-    End.Z = End.Z - Actor.CapsuleComponent:GetUnscaledCapsuleHalfHeight() * 0.5
-    local HitResult = FHitResult()
-    local bHit = UE4.UKismetSystemLibrary.SphereTraceSingle(Actor, Start, End, ActorCapsuleRaduis, ETraceTypeQuery.TraceExceptChar, true, nil, 0, HitResult, true, UE4.FLinearColor(1, 0, 0, 1), UE4.FLinearColor(0, 1, 0, 1), 5)
-    if bHit then
-      return HitResult.ImpactPoint
+  r8_117.Rotation = r14_117:ToQuat()
+  r2_117 = r0_117:GetWorld():SpawnActor(LoadClass(r3_117.BPPath), r8_117, UE4.ESpawnActorCollisionHandlingMethod.AdjustIfPossibleButAlwaysSpawn, r6_117, r6_117, nil)
+  local function r15_117(r0_118)
+    -- line: [2585, 2598] id: 118
+    local r1_118 = r0_118.CapsuleComponent:GetUnscaledCapsuleRadius()
+    local r2_118 = r0_118.CapsuleComponent:K2_GetComponentLocation()
+    local r3_118 = r0_118.CapsuleComponent:K2_GetComponentLocation()
+    r2_118.Z = r2_118.Z + r0_118.CapsuleComponent:GetUnscaledCapsuleHalfHeight()
+    r3_118.Z = r3_118.Z - r0_118.CapsuleComponent:GetUnscaledCapsuleHalfHeight() * 0.5
+    local r4_118 = FHitResult()
+    if UE4.UKismetSystemLibrary.SphereTraceSingle(r0_118, r2_118, r3_118, r1_118, ETraceTypeQuery.TraceExceptChar, true, nil, 0, r4_118, true, UE4.FLinearColor(1, 0, 0, 1), UE4.FLinearColor(0, 1, 0, 1), 5) then
+      return r4_118.ImpactPoint
     else
       return nil
     end
   end
-  
-  local FirstImpactLocation = TryGetActorOverlapImpactLocation(ToCreateUIActor)
-  if nil ~= FirstImpactLocation then
-    PlayerTransform.Translation.X = FirstImpactLocation.X
-    PlayerTransform.Translation.Y = FirstImpactLocation.Y
-    PlayerTransform.Translation.Z = FirstImpactLocation.Z + ToCreateUIActor.CapsuleComponent:GetUnscaledCapsuleHalfHeight()
-    ToCreateUIActor:K2_SetActorTransform(PlayerTransform, false, nil, false)
-    local SecondImpactLocation = TryGetActorOverlapImpactLocation(ToCreateUIActor)
-    if nil ~= SecondImpactLocation then
-      local CurLocationVector = PlayerTransform.Translation
-      local NewLocationVector = UE.UNavigationFunctionLibrary.ProjectPointToNavigation(CurLocationVector, ToCreateUIActor)
-      if NewLocationVector.X > 0 and NewLocationVector.Y > 0 and NewLocationVector.Z > 0 then
-        PlayerTransform.Translation.X = NewLocationVector.X
-        PlayerTransform.Translation.Y = NewLocationVector.Y
-        PlayerTransform.Translation.Z = NewLocationVector.Z + ToCreateUIActor.CapsuleComponent:GetUnscaledCapsuleHalfHeight()
-        ToCreateUIActor:K2_SetActorTransform(PlayerTransform, false, nil, false)
+  local r16_117 = r15_117(r2_117)
+  if r16_117 ~= nil then
+    r8_117.Translation.X = r16_117.X
+    r8_117.Translation.Y = r16_117.Y
+    r8_117.Translation.Z = r16_117.Z + r2_117.CapsuleComponent:GetUnscaledCapsuleHalfHeight()
+    r2_117:K2_SetActorTransform(r8_117, false, nil, false)
+    if r15_117(r2_117) ~= nil then
+      local r19_117 = UE.UNavigationFunctionLibrary.ProjectPointToNavigation(r8_117.Translation, r2_117)
+      if r19_117.X > 0 and r19_117.Y > 0 and r19_117.Z > 0 then
+        r8_117.Translation.X = r19_117.X
+        r8_117.Translation.Y = r19_117.Y
+        r8_117.Translation.Z = r19_117.Z + r2_117.CapsuleComponent:GetUnscaledCapsuleHalfHeight()
+        r2_117:K2_SetActorTransform(r8_117, false, nil, false)
       end
     end
   end
-  if ToCreateUIActor then
-    ToCreateUIActor.NpcId = NpcId
-    ToCreateUIActor.ModelId = DataMgr.Npc[NpcId].ModelId
-    ToCreateUIActor.CapsuleComponent:SetCollisionEnabled(ECollisionEnabled.NoCollision)
-    ToCreateUIActor.Mesh:SetCollisionEnabled(ECollisionEnabled.NoCollision)
-    ToCreateUIActor:SetTickableWhenPaused(true)
-    ToCreateUIActor.Mesh:SetTickableWhenPaused(true)
+  if r2_117 then
+    r2_117.NpcId = r1_117
+    r2_117.ModelId = DataMgr.Npc[r1_117].ModelId
+    r2_117.CapsuleComponent:SetCollisionEnabled(ECollisionEnabled.NoCollision)
+    r2_117.Mesh:SetCollisionEnabled(ECollisionEnabled.NoCollision)
+    r2_117:SetTickableWhenPaused(true)
+    r2_117.Mesh:SetTickableWhenPaused(true)
   end
-  ToCreateUIActor.IsNeedSetPos = false
-  self.AllUINpcActor[NpcId] = ToCreateUIActor
-  return ToCreateUIActor
+  r2_117.IsNeedSetPos = false
+  r0_117.AllUINpcActor[r1_117] = r2_117
+  return r2_117
 end
-
-function BP_UIManagerComponent_C:GetUINpcActor(NpcId)
-  return self.AllUINpcActor[NpcId]
+function r6_0.GetUINpcActor(r0_119, r1_119)
+  -- line: [2639, 2641] id: 119
+  return r0_119.AllUINpcActor[r1_119]
 end
-
-function BP_UIManagerComponent_C:HideOrShowPlayerFX(Player, bHide, Tag)
-  if Player and Player.Mesh then
-    local Components = TArray(USceneComponent)
-    URuntimeCommonFunctionLibrary.SetSceneComponentHiddenInGame(Player.Mesh, bHide, true, Tag, Components)
+function r6_0.HideOrShowPlayerFX(r0_120, r1_120, r2_120, r3_120)
+  -- line: [2647, 2652] id: 120
+  if r1_120 and r1_120.Mesh then
+    URuntimeCommonFunctionLibrary.SetSceneComponentHiddenInGame(r1_120.Mesh, r2_120, true, r3_120, TArray(USceneComponent))
   end
 end
-
-function BP_UIManagerComponent_C:HideOrShowOtherUINpcActor(bHide, HideTag, ExNpcId)
-  for NpcId, UINpcActor in pairs(self.AllUINpcActor) do
-    if NpcId ~= ExNpcId then
-      if UINpcActor.SetActorHideTag then
-        UINpcActor:SetActorHideTag(HideTag, bHide)
+function r6_0.HideOrShowOtherUINpcActor(r0_121, r1_121, r2_121, r3_121)
+  -- line: [2658, 2672] id: 121
+  for r8_121, r9_121 in pairs(r0_121.AllUINpcActor) do
+    if r8_121 ~= r3_121 then
+      if r9_121.SetActorHideTag then
+        r9_121:SetActorHideTag(r2_121, r1_121)
       else
-        UINpcActor:SetActorHiddenInGame(bHide)
+        r9_121:SetActorHiddenInGame(r1_121)
       end
     end
   end
-  if IsValid(self.ArmoryPlayer) then
-    self.ArmoryPlayer:SetActorHideTag(HideTag, bHide)
-    self.ArmoryPlayer:HideAllEffectCreature(HideTag, bHide)
+  -- close: r4_121
+  if IsValid(r0_121.ArmoryPlayer) then
+    r0_121.ArmoryPlayer:SetActorHideTag(r2_121, r1_121)
+    r0_121.ArmoryPlayer:HideAllEffectCreature(r2_121, r1_121)
   end
 end
-
-function BP_UIManagerComponent_C:HideNpcActor(bHide, HideTag, ExNpcId)
-  for NpcId, UINpcActor in pairs(self.AllUINpcActor) do
-    if NpcId ~= ExNpcId then
-      if UINpcActor.SetActorHideTag then
-        UINpcActor:SetActorHideTag(HideTag, bHide)
+function r6_0.HideNpcActor(r0_122, r1_122, r2_122, r3_122)
+  -- line: [2678, 2688] id: 122
+  for r8_122, r9_122 in pairs(r0_122.AllUINpcActor) do
+    if r8_122 ~= r3_122 then
+      if r9_122.SetActorHideTag then
+        r9_122:SetActorHideTag(r2_122, r1_122)
       else
-        UINpcActor:SetActorHiddenInGame(bHide)
+        r9_122:SetActorHiddenInGame(r1_122)
       end
     end
   end
+  -- close: r4_122
 end
-
-function BP_UIManagerComponent_C:HideNpcById(NpcId, bHide, HideTag)
-  local UINpcActor = self.AllUINpcActor and self.AllUINpcActor[NpcId]
-  if not UINpcActor then
+function r6_0.HideNpcById(r0_123, r1_123, r2_123, r3_123)
+  -- line: [2694, 2706] id: 123
+  local r4_123 = r0_123.AllUINpcActor and r0_123.AllUINpcActor[r1_123]
+  if not r4_123 then
     DebugPrint("HideNpcById  找不到npc")
-    return
+    return 
   end
-  if UINpcActor.SetActorHideTag then
-    UINpcActor:SetActorHideTag(HideTag or "DefaultHideTag", bHide)
+  if r4_123.SetActorHideTag then
+    r4_123:SetActorHideTag(r3_123 and "DefaultHideTag", r2_123)
   else
-    UINpcActor:SetActorHiddenInGame(bHide)
+    r4_123:SetActorHiddenInGame(r2_123)
   end
 end
-
-function BP_UIManagerComponent_C:CreateUIActorCameraHelper(Player)
-  local ToCreateUIActorCameraHelper = self:GetWorld():SpawnActor(LoadClass("/Game/BluePrints/Char/BP_PlayerCharacterArmoryHelper.BP_PlayerCharacterArmoryHelper_C"), Player:GetTransform(), UE4.ESpawnActorCollisionHandlingMethod.Default)
-  ToCreateUIActorCameraHelper:K2_AttachToActor(Player, "Root", UE4.EAttachmentRule.KeepWorld, UE4.EAttachmentRule.KeepWorld, UE4.EAttachmentRule.KeepWorld, true)
-  ToCreateUIActorCameraHelper:K2_AddActorLocalOffset(FVector(0, 0, 0), false, nil, false)
-  return ToCreateUIActorCameraHelper
+function r6_0.CreateUIActorCameraHelper(r0_124, r1_124)
+  -- line: [2711, 2717] id: 124
+  local r2_124 = r0_124:GetWorld():SpawnActor(LoadClass("/Game/BluePrints/Char/BP_PlayerCharacterArmoryHelper.BP_PlayerCharacterArmoryHelper_C"), r1_124:GetTransform(), UE4.ESpawnActorCollisionHandlingMethod.Default)
+  r2_124:K2_AttachToActor(r1_124, "Root", UE4.EAttachmentRule.KeepWorld, UE4.EAttachmentRule.KeepWorld, UE4.EAttachmentRule.KeepWorld, true)
+  r2_124:K2_AddActorLocalOffset(FVector(0, 0, 0), false, nil, false)
+  return r2_124
 end
-
-function BP_UIManagerComponent_C:GetUIActorCameraHelper(NpcId)
-  return self.AllUIActorCameraHelper[NpcId]
+function r6_0.GetUIActorCameraHelper(r0_125, r1_125)
+  -- line: [2722, 2724] id: 125
+  return r0_125.AllUIActorCameraHelper[r1_125]
 end
-
-function BP_UIManagerComponent_C:PlayUINpcAnimation(bInOut, UIName, NpcId, Params)
-  local UINpcActor = self:GetUINpcActor(NpcId)
-  local SpawnNpcConfig = DataMgr.SpawnNPC[NpcId]
-  if nil == UINpcActor or nil == SpawnNpcConfig then
-    return
+function r6_0.PlayUINpcAnimation(r0_126, r1_126, r2_126, r3_126, r4_126)
+  -- line: [2731, 2843] id: 126
+  local r5_126 = r0_126:GetUINpcActor(r3_126)
+  local r6_126 = DataMgr.SpawnNPC[r3_126]
+  if r5_126 == nil or r6_126 == nil then
+    return 
   end
-  local bDestroyNpc = Params.bDestroyNpc
-  local IsHaveInOutAnim = Params.IsHaveInOutAnim
-  if bInOut then
-    local OnInActionFinished = Params.OnInActionFinished
-    if UINpcActor.IsNeedSetPos then
-      local DistanceRadius = SpawnNpcConfig.SpawnRadius
-      local DistanceAngle = SpawnNpcConfig.SpawnAngle
-      local PlayerForwardVector = Player:GetActorForwardVector()
-      PlayerForwardVector:Normalize()
-      local PlayerTransform = Player:GetTransform()
-      local NPCPointVector = UE4.UKismetMathLibrary.RotateAngleAxis(PlayerForwardVector, DistanceAngle, Player:GetActorUpVector())
-      PlayerTransform.Translation.X = PlayerTransform.Translation.X + DistanceRadius * NPCPointVector.X
-      PlayerTransform.Translation.Y = PlayerTransform.Translation.Y + DistanceRadius * NPCPointVector.Y
-      local PlayerBackVector = UE4.UKismetMathLibrary.RotateAngleAxis(PlayerForwardVector, 180, Player:GetActorUpVector())
-      local TraceEndPos = PlayerTransform.Translation + PlayerBackVector * SpawnNpcConfig.DetectionDiatance
-      local HitWallResult = FHitResult()
-      local bHitWall = UE4.UKismetSystemLibrary.LineTraceSingle(self, PlayerTransform.Translation, TraceEndPos, ETraceTypeQuery.TraceExceptChar, false, nil, 0, HitWallResult, true)
-      local NewNpcRotation = PlayerTransform.Rotation:ToRotator()
-      if bHitWall then
-        NewNpcRotation.Pitch, NewNpcRotation.Yaw, NewNpcRotation.Roll = 0, NewNpcRotation.Yaw - 90, 0
+  local r7_126 = r4_126.bDestroyNpc
+  local r8_126 = r4_126.IsHaveInOutAnim
+  local r9_126 = nil	-- notice: implicit variable refs by block#[16, 17, 18]
+  if r1_126 then
+    r9_126 = r4_126.OnInActionFinished
+    if r5_126.IsNeedSetPos then
+      local r10_126 = r6_126.SpawnRadius
+      local r11_126 = r6_126.SpawnAngle
+      local r12_126 = Player:GetActorForwardVector()
+      r12_126:Normalize()
+      local r13_126 = Player:GetTransform()
+      local r14_126 = UE4.UKismetMathLibrary.RotateAngleAxis(r12_126, r11_126, Player:GetActorUpVector())
+      r13_126.Translation.X = r13_126.Translation.X + r10_126 * r14_126.X
+      r13_126.Translation.Y = r13_126.Translation.Y + r10_126 * r14_126.Y
+      local r18_126 = UE4.UKismetSystemLibrary.LineTraceSingle(r0_126, r13_126.Translation, r13_126.Translation + UE4.UKismetMathLibrary.RotateAngleAxis(r12_126, 180, Player:GetActorUpVector()) * r6_126.DetectionDiatance, ETraceTypeQuery.TraceExceptChar, false, nil, 0, FHitResult(), true)
+      local r19_126 = r13_126.Rotation:ToRotator()
+      if r18_126 then
+        r19_126.Roll = 0
+        r19_126.Yaw = r19_126.Yaw + -90
+        r19_126.Pitch = 0
       else
-        NewNpcRotation.Pitch, NewNpcRotation.Yaw, NewNpcRotation.Roll = 0, NewNpcRotation.Yaw + 90, 0
+        r19_126.Roll = 0
+        r19_126.Yaw = r19_126.Yaw + 90
+        r19_126.Pitch = 0
       end
-      PlayerTransform.Rotation = NewNpcRotation:ToQuat()
-      UINpcActor:K2_SetActorTransform(PlayerTransform, false, nil, false)
-      
-      local function TryGetActorOverlapImpactLocation(Actor)
-        local ActorCapsuleRaduis = Actor.CapsuleComponent:GetUnscaledCapsuleRadius()
-        local Start = Actor.CapsuleComponent:K2_GetComponentLocation()
-        local End = Actor.CapsuleComponent:K2_GetComponentLocation()
-        Start.Z = Start.Z + Actor.CapsuleComponent:GetUnscaledCapsuleHalfHeight()
-        End.Z = End.Z - Actor.CapsuleComponent:GetUnscaledCapsuleHalfHeight() * 0.5
-        local HitResult = FHitResult()
-        local bHit = UE4.UKismetSystemLibrary.SphereTraceSingle(Actor, Start, End, ActorCapsuleRaduis, ETraceTypeQuery.TraceExceptChar, true, nil, 0, HitResult, true, UE4.FLinearColor(1, 0, 0, 1), UE4.FLinearColor(0, 1, 0, 1), 5)
-        if bHit then
-          return HitResult.ImpactPoint
+      r13_126.Rotation = r19_126:ToQuat()
+      r5_126:K2_SetActorTransform(r13_126, false, nil, false)
+      local function r20_126(r0_127)
+        -- line: [2763, 2776] id: 127
+        local r1_127 = r0_127.CapsuleComponent:GetUnscaledCapsuleRadius()
+        local r2_127 = r0_127.CapsuleComponent:K2_GetComponentLocation()
+        local r3_127 = r0_127.CapsuleComponent:K2_GetComponentLocation()
+        r2_127.Z = r2_127.Z + r0_127.CapsuleComponent:GetUnscaledCapsuleHalfHeight()
+        r3_127.Z = r3_127.Z - r0_127.CapsuleComponent:GetUnscaledCapsuleHalfHeight() * 0.5
+        local r4_127 = FHitResult()
+        if UE4.UKismetSystemLibrary.SphereTraceSingle(r0_127, r2_127, r3_127, r1_127, ETraceTypeQuery.TraceExceptChar, true, nil, 0, r4_127, true, UE4.FLinearColor(1, 0, 0, 1), UE4.FLinearColor(0, 1, 0, 1), 5) then
+          return r4_127.ImpactPoint
         else
           return nil
         end
       end
-      
-      local FirstImpactLocation = TryGetActorOverlapImpactLocation(UINpcActor)
-      if nil ~= FirstImpactLocation then
-        PlayerTransform.Translation.X = FirstImpactLocation.X
-        PlayerTransform.Translation.Y = FirstImpactLocation.Y
-        PlayerTransform.Translation.Z = FirstImpactLocation.Z + UINpcActor.CapsuleComponent:GetUnscaledCapsuleHalfHeight()
-        UINpcActor:K2_SetActorTransform(PlayerTransform, false, nil, false)
-        local SecondImpactLocation = TryGetActorOverlapImpactLocation(UINpcActor)
-        if nil ~= SecondImpactLocation then
-          local CurLocationVector = PlayerTransform.Translation
-          local NewLocationVector = UE.UNavigationFunctionLibrary.ProjectPointToNavigation(CurLocationVector, UINpcActor)
-          PlayerTransform.Translation.X = NewLocationVector.X
-          PlayerTransform.Translation.Y = NewLocationVector.Y
-          PlayerTransform.Translation.Z = NewLocationVector.Z + UINpcActor.CapsuleComponent:GetUnscaledCapsuleHalfHeight()
-          UINpcActor:K2_SetActorTransform(PlayerTransform, false, nil, false)
+      local r21_126 = r20_126(r5_126)
+      if r21_126 ~= nil then
+        r13_126.Translation.X = r21_126.X
+        r13_126.Translation.Y = r21_126.Y
+        r13_126.Translation.Z = r21_126.Z + r5_126.CapsuleComponent:GetUnscaledCapsuleHalfHeight()
+        r5_126:K2_SetActorTransform(r13_126, false, nil, false)
+        if r20_126(r5_126) ~= nil then
+          local r24_126 = UE.UNavigationFunctionLibrary.ProjectPointToNavigation(r13_126.Translation, r5_126)
+          r13_126.Translation.X = r24_126.X
+          r13_126.Translation.Y = r24_126.Y
+          r13_126.Translation.Z = r24_126.Z + r5_126.CapsuleComponent:GetUnscaledCapsuleHalfHeight()
+          r5_126:K2_SetActorTransform(r13_126, false, nil, false)
         end
       end
     end
-    self:HideOrShowOtherUINpcActor(true, UIName, NpcId)
-    
-    local function PlayInActionFinished()
-      UINpcActor:SetCharacterTag("Interactive")
-      if OnInActionFinished then
-        OnInActionFinished()
+    r0_126:HideOrShowOtherUINpcActor(true, r2_126, r3_126)
+    local function r10_126()
+      -- line: [2797, 2802] id: 128
+      r5_126:SetCharacterTag("Interactive")
+      if r9_126 then
+        r9_126()
       end
     end
-    
-    if IsHaveInOutAnim and nil ~= SpawnNpcConfig.StartDialogue then
-      UINpcActor:PlayUITalkAction(SpawnNpcConfig.StartDialogue, {self, PlayInActionFinished})
+    if r8_126 and r6_126.StartDialogue ~= nil then
+      r5_126:PlayUITalkAction(r6_126.StartDialogue, {
+        r0_126,
+        r10_126
+      })
     else
-      PlayInActionFinished()
+      r10_126()
     end
+    -- close: r9_126
   else
-    if UINpcActor.BaiBox then
-      UINpcActor.BaiBox:SetHiddenInGame(true, false)
+    r9_126 = r5_126.BaiBox
+    if r9_126 then
+      r9_126 = r5_126.BaiBox
+      r9_126:SetHiddenInGame(true, false)
     end
-    local ToCreateUIActorCameraHelper = self.AllUIActorCameraHelper[NpcId]
-    
-    local function PlayOutActionFinished()
-      if bDestroyNpc and IsValid(UINpcActor) then
-        UINpcActor:DestroyActorTemp()
-        self.AllUINpcActor[NpcId] = nil
+    r9_126 = r0_126.AllUIActorCameraHelper
+    r9_126 = r9_126[r3_126]
+    local function r10_126()
+      -- line: [2813, 2834] id: 129
+      if r7_126 and IsValid(r5_126) then
+        r5_126:DestroyActorTemp()
+        r0_126.AllUINpcActor[r3_126] = nil
       else
-        CommonUtils:SetActorTickableWhenPaused(UINpcActor, false)
-        if type(UINpcActor.SetEmoIdleEnabled) == "function" then
-          UINpcActor:SetEmoIdleEnabled(true)
+        r5_0:SetActorTickableWhenPaused(r5_126, false)
+        if type(r5_126.SetEmoIdleEnabled) == "function" then
+          r5_126:SetEmoIdleEnabled(true)
         end
-        if "function" == type(UINpcActor.KawaiiSwitch) then
-          UINpcActor:KawaiiSwitch(true)
+        if type(r5_126.KawaiiSwitch) == "function" then
+          r5_126:KawaiiSwitch(true)
         end
-        UINpcActor.IsNeedSetPos = true
-        UINpcActor:SetCharacterTag("Idle")
-        UINpcActor:K2_SetActorLocation(FVector(-1000000, -1000000, -1000000), false, nil, false)
-        UINpcActor:SetActorHiddenInGame(true)
+        r5_126.IsNeedSetPos = true
+        r5_126:SetCharacterTag("Idle")
+        r5_126:K2_SetActorLocation(FVector(-1000000, -1000000, -1000000), false, nil, false)
+        r5_126:SetActorHiddenInGame(true)
       end
-      self:HideOrShowOtherUINpcActor(false, UIName, NpcId)
-      ToCreateUIActorCameraHelper:K2_DestroyActor()
+      r0_126:HideOrShowOtherUINpcActor(false, r2_126, r3_126)
+      r9_126:K2_DestroyActor()
     end
-    
-    if IsHaveInOutAnim and nil ~= SpawnNpcConfig.EndDialogue then
-      UINpcActor.IsInOutAnim = true
-      UINpcActor:PlayUITalkAction(SpawnNpcConfig.EndDialogue, {self, PlayOutActionFinished})
+    if r8_126 and r6_126.EndDialogue ~= nil then
+      r5_126.IsInOutAnim = true
+      r5_126:PlayUITalkAction(r6_126.EndDialogue, {
+        r0_126,
+        r10_126
+      })
     else
-      PlayOutActionFinished()
+      r10_126()
     end
+    -- close: r9_126
   end
 end
-
-function BP_UIManagerComponent_C:SwitchUINpcCamera(bNpcCamera, UIName, NpcId, Params)
-  local SpawnNpcConfig, UINpcActorForCreate = DataMgr.SpawnNPC[NpcId]
-  if nil == SpawnNpcConfig then
-    DebugPrint("BP_UIManagerComponent_C SwitchUINpcCamera SpawnNpcConfig is nil, NpcId is ", NpcId)
-    return
+function r6_0.SwitchUINpcCamera(r0_130, r1_130, r2_130, r3_130, r4_130)
+  -- line: [2849, 2933] id: 130
+  local r5_130 = DataMgr.SpawnNPC[r3_130]
+  local r6_130 = nil
+  if r5_130 == nil then
+    DebugPrint("BP_UIManagerComponent_C SwitchUINpcCamera SpawnNpcConfig is nil, NpcId is ", r3_130)
+    return 
   end
-  if nil ~= SpawnNpcConfig.ConditionID then
-    local PlayerAvatar = GWorld:GetAvatar()
-    if nil ~= PlayerAvatar and not ConditionUtils.CheckCondition(PlayerAvatar, SpawnNpcConfig.ConditionID) then
-      return
+  if r5_130.ConditionID ~= nil then
+    local r7_130 = GWorld:GetAvatar()
+    if r7_130 ~= nil and not ConditionUtils.CheckCondition(r7_130, r5_130.ConditionID) then
+      return 
     end
   end
-  local IsOnlyMoveCamera = SpawnNpcConfig.IsOnlyMoveCamera
-  if nil == IsOnlyMoveCamera then
-    UINpcActorForCreate = self:CreateAndGetUINpcActor(NpcId)
-    if nil == UINpcActorForCreate or not IsValid(UINpcActorForCreate) then
-      DebugPrint("BP_UIManagerComponent_C SwitchUINpcCamera Create UIActor failed, The NpcId is", NpcId)
-      return
+  local r7_130 = r5_130.IsOnlyMoveCamera
+  if r7_130 == nil then
+    r6_130 = r0_130:CreateAndGetUINpcActor(r3_130)
+    if r6_130 == nil or not IsValid(r6_130) then
+      DebugPrint("BP_UIManagerComponent_C SwitchUINpcCamera Create UIActor failed, The NpcId is", r3_130)
+      return 
     end
-    if UINpcActorForCreate.BaiBox then
-      UINpcActorForCreate.BaiBox:SetHiddenInGame(false, false)
+    if r6_130.BaiBox then
+      r6_130.BaiBox:SetHiddenInGame(false, false)
     end
   end
-  Params = Params or {}
-  local RecoverTime, IsHaveInOutAnim = Params.RecoverTime, Params.IsHaveInOutAnim
-  local Player = UE4.UGameplayStatics.GetPlayerCharacter(self, 0)
-  local UIActorCameraHelper = self:GetUIActorCameraHelper(NpcId)
-  if nil == UIActorCameraHelper or not IsValid(UIActorCameraHelper) then
-    UIActorCameraHelper = self:CreateUIActorCameraHelper(Player)
-    self.AllUIActorCameraHelper[NpcId] = UIActorCameraHelper
+  if not r4_130 then
+    r4_130 = {}
   end
-  if not IsValid(UIActorCameraHelper) then
-    DebugPrint("SwitchUINpcCamera UIActorCameraHelper Create Failed, Npc Id is ", NpcId)
-    return
+  local r8_130 = r4_130.RecoverTime
+  local r9_130 = r4_130.IsHaveInOutAnim
+  local r10_130 = UE4.UGameplayStatics.GetPlayerCharacter(r0_130, 0)
+  local r11_130 = r0_130:GetUIActorCameraHelper(r3_130)
+  if r11_130 == nil or not IsValid(r11_130) then
+    r11_130 = r0_130:CreateUIActorCameraHelper(r10_130)
+    r0_130.AllUIActorCameraHelper[r3_130] = r11_130
   end
-  local ViewTargetActor = self:GetUINpcActor(NpcId)
-  if IsOnlyMoveCamera then
-    if nil == ViewTargetActor then
-      local CameraComponent = Player:GetComponentByClass(UCameraComponent:StaticClass())
-      UIActorCameraHelper:SetCameraStartTrans(CameraComponent:K2_GetComponentToWorld(), CameraComponent.FieldOfView, Player)
+  if not IsValid(r11_130) then
+    DebugPrint("SwitchUINpcCamera UIActorCameraHelper Create Failed, Npc Id is ", r3_130)
+    return 
+  end
+  local r12_130 = r0_130:GetUINpcActor(r3_130)
+  if r7_130 then
+    if r12_130 == nil then
+      local r13_130 = r10_130:GetComponentByClass(UCameraComponent:StaticClass())
+      r11_130:SetCameraStartTrans(r13_130:K2_GetComponentToWorld(), r13_130.FieldOfView, r10_130)
     end
-    self:SetCameraParamWithConfigData(UIActorCameraHelper, SpawnNpcConfig)
-    return
+    r0_130:SetCameraParamWithConfigData(r11_130, r5_130)
+    return 
   end
-  if bNpcCamera then
-    self:SetTargetActorState(true, UINpcActorForCreate, UIName, IsHaveInOutAnim)
-    self:PlayUINpcAnimation(true, UIName, NpcId, Params)
-    local CameraComponent = Player:GetComponentByClass(UCameraComponent:StaticClass())
-    UIActorCameraHelper:SetCameraStartTrans(CameraComponent:K2_GetComponentToWorld(), CameraComponent.FieldOfView, UINpcActorForCreate)
-    self:SetCameraParamWithConfigData(UIActorCameraHelper, SpawnNpcConfig)
+  if r1_130 then
+    r0_130:SetTargetActorState(true, r6_130, r2_130, r9_130)
+    r0_130:PlayUINpcAnimation(true, r2_130, r3_130, r4_130)
+    local r13_130 = r10_130:GetComponentByClass(UCameraComponent:StaticClass())
+    r11_130:SetCameraStartTrans(r13_130:K2_GetComponentToWorld(), r13_130.FieldOfView, r6_130)
+    r0_130:SetCameraParamWithConfigData(r11_130, r5_130)
   else
-    if IsHaveInOutAnim then
-      if IsValid(Player) and Player.IsInAir then
-        IsHaveInOutAnim = false
+    if r9_130 then
+      if IsValid(r10_130) and r10_130.IsInAir then
+        r9_130 = false
       end
-      local UIObj = self:GetUIObj(UIName)
-      if nil ~= UIObj and UIObj.IsAddInDeque then
-        IsHaveInOutAnim = false
+      local r13_130 = r0_130:GetUIObj(r2_130)
+      if r13_130 ~= nil and r13_130.IsAddInDeque then
+        r9_130 = false
       end
     end
-    self:SetTargetActorState(false, UINpcActorForCreate, UIName, IsHaveInOutAnim)
-    self:PlayUINpcAnimation(false, UIName, NpcId, Params)
-    if nil ~= RecoverTime then
-      local function OnRecorverCameraEnd()
-        local TargetUI = self:GetUIObj(UIName)
-        
-        if TargetUI and TargetUI.OnRecorverCameraEnd then
-          TargetUI:OnRecorverCameraEnd()
+    r0_130:SetTargetActorState(false, r6_130, r2_130, r9_130)
+    r0_130:PlayUINpcAnimation(false, r2_130, r3_130, r4_130)
+    if r8_130 ~= nil then
+      r11_130:RecorverCamera(r0_130, function()
+        -- line: [2924, 2929] id: 131
+        local r0_131 = r0_130:GetUIObj(r2_130)
+        if r0_131 and r0_131.OnRecorverCameraEnd then
+          r0_131:OnRecorverCameraEnd()
         end
-      end
-      
-      UIActorCameraHelper:RecorverCamera(self, OnRecorverCameraEnd, RecoverTime)
+      end, r8_130)
     end
   end
 end
-
-local FixedCameraCache = {}
-
-function BP_UIManagerComponent_C:SwitchFixedCamera(bInOut, NpcId, Hidetag, OriginSelf, UIName, Parms)
-  if nil == NpcId then
+local r9_0 = {}
+function r6_0.SwitchFixedCamera(r0_132, r1_132, r2_132, r3_132, r4_132, r5_132, r6_132)
+  -- line: [2942, 3047] id: 132
+  if r2_132 == nil then
     ScreenPrint("SwitchFixedCamera:跳转镜头失败NpcId为空")
     DebugPrint("SwitchFixedCamera Failed NpcId is nil ")
-    return
+    return 
   end
-  local PlayerController = UGameplayStatics.GetPlayerController(self, 0)
-  local PlayerCharacter = UGameplayStatics.GetPlayerCharacter(self, 0)
-  local SpawnNpcConfig, UINpcActorForCreate = DataMgr.SpawnNPC[NpcId]
-  if nil == SpawnNpcConfig then
-    ScreenPrint("SwitchFixedCamera:没有找到表内数据，请检查NpcId" .. (NpcId or "NpcId为空"))
+  local r7_132 = UGameplayStatics.GetPlayerController(r0_132, 0)
+  local r8_132 = UGameplayStatics.GetPlayerCharacter(r0_132, 0)
+  local r9_132 = DataMgr.SpawnNPC[r2_132]
+  local r10_132 = nil
+  if r9_132 == nil then
+    ScreenPrint("SwitchFixedCamera:没有找到表内数据，请检查NpcId" .. (r2_132 and "NpcId为空"))
     DebugPrint("SwitchFixedCamera:没有找到表内数据 SpawnNpcConfig 为空 ")
-    return
+    return 
   end
-  
-  local function CreatNpcAndSwitch()
-    if UIName then
-      self:SwitchUINpcCamera(bInOut, UIName, NpcId, Parms)
+  local function r11_132()
+    -- line: [2957, 2963] id: 133
+    if r5_132 then
+      r0_132:SwitchUINpcCamera(r1_132, r5_132, r2_132, r6_132)
     else
       ScreenPrint("生成NPC镜头UIName为空")
     end
   end
-  
-  local cameraPath
-  local CurrentPlatform = CommonUtils.GetDeviceTypeByPlatformName(self)
-  if "Mobile" == CurrentPlatform and SpawnNpcConfig.FixedCameraM then
-    cameraPath = SpawnNpcConfig.FixedCameraM
-  elseif SpawnNpcConfig.FixedCamera then
-    cameraPath = SpawnNpcConfig.FixedCamera
+  local r12_132 = nil
+  if r5_0.GetDeviceTypeByPlatformName(r0_132) == "Mobile" and r9_132.FixedCameraM then
+    r12_132 = r9_132.FixedCameraM
+  elseif r9_132.FixedCamera then
+    r12_132 = r9_132.FixedCamera
   else
     DebugPrint("SwitchFixedCamera:表内没有配置固定镜头：生成NPC镜头")
-    CreatNpcAndSwitch()
-    return
+    r11_132()
+    return 
   end
-  
-  local function GetOrCreateCamera()
-    if FixedCameraCache[cameraPath] and IsValid(FixedCameraCache[cameraPath].actor) then
-      return FixedCameraCache[cameraPath].actor
+  local function r14_132()
+    -- line: [2985, 3010] id: 134
+    if r9_0[r12_132] and IsValid(r9_0[r12_132].actor) then
+      return r9_0[r12_132].actor
     end
-    local CameraClass = LoadClass(cameraPath)
-    if not CameraClass then
-      ScreenPrint("SwitchFixedCamera:无法加载相机蓝图类，请检查路径是否正确：" .. cameraPath)
+    local r0_134 = LoadClass(r12_132)
+    if not r0_134 then
+      ScreenPrint("SwitchFixedCamera:无法加载相机蓝图类，请检查路径是否正确：" .. r12_132)
       return nil
     end
-    local actor = UGameplayStatics.GetActorOfClass(OriginSelf, CameraClass)
-    if not actor then
+    local r1_134 = UGameplayStatics.GetActorOfClass(r4_132, r0_134)
+    if not r1_134 then
       ScreenPrint("SwitchFixedCamera:[WARNING] 未找到相机实例")
-      return
+      return 
     end
-    FixedCameraCache[cameraPath] = {class = CameraClass, actor = actor}
-    return actor
+    r9_0[r12_132] = {
+      class = r0_134,
+      actor = r1_134,
+    }
+    return r1_134
   end
-  
-  local ShopCamera = GetOrCreateCamera()
-  if not ShopCamera then
+  if not r14_132() then
     ScreenPrint("未找到相机实例")
-    CreatNpcAndSwitch()
-    return
+    r11_132()
+    return 
   end
-  if bInOut then
-    local ShopCamera = GetOrCreateCamera()
-    if ShopCamera then
-      ShopCamera.Camera:K2_SetRelativeLocation(ShopCamera.DefaultLocation, false, nil, false)
-      PlayerController:SetViewTargetWithBlend(ShopCamera, 0, EViewTargetBlendFunction.VTBlend_Linear, 0, false)
-      self.MoveFixedCamera(OriginSelf, ShopCamera.Camera)
+  if r1_132 then
+    local r16_132 = r14_132()
+    if r16_132 then
+      r16_132.Camera:K2_SetRelativeLocation(r16_132.DefaultLocation, false, nil, false)
+      r7_132:SetViewTargetWithBlend(r16_132, 0, EViewTargetBlendFunction.VTBlend_Linear, 0, false)
+      r0_132.MoveFixedCamera(r4_132, r16_132.Camera)
     end
-    if PlayerCharacter and Hidetag then
-      PlayerCharacter:SetActorHideTag(Hidetag, true)
+    if r8_132 and r3_132 then
+      r8_132:SetActorHideTag(r3_132, true)
     end
   else
-    if IsValid(OriginSelf.CameraHandle) then
-      ULTweenBPLibrary.KillIfIsTweening(OriginSelf, OriginSelf.CameraHandle)
+    if IsValid(r4_132.CameraHandle) then
+      ULTweenBPLibrary.KillIfIsTweening(r4_132, r4_132.CameraHandle)
     end
-    local CachedViewTarget = rawget(OriginSelf, "OriginalViewTarget")
+    local r16_132 = rawget(r4_132, "OriginalViewTarget")
     if IsValid() then
-      PlayerController:SetViewTargetWithBlend(OriginSelf.OriginalViewTarget, 0, UE4.EViewTargetBlendFunction.VTBlend_Linear, 0, false)
+      r7_132:SetViewTargetWithBlend(r4_132.OriginalViewTarget, 0, UE4.EViewTargetBlendFunction.VTBlend_Linear, 0, false)
     else
-      DebugPrint("SwitchFixedCamera:UIState的OriginalViewTarget为空  " .. (UIName or "UIName为空"))
-      OriginSelf:GetOwningPlayer():SetViewTargetWithBlend(PlayerCharacter, 0, UE4.EViewTargetBlendFunction.VTBlend_Linear, 0, false)
+      DebugPrint("SwitchFixedCamera:UIState的OriginalViewTarget为空  " .. (r5_132 and "UIName为空"))
+      r4_132:GetOwningPlayer():SetViewTargetWithBlend(r8_132, 0, UE4.EViewTargetBlendFunction.VTBlend_Linear, 0, false)
     end
-    if PlayerCharacter and Hidetag then
-      PlayerCharacter:SetActorHideTag(Hidetag, false)
+    if r8_132 and r3_132 then
+      r8_132:SetActorHideTag(r3_132, false)
     end
   end
 end
-
-function BP_UIManagerComponent_C:MoveFixedCamera(Camera)
-  local StartPosition = Camera.RelativeLocation
-  local EndPosition = FVector(0)
-  self.CameraHandle = ULTweenBPLibrary.Vector3To(self, {
-    self,
-    function(_, Value)
-      Camera:K2_SetRelativeLocation(Value, false, nil, false)
+function r6_0.MoveFixedCamera(r0_135, r1_135)
+  -- line: [3051, 3057] id: 135
+  r0_135.CameraHandle = ULTweenBPLibrary.Vector3To(r0_135, {
+    r0_135,
+    function(r0_136, r1_136)
+      -- line: [3054, 3056] id: 136
+      r1_135:K2_SetRelativeLocation(r1_136, false, nil, false)
     end
-  }, StartPosition, EndPosition, 0.5, 0, 17)
+  }, r1_135.RelativeLocation, FVector(0), 0.5, 0, 17)
 end
-
-function BP_UIManagerComponent_C:SetCameraParamWithConfigData(ToCreateUIActorCameraHelper, SpawnNpcConfig)
-  local CameraPositionStart, CameraRotationStart, CameraPosition, CameraRotation
-  local PlatformName = CommonUtils.GetDeviceTypeByPlatformName(self)
-  if "Mobile" == PlatformName and SpawnNpcConfig.CameraPositionStartM then
-    CameraPositionStart = SpawnNpcConfig.CameraPositionStartM
-    CameraRotationStart = SpawnNpcConfig.CameraRotationStartM
-    CameraPosition = SpawnNpcConfig.CameraPositionM
-    CameraRotation = SpawnNpcConfig.CameraRotationM
-    CameraRotation = self:CalculatorCameraRotationbyResolution(SpawnNpcConfig, CameraRotation)
+function r6_0.SetCameraParamWithConfigData(r0_137, r1_137, r2_137)
+  -- line: [3064, 3094] id: 137
+  local r3_137 = nil
+  local r4_137 = nil
+  local r5_137 = nil
+  local r6_137 = nil
+  if r5_0.GetDeviceTypeByPlatformName(r0_137) == "Mobile" and r2_137.CameraPositionStartM then
+    r3_137 = r2_137.CameraPositionStartM
+    r4_137 = r2_137.CameraRotationStartM
+    r5_137 = r2_137.CameraPositionM
+    r6_137 = r0_137:CalculatorCameraRotationbyResolution(r2_137, r2_137.CameraRotationM)
   else
-    CameraPositionStart = SpawnNpcConfig.CameraPositionStart
-    CameraRotationStart = SpawnNpcConfig.CameraRotationStart
-    CameraPosition = SpawnNpcConfig.CameraPosition
-    CameraRotation = SpawnNpcConfig.CameraRotation
-    CameraRotation = self:CalculatorCameraRotationbyResolution(SpawnNpcConfig, CameraRotation)
+    r3_137 = r2_137.CameraPositionStart
+    r4_137 = r2_137.CameraRotationStart
+    r5_137 = r2_137.CameraPosition
+    r6_137 = r0_137:CalculatorCameraRotationbyResolution(r2_137, r2_137.CameraRotation)
   end
-  local StartCameraLocation = FVector(CameraPositionStart[1], CameraPositionStart[2], CameraPositionStart[3])
-  local StartCameraRotation = FRotator(CameraRotationStart[1], CameraRotationStart[2], CameraRotationStart[3])
-  local Controller = UE4.UGameplayStatics.GetPlayerController(self, 0)
-  Controller:SetViewTargetWithBlend(ToCreateUIActorCameraHelper, 0, UE4.EViewTargetBlendFunction.VTBlend_Linear, 0, false)
-  if SpawnNpcConfig.CameraFov then
-    ToCreateUIActorCameraHelper:StartFOVAnim(SpawnNpcConfig.CameraFov, SpawnNpcConfig.CameraTime, 14)
+  local r8_137 = FVector(r3_137[1], r3_137[2], r3_137[3])
+  local r9_137 = FRotator(r4_137[1], r4_137[2], r4_137[3])
+  UE4.UGameplayStatics.GetPlayerController(r0_137, 0):SetViewTargetWithBlend(r1_137, 0, UE4.EViewTargetBlendFunction.VTBlend_Linear, 0, false)
+  if r2_137.CameraFov then
+    r1_137:StartFOVAnim(r2_137.CameraFov, r2_137.CameraTime, 14)
   end
-  ToCreateUIActorCameraHelper:TransformCamera(FVector(CameraPosition[1], CameraPosition[2], CameraPosition[3]), FRotator(CameraRotation[1], CameraRotation[2], CameraRotation[3]), SpawnNpcConfig.CameraTime, 17, StartCameraLocation, StartCameraRotation)
+  r1_137:TransformCamera(FVector(r5_137[1], r5_137[2], r5_137[3]), FRotator(r6_137[1], r6_137[2], r6_137[3]), r2_137.CameraTime, 17, r8_137, r9_137)
 end
-
-function BP_UIManagerComponent_C:CalculatorCameraRotationbyResolution(SpawnNpcConfig, CameraRotation)
-  local CameraRotationDelta = SpawnNpcConfig.CameraRotation2
-  if nil == CameraRotationDelta then
-    return CameraRotation
+function r6_0.CalculatorCameraRotationbyResolution(r0_138, r1_138, r2_138)
+  -- line: [3098, 3132] id: 138
+  local r3_138 = r1_138.CameraRotation2
+  if r3_138 == nil then
+    return r2_138
   end
-  if not (type(CameraRotationDelta) == "table" and CameraRotationDelta[1] and CameraRotationDelta[2]) or not CameraRotationDelta[3] then
+  if type(r3_138) ~= "table" or not r3_138[1] or not r3_138[2] or not r3_138[3] then
     ScreenPrint("SpawnNpc表中的CameraRotationDelta数据有误，没找到对应的3个坐标")
-    return CameraRotation
+    return r2_138
   end
-  local FinalCameraRotation = {
-    CameraRotation[1] + CameraRotationDelta[1],
-    CameraRotation[2] + CameraRotationDelta[2],
-    CameraRotation[3] + CameraRotationDelta[3]
+  local r4_138 = {
+    r2_138[1] + r3_138[1],
+    r2_138[2] + r3_138[2],
+    r2_138[3] + r3_138[3]
   }
-  local resolution = UWidgetLayoutLibrary.GetViewportSize(self) / UWidgetLayoutLibrary.GetViewportScale(self)
-  local width = resolution.X
-  local height = resolution.Y
-  local Aspectratio = width / height
-  local Aspectratio23To9 = 2.5555555555555554
-  local Aspectratio16To9 = 1.7777777777777777
-  local Aspectratio4To3 = 1.3333333333333333
-  local Alalpha = (Aspectratio - Aspectratio16To9) / (Aspectratio23To9 - Aspectratio16To9)
-  local minAlpha = (Aspectratio4To3 - Aspectratio16To9) / (Aspectratio23To9 - Aspectratio16To9)
-  local maxAlpha = 1.0
-  Alalpha = math.clamp(Alalpha, minAlpha, maxAlpha)
-  local AimCameraRotationEnd = {
-    math.lerp(CameraRotation[1] or 0, FinalCameraRotation[1] or 0, Alalpha) or 0,
-    math.lerp(CameraRotation[2] or 0, FinalCameraRotation[2] or 0, Alalpha) or 0,
-    math.lerp(CameraRotation[3] or 0, FinalCameraRotation[3] or 0, Alalpha) or 0
-  }
-  DebugPrint("yklua CalculatorCameraRotationbyResolution Aspectratio:" .. (Aspectratio or "nil") .. " Alalpha:" .. (Alalpha or "nil") .. "resolution X:" .. (width or "nil") .. " Y:" .. (height or "nil"))
-  return AimCameraRotationEnd
+  local r5_138 = UWidgetLayoutLibrary.GetViewportSize(r0_138) / UWidgetLayoutLibrary.GetViewportScale(r0_138)
+  local r6_138 = r5_138.X
+  local r7_138 = r5_138.Y
+  local r8_138 = r6_138 / r7_138
+  local r9_138 = 2.5555555555555554
+  local r10_138 = 1.7777777777777777
+  local r12_138 = math.clamp((r8_138 - r10_138) / (r9_138 - r10_138), (1.3333333333333333 - r10_138) / (r9_138 - r10_138), 1)
+  local r15_138 = {}
+  local r16_138 = math.lerp
+  local r17_138 = r2_138[1] and 0
+  r16_138 = r16_138(r17_138, r4_138[1] and 0, r12_138) and 0
+  r17_138 = math.lerp
+  local r18_138 = r2_138[2] and 0
+  r17_138 = r17_138(r18_138, r4_138[2] and 0, r12_138) and 0
+  r18_138 = math.lerp
+  local r19_138 = r2_138[3] and 0
+  r18_138 = r18_138(r19_138, r4_138[3] and 0, r12_138) and 0
+  -- setlist for #15 failed
+  r16_138 = DebugPrint
+  r17_138 = "yklua CalculatorCameraRotationbyResolution Aspectratio:"
+  r18_138 = r8_138 and "nil"
+  r19_138 = " Alalpha:"
+  local r20_138 = r12_138 and "nil"
+  local r21_138 = "resolution X:"
+  local r22_138 = r6_138 and "nil"
+  r16_138(r17_138 .. r18_138 .. r19_138 .. r20_138 .. r21_138 .. r22_138 .. " Y:" .. (r7_138 and "nil"))
+  return r15_138
 end
-
-function BP_UIManagerComponent_C:TweenToMoveCamera(Camera, EndPosition)
-  if not IsValid(Camera) then
-    return
+function r6_0.TweenToMoveCamera(r0_139, r1_139, r2_139)
+  -- line: [3137, 3149] id: 139
+  if not IsValid(r1_139) then
+    return 
   end
-  if self.UINpcCameraHandle then
-    ULTweenBPLibrary.KillIfIsTweening(self, self.UINpcCameraHandle)
+  if r0_139.UINpcCameraHandle then
+    ULTweenBPLibrary.KillIfIsTweening(r0_139, r0_139.UINpcCameraHandle)
   end
-  local StartPosition = Camera.RelativeLocation
-  self.UINpcCameraHandle = ULTweenBPLibrary.Vector3To(self, {
-    self,
-    function(_, Value)
-      Camera:K2_SetRelativeLocation(Value, false, nil, false)
+  r0_139.UINpcCameraHandle = ULTweenBPLibrary.Vector3To(r0_139, {
+    r0_139,
+    function(r0_140, r1_140)
+      -- line: [3145, 3147] id: 140
+      r1_139:K2_SetRelativeLocation(r1_140, false, nil, false)
     end
-  }, StartPosition, EndPosition, 0.5, 0, 17)
+  }, r1_139.RelativeLocation, r2_139, 0.5, 0, 17)
 end
-
-function BP_UIManagerComponent_C:SetTargetActorState(IsLoaded, TargetActor, ReasonStr, IsHaveInOutAnim)
-  if IsValid(TargetActor) and not IsHaveInOutAnim then
-    CommonUtils:SetActorTickableWhenPaused(TargetActor, IsLoaded)
-    if TargetActor.MeleeWeapon then
-      CommonUtils:SetActorTickableWhenPaused(TargetActor.MeleeWeapon, IsLoaded)
+function r6_0.SetTargetActorState(r0_141, r1_141, r2_141, r3_141, r4_141)
+  -- line: [3156, 3176] id: 141
+  if IsValid(r2_141) and not r4_141 then
+    r5_0:SetActorTickableWhenPaused(r2_141, r1_141)
+    if r2_141.MeleeWeapon then
+      r5_0:SetActorTickableWhenPaused(r2_141.MeleeWeapon, r1_141)
     end
-    if TargetActor.RangedWeapon then
-      CommonUtils:SetActorTickableWhenPaused(TargetActor.RangedWeapon, IsLoaded)
+    if r2_141.RangedWeapon then
+      r5_0:SetActorTickableWhenPaused(r2_141.RangedWeapon, r1_141)
     end
-    if TargetActor.UltraWeapon then
-      CommonUtils:SetActorTickableWhenPaused(TargetActor.UltraWeapon, IsLoaded)
+    if r2_141.UltraWeapon then
+      r5_0:SetActorTickableWhenPaused(r2_141.UltraWeapon, r1_141)
     end
-    if type(TargetActor.SetEmoIdleEnabled) == "function" then
-      TargetActor:SetEmoIdleEnabled(not IsLoaded)
+    if type(r2_141.SetEmoIdleEnabled) == "function" then
+      r2_141:SetEmoIdleEnabled(not r1_141)
     end
-    if "function" == type(TargetActor.KawaiiSwitch) then
-      TargetActor:KawaiiSwitch(IsLoaded)
+    if type(r2_141.KawaiiSwitch) == "function" then
+      r2_141:KawaiiSwitch(r1_141)
     end
-    TargetActor:SetActorHiddenInGame(not IsLoaded)
+    r2_141:SetActorHiddenInGame(not r1_141)
   end
 end
-
-function BP_UIManagerComponent_C:RegisterBattleShortCutHudKey(ShortCutKeyHud)
-  DebugPrint("RegisterBattleShortCutHudKey:" .. tostring(ShortCutKeyHud))
-  if nil == ShortCutKeyHud then
-    return
+function r6_0.RegisterBattleShortCutHudKey(r0_142, r1_142)
+  -- line: [3179, 3185] id: 142
+  DebugPrint("RegisterBattleShortCutHudKey:" .. tostring(r1_142))
+  if r1_142 == nil then
+    return 
   end
-  self.ShortCutHudKeys[ShortCutKeyHud] = true
+  r0_142.ShortCutHudKeys[r1_142] = true
 end
-
-function BP_UIManagerComponent_C:UnRegisterBattleShortCutHudKey(ShortCutKeyHud)
-  DebugPrint("UnRegisterBattleShortCutHudKey:" .. tostring(ShortCutKeyHud))
-  if nil == ShortCutKeyHud then
-    return
+function r6_0.UnRegisterBattleShortCutHudKey(r0_143, r1_143)
+  -- line: [3188, 3194] id: 143
+  DebugPrint("UnRegisterBattleShortCutHudKey:" .. tostring(r1_143))
+  if r1_143 == nil then
+    return 
   end
-  self.ShortCutHudKeys[ShortCutKeyHud] = nil
+  r0_143.ShortCutHudKeys[r1_143] = nil
 end
-
-function BP_UIManagerComponent_C:SetBattleShortCutHudKeysHidden(bHidden)
-  if bHidden then
-    for KeyHud, _ in pairs(self.ShortCutHudKeys) do
-      if IsValid(KeyHud) then
-        KeyHud:SetVisibility(UE4.ESlateVisibility.Hidden)
+function r6_0.SetBattleShortCutHudKeysHidden(r0_144, r1_144)
+  -- line: [3197, 3211] id: 144
+  if r1_144 then
+    for r6_144, r7_144 in pairs(r0_144.ShortCutHudKeys) do
+      if IsValid(r6_144) then
+        r6_144:SetVisibility(UE4.ESlateVisibility.Hidden)
       end
     end
+    -- close: r2_144
   else
-    for KeyHud, _ in pairs(self.ShortCutHudKeys) do
-      if IsValid(KeyHud) then
-        KeyHud:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    for r6_144, r7_144 in pairs(r0_144.ShortCutHudKeys) do
+      if IsValid(r6_144) then
+        r6_144:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
       end
     end
+    -- close: r2_144
   end
 end
-
-function BP_UIManagerComponent_C:HideAllComponentUI(IsHide, Tag, CompName)
-  if "Billboard" == CompName or nil == CompName then
-    DebugPrint("BP_UIManagerComponent_C:HideAllComponentUI SetIsForbidenShowBloodUI", IsHide, Tag)
-    UE4.UMainBar.SetIsForbidenShowBloodUI(IsHide)
+function r6_0.HideAllComponentUI(r0_145, r1_145, r2_145, r3_145)
+  -- line: [3217, 3260] id: 145
+  if r3_145 == "Billboard" or r3_145 == nil then
+    DebugPrint("BP_UIManagerComponent_C:HideAllComponentUI SetIsForbidenShowBloodUI", r1_145, r2_145)
+    UE4.UMainBar.SetIsForbidenShowBloodUI(r1_145)
   end
-  for Eid, WidgetInfo in pairs(self.WidgetComponentList) do
-    for WidgetName, WidgetComp in pairs(WidgetInfo) do
-      if CompName and "" ~= CompName and CompName ~= WidgetName then
-      elseif IsValid(WidgetComp) then
-        local Widget = WidgetComp:GetWidget()
-        if "Billboard" == WidgetName and not IsHide and Widget and (Widget:Cast(UMainBar) or Widget:Cast(UHUD_ToughnessBar)) then
-        elseif type(WidgetComp.SetWidgetHiddenByTag) == "function" then
-          WidgetComp:SetWidgetHiddenByTag(IsHide, Tag)
-        elseif Widget then
-          if IsHide then
-            Widget:Hide(Tag)
-          else
-            Widget:Show(Tag)
+  for r8_145, r9_145 in pairs(r0_145.WidgetComponentList) do
+    for r14_145, r15_145 in pairs(r9_145) do
+      if (not r3_145 or r3_145 == "" or r3_145 == r14_145) and IsValid(r15_145) then
+        local r16_145 = r15_145:GetWidget()
+        if r14_145 ~= "Billboard" or r1_145 or not r16_145 then
+          if type(r15_145.SetWidgetHiddenByTag) == "function" then
+            r15_145:SetWidgetHiddenByTag(r1_145, r2_145)
+          elseif r16_145 then
+            if r1_145 then
+              r16_145:Hide(r2_145)
+            else
+              r16_145:Show(r2_145)
+            end
           end
         end
       end
     end
+    -- close: r10_145
   end
-  EventManager:FireEvent(EventID.OnHideAllComponentUI, IsHide, Tag)
+  -- close: r4_145
+  EventManager:FireEvent(EventID.OnHideAllComponentUI, r1_145, r2_145)
+  -- warn: not visited block [15]
+  -- block#15:
+  -- goto label_74
 end
-
-function BP_UIManagerComponent_C:PlayScreenEffectAnim(BPPath, EffectName, AnimInfoList)
-  local ScreenEffectUI = self:LoadUI(BPPath, EffectName, UIConst.ZORDER_SCREEN_EFFECT)
-  if nil == ScreenEffectUI then
-    return
+function r6_0.PlayScreenEffectAnim(r0_146, r1_146, r2_146, r3_146)
+  -- line: [3266, 3290] id: 146
+  local r4_146 = r0_146:LoadUI(r1_146, r2_146, UIConst.ZORDER_SCREEN_EFFECT)
+  if r4_146 == nil then
+    return 
   end
-  ScreenEffectUI:Show()
-  if #AnimInfoList > 1 then
-    if not ScreenEffectUI:IsAnimationPlaying(ScreenEffectUI[AnimInfoList[1].AnimName]) and not ScreenEffectUI:IsAnimationPlaying(ScreenEffectUI[AnimInfoList[2].AnimName]) then
-      local function PlayAnimFinished(EffectPanelUI)
-        if IsValid(EffectPanelUI) then
-          EffectPanelUI:PlayAnimation(EffectPanelUI[AnimInfoList[2].AnimName], AnimInfoList[2].StartTime, AnimInfoList[2].LoopNums)
+  r4_146:Show()
+  if #r3_146 > 1 then
+    if not r4_146:IsAnimationPlaying(r4_146[r3_146[1].AnimName]) and not r4_146:IsAnimationPlaying(r4_146[r3_146[2].AnimName]) then
+      r4_146:BindToAnimationFinished(r4_146[r3_146[1].AnimName], {
+        r4_146,
+        function(r0_147)
+          -- line: [3275, 3279] id: 147
+          if IsValid(r0_147) then
+            r0_147:PlayAnimation(r0_147[r3_146[2].AnimName], r3_146[2].StartTime, r3_146[2].LoopNums)
+          end
         end
-      end
-      
-      ScreenEffectUI:BindToAnimationFinished(ScreenEffectUI[AnimInfoList[1].AnimName], {ScreenEffectUI, PlayAnimFinished})
-      ScreenEffectUI:PlayAnimation(ScreenEffectUI[AnimInfoList[1].AnimName], AnimInfoList[1].StartTime, AnimInfoList[1].LoopNums)
+      })
+      r4_146:PlayAnimation(r4_146[r3_146[1].AnimName], r3_146[1].StartTime, r3_146[1].LoopNums)
     end
   else
-    local AnimInfo = AnimInfoList[1]
-    if not ScreenEffectUI:IsAnimationPlaying(ScreenEffectUI[AnimInfo.AnimName]) then
-      ScreenEffectUI:PlayAnimation(ScreenEffectUI[AnimInfo.AnimName], AnimInfo.StartTime, AnimInfo.LoopNums)
+    local r5_146 = r3_146[1]
+    if not r4_146:IsAnimationPlaying(r4_146[r5_146.AnimName]) then
+      r4_146:PlayAnimation(r4_146[r5_146.AnimName], r5_146.StartTime, r5_146.LoopNums)
     end
   end
-  return ScreenEffectUI
+  return r4_146
 end
-
-function BP_UIManagerComponent_C:CheckNeedExitUIMode(ExceptUI)
-  local GameInstance = UE4.UGameplayStatics.GetGameInstance(self)
-  local TalkContext = GameInstance:TryGetTalkContext()
-  if TalkContext and TalkContext:HasHiddenGameUI() then
+function r6_0.CheckNeedExitUIMode(r0_148, r1_148)
+  -- line: [3296, 3310] id: 148
+  local r3_148 = UE4.UGameplayStatics.GetGameInstance(r0_148):TryGetTalkContext()
+  if r3_148 and r3_148:HasHiddenGameUI() then
     return false
   end
-  local allUI = self.UIInstances:ToTable()
-  for _, widget in pairs(allUI) do
-    if widget.IsInUIMode and widget ~= ExceptUI and (widget:GetParent() or widget:IsInViewport()) then
+  for r9_148, r10_148 in pairs(r0_148.UIInstances:ToTable()) do
+    if r10_148.IsInUIMode and r10_148 ~= r1_148 and (r10_148:GetParent() or r10_148:IsInViewport()) then
       return false
     end
   end
+  -- close: r5_148
   return true
 end
-
-function BP_UIManagerComponent_C:GetTopUIModeUI(ExceptUI)
-  local allUI = self.UIInstances:ToTable()
-  local ZOrder = -10000
-  local TopWidget
-  for _, widget in pairs(allUI) do
-    if widget.IsInUIMode and widget ~= ExceptUI and (widget:GetParent() or widget:IsInViewport()) then
-      local CurZOeder = widget:GetZOrder()
-      if ZOrder <= CurZOeder then
-        ZOrder = CurZOeder
-        TopWidget = widget
+function r6_0.GetTopUIModeUI(r0_149, r1_149)
+  -- line: [3312, 3326] id: 149
+  local r2_149 = r0_149.UIInstances:ToTable()
+  local r3_149 = -10000
+  local r4_149 = nil
+  for r9_149, r10_149 in pairs(r2_149) do
+    if r10_149.IsInUIMode and r10_149 ~= r1_149 and (r10_149:GetParent() or r10_149:IsInViewport()) then
+      local r11_149 = r10_149:GetZOrder()
+      if r3_149 <= r11_149 then
+        r3_149 = r11_149
+        r4_149 = r10_149
       end
     end
   end
-  return TopWidget
+  -- close: r5_149
+  return r4_149
 end
-
-function BP_UIManagerComponent_C:SetPauseWorldRenderingSwitch(UIName, bOpen)
-  if bOpen then
-    self.AllNotRenderWorldUI[UIName] = 1
-    if UE4.UGameplayStatics.GetEnableWorldRendering(self) then
-      UE4.UGameplayStatics.SetEnableWorldRendering(self, false)
+function r6_0.SetPauseWorldRenderingSwitch(r0_150, r1_150, r2_150)
+  -- line: [3328, 3341] id: 150
+  if r2_150 then
+    r0_150.AllNotRenderWorldUI[r1_150] = 1
+    if UE4.UGameplayStatics.GetEnableWorldRendering(r0_150) then
+      UE4.UGameplayStatics.SetEnableWorldRendering(r0_150, false)
     end
   else
-    self.AllNotRenderWorldUI[UIName] = nil
-    if IsEmptyTable(self.AllNotRenderWorldUI) then
-      UE4.UGameplayStatics.SetEnableWorldRendering(self, true)
+    r0_150.AllNotRenderWorldUI[r1_150] = nil
+    if IsEmptyTable(r0_150.AllNotRenderWorldUI) then
+      UE4.UGameplayStatics.SetEnableWorldRendering(r0_150, true)
     end
   end
 end
-
-function BP_UIManagerComponent_C:ShowBossBattleOpenTitle(bIsShow)
-  local BossBattleOpenUI = self:GetUIObj("HardBossBattleOpen")
-  if BossBattleOpenUI then
-    BossBattleOpenUI:ShowHardBossTitle(bIsShow)
+function r6_0.ShowBossBattleOpenTitle(r0_151, r1_151)
+  -- line: [3343, 3350] id: 151
+  local r2_151 = r0_151:GetUIObj("HardBossBattleOpen")
+  if r2_151 then
+    r2_151:ShowHardBossTitle(r1_151)
   else
     DebugPrint("找不到Boss战开战UI")
   end
 end
-
-function BP_UIManagerComponent_C:RecordShowInStoryConfig(UIConfig, UIName)
-  self.ShowInStoryUINames = self.ShowInStoryUINames or {}
-  if UIConfig.ShowInStory then
-    self.ShowInStoryUINames[UIName] = UIName
+function r6_0.RecordShowInStoryConfig(r0_152, r1_152, r2_152)
+  -- line: [3352, 3357] id: 152
+  r0_152.ShowInStoryUINames = r0_152.ShowInStoryUINames and {}
+  if r1_152.ShowInStory then
+    r0_152.ShowInStoryUINames[r2_152] = r2_152
   end
 end
-
-function BP_UIManagerComponent_C:GetShowInStoryUINames()
-  return self.ShowInStoryUINames or {}
+function r6_0.GetShowInStoryUINames(r0_153)
+  -- line: [3359, 3361] id: 153
+  return r0_153.ShowInStoryUINames and {}
 end
-
-function BP_UIManagerComponent_C:PlayBattleButtonPhoneVX(SkillName, IsClose)
-  local Widget = self:GetUIObj("BattleMain")
-  if not Widget then
+function r6_0.PlayBattleButtonPhoneVX(r0_154, r1_154, r2_154)
+  -- line: [3366, 3376] id: 154
+  local r3_154 = r0_154:GetUIObj("BattleMain")
+  if not r3_154 then
     print(_G.LogTag, "UIManager get widget BattleMain failed")
-    return
+    return 
   end
-  Widget = Widget.Char_Skill
-  if CommonUtils.GetDeviceTypeByPlatformName(self) == "Mobile" then
-    Widget.Jump:PlayVX(SkillName, IsClose)
+  r3_154 = r3_154.Char_Skill
+  if r5_0.GetDeviceTypeByPlatformName(r0_154) == "Mobile" then
+    r3_154.Jump:PlayVX(r1_154, r2_154)
   end
 end
-
-function BP_UIManagerComponent_C:LoadBossSkillTipsUI(BossSkillToastId)
-  local BossSkillToastConfig = DataMgr.BossSkillToast[BossSkillToastId]
-  local TipsStyle = BossSkillToastConfig.TipsStyle or "Common"
-  TipsStyle = string.lower(TipsStyle)
-  local UIName
-  if "common" == TipsStyle then
-    UIName = "BossSkillToast"
+function r6_0.LoadBossSkillTipsUI(r0_155, r1_155)
+  -- line: [3378, 3393] id: 155
+  local r3_155 = string.lower(DataMgr.BossSkillToast[r1_155].TipsStyle and "Common")
+  local r4_155 = nil
+  if r3_155 == "common" then
+    r4_155 = "BossSkillToast"
   else
-    UIName = "SpecialBossSkillToast"
+    r4_155 = "SpecialBossSkillToast"
   end
-  local BossSkillTipsUI = self:GetUIObj(UIName)
-  if BossSkillTipsUI then
-    BossSkillTipsUI:Close()
+  local r5_155 = r0_155:GetUIObj(r4_155)
+  if r5_155 then
+    r5_155:Close()
   end
-  return self:LoadUINew(UIName, BossSkillToastId)
+  return r0_155:LoadUINew(r4_155, r1_155)
 end
-
-function BP_UIManagerComponent_C:GetArmoryUIObj()
-  return self:GetUI("ArmoryDetail") or self:GetUI("ArmoryMain")
+function r6_0.GetArmoryUIObj(r0_156)
+  -- line: [3395, 3397] id: 156
+  return r0_156:GetUI("ArmoryDetail") and r0_156:GetUI("ArmoryMain")
 end
-
-function BP_UIManagerComponent_C:ShowDispatchTip(DispatchId)
-  local Avatar = GWorld:GetAvatar()
-  if not Avatar then
-    return
+function r6_0.ShowDispatchTip(r0_157, r1_157)
+  -- line: [3400, 3420] id: 157
+  local r2_157 = GWorld:GetAvatar()
+  if not r2_157 then
+    return 
   end
-  local RegionId = DataMgr.Dispatch[DispatchId].RegionId
-  local Condition = DataMgr.Region[RegionId].RegionDispCondition
-  local Check = ConditionUtils.CheckCondition(Avatar, Condition)
-  if false == Check then
+  if ConditionUtils.CheckCondition(r2_157, DataMgr.Region[DataMgr.Dispatch[r1_157].RegionId].RegionDispCondition) == false then
     DebugPrint("事件所在区域未解锁")
-    return
+    return 
   end
-  local DispatchUIId = DataMgr.Dispatch[DispatchId].DispatchUIId
-  local DispatchName = DataMgr.DispatchUI[DispatchUIId].DispatchName
-  self:AddTimer(1.8, function()
-    local Text = string.format(GText("UI_Dispatch_Toast_Unlock"), "【" .. GText(DispatchName) .. "】")
-    UIManager(self):ShowUITip(UIConst.Tip_CommonTop, Text)
-    DebugPrint("lkkkShowDispatchTip ", DispatchId)
+  local r7_157 = DataMgr.DispatchUI[DataMgr.Dispatch[r1_157].DispatchUIId].DispatchName
+  r0_157:AddTimer(1.8, function()
+    -- line: [3415, 3419] id: 158
+    UIManager(r0_157):ShowUITip(UIConst.Tip_CommonTop, string.format(GText("UI_Dispatch_Toast_Unlock"), "【" .. GText(r7_157) .. "】"))
+    DebugPrint("lkkkShowDispatchTip ", r1_157)
   end, false, 0, nil, false)
 end
-
-function BP_UIManagerComponent_C:LaunchAfterLoadingMgr()
+function r6_0.LaunchAfterLoadingMgr(r0_159)
+  -- line: [3424, 3437] id: 159
   DebugPrint(WarningTag, "UIManager.AfterLoadingMgr, 启动状态机")
-  self:DestroyAfterLoadingMgr()
-  local AfterLoadingMgr = require("BluePrints.UI.Common.AfterLoadingMgr")
-  self.AfterLoadingMgr = AfterLoadingMgr.New()
-  EventManager:AddEvent(EventID.OnGuideEnd, self.AfterLoadingMgr, function(_, GuidId)
-    self.AfterLoadingMgr.bGuideEndPending = true
-    self:TryResumeAfterLoadingMgr({
+  r0_159:DestroyAfterLoadingMgr()
+  r0_159.AfterLoadingMgr = require("BluePrints.UI.Common.AfterLoadingMgr").New()
+  EventManager:AddEvent(EventID.OnGuideEnd, r0_159.AfterLoadingMgr, function(r0_160, r1_160)
+    -- line: [3431, 3434] id: 160
+    r0_159.AfterLoadingMgr.bGuideEndPending = true
+    r0_159:TryResumeAfterLoadingMgr({
       "TriggerGuide",
       "MainLineQuest",
       "DynamicQuest"
     })
   end)
-  self.AfterLoadingMgr:Continue()
+  r0_159.AfterLoadingMgr:Continue()
 end
-
-function BP_UIManagerComponent_C:DestroyAfterLoadingMgr()
-  if self.AfterLoadingMgr and not self.AfterLoadingMgr:IsEnd() then
+function r6_0.DestroyAfterLoadingMgr(r0_161)
+  -- line: [3439, 3450] id: 161
+  if r0_161.AfterLoadingMgr and not r0_161.AfterLoadingMgr:IsEnd() then
     DebugPrint(WarningTag, "UIManager.AfterLoadingMgr, 强制清理掉上次没执行完的状态机")
   end
-  if self.AfterLoadingMgr then
-    EventManager:RemoveEvent(EventID.OnGuideEnd, self.AfterLoadingMgr)
+  if r0_161.AfterLoadingMgr then
+    EventManager:RemoveEvent(EventID.OnGuideEnd, r0_161.AfterLoadingMgr)
   end
-  self.AfterLoadingMgr = nil
+  r0_161.AfterLoadingMgr = nil
 end
-
-function BP_UIManagerComponent_C:TryPauseAfterLoadingMgr(PauseAfterLoadingState)
-  if not self.AfterLoadingMgr then
-    return
+function r6_0.TryPauseAfterLoadingMgr(r0_162, r1_162)
+  -- line: [3452, 3461] id: 162
+  if not r0_162.AfterLoadingMgr then
+    return 
   end
-  for _, State in ipairs(PauseAfterLoadingState) do
-    if self.AfterLoadingMgr:IsCurrentState(State) then
+  for r6_162, r7_162 in ipairs(r1_162) do
+    if r0_162.AfterLoadingMgr:IsCurrentState(r7_162) then
       DebugPrint(WarningTag, "UIManager.AfterLoadingMgr, UI打开触发继续状态机暂停")
-      self.AfterLoadingMgr:Pause()
-      return
+      r0_162.AfterLoadingMgr:Pause()
+      return 
     end
   end
+  -- close: r2_162
 end
-
-function BP_UIManagerComponent_C:FallbackAfterLoadingMgr()
-  if not self.AfterLoadingMgr then
-    return
+function r6_0.FallbackAfterLoadingMgr(r0_163)
+  -- line: [3463, 3468] id: 163
+  if not r0_163.AfterLoadingMgr then
+    return 
   end
-  if self.AfterLoadingMgr.bPause then
-    return
+  if r0_163.AfterLoadingMgr.bPause then
+    return 
   end
   DebugPrint(WarningTag, "UIManager.AfterLoadingMgr, 保底继续执行状态机，避免卡住")
-  self.AfterLoadingMgr:Fallback()
+  r0_163.AfterLoadingMgr:Fallback()
 end
-
-function BP_UIManagerComponent_C:TryResumeAfterLoadingMgr(PauseAfterLoadingState)
-  if not self.AfterLoadingMgr then
-    return
+function r6_0.TryResumeAfterLoadingMgr(r0_164, r1_164)
+  -- line: [3470, 3484] id: 164
+  if not r0_164.AfterLoadingMgr then
+    return 
   end
-  for _, State in ipairs(PauseAfterLoadingState) do
-    if self.AfterLoadingMgr:IsCurrentState(State) then
-      self:AddTimer(0.01, function()
-        if self.AfterLoadingMgr and not self.AfterLoadingMgr:IsEnd() then
+  for r6_164, r7_164 in ipairs(r1_164) do
+    if r0_164.AfterLoadingMgr:IsCurrentState(r7_164) then
+      r0_164:AddTimer(0.01, function()
+        -- line: [3474, 3480] id: 165
+        if r0_164.AfterLoadingMgr and not r0_164.AfterLoadingMgr:IsEnd() then
           DebugPrint(WarningTag, "UIManager.AfterLoadingMgr, UI关闭触发继续执行状态机")
-          self.AfterLoadingMgr:Continue()
+          r0_164.AfterLoadingMgr:Continue()
         end
-        return
-      end, false, 0, State)
-      return
+      end, false, 0, r7_164)
+      return 
+    end
+  end
+  -- close: r2_164
+end
+function r6_0.AddTimer(r0_166, r1_166, r2_166, r3_166, r4_166, r5_166, r6_166, ...)
+  -- line: [3488, 3491] id: 166
+  if r6_166 == nil then
+    r6_166 = true
+  end
+  return r6_0.Super.AddTimer(r0_166, r1_166, r2_166, r3_166, r4_166, r5_166, r6_166, ...)
+end
+function r6_0.SetUIPauseGame(r0_167, r1_167, r2_167)
+  -- line: [3493, 3498] id: 167
+  if not r0_167.UIPauseGameMap then
+    r0_167.UIPauseGameMap = {}
+  end
+  local r3_167 = r0_167.UIPauseGameMap
+  local r4_167 = nil	-- notice: implicit variable refs by block#[5]
+  if r2_167 then
+    r4_167 = true
+    if not r4_167 then
+      ::label_12::
+      r4_167 = nil
+    end
+  else
+    goto label_12	-- block#4 is visited secondly
+  end
+  r3_167[r1_167] = r4_167
+end
+function r6_0.IsUIPauseGame(r0_168)
+  -- line: [3500, 3506] id: 168
+  if not r0_168.UIPauseGameMap then
+    return false
+  end
+  return r5_0.TableLength(r0_168.UIPauseGameMap) > 0
+end
+function r6_0.NotifyClientShowDungeonToast(r0_169, r1_169)
+  -- line: [3512, 3515] id: 169
+  local r2_169 = UE4.UGameplayStatics.GetGameInstance(r0_169)
+  UE4.UGameplayStatics.GetGameMode():NotifyClientShowDungeonToast("AvailablePet_Empty", 1, EToastType.Common, r1_169 and EToastColor.Yellow)
+end
+function r6_0.LoadTitleFrameWidget(r0_170, r1_170)
+  -- line: [3517, 3530] id: 170
+  local r2_170 = DataMgr.TitleFrame[r1_170]
+  if not r2_170 then
+    ScreenPrint("称号加载失败：TitleFrame 表内没有配置TitleFrameID=" .. r1_170 and "空")
+    return 
+  end
+  local r3_170 = r2_170.FramePath
+  if not r3_170 then
+    ScreenPrint("称号加载失败：TitleFrame 表内没有配置资源地址，先用默认的=" .. r1_170 and "空")
+    r3_170 = "WidgetBlueprint\'/Game/UI/WBP/PersonalInfo/Widget/Title/Title/WBP_PersonalInfo_Title_01.WBP_PersonalInfo_Title_01\'"
+  end
+  return r0_170:CreateWidget(r3_170, false)
+end
+function r6_0.GetCurrentWindowSize(r0_171)
+  -- line: [3531, 3533] id: 171
+  return GWorld.GameInstance:GetSceneManager():GetWindowSize()
+end
+function r6_0.AddFlow(r0_172, r1_172, r2_172)
+  -- line: [3535, 3538] id: 172
+  r0_172.FlowList[r1_172] = r2_172
+  DebugPrint("WXT UIManagerComponent_C:AddFlow", r1_172)
+end
+function r6_0.TryOpenSystem(r0_173, r1_173)
+  -- line: [3543, 3553] id: 173
+  local r2_173 = UKismetSystemLibrary.GetFrameCount()
+  if r0_173.SystemOpenFrameFlag ~= r2_173 and r0_173.SystemOpenFrameFlag ~= r2_173 + -1 then
+    r0_173.SystemOpenFrameFlag = r2_173
+    return true
+  end
+  DebugPrint("防止同一帧打开多个系统:", "来源:", r1_173, "帧号:", r2_173)
+  return false
+end
+function r6_0.InitGlobalVersionDisplay(r0_174)
+  -- line: [3555, 3566] id: 174
+  if UE.URuntimeCommonFunctionLibrary.IsDistribution() then
+    return 
+  end
+  local r2_174 = r0_174:CreateWidget("WidgetBlueprint\'/Game/UI/WBP/Battle/Widget/WBP_Battle_Version.WBP_Battle_Version\'", true, 999)
+  if r2_174 then
+    r0_174.GlobalVersionWidget = r2_174
+    r2_174:InitVersionDisplay()
+  end
+end
+function r6_0.ShowGlobalVersion(r0_175)
+  -- line: [3568, 3572] id: 175
+  if r0_175.GlobalVersionWidget then
+    r0_175.GlobalVersionWidget:Show()
+  end
+end
+function r6_0.HideGlobalVersion(r0_176)
+  -- line: [3573, 3577] id: 176
+  if r0_176.GlobalVersionWidget then
+    r0_176.GlobalVersionWidget:Hide()
+  end
+end
+function r6_0.StartScriptDetectionCheck(r0_177)
+  -- line: [3580, 3589] id: 177
+  if Const.bOpenScriptDetectionCheck then
+    local r1_177 = GWorld.GameInstance:GetSceneManager()
+    if r1_177 and r1_177:GetIsEnableScriptDetectionCheck() then
+      r1_177:StartScriptDetectionCheck("OnMouse")
     end
   end
 end
-
-function BP_UIManagerComponent_C:AddTimer(Interval, Func, IsLoop, Delay, Key, IsRealTime, ...)
-  if nil == IsRealTime then
-    IsRealTime = true
-  end
-  return BP_UIManagerComponent_C.Super.AddTimer(self, Interval, Func, IsLoop, Delay, Key, IsRealTime, ...)
-end
-
-function BP_UIManagerComponent_C:SetUIPauseGame(UIName, IsPause)
-  if not self.UIPauseGameMap then
-    self.UIPauseGameMap = {}
-  end
-  self.UIPauseGameMap[UIName] = IsPause and true or nil
-end
-
-function BP_UIManagerComponent_C:IsUIPauseGame()
-  if not self.UIPauseGameMap then
-    return false
-  end
-  local Num = CommonUtils.TableLength(self.UIPauseGameMap)
-  return Num > 0
-end
-
-function BP_UIManagerComponent_C:NotifyClientShowDungeonToast(Color)
-  local GameInstance = UE4.UGameplayStatics.GetGameInstance(self)
-  UE4.UGameplayStatics.GetGameMode():NotifyClientShowDungeonToast("AvailablePet_Empty", 1.0, EToastType.Common, Color or EToastColor.Yellow)
-end
-
-function BP_UIManagerComponent_C:LoadTitleFrameWidget(TitleFrameID)
-  local TitleConfig = DataMgr.TitleFrame[TitleFrameID]
-  if not TitleConfig then
-    ScreenPrint("称号加载失败：TitleFrame 表内没有配置TitleFrameID=" .. TitleFrameID or "空")
-    return
-  end
-  local BPPath = TitleConfig.FramePath
-  if not BPPath then
-    ScreenPrint("称号加载失败：TitleFrame 表内没有配置资源地址，先用默认的=" .. TitleFrameID or "空")
-    BPPath = "WidgetBlueprint'/Game/UI/WBP/PersonalInfo/Widget/Title/Title/WBP_PersonalInfo_Title_01.WBP_PersonalInfo_Title_01'"
-  end
-  local Widget = self:CreateWidget(BPPath, false)
-  return Widget
-end
-
-function BP_UIManagerComponent_C:GetCurrentWindowSize()
-  return GWorld.GameInstance:GetSceneManager():GetWindowSize()
-end
-
-function BP_UIManagerComponent_C:AddFlow(WidgetName, Flow)
-  self.FlowList[WidgetName] = Flow
-  DebugPrint("WXT UIManagerComponent_C:AddFlow", WidgetName)
-end
-
-function BP_UIManagerComponent_C:TryOpenSystem(source)
-  local currentFrame = UKismetSystemLibrary.GetFrameCount()
-  if self.SystemOpenFrameFlag ~= currentFrame and self.SystemOpenFrameFlag ~= currentFrame - 1 then
-    self.SystemOpenFrameFlag = currentFrame
-    return true
-  end
-  DebugPrint("防止同一帧打开多个系统:", "来源:", source, "帧号:", currentFrame)
-  return false
-end
-
-function BP_UIManagerComponent_C:InitGlobalVersionDisplay()
-  if UE.URuntimeCommonFunctionLibrary.IsDistribution() then
-    return
-  end
-  local bpPath = "WidgetBlueprint'/Game/UI/WBP/Battle/Widget/WBP_Battle_Version.WBP_Battle_Version'"
-  local versionWidget = self:CreateWidget(bpPath, true, 999)
-  if versionWidget then
-    self.GlobalVersionWidget = versionWidget
-    versionWidget:InitVersionDisplay()
-  end
-end
-
-function BP_UIManagerComponent_C:ShowGlobalVersion()
-  if self.GlobalVersionWidget then
-    self.GlobalVersionWidget:Show()
-  end
-end
-
-function BP_UIManagerComponent_C:HideGlobalVersion()
-  if self.GlobalVersionWidget then
-    self.GlobalVersionWidget:Hide()
-  end
-end
-
-return BP_UIManagerComponent_C
+return r6_0
