@@ -1,358 +1,383 @@
-local Const = {HOT_RELOAD = true}
-Const.BattleHistoryTags = {
-  "Skill",
-  "Buff",
-  "SkillEffect",
-  "SkillCreature",
-  "Summon",
-  "Phantom",
-  "MechanismSummon",
-  "Mechanism",
-  "Monster"
+-- filename: @E:/Pack/Branch/OBT10_Geili\Content/Script/Const.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r0_0 = {
+  HOT_RELOAD = true,
+  BattleHistoryTags = {
+    "Skill",
+    "Buff",
+    "SkillEffect",
+    "SkillCreature",
+    "Summon",
+    "Phantom",
+    "MechanismSummon",
+    "Mechanism",
+    "Monster"
+  },
+  VectorSizeZero = 0.00001,
+  NearZero = 0.0001,
+  LittleOffset = 0.1,
+  TestInt = 4,
+  SlideSpeed = 5000,
+  BulletJumpSpeed = 800,
+  MaxJumpCount = 2,
+  MaxBulletJumpCount = 1,
+  SpeedLowGravity = 150,
+  LowGravityScale = 1.5,
+  HighGravityScale = 2.8,
+  SlideBlendTime = 0.2,
+  AvoidDeccelerTime = 0.03,
+  DoSlideDelayTime = 0.1,
+  DefaultCD = 0,
+  BoneHitTime = 0.4,
+  Shoulder = 1,
+  Hand = 2,
+  Blend = 3,
+  NormalState = 0,
+  FirstJump = 1,
+  SecondJump = 2,
+  BulletJump = 3,
+  WallJump = 4,
+  JumpFall = 5,
+  Climb = 6,
+  FlipEaves = 7,
+  Flying = 8,
+  JumpFunctionIndex = {
+    "FirstJump",
+    "SecondJump",
+    "BulletJump",
+    "WallJump"
+  },
+  BulletJumpDebug = false,
+  DebugDruration = 3,
+  ClimbHeight = 176.682999,
+  RunStopStartTime = 0.13,
+  TransplantSize = 500,
+  NormalWallJump = "NormalWallJump",
+  LeftSideWallJump = "LeftSideWallJump",
+  RightSideWallJump = "RightSideWallJump",
+  NormalWallJumpHeight = 300,
+  SideWallJumpHeight = 400,
+  SideWallJumpMultiply = 3,
+  GapDistance = 30,
+  GuidePointName = "GuideManBornLoc",
+  FallAttackPointName = "BP_FallAttackPoint",
+  Walking = 1,
+  Falling = 3,
+  Custom = 6,
+  Slide = 2,
+  InvincibleBuffId = 301,
+  Forward = 0,
+  Right = 1,
+  Left = 2,
+  Backward = 3,
+  VelocityBlendInterpSpeed = 12,
+  AimRotLerpSpeed = 30,
+  FwdThresholdR = 22.5,
+  FwdThresholdL = -22.5,
+  FRThresholdR = 67.5,
+  FLThresholdL = -67.5,
+  RThresholdRB = 112.5,
+  LThresholdLB = -112.5,
+  BckThresholdR = 157.5,
+  BckThresholdL = -157.5,
+  FRThreshold = 60,
+  FLThreshold = -60,
+  BRThreshold = 120,
+  BLThreshold = -120,
+  Buffer = 5,
+  AllQuestChainType = -1,
+  MainQuestChainType = 1,
+  DailyQuestChainType = 2,
+  SideQuestChainType = 3,
+  MainActivityQuestChainType = 6,
+  LimTimeQuestChainType = 5,
+  SpecialSideQuestChainType = 4,
+  MontageBlendOutTime = 0.1,
+  CrouchWalkSpeed = 160,
+  NormalWalkSpeed = 500,
+  MaxClimbHeight = 100,
+  MinClimbHeight = 20,
+  RST_World = 0,
+  RST_Component = 2,
+  UpVector = FVector(0, 0, 1),
+  ZeroVector = FVector(0, 0, 0),
+  OneVector = FVector(1, 1, 1),
+  UpFootHeight = FVector(0, 0, 50),
+  DownFootHeight = FVector(0, 0, 45),
+  XAxisVector = FVector(1, 0, 0),
+  FootCheckRadius = 15,
+  FootHeight = 10,
+  FootHeight2 = 9.5,
+  IkFootBoneHeight = 13,
+  ClampFootRot = 10,
+  StandSlopeThreshold = 0.75,
+  InterSpeedLevel0 = 5,
+  InterSpeedLevel1 = 10,
+  InterSpeedLevel2 = 15,
+  InterSpeedLevel3 = 30,
+  InterSpeedLevel4 = 40,
+  EnterIKDelay = 1,
+  DefaultAimRot = FRotator(0.5, 0.5, 0),
+  RightAngle = 90,
+  HalfRightAngle = 45,
+  FlatAngle = 180,
+  Angle270 = 270,
+  FullAngle = 360,
+  LowerPlayRate = 1.15,
+  HigherPlayRate = 3,
+  PushFactorSlide = 1,
+  PushFactorBulletJump = 1,
+  BulletClimbAngle = 45,
+  Enemy = 0,
+  Friend = 1,
+  Neutral = 2,
+  NormalAttack = "Attack",
+  FallAttack = "FallAttack",
+  HeavyAttack = "HeavyAttack",
+  NormalSkill = "Skill1",
+  UltraSkill = "Skill2",
+  SummonRoleSupportSkill = "Skill3",
+  SupportSkill = "Support",
+  SlideSkill = "SlideAttack",
+  FireSkill = "Shooting",
+  HeavyShooting = "HeavyShooting",
+  OverHeatSkill = "ShootingOverheat",
+  ReloadSkill = "Reload",
+  CondemnSkill = "Condemn",
+  PassiveSkill = "Passive",
+  ExtraPassiveSkill = "ExtraPassive",
+  HomeBaseSubRegionId = 210101,
+  IceCitySubRegionId = 101101,
+  StopUnknown = 0,
+  StopNormal = 1,
+  StopBySkillCancel = 2,
+  StopByWalkCancel = 3,
+  StopBySlideCancel = 4,
+  StateNormal = 0,
+  StateHitFly = 2,
+  StateHitFlyDown = 3,
+  StateHeavyHit_1 = 4,
+  StateHeavyHit_2 = 5,
+  StateLightHit = 6,
+  StateLightHitRanged = 7,
+  Player = "Player",
+  Monster = "Monster",
+  First = 1,
+  Second = 2,
+  SimulatedProxy = 1,
+  AutonomousProxy = 2,
+  Authority = 3,
+  AutoPickupDistance = 500,
+  ManualPickupDistance = 100,
+  LandHeavySpeed = -2000,
+  SummonInheritAttrs = {
+    MaxHp = 1,
+    Hp = 1,
+    MaxES = 1,
+    ES = 1,
+    DEF = 1,
+    SkillRange = 1,
+    SkillSustain = 1,
+    SkillEfficiency = 1,
+    SkillIntensity = 1,
+  },
+  HpAttrNames = {
+    MaxHp = 1,
+  },
+  ATKAttrNames = {
+    ATK = 1,
+    WeaponATKModifierRate = 1,
+  },
+  WeaponAttrTable = {},
 }
-Const.VectorSizeZero = 1.0E-5
-Const.NearZero = 1.0E-4
-Const.LittleOffset = 0.1
-Const.TestInt = 4
-Const.SlideSpeed = 5000
-Const.BulletJumpSpeed = 800
-Const.MaxJumpCount = 2
-Const.MaxBulletJumpCount = 1
-Const.SpeedLowGravity = 150
-Const.LowGravityScale = 1.5
-Const.HighGravityScale = 2.8
-Const.SlideBlendTime = 0.2
-Const.AvoidDeccelerTime = 0.03
-Const.DoSlideDelayTime = 0.1
-Const.DefaultCD = 0
-Const.BoneHitTime = 0.4
-Const.Shoulder = 1
-Const.Hand = 2
-Const.Blend = 3
-Const.NormalState = 0
-Const.FirstJump = 1
-Const.SecondJump = 2
-Const.BulletJump = 3
-Const.WallJump = 4
-Const.JumpFall = 5
-Const.Climb = 6
-Const.FlipEaves = 7
-Const.Flying = 8
-Const.JumpFunctionIndex = {
-  "FirstJump",
-  "SecondJump",
-  "BulletJump",
-  "WallJump"
-}
-Const.BulletJumpDebug = false
-Const.DebugDruration = 3
-Const.ClimbHeight = 176.682999
-Const.RunStopStartTime = 0.13
-Const.TransplantSize = 500
-Const.NormalWallJump = "NormalWallJump"
-Const.LeftSideWallJump = "LeftSideWallJump"
-Const.RightSideWallJump = "RightSideWallJump"
-Const.NormalWallJumpHeight = 300
-Const.SideWallJumpHeight = 400
-Const.SideWallJumpMultiply = 3
-Const.GapDistance = 30
-Const.GuidePointName = "GuideManBornLoc"
-Const.FallAttackPointName = "BP_FallAttackPoint"
-Const.Walking = 1
-Const.Falling = 3
-Const.Custom = 6
-Const.Slide = 2
-Const.InvincibleBuffId = 301
-Const.Forward = 0
-Const.Right = 1
-Const.Left = 2
-Const.Backward = 3
-Const.VelocityBlendInterpSpeed = 12.0
-Const.AimRotLerpSpeed = 30.0
-Const.FwdThresholdR = 22.5
-Const.FwdThresholdL = -22.5
-Const.FRThresholdR = 67.5
-Const.FLThresholdL = -67.5
-Const.RThresholdRB = 112.5
-Const.LThresholdLB = -112.5
-Const.BckThresholdR = 157.5
-Const.BckThresholdL = -157.5
-Const.FRThreshold = 60
-Const.FLThreshold = -60
-Const.BRThreshold = 120
-Const.BLThreshold = -120
-Const.Buffer = 5
-Const.AllQuestChainType = -1
-Const.MainQuestChainType = 1
-Const.DailyQuestChainType = 2
-Const.SideQuestChainType = 3
-Const.MainActivityQuestChainType = 6
-Const.LimTimeQuestChainType = 5
-Const.SpecialSideQuestChainType = 4
-Const.MontageBlendOutTime = 0.1
-Const.CrouchWalkSpeed = 160
-Const.NormalWalkSpeed = 500
-Const.MaxClimbHeight = 100
-Const.MinClimbHeight = 20
-Const.RST_World = 0
-Const.RST_Component = 2
-Const.UpVector = FVector(0, 0, 1)
-Const.ZeroVector = FVector(0, 0, 0)
-Const.OneVector = FVector(1, 1, 1)
-Const.UpFootHeight = FVector(0.0, 0.0, 50)
-Const.DownFootHeight = FVector(0.0, 0.0, 45)
-Const.XAxisVector = FVector(1, 0, 0)
-Const.FootCheckRadius = 15
-Const.FootHeight = 10
-Const.FootHeight2 = 9.5
-Const.IkFootBoneHeight = 13
-Const.ClampFootRot = 10
-Const.StandSlopeThreshold = 0.75
-Const.InterSpeedLevel0 = 5
-Const.InterSpeedLevel1 = 10
-Const.InterSpeedLevel2 = 15
-Const.InterSpeedLevel3 = 30
-Const.InterSpeedLevel4 = 40
-Const.EnterIKDelay = 1
-Const.DefaultAimRot = FRotator(0.5, 0.5, 0)
-Const.RightAngle = 90
-Const.HalfRightAngle = 45
-Const.FlatAngle = 180
-Const.Angle270 = 270
-Const.FullAngle = 360
-Const.LowerPlayRate = 1.15
-Const.HigherPlayRate = 3
-Const.PushFactorSlide = 1
-Const.PushFactorBulletJump = 1
-Const.BulletClimbAngle = 45
-Const.Enemy = 0
-Const.Friend = 1
-Const.Neutral = 2
-Const.NormalAttack = "Attack"
-Const.FallAttack = "FallAttack"
-Const.HeavyAttack = "HeavyAttack"
-Const.NormalSkill = "Skill1"
-Const.UltraSkill = "Skill2"
-Const.SummonRoleSupportSkill = "Skill3"
-Const.SupportSkill = "Support"
-Const.SlideSkill = "SlideAttack"
-Const.FireSkill = "Shooting"
-Const.HeavyShooting = "HeavyShooting"
-Const.OverHeatSkill = "ShootingOverheat"
-Const.ReloadSkill = "Reload"
-Const.CondemnSkill = "Condemn"
-Const.PassiveSkill = "Passive"
-Const.ExtraPassiveSkill = "ExtraPassive"
-Const.HomeBaseSubRegionId = 210101
-Const.IceCitySubRegionId = 101101
-Const.StopUnknown = 0
-Const.StopNormal = 1
-Const.StopBySkillCancel = 2
-Const.StopByWalkCancel = 3
-Const.StopBySlideCancel = 4
-Const.StateNormal = 0
-Const.StateHitFly = 2
-Const.StateHitFlyDown = 3
-Const.StateHeavyHit_1 = 4
-Const.StateHeavyHit_2 = 5
-Const.StateLightHit = 6
-Const.StateLightHitRanged = 7
-Const.Player = "Player"
-Const.Monster = "Monster"
-Const.First = 1
-Const.Second = 2
-Const.SimulatedProxy = 1
-Const.AutonomousProxy = 2
-Const.Authority = 3
-Const.AutoPickupDistance = 500
-Const.ManualPickupDistance = 100
-Const.LandHeavySpeed = -2000
-Const.SummonInheritAttrs = {
-  MaxHp = 1,
-  Hp = 1,
-  MaxES = 1,
-  ES = 1,
-  DEF = 1,
-  SkillRange = 1,
-  SkillSustain = 1,
-  SkillEfficiency = 1,
-  SkillIntensity = 1
-}
-Const.HpAttrNames = {MaxHp = 1}
-Const.ATKAttrNames = {ATK = 1, WeaponATKModifierRate = 1}
-Const.WeaponAttrTable = {}
-local AttrATKList = {}
-for _AttrName, _ in pairs(DataMgr.Attribute) do
-  local AttrName = "ATK_" .. _AttrName
-  Const.ATKAttrNames[AttrName] = 1
-  Const.WeaponAttrTable[AttrName] = 1
-  table.insert(AttrATKList, AttrName)
+local r1_0 = {}
+for r6_0, r7_0 in pairs(DataMgr.Attribute) do
+  local r8_0 = "ATK_" .. r6_0
+  r0_0.ATKAttrNames[r8_0] = 1
+  r0_0.WeaponAttrTable[r8_0] = 1
+  table.insert(r1_0, r8_0)
 end
-Const.WeaponModifierAttrs = {
+-- close: r2_0
+local r2_0 = "WeaponModifierAttrs"
+local r3_0 = {
   WeaponATKModifierRate = {
-    AttrNames = AttrATKList,
+    AttrNames = r1_0,
     RateAttr = "WeaponATKModifierRate",
     ValueAttr = "WeaponATKModifierValue",
     CalcATK = 1,
-    RateIndex = CommonConst.RateIndex.GlobalATK
+    RateIndex = CommonConst.RateIndex.GlobalATK,
   },
-  AttackSpeedModifierRate_Normal = {
-    AttrNames = {
-      "AttackSpeed_Normal"
-    },
-    RateAttr = "AttackSpeedModifierRate_Normal",
-    ValueAttr = "AttackSpeedModifierValue_Normal"
-  },
-  AttackSpeedModifierValue_Normal = {
-    AttrNames = {
-      "AttackSpeed_Normal"
-    },
-    RateAttr = "AttackSpeedModifierRate_Normal",
-    ValueAttr = "AttackSpeedModifierValue_Normal"
-  },
-  AttackRangeModifierRate_Normal = {
-    AttrNames = {
-      "AttackRange_Normal"
-    },
-    RateAttr = "AttackRangeModifierRate_Normal",
-    ValueAttr = "AttackRangeModifierValue_Normal"
-  },
-  AttackRangeModifierValue_Normal = {
-    AttrNames = {
-      "AttackRange_Normal"
-    },
-    RateAttr = "AttackRangeModifierRate_Normal",
-    ValueAttr = "AttackRangeModifierValue_Normal"
-  },
-  AttackRangeModifierRate_Bullet = {
-    AttrNames = {
-      "AttackRange_Bullet"
-    },
-    RateAttr = "AttackRangeModifierRate_Bullet",
-    ValueAttr = "AttackRangeModifierValue_Bullet"
-  },
-  AttackRangeModifierValue_Bullet = {
-    AttrNames = {
-      "AttackRange_Bullet"
-    },
-    RateAttr = "AttackRangeModifierRate_Bullet",
-    ValueAttr = "AttackRangeModifierValue_Bullet"
-  },
-  WeaponCRIModifierRate = {
-    AttrNames = {"CRI"},
-    RateAttr = "WeaponCRIModifierRate",
-    ValueAttr = "WeaponCRIModifierValue"
-  },
-  WeaponCRIModifierValue = {
-    AttrNames = {"CRI"},
-    RateAttr = "WeaponCRIModifierRate",
-    ValueAttr = "WeaponCRIModifierValue"
-  },
-  WeaponCRDModifierRate = {
-    AttrNames = {"CRD"},
-    RateAttr = "WeaponCRDModifierRate",
-    ValueAttr = "WeaponCRDModifierValue"
-  },
-  WeaponCRDModifierValue = {
-    AttrNames = {"CRD"},
-    RateAttr = "WeaponCRDModifierRate",
-    ValueAttr = "WeaponCRDModifierValue"
-  },
-  TriggerProbModifierRate = {
-    AttrNames = {
-      "TriggerProbability"
-    },
-    RateAttr = "TriggerProbModifierRate",
-    ValueAttr = "TriggerProbModifierValue"
-  },
-  TriggerProbModifierValue = {
-    AttrNames = {
-      "TriggerProbability"
-    },
-    RateAttr = "TriggerProbModifierRate",
-    ValueAttr = "TriggerProbModifierValue"
-  },
-  MultiShootModifierRate = {
-    AttrNames = {"MultiShoot"},
-    RateAttr = "MultiShootModifierRate",
-    ValueAttr = "MultiShootModifierValue"
-  },
-  MultiShootModifierValue = {
-    AttrNames = {"MultiShoot"},
-    RateAttr = "MultiShootModifierRate",
-    ValueAttr = "MultiShootModifierValue"
-  }
 }
-Const.WeaponModifierAttrChangers = {
+r3_0.AttackSpeedModifierRate_Normal = {
+  AttrNames = {
+    "AttackSpeed_Normal"
+  },
+  RateAttr = "AttackSpeedModifierRate_Normal",
+  ValueAttr = "AttackSpeedModifierValue_Normal",
+}
+r3_0.AttackSpeedModifierValue_Normal = {
+  AttrNames = {
+    "AttackSpeed_Normal"
+  },
+  RateAttr = "AttackSpeedModifierRate_Normal",
+  ValueAttr = "AttackSpeedModifierValue_Normal",
+}
+r3_0.AttackRangeModifierRate_Normal = {
+  AttrNames = {
+    "AttackRange_Normal"
+  },
+  RateAttr = "AttackRangeModifierRate_Normal",
+  ValueAttr = "AttackRangeModifierValue_Normal",
+}
+r3_0.AttackRangeModifierValue_Normal = {
+  AttrNames = {
+    "AttackRange_Normal"
+  },
+  RateAttr = "AttackRangeModifierRate_Normal",
+  ValueAttr = "AttackRangeModifierValue_Normal",
+}
+r3_0.AttackRangeModifierRate_Bullet = {
+  AttrNames = {
+    "AttackRange_Bullet"
+  },
+  RateAttr = "AttackRangeModifierRate_Bullet",
+  ValueAttr = "AttackRangeModifierValue_Bullet",
+}
+r3_0.AttackRangeModifierValue_Bullet = {
+  AttrNames = {
+    "AttackRange_Bullet"
+  },
+  RateAttr = "AttackRangeModifierRate_Bullet",
+  ValueAttr = "AttackRangeModifierValue_Bullet",
+}
+r3_0.WeaponCRIModifierRate = {
+  AttrNames = {
+    "CRI"
+  },
+  RateAttr = "WeaponCRIModifierRate",
+  ValueAttr = "WeaponCRIModifierValue",
+}
+r3_0.WeaponCRIModifierValue = {
+  AttrNames = {
+    "CRI"
+  },
+  RateAttr = "WeaponCRIModifierRate",
+  ValueAttr = "WeaponCRIModifierValue",
+}
+r3_0.WeaponCRDModifierRate = {
+  AttrNames = {
+    "CRD"
+  },
+  RateAttr = "WeaponCRDModifierRate",
+  ValueAttr = "WeaponCRDModifierValue",
+}
+r3_0.WeaponCRDModifierValue = {
+  AttrNames = {
+    "CRD"
+  },
+  RateAttr = "WeaponCRDModifierRate",
+  ValueAttr = "WeaponCRDModifierValue",
+}
+r3_0.TriggerProbModifierRate = {
+  AttrNames = {
+    "TriggerProbability"
+  },
+  RateAttr = "TriggerProbModifierRate",
+  ValueAttr = "TriggerProbModifierValue",
+}
+r3_0.TriggerProbModifierValue = {
+  AttrNames = {
+    "TriggerProbability"
+  },
+  RateAttr = "TriggerProbModifierRate",
+  ValueAttr = "TriggerProbModifierValue",
+}
+r3_0.MultiShootModifierRate = {
+  AttrNames = {
+    "MultiShoot"
+  },
+  RateAttr = "MultiShootModifierRate",
+  ValueAttr = "MultiShootModifierValue",
+}
+r3_0.MultiShootModifierValue = {
+  AttrNames = {
+    "MultiShoot"
+  },
+  RateAttr = "MultiShootModifierRate",
+  ValueAttr = "MultiShootModifierValue",
+}
+r0_0[r2_0] = r3_0
+r0_0.WeaponModifierAttrChangers = {
   AttackSpeed_Normal = {
-    BattleEvent = "AttackSpeedNormalChanged"
-  }
+    BattleEvent = "AttackSpeedNormalChanged",
+  },
 }
-Const.ROLE_None = 0
-Const.ROLE_SimulatedProxy = 1
-Const.ROLE_AutonomousProxy = 2
-Const.ROLE_Authority = 3
-Const.ROLE_MAX = 4
-Const.NM_Standalone = 0
-Const.NM_DedicatedServer = 1
-Const.NM_ListenServer = 2
-Const.NM_Client = 3
-Const.NM_MAX = 4
-Const.StatePrepare = 0
-Const.StateGameModeReady = 1
-Const.StateRunning = 2
-Const.StateAlert = 3
-Const.StateBattle = 4
-Const.StatePause = 5
-Const.StateEnd = 6
-Const.ExitStateAlert = 7
-Const.StateBattleProgress = 99
-Const.ProgressRecoverDungeonType = {
+r0_0.ROLE_None = 0
+r0_0.ROLE_SimulatedProxy = 1
+r0_0.ROLE_AutonomousProxy = 2
+r0_0.ROLE_Authority = 3
+r0_0.ROLE_MAX = 4
+r0_0.NM_Standalone = 0
+r0_0.NM_DedicatedServer = 1
+r0_0.NM_ListenServer = 2
+r0_0.NM_Client = 3
+r0_0.NM_MAX = 4
+r0_0.StatePrepare = 0
+r0_0.StateGameModeReady = 1
+r0_0.StateRunning = 2
+r0_0.StateAlert = 3
+r0_0.StateBattle = 4
+r0_0.StatePause = 5
+r0_0.StateEnd = 6
+r0_0.ExitStateAlert = 7
+r0_0.StateBattleProgress = 99
+r0_0.ProgressRecoverDungeonType = {
   Survival = true,
   SurvivalPro = true,
   SurvivalMini = true,
   Defence = true,
   Excavation = true,
-  Rouge = true
+  Rouge = true,
 }
-Const.DungeonEnd_NoReason = 0
-Const.DungeonEnd_PlayerDead = 1
-Const.DungeonEnd_DefenceCoreDead = 2
-Const.GameModeEventServer = 0
-Const.GameModeEventServerClient = 1
-Const.AimProtectYaw = 175
-Const.MaXRotPercent = 0.12
-Const.ShootAimLengthLR = 1
-Const.ShootAimLengthDU = 1
-Const.CrouchHalfHeight = 67.5
-Const.CrouchShrinkSpeed = 160
-Const.SlideHalfHeight = 45
-Const.SlideShrinkSpeed = 200
-Const.BulletJumpHalfHeight = 44
-Const.BulletJumpShrinkSpeed = 160
-Const.SecondJumpHalfHeight = 44
-Const.SecondJumpShrinkSpeed = 160
-Const.WallJumpHalfHeight = 44
-Const.WallJumpShrinkSpeed = 160
-Const.CreateType = {
+r0_0.DungeonEnd_NoReason = 0
+r0_0.DungeonEnd_PlayerDead = 1
+r0_0.DungeonEnd_DefenceCoreDead = 2
+r0_0.GameModeEventServer = 0
+r0_0.GameModeEventServerClient = 1
+r0_0.AimProtectYaw = 175
+r0_0.MaXRotPercent = 0.12
+r0_0.ShootAimLengthLR = 1
+r0_0.ShootAimLengthDU = 1
+r0_0.CrouchHalfHeight = 67.5
+r0_0.CrouchShrinkSpeed = 160
+r0_0.SlideHalfHeight = 45
+r0_0.SlideShrinkSpeed = 200
+r0_0.BulletJumpHalfHeight = 44
+r0_0.BulletJumpShrinkSpeed = 160
+r0_0.SecondJumpHalfHeight = 44
+r0_0.SecondJumpShrinkSpeed = 160
+r0_0.WallJumpHalfHeight = 44
+r0_0.WallJumpShrinkSpeed = 160
+r0_0.CreateType = {
   Monster = 1,
   Npc = 1,
   CombatProp = 1,
   BattleChar = 1,
   Mechanism = 2,
-  Phantom = 1
+  Phantom = 1,
 }
-Const.ScreenFadeMat = "Material'/Game/Asset/Char/Player/Common/Material/PP/MI_PP_ScreenFade.MI_PP_ScreenFade'"
-Const.HitToLevel = {
+r0_0.ScreenFadeMat = "Material\'/Game/Asset/Char/Player/Common/Material/PP/MI_PP_ScreenFade.MI_PP_ScreenFade\'"
+r0_0.HitToLevel = {
   BoneHit = 1,
   LightHit = 2,
   LightHitRanged = 2,
   HeavyHit = 3,
   HitRepel = 4,
   HitFly = 5,
-  GrabHit = 6
+  GrabHit = 6,
 }
-Const.LevelToHit = {
+r0_0.LevelToHit = {
   "BoneHit",
   "LightHit",
   "HeavyHit",
@@ -360,110 +385,124 @@ Const.LevelToHit = {
   "HitFly",
   "GrabHit"
 }
-Const.CauseHitTypeNormal = 0
-Const.CauseHitTypeFirst = 1
-Const.CauseHitTypeDie = 2
-Const.NormalStateInAlert = 0
-Const.AlertState = 1
-Const.FightState = 2
-Const.EndBattleState = 3
-Const.YXDNewState = 99
-Const.PresetNone = 0
-Const.PresetPlayer = 1
-Const.PresetMechanism = 2
-Const.SurvivalResourceItemId = 1006
-Const.DefaultRoleId = 1101
-Const.DeafaultMeleeWeapon = nil
-Const.DeafaultRangedWeapon = nil
-Const.DefaultBattlePet = 101
-Const.DefaultPetLocation = FVector(0, 50, 0)
-Const.RandomLimitedPetRarity = 4
-Const.NvZhuRoleId = 101
-Const.NanZhuRoleId = 104
-Const.DefaultKawaiiLinkLayer = "AnimBlueprint'/Game/AssetDesign/Char/Player/Heitao/ABP_Heitao_Kawaii.ABP_Heitao_Kawaii'"
-Const.MouthSlotName = "FacialMouth"
-Const.EyeSlotName = "FacialMouth"
-Const.RougeLikeBuff = 10101101
-Const.BuffDotDuration = 10
-Const.BuffDotDamage = "Dot"
-Const.BuffDotHot = "Hot"
-Const.BuffDotAddShield = "AddShield"
-Const.BuffDotSkillEffect = "SkillEffect"
-Const.BuffDotSpChange = "SpChange"
-Const.BuffDefaultFresnelParams = {
+r0_0.CauseHitTypeNormal = 0
+r0_0.CauseHitTypeFirst = 1
+r0_0.CauseHitTypeDie = 2
+r0_0.NormalStateInAlert = 0
+r0_0.AlertState = 1
+r0_0.FightState = 2
+r0_0.EndBattleState = 3
+r0_0.YXDNewState = 99
+r0_0.PresetNone = 0
+r0_0.PresetPlayer = 1
+r0_0.PresetMechanism = 2
+r0_0.SurvivalResourceItemId = 1006
+r0_0.DefaultRoleId = 1101
+r0_0.DeafaultMeleeWeapon = nil
+r0_0.DeafaultRangedWeapon = nil
+r0_0.DefaultBattlePet = 101
+r0_0.DefaultPetLocation = FVector(0, 50, 0)
+r0_0.RandomLimitedPetRarity = 4
+r0_0.NvZhuRoleId = 101
+r0_0.NanZhuRoleId = 104
+r0_0.DefaultKawaiiLinkLayer = "AnimBlueprint\'/Game/AssetDesign/Char/Player/Heitao/ABP_Heitao_Kawaii.ABP_Heitao_Kawaii\'"
+r0_0.MouthSlotName = "FacialMouth"
+r0_0.EyeSlotName = "FacialMouth"
+r0_0.RougeLikeBuff = 10101101
+r0_0.BuffDotDuration = 10
+r0_0.BuffDotDamage = "Dot"
+r0_0.BuffDotHot = "Hot"
+r0_0.BuffDotAddShield = "AddShield"
+r0_0.BuffDotSkillEffect = "SkillEffect"
+r0_0.BuffDotSpChange = "SpChange"
+r0_0.BuffDefaultFresnelParams = {
   FresnelColor = {
     0.953125,
     0.677123,
     0.541725,
     0
   },
-  FresnelColorRange = {Default = 0},
-  FresnelColorStrength = {Default = 0}
+  FresnelColorRange = {
+    Default = 0,
+  },
+  FresnelColorStrength = {
+    Default = 0,
+  },
 }
-Const.BuffDefaultNextPassParams = {
+r0_0.BuffDefaultNextPassParams = {
   NextPassShowyColor = {
     0,
     0,
     0,
     0
   },
-  NextPassShowy = {Default = 0},
-  NextPassShowyWidth = {Default = 0.3}
+  NextPassShowy = {
+    Default = 0,
+  },
+  NextPassShowyWidth = {
+    Default = 0.3,
+  },
 }
-Const.PathTypeNoNav = 0
-Const.PathTypeNoPath = 1
-Const.PathTypeHasPath = 2
-Const.EmojiIdleDelay = 5
-Const.EmoIdleVoiceCoolDown = 60
-Const.WholeShootHoldTime = 10
-Const.StopShootHoldDelay = 2
-Const.ExtraFixVitamin = {
+r0_0.PathTypeNoNav = 0
+r0_0.PathTypeNoPath = 1
+r0_0.PathTypeHasPath = 2
+r0_0.EmojiIdleDelay = 5
+r0_0.EmoIdleVoiceCoolDown = 60
+r0_0.WholeShootHoldTime = 10
+r0_0.StopShootHoldDelay = 2
+r0_0.ExtraFixVitamin = {
   "Mon.Strong.Poison"
 }
-Const.BossMonster = {"Mon.Boss"}
-Const.StrongMonster = {"Mon.Strong"}
-Const.EliteMonster = {"Mon.Elite"}
-Const.SummonLightMonster = {
+r0_0.BossMonster = {
+  "Mon.Boss"
+}
+r0_0.StrongMonster = {
+  "Mon.Strong"
+}
+r0_0.EliteMonster = {
+  "Mon.Elite"
+}
+r0_0.SummonLightMonster = {
   "Mon.Summon.Light"
 }
-Const.CaptureMonster = {
+r0_0.CaptureMonster = {
   "Mon.Capture"
 }
-Const.InvisibleMonster = {
+r0_0.InvisibleMonster = {
   "Mon.Invisible"
 }
-Const.SurvivalPoisonMonster = {
+r0_0.SurvivalPoisonMonster = {
   "Mon.SurvivalPoison"
 }
-Const.StrongBloodMonster = {
+r0_0.StrongBloodMonster = {
   "Mon.Strong.Blood"
 }
-Const.StrongBurstMonster = {
+r0_0.StrongBurstMonster = {
   "Mon.Strong.Burst"
 }
-Const.StrongFadeMonster = {
+r0_0.StrongFadeMonster = {
   "Mon.Strong.Fade"
 }
-Const.StrongFrozenMonster = {
+r0_0.StrongFrozenMonster = {
   "Mon.Strong.Frozen"
 }
-Const.StrongPoisonMonster = {
+r0_0.StrongPoisonMonster = {
   "Mon.Strong.Poison"
 }
-Const.StrongShieldMonster = {
+r0_0.StrongShieldMonster = {
   "Mon.Strong.Shield"
 }
-Const.StrongThunderMonster = {
+r0_0.StrongThunderMonster = {
   "Mon.Strong.Thunder"
 }
-Const.MinusFindPathDist = 2000
-Const.InitialCollisionProfileName = "meshcollision"
-Const.HittedCollisionProfileName = "Ragdoll"
-Const.DefaultBuffCollisionProfileName = "Ragdoll"
-Const.ECreatorInit = 0
-Const.ECreateSuccess = 1
-Const.ELevelUnloaded = 2
-Const.AllSKillNames = {
+r0_0.MinusFindPathDist = 2000
+r0_0.InitialCollisionProfileName = "meshcollision"
+r0_0.HittedCollisionProfileName = "Ragdoll"
+r0_0.DefaultBuffCollisionProfileName = "Ragdoll"
+r0_0.ECreatorInit = 0
+r0_0.ECreateSuccess = 1
+r0_0.ELevelUnloaded = 2
+r0_0.AllSKillNames = {
   ESkillName.Skill1,
   ESkillName.Skill2,
   ESkillName.Skill3,
@@ -476,291 +515,296 @@ Const.AllSKillNames = {
   ESkillName.ChargeBullet,
   ESkillName.HeavyShooting
 }
-Const.ArmoryIdleTags = {
+r0_0.ArmoryIdleTags = {
   None = "None",
   Armory = "Armory",
   Armory_Mod = "Armory_Mod",
   Armory_Grade = "Armory_Grade",
-  Armory_Pet = "Armory_Pet"
+  Armory_Pet = "Armory_Pet",
 }
-Const.ArmoryActionIdToArmoryTag = {
+r0_0.ArmoryActionIdToArmoryTag = {
   [1] = "Melee",
   [2] = "Ranged",
   [3] = "Armory",
   [4] = "Ultra",
-  [5] = "Armory_Grade"
+  [5] = "Armory_Grade",
 }
-Const.MaxBatteryOneChar = 4
-Const.MaxCrackKeyOneChar = 1
-Const.MainCityID = 2101
-Const.DefaultMainCityFile = "/Game/Maps/Chapter01_HomeBase"
-Const.DefaultLoginSceneFile = "/Game/Maps/Login"
-Const.DefaultMainCityRegionId = 210101
-Const.DefaultPrologueRegionId = 100103
-Const.BigIceLakeRegionId = 1011
-Const.BaseSummonOffset = 100
-local L = Const.BaseSummonOffset
-Const.SummonOffset = {}
-Const.HitFlyHeightMinValue = 50
-for i = 0, 2 do
-  for j = 0, i do
-    local k = i - j
-    if 0 == k and 0 == j then
-      table.insert(Const.SummonOffset, {
-        k * L,
-        j * L
+r0_0.MaxBatteryOneChar = 4
+r0_0.MaxCrackKeyOneChar = 1
+r0_0.MainCityID = 2101
+r0_0.DefaultMainCityFile = "/Game/Maps/Chapter01_HomeBase"
+r0_0.DefaultLoginSceneFile = "/Game/Maps/Login"
+r0_0.DefaultMainCityRegionId = 210101
+r0_0.DefaultPrologueRegionId = 100103
+r0_0.BigIceLakeRegionId = 1011
+r0_0.BaseSummonOffset = 100
+r2_0 = r0_0.BaseSummonOffset
+r0_0.SummonOffset = {}
+r0_0.HitFlyHeightMinValue = 50
+for r6_0 = 0, 2, 1 do
+  for r10_0 = 0, r6_0, 1 do
+    local r11_0 = r6_0 - r10_0
+    if r11_0 == 0 and r10_0 == 0 then
+      table.insert(r0_0.SummonOffset, {
+        r11_0 * r2_0,
+        r10_0 * r2_0
       })
-    elseif 0 == k then
-      table.insert(Const.SummonOffset, {
-        k * L,
-        j * L
+    elseif r11_0 == 0 then
+      table.insert(r0_0.SummonOffset, {
+        r11_0 * r2_0,
+        r10_0 * r2_0
       })
-      table.insert(Const.SummonOffset, {
-        k * L,
-        -j * L
+      table.insert(r0_0.SummonOffset, {
+        r11_0 * r2_0,
+        -r10_0 * r2_0
       })
-    elseif 0 == j then
-      table.insert(Const.SummonOffset, {
-        k * L,
-        j * L
+    elseif r10_0 == 0 then
+      table.insert(r0_0.SummonOffset, {
+        r11_0 * r2_0,
+        r10_0 * r2_0
       })
-      table.insert(Const.SummonOffset, {
-        -k * L,
-        j * L
+      table.insert(r0_0.SummonOffset, {
+        -r11_0 * r2_0,
+        r10_0 * r2_0
       })
     else
-      table.insert(Const.SummonOffset, {
-        k * L,
-        j * L
+      table.insert(r0_0.SummonOffset, {
+        r11_0 * r2_0,
+        r10_0 * r2_0
       })
-      table.insert(Const.SummonOffset, {
-        -k * L,
-        j * L
+      table.insert(r0_0.SummonOffset, {
+        -r11_0 * r2_0,
+        r10_0 * r2_0
       })
-      table.insert(Const.SummonOffset, {
-        k * L,
-        -j * L
+      table.insert(r0_0.SummonOffset, {
+        r11_0 * r2_0,
+        -r10_0 * r2_0
       })
-      table.insert(Const.SummonOffset, {
-        -k * L,
-        -j * L
+      table.insert(r0_0.SummonOffset, {
+        -r11_0 * r2_0,
+        -r10_0 * r2_0
       })
     end
   end
 end
-Const.AttrLimit = {}
-for AttrName, Data in pairs(DataMgr.AttrLimit) do
-  if Data.AttachAttrName then
-    Const.AttrLimit[Data.AttachAttrName] = Data.LimitValue
+r0_0.AttrLimit = {}
+for r7_0, r8_0 in pairs(DataMgr.AttrLimit) do
+  local r9_0 = r8_0.AttachAttrName
+  if r9_0 then
+    r9_0 = r0_0.AttrLimit
+    local r10_0 = r8_0.AttachAttrName
+    local r11_0 = r8_0.LimitValue
+    r9_0[r10_0] = r11_0
   end
 end
-Const.PlayerRecoverySkill = 20
-Const.PlayerCondemnSkill = 30
-Const.EmptyTNHpPercent = 0.3
-Const.DefaultWeaponArmSocket = "root_point"
-Const.UseLocation = {
+-- close: r3_0
+r0_0.PlayerRecoverySkill = 20
+r0_0.PlayerCondemnSkill = 30
+r0_0.EmptyTNHpPercent = 0.3
+r0_0.DefaultWeaponArmSocket = "root_point"
+r0_0.UseLocation = {
   Weapon = "Weapon",
   ChildWeapon = "ChildWeapon",
   Target = "Target",
-  Char = "Char"
+  Char = "Char",
 }
-Const.DefaultSkillLevel = 1
-Const.DefaultSkillGrade = 0
-Const.DefaultCharGrade = 0
-Const.DefaultWeaponGrade = 0
-Const.DefaultPhantomSkillLevel = 1
-Const.DefaultPhantomSkillGrade = 0
-Const.MontageSuffix = "_Montage"
-Const.GravityAcceleration = -980
-Const.BodyAccessoryDropFrameCount = 3
-Const.ShortPressThreshold = 0.3
-Const.LongPressThreshold = 1.5
-Const.TalkUIDeactiveTimeThreshold = 3
-Const.TalkState_IsInTalk = "IsInTalk"
-Const.TalkState_DisableMonsterSpawn = "DisableMonsterSpawn"
-Const.TalkState_HiddenGameUI = "HiddenGameUI"
-Const.Tag_GamePausedByTalk = "PausedByTalk"
-Const.Talk_LevelSequenceActorPath = "/Game/BluePrints/Story/Talk/Base/BP_TalkSequenceActor.BP_TalkSequenceActor_C"
-Const.MaxFloorDetection = 2000
-Const.BuffEffectInterval = 2
-Const.SkillCreatureSpeed = 1
-Const.TalkSoundKey = "Talk_VO"
-Const.ReviewSoundKey = "Review_VO"
-Const.DialogueEffectSoundKey = "DialogueEffectSoundKey"
-Const.TalkActionMontageGroupName = "TalkGroup"
-Const.CharacterFacialMouthMontageGroupName = "TalkFacialMouth"
-Const.CharacterFacialEyeMontageGroupName = "TalkFacialEye"
-Const.ForceEndInteractive = 1
-Const.NormalEndInteractive = 0
-Const.NoInteractive = 0
-Const.InteractiveStart = 1
-Const.InteractiveWaitToEnd = 2
-Const.ClickInteractive = 1
-Const.PressInteractive = 2
-Const.EndByTargetInteractive = 3
-Const.EnableTaskPrintError = true
-Const.OpenFramingCreateUnit = {
+r0_0.DefaultSkillLevel = 1
+r0_0.DefaultSkillGrade = 0
+r0_0.DefaultCharGrade = 0
+r0_0.DefaultWeaponGrade = 0
+r0_0.DefaultPhantomSkillLevel = 1
+r0_0.DefaultPhantomSkillGrade = 0
+r0_0.MontageSuffix = "_Montage"
+r0_0.GravityAcceleration = -980
+r0_0.BodyAccessoryDropFrameCount = 3
+r0_0.ShortPressThreshold = 0.3
+r0_0.LongPressThreshold = 1.5
+r0_0.TalkUIDeactiveTimeThreshold = 3
+r0_0.TalkState_IsInTalk = "IsInTalk"
+r0_0.TalkState_DisableMonsterSpawn = "DisableMonsterSpawn"
+r0_0.TalkState_HiddenGameUI = "HiddenGameUI"
+r0_0.Tag_GamePausedByTalk = "PausedByTalk"
+r0_0.Talk_LevelSequenceActorPath = "/Game/BluePrints/Story/Talk/Base/BP_TalkSequenceActor.BP_TalkSequenceActor_C"
+r0_0.MaxFloorDetection = 2000
+r0_0.BuffEffectInterval = 2
+r0_0.SkillCreatureSpeed = 1
+r0_0.TalkSoundKey = "Talk_VO"
+r0_0.ReviewSoundKey = "Review_VO"
+r0_0.DialogueEffectSoundKey = "DialogueEffectSoundKey"
+r0_0.TalkActionMontageGroupName = "TalkGroup"
+r0_0.CharacterFacialMouthMontageGroupName = "TalkFacialMouth"
+r0_0.CharacterFacialEyeMontageGroupName = "TalkFacialEye"
+r0_0.ForceEndInteractive = 1
+r0_0.NormalEndInteractive = 0
+r0_0.NoInteractive = 0
+r0_0.InteractiveStart = 1
+r0_0.InteractiveWaitToEnd = 2
+r0_0.ClickInteractive = 1
+r0_0.PressInteractive = 2
+r0_0.EndByTargetInteractive = 3
+r0_0.EnableTaskPrintError = true
+r0_0.OpenFramingCreateUnit = {
   Npc = true,
   Monster = true,
   Drop = true,
-  Mechanism = true
+  Mechanism = true,
 }
-Const.RegionSerializeUnitType = {
+r0_0.RegionSerializeUnitType = {
   Npc = 1,
   Monster = 1,
   Drop = 1,
   Mechanism = 1,
   Pet = 1,
-  Phantom = 1
+  Phantom = 1,
 }
-Const.FrameCreateUnitCount = {
+r0_0.FrameCreateUnitCount = {
   Npc = 1,
   Monster = 1,
   Drop = 1,
-  Mechanism = 1
+  Mechanism = 1,
 }
-Const.MonsterCullDistance = 7000
-Const.EnableTickLod = true
-Const.EnableDungeonAssetsPreload = true
-Const.DataMgrGCUseCount = 20
-Const.DataMgrGCTablePercent = 0.5
-Const.SkillCreaturePoolRefreshTime = 20
-Const.SkillCreaturePoolCleanTime = 60
-Const.SkillCreaturePoolDefaultPreloadNum = 100
-Const.EnableMonsterPreloadPackage = true
-Const.EnableNpcPreloadPackage = true
-Const.OptimizationRegionRPC = true
-Const.bSkipEQSTestWhilePlatformWarning = false
-Const.NumOfEQSItemWhilePlatformWarning = 5
-Const.EnablePlayerPreload = true
-Const.EnableDungeonPhantomPreload = true
-Const.EnableMonLevelChecker = true
-Const.AndroidPlayDeathEffectDist = 1500
-Const.EnableClientRpcDelay = true
-Const.PushMonsterOptimizationLevel = 2
-Const.BeginRagdollExecutePreFrame_PC = 3
-Const.BeginRagdollExecutePreFrame_IOS = 3
-Const.BeginRagdollExecutePreFrame_Android = 1
-Const.bEnablePlayerRootMotionOptimizations = true
-Const.CharResourcePaths = {
+r0_0.MonsterCullDistance = 7000
+r0_0.EnableTickLod = true
+r0_0.EnableDungeonAssetsPreload = true
+r0_0.DataMgrGCUseCount = 20
+r0_0.DataMgrGCTablePercent = 0.5
+r0_0.SkillCreaturePoolRefreshTime = 20
+r0_0.SkillCreaturePoolCleanTime = 60
+r0_0.SkillCreaturePoolDefaultPreloadNum = 100
+r0_0.EnableMonsterPreloadPackage = true
+r0_0.EnableNpcPreloadPackage = true
+r0_0.OptimizationRegionRPC = true
+r0_0.bSkipEQSTestWhilePlatformWarning = false
+r0_0.NumOfEQSItemWhilePlatformWarning = 5
+r0_0.EnablePlayerPreload = true
+r0_0.EnableDungeonPhantomPreload = true
+r0_0.EnableMonLevelChecker = true
+r0_0.AndroidPlayDeathEffectDist = 1500
+r0_0.EnableClientRpcDelay = true
+r0_0.PushMonsterOptimizationLevel = 2
+r0_0.BeginRagdollExecutePreFrame_PC = 3
+r0_0.BeginRagdollExecutePreFrame_IOS = 3
+r0_0.BeginRagdollExecutePreFrame_Android = 1
+r0_0.bEnablePlayerRootMotionOptimizations = true
+r0_0.CharResourcePaths = {
   DistructableBodyBp = "/Game/BluePrints/Item/AccessoryItems/BP_DestructablePart.BP_DestructablePart_C",
   AccessoryBP = "/Game/BluePrints/Item/AccessoryItems/BP_BodyAccessoryItem.BP_BodyAccessoryItem_C",
-  StaticAccessoryBP = "/Game/BluePrints/Item/AccessoryItems/BP_BodyAccessoryStaticItem.BP_BodyAccessoryStaticItem_C"
+  StaticAccessoryBP = "/Game/BluePrints/Item/AccessoryItems/BP_BodyAccessoryStaticItem.BP_BodyAccessoryStaticItem_C",
 }
-Const.FixTraceChannel = {
+r0_0.FixTraceChannel = {
   TraceCreatureHit = ETraceTypeQuery.TraceCreatureHit,
-  TraceScene = ETraceTypeQuery.TraceScene
+  TraceScene = ETraceTypeQuery.TraceScene,
 }
-Const.BlockTickLodTag = {
+r0_0.BlockTickLodTag = {
   SceneGuide = "SceneGuide",
-  CharBillboard = "CharBillboard"
+  CharBillboard = "CharBillboard",
 }
-Const.EDungeonUIState = {
+r0_0.EDungeonUIState = {
   None = 0,
   BeforeTarget = 1,
   OnTarget = 2,
-  AfterTarget = 3
+  AfterTarget = 3,
 }
-Const.BrushStaticMesh = {
+r0_0.BrushStaticMesh = {
   "SM_Zhanshijia_01",
   "地图B",
   "地图贴纸"
 }
-Const.CharWaitInitTag = {
+r0_0.CharWaitInitTag = {
   AssetsLoading = "AssetsLoading",
   OverlapCheck = "OverlapCheck",
-  HideInTalk = "HideInTalk"
+  HideInTalk = "HideInTalk",
 }
-Const.EnableDynamicAIController = true
-Const.FlyAIControllerPath = "/Game/BluePrints/AI/BP_EMMonFlyAIController.BP_EMMonFlyAIController_C"
-Const.DefaultAIControllerPath = "/Game/BluePrints/AI/BP_EMAIController.BP_EMAIController_C"
-Const.EnableBornOverlapCheck = true
-Const.MonsterPushFactor = 1.5
-Const.MonsterMinPushVelocity = 200
-Const.MonsterOverlapPushVelocity = 1000
-Const.Patrol = 3
-Const.Command = 4
-Const.MaxLoadingPercentage = 100
-Const.LoadingTipsInterval = 15
-Const.MaxRecoverValue = 100
-Const.BossTNToZeroRecoverTickInterival = 0.1
-Const.MonsterTNRecoverTickInterival = 1
-Const.BossTNRecoverTickFrequency = 30
-Const.DefaultHUDScale = 100
-Const.MinHUDScale = 50
-Const.MaxHUDScale = 150
-Const.ROLE_None = 0
-Const.ROLE_SimulatedProxy = 1
-Const.ROLE_AutonomousProxy = 2
-Const.ROLE_Authority = 3
-Const.ROLE_MAX = 4
-Const.SkillFeatureHideTag = "SkillFeature"
-Const.ImmersionModelHideTag = "ImmersionModel"
-Const.MiniGameHideTag = "MiniGame"
-Const.TalkHideTag = "Talk"
-Const.ShowUIOnlyTag = "DoShowUIOnly"
-Const.BattleResurgenceHidTag = "BattleResurgence"
-Const.BlackScreenHideTag = "BlackScreen"
-Const.DungeonSettlementHideTag = "DungeonSettlement"
-Const.GuideMainHideTag = "GuideMain"
-Const.BossBattleOpenHideTag = "BossBattleOpen"
-Const.LevelSequenceStateRecorderTag = "LevelSequenceStateRecorder"
-Const.Common = 0
-Const.Hijack = 1
-Const.RougeLike = 2
-Const.GatherMaxTime = 5
-Const.MinTimeDilation = 0.001
-Const.Skill = "Skill"
-Const.Melee = "Melee"
-Const.Ranged = "Ranged"
-Const.SequenceNpcMeshBoundScale = 5
-Const.BreakableJsonPath = "Script/Datas/Houdini_data/Prologue/PrologueBreakableFile/"
-Const.ScalabilityUpdateTime = 0
-Const.ScalabilityLevelVeryLow = 0
-Const.ScalabilityLevelLow = 1
-Const.ScalabilityLevelMiddle = 2
-Const.ScalabilityLevelHigh = 3
-Const.ScalabilityLevelVeryHigh = 4
-Const.BanSmallLevelScalabilityLevel = {}
-Const.CutTNLevelThreshold = 10
-Const.CutTNLevelModifer = 1.0
-Const.AccessEnterDefeated = 0
-Const.CantEnterDefeated = 1
-Const.DefeatedStopNotify = 2
-Const.DefeatedEndToIdle = 3
-Const.ClearCombo_Timelimit = 0
-Const.ClearCombo_Dead = 1
-Const.ClearCombo_SkillEffect = 2
-Const.ClearCombo_DisableUltraWeapon = 3
-Const.ClearCombo_ChangeWeapon = 4
-Const.MaxPhantomNum = 2
-Const.MaxPhantomNum2Player = 1
-Const.MaxPhantomNumOver2Player = 0
-Const.SavePickupType = {
+r0_0.EnableDynamicAIController = true
+r0_0.FlyAIControllerPath = "/Game/BluePrints/AI/BP_EMMonFlyAIController.BP_EMMonFlyAIController_C"
+r0_0.DefaultAIControllerPath = "/Game/BluePrints/AI/BP_EMAIController.BP_EMAIController_C"
+r0_0.EnableBornOverlapCheck = true
+r0_0.MonsterPushFactor = 1.5
+r0_0.MonsterMinPushVelocity = 200
+r0_0.MonsterOverlapPushVelocity = 1000
+r0_0.Patrol = 3
+r0_0.Command = 4
+r0_0.MaxLoadingPercentage = 100
+r0_0.LoadingTipsInterval = 15
+r0_0.MaxRecoverValue = 100
+r0_0.BossTNToZeroRecoverTickInterival = 0.1
+r0_0.MonsterTNRecoverTickInterival = 1
+r0_0.BossTNRecoverTickFrequency = 30
+r0_0.DefaultHUDScale = 100
+r0_0.MinHUDScale = 50
+r0_0.MaxHUDScale = 150
+r0_0.ROLE_None = 0
+r0_0.ROLE_SimulatedProxy = 1
+r0_0.ROLE_AutonomousProxy = 2
+r0_0.ROLE_Authority = 3
+r0_0.ROLE_MAX = 4
+r0_0.SkillFeatureHideTag = "SkillFeature"
+r0_0.ImmersionModelHideTag = "ImmersionModel"
+r0_0.MiniGameHideTag = "MiniGame"
+r0_0.TalkHideTag = "Talk"
+r0_0.ShowUIOnlyTag = "DoShowUIOnly"
+r0_0.BattleResurgenceHidTag = "BattleResurgence"
+r0_0.BlackScreenHideTag = "BlackScreen"
+r0_0.DungeonSettlementHideTag = "DungeonSettlement"
+r0_0.GuideMainHideTag = "GuideMain"
+r0_0.BossBattleOpenHideTag = "BossBattleOpen"
+r0_0.LevelSequenceStateRecorderTag = "LevelSequenceStateRecorder"
+r0_0.Common = 0
+r0_0.Hijack = 1
+r0_0.RougeLike = 2
+r0_0.GatherMaxTime = 5
+r0_0.MinTimeDilation = 0.001
+r0_0.Skill = "Skill"
+r0_0.Melee = "Melee"
+r0_0.Ranged = "Ranged"
+r0_0.SequenceNpcMeshBoundScale = 5
+r0_0.BreakableJsonPath = "Script/Datas/Houdini_data/Prologue/PrologueBreakableFile/"
+r0_0.ScalabilityUpdateTime = 0
+r0_0.ScalabilityLevelVeryLow = 0
+r0_0.ScalabilityLevelLow = 1
+r0_0.ScalabilityLevelMiddle = 2
+r0_0.ScalabilityLevelHigh = 3
+r0_0.ScalabilityLevelVeryHigh = 4
+r0_0.BanSmallLevelScalabilityLevel = {}
+r0_0.CutTNLevelThreshold = 10
+r0_0.CutTNLevelModifer = 1
+r0_0.AccessEnterDefeated = 0
+r0_0.CantEnterDefeated = 1
+r0_0.DefeatedStopNotify = 2
+r0_0.DefeatedEndToIdle = 3
+r0_0.ClearCombo_Timelimit = 0
+r0_0.ClearCombo_Dead = 1
+r0_0.ClearCombo_SkillEffect = 2
+r0_0.ClearCombo_DisableUltraWeapon = 3
+r0_0.ClearCombo_ChangeWeapon = 4
+r0_0.MaxPhantomNum = 2
+r0_0.MaxPhantomNum2Player = 1
+r0_0.MaxPhantomNumOver2Player = 0
+r0_0.SavePickupType = {
   GetWeapon = 1,
   GetMod = 1,
-  GetResource = 1
+  GetResource = 1,
 }
-Const.Popup_GetProduceItem = 100017
-Const.Popup_StartProduce = 100014
-Const.Popup_CancelProduce = 100154
-Const.Popup_BatchStartProduce = 100153
-Const.Popup_AccerateProduce = 100018
-Const.Popup_ConfirmLockedMod = 100098
-Const.Popup_ConfirmUpgradedMod = 100099
-Const.StunTag = "Stun"
-Const.DS_Default_GroupId = 102
-Const.DSVersion = 0
-Const.NetWorkFailure_Tag = "NetWorkFailure"
-Const.NET_CLIENT_SEND_HEARTBEAT_TIME = 60
-Const.NET_CLIENT_HEARTBEAT_WARNING = 5
-Const.NET_CLIENT_HEARTBEAT_TIMEOUT = 13
-Const.DefaultResetPressSkillId = 0
-Const.UseOriginSkillId = -1
-Const.Popup_SecondConfirm = 100027
-Const.Popup_CombatData = 100052
-Const.RoleBarLength = 202.5
-Const.BattleCharTagVXScaleTable = {
+r0_0.Popup_GetProduceItem = 100017
+r0_0.Popup_StartProduce = 100014
+r0_0.Popup_CancelProduce = 100154
+r0_0.Popup_BatchStartProduce = 100153
+r0_0.Popup_AccerateProduce = 100018
+r0_0.Popup_ConfirmLockedMod = 100098
+r0_0.Popup_ConfirmUpgradedMod = 100099
+r0_0.StunTag = "Stun"
+r0_0.DS_Default_GroupId = 102
+r0_0.DSVersion = 0
+r0_0.NetWorkFailure_Tag = "NetWorkFailure"
+r0_0.NET_CLIENT_SEND_HEARTBEAT_TIME = 60
+r0_0.NET_CLIENT_HEARTBEAT_WARNING = 5
+r0_0.NET_CLIENT_HEARTBEAT_TIMEOUT = 13
+r0_0.DefaultResetPressSkillId = 0
+r0_0.UseOriginSkillId = -1
+r0_0.Popup_SecondConfirm = 100027
+r0_0.Popup_CombatData = 100052
+r0_0.RoleBarLength = 202.5
+r0_0.BattleCharTagVXScaleTable = {
   Loli = {
     0.8,
     0.8,
@@ -785,40 +829,40 @@ Const.BattleCharTagVXScaleTable = {
     1,
     1,
     1
-  }
+  },
 }
-Const.Popup_ModUpgrade = 100045
-Const.Popup_ModPolarity = 100050
-Const.Popup_ModAutoPutOn = 100066
-Const.BarriyBuffId = 50
-Const.CrackKeyBuffId = 51
-Const.SkillFeatureCD = 30
-Const.bEnableSkillFeatureCD = true
-Const.bHideSkillCD = 1
-Const.DungeonBgBluePrint = "/Game/UI/UI_PC/LevelSelect/LevelSelect_Bg/LevelSelect_Bg_Training.LevelSelect_Bg_Training"
-Const.BloodBarAnimTime = 0.3
-Const.BloodBarDelayTime = 0.1
-Const.SignalStrength = {
+r0_0.Popup_ModUpgrade = 100045
+r0_0.Popup_ModPolarity = 100050
+r0_0.Popup_ModAutoPutOn = 100066
+r0_0.BarriyBuffId = 50
+r0_0.CrackKeyBuffId = 51
+r0_0.SkillFeatureCD = 30
+r0_0.bEnableSkillFeatureCD = true
+r0_0.bHideSkillCD = 1
+r0_0.DungeonBgBluePrint = "/Game/UI/UI_PC/LevelSelect/LevelSelect_Bg/LevelSelect_Bg_Training.LevelSelect_Bg_Training"
+r0_0.BloodBarAnimTime = 0.3
+r0_0.BloodBarDelayTime = 0.1
+r0_0.SignalStrength = {
   30,
   90,
   150
 }
-Const.PlayerSignatureIllegal = 26005
-Const.PlayerNicknameIllegal = 26006
-Const.BattleTip_CommonTop_CD = 0.5
-Const.BehaviorId = {
+r0_0.PlayerSignatureIllegal = 26005
+r0_0.PlayerNicknameIllegal = 26006
+r0_0.BattleTip_CommonTop_CD = 0.5
+r0_0.BehaviorId = {
   Stroll = 0,
   LoopMontage = 1,
   MontageList = 2,
   Patrol = 3,
-  Command = 4
+  Command = 4,
 }
-Const.TestGMRegionType = {
+r0_0.TestGMRegionType = {
   NoneTest = 0,
   OnlyServer = 1,
-  CompareServer = 2
+  CompareServer = 2,
 }
-Const.RegionDataTypeDebugText = {
+r0_0.RegionDataTypeDebugText = {
   "非存储数据",
   "关卡数据, 永不卸载",
   "任务数据",
@@ -829,7 +873,7 @@ Const.RegionDataTypeDebugText = {
   "关卡数据, 每一周清除",
   "跨任务数据"
 }
-Const.RegionDataStorageType = {
+r0_0.RegionDataStorageType = {
   ERegionDataType.RDT_CommonData,
   ERegionDataType.RDT_RarelyData,
   ERegionDataType.RDT_CommonDailyData,
@@ -837,39 +881,39 @@ Const.RegionDataStorageType = {
   ERegionDataType.RDT_CommonWeeklyData,
   ERegionDataType.RDT_CommonQuestData
 }
-Const.RougeSliceInfoType = {
+r0_0.RougeSliceInfoType = {
   None = 0,
   RecoverCount = 1,
   TreasureMonCount = 2,
-  BlueprintValue = 3
+  BlueprintValue = 3,
 }
-Const.DUNGEON_MATCH_BAR_STATE = {
+r0_0.DUNGEON_MATCH_BAR_STATE = {
   SPONSOR_WAITING_CONFIRM = 1,
   TEAMMATE_CONFIRMING = 2,
   TEAMMATE_WAITING_CONFIRMING = 3,
   WAITING_MATCHING = 4,
   WAITING_MATCHING_WITH_CANCEL = 5,
-  WAITING_ENTER_DUNGEON = 6
+  WAITING_ENTER_DUNGEON = 6,
 }
-Const.CampType = {
+r0_0.CampType = {
   Monster = ECampName.Monster,
   Player = ECampName.Player,
   DefenceCore = ECampName.DefenceCore,
   NPC = ECampName.NPC,
   Neutral = ECampName.Neutral,
-  Hostile = ECampName.Hostile
+  Hostile = ECampName.Hostile,
 }
-Const.EnableCreateUnitLog = false
-Const.IsOpenNpcInitOpt = true
-Const.EnableFXOptimization = true
-Const.ToughnessTimeDilation = 0.33
-Const.ToughnessShowBloodTip = 0.4
-Const.ToughnessClose = 0.76
-Const.PlayerHandAimSpeedRate = 0.9
-Const.InVaildModUnlockLevel = 99
-Const.PlaySoundAsync = true
-Const.EveryAttackLimitSeNum = 3
-Const.RomanNum = {
+r0_0.EnableCreateUnitLog = false
+r0_0.IsOpenNpcInitOpt = true
+r0_0.EnableFXOptimization = true
+r0_0.ToughnessTimeDilation = 0.33
+r0_0.ToughnessShowBloodTip = 0.4
+r0_0.ToughnessClose = 0.76
+r0_0.PlayerHandAimSpeedRate = 0.9
+r0_0.InVaildModUnlockLevel = 99
+r0_0.PlaySoundAsync = true
+r0_0.EveryAttackLimitSeNum = 3
+r0_0.RomanNum = {
   "Ⅰ",
   "Ⅱ",
   "Ⅲ",
@@ -883,7 +927,7 @@ Const.RomanNum = {
   "Ⅺ",
   "Ⅻ"
 }
-Const.IndexNum = {
+r0_0.IndexNum = {
   "①",
   "②",
   "③",
@@ -895,9 +939,9 @@ Const.IndexNum = {
   "⑨",
   "⑩"
 }
-Const.bShowDamageDetails = false
-Const.bEditorOpenFXBudget = true
-Const.DialogueSnapShot = {
+r0_0.bShowDamageDetails = false
+r0_0.bEditorOpenFXBudget = true
+r0_0.DialogueSnapShot = {
   HEART = 1,
   MEMORY = 2,
   MYSTERIOUS = 3,
@@ -906,132 +950,132 @@ Const.DialogueSnapShot = {
   OUTDOOR = 6,
   ELECTRIC = 7,
   BROADCAST = 8,
-  ECHO = 9
+  ECHO = 9,
 }
-Const.DungeonFrameLoadBreakableItemMaxNum = 2
-Const.MaxDungeonMonNum = 60
-Const.bOverrideHLODDistance = false
-Const.HLODDistanceDefault = {
+r0_0.DungeonFrameLoadBreakableItemMaxNum = 2
+r0_0.MaxDungeonMonNum = 60
+r0_0.bOverrideHLODDistance = false
+r0_0.HLODDistanceDefault = {
   [0] = 12000,
   [1] = 13000,
   [2] = 15000,
   [3] = 16000,
-  [4] = 18000
+  [4] = 18000,
 }
-Const.HLODDistanceAndroid = {
+r0_0.HLODDistanceAndroid = {
   [0] = 3000,
   [1] = 3000,
   [2] = 3000,
   [3] = 4000,
-  [4] = 4000
+  [4] = 4000,
 }
-Const.PCRealStreamingDistanceRatio = {
+r0_0.PCRealStreamingDistanceRatio = {
   [0] = 1,
   [1] = 1.1,
   [2] = 1.2,
   [3] = 1.3,
-  [4] = 1.5
+  [4] = 1.5,
 }
-Const.AndroidRealStreamingDistanceRatio = {
+r0_0.AndroidRealStreamingDistanceRatio = {
   [0] = 0.9,
   [1] = 0.95,
   [2] = 1,
   [3] = 1.2,
-  [4] = 1.3
+  [4] = 1.3,
 }
-Const.IOSRealStreamingDistanceRatio = {
+r0_0.IOSRealStreamingDistanceRatio = {
   [0] = 0.9,
   [1] = 0.95,
   [2] = 1,
   [3] = 1.2,
-  [4] = 1.3
+  [4] = 1.3,
 }
-Const.IOSSerializeDistanceRatio = {
+r0_0.IOSSerializeDistanceRatio = {
   [0] = 0.8,
   [1] = 0.9,
-  [2] = 1.0,
-  [3] = 1.0,
-  [4] = 1.0
+  [2] = 1,
+  [3] = 1,
+  [4] = 1,
 }
-Const.CanUnloadNavMeshLevel = true
-Const.SimulateMovementDebugPlatform = ""
-Const.CheckDungeonMonId = false
-Const.PreFrameRealInitNum = 1
-Const.MonDeathTaskNumPreFrame = 1
-Const.bEnableMonDeathOptimization = true
-Const.bCloseWeaponMovementSync = true
-Const.bCloseBodyAccessoryItemMovementSync = true
-Const.bSpawnAIUnitAddToEventQueue = true
-Const.bWeaponAndAccessoryItemHcc = true
-Const.bMonsterInitByPropertySync = true
-Const.OpenLookAtProtect = true
-Const.StandAloneMonsterCanCache = true
-Const.OnlineMonsterCanCache = true
-Const.DungeonPreloadMonster = true
-Const.MonsterNeedCache = true
-Const.MonsterCanSpawnFromCache = true
-Const.SummonDeadCache_Windows = false
-Const.SummonDeadCache_Android = false
-Const.SummonDeadCache_IOS = false
-Const.PlayerPreloadSummon_Windows = false
-Const.PlayerPreloadSummon_Android = false
-Const.PlayerPreloadSummon_IOS = false
-Const.NPCDeadCache_Win = true
-Const.NPCDeadCache_IOS = false
-Const.NPCDeadCache_Andriod = true
-Const.LowMemoryDeviceNPCOptimize = true
-Const.OnlineNPCCreateOptimize = true
-Const.NeedStoreSTLBGM = true
-Const.FootstepFXSlowSpeed = 230
-Const.GamepadSpecialLeft = "Gamepad_Special_Left"
-Const.GamepadSpecialRight = "Gamepad_Special_Right"
-Const.GamepadDPadLeft = "Gamepad_DPad_Left"
-Const.GamepadDPadRight = "Gamepad_DPad_Right"
-Const.GamepadDPadUp = "Gamepad_DPad_Up"
-Const.GamepadDPadDown = "Gamepad_DPad_Down"
-Const.GamepadFaceButtonLeft = "Gamepad_FaceButton_Left"
-Const.GamepadFaceButtonRight = "Gamepad_FaceButton_Right"
-Const.GamepadFaceButtonUp = "Gamepad_FaceButton_Top"
-Const.GamepadFaceButtonDown = "Gamepad_FaceButton_Bottom"
-Const.GamepadLeftShoulder = "Gamepad_LeftShoulder"
-Const.GamepadLeftTrigger = "Gamepad_LeftTrigger"
-Const.GamepadRightShoulder = "Gamepad_RightShoulder"
-Const.GamepadRightTrigger = "Gamepad_RightTrigger"
-Const.GamepadRightThumbstick = "Gamepad_RightThumbstick"
-Const.GamepadLeftThumbstick = "Gamepad_LeftThumbstick"
-Const.LeftStickUp = "Gamepad_LeftStick_Up"
-Const.LeftStickDown = "Gamepad_LeftStick_Down"
-Const.LeftStickRight = "Gamepad_LeftStick_Right"
-Const.LeftStickLeft = "Gamepad_LeftStick_Left"
-Const.RightStickUp = "Gamepad_RightStick_Up"
-Const.RightStickDown = "Gamepad_RightStick_Down"
-Const.RightStickRight = "Gamepad_RightStick_Right"
-Const.RightStickLeft = "Gamepad_RightStick_Left"
-Const.ShortKeyToGamePadKey = {
-  Menu = Const.GamepadSpecialRight,
-  View = Const.GamepadSpecialLeft,
-  A = Const.GamepadFaceButtonDown,
-  B = Const.GamepadFaceButtonRight,
-  X = Const.GamepadFaceButtonLeft,
-  Y = Const.GamepadFaceButtonUp,
-  LB = Const.GamepadLeftShoulder,
-  RB = Const.GamepadRightShoulder,
-  LT = Const.GamepadLeftTrigger,
-  RT = Const.GamepadRightTrigger,
-  LS = Const.GamepadLeftThumbstick,
-  RS = Const.GamepadRightThumbstick,
-  Up = Const.GamepadDPadUp,
-  Down = Const.GamepadDPadDown,
-  Left = Const.GamepadDPadLeft,
-  Right = Const.GamepadDPadRight
+r0_0.CanUnloadNavMeshLevel = true
+r0_0.SimulateMovementDebugPlatform = ""
+r0_0.CheckDungeonMonId = false
+r0_0.PreFrameRealInitNum = 1
+r0_0.MonDeathTaskNumPreFrame = 1
+r0_0.bEnableMonDeathOptimization = true
+r0_0.bCloseWeaponMovementSync = true
+r0_0.bCloseBodyAccessoryItemMovementSync = true
+r0_0.bSpawnAIUnitAddToEventQueue = true
+r0_0.bWeaponAndAccessoryItemHcc = true
+r0_0.bMonsterInitByPropertySync = true
+r0_0.OpenLookAtProtect = true
+r0_0.StandAloneMonsterCanCache = true
+r0_0.OnlineMonsterCanCache = true
+r0_0.DungeonPreloadMonster = true
+r0_0.MonsterNeedCache = true
+r0_0.MonsterCanSpawnFromCache = true
+r0_0.SummonDeadCache_Windows = false
+r0_0.SummonDeadCache_Android = false
+r0_0.SummonDeadCache_IOS = false
+r0_0.PlayerPreloadSummon_Windows = false
+r0_0.PlayerPreloadSummon_Android = false
+r0_0.PlayerPreloadSummon_IOS = false
+r0_0.NPCDeadCache_Win = true
+r0_0.NPCDeadCache_IOS = false
+r0_0.NPCDeadCache_Andriod = true
+r0_0.LowMemoryDeviceNPCOptimize = true
+r0_0.OnlineNPCCreateOptimize = true
+r0_0.NeedStoreSTLBGM = true
+r0_0.FootstepFXSlowSpeed = 230
+r0_0.GamepadSpecialLeft = "Gamepad_Special_Left"
+r0_0.GamepadSpecialRight = "Gamepad_Special_Right"
+r0_0.GamepadDPadLeft = "Gamepad_DPad_Left"
+r0_0.GamepadDPadRight = "Gamepad_DPad_Right"
+r0_0.GamepadDPadUp = "Gamepad_DPad_Up"
+r0_0.GamepadDPadDown = "Gamepad_DPad_Down"
+r0_0.GamepadFaceButtonLeft = "Gamepad_FaceButton_Left"
+r0_0.GamepadFaceButtonRight = "Gamepad_FaceButton_Right"
+r0_0.GamepadFaceButtonUp = "Gamepad_FaceButton_Top"
+r0_0.GamepadFaceButtonDown = "Gamepad_FaceButton_Bottom"
+r0_0.GamepadLeftShoulder = "Gamepad_LeftShoulder"
+r0_0.GamepadLeftTrigger = "Gamepad_LeftTrigger"
+r0_0.GamepadRightShoulder = "Gamepad_RightShoulder"
+r0_0.GamepadRightTrigger = "Gamepad_RightTrigger"
+r0_0.GamepadRightThumbstick = "Gamepad_RightThumbstick"
+r0_0.GamepadLeftThumbstick = "Gamepad_LeftThumbstick"
+r0_0.LeftStickUp = "Gamepad_LeftStick_Up"
+r0_0.LeftStickDown = "Gamepad_LeftStick_Down"
+r0_0.LeftStickRight = "Gamepad_LeftStick_Right"
+r0_0.LeftStickLeft = "Gamepad_LeftStick_Left"
+r0_0.RightStickUp = "Gamepad_RightStick_Up"
+r0_0.RightStickDown = "Gamepad_RightStick_Down"
+r0_0.RightStickRight = "Gamepad_RightStick_Right"
+r0_0.RightStickLeft = "Gamepad_RightStick_Left"
+r0_0.ShortKeyToGamePadKey = {
+  Menu = r0_0.GamepadSpecialRight,
+  View = r0_0.GamepadSpecialLeft,
+  A = r0_0.GamepadFaceButtonDown,
+  B = r0_0.GamepadFaceButtonRight,
+  X = r0_0.GamepadFaceButtonLeft,
+  Y = r0_0.GamepadFaceButtonUp,
+  LB = r0_0.GamepadLeftShoulder,
+  RB = r0_0.GamepadRightShoulder,
+  LT = r0_0.GamepadLeftTrigger,
+  RT = r0_0.GamepadRightTrigger,
+  LS = r0_0.GamepadLeftThumbstick,
+  RS = r0_0.GamepadRightThumbstick,
+  Up = r0_0.GamepadDPadUp,
+  Down = r0_0.GamepadDPadDown,
+  Left = r0_0.GamepadDPadLeft,
+  Right = r0_0.GamepadDPadRight,
 }
-Const.ForceFeedbackScale = {
-  1.0,
+r0_0.ForceFeedbackScale = {
+  1,
   0.6,
   0.2
 }
-Const.StandAloneNoWalnutTipsTime = 2
-Const.WalnutNumberIconPath = {
+r0_0.StandAloneNoWalnutTipsTime = 2
+r0_0.WalnutNumberIconPath = {
   "/Game/UI/Texture/Dynamic/Atlas/Walnut/T_Walnut_Num0.T_Walnut_Num0",
   "/Game/UI/Texture/Dynamic/Atlas/Walnut/T_Walnut_Num1.T_Walnut_Num1",
   "/Game/UI/Texture/Dynamic/Atlas/Walnut/T_Walnut_Num2.T_Walnut_Num2",
@@ -1044,19 +1088,19 @@ Const.WalnutNumberIconPath = {
   "/Game/UI/Texture/Dynamic/Atlas/Walnut/T_Walnut_Num9.T_Walnut_Num9",
   "/Game/UI/Texture/Dynamic/Atlas/Walnut/T_Walnut_Num10.T_Walnut_Num10"
 }
-Const.DeputeType = {
+r0_0.DeputeType = {
   RegularDepute = 1,
   NightFlightManualDepute = 2,
   WalnutDepute = 3,
-  DeputeWeekly = 4
+  DeputeWeekly = 4,
 }
-Const.UnBorn = -1
-Const.Borning = 0
-Const.Bonred = 1
-Const.ShouldDetory = 2
-Const.IsOpenNewDepute = false
-Const.BubbleTimePerLine = 2
-Const.HeroUsdkSharePlatform = {
+r0_0.UnBorn = -1
+r0_0.Borning = 0
+r0_0.Bonred = 1
+r0_0.ShouldDetory = 2
+r0_0.IsOpenNewDepute = false
+r0_0.BubbleTimePerLine = 2
+r0_0.HeroUsdkSharePlatform = {
   All = 20000,
   QQ = 20001,
   QQZone = 20002,
@@ -1072,17 +1116,17 @@ Const.HeroUsdkSharePlatform = {
   Facebook = 30002,
   TwitterFriends = 30003,
   Tweets = 30004,
-  Discord = 30011
+  Discord = 30011,
 }
-Const.HeroUsdkShareType = {
+r0_0.HeroUsdkShareType = {
   None = 0,
   Link = 1,
   Image = 2,
-  Text = 3
+  Text = 3,
 }
-Const.CustomNpcCreateOpt = true
-Const.CustomNpcCanCache = true
-Const.PickupNiagaraPaths = {
+r0_0.CustomNpcCreateOpt = true
+r0_0.CustomNpcCanCache = true
+r0_0.PickupNiagaraPaths = {
   "/Game/Asset/Effect/Niagara/Item/NS_Item_Base.NS_Item_Base",
   "/Game/Asset/Effect/Niagara/Item/NS_Item_Pick_Base.NS_Item_Pick_Base",
   "/Game/Asset/Effect/Niagara/Item/NS_Item_Base_Pro.NS_Item_Base_Pro",
@@ -1091,29 +1135,34 @@ Const.PickupNiagaraPaths = {
   "/Game/Asset/Effect/Niagara/Item/NS_Item_Pick_Base_Ultra.NS_Item_Pick_Base_Ultra",
   "/Game/Asset/Effect/Niagara/Item/NS_Item_Base_Fly.NS_Item_Base_Fly"
 }
-Const.bForceOpenPay = false
-Const.IsOpenNetMultiClientOnly = true
-Const.ReddotCacheType = {
+r0_0.bForceOpenPay = false
+r0_0.IsOpenNetMultiClientOnly = true
+r0_0.ReddotCacheType = {
   UserCache = 1,
   CommonCache = 0,
-  NoneCache = -1
+  NoneCache = -1,
 }
-Const.ShopCacheReason = {
+r0_0.ShopCacheReason = {
   Temporary = 1,
   Persistent = 2,
-  Read = 0
+  Read = 0,
 }
-Const.bOpenAntiCheat = true
-Const.AntiCheatInterval = 60
-Const.IsShowRayCreature = false
-Const.IsOpenBulletCreature = true
-Const.IsOpenSkillCreature = true
-Const.IsOpenCreatureECS = true
-Const.UnlockRegionTeleport = false
-Const.DefaultAttributeMaster = {
+r0_0.bOpenAntiCheat = true
+r0_0.AntiCheatInterval = 60
+r0_0.bOpenScriptDetectionCheck = true
+r0_0.IsShowRayCreature = false
+r0_0.IsOpenBulletCreature = true
+r0_0.IsOpenSkillCreature = true
+r0_0.IsOpenCreatureECS = true
+r0_0.UnlockRegionTeleport = false
+r0_0.DefaultAttributeMaster = {
   [0] = 160101,
-  [1] = 1601
+  [1] = 1601,
 }
-Const.SkipShadowBudgetConfig = {3102}
-Const.OpenVerifyArray = true
-return Const
+r0_0.SkipShadowBudgetConfig = {
+  3102
+}
+r0_0.OpenVerifyArray = true
+r0_0.bNullNetWorkMgr = true
+r0_0.bUseDynamicResolution = true
+return r0_0

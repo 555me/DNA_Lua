@@ -1,322 +1,335 @@
-local FSM = require("BluePrints.UI.ControllerFSM")
-local MiscUtils = require("Utils.MiscUtils")
-local StorylineUtils = require("StoryCreator.StoryLogic.StorylineUtils")
-
-local function IsBattleMainInVisible()
-  local BattleMain = UIManager():GetUIObj("BattleMain")
-  return not IsValid(BattleMain) or BattleMain.IsPlayOutAnim or not BattleMain:IsVisible()
+-- filename: @E:/Pack/Branch/OBT10_Geili\Content/Script/BluePrints\UI\Common\AfterLoadingMgr.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r0_0 = require("BluePrints.UI.ControllerFSM")
+local r1_0 = require("Utils.MiscUtils")
+local r2_0 = require("StoryCreator.StoryLogic.StorylineUtils")
+local function r3_0()
+  -- line: [5, 8] id: 1
+  local r0_1 = UIManager():GetUIObj("BattleMain")
+  return IsValid(r0_1) and r0_1.IsPlayOutAnim and not r0_1:IsVisible()
 end
-
-local State = {
+local r4_0 = {
   __index = {
-    GetNextState = function(self)
-      return DataMgr.AfterLoadingFSM[self.StateName].NextState
+    GetNextState = function(r0_2)
+      -- line: [13, 15] id: 2
+      return DataMgr.AfterLoadingFSM[r0_2.StateName].NextState
     end,
-    OnAfterEnter = function(AfterLoadingMgr, NowState)
-      AfterLoadingMgr:Fallback(NowState)
-    end
+    OnAfterEnter = function(r0_3, r1_3)
+      -- line: [16, 18] id: 3
+      r0_3:Fallback(r1_3)
+    end,
   },
-  New = function(Class, StateName, FuncTable)
-    local NewObj = {}
-    setmetatable(NewObj, Class)
-    
-    function NewObj.OnEnter(AfterLoadingMgr)
+  New = function(r0_4, r1_4, r2_4)
+    -- line: [20, 44] id: 4
+    local r3_4 = {}
+    setmetatable(r3_4, r0_4)
+    function r3_4.OnEnter(r0_5)
+      -- line: [23, 32] id: 5
       try({
-        exec = FuncTable.OnEnter,
-        catch = function(err)
-          DebugPrint(Traceback(ErrorTag, "AfterLoading流程出错了,看日志有trace,出错状态：%s", AfterLoadingMgr.FSM:Current()))
-          LogError(Traceback(ErrorTag, err, true))
+        exec = r2_4.OnEnter,
+        catch = function(r0_6)
+          -- line: [26, 30] id: 6
+          DebugPrint(Traceback(ErrorTag, "AfterLoading流程出错了,看日志有trace,出错状态：%s", r0_5.FSM:Current()))
+          LogError(Traceback(ErrorTag, r0_6, true))
           UIManager():DestroyAfterLoadingMgr()
-        end
-      }, AfterLoadingMgr)
+        end,
+      }, r0_5)
     end
-    
-    NewObj.StateName = StateName
-    if FuncTable.OnAfterEnter then
-      NewObj.OnAfterEnter = FuncTable.OnAfterEnter
+    r3_4.StateName = r1_4
+    if r2_4.OnAfterEnter then
+      r3_4.OnAfterEnter = r2_4.OnAfterEnter
     end
-    if FuncTable.OnLeave then
-      NewObj.OnLeave = FuncTable.OnLeave
+    if r2_4.OnLeave then
+      r3_4.OnLeave = r2_4.OnLeave
     end
-    if FuncTable.GetNextState then
-      NewObj.GetNextState = FuncTable.GetNextState
+    if r2_4.GetNextState then
+      r3_4.GetNextState = r2_4.GetNextState
     end
-    return NewObj
-  end
+    return r3_4
+  end,
 }
-local StateImpl = Class("BluePrints.Common.TimerMgr")
-StateImpl.BeginState = State:New("BeginState", {
-  OnEnter = function(AfterLoadingMgr)
+local r5_0 = Class("BluePrints.Common.TimerMgr")
+r5_0.BeginState = r4_0:New("BeginState", {
+  OnEnter = function(r0_7)
+    -- line: [50, 63] id: 7
     GWorld.NetworkMgr:UpdateNetDisconnectUIConfirm()
-    local GameInputSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(GWorld.GameInstance)
-    if IsValid(GameInputSubsystem) then
-      GameInputSubsystem:DisableInputMode("CommonChangeScene")
+    local r1_7 = UGameInputModeSubsystem.GetGameInputModeSubsystem(GWorld.GameInstance)
+    if IsValid(r1_7) then
+      r1_7:DisableInputMode("CommonChangeScene")
     end
     GWorld.StoryMgr:EnableStory()
-    local PlayerCharacter = GWorld:GetMainPlayer()
-    if PlayerCharacter then
-      PlayerCharacter:SetCanInteractiveTrigger(true, "Loading")
+    local r2_7 = GWorld:GetMainPlayer()
+    if r2_7 then
+      r2_7:SetCanInteractiveTrigger(true, "Loading")
     end
     EventManager:FireEvent(EventID.OnCloseLoadingEnableStory)
   end,
-  GetNextState = function(self)
-    return DataMgr.AfterLoadingFSM[self.StateName].NextState
-  end
+  GetNextState = function(r0_8)
+    -- line: [64, 66] id: 8
+    return DataMgr.AfterLoadingFSM[r0_8.StateName].NextState
+  end,
 })
-StateImpl.JumpToRogueMain = State:New("JumpToRogueMain", {
-  OnEnter = function(AfterLoadingMgr)
-    local PlayerCharacter = GWorld:GetMainPlayer()
-    local CurDungeonType = WorldTravelSubsystem():GetCurrentDungeonType()
-    if CurDungeonType == CommonConst.DungeonType.Abyss and PlayerCharacter then
-      PlayerCharacter:DisableBattleWheel()
+r5_0.JumpToRogueMain = r4_0:New("JumpToRogueMain", {
+  OnEnter = function(r0_9)
+    -- line: [70, 107] id: 9
+    local r1_9 = GWorld:GetMainPlayer()
+    if WorldTravelSubsystem():GetCurrentDungeonType() == CommonConst.DungeonType.Abyss and r1_9 then
+      r1_9:DisableBattleWheel()
     end
-    local GameState = GameState()
-    if GameState and GameState.IsInRegion and GameState:IsInRegion() then
-      local ExitDungeonInfo = GWorld.GameInstance:GetExitDungeonData()
-      if ExitDungeonInfo then
+    local r3_9 = GameState()
+    if r3_9 and r3_9.IsInRegion and r3_9:IsInRegion() then
+      local r4_9 = GWorld.GameInstance:GetExitDungeonData()
+      if r4_9 then
         GWorld.GameInstance:ClearExitDungeonData()
-        if "Abyss" == ExitDungeonInfo.Type then
-          local AbyssId = ExitDungeonInfo.AbyssId
-          local AbyssLevelId = ExitDungeonInfo.AbyssLevelId
-          local AbyssDungeonIndex = ExitDungeonInfo.AbyssDungeonIndex
-          PageJumpUtils:JumpToAbyssLevelInfoPage(AbyssId, AbyssLevelId, AbyssDungeonIndex)
-        elseif ExitDungeonInfo.Type == "Rouge" then
+        if r4_9.Type == "Abyss" then
+          PageJumpUtils:JumpToAbyssLevelInfoPage(r4_9.AbyssId, r4_9.AbyssLevelId, r4_9.AbyssDungeonIndex)
+        elseif r4_9.Type == "Rouge" then
           PageJumpUtils:JumpToRougeMain("ExitFromRouge")
-        elseif ExitDungeonInfo.Type == "TryOut" then
-          local CurTabIndex = ExitDungeonInfo.CurTabIndex
-          local CurSelectIndex = ExitDungeonInfo.CurSelectIndex
-          local ActivityId = ExitDungeonInfo.ActivityId
-          PageJumpUtils:JumpToTryOut(CurTabIndex, ActivityId, CurSelectIndex)
-        elseif ExitDungeonInfo.Type == "Paotai" then
-          local CurTabIndex = ExitDungeonInfo.CurTabIndex
-          PageJumpUtils:JumpToPaotai(CurTabIndex)
-        elseif ExitDungeonInfo.Type == "FeinaEvent" then
-          local CurTabIndex = ExitDungeonInfo.CurTabIndex
-          PageJumpUtils:JumpToFeinaEvent(CurTabIndex)
-        elseif ExitDungeonInfo.Type == "Depute" then
-          local DeputeType = ExitDungeonInfo.DeputeType
-          PageJumpUtils:JumpToStyleOfPlaySubUI("NewDeputeRoot", DeputeType)
+        elseif r4_9.Type == "TryOut" then
+          PageJumpUtils:JumpToTryOut(r4_9.CurTabIndex, r4_9.ActivityId, r4_9.CurSelectIndex)
+        elseif r4_9.Type == "Paotai" then
+          PageJumpUtils:JumpToPaotai(r4_9.CurTabIndex)
+        elseif r4_9.Type == "FeinaEvent" then
+          PageJumpUtils:JumpToFeinaEvent(r4_9.CurTabIndex)
+        elseif r4_9.Type == "Depute" then
+          PageJumpUtils:JumpToStyleOfPlaySubUI("NewDeputeRoot", r4_9.DeputeType)
         end
       end
     end
-  end
+  end,
 })
-StateImpl.GameplayReward = State:New("GameplayReward", {
-  OnEnter = function(AfterLoadingMgr)
-  end
+r5_0.GameplayReward = r4_0:New("GameplayReward", {
+  OnEnter = function(r0_10)
+    -- line: [111, 113] id: 10
+  end,
 })
-StateImpl.DungeonUI = State:New("DungeonUI", {
-  OnEnter = function(AfterLoadingMgr)
-  end
+r5_0.DungeonUI = r4_0:New("DungeonUI", {
+  OnEnter = function(r0_11)
+    -- line: [117, 119] id: 11
+  end,
 })
-StateImpl.SystemUnlock = State:New("SystemUnlock", {
-  OnEnter = function(AfterLoadingMgr)
-    local Avatar = GWorld:GetAvatar()
-    if Avatar then
-      Avatar:HandleCloseLoadingEvent_WhileSystemUnlock()
+r5_0.SystemUnlock = r4_0:New("SystemUnlock", {
+  OnEnter = function(r0_12)
+    -- line: [123, 128] id: 12
+    local r1_12 = GWorld:GetAvatar()
+    if r1_12 then
+      r1_12:HandleCloseLoadingEvent_WhileSystemUnlock()
     end
-  end
+  end,
 })
-StateImpl.TriggerGuide = State:New("TriggerGuide", {
-  OnEnter = function(AfterLoadingMgr)
-    local DungeonId = GWorld.GameInstance:GetCurrentDungeonId()
-    local GameMode = MiscUtils.GameMode()
-    if not GWorld.GameInstance:IsNullDungeonId(DungeonId) then
+r5_0.TriggerGuide = r4_0:New("TriggerGuide", {
+  OnEnter = function(r0_13)
+    -- line: [132, 149] id: 13
+    local r1_13 = GWorld.GameInstance:GetCurrentDungeonId()
+    local r2_13 = r1_0.GameMode()
+    if not GWorld.GameInstance:IsNullDungeonId(r1_13) then
       DebugPrint("SystemGuide Enter Dungeon")
       EventManager:FireEvent(EventID.ExitRegion)
-      EventManager:FireEvent(EventID.SystemGuideEnterDungeon, DungeonId)
-    elseif nil ~= GameMode and GameMode.IsInRegion and GameMode:IsInRegion() then
-      local CurMode = UE4.URuntimeCommonFunctionLibrary.GetInputMode(GWorld.GameInstance:GetWorld())
-      DebugPrint("SystemGuide Enter Region", CurMode)
+      EventManager:FireEvent(EventID.SystemGuideEnterDungeon, r1_13)
+    elseif r2_13 ~= nil and r2_13.IsInRegion and r2_13:IsInRegion() then
+      DebugPrint("SystemGuide Enter Region", UE4.URuntimeCommonFunctionLibrary.GetInputMode(GWorld.GameInstance:GetWorld()))
       EventManager:FireEvent(EventID.SystemGuideEnterRegion)
     else
       DebugPrint("ERROR:SystemGuide Not Enter Region And Not Enter Dungeon")
     end
   end,
-  GetNextState = function(self, AfterLoadingMgr)
-    if AfterLoadingMgr.bGuideEndPending then
-      AfterLoadingMgr.bGuideEndPending = nil
-      if IsBattleMainInVisible() then
-        return self.StateName
+  GetNextState = function(r0_14, r1_14)
+    -- line: [150, 164] id: 14
+    if r1_14.bGuideEndPending then
+      r1_14.bGuideEndPending = nil
+      if r3_0() then
+        return r0_14.StateName
       else
-        return DataMgr.AfterLoadingFSM[self.StateName].NextState
+        return DataMgr.AfterLoadingFSM[r0_14.StateName].NextState
       end
     end
-    if StorylineUtils:IsGuideNodeRunning() or IsBattleMainInVisible() then
-      return self.StateName
+    if r2_0:IsGuideNodeRunning() or r3_0() then
+      return r0_14.StateName
     else
-      return DataMgr.AfterLoadingFSM[self.StateName].NextState
+      return DataMgr.AfterLoadingFSM[r0_14.StateName].NextState
     end
-  end
+  end,
 })
-StateImpl.OpenForcePopup = State:New("OpenForcePopup", {
-  OnEnter = function(AfterLoadingMgr)
-    local GameMode = MiscUtils.GameMode()
-    local GameState = GameState()
-    if nil ~= GameMode and nil ~= GameState and GameState.GameModeType == "Trial" then
-      AfterLoadingMgr:Pause()
+r5_0.OpenForcePopup = r4_0:New("OpenForcePopup", {
+  OnEnter = function(r0_15)
+    -- line: [168, 187] id: 15
+    local r1_15 = r1_0.GameMode()
+    local r2_15 = GameState()
+    if r1_15 ~= nil and r2_15 ~= nil and r2_15.GameModeType == "Trial" then
+      r0_15:Pause()
       UIManager():AddTimer(0.1, function()
+        -- line: [174, 176] id: 16
         UIManager():LoadUINew("TryOutMain")
       end, false, 0, nil, true)
-      return
+      return 
     end
-    local Avatar = GWorld:GetAvatar()
-    if Avatar then
+    local r3_15 = GWorld:GetAvatar()
+    if r3_15 then
       MonthCardController:TryDisplayMonthCardPop()
       UIManager(PlayerCharacter):TryShowPlayerLevelUpInfo({
-        CurLevel = Avatar.Level,
-        ShowProgresBar = false
+        CurLevel = r3_15.Level,
+        ShowProgresBar = false,
       })
     end
-  end
+  end,
 })
-StateImpl.MainLineQuest = State:New("MainLineQuest", {
-  OnEnter = function(AfterLoadingMgr)
-    local GameMode = MiscUtils.GameMode()
-    local Avatar = GWorld:GetAvatar()
-    if Avatar and Avatar.NotifyAvatarRegionAllReady and GameMode and GameMode:IsInRegion() then
-      local BattleMainUI = UIManager():GetUIObj("BattleMain")
-      if Avatar and 0 ~= Avatar.TrackingQuestChainId and Avatar.TrackingQuestChainId ~= nil and BattleMainUI.Pos_TaskBar then
-        BattleMainUI.Pos_TaskBar:SetVisibility(UIConst.VisibilityOp.Visible)
+r5_0.MainLineQuest = r4_0:New("MainLineQuest", {
+  OnEnter = function(r0_17)
+    -- line: [191, 203] id: 17
+    local r1_17 = r1_0.GameMode()
+    local r2_17 = GWorld:GetAvatar()
+    if r2_17 and r2_17.NotifyAvatarRegionAllReady and r1_17 and r1_17:IsInRegion() then
+      local r3_17 = UIManager():GetUIObj("BattleMain")
+      if r2_17 and r2_17.TrackingQuestChainId ~= 0 and r2_17.TrackingQuestChainId ~= nil and r3_17.Pos_TaskBar then
+        r3_17.Pos_TaskBar:SetVisibility(UIConst.VisibilityOp.Visible)
       else
-        BattleMainUI.Pos_TaskBar:SetVisibility(UIConst.VisibilityOp.Collapsed)
+        r3_17.Pos_TaskBar:SetVisibility(UIConst.VisibilityOp.Collapsed)
       end
-      Avatar:NotifyAvatarRegionAllReady()
+      r2_17:NotifyAvatarRegionAllReady()
     end
   end,
-  OnAfterEnter = function(AfterLoadingMgr, NowState)
+  OnAfterEnter = function(r0_18, r1_18)
+    -- line: [204, 217] id: 18
     if not GWorld.StoryMgr then
-      return
+      return 
     end
-    local WaitOfTimeNodeTable = {}
-    GWorld.StoryMgr:GetRunningNodeTableByType("WaitOfTimeNode", WaitOfTimeNodeTable)
-    if not table.isempty(WaitOfTimeNodeTable) then
-      return
+    local r2_18 = {}
+    GWorld.StoryMgr:GetRunningNodeTableByType("WaitOfTimeNode", r2_18)
+    if not table.isempty(r2_18) then
+      return 
     end
-    local TalkNodeTable = {}
-    GWorld.StoryMgr:GetRunningNodeTableByType("TalkNode", WaitOfTimeNodeTable)
-    if not table.isempty(TalkNodeTable) then
-      return
+    local r3_18 = {}
+    GWorld.StoryMgr:GetRunningNodeTableByType("TalkNode", r2_18)
+    if not table.isempty(r3_18) then
+      return 
     end
-    AfterLoadingMgr:Fallback(NowState)
+    r0_18:Fallback(r1_18)
   end,
-  GetNextState = function(self, AfterLoadingMgr)
-    if AfterLoadingMgr.bGuideEndPending then
-      AfterLoadingMgr.bGuideEndPending = nil
-      if IsBattleMainInVisible() then
-        return self.StateName
+  GetNextState = function(r0_19, r1_19)
+    -- line: [218, 232] id: 19
+    if r1_19.bGuideEndPending then
+      r1_19.bGuideEndPending = nil
+      if r3_0() then
+        return r0_19.StateName
       else
-        return DataMgr.AfterLoadingFSM[self.StateName].NextState
+        return DataMgr.AfterLoadingFSM[r0_19.StateName].NextState
       end
     end
-    if StorylineUtils:IsGuideNodeRunning() or IsBattleMainInVisible() then
-      return self.StateName
+    if r2_0:IsGuideNodeRunning() or r3_0() then
+      return r0_19.StateName
     else
-      return DataMgr.AfterLoadingFSM[self.StateName].NextState
-    end
-  end
-})
-StateImpl.DynamicQuest = State:New("DynamicQuest", {
-  OnEnter = function(AfterLoadingMgr)
-    local GameMode = MiscUtils.GameMode()
-    if GameMode and GameMode.ActivateDynamicQuestEvent then
-      GameMode:ActivateDynamicQuestEvent()
+      return DataMgr.AfterLoadingFSM[r0_19.StateName].NextState
     end
   end,
-  OnAfterEnter = function(AfterLoadingMgr, NowState)
+})
+r5_0.DynamicQuest = r4_0:New("DynamicQuest", {
+  OnEnter = function(r0_20)
+    -- line: [237, 242] id: 20
+    local r1_20 = r1_0.GameMode()
+    if r1_20 and r1_20.ActivateDynamicQuestEvent then
+      r1_20:ActivateDynamicQuestEvent()
+    end
+  end,
+  OnAfterEnter = function(r0_21, r1_21)
+    -- line: [243, 256] id: 21
     if not GWorld.StoryMgr then
-      return
+      return 
     end
-    local WaitOfTimeNodeTable = {}
-    GWorld.StoryMgr:GetRunningNodeTableByType("WaitOfTimeNode", WaitOfTimeNodeTable)
-    if not table.isempty(WaitOfTimeNodeTable) then
-      return
+    local r2_21 = {}
+    GWorld.StoryMgr:GetRunningNodeTableByType("WaitOfTimeNode", r2_21)
+    if not table.isempty(r2_21) then
+      return 
     end
-    local TalkNodeTable = {}
-    GWorld.StoryMgr:GetRunningNodeTableByType("TalkNode", WaitOfTimeNodeTable)
-    if not table.isempty(TalkNodeTable) then
-      return
+    local r3_21 = {}
+    GWorld.StoryMgr:GetRunningNodeTableByType("TalkNode", r2_21)
+    if not table.isempty(r3_21) then
+      return 
     end
-    AfterLoadingMgr:Fallback(NowState)
+    r0_21:Fallback(r1_21)
   end,
-  GetNextState = function(self, AfterLoadingMgr)
-    if AfterLoadingMgr.bGuideEndPending then
-      AfterLoadingMgr.bGuideEndPending = nil
-      if IsBattleMainInVisible() then
-        return self.StateName
+  GetNextState = function(r0_22, r1_22)
+    -- line: [257, 271] id: 22
+    if r1_22.bGuideEndPending then
+      r1_22.bGuideEndPending = nil
+      if r3_0() then
+        return r0_22.StateName
       else
-        return DataMgr.AfterLoadingFSM[self.StateName].NextState
+        return DataMgr.AfterLoadingFSM[r0_22.StateName].NextState
       end
     end
-    if StorylineUtils:IsGuideNodeRunning() or IsBattleMainInVisible() then
-      return self.StateName
+    if r2_0:IsGuideNodeRunning() or r3_0() then
+      return r0_22.StateName
     else
-      return DataMgr.AfterLoadingFSM[self.StateName].NextState
+      return DataMgr.AfterLoadingFSM[r0_22.StateName].NextState
     end
-  end
+  end,
 })
-StateImpl.EndState = State:New("EndState", {
-  OnEnter = function(AfterLoadingMgr)
+r5_0.EndState = r4_0:New("EndState", {
+  OnEnter = function(r0_23)
+    -- line: [275, 278] id: 23
     UIManager():DestroyAfterLoadingMgr()
+    UIManager():StartScriptDetectionCheck()
   end,
-  GetNextState = function(self)
-  end
+  GetNextState = function(r0_24)
+    -- line: [279, 279] id: 24
+  end,
 })
-local AfterLoadingMgr = Class()
-
-function AfterLoadingMgr.New()
-  local NewObj = {}
-  setmetatable(NewObj, AfterLoadingMgr)
-  NewObj.FSM = FSM.New(NewObj, StateImpl)
-  return NewObj
+local r6_0 = Class()
+function r6_0.New()
+  -- line: [287, 292] id: 25
+  local r0_25 = {}
+  setmetatable(r0_25, r6_0)
+  r0_25.FSM = r0_0.New(r0_25, r5_0)
+  return r0_25
 end
-
-function AfterLoadingMgr:Pause()
-  self.bPause = true
-  DebugPrint(WarningTag, string.format("AfterLoadingMgr 状态机暂停，当前状态：%s", self.FSM:Current()))
+function r6_0.Pause(r0_26)
+  -- line: [294, 297] id: 26
+  r0_26.bPause = true
+  DebugPrint(WarningTag, string.format("AfterLoadingMgr 状态机暂停，当前状态：%s", r0_26.FSM:Current()))
 end
-
-function AfterLoadingMgr:Fallback(State)
-  State = State or self.FSM:Current()
-  if not self.bPause and self:IsCurrentState(State) then
-    DebugPrint(WarningTag, string.format("AfterLoadingMgr 状态机没有被暂停，继续执行 State: %s", State))
-    self:Continue()
+function r6_0.Fallback(r0_27, r1_27)
+  -- line: [299, 305] id: 27
+  if not r1_27 then
+    r1_27 = r0_27.FSM:Current()
+  end
+  if not r0_27.bPause and r0_27:IsCurrentState(r1_27) then
+    DebugPrint(WarningTag, string.format("AfterLoadingMgr 状态机没有被暂停，继续执行 State: %s", r1_27))
+    r0_27:Continue()
   end
 end
-
-function AfterLoadingMgr:IsCurrentState(State)
-  return self.FSM:Current() == State
+function r6_0.IsCurrentState(r0_28, r1_28)
+  -- line: [307, 309] id: 28
+  return r0_28.FSM:Current() == r1_28
 end
-
-function AfterLoadingMgr:IsEnd()
-  local CurrState = self.FSM:Current()
-  return "EndState" == CurrState
+function r6_0.IsEnd(r0_29)
+  -- line: [311, 314] id: 29
+  return r0_29.FSM:Current() == "EndState"
 end
-
-function AfterLoadingMgr:Continue()
-  if self.bPause then
-    DebugPrint(WarningTag, string.format("AfterLoadingMgr 状态机从暂停中恢复, CurrState: %s", self.FSM:Current()))
+function r6_0.Continue(r0_30)
+  -- line: [316, 340] id: 30
+  if r0_30.bPause then
+    DebugPrint(WarningTag, string.format("AfterLoadingMgr 状态机从暂停中恢复, CurrState: %s", r0_30.FSM:Current()))
   end
-  self.bPause = false
-  if self:IsEnd() then
+  r0_30.bPause = false
+  if r0_30:IsEnd() then
     DebugPrint(WarningTag, "AfterLoadingMgr 状态机执行完毕！！！")
-    return
+    return 
   end
-  local CurrState = self.FSM:Current()
-  if not CurrState then
+  local r1_30 = r0_30.FSM:Current()
+  if not r1_30 then
     DebugPrint(WarningTag, "AfterLoadingMgr 状态机开始执行！！！")
-    self.FSM:Enter("BeginState")
-    return
+    r0_30.FSM:Enter("BeginState")
+    return 
   end
-  local NextState = StateImpl[CurrState]:GetNextState(self)
-  if NextState then
-    if NextState == CurrState then
-      DebugPrint(WarningTag, string.format("AfterLoadingMgr GetNextState保持原状，暂停切换 CurrState:%s", CurrState))
-      return
+  local r2_30 = r5_0[r1_30]:GetNextState(r0_30)
+  if r2_30 then
+    if r2_30 == r1_30 then
+      DebugPrint(WarningTag, string.format("AfterLoadingMgr GetNextState保持原状，暂停切换 CurrState:%s", r1_30))
+      return 
     end
-    DebugPrint(WarningTag, string.format("AfterLoadingMgr 切换状态，前个状态：%s，下个状态：%s", CurrState, NextState))
-    self.FSM:Enter(NextState)
+    DebugPrint(WarningTag, string.format("AfterLoadingMgr 切换状态，前个状态：%s，下个状态：%s", r1_30, r2_30))
+    r0_30.FSM:Enter(r2_30)
   end
 end
-
-return AfterLoadingMgr
+return r6_0
