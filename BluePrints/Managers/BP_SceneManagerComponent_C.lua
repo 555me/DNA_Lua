@@ -5,20 +5,26 @@ require("UnLua")
 require("DataMgr")
 local r0_0 = Class("BluePrints.Common.TimerMgr")
 local r1_0 = require("Utils.BattleUtils")
+local r2_0 = require("sha1")
+local r3_0 = 0.3
+local r4_0 = 30
+local r5_0 = 5
+local r6_0 = 6
+local r7_0 = "MonitorType: ScriptDetection [KeyBoardRepeatDetection] DungeonId: %d, DungeonType = %s, RoundNum: %d, RepeatTime: %d."
 function r0_0.DebugPrint(r0_1, ...)
-  -- line: [18, 20] id: 1
+  -- line: [26, 28] id: 1
   DebugPrint("SceneManagerComponent", ...)
 end
 function r0_0.GetExcavationABCIconPath(r0_2, r1_2)
-  -- line: [22, 24] id: 2
+  -- line: [30, 32] id: 2
   return "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Digging_" .. r1_2 .. ".T_Gp_Digging_" .. r1_2
 end
 function r0_0.GetSabotageABCIconPath(r0_3, r1_3)
-  -- line: [26, 28] id: 3
+  -- line: [34, 36] id: 3
   return "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_DestroyTarget_" .. r1_3 .. ".T_Gp_DestroyTarget_" .. r1_3
 end
 function r0_0.GetABCText(r0_4, r1_4, r2_4, r3_4)
-  -- line: [30, 39] id: 4
+  -- line: [38, 47] id: 4
   if r1_4 == nil then
     return ""
   end
@@ -29,11 +35,11 @@ function r0_0.GetABCText(r0_4, r1_4, r2_4, r3_4)
   return string.char(string.byte("A") + r1_4.Index[r2_4])
 end
 function r0_0.GetABCTextByMapName(r0_5, r1_5, r2_5, r3_5)
-  -- line: [41, 43] id: 5
+  -- line: [49, 51] id: 5
   return r0_5:GetABCText(r0_5[r1_5], r2_5, r3_5)
 end
 function r0_0.Initialize(r0_6, r1_6)
-  -- line: [47, 74] id: 6
+  -- line: [55, 82] id: 6
   r0_6.LoadJsonLevelData = nil
   r0_6.LastAssetName = ""
   r0_6.NeedLoadAssetName = ""
@@ -59,7 +65,7 @@ function r0_0.Initialize(r0_6, r1_6)
   r0_6.CurrentCheckCountInScene = 0
 end
 function r0_0.AddRegionEvent(r0_7, r1_7)
-  -- line: [76, 83] id: 7
+  -- line: [84, 91] id: 7
   DebugPrint(" BP_SceneManagerComponent_C:AddRegionEvent IsRegion: ", r1_7)
   if r1_7 then
     r0_7:RegisterTeamEvent()
@@ -68,33 +74,33 @@ function r0_0.AddRegionEvent(r0_7, r1_7)
   end
 end
 function r0_0.RemoveRegionEvent(r0_8)
-  -- line: [85, 90] id: 8
+  -- line: [93, 98] id: 8
   DebugPrint(" BP_SceneManagerComponent_C:RemoveRegionEvent")
   TeamController:UnRegisterEvent(r0_8)
   EventManager:RemoveEvent(EventID.AddRegionIndicatorInfo, r0_8)
   EventManager:RemoveEvent(EventID.RemoveRegionIndicatorInfo, r0_8)
 end
 function r0_0.NotifyOnWindowResized(r0_9)
-  -- line: [92, 94] id: 9
+  -- line: [100, 102] id: 9
   EventManager:FireEvent(EventID.OnWindowResized)
 end
 function r0_0.NotifyOnWindowMoved(r0_10)
-  -- line: [96, 98] id: 10
+  -- line: [104, 106] id: 10
   EventManager:FireEvent(EventID.OnWindowMoved)
 end
 function r0_0.OnOtherPlayerEntityChange(r0_11, r1_11)
-  -- line: [100, 106] id: 11
+  -- line: [108, 114] id: 11
   DebugPrint("LHQ_BP_SceneManagerComponent_C:OnOtherPlayerEntityChange")
   PrintTable(r1_11)
   if r1_11 then
   end
 end
 function r0_0.GetCurSceneName(r0_12)
-  -- line: [108, 111] id: 12
+  -- line: [116, 119] id: 12
   return r0_12:GetWorld():GetName()
 end
 function r0_0.GetTargetActorByName(r0_13, r1_13)
-  -- line: [113, 123] id: 13
+  -- line: [121, 131] id: 13
   local r2_13 = TArray(AActor)
   UE4.UGameplayStatics.GetAllActorsOfClass(r0_13, AActor:StaticClass(), r2_13)
   for r8_13, r9_13 in pairs(r2_13:ToTable()) do
@@ -105,7 +111,7 @@ function r0_0.GetTargetActorByName(r0_13, r1_13)
   -- close: r4_13
 end
 function r0_0.GetNpcActorInSceneByID(r0_14, r1_14)
-  -- line: [125, 139] id: 14
+  -- line: [133, 147] id: 14
   local r2_14 = DataMgr.Npc[r1_14]
   if not r2_14 then
     return 
@@ -121,14 +127,14 @@ function r0_0.GetNpcActorInSceneByID(r0_14, r1_14)
   -- close: r6_14
 end
 function r0_0.GetTargetActorInSceneByBPPath(r0_15, r1_15)
-  -- line: [141, 146] id: 15
+  -- line: [149, 154] id: 15
   local r2_15 = UE4.UClass.Load(r1_15)
   local r3_15 = TArray(AActor)
   UE4.UGameplayStatics.GetAllActorsOfClass(r0_15, r2_15, r3_15)
   return r3_15
 end
 function r0_0.UpdateSceneTargetDoorInfo(r0_16, r1_16, r2_16, r3_16)
-  -- line: [148, 176] id: 16
+  -- line: [156, 184] id: 16
   if not r0_16.Guide2NextLevelIdMaps:Find(r1_16) then
     r0_16.Guide2NextLevelIdMaps:Add(r1_16, r3_16)
   end
@@ -146,7 +152,7 @@ function r0_0.UpdateSceneTargetDoorInfo(r0_16, r1_16, r2_16, r3_16)
   r0_16:UpdateGuide2LevelDoorInfo(r1_16, r2_16, r3_16, "Update")
 end
 function r0_0.IsDungeonScene(r0_17)
-  -- line: [178, 200] id: 17
+  -- line: [186, 208] id: 17
   local r1_17 = r0_17:GetCurSceneName()
   for r6_17, r7_17 in pairs(DataMgr.Dungeon) do
     local r8_17 = Split(r7_17.DungeonMapFile, "/")
@@ -168,7 +174,7 @@ function r0_0.IsDungeonScene(r0_17)
   return false, false, ""
 end
 function r0_0.GetSceneLoadProgress(r0_18, r1_18)
-  -- line: [202, 211] id: 18
+  -- line: [210, 219] id: 18
   local r2_18 = DataMgr.Dungeon[r1_18]
   if r2_18 == nil then
     print(r0_18:GetLogMask(), "GetSceneLoadProgress  MapLevelConfig is nil, SceneId is ", r1_18)
@@ -177,7 +183,7 @@ function r0_0.GetSceneLoadProgress(r0_18, r1_18)
   return UE4.UResourceLibrary.GetLoadProgress(r0_18, r2_18.DungeonMapFile and "/Game/Maps/Levels/TestLevel/TestScene", r0_18:GetCurrentLoadSceneResourceId())
 end
 function r0_0.CheckPlayerIsInDefaultMainCity(r0_19)
-  -- line: [213, 232] id: 19
+  -- line: [221, 240] id: 19
   local r1_19 = r0_19:GetCurSceneName()
   local r2_19 = Split(Const.DefaultMainCityFile, "/")
   local r3_19 = #r2_19
@@ -196,7 +202,7 @@ function r0_0.CheckPlayerIsInDefaultMainCity(r0_19)
   return false
 end
 function r0_0.CheckIsInLevelSceneByPath(r0_20, r1_20)
-  -- line: [234, 253] id: 20
+  -- line: [242, 261] id: 20
   local r2_20 = r0_20:GetCurSceneName()
   local r3_20 = Split(r1_20, "/")
   local r4_20 = #r3_20
@@ -215,11 +221,11 @@ function r0_0.CheckIsInLevelSceneByPath(r0_20, r1_20)
   return false
 end
 function r0_0.CheckIsInLevelSceneBySceneId(r0_21, r1_21)
-  -- line: [255, 258] id: 21
+  -- line: [263, 266] id: 21
   return r0_21:CheckIsInLevelSceneByPath(DataMgr.Dungeon[r1_21].DungeonMapFile)
 end
 function r0_0.ReplaceGuideIcon(r0_22, r1_22, r2_22, r3_22, r4_22)
-  -- line: [261, 283] id: 22
+  -- line: [269, 291] id: 22
   local r8_22 = UE4.UGameplayStatics.GetGameInstance(r0_22):GetGameUIManager():GetUIObj(tostring(r1_22))
   if r8_22 == nil then
     r8_22 = r0_22:GetGuideIconByEid(r1_22)
@@ -236,10 +242,10 @@ function r0_0.ReplaceGuideIcon(r0_22, r1_22, r2_22, r3_22, r4_22)
   r0_22.CaptureMonsterEid = r1_22
 end
 function r0_0.RecoverGuideIcon(r0_23)
-  -- line: [285, 303] id: 23
+  -- line: [293, 311] id: 23
   local r1_23 = tostring(r0_23.CaptureMonsterEid) .. "Replace"
   RunAsyncTask(r0_23, "RecoverGuideIcon_GetUIObjAsync" .. r1_23, function(r0_24)
-    -- line: [288, 302] id: 24
+    -- line: [296, 310] id: 24
     local r2_24 = UE4.UGameplayStatics.GetGameInstance(r0_23):GetGameUIManager()
     if not r2_24 then
       return 
@@ -254,12 +260,12 @@ function r0_0.RecoverGuideIcon(r0_23)
   end)
 end
 function r0_0.SetGuideActorInfo(r0_25, r1_25)
-  -- line: [305, 365] id: 25
+  -- line: [313, 373] id: 25
   if r1_25 == nil then
     return 
   end
   if (function(r0_26)
-    -- line: [310, 340] id: 26
+    -- line: [318, 348] id: 26
     local r1_26 = UE4.UGameplayStatics.GetGameInstance(r0_25)
     local r2_26 = UE4.UGameplayStatics.GetGameState(r0_25)
     local r4_26 = r2_26:GetPlayerState(UE4.UGameplayStatics.GetPlayerCharacter(r1_26, 0).Eid)
@@ -315,7 +321,7 @@ function r0_0.SetGuideActorInfo(r0_25, r1_25)
   end
 end
 function r0_0.GetCurSceneGuideEntityByEid(r0_27, r1_27)
-  -- line: [368, 377] id: 27
+  -- line: [376, 385] id: 27
   if r0_27.CurSceneGuideEids and r0_27.CurSceneGuideEids[r1_27] then
     if r0_27.CurSceneGuideEids[r1_27].IsDataStruct then
       return r0_27.CurSceneGuideEids[r1_27].Entity, true
@@ -326,7 +332,7 @@ function r0_0.GetCurSceneGuideEntityByEid(r0_27, r1_27)
   return nil, false
 end
 function r0_0.GetCurSceneGuideEntityByData(r0_28, r1_28)
-  -- line: [379, 388] id: 28
+  -- line: [387, 396] id: 28
   if r1_28 then
     if r1_28.IsDataStruct then
       return nil
@@ -337,7 +343,7 @@ function r0_0.GetCurSceneGuideEntityByData(r0_28, r1_28)
   return nil
 end
 function r0_0.UpdateOneSceneGuideIcon(r0_29, r1_29, r2_29, r3_29)
-  -- line: [390, 435] id: 29
+  -- line: [398, 443] id: 29
   DebugPrint("BP_SceneManagerComponent_C:UpdateOneSceneGuideIcon TargetEid: ", r1_29, "IsAdd: ", r2_29, "IsPlayerEid: ", r3_29)
   r0_29.CurSceneGuideEids = r0_29.CurSceneGuideEids and {}
   if r2_29 == true then
@@ -375,7 +381,7 @@ function r0_0.UpdateOneSceneGuideIcon(r0_29, r1_29, r2_29, r3_29)
   end
 end
 function r0_0.AddOneGuideIconWithSkillEffect(r0_30, r1_30, r2_30, r3_30, r4_30)
-  -- line: [437, 460] id: 30
+  -- line: [445, 468] id: 30
   if not Battle(r0_30) then
     return 
   end
@@ -398,11 +404,11 @@ function r0_0.AddOneGuideIconWithSkillEffect(r0_30, r1_30, r2_30, r3_30, r4_30)
   end
 end
 function r0_0.CloseOneGuideIconByTargetEid(r0_31, r1_31)
-  -- line: [462, 464] id: 31
+  -- line: [470, 472] id: 31
   r0_31:UpdateSceneGuideIcon(r1_31, nil, nil, "Delete", true, nil, nil)
 end
 function r0_0.UpdateAllSceneGuideIcon(r0_32)
-  -- line: [466, 498] id: 32
+  -- line: [474, 506] id: 32
   local r1_32 = UE4.UGameplayStatics.GetGameState(r0_32)
   if r1_32 == nil then
     return 
@@ -436,7 +442,7 @@ function r0_0.UpdateAllSceneGuideIcon(r0_32)
   end
 end
 function r0_0.UpdateAllCommonGuideIcon(r0_33)
-  -- line: [500, 550] id: 33
+  -- line: [508, 558] id: 33
   local r1_33 = UE4.UGameplayStatics.GetGameState(r0_33)
   if r1_33 == nil then
     return 
@@ -489,7 +495,7 @@ function r0_0.UpdateAllCommonGuideIcon(r0_33)
   -- close: r4_33
 end
 function r0_0.UpdateAllPlayerGuideIcon(r0_34)
-  -- line: [552, 612] id: 34
+  -- line: [560, 620] id: 34
   local r1_34 = UE4.UGameplayStatics.GetGameState(r0_34)
   local r2_34 = UE4.UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
   local r4_34 = UE4.UGameplayStatics.GetGameInstance(r0_34):GetGameUIManager()
@@ -549,7 +555,7 @@ function r0_0.UpdateAllPlayerGuideIcon(r0_34)
   -- close: r7_34
 end
 function r0_0.RemoveGuideFromPathFinding(r0_35, r1_35)
-  -- line: [629, 650] id: 35
+  -- line: [637, 658] id: 35
   if r0_35:IsExistTimer("AddGuideToPathFinding" .. r1_35) then
     r0_35:RemoveTimer("AddGuideToPathFinding" .. r1_35)
   end
@@ -566,7 +572,7 @@ function r0_0.RemoveGuideFromPathFinding(r0_35, r1_35)
   end
 end
 function r0_0.GetGuideTypeByBPPath(r0_36, r1_36, r2_36)
-  -- line: [652, 659] id: 36
+  -- line: [660, 667] id: 36
   local r3_36 = UIConst.IndicatorCategoryTable[r1_36] and UIConst.IndicatorCategoryIconTable[r2_36]
   if r3_36 then
     return r3_36
@@ -574,7 +580,7 @@ function r0_0.GetGuideTypeByBPPath(r0_36, r1_36, r2_36)
   return ""
 end
 function r0_0.GetGuideGuideAnimByBPPath(r0_37, r1_37, r2_37)
-  -- line: [661, 668] id: 37
+  -- line: [669, 676] id: 37
   local r3_37 = UIConst.IndicatorAnimTable[r1_37] and UIConst.IndicatorAnimIconTable[r2_37]
   if r3_37 then
     return r3_37
@@ -582,9 +588,9 @@ function r0_0.GetGuideGuideAnimByBPPath(r0_37, r1_37, r2_37)
   return ""
 end
 function r0_0.RegisterTeamEvent(r0_38)
-  -- line: [670, 696] id: 38
+  -- line: [678, 704] id: 38
   TeamController:RegisterEvent(r0_38, function(r0_39, r1_39, ...)
-    -- line: [671, 695] id: 39
+    -- line: [679, 703] id: 39
     local r2_39 = TeamCommon.EventId.TeamOnAddPlayer
     if r1_39 == r2_39 then
       ... = ... -- error: untaken top expr
@@ -621,7 +627,7 @@ function r0_0.RegisterTeamEvent(r0_38)
   end)
 end
 function r0_0.AddRegionOnlineCharacterInfo(r0_40, r1_40, r2_40, r3_40)
-  -- line: [699, 707] id: 40
+  -- line: [707, 715] id: 40
   DebugPrint("AddRegionOnlineCharacterInfo Eid", r1_40, "Uid", r2_40, "StartLoc", r3_40)
   r0_40.RegionOnlineCharacterInfo[r2_40] = r1_40
   local r4_40 = TeamController:GetModel()
@@ -632,7 +638,7 @@ function r0_0.AddRegionOnlineCharacterInfo(r0_40, r1_40, r2_40, r3_40)
   r0_40:AddRegionOtherPlayerGuide(r1_40, r3_40, r5_40)
 end
 function r0_0.OnTeamAddRegionOtherPlayerGuide(r0_41, r1_41)
-  -- line: [710, 722] id: 41
+  -- line: [718, 730] id: 41
   DebugPrint("OnTeamAddRegionOtherPlayerGuide MemberInfo.Uid", r1_41.Uid, "MemberInfo.Index", r1_41.Index)
   local r2_41 = r0_41.RegionOnlineCharacterInfo[r1_41.Uid]
   if r2_41 then
@@ -645,7 +651,7 @@ function r0_0.OnTeamAddRegionOtherPlayerGuide(r0_41, r1_41)
   end
 end
 function r0_0.AddRegionOtherPlayerGuide(r0_42, r1_42, r2_42, r3_42)
-  -- line: [725, 735] id: 42
+  -- line: [733, 743] id: 42
   DebugPrint("AddRegionOtherPlayerGuide Eid: ", r1_42, "StartLoc", r2_42, "MemberIndex", r3_42)
   local r4_42 = r0_42.CurSceneGuideEids[r1_42]
   if r4_42 == nil then
@@ -660,7 +666,7 @@ function r0_0.AddRegionOtherPlayerGuide(r0_42, r1_42, r2_42, r3_42)
   }, true)
 end
 function r0_0.RemoveRegionOnlineCharacterInfo(r0_43, r1_43)
-  -- line: [738, 746] id: 43
+  -- line: [746, 754] id: 43
   local r2_43 = r0_43.RegionOnlineCharacterInfo[r1_43]
   DebugPrint("RemoveRegionOnlineCharacterInfo Uid", r1_43, "CurrentEid", r2_43)
   if not r2_43 then
@@ -670,7 +676,7 @@ function r0_0.RemoveRegionOnlineCharacterInfo(r0_43, r1_43)
   r0_43:RemoveRegionOtherPlayerGuide(r2_43)
 end
 function r0_0.OnTeamRemoveRegionOtherPlayerGuide(r0_44, r1_44)
-  -- line: [749, 759] id: 44
+  -- line: [757, 767] id: 44
   local r2_44 = r0_44.RegionOnlineCharacterInfo[r1_44.Uid]
   DebugPrint("RemoveRegionOnlineCharacterInfo MemberInfo", r1_44, "MemberEid", r2_44)
   if not r2_44 then
@@ -681,11 +687,11 @@ function r0_0.OnTeamRemoveRegionOtherPlayerGuide(r0_44, r1_44)
   end
 end
 function r0_0.RemoveRegionOtherPlayerGuide(r0_45, r1_45)
-  -- line: [762, 781] id: 45
+  -- line: [770, 789] id: 45
   DebugPrint("RemoveRegionOtherPlayerGuide Eid: ", r1_45)
   local r2_45 = tostring(r1_45)
   RunAsyncTask(r0_45, "RemoveRegionOtherPlayerGuide_GetUIObjAsync" .. r2_45, function(r0_46)
-    -- line: [765, 780] id: 46
+    -- line: [773, 788] id: 46
     local r2_46 = UE4.UGameplayStatics.GetGameInstance(r0_45):GetGameUIManager()
     if not r2_46 then
       return 
@@ -702,7 +708,7 @@ function r0_0.RemoveRegionOtherPlayerGuide(r0_45, r1_45)
   end)
 end
 function r0_0.UpdateSceneOtherPlayerGuide(r0_47, r1_47, r2_47)
-  -- line: [783, 855] id: 47
+  -- line: [791, 863] id: 47
   DebugPrint("BP_SceneManagerComponent_C:UpdateSceneOtherPlayerGuide Eid: ", r1_47, "OpType", r2_47)
   if r2_47 == "Enter" then
     local r3_47 = UE4.UGameplayStatics.GetGameState(r0_47)
@@ -736,7 +742,7 @@ function r0_0.UpdateSceneOtherPlayerGuide(r0_47, r1_47, r2_47)
   elseif r2_47 == "Exit" then
     local r3_47 = tostring(r1_47)
     RunAsyncTask(r0_47, "UpdateSceneOtherPlayerGuide_GetUIObjAsync" .. r3_47, function(r0_48)
-      -- line: [837, 852] id: 48
+      -- line: [845, 860] id: 48
       local r2_48 = UE4.UGameplayStatics.GetGameInstance(r0_47):GetGameUIManager()
       if not r2_48 then
         return 
@@ -754,7 +760,7 @@ function r0_0.UpdateSceneOtherPlayerGuide(r0_47, r1_47, r2_47)
   end
 end
 function r0_0.GetPlayerGuideIcon(r0_49, r1_49, r2_49)
-  -- line: [857, 865] id: 49
+  -- line: [865, 873] id: 49
   if r2_49 then
     return "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Player" .. tostring(r1_49) .. "A.T_Gp_Player" .. tostring(r1_49) .. "A"
   else
@@ -763,7 +769,7 @@ function r0_0.GetPlayerGuideIcon(r0_49, r1_49, r2_49)
   return ""
 end
 function r0_0.UpdateAllGuideIconsByName(r0_50, r1_50, r2_50, r3_50)
-  -- line: [867, 888] id: 50
+  -- line: [875, 896] id: 50
   if r1_50 == "Add" or r1_50 == "Modify" then
     if r3_50 ~= nil then
       if r0_50.GuideIcons:FindRef(r2_50) then
@@ -782,7 +788,7 @@ function r0_0.UpdateAllGuideIconsByName(r0_50, r1_50, r2_50, r3_50)
   end
 end
 function r0_0.IsExistInGuideEidArrays(r0_51, r1_51)
-  -- line: [890, 922] id: 51
+  -- line: [898, 930] id: 51
   local r2_51 = UE4.UGameplayStatics.GetGameInstance(r0_51)
   local r3_51 = UE4.UGameplayStatics.GetGameState(r0_51)
   local r4_51 = UE4.UGameplayStatics.GetPlayerCharacter(r2_51, 0)
@@ -813,7 +819,7 @@ function r0_0.IsExistInGuideEidArrays(r0_51, r1_51)
   return false
 end
 function r0_0.UpdateSceneGuideIcon(r0_52, r1_52, r2_52, r3_52, r4_52, r5_52, r6_52, r7_52, r8_52)
-  -- line: [924, 1154] id: 52
+  -- line: [932, 1162] id: 52
   r0_52.Overridden.UpdateSceneGuideIcon(r0_52, r1_52, r2_52, r3_52, r4_52, r5_52)
   local r9_52 = UE4.UGameplayStatics.GetGameInstance(r0_52)
   local r10_52 = UE4.UGameplayStatics.GetGameState(r0_52)
@@ -878,7 +884,7 @@ function r0_0.UpdateSceneGuideIcon(r0_52, r1_52, r2_52, r3_52, r4_52, r5_52, r6_
     local r19_52 = not r8_52
     DebugPrint("UpdateSceneGuideIcon START UpdateSceneGuideIcon_GetUIObjAsync" .. r15_52 .. r4_52)
     RunAsyncTask(r0_52, "UpdateSceneGuideIcon_GetUIObjAsync" .. r15_52 .. r4_52, function(r0_53)
-      -- line: [1000, 1152] id: 53
+      -- line: [1008, 1160] id: 53
       DebugPrint("UpdateSceneGuideIcon REAL START UpdateSceneGuideIcon_GetUIObjAsync" .. r15_52 .. r4_52)
       local r1_53 = r11_52:GetUIObjAsync(r15_52, r0_53) and r11_52:GetUIObjAsync(r15_52 .. "Replace", r0_53)
       if r1_53 == nil and r4_52 == "Modify" then
@@ -1003,7 +1009,7 @@ function r0_0.UpdateSceneGuideIcon(r0_52, r1_52, r2_52, r3_52, r4_52, r5_52, r6_
   end
 end
 function r0_0.UpdateMiniMapGuideIcon(r0_54, r1_54, r2_54, r3_54, r4_54, r5_54, r6_54, r7_54, r8_54)
-  -- line: [1156, 1191] id: 54
+  -- line: [1164, 1199] id: 54
   if r2_54 == "Delete" then
     if r0_54:IsExistTimer("UpdateMiniMapGuideIcon" .. r1_54 .. "Add") then
       r0_54:RemoveTimer("UpdateMiniMapGuideIcon" .. r1_54 .. "Add")
@@ -1036,11 +1042,11 @@ function r0_0.UpdateMiniMapGuideIcon(r0_54, r1_54, r2_54, r3_54, r4_54, r5_54, r
   end
 end
 function r0_0.AddGuideToPathFindingTimerFunc(r0_55, r1_55, r2_55)
-  -- line: [1193, 1196] id: 55
+  -- line: [1201, 1204] id: 55
   r0_55:AddGuideToPathFinding(Battle(r0_55):GetEntity(r1_55), r1_55, r2_55)
 end
 function r0_0.ProcessGuideIconAfterLoad(r0_56, r1_56)
-  -- line: [1198, 1212] id: 56
+  -- line: [1206, 1220] id: 56
   if r1_56 == nil then
     return 
   end
@@ -1054,7 +1060,7 @@ function r0_0.ProcessGuideIconAfterLoad(r0_56, r1_56)
   r1_56:AttachEventOnLoaded()
 end
 function r0_0.ProcessGuideIconBeforeClose(r0_57, r1_57)
-  -- line: [1214, 1221] id: 57
+  -- line: [1222, 1229] id: 57
   if r0_57.GuideIconMain then
     r0_57.GuideIconMain:DeleteGuideIcon(r1_57.WidgetName)
   end
@@ -1062,11 +1068,11 @@ function r0_0.ProcessGuideIconBeforeClose(r0_57, r1_57)
   r1_57.IsInit = true
 end
 function r0_0.ShowOrHideAllSceneGuideIcon(r0_58, r1_58, r2_58)
-  -- line: [1223, 1248] id: 58
+  -- line: [1231, 1256] id: 58
   r0_58.IsSceneGuideShow = r1_58
   for r7_58, r8_58 in pairs(r0_58.CurSceneGuideEids) do
     RunAsyncTask(r0_58, "ShowOrHideAllSceneGuideIcon_GetUIObjAsync" .. r7_58, function(r0_59)
-      -- line: [1227, 1246] id: 59
+      -- line: [1235, 1254] id: 59
       local r2_59 = UE4.UGameplayStatics.GetGameInstance(r0_58):GetGameUIManager()
       if r2_59 == nil then
         return 
@@ -1092,13 +1098,13 @@ function r0_0.ShowOrHideAllSceneGuideIcon(r0_58, r1_58, r2_58)
   -- close: r3_58
 end
 function r0_0.ExistPathfindingEid(r0_60, r1_60)
-  -- line: [1269, 1272] id: 60
+  -- line: [1277, 1280] id: 60
   return r0_60.PathfindingEid:FindRef(r1_60)
 end
 function r0_0.ShowOrHideGuideIconByGuideName(r0_61, r1_61, r2_61)
-  -- line: [1274, 1286] id: 61
+  -- line: [1282, 1294] id: 61
   RunAsyncTask(r0_61, "ShowOrHideGuideIconByGuideName_GetUIObjAsync" .. r1_61, function(r0_62)
-    -- line: [1275, 1285] id: 62
+    -- line: [1283, 1293] id: 62
     local r2_62 = UE4.UGameplayStatics.GetGameInstance(r0_61):GetGameUIManager()
     if not r2_62 then
       return 
@@ -1110,7 +1116,7 @@ function r0_0.ShowOrHideGuideIconByGuideName(r0_61, r1_61, r2_61)
   end)
 end
 function r0_0.GetAllKindsOfGuide(r0_63)
-  -- line: [1288, 1297] id: 63
+  -- line: [1296, 1305] id: 63
   local r1_63 = TArray("")
   for r6_63, r7_63 in pairs(r0_63.GuideIcons) do
     local r8_63 = r7_63
@@ -1122,7 +1128,7 @@ function r0_0.GetAllKindsOfGuide(r0_63)
   return r1_63
 end
 function r0_0.GetGuideIconByEid(r0_64, r1_64)
-  -- line: [1299, 1310] id: 64
+  -- line: [1307, 1318] id: 64
   local r3_64 = UE4.UGameplayStatics.GetGameInstance(r0_64):GetGameUIManager()
   if r0_64.GuideIcons:FindRef(r1_64) then
     local r5_64 = r3_64:GetUIObj(r0_64.GuideIcons:FindRef(r1_64))
@@ -1133,7 +1139,7 @@ function r0_0.GetGuideIconByEid(r0_64, r1_64)
   return nil
 end
 function r0_0.RefreshAllGuideStyle(r0_65)
-  -- line: [1312, 1447] id: 65
+  -- line: [1320, 1455] id: 65
   local r1_65 = UE4.UKismetSystemLibrary.GetFrameCount()
   if r1_65 == r0_65.PreFrameCount then
     return 
@@ -1184,7 +1190,7 @@ function r0_0.RefreshAllGuideStyle(r0_65)
   end
   for r10_65, r11_65 in pairs(r5_65) do
     table.sort(r11_65, function(r0_66, r1_66)
-      -- line: [1362, 1367] id: 66
+      -- line: [1370, 1375] id: 66
       if r0_66.GuideDis ~= r1_66.GuideDis then
         return r0_66.GuideDis < r1_66.GuideDis
       else
@@ -1229,7 +1235,7 @@ function r0_0.RefreshAllGuideStyle(r0_65)
   -- close: r6_65
 end
 function r0_0.RealArrangeAllGuideIcons(r0_67)
-  -- line: [1449, 1627] id: 67
+  -- line: [1457, 1635] id: 67
   r0_67:RefreshAllGuideStyle()
   local r1_67 = UE4.UGameplayStatics.GetGameInstance(r0_67)
   local r2_67 = r1_67:GetGameUIManager()
@@ -1312,7 +1318,7 @@ function r0_0.RealArrangeAllGuideIcons(r0_67)
   end
   for r11_67, r12_67 in pairs(r6_67) do
     table.sort(r12_67, function(r0_68, r1_68)
-      -- line: [1550, 1556] id: 68
+      -- line: [1558, 1564] id: 68
       if r0_68.Order ~= r1_68.Order then
         return r0_68.Order < r1_68.Order
       else
@@ -1385,7 +1391,7 @@ function r0_0.RealArrangeAllGuideIcons(r0_67)
   -- close: r7_67
 end
 function r0_0.ArrangeAllGuideIcons(r0_69, r1_69, r2_69, r3_69)
-  -- line: [1629, 1651] id: 69
+  -- line: [1637, 1659] id: 69
   if r2_69 == "NotInDoor" then
     r0_69.Guide2NextLevelIdMaps:Remove(r1_69)
     r0_69.Guide2InDoorNameMaps:Remove(r1_69)
@@ -1404,7 +1410,7 @@ function r0_0.ArrangeAllGuideIcons(r0_69, r1_69, r2_69, r3_69)
   end
 end
 function r0_0.GetIsEnableScriptDetectionCheck(r0_70)
-  -- line: [1655, 1661] id: 70
+  -- line: [1663, 1669] id: 70
   -- notice: unreachable block#4
   local r1_70 = CommonUtils.GetDeviceTypeByPlatformName(r0_70)
   local r2_70 = UIUtils.UtilsGetCurrentInputType()
@@ -1421,27 +1427,32 @@ function r0_0.GetIsEnableScriptDetectionCheck(r0_70)
   return r4_70
 end
 function r0_0.StartScriptDetectionCheck(r0_71, r1_71)
-  -- line: [1665, 1679] id: 71
-  if r1_71 == "OnMouse" then
-    local r2_71 = false
-    local r3_71 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_71)
-    if r3_71 and r3_71:IsInDungeon() then
-      r2_71 = r3_71.GameModeType ~= "ExtermPro"
-    end
+  -- line: [1673, 1696] id: 71
+  local r2_71 = false
+  local r3_71 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_71)
+  if r3_71 and r3_71:IsInDungeon() then
+    r2_71 = true
+  end
+  if r1_71 == Const.ScriptDetectionCheckType.OnMouse then
+    local r4_71 = false
     if r2_71 then
+      r4_71 = r3_71.GameModeType ~= "ExtermPro"
+    end
+    if r4_71 then
       r0_71.bNeedRecordThisTurn = false
       r0_71.CurrentMouseLocation2D = UE4.UWidgetLayoutLibrary.GetMousePositionOnViewport(r0_71)
       r0_71:StartScriptDetectionCheck_OnMouse()
     end
+  elseif r1_71 == Const.ScriptDetectionCheckType.OnKeyboard and r2_71 then
+    r0_71:StartScriptDetectionCheck_OnKeyboard()
   end
 end
 function r0_0.StartScriptDetectionCheck_OnMouse(r0_72)
-  -- line: [1682, 1706] id: 72
+  -- line: [1699, 1721] id: 72
   if not r0_72.ScriptDetectionCheck_OnMouse_Timer then
     r0_72.ScriptDetectionCheck_OnMouse_Timer = r0_72:AddTimer(1, function()
-      -- line: [1684, 1704] id: 73
+      -- line: [1701, 1719] id: 73
       -- notice: unreachable block#10
-      DebugPrint("StartScriptDetectionCheck_OnMouse: 开始进行检测，当前检测次数：", r0_72.CurrentCheckCountInScene)
       local r0_73 = true
       local r1_73 = true
       local r2_73 = UE4.UWidgetLayoutLibrary.GetMousePositionOnViewport(r0_72)
@@ -1450,7 +1461,6 @@ function r0_0.StartScriptDetectionCheck_OnMouse(r0_72)
       end
       if r0_72.CurrentCheckCountInScene < 10 then
         if not r0_73 and r1_73 then
-          DebugPrint("StartScriptDetectionCheck_OnMouse: 检测到鼠标移动，并且窗口处于激活状态，移除检测Timer")
           r0_72:EndScriptDetectionCheck_OnMouse(false)
         end
       else
@@ -1469,118 +1479,212 @@ function r0_0.StartScriptDetectionCheck_OnMouse(r0_72)
   end
 end
 function r0_0.EndScriptDetectionCheck_OnMouse(r0_74, r1_74)
-  -- line: [1710, 1718] id: 74
+  -- line: [1725, 1732] id: 74
   if r0_74.ScriptDetectionCheck_OnMouse_Timer then
-    DebugPrint("EndScriptDetectionCheck_OnMouse: 结束检测，当前检测结果是否需要先临时记录：", r1_74)
     r0_74.bNeedRecordThisTurn = r1_74
     r0_74:RemoveTimer(r0_74.ScriptDetectionCheck_OnMouse_Timer)
     r0_74.ScriptDetectionCheck_OnMouse_Timer = nil
     r0_74.CurrentCheckCountInScene = 0
   end
 end
-function r0_0.UpdateIfRecordThisTurnValue(r0_75)
-  -- line: [1721, 1736] id: 75
-  if r0_75.CurrentMouseLocation2D == nil then
-    r0_75.bNeedRecordThisTurn = false
+function r0_0.StartScriptDetectionCheck_OnKeyboard(r0_75)
+  -- line: [1734, 1745] id: 75
+  if r0_75.SDCKeyboardOverTimeTimer then
+    r0_75:RemoveTimer(r0_75.SDCKeyboardOverTimeTimer)
+  end
+  r0_75.SDCKeyboardOverTimeTimer = r0_75:AddTimer(r4_0, function()
+    -- line: [1739, 1741] id: 76
+    r0_75:EndScriptDetectionCheck_OnKeyboard()
+  end, false)
+  r0_75.bEnableKeyboardSDC = true
+  r0_75.KeyList = {}
+end
+function r0_0.EndScriptDetectionCheck_OnKeyboard(r0_77)
+  -- line: [1747, 1770] id: 77
+  if r0_77.SDCKeyboardOverTimeTimer then
+    r0_77:RemoveTimer(r0_77.SDCKeyboardOverTimeTimer)
+    r0_77.SDCKeyboardOverTimeTimer = nil
+  end
+  if r0_77.bEnableKeyboardSDC then
+    local r1_77 = UE4.UGameplayStatics.GetGameInstance(r0_77)
+    if r1_77 and r0_77.KeyList and r6_0 <= #r0_77.KeyList then
+      local r2_77 = r0_77:GetKeyListFingerprints(r0_77.KeyList)
+      if r2_77 then
+        r1_77.KeyListRecord[r2_77] = (r1_77.KeyListRecord[r2_77] and 0) + 1
+        if r5_0 <= r1_77.KeyListRecord[r2_77] then
+          r0_77:ReportScriptDetection_Keyboard(r2_77)
+        end
+      end
+    end
+    r0_77.bEnableKeyboardSDC = false
+    r0_77.KeyList = nil
+  end
+end
+function r0_0.ReceivedInputKey(r0_78, r1_78, r2_78)
+  -- line: [1773, 1788] id: 78
+  local r3_78 = r1_78.KeyName
+  if UIConst.MouseButton[r3_78] then
     return 
   end
-  if not r0_75.bNeedRecordThisTurn then
+  if r0_78.bEnableKeyboardSDC then
+    local r4_78 = UE4.UGameplayStatics.GetTimeSeconds(r0_78)
+    local r5_78 = r0_78.KeyList and {}
+    r0_78.KeyList = r5_78
+    r5_78[#r5_78 + 1] = {
+      r3_78,
+      r2_78,
+      r4_78
+    }
+  end
+end
+function r0_0.ReportScriptDetection_Keyboard(r0_79, r1_79)
+  -- line: [1790, 1816] id: 79
+  local r2_79 = GWorld:GetAvatar()
+  if r2_79 then
+    local r3_79 = UE4.UGameplayStatics.GetGameInstance(r0_79)
+    local r4_79 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_79)
+    if r3_79 and r4_79 then
+      local r5_79 = r4_79.DungeonId
+      local r6_79 = DataMgr.Dungeon[r5_79]
+      if r6_79 then
+        local r7_79 = r6_79.DungeonType and 0
+        local r8_79 = 0
+        local r9_79 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_79)
+        if IsValid(r9_79) then
+          r8_79 = r9_79.DungeonProgress
+        end
+        r2_79:SendToFeishuForCombatMonitor(string.format(r7_0, r5_79, r7_79, r8_79, r3_79.KeyListRecord[r1_79] and 0))
+      end
+    end
+  end
+end
+function r0_0.UpdateIfRecordThisTurnValue(r0_80)
+  -- line: [1819, 1834] id: 80
+  if r0_80.CurrentMouseLocation2D == nil then
+    r0_80.bNeedRecordThisTurn = false
+    return 
+  end
+  if not r0_80.bNeedRecordThisTurn then
     DebugPrint("ScriptDetection== UpdateIfRecordThisTurnValue: 当前结果不需要最后校验, 已经是移动过鼠标的状态了！")
     return 
   end
-  r0_75.bNeedRecordThisTurn = UE4.UKismetMathLibrary.EqualEqual_Vector2DVector2D(r0_75.CurrentMouseLocation2D, UE4.UWidgetLayoutLibrary.GetMousePositionOnViewport(r0_75), 0.001)
+  r0_80.bNeedRecordThisTurn = UE4.UKismetMathLibrary.EqualEqual_Vector2DVector2D(r0_80.CurrentMouseLocation2D, UE4.UWidgetLayoutLibrary.GetMousePositionOnViewport(r0_80), 0.001)
 end
-function r0_0.CheckAndSendRecordToServer_OnMouse(r0_76)
-  -- line: [1739, 1775] id: 76
-  local r1_76 = GWorld:GetAvatar()
-  if not r1_76 then
+function r0_0.CheckAndSendRecordToServer_OnMouse(r0_81)
+  -- line: [1837, 1873] id: 81
+  local r1_81 = GWorld:GetAvatar()
+  if not r1_81 then
     return 
   end
-  if r0_76.bNeedRecordThisTurn then
-    local r2_76 = UE4.UGameplayStatics.GetGameInstance(r0_76)
-    r2_76.ScriptDetectionCheckRecordNum = r2_76.ScriptDetectionCheckRecordNum + 1
-    DebugPrint("ScriptDetection== CheckAndSendRecordToServer_OnMouse: 未检测到鼠标移动，疑似使用脚本进行游戏操作，移除检测Timer，并且记录次数：", r2_76.ScriptDetectionCheckRecordNum)
-    if r2_76.ScriptDetectionCheckRecordNum >= 5 then
+  if r0_81.bNeedRecordThisTurn then
+    local r2_81 = UE4.UGameplayStatics.GetGameInstance(r0_81)
+    r2_81.ScriptDetectionCheckRecordNum = r2_81.ScriptDetectionCheckRecordNum + 1
+    DebugPrint("ScriptDetection== CheckAndSendRecordToServer_OnMouse: 未检测到鼠标移动，疑似使用脚本进行游戏操作，移除检测Timer，并且记录次数：", r2_81.ScriptDetectionCheckRecordNum)
+    if r2_81.ScriptDetectionCheckRecordNum >= 5 then
       DebugPrint("ScriptDetection== CheckAndSendRecordToServer_OnMouse: 脚本检测上报，当前累计次数超过5次")
-      local r3_76 = "MonitorType: ScriptDetection "
-      local r4_76 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_76)
-      if r4_76 then
-        local r5_76 = r4_76.DungeonId
-        if r5_76 then
-          r3_76 = r3_76 .. "DungeonID: " .. r5_76 .. "  "
-          local r6_76 = DataMgr.Dungeon[r5_76]
-          if r6_76 then
-            if r6_76.DungeonType then
-              r3_76 = r3_76 .. "DungeonType: " .. r6_76.DungeonType .. "  "
+      local r3_81 = "MonitorType: ScriptDetection "
+      local r4_81 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_81)
+      if r4_81 then
+        local r5_81 = r4_81.DungeonId
+        if r5_81 then
+          r3_81 = r3_81 .. "DungeonID: " .. r5_81 .. "  "
+          local r6_81 = DataMgr.Dungeon[r5_81]
+          if r6_81 then
+            if r6_81.DungeonType then
+              r3_81 = r3_81 .. "DungeonType: " .. r6_81.DungeonType .. "  "
             end
-            if r6_76.DungeonLevel then
-              r3_76 = r3_76 .. "DungeonLevel: " .. r6_76.DungeonLevel .. "  "
+            if r6_81.DungeonLevel then
+              r3_81 = r3_81 .. "DungeonLevel: " .. r6_81.DungeonLevel .. "  "
             end
           end
         end
-        r3_76 = r3_76 .. "Detection threshold for unoperated duration: 10s  "
+        r3_81 = r3_81 .. "Detection threshold for unoperated duration: 10s  "
       end
-      r1_76:SendToFeishuForCombatMonitor(r3_76)
+      r1_81:SendToFeishuForCombatMonitor(r3_81)
     end
   else
     DebugPrint("ScriptDetection== CheckAndSendRecordToServer_OnMouse: 检测到结束前鼠标有过移动, 判定未使用脚本进行游戏操作, 若有临时记录数据也不算次数")
   end
 end
-function r0_0.OnDungeonEnd_ToSceneManager(r0_77, r1_77, r2_77, r3_77)
-  -- line: [1782, 1789] id: 77
-  DebugPrint("OnDungeonEnd_ToSceneManager: 副本结束通知，当前副本类型：", r3_77)
-  if r3_77 ~= "ExtermPro" and r0_77:GetIsEnableScriptDetectionCheck() then
-    r0_77:UpdateIfRecordThisTurnValue()
-    r0_77:CheckAndSendRecordToServer_OnMouse()
+function r0_0.OnDungeonEnd_ToSceneManager(r0_82, r1_82, r2_82, r3_82)
+  -- line: [1880, 1891] id: 82
+  DebugPrint("OnDungeonEnd_ToSceneManager: 副本结束通知，当前副本类型：", r3_82)
+  if r0_82:GetIsEnableScriptDetectionCheck() then
+    if r3_82 ~= "ExtermPro" then
+      r0_82:UpdateIfRecordThisTurnValue()
+      r0_82:CheckAndSendRecordToServer_OnMouse()
+    end
+    r0_82:EndScriptDetectionCheck_OnKeyboard()
   end
 end
-function r0_0.GetLogMask(r0_78)
-  -- line: [1791, 1793] id: 78
+function r0_0.GetLogMask(r0_83)
+  -- line: [1893, 1895] id: 83
   return _G.LogTag
 end
-function r0_0.CaluCurGuideNeedShowPos(r0_79, r1_79, r2_79, r3_79)
-  -- line: [1802, 1817] id: 79
-  if r0_79:GetLevelLoader() == nil then
+function r0_0.CaluCurGuideNeedShowPos(r0_84, r1_84, r2_84, r3_84)
+  -- line: [1904, 1919] id: 84
+  if r0_84:GetLevelLoader() == nil then
     return false, nil
   end
-  local r4_79 = r0_79.Guide2NextLevelIdMaps:Find(r1_79)
-  local r5_79 = r0_79.Guide2InDoorNameMaps:Find(r1_79)
-  if r4_79 ~= nil and r5_79 ~= nil then
-    return r0_79.LevelLoader.LevelPathfinding:GetTargetActorGuideLocation(r4_79, r5_79, r2_79, r3_79)
+  local r4_84 = r0_84.Guide2NextLevelIdMaps:Find(r1_84)
+  local r5_84 = r0_84.Guide2InDoorNameMaps:Find(r1_84)
+  if r4_84 ~= nil and r5_84 ~= nil then
+    return r0_84.LevelLoader.LevelPathfinding:GetTargetActorGuideLocation(r4_84, r5_84, r2_84, r3_84)
   end
   return false
 end
-function r0_0.AddFoorBox(r0_80, r1_80)
-  -- line: [1819, 1822] id: 80
-  if not r0_80.FloorBoxArray then
-    r0_80.FloorBoxArray = {}
+function r0_0.AddFoorBox(r0_85, r1_85)
+  -- line: [1921, 1924] id: 85
+  if not r0_85.FloorBoxArray then
+    r0_85.FloorBoxArray = {}
   end
-  table.insert(r0_80.FloorBoxArray, r1_80)
+  table.insert(r0_85.FloorBoxArray, r1_85)
 end
-function r0_0.AddMinimapDoor(r0_81, r1_81)
-  -- line: [1824, 1827] id: 81
-  if not r0_81.MinimapDoorArray then
-    r0_81.MinimapDoorArray = {}
+function r0_0.AddMinimapDoor(r0_86, r1_86)
+  -- line: [1926, 1929] id: 86
+  if not r0_86.MinimapDoorArray then
+    r0_86.MinimapDoorArray = {}
   end
-  table.insert(r0_81.MinimapDoorArray, r1_81)
+  table.insert(r0_86.MinimapDoorArray, r1_86)
 end
-function r0_0.DelaySetFullScreen_Lua(r0_82, r1_82, r2_82)
-  -- line: [1830, 1839] id: 82
-  r0_82:AddTimer(0.1, function()
-    -- line: [1831, 1838] id: 83
-    local r0_83 = UE4.UGameUserSettings:GetGameUserSettings()
-    if r0_83 then
+function r0_0.DelaySetFullScreen_Lua(r0_87, r1_87, r2_87)
+  -- line: [1932, 1941] id: 87
+  r0_87:AddTimer(0.1, function()
+    -- line: [1933, 1940] id: 88
+    local r0_88 = UE4.UGameUserSettings:GetGameUserSettings()
+    if r0_88 then
       DebugPrint("@zyh DelaySetFullScreen_Lua执行")
-      r0_83:SetFullscreenMode(r2_82)
-      r0_83:ApplySettings(false)
+      r0_88:SetFullscreenMode(r2_87)
+      r0_88:ApplySettings(false)
     end
   end, false)
 end
-function r0_0.CleanSpecialMonsterInfo(r0_84, r1_84)
-  -- line: [1841, 1845] id: 84
-  if r1_84 then
-    r0_84.SpecialMonsterInfo[r1_84] = nil
+function r0_0.CleanSpecialMonsterInfo(r0_89, r1_89)
+  -- line: [1943, 1947] id: 89
+  if r1_89 then
+    r0_89.SpecialMonsterInfo[r1_89] = nil
   end
+end
+function r0_0.GetKeyListFingerprints(r0_90, r1_90)
+  -- line: [1949, 1954] id: 90
+  return r2_0.sha1(r0_90:SerializeInputSequence(r1_90))
+end
+function r0_0.SerializeInputSequence(r0_91, r1_91)
+  -- line: [1956, 1975] id: 91
+  local r2_91 = {}
+  local r3_91 = 1
+  for r8_91, r9_91 in ipairs(r1_91) do
+    local r10_91 = 0
+    if r8_91 > 1 then
+      r10_91 = math.floor(((r9_91[3] - r1_91[r8_91 + -1][3]) / r3_0 + 0.5)) * r3_0
+    end
+    r2_91[r3_91] = r9_91[1]
+    r2_91[r3_91 + 1] = r9_91[2]
+    r2_91[r3_91 + 2] = r10_91
+    r3_91 = r3_91 + 3
+  end
+  -- close: r4_91
+  return table.concat(r2_91, "|")
 end
 AssembleComponents(r0_0)
 return r0_0

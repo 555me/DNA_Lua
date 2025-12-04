@@ -3151,11 +3151,12 @@ function r6_0.HideGlobalVersion(r0_176)
   end
 end
 function r6_0.StartScriptDetectionCheck(r0_177)
-  -- line: [3580, 3589] id: 177
+  -- line: [3580, 3590] id: 177
   if Const.bOpenScriptDetectionCheck then
     local r1_177 = GWorld.GameInstance:GetSceneManager()
     if r1_177 and r1_177:GetIsEnableScriptDetectionCheck() then
-      r1_177:StartScriptDetectionCheck("OnMouse")
+      r1_177:StartScriptDetectionCheck(Const.ScriptDetectionCheckType.OnMouse)
+      r1_177:StartScriptDetectionCheck(Const.ScriptDetectionCheckType.OnKeyboard)
     end
   end
 end

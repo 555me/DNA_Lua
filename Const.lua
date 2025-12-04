@@ -1165,4 +1165,8 @@ r0_0.SkipShadowBudgetConfig = {
 r0_0.OpenVerifyArray = true
 r0_0.bNullNetWorkMgr = true
 r0_0.bUseDynamicResolution = true
+r0_0.ScriptDetectionCheckType = {
+  OnMouse = "OnMouse",
+  OnKeyboard = "OnKeyboard",
+}
 return r0_0

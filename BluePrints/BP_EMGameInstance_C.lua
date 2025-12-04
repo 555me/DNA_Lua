@@ -28,14 +28,15 @@ function r8_0.Initialize(r0_1, r1_1)
   -- line: [32, 33] id: 1
 end
 function r8_0.OnLoginSuccess(r0_2)
-  -- line: [35, 41] id: 2
+  -- line: [35, 44] id: 2
   UE4.USubsystemBlueprintLibrary.GetGameInstanceSubsystem(GWorld.GameInstance, UStorySubsystem:StaticClass()):TryInitVars()
   if Const.OpenVerifyArray then
     r0_2:InitVerifyArray()
   end
+  r0_2.KeyListRecord = {}
 end
 function r8_0.GetInt(r0_3, r1_3, r2_3)
-  -- line: [43, 50] id: 3
+  -- line: [46, 53] id: 3
   local r4_3 = require(string.format("%s", r1_3))[r2_3]
   if r4_3 == nil then
     return 0
@@ -43,14 +44,14 @@ function r8_0.GetInt(r0_3, r1_3, r2_3)
   return r4_3
 end
 function r8_0.IsLowScalabilityLevel(r0_4, r1_4)
-  -- line: [52, 57] id: 4
+  -- line: [55, 60] id: 4
   if CommonUtils.HasValue(Const.BanSmallLevelScalabilityLevel, r1_4) then
     return true
   end
   return false
 end
 function r8_0.GetSerializeDistanceRatio(r0_5, r1_5, r2_5)
-  -- line: [59, 65] id: 5
+  -- line: [62, 68] id: 5
   local r3_5 = 1
   if r2_5 == "IOS" or r0_5:GetUseMapPhoneInPC() then
     r3_5 = Const.IOSSerializeDistanceRatio[r1_5]
@@ -61,7 +62,7 @@ function r8_0.GetSerializeDistanceRatio(r0_5, r1_5, r2_5)
   return r3_5
 end
 function r8_0._FontOptimizeSetting(r0_6)
-  -- line: [68, 84] id: 6
+  -- line: [71, 87] id: 6
   UKismetSystemLibrary.ExecuteConsoleCommand(r0_6, "Slate.MaxFontAtlasPagesBeforeFlush 2")
   UKismetSystemLibrary.ExecuteConsoleCommand(r0_6, "Slate.MaxFontNonAtlasTexturesBeforeFlush 4")
   local r1_6 = UE4.UUIFunctionLibrary.GetDevicePlatformName(r0_6)
@@ -78,7 +79,7 @@ function r8_0._FontOptimizeSetting(r0_6)
   end
 end
 function r8_0.InitReady(r0_7)
-  -- line: [86, 121] id: 7
+  -- line: [89, 124] id: 7
   if IsDedicatedServer(r0_7) then
     GWorld.bDebugServer = r0_7.bDebugServer
     print(_G.LogTag, "DebugServer", GWorld.bDebugServer)
@@ -97,7 +98,7 @@ function r8_0.InitReady(r0_7)
   GWorld.GameInstance = r0_7
   if not URuntimeCommonFunctionLibrary.IsPlayInEditor(r0_7) then
     _G.Battle = function(r0_8)
-      -- line: [109, 109] id: 8
+      -- line: [112, 112] id: 8
       return GWorld.Battle
     end
   end
@@ -107,29 +108,29 @@ function r8_0.InitReady(r0_7)
   GWorld.BP_Avatar = r0_7:GetAvatar()
 end
 function r8_0.OnPostWorldCleanup(r0_9, r1_9, r2_9, r3_9)
-  -- line: [123, 129] id: 9
+  -- line: [126, 132] id: 9
   if r1_9:GetName() == r0_9:GetWorld():GetName() and not GWorld:GetAvatar() then
     EventManager:CheckIsLeak()
   end
 end
 function r8_0.NowTime(r0_10)
-  -- line: [131, 133] id: 10
+  -- line: [134, 136] id: 10
   return r1_0.NowTime()
 end
 function r8_0.SetWorldStandardTime_Lua(r0_11)
-  -- line: [135, 139] id: 11
+  -- line: [138, 142] id: 11
   if IsStandAlone(r0_11) or IsClient(r0_11) then
     r1_0.RequestSetNowTime()
   end
 end
 function r8_0.OnStart_Lua(r0_12, r1_12)
-  -- line: [141, 145] id: 12
+  -- line: [144, 148] id: 12
   if IsDedicatedServer(r0_12) and not GWorld.bDebugServer then
     r0_12:HandleDSConnect(r1_12)
   end
 end
 function r8_0.OnUpdateNetDriverInfo(r0_13, r1_13, r2_13)
-  -- line: [147, 160] id: 13
+  -- line: [150, 163] id: 13
   DebugPrint(r1_13, r2_13)
   if IsDedicatedServer(r0_13) and not GWorld.bDebugServer then
     local r3_13 = GWorld:GetDSEntity()
@@ -144,13 +145,13 @@ function r8_0.OnUpdateNetDriverInfo(r0_13, r1_13, r2_13)
   end
 end
 function r8_0.SetInstance2GWorld(r0_14)
-  -- line: [162, 166] id: 14
+  -- line: [165, 169] id: 14
   GWorld.GameInstance = r0_14
   GWorld.IsDev = r0_14:GetIsDev()
   _G.EMUIAnimationSubsystem = USubsystemBlueprintLibrary.GetWorldSubsystem(r0_14, UEMUIAnimationSubsystem)
 end
 function r8_0.HandleDSConnect(r0_15, r1_15)
-  -- line: [168, 199] id: 15
+  -- line: [171, 202] id: 15
   if r1_15 == -1 then
     r1_15 = Const.DS_Default_GroupId
   end
@@ -179,11 +180,11 @@ function r8_0.HandleDSConnect(r0_15, r1_15)
   GWorld.NetworkMgr:ConnectServer(r2_15, r5_15, r6_15)
 end
 function r8_0.IsNullDungeonId(r0_16, r1_16)
-  -- line: [201, 203] id: 16
+  -- line: [204, 206] id: 16
   return r1_16 == -1
 end
 function r8_0.GetDataInt(r0_17, r1_17, r2_17, r3_17)
-  -- line: [205, 219] id: 17
+  -- line: [208, 222] id: 17
   local r4_17 = DataMgr[r1_17]
   if r4_17 ~= nil then
     local r5_17 = r4_17[r2_17]
@@ -197,7 +198,7 @@ function r8_0.GetDataInt(r0_17, r1_17, r2_17, r3_17)
   return 0
 end
 function r8_0.HandleNetworkError(r0_18, r1_18, r2_18)
-  -- line: [223, 239] id: 18
+  -- line: [226, 242] id: 18
   print(_G.LogTag, "HandleNetworkError", r1_18, r2_18)
   if not r2_18 and not r0_18.bHandleNetError then
     r0_18.bHandleNetError = true
@@ -215,7 +216,7 @@ function r8_0.HandleNetworkError(r0_18, r1_18, r2_18)
   end
 end
 function r8_0.GetDsType(r0_19)
-  -- line: [241, 250] id: 19
+  -- line: [244, 253] id: 19
   if r0_19.DSType == CommonConst.DSType.Leaf then
     return "Leaf"
   elseif r0_19.DSType == CommonConst.DSType.Child then
@@ -226,17 +227,17 @@ function r8_0.GetDsType(r0_19)
   return "None"
 end
 function r8_0.OnSubProcessInit(r0_20, r1_20)
-  -- line: [252, 259] id: 20
+  -- line: [255, 262] id: 20
   math.randomseed(r1_20)
   if r0_20.DSType == CommonConst.DSType.Leaf then
     r0_20:AddTimer(2, function()
-      -- line: [255, 257] id: 21
+      -- line: [258, 260] id: 21
       r0_20:GetDSAssetsManager():TryCheckPreLoadAssets()
     end)
   end
 end
 function r8_0.SetFixedStartPoint(r0_22, r1_22, r2_22, r3_22, r4_22)
-  -- line: [262, 269] id: 22
+  -- line: [265, 272] id: 22
   print(_G.LogTag, "SetFixedStartPoint", r1_22, r2_22)
   r0_22.UseFixedStartPoint = true
   r0_22.StartLocation = r1_22
@@ -245,17 +246,17 @@ function r8_0.SetFixedStartPoint(r0_22, r1_22, r2_22, r3_22, r4_22)
   r0_22.bCharacterDead = r4_22
 end
 function r8_0.ResetFixedStartPoint(r0_23)
-  -- line: [272, 276] id: 23
+  -- line: [275, 279] id: 23
   print(_G.LogTag, "ResetFixedStartPoint")
   r0_23.UseFixedStartPoint = false
   r0_23.bCharacterDead = nil
 end
 function r8_0.IsUseFixedStartPoint(r0_24)
-  -- line: [278, 280] id: 24
+  -- line: [281, 283] id: 24
   return r0_24.UseFixedStartPoint and false
 end
 function r8_0.SetStartSpotWithFixedTransform(r0_25, r1_25)
-  -- line: [282, 291] id: 25
+  -- line: [285, 294] id: 25
   if not r0_25.UseFixedStartPoint then
     return false
   end
@@ -265,11 +266,11 @@ function r8_0.SetStartSpotWithFixedTransform(r0_25, r1_25)
   return true
 end
 function r8_0.CachePlayerCharacterInfo(r0_26, ...)
-  -- line: [293, 295] id: 26
+  -- line: [296, 298] id: 26
   r0_26.PlayerCharacterInfo = table.pack(...)
 end
 function r8_0.ConsumePlayerCharacterInfo(r0_27, r1_27)
-  -- line: [297, 305] id: 27
+  -- line: [300, 308] id: 27
   if not r0_27.PlayerCharacterInfo then
     return 
   end
@@ -278,16 +279,16 @@ function r8_0.ConsumePlayerCharacterInfo(r0_27, r1_27)
   r0_27.PlayerCharacterInfo = nil
 end
 function r8_0.PreInitGameMode(r0_28, r1_28)
-  -- line: [307, 309] id: 28
+  -- line: [310, 312] id: 28
   r0_28.CustomPreInitInfo = r1_28
 end
 function r8_0.ConsumeGameModePreInitInfo(r0_29)
-  -- line: [311, 315] id: 29
+  -- line: [314, 318] id: 29
   r0_29.CustomPreInitInfo = nil
   return r0_29.CustomPreInitInfo
 end
 function r8_0.OnPlayerControllerGameEnd(r0_30, r1_30, r2_30, r3_30)
-  -- line: [317, 342] id: 30
+  -- line: [320, 345] id: 30
   r0_30.DungeonIdCache = r0_30:GetCurrentDungeonId()
   local r4_30 = UE4.UGameplayStatics.GetGameState(r0_30)
   local r5_30 = r0_30:GetSceneManager()
@@ -307,7 +308,7 @@ function r8_0.OnPlayerControllerGameEnd(r0_30, r1_30, r2_30, r3_30)
   r0_30:OnPlayerControllerGameEnd_Internal(r1_30, r2_30, r3_30)
 end
 function r8_0.CalculatePhantom(r0_31)
-  -- line: [345, 357] id: 31
+  -- line: [348, 360] id: 31
   local r1_31 = UE4.UGameplayStatics.GetPlayerCharacter(r0_31, 0)
   local r2_31 = r1_31:GetPhantomTeammates()
   local r3_31 = 0
@@ -322,13 +323,13 @@ function r8_0.CalculatePhantom(r0_31)
   DebugPrint("CalculatePhantom PhantomTeammatesNum", r0_31.PhantomTeammatesNum)
 end
 function r8_0.AddOnPhantomInitReadyEvent(r0_32)
-  -- line: [359, 363] id: 32
+  -- line: [362, 366] id: 32
   if r0_32.PhantomTeammatesNum > 0 then
     EventManager:AddEvent(EventID.OnPhantomInitReady, r0_32, r0_32.OnSettlementPhantomInitReady)
   end
 end
 function r8_0.OnPlayerControllerGameEnd_Internal(r0_33, r1_33, r2_33, r3_33)
-  -- line: [365, 404] id: 33
+  -- line: [368, 407] id: 33
   -- notice: unreachable block#6
   r0_33:PushGameEndInfo(r1_33, r2_33)
   local r4_33 = GWorld:GetAvatar()
@@ -350,7 +351,7 @@ function r8_0.OnPlayerControllerGameEnd_Internal(r0_33, r1_33, r2_33, r3_33)
   local r8_33 = r0_33:GetCurrentDungeonId()
   r0_33.ScenePlayers = r3_33
   function r7_33()
-    -- line: [380, 392] id: 34
+    -- line: [383, 395] id: 34
     local r0_34 = GWorld:GetAvatar()
     if r6_33 and r0_34:CheckMoveToTempScene(r8_33, r1_33) then
       EventManager:AddEvent(EventID.OnMainCharacterBeginPlay, r0_33, r0_33.OnSettlementPlayerCharacterBeginPlay)
@@ -367,7 +368,7 @@ function r8_0.OnPlayerControllerGameEnd_Internal(r0_33, r1_33, r2_33, r3_33)
   UE4.UGameplayStatics.GetPlayerController(r0_33, 0):GetMyPawn():ResetIdle()
 end
 function r8_0.RecordCombatData(r0_35)
-  -- line: [406, 533] id: 35
+  -- line: [409, 536] id: 35
   r0_35.CombatData = {}
   local r1_35 = UE4.UGameplayStatics.GetPlayerCharacter(r0_35, 0)
   if r1_35 then
@@ -499,7 +500,7 @@ function r8_0.RecordCombatData(r0_35)
   PrintTable(r0_35.CombatData, 5)
 end
 function r8_0.FillTempTeamInfo(r0_36, r1_36, r2_36)
-  -- line: [535, 555] id: 36
+  -- line: [538, 558] id: 36
   r0_36.CombatData.TempTeamInfo = {}
   if not r1_36 or not r2_36 then
     return 
@@ -521,22 +522,22 @@ function r8_0.FillTempTeamInfo(r0_36, r1_36, r2_36)
   -- close: r3_36
 end
 function r8_0.PushGameEndInfo(r0_37, ...)
-  -- line: [557, 559] id: 37
+  -- line: [560, 562] id: 37
   r0_37.GameEndInfo = table.pack(...)
 end
 function r8_0.EnablePlayerCharacterInput(r0_38)
-  -- line: [561, 565] id: 38
+  -- line: [564, 568] id: 38
   local r1_38 = UE4.UGameplayStatics.GetPlayerController(r0_38, 0)
   r1_38:GetMyPawn():EnableInput(r1_38)
 end
 function r8_0.CreateDungeonBlackScreen(r0_39, r1_39, r2_39, r3_39)
-  -- line: [567, 571] id: 39
+  -- line: [570, 574] id: 39
   local r4_39 = GWorld.GameInstance:GetGameUIManager()
   DebugPrint("DungeonSettlement: CreateDungeonBlackScreen")
   return r4_39:LoadUINew("DungeonBlackScreen", r1_39, r2_39, r3_39)
 end
 function r8_0.OnBlackScreenSyncFinished(r0_40, r1_40)
-  -- line: [573, 580] id: 40
+  -- line: [576, 583] id: 40
   DebugPrint("OnBlackScreenSyncFinished")
   r0_40:OnSettlementPlayerCharacterBeginPlay()
   if not r1_40 or r0_40.PhantomTeammatesNum == 0 then
@@ -545,14 +546,14 @@ function r8_0.OnBlackScreenSyncFinished(r0_40, r1_40)
   end
 end
 function r8_0.OnSettlementPlayerCharacterBeginPlay(r0_41)
-  -- line: [583, 588] id: 41
+  -- line: [586, 591] id: 41
   EventManager:RemoveEvent(EventID.OnMainCharacterBeginPlay, r0_41)
   DebugPrint("DungeonSettlement: OnSettlementPlayerCharacterBeginPlay")
   local r1_41 = r0_41:CreateDungeonBlackScreen(false)
   r0_41.GameEndInfo = nil
 end
 function r8_0.OnSettlementPhantomInitReady(r0_42)
-  -- line: [590, 598] id: 42
+  -- line: [593, 601] id: 42
   DebugPrint("OnSettlementPhantomInitReady")
   r0_42.InitPhantomTeammates = r0_42.InitPhantomTeammates + 1
   if r0_42.PhantomTeammatesNum <= r0_42.InitPhantomTeammates then
@@ -562,20 +563,20 @@ function r8_0.OnSettlementPhantomInitReady(r0_42)
   end
 end
 function r8_0.OnCharaterReset(r0_43)
-  -- line: [600, 605] id: 43
+  -- line: [603, 608] id: 43
   local r1_43 = UE4.UGameplayStatics.GetPlayerCharacter(r0_43, 0)
   r1_43:InitCharacterInfo(r1_43.InfoForInit)
   r1_43:ResetIdle()
   USkillFeatureFunctionLibrary.SKillFeatureForceStop()
 end
 function r8_0.OnSettlementPlayerCharacterInitReady(r0_44)
-  -- line: [607, 612] id: 44
+  -- line: [610, 615] id: 44
   EventManager:RemoveEvent(EventID.OnNotifyClientToCloseLoading, r0_44)
   r0_44.bPlayerCharacterInitReady = true
   r0_44:TryDungeonSettlement()
 end
 function r8_0.PushLogicServerCallbackInfo(r0_45, ...)
-  -- line: [614, 626] id: 45
+  -- line: [617, 629] id: 45
   if WorldTravelSubsystem() and WorldTravelSubsystem():GetCurrentSceneId() == 0 then
     DebugPrint("TryDungeonSettlement SceneId为0，丢弃此次逻辑服结算数据！")
     return 
@@ -584,13 +585,13 @@ function r8_0.PushLogicServerCallbackInfo(r0_45, ...)
   r0_45:TryDungeonSettlement()
 end
 function r8_0.SetExitLevelEndPointInfo(r0_46, r1_46)
-  -- line: [629, 633] id: 46
+  -- line: [632, 636] id: 46
   print(_G.LogTag, "SetExitLevelEndPointInfo", r1_46.Translation, r1_46.Rotation)
   r0_46.UseExitLevel = true
   r0_46.ExitLevelEndPointTransformation = r1_46
 end
 function r8_0.TryDungeonSettlement(r0_47)
-  -- line: [635, 715] id: 47
+  -- line: [638, 718] id: 47
   DebugPrint("DungeonSettlement: TryDungeonSettlement", r0_47.bPlayerCharacterInitReady, r0_47.LogicServerCallbackInfo)
   if r0_47.bPlayerCharacterInitReady and r0_47.LogicServerCallbackInfo then
     if CommonUtils.GetDeviceTypeByPlatformName(r0_47) ~= "Mobile" then
@@ -626,7 +627,7 @@ function r8_0.TryDungeonSettlement(r0_47)
     r0_47.LogicServerCallbackInfo = nil
     local r5_47 = GWorld.GameInstance:GetGameUIManager()
     local function r6_47()
-      -- line: [671, 690] id: 48
+      -- line: [674, 693] id: 48
       r0_47.IsInSettlementScene = nil
       local r0_48 = UE4.UGameplayStatics.GetGameState(r0_47)
       if r0_48 then
@@ -662,7 +663,7 @@ function r8_0.TryDungeonSettlement(r0_47)
   end
 end
 function r8_0.IsInTempScene(r0_49)
-  -- line: [717, 726] id: 49
+  -- line: [720, 729] id: 49
   if r0_49.IsInSettlementScene then
     return true
   end
@@ -673,7 +674,7 @@ function r8_0.IsInTempScene(r0_49)
   return false
 end
 function r8_0.PlayerDungeonSettlement(r0_50, r1_50)
-  -- line: [728, 794] id: 50
+  -- line: [731, 797] id: 50
   r0_50.SettlementCharacters = {}
   if r0_50.ScenePlayers ~= nil then
     local r2_50 = nil
@@ -727,7 +728,7 @@ function r8_0.PlayerDungeonSettlement(r0_50, r1_50)
   end
 end
 function r8_0.CalculateSettlementOriginLoc(r0_51, r1_51)
-  -- line: [796, 820] id: 51
+  -- line: [799, 823] id: 51
   local r2_51 = UE4.UGameplayStatics.GetPlayerCharacter(r0_51, 0)
   if r1_51 then
     local r3_51, r4_51, r5_51 = r2_51:GetEndPointInfo()
@@ -748,7 +749,7 @@ function r8_0.CalculateSettlementOriginLoc(r0_51, r1_51)
   return FVector(0, 0, 0), FRotator(0, 0, 0)
 end
 function r8_0.ProcessSettlementCharacter(r0_52)
-  -- line: [822, 842] id: 52
+  -- line: [825, 845] id: 52
   local r1_52 = UE4.UGameplayStatics.GetPlayerCharacter(r0_52, 0)
   r1_52:SetActorEnableCollision(true)
   if r0_52.SettlementCharacters ~= nil then
@@ -768,7 +769,7 @@ function r8_0.ProcessSettlementCharacter(r0_52)
   -- close: r3_52
 end
 function r8_0.LoadGameEventSettlementUI(r0_53, r1_53, r2_53, r3_53)
-  -- line: [844, 940] id: 53
+  -- line: [847, 943] id: 53
   local r4_53 = GWorld:GetAvatar()
   if not r4_53 then
     DebugPrint("Error: DungeonSettlement: 找不到Avatar!")
@@ -818,7 +819,7 @@ function r8_0.LoadGameEventSettlementUI(r0_53, r1_53, r2_53, r3_53)
       r13_53 = true
     end
     function r12_53.ContinueCallback()
-      -- line: [894, 896] id: 54
+      -- line: [897, 899] id: 54
       r4_53:EnterDungeon(r1_53)
     end
     r14_53 = r4_0.OpenActivitySettlement(r9_53.SettlementId, r1_53, r12_53)
@@ -859,7 +860,7 @@ function r8_0.LoadGameEventSettlementUI(r0_53, r1_53, r2_53, r3_53)
       r18_53(r19_53, r20_53)
     end
     function r12_53.ContinueCallback()
-      -- line: [933, 935] id: 55
+      -- line: [936, 938] id: 55
       r4_53:EnterDungeon(r1_53)
     end
     r4_0.OpenActivitySettlement(DataMgr.PaotaiEventConstant.PaotaiGameEventId.ConstantValue, r1_53, r12_53)
@@ -868,16 +869,16 @@ function r8_0.LoadGameEventSettlementUI(r0_53, r1_53, r2_53, r3_53)
   end
 end
 function r8_0.CheckMaintenanceInfo(r0_56, r1_56, r2_56)
-  -- line: [942, 947] id: 56
+  -- line: [945, 950] id: 56
   r3_0:GetMaintenance(r1_56, function(r0_57)
-    -- line: [944, 946] id: 57
+    -- line: [947, 949] id: 57
     r0_56:GetMaintenanceCb(r1_56, r0_57, r2_56)
   end)
 end
 function r8_0.JumpToHomepage(r0_58, r1_58)
-  -- line: [948, 1012] id: 58
+  -- line: [951, 1015] id: 58
   local function r2_58(r0_59, r1_59, r2_59)
-    -- line: [949, 988] id: 59
+    -- line: [952, 991] id: 59
     if not r2_59 then
       return false
     end
@@ -919,7 +920,7 @@ function r8_0.JumpToHomepage(r0_58, r1_58)
     return false
   end
   r3_0:GetMaintenanceInterceptUrl(r1_58, function(r0_60)
-    -- line: [989, 1011] id: 60
+    -- line: [992, 1014] id: 60
     local r1_60 = nil
     if r0_60 and r0_60.mediumList then
       local r2_60 = Utils.HeroUSDKSubsystem():GetChannelId()
@@ -946,7 +947,7 @@ function r8_0.JumpToHomepage(r0_58, r1_58)
   end)
 end
 function r8_0.GetMaintenanceCb(r0_61, r1_61, r2_61, r3_61)
-  -- line: [1014, 1059] id: 61
+  -- line: [1017, 1062] id: 61
   local r4_61 = true
   local r5_61 = false
   if r2_61 then
@@ -967,7 +968,7 @@ function r8_0.GetMaintenanceCb(r0_61, r1_61, r2_61, r3_61)
           UIManager(r0_61):ShowCommonPopupUI(100205, {
             ShortText = r13_61.body,
             RightCallbackFunction = function()
-              -- line: [1036, 1038] id: 62
+              -- line: [1039, 1041] id: 62
               r0_61:JumpToHomepage(r1_61)
             end,
           })
@@ -983,40 +984,40 @@ function r8_0.GetMaintenanceCb(r0_61, r1_61, r2_61, r3_61)
   end
 end
 function r8_0.SetProgressData(r0_63, r1_63, r2_63)
-  -- line: [1061, 1064] id: 63
+  -- line: [1064, 1067] id: 63
   r0_63.InterruptProgressData = r1_63
   r0_63.PlayerSliceData = r2_63
 end
 function r8_0.GetProgressData(r0_64)
-  -- line: [1066, 1068] id: 64
+  -- line: [1069, 1071] id: 64
   return r0_64.InterruptProgressData
 end
 function r8_0.GetPlayerSliceData(r0_65)
-  -- line: [1070, 1072] id: 65
+  -- line: [1073, 1075] id: 65
   return r0_65.PlayerSliceData
 end
 function r8_0.ClearProgressData(r0_66)
-  -- line: [1074, 1076] id: 66
+  -- line: [1077, 1079] id: 66
   r0_66.InterruptProgressData = nil
 end
 function r8_0.ClearPlayerSliceData(r0_67)
-  -- line: [1078, 1080] id: 67
+  -- line: [1081, 1083] id: 67
   r0_67.PlayerSliceData = nil
 end
 function r8_0.SetExitDungeonData(r0_68, r1_68)
-  -- line: [1083, 1085] id: 68
+  -- line: [1086, 1088] id: 68
   r0_68.ExitDungeonData = r1_68
 end
 function r8_0.GetExitDungeonData(r0_69)
-  -- line: [1087, 1089] id: 69
+  -- line: [1090, 1092] id: 69
   return r0_69.ExitDungeonData
 end
 function r8_0.ClearExitDungeonData(r0_70)
-  -- line: [1091, 1093] id: 70
+  -- line: [1094, 1096] id: 70
   r0_70.ExitDungeonData = nil
 end
 function r8_0.LoadLogoAtEndOfPrologue(r0_71)
-  -- line: [1096, 1110] id: 71
+  -- line: [1099, 1113] id: 71
   local r2_71 = GWorld.GameInstance:GetGameUIManager():LoadUI(UIConst.PROLOGUEENDLOGO, "PrologueEndLogo", UIConst.ZORDER_ABOVE_ALL)
   if r2_71 ~= nil then
     r2_71:Show("Talk")
@@ -1030,60 +1031,60 @@ function r8_0.LoadLogoAtEndOfPrologue(r0_71)
   }
 end
 function r8_0.UnLoadLogoAtEndOfPrologue(r0_72)
-  -- line: [1111, 1115] id: 72
+  -- line: [1114, 1118] id: 72
   GWorld.GameInstance:GetGameUIManager():GetUIObj("PrologueEndLogo"):Close()
 end
 function r8_0.ShowLogoAtEndOfPrologue(r0_73)
-  -- line: [1117, 1123] id: 73
+  -- line: [1120, 1126] id: 73
   local r2_73 = GWorld.GameInstance:GetGameUIManager():GetUIObj("PrologueEndLogo")
   r2_73:PlayAnimation(r2_73[r0_73.LogoLanguageMap[CommonConst.SystemLanguage] and r0_73.LogoLanguageMap[CommonConst.SystemLanguages.Default]])
 end
 function r8_0.ShowWhiteAtEndOfPrologue(r0_74)
-  -- line: [1124, 1128] id: 74
+  -- line: [1127, 1131] id: 74
   local r2_74 = GWorld.GameInstance:GetGameUIManager():GetUIObj("PrologueEndLogo")
   r2_74:PlayAnimation(r2_74.Static_Img_BottomMask_In)
 end
 function r8_0.ShowBlackAtEndOfPrologue(r0_75)
-  -- line: [1129, 1133] id: 75
+  -- line: [1132, 1136] id: 75
   local r2_75 = GWorld.GameInstance:GetGameUIManager():GetUIObj("PrologueEndLogo")
   r2_75:PlayAnimation(r2_75.Black_In)
 end
 function r8_0.HideLogoAtEndOfPrologue(r0_76)
-  -- line: [1135, 1139] id: 76
+  -- line: [1138, 1142] id: 76
   local r2_76 = GWorld.GameInstance:GetGameUIManager():GetUIObj("PrologueEndLogo")
   r2_76:PlayAnimation(r2_76.Logo_Out)
 end
 function r8_0.HideBlackAtEndOfPrologue(r0_77)
-  -- line: [1140, 1144] id: 77
+  -- line: [1143, 1147] id: 77
   local r2_77 = GWorld.GameInstance:GetGameUIManager():GetUIObj("PrologueEndLogo")
   r2_77:PlayAnimation(r2_77.Black_Out)
 end
 function r8_0.PrologueLogoSetFirstDialog(r0_78)
-  -- line: [1146, 1153] id: 78
+  -- line: [1149, 1156] id: 78
   local r2_78 = GWorld.GameInstance:GetGameUIManager():GetUIObj("PrologueEndLogo")
   r2_78.Text_ChapterDesc:SetText(GText("UI_LOGO_DIALOGUE_10018201"))
   r2_78.Text_WorldDesc:SetText(GText("UI_LOGO_DIALOGUE_10018201_WORLD"))
   r2_78:PlayAnimation(r2_78.Text_In)
 end
 function r8_0.PrologueLogoUnSetFirstDialog(r0_79)
-  -- line: [1154, 1158] id: 79
+  -- line: [1157, 1161] id: 79
   local r2_79 = GWorld.GameInstance:GetGameUIManager():GetUIObj("PrologueEndLogo")
   r2_79:PlayAnimation(r2_79.Text_Out)
 end
 function r8_0.PrologueLogoSetSecondDialog(r0_80)
-  -- line: [1160, 1167] id: 80
+  -- line: [1163, 1170] id: 80
   local r2_80 = GWorld.GameInstance:GetGameUIManager():GetUIObj("PrologueEndLogo")
   r2_80.Text_ChapterDesc:SetText(GText("UI_LOGO_DIALOGUE_10018202"))
   r2_80.Text_WorldDesc:SetText(GText("UI_LOGO_DIALOGUE_10018202_WORLD"))
   r2_80:PlayAnimation(r2_80.Text_In)
 end
 function r8_0.PrologueLogoUnSetSecondDialog(r0_81)
-  -- line: [1168, 1172] id: 81
+  -- line: [1171, 1175] id: 81
   local r2_81 = GWorld.GameInstance:GetGameUIManager():GetUIObj("PrologueEndLogo")
   r2_81:PlayAnimation(r2_81.Text_Out)
 end
 function r8_0.OnGlobalGameUITagChanged(r0_82, r1_82, r2_82)
-  -- line: [1175, 1183] id: 82
+  -- line: [1178, 1186] id: 82
   DebugPrint("LHQ_OnGlobalGameUITagChanged: start")
   if r2_82 == "" then
     r0_82:TriggerAllNpcPauseAndHide("None")
@@ -1093,10 +1094,10 @@ function r8_0.OnGlobalGameUITagChanged(r0_82, r1_82, r2_82)
   DebugPrint("LHQ_OnGlobalGameUITagChanged: end")
 end
 function r8_0.TriggerAllNpcPauseAndHide(r0_83, r1_83)
-  -- line: [1185, 1262] id: 83
+  -- line: [1188, 1265] id: 83
   DebugPrint("LHQ_OnGlobalGameUITagChanged_HideNpc: start")
   local function r2_83(r0_84)
-    -- line: [1187, 1198] id: 84
+    -- line: [1190, 1201] id: 84
     if r0_84.FXComponent then
       r0_84:SetTickableWhenPaused(true)
     end
@@ -1176,12 +1177,12 @@ function r8_0.TriggerAllNpcPauseAndHide(r0_83, r1_83)
   DebugPrint("LHQ_OnGlobalGameUITagChanged_HideNpc: end")
 end
 function r8_0.OnGameInputMethodChanged(r0_85, r1_85, r2_85)
-  -- line: [1264, 1267] id: 85
+  -- line: [1267, 1270] id: 85
   r0_85.CurInputDeviceType = r1_85
   r0_85.CurInputDeviceName = r2_85
 end
 function r8_0.BindGamepadEvent(r0_86)
-  -- line: [1269, 1278] id: 86
+  -- line: [1272, 1281] id: 86
   if r0_86.CurInputDeviceType ~= nil then
     return 
   end
@@ -1194,7 +1195,7 @@ function r8_0.BindGamepadEvent(r0_86)
   end
 end
 function r8_0.UnBindGamepadEvent(r0_87)
-  -- line: [1280, 1289] id: 87
+  -- line: [1283, 1292] id: 87
   if r0_87.CurInputDeviceType == nil then
     return 
   end
@@ -1207,31 +1208,31 @@ function r8_0.UnBindGamepadEvent(r0_87)
   r0_87.CurInputDeviceName = nil
 end
 function r8_0.ReceiveInit(r0_88)
-  -- line: [1291, 1347] id: 88
+  -- line: [1294, 1350] id: 88
   GWorld.GameInstance = r0_88
   if IsDedicatedServer(r0_88) then
     return 
   end
   r2_0._Init()
   function r0_88.OnApplicationWillEnterBackground(r0_89)
-    -- line: [1309, 1313] id: 89
+    -- line: [1312, 1316] id: 89
     EventManager:FireEvent(EventID.ApplicationWillEnterBackground)
     r0_0:SaveAll(false)
   end
   r0_88.ApplicationWillEnterBackgroundDelegate:Add(r0_88, r0_88.OnApplicationWillEnterBackground)
   function r0_88.OnApplicationHasEnteredForeground(r0_90)
-    -- line: [1315, 1317] id: 90
+    -- line: [1318, 1320] id: 90
     EventManager:FireEvent(EventID.ApplicationHasEnteredForeground)
   end
   r0_88.ApplicationHasEnteredForegroundDelegate:Add(r0_88, r0_88.OnApplicationHasEnteredForeground)
   function r0_88.OnApplicationWillDeactivate(r0_91)
-    -- line: [1321, 1325] id: 91
+    -- line: [1324, 1328] id: 91
     EventManager:FireEvent(EventID.ApplicationWillDeactivate)
     r0_0:SaveAll(false)
   end
   r0_88.ApplicationWillDeactivateDelegate:Add(r0_88, r0_88.OnApplicationWillDeactivate)
   function r0_88.OnApplicationHasReactivated(r0_92)
-    -- line: [1327, 1329] id: 92
+    -- line: [1330, 1332] id: 92
     EventManager:FireEvent(EventID.ApplicationHasReactivated)
   end
   r0_88.ApplicationHasReactivatedDelegate:Add(r0_88, r0_88.OnApplicationHasReactivated)
@@ -1259,12 +1260,12 @@ function r8_0.ReceiveInit(r0_88)
   EventManager:AddEvent(EventID.ConditionComplete, r0_88, r0_88.OnConditionComplete)
 end
 function r8_0.OnApplicationWillTerminate(r0_93)
-  -- line: [1350, 1354] id: 93
+  -- line: [1353, 1357] id: 93
   r0_93.ApplicationWillTerminateDelegate:Clear()
   r0_0:SaveAll(false)
 end
 function r8_0.ReceiveShutdown(r0_94)
-  -- line: [1357, 1393] id: 94
+  -- line: [1360, 1396] id: 94
   if IsDedicatedServer(r0_94) then
     return 
   end
@@ -1280,7 +1281,7 @@ function r8_0.ReceiveShutdown(r0_94)
   end
 end
 function r8_0.InitGameSetting(r0_95)
-  -- line: [1396, 1403] id: 95
+  -- line: [1399, 1406] id: 95
   r6_0.InitPerformanceSetting()
   r0_95:InitGameSystemLanguage()
   r0_95:InitGameSystemVoice()
@@ -1289,7 +1290,7 @@ function r8_0.InitGameSetting(r0_95)
   r0_95:InitHideBackWeapons()
 end
 function r8_0.InitGameSystemLanguage(r0_96)
-  -- line: [1405, 1473] id: 96
+  -- line: [1408, 1476] id: 96
   local r1_96 = r0_0:Get("SystemLanguage")
   if r1_96 ~= nil then
     CommonConst.SystemLanguage = CommonConst.SystemLanguages[r1_96]
@@ -1348,7 +1349,7 @@ function r8_0.InitGameSystemLanguage(r0_96)
   require("BluePrints.UI.WBP.Announcement.AnnounceUtils"):Init()
 end
 function r8_0.SetCurrentLanguage(r0_97)
-  -- line: [1476, 1487] id: 97
+  -- line: [1479, 1490] id: 97
   UE4.UKismetInternationalizationLibrary.SetCurrentLanguage(({
     CN = "en",
     EN = "en",
@@ -1358,7 +1359,7 @@ function r8_0.SetCurrentLanguage(r0_97)
   })[r0_0:Get("SystemLanguage")] and "en", true)
 end
 function r8_0.SetUsdkLanguage(r0_98)
-  -- line: [1489, 1500] id: 98
+  -- line: [1492, 1503] id: 98
   r0_98:InitUsdkLanguage(EHeroUsdkLanguageFlag[({
     CN = "HeroLanguageZhHans",
     TC = "HeroLanguageZhHant",
@@ -1368,7 +1369,7 @@ function r8_0.SetUsdkLanguage(r0_98)
   })[r0_0:Get("SystemLanguage")]])
 end
 function r8_0.InitGameSystemVoice(r0_99)
-  -- line: [1502, 1516] id: 99
+  -- line: [1505, 1519] id: 99
   if IsDedicatedServer(r0_99) then
     return 
   end
@@ -1377,13 +1378,13 @@ function r8_0.InitGameSystemVoice(r0_99)
     CommonConst.SystemVoice = r1_99
   end
   r0_99:AddDelayFrameFunc(function()
-    -- line: [1511, 1513] id: 100
+    -- line: [1514, 1516] id: 100
     AudioManager(r0_99):RecoverSavedData()
   end, 1)
   r0_99:OnSystemVoiceLanguageChanged()
 end
 function r8_0.InitGameInterfaceMode(r0_101)
-  -- line: [1519, 1552] id: 101
+  -- line: [1522, 1555] id: 101
   if UE4.URuntimeCommonFunctionLibrary.IsPlayInEditor(r0_101) then
     return 
   end
@@ -1416,7 +1417,7 @@ function r8_0.InitGameInterfaceMode(r0_101)
   end
 end
 function r8_0.InitGameMuteBackstage(r0_102)
-  -- line: [1555, 1572] id: 102
+  -- line: [1558, 1575] id: 102
   local r1_102 = "MuteBackstage"
   local r2_102 = r0_0:Get(r1_102)
   if r2_102 == nil then
@@ -1430,7 +1431,7 @@ function r8_0.InitGameMuteBackstage(r0_102)
   end
 end
 function r8_0.InitHideBackWeapons(r0_103)
-  -- line: [1575, 1591] id: 103
+  -- line: [1578, 1594] id: 103
   local r1_103 = "HideBackWeapons"
   local r2_103 = r0_0:Get(r1_103)
   if r2_103 == nil then
@@ -1443,7 +1444,7 @@ function r8_0.InitHideBackWeapons(r0_103)
   AWeaponBase.SetWeaponBackTimerEnabled(r0_103, r2_103)
 end
 function r8_0.UploadLuaCallError(r0_104, r1_104)
-  -- line: [1593, 1673] id: 104
+  -- line: [1596, 1676] id: 104
   if not GWorld then
     return 
   end
@@ -1453,7 +1454,7 @@ function r8_0.UploadLuaCallError(r0_104, r1_104)
   end
   local r3_104 = UGameplayStatics.GetPlayerCharacter(r0_104, 0)
   local function r4_104()
-    -- line: [1603, 1654] id: 105
+    -- line: [1606, 1657] id: 105
     if not r3_104 then
       return ""
     end
@@ -1464,7 +1465,7 @@ function r8_0.UploadLuaCallError(r0_104, r1_104)
     if r0_105:IsInDungeon() then
       local r1_105 = UE4.URuntimeCommonFunctionLibrary.GetLevelLoadJsonName(r3_104)
       local function r2_105(r0_106)
-        -- line: [1613, 1620] id: 106
+        -- line: [1616, 1623] id: 106
         return require("rapidjson").decode(UE4.URuntimeCommonFunctionLibrary.LoadFile(UE4.UKismetSystemLibrary.GetProjectContentDirectory() .. "Script/Datas/Houdini_data/" .. r0_106 .. ".json"))
       end
       local r3_105 = r3_104.CurrentLevelId
@@ -1503,7 +1504,7 @@ function r8_0.UploadLuaCallError(r0_104, r1_104)
   end
   local r5_104 = "Error"
   pcall(function()
-    -- line: [1657, 1657] id: 107
+    -- line: [1660, 1660] id: 107
     r5_104 = r4_104()
   end)
   local r6_104 = tostring(WorldTravelSubsystem():GetCurrentSceneId())
@@ -1528,22 +1529,22 @@ function r8_0.UploadLuaCallError(r0_104, r1_104)
   end
 end
 function r8_0.GetDeviceTypeByPlatformName(r0_108)
-  -- line: [1675, 1677] id: 108
+  -- line: [1678, 1680] id: 108
   return CommonUtils:GetDeviceTypeByPlatformName()
 end
 function r8_0.SimulateMovementDebugPlatform(r0_109)
-  -- line: [1679, 1690] id: 109
+  -- line: [1682, 1693] id: 109
   if Const.SimulateMovementDebugPlatform == "Android" or Const.SimulateMovementDebugPlatform == "Windows" or Const.SimulateMovementDebugPlatform == "IOS" or Const.SimulateMovementDebugPlatform == "Mac" then
     return Const.SimulateMovementDebugPlatform
   end
   return UE4.UUIFunctionLibrary.GetDevicePlatformName(r0_109)
 end
 function r8_0.DisableLuaMemoryMonitorFromCPP(r0_110)
-  -- line: [1692, 1694] id: 110
+  -- line: [1695, 1697] id: 110
   LuaMemoryManager:DisableLuaMemoryMonitor()
 end
 function r8_0.RequestShowPopup(r0_111, r1_111, r2_111, r3_111)
-  -- line: [1696, 1727] id: 111
+  -- line: [1699, 1730] id: 111
   if not r0_111.RequestPopupQueue then
     r0_111.RequestPopupQueue = {}
   end
@@ -1553,7 +1554,7 @@ function r8_0.RequestShowPopup(r0_111, r1_111, r2_111, r3_111)
     ParentWidget = r3_111,
   })
   local function r4_111()
-    -- line: [1707, 1722] id: 112
+    -- line: [1710, 1725] id: 112
     DebugPrint("Tianyi@ Try to show popup")
     if not r0_111.RequestPopupQueue then
       r0_111:RemoveTimer(r0_111.RequestShowPopupTimer)
@@ -1574,14 +1575,14 @@ function r8_0.RequestShowPopup(r0_111, r1_111, r2_111, r3_111)
   end
 end
 function r8_0.CheckCanShowPopup(r0_113)
-  -- line: [1730, 1734] id: 113
+  -- line: [1733, 1737] id: 113
   if r0_113:GetLoadingUI() then
     return false
   end
   return true
 end
 function r8_0.OnTalkHiddenGameUIChange(r0_114)
-  -- line: [1736, 1750] id: 114
+  -- line: [1739, 1753] id: 114
   local r1_114 = GWorld:GetAvatar()
   if not r1_114 or not r1_114:IsInBigWorld() then
     return 
@@ -1589,7 +1590,7 @@ function r8_0.OnTalkHiddenGameUIChange(r0_114)
   UE4.UKismetSystemLibrary.K2_SetTimerDelegate({
     r0_114,
     function()
-      -- line: [1742, 1749] id: 115
+      -- line: [1745, 1752] id: 115
       local r0_115 = r0_114:GetTalkContext()
       if not IsValid(r0_115) or r0_115:HasHiddenGameUI() then
         return 
@@ -1603,7 +1604,7 @@ function r8_0.OnTalkHiddenGameUIChange(r0_114)
   }, 0.01, false, 0)
 end
 function r8_0.OnConditionComplete(r0_116, r1_116)
-  -- line: [1752, 1789] id: 116
+  -- line: [1755, 1792] id: 116
   if DataMgr.ConditionId2ModArchiveId and DataMgr.ConditionId2ModArchiveId[r1_116] then
     for r6_116, r7_116 in pairs(DataMgr.ConditionId2ModArchiveId[r1_116]) do
       if r7_116 then
@@ -1638,14 +1639,14 @@ function r8_0.OnConditionComplete(r0_116, r1_116)
   end
 end
 function r8_0.CloseLoadingUI(r0_117)
-  -- line: [1791, 1795] id: 117
+  -- line: [1794, 1798] id: 117
   UKismetSystemLibrary.ExecuteConsoleCommand(r0_117, "r.Shadow.ForceCacheUpdate 1", nil)
   r0_117.Overridden.CloseLoadingUI(r0_117)
 end
 function r8_0.SpawnOtherRole(r0_118, r1_118, r2_118, r3_118)
-  -- line: [1796, 1899] id: 118
+  -- line: [1799, 1902] id: 118
   local function r4_118(r0_119, r1_119)
-    -- line: [1797, 1884] id: 119
+    -- line: [1800, 1887] id: 119
     local r2_119 = GWorld:GetAvatar()
     if r2_119 and r2_119.OtherRoleInfo[r1_118].BornState == Const.ShouldDetory then
       r2_119.OtherRoleInfo[r1_118] = nil
@@ -1694,7 +1695,7 @@ function r8_0.SpawnOtherRole(r0_118, r1_118, r2_118, r3_118)
       r2_118.AppearanceSuit.SkinId = r10_119
     end
     function r7_119.LoadFinishCallback(r0_120)
-      -- line: [1852, 1879] id: 120
+      -- line: [1855, 1882] id: 120
       print(_G.LogTag, "CharacterRead", r0_120:K2_GetActorLocation(), r0_120:K2_GetActorRotation())
       local r1_120 = GWorld:GetAvatar()
       if r1_120 then
@@ -1742,7 +1743,7 @@ function r8_0.SpawnOtherRole(r0_118, r1_118, r2_118, r3_118)
   end
 end
 function r8_0.CreatePlayerCharacterWhileOnlyShowUI(r0_121, r1_121, r2_121)
-  -- line: [1901, 1988] id: 121
+  -- line: [1904, 1991] id: 121
   local r3_121 = GWorld:GetAvatar()
   if r1_121 <= 0 or not r3_121 then
     return 
@@ -1801,7 +1802,7 @@ function r8_0.CreatePlayerCharacterWhileOnlyShowUI(r0_121, r1_121, r2_121)
     r4_121.AppearanceSuit.SkinId = r10_121
   end
   function r5_121.LoadFinishCallback(r0_122)
-    -- line: [1961, 1985] id: 122
+    -- line: [1964, 1988] id: 122
     local r1_122 = GWorld:GetAvatar()
     if r1_122 and r1_122.OtherRoleInfo[r6_121].BornState == Const.ShouldDetory and r0_122 then
       r0_122:K2_DestroyActor()
@@ -1827,7 +1828,7 @@ function r8_0.CreatePlayerCharacterWhileOnlyShowUI(r0_121, r1_121, r2_121)
   r8_121:InitCharacterInfoForRegionPlayer(r5_121)
 end
 function r8_0.TeleportToCloestTeleportPoint(r0_123)
-  -- line: [1991, 1997] id: 123
+  -- line: [1994, 2000] id: 123
   DebugPrint("============TeleportToCloestTeleportPoint==============", r0_123.TriggerBoxID)
   CommonUtils:TeleportToCloestTeleportPoint(r0_123.TriggerBoxID)
   r0_123.TriggerBoxID = nil
@@ -1835,11 +1836,11 @@ function r8_0.TeleportToCloestTeleportPoint(r0_123)
   EventManager:RemoveEvent(EventID.OnLevelDeliverBlackCurtainEnd, GWorld.GameInstance)
 end
 function r8_0.GetIsOpenCrashSight(r0_124)
-  -- line: [1999, 2001] id: 124
+  -- line: [2002, 2004] id: 124
   return r0_0:Get("IsOpenCrashSight")
 end
 function r8_0.IsInSquadDungeon(r0_125)
-  -- line: [2004, 2018] id: 125
+  -- line: [2007, 2021] id: 125
   local r1_125 = r0_125:GetCurrentDungeonId()
   local r2_125 = DataMgr.Dungeon[r1_125]
   if r2_125 then
@@ -1852,7 +1853,7 @@ function r8_0.IsInSquadDungeon(r0_125)
   return false
 end
 function r8_0.SendInputDiviceChangeMessage(r0_126, r1_126, r2_126)
-  -- line: [2020, 2040] id: 126
+  -- line: [2023, 2043] id: 126
   DebugPrint("yklua___@BP_EMGameInstance_C BP_EMGameInstance_C:SendInputDiviceChangeMessage", r1_126, r2_126)
   local r3_126 = {
     [ECommonInputType.MouseAndKeyboard] = "MouseAndKeyboard",
@@ -1869,7 +1870,7 @@ function r8_0.SendInputDiviceChangeMessage(r0_126, r1_126, r2_126)
   HeroUSDKSubsystem(r0_126):UploadTrackLog_Lua("input_device_change", r4_126)
 end
 function r8_0.VerifyArraySendTrace(r0_127, r1_127, r2_127)
-  -- line: [2042, 2053] id: 127
+  -- line: [2045, 2056] id: 127
   local r3_127 = GWorld:GetAvatar()
   if not r3_127 then
     return 
@@ -1881,7 +1882,7 @@ function r8_0.VerifyArraySendTrace(r0_127, r1_127, r2_127)
   end
 end
 function r8_0.InitFloatVerifyArray(r0_128)
-  -- line: [2055, 2072] id: 128
+  -- line: [2058, 2075] id: 128
   local r2_128 = AvatarUtils:GetDefaultBattleInfo(GWorld:GetAvatar())
   if r2_128 and r2_128.RoleInfo and r2_128.RoleInfo.ReplaceAttrs and r2_128.RoleInfo.ReplaceAttrs.TotalValues then
     local r3_128 = r2_128.RoleInfo.ReplaceAttrs.TotalValues
@@ -1897,7 +1898,7 @@ function r8_0.InitFloatVerifyArray(r0_128)
   end
 end
 function r8_0.SetDynamicResolution(r0_129, r1_129, r2_129)
-  -- line: [2074, 2124] id: 129
+  -- line: [2077, 2127] id: 129
   if not Const.bUseDynamicResolution then
     return 
   end
