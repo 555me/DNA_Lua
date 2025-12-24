@@ -1,22 +1,28 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("PlayerStateMachine", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\PlayerStateMachine.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("PlayerStateMachine", {
   Avoid = {
     Interactive = 1,
     LandHeavy = 1,
     Seating = 1,
     Shooting = 1,
     Skill = 1,
-    SourceTag = "Avoid"
+    SourceTag = "Avoid",
   },
   BulletJump = {
     Interactive = 1,
     LandHeavy = 1,
     Seating = 1,
-    SourceTag = "BulletJump"
+    SourceTag = "BulletJump",
   },
-  Crouch = {Seating = 1, SourceTag = "Crouch"},
+  Crouch = {
+    Seating = 1,
+    SourceTag = "Crouch",
+  },
   Dead = {
     BulletJump = 1,
     Crouch = 1,
@@ -37,12 +43,12 @@ return ReadOnly("PlayerStateMachine", {
     Skill = 1,
     Slide = 1,
     SourceTag = "Dead",
-    Stun = 1
+    Stun = 1,
   },
   Falling = {
     Interactive = 1,
     Seating = 1,
-    SourceTag = "Falling"
+    SourceTag = "Falling",
   },
   GrabHit = {
     BulletJump = 1,
@@ -58,7 +64,7 @@ return ReadOnly("PlayerStateMachine", {
     Skill = 1,
     Slide = 1,
     SourceTag = "GrabHit",
-    Stun = 1
+    Stun = 1,
   },
   HeavyHit = {
     HeavyHit = 1,
@@ -68,7 +74,7 @@ return ReadOnly("PlayerStateMachine", {
     LightHit = 1,
     LightHitRanged = 1,
     Seating = 1,
-    SourceTag = "HeavyHit"
+    SourceTag = "HeavyHit",
   },
   HitFly = {
     BulletJump = 1,
@@ -84,13 +90,13 @@ return ReadOnly("PlayerStateMachine", {
     Skill = 1,
     Slide = 1,
     SourceTag = "HitFly",
-    Stun = 1
+    Stun = 1,
   },
   HitRepel = {
     Hook = 1,
     Interactive = 1,
     Seating = 1,
-    SourceTag = "HitRepel"
+    SourceTag = "HitRepel",
   },
   Hook = {
     GrabHit = 1,
@@ -101,9 +107,11 @@ return ReadOnly("PlayerStateMachine", {
     LightHitRanged = 1,
     Seating = 1,
     SourceTag = "Hook",
-    Stun = 1
+    Stun = 1,
   },
-  Idle = {SourceTag = "Idle"},
+  Idle = {
+    SourceTag = "Idle",
+  },
   Interactive = {
     GrabHit = 1,
     HeavyHit = 1,
@@ -112,12 +120,12 @@ return ReadOnly("PlayerStateMachine", {
     LightHitRanged = 1,
     Seating = 1,
     SourceTag = "Interactive",
-    Stun = 1
+    Stun = 1,
   },
   LandHeavy = {
     Interactive = 1,
     Seating = 1,
-    SourceTag = "LandHeavy"
+    SourceTag = "LandHeavy",
   },
   LevelEnter = {
     GrabHit = 1,
@@ -129,7 +137,7 @@ return ReadOnly("PlayerStateMachine", {
     LightHitRanged = 1,
     Seating = 1,
     SourceTag = "LevelEnter",
-    Stun = 1
+    Stun = 1,
   },
   LevelFinish = {
     GrabHit = 1,
@@ -141,19 +149,19 @@ return ReadOnly("PlayerStateMachine", {
     LightHitRanged = 1,
     Seating = 1,
     SourceTag = "LevelFinish",
-    Stun = 1
+    Stun = 1,
   },
   LightHit = {
     Hook = 1,
     Interactive = 1,
     Seating = 1,
-    SourceTag = "LightHit"
+    SourceTag = "LightHit",
   },
   LightHitRanged = {
     Hook = 1,
     Interactive = 1,
     Seating = 1,
-    SourceTag = "LightHitRanged"
+    SourceTag = "LightHitRanged",
   },
   Recovery = {
     GrabHit = 1,
@@ -164,7 +172,7 @@ return ReadOnly("PlayerStateMachine", {
     LightHitRanged = 1,
     Seating = 1,
     SourceTag = "Recovery",
-    Stun = 1
+    Stun = 1,
   },
   Seating = {
     Avoid = 1,
@@ -175,26 +183,26 @@ return ReadOnly("PlayerStateMachine", {
     LandHeavy = 1,
     Seating = 1,
     Slide = 1,
-    SourceTag = "Seating"
+    SourceTag = "Seating",
   },
   Shooting = {
     Interactive = 1,
     LandHeavy = 1,
     Seating = 1,
-    SourceTag = "Shooting"
+    SourceTag = "Shooting",
   },
   Skill = {
     Interactive = 1,
     LandHeavy = 1,
     Seating = 1,
-    SourceTag = "Skill"
+    SourceTag = "Skill",
   },
   Slide = {
     Interactive = 1,
     LandHeavy = 1,
     Seating = 1,
     Shooting = 1,
-    SourceTag = "Slide"
+    SourceTag = "Slide",
   },
   Stun = {
     BulletJump = 1,
@@ -209,6 +217,6 @@ return ReadOnly("PlayerStateMachine", {
     Skill = 1,
     Slide = 1,
     SourceTag = "Stun",
-    Stun = 1
-  }
+    Stun = 1,
+  },
 })

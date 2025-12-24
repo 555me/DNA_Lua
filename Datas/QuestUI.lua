@@ -1,14 +1,17 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("QuestUI", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\QuestUI.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("QuestUI", {
   [100301] = {
     AudioPath = "event:/ui/common/chapter_2_trans",
     CantoName = "Episode_02_01",
     ChapterName = "Episode_02",
     QuestId = 100301,
     Title = "Name_100301",
-    UIName = "Chapter_Transition02"
+    UIName = "Chapter_Transition02",
   },
   [100302] = {
     AudioPath = "event:/ui/common/chapter_2_trans",
@@ -16,7 +19,7 @@ return ReadOnly("QuestUI", {
     ChapterName = "Episode_02",
     QuestId = 100302,
     Title = "Name_100302",
-    UIName = "Chapter_Transition02"
+    UIName = "Chapter_Transition02",
   },
   [100303] = {
     AudioPath = "event:/ui/common/chapter_2_trans",
@@ -24,7 +27,7 @@ return ReadOnly("QuestUI", {
     ChapterName = "Episode_02",
     QuestId = 100303,
     Title = "Name_100303",
-    UIName = "Chapter_Transition02"
+    UIName = "Chapter_Transition02",
   },
   [100304] = {
     AudioPath = "event:/ui/common/chapter_2_trans",
@@ -32,7 +35,7 @@ return ReadOnly("QuestUI", {
     ChapterName = "Episode_02",
     QuestId = 100304,
     Title = "Name_100304",
-    UIName = "Chapter_Transition02"
+    UIName = "Chapter_Transition02",
   },
   [100305] = {
     AudioPath = "event:/ui/common/chapter_2_trans",
@@ -40,7 +43,7 @@ return ReadOnly("QuestUI", {
     ChapterName = "Episode_02",
     QuestId = 100305,
     Title = "Name_100305",
-    UIName = "Chapter_Transition02"
+    UIName = "Chapter_Transition02",
   },
   [100306] = {
     AudioPath = "event:/ui/common/chapter_2_trans",
@@ -48,7 +51,7 @@ return ReadOnly("QuestUI", {
     ChapterName = "Episode_02",
     QuestId = 100306,
     Title = "Name_100306",
-    UIName = "Chapter_Transition02"
+    UIName = "Chapter_Transition02",
   },
   [100307] = {
     AudioPath = "event:/ui/common/chapter_2_trans",
@@ -56,7 +59,7 @@ return ReadOnly("QuestUI", {
     ChapterName = "Episode_02",
     QuestId = 100307,
     Title = "Name_100307",
-    UIName = "Chapter_Transition02"
+    UIName = "Chapter_Transition02",
   },
   [120111] = {
     AudioPath = "event:/ui/activity/feina_day_update",
@@ -64,7 +67,7 @@ return ReadOnly("QuestUI", {
     ChapterName = "Episode_Feina",
     QuestId = 120111,
     Title = "Name_120111",
-    UIName = "FeinaChangeScene"
+    UIName = "FeinaChangeScene",
   },
   [120112] = {
     AudioPath = "event:/ui/activity/feina_day_update",
@@ -72,7 +75,7 @@ return ReadOnly("QuestUI", {
     ChapterName = "Episode_Feina",
     QuestId = 120112,
     Title = "Name_120112",
-    UIName = "FeinaChangeScene"
+    UIName = "FeinaChangeScene",
   },
   [120113] = {
     AudioPath = "event:/ui/activity/feina_day_update",
@@ -80,7 +83,7 @@ return ReadOnly("QuestUI", {
     ChapterName = "Episode_Feina",
     QuestId = 120113,
     Title = "Name_120113",
-    UIName = "FeinaChangeScene"
+    UIName = "FeinaChangeScene",
   },
   [120114] = {
     AudioPath = "event:/ui/activity/feina_day_update",
@@ -88,6 +91,6 @@ return ReadOnly("QuestUI", {
     ChapterName = "Episode_Feina",
     QuestId = 120114,
     Title = "Name_120114",
-    UIName = "FeinaChangeScene"
-  }
+    UIName = "FeinaChangeScene",
+  },
 })

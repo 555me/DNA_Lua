@@ -1,8 +1,13 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("MonsterStateMachine", {
-  Birth = {SourceTag = "Birth"},
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\MonsterStateMachine.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("MonsterStateMachine", {
+  Birth = {
+    SourceTag = "Birth",
+  },
   CaptureSuccess = {
     Cover = 1,
     Crouch = 1,
@@ -16,10 +21,14 @@ return ReadOnly("MonsterStateMachine", {
     Shooting = 1,
     Skill = 1,
     Slide = 1,
-    SourceTag = "CaptureSuccess"
+    SourceTag = "CaptureSuccess",
   },
-  Cover = {SourceTag = "Cover"},
-  Crouch = {SourceTag = "Crouch"},
+  Cover = {
+    SourceTag = "Cover",
+  },
+  Crouch = {
+    SourceTag = "Crouch",
+  },
   Dead = {
     Cover = 1,
     Crouch = 1,
@@ -34,7 +43,7 @@ return ReadOnly("MonsterStateMachine", {
     Skill = 1,
     Slide = 1,
     SourceTag = "Dead",
-    Stun = 1
+    Stun = 1,
   },
   Defeated = {
     Cover = 1,
@@ -51,15 +60,17 @@ return ReadOnly("MonsterStateMachine", {
     Slide = 1,
     SourceTag = "Defeated",
     Stun = 1,
-    StunFloat = 1
+    StunFloat = 1,
   },
-  Falling = {SourceTag = "Falling"},
+  Falling = {
+    SourceTag = "Falling",
+  },
   HeavyHit = {
     LightHit = 1,
     LightHitRanged = 1,
     Shooting = 1,
     Skill = 1,
-    SourceTag = "HeavyHit"
+    SourceTag = "HeavyHit",
   },
   HitFly = {
     Cover = 1,
@@ -70,23 +81,33 @@ return ReadOnly("MonsterStateMachine", {
     Skill = 1,
     Slide = 1,
     SourceTag = "HitFly",
-    Stun = 1
+    Stun = 1,
   },
-  Idle = {SourceTag = "Idle"},
-  LandHeavy = {SourceTag = "LandHeavy"},
+  Idle = {
+    SourceTag = "Idle",
+  },
+  LandHeavy = {
+    SourceTag = "LandHeavy",
+  },
   LightHit = {
     Shooting = 1,
     Skill = 1,
-    SourceTag = "LightHit"
+    SourceTag = "LightHit",
   },
   LightHitRanged = {
     Shooting = 1,
     Skill = 1,
-    SourceTag = "LightHitRanged"
+    SourceTag = "LightHitRanged",
   },
-  Shooting = {SourceTag = "Shooting"},
-  Skill = {SourceTag = "Skill"},
-  Slide = {SourceTag = "Slide"},
+  Shooting = {
+    SourceTag = "Shooting",
+  },
+  Skill = {
+    SourceTag = "Skill",
+  },
+  Slide = {
+    SourceTag = "Slide",
+  },
   Stun = {
     HeavyHit = 1,
     LightHit = 1,
@@ -95,7 +116,7 @@ return ReadOnly("MonsterStateMachine", {
     Skill = 1,
     Slide = 1,
     SourceTag = "Stun",
-    Stun = 1
+    Stun = 1,
   },
   StunFloat = {
     Crouch = 1,
@@ -107,7 +128,7 @@ return ReadOnly("MonsterStateMachine", {
     Slide = 1,
     SourceTag = "StunFloat",
     Stun = 1,
-    StunFloat = 1
+    StunFloat = 1,
   },
   WaitForCaught = {
     Cover = 1,
@@ -123,6 +144,6 @@ return ReadOnly("MonsterStateMachine", {
     Slide = 1,
     SourceTag = "WaitForCaught",
     Stun = 1,
-    StunFloat = 1
-  }
+    StunFloat = 1,
+  },
 })

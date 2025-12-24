@@ -1,59 +1,62 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("PersonalUniqueDetails", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\PersonalUniqueDetails.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("PersonalUniqueDetails", {
   Collection_Char = {
     DataType = "Int,Percent",
     Des = "UI_Armory_Char",
     Event = "Collection_Char",
-    Sort = 1
+    Sort = 1,
   },
   Collection_CharAccessory = {
     DataType = "Int,Percent",
     Des = "UI_Char_Accessory",
     Event = "Collection_CharAccessory",
-    Sort = 6
+    Sort = 6,
   },
   Collection_Melee = {
     DataType = "Int,Percent",
     Des = "UI_Armory_Meleeweapon",
     Event = "Collection_Melee",
-    Sort = 2
+    Sort = 2,
   },
   Collection_Mod = {
     DataType = "Int,Percent",
     Des = "UI_Armory_Mod",
     Event = "Collection_Mod",
-    Sort = 8
+    Sort = 8,
   },
   Collection_Pet = {
     DataType = "Int,Percent",
     Des = "MAIN_UI_PET",
     Event = "Collection_Pet",
-    Sort = 9
+    Sort = 9,
   },
   Collection_Range = {
     DataType = "Int,Percent",
     Des = "UI_Armory_Longrange",
     Event = "Collection_Range",
-    Sort = 3
+    Sort = 3,
   },
   Collection_Skin = {
     DataType = "Int,Percent",
     Des = "UI_Char_Skin",
     Event = "Collection_Skin",
-    Sort = 4
+    Sort = 4,
   },
   Collection_WeaponAccessory = {
     DataType = "Int,Percent",
     Des = "UI_Weapon_Accessory",
     Event = "Collection_WeaponAccessory",
-    Sort = 7
+    Sort = 7,
   },
   Collection_WeaponSkin = {
     DataType = "Int,Percent",
     Des = "UI_Weapon_Skin",
     Event = "Collection_WeaponSkin",
-    Sort = 5
-  }
+    Sort = 5,
+  },
 })

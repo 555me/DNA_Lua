@@ -1,11 +1,14 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("Mail", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\Mail.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("Mail", {
   [-1] = {
     MailId = -1,
     MailSenderId = 4101,
-    MailTimeLimit = 30
+    MailTimeLimit = 30,
   },
   [10001] = {
     IfStar = true,
@@ -15,14 +18,14 @@ return ReadOnly("Mail", {
     MailSenderId = 85101,
     MailTimeLimit = -1,
     MailTitle = "Mail_Title_100001",
-    Provider = "hero"
+    Provider = "hero",
   },
   [10002] = {
     MailContent = "Mail_Content_100002",
     MailId = 10002,
     MailSenderId = 82101,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_100002"
+    MailTitle = "Mail_Title_100002",
   },
   [10003] = {
     MailContent = "Mail_Content_100003",
@@ -30,7 +33,7 @@ return ReadOnly("Mail", {
     MailReward = 130004,
     MailSenderId = 83101,
     MailTimeLimit = 1,
-    MailTitle = "Mail_Title_100003"
+    MailTitle = "Mail_Title_100003",
   },
   [10004] = {
     MailContent = "Mail_Content_100003",
@@ -38,13 +41,13 @@ return ReadOnly("Mail", {
     MailReward = 5006,
     MailSenderId = 83101,
     MailTimeLimit = 1,
-    MailTitle = "Mail_Title_100003"
+    MailTitle = "Mail_Title_100003",
   },
   [10005] = {
     MailContent = "Mail_Content_100005",
     MailId = 10005,
     MailTimeLimit = 7,
-    MailTitle = "Mail_Title_100005"
+    MailTitle = "Mail_Title_100005",
   },
   [10006] = {
     MailContent = "Mail_Content_10006",
@@ -52,14 +55,14 @@ return ReadOnly("Mail", {
     MailReward = 70002,
     MailSenderId = 900003,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10006"
+    MailTitle = "Mail_Title_10006",
   },
   [10007] = {
     MailContent = "Mail_Content_10007",
     MailId = 10007,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10007"
+    MailTitle = "Mail_Title_10007",
   },
   [10008] = {
     MailContent = "Mail_Content_10008",
@@ -67,35 +70,35 @@ return ReadOnly("Mail", {
     MailReward = 2010001,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10008"
+    MailTitle = "Mail_Title_10008",
   },
   [10009] = {
     MailContent = "Mail_Content_10009",
     MailId = 10009,
     MailSenderId = 99999,
     MailTimeLimit = 7,
-    MailTitle = "Mail_Title_10009"
+    MailTitle = "Mail_Title_10009",
   },
   [10010] = {
     MailContent = "Mail_Content_10010",
     MailId = 10010,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10010"
+    MailTitle = "Mail_Title_10010",
   },
   [10011] = {
     MailContent = "Mail_Content_10011",
     MailId = 10011,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10011"
+    MailTitle = "Mail_Title_10011",
   },
   [10012] = {
     MailContent = "Mail_Content_10012",
     MailId = 10012,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10012"
+    MailTitle = "Mail_Title_10012",
   },
   [10013] = {
     MailContent = "Mail_Content_10013",
@@ -103,14 +106,14 @@ return ReadOnly("Mail", {
     MailReward = 7928,
     MailSenderId = 900003,
     MailTimeLimit = 60,
-    MailTitle = "Mail_Title_10013"
+    MailTitle = "Mail_Title_10013",
   },
   [10014] = {
     MailContent = "Mail_Content_10014",
     MailId = 10014,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10014"
+    MailTitle = "Mail_Title_10014",
   },
   [10015] = {
     MailContent = "Mail_Content_10008",
@@ -118,7 +121,7 @@ return ReadOnly("Mail", {
     MailReward = 2010002,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10008"
+    MailTitle = "Mail_Title_10008",
   },
   [10016] = {
     Condition = 4010,
@@ -127,7 +130,7 @@ return ReadOnly("Mail", {
     MailReward = 2010004,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10016"
+    MailTitle = "Mail_Title_10016",
   },
   [10017] = {
     MailContent = "Mail_Content_10008",
@@ -135,7 +138,7 @@ return ReadOnly("Mail", {
     MailReward = 2010003,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10008"
+    MailTitle = "Mail_Title_10008",
   },
   [10021] = {
     MailContent = "Mail_Content_10021",
@@ -143,7 +146,7 @@ return ReadOnly("Mail", {
     MailReward = 79001,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10022] = {
     MailContent = "Mail_Content_10021",
@@ -151,7 +154,7 @@ return ReadOnly("Mail", {
     MailReward = 79002,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10023] = {
     MailContent = "Mail_Content_10021",
@@ -159,7 +162,7 @@ return ReadOnly("Mail", {
     MailReward = 79003,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10024] = {
     MailContent = "Mail_Content_10021",
@@ -167,7 +170,7 @@ return ReadOnly("Mail", {
     MailReward = 79004,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10025] = {
     MailContent = "Mail_Content_10021",
@@ -175,7 +178,7 @@ return ReadOnly("Mail", {
     MailReward = 79003,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10026] = {
     MailContent = "Mail_Content_10021",
@@ -183,7 +186,7 @@ return ReadOnly("Mail", {
     MailReward = 79005,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10027] = {
     MailContent = "Mail_Content_10021",
@@ -191,28 +194,65 @@ return ReadOnly("Mail", {
     MailReward = 79006,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10031] = {
     MailContent = "Mail_Content_10031",
     MailId = 10031,
     MailSenderId = 900002,
     MailTimeLimit = 1,
-    MailTitle = "Mail_Title_10031"
+    MailTitle = "Mail_Title_10031",
   },
   [10032] = {
     MailContent = "Mail_Content_10032",
     MailId = 10032,
     MailSenderId = 900002,
     MailTimeLimit = 1,
-    MailTitle = "Mail_Title_10032"
+    MailTitle = "Mail_Title_10032",
   },
   [10033] = {
     MailContent = "Mail_Content_10033",
     MailId = 10033,
     MailSenderId = 900002,
     MailTimeLimit = 1,
-    MailTitle = "Mail_Title_10033"
+    MailTitle = "Mail_Title_10033",
+  },
+  [10034] = {
+    MailContent = "Mail_Content_10034",
+    MailId = 10034,
+    MailReward = 110501,
+    MailSenderId = 900013,
+    MailTimeLimit = -1,
+    MailTitle = "Mail_Title_10034",
+  },
+  [10035] = {
+    MailContent = "Mail_Content_10034",
+    MailId = 10035,
+    MailReward = 110502,
+    MailSenderId = 900013,
+    MailTimeLimit = -1,
+    MailTitle = "Mail_Title_10035",
+  },
+  [10036] = {
+    MailContent = "Mail_Content_10034",
+    MailId = 10036,
+    MailReward = 110503,
+    MailSenderId = 900013,
+    MailTimeLimit = -1,
+    MailTitle = "Mail_Title_10036",
+  },
+  [10037] = {
+    MailContent = "Mail_Content_10037",
+    MailId = 10037,
+    MailTimeLimit = -1,
+    MailTitle = "Mail_Title_10037",
+  },
+  [10038] = {
+    MailContent = "Mail_Content_10038",
+    MailId = 10038,
+    MailSenderId = 900002,
+    MailTimeLimit = 7,
+    MailTitle = "Mail_Title_10038",
   },
   [10041] = {
     MailContent = "Mail_Content_10021",
@@ -220,7 +260,7 @@ return ReadOnly("Mail", {
     MailReward = 79007,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10042] = {
     MailContent = "Mail_Content_10021",
@@ -228,7 +268,7 @@ return ReadOnly("Mail", {
     MailReward = 79008,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10043] = {
     MailContent = "Mail_Content_10021",
@@ -236,7 +276,7 @@ return ReadOnly("Mail", {
     MailReward = 79009,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10044] = {
     MailContent = "Mail_Content_10021",
@@ -244,7 +284,7 @@ return ReadOnly("Mail", {
     MailReward = 79010,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10045] = {
     MailContent = "Mail_Content_10021",
@@ -252,7 +292,7 @@ return ReadOnly("Mail", {
     MailReward = 79011,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10046] = {
     MailContent = "Mail_Content_10021",
@@ -260,7 +300,7 @@ return ReadOnly("Mail", {
     MailReward = 79012,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10047] = {
     MailContent = "Mail_Content_10021",
@@ -268,7 +308,7 @@ return ReadOnly("Mail", {
     MailReward = 79013,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10048] = {
     MailContent = "Mail_Content_10021",
@@ -276,7 +316,7 @@ return ReadOnly("Mail", {
     MailReward = 79014,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10049] = {
     MailContent = "Mail_Content_10021",
@@ -284,7 +324,7 @@ return ReadOnly("Mail", {
     MailReward = 79015,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10050] = {
     MailContent = "Mail_Content_10021",
@@ -292,7 +332,7 @@ return ReadOnly("Mail", {
     MailReward = 79016,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10051] = {
     MailContent = "Mail_Content_10021",
@@ -300,7 +340,7 @@ return ReadOnly("Mail", {
     MailReward = 79017,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10052] = {
     MailContent = "Mail_Content_10021",
@@ -308,7 +348,7 @@ return ReadOnly("Mail", {
     MailReward = 79018,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10053] = {
     MailContent = "Mail_Content_10021",
@@ -316,7 +356,7 @@ return ReadOnly("Mail", {
     MailReward = 79019,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10054] = {
     MailContent = "Mail_Content_10021",
@@ -324,42 +364,96 @@ return ReadOnly("Mail", {
     MailReward = 79020,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10021"
+    MailTitle = "Mail_Title_10021",
   },
   [10055] = {
     MailContent = "Mail_Content_10055",
     MailId = 10055,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10055"
+    MailTitle = "Mail_Title_10055",
   },
   [10056] = {
     MailContent = "Mail_Content_10056",
     MailId = 10056,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10056"
+    MailTitle = "Mail_Title_10056",
   },
   [10057] = {
     MailContent = "Mail_Content_10056",
     MailId = 10057,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10056"
+    MailTitle = "Mail_Title_10056",
   },
   [10058] = {
     MailContent = "Mail_Content_10058",
     MailId = 10058,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10058"
+    MailTitle = "Mail_Title_10058",
   },
   [10059] = {
     MailContent = "Mail_Content_10059",
     MailId = 10059,
     MailSenderId = 99999,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_10059"
+    MailTitle = "Mail_Title_10059",
+  },
+  [10060] = {
+    MailContent = "Mail_Content_10060",
+    MailId = 10060,
+    MailSenderId = 99999,
+    MailTimeLimit = -1,
+    MailTitle = "Mail_Title_10060",
+  },
+  [10061] = {
+    MailContent = "Mail_Content_10061",
+    MailId = 10061,
+    MailSenderId = 99999,
+    MailTimeLimit = 7,
+    MailTitle = "Mail_Title_10061",
+  },
+  [10062] = {
+    MailContent = "Mail_Content_10062",
+    MailId = 10062,
+    MailReward = 110516,
+    MailSenderId = 900016,
+    MailTimeLimit = -1,
+    MailTitle = "Mail_Title_10062",
+  },
+  [10063] = {
+    MailContent = "Mail_Content_10063",
+    MailId = 10063,
+    MailReward = 110517,
+    MailSenderId = 900015,
+    MailTimeLimit = -1,
+    MailTitle = "Mail_Title_10063",
+  },
+  [10064] = {
+    MailContent = "Mail_Content_10064",
+    MailId = 10064,
+    MailReward = 110518,
+    MailSenderId = 900017,
+    MailTimeLimit = -1,
+    MailTitle = "Mail_Title_10064",
+  },
+  [10065] = {
+    MailContent = "Mail_Content_10065",
+    MailId = 10065,
+    MailReward = 110519,
+    MailSenderId = 900018,
+    MailTimeLimit = -1,
+    MailTitle = "Mail_Title_10065",
+  },
+  [10066] = {
+    MailContent = "Mail_Content_10066",
+    MailId = 10066,
+    MailReward = 110520,
+    MailSenderId = 900019,
+    MailTimeLimit = -1,
+    MailTitle = "Mail_Title_10066",
   },
   [19101] = {
     Condition = 4100,
@@ -370,7 +464,7 @@ return ReadOnly("Mail", {
     MailSenderId = 900003,
     MailTimeLimit = -1,
     MailTitle = "Mail_Title_19101",
-    Provider = "hero"
+    Provider = "hero",
   },
   [19102] = {
     Condition = 4100,
@@ -380,7 +474,7 @@ return ReadOnly("Mail", {
     MailSenderId = 900003,
     MailTimeLimit = -1,
     MailTitle = "Mail_Title_19101",
-    Provider = "wegame"
+    Provider = "wegame",
   },
   [19103] = {
     Condition = 4100,
@@ -390,7 +484,7 @@ return ReadOnly("Mail", {
     MailReward = 79023,
     MailSenderId = 900003,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_19101"
+    MailTitle = "Mail_Title_19101",
   },
   [19104] = {
     Condition = 4100,
@@ -400,7 +494,7 @@ return ReadOnly("Mail", {
     MailSenderId = 900003,
     MailTimeLimit = -1,
     MailTitle = "Mail_Title_19101",
-    Provider = "bilibili"
+    Provider = "bilibili",
   },
   [19105] = {
     Condition = 4100,
@@ -410,7 +504,7 @@ return ReadOnly("Mail", {
     MailReward = 79025,
     MailSenderId = 900003,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_19101"
+    MailTitle = "Mail_Title_19101",
   },
   [19106] = {
     Condition = 4100,
@@ -420,7 +514,7 @@ return ReadOnly("Mail", {
     MailSenderId = 900003,
     MailTimeLimit = -1,
     MailTitle = "Mail_Title_19101",
-    Provider = "lenovo"
+    Provider = "lenovo",
   },
   [19107] = {
     Condition = 4100,
@@ -430,37 +524,57 @@ return ReadOnly("Mail", {
     MailReward = 79027,
     MailSenderId = 900003,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_19101"
+    MailTitle = "Mail_Title_19101",
+  },
+  [19108] = {
+    Condition = 4100,
+    MailContent = "Mail_Content_19101",
+    MailId = 19108,
+    MailReward = 79021,
+    MailSenderId = 900003,
+    MailTimeLimit = -1,
+    MailTitle = "Mail_Title_19101",
+    Provider = "cloud",
+  },
+  [19109] = {
+    Condition = 4100,
+    MailContent = "Mail_Content_19101",
+    MailId = 19109,
+    MailReward = 79021,
+    MailSenderId = 900003,
+    MailTimeLimit = -1,
+    MailTitle = "Mail_Title_19101",
+    Provider = "oppo",
   },
   [100301] = {
     MailContent = "Mail_Content_100301",
     MailId = 100301,
     MailSenderId = 900005,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_100301"
+    MailTitle = "Mail_Title_100301",
   },
   [100401] = {
     MailContent = "Mail_Content_100401",
     MailId = 100401,
     MailTimeLimit = 7,
-    MailTitle = "Mail_Title_100401"
+    MailTitle = "Mail_Title_100401",
   },
   [100402] = {
     MailContent = "Mail_Content_100402",
     MailId = 100402,
     MailTimeLimit = -1,
-    MailTitle = "Mail_Title_100402"
+    MailTitle = "Mail_Title_100402",
   },
   [101001] = {
     MailContent = "Mail_Content_101001",
     MailId = 101001,
     MailTimeLimit = 7,
-    MailTitle = "Mail_Title_101001"
+    MailTitle = "Mail_Title_101001",
   },
   [102001] = {
     MailContent = "Mail_Content_102001",
     MailId = 102001,
     MailTimeLimit = 7,
-    MailTitle = "Mail_Title_102001"
-  }
+    MailTitle = "Mail_Title_102001",
+  },
 })

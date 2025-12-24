@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("RespawnRule", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\RespawnRule.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("RespawnRule", {
   Abyss = {
     DelayTime = 1.8,
     DissolveAfterDead = false,
@@ -12,7 +15,7 @@ return ReadOnly("RespawnRule", {
     PlayerRecoverSpeed = 0,
     PlayerRecoverTimes = 0,
     RecoverUI = "BattleResurgence",
-    RuleId = "Abyss"
+    RuleId = "Abyss",
   },
   CommonRegion = {
     DelayTime = 1.8,
@@ -23,7 +26,7 @@ return ReadOnly("RespawnRule", {
     PlayerRecoverSpeed = -1,
     PlayerRecoverTimes = -1,
     RecoverUI = "RegionResurgence",
-    RuleId = "CommonRegion"
+    RuleId = "CommonRegion",
   },
   CommonSolo = {
     DelayTime = 1.8,
@@ -34,7 +37,7 @@ return ReadOnly("RespawnRule", {
     PlayerRecoverSpeed = 10,
     PlayerRecoverTimes = 3,
     RecoverUI = "BattleResurgence",
-    RuleId = "CommonSolo"
+    RuleId = "CommonSolo",
   },
   Default = {
     DelayTime = 1.8,
@@ -45,7 +48,7 @@ return ReadOnly("RespawnRule", {
     PlayerRecoverSpeed = 20,
     PlayerRecoverTimes = -1,
     RecoverUI = "BattleResurgence",
-    RuleId = "Default"
+    RuleId = "Default",
   },
   HardBoss = {
     DelayTime = 1.8,
@@ -56,7 +59,7 @@ return ReadOnly("RespawnRule", {
     PlayerRecoverSpeed = 20,
     PlayerRecoverTimes = 1,
     RecoverUI = "BattleResurgence",
-    RuleId = "HardBoss"
+    RuleId = "HardBoss",
   },
   Hostage = {
     DelayTime = 1.8,
@@ -66,7 +69,7 @@ return ReadOnly("RespawnRule", {
     PhantomRecoverTimes = 0,
     PlayerRecoverSpeed = 0,
     PlayerRecoverTimes = -1,
-    RuleId = "Hostage"
+    RuleId = "Hostage",
   },
   MonsterRush = {
     DelayTime = 1.8,
@@ -77,7 +80,7 @@ return ReadOnly("RespawnRule", {
     PlayerRecoverSpeed = 100,
     PlayerRecoverTimes = 1,
     RecoverUI = "BattleResurgence",
-    RuleId = "MonsterRush"
+    RuleId = "MonsterRush",
   },
   Rouge = {
     DelayTime = 1.8,
@@ -88,6 +91,18 @@ return ReadOnly("RespawnRule", {
     PlayerRecoverSpeed = 50,
     PlayerRecoverTimes = 1,
     RecoverUI = "BattleResurgence",
-    RuleId = "Rouge"
-  }
+    RuleId = "Rouge",
+  },
+  SpecialQuestNoRes = {
+    DelayTime = 1.8,
+    DissolveAfterDead = true,
+    DyingDuration = 20,
+    NotModify = true,
+    PhantomRecoverSpeed = 0,
+    PhantomRecoverTimes = 0,
+    PlayerRecoverSpeed = 0,
+    PlayerRecoverTimes = 0,
+    RecoverUI = "None",
+    RuleId = "SpecialQuestNoRes",
+  },
 })

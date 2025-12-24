@@ -1,4 +1,4 @@
--- filename: @E:/Pack/Branch/OBT10_Geili\Content/Script/sha1.lua
+-- filename: @C:/Pack/Branch/geili11\Content/Script/sha1.lua
 -- version: lua54
 -- line: [0, 0] id: 0
 local function r0_0()

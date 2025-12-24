@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("KeyboardMap", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\KeyboardMap.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("KeyboardMap", {
   A = {
     ActionName = "A",
     ActionNameText = "UI_Keyboard_Map_A",
@@ -10,7 +13,7 @@ return ReadOnly("KeyboardMap", {
     IsShowInSetting = true,
     Key = "A",
     Scale = "-1.0",
-    SortId = 32
+    SortId = 32,
   },
   ActiveGuide = {
     ActionName = "ActiveGuide",
@@ -19,7 +22,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "V",
-    SortId = 26
+    SortId = 26,
   },
   Attack = {
     ActionName = "Attack",
@@ -29,7 +32,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "LeftMouseButton",
-    SortId = 1
+    SortId = 1,
   },
   Avoid = {
     ActionName = "Avoid",
@@ -38,7 +41,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "LeftShift",
-    SortId = 8
+    SortId = 8,
   },
   BulletJump = {
     ActionName = "BulletJump",
@@ -47,21 +50,21 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "Four",
-    SortId = 9
+    SortId = 9,
   },
   ChangeCameraLengthDown = {
     ActionName = "ChangeCameraLengthDown",
     IsActionMapping = true,
     IsShowInSetting = false,
     Key = "MouseScrollDown",
-    SortId = 37
+    SortId = 37,
   },
   ChangeCameraLengthUp = {
     ActionName = "ChangeCameraLengthUp",
     IsActionMapping = true,
     IsShowInSetting = false,
     Key = "MouseScrollUp",
-    SortId = 38
+    SortId = 38,
   },
   ChargeBullet = {
     ActionName = "ChargeBullet",
@@ -70,7 +73,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "R",
-    SortId = 11
+    SortId = 11,
   },
   D = {
     ActionName = "D",
@@ -80,14 +83,14 @@ return ReadOnly("KeyboardMap", {
     IsShowInSetting = true,
     Key = "D",
     Scale = "1.0",
-    SortId = 34
+    SortId = 34,
   },
   DownSelect = {
     ActionName = "DownSelect",
     ActionNameText = "UI_Keyboard_DownSelect",
     IsShowInSetting = true,
     Key = "MouseScrollDown",
-    SortId = 36
+    SortId = 36,
   },
   Fire = {
     ActionName = "Fire",
@@ -96,7 +99,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "RightMouseButton",
-    SortId = 2
+    SortId = 2,
   },
   Interactive = {
     ActionName = "Interactive",
@@ -105,7 +108,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "F",
-    SortId = 12
+    SortId = 12,
   },
   ItemDetail = {
     ActionName = "ItemDetail",
@@ -114,7 +117,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "Tab",
-    SortId = 25
+    SortId = 25,
   },
   Jump = {
     ActionName = "Jump",
@@ -123,7 +126,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "SpaceBar",
-    SortId = 6
+    SortId = 6,
   },
   LockMonster = {
     ActionName = "LockMonster",
@@ -132,7 +135,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "MiddleMouseButton",
-    SortId = 29
+    SortId = 29,
   },
   OpenArmory = {
     ActionName = "OpenArmory",
@@ -141,7 +144,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "C",
-    SortId = 18
+    SortId = 18,
   },
   OpenBag = {
     ActionName = "OpenBag",
@@ -150,7 +153,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "B",
-    SortId = 13
+    SortId = 13,
   },
   OpenBattlePass = {
     ActionName = "OpenBattlePass",
@@ -159,7 +162,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "F2",
-    SortId = 21
+    SortId = 21,
   },
   OpenBattleWheel = {
     ActionName = "OpenBattleWheel",
@@ -168,7 +171,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "T",
-    SortId = 23
+    SortId = 23,
   },
   OpenChat = {
     ActionName = "OpenChat",
@@ -177,7 +180,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "Enter",
-    SortId = 17
+    SortId = 17,
   },
   OpenEvent = {
     ActionName = "OpenEvent",
@@ -186,7 +189,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "F1",
-    SortId = 20
+    SortId = 20,
   },
   OpenForge = {
     ActionName = "OpenForge",
@@ -195,7 +198,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "H",
-    SortId = 19
+    SortId = 19,
   },
   OpenGacha = {
     ActionName = "OpenGacha",
@@ -204,7 +207,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "F3",
-    SortId = 22
+    SortId = 22,
   },
   OpenGuideBook = {
     ActionName = "OpenGuideBook",
@@ -213,7 +216,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "G",
-    SortId = 24
+    SortId = 24,
   },
   OpenMap = {
     ActionName = "OpenMap",
@@ -222,7 +225,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "M",
-    SortId = 16
+    SortId = 16,
   },
   OpenMenu = {
     ActionName = "OpenMenu",
@@ -230,7 +233,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "Escape",
-    SortId = 30
+    SortId = 30,
   },
   OpenPlay = {
     ActionName = "OpenPlay",
@@ -239,7 +242,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "L",
-    SortId = 14
+    SortId = 14,
   },
   OpenTask = {
     ActionName = "OpenTask",
@@ -248,7 +251,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "J",
-    SortId = 15
+    SortId = 15,
   },
   QuitChallenge = {
     ActionName = "QuitChallenge",
@@ -257,7 +260,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "P",
-    SortId = 27
+    SortId = 27,
   },
   Recovery = {
     ActionName = "Recovery",
@@ -266,7 +269,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "X",
-    SortId = 10
+    SortId = 10,
   },
   S = {
     ActionName = "S",
@@ -276,7 +279,7 @@ return ReadOnly("KeyboardMap", {
     IsShowInSetting = true,
     Key = "S",
     Scale = "-1.0",
-    SortId = 33
+    SortId = 33,
   },
   ShowCursor = {
     ActionName = "ShowCursor",
@@ -284,7 +287,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "LeftAlt",
-    SortId = 28
+    SortId = 28,
   },
   ShowTeamInfo = {
     ActionName = "ShowTeamInfo",
@@ -292,7 +295,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = false,
     Key = "F4",
-    SortId = 45
+    SortId = 45,
   },
   Skill1 = {
     ActionName = "Skill1",
@@ -301,7 +304,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "E",
-    SortId = 3
+    SortId = 3,
   },
   Skill2 = {
     ActionName = "Skill2",
@@ -310,7 +313,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "Q",
-    SortId = 4
+    SortId = 4,
   },
   Skill3 = {
     ActionName = "Skill3",
@@ -319,7 +322,7 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "Z",
-    SortId = 5
+    SortId = 5,
   },
   Slide = {
     ActionName = "Slide",
@@ -328,98 +331,133 @@ return ReadOnly("KeyboardMap", {
     IsActionMapping = true,
     IsShowInSetting = true,
     Key = "LeftControl",
-    SortId = 7
+    SortId = 7,
   },
   StoryInteractive = {
     ActionName = "StoryInteractive",
     IsActionMapping = true,
     IsShowInSetting = false,
     Key = "F",
-    SortId = 51
+    SortId = 51,
   },
   StoryInteractiveClick = {
     ActionName = "StoryInteractiveClick",
     IsActionMapping = true,
     IsShowInSetting = false,
     Key = "SpaceBar",
-    SortId = 50
+    SortId = 50,
   },
   StoryInteractiveClose = {
     ActionName = "StoryInteractiveClose",
     IsActionMapping = true,
     IsShowInSetting = false,
     Key = "Escape",
-    SortId = 49
+    SortId = 49,
   },
   TalkAutoPlay = {
     ActionName = "TalkAutoPlay",
     IsActionMapping = true,
     IsShowInSetting = false,
     Key = "Tab",
-    SortId = 39
+    SortId = 39,
   },
   TalkClick = {
     ActionName = "TalkClick",
     IsActionMapping = true,
     IsShowInSetting = false,
     Key = "SpaceBar",
-    SortId = 40
+    SortId = 40,
   },
   TalkDownSelect = {
     ActionName = "TalkDownSelect",
     IsActionMapping = true,
     IsShowInSetting = false,
     Key = "S",
-    SortId = 41
+    SortId = 41,
   },
   TalkExit = {
     ActionName = "TalkExit",
     IsActionMapping = true,
     IsShowInSetting = false,
     Key = "Escape",
-    SortId = 48
+    SortId = 48,
   },
   TalkOption = {
     ActionName = "TalkOption",
     IsActionMapping = true,
     IsShowInSetting = false,
     Key = "F",
-    SortId = 42
+    SortId = 42,
   },
   TalkReview = {
     ActionName = "TalkReview",
     IsActionMapping = true,
     IsShowInSetting = false,
     Key = "V",
-    SortId = 47
+    SortId = 47,
   },
   TalkSkip = {
     ActionName = "TalkSkip",
     IsActionMapping = true,
     IsShowInSetting = false,
     Key = "SpaceBar",
-    SortId = 43
+    SortId = 43,
   },
   TalkUpSelect = {
     ActionName = "TalkUpSelect",
     IsActionMapping = true,
     IsShowInSetting = false,
     Key = "W",
-    SortId = 44
+    SortId = 44,
   },
   TalkWiki = {
     ActionName = "TalkWiki",
     IsActionMapping = true,
     IsShowInSetting = false,
     Key = "H",
-    SortId = 46
+    SortId = 46,
+  },
+  TrainingCharacterSkills = {
+    ActionName = "TrainingCharacterSkills",
+    IsActionMapping = true,
+    IsShowInSetting = false,
+    Key = "F2",
+    SortId = 53,
+  },
+  TrainingInvincible = {
+    ActionName = "TrainingInvincible",
+    IsActionMapping = true,
+    IsShowInSetting = false,
+    Key = "F3",
+    SortId = 54,
+  },
+  TrainingKillMonsters = {
+    ActionName = "TrainingKillMonsters",
+    IsActionMapping = true,
+    IsShowInSetting = false,
+    Key = "F4",
+    SortId = 55,
+  },
+  TrainingMonstersActive = {
+    ActionName = "TrainingMonstersActive",
+    IsActionMapping = true,
+    IsShowInSetting = false,
+    Key = "F5",
+    SortId = 56,
+  },
+  TrainingOpenSetup = {
+    ActionName = "TrainingOpenSetup",
+    IsActionMapping = true,
+    IsShowInSetting = false,
+    Key = "F1",
+    SortId = 52,
   },
   UpSelect = {
     ActionName = "UpSelect",
     ActionNameText = "UI_Keyboard_UpSelect",
     IsShowInSetting = true,
     Key = "MouseScrollUp",
-    SortId = 35
+    SortId = 35,
   },
   W = {
     ActionName = "W",
@@ -429,6 +467,6 @@ return ReadOnly("KeyboardMap", {
     IsShowInSetting = true,
     Key = "W",
     Scale = "1.0",
-    SortId = 31
-  }
+    SortId = 31,
+  },
 })

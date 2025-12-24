@@ -1,216 +1,253 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("ConditionText", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\ConditionText.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("ConditionText", {
+  ActivePropEffectId = {
+    ConditionLogic = "C",
+    ConditionType = "ActivePropEffectId",
+  },
   AvatarStatus = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "AvatarStatus"
+    ConditionType = "AvatarStatus",
   },
   CharEquipRarityLevelModCount = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "CharEquipRarityLevelModCount"
+    ConditionType = "CharEquipRarityLevelModCount",
   },
   ConditionalRewardEventEnd = {
     ConditionLogic = "S",
-    ConditionType = "ConditionalRewardEventEnd"
+    ConditionType = "ConditionalRewardEventEnd",
   },
   ConstantBool = {
     ConditionLogic = "S",
-    ConditionType = "ConstantBool"
+    ConditionType = "ConstantBool",
   },
   CurrentCharId = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "CurrentCharId"
+    ConditionType = "CurrentCharId",
+  },
+  DailyFreeTicketAmount = {
+    AutoTrigger = true,
+    ConditionLogic = "S",
+    ConditionType = "DailyFreeTicketAmount",
   },
   DailyLoginEnd = {
     ConditionLogic = "S",
-    ConditionType = "DailyLoginEnd"
+    ConditionType = "DailyLoginEnd",
   },
   DialogueHasRead = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "DialogueHasRead"
+    ConditionType = "DialogueHasRead",
   },
   DualTerminalLogin = {
     ConditionLogic = "S",
-    ConditionType = "DualTerminalLogin"
+    ConditionType = "DualTerminalLogin",
   },
   DungeonComplete = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "DungeonComplete"
+    ConditionType = "DungeonComplete",
   },
   DungeonType = {
     AutoTrigger = true,
     ConditionLogic = "S&DS",
-    ConditionType = "DungeonType"
+    ConditionType = "DungeonType",
   },
   DynamicEventCompleteTimes = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "DynamicEventCompleteTimes"
+    ConditionType = "DynamicEventCompleteTimes",
   },
   EquipPetId = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "EquipPetId"
+    ConditionType = "EquipPetId",
   },
   ExploreGroup = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "ExploreGroup"
+    ConditionType = "ExploreGroup",
   },
   FollowCommunityComplete = {
     ConditionLogic = "S",
-    ConditionType = "FollowCommunityComplete"
+    ConditionType = "FollowCommunityComplete",
   },
   HardBossComplete = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "HardBossComplete"
+    ConditionType = "HardBossComplete",
   },
   HaveResource = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "HaveResource"
+    ConditionType = "HaveResource",
   },
   HaveResourceSType = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "HaveResourceSType"
+    ConditionType = "HaveResourceSType",
   },
   ImprShopUnlock = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "ImprShopUnlock"
+    ConditionType = "ImprShopUnlock",
   },
   Impression = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "Impression"
+    ConditionType = "Impression",
   },
   InDungeon = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "InDungeon"
+    ConditionType = "InDungeon",
   },
   InHardBossDifficulty = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "InHardBossDifficulty"
+    ConditionType = "InHardBossDifficulty",
   },
   InStoryMode = {
     AutoTrigger = true,
     ConditionLogic = "C",
-    ConditionType = "InStoryMode"
+    ConditionType = "InStoryMode",
+  },
+  IsCurrentCharEquipMod = {
+    ConditionLogic = "C",
+    ConditionType = "IsCurrentCharEquipMod",
   },
   IsSpecialQuest = {
-    ConditionType = "IsSpecialQuest"
+    ConditionType = "IsSpecialQuest",
   },
-  LoginDay = {ConditionLogic = "S", ConditionType = "LoginDay"},
+  LoginDay = {
+    ConditionLogic = "S",
+    ConditionType = "LoginDay",
+  },
   MechanismState = {
     AutoTrigger = true,
     ConditionLogic = "DS",
-    ConditionType = "MechanismState"
+    ConditionType = "MechanismState",
   },
   OwnCharIdAndLevel = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "OwnCharIdAndLevel"
+    ConditionType = "OwnCharIdAndLevel",
   },
   PhaseQuestEnd = {
     ConditionLogic = "S",
-    ConditionType = "PhaseQuestEnd"
+    ConditionType = "PhaseQuestEnd",
   },
   PlayerInBattlePass = {
     ConditionLogic = "C",
-    ConditionType = "PlayerInBattlePass"
+    ConditionType = "PlayerInBattlePass",
   },
   PlayerLevelMax = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "PlayerLevelMax"
+    ConditionType = "PlayerLevelMax",
   },
   PlayerLevelMin = {
     AutoTrigger = true,
     ConditionLogic = "S",
     ConditionName = "UI_QUEST_CONDITION_PLAYERLEVEL",
-    ConditionType = "PlayerLevelMin"
+    ConditionType = "PlayerLevelMin",
   },
   PlayerLvEventEnd = {
     ConditionLogic = "S",
-    ConditionType = "PlayerLvEventEnd"
+    ConditionType = "PlayerLvEventEnd",
   },
   Quest = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "Quest"
+    ConditionType = "Quest",
   },
   QuestChain = {
     AutoTrigger = true,
     ConditionLogic = "S",
     ConditionName = "UI_QUEST_CONDITION_FINISHQUEST",
-    ConditionType = "QuestChain"
+    ConditionType = "QuestChain",
+  },
+  RegionCapturePet = {
+    ConditionLogic = "S",
+    ConditionType = "RegionCapturePet",
   },
   RougeLikeComplete = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "RougeLikeComplete"
+    ConditionType = "RougeLikeComplete",
   },
   RougeLikeDifficulty = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "RougeLikeDifficulty"
+    ConditionType = "RougeLikeDifficulty",
   },
   RougeLikeGroupMax = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "RougeLikeGroupMax"
+    ConditionType = "RougeLikeGroupMax",
   },
   RougeLikeGroupMin = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "RougeLikeGroupMin"
+    ConditionType = "RougeLikeGroupMin",
   },
   RougeLikeManual = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "RougeLikeManual"
+    ConditionType = "RougeLikeManual",
   },
   RougeLikePassRoom = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "RougeLikePassRoom"
+    ConditionType = "RougeLikePassRoom",
   },
   RougeLikePreAward = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "RougeLikePreAward"
+    ConditionType = "RougeLikePreAward",
   },
   RougeLikePreRoom = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "RougeLikePreRoom"
+    ConditionType = "RougeLikePreRoom",
   },
   SubRegionType = {
     AutoTrigger = true,
     ConditionLogic = "S",
-    ConditionType = "SubRegionType"
+    ConditionType = "SubRegionType",
   },
   TeleportIsUnlock = {
     ConditionLogic = "C",
-    ConditionType = "TeleportIsUnlock"
+    ConditionType = "TeleportIsUnlock",
   },
   TestClientCon = {
     ConditionLogic = "C",
-    ConditionType = "TestClientCon"
+    ConditionType = "TestClientCon",
   },
   TimeArrived = {
     ConditionLogic = "S",
-    ConditionType = "TimeArrived"
+    ConditionType = "TimeArrived",
   },
-  VarEqual = {ConditionLogic = "S", ConditionType = "VarEqual"}
+  TrueQuest = {
+    AutoTrigger = true,
+    ConditionLogic = "S",
+    ConditionType = "TrueQuest",
+  },
+  TrueQuestChain = {
+    AutoTrigger = true,
+    ConditionLogic = "S",
+    ConditionName = "UI_QUEST_CONDITION_FINISHQUEST",
+    ConditionType = "TrueQuestChain",
+  },
+  VarEqual = {
+    ConditionLogic = "S",
+    ConditionType = "VarEqual",
+  },
 })

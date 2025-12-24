@@ -1,57 +1,56 @@
-local MemDump = {}
-
-function MemDump:GetCurrentDir()
-  local info = debug.getinfo(1)
-  local path = info.source
-  path = string.match(path, "^(.*)/")
-  return path
-end
-
-MemDump.file = io.open(MemDump:GetCurrentDir() .. "/MemDump_" .. os.time() .. ".txt", "w+")
-MemDump.NextLine = "\n"
-io.output(MemDump.file)
-io.write("CurrentLuaMemory(KBytes): " .. collectgarbage("count") .. MemDump.NextLine)
-io.write("Global" .. MemDump.NextLine)
-
-function MemDump:Dump(Table, Level)
-  Level = Level or 1
-  if Level > 4 then
-    return
+-- filename: @C:/Pack/Branch/geili11\Content/Script/MemDump.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r0_0 = {
+  GetCurrentDir = function(r0_1)
+    -- line: [9, 15] id: 1
+    return string.match(debug.getinfo(1).source, "^(.*)/")
+  end,
+}
+r0_0.file = io.open(r0_0:GetCurrentDir() .. "/MemDump_" .. os.time() .. ".txt", "w+")
+r0_0.NextLine = "\n"
+io.output(r0_0.file)
+io.write("CurrentLuaMemory(KBytes): " .. collectgarbage("count") .. r0_0.NextLine)
+io.write("Global" .. r0_0.NextLine)
+function r0_0.Dump(r0_2, r1_2, r2_2)
+  -- line: [23, 49] id: 2
+  if not r2_2 then
+    r2_2 = 1
   end
-  local Prefix = ""
-  for i = 1, Level do
-    Prefix = Prefix .. "  "
+  if r2_2 > 4 then
+    return 
   end
-  Prefix = Prefix .. "L_" .. tostring(Level)
+  local r3_2 = ""
+  for r7_2 = 1, r2_2, 1 do
+    r3_2 = r3_2 .. "  "
+  end
+  r3_2 = r3_2 .. "L_" .. tostring(r2_2)
   pcall(function()
-    for k, v in pairs(Table) do
-      if type(v) ~= "function" then
-        local out = Prefix .. "[key]" .. k .. " [value]" .. "[" .. type(v) .. "]" .. tostring(v)
-        io.write(out .. self.NextLine)
-        if type(v) == "table" and not self:CheckTable(v) then
-          self:Dump(v, Level + 1)
+    -- line: [34, 48] id: 3
+    for r4_3, r5_3 in pairs(r1_2) do
+      if type(r5_3) ~= "function" then
+        io.write(r3_2 .. "[key]" .. r4_3 .. " [value]" .. "[" .. type(r5_3) .. "]" .. tostring(r5_3) .. r0_2.NextLine)
+        if type(r5_3) == "table" and not r0_2:CheckTable(r5_3) then
+          r0_2:Dump(r5_3, r2_2 + 1)
         end
       end
     end
-    io.write(self.NextLine)
-    self:MarkTable(Table)
+    -- close: r0_3
+    io.write(r0_2.NextLine)
+    r0_2:MarkTable(r1_2)
   end)
 end
-
-MemDump.Mark = {}
-
-function MemDump:MarkTable(Table)
-  if type(Table) ~= "table" then
-    return
+r0_0.Mark = {}
+function r0_0.MarkTable(r0_4, r1_4)
+  -- line: [52, 59] id: 4
+  if type(r1_4) ~= "table" then
+    return 
   end
-  local key = tostring(Table)
-  self.Mark[key] = true
+  r0_4.Mark[tostring(r1_4)] = true
 end
-
-function MemDump:CheckTable(Table)
-  local key = tostring(Table)
-  return self.Mark[key]
+function r0_0.CheckTable(r0_5, r1_5)
+  -- line: [61, 64] id: 5
+  return r0_5.Mark[tostring(r1_5)]
 end
-
-MemDump:Dump(_G)
-io.close(MemDump.file)
+r0_0:Dump(_G)
+io.close(r0_0.file)

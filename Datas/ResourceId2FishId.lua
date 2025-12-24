@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("ResourceId2FishId", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\ResourceId2FishId.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [1, 1] id: 1
+  return r1_1
+end)("ResourceId2FishId", {
   [5011010] = 1101,
   [5011011] = 110101,
   [5011020] = 1102,
@@ -99,5 +102,5 @@ return ReadOnly("ResourceId2FishId", {
   [5028040] = 2804,
   [5028041] = 280401,
   [5028050] = 2805,
-  [5028051] = 280501
+  [5028051] = 280501,
 })

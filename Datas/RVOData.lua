@@ -1,53 +1,58 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\RVOData.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r1_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
 end
-return ReadOnly("RVOData", {
-  ArtificialRadiusExpansion = {
-    ParamName = "ArtificialRadiusExpansion",
-    ParamValue = {
-      1.1,
-      1.1,
-      1.1
-    }
+local r2_0 = "RVOData"
+local r3_0 = {}
+r3_0.ArtificialRadiusExpansion = {
+  ParamName = "ArtificialRadiusExpansion",
+  ParamValue = {
+    1.1,
+    1.1,
+    1.1
   },
-  DefaultTimeToLive = {
-    ParamName = "DefaultTimeToLive",
-    ParamValue = {
-      1.5,
-      1.5,
-      3
-    }
+}
+r3_0.DefaultTimeToLive = {
+  ParamName = "DefaultTimeToLive",
+  ParamValue = {
+    1.5,
+    1.5,
+    3
   },
-  DeltaTimeToPredict = {
-    ParamName = "DeltaTimeToPredict",
-    ParamValue = {
-      0.5,
-      0.5,
-      0.8
-    }
+}
+r3_0.DeltaTimeToPredict = {
+  ParamName = "DeltaTimeToPredict",
+  ParamValue = {
+    0.5,
+    0.5,
+    0.8
   },
-  HeightCheckMargin = {
-    ParamName = "HeightCheckMargin",
-    ParamValue = {
-      50,
-      50,
-      50
-    }
+}
+r3_0.HeightCheckMargin = {
+  ParamName = "HeightCheckMargin",
+  ParamValue = {
+    50,
+    50,
+    50
   },
-  LockTimeAfterAvoid = {
-    ParamName = "LockTimeAfterAvoid",
-    ParamValue = {
-      0.25,
-      0.25,
-      1
-    }
+}
+r3_0.LockTimeAfterAvoid = {
+  ParamName = "LockTimeAfterAvoid",
+  ParamValue = {
+    0.25,
+    0.25,
+    1
   },
-  LockTimeAfterClean = {
-    ParamName = "LockTimeAfterClean",
-    ParamValue = {
-      0.03,
-      0.03,
-      0.03
-    }
-  }
-})
+}
+r3_0.LockTimeAfterClean = {
+  ParamName = "LockTimeAfterClean",
+  ParamValue = {
+    0.03,
+    0.03,
+    0.03
+  },
+}
+return r1_0(r2_0, r3_0)

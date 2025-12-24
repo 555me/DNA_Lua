@@ -1,213 +1,240 @@
-local T = {}
-T.RT_1 = {
-  2,
-  3,
-  10304,
-  10305,
-  10310
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\RougeLikeTreasureRandom.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r0_0 = {
+  RT_1 = {
+    2,
+    3,
+    10304,
+    10305,
+    10310
+  },
+  RT_2 = {
+    1
+  },
+  RT_3 = {
+    2,
+    10304,
+    10305,
+    10310
+  },
+  RT_4 = {
+    2
+  },
+  RT_5 = {
+    3
+  },
+  RT_6 = {
+    1,
+    2
+  },
+  RT_7 = {
+    2,
+    3
+  },
+  RT_8 = {
+    1,
+    2,
+    3
+  },
+  RT_9 = {
+    2,
+    3,
+    4,
+    10211,
+    102,
+    10108,
+    10304,
+    10305,
+    10310
+  },
 }
-T.RT_2 = {1}
-T.RT_3 = {
-  2,
-  10304,
-  10305,
-  10310
-}
-T.RT_4 = {2}
-T.RT_5 = {3}
-T.RT_6 = {1, 2}
-T.RT_7 = {2, 3}
-T.RT_8 = {
-  1,
-  2,
-  3
-}
-T.RT_9 = {
-  2,
-  3,
-  4,
-  10211,
-  102,
-  10108,
-  10304,
-  10305,
-  10310
-}
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
+local r2_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [49, 49] id: 1
+  return r1_1
 end
-return ReadOnly("RougeLikeTreasureRandom", {
-  [-1] = {TreasureRandom = -1},
+local r3_0 = "RougeLikeTreasureRandom"
+local r4_0 = {
+  [-1] = {
+    TreasureRandom = -1,
+  },
   [1] = {
-    ExcludeGroup = T.RT_1,
+    ExcludeGroup = r0_0.RT_1,
     RandomType = 1,
     TreasureRandom = 1,
-    TreasureRarity = T.RT_2
+    TreasureRarity = r0_0.RT_2,
   },
   [2] = {
-    ExcludeGroup = T.RT_1,
+    ExcludeGroup = r0_0.RT_1,
     RandomType = 1,
     TreasureRandom = 2,
-    TreasureRarity = T.RT_4
+    TreasureRarity = r0_0.RT_4,
   },
   [3] = {
-    ExcludeGroup = T.RT_1,
+    ExcludeGroup = r0_0.RT_1,
     RandomType = 1,
     TreasureRandom = 3,
-    TreasureRarity = T.RT_5
+    TreasureRarity = r0_0.RT_5,
   },
   [4] = {
-    ExcludeGroup = T.RT_1,
+    ExcludeGroup = r0_0.RT_1,
     RandomType = 1,
     TreasureRandom = 4,
-    TreasureRarity = T.RT_6
+    TreasureRarity = r0_0.RT_6,
   },
   [5] = {
-    ExcludeGroup = T.RT_1,
+    ExcludeGroup = r0_0.RT_1,
     RandomType = 1,
     TreasureRandom = 5,
-    TreasureRarity = T.RT_7
+    TreasureRarity = r0_0.RT_7,
   },
   [6] = {
-    ExcludeGroup = T.RT_1,
+    ExcludeGroup = r0_0.RT_1,
     RandomType = 1,
     TreasureRandom = 6,
-    TreasureRarity = T.RT_8
+    TreasureRarity = r0_0.RT_8,
   },
   [7] = {
-    ExcludeGroup = T.RT_1,
+    ExcludeGroup = r0_0.RT_1,
     RandomType = 1,
     TreasureRandom = 7,
-    TreasureRarity = T.RT_8
+    TreasureRarity = r0_0.RT_8,
   },
   [8] = {
-    ExcludeGroup = T.RT_1,
+    ExcludeGroup = r0_0.RT_1,
     RandomType = 1,
     TreasureRandom = 8,
-    TreasureRarity = T.RT_8
+    TreasureRarity = r0_0.RT_8,
   },
   [9] = {
-    ExcludeGroup = T.RT_1,
+    ExcludeGroup = r0_0.RT_1,
     RandomType = 1,
     TreasureRandom = 9,
-    TreasureRarity = T.RT_8
+    TreasureRarity = r0_0.RT_8,
   },
   [10] = {
-    ExcludeGroup = T.RT_3,
+    ExcludeGroup = r0_0.RT_3,
     RandomType = 2,
     TreasureRandom = 10,
-    TreasureRarity = T.RT_2
+    TreasureRarity = r0_0.RT_2,
   },
   [11] = {
-    ExcludeGroup = T.RT_3,
+    ExcludeGroup = r0_0.RT_3,
     RandomType = 2,
     TreasureRandom = 11,
-    TreasureRarity = T.RT_4
+    TreasureRarity = r0_0.RT_4,
   },
   [12] = {
-    ExcludeGroup = T.RT_3,
+    ExcludeGroup = r0_0.RT_3,
     RandomType = 2,
     TreasureRandom = 12,
-    TreasureRarity = T.RT_5
+    TreasureRarity = r0_0.RT_5,
   },
   [13] = {
-    ExcludeGroup = T.RT_3,
+    ExcludeGroup = r0_0.RT_3,
     RandomType = 2,
     TreasureRandom = 13,
-    TreasureRarity = T.RT_6
+    TreasureRarity = r0_0.RT_6,
   },
   [14] = {
-    ExcludeGroup = T.RT_3,
+    ExcludeGroup = r0_0.RT_3,
     RandomType = 2,
     TreasureRandom = 14,
-    TreasureRarity = T.RT_7
+    TreasureRarity = r0_0.RT_7,
   },
   [15] = {
-    ExcludeGroup = T.RT_3,
+    ExcludeGroup = r0_0.RT_3,
     RandomType = 2,
     TreasureRandom = 15,
-    TreasureRarity = T.RT_8
+    TreasureRarity = r0_0.RT_8,
   },
   [16] = {
-    ExcludeGroup = T.RT_3,
+    ExcludeGroup = r0_0.RT_3,
     RandomType = 2,
     TreasureRandom = 16,
-    TreasureRarity = T.RT_8
+    TreasureRarity = r0_0.RT_8,
   },
   [17] = {
-    ExcludeGroup = T.RT_3,
+    ExcludeGroup = r0_0.RT_3,
     RandomType = 2,
     TreasureRandom = 17,
-    TreasureRarity = T.RT_8
+    TreasureRarity = r0_0.RT_8,
   },
   [18] = {
-    ExcludeGroup = T.RT_3,
+    ExcludeGroup = r0_0.RT_3,
     RandomType = 2,
     TreasureRandom = 18,
-    TreasureRarity = T.RT_8
+    TreasureRarity = r0_0.RT_8,
   },
   [19] = {
     Designated = 10308,
-    ExcludeGroup = T.RT_1,
+    ExcludeGroup = r0_0.RT_1,
     RandomType = 3,
     TreasureRandom = 19,
-    TreasureRarity = T.RT_8
+    TreasureRarity = r0_0.RT_8,
   },
-  [20] = {
-    LimitGroup = {
-      2,
-      4,
-      10108,
-      10308,
-      10309,
-      101,
-      103,
-      104
-    },
-    RandomType = 2,
-    TreasureRandom = 20,
-    TreasureRarity = T.RT_8
+}
+r4_0[20] = {
+  LimitGroup = {
+    2,
+    4,
+    10108,
+    10308,
+    10309,
+    101,
+    103,
+    104
   },
-  [21] = {
-    ExcludeGroup = T.RT_9,
-    RandomType = 1,
-    TreasureRandom = 21,
-    TreasureRarity = T.RT_6
+  RandomType = 2,
+  TreasureRandom = 20,
+  TreasureRarity = r0_0.RT_8,
+}
+r4_0[21] = {
+  ExcludeGroup = r0_0.RT_9,
+  RandomType = 1,
+  TreasureRandom = 21,
+  TreasureRarity = r0_0.RT_6,
+}
+r4_0[22] = {
+  ExcludeGroup = r0_0.RT_9,
+  RandomType = 1,
+  TreasureRandom = 22,
+  TreasureRarity = r0_0.RT_8,
+}
+r4_0[23] = {
+  ExcludeGroup = r0_0.RT_9,
+  RandomType = 1,
+  TreasureRandom = 23,
+  TreasureRarity = r0_0.RT_7,
+}
+r4_0[24] = {
+  ExcludeGroup = r0_0.RT_9,
+  RandomType = 1,
+  TreasureRandom = 24,
+  TreasureRarity = r0_0.RT_5,
+}
+r4_0[25] = {
+  LimitGroup = {
+    10108
   },
-  [22] = {
-    ExcludeGroup = T.RT_9,
-    RandomType = 1,
-    TreasureRandom = 22,
-    TreasureRarity = T.RT_8
+  RandomType = 1,
+  TreasureRandom = 25,
+  TreasureRarity = r0_0.RT_8,
+}
+r4_0[26] = {
+  LimitGroup = {
+    103
   },
-  [23] = {
-    ExcludeGroup = T.RT_9,
-    RandomType = 1,
-    TreasureRandom = 23,
-    TreasureRarity = T.RT_7
+  RandomType = 1,
+  TreasureRandom = 26,
+  TreasureRarity = r0_0.RT_8,
+}
+r4_0[27] = {
+  LimitGroup = {
+    10310
   },
-  [24] = {
-    ExcludeGroup = T.RT_9,
-    RandomType = 1,
-    TreasureRandom = 24,
-    TreasureRarity = T.RT_5
-  },
-  [25] = {
-    LimitGroup = {10108},
-    RandomType = 1,
-    TreasureRandom = 25,
-    TreasureRarity = T.RT_8
-  },
-  [26] = {
-    LimitGroup = {103},
-    RandomType = 1,
-    TreasureRandom = 26,
-    TreasureRarity = T.RT_8
-  },
-  [27] = {
-    LimitGroup = {10310},
-    RandomType = 2,
-    TreasureRandom = 27,
-    TreasureRarity = T.RT_5
-  }
-})
+  RandomType = 2,
+  TreasureRandom = 27,
+  TreasureRarity = r0_0.RT_5,
+}
+return r2_0(r3_0, r4_0)

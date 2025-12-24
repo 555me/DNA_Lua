@@ -1,3 +1,6 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\VisualEffect.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 local r0_0 = {
   RT_1 = {
     0,
@@ -49,683 +52,710 @@ r0_0.RT_11 = {
   socket = "Root",
 }
 r0_0.RT_12 = {
+  90,
+  0,
+  90
+}
+r0_0.RT_13 = {
+  1.2,
+  1.2,
+  1
+}
+r0_0.RT_14 = {
+  socket = "pelvis",
+}
+r0_0.RT_15 = {
   0,
   0,
   -100
 }
-r0_0.RT_13 = {
-  Location = r0_0.RT_12,
+r0_0.RT_16 = {
+  Location = r0_0.RT_15,
 }
-r0_0.RT_14 = {
+r0_0.RT_17 = {
   0,
   0,
   60
 }
-r0_0.RT_15 = {
-  Location = r0_0.RT_14,
+r0_0.RT_18 = {
+  Location = r0_0.RT_17,
 }
-r0_0.RT_16 = {
+r0_0.RT_19 = {
   socket = "hit1",
 }
-r0_0.RT_17 = {
+r0_0.RT_20 = {
   100,
   0,
   120
 }
-r0_0.RT_18 = {
+r0_0.RT_21 = {
   0,
   0,
   -90
 }
-r0_0.RT_19 = {
+r0_0.RT_22 = {
   1.3,
   1.3,
   1.3
 }
-r0_0.RT_20 = {
+r0_0.RT_23 = {
   socket = "root",
 }
-r0_0.RT_21 = {
+r0_0.RT_24 = {
   537,
   -332,
   127
 }
-r0_0.RT_22 = {
+r0_0.RT_25 = {
   1,
   41,
   -84
 }
-r0_0.RT_23 = {
+r0_0.RT_26 = {
   189,
   29,
   73
 }
-r0_0.RT_24 = {
+r0_0.RT_27 = {
   19,
   -3,
   -75
 }
-r0_0.RT_25 = {
+r0_0.RT_28 = {
   207,
   48,
   477
 }
-r0_0.RT_26 = {
+r0_0.RT_29 = {
   11,
   10,
   -55
 }
-r0_0.RT_27 = {
+r0_0.RT_30 = {
   193,
   -24,
   78
 }
-r0_0.RT_28 = {
+r0_0.RT_31 = {
   0,
   0,
   90
 }
-r0_0.RT_29 = {
+r0_0.RT_32 = {
   socket = "Root_Effect",
 }
-r0_0.RT_30 = {
+r0_0.RT_33 = {
   1.5,
   1.5,
   1.5
 }
-r0_0.RT_31 = {
-  scale = r0_0.RT_30,
+r0_0.RT_34 = {
+  scale = r0_0.RT_33,
 }
-r0_0.RT_32 = {
+r0_0.RT_35 = {
   3,
   3,
   3
 }
-r0_0.RT_33 = {
-  scale = r0_0.RT_32,
+r0_0.RT_36 = {
+  scale = r0_0.RT_35,
 }
-r0_0.RT_34 = {
+r0_0.RT_37 = {
   0,
   0,
   100
 }
-r0_0.RT_35 = {
-  Location = r0_0.RT_34,
+r0_0.RT_38 = {
+  Location = r0_0.RT_37,
 }
-r0_0.RT_36 = {
+r0_0.RT_39 = {
   2,
   2,
   2
 }
-r0_0.RT_37 = {
-  scale = r0_0.RT_36,
+r0_0.RT_40 = {
+  scale = r0_0.RT_39,
 }
-r0_0.RT_38 = {
+r0_0.RT_41 = {
   socket = "hand_r",
 }
-r0_0.RT_39 = {
+r0_0.RT_42 = {
   -15,
   0,
   0
 }
-r0_0.RT_40 = {
+r0_0.RT_43 = {
   0.8,
   0.8,
   0.8
 }
-r0_0.RT_41 = {
-  Location = r0_0.RT_39,
-  scale = r0_0.RT_40,
-}
-r0_0.RT_42 = {
-  socket = "lowerarm_l",
-}
-r0_0.RT_43 = {
-  socket = "lowerarm_r",
-}
 r0_0.RT_44 = {
-  socket = "spine_01",
+  Location = r0_0.RT_42,
+  scale = r0_0.RT_43,
 }
 r0_0.RT_45 = {
+  socket = "lowerarm_l",
+}
+r0_0.RT_46 = {
+  socket = "lowerarm_r",
+}
+r0_0.RT_47 = {
+  socket = "spine_01",
+}
+r0_0.RT_48 = {
   0,
   -90,
   0
 }
-r0_0.RT_46 = {
-  Rotation = r0_0.RT_45,
+r0_0.RT_49 = {
+  Rotation = r0_0.RT_48,
 }
-r0_0.RT_47 = {
+r0_0.RT_50 = {
   120,
   -150,
   120
 }
-r0_0.RT_48 = {
+r0_0.RT_51 = {
   socket = "spine_03",
 }
-r0_0.RT_49 = {
+r0_0.RT_52 = {
   0,
   50,
   10
-}
-r0_0.RT_50 = {
-  Location = r0_0.RT_49,
-}
-r0_0.RT_51 = {
-  socket = "Player_Part_Mouth",
-}
-r0_0.RT_52 = {
-  -20,
-  0,
-  0
 }
 r0_0.RT_53 = {
   Location = r0_0.RT_52,
 }
 r0_0.RT_54 = {
-  Saveloc = true,
+  socket = "Player_Part_Mouth",
 }
 r0_0.RT_55 = {
-  socket = "hand_l",
+  -20,
+  0,
+  0
 }
 r0_0.RT_56 = {
+  Location = r0_0.RT_55,
+}
+r0_0.RT_57 = {
+  Saveloc = true,
+}
+r0_0.RT_58 = {
+  socket = "hand_l",
+}
+r0_0.RT_59 = {
   0,
   0,
   180
 }
-r0_0.RT_57 = {
-  Rotation = r0_0.RT_56,
+r0_0.RT_60 = {
+  Rotation = r0_0.RT_59,
 }
-r0_0.RT_58 = {
+r0_0.RT_61 = {
   0,
   0,
   10
 }
-r0_0.RT_59 = {
+r0_0.RT_62 = {
   0.5,
   0.5,
   0.5
 }
-r0_0.RT_60 = {
-  Location = r0_0.RT_58,
+r0_0.RT_63 = {
+  Location = r0_0.RT_61,
 }
-r0_0.RT_61 = {
+r0_0.RT_64 = {
+  0,
+  100,
+  110
+}
+r0_0.RT_65 = {
   0.7,
   0.7,
   0.7
 }
-r0_0.RT_62 = {
-  scale = r0_0.RT_61,
+r0_0.RT_66 = {
+  scale = r0_0.RT_65,
 }
-r0_0.RT_63 = {
+r0_0.RT_67 = {
   90,
   90,
   90
 }
-r0_0.RT_64 = {
-  Rotation = r0_0.RT_63,
-  scale = r0_0.RT_30,
+r0_0.RT_68 = {
+  Rotation = r0_0.RT_67,
+  scale = r0_0.RT_33,
 }
-r0_0.RT_65 = {
-  Location = r0_0.RT_18,
+r0_0.RT_69 = {
+  Location = r0_0.RT_21,
 }
-r0_0.RT_66 = {
+r0_0.RT_70 = {
+  0,
+  90,
+  0
+}
+r0_0.RT_71 = {
+  Rotation = r0_0.RT_70,
+}
+r0_0.RT_72 = {
   0,
   0,
   70
 }
-r0_0.RT_67 = {
+r0_0.RT_73 = {
+  [160102] = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_nanzhu_skill01_chaungshengred.NS_nanzhu_skill01_chaungshengred",
+  [160103] = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_nanzhu_skill01_chaungshengred.NS_nanzhu_skill01_chaungshengred",
+}
+r0_0.RT_74 = {
   UseWeaponBone = "main",
   socket = "gunpoint_01",
 }
-r0_0.RT_68 = {
-  0,
-  90,
-  0
+r0_0.RT_75 = {
+  Rotation = r0_0.RT_21,
 }
-r0_0.RT_69 = {
-  Rotation = r0_0.RT_68,
-}
-r0_0.RT_70 = {
-  Rotation = r0_0.RT_18,
-}
-r0_0.RT_71 = {
+r0_0.RT_76 = {
   0,
   0,
   200
 }
-r0_0.RT_72 = {
-  Life = 1,
-}
-r0_0.RT_73 = {
-  Rotation = r0_0.RT_1,
-}
-r0_0.RT_74 = {
-  -90,
-  0,
-  0
-}
-r0_0.RT_75 = {
-  Rotation = r0_0.RT_74,
-}
-r0_0.RT_76 = {
-  50,
-  0,
-  0
-}
 r0_0.RT_77 = {
-  1.2,
-  1.2,
-  1.2
-}
-r0_0.RT_78 = {
-  Life = 0.2,
-  Rotation = r0_0.RT_45,
-}
-r0_0.RT_79 = {
-  Life = 0.2,
-}
-r0_0.RT_80 = {
-  Location = r0_0.RT_76,
-  scale = r0_0.RT_59,
-}
-r0_0.RT_81 = {
-  1,
-  1,
-  1
-}
-r0_0.RT_82 = {
-  Location = r0_0.RT_3,
-  scale = r0_0.RT_81,
-}
-r0_0.RT_83 = {
-  0.1,
-  0.1,
-  0.1
-}
-r0_0.RT_84 = {
-  Rotation = r0_0.RT_45,
-  scale = r0_0.RT_30,
-}
-r0_0.RT_85 = {
   0,
   0,
   20
 }
+r0_0.RT_78 = {
+  Life = 1,
+}
+r0_0.RT_79 = {
+  Rotation = r0_0.RT_1,
+}
+r0_0.RT_80 = {
+  -90,
+  0,
+  0
+}
+r0_0.RT_81 = {
+  Rotation = r0_0.RT_80,
+}
+r0_0.RT_82 = {
+  50,
+  0,
+  0
+}
+r0_0.RT_83 = {
+  1.2,
+  1.2,
+  1.2
+}
+r0_0.RT_84 = {
+  Life = 0.2,
+  Rotation = r0_0.RT_48,
+}
+r0_0.RT_85 = {
+  Life = 0.2,
+}
 r0_0.RT_86 = {
+  0.25,
+  0.25,
+  0.25
+}
+r0_0.RT_87 = {
+  scale = r0_0.RT_86,
+}
+r0_0.RT_88 = {
+  Location = r0_0.RT_82,
+  scale = r0_0.RT_62,
+}
+r0_0.RT_89 = {
+  1,
+  1,
+  1
+}
+r0_0.RT_90 = {
+  Location = r0_0.RT_3,
+  scale = r0_0.RT_89,
+}
+r0_0.RT_91 = {
+  0.1,
+  0.1,
+  0.1
+}
+r0_0.RT_92 = {
+  Rotation = r0_0.RT_48,
+  scale = r0_0.RT_33,
+}
+r0_0.RT_93 = {
   0,
   0,
   40
 }
-r0_0.RT_87 = {
+r0_0.RT_94 = {
   0,
   0,
   45
 }
-r0_0.RT_88 = {
+r0_0.RT_95 = {
   0,
   0,
   190
 }
-r0_0.RT_89 = {
+r0_0.RT_96 = {
   -90,
   0,
   90
 }
-r0_0.RT_90 = {
+r0_0.RT_97 = {
   Location = r0_0.RT_1,
-  Rotation = r0_0.RT_89,
+  Rotation = r0_0.RT_96,
 }
-r0_0.RT_91 = {
+r0_0.RT_98 = {
   0,
   0,
   -120
 }
-r0_0.RT_92 = {
+r0_0.RT_99 = {
+  socket = "head",
+}
+r0_0.RT_100 = {
+  -166.2,
+  90,
+  -158.4
+}
+r0_0.RT_101 = {
+  Rotation = r0_0.RT_100,
+}
+r0_0.RT_102 = {
   50,
   50,
   120
 }
-r0_0.RT_93 = {
-  Location = r0_0.RT_92,
+r0_0.RT_103 = {
+  Location = r0_0.RT_102,
 }
-r0_0.RT_94 = {
+r0_0.RT_104 = {
   90,
   0,
   0
 }
-r0_0.RT_95 = {
-  Rotation = r0_0.RT_94,
+r0_0.RT_105 = {
+  Rotation = r0_0.RT_104,
 }
-r0_0.RT_96 = {
-  Location = r0_0.RT_71,
-  scale = r0_0.RT_81,
+r0_0.RT_106 = {
+  Location = r0_0.RT_76,
+  scale = r0_0.RT_89,
 }
-r0_0.RT_97 = {
+r0_0.RT_107 = {
   0,
   0,
   50
 }
-r0_0.RT_98 = {
-  Location = r0_0.RT_66,
+r0_0.RT_108 = {
+  Location = r0_0.RT_72,
 }
-r0_0.RT_99 = {
+r0_0.RT_109 = {
   socket = "EffectPoint_Condemned",
 }
-r0_0.RT_100 = {
+r0_0.RT_110 = {
   socket = "thigh_l",
 }
-r0_0.RT_101 = {
+r0_0.RT_111 = {
   socket = "thigh_r",
 }
-r0_0.RT_102 = {
+r0_0.RT_112 = {
   9,
   0,
   -15
 }
-r0_0.RT_103 = {
+r0_0.RT_113 = {
   90,
   0,
   -90
 }
-r0_0.RT_104 = {
-  Location = r0_0.RT_102,
-  Rotation = r0_0.RT_103,
-  scale = r0_0.RT_81,
+r0_0.RT_114 = {
+  Location = r0_0.RT_112,
+  Rotation = r0_0.RT_113,
+  scale = r0_0.RT_89,
 }
-r0_0.RT_105 = {
+r0_0.RT_115 = {
   socket = "LaserPortForBig",
 }
-r0_0.RT_106 = {
+r0_0.RT_116 = {
   120,
   0,
   0
 }
-r0_0.RT_107 = {
+r0_0.RT_117 = {
   socket = "spine_01Slot",
 }
-r0_0.RT_108 = {
+r0_0.RT_118 = {
   0.6,
   0.6,
   0.6
 }
-r0_0.RT_109 = {
-  scale = r0_0.RT_108,
+r0_0.RT_119 = {
+  scale = r0_0.RT_118,
 }
-r0_0.RT_110 = {
+r0_0.RT_120 = {
   Life = 0.4,
 }
-r0_0.RT_111 = {
+r0_0.RT_121 = {
   0,
   0,
   -35
 }
-r0_0.RT_112 = {
+r0_0.RT_122 = {
   0,
   100,
   0
 }
-r0_0.RT_113 = {
+r0_0.RT_123 = {
+  2.5,
+  2.5,
+  2.5
+}
+r0_0.RT_124 = {
+  scale = r0_0.RT_123,
+}
+r0_0.RT_125 = {
   0.3333,
   0,
   1,
   1
 }
-r0_0.RT_114 = {
+r0_0.RT_126 = {
   0,
   0,
   110
 }
-r0_0.RT_115 = {
-  Location = r0_0.RT_114,
+r0_0.RT_127 = {
+  Location = r0_0.RT_126,
 }
-r0_0.RT_116 = {
+r0_0.RT_128 = {
   1,
   0.5167,
   0,
   1
 }
-r0_0.RT_117 = {
+r0_0.RT_129 = {
   BaseObBloodUI = 1,
-  Location = r0_0.RT_85,
+  Location = r0_0.RT_77,
 }
-r0_0.RT_118 = {
+r0_0.RT_130 = {
   30,
   0,
   180
 }
-r0_0.RT_119 = {
+r0_0.RT_131 = {
   Life = 0.5,
 }
-r0_0.RT_120 = {
+r0_0.RT_132 = {
   0,
   0,
   4.85
 }
-r0_0.RT_121 = {
-  Location = r0_0.RT_120,
-}
-r0_0.RT_122 = {
-  socket = "L_Wing01_d",
-}
-r0_0.RT_123 = {
-  Location = r0_0.RT_7,
-  Rotation = r0_0.RT_28,
-}
-r0_0.RT_124 = {
-  Rotation = r0_0.RT_28,
-}
-r0_0.RT_125 = {
-  socket = "spine_02",
-}
-r0_0.RT_126 = {
-  scale = r0_0.RT_77,
-}
-r0_0.RT_127 = {
-  [530199] = "/Game/Asset/Effect/Niagara/Player/Saiqi01/NS_Saiqi01_Butterfly_Destroy.NS_Saiqi01_Butterfly_Destroy",
-}
-r0_0.RT_128 = {
-  2.5,
-  2.5,
-  2.5
-}
-r0_0.RT_129 = {
-  scale = r0_0.RT_128,
-}
-r0_0.RT_130 = {
-  socket = "fanbone_01",
-}
-r0_0.RT_131 = {
-  socket = "pelvis",
-}
-r0_0.RT_132 = {
-  Life = 0.3,
-}
 r0_0.RT_133 = {
-  90,
-  0,
-  90
+  Location = r0_0.RT_132,
 }
 r0_0.RT_134 = {
-  1.2,
-  1.2,
-  1
+  socket = "L_Wing01_d",
 }
 r0_0.RT_135 = {
+  Location = r0_0.RT_7,
+  Rotation = r0_0.RT_31,
+}
+r0_0.RT_136 = {
+  Rotation = r0_0.RT_31,
+}
+r0_0.RT_137 = {
+  socket = "spine_02",
+}
+r0_0.RT_138 = {
+  scale = r0_0.RT_83,
+}
+r0_0.RT_139 = {
+  [530199] = "/Game/Asset/Effect/Niagara/Player/Saiqi01/NS_Saiqi01_Butterfly_Destroy.NS_Saiqi01_Butterfly_Destroy",
+}
+r0_0.RT_140 = {
+  socket = "fanbone_01",
+}
+r0_0.RT_141 = {
+  0.3,
+  1,
+  0.2,
+  1
+}
+r0_0.RT_142 = {
+  Life = 0.3,
+}
+r0_0.RT_143 = {
+  0.2,
+  0.2,
+  0.2
+}
+r0_0.RT_144 = {
+  scale = r0_0.RT_143,
+}
+r0_0.RT_145 = {
+  Location = r0_0.RT_64,
+}
+r0_0.RT_146 = {
   1.25,
   1.25,
   1.25
 }
-r0_0.RT_136 = {
-  scale = r0_0.RT_135,
+r0_0.RT_147 = {
+  scale = r0_0.RT_146,
 }
-r0_0.RT_137 = {
-  Location = r0_0.RT_106,
+r0_0.RT_148 = {
+  Location = r0_0.RT_116,
 }
-r0_0.RT_138 = {
+r0_0.RT_149 = {
   1,
   0.778,
   0.138
 }
-r0_0.RT_139 = {
+r0_0.RT_150 = {
   1.35,
   1.35,
   1.35
 }
-r0_0.RT_140 = {
-  scale = r0_0.RT_139,
+r0_0.RT_151 = {
+  scale = r0_0.RT_150,
 }
-r0_0.RT_141 = {
+r0_0.RT_152 = {
   1250,
   0,
   -120
-}
-r0_0.RT_142 = {
-  Location = r0_0.RT_141,
-  OnGround = true,
-}
-r0_0.RT_143 = {
-  1050,
-  0,
-  -90
-}
-r0_0.RT_144 = {
-  Location = r0_0.RT_143,
-  OnGround = true,
-  Rotation = r0_0.RT_1,
-}
-r0_0.RT_145 = {
-  900,
-  -700,
-  -90
-}
-r0_0.RT_146 = {
-  0,
-  0,
-  -45
-}
-r0_0.RT_147 = {
-  Location = r0_0.RT_145,
-  OnGround = true,
-  Rotation = r0_0.RT_146,
-}
-r0_0.RT_148 = {
-  900,
-  700,
-  -90
-}
-r0_0.RT_149 = {
-  Location = r0_0.RT_148,
-  OnGround = true,
-  Rotation = r0_0.RT_87,
-}
-r0_0.RT_150 = {
-  1875,
-  0,
-  -180
-}
-r0_0.RT_151 = {
-  Location = r0_0.RT_150,
-  OnGround = true,
-}
-r0_0.RT_152 = {
-  625,
-  0,
-  -180
 }
 r0_0.RT_153 = {
   Location = r0_0.RT_152,
   OnGround = true,
 }
 r0_0.RT_154 = {
-  scale = r0_0.RT_40,
+  1050,
+  0,
+  -90
 }
 r0_0.RT_155 = {
-  socket = "SleepWeaponLockPoint",
+  Location = r0_0.RT_154,
+  OnGround = true,
+  Rotation = r0_0.RT_1,
 }
 r0_0.RT_156 = {
-  1.75,
-  1.75,
-  1.75
+  900,
+  -700,
+  -90
 }
 r0_0.RT_157 = {
-  1000,
   0,
-  0
+  0,
+  -45
 }
 r0_0.RT_158 = {
-  0,
-  180,
-  180
+  Location = r0_0.RT_156,
+  OnGround = true,
+  Rotation = r0_0.RT_157,
 }
 r0_0.RT_159 = {
-  4,
-  4,
-  4
+  900,
+  700,
+  -90
 }
 r0_0.RT_160 = {
-  Location = r0_0.RT_157,
-  Rotation = r0_0.RT_158,
-  scale = r0_0.RT_159,
+  Location = r0_0.RT_159,
+  OnGround = true,
+  Rotation = r0_0.RT_94,
 }
 r0_0.RT_161 = {
+  1875,
+  0,
+  -180
+}
+r0_0.RT_162 = {
+  Location = r0_0.RT_161,
+  OnGround = true,
+}
+r0_0.RT_163 = {
+  625,
+  0,
+  -180
+}
+r0_0.RT_164 = {
+  Location = r0_0.RT_163,
+  OnGround = true,
+}
+r0_0.RT_165 = {
+  0,
+  0,
+  -60
+}
+r0_0.RT_166 = {
+  socket = "SleepWeaponLockPoint",
+}
+r0_0.RT_167 = {
   10,
   10,
   10
 }
-r0_0.RT_162 = {
-  scale = r0_0.RT_159,
+r0_0.RT_168 = {
+  4,
+  4,
+  4
 }
-r0_0.RT_163 = {
+r0_0.RT_169 = {
+  scale = r0_0.RT_168,
+}
+r0_0.RT_170 = {
   socket = "Rocket",
 }
-r0_0.RT_164 = {
+r0_0.RT_171 = {
   3.1,
   0,
   0.03
 }
-r0_0.RT_165 = {
+r0_0.RT_172 = {
   5,
   5,
   5
 }
-r0_0.RT_166 = {
-  scale = r0_0.RT_165,
+r0_0.RT_173 = {
+  scale = r0_0.RT_172,
 }
-r0_0.RT_167 = {
+r0_0.RT_174 = {
   0.25,
   0.75,
   1,
   1
 }
-r0_0.RT_168 = {
-  color = r0_0.RT_167,
+r0_0.RT_175 = {
+  color = r0_0.RT_174,
 }
-r0_0.RT_169 = {
+r0_0.RT_176 = {
   0,
   82.9,
   258
 }
-r0_0.RT_170 = {
+r0_0.RT_177 = {
   0.58,
   0.85,
   1,
   1
 }
-r0_0.RT_171 = {
+r0_0.RT_178 = {
   0,
   -10,
   20
 }
-r0_0.RT_172 = {
-  Location = r0_0.RT_171,
+r0_0.RT_179 = {
+  Location = r0_0.RT_178,
 }
-r0_0.RT_173 = {
+r0_0.RT_180 = {
   -5,
   -45,
   25
 }
 local r2_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
-  -- line: [727, 727] id: 1
+  -- line: [754, 754] id: 1
   return r1_1
 end
 local r3_0 = "VisualEffect"
@@ -741,11 +771,10 @@ r4_0[1] = {
 r4_0[3] = {
   EffectId = 3,
   EffectMaxNum = 5,
-  EffectParam = r0_0.RT_95,
+  EffectParam = r0_0.RT_105,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Common_Dead.NS_Common_Dead",
   FXPriorityType = 10,
-  PlayLocation = r0_0.RT_16,
-  SoundID = 23,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[4] = {
   EffectId = 4,
@@ -756,12 +785,7 @@ r4_0[5] = {
   FXPriorityType = 80,
 }
 r4_0[6] = {
-  EffectColor = {
-    0.1083,
-    1,
-    0.04,
-    1
-  },
+  EffectColor = r0_0.RT_141,
   EffectId = 6,
   EffectMaxNum = 1,
   EffectPath = "/Game/Asset/Effect/Niagara/Item/NS_Item_Restore.NS_Item_Restore",
@@ -854,19 +878,19 @@ r4_0[26] = {
 r4_0[31] = {
   ChangeColorByChar = true,
   EffectId = 31,
-  EffectParam = r0_0.RT_98,
+  EffectParam = r0_0.RT_108,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Heitao/NS_Heitao_Condemned_Hit_01.NS_Heitao_Condemned_Hit_01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_99,
+  PlayLocation = r0_0.RT_109,
   SoundID = 5,
 }
 r4_0[32] = {
   ChangeColorByChar = true,
   EffectId = 32,
-  EffectParam = r0_0.RT_98,
+  EffectParam = r0_0.RT_108,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Heitao/NS_Heitao_Condemned_Hit_02.NS_Heitao_Condemned_Hit_02",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_99,
+  PlayLocation = r0_0.RT_109,
   SoundID = 32,
 }
 r4_0[33] = {
@@ -874,7 +898,7 @@ r4_0[33] = {
   EffectId = 33,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Heitao/NS_Heitao_Condemned_Throns.NS_Heitao_Condemned_Throns",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_99,
+  PlayLocation = r0_0.RT_109,
 }
 r4_0[34] = {
   EffectId = 34,
@@ -935,7 +959,7 @@ local r5_0 = {
   EffectMaxNum = 8,
 }
 r5_0.EffectParam = {
-  Location = r0_0.RT_52,
+  Location = r0_0.RT_55,
   Rotation = {
     -90,
     90,
@@ -1017,28 +1041,6 @@ r4_0[71] = {
     socket = "hook_arm_r",
   },
 }
-r4_0[90] = {
-  EffectId = 90,
-  EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Paotai_Bullet01.NS_Paotai_Bullet01",
-  FXPriorityType = 90,
-}
-r4_0[91] = {
-  EffectId = 91,
-  EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Paotai_Bullet02.NS_Paotai_Bullet02",
-  FXPriorityType = 90,
-}
-r4_0[92] = {
-  EffectId = 92,
-  EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Paotai_Burst01.NS_Paotai_Burst01",
-  FXPriorityType = 90,
-  SoundID = 2017,
-}
-r4_0[93] = {
-  EffectId = 93,
-  EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Paotai_Burst02.NS_Paotai_Burst02",
-  FXPriorityType = 90,
-  SoundID = 2019,
-}
 r4_0[111] = {
   EffectId = 111,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_Nvzhu_Beidong_Dodge.NS_Nvzhu_Beidong_Dodge",
@@ -1046,7 +1048,7 @@ r4_0[111] = {
 }
 r4_0[112] = {
   EffectId = 112,
-  EffectParam = r0_0.RT_57,
+  EffectParam = r0_0.RT_60,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_Nvzhu_Beidong_Dodge.NS_Nvzhu_Beidong_Dodge",
   PlayLocation = r0_0.RT_11,
 }
@@ -1203,7 +1205,7 @@ r4_0[230] = {
 }
 r4_0[231] = {
   EffectId = 231,
-  EffectParam = r0_0.RT_15,
+  EffectParam = r0_0.RT_18,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_PetPan_Interact.NS_PetPan_Interact",
   PlayLocation = r0_0.RT_11,
   SoundID = 2201,
@@ -1221,7 +1223,7 @@ r4_0[233] = {
 }
 r4_0[241] = {
   EffectId = 241,
-  EffectParam = r0_0.RT_93,
+  EffectParam = r0_0.RT_103,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/A_Common/NS_PartySkill_StickyBomb.NS_PartySkill_StickyBomb",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
@@ -1229,7 +1231,7 @@ r4_0[241] = {
 }
 r4_0[242] = {
   EffectId = 242,
-  EffectParam = r0_0.RT_93,
+  EffectParam = r0_0.RT_103,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/A_Common/NS_PartySkill_StickyBomb_Blast.NS_PartySkill_StickyBomb_Blast",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
@@ -1266,17 +1268,17 @@ r4_0[246] = {
 r4_0[247] = {
   ChangeColorByChar = true,
   EffectId = 247,
-  EffectParam = r0_0.RT_69,
+  EffectParam = r0_0.RT_71,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/A_Common/NS_ParkourStun.NS_ParkourStun",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
   SoundID = 218,
 }
 r4_0[248] = {
   EffectId = 248,
-  EffectParam = r0_0.RT_69,
+  EffectParam = r0_0.RT_71,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/A_Common/NS_ParkourStunHammer.NS_ParkourStunHammer",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
   SoundID = 221,
 }
 r4_0[251] = {
@@ -1319,7 +1321,7 @@ r4_0[305] = {
 r4_0[306] = {
   EffectId = 306,
   EffectParam = {
-    Location = r0_0.RT_97,
+    Location = r0_0.RT_107,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Player/A_Common/NS_Common_Dye.NS_Common_Dye",
   PlayLocation = r0_0.RT_11,
@@ -1328,56 +1330,6 @@ r4_0[401] = {
   EffectId = 401,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/A_Common/NS_Common_Change.NS_Common_Change",
   PlayLocation = r0_0.RT_11,
-}
-r4_0[501] = {
-  EffectId = 501,
-  EffectPath = "/Game/Asset/Effect/Niagara/Costume/NS_Costume_Hudie.NS_Costume_Hudie",
-  SoundID = 3001,
-}
-r4_0[502] = {
-  EffectId = 502,
-  EffectPath = "/Game/Asset/Effect/Niagara/Costume/NS_Costume_Hudietuowei.NS_Costume_Hudietuowei",
-  SoundID = 3001,
-}
-r4_0[503] = {
-  EffectId = 503,
-  EffectPath = "/Game/Asset/Effect/Niagara/Costume/07JY/NS_JY_Hudie_001_R.NS_JY_Hudie_001_R",
-  SoundID = 3001,
-}
-r4_0[504] = {
-  EffectId = 504,
-  EffectPath = "/Game/Asset/Effect/Niagara/Costume/07JY/NS_JY_Hudie_002_R.NS_JY_Hudie_002_R",
-  SoundID = 3001,
-}
-r4_0[505] = {
-  EffectId = 505,
-  EffectPath = "/Game/Asset/Effect/Niagara/Costume/07JY/NS_JY_Hudie_001_V.NS_JY_Hudie_001_V",
-  SoundID = 3001,
-}
-r4_0[506] = {
-  EffectId = 506,
-  EffectPath = "/Game/Asset/Effect/Niagara/Costume/07JY/NS_JY_Hudie_002_V.NS_JY_Hudie_002_V",
-  SoundID = 3001,
-}
-r4_0[507] = {
-  EffectId = 507,
-  EffectPath = "/Game/Asset/Effect/Niagara/Costume/07JY/NS_JY_Hudie_001_W.NS_JY_Hudie_001_W",
-  SoundID = 3001,
-}
-r4_0[508] = {
-  EffectId = 508,
-  EffectPath = "/Game/Asset/Effect/Niagara/Costume/07JY/NS_JY_Hudie_002_W.NS_JY_Hudie_002_W",
-  SoundID = 3001,
-}
-r4_0[509] = {
-  EffectId = 509,
-  EffectPath = "/Game/Asset/Effect/Niagara/Costume/07JY/NS_JY_Hudie_001_Y.NS_JY_Hudie_001_Y",
-  SoundID = 3001,
-}
-r4_0[510] = {
-  EffectId = 510,
-  EffectPath = "/Game/Asset/Effect/Niagara/Costume/07JY/NS_JY_Hudie_001_Y.NS_JY_Hudie_002_Y",
-  SoundID = 3001,
 }
 r4_0[1000] = {
   EffectId = 1000,
@@ -1701,38 +1653,38 @@ r4_0[2031] = {
 }
 r4_0[2101] = {
   EffectId = 2101,
-  EffectParam = r0_0.RT_84,
+  EffectParam = r0_0.RT_92,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Water.NS_Water",
   FXPriorityType = 70,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[2102] = {
   EffectId = 2102,
-  EffectParam = r0_0.RT_84,
+  EffectParam = r0_0.RT_92,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Fire.NS_Fire",
   FXPriorityType = 70,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[2103] = {
   EffectId = 2103,
-  EffectParam = r0_0.RT_84,
+  EffectParam = r0_0.RT_92,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Thunder.NS_Thunder",
   FXPriorityType = 70,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[2104] = {
   EffectId = 2104,
-  EffectParam = r0_0.RT_84,
+  EffectParam = r0_0.RT_92,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Wind.NS_Wind",
   FXPriorityType = 70,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[2105] = {
   EffectId = 2105,
-  EffectParam = r0_0.RT_84,
+  EffectParam = r0_0.RT_92,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Fire.NS_Fire",
   FXPriorityType = 70,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 2021,
 }
 r4_0[3001] = {
@@ -1742,7 +1694,7 @@ r4_0[3001] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Nifu/NS_Nifu_Stencil_Arm.NS_Nifu_Stencil_Arm",
   FXPriorityType = 90,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
 }
 r4_0[4011] = {
   EffectId = 4011,
@@ -1753,7 +1705,7 @@ r4_0[4011] = {
   SoundID = 601,
 }
 r4_0[4012] = {
-  EffectColor = r0_0.RT_113,
+  EffectColor = r0_0.RT_125,
   EffectId = 4012,
   EffectPath = "/Game/Asset/Effect/Niagara/Common/Player/NS_hit_char_dark.NS_hit_char_dark",
   FXPriorityType = 45,
@@ -1790,7 +1742,7 @@ r4_0[4032] = {
 }
 r4_0[4041] = {
   EffectId = 4041,
-  EffectParam = r0_0.RT_115,
+  EffectParam = r0_0.RT_127,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_Zhamao_Shield.NS_Zhamao_Shield",
   FXPriorityType = 90,
   NotFollowRotation = true,
@@ -1799,7 +1751,7 @@ r4_0[4041] = {
 }
 r4_0[4042] = {
   EffectId = 4042,
-  EffectParam = r0_0.RT_115,
+  EffectParam = r0_0.RT_127,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_Zhamao_Shield02.NS_Zhamao_Shield02",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
@@ -1828,7 +1780,7 @@ r4_0[4061] = {
   SoundID = 607,
 }
 r4_0[4062] = {
-  EffectColor = r0_0.RT_116,
+  EffectColor = r0_0.RT_128,
   EffectId = 4062,
   EffectPath = "/Game/Asset/Effect/Niagara/Common/Player/NS_hit_char_dark.NS_hit_char_dark",
   FXPriorityType = 90,
@@ -1844,7 +1796,7 @@ r4_0[4071] = {
 }
 r4_0[4081] = {
   EffectId = 4081,
-  EffectParam = r0_0.RT_115,
+  EffectParam = r0_0.RT_127,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_Zhenzhu_Buff.NS_Zhenzhu_Buff",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
@@ -1866,7 +1818,7 @@ r4_0[4111] = {
   SoundID = 612,
 }
 r4_0[4112] = {
-  EffectColor = r0_0.RT_113,
+  EffectColor = r0_0.RT_125,
   EffectId = 4112,
   EffectPath = "/Game/Asset/Effect/Niagara/Common/Player/NS_hit_char_dark.NS_hit_char_dark",
   FXPriorityType = 90,
@@ -1896,7 +1848,7 @@ r4_0[4131] = {
   SoundID = 614,
 }
 r4_0[4132] = {
-  EffectColor = r0_0.RT_113,
+  EffectColor = r0_0.RT_125,
   EffectId = 4132,
   EffectPath = "/Game/Asset/Effect/Niagara/Common/Player/NS_hit_char_fire.NS_hit_char_fire",
   FXPriorityType = 90,
@@ -1939,7 +1891,7 @@ r4_0[4161] = {
   SoundID = 617,
 }
 r4_0[4162] = {
-  EffectColor = r0_0.RT_116,
+  EffectColor = r0_0.RT_128,
   EffectId = 4162,
   EffectPath = "/Game/Asset/Effect/Niagara/Common/Player/NS_hit_char_dark.NS_hit_char_dark",
   FXPriorityType = 90,
@@ -1958,7 +1910,7 @@ r4_0[4212] = {
   EffectId = 4212,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_heiyao_buff.NS_heiyao_buff",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
 }
 r4_0[4221] = {
   EffectId = 4221,
@@ -1972,7 +1924,7 @@ r4_0[4222] = {
   EffectId = 4222,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_Jinqing_Buff.NS_Jinqing_Buff",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
 }
 r4_0[4231] = {
   EffectId = 4231,
@@ -1986,7 +1938,7 @@ r4_0[4232] = {
   EffectId = 4232,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_Manao_Buff.NS_Manao_Buff",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
 }
 r4_0[4241] = {
   EffectId = 4241,
@@ -2000,7 +1952,7 @@ r4_0[4242] = {
   EffectId = 4242,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_zijing_buff.NS_zijing_buff",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
 }
 r4_0[4251] = {
   EffectId = 4251,
@@ -2014,7 +1966,7 @@ r4_0[4252] = {
   EffectId = 4252,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_bixi_buff.NS_bixi_buff",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
 }
 r4_0[4261] = {
   EffectId = 4261,
@@ -2028,29 +1980,29 @@ r4_0[4262] = {
   EffectId = 4262,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_oubo_buff.NS_oubo_buff",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
 }
 r4_0[4911] = {
   EffectId = 4911,
-  EffectParam = r0_0.RT_119,
+  EffectParam = r0_0.RT_131,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jt/NS_HealRobot_Heal.NS_HealRobot_Heal",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
   SoundID = 21,
 }
 r4_0[4921] = {
   EffectId = 4921,
   EffectParam = {
-    scale = r0_0.RT_83,
+    scale = r0_0.RT_91,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jt/NS_BlastRobot_Blast.NS_BlastRobot_Blast",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 608,
 }
 r4_0[4931] = {
   EffectId = 4931,
-  EffectParam = r0_0.RT_115,
+  EffectParam = r0_0.RT_127,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_YYD_Shield.NS_YYD_Shield",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
@@ -2076,10 +2028,10 @@ r4_0[5001] = {
     1
   },
   EffectId = 5001,
-  EffectParam = r0_0.RT_121,
+  EffectParam = r0_0.RT_133,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_Fuyou_Idle.NS_Fuyou_Idle",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_122,
+  PlayLocation = r0_0.RT_134,
 }
 r4_0[5002] = {
   EffectColor = {
@@ -2089,10 +2041,10 @@ r4_0[5002] = {
     1
   },
   EffectId = 5002,
-  EffectParam = r0_0.RT_121,
+  EffectParam = r0_0.RT_133,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_Fuyou_Idle.NS_Fuyou_Idle",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_122,
+  PlayLocation = r0_0.RT_134,
 }
 r4_0[5003] = {
   EffectColor = {
@@ -2102,10 +2054,10 @@ r4_0[5003] = {
     1
   },
   EffectId = 5003,
-  EffectParam = r0_0.RT_121,
+  EffectParam = r0_0.RT_133,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_Fuyou_Idle.NS_Fuyou_Idle",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_122,
+  PlayLocation = r0_0.RT_134,
 }
 r4_0[5441] = {
   EffectColor = {
@@ -2115,10 +2067,10 @@ r4_0[5441] = {
     1
   },
   EffectId = 5441,
-  EffectParam = r0_0.RT_95,
+  EffectParam = r0_0.RT_105,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_44,
+  PlayLocation = r0_0.RT_47,
 }
 r4_0[5442] = {
   EffectColor = {
@@ -2130,7 +2082,7 @@ r4_0[5442] = {
   EffectId = 5442,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_130,
+  PlayLocation = r0_0.RT_140,
 }
 r4_0[5443] = {
   EffectColor = {
@@ -2142,7 +2094,7 @@ r4_0[5443] = {
   EffectId = 5443,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_130,
+  PlayLocation = r0_0.RT_140,
 }
 r4_0[5444] = {
   EffectColor = {
@@ -2152,10 +2104,10 @@ r4_0[5444] = {
     1
   },
   EffectId = 5444,
-  EffectParam = r0_0.RT_95,
+  EffectParam = r0_0.RT_105,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_44,
+  PlayLocation = r0_0.RT_47,
 }
 r4_0[5445] = {
   EffectColor = {
@@ -2167,7 +2119,7 @@ r4_0[5445] = {
   EffectId = 5445,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_130,
+  PlayLocation = r0_0.RT_140,
 }
 r4_0[5446] = {
   EffectColor = {
@@ -2177,10 +2129,10 @@ r4_0[5446] = {
     1
   },
   EffectId = 5446,
-  EffectParam = r0_0.RT_46,
+  EffectParam = r0_0.RT_49,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_131,
+  PlayLocation = r0_0.RT_14,
 }
 r4_0[5447] = {
   EffectColor = {
@@ -2190,10 +2142,10 @@ r4_0[5447] = {
     1
   },
   EffectId = 5447,
-  EffectParam = r0_0.RT_75,
+  EffectParam = r0_0.RT_81,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_130,
+  PlayLocation = r0_0.RT_140,
 }
 r4_0[5448] = {
   EffectColor = {
@@ -2203,10 +2155,10 @@ r4_0[5448] = {
     1
   },
   EffectId = 5448,
-  EffectParam = r0_0.RT_46,
+  EffectParam = r0_0.RT_49,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_131,
+  PlayLocation = r0_0.RT_14,
 }
 r4_0[5449] = {
   EffectColor = {
@@ -2216,10 +2168,10 @@ r4_0[5449] = {
     1
   },
   EffectId = 5449,
-  EffectParam = r0_0.RT_46,
+  EffectParam = r0_0.RT_49,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_131,
+  PlayLocation = r0_0.RT_14,
 }
 r4_0[5461] = {
   EffectColor = {
@@ -2231,7 +2183,7 @@ r4_0[5461] = {
   EffectId = 5461,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_130,
+  PlayLocation = r0_0.RT_140,
 }
 r4_0[5462] = {
   EffectColor = {
@@ -2241,10 +2193,10 @@ r4_0[5462] = {
     1
   },
   EffectId = 5462,
-  EffectParam = r0_0.RT_46,
+  EffectParam = r0_0.RT_49,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_131,
+  PlayLocation = r0_0.RT_14,
 }
 r4_0[5463] = {
   EffectColor = {
@@ -2254,10 +2206,10 @@ r4_0[5463] = {
     1
   },
   EffectId = 5463,
-  EffectParam = r0_0.RT_95,
+  EffectParam = r0_0.RT_105,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_44,
+  PlayLocation = r0_0.RT_47,
 }
 r4_0[5464] = {
   EffectColor = {
@@ -2269,7 +2221,7 @@ r4_0[5464] = {
   EffectId = 5464,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_130,
+  PlayLocation = r0_0.RT_140,
 }
 r4_0[5465] = {
   EffectColor = {
@@ -2281,7 +2233,7 @@ r4_0[5465] = {
   EffectId = 5465,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_130,
+  PlayLocation = r0_0.RT_140,
 }
 r4_0[5466] = {
   EffectColor = {
@@ -2291,10 +2243,10 @@ r4_0[5466] = {
     1
   },
   EffectId = 5466,
-  EffectParam = r0_0.RT_75,
+  EffectParam = r0_0.RT_81,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_130,
+  PlayLocation = r0_0.RT_140,
 }
 r4_0[5496] = {
   EffectColor = {
@@ -2326,20 +2278,30 @@ r4_0[6000] = {
   EffectId = 6000,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/Wuyou/NS_NE_Wuyou04_Buff.NS_NE_Wuyou04_Buff",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
+  SoundID = 2034,
 }
 r4_0[6001] = {
   EffectId = 6001,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/Wuyou/NS_NE_Wuyou04_SphereWave.NS_NE_Wuyou04_SphereWave",
   FXPriorityType = 90,
 }
-r4_0[6011] = {
-  EffectId = 6011,
-  EffectPath = "/Game/Asset/Effect/Niagara/Pet/Wuyou/NS_NE_Wuyou01_Skill01_Field.NS_NE_Wuyou01_Skill01_Field",
-  FXPriorityType = 90,
-}
-r5_0 = 6012
+r5_0 = 6011
 local r6_0 = {
+  EffectId = 6011,
+}
+r6_0.EffectParam = {
+  Location = {
+    0,
+    0,
+    -50
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Pet/Wuyou/NS_NE_Wuyou01_Skill01_Field.NS_NE_Wuyou01_Skill01_Field"
+r6_0.FXPriorityType = 90
+r4_0[r5_0] = r6_0
+r5_0 = 6012
+r6_0 = {
   DeactiveParam = "DeadTime",
   DelayDeactiveTime = 1.5,
   EffectId = 6012,
@@ -2370,7 +2332,7 @@ r4_0[6023] = {
   EffectId = 6023,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/Wuyou/NS_NE_Wuyou02_Skill01_Heal.NS_NE_Wuyou02_Skill01_Heal",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
 }
 r4_0[6031] = {
   DeactiveParam = "DeadTime",
@@ -2390,13 +2352,13 @@ r4_0[6033] = {
   DeactiveParam = "DeadTime",
   DelayDeactiveTime = 1.5,
   EffectId = 6033,
-  EffectParam = r0_0.RT_37,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/Wuyou/NS_NE_Wuyou03_Skill01_Knife.NS_NE_Wuyou03_Skill01_Knife",
   FXPriorityType = 90,
 }
 r4_0[6041] = {
   EffectId = 6041,
-  EffectParam = r0_0.RT_109,
+  EffectParam = r0_0.RT_119,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/Wuyou/NS_NE_Wuyou04_Skill01_Range.NS_NE_Wuyou04_Skill01_Range",
   FXPriorityType = 90,
 }
@@ -2424,11 +2386,7 @@ r6_0.EffectParam = {
   BodyShapeOffset = {
     {
       BattleCharTag = "Girl",
-      Location = {
-        0,
-        100,
-        110
-      },
+      Location = r0_0.RT_64,
     },
     {
       BattleCharTag = "Loli",
@@ -2482,22 +2440,22 @@ r6_0.EffectParam = {
   BodyShapeOffset = {
     {
       BattleCharTag = "Girl",
-      Location = r0_0.RT_66,
+      Location = r0_0.RT_72,
     },
     {
       BattleCharTag = "Loli",
-      Location = r0_0.RT_66,
+      Location = r0_0.RT_72,
     },
     {
       BattleCharTag = "Woman",
-      Location = r0_0.RT_28,
+      Location = r0_0.RT_31,
     },
     {
       BattleCharTag = "Man",
-      Location = r0_0.RT_28,
+      Location = r0_0.RT_31,
     }
   },
-  Rotation = r0_0.RT_28,
+  Rotation = r0_0.RT_31,
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Player/A_Common/NS_Mod_Dodge_Fire_F.NS_Mod_Dodge_Fire_F"
 r6_0.FXPriorityType = 90
@@ -2506,8 +2464,8 @@ r4_0[r5_0] = r6_0
 r4_0[15322] = {
   EffectId = 15322,
   EffectParam = {
-    Location = r0_0.RT_66,
-    Rotation = r0_0.RT_28,
+    Location = r0_0.RT_72,
+    Rotation = r0_0.RT_31,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Player/A_Common/NS_mod_Dodge_Fire_B.NS_Mod_Dodge_Fire_B",
   FXPriorityType = 90,
@@ -2515,7 +2473,7 @@ r4_0[15322] = {
 }
 r4_0[20101] = {
   EffectId = 20101,
-  EffectParam = r0_0.RT_57,
+  EffectParam = r0_0.RT_60,
   EffectPath = "/Game/Asset/Effect/Niagara/NPC/Awaer/NS_Awa_Skill01_Bullet.NS_Awa_Skill01_Bullet",
   FXPriorityType = 90,
 }
@@ -2529,7 +2487,7 @@ r4_0[20103] = {
   DeactiveParam = "DeadTime",
   DelayDeactiveTime = 2,
   EffectId = 20103,
-  EffectParam = r0_0.RT_35,
+  EffectParam = r0_0.RT_38,
   EffectPath = "/Game/Asset/Effect/Niagara/NPC/Awaer/NS_Awa_Skill02_Aura.NS_Awa_Skill02_Aura",
   FXPriorityType = 90,
   NotFollowRotation = true,
@@ -2555,12 +2513,343 @@ r4_0[33311] = {
   PlayLocation = r0_0.RT_11,
   SoundID = 3331101,
 }
-r4_0[80001] = {
-  EffectId = 80001,
-  EffectPath = "/Game/Asset/Effect/Niagara/Player/A_Common/NS_Teleport_Start.NS_Teleport_Start",
+r4_0[70001] = {
+  EffectId = 70001,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/07JY/NS_JY_Hudie_001.NS_JY_Hudie_001",
+  SoundID = 3001,
+}
+r4_0[70002] = {
+  EffectId = 70002,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/07JY/NS_JY_xiari_001_blue.NS_JY_xiari_001_blue",
+  SoundID = 3002,
+}
+r4_0[70011] = {
+  EffectId = 70011,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/07JY/NS_JY_Hudie_001_R.NS_JY_Hudie_001_R",
+  SoundID = 3001,
+}
+r4_0[70012] = {
+  EffectId = 70012,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/07JY/NS_JY_Hudie_001_V.NS_JY_Hudie_001_V",
+  SoundID = 3001,
+}
+r4_0[70013] = {
+  EffectId = 70013,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/07JY/NS_JY_Hudie_001_W.NS_JY_Hudie_001_W",
+  SoundID = 3001,
+}
+r4_0[70021] = {
+  EffectId = 70021,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/07JY/NS_JY_xiari_001_gold.NS_JY_xiari_001_gold",
+  SoundID = 3002,
+}
+r4_0[70022] = {
+  EffectId = 70022,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/07JY/NS_JY_xiari_001_pink.NS_JY_xiari_001_pink",
+  SoundID = 3002,
+}
+r4_0[70023] = {
+  EffectId = 70023,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/07JY/NS_JY_xiari_001_white.NS_JY_xiari_001_white",
+  SoundID = 3002,
+}
+r4_0[80010] = {
+  EffectId = 80010,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/08HW/NS_HW_001.NS_HW_001",
+  FXPriorityType = 90,
+  NotFollowRotation = true,
+  PlayLocation = r0_0.RT_32,
+  SoundID = 3101,
+  bTickEvenWhenPaused = true,
+}
+r4_0[80011] = {
+  EffectId = 80011,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/08HW/NS_HW_001_R.NS_HW_001_R",
+  FXPriorityType = 90,
+  NotFollowRotation = true,
+  PlayLocation = r0_0.RT_32,
+  SoundID = 3101,
+  bTickEvenWhenPaused = true,
+}
+r4_0[80012] = {
+  EffectId = 80012,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/08HW/NS_HW_001_V.NS_HW_001_V",
+  FXPriorityType = 90,
+  NotFollowRotation = true,
+  PlayLocation = r0_0.RT_32,
+  SoundID = 3101,
+  bTickEvenWhenPaused = true,
+}
+r4_0[80013] = {
+  EffectId = 80013,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/08HW/NS_HW_001_W.NS_HW_001_W",
+  FXPriorityType = 90,
+  NotFollowRotation = true,
+  PlayLocation = r0_0.RT_32,
+  SoundID = 3101,
+  bTickEvenWhenPaused = true,
+}
+r4_0[80020] = {
+  EffectId = 80020,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/08HW/NS_HW_002.NS_HW_002",
+  FXPriorityType = 90,
+  NotFollowRotation = true,
+  PlayLocation = r0_0.RT_32,
+  SoundID = 3102,
+  bTickEvenWhenPaused = true,
+}
+r4_0[80021] = {
+  EffectId = 80021,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/08HW/NS_HW_002_B.NS_HW_002_B",
+  FXPriorityType = 90,
+  NotFollowRotation = true,
+  PlayLocation = r0_0.RT_32,
+  SoundID = 3102,
+  bTickEvenWhenPaused = true,
+}
+r4_0[80022] = {
+  EffectId = 80022,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/08HW/NS_HW_002_R.NS_HW_002_R",
+  FXPriorityType = 90,
+  NotFollowRotation = true,
+  PlayLocation = r0_0.RT_32,
+  SoundID = 3102,
+  bTickEvenWhenPaused = true,
+}
+r4_0[80023] = {
+  EffectId = 80023,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/08HW/NS_HW_002_Y.NS_HW_002_Y",
+  FXPriorityType = 90,
+  NotFollowRotation = true,
+  PlayLocation = r0_0.RT_32,
+  SoundID = 3102,
+  bTickEvenWhenPaused = true,
+}
+r4_0[81001] = {
+  EffectId = 81001,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/06CS/NS_Teleport_Start.NS_Teleport_Start",
   FXPriorityType = 90,
   IgnoreHidden = true,
   PlayLocation = r0_0.RT_11,
+  TickInArmory = true,
+}
+r4_0[81002] = {
+  EffectId = 81002,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/06CS/NS_CS_Start02.NS_CS_Start02",
+  FXPriorityType = 90,
+  IgnoreHidden = true,
+  PlayLocation = r0_0.RT_11,
+  TickInArmory = true,
+}
+r5_0 = 81003
+r6_0 = {
+  EffectId = 81003,
+}
+r6_0.EffectParam = {
+  Location = {
+    12.56,
+    0,
+    2.6
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/06CS/NS_CS_Start02_01.NS_CS_Start02_01"
+r6_0.FXPriorityType = 90
+r6_0.IgnoreHidden = true
+r6_0.PlayLocation = r0_0.RT_41
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
+r4_0[82001] = {
+  EffectId = 82001,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/10LP/NS_LP_Car01_ci.NS_LP_Car01_ci",
+  FXPriorityType = 90,
+  TickInArmory = true,
+}
+r4_0[82002] = {
+  EffectId = 82002,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/10LP/NS_LP_Car01_daiji.NS_LP_Car01_daiji",
+  FXPriorityType = 90,
+  TickInArmory = true,
+}
+r4_0[82003] = {
+  EffectId = 82003,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/10LP/NS_LP_Car01_deng.NS_LP_Car01_deng",
+  FXPriorityType = 90,
+  TickInArmory = true,
+}
+r4_0[82004] = {
+  EffectId = 82004,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/10LP/NS_LP_Car01_dihuo_01.NS_LP_Car01_dihuo_01",
+  FXPriorityType = 90,
+  TickInArmory = true,
+}
+r4_0[82005] = {
+  EffectId = 82005,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/10LP/NS_LP_Car01_dihuo_02.NS_LP_Car01_dihuo_02",
+  FXPriorityType = 90,
+  TickInArmory = true,
+}
+r4_0[82006] = {
+  EffectId = 82006,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/10LP/NS_LP_Car01_huohua.NS_LP_Car01_huohua",
+  FXPriorityType = 90,
+  TickInArmory = true,
+}
+r4_0[82007] = {
+  EffectId = 82007,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/10LP/NS_LP_Car01_lizi.NS_LP_Car01_lizi",
+  FXPriorityType = 90,
+  TickInArmory = true,
+}
+r4_0[82008] = {
+  EffectId = 82008,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/10LP/NS_LP_Car01_smoke.NS_LP_Car01_smoke",
+  FXPriorityType = 90,
+  TickInArmory = true,
+}
+r4_0[82009] = {
+  EffectId = 82009,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/10LP/NS_LP_Car01_taiyin.NS_LP_Car01_taiyin",
+  FXPriorityType = 90,
+  TickInArmory = true,
+}
+r4_0[82010] = {
+  EffectId = 82010,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/10LP/NS_LP_Car01_weihuo.NS_LP_Car01_weihuo",
+  FXPriorityType = 90,
+  TickInArmory = true,
+}
+r4_0[82011] = {
+  EffectId = 82011,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/10LP/NS_LP_Violin_Cast.NS_LP_Violin_Cast",
+  FXPriorityType = 90,
+  TickInArmory = true,
+}
+r4_0[82012] = {
+  EffectId = 82012,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/10LP/NS_LP_Violin_Light.NS_LP_Violin_Light",
+  FXPriorityType = 90,
+  TickInArmory = true,
+}
+r5_0 = 82013
+r6_0 = {
+  EffectId = 82013,
+}
+r6_0.EffectParam = {
+  Location = {
+    0,
+    88,
+    0
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/10LP/NS_LP_Kaorou.NS_LP_Kaorou"
+r6_0.FXPriorityType = 90
+r6_0.PlayLocation = r0_0.RT_11
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
+r5_0 = 82014
+r6_0 = {
+  EffectId = 82014,
+}
+r6_0.EffectParam = {
+  Location = {
+    0,
+    114,
+    0
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/10LP/NS_LP_Kaorou.NS_LP_Kaorou"
+r6_0.FXPriorityType = 90
+r6_0.PlayLocation = r0_0.RT_11
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
+r5_0 = 82015
+r6_0 = {
+  EffectId = 82015,
+}
+r6_0.EffectParam = {
+  Location = {
+    20,
+    0,
+    7
+  },
+  Rotation = {
+    0,
+    0,
+    -5
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/10LP/NS_LP_Paopao_01.NS_LP_Paopao_01"
+r6_0.FXPriorityType = 90
+r6_0.PlayLocation = r0_0.RT_41
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
+r4_0[83001] = {
+  EffectId = 83001,
+  EffectParam = r0_0.RT_145,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/A_Common/NS_BulletJump.NS_BulletJump",
+  FXPriorityType = 90,
+  TickInArmory = true,
+}
+r4_0[83002] = {
+  EffectId = 83002,
+  EffectParam = r0_0.RT_145,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/11LXFY/NS_BulletJump_StarrySky.NS_BulletJump_StarrySky",
+  FXPriorityType = 90,
+  SoundID = 3401,
+  TickInArmory = true,
+}
+r4_0[83003] = {
+  EffectId = 83003,
+  EffectParam = r0_0.RT_145,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/11LXFY/NS_BulletJump_Summer.NS_BulletJump_Summer",
+  FXPriorityType = 90,
+  SoundID = 3402,
+  TickInArmory = true,
+}
+r4_0[83601] = {
+  EffectId = 83601,
+  EffectParam = r0_0.RT_127,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/A_Common/NS_BulletJump.NS_BulletJump",
+  FXPriorityType = 90,
+  TickInArmory = true,
+}
+r4_0[83602] = {
+  EffectId = 83602,
+  EffectParam = r0_0.RT_127,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/11LXFY/NS_BulletJump_StarrySky.NS_BulletJump_StarrySky",
+  FXPriorityType = 90,
+  SoundID = 3401,
+  TickInArmory = true,
+}
+r4_0[83603] = {
+  EffectId = 83603,
+  EffectParam = r0_0.RT_127,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/11LXFY/NS_BulletJump_Summer.NS_BulletJump_Summer",
+  FXPriorityType = 90,
+  SoundID = 3402,
+  TickInArmory = true,
+}
+r4_0[90001] = {
+  EffectId = 90001,
+  EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Paotai_Bullet01.NS_Paotai_Bullet01",
+  FXPriorityType = 90,
+}
+r4_0[90002] = {
+  EffectId = 90002,
+  EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Paotai_Bullet02.NS_Paotai_Bullet02",
+  FXPriorityType = 90,
+}
+r4_0[90003] = {
+  EffectId = 90003,
+  EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Paotai_Burst01.NS_Paotai_Burst01",
+  FXPriorityType = 90,
+  SoundID = 2017,
+}
+r4_0[90004] = {
+  EffectId = 90004,
+  EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Paotai_Burst02.NS_Paotai_Burst02",
+  FXPriorityType = 90,
+  SoundID = 2019,
 }
 r4_0[110101] = {
   DeactiveParam = "DeadTime",
@@ -2574,13 +2863,13 @@ r4_0[110111] = {
   EffectId = 110111,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Heitao/NS_Heitao_BodyBuff.NS_Heitao_BodyBuff",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
 }
 r4_0[110129] = {
   EffectId = 110129,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Heitao/NS_Heitao_Buff_Body_Spine.NS_Heitao_Buff_Body_Spine",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
 }
 r4_0[110151] = {
   EffectId = 110151,
@@ -2597,10 +2886,10 @@ r4_0[110152] = {
 r4_0[110301] = {
   DestroyWhenSkillEnds = true,
   EffectId = 110301,
-  EffectParam = r0_0.RT_50,
+  EffectParam = r0_0.RT_53,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Tuosi/NS_Tuosi02_Shoot.NS_Tuosi02_Shoot",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_51,
+  PlayLocation = r0_0.RT_54,
   ReplaceEffectPaths = {
     [110302] = "/Game/Asset/Effect/Niagara/Player/Tuosi/Tuosi03/NS_Tuosi03_Shoot1.NS_Tuosi03_Shoot1",
     [110303] = "/Game/Asset/Effect/Niagara/Player/Tuosi/Tuosi03/NS_Tuosi03_Shoot1.NS_Tuosi03_Shoot1",
@@ -2611,16 +2900,16 @@ r4_0[110302] = {
   EffectId = 110302,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Tuosi/NS_Tuosi02_InBuff.NS_Tuosi02_InBuff",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
 }
 r4_0[110303] = {
   DeactiveParam = "DeadTime",
   DelayDeactiveTime = 1.5,
   EffectId = 110303,
-  EffectParam = r0_0.RT_53,
+  EffectParam = r0_0.RT_56,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Tuosi/NS_Tuosi01_Debuff.NS_Tuosi01_Debuff",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[110304] = {
   EffectId = 110304,
@@ -2636,7 +2925,7 @@ r4_0[110311] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Tuosi/NS_Tuosi02_Shoothit.NS_Tuosi02_Shoothit",
   FXPriorityType = 90,
   IsHitFX = true,
-  PlayLocation = r0_0.RT_54,
+  PlayLocation = r0_0.RT_57,
   ReplaceEffectPaths = {
     [110302] = "/Game/Asset/Effect/Niagara/Player/Tuosi/Tuosi03/NS_Tuosi03_Shoothit.NS_Tuosi03_Shoothit",
     [110303] = "/Game/Asset/Effect/Niagara/Player/Tuosi/Tuosi03/NS_Tuosi03_Shoothit.NS_Tuosi03_Shoothit",
@@ -2646,10 +2935,10 @@ r4_0[110311] = {
 r4_0[110312] = {
   DestroyWhenSkillEnds = true,
   EffectId = 110312,
-  EffectParam = r0_0.RT_50,
+  EffectParam = r0_0.RT_53,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Tuosi/NS_Tuosi02_ShootPro.NS_Tuosi02_ShootPro",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_51,
+  PlayLocation = r0_0.RT_54,
   SoundID = 110302,
 }
 r4_0[110321] = {
@@ -2659,7 +2948,7 @@ r4_0[110321] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Tuosi/NS_Tuosi02_BuffLoop.NS_Tuosi02_BuffLoop",
   FXPriorityType = 90,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
   SoundID = 110304,
 }
 r4_0[110322] = {
@@ -2669,7 +2958,7 @@ r4_0[110322] = {
   EffectId = 110322,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Tuosi/NS_Tuosi_Stencil_Arm.NS_Tuosi_Stencil_Arm",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_38,
+  PlayLocation = r0_0.RT_41,
 }
 r4_0[110323] = {
   CustomDepthValue = 4,
@@ -2678,7 +2967,7 @@ r4_0[110323] = {
   EffectId = 110323,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Tuosi/NS_Tuosi_Stencil_Arm.NS_Tuosi_Stencil_Arm",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_55,
+  PlayLocation = r0_0.RT_58,
 }
 r4_0[110324] = {
   EffectId = 110324,
@@ -2687,11 +2976,11 @@ r4_0[110324] = {
 }
 r4_0[110331] = {
   EffectId = 110331,
-  EffectParam = r0_0.RT_53,
+  EffectParam = r0_0.RT_56,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Tuosi/NS_Tuosi01_Debuff02.NS_Tuosi01_Debuff02",
   FXPriorityType = 90,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[110341] = {
   EffectId = 110341,
@@ -2711,8 +3000,8 @@ r4_0[120101] = {
 r4_0[120131] = {
   EffectId = 120131,
   EffectParam = {
-    Location = r0_0.RT_58,
-    scale = r0_0.RT_59,
+    Location = r0_0.RT_61,
+    scale = r0_0.RT_62,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Nifu/NS_Nifu_Skill01_3.NS_Nifu_Skill01_3",
   FXPriorityType = 80,
@@ -2755,7 +3044,7 @@ r4_0[150103] = {
   EffectId = 150103,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Baonu/NS_Baonu_Passive_buff.NS_Baonu_Passive_Buff",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
 }
 r4_0[150151] = {
   EffectId = 150151,
@@ -2778,11 +3067,11 @@ r6_0.EffectParam = {
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Player/Baonu/NS_Baonu_Skill02_WP01.NS_Baonu_Skill02_WP01"
 r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r4_0[r5_0] = r6_0
 r4_0[150201] = {
   EffectId = 150201,
-  EffectParam = r0_0.RT_60,
+  EffectParam = r0_0.RT_63,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Nifu/NS_Nifu_Skill01_1.NS_Nifu_Skill01_1",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
@@ -2790,7 +3079,7 @@ r4_0[150201] = {
 }
 r4_0[150202] = {
   EffectId = 150202,
-  EffectParam = r0_0.RT_60,
+  EffectParam = r0_0.RT_63,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Nifu/NS_Nifu_Skill01_3.NS_Nifu_Skill01_3",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
@@ -2798,7 +3087,7 @@ r4_0[150202] = {
 }
 r4_0[150203] = {
   EffectId = 150203,
-  EffectParam = r0_0.RT_60,
+  EffectParam = r0_0.RT_63,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Nifu/NS_Nifu_Skill01_2.NS_Nifu_Skill01_2",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
@@ -2806,7 +3095,7 @@ r4_0[150203] = {
 }
 r4_0[150204] = {
   EffectId = 150204,
-  EffectParam = r0_0.RT_60,
+  EffectParam = r0_0.RT_63,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Nifu/NS_Nifu_Skill01_4.NS_Nifu_Skill01_4",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
@@ -2817,12 +3106,6 @@ r4_0[150302] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Kezhou/NS_Kezhou_Skill01_Appear.NS_Kezhou_Skill01_Appear",
   FXPriorityType = 90,
 }
-r4_0[150303] = {
-  DeactiveParam = "DeadTime",
-  DelayDeactiveTime = 2,
-  EffectId = 150303,
-  FXPriorityType = 90,
-}
 r4_0[150304] = {
   EffectId = 150304,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Kezhou/NS_Kezhou_Skill02_ShadowSword_Bullet.NS_Kezhou_Skill02_ShadowSword_Bullet",
@@ -2831,7 +3114,7 @@ r4_0[150304] = {
 }
 r4_0[150306] = {
   EffectId = 150306,
-  EffectParam = r0_0.RT_62,
+  EffectParam = r0_0.RT_66,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Shotgun/Banzi/NS_Banzi_Explode.NS_Banzi_Explode",
   FXPriorityType = 90,
 }
@@ -2839,22 +3122,16 @@ r4_0[150307] = {
   DeactiveParam = "DeadTime",
   DelayDeactiveTime = 2,
   EffectId = 150307,
-  EffectParam = r0_0.RT_64,
+  EffectParam = r0_0.RT_68,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Kezhou/NS_Kezhou_WeaponDecal_Batch.NS_Kezhou_WeaponDecal_Batch",
   FXPriorityType = 90,
   IsArrayBatching = true,
-}
-r4_0[150308] = {
-  DeactiveParam = "DeadTime",
-  DelayDeactiveTime = 2,
-  EffectId = 150308,
-  FXPriorityType = 90,
 }
 r4_0[150309] = {
   DeactiveParam = "DeadTime",
   DelayDeactiveTime = 2,
   EffectId = 150309,
-  EffectParam = r0_0.RT_64,
+  EffectParam = r0_0.RT_68,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Kezhou/NS_Kezhou_WeaponDecal_Dualblade_Batch.NS_Kezhou_WeaponDecal_Dualblade_Batch",
   FXPriorityType = 90,
   IsArrayBatching = true,
@@ -2892,13 +3169,13 @@ r6_0.SoundID = 150304
 r4_0[r5_0] = r6_0
 r4_0[150312] = {
   EffectId = 150312,
-  EffectParam = r0_0.RT_65,
+  EffectParam = r0_0.RT_69,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Kezhou/NS_Kezhou_Skill01_Burst.NS_Kezhou_Skill01_Burst",
   FXPriorityType = 90,
 }
 r4_0[150313] = {
   EffectId = 150313,
-  EffectParam = r0_0.RT_65,
+  EffectParam = r0_0.RT_69,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Kezhou/NS_Kezhou_Skill01_ShootBurst.NS_Kezhou_Skill01_ShootBurst",
   FXPriorityType = 90,
 }
@@ -2954,7 +3231,7 @@ r4_0[150325] = {
   DeactiveParam = "DeadTime",
   DelayDeactiveTime = 2,
   EffectId = 150325,
-  EffectParam = r0_0.RT_46,
+  EffectParam = r0_0.RT_49,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Kezhou/NS_Kezhou_Skill02_Loop.NS_Kezhou_Skill02_Loop",
   FXPriorityType = 90,
   SoundID = 150306,
@@ -2973,7 +3250,7 @@ r4_0[150327] = {
   EffectId = 150327,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Kezhou/NS_Kezhou_Stencil_Arm.NS_Kezhou_Stencil_Arm",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_38,
+  PlayLocation = r0_0.RT_41,
 }
 r4_0[150328] = {
   CustomDepthValue = 4,
@@ -2982,7 +3259,7 @@ r4_0[150328] = {
   EffectId = 150328,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Kezhou/NS_Kezhou_Stencil_Arm.NS_Kezhou_Stencil_Arm",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_55,
+  PlayLocation = r0_0.RT_58,
 }
 r4_0[150329] = {
   CustomDepthValue = 4,
@@ -2991,70 +3268,108 @@ r4_0[150329] = {
   EffectId = 150329,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Kezhou/NS_Kezhou_Stencil_spine_03.NS_Kezhou_Stencil_spine_03",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
+}
+r4_0[150330] = {
+  CustomDepthValue = 4,
+  DeactiveParam = "DeadTime",
+  DelayDeactiveTime = 2,
+  EffectId = 150330,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Kezhou/NS_Kezhou_Skill02_HandBuff_Loop.NS_Kezhou_Skill02_HandBuff_Loop",
+  FXPriorityType = 90,
+  PlayLocation = r0_0.RT_41,
+}
+r4_0[150421] = {
+  DeactiveParam = "Deactive",
+  DelayDeactiveTime = 1.5,
+  EffectId = 150421,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Suyi/NS_Suyi_Bullet1.NS_Suyi_Bullet1",
+  FXPriorityType = 90,
+}
+r4_0[150422] = {
+  EffectId = 150422,
+  EffectParam = r0_0.RT_71,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Suyi/NS_Suyi_Explode.NS_Suyi_Explode",
+  FXPriorityType = 90,
+  SoundID = 2030101,
 }
 r4_0[150431] = {
-  ChangeColorByChar = true,
+  DeactiveParam = "DeadTime",
+  DelayDeactiveTime = 0.5,
   EffectId = 150431,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Suyi/NS_Suyi_Creature_Yinxin.NS_Suyi_Creature_Yinxin",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
   SoundID = 2060301,
 }
 r4_0[150432] = {
-  ChangeColorByChar = true,
   EffectId = 150432,
-  EffectParam = r0_0.RT_62,
+  EffectParam = r0_0.RT_66,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Cannon/NS_Jishu_Explode_Small.NS_Jishu_Explode_Small",
   FXPriorityType = 90,
   SoundID = 2030203,
 }
-r5_0 = 150441
-r6_0 = {
-  ChangeColorByChar = true,
-  DeactiveParam = "Deactive",
-  DelayDeactiveTime = 1,
+r4_0[150441] = {
   EffectId = 150441,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Suyi/NS_Suyi_Skill02_WP01.NS_Suyi_Skill02_WP01",
+  FXPriorityType = 90,
+  PlayLocation = r0_0.RT_23,
 }
-r6_0.EffectParam = {
-  scale = {
-    4,
-    0,
-    0
-  },
+r4_0[150451] = {
+  EffectId = 150451,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Suyi/NS_Suyi_Shield.NS_Suyi_Shield",
+  FXPriorityType = 90,
+  PlayLocation = r0_0.RT_32,
 }
-r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Bow/NS_Bow_Bullet_01.NS_Bow_Bullet_01"
-r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_20
-r6_0.SoundID = 2060101
-r4_0[r5_0] = r6_0
-r5_0 = 150442
+r4_0[150452] = {
+  EffectId = 150452,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Suyi/NS_Suyi_ShieldAtk.NS_Suyi_ShieldAtk",
+  FXPriorityType = 90,
+  PlayLocation = r0_0.RT_32,
+}
+r4_0[150453] = {
+  EffectId = 150453,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Suyi/NS_Suyi_Shield_End.NS_Suyi_Shield_End",
+  FXPriorityType = 90,
+  PlayLocation = r0_0.RT_32,
+}
+r4_0[150454] = {
+  EffectId = 150454,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Suyi/NS_Suyi_Shield_End2.NS_Suyi_Shield_End2",
+  FXPriorityType = 90,
+  PlayLocation = r0_0.RT_32,
+}
+r4_0[150461] = {
+  EffectId = 150461,
+  EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill08_LastBurst.NS_Boss_Tuosi_Skill08_LastBurst",
+  FXPriorityType = 90,
+}
+r5_0 = 150504
 r6_0 = {
-  DeactiveParam = "DeadTime",
-  DelayDeactiveTime = 1.5,
-  EffectId = 150442,
+  EffectId = 150504,
 }
 r6_0.EffectParam = {
   scale = {
-    4,
-    1,
+    5,
+    5,
     1
   },
 }
-r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Player/Heitao/NS_Heitao_SwordWave.NS_Heitao_SwordWave"
-r6_0.FXPriorityType = 90
-r6_0.NotBlocking = true
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_TreasureChest_lock.NS_TreasureChest_lock"
+r6_0.PlayLocation = r0_0.RT_11
 r4_0[r5_0] = r6_0
 r4_0[160101] = {
   EffectId = 160101,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_nanzhu_skill01_chaungsheng.NS_nanzhu_skill01_chaungsheng",
   FXPriorityType = 90,
+  ReplaceEffectPaths = r0_0.RT_73,
   SoundID = 160102,
 }
 r4_0[160102] = {
   EffectId = 160102,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_nanzhu_skill01_chaungsheng.NS_nanzhu_skill01_chaungsheng",
   FXPriorityType = 90,
+  ReplaceEffectPaths = r0_0.RT_73,
   SoundID = 160102,
 }
 r4_0[160103] = {
@@ -3063,12 +3378,20 @@ r4_0[160103] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_nanzhu_skill01_hit.NS_nanzhu_skill01_hit",
   FXPriorityType = 90,
   IsHitFX = true,
+  ReplaceEffectPaths = {
+    [160102] = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_nanzhu_skill01_hitred.NS_nanzhu_skill01_hitred",
+    [160103] = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_nanzhu_skill01_hitred.NS_nanzhu_skill01_hitred",
+  },
 }
 r4_0[160121] = {
   EffectId = 160121,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_NVzhu_Skill02_BuffSpawn.NS_NVzhu_Skill02_BuffSpawn",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
+  ReplaceEffectPaths = {
+    [160102] = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_NVzhu_Skill02_BuffSpawnred.NS_NVzhu_Skill02_BuffSpawnred",
+    [160103] = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_NVzhu_Skill02_BuffSpawnred.NS_NVzhu_Skill02_BuffSpawnred",
+  },
 }
 r4_0[160122] = {
   DeactiveParam = "DeadTime",
@@ -3078,6 +3401,10 @@ r4_0[160122] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_NVzhu_Skill02_BuffLoop.NS_NVzhu_Skill02_BuffLoop",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
+  ReplaceEffectPaths = {
+    [160102] = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_NVzhu_Skill02_BuffLoopred.NS_NVzhu_Skill02_BuffLoopred",
+    [160103] = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_NVzhu_Skill02_BuffLoopred.NS_NVzhu_Skill02_BuffLoopred",
+  },
 }
 r4_0[160123] = {
   DeactiveParam = "DeadTime",
@@ -3085,19 +3412,31 @@ r4_0[160123] = {
   EffectId = 160123,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_Nvzhu_Skill02_DebuffLingYu.NS_Nvzhu_Skill02_DebuffLingYu",
   FXPriorityType = 90,
+  ReplaceEffectPaths = {
+    [160102] = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_Nvzhu_Skill02_DebuffLingYured.NS_Nvzhu_Skill02_DebuffLingYured",
+    [160103] = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_Nvzhu_Skill02_DebuffLingYured.NS_Nvzhu_Skill02_DebuffLingYured",
+  },
 }
 r4_0[160124] = {
   EffectId = 160124,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_Nvzhu_Skill02_LingYu.NS_Nvzhu_Skill02_LingYu",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
+  ReplaceEffectPaths = {
+    [160102] = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_Nvzhu_Skill02_LingYured.NS_Nvzhu_Skill02_LingYured",
+    [160103] = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_Nvzhu_Skill02_LingYured.NS_Nvzhu_Skill02_LingYured",
+  },
 }
 r4_0[160131] = {
   EffectId = 160131,
   EffectMaxNum = 8,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_Nvzhu_skill01_bao.NS_Nvzhu_skill01_bao",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
+  ReplaceEffectPaths = {
+    [160102] = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_Nvzhu_skill01_baored.NS_Nvzhu_skill01_baored",
+    [160103] = "/Game/Asset/Effect/Niagara/Player/Nvzhu/NS_Nvzhu_skill01_baored.NS_Nvzhu_skill01_baored",
+  },
   SoundID = 160103,
 }
 r4_0[180101] = {
@@ -3115,7 +3454,7 @@ r4_0[180102] = {
 }
 r4_0[210101] = {
   EffectId = 210101,
-  EffectPath = "/Game/Asset/Effect/Niagara/Player/Shuimu/NS_Shuimu_Debuff_Spread.NS_Shuimu_Debuff_Spread",
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Shuimu/NDC_Shuimu_Debuff_Spread.NDC_Shuimu_Debuff_Spread",
   FXPriorityType = 90,
   NotFollowRotation = true,
   SoundID = 210104,
@@ -3125,7 +3464,7 @@ r4_0[210102] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Shuimu/NS_Shuimu_Debuff_Weak.NS_Shuimu_Debuff_Weak",
   FXPriorityType = 90,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 210102,
 }
 r4_0[210121] = {
@@ -3137,37 +3476,37 @@ r4_0[210121] = {
   EffectId = 210121,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Shuimu/NDC_Shuimu_Skill02_Shuizhu.NDC_Shuimu_Skill02_Shuizhu",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[210122] = {
   EffectId = 210122,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Shuimu/NS_Shuimu_skill02_sequence_02.NS_Shuimu_skill02_sequence_02",
   FXPriorityType = 90,
   HideOnSkillFeature = true,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[210123] = {
   EffectId = 210123,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Shuimu/NS_Shuimu_Skill02_fazhen.NS_Shuimu_Skill02_fazhen",
   FXPriorityType = 90,
   HideOnSkillFeature = true,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[210221] = {
   EffectId = 210221,
-  EffectParam = r0_0.RT_37,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Feina/NS_Feina_Skill02_WaterCircle.NS_Feina_Skill02_WaterCircle",
   FXPriorityType = 90,
   HideOnSkillFeature = true,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[210222] = {
   EffectId = 210222,
-  EffectParam = r0_0.RT_37,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Shuimu/NS_Shuimu_skill02_sequence_02.NS_Shuimu_skill02_sequence_02",
   FXPriorityType = 90,
   HideOnSkillFeature = true,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r5_0 = 230101
 r6_0 = {
@@ -3180,7 +3519,7 @@ r6_0.EffectParam = {
   BodyShapeOffset = {
     {
       BattleCharTag = "Girl",
-      Location = r0_0.RT_85,
+      Location = r0_0.RT_77,
     },
     {
       BattleCharTag = "Loli",
@@ -3188,11 +3527,11 @@ r6_0.EffectParam = {
     },
     {
       BattleCharTag = "Woman",
-      Location = r0_0.RT_86,
+      Location = r0_0.RT_93,
     },
     {
       BattleCharTag = "Man",
-      Location = r0_0.RT_87,
+      Location = r0_0.RT_94,
     }
   },
 }
@@ -3236,22 +3575,28 @@ r4_0[240101] = {
   EffectId = 240101,
   EffectParam = {
     Life = 1.2,
-    Location = r0_0.RT_88,
+    Location = r0_0.RT_95,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng/NS_Baiheng_E_003.NS_Baiheng_E_003",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
+  ReplaceEffectPaths = {
+    [240199] = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_E_003.NS_Baiheng01_E_003",
+  },
   SoundID = 240101,
-  TargetLocation = r0_0.RT_44,
+  TargetLocation = r0_0.RT_47,
 }
 r4_0[240102] = {
   EffectId = 240102,
   EffectParam = {
-    Location = r0_0.RT_88,
+    Location = r0_0.RT_95,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng/NS_Baiheng_E_004_Back.NS_Baiheng_E_004_Back",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
+  ReplaceEffectPaths = {
+    [240199] = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_E_004_Back.NS_Baiheng01_E_004_Back",
+  },
   SoundID = 240102,
 }
 r4_0[240105] = {
@@ -3259,43 +3604,61 @@ r4_0[240105] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng/NS_Baiheng_shouji.NS_Baiheng_shouji",
   FXPriorityType = 45,
   IsHitFX = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
+  ReplaceEffectPaths = {
+    [240199] = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_shouji.NS_Baiheng01_shouji",
+  },
   SoundID = 240103,
 }
 r4_0[240106] = {
   EffectId = 240106,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng/NS_Baiheng_E_005_Begin.NS_Baiheng_E_005_Begin",
   FXPriorityType = 90,
+  ReplaceEffectPaths = {
+    [240199] = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_E_005_Begin.NS_Baiheng01_E_005_Begin",
+  },
 }
 r4_0[240121] = {
   DeactiveParam = "DeadTime",
   DelayDeactiveTime = 2,
   EffectId = 240121,
-  EffectParam = r0_0.RT_90,
+  EffectParam = r0_0.RT_97,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng/NS_Baiheng_Buff.NS_Baiheng_Buff",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
+  ReplaceEffectPaths = {
+    [240199] = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_Buff.NS_Baiheng01_Buff",
+  },
+  SoundID = 240104,
 }
 r4_0[240122] = {
   DeactiveParam = "DeadTime",
   DelayDeactiveTime = 2,
   EffectId = 240122,
-  EffectParam = r0_0.RT_90,
+  EffectParam = r0_0.RT_97,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng/NS_Baiheng_BuffSelf.NS_Baiheng_BuffSelf",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
+  ReplaceEffectPaths = {
+    [240199] = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_BuffSelf.NS_Baiheng01_BuffSelf",
+  },
+  SoundID = 240104,
 }
 r4_0[240123] = {
   DeactiveParam = "DeadTime",
   DelayDeactiveTime = 2,
   EffectId = 240123,
   EffectParam = {
-    Location = r0_0.RT_91,
+    Location = r0_0.RT_98,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng/NS_Baiheng_BFSelfRoot.NS_Baiheng_BFSelfRoot",
   FXPriorityType = 90,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
+  ReplaceEffectPaths = {
+    [240199] = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_BFSelfRoot.NS_Baiheng01_BFSelfRoot",
+  },
+  SoundID = 240104,
 }
 r4_0[240151] = {
   DeactiveParam = "DeadTime",
@@ -3304,13 +3667,127 @@ r4_0[240151] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/East01/NS_Baiheng_Debuff.NS_Baiheng_Debuff",
   FXPriorityType = 90,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
+  SoundID = 2035,
+}
+r5_0 = 240161
+r6_0 = {
+  EffectId = 240161,
+}
+r6_0.EffectParam = {
+  Location = {
+    22,
+    8,
+    10
+  },
+  Rotation = {
+    0,
+    80,
+    0
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_yongzhuangWave_001.NS_Baiheng01_yongzhuangWave_001"
+r6_0.FXPriorityType = 90
+r6_0.NotHideInSkillFeature = true
+r6_0.PlayLocation = {
+  socket = "root_Armpoint_R",
+}
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
+r5_0 = 240162
+r6_0 = {
+  EffectId = 240162,
+}
+r6_0.EffectParam = {
+  Location = {
+    22,
+    8,
+    -10
+  },
+  Rotation = {
+    0,
+    -80,
+    0
+  },
+  scale = {
+    1,
+    1,
+    -1
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_yongzhuangWave_002.NS_Baiheng01_yongzhuangWave_002"
+r6_0.FXPriorityType = 90
+r6_0.NotHideInSkillFeature = true
+r6_0.PlayLocation = {
+  socket = "root_Armpoint_L",
+}
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
+r5_0 = 240163
+r6_0 = {
+  EffectId = 240163,
+}
+r6_0.EffectParam = {
+  Location = {
+    15.54,
+    -7.15,
+    6.88
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_yongzhuangWave_003.NS_Baiheng01_yongzhuangWave_003"
+r6_0.FXPriorityType = 90
+r6_0.NotHideInSkillFeature = true
+r6_0.PlayLocation = r0_0.RT_99
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
+r5_0 = 240164
+r6_0 = {
+  EffectId = 240164,
+}
+r6_0.EffectParam = {
+  Location = {
+    15.54,
+    -7.15,
+    -6.04
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_yongzhuangWave_004.NS_Baiheng01_yongzhuangWave_004"
+r6_0.FXPriorityType = 90
+r6_0.NotHideInSkillFeature = true
+r6_0.PlayLocation = r0_0.RT_99
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
+r4_0[240165] = {
+  EffectId = 240165,
+  EffectParam = r0_0.RT_101,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_yongzhuanLens_001.NS_Baiheng01_yongzhuanLens_001",
+  FXPriorityType = 90,
+  NotHideInSkillFeature = true,
+  PlayLocation = r0_0.RT_41,
+  TickInArmory = true,
+}
+r4_0[240166] = {
+  EffectId = 240166,
+  EffectParam = r0_0.RT_101,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_yongzhuanLens_001.NS_Baiheng01_yongzhuanLens_001",
+  FXPriorityType = 90,
+  NotHideInSkillFeature = true,
+  PlayLocation = r0_0.RT_58,
+  TickInArmory = true,
+}
+r4_0[240167] = {
+  EffectId = 240167,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_yongzhuanLens_002.NS_Baiheng01_yongzhuanLens_002",
+  FXPriorityType = 90,
+  NotHideInSkillFeature = true,
+  PlayLocation = r0_0.RT_99,
+  TickInArmory = true,
 }
 r4_0[310101] = {
   EffectId = 310101,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Linen/NS_Linen_Skill01_Buff.NS_Linen_Skill01_Buff",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 310101,
 }
 r4_0[310102] = {
@@ -3330,7 +3807,7 @@ r4_0[310104] = {
   EffectId = 310104,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Linen/NS_Linen_Skill01_BuffExpo.NS_Linen_Skill01_BuffExpo",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 310103,
 }
 r4_0[310111] = {
@@ -3338,7 +3815,7 @@ r4_0[310111] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Linen/NS_Linen_Skill02_Hit.NS_Linen_Skill02_Hit",
   FXPriorityType = 45,
   IsHitFX = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[310121] = {
   DeactiveParam = "Deactive",
@@ -3366,7 +3843,7 @@ r4_0[310123] = {
   EffectId = 310123,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Linen/NS_Linen_Buff_Body_Arm.NS_Linen_Buff_Body_Arm",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_43,
+  PlayLocation = r0_0.RT_46,
 }
 r4_0[310124] = {
   DeactiveParam = "Deactive",
@@ -3374,7 +3851,7 @@ r4_0[310124] = {
   EffectId = 310124,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Linen/NS_Linen_Buff_Body_Arm.NS_Linen_Buff_Body_Arm",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_42,
+  PlayLocation = r0_0.RT_45,
 }
 r4_0[310125] = {
   DeactiveParam = "Deactive",
@@ -3382,7 +3859,7 @@ r4_0[310125] = {
   EffectId = 310125,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Linen/NS_Linen_Buff_Body_Leg.NS_Linen_Buff_Body_Leg",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_100,
+  PlayLocation = r0_0.RT_110,
 }
 r4_0[310126] = {
   DeactiveParam = "Deactive",
@@ -3390,7 +3867,7 @@ r4_0[310126] = {
   EffectId = 310126,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Linen/NS_Linen_Buff_Body_Leg.NS_Linen_Buff_Body_Leg",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_101,
+  PlayLocation = r0_0.RT_111,
 }
 r4_0[310127] = {
   DeactiveParam = "Deactive",
@@ -3403,7 +3880,7 @@ r4_0[310127] = {
 }
 r4_0[310128] = {
   EffectId = 310128,
-  EffectParam = r0_0.RT_104,
+  EffectParam = r0_0.RT_114,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Linen/NS_Linen_Buff_Gun.NS_Linen_Buff_Gun",
   FXPriorityType = 90,
   PlayLocation = {
@@ -3413,7 +3890,7 @@ r4_0[310128] = {
 }
 r4_0[310129] = {
   EffectId = 310129,
-  EffectParam = r0_0.RT_104,
+  EffectParam = r0_0.RT_114,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Linen/NS_Linen_Buff_Gun.NS_Linen_Buff_Gun",
   FXPriorityType = 90,
   PlayLocation = {
@@ -3440,7 +3917,7 @@ r4_0[r5_0] = r6_0
 r4_0[310202] = {
   EffectId = 310202,
   EffectParam = {
-    Location = r0_0.RT_94,
+    Location = r0_0.RT_104,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Xier/NS_Xier_OpenFire.NS_Xier_OpenFire",
   FXPriorityType = 90,
@@ -3456,18 +3933,18 @@ r4_0[310203] = {
   IgnoreHidden = true,
   IsArrayBatching = true,
   NotBlocking = true,
-  PlayLocation = r0_0.RT_105,
+  PlayLocation = r0_0.RT_115,
 }
 r4_0[310204] = {
   DeactiveParam = "Deactive",
   EffectId = 310204,
   EffectParam = {
     Life = 0.25,
-    Location = r0_0.RT_106,
+    Location = r0_0.RT_116,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Xier/NS_Xier_Skill01_Disappear.NS_Xier_Skill01_Disappear",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_105,
+  PlayLocation = r0_0.RT_115,
 }
 r5_0 = 310205
 r6_0 = {
@@ -3482,7 +3959,7 @@ r6_0.EffectParam = {
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Player/Xier/NS_Xier_Buff.NS_Xier_Buff"
 r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_48
+r6_0.PlayLocation = r0_0.RT_51
 r4_0[r5_0] = r6_0
 r5_0 = 310206
 r6_0 = {
@@ -3494,7 +3971,7 @@ r6_0.EffectParam = {
     0,
     0
   },
-  scale = r0_0.RT_59,
+  scale = r0_0.RT_62,
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Player/Xier/NS_Xier_OpenFire.NS_Xier_OpenFire"
 r6_0.FXPriorityType = 90
@@ -3508,7 +3985,7 @@ r4_0[310207] = {
   PlayLocation = {
     socket = "Float04",
   },
-  TargetLocation = r0_0.RT_107,
+  TargetLocation = r0_0.RT_117,
 }
 r4_0[310208] = {
   DeactiveParam = "DeadTime",
@@ -3518,7 +3995,7 @@ r4_0[310208] = {
   PlayLocation = {
     socket = "Float08",
   },
-  TargetLocation = r0_0.RT_107,
+  TargetLocation = r0_0.RT_117,
 }
 r4_0[310213] = {
   DeactiveParam = "Deactive",
@@ -3536,7 +4013,7 @@ r4_0[310214] = {
   DeactiveParam = "Deactive",
   DestroyWhenSkillEnds = true,
   EffectId = 310214,
-  EffectParam = r0_0.RT_109,
+  EffectParam = r0_0.RT_119,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Xier/NS_Xier_Skill01_Weapon.NS_Xier_Skill01_Weapon",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
@@ -3545,7 +4022,7 @@ r4_0[310214] = {
 r4_0[310215] = {
   DeactiveParam = "Deactive",
   EffectId = 310215,
-  EffectParam = r0_0.RT_110,
+  EffectParam = r0_0.RT_120,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Xier/NS_Xier_Skill01_Weapon_Disappear.NS_Xier_Skill01_Weapon_Disappear",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
@@ -3555,7 +4032,7 @@ r4_0[310216] = {
   EffectId = 310216,
   EffectParam = {
     Life = 0.4,
-    scale = r0_0.RT_108,
+    scale = r0_0.RT_118,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Xier/NS_Xier_Skill01_Weapon_Disappear.NS_Xier_Skill01_Weapon_Disappear",
   FXPriorityType = 90,
@@ -3586,11 +4063,6 @@ r4_0[310311] = {
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
 }
-r4_0[310312] = {
-  EffectId = 310312,
-  FXPriorityType = 90,
-  PlayLocation = r0_0.RT_11,
-}
 r4_0[310321] = {
   EffectId = 310321,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Yeer/NS_Yeer_Skill02_End.NS_Yeer_Skill02_End",
@@ -3607,10 +4079,10 @@ r4_0[320101] = {
 }
 r4_0[320102] = {
   EffectId = 320102,
-  EffectParam = r0_0.RT_46,
+  EffectParam = r0_0.RT_49,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Haier/NS_Haier_Fire.NS_Haier_Fire",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r5_0 = 320103
 r6_0 = {
@@ -3631,34 +4103,34 @@ r6_0.PlayLocation = r0_0.RT_11
 r4_0[r5_0] = r6_0
 r4_0[320104] = {
   EffectId = 320104,
-  EffectParam = r0_0.RT_46,
+  EffectParam = r0_0.RT_49,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Haier/NS_Haier_Body_Buff.NS_Haier_Body_Buff",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[320105] = {
   EffectId = 320105,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Haier/NS_Haier_Buff_Arm.NS_Haier_Buff_Arm",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_42,
+  PlayLocation = r0_0.RT_45,
 }
 r4_0[320106] = {
   EffectId = 320106,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Haier/NS_Haier_Buff_Arm.NS_Haier_Buff_Arm",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_43,
+  PlayLocation = r0_0.RT_46,
 }
 r4_0[320107] = {
   EffectId = 320107,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Haier/NS_Haier_Buff_Leg.NS_Haier_Buff_Leg",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_100,
+  PlayLocation = r0_0.RT_110,
 }
 r4_0[320108] = {
   EffectId = 320108,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Haier/NS_Haier_Buff_Leg.NS_Haier_Buff_Leg",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_101,
+  PlayLocation = r0_0.RT_111,
 }
 r4_0[320111] = {
   DeactiveParam = "DeadTime",
@@ -3669,45 +4141,60 @@ r4_0[320111] = {
   PlayLocation = r0_0.RT_11,
   SoundID = 320103,
 }
+r4_0[320201] = {
+  EffectId = 320201,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Kami/NS_Kami_Passive_Buff.NS_Kami_Passive_Buff",
+  FXPriorityType = 90,
+  PlayLocation = r0_0.RT_19,
+  SoundID = 310101,
+}
 r4_0[320202] = {
   EffectId = 320202,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Kami/NS_Kami_Skill02Creature_Attack.NS_Kami_Skill02Creature_Attack",
   FXPriorityType = 90,
   SoundID = 2050701,
 }
+r4_0[320203] = {
+  EffectId = 320203,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Kami/NS_Kami_Passive_Buff_Hit.NS_Kami_Passive_Buff_Hit",
+  FXPriorityType = 90,
+  IsHitFX = true,
+  NotFollowRotation = true,
+  PlayLocation = r0_0.RT_19,
+}
 r4_0[330101] = {
   ChangeColorByChar = true,
   EffectId = 330101,
   EffectParam = {
-    Location = r0_0.RT_111,
+    Location = r0_0.RT_121,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Maer/NS_Maer_Skill02_Explode.NS_Maer_Skill02_Explode",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 330103,
 }
 r4_0[330102] = {
   ChangeColorByChar = true,
   EffectId = 330102,
   EffectParam = {
-    Location = r0_0.RT_111,
-    scale = r0_0.RT_30,
+    Location = r0_0.RT_121,
+    scale = r0_0.RT_33,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Maer/NS_Maer_Skill02_Explode.NS_Maer_Skill02_Explode",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 330103,
 }
 r4_0[330103] = {
   ChangeColorByChar = true,
   EffectId = 330103,
   EffectParam = {
-    Location = r0_0.RT_112,
-    scale = r0_0.RT_30,
+    Location = r0_0.RT_122,
+    scale = r0_0.RT_33,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Maer/NS_Maer_Skill02_Explode_Small.NS_Maer_Skill02_Explode_Small",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 330104,
 }
 r5_0 = 330104
@@ -3721,50 +4208,52 @@ r6_0.EffectParam = {
     -100,
     0
   },
-  scale = r0_0.RT_30,
+  scale = r0_0.RT_33,
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Player/Maer/NS_Maer_Skill02_Explode_Small.NS_Maer_Skill02_Explode_Small"
 r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_16
+r6_0.PlayLocation = r0_0.RT_19
 r6_0.SoundID = 330104
 r4_0[r5_0] = r6_0
 r4_0[410101] = {
   EffectId = 410101,
-  EffectParam = r0_0.RT_117,
+  EffectParam = r0_0.RT_129,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Lise/NS_lise_zheng.NS_lise_zheng",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
 }
 r4_0[410102] = {
   EffectId = 410102,
-  EffectParam = r0_0.RT_117,
+  EffectParam = r0_0.RT_129,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Lise/NS_lise_fuji.NS_lise_fuji",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
 }
 r4_0[410121] = {
   EffectId = 410121,
-  EffectParam = r0_0.RT_110,
+  EffectParam = r0_0.RT_120,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Lise/NS_lise_shandian_CharToMon.NS_lise_shandian_CharToMon",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_44,
+  NotDestroyWithTarget = true,
+  PlayLocation = r0_0.RT_47,
   SoundID = 410106,
-  TargetLocation = r0_0.RT_16,
+  TargetLocation = r0_0.RT_19,
 }
 r4_0[410123] = {
   EffectId = 410123,
-  EffectParam = r0_0.RT_110,
+  EffectParam = r0_0.RT_120,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Lise/NS_lise_shandian_MonToMon.NS_lise_shandian_MonToMon",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_44,
+  NotDestroyWithTarget = true,
+  PlayLocation = r0_0.RT_47,
   SoundID = 410107,
-  TargetLocation = r0_0.RT_16,
+  TargetLocation = r0_0.RT_19,
 }
 r4_0[410124] = {
   EffectId = 410124,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Lise/NS_lise_BUff.NS_lise_Buff",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
   SoundID = 410109,
 }
 r4_0[410125] = {
@@ -3789,33 +4278,33 @@ r4_0[410129] = {
   EffectId = 410129,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Lise/NS_lise_buff_tuowei.NS_lise_buff_tuowei",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
 }
 r4_0[410130] = {
   EffectId = 410130,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Lise/NS_lise_BUff_duiyou.NS_lise_BUff_duiyou",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
 }
 r4_0[410131] = {
   EffectId = 410131,
-  EffectParam = r0_0.RT_35,
+  EffectParam = r0_0.RT_38,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Lise/NS_lise_Buff_Over.NS_lise_Buff_Over",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
 }
 r4_0[410200] = {
   EffectId = 410200,
-  EffectPath = "/Game/Asset/Effect/Niagara/Player/Zhiliu/NS_Zhiliu_Skill01_Hit.NS_Zhiliu_Skill01_Hit",
-  FXPriorityType = 90,
+  EffectMaxNum = 8,
+  EffectPath = "/Game/Asset/Effect/Niagara/Common/Player/NS_hit_char_thunder.NS_hit_char_thunder",
+  FXPriorityType = 45,
   IsHitFX = true,
-  NotFollowRotation = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_11,
 }
 r4_0[410201] = {
   DeactiveParam = "DeadTime",
   EffectId = 410201,
-  EffectParam = r0_0.RT_70,
+  EffectParam = r0_0.RT_75,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Zhiliu/NS_Zhiliu_Skill02_04_Boom_Spawn.NS_Zhiliu_Skill02_04_Boom_Spawn",
   FXPriorityType = 90,
 }
@@ -3837,7 +4326,7 @@ r4_0[410203] = {
   DeactiveParam = "DeadTime",
   DelayDeactiveTime = 1,
   EffectId = 410203,
-  EffectParam = r0_0.RT_35,
+  EffectParam = r0_0.RT_38,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Zhiliu/NS_Zhiliu_Skill01_02_Dun.NS_Zhiliu_Skill01_02_Dun",
   NotFollowRotation = true,
   PlayLocation = r0_0.RT_11,
@@ -3846,7 +4335,7 @@ r4_0[410203] = {
 r4_0[410204] = {
   DeactiveParam = "DeadTime",
   EffectId = 410204,
-  EffectParam = r0_0.RT_70,
+  EffectParam = r0_0.RT_75,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Zhiliu/NS_Zhiliu_Skill02_04_Boom_Spawn_Range.NS_Zhiliu_Skill02_04_Boom_Spawn_Range",
   FXPriorityType = 90,
 }
@@ -3879,47 +4368,71 @@ r4_0[410216] = {
 }
 r4_0[410220] = {
   EffectId = 410220,
-  EffectParam = r0_0.RT_70,
+  EffectParam = r0_0.RT_75,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Zhiliu/NS_Zhiliu_Skill02_01_Dian.NS_Zhiliu_Skill02_01_Dian",
+}
+r4_0[410222] = {
+  DeactiveParam = "DeadTime",
+  DelayDeactiveTime = 1,
+  EffectColor = {
+    0.39,
+    0.3,
+    3,
+    1
+  },
+  EffectId = 410222,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Zhiliu/Zhiliu_Skill02_2/NS_Zhiliu_Skill02_02_Fazhen.NS_Zhiliu_Skill02_02_Fazhen",
+  FXPriorityType = 90,
+  SoundID = 410206,
 }
 r4_0[410224] = {
   EffectId = 410224,
-  EffectParam = r0_0.RT_70,
+  EffectParam = r0_0.RT_75,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Zhiliu/NS_Zhiliu_Skill02_01_Zadi_Range.NS_Zhiliu_Skill02_01_Zadi_Range",
   FXPriorityType = 90,
   SoundID = 410204,
 }
 r4_0[410225] = {
   EffectId = 410225,
-  EffectParam = r0_0.RT_70,
+  EffectParam = r0_0.RT_75,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Zhiliu/NS_Zhiliu_Skill02_01_Zadi.NS_Zhiliu_Skill02_01_Zadi",
   FXPriorityType = 90,
 }
 r4_0[410226] = {
   EffectId = 410226,
-  EffectParam = r0_0.RT_70,
+  EffectParam = r0_0.RT_75,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Zhiliu/NS_Zhiliu_Skill02_01_Dilie.NS_Zhiliu_Skill02_01_Dilie",
 }
 r4_0[410227] = {
   EffectId = 410227,
-  EffectParam = r0_0.RT_70,
+  EffectParam = r0_0.RT_75,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Zhiliu/NS_Zhiliu_Skill02_01_Stone.NS_Zhiliu_Skill02_01_Stone",
 }
 r4_0[410228] = {
   EffectId = 410228,
-  EffectParam = r0_0.RT_70,
+  EffectParam = r0_0.RT_75,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Zhiliu/NS_Zhiliu_Skill02_01_Fazhen.NS_Zhiliu_Skill02_01_Fazhen",
+}
+r4_0[410233] = {
+  EffectId = 410233,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Zhiliu/Zhiliu_Skill02_2/NS_Zhiliu_Skill02_02_Ground02_W.NS_Zhiliu_Skill02_02_Ground02_W",
+  FXPriorityType = 90,
+}
+r4_0[410236] = {
+  EffectId = 410236,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Zhiliu/Zhiliu_Skill02_2/NS_Zhiliu_Skill02_02_Ground02_Range_W.NS_Zhiliu_Skill02_02_Ground02_Range_W",
+  FXPriorityType = 90,
 }
 r4_0[420102] = {
   EffectId = 420102,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Yuming/NS_Yuming_Skill01_HandLightnin_002.NS_Yuming_Skill01_HandLightnin_002",
-  PlayLocation = r0_0.RT_43,
+  PlayLocation = r0_0.RT_46,
 }
 r4_0[420103] = {
   EffectId = 420103,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Yuming/NS_Yuming_Skill02_Lightening_S.NS_Yuming_Skill02_Lightening_S",
   PlayFXCD = 0.1,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 420101,
 }
 r4_0[420104] = {
@@ -3933,26 +4446,27 @@ r4_0[420104] = {
 }
 r4_0[420122] = {
   EffectId = 420122,
-  EffectParam = r0_0.RT_79,
+  EffectParam = r0_0.RT_85,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Lise/NS_lise_shouji.NS_lise_shouji",
   FXPriorityType = 90,
   IsHitFX = true,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[420128] = {
   EffectId = 420128,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Lise/NS_lise_shouji.NS_lise_shouji",
   FXPriorityType = 90,
+  NotDestroyWithTarget = true,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 410108,
 }
 r4_0[420211] = {
   EffectId = 420211,
   EffectParam = {
-    Location = r0_0.RT_112,
-    Rotation = r0_0.RT_28,
+    Location = r0_0.RT_122,
+    Rotation = r0_0.RT_31,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Landi/NS_Landi_Skill01_03.NS_Landi_Skill01_03",
   FXPriorityType = 90,
@@ -3968,7 +4482,7 @@ r4_0[420222] = {
   DeactiveParam = "DeadTime",
   DelayDeactiveTime = 2,
   EffectId = 420222,
-  EffectParam = r0_0.RT_69,
+  EffectParam = r0_0.RT_71,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Landi/NS_Landi_Skill02_Shield_01.NS_Landi_Skill02_Shield_01",
   FXPriorityType = 100,
   SoundID = 420208,
@@ -4054,7 +4568,7 @@ r4_0[430151] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Xibi/NS_Xibi_Skill02_Line.NS_Xibi_Skill02_Line",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
-  TargetLocation = r0_0.RT_44,
+  TargetLocation = r0_0.RT_47,
 }
 r4_0[430152] = {
   EffectId = 430152,
@@ -4087,7 +4601,7 @@ r4_0[430156] = {
 }
 r4_0[510101] = {
   EffectId = 510101,
-  EffectParam = r0_0.RT_123,
+  EffectParam = r0_0.RT_135,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Songlu/NS_Songlu_Skill01_Explo.NS_Songlu_Skill01_Explo",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
@@ -4097,7 +4611,7 @@ r4_0[510102] = {
   DeactiveParam = "Deactive",
   DelayDeactiveTime = 3,
   EffectId = 510102,
-  EffectParam = r0_0.RT_124,
+  EffectParam = r0_0.RT_136,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Songlu/NS_Songlu_Skill02_Running.NS_Songlu_Skill02_Running",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
@@ -4107,26 +4621,26 @@ r4_0[510103] = {
   DeactiveParam = "Deactive",
   DelayDeactiveTime = 3,
   EffectId = 510103,
-  EffectParam = r0_0.RT_124,
+  EffectParam = r0_0.RT_136,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Songlu/NS_Songlu_Skill02_Trail01.NS_Songlu_Skill02_Trail01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_42,
+  PlayLocation = r0_0.RT_45,
 }
 r4_0[510104] = {
   DeactiveParam = "Deactive",
   DelayDeactiveTime = 3,
   EffectId = 510104,
-  EffectParam = r0_0.RT_124,
+  EffectParam = r0_0.RT_136,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Songlu/NS_Songlu_Skill02_Trail02.NS_Songlu_Skill02_Trail02",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_38,
+  PlayLocation = r0_0.RT_41,
 }
 r4_0[510105] = {
   EffectId = 510105,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Songlu/NS_Songlu_Hit.NS_Songlu_Hit",
   FXPriorityType = 45,
   IsHitFX = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[510106] = {
   DeactiveParam = "Deactive",
@@ -4134,7 +4648,7 @@ r4_0[510106] = {
   EffectId = 510106,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Songlu/NS_Songlu_Buff_Loop.NS_Songlu_Buff_Loop",
   FXPriorityType = 45,
-  PlayLocation = r0_0.RT_125,
+  PlayLocation = r0_0.RT_137,
   SoundID = 510105,
 }
 r5_0 = 510108
@@ -4201,13 +4715,13 @@ r4_0[510112] = {
 }
 r4_0[510113] = {
   EffectId = 510113,
-  EffectParam = r0_0.RT_13,
+  EffectParam = r0_0.RT_16,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Songlu/NS_Songlu_Skill01_PPRun.NS_Songlu_Skill01_PPRun",
   FXPriorityType = 90,
 }
 r4_0[510121] = {
   EffectId = 510121,
-  EffectParam = r0_0.RT_123,
+  EffectParam = r0_0.RT_135,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Songlu/NS_Songlu_Skill02_Explo.NS_Songlu_Skill02_Explo",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
@@ -4217,10 +4731,10 @@ r4_0[510201] = {
   DeactiveParam = "DeadTime",
   DelayDeactiveTime = 2,
   EffectId = 510201,
-  EffectParam = r0_0.RT_90,
+  EffectParam = r0_0.RT_97,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Aote/NS_Aote_BuffSelf.NS_Aote_BuffSelf",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
   SoundID = 510204,
 }
 r4_0[510202] = {
@@ -4240,7 +4754,7 @@ r6_0 = {
   EffectId = 510204,
 }
 r6_0.EffectParam = {
-  Location = r0_0.RT_34,
+  Location = r0_0.RT_37,
   scale = {
     0.9,
     0.9,
@@ -4254,17 +4768,17 @@ r6_0.PlayLocation = r0_0.RT_11
 r4_0[r5_0] = r6_0
 r4_0[530101] = {
   EffectId = 530101,
-  EffectParam = r0_0.RT_37,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Saiqi/NS_Saiqi_Skill1_Rune.NS_Saiqi_Skill1_Rune",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   ReplaceEffectPaths = {
     [530199] = "/Game/Asset/Effect/Niagara/Player/Saiqi01/NS_Saiqi01_Skill1_Rune.NS_Saiqi01_Skill1_Rune",
   },
 }
 r4_0[530102] = {
   EffectId = 530102,
-  EffectParam = r0_0.RT_126,
+  EffectParam = r0_0.RT_138,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Saiqi/NS_Saiqi_Butterfly_Bullet.NS_Saiqi_Butterfly_Bullet",
   FXPriorityType = 90,
   ReplaceEffectPaths = {
@@ -4286,7 +4800,7 @@ r4_0[530104] = {
   EffectId = 530104,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Saiqi/NS_Saiqi_Butterfly_Destroy.NS_Saiqi_Butterfly_Destroy",
   FXPriorityType = 90,
-  ReplaceEffectPaths = r0_0.RT_127,
+  ReplaceEffectPaths = r0_0.RT_139,
 }
 r4_0[530105] = {
   DeactiveParam = "DeadTime",
@@ -4303,7 +4817,7 @@ r4_0[530106] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Saiqi/NS_Saiqi_Skill01_Explode.NS_Saiqi_Skill01_Explode",
   FXPriorityType = 90,
   PlayFXCD = 0.2,
-  PlayLocation = r0_0.RT_44,
+  PlayLocation = r0_0.RT_47,
   ReplaceEffectPaths = {
     [530199] = "/Game/Asset/Effect/Niagara/Player/Saiqi01/NS_Saiqi01_Skill01_Explode.NS_Saiqi01_Skill01_Explode",
   },
@@ -4331,7 +4845,7 @@ r4_0[530112] = {
   DeactiveParam = "DeadTime",
   DelayDeactiveTime = 0.5,
   EffectId = 530112,
-  EffectParam = r0_0.RT_37,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Saiqi/NS_Saiqi_Skill01_InBuff.NS_Saiqi_Skill01_InBuff",
   FXPriorityType = 90,
   ReplaceEffectPaths = {
@@ -4413,11 +4927,11 @@ r4_0[530123] = {
 r4_0[530141] = {
   EffectId = 530141,
   EffectMaxNum = 5,
-  EffectParam = r0_0.RT_129,
+  EffectParam = r0_0.RT_124,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Saiqi/NS_Saiqi_Butterfly_Destroy.NS_Saiqi_Butterfly_Destroy",
   FXPriorityType = 45,
   IsHitFX = true,
-  ReplaceEffectPaths = r0_0.RT_127,
+  ReplaceEffectPaths = r0_0.RT_139,
 }
 r4_0[530171] = {
   EffectId = 530171,
@@ -4445,7 +4959,7 @@ r4_0[540112] = {
   EffectId = 540112,
   EffectPath = "/Game/Asset/Effect/Niagara/NPC/Dafu/NS_Dafu_Skill01_Smoke.NS_Dafu_Skill01_Smoke",
   FXPriorityType = 45,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 540101,
 }
 r4_0[540121] = {
@@ -4458,10 +4972,10 @@ r4_0[540122] = {
   DeactiveParam = "Deactive",
   DelayDeactiveTime = 0.5,
   EffectId = 540122,
-  EffectParam = r0_0.RT_37,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/NPC/Dafu/NS_Dafu_Skill01_Smoke.NS_Dafu_Skill01_Smoke",
   FXPriorityType = 45,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 540101,
 }
 r4_0[540123] = {
@@ -4545,7 +5059,7 @@ r4_0[600010] = {
   EffectId = 600010,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Debuff_Blood.NS_Debuff_Blood",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[600012] = {
   DeactiveParam = "Deactive",
@@ -4553,7 +5067,7 @@ r4_0[600012] = {
   EffectId = 600012,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jt/NS_Common_StunParalysis.NS_Common_StunParalysis",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_131,
+  PlayLocation = r0_0.RT_14,
   SoundID = 700205,
 }
 r4_0[600013] = {
@@ -4562,7 +5076,7 @@ r4_0[600013] = {
   EffectId = 600013,
   EffectParam = {
     BaseObBloodUI = 1,
-    Location = r0_0.RT_58,
+    Location = r0_0.RT_61,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Common_chaofeng.NS_Common_chaofeng",
   NotFollowRotation = true,
@@ -4571,7 +5085,7 @@ r4_0[600013] = {
 r4_0[600014] = {
   EffectId = 600014,
   EffectMaxNum = 12,
-  EffectParam = r0_0.RT_60,
+  EffectParam = r0_0.RT_63,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Common_Spawn.NS_Common_Spawn",
   NotFollowRotation = true,
   PlayLocation = r0_0.RT_11,
@@ -4580,7 +5094,7 @@ r4_0[600100] = {
   EffectId = 600100,
   EffectPath = "/Game/Asset/Effect/Niagara/Common/Player/NS_hit_Water_loop.NS_Hit_Water_Loop",
   FXPriorityType = 40,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
   WithEffectShape = true,
 }
 r4_0[600102] = {
@@ -4616,26 +5130,18 @@ r4_0[600204] = {
 }
 r4_0[600205] = {
   EffectId = 600205,
-  EffectParam = r0_0.RT_132,
+  EffectParam = r0_0.RT_142,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_AimlineOn.NS_AimlineOn",
   FXPriorityType = 80,
-  PlayLocation = r0_0.RT_67,
-  TargetLocation = r0_0.RT_44,
+  PlayLocation = r0_0.RT_74,
+  TargetLocation = r0_0.RT_47,
 }
-r5_0 = 600301
-r6_0 = {
+r4_0[600301] = {
   EffectId = 600301,
+  EffectParam = r0_0.RT_144,
+  EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Shield_Creature.NS_Strong_Shield_Creature",
+  FXPriorityType = 80,
 }
-r6_0.EffectParam = {
-  scale = {
-    0.2,
-    0.2,
-    0.2
-  },
-}
-r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Shield_Creature.NS_Strong_Shield_Creature"
-r6_0.FXPriorityType = 80
-r4_0[r5_0] = r6_0
 r4_0[600302] = {
   EffectId = 600302,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Gr/NS_Gr_Piaofu_Skill01_Hit.NS_Gr_Piaofu_Skill01_Hit",
@@ -4689,7 +5195,7 @@ r4_0[600503] = {
   EffectId = 600503,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Gr/NS_GR_Longcao_Debuff.NS_GR_Longcao_Debuff",
   FXPriorityType = 60,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[600504] = {
   EffectId = 600504,
@@ -4703,7 +5209,7 @@ r4_0[600505] = {
   EffectId = 600505,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Gr/NS_GR_Longcao_FightIdle02_Loop.NS_GR_Longcao_FightIdle02_Loop",
   FXPriorityType = 80,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
   SoundID = 600505,
 }
 r4_0[600506] = {
@@ -4761,7 +5267,7 @@ r4_0[601101] = {
     socket = "branch_left01_b1",
   },
   SoundID = 700321,
-  TargetLocation = r0_0.RT_44,
+  TargetLocation = r0_0.RT_47,
 }
 r4_0[601201] = {
   EffectId = 601201,
@@ -4828,11 +5334,11 @@ r4_0[601604] = {
 }
 r4_0[601605] = {
   EffectId = 601605,
-  EffectParam = r0_0.RT_132,
+  EffectParam = r0_0.RT_142,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_AimlineOn.NS_AimlineOn",
   FXPriorityType = 80,
-  PlayLocation = r0_0.RT_67,
-  TargetLocation = r0_0.RT_44,
+  PlayLocation = r0_0.RT_74,
+  TargetLocation = r0_0.RT_47,
 }
 r4_0[601606] = {
   EffectId = 601606,
@@ -4944,17 +5450,17 @@ r4_0[700101] = {
   DeactiveParam = "Deactive",
   DelayDeactiveTime = 0.7,
   EffectId = 700101,
-  EffectParam = r0_0.RT_119,
+  EffectParam = r0_0.RT_131,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_AimlineOn.NS_AimlineOn",
   FXPriorityType = 80,
-  PlayLocation = r0_0.RT_67,
-  TargetLocation = r0_0.RT_125,
+  PlayLocation = r0_0.RT_74,
+  TargetLocation = r0_0.RT_137,
 }
 r4_0[700102] = {
   EffectId = 700102,
   EffectParam = {
     Location = r0_0.RT_1,
-    scale = r0_0.RT_81,
+    scale = r0_0.RT_89,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jt/NS_Capture_Invisible_Smoke.NS_Capture_Invisible_Smoke",
   FXPriorityType = 80,
@@ -4967,10 +5473,10 @@ r4_0[700103] = {
 }
 r4_0[700104] = {
   EffectId = 700104,
-  EffectParam = r0_0.RT_73,
+  EffectParam = r0_0.RT_79,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jt/NS_Jt_Ranger_OpenFire.NS_Jt_Ranger_OpenFire",
   FXPriorityType = 80,
-  PlayLocation = r0_0.RT_67,
+  PlayLocation = r0_0.RT_74,
 }
 r4_0[700105] = {
   DeactiveParam = "Deactive",
@@ -4978,12 +5484,12 @@ r4_0[700105] = {
   EffectId = 700105,
   EffectParam = {
     Life = 0.5,
-    Rotation = r0_0.RT_87,
+    Rotation = r0_0.RT_94,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_AimlineOn.NS_AimlineOn",
   FXPriorityType = 80,
-  PlayLocation = r0_0.RT_67,
-  TargetLocation = r0_0.RT_131,
+  PlayLocation = r0_0.RT_74,
+  TargetLocation = r0_0.RT_14,
 }
 r4_0[700301] = {
   EffectId = 700301,
@@ -5003,7 +5509,7 @@ r4_0[700303] = {
 r4_0[700304] = {
   EffectId = 700304,
   EffectParam = {
-    scale = r0_0.RT_19,
+    scale = r0_0.RT_22,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jt/NS_Jt_Ranger_Grenade_Explode.NS_Jt_Ranger_Grenade_Explode",
   FXPriorityType = 80,
@@ -5044,7 +5550,7 @@ r4_0[700308] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Thunder_Slow.NS_Thunder_Slow",
   FXPriorityType = 80,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[700401] = {
   EffectId = 700401,
@@ -5059,13 +5565,13 @@ r4_0[700501] = {
   EffectId = 700501,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jt/NS_JT_Commander_Buff.NS_JT_Commander_Buff",
   FXPriorityType = 60,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[700502] = {
   EffectId = 700502,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jt/NS_xiaobingBuff_2.NS_xiaobingBuff_2",
   FXPriorityType = 60,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
 }
 r4_0[700601] = {
   DeactiveParam = "DeadTime",
@@ -5077,7 +5583,7 @@ r4_0[700601] = {
     socket = "Tail01_a",
   },
   SoundID = 700202,
-  TargetLocation = r0_0.RT_131,
+  TargetLocation = r0_0.RT_14,
 }
 r4_0[700602] = {
   DeactiveParam = "Deactive",
@@ -5085,7 +5591,7 @@ r4_0[700602] = {
   EffectId = 700602,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jt/NS_HealRobot_Heal.NS_HealRobot_Heal",
   FXPriorityType = 60,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
 }
 r4_0[700701] = {
   EffectId = 700701,
@@ -5124,12 +5630,12 @@ r4_0[700806] = {
   DeactiveParam = "DeadTime",
   EffectId = 700806,
   EffectParam = {
-    Rotation = r0_0.RT_133,
-    scale = r0_0.RT_81,
+    Rotation = r0_0.RT_12,
+    scale = r0_0.RT_89,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jh/NS_Jh_Xianfeng_CoopState_Loop.NS_Jh_Xianfeng_CoopState_Loop",
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
 }
 r4_0[701001] = {
   DeactiveParam = "Deactive",
@@ -5172,7 +5678,7 @@ r4_0[701201] = {
 }
 r4_0[701301] = {
   EffectId = 701301,
-  EffectParam = r0_0.RT_31,
+  EffectParam = r0_0.RT_34,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jt/NS_Jt_Ranger_Bullet_Thunder.NS_Jt_Ranger_Bullet_Thunder",
   FXPriorityType = 80,
   SoundID = 700321,
@@ -5251,19 +5757,19 @@ r4_0[800103] = {
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_AimlineOn.NS_AimlineOn",
   FXPriorityType = 80,
-  PlayLocation = r0_0.RT_67,
-  TargetLocation = r0_0.RT_131,
+  PlayLocation = r0_0.RT_74,
+  TargetLocation = r0_0.RT_14,
 }
 r4_0[800201] = {
   DeactiveParam = "DeadTime",
   EffectId = 800201,
   EffectParam = {
-    Rotation = r0_0.RT_133,
-    scale = r0_0.RT_134,
+    Rotation = r0_0.RT_12,
+    scale = r0_0.RT_13,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jh/NS_Jh_Xianfeng_CoopState_Loop.NS_Jh_Xianfeng_CoopState_Loop",
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_131,
+  PlayLocation = r0_0.RT_14,
 }
 r5_0 = 800202
 r6_0 = {
@@ -5271,18 +5777,18 @@ r6_0 = {
   EffectId = 800202,
 }
 r6_0.EffectParam = {
-  Rotation = r0_0.RT_133,
+  Rotation = r0_0.RT_12,
   color = {
     102,
     12,
     1,
     1
   },
-  scale = r0_0.RT_134,
+  scale = r0_0.RT_13,
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jh/NS_Jh_Xianfeng_CoopState_Loop.NS_Jh_Xianfeng_CoopState_Loop"
 r6_0.NotFollowRotation = true
-r6_0.PlayLocation = r0_0.RT_131
+r6_0.PlayLocation = r0_0.RT_14
 r4_0[r5_0] = r6_0
 r4_0[800301] = {
   EffectId = 800301,
@@ -5293,7 +5799,7 @@ r4_0[800302] = {
   EffectId = 800302,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jt/NS_Jt_Ranger_OpenFire.NS_Jt_Ranger_OpenFire",
   FXPriorityType = 80,
-  PlayLocation = r0_0.RT_67,
+  PlayLocation = r0_0.RT_74,
 }
 r4_0[800303] = {
   EffectId = 800303,
@@ -5314,7 +5820,7 @@ r4_0[800305] = {
 }
 r4_0[850001] = {
   EffectId = 850001,
-  EffectParam = r0_0.RT_136,
+  EffectParam = r0_0.RT_147,
   EffectPath = "/Game/Asset/Effect/Niagara/Common/Monster/NS_knifehit_mon_normal.NS_knifehit_mon_normal",
   FXPriorityType = 90,
   IsHitFX = true,
@@ -5328,7 +5834,7 @@ r4_0[850002] = {
     5
   },
   EffectId = 850002,
-  EffectParam = r0_0.RT_37,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/Common/Monster/NS_hit_mon_thunder.NS_hit_mon_thunder",
   FXPriorityType = 90,
   IsHitFX = true,
@@ -5342,7 +5848,7 @@ r4_0[850004] = {
 r4_0[850005] = {
   EffectId = 850005,
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_125,
+  PlayLocation = r0_0.RT_137,
 }
 r4_0[850006] = {
   EffectId = 850006,
@@ -5364,7 +5870,7 @@ r4_0[850011] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Xibi/NS_Xibi_Hit.NS_Xibi_Hit",
   FXPriorityType = 90,
   PlayFXCD = 0.1,
-  PlayLocation = r0_0.RT_125,
+  PlayLocation = r0_0.RT_137,
   SoundID = 850052,
 }
 r4_0[850031] = {
@@ -5382,7 +5888,7 @@ r4_0[850031] = {
 }
 r4_0[850051] = {
   EffectId = 850051,
-  EffectParam = r0_0.RT_136,
+  EffectParam = r0_0.RT_147,
   FXPriorityType = 90,
   SoundID = 850051,
 }
@@ -5451,7 +5957,7 @@ r4_0[850102] = {
   EffectId = 850102,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Lizhanzhe/NS_Boss_Lizhanzhe_Skill03_Explode.NS_Boss_Lizhanzhe_Skill03_Explode",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 850103,
 }
 r4_0[850103] = {
@@ -5472,7 +5978,7 @@ r4_0[850105] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Lizhanzhe/NS_Boss_Lizhanzhe_Skill05_knife_ground.NS_Boss_Lizhanzhe_Skill05_knife_ground",
   FXPriorityType = 90,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 850104,
 }
 r4_0[850106] = {
@@ -5487,7 +5993,7 @@ r4_0[850107] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Lizhanzhe/NS_Boss_Lizhanzhe_Skill10_Burst.NS_Boss_Lizhanzhe_Skill10_Burst",
   FXPriorityType = 90,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 850106,
 }
 r4_0[850108] = {
@@ -5524,7 +6030,7 @@ r4_0[850204] = {
   EffectId = 850204,
   EffectParam = {
     Life = 999,
-    scale = r0_0.RT_128,
+    scale = r0_0.RT_123,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Saiqi/NS_Boss_Saiqi_Skill07_tornado.NS_Boss_Saiqi_Skill07_tornado",
   FXPriorityType = 90,
@@ -5618,20 +6124,12 @@ r4_0[850302] = {
   FXPriorityType = 90,
   SoundID = 850303,
 }
-r5_0 = 850303
-r6_0 = {
+r4_0[850303] = {
   EffectId = 850303,
+  EffectParam = r0_0.RT_87,
+  EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Shield_Creature.NS_Strong_Shield_Creature",
+  FXPriorityType = 90,
 }
-r6_0.EffectParam = {
-  scale = {
-    0.25,
-    0.25,
-    0.25
-  },
-}
-r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Shield_Creature.NS_Strong_Shield_Creature"
-r6_0.FXPriorityType = 90
-r4_0[r5_0] = r6_0
 r4_0[850304] = {
   CustomDepthValue = 2,
   EffectId = 850304,
@@ -5658,7 +6156,7 @@ r4_0[850306] = {
 r4_0[850307] = {
   EffectId = 850307,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Shijingzhe/NS_Boss_Shijingzhe_Breaks.NS_Boss_Shijingzhe_Breaks",
-  FXPriorityType = 90,
+  FXPriorityType = 100,
   NotFollowRotation = true,
   PlayLocation = {
     socket = "shawl_left01_a",
@@ -5668,7 +6166,7 @@ r4_0[850307] = {
 r4_0[850308] = {
   EffectId = 850308,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Shijingzhe/NS_Boss_Shijingzhe_Breaks.NS_Boss_Shijingzhe_Breaks",
-  FXPriorityType = 90,
+  FXPriorityType = 100,
   NotFollowRotation = true,
   PlayLocation = {
     socket = "shawl_right01_a",
@@ -5677,9 +6175,9 @@ r4_0[850308] = {
 }
 r4_0[850309] = {
   EffectId = 850309,
-  EffectParam = r0_0.RT_137,
+  EffectParam = r0_0.RT_148,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Shijingzhe/NS_Boss_Shijingzhe_Breaks_Right.NS_Boss_Shijingzhe_Breaks_Right",
-  FXPriorityType = 90,
+  FXPriorityType = 100,
   NotFollowRotation = true,
   PlayLocation = {
     socket = "calf_left01_a",
@@ -5688,9 +6186,9 @@ r4_0[850309] = {
 }
 r4_0[850310] = {
   EffectId = 850310,
-  EffectParam = r0_0.RT_137,
+  EffectParam = r0_0.RT_148,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Shijingzhe/NS_Boss_Shijingzhe_Breaks_Right.NS_Boss_Shijingzhe_Breaks_Right",
-  FXPriorityType = 90,
+  FXPriorityType = 100,
   NotFollowRotation = true,
   PlayLocation = {
     socket = "calf_right01_a",
@@ -5701,21 +6199,21 @@ r4_0[850311] = {
   EffectId = 850311,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Shijingzhe/NS_Boss_Shijingzhe_Skill10_Burst.NS_Boss_Shijingzhe_Skill10_Burst",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 850304,
 }
 r4_0[850312] = {
-  EffectColor = r0_0.RT_138,
+  EffectColor = r0_0.RT_149,
   EffectId = 850312,
-  EffectParam = r0_0.RT_140,
+  EffectParam = r0_0.RT_151,
   EffectPath = "/Game/Asset/Effect/Niagara/Common/Player/NS_gunhit_char_01.NS_gunhit_char_01",
   FXPriorityType = 90,
   IsHitFX = true,
 }
 r4_0[850313] = {
-  EffectColor = r0_0.RT_138,
+  EffectColor = r0_0.RT_149,
   EffectId = 850313,
-  EffectParam = r0_0.RT_140,
+  EffectParam = r0_0.RT_151,
   EffectPath = "/Game/Asset/Effect/Niagara/Common/Player/NS_gunhit_char_01.NS_gunhit_char_01",
   FXPriorityType = 90,
   IsHitFX = true,
@@ -5724,7 +6222,7 @@ r4_0[850313] = {
 r4_0[850314] = {
   EffectId = 850314,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Shijingzhe/NS_Boss_Condemn_Light.NS_Boss_Condemn_Light",
-  FXPriorityType = 90,
+  FXPriorityType = 100,
   NotFollowRotation = true,
   PlayLocation = {
     socket = "tongue_01_c",
@@ -5757,11 +6255,11 @@ r6_0.EffectParam = {
     0
   },
   OnGround = true,
-  Rotation = r0_0.RT_56,
+  Rotation = r0_0.RT_59,
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Boss/Shijingzhe/NS_Boss_Shijingzhe_Skill10_Circle1.NS_Boss_Shijingzhe_Skill10_Circle1"
-r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.FXPriorityType = 100
+r6_0.PlayLocation = r0_0.RT_23
 r6_0.SoundID = 850307
 r4_0[r5_0] = r6_0
 r5_0 = 850318
@@ -5775,11 +6273,11 @@ r6_0.EffectParam = {
     0
   },
   OnGround = true,
-  Rotation = r0_0.RT_56,
+  Rotation = r0_0.RT_59,
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Boss/Shijingzhe/NS_Boss_Shijingzhe_Skill10_Circle2.NS_Boss_Shijingzhe_Skill10_Circle2"
-r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.FXPriorityType = 100
+r6_0.PlayLocation = r0_0.RT_23
 r6_0.SoundID = 850308
 r4_0[r5_0] = r6_0
 r5_0 = 850319
@@ -5793,11 +6291,11 @@ r6_0.EffectParam = {
     0
   },
   OnGround = true,
-  Rotation = r0_0.RT_56,
+  Rotation = r0_0.RT_59,
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Boss/Shijingzhe/NS_Boss_Shijingzhe_Skill10_Circle3.NS_Boss_Shijingzhe_Skill10_Circle3"
-r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.FXPriorityType = 100
+r6_0.PlayLocation = r0_0.RT_23
 r6_0.SoundID = 850309
 r4_0[r5_0] = r6_0
 r4_0[850320] = {
@@ -5810,9 +6308,9 @@ r4_0[850321] = {
   DeactiveParam = "DeadTime",
   DelayDeactiveTime = 0.2,
   EffectId = 850321,
-  EffectParam = r0_0.RT_31,
+  EffectParam = r0_0.RT_34,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Shijingzhe/Yundonghui/NS_Boss_Shijingzhe_Skill14_Crystal.NS_Boss_Shijingzhe_Skill14_Crystal",
-  FXPriorityType = 90,
+  FXPriorityType = 100,
   SoundID = 850318,
 }
 r5_0 = 850322
@@ -5829,9 +6327,9 @@ r6_0.EffectParam = {
   },
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Boss/Shijingzhe/Yundonghui/Boss_Shijingzhe_Skill14_Invincible.Boss_Shijingzhe_Skill14_Invincible"
-r6_0.FXPriorityType = 90
+r6_0.FXPriorityType = 100
 r6_0.NotFollowRotation = true
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r6_0.SoundID = 850314
 r4_0[r5_0] = r6_0
 r4_0[850323] = {
@@ -5876,7 +6374,7 @@ r4_0[850404] = {
 }
 r4_0[850405] = {
   EffectId = 850405,
-  EffectParam = r0_0.RT_37,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Saiqi/NS_Saiqi_Skill01_InBuff.NS_Saiqi_Skill01_InBuff",
   FXPriorityType = 90,
   SoundID = 850403,
@@ -5900,7 +6398,7 @@ r4_0[850408] = {
 }
 r4_0[850501] = {
   EffectId = 850501,
-  EffectParam = r0_0.RT_31,
+  EffectParam = r0_0.RT_34,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/LianHuo/NS_Boss_LianHuo_Skill05_FireBall.NS_Boss_LianHuo_Skill05_FireBall",
   FXPriorityType = 90,
   SoundID = 850501,
@@ -5910,7 +6408,7 @@ r4_0[850502] = {
   EffectId = 850502,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/LianHuo/NS_Boss_LianHuo_Skill03_Buff.NS_Boss_LianHuo_Skill03_Buff",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
 }
 r5_0 = 850503
 r6_0 = {
@@ -6010,12 +6508,6 @@ r4_0[850901] = {
   EffectId = 850901,
   FXPriorityType = 100,
 }
-r4_0[850902] = {
-  EffectId = 850902,
-  EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill08_CenterBurst.NS_Boss_Tuosi_Skill08_CenterBurst",
-  FXPriorityType = 100,
-  NotFollowRotation = true,
-}
 r4_0[850903] = {
   EffectId = 850903,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill08_AroundBurst.NS_Boss_Tuosi_Skill08_AroundBurst",
@@ -6033,92 +6525,92 @@ r4_0[850904] = {
 r4_0[850905] = {
   CustomDepthValue = 2,
   EffectId = 850905,
-  EffectParam = r0_0.RT_142,
+  EffectParam = r0_0.RT_153,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill04_Ground2.NS_Boss_Tuosi_Skill04_Ground2",
   FXPriorityType = 100,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[850906] = {
   EffectId = 850906,
-  EffectParam = r0_0.RT_142,
+  EffectParam = r0_0.RT_153,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill04_Decal.NS_Boss_Tuosi_Skill04_Decal",
   FXPriorityType = 100,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[850907] = {
   CustomDepthValue = 2,
   EffectId = 850907,
-  EffectParam = r0_0.RT_144,
+  EffectParam = r0_0.RT_155,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill06_Ground3.NS_Boss_Tuosi_Skill06_Ground3",
   FXPriorityType = 100,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[850908] = {
   EffectId = 850908,
-  EffectParam = r0_0.RT_144,
+  EffectParam = r0_0.RT_155,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill06_Decal.NS_Boss_Tuosi_Skill06_Decal",
   FXPriorityType = 100,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[850909] = {
   CustomDepthValue = 2,
   EffectId = 850909,
-  EffectParam = r0_0.RT_147,
+  EffectParam = r0_0.RT_158,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill06_Ground3.NS_Boss_Tuosi_Skill06_Ground3",
   FXPriorityType = 100,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[850910] = {
   EffectId = 850910,
-  EffectParam = r0_0.RT_147,
+  EffectParam = r0_0.RT_158,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill06_Decal.NS_Boss_Tuosi_Skill06_Decal",
   FXPriorityType = 100,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[850911] = {
   CustomDepthValue = 2,
   EffectId = 850911,
-  EffectParam = r0_0.RT_149,
+  EffectParam = r0_0.RT_160,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill06_Ground3.NS_Boss_Tuosi_Skill06_Ground3",
   FXPriorityType = 100,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[850912] = {
   EffectId = 850912,
-  EffectParam = r0_0.RT_149,
+  EffectParam = r0_0.RT_160,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill06_Decal.NS_Boss_Tuosi_Skill06_Decal",
   FXPriorityType = 100,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[850913] = {
   CustomDepthValue = 2,
   EffectId = 850913,
-  EffectParam = r0_0.RT_151,
+  EffectParam = r0_0.RT_162,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill04_Ground2.NS_Boss_Tuosi_Skill04_Ground2",
   FXPriorityType = 100,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[850914] = {
   EffectId = 850914,
-  EffectParam = r0_0.RT_151,
+  EffectParam = r0_0.RT_162,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill04_Decal.NS_Boss_Tuosi_Skill04_Decal",
   FXPriorityType = 100,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[850915] = {
   CustomDepthValue = 2,
   EffectId = 850915,
-  EffectParam = r0_0.RT_153,
+  EffectParam = r0_0.RT_164,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill04_Ground2.NS_Boss_Tuosi_Skill04_Ground2",
   FXPriorityType = 100,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[850916] = {
   EffectId = 850916,
-  EffectParam = r0_0.RT_153,
+  EffectParam = r0_0.RT_164,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill04_Decal.NS_Boss_Tuosi_Skill04_Decal",
   FXPriorityType = 100,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r5_0 = 850917
 r6_0 = {
@@ -6133,7 +6625,7 @@ r6_0.EffectParam = {
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill05_Burst.NS_Boss_Tuosi_Skill05_Burst"
 r6_0.FXPriorityType = 100
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r6_0.SoundID = 850903
 r4_0[r5_0] = r6_0
 r5_0 = 850918
@@ -6149,7 +6641,7 @@ r6_0.EffectParam = {
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill05_Burst.NS_Boss_Tuosi_Skill05_Burst"
 r6_0.FXPriorityType = 100
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r6_0.SoundID = 850903
 r4_0[r5_0] = r6_0
 r5_0 = 850919
@@ -6165,7 +6657,7 @@ r6_0.EffectParam = {
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill05_Burst.NS_Boss_Tuosi_Skill05_Burst"
 r6_0.FXPriorityType = 100
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r6_0.SoundID = 850903
 r4_0[r5_0] = r6_0
 r4_0[850920] = {
@@ -6176,20 +6668,20 @@ r4_0[850920] = {
 }
 r4_0[850921] = {
   EffectId = 850921,
-  EffectParam = r0_0.RT_95,
+  EffectParam = r0_0.RT_105,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill09_TP.NS_Boss_Tuosi_Skill09_TP",
   FXPriorityType = 100,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[850922] = {
   EffectId = 850922,
   EffectParam = {
-    Location = r0_0.RT_91,
+    Location = r0_0.RT_98,
     OnGround = true,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill04_Burst.NS_Boss_Tuosi_Skill04_Burst",
   FXPriorityType = 100,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
   SoundID = 850901,
 }
 r4_0[850923] = {
@@ -6200,16 +6692,20 @@ r4_0[850923] = {
 }
 r4_0[851001] = {
   EffectId = 851001,
-  EffectParam = r0_0.RT_31,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Heilong/NS_Boss_Heilong_Skill04_02_Boom.NS_Boss_Heilong_Skill04_02_Boom",
   FXPriorityType = 90,
   SoundID = 851005,
 }
 r4_0[851002] = {
   EffectId = 851002,
-  EffectParam = r0_0.RT_154,
+  EffectParam = {
+    Location = r0_0.RT_93,
+    scale = r0_0.RT_89,
+  },
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Heilong/NS_Boss_Heilong_Skill04_DimianRing.NS_Boss_Heilong_Skill04_DimianRing",
   FXPriorityType = 90,
+  SoundID = 851019,
 }
 r4_0[851003] = {
   EffectId = 851003,
@@ -6239,48 +6735,74 @@ r4_0[851004] = {
 }
 r4_0[851005] = {
   EffectId = 851005,
-  EffectParam = r0_0.RT_129,
+  EffectParam = r0_0.RT_124,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Heilong/NS_Boss_Heilong_Skill05_Dabaofa02.NS_Boss_Heilong_Skill05_Dabaofa02",
   FXPriorityType = 90,
 }
-r4_0[851006] = {
+r5_0 = 851006
+r6_0 = {
   EffectId = 851006,
-  EffectParam = r0_0.RT_62,
-  EffectPath = "/Game/Asset/Effect/Niagara/Boss/Heilong/NS_Boss_Heilong_Skill05_longjing_Boom.NS_Boss_Heilong_Skill05_longjing_Boom",
-  FXPriorityType = 90,
-  SoundID = 851017,
 }
+r6_0.EffectParam = {
+  Location = {
+    0,
+    0,
+    -200
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Boss/Heilong/NS_Boss_Heilong_Skill05_longjing_Boom.NS_Boss_Heilong_Skill05_longjing_Boom"
+r6_0.FXPriorityType = 90
+r6_0.SoundID = 851017
+r4_0[r5_0] = r6_0
 r4_0[851007] = {
   EffectId = 851007,
-  EffectParam = r0_0.RT_62,
+  EffectParam = r0_0.RT_66,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Shield_Creature.NS_Strong_Shield_Creature",
   FXPriorityType = 90,
 }
 r4_0[851008] = {
   EffectId = 851008,
-  EffectParam = r0_0.RT_126,
+  EffectParam = {
+    Location = r0_0.RT_165,
+    OnGround = true,
+    scale = r0_0.RT_35,
+  },
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Heilong/NS_Boss_Heilong_Skill07_FireStrom.NS_Boss_Heilong_Skill07_FireStrom",
   SoundID = 851013,
 }
 r4_0[851009] = {
   EffectId = 851009,
+  EffectParam = {
+    Location = r0_0.RT_93,
+    scale = r0_0.RT_33,
+  },
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Heilong/NS_Boss_Heilong_Skill07_Groud.NS_Boss_Heilong_Skill07_Groud",
-}
-r4_0[851010] = {
-  EffectId = 851010,
-  EffectPath = "/Game/Asset/Effect/Niagara/Boss/Heilong/NS_Boss_Heilong_Skill07_Groud02.NS_Boss_Heilong_Skill07_Groud02",
-  SoundID = 851011,
+  SoundID = 851021,
 }
 r4_0[851011] = {
   EffectId = 851011,
-  EffectParam = r0_0.RT_31,
-  EffectPath = "/Game/Asset/Effect/Niagara/Boss/Heilong/NS_Boss_Heilong_Skill07_Groud.NS_Boss_Heilong_Skill07_Groud",
+  EffectParam = {
+    Location = r0_0.RT_165,
+    OnGround = true,
+  },
+  EffectPath = "/Game/Asset/Effect/Niagara/Boss/Heilong/NS_Boss_Heilong_Skill07_FireStrom_End.NS_Boss_Heilong_Skill07_FireStrom_End",
+  SoundID = 851020,
 }
-r4_0[851012] = {
-  EffectId = 851012,
-  EffectParam = r0_0.RT_31,
-  EffectPath = "/Game/Asset/Effect/Niagara/Boss/Heilong/NS_Boss_Heilong_Skill07_Groud02.NS_Boss_Heilong_Skill07_Groud02",
-  SoundID = 851011,
+r4_0[851013] = {
+  EffectId = 851013,
+  EffectPath = "/Game/Asset/Effect/Niagara/Boss/Heilong/NS_Boss_Heilong_Skill09_fireball.NS_Boss_Heilong_Skill09_fireball",
+}
+r4_0[851014] = {
+  EffectId = 851014,
+  EffectPath = "/Game/Asset/Effect/Niagara/Boss/Heilong/NS_Boss_Heilong_Skill07_Wave.NS_Boss_Heilong_Skill07_Wave",
+}
+r4_0[851015] = {
+  EffectId = 851015,
+  EffectPath = "/Game/Asset/Effect/Niagara/Boss/Heilong/NS_Boss_Heilong_Skill08_fireball02.NS_Boss_Heilong_Skill08_fireball02",
+}
+r4_0[851101] = {
+  EffectId = 851101,
+  EffectPath = "/Game/Asset/Effect/Niagara/Boss/Bailong/NS_Boss_Bailong_Skill04_Lightning.NS_Boss_Bailong_Skill04_Lightning",
 }
 r5_0 = 851201
 r6_0 = {
@@ -6299,20 +6821,20 @@ r4_0[r5_0] = r6_0
 r4_0[851202] = {
   EffectId = 851202,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Linen/NS_Boss_Linen_Skill08_Dun02.NS_Boss_Linen_Skill08_Dun02",
-  FXPriorityType = 90,
+  FXPriorityType = 100,
   SoundID = 851226,
 }
 r4_0[851203] = {
   EffectId = 851203,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Linen/NS_Boss_Linen_Skill08_DunCrush02.NS_Boss_Linen_Skill08_DunCrush02",
-  FXPriorityType = 90,
+  FXPriorityType = 100,
 }
 r4_0[851204] = {
   EffectId = 851204,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Linen/NS_Boss_Linen_Skill03_Explode.NS_Boss_Linen_Skill03_Explode",
-  FXPriorityType = 90,
+  FXPriorityType = 100,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 851205,
 }
 r4_0[851205] = {
@@ -6327,18 +6849,18 @@ r4_0[851206] = {
   DelayDeactiveTime = 2,
   EffectId = 851206,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Linen/NS_Boss_Linen_Skill03_MissileBullet.NS_Boss_Linen_Skill03_MissileBullet",
-  FXPriorityType = 90,
+  FXPriorityType = 100,
   SoundID = 851204,
 }
 r4_0[851207] = {
   EffectId = 851207,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Linen/NS_Boss_Linen_Skill08_DunCrush.NS_Boss_Linen_Skill08_DunCrush",
-  FXPriorityType = 90,
+  FXPriorityType = 100,
 }
 r4_0[851208] = {
   EffectId = 851208,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Linen/NS_Boss_Linen_Skill08_Dun.NS_Boss_Linen_Skill08_Dun",
-  FXPriorityType = 90,
+  FXPriorityType = 100,
   SoundID = 851226,
 }
 r4_0[851209] = {
@@ -6358,7 +6880,7 @@ r4_0[851210] = {
 r4_0[851211] = {
   EffectId = 851211,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Linen/NS_Boss_Linen_Skill02_Thorn.NS_Boss_Linen_Skill02_Thorn",
-  FXPriorityType = 90,
+  FXPriorityType = 100,
 }
 r4_0[851212] = {
   EffectId = 851212,
@@ -6369,26 +6891,26 @@ r4_0[851212] = {
 r4_0[851213] = {
   EffectId = 851213,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Linen/NS_Boss_Linen_Skill09_Explode.NS_Boss_Linen_Skill09_Explode",
-  FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
+  FXPriorityType = 100,
+  PlayLocation = r0_0.RT_19,
   SoundID = 851228,
 }
 r4_0[851214] = {
   DeactiveParam = "DeadTime",
   DelayDeactiveTime = 2,
   EffectId = 851214,
-  EffectParam = r0_0.RT_37,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Linen/NS_Boss_Linen_Skill03_MissileBullet.NS_Boss_Linen_Skill03_MissileBullet",
-  FXPriorityType = 90,
+  FXPriorityType = 100,
   SoundID = 851204,
 }
 r4_0[851215] = {
   EffectId = 851215,
-  EffectParam = r0_0.RT_31,
+  EffectParam = r0_0.RT_34,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Linen/NS_Boss_Linen_Skill03_Explode.NS_Boss_Linen_Skill03_Explode",
   FXPriorityType = 90,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 851205,
 }
 r4_0[851216] = {
@@ -6513,15 +7035,15 @@ r6_0.EffectParam = {
   },
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Boss/Linen/NS_Boss_Linen_Skill07_Mesh.NS_Boss_Linen_Skill07_Mesh"
-r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.FXPriorityType = 100
+r6_0.PlayLocation = r0_0.RT_23
 r4_0[r5_0] = r6_0
 r4_0[851229] = {
   EffectId = 851229,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Linen/NS_Boss_Linen_Skill11_Explode.NS_Boss_Linen_Skill11_Explode",
-  FXPriorityType = 99,
+  FXPriorityType = 100,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 851205,
 }
 r5_0 = 851230
@@ -6536,10 +7058,10 @@ r6_0.EffectParam = {
   },
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Boss/Linen/NS_Boss_Linen_Skill08_Hit.NS_Boss_Linen_Skill08_Hit"
-r6_0.FXPriorityType = 99
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.FXPriorityType = 100
+r6_0.PlayLocation = r0_0.RT_23
 r6_0.SoundID = 851235
-r6_0.TargetLocation = r0_0.RT_155
+r6_0.TargetLocation = r0_0.RT_166
 r4_0[r5_0] = r6_0
 r5_0 = 851231
 r6_0 = {
@@ -6553,10 +7075,10 @@ r6_0.EffectParam = {
   },
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Boss/Linen/NS_Boss_Linen_Skill08_Hit.NS_Boss_Linen_Skill08_Hit"
-r6_0.FXPriorityType = 99
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.FXPriorityType = 100
+r6_0.PlayLocation = r0_0.RT_23
 r6_0.SoundID = 851235
-r6_0.TargetLocation = r0_0.RT_155
+r6_0.TargetLocation = r0_0.RT_166
 r4_0[r5_0] = r6_0
 r5_0 = 851232
 r6_0 = {
@@ -6570,10 +7092,10 @@ r6_0.EffectParam = {
   },
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Boss/Linen/NS_Boss_Linen_Skill08_Hit.NS_Boss_Linen_Skill08_Hit"
-r6_0.FXPriorityType = 99
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.FXPriorityType = 100
+r6_0.PlayLocation = r0_0.RT_23
 r6_0.SoundID = 851235
-r6_0.TargetLocation = r0_0.RT_155
+r6_0.TargetLocation = r0_0.RT_166
 r4_0[r5_0] = r6_0
 r4_0[851301] = {
   EffectId = 851301,
@@ -6661,7 +7183,7 @@ r4_0[851315] = {
   EffectId = 851315,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Kuxiu/NS_Kuxiu_Skill07_Weapon.NS_Kuxiu_Skill07_Weapon",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
   SoundID = 851314,
 }
 r4_0[851316] = {
@@ -6724,7 +7246,7 @@ r4_0[851409] = {
 r4_0[851410] = {
   EffectId = 851410,
   EffectParam = {
-    scale = r0_0.RT_59,
+    scale = r0_0.RT_62,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Burst_Fire.NS_Strong_Burst_Fire",
   FXPriorityType = 90,
@@ -6807,33 +7329,23 @@ r4_0[851512] = {
   FXPriorityType = 90,
   SoundID = 851515,
 }
-r4_0[851513] = {
+r5_0 = 851513
+r6_0 = {
   EffectId = 851513,
-  EffectParam = {
-    scale = r0_0.RT_156,
-  },
-  EffectPath = "/Game/Asset/Effect/Niagara/Boss/Jushizhe/Ns_jushi_skill03_chuansong.Ns_jushi_skill03_chuansong",
-  FXPriorityType = 90,
 }
+r6_0.EffectParam = {
+  scale = {
+    1.75,
+    1.75,
+    1.75
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Boss/Jushizhe/Ns_jushi_skill03_chuansong.Ns_jushi_skill03_chuansong"
+r6_0.FXPriorityType = 90
+r4_0[r5_0] = r6_0
 r4_0[851514] = {
   EffectId = 851514,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Jushizhe/NS_jushi_dandao.NS_jushi_dandao",
-  FXPriorityType = 90,
-}
-r4_0[851601] = {
-  EffectId = 851601,
-  EffectParam = r0_0.RT_160,
-  EffectPath = "/Game/Asset/Effect/Niagara/Boss/Lizhanzhe/NS_Boss_Lizhanzhe_Skill05_knife_bullet.NS_Boss_Lizhanzhe_Skill05_knife_bullet",
-  FXPriorityType = 90,
-}
-r4_0[851602] = {
-  EffectId = 851602,
-  EffectParam = {
-    Location = r0_0.RT_1,
-    Rotation = r0_0.RT_45,
-    scale = r0_0.RT_156,
-  },
-  EffectPath = "/Game/Asset/Effect/Niagara/Boss/Jushizhe/Ns_jushi_skill03_chuansong.Ns_jushi_skill03_chuansong",
   FXPriorityType = 90,
 }
 r4_0[851603] = {
@@ -6842,14 +7354,14 @@ r4_0[851603] = {
   EffectId = 851603,
   EffectParam = {
     Life = 4.4,
-    scale = r0_0.RT_161,
+    scale = r0_0.RT_167,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_AimlineOn.NS_AimlineOn",
   FXPriorityType = 80,
   PlayLocation = {
     socket = "RightArm_slot",
   },
-  TargetLocation = r0_0.RT_131,
+  TargetLocation = r0_0.RT_14,
 }
 r4_0[851604] = {
   EffectId = 851604,
@@ -6863,25 +7375,25 @@ r4_0[851605] = {
 }
 r4_0[851606] = {
   EffectId = 851606,
-  EffectParam = r0_0.RT_162,
+  EffectParam = r0_0.RT_169,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Gr/NS_Gr_Zhuoxin_Skill01_Bullet.NS_Gr_Zhuoxin_Skill01_Bullet",
   FXPriorityType = 80,
 }
 r4_0[851607] = {
   EffectId = 851607,
-  EffectParam = r0_0.RT_162,
+  EffectParam = r0_0.RT_169,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Gr/NS_Gr_Zhuoxin_Skill01_Explode.NS_Gr_Zhuoxin_Skill01_Explode",
   FXPriorityType = 40,
 }
 r4_0[851608] = {
   EffectId = 851608,
-  EffectParam = r0_0.RT_37,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Gr/NS_Gr_Zhuoxin_Skill01_Bullet.NS_Gr_Zhuoxin_Skill01_Bullet",
   FXPriorityType = 80,
 }
 r4_0[851609] = {
   EffectId = 851609,
-  EffectParam = r0_0.RT_37,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Gr/NS_Gr_Zhuoxin_Skill01_Explode.NS_Gr_Zhuoxin_Skill01_Explode",
   FXPriorityType = 40,
 }
@@ -6898,23 +7410,23 @@ r6_0.EffectParam = {
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jh/NS_SQ_Baozha_Skill01_Absorb.NS_SQ_Baozha_Skill01_Absorb"
 r6_0.FXPriorityType = 40
-r6_0.PlayLocation = r0_0.RT_163
+r6_0.PlayLocation = r0_0.RT_170
 r4_0[r5_0] = r6_0
 r4_0[851611] = {
   EffectId = 851611,
   EffectParam = {
-    Rotation = r0_0.RT_28,
-    scale = r0_0.RT_161,
+    Rotation = r0_0.RT_31,
+    scale = r0_0.RT_167,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jh/NS_Jh_Zhishi_Skill01_Openfire.NS_Jh_Zhishi_Skill01_Openfire",
   FXPriorityType = 80,
-  PlayLocation = r0_0.RT_163,
+  PlayLocation = r0_0.RT_170,
 }
 r4_0[851612] = {
   EffectId = 851612,
   EffectParam = {
     Location = r0_0.RT_1,
-    scale = r0_0.RT_159,
+    scale = r0_0.RT_168,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Gr/NS_Gr_Zhuoxin_Skill01_Explode.NS_Gr_Zhuoxin_Skill01_Explode",
   FXPriorityType = 90,
@@ -6924,8 +7436,8 @@ r4_0[851613] = {
   EffectId = 851613,
   EffectParam = {
     Location = r0_0.RT_1,
-    Rotation = r0_0.RT_45,
-    scale = r0_0.RT_59,
+    Rotation = r0_0.RT_48,
+    scale = r0_0.RT_62,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Lizhanzhe/NS_Boss_Lizhanzhe_Skill05_knife_bullet.NS_Boss_Lizhanzhe_Skill05_knife_bullet",
   FXPriorityType = 80,
@@ -6937,27 +7449,41 @@ r4_0[851614] = {
   FXPriorityType = 90,
 }
 r4_0[851615] = {
-  EffectColor = r0_0.RT_164,
+  EffectColor = r0_0.RT_171,
   EffectId = 851615,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Gr/NS_piaofu_bubble.NS_piaofu_bubble",
   FXPriorityType = 90,
 }
 r4_0[851617] = {
-  EffectColor = r0_0.RT_164,
+  EffectColor = r0_0.RT_171,
   EffectId = 851617,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Gr/NS_piaofu_bubble_Boom.NS_piaofu_bubble_Boom",
   FXPriorityType = 90,
 }
-r4_0[851618] = {
+r5_0 = 851618
+r6_0 = {
   EffectId = 851618,
-  EffectParam = r0_0.RT_160,
-  EffectPath = "/Game/Asset/Effect/Niagara/Boss/Lizhanzhe/NS_Boss_Lizhanzhe_Skill05_knife_bullet.NS_Boss_Lizhanzhe_Skill05_knife_bullet",
 }
+r6_0.EffectParam = {
+  Location = {
+    1000,
+    0,
+    0
+  },
+  Rotation = {
+    0,
+    180,
+    180
+  },
+  scale = r0_0.RT_168,
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Boss/Lizhanzhe/NS_Boss_Lizhanzhe_Skill05_knife_bullet.NS_Boss_Lizhanzhe_Skill05_knife_bullet"
+r4_0[r5_0] = r6_0
 r4_0[851701] = {
   DeactiveParam = "Deactive",
   DelayDeactiveTime = 2,
   EffectId = 851701,
-  EffectParam = r0_0.RT_62,
+  EffectParam = r0_0.RT_66,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Yuming/NS_Boss_Yuming_Attack_Shockwave.NS_Boss_Yuming_Attack_Shockwave",
   PlayFXCD = 0.1,
   SoundID = 851703,
@@ -6988,7 +7514,6 @@ r4_0[851801] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/juque/NS_Boss_Juque_Skill03_line.NS_Boss_Juque_Skill03_line",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
-  SoundID = 240101,
   TargetLocation = {
     socket = "upperarm_lanchport",
   },
@@ -6996,10 +7521,12 @@ r4_0[851801] = {
 r4_0[851802] = {
   EffectId = 851802,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/juque/NS_Boss_Juque_Skill02_Ball.NS_Boss_Juque_Skill02_Ball",
+  SoundID = 851802,
 }
 r4_0[851803] = {
   EffectId = 851803,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/juque/NS_Boss_Juque_Skill03_Bullet.NS_Boss_Juque_Skill03_Bullet",
+  SoundID = 851805,
 }
 r4_0[851804] = {
   EffectId = 851804,
@@ -7008,6 +7535,7 @@ r4_0[851804] = {
 r4_0[851805] = {
   EffectId = 851805,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/juque/NS_Boss_juque_Skill06_Burst.NS_Boss_juque_Skill06_Burst",
+  SoundID = 851808,
 }
 r4_0[851901] = {
   EffectId = 851901,
@@ -7022,28 +7550,28 @@ r4_0[851902] = {
 }
 r4_0[851903] = {
   EffectId = 851903,
-  EffectParam = r0_0.RT_166,
+  EffectParam = r0_0.RT_173,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill08_AroundBurst.NS_Boss_Tuosi_Skill08_AroundBurst",
   FXPriorityType = 100,
   NotFollowRotation = true,
 }
 r4_0[851904] = {
   EffectId = 851904,
-  EffectParam = r0_0.RT_33,
+  EffectParam = r0_0.RT_36,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill08_AroundBurst.NS_Boss_Tuosi_Skill08_AroundBurst",
   FXPriorityType = 100,
   NotFollowRotation = true,
 }
 r4_0[851905] = {
   EffectId = 851905,
-  EffectParam = r0_0.RT_126,
+  EffectParam = r0_0.RT_138,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill08_AroundBurst.NS_Boss_Tuosi_Skill08_AroundBurst",
   FXPriorityType = 100,
   NotFollowRotation = true,
 }
 r4_0[851906] = {
   EffectId = 851906,
-  EffectParam = r0_0.RT_33,
+  EffectParam = r0_0.RT_36,
   EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/NS_Boss_Tuosi_Skill08_AroundBurst.NS_Boss_Tuosi_Skill08_AroundBurst",
   FXPriorityType = 100,
   NotFollowRotation = true,
@@ -7054,9 +7582,66 @@ r4_0[851907] = {
 }
 r4_0[851908] = {
   EffectId = 851908,
-  EffectParam = r0_0.RT_166,
+  EffectParam = r0_0.RT_173,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jt/NS_BlastRobot_Blast.NS_BlastRobot_Blast",
   FXPriorityType = 100,
+}
+r4_0[852201] = {
+  EffectId = 852201,
+  EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Bow/NS_Bow_Bullet_04.NS_Bow_Bullet_04",
+}
+r4_0[852202] = {
+  EffectId = 852202,
+  EffectParam = r0_0.RT_144,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/A_Common/NS_Monster_catch.NS_Monster_catch",
+  PlayLocation = r0_0.RT_23,
+}
+r5_0 = 852302
+r6_0 = {
+  DeactiveParam = "DeadTime",
+  EffectId = 852302,
+}
+r6_0.EffectParam = {
+  Location = {
+    0,
+    60,
+    120
+  },
+  Rotation = {
+    0,
+    90,
+    180
+  },
+  scale = {
+    2,
+    2,
+    3
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jt/NS_Jt_Tuji_HitShield.NS_Jt_Tuji_HitShield"
+r6_0.FXPriorityType = 90
+r6_0.PlayLocation = r0_0.RT_23
+r4_0[r5_0] = r6_0
+r5_0 = 852303
+r6_0 = {
+  EffectId = 852303,
+}
+r6_0.EffectParam = {
+  Location = {
+    0,
+    0,
+    80
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Boss/Tuosi/Boss_Tuosi_Shine.Boss_Tuosi_Shine"
+r6_0.FXPriorityType = 90
+r6_0.PlayLocation = r0_0.RT_23
+r4_0[r5_0] = r6_0
+r4_0[852306] = {
+  EffectId = 852306,
+  EffectPath = "/Game/Asset/Effect/Niagara/Monster/Hx/NS_HX_Bian_B_Skill03_Hit.NS_HX_Bian_B_Skill03_Hit",
+  FXPriorityType = 90,
+  IsHitFX = true,
 }
 r4_0[900001] = {
   EffectId = 900001,
@@ -7073,14 +7658,14 @@ r4_0[900001] = {
 r4_0[900002] = {
   EffectId = 900002,
   EffectParam = {
-    Location = r0_0.RT_85,
+    Location = r0_0.RT_77,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Player/A_Common/NS_Monster_catch.NS_Monster_catch",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[900003] = {
   EffectId = 900003,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
 }
 r4_0[900004] = {
   EffectId = 900004,
@@ -7109,7 +7694,7 @@ r4_0[900007] = {
   EffectId = 900007,
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_Excavation_MapCircle.NS_Excavation_MapCircle",
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_131,
+  PlayLocation = r0_0.RT_14,
 }
 r4_0[900009] = {
   EffectId = 900009,
@@ -7125,20 +7710,20 @@ r4_0[900009] = {
 }
 r4_0[900010] = {
   EffectId = 900010,
-  EffectParam = r0_0.RT_168,
+  EffectParam = r0_0.RT_175,
 }
 r4_0[900011] = {
   EffectId = 900011,
-  EffectParam = r0_0.RT_168,
+  EffectParam = r0_0.RT_175,
 }
 r4_0[900012] = {
   EffectId = 900012,
   EffectParam = {
-    Location = r0_0.RT_169,
+    Location = r0_0.RT_176,
     Rotation = r0_0.RT_1,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_Med_Interactive",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
   SoundID = 209,
 }
 r5_0 = 900013
@@ -7146,7 +7731,7 @@ r6_0 = {
   EffectId = 900013,
 }
 r6_0.EffectParam = {
-  Location = r0_0.RT_169,
+  Location = r0_0.RT_176,
   Rotation = {
     9.5,
     0,
@@ -7154,12 +7739,12 @@ r6_0.EffectParam = {
   },
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_Med_Working_01"
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r4_0[r5_0] = r6_0
 r4_0[900014] = {
   EffectId = 900014,
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_Med_Working_02",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r5_0 = 900015
 r6_0 = {
@@ -7178,7 +7763,7 @@ r6_0.EffectParam = {
   },
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_Med_Working_03"
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r4_0[r5_0] = r6_0
 r5_0 = 900016
 r6_0 = {
@@ -7246,41 +7831,41 @@ r6_0.PlayLocation = {
 r4_0[r5_0] = r6_0
 r4_0[900020] = {
   EffectId = 900020,
-  EffectParam = r0_0.RT_70,
+  EffectParam = r0_0.RT_75,
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_Kongzhitai_Diguo_Interactive.NS_Kongzhitai_Diguo_Interactive",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[900021] = {
   EffectId = 900021,
-  EffectParam = r0_0.RT_70,
+  EffectParam = r0_0.RT_75,
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_Kongzhitai_Diguo_Active.NS_Kongzhitai_Diguo_Active",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[900022] = {
   EffectId = 900022,
-  EffectParam = r0_0.RT_70,
+  EffectParam = r0_0.RT_75,
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_Kongzhitai_Diguo_Running.NS_Kongzhitai_Diguo_Running",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[900023] = {
   EffectId = 900023,
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Prologue/NS_Kongzhitai_Prologue_Interactive.NS_Kongzhitai_Prologue_Interactive",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[900024] = {
   EffectId = 900024,
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Prologue/NS_Kongzhitai_Prologue_Active.NS_Kongzhitai_Prologue_Active",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[900025] = {
   EffectId = 900025,
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Prologue/NS_Kongzhitai_Prologue_Running.NS_Kongzhitai_Prologue_Running",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[900026] = {
   EffectId = 900026,
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_Scene_Baolie_Explode.NS_Scene_Baolie_Explode",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
   SoundID = 2111,
 }
 r5_0 = 900027
@@ -7295,39 +7880,39 @@ r6_0.EffectParam = {
   },
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_Fou01_Bling.NS_Fou01_Bling"
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r4_0[r5_0] = r6_0
 r4_0[900028] = {
   EffectId = 900028,
   EffectParam = {
-    Location = r0_0.RT_97,
-    color = r0_0.RT_170,
-    scale = r0_0.RT_30,
+    Location = r0_0.RT_107,
+    color = r0_0.RT_177,
+    scale = r0_0.RT_33,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_Harvest_Explode.NS_Harvest_Explode",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[900029] = {
   EffectId = 900029,
-  EffectParam = r0_0.RT_172,
+  EffectParam = r0_0.RT_179,
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_Harvest_Bling.NS_Harvest_Bling",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[900030] = {
   EffectId = 900030,
-  EffectParam = r0_0.RT_172,
+  EffectParam = r0_0.RT_179,
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_Harvest_BlingRare.NS_Harvest_BlingRare",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[900031] = {
   EffectId = 900031,
   EffectParam = {
-    Location = r0_0.RT_173,
-    color = r0_0.RT_170,
-    scale = r0_0.RT_30,
+    Location = r0_0.RT_180,
+    color = r0_0.RT_177,
+    scale = r0_0.RT_33,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_Harvest_Explode.NS_Harvest_Explode",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r5_0 = 900032
 r6_0 = {
@@ -7339,16 +7924,16 @@ r6_0.EffectParam = {
     -40,
     25
   },
-  Rotation = r0_0.RT_86,
+  Rotation = r0_0.RT_93,
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_Harvest_Bling.NS_Harvest_Bling"
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r4_0[r5_0] = r6_0
 r4_0[900033] = {
   EffectId = 900033,
   EffectParam = {
-    Location = r0_0.RT_94,
-    Rotation = r0_0.RT_68,
+    Location = r0_0.RT_104,
+    Rotation = r0_0.RT_70,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_TrainingEntrance_Idle.NS_TrainingEntrance_Idle",
   PlayLocation = {
@@ -7360,27 +7945,27 @@ r6_0 = {
   EffectId = 900034,
 }
 r6_0.EffectParam = {
-  Location = r0_0.RT_173,
+  Location = r0_0.RT_180,
   color = {
     1.2,
     0.61,
     0.2,
     1
   },
-  scale = r0_0.RT_30,
+  scale = r0_0.RT_33,
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/NS_Harvest_Explode.NS_Harvest_Explode"
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r4_0[r5_0] = r6_0
 r4_0[900035] = {
   EffectId = 900035,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_PetDefence_lock.NS_PetDefence_lock",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[900036] = {
   EffectId = 900036,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_PetDefence_Unlock.NS_PetDefence_Unlock",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[900037] = {
   ChangeColorByChar = true,
@@ -7410,7 +7995,7 @@ r4_0[900041] = {
 r4_0[900042] = {
   EffectId = 900042,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Thunder_Slow.NS_Thunder_Slow",
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[900043] = {
   EffectId = 900043,
@@ -7423,7 +8008,7 @@ r4_0[900044] = {
   EffectId = 900044,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Frozen_Debuff.NS_Strong_Frozen_Debuff",
   FXPriorityType = 80,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[900061] = {
   EffectId = 900061,
@@ -7454,7 +8039,7 @@ r4_0[900064] = {
   EffectId = 900064,
   EffectPath = "/Game/Asset/Effect/Niagara/Common/Monster/NS_hit_char_thunder02.NS_hit_char_thunder02",
   IsHitFX = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r5_0 = 900065
 r6_0 = {
@@ -7472,7 +8057,7 @@ r4_0[r5_0] = r6_0
 r4_0[900066] = {
   EffectId = 900066,
   EffectParam = {
-    scale = r0_0.RT_161,
+    scale = r0_0.RT_167,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Prologue/NS_Fish_FishingSpot.NS_Fish_FishingSpot",
 }
@@ -7561,17 +8146,26 @@ r4_0[900072] = {
   EffectId = 900072,
   EffectParam = {
     Location = r0_0.RT_3,
-    scale = r0_0.RT_59,
+    scale = r0_0.RT_62,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Maer/NS_Maer_Skill02_Ground.NS_Maer_Skill02_Ground",
 }
 r4_0[900073] = {
   EffectId = 900073,
-  EffectParam = r0_0.RT_69,
+  EffectParam = r0_0.RT_71,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Cannon/NS_Chixing_Explode.NS_Chixing_Explode",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
   SoundID = 900000001,
+}
+r4_0[900074] = {
+  EffectColor = r0_0.RT_141,
+  EffectId = 900074,
+  EffectMaxNum = 1,
+  EffectPath = "/Game/Asset/Effect/Niagara/Item/NS_Item_Restore.NS_Item_Restore",
+  FXPriorityType = 40,
+  PlayLocation = r0_0.RT_11,
+  SoundID = 2040,
 }
 r4_0[900201] = {
   EffectId = 900201,
@@ -7709,7 +8303,7 @@ r4_0[950001] = {
 r4_0[950002] = {
   EffectId = 950002,
   EffectParam = {
-    scale = r0_0.RT_81,
+    scale = r0_0.RT_89,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/NPC/Dajie/NS_NE_Dajie_Colorful02.NS_NE_Dajie_Colorful02",
   FXPriorityType = 10,
@@ -7724,7 +8318,7 @@ r4_0[950003] = {
   EffectPath = "/Game/Asset/Effect/Niagara/NPC/Dajie/NS_NE_Dajie_Buff.NS_NE_Dajie_Buff",
   FXPriorityType = 80,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
   SoundID = 950001,
 }
 r4_0[950004] = {
@@ -7751,24 +8345,46 @@ r4_0[950102] = {
 r4_0[950401] = {
   EffectId = 950401,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/Wuyou/NS_NE_Wuyou01_Skill02_Hit.NS_NE_Wuyou01_Skill02_Hit",
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[950402] = {
   EffectId = 950402,
-  EffectParam = r0_0.RT_154,
+  EffectParam = {
+    scale = r0_0.RT_43,
+  },
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/Wuyou/NS_NE_Wuyou01_Skill02_Bullet.NS_NE_Wuyou01_Skill02_Bullet",
   SoundID = 950401,
 }
 r4_0[950501] = {
   EffectId = 950501,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/Wuyou/NS_NE_Wuyou02_Skill02_Hit.NS_NE_Wuyou02_Skill02_Hit",
-  PlayLocation = r0_0.RT_16,
+  IsHitFX = true,
+  PlayLocation = r0_0.RT_19,
 }
+r5_0 = 1000101
+r6_0 = {
+  DeactiveParam = "DeadTime",
+  EffectId = 1000101,
+}
+r6_0.EffectParam = {
+  Location = {
+    20,
+    0,
+    0
+  },
+  Rotation = r0_0.RT_12,
+  scale = r0_0.RT_13,
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Monster/Jh/NS_Jh_Xianfeng_CoopState_Loop.NS_Jh_Xianfeng_CoopState_Loop"
+r6_0.NotFollowRotation = true
+r6_0.PlayLocation = r0_0.RT_14
+r4_0[r5_0] = r6_0
 r4_0[1000201] = {
   DelayDestroyTime = 2,
   EffectId = 1000201,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Hx/NS_HX_Tianwei_Skill04_Bullet.NS_HX_Tianwei_Skill04_Bullet",
   FXPriorityType = 80,
+  SoundID = 10001001,
 }
 r4_0[1000301] = {
   DeactiveParam = "DeadTime",
@@ -7776,6 +8392,7 @@ r4_0[1000301] = {
   EffectId = 1000301,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Hx/NS_HX_Bian_Skill02_WindBlade.NS_HX_Bian_Skill02_WindBlade",
   FXPriorityType = 90,
+  SoundID = 10003004,
 }
 r4_0[1000302] = {
   EffectId = 1000302,
@@ -7783,12 +8400,22 @@ r4_0[1000302] = {
   FXPriorityType = 90,
   IsHitFX = true,
 }
-r4_0[1000303] = {
+r5_0 = 1000303
+r6_0 = {
   DelayDestroyTime = 2,
   EffectId = 1000303,
-  EffectPath = "/Game/Asset/Effect/Niagara/Monster/Hx/NS_HX_Bian_Skill03_Blade.NS_HX_Bian_Skill03_Blade",
-  FXPriorityType = 80,
 }
+r6_0.EffectParam = {
+  Location = {
+    -200,
+    0,
+    -120
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Monster/Hx/NS_HX_Bian_Skill03_Blade.NS_HX_Bian_Skill03_Blade"
+r6_0.FXPriorityType = 80
+r6_0.SoundID = 10003006
+r4_0[r5_0] = r6_0
 r4_0[1000304] = {
   EffectId = 1000304,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Hx/NS_HX_Bian_die04.NS_HX_Bian_die04",
@@ -7805,7 +8432,6 @@ r4_0[1000402] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Hx/NS_HX_Bian_B_Skill01_Hit.NS_HX_Bian_B_Skill01_Hit",
   FXPriorityType = 90,
   IsHitFX = true,
-  SoundID = 851305,
 }
 r4_0[1000403] = {
   EffectId = 1000403,
@@ -7818,23 +8444,24 @@ r4_0[1000404] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Hx/NS_HX_Bian_B_Skill01_Hit.NS_HX_Bian_B_Skill01_Hit",
   FXPriorityType = 90,
   IsHitFX = true,
-  SoundID = 851305,
 }
 r4_0[1000405] = {
   DelayDestroyTime = 2,
   EffectId = 1000405,
-  EffectParam = r0_0.RT_13,
+  EffectParam = r0_0.RT_16,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Hx/NS_HX_Bian_B_Skill04_Blade.NS_HX_Bian_B_Skill04_Blade",
   FXPriorityType = 80,
+  SoundID = 10004003,
 }
 r4_0[1000406] = {
   EffectId = 1000406,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Hx/NS_HX_Bian_B_Skill05_Airflow.NS_HX_Bian_B_Skill05_Airflow",
   FXPriorityType = 90,
+  SoundID = 10004006,
 }
 r4_0[1000407] = {
   EffectId = 1000407,
-  EffectParam = r0_0.RT_15,
+  EffectParam = r0_0.RT_18,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/Hx/NS_HX_Bian_die03.NS_HX_Bian_die03",
   FXPriorityType = 90,
 }
@@ -7842,97 +8469,97 @@ r4_0[1010121] = {
   ChangeColorByChar = true,
   EffectId = 1010121,
   EffectParam = {
-    Location = r0_0.RT_17,
-    Rotation = r0_0.RT_18,
-    scale = r0_0.RT_19,
+    Location = r0_0.RT_20,
+    Rotation = r0_0.RT_21,
+    scale = r0_0.RT_22,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_HeavyAttack_Slash02.NS_Katana_HeavyAttack_Slash02",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[1010122] = {
   ChangeColorByChar = true,
   EffectId = 1010122,
   EffectParam = {
-    Location = r0_0.RT_17,
-    Rotation = r0_0.RT_21,
-    scale = r0_0.RT_19,
+    Location = r0_0.RT_20,
+    Rotation = r0_0.RT_24,
+    scale = r0_0.RT_22,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_HeavyAttack_Slash01.NS_Katana_HeavyAttack_Slash01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[1010123] = {
   ChangeColorByChar = true,
   EffectId = 1010123,
   EffectParam = {
-    Location = r0_0.RT_17,
-    Rotation = r0_0.RT_22,
-    scale = r0_0.RT_19,
+    Location = r0_0.RT_20,
+    Rotation = r0_0.RT_25,
+    scale = r0_0.RT_22,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_HeavyAttack_Slash01.NS_Katana_HeavyAttack_Slash01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[1010124] = {
   ChangeColorByChar = true,
   EffectId = 1010124,
   EffectParam = {
-    Location = r0_0.RT_17,
-    Rotation = r0_0.RT_23,
-    scale = r0_0.RT_19,
+    Location = r0_0.RT_20,
+    Rotation = r0_0.RT_26,
+    scale = r0_0.RT_22,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_HeavyAttack_Slash01.NS_Katana_HeavyAttack_Slash01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[1010125] = {
   ChangeColorByChar = true,
   EffectId = 1010125,
   EffectParam = {
-    Location = r0_0.RT_17,
-    Rotation = r0_0.RT_24,
-    scale = r0_0.RT_19,
+    Location = r0_0.RT_20,
+    Rotation = r0_0.RT_27,
+    scale = r0_0.RT_22,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_HeavyAttack_Slash01.NS_Katana_HeavyAttack_Slash01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[1010126] = {
   ChangeColorByChar = true,
   EffectId = 1010126,
   EffectParam = {
-    Location = r0_0.RT_17,
-    Rotation = r0_0.RT_25,
-    scale = r0_0.RT_19,
+    Location = r0_0.RT_20,
+    Rotation = r0_0.RT_28,
+    scale = r0_0.RT_22,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_HeavyAttack_Slash01.NS_Katana_HeavyAttack_Slash01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[1010127] = {
   ChangeColorByChar = true,
   EffectId = 1010127,
   EffectParam = {
-    Location = r0_0.RT_17,
-    Rotation = r0_0.RT_26,
-    scale = r0_0.RT_19,
+    Location = r0_0.RT_20,
+    Rotation = r0_0.RT_29,
+    scale = r0_0.RT_22,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_HeavyAttack_Slash01.NS_Katana_HeavyAttack_Slash01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[1010128] = {
   ChangeColorByChar = true,
   EffectId = 1010128,
   EffectParam = {
-    Location = r0_0.RT_17,
-    Rotation = r0_0.RT_27,
-    scale = r0_0.RT_19,
+    Location = r0_0.RT_20,
+    Rotation = r0_0.RT_30,
+    scale = r0_0.RT_22,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_HeavyAttack_Slash01.NS_Katana_HeavyAttack_Slash01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r5_0 = 1010129
 r6_0 = {
@@ -7940,17 +8567,54 @@ r6_0 = {
   EffectId = 1010129,
 }
 r6_0.EffectParam = {
-  Location = r0_0.RT_17,
+  Location = r0_0.RT_20,
   Rotation = {
     715,
     -10,
     -94
   },
-  scale = r0_0.RT_19,
+  scale = r0_0.RT_22,
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_HeavyAttack_Slash02.NS_Katana_HeavyAttack_Slash02"
 r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
+r4_0[r5_0] = r6_0
+r5_0 = 1010199
+r6_0 = {
+  EffectId = 1010199,
+}
+r6_0.EffectParam = {
+  scale = {
+    1.2,
+    1,
+    1
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Common/NS_Weapon_Miao01.NS_Weapon_Miao01"
+r6_0.FXPriorityType = 90
+r6_0.PlayLocation = r0_0.RT_23
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
+r5_0 = 1020197
+r6_0 = {
+  EffectId = 1020197,
+}
+r6_0.EffectParam = {
+  Location = {
+    45,
+    0,
+    0
+  },
+  scale = {
+    1,
+    1.5,
+    1
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Common/NS_Weapon_Miao01.NS_Weapon_Miao01"
+r6_0.FXPriorityType = 90
+r6_0.PlayLocation = r0_0.RT_23
+r6_0.TickInArmory = true
 r4_0[r5_0] = r6_0
 r5_0 = 1020198
 r6_0 = {
@@ -7963,16 +8627,16 @@ r6_0.EffectParam = {
     0
   },
 }
-r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Polearm/Pifu/NS_Polearm_Tlwq.NS_Polearm_Tlwq"
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Polearm/NS_Polearm_Tlwq.NS_Polearm_Tlwq"
 r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r4_0[r5_0] = r6_0
 r4_0[1020199] = {
   EffectId = 1020199,
-  EffectParam = r0_0.RT_46,
-  EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Polearm/Pifu/NS_Polearm_Xyxy.NS_Polearm_Xyxy",
+  EffectParam = r0_0.RT_49,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Polearm/NS_Polearm_Xyxy.NS_Polearm_Xyxy",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[1020201] = {
   ChangeColorByChar = true,
@@ -8014,11 +8678,27 @@ r6_0.EffectParam = {
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Weapon/A_Common/NS_FallAttack.NS_FallAttack"
 r6_0.FXPriorityType = 90
 r4_0[r5_0] = r6_0
+r5_0 = 1030198
+r6_0 = {
+  EffectId = 1030198,
+}
+r6_0.EffectParam = {
+  scale = {
+    1.5,
+    1.5,
+    1
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Common/NS_Weapon_Miao01.NS_Weapon_Miao01"
+r6_0.FXPriorityType = 90
+r6_0.PlayLocation = r0_0.RT_23
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
 r4_0[1030199] = {
   EffectId = 1030199,
   EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Claymore/NS_Claymore_Qunx.NS_Claymore_Qunx",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_11,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[1030201] = {
   ChangeColorByChar = true,
@@ -8044,12 +8724,60 @@ r4_0[1030203] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Claymore/NS_Claymore_Mod_05.NS_Claymore_Mod_05",
   FXPriorityType = 90,
 }
+r5_0 = 1040199
+r6_0 = {
+  EffectId = 1040199,
+}
+r6_0.EffectParam = {
+  scale = {
+    0.7,
+    1.2,
+    1.2
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Common/NS_Weapon_Miao01.NS_Weapon_Miao01"
+r6_0.FXPriorityType = 90
+r6_0.PlayLocation = r0_0.RT_11
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
+r5_0 = 1050199
+r6_0 = {
+  EffectId = 1050199,
+}
+r6_0.EffectParam = {
+  Location = {
+    0,
+    4,
+    0
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Common/NS_Weapon_Miao03.NS_Weapon_Miao03"
+r6_0.FXPriorityType = 90
+r6_0.PlayLocation = r0_0.RT_23
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
 r4_0[1050201] = {
   EffectId = 1050201,
-  EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Sword/NS_ZW_Zeshi_Core.NS_ZW_Zeshi_Core",
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Swordwhip/NS_Swordwhip_Zeshi.NS_Swordwhip_Zeshi",
   FXPriorityType = 90,
   PlayLocation = r0_0.RT_11,
 }
+r5_0 = 1060199
+r6_0 = {
+  EffectId = 1060199,
+}
+r6_0.EffectParam = {
+  scale = {
+    1.7,
+    1,
+    1
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Common/NS_Weapon_Miao03.NS_Weapon_Miao03"
+r6_0.FXPriorityType = 90
+r6_0.PlayLocation = r0_0.RT_11
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
 r5_0 = 1060211
 r6_0 = {
   ChangeColorByChar = true,
@@ -8065,7 +8793,7 @@ r6_0.EffectParam = {
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_Mod01_Flash02.NS_Katana_Mod01_Flash02"
 r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r4_0[r5_0] = r6_0
 r5_0 = 1060212
 r6_0 = {
@@ -8078,11 +8806,11 @@ r6_0.EffectParam = {
     200,
     120
   },
-  Rotation = r0_0.RT_21,
+  Rotation = r0_0.RT_24,
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_Mod01_Flash02.NS_Katana_Mod01_Flash02"
 r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r4_0[r5_0] = r6_0
 r5_0 = 1060213
 r6_0 = {
@@ -8095,11 +8823,11 @@ r6_0.EffectParam = {
     -200,
     120
   },
-  Rotation = r0_0.RT_22,
+  Rotation = r0_0.RT_25,
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_Mod01_Flash02.NS_Katana_Mod01_Flash02"
 r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r4_0[r5_0] = r6_0
 r5_0 = 1060214
 r6_0 = {
@@ -8112,11 +8840,11 @@ r6_0.EffectParam = {
     100,
     120
   },
-  Rotation = r0_0.RT_23,
+  Rotation = r0_0.RT_26,
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_Mod01_Flash02.NS_Katana_Mod01_Flash02"
 r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r4_0[r5_0] = r6_0
 r5_0 = 1060215
 r6_0 = {
@@ -8129,11 +8857,11 @@ r6_0.EffectParam = {
     -100,
     120
   },
-  Rotation = r0_0.RT_24,
+  Rotation = r0_0.RT_27,
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_Mod01_Flash02.NS_Katana_Mod01_Flash02"
 r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r4_0[r5_0] = r6_0
 r5_0 = 1060216
 r6_0 = {
@@ -8146,22 +8874,22 @@ r6_0.EffectParam = {
     150,
     120
   },
-  Rotation = r0_0.RT_25,
+  Rotation = r0_0.RT_28,
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_Mod01_Flash02.NS_Katana_Mod01_Flash02"
 r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r4_0[r5_0] = r6_0
 r4_0[1060217] = {
   ChangeColorByChar = true,
   EffectId = 1060217,
   EffectParam = {
-    Location = r0_0.RT_47,
-    Rotation = r0_0.RT_26,
+    Location = r0_0.RT_50,
+    Rotation = r0_0.RT_29,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_Mod01_Flash02.NS_Katana_Mod01_Flash02",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r5_0 = 1060218
 r6_0 = {
@@ -8174,11 +8902,11 @@ r6_0.EffectParam = {
     150,
     120
   },
-  Rotation = r0_0.RT_27,
+  Rotation = r0_0.RT_30,
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_Mod01_Flash02.NS_Katana_Mod01_Flash02"
 r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r4_0[r5_0] = r6_0
 r5_0 = 1060219
 r6_0 = {
@@ -8186,7 +8914,7 @@ r6_0 = {
   EffectId = 1060219,
 }
 r6_0.EffectParam = {
-  Location = r0_0.RT_47,
+  Location = r0_0.RT_50,
   Rotation = {
     715,
     -10,
@@ -8195,23 +8923,23 @@ r6_0.EffectParam = {
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Katana/NS_Katana_Mod01_Flash02.NS_Katana_Mod01_Flash02"
 r6_0.FXPriorityType = 90
-r6_0.PlayLocation = r0_0.RT_20
+r6_0.PlayLocation = r0_0.RT_23
 r4_0[r5_0] = r6_0
 r4_0[2010101] = {
   ChangeColorByChar = true,
   EffectId = 2010101,
-  EffectParam = r0_0.RT_46,
+  EffectParam = r0_0.RT_49,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Pistol/Pistol_Wuxu/NS_Wuxu_OpenFire_01.NS_Wuxu_OpenFire_01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_67,
+  PlayLocation = r0_0.RT_74,
 }
 r4_0[2010102] = {
   ChangeColorByChar = true,
   EffectId = 2010102,
-  EffectParam = r0_0.RT_46,
+  EffectParam = r0_0.RT_49,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Pistol/Pistol_Wuxu/NS_Wuxu_OpenFire_02.NS_Wuxu_OpenFire_02",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_67,
+  PlayLocation = r0_0.RT_74,
   SoundID = 2010103,
 }
 r4_0[2010111] = {
@@ -8231,8 +8959,8 @@ r4_0[2010121] = {
   ChangeColorByChar = true,
   EffectId = 2010121,
   EffectParam = {
-    Rotation = r0_0.RT_68,
-    scale = r0_0.RT_59,
+    Rotation = r0_0.RT_70,
+    scale = r0_0.RT_62,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Pistol/Pistol_Wuxu/NS_Wuxu_Explode_01.NS_Wuxu_Explode_01",
   FXPriorityType = 90,
@@ -8240,10 +8968,33 @@ r4_0[2010121] = {
 r4_0[2010122] = {
   ChangeColorByChar = true,
   EffectId = 2010122,
-  EffectParam = r0_0.RT_69,
+  EffectParam = r0_0.RT_71,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Pistol/Pistol_Wuxu/NDC_Wuxu_Explode.NDC_Wuxu_Explode",
   FXPriorityType = 90,
-  SoundID = 2010101,
+}
+r5_0 = 2010199
+r6_0 = {
+  EffectId = 2010199,
+}
+r6_0.EffectParam = {
+  Location = r0_0.RT_61,
+  Rotation = r0_0.RT_48,
+  scale = {
+    0.5,
+    1.2,
+    1
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Common/NS_Weapon_Miao01.NS_Weapon_Miao01"
+r6_0.FXPriorityType = 90
+r6_0.PlayLocation = r0_0.RT_23
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
+r4_0[2010401] = {
+  EffectId = 2010401,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Zhiliu/Zhiliu_Skill02_2/NS_Zhiliu_Skill02_02_JG02.NS_Zhiliu_Skill02_02_JG02",
+  FXPriorityType = 100,
+  SoundID = 410205,
 }
 r5_0 = 2019901
 r6_0 = {
@@ -8252,7 +9003,7 @@ r6_0 = {
 }
 r6_0.EffectParam = {
   Life = 0.2,
-  Rotation = r0_0.RT_45,
+  Rotation = r0_0.RT_48,
   scale = {
     0.3,
     0.3,
@@ -8261,15 +9012,33 @@ r6_0.EffectParam = {
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Crossbow/NS_Chixing_Muzzle.NS_Chixing_Muzzle"
 r6_0.FXPriorityType = 45
-r6_0.PlayLocation = r0_0.RT_67
+r6_0.PlayLocation = r0_0.RT_74
 r4_0[r5_0] = r6_0
 r4_0[2020101] = {
   ChangeColorByChar = true,
   EffectId = 2020101,
-  EffectParam = r0_0.RT_31,
+  EffectParam = r0_0.RT_34,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Crossbow/NS_Chixing_Bullet.NS_Chixing_Bullet",
   FXPriorityType = 90,
 }
+r5_0 = 2020199
+r6_0 = {
+  EffectId = 2020199,
+}
+r6_0.EffectParam = {
+  Location = r0_0.RT_77,
+  Rotation = r0_0.RT_48,
+  scale = {
+    0.6,
+    1.2,
+    1
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Common/NS_Weapon_Miao01.NS_Weapon_Miao01"
+r6_0.FXPriorityType = 90
+r6_0.PlayLocation = r0_0.RT_23
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
 r4_0[2020301] = {
   ChangeColorByChar = true,
   EffectId = 2020301,
@@ -8295,27 +9064,46 @@ r4_0[2030101] = {
 r4_0[2030102] = {
   ChangeColorByChar = true,
   EffectId = 2030102,
-  EffectParam = r0_0.RT_69,
+  EffectParam = r0_0.RT_71,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Cannon/NS_Chixing_Explode.NS_Chixing_Explode",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
   SoundID = 2030101,
 }
+r5_0 = 2030199
+r6_0 = {
+  EffectId = 2030199,
+}
+r6_0.EffectParam = {
+  Location = {
+    0,
+    0,
+    -25
+  },
+  scale = {
+    1.1,
+    1.5,
+    1
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Common/NS_Weapon_Miao01.NS_Weapon_Miao01"
+r6_0.FXPriorityType = 90
+r6_0.PlayLocation = r0_0.RT_23
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
 r4_0[2030201] = {
   ChangeColorByChar = true,
   EffectId = 2030201,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Cannon/NDC_Jishu_Explode.NDC_Jishu_Explode",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
-  SoundID = 2030201,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[2030202] = {
   ChangeColorByChar = true,
   EffectId = 2030202,
-  EffectParam = r0_0.RT_69,
+  EffectParam = r0_0.RT_71,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Cannon/NDC_Jishu_Explode_Small.NDC_Jishu_Explode_Small",
   FXPriorityType = 90,
-  SoundID = 2030203,
 }
 r4_0[2030203] = {
   ChangeColorByChar = true,
@@ -8331,23 +9119,21 @@ r4_0[2030301] = {
   EffectId = 2030301,
   EffectParam = {
     Life = 1,
-    Rotation = r0_0.RT_68,
+    Rotation = r0_0.RT_70,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Cannon/NS_Chiqiang_Explode_Batch.NS_Chiqiang_Explode_Batch",
   FXPriorityType = 90,
   IsArrayBatching = true,
-  SoundID = 2030301,
 }
 r4_0[2030302] = {
   ChangeColorByChar = true,
   DeactiveParam = "Deactive",
   DelayDeactiveTime = 1.5,
   EffectId = 2030302,
-  EffectParam = r0_0.RT_72,
+  EffectParam = r0_0.RT_78,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Cannon/NS_Chiqiang_Smoke_02_Batch.NS_Chiqiang_Smoke_02_Batch",
   FXPriorityType = 90,
   IsArrayBatching = true,
-  SoundID = 2030302,
 }
 r4_0[2030303] = {
   ChangeColorByChar = true,
@@ -8360,7 +9146,7 @@ r4_0[2030303] = {
 r4_0[2030401] = {
   ChangeColorByChar = true,
   EffectId = 2030401,
-  EffectParam = r0_0.RT_73,
+  EffectParam = r0_0.RT_79,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Shotgun/Qiege/NS_Qiege_Hit03.NS_Qiege_Hit03",
   FXPriorityType = 90,
   IsHitFX = true,
@@ -8391,6 +9177,43 @@ r4_0[2040103] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Shotgun/NS_Shotgun_Bullet.NS_Shotgun_Bullet",
   FXPriorityType = 90,
 }
+r5_0 = 2040198
+r6_0 = {
+  EffectId = 2040198,
+}
+r6_0.EffectParam = {
+  Location = {
+    4,
+    0,
+    20
+  },
+  Rotation = r0_0.RT_48,
+  scale = {
+    0.6,
+    0.8,
+    0.8
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Common/NS_Weapon_Miao01.NS_Weapon_Miao01"
+r6_0.FXPriorityType = 90
+r6_0.PlayLocation = r0_0.RT_23
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
+r5_0 = 2040199
+r6_0 = {
+  EffectId = 2040199,
+}
+r6_0.EffectParam = {
+  Location = {
+    8,
+    0,
+    -20
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Machinegun/NS_weapon_dalang_01.NS_weapon_dalang_01"
+r6_0.PlayLocation = r0_0.RT_11
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
 r4_0[2040201] = {
   ChangeColorByChar = true,
   EffectId = 2040201,
@@ -8424,7 +9247,7 @@ r4_0[2040302] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Shotgun/Shengcai/NS_Shengcai_Hit_Batch.NS_Shengcai_Hit_Batch",
   FXPriorityType = 90,
   IsArrayBatching = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 2040302,
 }
 r5_0 = 2040401
@@ -8459,14 +9282,14 @@ r4_0[2040403] = {
 r4_0[2040404] = {
   ChangeColorByChar = true,
   EffectId = 2040404,
-  EffectParam = r0_0.RT_75,
+  EffectParam = r0_0.RT_81,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Shotgun/Qiege/NS_Qiege_Attact2.NS_Qiege_Attact2",
   FXPriorityType = 90,
 }
 r4_0[2040405] = {
   ChangeColorByChar = true,
   EffectId = 2040405,
-  EffectParam = r0_0.RT_75,
+  EffectParam = r0_0.RT_81,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Shotgun/Qiege/NS_Qiege_Attact2.NS_Qiege_Attact2",
   FXPriorityType = 90,
 }
@@ -8474,8 +9297,8 @@ r4_0[2040501] = {
   ChangeColorByChar = true,
   EffectId = 2040501,
   EffectParam = {
-    Location = r0_0.RT_76,
-    scale = r0_0.RT_77,
+    Location = r0_0.RT_82,
+    scale = r0_0.RT_83,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Shotgun/Baopo/NS_Baopo_Bullet.NS_Baopo_Bullet",
   FXPriorityType = 90,
@@ -8485,7 +9308,7 @@ r4_0[2040502] = {
   ChangeColorByChar = true,
   EffectId = 2040502,
   EffectParam = {
-    Location = r0_0.RT_76,
+    Location = r0_0.RT_82,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Shotgun/Baopo/NS_Baopo_Bullet2.NS_Baopo_Bullet2",
   FXPriorityType = 90,
@@ -8505,6 +9328,23 @@ r4_0[2040504] = {
   FXPriorityType = 45,
   IsHitFX = true,
 }
+r4_0[2040701] = {
+  ChangeColorByChar = true,
+  DeactiveParam = "DeadTime",
+  DelayDeactiveTime = 0.5,
+  EffectId = 2040701,
+  EffectPath = "/Game/Asset/Effect/Niagara/Player/Suyi/NS_Suyi_Creature_Yinxin.NS_Suyi_Creature_Yinxin",
+  FXPriorityType = 90,
+  PlayLocation = r0_0.RT_23,
+  SoundID = 2060301,
+}
+r4_0[2040702] = {
+  ChangeColorByChar = true,
+  EffectId = 2040702,
+  EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Shotgun/Qiege/NS_Qiege_Hit01.NS_Qiege_Hit01",
+  FXPriorityType = 90,
+  SoundID = 2030405,
+}
 r4_0[2050101] = {
   ChangeColorByChar = true,
   EffectId = 2050101,
@@ -8515,30 +9355,48 @@ r4_0[2050102] = {
   ChangeColorByChar = true,
   DestroyWhenSkillEnds = true,
   EffectId = 2050102,
-  EffectParam = r0_0.RT_78,
+  EffectParam = r0_0.RT_84,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Smg/Common/NS_Smg_Common_Shoot.NS_Smg_Common_Shoot",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_67,
+  PlayLocation = r0_0.RT_74,
 }
+r5_0 = 2050199
+r6_0 = {
+  EffectId = 2050199,
+}
+r6_0.EffectParam = {
+  Location = {
+    0,
+    6,
+    30
+  },
+  Rotation = r0_0.RT_48,
+  scale = r0_0.RT_43,
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Common/NS_Weapon_Miao01.NS_Weapon_Miao01"
+r6_0.FXPriorityType = 90
+r6_0.PlayLocation = r0_0.RT_23
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
 r4_0[2050201] = {
   ChangeColorByChar = true,
   DestroyWhenSkillEnds = true,
   EffectId = 2050201,
-  EffectParam = r0_0.RT_78,
+  EffectParam = r0_0.RT_84,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Smg/Fangzhu/NS_Smg_Fangzhu_Laser_01.NS_Smg_Fangzhu_Laser_01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_67,
+  PlayLocation = r0_0.RT_74,
 }
 r4_0[2050202] = {
   AllowRefreshAudio = true,
   ChangeColorByChar = true,
   EffectId = 2050202,
-  EffectParam = r0_0.RT_79,
+  EffectParam = r0_0.RT_85,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Smg/Fangzhu/NS_Smg_Fangzhu_Laser_02.NS_Smg_Fangzhu_Laser_02",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 2050202,
-  TargetLocation = r0_0.RT_44,
+  TargetLocation = r0_0.RT_47,
 }
 r4_0[2050203] = {
   ChangeColorByChar = true,
@@ -8552,10 +9410,10 @@ r4_0[2050204] = {
   ChangeColorByChar = true,
   DestroyWhenSkillEnds = true,
   EffectId = 2050204,
-  EffectParam = r0_0.RT_79,
+  EffectParam = r0_0.RT_85,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Smg/Fangzhu/NS_Smg_Fangzhu_Attack_01.NS_Smg_Fangzhu_Attack_01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_67,
+  PlayLocation = r0_0.RT_74,
 }
 r4_0[2050205] = {
   ChangeColorByChar = true,
@@ -8563,7 +9421,7 @@ r4_0[2050205] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Smg/Fangzhu/NDC_Smg_FangZhu_Hit.NDC_Smg_FangZhu_Hit",
   FXPriorityType = 90,
   IsHitFX = true,
-  PlayLocation = r0_0.RT_54,
+  PlayLocation = r0_0.RT_57,
   SoundID = 2050201,
 }
 r4_0[2050206] = {
@@ -8572,7 +9430,7 @@ r4_0[2050206] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Smg/Fangzhu/NDC_Smg_FangZhu_Hit.NDC_Smg_FangZhu_Hit",
   FXPriorityType = 90,
   IsHitFX = true,
-  PlayLocation = r0_0.RT_54,
+  PlayLocation = r0_0.RT_57,
   SoundID = 2050203,
 }
 r4_0[2050301] = {
@@ -8583,11 +9441,11 @@ r4_0[2050301] = {
   EffectId = 2050301,
   EffectParam = {
     Life = 0.25,
-    Rotation = r0_0.RT_45,
+    Rotation = r0_0.RT_48,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Smg/Qiqing/NS_Smg_Qiqing_Attack_01.NS_Smg_Qiqing_Attack_01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_67,
+  PlayLocation = r0_0.RT_74,
 }
 r4_0[2050401] = {
   ChangeColorByChar = true,
@@ -8595,7 +9453,7 @@ r4_0[2050401] = {
   EffectId = 2050401,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Machinegun/NS_weapon_poxiao_01.NS_weapon_poxiao_01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_67,
+  PlayLocation = r0_0.RT_74,
 }
 r4_0[2050402] = {
   ChangeColorByChar = true,
@@ -8603,7 +9461,7 @@ r4_0[2050402] = {
   EffectId = 2050402,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Machinegun/NS_weapon_poxiao_02.NS_weapon_poxiao_02",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_67,
+  PlayLocation = r0_0.RT_74,
 }
 r4_0[2050403] = {
   ChangeColorByChar = true,
@@ -8611,7 +9469,7 @@ r4_0[2050403] = {
   EffectId = 2050403,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Machinegun/NS_weapon_poxiao_03.NS_weapon_poxiao_03",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_67,
+  PlayLocation = r0_0.RT_74,
 }
 r4_0[2050411] = {
   ChangeColorByChar = true,
@@ -8620,7 +9478,7 @@ r4_0[2050411] = {
   FXPriorityType = 45,
   IsArrayBatching = true,
   IsHitFX = true,
-  PlayLocation = r0_0.RT_54,
+  PlayLocation = r0_0.RT_57,
 }
 r4_0[2050412] = {
   ChangeColorByChar = true,
@@ -8629,7 +9487,7 @@ r4_0[2050412] = {
   FXPriorityType = 45,
   IsArrayBatching = true,
   IsHitFX = true,
-  PlayLocation = r0_0.RT_54,
+  PlayLocation = r0_0.RT_57,
 }
 r4_0[2050413] = {
   ChangeColorByChar = true,
@@ -8638,7 +9496,7 @@ r4_0[2050413] = {
   FXPriorityType = 45,
   IsArrayBatching = true,
   IsHitFX = true,
-  PlayLocation = r0_0.RT_54,
+  PlayLocation = r0_0.RT_57,
 }
 r4_0[2050414] = {
   ChangeColorByChar = true,
@@ -8646,7 +9504,7 @@ r4_0[2050414] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Machinegun/NS_weapon_poxiao_shouji_01_Batch.NS_weapon_poxiao_shouji_01_Batch",
   FXPriorityType = 45,
   IsArrayBatching = true,
-  PlayLocation = r0_0.RT_54,
+  PlayLocation = r0_0.RT_57,
 }
 r4_0[2050415] = {
   ChangeColorByChar = true,
@@ -8654,7 +9512,7 @@ r4_0[2050415] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Machinegun/NS_weapon_poxiao_shouji_02_Batch.NS_weapon_poxiao_shouji_02_Batch",
   FXPriorityType = 45,
   IsArrayBatching = true,
-  PlayLocation = r0_0.RT_54,
+  PlayLocation = r0_0.RT_57,
 }
 r4_0[2050416] = {
   ChangeColorByChar = true,
@@ -8662,7 +9520,96 @@ r4_0[2050416] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Machinegun/NS_weapon_poxiao_shouji_03_Batch.NS_weapon_poxiao_shouji_03_Batch",
   FXPriorityType = 45,
   IsArrayBatching = true,
-  PlayLocation = r0_0.RT_54,
+  PlayLocation = r0_0.RT_57,
+}
+r4_0[2050501] = {
+  ChangeColorByChar = true,
+  DestroyWhenSkillEnds = true,
+  EffectId = 2050501,
+  EffectParam = r0_0.RT_84,
+  EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Smg/Sanjiao/NS_Smg_Sanjiao_Laser.NS_Smg_Sanjiao_Laser",
+  FXPriorityType = 90,
+  PlayLocation = r0_0.RT_74,
+}
+r4_0[2050502] = {
+  ChangeColorByChar = true,
+  DestroyWhenSkillEnds = true,
+  EffectId = 2050502,
+  EffectParam = r0_0.RT_85,
+  EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Smg/Sanjiao/NS_Smg_Sanjiao_Shoot01.NS_Smg_Sanjiao_Shoot01",
+  FXPriorityType = 90,
+  PlayLocation = r0_0.RT_74,
+}
+r4_0[2050503] = {
+  ChangeColorByChar = true,
+  EffectId = 2050503,
+  EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Smg/Sanjiao/NS_Smg_Sanjiao_Hit.NS_Smg_Sanjiao_Hit",
+  FXPriorityType = 90,
+  IsHitFX = true,
+  PlayLocation = r0_0.RT_57,
+  SoundID = 2050201,
+}
+r4_0[2050504] = {
+  ChangeColorByChar = true,
+  EffectId = 2050504,
+  EffectParam = r0_0.RT_71,
+  EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Smg/Sanjiao/NS_Smg_Sanjiao_Explode.NS_Smg_Sanjiao_Explode",
+  FXPriorityType = 90,
+  PlayLocation = r0_0.RT_23,
+  SoundID = 2030101,
+}
+r4_0[2050505] = {
+  ChangeColorByChar = true,
+  DestroyWhenSkillEnds = true,
+  EffectId = 2050505,
+  EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Smg/Sanjiao/NS_Smg_Sanjiao_ShootBurst.NS_Smg_Sanjiao_ShootBurst",
+  FXPriorityType = 90,
+  PlayLocation = r0_0.RT_74,
+}
+r4_0[2050601] = {
+  AllowRefreshAudio = true,
+  ChangeColorByChar = true,
+  DestroyWhenSkillEnds = true,
+  EffectId = 2050601,
+  EffectParam = {
+    Life = 0.12,
+  },
+  EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Machinegun/NS_weapon_Quewu_01.NS_weapon_Quewu_01",
+  FXPriorityType = 90,
+  PlayLocation = r0_0.RT_74,
+  SortPriority = 2,
+  SoundID = 2050602,
+}
+r4_0[2050602] = {
+  AllowRefreshAudio = true,
+  ChangeColorByChar = true,
+  DestroyWhenSkillEnds = true,
+  EffectId = 2050602,
+  EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Machinegun/NS_weapon_Quewu_02.NS_weapon_Quewu_02",
+  FXPriorityType = 90,
+  PlayLocation = r0_0.RT_74,
+  SortPriority = 0,
+  SoundID = 2050601,
+}
+r4_0[2050603] = {
+  AllowRefreshAudio = true,
+  ChangeColorByChar = true,
+  DestroyWhenSkillEnds = true,
+  EffectId = 2050603,
+  EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Machinegun/NS_weapon_Quewu_02.NS_weapon_Quewu_02",
+  FXPriorityType = 90,
+  PlayLocation = r0_0.RT_74,
+  SortPriority = 1,
+  SoundID = 2050601,
+}
+r4_0[2050604] = {
+  ChangeColorByChar = true,
+  EffectId = 2050604,
+  EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Machinegun/NS_weapon_poxiao_shouji_01_Batch.NS_weapon_poxiao_shouji_01_Batch",
+  FXPriorityType = 45,
+  IsArrayBatching = true,
+  IsHitFX = true,
+  PlayLocation = r0_0.RT_57,
 }
 r4_0[2050701] = {
   BatchRootMesh = "Character",
@@ -8698,7 +9645,7 @@ r4_0[2051002] = {
 r4_0[2051003] = {
   ChangeColorByChar = true,
   EffectId = 2051003,
-  EffectParam = r0_0.RT_72,
+  EffectParam = r0_0.RT_78,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Shotgun/Ruohua/NS_Ruohua_BulletBurst_Batch.NS_Ruohua_BulletBurst_Batch",
   FXPriorityType = 90,
   IsArrayBatching = true,
@@ -8716,10 +9663,10 @@ r4_0[2051005] = {
   ChangeColorByChar = true,
   DestroyWhenSkillEnds = true,
   EffectId = 2051005,
-  EffectParam = r0_0.RT_46,
+  EffectParam = r0_0.RT_49,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Shotgun/Ruohua/NS_Ruohua_OpenFire.NS_Ruohua_OpenFire",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_67,
+  PlayLocation = r0_0.RT_74,
 }
 r4_0[2051006] = {
   ChangeColorByChar = true,
@@ -8727,22 +9674,37 @@ r4_0[2051006] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Shotgun/Ruohua/NS_Ruohua_HitGround.NS_Ruohua_HitGround",
   FXPriorityType = 45,
 }
+r4_0[2051101] = {
+  ChangeColorByChar = true,
+  EffectId = 2051101,
+  EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Shotgun/Shengcai/NS_Shengcai_Bullet.NS_Shengcai_Bullet",
+  FXPriorityType = 90,
+  SoundID = 2040504,
+}
+r4_0[2051102] = {
+  ChangeColorByChar = true,
+  EffectId = 2051102,
+  EffectParam = r0_0.RT_87,
+  EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Shotgun/Baopo/NS_Baopo_Explode.NS_Baopo_Explode",
+  FXPriorityType = 90,
+  SoundID = 2040507,
+}
 r4_0[2060100] = {
   EffectId = 2060100,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Bow/Ns_Bow_string_01.Ns_Bow_string_01",
   FXPriorityType = 90,
   NiagaraTickBehavior = 0,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[2060101] = {
   ChangeColorByChar = true,
   DeactiveParam = "Deactive",
   DelayDeactiveTime = 1,
   EffectId = 2060101,
-  EffectParam = r0_0.RT_80,
+  EffectParam = r0_0.RT_88,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Bow/NS_Bow_Bullet_01.NS_Bow_Bullet_01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
   SoundID = 2060101,
 }
 r4_0[2060102] = {
@@ -8750,30 +9712,30 @@ r4_0[2060102] = {
   ChangeColorByChar = true,
   DestroyWhenSkillEnds = true,
   EffectId = 2060102,
-  EffectParam = r0_0.RT_82,
+  EffectParam = r0_0.RT_90,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Bow/NS_Bow_OpenFire_Shooting_01_Batch.NS_Bow_OpenFire_Shooting_01_Batch",
   FXPriorityType = 90,
   IsArrayBatching = true,
-  PlayLocation = r0_0.RT_67,
+  PlayLocation = r0_0.RT_74,
 }
 r4_0[2060103] = {
   ChangeColorByChar = true,
   DestroyWhenSkillEnds = true,
   EffectId = 2060103,
-  EffectParam = r0_0.RT_82,
+  EffectParam = r0_0.RT_90,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Bow/NS_Bow_OpenFire_HeavyShooting_01.NS_Bow_OpenFire_HeavyShooting_01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_67,
+  PlayLocation = r0_0.RT_74,
 }
 r4_0[2060111] = {
   ChangeColorByChar = true,
   DeactiveParam = "Deactive",
   DelayDeactiveTime = 1,
   EffectId = 2060111,
-  EffectParam = r0_0.RT_80,
+  EffectParam = r0_0.RT_88,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Bow/NS_Bow_Bullet_02.NS_Bow_Bullet_02",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
   SoundID = 2060102,
 }
 r4_0[2060112] = {
@@ -8781,71 +9743,109 @@ r4_0[2060112] = {
   DeactiveParam = "Deactive",
   DelayDeactiveTime = 1,
   EffectId = 2060112,
-  EffectParam = r0_0.RT_80,
+  EffectParam = r0_0.RT_88,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Bow/NS_Bow_Bullet_03.NS_Bow_Bullet_03",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
   SoundID = 2060103,
 }
 r4_0[2060131] = {
   ChangeColorByChar = true,
   DestroyWhenSkillEnds = true,
   EffectId = 2060131,
-  EffectParam = r0_0.RT_82,
+  EffectParam = r0_0.RT_90,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Bow/NS_Bow_OpenFire_HeavyShooting_02.NS_Bow_OpenFire_HeavyShooting_02",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_67,
+  PlayLocation = r0_0.RT_74,
 }
+r4_0[2060197] = {
+  EffectId = 2060197,
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Common/NS_Weapon_Miao02.NS_Weapon_Miao02",
+  FXPriorityType = 90,
+  PlayLocation = r0_0.RT_23,
+  TickInArmory = true,
+}
+r5_0 = 2060198
+r6_0 = {
+  EffectId = 2060198,
+}
+r6_0.EffectParam = {
+  scale = {
+    0.8,
+    1,
+    1
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Common/NS_Weapon_Miao02.NS_Weapon_Miao02"
+r6_0.FXPriorityType = 90
+r6_0.PlayLocation = r0_0.RT_23
+r6_0.TickInArmory = true
+r4_0[r5_0] = r6_0
 r4_0[2060199] = {
   EffectId = 2060199,
-  EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Bow/Ns_Bow01_Huanri.Ns_Bow01_Huanri",
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Bow/Ns_Bow01_Huanri.Ns_Bow01_Huanri",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[2060201] = {
   ChangeColorByChar = true,
   EffectId = 2060201,
   EffectParam = {
-    Location = r0_0.RT_76,
-    scale = r0_0.RT_83,
+    Location = r0_0.RT_82,
+    scale = r0_0.RT_91,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Bow/NS_Bow_Bullet_04.NS_Bow_Bullet_04",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
   SoundID = 2060201,
 }
 r4_0[2060202] = {
   EffectId = 2060202,
-  EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Bow/Ns_Bow01_Huguang.Ns_Bow01_Huguang",
+  EffectPath = "/Game/Asset/Effect/Niagara/Costume/09Weapon/Bow/Ns_Bow01_Huguang.Ns_Bow01_Huguang",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[2060301] = {
   EffectId = 2060301,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Bow/NS_Bow_ZimiaoSign.NS_Bow_ZimiaoSign",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[2060302] = {
   ChangeColorByChar = true,
   EffectId = 2060302,
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Bow/NS_Bow_ZimiaoBullet.NS_Bow_ZimiaoBullet",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
   SoundID = 2060301,
 }
+r5_0 = 2060511
+r6_0 = {
+  EffectId = 2060511,
+}
+r6_0.EffectParam = {
+  scale = {
+    4.5,
+    4.5,
+    4.5
+  },
+}
+r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Boss/Jushizhe/NS_jushi_skill05_hit01.NS_jushi_skill05_hit01"
+r6_0.FXPriorityType = 90
+r6_0.SoundID = 2040507
+r4_0[r5_0] = r6_0
 r4_0[4200101] = {
   ChangeColorByChar = true,
   DestroyWhenSkillEnds = true,
   EffectId = 4200101,
   EffectParam = {
     Life = 0.2,
-    Location = r0_0.RT_118,
-    Rotation = r0_0.RT_45,
+    Location = r0_0.RT_130,
+    Rotation = r0_0.RT_48,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Smg/Fangzhu/NS_Smg_Fangzhu_Laser_01.NS_Smg_Fangzhu_Laser_01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[4200102] = {
   ChangeColorByChar = true,
@@ -8853,18 +9853,18 @@ r4_0[4200102] = {
   EffectId = 4200102,
   EffectParam = {
     Life = 0.2,
-    Location = r0_0.RT_118,
+    Location = r0_0.RT_130,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Weapon/Smg/Fangzhu/NS_Smg_Fangzhu_Attack_01.NS_Smg_Fangzhu_Attack_01",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[10101101] = {
   EffectId = 10101101,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/NS_Rou_101_Dot.NS_Rou_101_Dot",
   FXPriorityType = 70,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[10101302] = {
   EffectId = 10101302,
@@ -8872,7 +9872,7 @@ r4_0[10101302] = {
   FXPriorityType = 70,
   IsHitFX = true,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 10101103,
 }
 r4_0[10101901] = {
@@ -8881,7 +9881,7 @@ r4_0[10101901] = {
   FXPriorityType = 70,
   IsHitFX = true,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 10101104,
 }
 r4_0[10102101] = {
@@ -8901,7 +9901,7 @@ r4_0[10102102] = {
 r4_0[10102103] = {
   EffectId = 10102103,
   EffectParam = {
-    Location = r0_0.RT_28,
+    Location = r0_0.RT_31,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng/NS_Baiheng_E_004_Back.NS_Baiheng_E_004_Back",
   FXPriorityType = 90,
@@ -8911,7 +9911,7 @@ r4_0[10102991] = {
   EffectId = 10102991,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/NS_Rou_102_Buff.NS_Rou_102_Buff",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
 }
 r4_0[10103101] = {
   EffectId = 10103101,
@@ -8957,7 +9957,7 @@ r6_0.FXPriorityType = 90
 r4_0[r5_0] = r6_0
 r4_0[10104103] = {
   EffectId = 10104103,
-  EffectParam = r0_0.RT_31,
+  EffectParam = r0_0.RT_34,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/NS_Rou_Liuming_Seed_Explode.NS_Rou_Liuming_Seed_Explode",
   FXPriorityType = 90,
   NotFollowRotation = true,
@@ -8965,7 +9965,7 @@ r4_0[10104103] = {
 }
 r4_0[10104104] = {
   EffectId = 10104104,
-  EffectParam = r0_0.RT_33,
+  EffectParam = r0_0.RT_36,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/NS_Rou_Liuming_Seed_Explode.NS_Rou_Liuming_Seed_Explode",
   FXPriorityType = 90,
   NotFollowRotation = true,
@@ -8988,7 +9988,7 @@ r6_0.IsArrayBatching = true
 r4_0[r5_0] = r6_0
 r4_0[10104106] = {
   EffectId = 10104106,
-  EffectParam = r0_0.RT_35,
+  EffectParam = r0_0.RT_38,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/NS_Rou_Liuming_Seed_Idle_Batch.NS_Rou_Liuming_Seed_Idle_Batch",
   FXPriorityType = 90,
   IsArrayBatching = true,
@@ -9033,14 +10033,14 @@ r6_0.SoundID = 10105203
 r4_0[r5_0] = r6_0
 r4_0[10105205] = {
   EffectId = 10105205,
-  EffectParam = r0_0.RT_37,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/NS_Rou_105_Bullet.NS_Rou_105_Bullet",
   FXPriorityType = 90,
   SoundID = 10105202,
 }
 r4_0[10105302] = {
   EffectId = 10105302,
-  EffectParam = r0_0.RT_31,
+  EffectParam = r0_0.RT_34,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/NS_Rou_105_Bullet.NS_Rou_105_Bullet",
   FXPriorityType = 90,
 }
@@ -9048,7 +10048,7 @@ r4_0[10105901] = {
   DeactiveParam = "DeadTime",
   DelayDeactiveTime = 0.5,
   EffectId = 10105901,
-  EffectParam = r0_0.RT_37,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/NS_Rou_105_Wind.NS_Rou_105_Wind",
   FXPriorityType = 70,
   NotFollowRotation = true,
@@ -9071,7 +10071,7 @@ r4_0[10105902] = {
 r4_0[10106101] = {
   DeactiveParam = "DeadTime",
   EffectId = 10106101,
-  EffectParam = r0_0.RT_33,
+  EffectParam = r0_0.RT_36,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/NS_Rou_106_Bullet.NS_Rou_106_Bullet",
   FXPriorityType = 90,
   SoundID = 10106102,
@@ -9093,14 +10093,14 @@ r4_0[10106103] = {
 r4_0[10106104] = {
   DeactiveParam = "DeadTime",
   EffectId = 10106104,
-  EffectParam = r0_0.RT_31,
+  EffectParam = r0_0.RT_34,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/NS_Rou_106_Bullet.NS_Rou_106_Bullet",
   FXPriorityType = 90,
   SoundID = 10106102,
 }
 r4_0[10106105] = {
   EffectId = 10106105,
-  EffectParam = r0_0.RT_31,
+  EffectParam = r0_0.RT_34,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/NS_Rou_106_Blast.NS_Rou_106_Blast",
   FXPriorityType = 90,
   NotFollowRotation = true,
@@ -9110,14 +10110,14 @@ r4_0[10109101] = {
   EffectId = 10109101,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/NS_Rou_109_NextAtkUp.NS_Rou_109_NextAtkUp",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_38,
+  PlayLocation = r0_0.RT_41,
 }
 r4_0[10109102] = {
   EffectId = 10109102,
-  EffectParam = r0_0.RT_41,
+  EffectParam = r0_0.RT_44,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/NS_Rou_109_FireMan.NS_Rou_109_FireMan",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_42,
+  PlayLocation = r0_0.RT_45,
   SoundID = 10109102,
 }
 r4_0[10109103] = {
@@ -9129,17 +10129,17 @@ r4_0[10109103] = {
 }
 r4_0[10109104] = {
   EffectId = 10109104,
-  EffectParam = r0_0.RT_41,
+  EffectParam = r0_0.RT_44,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/NS_Rou_109_FireMan.NS_Rou_109_FireMan",
   FXPriorityType = 90,
-  PlayLocation = r0_0.RT_43,
+  PlayLocation = r0_0.RT_46,
 }
 r4_0[10109105] = {
   EffectId = 10109105,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/NS_Rou_109_Blast.NS_Rou_109_Blast",
   FXPriorityType = 90,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
   SoundID = 10109103,
 }
 r4_0[10199001] = {
@@ -9189,7 +10189,7 @@ r4_0[10199005] = {
   EffectId = 10199005,
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Common/Mechanism_Supply_Drop.Mechanism_Supply_Drop",
   FXPriorityType = 70,
-  PlayLocation = r0_0.RT_44,
+  PlayLocation = r0_0.RT_47,
 }
 r4_0[10301001] = {
   DeactiveParam = "Deactive",
@@ -9219,7 +10219,7 @@ r4_0[10301004] = {
   EffectId = 10301004,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Feina/NS_Feina_Sum02_AddBuff.NS_Feina_Sum02_AddBuff",
   FXPriorityType = 45,
-  PlayLocation = r0_0.RT_29,
+  PlayLocation = r0_0.RT_32,
 }
 r4_0[10301011] = {
   EffectId = 10301011,
@@ -9261,25 +10261,26 @@ r4_0[20130001] = {
   DeactiveParam = "Deactive",
   DelayDeactiveTime = 1.5,
   EffectId = 20130001,
-  EffectParam = r0_0.RT_70,
+  EffectParam = r0_0.RT_75,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/Rou_20130_bullet.Rou_20130_bullet",
   FXPriorityType = 90,
-  SoundID = 1020101,
+  SoundID = 21030001,
 }
 r4_0[20131001] = {
   DeactiveParam = "Deactive",
   DelayDeactiveTime = 2,
   EffectId = 20131001,
   EffectParam = {
-    Location = r0_0.RT_71,
-    scale = r0_0.RT_32,
+    Location = r0_0.RT_76,
+    scale = r0_0.RT_35,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/Rou_20131_blast.Rou_20131_blast",
   FXPriorityType = 90,
+  SoundID = 21031001,
 }
 r4_0[20132001] = {
   EffectId = 20132001,
-  EffectParam = r0_0.RT_31,
+  EffectParam = r0_0.RT_34,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/NS_Rou_105_Bullet.NS_Rou_105_Bullet",
   FXPriorityType = 90,
   SoundID = 10105202,
@@ -9290,11 +10291,13 @@ r4_0[20134001] = {
   EffectId = 20134001,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/Rou_20134_blast.Rou_20134_blast",
   FXPriorityType = 90,
+  SoundID = 21034001,
 }
 r4_0[20134002] = {
   EffectId = 20134002,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/Rou_20134_blast_OpenFire.Rou_20134_blast_OpenFire",
   FXPriorityType = 90,
+  SoundID = 21034001,
 }
 r4_0[20135001] = {
   DeactiveParam = "Deactive",
@@ -9302,7 +10305,7 @@ r4_0[20135001] = {
   EffectId = 20135001,
   EffectPath = "/Game/Asset/Effect/Niagara/Roguelike/Rou_20135_blast.Rou_20135_blast",
   FXPriorityType = 90,
-  SoundID = 430101,
+  SoundID = 21035001,
 }
 r4_0[30102041] = {
   EffectId = 30102041,
@@ -9326,6 +10329,7 @@ r4_0[40101002] = {
 }
 r4_0[40101003] = {
   EffectId = 40101003,
+  EffectParam = r0_0.RT_34,
   EffectPath = "/Game/Asset/Effect/Niagara/Events/NS_Events_PTIceHit.NS_Events_PTIceHit",
 }
 r4_0[40101004] = {
@@ -9336,6 +10340,29 @@ r4_0[40101005] = {
   EffectId = 40101005,
   EffectPath = "/Game/Asset/Effect/Niagara/Events/NS_Events_PTInk.NS_Events_PTInk",
 }
+r4_0[40101006] = {
+  EffectId = 40101006,
+  EffectPath = "/Game/Asset/Effect/Niagara/Scene/Rouge/NS_Rouge_Portal_Monster02.NS_Rouge_Portal_Monster02",
+  PlayLocation = {
+    socket = "Spine_01",
+  },
+}
+r4_0[40101007] = {
+  EffectId = 40101007,
+  EffectParam = r0_0.RT_124,
+  EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Paotai_Burst01.NS_Paotai_Burst01",
+  FXPriorityType = 90,
+  SoundID = 2017,
+}
+r4_0[40101008] = {
+  EffectId = 40101008,
+  EffectParam = r0_0.RT_124,
+  EffectPath = "/Game/Asset/Effect/Niagara/Events/NS_Events_PTIceHit.NS_Events_PTIceHit",
+}
+r4_0[40101009] = {
+  EffectId = 40101009,
+  EffectPath = "/Game/Asset/Effect/Niagara/GamePlay/NS_Paotai_FireDecal.NS_Paotai_FireDecal",
+}
 r4_0[304000001] = {
   EffectColor = {
     0,
@@ -9344,9 +10371,9 @@ r4_0[304000001] = {
     1
   },
   EffectId = 304000001,
-  EffectParam = r0_0.RT_37,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[304000002] = {
   EffectColor = {
@@ -9356,9 +10383,9 @@ r4_0[304000002] = {
     1
   },
   EffectId = 304000002,
-  EffectParam = r0_0.RT_37,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[304000003] = {
   EffectColor = {
@@ -9368,9 +10395,9 @@ r4_0[304000003] = {
     1
   },
   EffectId = 304000003,
-  EffectParam = r0_0.RT_37,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[304000004] = {
   EffectColor = {
@@ -9380,36 +10407,36 @@ r4_0[304000004] = {
     1
   },
   EffectId = 304000004,
-  EffectParam = r0_0.RT_37,
+  EffectParam = r0_0.RT_40,
   EffectPath = "/Game/Asset/Effect/Niagara/Pet/NS_ShiningPet.NS_ShiningPet",
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[304000005] = {
   EffectId = 304000005,
   EffectParam = {
-    Location = r0_0.RT_71,
-    scale = r0_0.RT_59,
+    Location = r0_0.RT_76,
+    scale = r0_0.RT_62,
   },
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Xibi/NS_Xibi_Skill02_Ball.NS_Xibi_Skill02_Ball",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[304000006] = {
   EffectId = 304000006,
-  EffectParam = r0_0.RT_96,
+  EffectParam = r0_0.RT_106,
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Temple/NS_hitball_temple03.NS_hitball_temple03",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[304000007] = {
   EffectId = 304000007,
-  EffectParam = r0_0.RT_96,
+  EffectParam = r0_0.RT_106,
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Temple/NS_hitball_temple01.NS_hitball_temple01",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[304000008] = {
   EffectId = 304000008,
-  EffectParam = r0_0.RT_96,
+  EffectParam = r0_0.RT_106,
   EffectPath = "/Game/Asset/Effect/Niagara/Scene/Temple/NS_hitball_temple02.NS_hitball_temple02",
-  PlayLocation = r0_0.RT_20,
+  PlayLocation = r0_0.RT_23,
 }
 r4_0[500000305] = {
   EffectId = 500000305,
@@ -9434,7 +10461,7 @@ r4_0[600000102] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Frozen_Snow.NS_Strong_Frozen_Snow",
   FXPriorityType = 80,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
 }
 r4_0[600000103] = {
   DeactiveParam = "Deactive",
@@ -9442,15 +10469,15 @@ r4_0[600000103] = {
   EffectId = 600000103,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Frozen_Debuff.NS_Strong_Frozen_Debuff",
   FXPriorityType = 80,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[600000104] = {
   EffectId = 600000104,
-  EffectParam = r0_0.RT_31,
+  EffectParam = r0_0.RT_34,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Frozen_Snow.NS_Strong_Frozen_Snow",
   FXPriorityType = 80,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
 }
 r4_0[600000201] = {
   EffectId = 600000201,
@@ -9461,7 +10488,7 @@ r4_0[600000201] = {
 }
 r4_0[600000301] = {
   EffectId = 600000301,
-  EffectParam = r0_0.RT_124,
+  EffectParam = r0_0.RT_136,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Poison_AOE.NS_Poison_AOE",
   FXPriorityType = 80,
   NotFollowRotation = true,
@@ -9472,32 +10499,32 @@ r4_0[600000302] = {
   EffectId = 600000302,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Poison_Debuff.NS_Strong_Poison_Debuff",
   FXPriorityType = 80,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[600000402] = {
   EffectId = 600000402,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Thunder_Line.NS_Strong_Thunder_Line",
   FXPriorityType = 80,
-  TargetLocation = r0_0.RT_16,
+  TargetLocation = r0_0.RT_19,
 }
 r4_0[600000404] = {
   EffectId = 600000404,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Thunder_Warning.NS_Strong_Thunder_Warning",
   FXPriorityType = 80,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
 }
 r4_0[600000405] = {
   EffectId = 600000405,
-  EffectParam = r0_0.RT_126,
+  EffectParam = r0_0.RT_138,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Thunder_Warning.NS_Strong_Thunder_Warning",
   FXPriorityType = 80,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
 }
 r4_0[600000501] = {
   EffectId = 600000501,
-  EffectParam = r0_0.RT_31,
+  EffectParam = r0_0.RT_34,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Blood_Bullet.NS_Strong_Blood_Bullet",
   FXPriorityType = 80,
 }
@@ -9507,7 +10534,7 @@ r4_0[600000502] = {
   EffectId = 600000502,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Blood_Heal.NS_Strong_Blood_Heal",
   FXPriorityType = 80,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
 }
 r4_0[600000503] = {
   DeactiveParam = "Deactive",
@@ -9520,12 +10547,12 @@ r4_0[600000503] = {
 r4_0[600000701] = {
   EffectId = 600000701,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Shield_Die.NS_Strong_Shield_Die",
-  FXPriorityType = 80,
+  FXPriorityType = 100,
 }
 r4_0[600000702] = {
   EffectId = 600000702,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Shield_Creature.NS_Strong_Shield_Creature",
-  FXPriorityType = 80,
+  FXPriorityType = 100,
 }
 r4_0[600000801] = {
   EffectId = 600000801,
@@ -9540,7 +10567,7 @@ r4_0[600000802] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Revenge_Buff.NS_Strong_Revenge_Buff",
   FXPriorityType = 80,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
   SoundID = 700182,
 }
 r4_0[600000901] = {
@@ -9549,7 +10576,7 @@ r4_0[600000901] = {
   EffectId = 600000901,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Frozen_Debuff.NS_Strong_Frozen_Debuff",
   FXPriorityType = 80,
-  PlayLocation = r0_0.RT_16,
+  PlayLocation = r0_0.RT_19,
 }
 r4_0[600000902] = {
   EffectId = 600000902,
@@ -9571,14 +10598,14 @@ r4_0[600001001] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Reflect_Defence.NS_Strong_Reflect_Defence",
   FXPriorityType = 80,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
 }
 r4_0[600001002] = {
   EffectId = 600001002,
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Reflect_Warning.NS_Strong_Reflect_Warning",
   FXPriorityType = 80,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
   SoundID = 600001001,
 }
 r4_0[600001003] = {
@@ -9586,14 +10613,14 @@ r4_0[600001003] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Reflect_Explode.NS_Strong_Reflect_Explode",
   FXPriorityType = 80,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
   SoundID = 600001002,
 }
 r4_0[600001004] = {
   EffectId = 600001004,
   FXPriorityType = 80,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
 }
 r4_0[600001011] = {
   EffectId = 600001011,
@@ -9605,7 +10632,7 @@ r4_0[600001101] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Kamikaze_Warning.NS_Strong_Kamikaze_Warning",
   FXPriorityType = 80,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
   SoundID = 600001101,
 }
 r4_0[600001102] = {
@@ -9613,7 +10640,7 @@ r4_0[600001102] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Kamikaze_Burst.NS_Strong_Kamikaze_Burst",
   FXPriorityType = 80,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
   SoundID = 600001102,
 }
 r4_0[600001201] = {
@@ -9626,7 +10653,7 @@ r4_0[600001301] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Vampire_Treat.NS_Strong_Vampire_Treat",
   FXPriorityType = 80,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
   SoundID = 600001301,
 }
 r4_0[600001401] = {
@@ -9634,7 +10661,7 @@ r4_0[600001401] = {
   EffectPath = "/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Strong_Threefold_Flash.NS_Strong_Threefold_Flash",
   FXPriorityType = 80,
   NotFollowRotation = true,
-  PlayLocation = r0_0.RT_48,
+  PlayLocation = r0_0.RT_51,
   SoundID = 600001401,
 }
 return r2_0(r3_0, r4_0)

@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("DetectiveAnswerCache", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\DetectiveAnswerCache.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [1, 1] id: 1
+  return r1_1
+end)("DetectiveAnswerCache", {
   ["100201100202"] = 100203,
   ["100301100302"] = 100303,
   ["100401100403"] = 100404,
@@ -14,5 +17,5 @@ return ReadOnly("DetectiveAnswerCache", {
   ["200208200209"] = 200210,
   ["200301200302"] = 200305,
   ["200303200304"] = 200306,
-  ["200305200306"] = 200307
+  ["200305200306"] = 200307,
 })

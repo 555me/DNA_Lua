@@ -1,22 +1,28 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("AuPOParam", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\AuPOParam.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("AuPOParam", {
   DistanceLimit = {
     ParamName = "DistanceLimit",
-    ParamValue = 30
+    ParamValue = 30,
   },
   HighPriorityNum = {
     ParamName = "HighPriorityNum",
-    ParamValue = 8
+    ParamValue = 8,
   },
   LowPriorityNum = {
     ParamName = "LowPriorityNum",
-    ParamValue = 2
+    ParamValue = 2,
   },
   MidPriorityNum = {
     ParamName = "MidPriorityNum",
-    ParamValue = 4
+    ParamValue = 4,
   },
-  TimeLimit = {ParamName = "TimeLimit", ParamValue = 1}
+  TimeLimit = {
+    ParamName = "TimeLimit",
+    ParamValue = 1,
+  },
 })

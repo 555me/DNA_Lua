@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("CharacterData", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\CharacterData.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("CharacterData", {
   [1101] = {
     CharBirth = "UI_CHAR_BIRTH_1101",
     CharBirthday = "45292.0",
@@ -12,7 +15,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1001",
     CvENName = "CVName2001",
     CvJPName = "CVName3001",
-    CvKRName = "CVName4001"
+    CvKRName = "CVName4001",
   },
   [1103] = {
     CharBirth = "UI_CHAR_BIRTH_1103",
@@ -24,7 +27,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1018",
     CvENName = "CVName2018",
     CvJPName = "CVName3018",
-    CvKRName = "CVName4018"
+    CvKRName = "CVName4018",
   },
   [1501] = {
     CharBirth = "UI_CHAR_BIRTH_1501",
@@ -36,7 +39,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1023",
     CvENName = "CVName2023",
     CvJPName = "CVName3023",
-    CvKRName = "CVName4023"
+    CvKRName = "CVName4023",
   },
   [1502] = {
     CharBirth = "UI_CHAR_BIRTH_1502",
@@ -48,7 +51,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1019",
     CvENName = "CVName2019",
     CvJPName = "CVName3019",
-    CvKRName = "CVName4019"
+    CvKRName = "CVName4019",
   },
   [1503] = {
     CharBirth = "UI_CHAR_BIRTH_1503",
@@ -60,7 +63,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1020",
     CvENName = "CVName2020",
     CvJPName = "CVName3020",
-    CvKRName = "CVName4020"
+    CvKRName = "CVName4020",
   },
   [1801] = {
     CharBirth = "UI_CHAR_BIRTH_1801",
@@ -72,7 +75,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1015",
     CvENName = "CVName2015",
     CvJPName = "CVName3015",
-    CvKRName = "CVName4015"
+    CvKRName = "CVName4015",
   },
   [2101] = {
     CharBirth = "UI_CHAR_BIRTH_2101",
@@ -84,7 +87,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1002",
     CvENName = "CVName2002",
     CvJPName = "CVName3002",
-    CvKRName = "CVName4002"
+    CvKRName = "CVName4002",
   },
   [2301] = {
     CharBirth = "UI_CHAR_BIRTH_2301",
@@ -96,7 +99,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1003",
     CvENName = "CVName2003",
     CvJPName = "CVName3003",
-    CvKRName = "CVName4003"
+    CvKRName = "CVName4003",
   },
   [2401] = {
     CharBirth = "UI_CHAR_BIRTH_2401",
@@ -108,7 +111,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1004",
     CvENName = "CVName2004",
     CvJPName = "CVName3004",
-    CvKRName = "CVName4004"
+    CvKRName = "CVName4004",
   },
   [3101] = {
     CharBirth = "UI_CHAR_BIRTH_3101",
@@ -120,7 +123,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1005",
     CvENName = "CVName2005",
     CvJPName = "CVName3005",
-    CvKRName = "CVName4005"
+    CvKRName = "CVName4005",
   },
   [3102] = {
     CharBirth = "UI_CHAR_BIRTH_3102",
@@ -132,7 +135,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1006",
     CvENName = "CVName2006",
     CvJPName = "CVName3006",
-    CvKRName = "CVName4006"
+    CvKRName = "CVName4006",
   },
   [3103] = {
     CharBirth = "UI_CHAR_BIRTH_3103",
@@ -144,7 +147,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1013",
     CvENName = "CVName2013",
     CvJPName = "CVName3013",
-    CvKRName = "CVName4013"
+    CvKRName = "CVName4013",
   },
   [3201] = {
     CharBirth = "UI_CHAR_BIRTH_3201",
@@ -156,7 +159,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1007",
     CvENName = "CVName2007",
     CvJPName = "CVName3007",
-    CvKRName = "CVName4007"
+    CvKRName = "CVName4007",
   },
   [3301] = {
     CharBirth = "UI_CHAR_BIRTH_3301",
@@ -168,7 +171,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1014",
     CvENName = "CVName2014",
     CvJPName = "CVName3014",
-    CvKRName = "CVName4014"
+    CvKRName = "CVName4014",
   },
   [4101] = {
     CharBirth = "UI_CHAR_BIRTH_4101",
@@ -180,7 +183,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1017",
     CvENName = "CVName2017",
     CvJPName = "CVName3017",
-    CvKRName = "CVName4017"
+    CvKRName = "CVName4017",
   },
   [4102] = {
     CharBirth = "UI_CHAR_BIRTH_4102",
@@ -192,7 +195,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1021",
     CvENName = "CVName2021",
     CvJPName = "CVName3021",
-    CvKRName = "CVName4021"
+    CvKRName = "CVName4021",
   },
   [4201] = {
     CharBirth = "UI_CHAR_BIRTH_4201",
@@ -204,7 +207,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1008",
     CvENName = "CVName2008",
     CvJPName = "CVName3008",
-    CvKRName = "CVName4008"
+    CvKRName = "CVName4008",
   },
   [4202] = {
     CharBirth = "UI_CHAR_BIRTH_4202",
@@ -216,7 +219,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1009",
     CvENName = "CVName2009",
     CvJPName = "CVName3009",
-    CvKRName = "CVName4009"
+    CvKRName = "CVName4009",
   },
   [4301] = {
     CharBirth = "UI_CHAR_BIRTH_4301",
@@ -228,7 +231,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1012",
     CvENName = "CVName2012",
     CvJPName = "CVName3012",
-    CvKRName = "CVName4012"
+    CvKRName = "CVName4012",
   },
   [5101] = {
     CharBirth = "UI_CHAR_BIRTH_5101",
@@ -240,7 +243,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1010",
     CvENName = "CVName2010",
     CvJPName = "CVName3010",
-    CvKRName = "CVName4010"
+    CvKRName = "CVName4010",
   },
   [5102] = {
     CharBirth = "UI_CHAR_BIRTH_5102",
@@ -252,7 +255,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1016",
     CvENName = "CVName2016",
     CvJPName = "CVName3016",
-    CvKRName = "CVName4016"
+    CvKRName = "CVName4016",
   },
   [5301] = {
     CharBirth = "UI_CHAR_BIRTH_5301",
@@ -264,7 +267,7 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1011",
     CvENName = "CVName2011",
     CvJPName = "CVName3011",
-    CvKRName = "CVName4011"
+    CvKRName = "CVName4011",
   },
   [5401] = {
     CharBirth = "UI_CHAR_BIRTH_5401",
@@ -276,6 +279,6 @@ return ReadOnly("CharacterData", {
     CvCNName = "CVName1022",
     CvENName = "CVName2022",
     CvJPName = "CVName3022",
-    CvKRName = "CVName4022"
-  }
+    CvKRName = "CVName4022",
+  },
 })

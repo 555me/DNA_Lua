@@ -1,15 +1,19 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("TalkAction", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\TalkAction.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("TalkAction", {
   Afraid_End = {
     ActionMontage = "Emo_Afraid",
     AnimationId = "Afraid_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Afraid_Loop = {
     ActionMontage = "Emo_Afraid",
@@ -18,7 +22,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Afraid_Start = {
     ActionMontage = "Emo_Afraid",
@@ -27,7 +31,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Agree = {
     ActionMontage = "Emo_Agree",
@@ -37,7 +41,7 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   AgreeHead = {
     ActionMontage = "Emo_AgreeHead",
@@ -47,7 +51,7 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Aim_Loop = {
     ActionMontage = "Aim_Idle",
@@ -56,16 +60,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Alright_End = {
     ActionMontage = "Emo_Alright",
     AnimationId = "Alright_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = true
+    bUseIK = false,
   },
   Alright_Loop = {
     ActionMontage = "Emo_Alright",
@@ -74,7 +79,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = true
+    bUseIK = false,
   },
   Alright_Start = {
     ActionMontage = "Emo_Alright",
@@ -83,16 +88,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = true
+    bUseIK = false,
   },
   Angry01_End = {
     ActionMontage = "Emo_Angry01",
     AnimationId = "Angry01_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Angry01_Loop = {
     ActionMontage = "Emo_Angry01",
@@ -101,7 +107,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Angry01_Start = {
     ActionMontage = "Emo_Angry01",
@@ -110,16 +116,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Angry02_End = {
     ActionMontage = "Emo_Angry02",
     AnimationId = "Angry02_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Angry02_Start = {
     ActionMontage = "Emo_Angry02",
@@ -128,7 +135,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Aote_Story_Drink = {
     ActionMontage = "Story_Drink",
@@ -138,7 +145,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontage = "Emo_Sit_Idle",
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Aote_Story_Hug02_Loop = {
     ActionMontage = "Story_Hug02",
@@ -146,15 +153,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Aote_Story_Hug_End = {
     ActionMontage = "Story_Hug",
     AnimationId = "Aote_Story_Hug_End",
     BlendInTime = 0,
     BlendOutTime = 0,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Aote_Story_Hug_Loop = {
     ActionMontage = "Story_Hug",
@@ -162,7 +170,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Aote_Story_Hug_Start = {
     ActionMontage = "Story_Hug",
@@ -170,7 +178,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Avoid = {
     ActionMontage = "Emo_Avoid",
@@ -179,7 +187,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Awa_Idle = {
     ActionMontage = "Emo_Idle",
@@ -188,16 +196,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Awa_Story_Operate01_End = {
     ActionMontage = "Story_Operate01",
     AnimationId = "Awa_Story_Operate01_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Awa_Story_Operate01_Loop = {
     ActionMontage = "Story_Operate01",
@@ -206,7 +215,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Awa_Story_Operate01_Start = {
     ActionMontage = "Story_Operate01",
@@ -215,16 +224,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Awa_Story_Operate_End = {
     ActionMontage = "Story_Operate",
     AnimationId = "Awa_Story_Operate_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Awa_Story_Operate_Loop = {
     ActionMontage = "Story_Operate",
@@ -233,7 +243,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Awa_Story_Operate_Start = {
     ActionMontage = "Story_Operate",
@@ -242,7 +252,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   BaiTX_Story_Cry_Start = {
     ActionMontage = "Story_Cry",
@@ -250,39 +260,41 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
-  BaiTX_Story_Pride_End_End = {
+  BaiTX_Story_Pride_End = {
     ActionMontage = "Story_Pride",
-    AnimationId = "BaiTX_Story_Pride_End_End",
+    AnimationId = "BaiTX_Story_Pride_End",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "End",
+  },
+  BaiTX_Story_Pride_Loop = {
+    ActionMontage = "Story_Pride",
+    AnimationId = "BaiTX_Story_Pride_Loop",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "Loop",
   },
-  BaiTX_Story_Pride_Loop_Loop = {
+  BaiTX_Story_Pride_Start = {
     ActionMontage = "Story_Pride",
-    AnimationId = "BaiTX_Story_Pride_Loop_Loop",
+    AnimationId = "BaiTX_Story_Pride_Start",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
-  },
-  BaiTX_Story_Pride_Start_Start = {
-    ActionMontage = "Story_Pride",
-    AnimationId = "BaiTX_Story_Pride_Start_Start",
-    BlendInTime = 0.2,
-    BlendOutTime = 0.2,
-    IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   BaiTX_Story_RubForehead_End = {
     ActionMontage = "Story_RubForehead",
     AnimationId = "BaiTX_Story_RubForehead_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   BaiTX_Story_RubForehead_Loop = {
     ActionMontage = "Story_RubForehead",
@@ -290,7 +302,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   BaiTX_Story_RubForehead_Start = {
     ActionMontage = "Story_RubForehead",
@@ -298,15 +310,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   BaiTX_Story_Shout_End = {
     ActionMontage = "Story_Shout",
     AnimationId = "BaiTX_Story_Shout_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   BaiTX_Story_Shout_Loop = {
     ActionMontage = "Story_Shout",
@@ -314,7 +327,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   BaiTX_Story_Shout_Start = {
     ActionMontage = "Story_Shout",
@@ -322,15 +335,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   BaiTX_Story_Sleep_End = {
     ActionMontage = "Story_Sleep",
     AnimationId = "BaiTX_Story_Sleep_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   BaiTX_Story_Sleep_Loop = {
     ActionMontage = "Story_Sleep",
@@ -338,7 +352,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   BaiTX_Story_Sleep_Start = {
     ActionMontage = "Story_Sleep",
@@ -346,15 +360,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   BaiTX_Story_Tired_End = {
     ActionMontage = "Story_Tired",
     AnimationId = "BaiTX_Story_Tired_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   BaiTX_Story_Tired_Loop = {
     ActionMontage = "Story_Tired",
@@ -362,7 +377,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   BaiTX_Story_Tired_Start = {
     ActionMontage = "Story_Tired",
@@ -370,7 +385,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Bai_Bin_Idle = {
     ActionMontage = "Emo_Idle",
@@ -379,16 +394,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Special_Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Bai_Circle_End = {
     ActionMontage = "Emo_Circle",
     AnimationId = "Bai_Circle_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Bai_Circle_Loop = {
     ActionMontage = "Emo_Circle",
@@ -397,7 +413,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Bai_Circle_Start = {
     ActionMontage = "Emo_Circle",
@@ -406,7 +422,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Bai_Idle = {
     ActionMontage = "Emo_Idle",
@@ -415,7 +431,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Bai_Shock2Think2Confident = {
     ActionMontage = "Emo_ShockTo",
@@ -424,7 +440,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 1,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Bai_SlowIdle = {
     ActionMontage = "Emo_Idle",
@@ -433,16 +449,25 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Bai_SpecialConfident_Start = {
-    ActionMontage = "Emo_SpecialConfident",
+    ActionMontage = "Story_Lajitong",
     AnimationId = "Bai_SpecialConfident_Start",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
+  },
+  Bai_Story_Find = {
+    ActionMontage = "Story_Find",
+    AnimationId = "Bai_Story_Find",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Start",
+    bUseIK = false,
   },
   Bai_Talk03Quick = {
     ActionMontage = "Emo_Talk03",
@@ -451,7 +476,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "StartQuick",
-    bUseIK = false
+    bUseIK = false,
   },
   Bai_Think2Confident = {
     ActionMontage = "Emo_ThinkTo",
@@ -460,15 +485,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Baiheng_Story_Special01_End = {
     ActionMontage = "Story_Special01",
     AnimationId = "Baiheng_Story_Special01_End",
     BlendInTime = 0,
     BlendOutTime = 0,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Baiheng_Story_Special01_Loop = {
     ActionMontage = "Story_Special01",
@@ -476,7 +502,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Baiheng_Story_Special01_Start = {
     ActionMontage = "Story_Special01",
@@ -484,15 +510,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Baiheng_Story_Special02_End = {
     ActionMontage = "Story_Special02",
     AnimationId = "Baiheng_Story_Special02_End",
     BlendInTime = 0,
     BlendOutTime = 0,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Baiheng_Story_Special02_Loop = {
     ActionMontage = "Story_Special02",
@@ -500,7 +527,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Baiheng_Story_Special02_Start = {
     ActionMontage = "Story_Special02",
@@ -508,15 +535,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Baiheng_Story_Special03_End = {
     ActionMontage = "Story_Special03",
     AnimationId = "Baiheng_Story_Special03_End",
     BlendInTime = 0,
     BlendOutTime = 0,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Baiheng_Story_Special03_Loop = {
     ActionMontage = "Story_Special03",
@@ -524,7 +552,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Baiheng_Story_Special03_Start = {
     ActionMontage = "Story_Special03",
@@ -532,15 +560,23 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
-  Baiheng_Story_Wakeup_Start = {
+  Baiheng_Story_Wakeup_End = {
     ActionMontage = "Story_Wakeup",
-    AnimationId = "Baiheng_Story_Wakeup_Start",
+    AnimationId = "Baiheng_Story_Wakeup_End",
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "End",
+  },
+  Baiheng_Story_Wakeup_Loop = {
+    ActionMontage = "Story_Wakeup",
+    AnimationId = "Baiheng_Story_Wakeup_Loop",
+    BlendInTime = 0,
+    BlendOutTime = 0,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
   },
   Beg_Loop = {
     ActionMontage = "Emo_Beg",
@@ -549,7 +585,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Beibao_Dyn_Find1 = {
     ActionMontage = "Find1",
@@ -558,7 +594,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = true,
     MontageSection = "Default",
-    bUseIK = true
+    bUseIK = true,
   },
   Beibao_Dyn_Find2 = {
     ActionMontage = "Find2",
@@ -567,7 +603,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = true,
     MontageSection = "Default",
-    bUseIK = true
+    bUseIK = true,
   },
   Beibao_Dyn_Find3 = {
     ActionMontage = "Find3",
@@ -576,7 +612,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = true,
     MontageSection = "Default",
-    bUseIK = true
+    bUseIK = true,
   },
   Beibao_Finish = {
     ActionMontage = "Performance",
@@ -585,7 +621,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Finish",
-    bUseIK = false
+    bUseIK = false,
   },
   Beibao_Start = {
     ActionMontage = "Performance",
@@ -596,7 +632,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   BossSaiqi_Story_Die = {
     ActionMontage = "Story_Die",
@@ -605,7 +641,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   BossSaiqi_Story_HurtCrouch = {
     ActionMontage = "Story_HurtCrouch",
@@ -614,7 +650,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Buluchild_Story_Find = {
     ActionMontage = "Story_Find",
@@ -624,7 +660,7 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   BulusiY_Story_Find02_Start = {
     ActionMontage = "Story_Find02",
@@ -632,16 +668,82 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
+  },
+  CM_Story_AngryPoint_End = {
+    ActionMontage = "Story_AngryPoint",
+    AnimationId = "CM_Story_AngryPoint_End",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "End",
+  },
+  CM_Story_AngryPoint_Loop = {
+    ActionMontage = "Story_AngryPoint",
+    AnimationId = "CM_Story_AngryPoint_Loop",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
+  },
+  CM_Story_AngryPoint_Start = {
+    ActionMontage = "Story_AngryPoint",
+    AnimationId = "CM_Story_AngryPoint_Start",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Start",
+  },
+  CM_Story_HurtCrouch_Loop = {
+    ActionMontage = "Story_HurtCrouch",
+    AnimationId = "CM_Story_HurtCrouch_Loop",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
+  },
+  CM_Story_Kidnap_Loop = {
+    ActionMontage = "Story_Kidnap",
+    AnimationId = "CM_Story_Kidnap_Loop",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
+  },
+  CM_Story_Laugh01 = {
+    ActionMontage = "Story_Laugh01",
+    AnimationId = "CM_Story_Laugh01",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Start",
+  },
+  CM_Story_Laugh02 = {
+    ActionMontage = "Story_Laugh02",
+    AnimationId = "CM_Story_Laugh02",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Start",
+  },
+  CM_Story_LieDown_Loop = {
+    ActionMontage = "Story_LieDown",
+    AnimationId = "CM_Story_LieDown_Loop",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
   },
   Call_End = {
     ActionMontage = "Emo_Call",
     AnimationId = "Call_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Call_Loop = {
     ActionMontage = "Emo_Call",
@@ -650,7 +752,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Call_Start = {
     ActionMontage = "Emo_Call",
@@ -659,7 +761,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Cat_Interactive01 = {
     ActionMontage = "Emo_Cat_Interactive01",
@@ -668,7 +770,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   ChenSi_End = {
     ActionMontage = "Chensi",
@@ -677,7 +779,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ChenSi_Start = {
     ActionMontage = "Chensi",
@@ -686,7 +788,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToExplainL_End = {
     ActionMontage = "Emo_ConfidentLRToExplainL",
@@ -697,7 +799,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToExplainL_Loop = {
     ActionMontage = "Emo_ConfidentLRToExplainL",
@@ -706,7 +808,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToExplainL_Start = {
     ActionMontage = "Emo_ConfidentLRToExplainL",
@@ -715,7 +817,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToExplainR_End = {
     ActionMontage = "Emo_ConfidentLRToExplainR",
@@ -726,7 +828,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToExplainR_Loop = {
     ActionMontage = "Emo_ConfidentLRToExplainR",
@@ -735,7 +837,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToExplainR_Start = {
     ActionMontage = "Emo_ConfidentLRToExplainR",
@@ -744,7 +846,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToSighL_End = {
     ActionMontage = "Emo_ConfidentLRToSighL",
@@ -755,7 +857,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToSighL_Loop = {
     ActionMontage = "Emo_ConfidentLRToSighL",
@@ -764,7 +866,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToSighL_Start = {
     ActionMontage = "Emo_ConfidentLRToSighL",
@@ -773,7 +875,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToSighR_End = {
     ActionMontage = "Emo_ConfidentLRToSighR",
@@ -784,7 +886,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToSighR_Loop = {
     ActionMontage = "Emo_ConfidentLRToSighR",
@@ -793,7 +895,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToSighR_Start = {
     ActionMontage = "Emo_ConfidentLRToSighR",
@@ -802,7 +904,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToTalk01_End = {
     ActionMontage = "Emo_ConfidentLRToTalk01",
@@ -813,7 +915,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToTalk01_Loop = {
     ActionMontage = "Emo_ConfidentLRToTalk01",
@@ -822,7 +924,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToTalk01_Start = {
     ActionMontage = "Emo_ConfidentLRToTalk01",
@@ -831,7 +933,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToTalkL_End = {
     ActionMontage = "Emo_ConfidentLRToTalkL",
@@ -842,7 +944,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToTalkL_Loop = {
     ActionMontage = "Emo_ConfidentLRToTalkL",
@@ -851,7 +953,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToTalkL_Start = {
     ActionMontage = "Emo_ConfidentLRToTalkL",
@@ -860,7 +962,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToTalkR_End = {
     ActionMontage = "Emo_ConfidentLRToTalkR",
@@ -871,7 +973,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToTalkR_Loop = {
     ActionMontage = "Emo_ConfidentLRToTalkR",
@@ -880,7 +982,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLRToTalkR_Start = {
     ActionMontage = "Emo_ConfidentLRToTalkR",
@@ -889,16 +991,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLR_End = {
     ActionMontage = "Emo_ConfidentLR",
     AnimationId = "ConfidentLR_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLR_Loop = {
     ActionMontage = "Emo_ConfidentLR",
@@ -907,7 +1010,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLR_Start = {
     ActionMontage = "Emo_ConfidentLR",
@@ -916,47 +1019,47 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLToExplain_End = {
-    ActionMontage = "Emo_ConfidentLToExplain_",
+    ActionMontage = "Emo_ConfidentLToExplain",
     AnimationId = "ConfidentLToExplain_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
-    EndLoopMontage = "Emo_ConfidentL",
+    EndLoopMontage = "Emo_Confident",
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLToExplain_Loop = {
-    ActionMontage = "Emo_ConfidentLToExplain_",
+    ActionMontage = "Emo_ConfidentLToExplain",
     AnimationId = "ConfidentLToExplain_Loop",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLToExplain_Start = {
-    ActionMontage = "Emo_ConfidentLToExplain_",
+    ActionMontage = "Emo_ConfidentLToExplain",
     AnimationId = "ConfidentLToExplain_Start",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLToSigh_End = {
     ActionMontage = "Emo_ConfidentLToSigh",
     AnimationId = "ConfidentLToSigh_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
-    EndLoopMontage = "Emo_ConfidentL",
+    EndLoopMontage = "Emo_Confident",
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLToSigh_Loop = {
     ActionMontage = "Emo_ConfidentLToSigh",
@@ -965,7 +1068,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLToSigh_Start = {
     ActionMontage = "Emo_ConfidentLToSigh",
@@ -974,18 +1077,18 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLToTalk01_End = {
     ActionMontage = "Emo_ConfidentLToTalk01",
     AnimationId = "ConfidentLToTalk01_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
-    EndLoopMontage = "Emo_ConfidentL",
+    EndLoopMontage = "Emo_Confident",
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLToTalk01_Loop = {
     ActionMontage = "Emo_ConfidentLToTalk01",
@@ -994,7 +1097,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLToTalk01_Start = {
     ActionMontage = "Emo_ConfidentLToTalk01",
@@ -1003,18 +1106,18 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLToTalk_End = {
     ActionMontage = "Emo_ConfidentLToTalk",
     AnimationId = "ConfidentLToTalk_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
-    EndLoopMontage = "Emo_ConfidentL",
+    EndLoopMontage = "Emo_Confident",
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLToTalk_Loop = {
     ActionMontage = "Emo_ConfidentLToTalk",
@@ -1023,7 +1126,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentLToTalk_Start = {
     ActionMontage = "Emo_ConfidentLToTalk",
@@ -1032,7 +1135,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentRToExplain_End = {
     ActionMontage = "Emo_ConfidentRToExplain",
@@ -1043,7 +1146,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentRToExplain_Loop = {
     ActionMontage = "Emo_ConfidentRToExplain",
@@ -1052,7 +1155,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentRToExplain_Start = {
     ActionMontage = "Emo_ConfidentRToExplain",
@@ -1061,7 +1164,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentRToSigh_End = {
     ActionMontage = "Emo_ConfidentRToSigh",
@@ -1072,7 +1175,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentRToSigh_Loop = {
     ActionMontage = "Emo_ConfidentRToSigh",
@@ -1081,7 +1184,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentRToSigh_Start = {
     ActionMontage = "Emo_ConfidentRToSigh",
@@ -1090,7 +1193,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentRToTalk01_End = {
     ActionMontage = "Emo_ConfidentRToTalk01",
@@ -1101,7 +1204,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentRToTalk01_Loop = {
     ActionMontage = "Emo_ConfidentRToTalk01",
@@ -1110,7 +1213,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentRToTalk01_Start = {
     ActionMontage = "Emo_ConfidentRToTalk01",
@@ -1119,7 +1222,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentRToTalk_End = {
     ActionMontage = "Emo_ConfidentRToTalk",
@@ -1130,7 +1233,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentRToTalk_Loop = {
     ActionMontage = "Emo_ConfidentRToTalk",
@@ -1139,7 +1242,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentRToTalk_Start = {
     ActionMontage = "Emo_ConfidentRToTalk",
@@ -1148,16 +1251,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentR_End = {
     ActionMontage = "Emo_ConfidentR",
     AnimationId = "ConfidentR_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentR_Loop = {
     ActionMontage = "Emo_ConfidentR",
@@ -1166,7 +1270,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   ConfidentR_Start = {
     ActionMontage = "Emo_ConfidentR",
@@ -1175,16 +1279,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Confident_End = {
     ActionMontage = "Emo_Confident",
     AnimationId = "Confident_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Confident_Loop = {
     ActionMontage = "Emo_Confident",
@@ -1193,7 +1298,35 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
+  },
+  Confident_New_End = {
+    ActionMontage = "Emo_Confident_New",
+    AnimationId = "Confident_New_End",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "End",
+    bUseIK = false,
+  },
+  Confident_New_Loop = {
+    ActionMontage = "Emo_Confident_New",
+    AnimationId = "Confident_New_Loop",
+    BlendInTime = 0,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
+    bUseIK = false,
+  },
+  Confident_New_Start = {
+    ActionMontage = "Emo_Confident_New",
+    AnimationId = "Confident_New_Start",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Start",
+    bUseIK = false,
   },
   Confident_Start = {
     ActionMontage = "Emo_Confident",
@@ -1202,7 +1335,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Crouch = {
     ActionMontage = "Story_Crouch",
@@ -1211,7 +1344,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Crouch_End = {
     ActionMontage = "Story_Crouch",
@@ -1220,7 +1353,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Crouch_Loop = {
     ActionMontage = "Story_Crouch",
@@ -1229,7 +1362,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Crouch_Start = {
     ActionMontage = "Story_Crouch",
@@ -1238,16 +1371,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Dafu_Emo_Bandge_End = {
     ActionMontage = "Emo_Bandge",
     AnimationId = "Dafu_Emo_Bandge_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = true
+    bUseIK = true,
   },
   Dafu_Emo_Bandge_Loop = {
     ActionMontage = "Emo_Bandge",
@@ -1256,7 +1390,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = true
+    bUseIK = true,
   },
   Dafu_Emo_Bandge_Start = {
     ActionMontage = "Emo_Bandge",
@@ -1265,15 +1399,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = true
+    bUseIK = true,
   },
   Dafu_Story_BeHugged_End = {
     ActionMontage = "Story_BeHugged",
     AnimationId = "Dafu_Story_BeHugged_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Dafu_Story_BeHugged_Loop = {
     ActionMontage = "Story_BeHugged",
@@ -1281,7 +1416,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Dafu_Story_BeHugged_Start = {
     ActionMontage = "Story_BeHugged",
@@ -1289,15 +1424,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Dafu_Story_Cure_End = {
     ActionMontage = "Story_Cure",
     AnimationId = "Dafu_Story_Cure_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Dafu_Story_Cure_Loop = {
     ActionMontage = "Story_Cure",
@@ -1305,7 +1441,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Dafu_Story_Cure_Start = {
     ActionMontage = "Story_Cure",
@@ -1313,7 +1449,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Dead = {
     ActionMontage = "Emo_Dead",
@@ -1322,7 +1458,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Deny01 = {
     ActionMontage = "Emo_Deny01",
@@ -1332,15 +1468,16 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Deny01_End = {
     ActionMontage = "Emo_Deny01",
     AnimationId = "Deny01_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Deny01_Loop = {
     ActionMontage = "Emo_Deny01",
@@ -1348,7 +1485,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Deny01_Start = {
     ActionMontage = "Emo_Deny01",
@@ -1356,7 +1493,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Die = {
     ActionMontage = "Emo_Die",
@@ -1365,7 +1502,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Disagree = {
     ActionMontage = "Emo_Disagree",
@@ -1375,7 +1512,7 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   DisagreeHead = {
     ActionMontage = "Emo_DisagreeHead",
@@ -1385,15 +1522,16 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Emo_Daydream_End = {
     ActionMontage = "Emo_Daydream",
     AnimationId = "Emo_Daydream_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Emo_Daydream_Loop = {
     ActionMontage = "Emo_Daydream",
@@ -1401,7 +1539,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Emo_Daydream_Start = {
     ActionMontage = "Emo_Daydream",
@@ -1409,15 +1547,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Excited01_End = {
     ActionMontage = "Emo_Excited01",
     AnimationId = "Excited01_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Excited01_Loop = {
     ActionMontage = "Emo_Excited01",
@@ -1425,7 +1564,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Excited01_Start = {
     ActionMontage = "Emo_Excited01",
@@ -1433,15 +1572,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Excited02_End = {
     ActionMontage = "Emo_Excited02",
     AnimationId = "Excited02_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Excited02_Loop = {
     ActionMontage = "Emo_Excited02",
@@ -1449,7 +1589,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Excited02_Start = {
     ActionMontage = "Emo_Excited02",
@@ -1457,15 +1597,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Excited03_End = {
     ActionMontage = "Emo_Excited03",
     AnimationId = "Excited03_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Excited03_Loop = {
     ActionMontage = "Emo_Excited03",
@@ -1473,7 +1614,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Excited03_Start = {
     ActionMontage = "Emo_Excited03",
@@ -1481,16 +1622,17 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Explain01L_End = {
     ActionMontage = "Emo_Explain01L",
     AnimationId = "Explain01L_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Explain01L_Start = {
     ActionMontage = "Emo_Explain01L",
@@ -1499,16 +1641,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Explain01_End = {
     ActionMontage = "Emo_Explain01",
     AnimationId = "Explain01_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Explain01_Start = {
     ActionMontage = "Emo_Explain01",
@@ -1517,7 +1660,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Explain02_End = {
     ActionMontage = "Emo_Explain02",
@@ -1527,16 +1670,17 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Explain02_Loop = {
     ActionMontage = "Emo_Explain02",
     AnimationId = "Explain02_Loop",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Explain02_Start = {
     ActionMontage = "Emo_Explain02",
@@ -1545,16 +1689,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   ExplainTwo_End = {
     ActionMontage = "Emo_ExplainTwo",
     AnimationId = "ExplainTwo_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   ExplainTwo_Start = {
     ActionMontage = "Emo_ExplainTwo",
@@ -1563,15 +1708,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Feina_Story_CuteHairAction_End = {
     ActionMontage = "Story_CuteHairAction",
     AnimationId = "Feina_Story_CuteHairAction_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Feina_Story_CuteHairAction_Loop = {
     ActionMontage = "Story_CuteHairAction",
@@ -1579,7 +1725,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Feina_Story_Lieidle = {
     ActionMontage = "Story_Lieidle",
@@ -1587,7 +1733,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Feina_Story_Look01_Start = {
     ActionMontage = "Story_Look01",
@@ -1595,15 +1741,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Feina_Story_Squat_End = {
     ActionMontage = "Story_Squat",
     AnimationId = "Feina_Story_Squat_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Feina_Story_Squat_Loop = {
     ActionMontage = "Story_Squat",
@@ -1611,7 +1758,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Feina_Story_Squat_Start = {
     ActionMontage = "Story_Squat",
@@ -1619,15 +1766,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Feina_Story_TouchPet_End = {
     ActionMontage = "Story_TouchPet",
     AnimationId = "Feina_Story_TouchPet_End",
     BlendInTime = 0,
     BlendOutTime = 0,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Feina_Story_TouchPet_Loop = {
     ActionMontage = "Story_TouchPet",
@@ -1635,7 +1783,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Feina_Story_TouchPet_Start = {
     ActionMontage = "Story_TouchPet",
@@ -1643,7 +1791,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Feina_Story_WipeSweat_Start = {
     ActionMontage = "Story_WipeSweat",
@@ -1651,15 +1799,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Feina_Story_Wish_End = {
     ActionMontage = "Story_Wish",
     AnimationId = "Feina_Story_Wish_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Feina_Story_Wish_Loop = {
     ActionMontage = "Story_Wish",
@@ -1667,7 +1816,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Feina_Story_Wish_Start = {
     ActionMontage = "Story_Wish",
@@ -1675,15 +1824,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Fist02_End = {
     ActionMontage = "Emo_Fist02",
     AnimationId = "Fist02_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Fist02_Loop = {
     ActionMontage = "Emo_Fist02",
@@ -1691,7 +1841,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Fist02_Start = {
     ActionMontage = "Emo_Fist02",
@@ -1699,7 +1849,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   FuXiong_End = {
     ActionMontage = "FuXiong",
@@ -1708,7 +1858,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   FuXiong_Start = {
     ActionMontage = "FuXiong",
@@ -1717,7 +1867,97 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
+  },
+  Gesture_Bed = {
+    ActionMontage = "Gesture_Bed",
+    AnimationId = "Gesture_Bed",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "Default",
+    bUseIK = false,
+  },
+  Gesture_Caocong = {
+    ActionMontage = "Gesture_Caocong",
+    AnimationId = "Gesture_Caocong",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "Default",
+    bUseIK = false,
+  },
+  Gesture_Fishing = {
+    ActionMontage = "Gesture_Fishing",
+    AnimationId = "Gesture_Fishing",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "Default",
+    bUseIK = false,
+  },
+  Gesture_Kaorou = {
+    ActionMontage = "Gesture_Kaorou",
+    AnimationId = "Gesture_Kaorou",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "Default",
+    bUseIK = false,
+  },
+  Gesture_Saoba = {
+    ActionMontage = "Gesture_Saoba",
+    AnimationId = "Gesture_Saoba",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "Default",
+    bUseIK = false,
+  },
+  Gesture_Yaoren = {
+    ActionMontage = "Gesture_Yaoren",
+    AnimationId = "Gesture_Yaoren",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "Default",
+    bUseIK = false,
+  },
+  Gesture_Zhixiang_01 = {
+    ActionMontage = "Gesture_Zhixiang_01",
+    AnimationId = "Gesture_Zhixiang_01",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "Default",
+    bUseIK = false,
+  },
+  Gesture_Zhixiang_02 = {
+    ActionMontage = "Gesture_Zhixiang_02",
+    AnimationId = "Gesture_Zhixiang_02",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "Default",
+    bUseIK = false,
+  },
+  Gesture_Zhixiang_03 = {
+    ActionMontage = "Gesture_Zhixiang_03",
+    AnimationId = "Gesture_Zhixiang_03",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "Default",
+    bUseIK = false,
   },
   Give = {
     ActionMontage = "Emo_Give",
@@ -1727,7 +1967,7 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Gun_Loop = {
     ActionMontage = "Gun_Idle",
@@ -1736,15 +1976,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Helpless01_End = {
     ActionMontage = "Emo_Helpless01",
     AnimationId = "Helpless01_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Helpless01_Start = {
     ActionMontage = "Emo_Helpless01",
@@ -1752,7 +1993,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Huanhu_Nan_Start = {
     ActionMontage = "Emo_Huanhu_Nan",
@@ -1760,7 +2001,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Huanhu_Nv_Start = {
     ActionMontage = "Emo_Huanhu_Nv",
@@ -1768,7 +2009,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Hurt01 = {
     ActionMontage = "Emo_Hurt01",
@@ -1777,7 +2018,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
+  },
+  Idle_Excited = {
+    ActionMontage = "Emo_Idle_Excited",
+    AnimationId = "Idle_Excited",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "Default",
+    bUseIK = false,
   },
   Idle_Listen01 = {
     ActionMontage = "Emo_Idle_Listen01",
@@ -1786,7 +2037,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsOnceAction = true,
     IsSpecialAnim = false,
-    bUseIK = false
+    bUseIK = false,
   },
   Idle_Speak01 = {
     ActionMontage = "Emo_Idle_Speak01",
@@ -1795,7 +2046,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsOnceAction = true,
     IsSpecialAnim = false,
-    bUseIK = false
+    bUseIK = false,
+  },
+  Idle_Speak01_fu = {
+    ActionMontage = "Atp_Idle_Speak01",
+    AnimationId = "Idle_Speak01_fu",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontagePrePath = "Interactive/Show",
+    MontageSection = "Loop",
   },
   Interactive_End = {
     ActionMontage = "Interactive",
@@ -1804,25 +2064,27 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Interactive_Sit02_End = {
     ActionMontage = "Interactive_Sit02_Story",
     AnimationId = "Interactive_Sit02_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.05,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontagePrePath = "Interactive/MechInteractive",
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Interactive_Sit02_EndIdle = {
     ActionMontage = "Interactive_Sit02_Story",
     AnimationId = "Interactive_Sit02_EndIdle",
     BlendInTime = 0.2,
     BlendOutTime = 0.05,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontagePrePath = "Interactive/MechInteractive",
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Interactive_Sit02_Loop = {
     ActionMontage = "Interactive_Sit02_Story",
@@ -1831,7 +2093,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.05,
     IsSpecialAnim = false,
     MontagePrePath = "Interactive/MechInteractive",
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Interactive_Sit02_Start = {
     ActionMontage = "Interactive_Sit02_Story",
@@ -1841,7 +2103,7 @@ return ReadOnly("TalkAction", {
     IsSpecialAnim = false,
     MontagePrePath = "Interactive/MechInteractive",
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Interactive_Sit03_Idle = {
     ActionMontage = "Interactive_Sit03",
@@ -1851,7 +2113,7 @@ return ReadOnly("TalkAction", {
     IsSpecialAnim = false,
     MontagePrePath = "Interactive/MechInteractive",
     MontageSection = "Idle",
-    bUseIK = false
+    bUseIK = false,
   },
   Interactive_Start = {
     ActionMontage = "Interactive",
@@ -1860,7 +2122,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Interactived01 = {
     ActionMontage = "Interactived01",
@@ -1869,7 +2131,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = true,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Invite_Agree = {
     ActionMontage = "Emo_Agree",
@@ -1881,7 +2143,7 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Invite_AgreeHead = {
     ActionMontage = "Emo_AgreeHead",
@@ -1893,7 +2155,7 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Invite_Angry01_End = {
     ActionMontage = "Emo_Angry01",
@@ -1904,7 +2166,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Start",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Invite_Confident_End = {
     ActionMontage = "Emo_Confident",
@@ -1915,7 +2177,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Start",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Invite_Disagree = {
     ActionMontage = "Emo_Disagree",
@@ -1927,7 +2189,7 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Invite_DisagreeHead = {
     ActionMontage = "Emo_DisagreeHead",
@@ -1939,7 +2201,7 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Invite_Explain01_End = {
     ActionMontage = "Emo_Explain01",
@@ -1950,7 +2212,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Start",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Invite_Explain02_End = {
     ActionMontage = "Emo_Explain02",
@@ -1961,7 +2223,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Start",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Invite_Give = {
     ActionMontage = "Emo_Give",
@@ -1973,7 +2235,7 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Invite_Shock_End = {
     ActionMontage = "Emo_Shock",
@@ -1984,7 +2246,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Start",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Invite_Sigh_End = {
     ActionMontage = "Emo_Sigh",
@@ -1995,7 +2257,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Start",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Invite_Talk01_End = {
     ActionMontage = "Emo_Talk01",
@@ -2006,7 +2268,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Start",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Invite_Talk02_End = {
     ActionMontage = "Emo_Talk02",
@@ -2017,7 +2279,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Start",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Invite_Talk03_End = {
     ActionMontage = "Emo_Talk03",
@@ -2028,7 +2290,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Start",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Invite_Think_End = {
     ActionMontage = "Emo_Think",
@@ -2039,16 +2301,17 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Start",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   JT_Mid_F_Story_Operate_End = {
     ActionMontage = "Story_Operate",
     AnimationId = "JT_Mid_F_Story_Operate_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = true
+    bUseIK = true,
   },
   JT_Mid_F_Story_Operate_Loop = {
     ActionMontage = "Story_Operate",
@@ -2057,7 +2320,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = true
+    bUseIK = true,
   },
   JT_Mid_F_Story_Operate_Start = {
     ActionMontage = "Story_Operate",
@@ -2066,7 +2329,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = true
+    bUseIK = true,
   },
   JiaYou_End = {
     ActionMontage = "JiaYou",
@@ -2075,7 +2338,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   JiaYou_Start = {
     ActionMontage = "JiaYou",
@@ -2084,7 +2347,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   LNM_Idle = {
     ActionMontage = "Emo_Idle",
@@ -2093,15 +2356,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Laugh01_End = {
     ActionMontage = "Emo_Laugh01",
     AnimationId = "Laugh01_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Laugh01_Loop = {
     ActionMontage = "Emo_Laugh01",
@@ -2109,7 +2373,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Laugh01_Start = {
     ActionMontage = "Emo_Laugh01",
@@ -2117,15 +2381,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Lilikou_Story_Playlyre_End = {
     ActionMontage = "Story_Playlyre",
     AnimationId = "Lilikou_Story_Playlyre_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Lilikou_Story_Playlyre_Idle = {
     ActionMontage = "Story_Playlyre",
@@ -2133,7 +2398,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Idle"
+    MontageSection = "Idle",
   },
   Lilikou_Story_Playlyre_Loop = {
     ActionMontage = "Story_Playlyre",
@@ -2141,7 +2406,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Lilikou_Story_Playlyre_Start = {
     ActionMontage = "Story_Playlyre",
@@ -2149,16 +2414,17 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Linen_Inves_End = {
     ActionMontage = "Story_Inves",
     AnimationId = "Linen_Inves_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Linen_Inves_Start = {
     ActionMontage = "Story_Inves",
@@ -2167,16 +2433,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Linen_Salut_End = {
     ActionMontage = "Story_Salut",
     AnimationId = "Linen_Salut_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Linen_Salut_Start = {
     ActionMontage = "Story_Salut",
@@ -2185,7 +2452,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Linen_Shot = {
     ActionMontage = "Story_Shot",
@@ -2195,16 +2462,17 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Linen_Shotpre_End = {
     ActionMontage = "Story_Shotpre",
     AnimationId = "Linen_Shotpre_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Linen_Shotpre_Start = {
     ActionMontage = "Story_Shotpre",
@@ -2213,15 +2481,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Lise_Emo_Clean_End = {
     ActionMontage = "Emo_Clean",
     AnimationId = "Lise_Emo_Clean_End",
     BlendInTime = 0,
     BlendOutTime = 0,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Lise_Emo_Clean_Loop = {
     ActionMontage = "Emo_Clean",
@@ -2229,7 +2498,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Lise_Emo_Clean_Start = {
     ActionMontage = "Emo_Clean",
@@ -2237,7 +2506,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Lise_Lieidle = {
     ActionMontage = "Story_Lieidle",
@@ -2246,7 +2515,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Lise_Liewake_End = {
     ActionMontage = "Story_Liewake",
@@ -2257,7 +2526,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Lise_Liewake_Start = {
     ActionMontage = "Story_Liewake",
@@ -2266,16 +2535,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Lise_Sing_End = {
     ActionMontage = "Story_Sing",
     AnimationId = "Lise_Sing_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Lise_Sing_Loop = {
     ActionMontage = "Story_Sing",
@@ -2284,7 +2554,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Lise_Sing_Start = {
     ActionMontage = "Story_Sing",
@@ -2293,7 +2563,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Lise_Sitgive_End = {
     ActionMontage = "Story_Sitgive",
@@ -2304,7 +2574,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Lise_Sitgive_Start = {
     ActionMontage = "Story_Sitgive",
@@ -2313,16 +2583,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Lise_Sitidle_End = {
     ActionMontage = "Story_Sitidle",
     AnimationId = "Lise_Sitidle_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Lise_Sitidle_Start = {
     ActionMontage = "Story_Sitidle",
@@ -2331,15 +2602,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Lise_Story_Aim_End = {
     ActionMontage = "Story_Aim",
     AnimationId = "Lise_Story_Aim_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Lise_Story_Aim_Loop = {
     ActionMontage = "Story_Aim",
@@ -2347,7 +2619,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Lise_Story_Aim_Start = {
     ActionMontage = "Story_Aim",
@@ -2355,15 +2627,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Lise_Story_Denny_End = {
     ActionMontage = "Story_Denny",
     AnimationId = "Lise_Story_Denny_End",
     BlendInTime = 0,
     BlendOutTime = 0,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Lise_Story_Denny_Loop = {
     ActionMontage = "Story_Denny",
@@ -2371,7 +2644,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Lise_Story_Denny_Start = {
     ActionMontage = "Story_Denny",
@@ -2379,7 +2652,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Lise_Story_Hug = {
     ActionMontage = "Story_Hug",
@@ -2388,7 +2661,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Lise_Story_Hug02_Loop = {
     ActionMontage = "Story_Hug02",
@@ -2396,7 +2669,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Lise_Story_Hug03_Loop = {
     ActionMontage = "Story_Hug03",
@@ -2404,7 +2677,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Lise_Story_HurtCrouch = {
     ActionMontage = "Story_HurtCrouch",
@@ -2412,15 +2685,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Lise_Story_Protect_End = {
     ActionMontage = "Story_Protect",
     AnimationId = "Lise_Story_Protect_End",
     BlendInTime = 0,
     BlendOutTime = 0,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Lise_Story_Protect_Loop = {
     ActionMontage = "Story_Protect",
@@ -2428,7 +2702,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Lise_Story_Protect_Start = {
     ActionMontage = "Story_Protect",
@@ -2436,16 +2710,17 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Lise_Touch_End = {
     ActionMontage = "Story_Touch",
     AnimationId = "Lise_Touch_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Lise_Touch_Start = {
     ActionMontage = "Story_Touch",
@@ -2454,7 +2729,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Lise_hurt_Loop = {
     ActionMontage = "Emo_hurt",
@@ -2463,24 +2738,24 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = true
+    bUseIK = true,
   },
   Npc_Qingnian_M_Story_HideHand_End = {
     ActionMontage = "Story_HideHand",
     AnimationId = "Npc_Qingnian_M_Story_HideHand_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Npc_Qingnian_M_Story_HideHand_Loop = {
     ActionMontage = "Story_HideHand",
     AnimationId = "Npc_Qingnian_M_Story_HideHand_Loop",
     BlendInTime = 0,
     BlendOutTime = 0,
-    EndLoopMontageSection = "Story_+J101",
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Npc_Qingnian_M_Story_HideHand_Start = {
     ActionMontage = "Story_HideHand",
@@ -2488,7 +2763,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Nvzhu_Story_Alert_Start = {
     ActionMontage = "Story_Alert",
@@ -2496,15 +2771,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Nvzhu_Story_Angry02_End = {
     ActionMontage = "Story_Angry02",
     AnimationId = "Nvzhu_Story_Angry02_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Nvzhu_Story_Angry02_Loop = {
     ActionMontage = "Story_Angry02",
@@ -2512,7 +2788,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Nvzhu_Story_Angry02_Start = {
     ActionMontage = "Story_Angry02",
@@ -2520,7 +2796,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Nvzhu_Story_Awake_Start = {
     ActionMontage = "Story_Awake",
@@ -2528,7 +2804,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Nvzhu_Story_CrouchWithFlower = {
     ActionMontage = "Story_CrouchWithFlower",
@@ -2537,7 +2813,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Nvzhu_Story_LieDown = {
     ActionMontage = "LieDown_Loop",
@@ -2546,16 +2822,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Nvzhu_Story_StretchHand_End = {
     ActionMontage = "Story_StretchHand",
     AnimationId = "Nvzhu_Story_StretchHand_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Nvzhu_Story_StretchHand_Start = {
     ActionMontage = "Story_StretchHand",
@@ -2564,7 +2841,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Nvzhu_Story_Tired_Start = {
     ActionMontage = "Story_Tired",
@@ -2572,7 +2849,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Nvzhu_Story_WangXi_Start = {
     ActionMontage = "Story_WangXi",
@@ -2580,7 +2857,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   OldMan100155 = {
     ActionMontage = "Story_10015503",
@@ -2588,16 +2865,17 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Onground01_End = {
     ActionMontage = "Emo_OnGround01",
     AnimationId = "Onground01_End",
     BlendInTime = 0,
     BlendOutTime = 0,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = true
+    bUseIK = true,
   },
   Onground01_Loop = {
     ActionMontage = "Emo_OnGround01",
@@ -2606,7 +2884,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = true
+    bUseIK = true,
   },
   Onground02 = {
     ActionMontage = "Emo_OnGround02",
@@ -2615,7 +2893,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Onground03_Start = {
     ActionMontage = "Emo_OnGround03",
@@ -2624,15 +2902,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Please01_End = {
     ActionMontage = "Emo_Please01",
     AnimationId = "Please01_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Please01_Loop = {
     ActionMontage = "Emo_Please01",
@@ -2640,7 +2919,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Please01_Start = {
     ActionMontage = "Emo_Please01",
@@ -2648,7 +2927,32 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
+  },
+  PointF_End = {
+    ActionMontage = "Emo_PointF",
+    AnimationId = "PointF_End",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "End",
+  },
+  PointF_Loop = {
+    ActionMontage = "Emo_PointF",
+    AnimationId = "PointF_Loop",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
+  },
+  PointF_Start = {
+    ActionMontage = "Emo_PointF",
+    AnimationId = "PointF_Start",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Start",
   },
   Pose = {
     ActionMontage = "IdleShow_01",
@@ -2657,15 +2961,40 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = true,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
+  },
+  Pray_End = {
+    ActionMontage = "Emo_Pray",
+    AnimationId = "Pray_End",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "End",
+  },
+  Pray_Loop = {
+    ActionMontage = "Emo_Pray",
+    AnimationId = "Pray_Loop",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
+  },
+  Pray_Start = {
+    ActionMontage = "Emo_Pray",
+    AnimationId = "Pray_Start",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Start",
   },
   RaiseHand_End = {
     ActionMontage = "Emo_RaiseHand",
     AnimationId = "RaiseHand_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   RaiseHand_Start = {
     ActionMontage = "Emo_RaiseHand",
@@ -2673,15 +3002,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Sad02_End = {
     ActionMontage = "Emo_Sad02",
     AnimationId = "Sad02_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Sad02_Start = {
     ActionMontage = "Emo_Sad02",
@@ -2689,7 +3019,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Saiqi_Story_CrySit = {
     ActionMontage = "Story_CrySit",
@@ -2698,7 +3028,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Saiqi_Story_HoldScythe = {
     ActionMontage = "Story_HoldScythe",
@@ -2707,7 +3037,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Saiqi_Story_TiredStand = {
     ActionMontage = "Story_TiredStand",
@@ -2716,16 +3046,42 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
+  },
+  Salute_End = {
+    ActionMontage = "Emo_Salute",
+    AnimationId = "Salute_End",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "End",
+  },
+  Salute_Loop = {
+    ActionMontage = "Emo_Salute",
+    AnimationId = "Salute_Loop",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
+  },
+  Salute_Start = {
+    ActionMontage = "Emo_Salute",
+    AnimationId = "Salute_Start",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Start",
   },
   ScratchHead_End = {
     ActionMontage = "Emo_ScratchHead",
     AnimationId = "ScratchHead_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = true
+    bUseIK = false,
   },
   ScratchHead_Loop = {
     ActionMontage = "Emo_ScratchHead",
@@ -2734,7 +3090,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = true
+    bUseIK = false,
   },
   ScratchHead_Start = {
     ActionMontage = "Emo_ScratchHead",
@@ -2743,7 +3099,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = true
+    bUseIK = false,
   },
   Shangdian_Write_Start = {
     ActionMontage = "Write",
@@ -2752,15 +3108,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = true
+    bUseIK = true,
   },
   Shh01_End = {
     ActionMontage = "Emo_Shh01",
     AnimationId = "Shh01_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Shh01_Start = {
     ActionMontage = "Emo_Shh01",
@@ -2768,16 +3125,17 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Shock02_End = {
     ActionMontage = "Emo_Shock02",
     AnimationId = "Shock02_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Shock02_Loop = {
     ActionMontage = "Emo_Shock02",
@@ -2786,7 +3144,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Shock02_Start = {
     ActionMontage = "Emo_Shock02",
@@ -2795,15 +3153,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Shock03_End = {
     ActionMontage = "Emo_Shock03",
     AnimationId = "Shock03_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Shock03_Loop = {
     ActionMontage = "Emo_Shock03",
@@ -2811,7 +3170,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Shock03_Start = {
     ActionMontage = "Emo_Shock03",
@@ -2819,15 +3178,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Shock04_End = {
     ActionMontage = "Emo_Shock04",
     AnimationId = "Shock04_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Shock04_Loop = {
     ActionMontage = "Emo_Shock04",
@@ -2835,7 +3195,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Shock04_Start = {
     ActionMontage = "Emo_Shock04",
@@ -2843,16 +3203,17 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Shock_End = {
     ActionMontage = "Emo_Shock",
     AnimationId = "Shock_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Shock_Loop = {
     ActionMontage = "Emo_Shock",
@@ -2861,7 +3222,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Shock_Start = {
     ActionMontage = "Emo_Shock",
@@ -2870,15 +3231,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Shy01_End = {
     ActionMontage = "Emo_Shy01",
     AnimationId = "Shy01_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Shy01_Start = {
     ActionMontage = "Emo_Shy01",
@@ -2886,15 +3248,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Shy02_End = {
     ActionMontage = "Emo_Shy02",
     AnimationId = "Shy02_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Shy02_Start = {
     ActionMontage = "Emo_Shy02",
@@ -2902,15 +3265,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Shy03_End = {
     ActionMontage = "Emo_Shy03",
     AnimationId = "Shy03_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Shy03_Start = {
     ActionMontage = "Emo_Shy03",
@@ -2918,16 +3282,17 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Sigh_End = {
     ActionMontage = "Emo_Sigh",
     AnimationId = "Sigh_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Sigh_Loop = {
     ActionMontage = "Emo_Sigh",
@@ -2936,7 +3301,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Sigh_Start = {
     ActionMontage = "Emo_Sigh",
@@ -2945,7 +3310,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit = {
     ActionMontage = "Interactive_Sit_F",
@@ -2954,7 +3319,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "SitStart",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit01_Loop = {
     ActionMontage = "Interactive_Sit01",
@@ -2963,7 +3328,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = true
+    bUseIK = true,
   },
   Sit02 = {
     ActionMontage = "Interactive_Sit02",
@@ -2973,7 +3338,7 @@ return ReadOnly("TalkAction", {
     IsSpecialAnim = false,
     MontagePrePath = "Interactive/MechInteractive",
     MontageSection = "Start",
-    bUseIK = true
+    bUseIK = true,
   },
   Sit02_Loop = {
     ActionMontage = "Interactive_Sit02",
@@ -2983,17 +3348,18 @@ return ReadOnly("TalkAction", {
     IsSpecialAnim = false,
     MontagePrePath = "Interactive/MechInteractive",
     MontageSection = "Loop",
-    bUseIK = true
+    bUseIK = true,
   },
   Sit03_End = {
     ActionMontage = "Interactive_Sit03",
     AnimationId = "Sit03_End",
     BlendInTime = 0,
     BlendOutTime = 0,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontagePrePath = "Interactive/MechInteractive",
     MontageSection = "End",
-    bUseIK = true
+    bUseIK = true,
   },
   Sit03_Idle = {
     ActionMontage = "Interactive_Sit03",
@@ -3003,7 +3369,7 @@ return ReadOnly("TalkAction", {
     IsSpecialAnim = false,
     MontagePrePath = "Interactive/MechInteractive",
     MontageSection = "Idle",
-    bUseIK = true
+    bUseIK = true,
   },
   Sit03_Start = {
     ActionMontage = "Interactive_Sit03",
@@ -3013,7 +3379,7 @@ return ReadOnly("TalkAction", {
     IsSpecialAnim = false,
     MontagePrePath = "Interactive/MechInteractive",
     MontageSection = "Start",
-    bUseIK = true
+    bUseIK = true,
   },
   Sit_AgreeHead = {
     ActionMontage = "Emo_AgreeHead",
@@ -3022,7 +3388,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.4,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_DisagreeHead = {
     ActionMontage = "Emo_DisagreeHead",
@@ -3031,7 +3397,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.4,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_End = {
     ActionMontage = "Interactive_Sit_F",
@@ -3041,7 +3407,7 @@ return ReadOnly("TalkAction", {
     IsSpecialAnim = false,
     MontagePrePath = "Interactive/MechInteractive",
     MontageSection = "SitEnd",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_End_Interim = {
     ActionMontage = "Interactive_SitEnd",
@@ -3052,7 +3418,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Start",
     IsSpecialAnim = false,
     MontageSection = "SitEnd",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Idle_End = {
     ActionMontage = "Emo_Sit_Idle",
@@ -3061,7 +3427,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Idle_Loop = {
     ActionMontage = "Emo_Sit_Idle",
@@ -3070,7 +3436,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Idle_Start = {
     ActionMontage = "Emo_Sit_Idle",
@@ -3079,7 +3445,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Loop = {
     ActionMontage = "Interactive_Sit_F",
@@ -3089,7 +3455,7 @@ return ReadOnly("TalkAction", {
     IsSpecialAnim = false,
     MontagePrePath = "Interactive/MechInteractive",
     MontageSection = "SitLoop",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Start = {
     ActionMontage = "Interactive_Sit_F",
@@ -3099,7 +3465,7 @@ return ReadOnly("TalkAction", {
     IsSpecialAnim = false,
     MontagePrePath = "Interactive/MechInteractive",
     MontageSection = "SitStart",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk01_End = {
     ActionMontage = "Emo_Sit_Talk01",
@@ -3110,7 +3476,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk01_Loop = {
     ActionMontage = "Emo_Sit_Talk01",
@@ -3119,7 +3485,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk01_SitEnd = {
     ActionMontage = "Emo_Sit_Talk01",
@@ -3130,7 +3496,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "SitEnd",
     IsSpecialAnim = false,
     MontageSection = "SitEnd",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk01_Start = {
     ActionMontage = "Emo_Sit_Talk01",
@@ -3139,7 +3505,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk02R_End = {
     ActionMontage = "Emo_Sit_Talk02R",
@@ -3150,7 +3516,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk02R_Loop = {
     ActionMontage = "Emo_Sit_Talk02R",
@@ -3159,7 +3525,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk02R_SitEnd = {
     ActionMontage = "Emo_Sit_Talk02R",
@@ -3170,7 +3536,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "SitEnd",
     IsSpecialAnim = false,
     MontageSection = "SitEnd",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk02R_Start = {
     ActionMontage = "Emo_Sit_Talk02R",
@@ -3179,7 +3545,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk02_End = {
     ActionMontage = "Emo_Sit_Talk02",
@@ -3190,7 +3556,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk02_Loop = {
     ActionMontage = "Emo_Sit_Talk02",
@@ -3199,7 +3565,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk02_SitEnd = {
     ActionMontage = "Emo_Sit_Talk02",
@@ -3210,7 +3576,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "SitEnd",
     IsSpecialAnim = false,
     MontageSection = "SitEnd",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk02_Start = {
     ActionMontage = "Emo_Sit_Talk02",
@@ -3219,7 +3585,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk03ToTalkL_End = {
     ActionMontage = "Emo_Sit_Talk03ToTalkL",
@@ -3230,7 +3596,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk03ToTalkL_SitEnd = {
     ActionMontage = "Emo_Sit_Talk03ToTalkL",
@@ -3241,7 +3607,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "SitEnd",
     IsSpecialAnim = false,
     MontageSection = "SitEnd",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk03ToTalkL_Start = {
     ActionMontage = "Emo_Sit_Talk03ToTalkL",
@@ -3250,7 +3616,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk03ToTalkR_End = {
     ActionMontage = "Emo_Sit_Talk03ToTalkR",
@@ -3261,7 +3627,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk03ToTalkR_SitEnd = {
     ActionMontage = "Emo_Sit_Talk03ToTalkR",
@@ -3272,7 +3638,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "SitEnd",
     IsSpecialAnim = false,
     MontageSection = "SitEnd",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk03ToTalkR_Start = {
     ActionMontage = "Emo_Sit_Talk03ToTalkR",
@@ -3281,7 +3647,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk03ToThink_End = {
     ActionMontage = "Emo_Sit_Talk03ToThink",
@@ -3292,7 +3658,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk03ToThink_SitEnd = {
     ActionMontage = "Emo_Sit_Talk03ToThink",
@@ -3303,7 +3669,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "SitEnd",
     IsSpecialAnim = false,
     MontageSection = "SitEnd",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk03ToThink_Start = {
     ActionMontage = "Emo_Sit_Talk03ToThink",
@@ -3312,7 +3678,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk03_End = {
     ActionMontage = "Emo_Sit_Talk03",
@@ -3323,7 +3689,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk03_Loop = {
     ActionMontage = "Emo_Sit_Talk03",
@@ -3332,7 +3698,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk03_SitEnd = {
     ActionMontage = "Emo_Sit_Talk03",
@@ -3343,7 +3709,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "SitEnd",
     IsSpecialAnim = false,
     MontageSection = "SitEnd",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Talk03_Start = {
     ActionMontage = "Emo_Sit_Talk03",
@@ -3352,7 +3718,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Think_End = {
     ActionMontage = "Emo_Sit_Think",
@@ -3363,7 +3729,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Think_Loop = {
     ActionMontage = "Emo_Sit_Think",
@@ -3372,7 +3738,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Think_SitEnd = {
     ActionMontage = "Emo_Sit_Think",
@@ -3383,7 +3749,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "SitEnd",
     IsSpecialAnim = false,
     MontageSection = "SitEnd",
-    bUseIK = false
+    bUseIK = false,
   },
   Sit_Think_Start = {
     ActionMontage = "Emo_Sit_Think",
@@ -3392,16 +3758,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   SpecialConfident_End = {
     ActionMontage = "Emo_SpecialConfident",
     AnimationId = "SpecialConfident_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   SpecialConfident_Start = {
     ActionMontage = "Emo_SpecialConfident",
@@ -3410,16 +3777,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   SpecialHappy_End = {
     ActionMontage = "Emo_SpecialHappy",
     AnimationId = "SpecialHappy_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   SpecialHappy_Start = {
     ActionMontage = "Emo_SpecialHappy",
@@ -3428,16 +3796,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   SpecialHoldHelmet_End = {
     ActionMontage = "Emo_SpecialHoldHelmet",
     AnimationId = "SpecialHoldHelmet_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = true
+    bUseIK = true,
   },
   SpecialHoldHelmet_Start = {
     ActionMontage = "Emo_SpecialHoldHelmet",
@@ -3446,7 +3815,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = true
+    bUseIK = true,
   },
   SpecialIdle01 = {
     ActionMontage = "SpecialIdle01",
@@ -3455,7 +3824,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = true,
     MontageSection = "Default",
-    bUseIK = true
+    bUseIK = true,
   },
   SpecialIdle02 = {
     ActionMontage = "SpecialIdle02",
@@ -3464,7 +3833,31 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = true,
     MontageSection = "Default",
-    bUseIK = true
+    bUseIK = true,
+  },
+  SpecialIdle02_End = {
+    ActionMontage = "SpecialIdle02",
+    AnimationId = "SpecialIdle02_End",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "End",
+  },
+  SpecialIdle02_Loop = {
+    ActionMontage = "SpecialIdle02",
+    AnimationId = "SpecialIdle02_Loop",
+    BlendInTime = 0,
+    BlendOutTime = 0,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
+  },
+  SpecialIdle02_Start = {
+    ActionMontage = "SpecialIdle02",
+    AnimationId = "SpecialIdle02_Start",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Start",
   },
   SpecialIdle03 = {
     ActionMontage = "Idle_Sit",
@@ -3473,7 +3866,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = true,
     MontageSection = "Default",
-    bUseIK = true
+    bUseIK = true,
   },
   SpecialLook01_Start = {
     ActionMontage = "Emo_SpecialLook01",
@@ -3482,7 +3875,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = true
+    bUseIK = true,
   },
   SpecialLook02_Start = {
     ActionMontage = "Emo_SpecialLook02",
@@ -3491,7 +3884,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = true
+    bUseIK = true,
   },
   SpecialSnapFingers = {
     ActionMontage = "Emo_SpecialSnapFingers",
@@ -3500,16 +3893,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   SpecialThink_End = {
     ActionMontage = "Emo_SpecialThink",
     AnimationId = "SpecialThink_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   SpecialThink_Start = {
     ActionMontage = "Emo_SpecialThink",
@@ -3518,16 +3912,24 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   SpecialUnInterested_End = {
     ActionMontage = "Emo_SpecialUnInterested",
     AnimationId = "SpecialUnInterested_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = true
+  },
+  SpecialUnInterested_Loop = {
+    ActionMontage = "Emo_SpecialUnInterested",
+    AnimationId = "SpecialUnInterested_Loop",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
   },
   SpecialUnInterested_Start = {
     ActionMontage = "Emo_SpecialUnInterested",
@@ -3536,16 +3938,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = true
   },
   Special_End = {
     ActionMontage = "Emo_Special",
     AnimationId = "Special_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Special_Start = {
     ActionMontage = "Emo_Special",
@@ -3554,7 +3956,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.4,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Special_Start1 = {
     ActionMontage = "Emo_Special",
@@ -3563,7 +3965,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.4,
     IsSpecialAnim = false,
     MontageSection = "Start1",
-    bUseIK = false
+    bUseIK = false,
   },
   Special_Start2 = {
     ActionMontage = "Emo_Special",
@@ -3572,15 +3974,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.4,
     IsSpecialAnim = false,
     MontageSection = "Start2",
-    bUseIK = false
+    bUseIK = false,
   },
   SquatTalk_End = {
     ActionMontage = "Emo_SquatTalk",
     AnimationId = "SquatTalk_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   SquatTalk_Loop = {
     ActionMontage = "Emo_SquatTalk",
@@ -3588,7 +3991,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   SquatTalk_Start = {
     ActionMontage = "Emo_SquatTalk",
@@ -3596,16 +3999,17 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Squat_End = {
     ActionMontage = "Emo_Squat",
     AnimationId = "Squat_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = true
+    bUseIK = false,
   },
   Squat_Start = {
     ActionMontage = "Emo_Squat",
@@ -3614,16 +4018,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Stop01_End = {
     ActionMontage = "Emo_Stop01",
     AnimationId = "Stop01_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Stop01_Start = {
     ActionMontage = "Emo_Stop01",
@@ -3632,15 +4037,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Stop_End = {
     ActionMontage = "Emo_Stop",
     AnimationId = "Stop_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Stop_Loop = {
     ActionMontage = "Emo_Stop",
@@ -3648,7 +4054,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Stop_Start = {
     ActionMontage = "Emo_Stop",
@@ -3656,16 +4062,17 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Story_HandToHand_End = {
     ActionMontage = "Story_HandToHand",
     AnimationId = "Story_HandToHand_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Story_HandToHand_Loop = {
     ActionMontage = "Story_HandToHand",
@@ -3674,7 +4081,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Story_HandToHand_Start = {
     ActionMontage = "Story_HandToHand",
@@ -3683,15 +4090,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Story_Headache_End = {
     ActionMontage = "Story_Headache",
     AnimationId = "Story_Headache_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Story_Headache_Loop = {
     ActionMontage = "Story_Headache",
@@ -3699,7 +4107,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Story_Headache_Start = {
     ActionMontage = "Story_Headache",
@@ -3707,7 +4115,32 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
+  },
+  Story_HoldFist_End = {
+    ActionMontage = "Story_HoldFist",
+    AnimationId = "Story_HoldFist_End",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "End",
+  },
+  Story_HoldFist_Loop = {
+    ActionMontage = "Story_HoldFist",
+    AnimationId = "Story_HoldFist_Loop",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
+  },
+  Story_HoldFist_Start = {
+    ActionMontage = "Story_HoldFist",
+    AnimationId = "Story_HoldFist_Start",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Start",
   },
   Story_Hug = {
     ActionMontage = "Story_Hug",
@@ -3716,16 +4149,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk01_End = {
     ActionMontage = "Emo_Talk01",
     AnimationId = "Talk01_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk01_Loop = {
     ActionMontage = "Emo_Talk01",
@@ -3734,7 +4168,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk01_Start = {
     ActionMontage = "Emo_Talk01",
@@ -3743,16 +4177,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk02R_End = {
     ActionMontage = "Emo_Talk02R",
     AnimationId = "Talk02R_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk02R_Loop = {
     ActionMontage = "Emo_Talk02R",
@@ -3761,7 +4196,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk02R_Start = {
     ActionMontage = "Emo_Talk02R",
@@ -3770,16 +4205,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk02_End = {
     ActionMontage = "Emo_Talk02",
     AnimationId = "Talk02_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk02_Loop = {
     ActionMontage = "Emo_Talk02",
@@ -3787,7 +4223,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Talk02_Start = {
     ActionMontage = "Emo_Talk02",
@@ -3796,7 +4232,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk03ToTalkL_End = {
     ActionMontage = "Emo_Talk03ToTalkL",
@@ -3807,7 +4243,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk03ToTalkL_Loop = {
     ActionMontage = "Emo_Talk03ToTalkL",
@@ -3816,7 +4252,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk03ToTalkL_Start = {
     ActionMontage = "Emo_Talk03ToTalkL",
@@ -3825,7 +4261,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk03ToTalkR_End = {
     ActionMontage = "Emo_Talk03ToTalkR",
@@ -3836,7 +4272,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk03ToTalkR_Loop = {
     ActionMontage = "Emo_Talk03ToTalkR",
@@ -3845,7 +4281,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk03ToTalkR_Start = {
     ActionMontage = "Emo_Talk03ToTalkR",
@@ -3854,7 +4290,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk03ToThink_End = {
     ActionMontage = "Emo_Talk03ToThink",
@@ -3865,7 +4301,7 @@ return ReadOnly("TalkAction", {
     EndLoopMontageSection = "Loop",
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk03ToThink_Loop = {
     ActionMontage = "Emo_Talk03ToThink",
@@ -3874,7 +4310,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk03ToThink_Start = {
     ActionMontage = "Emo_Talk03ToThink",
@@ -3883,16 +4319,17 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk03_End = {
     ActionMontage = "Emo_Talk03",
     AnimationId = "Talk03_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk03_Loop = {
     ActionMontage = "Emo_Talk03",
@@ -3901,7 +4338,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Talk03_Start = {
     ActionMontage = "Emo_Talk03",
@@ -3910,7 +4347,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Tanshou_End = {
     ActionMontage = "TanShou",
@@ -3919,7 +4356,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Tanshou_Start = {
     ActionMontage = "TanShou",
@@ -3928,7 +4365,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Tentacle_Idle01 = {
     ActionMontage = "Interactive_Idle",
@@ -3936,7 +4373,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Idle01"
+    MontageSection = "Idle01",
   },
   Tentacle_Idle02 = {
     ActionMontage = "Interactive_Idle",
@@ -3944,7 +4381,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Idle02"
+    MontageSection = "Idle02",
   },
   Tentacle_Idle03 = {
     ActionMontage = "Interactive_Idle",
@@ -3952,7 +4389,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Idle03"
+    MontageSection = "Idle03",
   },
   Tentacle_Idle04 = {
     ActionMontage = "Interactive_Idle",
@@ -3960,16 +4397,17 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Idle04"
+    MontageSection = "Idle04",
   },
   Think_End = {
     ActionMontage = "Emo_Think",
     AnimationId = "Think_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Think_Loop = {
     ActionMontage = "Emo_Think",
@@ -3978,7 +4416,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Think_Start = {
     ActionMontage = "Emo_Think",
@@ -3987,7 +4425,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   TieJiang_Idle = {
     ActionMontage = "Emo_Idle",
@@ -3996,15 +4434,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   TilteHead_End = {
     ActionMontage = "Emo_TilteHead",
     AnimationId = "TilteHead_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   TilteHead_Loop = {
     ActionMontage = "Emo_TilteHead",
@@ -4012,7 +4451,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   TilteHead_Start = {
     ActionMontage = "Emo_TilteHead",
@@ -4020,16 +4459,17 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Tuosi02_Dodge_End = {
     ActionMontage = "Story_Dodge",
     AnimationId = "Tuosi02_Dodge_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Tuosi02_Dodge_Start = {
     ActionMontage = "Story_Dodge",
@@ -4038,7 +4478,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Tuosi02_Drop = {
     ActionMontage = "Story_Drop",
@@ -4048,7 +4488,7 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Tuosi02_Emo_Idle_Pose = {
     ActionMontage = "Emo_Idle_Pose",
@@ -4056,7 +4496,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Tuosi02_Sitidle = {
     ActionMontage = "Story_Sitidle",
@@ -4065,7 +4505,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Tuosi02_Story_Find02_Start = {
     ActionMontage = "Story_Find02",
@@ -4073,7 +4513,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Tuosi02_Story_Hug02_Loop = {
     ActionMontage = "Story_Hug02",
@@ -4081,16 +4521,17 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Tuosi02_Threat_End = {
     ActionMontage = "Story_Threat",
     AnimationId = "Tuosi02_Threat_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "End",
-    bUseIK = false
+    bUseIK = false,
   },
   Tuosi02_Threat_Start = {
     ActionMontage = "Story_Threat",
@@ -4099,7 +4540,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Tuosi02_Touch = {
     ActionMontage = "Story_Touch",
@@ -4109,7 +4550,7 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Tuosi_Story_Rise01_Start = {
     ActionMontage = "Story_Rise01",
@@ -4117,15 +4558,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Wave01_End = {
     ActionMontage = "Emo_Wave01",
     AnimationId = "Wave01_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Wave01_Loop = {
     ActionMontage = "Emo_Wave01",
@@ -4133,7 +4575,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Wave01_Start = {
     ActionMontage = "Emo_Wave01",
@@ -4141,15 +4583,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Wave02_End = {
     ActionMontage = "Emo_Wave02",
     AnimationId = "Wave02_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Wave02_Loop = {
     ActionMontage = "Emo_Wave02",
@@ -4157,7 +4600,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Wave02_Start = {
     ActionMontage = "Emo_Wave02",
@@ -4165,7 +4608,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Weiji_Story_Sit = {
     ActionMontage = "Story_Sit",
@@ -4174,7 +4617,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Weita_Idle = {
     ActionMontage = "Emo_Idle",
@@ -4183,7 +4626,7 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
     MontageSection = "Start",
-    bUseIK = false
+    bUseIK = false,
   },
   Weita_Story_Alert_Start = {
     ActionMontage = "Story_Alert",
@@ -4191,15 +4634,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Weita_Story_Awake_End = {
     ActionMontage = "Story_Awake",
     AnimationId = "Weita_Story_Awake_End",
     BlendInTime = 0,
     BlendOutTime = 0,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Weita_Story_Awake_Loop = {
     ActionMontage = "Story_Awake",
@@ -4207,7 +4651,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Weita_Story_Awake_Start = {
     ActionMontage = "Story_Awake",
@@ -4215,7 +4659,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Weita_Story_Crouch_Loop = {
     ActionMontage = "Story_Crouch",
@@ -4224,15 +4668,16 @@ return ReadOnly("TalkAction", {
     BlendOutTime = 0,
     IsSpecialAnim = false,
     MontageSection = "Loop",
-    bUseIK = false
+    bUseIK = false,
   },
   Weita_Story_Hug_End = {
     ActionMontage = "Story_Hug",
     AnimationId = "Weita_Story_Hug_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Weita_Story_Hug_Loop = {
     ActionMontage = "Story_Hug",
@@ -4240,7 +4685,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Weita_Story_Hug_Start = {
     ActionMontage = "Story_Hug",
@@ -4248,15 +4693,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Weita_Story_Hurt_End = {
     ActionMontage = "Story_Hurt",
     AnimationId = "Weita_Story_Hurt_End",
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Weita_Story_Hurt_Loop = {
     ActionMontage = "Story_Hurt",
@@ -4264,7 +4710,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Weita_Story_Hurt_Start = {
     ActionMontage = "Story_Hurt",
@@ -4272,7 +4718,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0.2,
     BlendOutTime = 0.2,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Weita_Story_Tired_Start = {
     ActionMontage = "Story_Tired",
@@ -4280,7 +4726,44 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
+  },
+  WuYou_Atp_Idle = {
+    ActionMontage = "Atp_Idle",
+    AnimationId = "WuYou_Atp_Idle",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
+    bUseIK = true,
+  },
+  Wuyou_Afraid_End = {
+    ActionMontage = "Afraid",
+    AnimationId = "Wuyou_Afraid_End",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "End",
+    bUseIK = true,
+  },
+  Wuyou_Afraid_Loop = {
+    ActionMontage = "Afraid",
+    AnimationId = "Wuyou_Afraid_Loop",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
+    bUseIK = true,
+  },
+  Wuyou_Afraid_Start = {
+    ActionMontage = "Afraid",
+    AnimationId = "Wuyou_Afraid_Start",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Start",
+    bUseIK = true,
   },
   Wuyou_Agree = {
     ActionMontage = "Idle_random1",
@@ -4290,7 +4773,43 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Default",
-    bUseIK = true
+    bUseIK = true,
+  },
+  Wuyou_Atp_Afraid = {
+    ActionMontage = "Atp_Afraid",
+    AnimationId = "Wuyou_Atp_Afraid",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
+    bUseIK = true,
+  },
+  Wuyou_Atp_Born02 = {
+    ActionMontage = "Atp_Born02",
+    AnimationId = "Wuyou_Atp_Born02",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
+    bUseIK = true,
+  },
+  Wuyou_Atp_random1 = {
+    ActionMontage = "Atp_random1",
+    AnimationId = "Wuyou_Atp_random1",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
+    bUseIK = true,
+  },
+  Wuyou_Atp_random2 = {
+    ActionMontage = "Atp_random2",
+    AnimationId = "Wuyou_Atp_random2",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
+    bUseIK = true,
   },
   Wuyou_Born = {
     ActionMontage = "Born",
@@ -4300,7 +4819,7 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Default",
-    bUseIK = true
+    bUseIK = true,
   },
   Wuyou_Disagree = {
     ActionMontage = "Idle_random2",
@@ -4310,7 +4829,7 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Default",
-    bUseIK = true
+    bUseIK = true,
   },
   Wuyou_Disappear = {
     ActionMontage = "Disappear",
@@ -4320,24 +4839,68 @@ return ReadOnly("TalkAction", {
     IsOnceAction = true,
     IsSpecialAnim = false,
     MontageSection = "Default",
-    bUseIK = true
+    bUseIK = true,
+  },
+  Wuyou_Disappear01 = {
+    ActionMontage = "Disappear01",
+    AnimationId = "Wuyou_Disappear01",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "Default",
+    bUseIK = true,
+  },
+  Yuming_Story_Rest_Loop = {
+    ActionMontage = "Story_Rest",
+    AnimationId = "Yuming_Story_Rest_Loop",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
+  },
+  Yuming_Story_Weak_End = {
+    ActionMontage = "Story_Weak",
+    AnimationId = "Yuming_Story_Weak_End",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsOnceAction = true,
+    IsSpecialAnim = false,
+    MontageSection = "End",
+  },
+  Yuming_Story_Weak_Loop = {
+    ActionMontage = "Story_Weak",
+    AnimationId = "Yuming_Story_Weak_Loop",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Loop",
+  },
+  Yuming_Story_Weak_Start = {
+    ActionMontage = "Story_Weak",
+    AnimationId = "Yuming_Story_Weak_Start",
+    BlendInTime = 0.2,
+    BlendOutTime = 0.2,
+    IsSpecialAnim = false,
+    MontageSection = "Start",
   },
   Zhangyu_Story_Tentacle = {
     ActionMontage = "Story_Tentacle",
     AnimationId = "Zhangyu_Story_Tentacle",
     BlendInTime = 0,
     BlendOutTime = 0,
-    EndLoopMontageSection = "Story_Tentacle",
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Zhiliu_Story_Special01_End = {
     ActionMontage = "Story_Special01",
     AnimationId = "Zhiliu_Story_Special01_End",
     BlendInTime = 0,
     BlendOutTime = 0,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Zhiliu_Story_Special01_Loop = {
     ActionMontage = "Story_Special01",
@@ -4345,7 +4908,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Zhiliu_Story_Special01_Start = {
     ActionMontage = "Story_Special01",
@@ -4353,15 +4916,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Zhiliu_Story_Special02_End = {
     ActionMontage = "Story_Special02",
     AnimationId = "Zhiliu_Story_Special02_End",
     BlendInTime = 0,
     BlendOutTime = 0,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Zhiliu_Story_Special02_Loop = {
     ActionMontage = "Story_Special02",
@@ -4369,7 +4933,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Zhiliu_Story_Special02_Start = {
     ActionMontage = "Story_Special02",
@@ -4377,15 +4941,16 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
+    MontageSection = "Start",
   },
   Zhiliu_Story_Special03_End = {
     ActionMontage = "Story_Special03",
     AnimationId = "Zhiliu_Story_Special03_End",
     BlendInTime = 0,
     BlendOutTime = 0,
+    IsOnceAction = true,
     IsSpecialAnim = false,
-    MontageSection = "End"
+    MontageSection = "End",
   },
   Zhiliu_Story_Special03_Loop = {
     ActionMontage = "Story_Special03",
@@ -4393,7 +4958,7 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Loop"
+    MontageSection = "Loop",
   },
   Zhiliu_Story_Special03_Start = {
     ActionMontage = "Story_Special03",
@@ -4401,6 +4966,6 @@ return ReadOnly("TalkAction", {
     BlendInTime = 0,
     BlendOutTime = 0,
     IsSpecialAnim = false,
-    MontageSection = "Start"
-  }
+    MontageSection = "Start",
+  },
 })

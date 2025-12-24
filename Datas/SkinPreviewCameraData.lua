@@ -1,3700 +1,4160 @@
-local T = {}
-T.RT_1 = {
-  0,
-  0,
-  50
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\SkinPreviewCameraData.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r0_0 = {
+  RT_1 = {
+    0,
+    0,
+    50
+  },
+  RT_2 = {
+    0,
+    0,
+    10
+  },
 }
-T.RT_2 = {
-  0,
-  0,
-  10
+r0_0.RT_3 = {
+  [2101] = r0_0.RT_2,
 }
-T.RT_3 = {
-  [2101] = T.RT_2
+r0_0.RT_4 = {
+  250,
+  1200,
+  720
 }
-T.RT_4 = {
+r0_0.RT_5 = {
+  90,
+  310,
+  257
+}
+r0_0.RT_6 = {
+  112,
+  472,
+  358
+}
+r0_0.RT_7 = {
+  0,
+  -25.6,
+  -97
+}
+r0_0.RT_8 = {
   165,
   670,
   322
 }
-T.RT_5 = {
+r0_0.RT_9 = {
   82,
   410,
   190
 }
-T.RT_6 = {
+r0_0.RT_10 = {
   130,
   520,
   240
 }
-T.RT_7 = {
+r0_0.RT_11 = {
   0,
   -20,
   -100
 }
-T.RT_8 = {
+r0_0.RT_12 = {
   47,
   505,
   87
 }
-T.RT_9 = {
+r0_0.RT_13 = {
   16,
   180,
   140
 }
-T.RT_10 = {
+r0_0.RT_14 = {
   45,
   408,
   87
 }
-T.RT_11 = {
+r0_0.RT_15 = {
   0,
   0,
   -90
 }
-T.RT_12 = {
-  460,
-  605,
-  380
-}
-T.RT_13 = {
-  250,
-  325,
-  285
-}
-T.RT_14 = {
-  390,
-  490,
-  350
-}
-T.RT_15 = {
-  0,
-  -20,
-  -120
-}
-T.RT_16 = {
-  135,
-  650,
-  270
-}
-T.RT_17 = {
-  100,
-  400,
-  200
-}
-T.RT_18 = {
-  100,
-  485,
-  240
-}
-T.RT_19 = {
-  0,
-  -15,
-  -90
-}
-T.RT_20 = {
-  100,
-  400,
-  220
-}
-T.RT_21 = {
+r0_0.RT_16 = {
   54,
   525,
   84
 }
-T.RT_22 = {
+r0_0.RT_17 = {
   16,
   130,
   135
 }
-T.RT_23 = {
+r0_0.RT_18 = {
   54,
   375,
   84
 }
-T.RT_24 = {
+r0_0.RT_19 = {
   38,
   410,
   73
 }
-T.RT_25 = {
+r0_0.RT_20 = {
   15,
   150,
   105
 }
-T.RT_26 = {
+r0_0.RT_21 = {
   38,
   340,
   73
 }
-T.RT_27 = {
+r0_0.RT_22 = {
   52,
   450,
   101
 }
-T.RT_28 = {
+r0_0.RT_23 = {
   25,
   185,
   160
 }
-T.RT_29 = {
+r0_0.RT_24 = {
   40,
   510,
   95
 }
-T.RT_30 = {
+r0_0.RT_25 = {
   16,
   170,
   148
 }
-T.RT_31 = {
+r0_0.RT_26 = {
   40,
   430,
   95
 }
-T.RT_32 = {
+r0_0.RT_27 = {
+  460,
+  605,
+  380
+}
+r0_0.RT_28 = {
+  250,
+  325,
+  285
+}
+r0_0.RT_29 = {
+  390,
+  490,
+  350
+}
+r0_0.RT_30 = {
+  0,
+  -20,
+  -120
+}
+r0_0.RT_31 = {
+  135,
+  650,
+  270
+}
+r0_0.RT_32 = {
+  100,
+  400,
+  200
+}
+r0_0.RT_33 = {
+  100,
+  485,
+  240
+}
+r0_0.RT_34 = {
+  0,
+  -15,
+  -90
+}
+r0_0.RT_35 = {
+  100,
+  400,
+  220
+}
+r0_0.RT_36 = {
   0,
   -12,
   -90
 }
-T.RT_33 = {
+r0_0.RT_37 = {
+  0,
+  0,
+  40
+}
+r0_0.RT_38 = {
+  0,
+  -10,
+  -90
+}
+r0_0.RT_39 = {
   0,
   0,
   -95
 }
-T.RT_34 = {
+r0_0.RT_40 = {
   350,
   470,
   230
 }
-T.RT_35 = {
+r0_0.RT_41 = {
   273,
   370,
   187
 }
-T.RT_36 = {
+r0_0.RT_42 = {
   0,
   -10,
   -120
 }
-T.RT_37 = {
+r0_0.RT_43 = {
   0,
   180,
   135
 }
-T.RT_38 = {
+r0_0.RT_44 = {
   0,
   180,
   105
 }
-T.RT_39 = {
+r0_0.RT_45 = {
   0,
   210,
   148
 }
-T.RT_40 = {
+r0_0.RT_46 = {
   0,
   210,
   140
 }
-T.RT_41 = {
+r0_0.RT_47 = {
   17,
   30,
   15
 }
-T.RT_42 = {
+r0_0.RT_48 = {
   17,
   30,
   8
 }
-T.RT_43 = {
-  [10016] = T.RT_41,
-  [10017] = T.RT_41,
-  [10018] = T.RT_41,
-  [10019] = T.RT_42,
-  [10037] = T.RT_42,
-  [10038] = T.RT_42,
-  [10039] = T.RT_42,
-  [10040] = T.RT_42,
-  [10041] = T.RT_42,
-  [10042] = T.RT_42,
-  [10043] = T.RT_42,
-  [10044] = T.RT_42,
-  [10045] = T.RT_42
+r0_0.RT_49 = {
+  [10016] = r0_0.RT_47,
+  [10017] = r0_0.RT_47,
+  [10018] = r0_0.RT_47,
+  [10019] = r0_0.RT_48,
+  [10037] = r0_0.RT_48,
+  [10038] = r0_0.RT_48,
+  [10039] = r0_0.RT_48,
+  [10040] = r0_0.RT_48,
+  [10041] = r0_0.RT_48,
+  [10042] = r0_0.RT_48,
+  [10043] = r0_0.RT_48,
+  [10044] = r0_0.RT_48,
+  [10045] = r0_0.RT_48,
 }
-T.RT_44 = {
+r0_0.RT_50 = {
   0,
   0,
   -120
 }
-T.RT_45 = {
+r0_0.RT_51 = {
   350,
   475,
   165
 }
-T.RT_46 = {
+r0_0.RT_52 = {
   250,
   337,
   120
 }
-T.RT_47 = {
+r0_0.RT_53 = {
   312,
   420,
   140
 }
-T.RT_48 = {
+r0_0.RT_54 = {
   312,
   411,
   150
 }
-T.RT_49 = {
+r0_0.RT_55 = {
   330,
   350,
   90
 }
-T.RT_50 = {
+r0_0.RT_56 = {
   220,
   200,
   100
 }
-T.RT_51 = {
+r0_0.RT_57 = {
   370,
   415,
   200
 }
-T.RT_52 = {
+r0_0.RT_58 = {
   258,
   270,
   195
 }
-T.RT_53 = {
+r0_0.RT_59 = {
   330,
   368,
   200
 }
-T.RT_54 = {
+r0_0.RT_60 = {
   0,
   0,
   -35
 }
-T.RT_55 = {
+r0_0.RT_61 = {
   530,
   -210,
   280
 }
-T.RT_56 = {
+r0_0.RT_62 = {
   340,
   -90,
   185
 }
-T.RT_57 = {
+r0_0.RT_63 = {
   434,
   -177,
   240
 }
-T.RT_58 = {
+r0_0.RT_64 = {
   0,
   -20,
   -200
 }
-T.RT_59 = {
+r0_0.RT_65 = {
   0,
   1,
   -90
 }
-T.RT_60 = {
+r0_0.RT_66 = {
   0,
   0,
   -60
 }
-T.RT_61 = {
+r0_0.RT_67 = {
   -10,
   230,
   130
 }
-T.RT_62 = {
+r0_0.RT_68 = {
   -5,
   140,
   145
 }
-T.RT_63 = {
+r0_0.RT_69 = {
   -10,
   250,
   120
 }
-T.RT_64 = {
+r0_0.RT_70 = {
   0,
   0,
   -80
 }
-T.RT_65 = {
+r0_0.RT_71 = {
   -17,
   250,
   115
 }
-T.RT_66 = {
+r0_0.RT_72 = {
   -10.5,
   135,
   135
 }
-T.RT_67 = {
+r0_0.RT_73 = {
   -14,
   205,
   120
 }
-T.RT_68 = {
+r0_0.RT_74 = {
   -23,
   255,
   83
 }
-T.RT_69 = {
+r0_0.RT_75 = {
   -18,
   130,
   100
 }
-T.RT_70 = {
+r0_0.RT_76 = {
   -21,
   191,
   90
 }
-T.RT_71 = {
+r0_0.RT_77 = {
   -30,
   325,
   136
 }
-T.RT_72 = {
+r0_0.RT_78 = {
   -13,
   166,
   166
 }
-T.RT_73 = {
+r0_0.RT_79 = {
   -28,
   250,
   150
 }
-T.RT_74 = {
+r0_0.RT_80 = {
   -24,
   288,
   123
 }
-T.RT_75 = {
+r0_0.RT_81 = {
   -12,
   116,
   148
 }
-T.RT_76 = {
+r0_0.RT_82 = {
   -21.5,
   230,
   135
 }
-T.RT_77 = {
+r0_0.RT_83 = {
   41.5,
   350,
   90
 }
-T.RT_78 = {
+r0_0.RT_84 = {
   20,
   155,
   100
 }
-T.RT_79 = {
+r0_0.RT_85 = {
   31,
   260,
   105
 }
-T.RT_80 = {
+r0_0.RT_86 = {
   45.5,
   350,
   80
 }
-T.RT_81 = {
+r0_0.RT_87 = {
   22.5,
   145,
   95
 }
-T.RT_82 = {
+r0_0.RT_88 = {
   31.5,
   260,
   100
 }
-T.RT_83 = {
+r0_0.RT_89 = {
   30,
   280,
   95
 }
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
+local r2_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [456, 456] id: 1
+  return r1_1
 end
-return ReadOnly("SkinPreviewCameraData", {
-  Char_Back_Boy = {
-    BackwardLocation = {
-      -395,
-      -390,
-      50
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Back_Boy",
-    Ease = 14,
-    ForwardLocation = {
-      -91,
-      -98,
-      110
-    },
-    Location = {
-      -170,
-      -175,
-      110
-    },
-    Rotation = T.RT_1,
-    Time = 1.2
-  },
-  Char_Back_Girl = {
-    BackwardLocation = {
-      -305,
-      -285,
-      90
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Back_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      -98,
-      -95,
-      115
-    },
-    Location = {
-      -175,
-      -165,
-      115
-    },
-    LocationOffset = T.RT_3,
-    Rotation = T.RT_1,
-    Time = 1.2
-  },
-  Char_Back_Loli = {
-    BackwardLocation = {
-      -225,
-      -208,
-      70
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Back_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      -135,
-      -127,
-      82
-    },
-    Location = {
-      -190,
-      -175,
-      80
-    },
-    Rotation = T.RT_1,
-    Time = 1.2
-  },
-  Char_Back_Man = {
-    BackwardLocation = {
-      -324,
-      -305,
-      100
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Back_Man",
-    Ease = 14,
-    ForwardLocation = {
-      -118,
-      -116,
-      140
-    },
-    Location = {
-      -180,
-      -175,
-      140
-    },
-    Rotation = T.RT_1,
-    Time = 1.2
-  },
-  Char_Back_Woman = {
-    BackwardLocation = {
-      -305,
-      -285,
-      95
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Back_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      -115,
-      -115,
-      135
-    },
-    Location = {
-      -165,
-      -165,
-      135
-    },
-    Rotation = T.RT_1,
-    Time = 1.2
-  },
-  Char_Bed_Boy = {
-    BackwardLocation = T.RT_4,
-    CameraFocal = 38.6,
-    CameraName = "Char_Bed_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_5,
-    Location = T.RT_6,
-    Rotation = T.RT_7,
-    Time = 1.2
-  },
-  Char_Bed_Girl = {
-    BackwardLocation = T.RT_4,
-    CameraFocal = 38.6,
-    CameraName = "Char_Bed_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_5,
-    Location = T.RT_6,
-    Rotation = T.RT_7,
-    Time = 1.2
-  },
-  Char_Bed_Loli = {
-    BackwardLocation = T.RT_4,
-    CameraFocal = 38.6,
-    CameraName = "Char_Bed_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_5,
-    Location = T.RT_6,
-    Rotation = T.RT_7,
-    Time = 1.2
-  },
-  Char_Bed_Man = {
-    BackwardLocation = T.RT_4,
-    CameraFocal = 38.6,
-    CameraName = "Char_Bed_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_5,
-    Location = T.RT_6,
-    Rotation = T.RT_7,
-    Time = 1.2
-  },
-  Char_Bed_Woman = {
-    BackwardLocation = T.RT_4,
-    CameraFocal = 38.6,
-    CameraName = "Char_Bed_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_5,
-    Location = T.RT_6,
-    Rotation = T.RT_7,
-    Time = 1.2
-  },
-  Char_Boy = {
-    BackwardLocation = T.RT_8,
-    CameraFocal = 38.6,
-    CameraName = "Char_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_9,
-    Location = T.RT_10,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Caocong_Boy = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Caocong_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Caocong_Girl = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Caocong_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Caocong_Loli = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Caocong_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Caocong_Man = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Caocong_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Caocong_Woman = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Caocong_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Car_01_Boy = {
-    BackwardLocation = T.RT_16,
-    CameraFocal = 38.6,
-    CameraName = "Char_Car_01_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_17,
-    Location = T.RT_18,
-    Rotation = T.RT_19,
-    Time = 1.2
-  },
-  Char_Car_01_Girl = {
-    BackwardLocation = T.RT_16,
-    CameraFocal = 38.6,
-    CameraName = "Char_Car_01_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_17,
-    Location = T.RT_18,
-    Rotation = T.RT_19,
-    Time = 1.2
-  },
-  Char_Car_01_Loli = {
-    BackwardLocation = T.RT_16,
-    CameraFocal = 38.6,
-    CameraName = "Char_Car_01_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_17,
-    Location = T.RT_18,
-    Rotation = T.RT_19,
-    Time = 1.2
-  },
-  Char_Car_01_Man = {
-    BackwardLocation = T.RT_16,
-    CameraFocal = 38.6,
-    CameraName = "Char_Car_01_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_20,
-    Location = T.RT_18,
-    Rotation = T.RT_19,
-    Time = 1.2
-  },
-  Char_Car_01_Woman = {
-    BackwardLocation = T.RT_16,
-    CameraFocal = 38.6,
-    CameraName = "Char_Car_01_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_17,
-    Location = T.RT_18,
-    Rotation = T.RT_19,
-    Time = 1.2
-  },
-  Char_Car_02_Boy = {
-    BackwardLocation = T.RT_16,
-    CameraFocal = 38.6,
-    CameraName = "Char_Car_02_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_17,
-    Location = T.RT_18,
-    Rotation = T.RT_19,
-    Time = 1.2
-  },
-  Char_Car_02_Girl = {
-    BackwardLocation = T.RT_16,
-    CameraFocal = 38.6,
-    CameraName = "Char_Car_02_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_17,
-    Location = T.RT_18,
-    Rotation = T.RT_19,
-    Time = 1.2
-  },
-  Char_Car_02_Loli = {
-    BackwardLocation = T.RT_16,
-    CameraFocal = 38.6,
-    CameraName = "Char_Car_02_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_17,
-    Location = T.RT_18,
-    Rotation = T.RT_19,
-    Time = 1.2
-  },
-  Char_Car_02_Man = {
-    BackwardLocation = T.RT_16,
-    CameraFocal = 38.6,
-    CameraName = "Char_Car_02_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_20,
-    Location = T.RT_18,
-    Rotation = T.RT_19,
-    Time = 1.2
-  },
-  Char_Car_02_Woman = {
-    BackwardLocation = T.RT_16,
-    CameraFocal = 38.6,
-    CameraName = "Char_Car_02_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_17,
-    Location = T.RT_18,
-    Rotation = T.RT_19,
-    Time = 1.2
-  },
-  Char_Car_03_Boy = {
-    BackwardLocation = T.RT_16,
-    CameraFocal = 38.6,
-    CameraName = "Char_Car_03_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_17,
-    Location = T.RT_18,
-    Rotation = T.RT_19,
-    Time = 1.2
-  },
-  Char_Car_03_Girl = {
-    BackwardLocation = T.RT_16,
-    CameraFocal = 38.6,
-    CameraName = "Char_Car_03_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_17,
-    Location = T.RT_18,
-    Rotation = T.RT_19,
-    Time = 1.2
-  },
-  Char_Car_03_Loli = {
-    BackwardLocation = T.RT_16,
-    CameraFocal = 38.6,
-    CameraName = "Char_Car_03_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_17,
-    Location = T.RT_18,
-    Rotation = T.RT_19,
-    Time = 1.2
-  },
-  Char_Car_03_Man = {
-    BackwardLocation = T.RT_16,
-    CameraFocal = 38.6,
-    CameraName = "Char_Car_03_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_20,
-    Location = T.RT_18,
-    Rotation = T.RT_19,
-    Time = 1.2
-  },
-  Char_Car_03_Woman = {
-    BackwardLocation = T.RT_16,
-    CameraFocal = 38.6,
-    CameraName = "Char_Car_03_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_17,
-    Location = T.RT_18,
-    Rotation = T.RT_19,
-    Time = 1.2
-  },
-  Char_Dye_Boy = {
-    BackwardLocation = T.RT_8,
-    CameraFocal = 38.6,
-    CameraName = "Char_Dye_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_9,
-    Location = T.RT_10,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Dye_Girl = {
-    BackwardLocation = T.RT_21,
-    CameraFocal = 38.6,
-    CameraName = "Char_Dye_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_22,
-    Location = T.RT_23,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Dye_Loli = {
-    BackwardLocation = T.RT_24,
-    CameraFocal = 38.6,
-    CameraName = "Char_Dye_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_25,
-    Location = T.RT_26,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Dye_Man = {
-    BackwardLocation = T.RT_27,
-    CameraFocal = 38.6,
-    CameraName = "Char_Dye_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_28,
-    Location = T.RT_27,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Dye_Woman = {
-    BackwardLocation = T.RT_29,
-    CameraFocal = 38.6,
-    CameraName = "Char_Dye_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_30,
-    Location = T.RT_31,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_FX_Body_Boy = {
-    BackwardLocation = {
-      75,
-      600,
-      140
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Body_Boy",
-    Ease = 14,
-    ForwardLocation = {
-      45,
-      350,
-      135
-    },
-    Location = {
-      53,
-      415,
-      128
-    },
-    Rotation = {
-      0,
-      -5,
-      -90
-    },
-    Time = 1.2
-  },
-  Char_FX_Body_Girl = {
-    BackwardLocation = {
-      65,
-      500,
-      125
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Body_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      40,
-      350,
-      120
-    },
-    Location = {
-      50,
-      405,
-      120
-    },
-    LocationOffset = T.RT_3,
-    Rotation = {
-      0,
-      -4,
-      -90
-    },
-    Time = 1.2
-  },
-  Char_FX_Body_Loli = {
-    BackwardLocation = {
-      56,
-      450,
-      135
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Body_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      30,
-      245,
-      135
-    },
-    Location = {
-      40,
-      335,
-      132
-    },
-    Rotation = {
-      0,
-      -9,
-      -90
-    },
-    Time = 1.2
-  },
-  Char_FX_Body_Man = {
-    BackwardLocation = {
-      82,
-      650,
-      135
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Body_Man",
-    Ease = 14,
-    ForwardLocation = {
-      52,
-      400,
-      147
-    },
-    Location = {
-      60,
-      475,
-      135
-    },
-    Rotation = {
-      0,
-      -3,
-      -90
-    },
-    Time = 1.2
-  },
-  Char_FX_Body_Woman = {
-    BackwardLocation = {
-      70,
-      550,
-      160
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Body_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      50,
-      400,
-      160
-    },
-    Location = {
-      60,
-      455,
-      160
-    },
-    LocationOffset = {
-      [1502] = {
-        10,
-        45,
-        15
-      }
-    },
-    Rotation = {
-      0,
-      -7,
-      -90
-    },
-    Time = 1.2
-  },
-  Char_FX_Dead_Boy = {
-    BackwardLocation = {
-      0,
-      900,
-      105
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Dead_Boy",
-    Ease = 14,
-    ForwardLocation = {
-      0,
-      550,
-      100
-    },
-    Location = {
-      0,
-      680,
-      105
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_FX_Dead_Girl = {
-    BackwardLocation = {
-      0,
-      760,
-      100
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Dead_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      0,
-      500,
-      100
-    },
-    Location = {
-      0,
-      620,
-      100
-    },
-    LocationOffset = T.RT_3,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_FX_Dead_Loli = {
-    BackwardLocation = {
-      0,
-      800,
-      75
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Dead_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      0,
-      450,
-      75
-    },
-    Location = {
-      0,
-      550,
-      90
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_FX_Dead_Man = {
-    BackwardLocation = {
-      0,
-      880,
-      115
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Dead_Man",
-    Ease = 14,
-    ForwardLocation = {
-      0,
-      550,
-      115
-    },
-    Location = {
-      0,
-      695,
-      115
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_FX_Dead_Woman = {
-    BackwardLocation = {
-      0,
-      900,
-      110
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Dead_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      0,
-      600,
-      110
-    },
-    Location = {
-      0,
-      685,
-      110
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_FX_Footprint_Boy = {
-    BackwardLocation = {
-      45,
-      375,
-      105
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Footprint_Boy",
-    Ease = 14,
-    ForwardLocation = {
-      28,
-      230,
-      80
-    },
-    Location = {
-      32,
-      263,
-      84
-    },
-    Rotation = T.RT_32,
-    Time = 1.2
-  },
-  Char_FX_Footprint_Girl = {
-    BackwardLocation = {
-      46,
-      300,
-      95
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Footprint_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      32,
-      190,
-      65
-    },
-    Location = {
-      37,
-      230,
-      83
-    },
-    LocationOffset = T.RT_3,
-    Rotation = T.RT_32,
-    Time = 1.2
-  },
-  Char_FX_Footprint_Loli = {
-    BackwardLocation = {
-      30,
-      220,
-      80
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Footprint_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      17,
-      120,
-      40
-    },
-    Location = {
-      20,
-      150,
-      55
-    },
-    Rotation = T.RT_32,
-    Time = 1.2
-  },
-  Char_FX_Footprint_Man = {
-    BackwardLocation = {
-      62,
-      450,
-      145
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Footprint_Man",
-    Ease = 14,
-    ForwardLocation = {
-      43,
-      300,
-      110
-    },
-    Location = {
-      50,
-      380,
-      130
-    },
-    Rotation = T.RT_32,
-    Time = 1.2
-  },
-  Char_FX_Footprint_Woman = {
-    BackwardLocation = {
-      40,
-      350,
-      110
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Footprint_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      23,
-      230,
-      80
-    },
-    Location = {
-      30,
-      270,
-      87
-    },
-    Rotation = T.RT_32,
-    Time = 1.2
-  },
-  Char_FX_Teleport_Boy = {
-    BackwardLocation = {
-      5,
-      650,
-      90
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Teleport_Boy",
-    Ease = 14,
-    ForwardLocation = {
-      5,
-      420,
-      90
-    },
-    Location = {
-      5,
-      520,
-      84
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_FX_Teleport_Girl = {
-    BackwardLocation = {
-      5,
-      500,
-      84
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Teleport_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      0,
-      310,
-      84
-    },
-    Location = {
-      5,
-      405,
-      84
-    },
-    LocationOffset = T.RT_3,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_FX_Teleport_Loli = {
-    BackwardLocation = {
-      5,
-      400,
-      69
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Teleport_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      5,
-      300,
-      69
-    },
-    Location = {
-      5,
-      350,
-      69
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_FX_Teleport_Man = {
-    BackwardLocation = {
-      5,
-      650,
-      99
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Teleport_Man",
-    Ease = 14,
-    ForwardLocation = {
-      5,
-      465,
-      99
-    },
-    Location = {
-      5,
-      575,
-      99
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_FX_Teleport_Woman = {
-    BackwardLocation = {
-      5,
-      570,
-      94
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_FX_Teleport_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      5,
-      360,
-      94
-    },
-    Location = {
-      5,
-      500,
-      94
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Face_Boy = {
-    BackwardLocation = {
-      70,
-      420,
-      90
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Face_Boy",
-    Ease = 14,
-    ForwardLocation = {
-      27,
-      96,
-      150
-    },
-    Location = {
-      40,
-      145,
-      140
-    },
-    Rotation = T.RT_33,
-    Time = 1.2
-  },
-  Char_Face_Girl = {
-    BackwardLocation = {
-      75,
-      350,
-      85
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Face_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      13,
-      63,
-      145
-    },
-    Location = {
-      50,
-      225,
-      136
-    },
-    LocationOffset = T.RT_3,
-    Rotation = T.RT_33,
-    Time = 1.2
-  },
-  Char_Face_Loli = {
-    BackwardLocation = {
-      71,
-      330,
-      78
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Face_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      23,
-      110,
-      110
-    },
-    Location = {
-      48,
-      210,
-      102
-    },
-    Rotation = T.RT_33,
-    Time = 1.2
-  },
-  Char_Face_Man = {
-    BackwardLocation = {
-      93,
-      425,
-      97
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Face_Man",
-    Ease = 14,
-    ForwardLocation = {
-      16,
-      78,
-      175
-    },
-    Location = {
-      50,
-      225,
-      166
-    },
-    Rotation = T.RT_33,
-    Time = 1.2
-  },
-  Char_Face_Woman = {
-    BackwardLocation = {
-      85,
-      390,
-      95
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Face_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      21,
-      100,
-      160
-    },
-    Location = {
-      45,
-      206,
-      150
-    },
-    Rotation = T.RT_33,
-    Time = 1.2
-  },
-  Char_Fishing_Boy = {
-    BackwardLocation = T.RT_34,
-    CameraFocal = 38.6,
-    CameraName = "Char_Fishing_Boy",
-    Ease = 14,
-    ForwardLocation = {
-      145,
-      200,
-      168
-    },
-    Location = T.RT_35,
-    Rotation = T.RT_36,
-    Time = 1.2
-  },
-  Char_Fishing_Girl = {
-    BackwardLocation = T.RT_34,
-    CameraFocal = 38.6,
-    CameraName = "Char_Fishing_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      115,
-      155,
-      158
-    },
-    Location = {
-      250,
-      335,
-      170
-    },
-    Rotation = T.RT_36,
-    Time = 1.2
-  },
-  Char_Fishing_Loli = {
-    BackwardLocation = {
-      350,
-      470,
-      180
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Fishing_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      145,
-      200,
-      137
-    },
-    Location = {
-      220,
-      290,
-      145
-    },
-    Rotation = T.RT_36,
-    Time = 1.2
-  },
-  Char_Fishing_Man = {
-    BackwardLocation = T.RT_34,
-    CameraFocal = 38.6,
-    CameraName = "Char_Fishing_Man",
-    Ease = 14,
-    ForwardLocation = {
-      145,
-      200,
-      190
-    },
-    Location = T.RT_35,
-    Rotation = T.RT_36,
-    Time = 1.2
-  },
-  Char_Fishing_Woman = {
-    BackwardLocation = {
-      350,
-      470,
-      210
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Fishing_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      145,
-      200,
-      180
-    },
-    Location = {
-      255,
-      345,
-      175
-    },
-    Rotation = T.RT_36,
-    Time = 1.2
-  },
-  Char_Fx_Boy = {
-    CameraFocal = 38.6,
-    CameraName = "Char_Fx_Boy",
-    Ease = 14,
-    Location = T.RT_37,
-    LocationOffset = T.RT_3,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Fx_Girl = {
-    CameraFocal = 38.6,
-    CameraName = "Char_Fx_Girl",
-    Ease = 14,
-    Location = {
-      0,
-      180,
-      175
-    },
-    LocationOffset = T.RT_3,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Fx_Loli = {
-    CameraFocal = 38.6,
-    CameraName = "Char_Fx_Loli",
-    Ease = 14,
-    Location = T.RT_38,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Fx_Man = {
-    CameraFocal = 38.6,
-    CameraName = "Char_Fx_Man",
-    Ease = 14,
-    Location = T.RT_39,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Fx_Switch_Boy = {
-    CameraFocal = 38.6,
-    CameraName = "Char_Fx_Switch_Boy",
-    Ease = 14,
-    Location = T.RT_37,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Fx_Switch_Girl = {
-    CameraFocal = 38.6,
-    CameraName = "Char_Fx_Switch_Girl",
-    Ease = 14,
-    Location = {
-      0,
-      180,
-      155
-    },
-    LocationOffset = T.RT_3,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Fx_Switch_Loli = {
-    CameraFocal = 38.6,
-    CameraName = "Char_Fx_Switch_Loli",
-    Ease = 14,
-    Location = T.RT_38,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Fx_Switch_Man = {
-    CameraFocal = 38.6,
-    CameraName = "Char_Fx_Switch_Man",
-    Ease = 14,
-    Location = T.RT_39,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Fx_Switch_Woman = {
-    CameraFocal = 38.6,
-    CameraName = "Char_Fx_Switch_Woman",
-    Ease = 14,
-    Location = T.RT_40,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Fx_Woman = {
-    CameraFocal = 38.6,
-    CameraName = "Char_Fx_Woman",
-    Ease = 14,
-    Location = T.RT_40,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Gesture_Idle_Boy = {
-    BackwardLocation = T.RT_8,
-    CameraFocal = 38.6,
-    CameraName = "Char_Gesture_Idle_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_9,
-    Location = T.RT_10,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Gesture_Idle_Girl = {
-    BackwardLocation = T.RT_21,
-    CameraFocal = 38.6,
-    CameraName = "Char_Gesture_Idle_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_22,
-    Location = T.RT_23,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Gesture_Idle_Loli = {
-    BackwardLocation = T.RT_24,
-    CameraFocal = 38.6,
-    CameraName = "Char_Gesture_Idle_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_25,
-    Location = T.RT_26,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Gesture_Idle_Man = {
-    BackwardLocation = T.RT_27,
-    CameraFocal = 38.6,
-    CameraName = "Char_Gesture_Idle_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_28,
-    Location = T.RT_27,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Gesture_Idle_Woman = {
-    BackwardLocation = T.RT_29,
-    CameraFocal = 38.6,
-    CameraName = "Char_Gesture_Idle_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_30,
-    Location = T.RT_31,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Girl = {
-    BackwardLocation = T.RT_21,
-    CameraFocal = 38.6,
-    CameraName = "Char_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_22,
-    Location = T.RT_23,
-    LocationOffset = {
-      [1801] = {
-        8,
-        0,
-        0
-      }
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Head_Boy = {
-    AccessoryLocationOffset = T.RT_43,
-    BackwardLocation = {
-      252,
-      340,
-      90
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Head_Boy",
-    Ease = 14,
-    ForwardLocation = {
-      51,
-      70,
-      156
-    },
-    Location = {
-      92,
-      125,
-      153
-    },
-    Rotation = T.RT_44,
-    Time = 1.2
-  },
-  Char_Head_Girl = {
-    AccessoryLocationOffset = T.RT_43,
-    BackwardLocation = {
-      223,
-      296,
-      85
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Head_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      48,
-      65,
-      156
-    },
-    Location = {
-      86,
-      117,
-      145
-    },
-    Rotation = T.RT_44,
-    Time = 1.2
-  },
-  Char_Head_Loli = {
-    AccessoryLocationOffset = T.RT_43,
-    BackwardLocation = {
-      200,
-      265,
-      75
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Head_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      43,
-      60,
-      125
-    },
-    Location = {
-      86,
-      117,
-      140
-    },
-    Rotation = T.RT_44,
-    Time = 1.2
-  },
-  Char_Head_Man = {
-    AccessoryLocationOffset = T.RT_43,
-    BackwardLocation = {
-      268,
-      362,
-      100
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Head_Man",
-    Ease = 14,
-    ForwardLocation = {
-      57.5,
-      80,
-      180
-    },
-    Location = {
-      90,
-      120,
-      179
-    },
-    Rotation = T.RT_44,
-    Time = 1.2
-  },
-  Char_Head_Woman = {
-    AccessoryLocationOffset = T.RT_43,
-    BackwardLocation = {
-      235,
-      310,
-      102
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Head_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      41,
-      55,
-      172
-    },
-    Location = {
-      82,
-      112,
-      161
-    },
-    Rotation = T.RT_44,
-    Time = 1.2
-  },
-  Char_Kaorou_Boy = {
-    BackwardLocation = T.RT_45,
-    CameraFocal = 38.6,
-    CameraName = "Char_Kaorou_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_46,
-    Location = T.RT_47,
-    Rotation = T.RT_36,
-    Time = 1.2
-  },
-  Char_Kaorou_Girl = {
-    BackwardLocation = T.RT_45,
-    CameraFocal = 38.6,
-    CameraName = "Char_Kaorou_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      250,
-      337,
-      135
-    },
-    Location = T.RT_47,
-    Rotation = T.RT_36,
-    Time = 1.2
-  },
-  Char_Kaorou_Loli = {
-    BackwardLocation = {
-      290,
-      390,
-      135
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Kaorou_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_46,
-    Location = {
-      235,
-      330,
-      120
-    },
-    Rotation = T.RT_36,
-    Time = 1.2
-  },
-  Char_Kaorou_Man = {
-    BackwardLocation = T.RT_45,
-    CameraFocal = 38.6,
-    CameraName = "Char_Kaorou_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_46,
-    Location = T.RT_48,
-    Rotation = T.RT_36,
-    Time = 1.2
-  },
-  Char_Kaorou_Woman = {
-    BackwardLocation = T.RT_45,
-    CameraFocal = 38.6,
-    CameraName = "Char_Kaorou_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      250,
-      337,
-      125
-    },
-    Location = T.RT_48,
-    Rotation = T.RT_36,
-    Time = 1.2
-  },
-  Char_Loli = {
-    BackwardLocation = T.RT_24,
-    CameraFocal = 38.6,
-    CameraName = "Char_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_25,
-    Location = T.RT_26,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Man = {
-    BackwardLocation = T.RT_27,
-    CameraFocal = 38.6,
-    CameraName = "Char_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_28,
-    Location = T.RT_27,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_MeleeWeapon_Boy = {
-    BackwardLocation = T.RT_8,
-    CameraFocal = 38.6,
-    CameraName = "Char_MeleeWeapon_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_9,
-    Location = T.RT_10,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_MeleeWeapon_Girl = {
-    BackwardLocation = T.RT_21,
-    CameraFocal = 38.6,
-    CameraName = "Char_MeleeWeapon_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_22,
-    Location = T.RT_23,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_MeleeWeapon_Loli = {
-    BackwardLocation = T.RT_24,
-    CameraFocal = 38.6,
-    CameraName = "Char_MeleeWeapon_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_25,
-    Location = T.RT_26,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_MeleeWeapon_Man = {
-    BackwardLocation = T.RT_27,
-    CameraFocal = 38.6,
-    CameraName = "Char_MeleeWeapon_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_28,
-    Location = T.RT_27,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_MeleeWeapon_Woman = {
-    BackwardLocation = T.RT_29,
-    CameraFocal = 38.6,
-    CameraName = "Char_MeleeWeapon_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_30,
-    Location = T.RT_31,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_RangeWeapon_Boy = {
-    BackwardLocation = T.RT_8,
-    CameraFocal = 38.6,
-    CameraName = "Char_RangeWeapon_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_9,
-    Location = T.RT_10,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_RangeWeapon_Girl = {
-    BackwardLocation = T.RT_21,
-    CameraFocal = 38.6,
-    CameraName = "Char_RangeWeapon_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_22,
-    Location = T.RT_23,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_RangeWeapon_Loli = {
-    BackwardLocation = T.RT_24,
-    CameraFocal = 38.6,
-    CameraName = "Char_RangeWeapon_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_25,
-    Location = T.RT_26,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_RangeWeapon_Man = {
-    BackwardLocation = T.RT_27,
-    CameraFocal = 38.6,
-    CameraName = "Char_RangeWeapon_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_28,
-    Location = T.RT_27,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_RangeWeapon_Woman = {
-    BackwardLocation = T.RT_29,
-    CameraFocal = 38.6,
-    CameraName = "Char_RangeWeapon_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_30,
-    Location = T.RT_31,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Saoba_Boy = {
-    BackwardLocation = T.RT_49,
-    CameraFocal = 38.6,
-    CameraName = "Char_Saoba_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_50,
-    Location = {
-      260,
-      255,
-      86
-    },
-    Rotation = T.RT_44,
-    Time = 1.2
-  },
-  Char_Saoba_Girl = {
-    BackwardLocation = {
-      330,
-      350,
-      180
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Saoba_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      220,
-      200,
-      150
-    },
-    Location = {
-      260,
-      255,
-      147
-    },
-    Rotation = T.RT_36,
-    Time = 1.2
-  },
-  Char_Saoba_Loli = {
-    BackwardLocation = T.RT_49,
-    CameraFocal = 38.6,
-    CameraName = "Char_Saoba_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_50,
-    Location = {
-      260,
-      255,
-      82
-    },
-    Rotation = T.RT_44,
-    Time = 1.2
-  },
-  Char_Saoba_Man = {
-    BackwardLocation = T.RT_51,
-    CameraFocal = 38.6,
-    CameraName = "Char_Saoba_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_52,
-    Location = T.RT_53,
-    Rotation = T.RT_36,
-    Time = 1.2
-  },
-  Char_Saoba_Woman = {
-    BackwardLocation = T.RT_51,
-    CameraFocal = 38.6,
-    CameraName = "Char_Saoba_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_52,
-    Location = T.RT_53,
-    Rotation = T.RT_36,
-    Time = 1.2
-  },
-  Char_Violin_02_Boy = {
-    BackwardLocation = T.RT_8,
-    CameraFocal = 38.6,
-    CameraName = "Char_Violin_02_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_9,
-    Location = T.RT_10,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Violin_02_Girl = {
-    BackwardLocation = T.RT_21,
-    CameraFocal = 38.6,
-    CameraName = "Char_Violin_02_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_22,
-    Location = T.RT_23,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Violin_02_Loli = {
-    BackwardLocation = T.RT_24,
-    CameraFocal = 38.6,
-    CameraName = "Char_Violin_02_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_25,
-    Location = T.RT_26,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Violin_02_Man = {
-    BackwardLocation = T.RT_27,
-    CameraFocal = 38.6,
-    CameraName = "Char_Violin_02_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_28,
-    Location = T.RT_27,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Violin_02_Woman = {
-    BackwardLocation = T.RT_29,
-    CameraFocal = 38.6,
-    CameraName = "Char_Violin_02_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_30,
-    Location = T.RT_31,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Violin_03_Boy = {
-    BackwardLocation = T.RT_8,
-    CameraFocal = 38.6,
-    CameraName = "Char_Violin_03_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_9,
-    Location = T.RT_10,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Violin_03_Girl = {
-    BackwardLocation = T.RT_21,
-    CameraFocal = 38.6,
-    CameraName = "Char_Violin_03_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_22,
-    Location = T.RT_23,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Violin_03_Loli = {
-    BackwardLocation = T.RT_24,
-    CameraFocal = 38.6,
-    CameraName = "Char_Violin_03_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_25,
-    Location = T.RT_26,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Violin_03_Man = {
-    BackwardLocation = T.RT_27,
-    CameraFocal = 38.6,
-    CameraName = "Char_Violin_03_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_28,
-    Location = T.RT_27,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Violin_03_Woman = {
-    BackwardLocation = T.RT_29,
-    CameraFocal = 38.6,
-    CameraName = "Char_Violin_03_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_30,
-    Location = T.RT_31,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Violin_Boy = {
-    BackwardLocation = T.RT_8,
-    CameraFocal = 38.6,
-    CameraName = "Char_Violin_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_9,
-    Location = T.RT_10,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Violin_Girl = {
-    BackwardLocation = T.RT_21,
-    CameraFocal = 38.6,
-    CameraName = "Char_Violin_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_22,
-    Location = T.RT_23,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Violin_Loli = {
-    BackwardLocation = T.RT_24,
-    CameraFocal = 38.6,
-    CameraName = "Char_Violin_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_25,
-    Location = T.RT_26,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Violin_Man = {
-    BackwardLocation = T.RT_27,
-    CameraFocal = 38.6,
-    CameraName = "Char_Violin_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_28,
-    Location = T.RT_27,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Violin_Woman = {
-    BackwardLocation = T.RT_29,
-    CameraFocal = 38.6,
-    CameraName = "Char_Violin_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_30,
-    Location = T.RT_31,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Waist_Boy = {
-    BackwardLocation = {
-      -300,
-      260,
-      85
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Waist_Boy",
-    Ease = 14,
-    ForwardLocation = {
-      -87,
-      75,
-      90
-    },
-    Location = {
-      -125,
-      110,
-      90
-    },
-    Rotation = T.RT_54,
-    Time = 1.2
-  },
-  Char_Waist_Girl = {
-    BackwardLocation = {
-      -287,
-      256,
-      85
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Waist_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      -80,
-      73,
-      100
-    },
-    Location = {
-      -85,
-      78,
-      110
-    },
-    LocationOffset = T.RT_3,
-    Rotation = T.RT_54,
-    Time = 1.2
-  },
-  Char_Waist_Loli = {
-    BackwardLocation = {
-      -256,
-      234,
-      68
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Waist_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      -80,
-      72,
-      78
-    },
-    Location = {
-      -105,
-      87,
-      75
-    },
-    Rotation = T.RT_54,
-    Time = 1.2
-  },
-  Char_Waist_Man = {
-    BackwardLocation = {
-      -385,
-      335,
-      105
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Waist_Man",
-    Ease = 14,
-    ForwardLocation = {
-      -109,
-      92,
-      115
-    },
-    Location = {
-      -140,
-      105,
-      115
-    },
-    Rotation = T.RT_54,
-    Time = 1.2
-  },
-  Char_Waist_Woman = {
-    BackwardLocation = {
-      -327,
-      289,
-      95
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Waist_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      -113,
-      98,
-      110
-    },
-    Location = {
-      -125,
-      105,
-      115
-    },
-    Rotation = T.RT_54,
-    Time = 1.2
-  },
-  Char_Woman = {
-    BackwardLocation = T.RT_29,
-    CameraFocal = 38.6,
-    CameraName = "Char_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_30,
-    Location = T.RT_31,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Char_Yaoren_Boy = {
-    BackwardLocation = T.RT_55,
-    CameraFocal = 38.6,
-    CameraName = "Char_Yaoren_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_56,
-    Location = T.RT_57,
-    Rotation = T.RT_58,
-    Time = 1.2
-  },
-  Char_Yaoren_Girl = {
-    BackwardLocation = T.RT_55,
-    CameraFocal = 38.6,
-    CameraName = "Char_Yaoren_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_56,
-    Location = T.RT_57,
-    Rotation = T.RT_58,
-    Time = 1.2
-  },
-  Char_Yaoren_Loli = {
-    BackwardLocation = T.RT_55,
-    CameraFocal = 38.6,
-    CameraName = "Char_Yaoren_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_56,
-    Location = T.RT_57,
-    Rotation = T.RT_58,
-    Time = 1.2
-  },
-  Char_Yaoren_Man = {
-    BackwardLocation = {
-      530,
-      -236,
-      280
-    },
-    CameraFocal = 38.6,
-    CameraName = "Char_Yaoren_Man",
-    Ease = 14,
-    ForwardLocation = {
-      340,
-      -100,
-      185
-    },
-    Location = T.RT_57,
-    Rotation = T.RT_58,
-    Time = 1.2
-  },
-  Char_Yaoren_Woman = {
-    BackwardLocation = T.RT_55,
-    CameraFocal = 38.6,
-    CameraName = "Char_Yaoren_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_56,
-    Location = T.RT_57,
-    Rotation = T.RT_58,
-    Time = 1.2
-  },
-  Char_Zhixiang_01_Boy = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Zhixiang_01_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Zhixiang_01_Girl = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Zhixiang_01_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Zhixiang_01_Loli = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Zhixiang_01_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Zhixiang_01_Man = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Zhixiang_01_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Zhixiang_01_Woman = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Zhixiang_01_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Zhixiang_02_Boy = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Zhixiang_02_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Zhixiang_02_Girl = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Zhixiang_02_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Zhixiang_02_Loli = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Zhixiang_02_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Zhixiang_02_Man = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Zhixiang_02_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Zhixiang_02_Woman = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Zhixiang_02_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Zhixiang_03_Boy = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Zhixiang_03_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Zhixiang_03_Girl = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Zhixiang_03_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Zhixiang_03_Loli = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Zhixiang_03_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Zhixiang_03_Man = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Zhixiang_03_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Char_Zhixiang_03_Woman = {
-    BackwardLocation = T.RT_12,
-    CameraFocal = 38.6,
-    CameraName = "Char_Zhixiang_03_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_13,
-    Location = T.RT_14,
-    Rotation = T.RT_15,
-    Time = 1.2
-  },
-  Default = {
-    CameraFocal = 70,
-    CameraName = "Default",
-    Ease = 14,
-    Location = {
-      1000,
-      -20,
-      -1
-    },
-    Rotation = {
-      0,
-      0,
-      180
-    },
-    Time = 1.2
-  },
-  Weapon_Bow_Boy = {
-    BackwardLocation = {
-      36.5,
-      340,
-      100
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Bow_Boy",
-    Ease = 14,
-    ForwardLocation = {
-      20,
-      230,
-      90
-    },
-    Location = {
-      31,
-      300,
-      100
-    },
-    Rotation = T.RT_59,
-    Time = 1.2
-  },
-  Weapon_Bow_Girl = {
-    BackwardLocation = {
-      32,
-      300,
-      100
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Bow_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      19,
-      230,
-      80
-    },
-    Location = {
-      27,
-      260,
-      100
-    },
-    LocationOffset = T.RT_3,
-    Rotation = T.RT_59,
-    Time = 1.2
-  },
-  Weapon_Bow_Loli = {
-    BackwardLocation = {
-      25,
-      295,
-      63
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Bow_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      15,
-      210,
-      70
-    },
-    Location = {
-      19,
-      240,
-      80
-    },
-    Rotation = T.RT_59,
-    Time = 1.2
-  },
-  Weapon_Bow_Man = {
-    BackwardLocation = {
-      30,
-      328,
-      125
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Bow_Man",
-    Ease = 14,
-    ForwardLocation = {
-      16,
-      200,
-      95
-    },
-    Location = {
-      30,
-      290,
-      125
-    },
-    Rotation = T.RT_59,
-    Time = 1.2
-  },
-  Weapon_Bow_Woman = {
-    BackwardLocation = {
-      32,
-      325,
-      113
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Bow_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      16,
-      190,
-      95
-    },
-    Location = {
-      21.5,
-      265,
-      120
-    },
-    Rotation = T.RT_59,
-    Time = 1.2
-  },
-  Weapon_Cannon_Boy = {
-    BackwardLocation = {
-      -120,
-      284,
-      100
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Cannon_Boy",
-    Ease = 14,
-    ForwardLocation = {
-      -73.5,
-      180,
-      77
-    },
-    Location = {
-      -110,
-      265,
-      100
-    },
-    Rotation = T.RT_60,
-    Time = 1.2
-  },
-  Weapon_Cannon_Girl = {
-    BackwardLocation = {
-      -122,
-      290,
-      95
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Cannon_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      -67.5,
-      175,
-      80
-    },
-    Location = {
-      -100,
-      240,
-      102
-    },
-    LocationOffset = T.RT_3,
-    Rotation = T.RT_60,
-    Time = 1.2
-  },
-  Weapon_Cannon_Loli = {
-    BackwardLocation = {
-      -100,
-      250,
-      77
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Cannon_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      -78,
-      190,
-      60
-    },
-    Location = {
-      -89,
-      226.5,
-      77
-    },
-    Rotation = T.RT_60,
-    Time = 1.2
-  },
-  Weapon_Cannon_Man = {
-    BackwardLocation = {
-      -125,
-      290,
-      115
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Cannon_Man",
-    Ease = 14,
-    ForwardLocation = {
-      -85,
-      190,
-      86
-    },
-    Location = {
-      -115,
-      260,
-      107
-    },
-    Rotation = T.RT_60,
-    Time = 1.2
-  },
-  Weapon_Cannon_Woman = {
-    BackwardLocation = {
-      -115,
-      280,
-      110
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Cannon_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      -75,
-      190,
-      90
-    },
-    Location = {
-      -97.5,
-      255,
-      110
-    },
-    Rotation = T.RT_60,
-    Time = 1.2
-  },
-  Weapon_Claymore_Boy = {
-    BackwardLocation = {
-      35,
-      450,
-      90
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Claymore_Boy",
-    Ease = 14,
-    ForwardLocation = {
-      17,
-      250,
-      120
-    },
-    Location = {
-      27,
-      365,
-      105
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Claymore_Girl = {
-    BackwardLocation = {
-      49,
-      440,
-      90
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Claymore_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      24.5,
-      215,
-      115
-    },
-    Location = {
-      35.5,
-      330,
-      117,
-      5
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Claymore_Loli = {
-    BackwardLocation = {
-      36,
-      340,
-      66
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Claymore_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      21.5,
-      220,
-      85
-    },
-    Location = {
-      35.5,
-      270,
-      71
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Claymore_Man = {
-    BackwardLocation = {
-      38,
-      460,
-      108
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Claymore_Man",
-    Ease = 14,
-    ForwardLocation = {
-      16,
-      270,
-      136,
-      5
-    },
-    Location = {
-      35,
-      390,
-      124
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Claymore_Woman = {
-    BackwardLocation = {
-      10,
-      450,
-      116
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Claymore_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      11,
-      255,
-      143
-    },
-    Location = {
-      10,
-      350,
-      120
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Crossbow_Boy = {
-    BackwardLocation = T.RT_61,
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Crossbow_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_62,
-    Location = T.RT_63,
-    Rotation = T.RT_64,
-    Time = 1.2
-  },
-  Weapon_Crossbow_Girl = {
-    BackwardLocation = T.RT_65,
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Crossbow_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_66,
-    Location = T.RT_67,
-    Rotation = T.RT_64,
-    Time = 1.2
-  },
-  Weapon_Crossbow_Loli = {
-    BackwardLocation = T.RT_68,
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Crossbow_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_69,
-    Location = T.RT_70,
-    Rotation = T.RT_64,
-    Time = 1.2
-  },
-  Weapon_Crossbow_Man = {
-    BackwardLocation = T.RT_71,
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Crossbow_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_72,
-    Location = T.RT_73,
-    Rotation = T.RT_64,
-    Time = 1.2
-  },
-  Weapon_Crossbow_Woman = {
-    BackwardLocation = T.RT_74,
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Crossbow_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_75,
-    Location = T.RT_76,
-    Rotation = T.RT_64,
-    Time = 1.2
-  },
-  Weapon_Dualblade_Boy = {
-    BackwardLocation = {
-      -10,
-      400,
-      86
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Dualblade_Boy",
-    Ease = 14,
-    ForwardLocation = {
-      -10,
-      158,
-      95
-    },
-    Location = T.RT_63,
-    Rotation = T.RT_64,
-    Time = 1.2
-  },
-  Weapon_Dualblade_Girl = {
-    BackwardLocation = {
-      -10,
-      340,
-      86
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Dualblade_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      -10,
-      152,
-      87
-    },
-    Location = {
-      -10,
-      232,
-      112
-    },
-    Rotation = T.RT_64,
-    Time = 1.2
-  },
-  Weapon_Dualblade_Loli = {
-    BackwardLocation = {
-      -15,
-      330,
-      72
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Dualblade_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      -10,
-      135,
-      80
-    },
-    Location = {
-      -10,
-      200,
-      92
-    },
-    Rotation = T.RT_64,
-    Time = 1.2
-  },
-  Weapon_Dualblade_Man = {
-    BackwardLocation = {
-      -10,
-      485,
-      110
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Dualblade_Man",
-    Ease = 14,
-    ForwardLocation = {
-      -8,
-      155,
-      110
-    },
-    Location = {
-      -10,
-      315,
-      135
-    },
-    Rotation = T.RT_64,
-    Time = 1.2
-  },
-  Weapon_Dualblade_Woman = {
-    BackwardLocation = {
-      -15,
-      430,
-      102
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Dualblade_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      -10,
-      153,
-      111
-    },
-    Location = {
-      -12,
-      256,
-      135
-    },
-    Rotation = T.RT_64,
-    Time = 1.2
-  },
-  Weapon_Katana_Boy = {
-    BackwardLocation = {
-      51,
-      455,
-      90
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Katana_Boy",
-    Ease = 14,
-    ForwardLocation = {
-      26,
-      255,
-      90
-    },
-    Location = {
-      40.5,
-      325,
-      95
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Katana_Girl = {
-    BackwardLocation = {
-      62,
-      430,
-      90
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Katana_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      26,
-      230,
-      90
-    },
-    Location = {
-      41,
-      300,
-      95
-    },
-    LocationOffset = {
-      [2101] = {
-        0,
-        0,
-        15
-      }
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Katana_Loli = {
-    BackwardLocation = {
-      39.5,
-      305,
-      70
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Katana_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      21,
-      184,
-      72
-    },
-    Location = {
-      28.5,
-      200,
-      80
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Katana_Man = {
-    BackwardLocation = {
-      48,
-      435,
-      100
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Katana_Man",
-    Ease = 14,
-    ForwardLocation = {
-      23,
-      180,
-      120
-    },
-    Location = {
-      35,
-      297,
-      128
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Katana_Woman = {
-    BackwardLocation = {
-      50,
-      400,
-      94
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Katana_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      24.5,
-      190,
-      105
-    },
-    Location = {
-      36,
-      239,
-      110
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Machinegun_Boy = {
-    BackwardLocation = T.RT_77,
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Machinegun_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_78,
-    Location = T.RT_79,
-    Rotation = T.RT_59,
-    Time = 1.2
-  },
-  Weapon_Machinegun_Girl = {
-    BackwardLocation = T.RT_80,
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Machinegun_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_81,
-    Location = T.RT_82,
-    LocationOffset = T.RT_3,
-    Rotation = T.RT_59,
-    Time = 1.2
-  },
-  Weapon_Machinegun_Loli = {
-    BackwardLocation = {
-      33,
-      292,
-      66.5
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Machinegun_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      21,
-      163,
-      68
-    },
-    Location = {
-      30,
-      228,
-      80
-    },
-    Rotation = T.RT_59,
-    Time = 1.2
-  },
-  Weapon_Machinegun_Man = {
-    BackwardLocation = {
-      28,
-      367,
-      109
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Machinegun_Man",
-    Ease = 14,
-    ForwardLocation = {
-      18.5,
-      173,
-      115
-    },
-    Location = {
-      28,
-      285,
-      133
-    },
-    Rotation = T.RT_59,
-    Time = 1.2
-  },
-  Weapon_Machinegun_Woman = {
-    BackwardLocation = {
-      35,
-      418,
-      103
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Machinegun_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      17,
-      158,
-      111
-    },
-    Location = {
-      28,
-      227,
-      130
-    },
-    Rotation = T.RT_59,
-    Time = 1.2
-  },
-  Weapon_Pistol_Boy = {
-    BackwardLocation = T.RT_61,
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Pistol_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_62,
-    Location = T.RT_63,
-    Rotation = T.RT_64,
-    Time = 1.2
-  },
-  Weapon_Pistol_Girl = {
-    BackwardLocation = T.RT_65,
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Pistol_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_66,
-    Location = T.RT_67,
-    Rotation = T.RT_64,
-    Time = 1.2
-  },
-  Weapon_Pistol_Loli = {
-    BackwardLocation = T.RT_68,
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Pistol_Loli",
-    Ease = 14,
-    ForwardLocation = T.RT_69,
-    Location = T.RT_70,
-    Rotation = T.RT_64,
-    Time = 1.2
-  },
-  Weapon_Pistol_Man = {
-    BackwardLocation = T.RT_71,
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Pistol_Man",
-    Ease = 14,
-    ForwardLocation = T.RT_72,
-    Location = T.RT_73,
-    Rotation = T.RT_64,
-    Time = 1.2
-  },
-  Weapon_Pistol_Woman = {
-    BackwardLocation = T.RT_74,
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Pistol_Woman",
-    Ease = 14,
-    ForwardLocation = T.RT_75,
-    Location = T.RT_76,
-    Rotation = T.RT_64,
-    Time = 1.2
-  },
-  Weapon_Polearm_Boy = {
-    BackwardLocation = {
-      55,
-      475,
-      90
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Polearm_Boy",
-    Ease = 14,
-    ForwardLocation = {
-      28,
-      258,
-      120
-    },
-    Location = {
-      45,
-      405,
-      90
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Polearm_Girl = {
-    BackwardLocation = {
-      62,
-      475,
-      95
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Polearm_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      12,
-      217,
-      145
-    },
-    Location = {
-      54,
-      430,
-      95
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Polearm_Loli = {
-    BackwardLocation = {
-      45,
-      392,
-      75
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Polearm_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      16,
-      228,
-      95
-    },
-    Location = {
-      38,
-      335,
-      75
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Polearm_Man = {
-    BackwardLocation = {
-      61,
-      522,
-      100
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Polearm_Man",
-    Ease = 14,
-    ForwardLocation = {
-      22,
-      256,
-      134
-    },
-    Location = {
-      51,
-      456,
-      100
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Polearm_Woman = {
-    BackwardLocation = {
-      64,
-      500,
-      100
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Polearm_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      20,
-      230,
-      150
-    },
-    Location = {
-      51,
-      433,
-      100
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Shotgun_Boy = {
-    BackwardLocation = T.RT_77,
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Shotgun_Boy",
-    Ease = 14,
-    ForwardLocation = T.RT_78,
-    Location = T.RT_79,
-    Rotation = T.RT_59,
-    Time = 1.2
-  },
-  Weapon_Shotgun_Girl = {
-    BackwardLocation = T.RT_80,
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Shotgun_Girl",
-    Ease = 14,
-    ForwardLocation = T.RT_81,
-    Location = T.RT_82,
-    LocationOffset = T.RT_3,
-    Rotation = T.RT_59,
-    Time = 1.2
-  },
-  Weapon_Shotgun_Loli = {
-    BackwardLocation = {
-      33,
-      320,
-      75
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Shotgun_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      21,
-      200,
-      72
-    },
-    Location = {
-      30,
-      260,
-      80
-    },
-    Rotation = T.RT_59,
-    Time = 1.2
-  },
-  Weapon_Shotgun_Man = {
-    BackwardLocation = {
-      28.5,
-      300,
-      135
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Shotgun_Man",
-    Ease = 14,
-    ForwardLocation = {
-      18.5,
-      200,
-      115
-    },
-    Location = {
-      25.5,
-      260,
-      128
-    },
-    Rotation = T.RT_59,
-    Time = 1.2
-  },
-  Weapon_Shotgun_Woman = {
-    BackwardLocation = {
-      35,
-      370,
-      120
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Shotgun_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      17,
-      190,
-      117
-    },
-    Location = {
-      28.5,
-      270,
-      127
-    },
-    Rotation = T.RT_59,
-    Time = 1.2
-  },
-  Weapon_Sword_Boy = {
-    BackwardLocation = {
-      35,
-      390,
-      86
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Sword_Boy",
-    Ease = 14,
-    ForwardLocation = {
-      24,
-      230,
-      115
-    },
-    Location = T.RT_83,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Sword_Girl = {
-    BackwardLocation = {
-      35,
-      360,
-      90
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Sword_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      24,
-      210,
-      105
-    },
-    Location = T.RT_83,
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Sword_Loli = {
-    BackwardLocation = {
-      24,
-      310,
-      68
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Sword_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      18,
-      197,
-      87
-    },
-    Location = {
-      24,
-      280,
-      68
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Sword_Man = {
-    BackwardLocation = {
-      23,
-      400,
-      125
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Sword_Man",
-    Ease = 14,
-    ForwardLocation = {
-      17,
-      230,
-      140
-    },
-    Location = {
-      28,
-      303,
-      125
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Sword_Woman = {
-    BackwardLocation = {
-      38,
-      385,
-      106,
-      5
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Sword_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      17,
-      175,
-      120
-    },
-    Location = {
-      30,
-      280,
-      115
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Swordwhip_Boy = {
-    BackwardLocation = {
-      41,
-      378,
-      83
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Swordwhip_Boy",
-    Ease = 14,
-    ForwardLocation = {
-      22.5,
-      220,
-      45
-    },
-    Location = {
-      41.5,
-      370,
-      87
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Swordwhip_Girl = {
-    BackwardLocation = {
-      45,
-      410,
-      80
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Swordwhip_Girl",
-    Ease = 14,
-    ForwardLocation = {
-      28.5,
-      270,
-      50
-    },
-    Location = {
-      41.5,
-      368,
-      80
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Swordwhip_Loli = {
-    BackwardLocation = {
-      36,
-      339,
-      67
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Swordwhip_Loli",
-    Ease = 14,
-    ForwardLocation = {
-      21.5,
-      185,
-      41
-    },
-    Location = {
-      21,
-      310,
-      68
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Swordwhip_Man = {
-    BackwardLocation = {
-      40,
-      490,
-      95
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Swordwhip_Man",
-    Ease = 14,
-    ForwardLocation = {
-      21.5,
-      230,
-      72
-    },
-    Location = {
-      34,
-      438,
-      97
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  },
-  Weapon_Swordwhip_Woman = {
-    BackwardLocation = {
-      36,
-      442,
-      95
-    },
-    CameraFocal = 38.6,
-    CameraName = "Weapon_Swordwhip_Woman",
-    Ease = 14,
-    ForwardLocation = {
-      16.5,
-      220,
-      60
-    },
-    Location = {
-      39,
-      400,
-      90
-    },
-    Rotation = T.RT_11,
-    Time = 1.2
-  }
-})
+local r3_0 = "SkinPreviewCameraData"
+local r4_0 = {}
+r4_0.Char_Back_Boy = {
+  BackwardLocation = {
+    -395,
+    -390,
+    50
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Back_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    -91,
+    -98,
+    110
+  },
+  Location = {
+    -170,
+    -175,
+    110
+  },
+  Rotation = r0_0.RT_1,
+  Time = 1.2,
+}
+r4_0.Char_Back_Girl = {
+  BackwardLocation = {
+    -305,
+    -285,
+    90
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Back_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    -98,
+    -95,
+    115
+  },
+  Location = {
+    -175,
+    -165,
+    115
+  },
+  LocationOffset = r0_0.RT_3,
+  Rotation = r0_0.RT_1,
+  Time = 1.2,
+}
+r4_0.Char_Back_Loli = {
+  BackwardLocation = {
+    -225,
+    -208,
+    70
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Back_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    -135,
+    -127,
+    82
+  },
+  Location = {
+    -190,
+    -175,
+    80
+  },
+  Rotation = r0_0.RT_1,
+  Time = 1.2,
+}
+r4_0.Char_Back_Man = {
+  BackwardLocation = {
+    -324,
+    -305,
+    100
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Back_Man",
+  Ease = 14,
+  ForwardLocation = {
+    -118,
+    -116,
+    140
+  },
+  Location = {
+    -180,
+    -175,
+    140
+  },
+  Rotation = r0_0.RT_1,
+  Time = 1.2,
+}
+r4_0.Char_Back_Woman = {
+  BackwardLocation = {
+    -305,
+    -285,
+    95
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Back_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    -115,
+    -115,
+    135
+  },
+  Location = {
+    -165,
+    -165,
+    135
+  },
+  Rotation = r0_0.RT_1,
+  Time = 1.2,
+}
+r4_0.Char_Beach_01_Boy = {
+  BackwardLocation = r0_0.RT_4,
+  CameraFocal = 38.6,
+  CameraName = "Char_Beach_01_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_5,
+  Location = r0_0.RT_6,
+  Rotation = r0_0.RT_7,
+  Time = 1.2,
+}
+r4_0.Char_Beach_01_Girl = {
+  BackwardLocation = r0_0.RT_4,
+  CameraFocal = 38.6,
+  CameraName = "Char_Beach_01_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_5,
+  Location = r0_0.RT_6,
+  Rotation = r0_0.RT_7,
+  Time = 1.2,
+}
+r4_0.Char_Beach_01_Loli = {
+  BackwardLocation = r0_0.RT_4,
+  CameraFocal = 38.6,
+  CameraName = "Char_Beach_01_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_5,
+  Location = r0_0.RT_6,
+  Rotation = r0_0.RT_7,
+  Time = 1.2,
+}
+r4_0.Char_Beach_01_Man = {
+  BackwardLocation = r0_0.RT_4,
+  CameraFocal = 38.6,
+  CameraName = "Char_Beach_01_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_5,
+  Location = r0_0.RT_6,
+  Rotation = r0_0.RT_7,
+  Time = 1.2,
+}
+r4_0.Char_Beach_01_Woman = {
+  BackwardLocation = r0_0.RT_4,
+  CameraFocal = 38.6,
+  CameraName = "Char_Beach_01_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_5,
+  Location = r0_0.RT_6,
+  Rotation = r0_0.RT_7,
+  Time = 1.2,
+}
+r4_0.Char_Beach_02_Boy = {
+  BackwardLocation = r0_0.RT_4,
+  CameraFocal = 38.6,
+  CameraName = "Char_Beach_02_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_5,
+  Location = r0_0.RT_6,
+  Rotation = r0_0.RT_7,
+  Time = 1.2,
+}
+r4_0.Char_Beach_02_Girl = {
+  BackwardLocation = r0_0.RT_4,
+  CameraFocal = 38.6,
+  CameraName = "Char_Beach_02_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_5,
+  Location = r0_0.RT_6,
+  Rotation = r0_0.RT_7,
+  Time = 1.2,
+}
+r4_0.Char_Beach_02_Loli = {
+  BackwardLocation = r0_0.RT_4,
+  CameraFocal = 38.6,
+  CameraName = "Char_Beach_02_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_5,
+  Location = r0_0.RT_6,
+  Rotation = r0_0.RT_7,
+  Time = 1.2,
+}
+r4_0.Char_Beach_02_Man = {
+  BackwardLocation = r0_0.RT_4,
+  CameraFocal = 38.6,
+  CameraName = "Char_Beach_02_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_5,
+  Location = r0_0.RT_6,
+  Rotation = r0_0.RT_7,
+  Time = 1.2,
+}
+r4_0.Char_Beach_02_Woman = {
+  BackwardLocation = r0_0.RT_4,
+  CameraFocal = 38.6,
+  CameraName = "Char_Beach_02_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_5,
+  Location = r0_0.RT_6,
+  Rotation = r0_0.RT_7,
+  Time = 1.2,
+}
+r4_0.Char_Beach_03_Boy = {
+  BackwardLocation = r0_0.RT_4,
+  CameraFocal = 38.6,
+  CameraName = "Char_Beach_03_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_5,
+  Location = r0_0.RT_6,
+  Rotation = r0_0.RT_7,
+  Time = 1.2,
+}
+r4_0.Char_Beach_03_Girl = {
+  BackwardLocation = r0_0.RT_4,
+  CameraFocal = 38.6,
+  CameraName = "Char_Beach_03_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_5,
+  Location = r0_0.RT_6,
+  Rotation = r0_0.RT_7,
+  Time = 1.2,
+}
+r4_0.Char_Beach_03_Loli = {
+  BackwardLocation = r0_0.RT_4,
+  CameraFocal = 38.6,
+  CameraName = "Char_Beach_03_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_5,
+  Location = r0_0.RT_6,
+  Rotation = r0_0.RT_7,
+  Time = 1.2,
+}
+r4_0.Char_Beach_03_Man = {
+  BackwardLocation = r0_0.RT_4,
+  CameraFocal = 38.6,
+  CameraName = "Char_Beach_03_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_5,
+  Location = r0_0.RT_6,
+  Rotation = r0_0.RT_7,
+  Time = 1.2,
+}
+r4_0.Char_Beach_03_Woman = {
+  BackwardLocation = r0_0.RT_4,
+  CameraFocal = 38.6,
+  CameraName = "Char_Beach_03_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_5,
+  Location = r0_0.RT_6,
+  Rotation = r0_0.RT_7,
+  Time = 1.2,
+}
+r4_0.Char_Bed_Boy = {
+  BackwardLocation = r0_0.RT_8,
+  CameraFocal = 38.6,
+  CameraName = "Char_Bed_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_9,
+  Location = r0_0.RT_10,
+  Rotation = r0_0.RT_11,
+  Time = 1.2,
+}
+r4_0.Char_Bed_Girl = {
+  BackwardLocation = r0_0.RT_8,
+  CameraFocal = 38.6,
+  CameraName = "Char_Bed_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_9,
+  Location = r0_0.RT_10,
+  Rotation = r0_0.RT_11,
+  Time = 1.2,
+}
+r4_0.Char_Bed_Loli = {
+  BackwardLocation = r0_0.RT_8,
+  CameraFocal = 38.6,
+  CameraName = "Char_Bed_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_9,
+  Location = r0_0.RT_10,
+  Rotation = r0_0.RT_11,
+  Time = 1.2,
+}
+r4_0.Char_Bed_Man = {
+  BackwardLocation = r0_0.RT_8,
+  CameraFocal = 38.6,
+  CameraName = "Char_Bed_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_9,
+  Location = r0_0.RT_10,
+  Rotation = r0_0.RT_11,
+  Time = 1.2,
+}
+r4_0.Char_Bed_Woman = {
+  BackwardLocation = r0_0.RT_8,
+  CameraFocal = 38.6,
+  CameraName = "Char_Bed_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_9,
+  Location = r0_0.RT_10,
+  Rotation = r0_0.RT_11,
+  Time = 1.2,
+}
+r4_0.Char_Boy = {
+  BackwardLocation = r0_0.RT_12,
+  CameraFocal = 38.6,
+  CameraName = "Char_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_13,
+  Location = r0_0.RT_14,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Bubblegun_Boy = {
+  BackwardLocation = r0_0.RT_12,
+  CameraFocal = 38.6,
+  CameraName = "Char_Bubblegun_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_13,
+  Location = r0_0.RT_14,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Bubblegun_Girl = {
+  BackwardLocation = r0_0.RT_16,
+  CameraFocal = 38.6,
+  CameraName = "Char_Bubblegun_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_17,
+  Location = r0_0.RT_18,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Bubblegun_Loli = {
+  BackwardLocation = r0_0.RT_19,
+  CameraFocal = 38.6,
+  CameraName = "Char_Bubblegun_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_20,
+  Location = r0_0.RT_21,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Bubblegun_Man = {
+  BackwardLocation = r0_0.RT_22,
+  CameraFocal = 38.6,
+  CameraName = "Char_Bubblegun_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_23,
+  Location = r0_0.RT_22,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Bubblegun_Woman = {
+  BackwardLocation = r0_0.RT_24,
+  CameraFocal = 38.6,
+  CameraName = "Char_Bubblegun_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_25,
+  Location = r0_0.RT_26,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Caocong_Boy = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Caocong_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Caocong_Girl = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Caocong_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Caocong_Loli = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Caocong_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Caocong_Man = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Caocong_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Caocong_Woman = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Caocong_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Car_01_Boy = {
+  BackwardLocation = r0_0.RT_31,
+  CameraFocal = 38.6,
+  CameraName = "Char_Car_01_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_32,
+  Location = r0_0.RT_33,
+  Rotation = r0_0.RT_34,
+  Time = 1.2,
+}
+r4_0.Char_Car_01_Girl = {
+  BackwardLocation = r0_0.RT_31,
+  CameraFocal = 38.6,
+  CameraName = "Char_Car_01_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_32,
+  Location = r0_0.RT_33,
+  Rotation = r0_0.RT_34,
+  Time = 1.2,
+}
+r4_0.Char_Car_01_Loli = {
+  BackwardLocation = r0_0.RT_31,
+  CameraFocal = 38.6,
+  CameraName = "Char_Car_01_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_32,
+  Location = r0_0.RT_33,
+  Rotation = r0_0.RT_34,
+  Time = 1.2,
+}
+r4_0.Char_Car_01_Man = {
+  BackwardLocation = r0_0.RT_31,
+  CameraFocal = 38.6,
+  CameraName = "Char_Car_01_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_35,
+  Location = r0_0.RT_33,
+  Rotation = r0_0.RT_34,
+  Time = 1.2,
+}
+r4_0.Char_Car_01_Woman = {
+  BackwardLocation = r0_0.RT_31,
+  CameraFocal = 38.6,
+  CameraName = "Char_Car_01_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_32,
+  Location = r0_0.RT_33,
+  Rotation = r0_0.RT_34,
+  Time = 1.2,
+}
+r4_0.Char_Car_02_Boy = {
+  BackwardLocation = r0_0.RT_31,
+  CameraFocal = 38.6,
+  CameraName = "Char_Car_02_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_32,
+  Location = r0_0.RT_33,
+  Rotation = r0_0.RT_34,
+  Time = 1.2,
+}
+r4_0.Char_Car_02_Girl = {
+  BackwardLocation = r0_0.RT_31,
+  CameraFocal = 38.6,
+  CameraName = "Char_Car_02_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_32,
+  Location = r0_0.RT_33,
+  Rotation = r0_0.RT_34,
+  Time = 1.2,
+}
+r4_0.Char_Car_02_Loli = {
+  BackwardLocation = r0_0.RT_31,
+  CameraFocal = 38.6,
+  CameraName = "Char_Car_02_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_32,
+  Location = r0_0.RT_33,
+  Rotation = r0_0.RT_34,
+  Time = 1.2,
+}
+r4_0.Char_Car_02_Man = {
+  BackwardLocation = r0_0.RT_31,
+  CameraFocal = 38.6,
+  CameraName = "Char_Car_02_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_35,
+  Location = r0_0.RT_33,
+  Rotation = r0_0.RT_34,
+  Time = 1.2,
+}
+r4_0.Char_Car_02_Woman = {
+  BackwardLocation = r0_0.RT_31,
+  CameraFocal = 38.6,
+  CameraName = "Char_Car_02_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_32,
+  Location = r0_0.RT_33,
+  Rotation = r0_0.RT_34,
+  Time = 1.2,
+}
+r4_0.Char_Car_03_Boy = {
+  BackwardLocation = r0_0.RT_31,
+  CameraFocal = 38.6,
+  CameraName = "Char_Car_03_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_32,
+  Location = r0_0.RT_33,
+  Rotation = r0_0.RT_34,
+  Time = 1.2,
+}
+r4_0.Char_Car_03_Girl = {
+  BackwardLocation = r0_0.RT_31,
+  CameraFocal = 38.6,
+  CameraName = "Char_Car_03_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_32,
+  Location = r0_0.RT_33,
+  Rotation = r0_0.RT_34,
+  Time = 1.2,
+}
+r4_0.Char_Car_03_Loli = {
+  BackwardLocation = r0_0.RT_31,
+  CameraFocal = 38.6,
+  CameraName = "Char_Car_03_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_32,
+  Location = r0_0.RT_33,
+  Rotation = r0_0.RT_34,
+  Time = 1.2,
+}
+r4_0.Char_Car_03_Man = {
+  BackwardLocation = r0_0.RT_31,
+  CameraFocal = 38.6,
+  CameraName = "Char_Car_03_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_35,
+  Location = r0_0.RT_33,
+  Rotation = r0_0.RT_34,
+  Time = 1.2,
+}
+r4_0.Char_Car_03_Woman = {
+  BackwardLocation = r0_0.RT_31,
+  CameraFocal = 38.6,
+  CameraName = "Char_Car_03_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_32,
+  Location = r0_0.RT_33,
+  Rotation = r0_0.RT_34,
+  Time = 1.2,
+}
+r4_0.Char_Dye_Boy = {
+  BackwardLocation = r0_0.RT_12,
+  CameraFocal = 38.6,
+  CameraName = "Char_Dye_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_13,
+  Location = r0_0.RT_14,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Dye_Girl = {
+  BackwardLocation = r0_0.RT_16,
+  CameraFocal = 38.6,
+  CameraName = "Char_Dye_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_17,
+  Location = r0_0.RT_18,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Dye_Loli = {
+  BackwardLocation = r0_0.RT_19,
+  CameraFocal = 38.6,
+  CameraName = "Char_Dye_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_20,
+  Location = r0_0.RT_21,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Dye_Man = {
+  BackwardLocation = r0_0.RT_22,
+  CameraFocal = 38.6,
+  CameraName = "Char_Dye_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_23,
+  Location = r0_0.RT_22,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Dye_Woman = {
+  BackwardLocation = r0_0.RT_24,
+  CameraFocal = 38.6,
+  CameraName = "Char_Dye_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_25,
+  Location = r0_0.RT_26,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_FX_Body_Boy = {
+  BackwardLocation = {
+    75,
+    600,
+    140
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Body_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    45,
+    350,
+    135
+  },
+  Location = {
+    53,
+    415,
+    128
+  },
+  Rotation = {
+    0,
+    -5,
+    -90
+  },
+  Time = 1.2,
+}
+r4_0.Char_FX_Body_Girl = {
+  BackwardLocation = {
+    65,
+    500,
+    125
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Body_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    40,
+    350,
+    120
+  },
+  Location = {
+    50,
+    405,
+    120
+  },
+  LocationOffset = r0_0.RT_3,
+  Rotation = {
+    0,
+    -4,
+    -90
+  },
+  Time = 1.2,
+}
+r4_0.Char_FX_Body_Loli = {
+  BackwardLocation = {
+    56,
+    450,
+    135
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Body_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    30,
+    245,
+    135
+  },
+  Location = {
+    40,
+    335,
+    132
+  },
+  Rotation = {
+    0,
+    -9,
+    -90
+  },
+  Time = 1.2,
+}
+r4_0.Char_FX_Body_Man = {
+  BackwardLocation = {
+    82,
+    650,
+    135
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Body_Man",
+  Ease = 14,
+  ForwardLocation = {
+    52,
+    400,
+    147
+  },
+  Location = {
+    60,
+    475,
+    135
+  },
+  Rotation = {
+    0,
+    -3,
+    -90
+  },
+  Time = 1.2,
+}
+local r5_0 = {
+  BackwardLocation = {
+    70,
+    550,
+    160
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Body_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    50,
+    400,
+    160
+  },
+  Location = {
+    60,
+    455,
+    160
+  },
+}
+r5_0.LocationOffset = {
+  [1502] = {
+    10,
+    45,
+    15
+  },
+}
+r5_0.Rotation = {
+  0,
+  -7,
+  -90
+}
+r5_0.Time = 1.2
+r4_0.Char_FX_Body_Woman = r5_0
+r4_0.Char_FX_Dead_Boy = {
+  BackwardLocation = {
+    0,
+    900,
+    105
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Dead_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    0,
+    550,
+    100
+  },
+  Location = {
+    0,
+    680,
+    105
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_FX_Dead_Girl = {
+  BackwardLocation = {
+    0,
+    760,
+    100
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Dead_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    0,
+    500,
+    100
+  },
+  Location = {
+    0,
+    620,
+    100
+  },
+  LocationOffset = r0_0.RT_3,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_FX_Dead_Loli = {
+  BackwardLocation = {
+    0,
+    800,
+    75
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Dead_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    0,
+    450,
+    75
+  },
+  Location = {
+    0,
+    550,
+    90
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_FX_Dead_Man = {
+  BackwardLocation = {
+    0,
+    880,
+    115
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Dead_Man",
+  Ease = 14,
+  ForwardLocation = {
+    0,
+    550,
+    115
+  },
+  Location = {
+    0,
+    695,
+    115
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_FX_Dead_Woman = {
+  BackwardLocation = {
+    0,
+    900,
+    110
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Dead_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    0,
+    600,
+    110
+  },
+  Location = {
+    0,
+    685,
+    110
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_FX_Footprint_Boy = {
+  BackwardLocation = {
+    45,
+    375,
+    105
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Footprint_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    28,
+    230,
+    80
+  },
+  Location = {
+    32,
+    263,
+    84
+  },
+  Rotation = r0_0.RT_36,
+  Time = 1.2,
+}
+r4_0.Char_FX_Footprint_Girl = {
+  BackwardLocation = {
+    46,
+    300,
+    95
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Footprint_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    32,
+    190,
+    65
+  },
+  Location = {
+    37,
+    230,
+    83
+  },
+  LocationOffset = r0_0.RT_3,
+  Rotation = r0_0.RT_36,
+  Time = 1.2,
+}
+r4_0.Char_FX_Footprint_Loli = {
+  BackwardLocation = {
+    30,
+    220,
+    80
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Footprint_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    17,
+    120,
+    40
+  },
+  Location = {
+    20,
+    150,
+    55
+  },
+  Rotation = r0_0.RT_36,
+  Time = 1.2,
+}
+r4_0.Char_FX_Footprint_Man = {
+  BackwardLocation = {
+    62,
+    450,
+    145
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Footprint_Man",
+  Ease = 14,
+  ForwardLocation = {
+    43,
+    300,
+    110
+  },
+  Location = {
+    50,
+    380,
+    130
+  },
+  Rotation = r0_0.RT_36,
+  Time = 1.2,
+}
+r4_0.Char_FX_Footprint_Woman = {
+  BackwardLocation = {
+    40,
+    350,
+    110
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Footprint_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    23,
+    230,
+    80
+  },
+  Location = {
+    30,
+    270,
+    87
+  },
+  Rotation = r0_0.RT_36,
+  Time = 1.2,
+}
+r4_0.Char_FX_HelixLeap_Boy = {
+  BackwardLocation = {
+    -465,
+    -300,
+    93
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_HelixLeap_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    -338,
+    -220,
+    93
+  },
+  Location = {
+    -394,
+    -253,
+    93
+  },
+  Rotation = r0_0.RT_37,
+  Time = 1.2,
+}
+r4_0.Char_FX_HelixLeap_Girl = {
+  BackwardLocation = {
+    -470,
+    -300,
+    90
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_HelixLeap_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    -327,
+    -214,
+    90
+  },
+  Location = {
+    -387,
+    -250,
+    90
+  },
+  Rotation = r0_0.RT_37,
+  Time = 1.2,
+}
+r4_0.Char_FX_HelixLeap_Loli = {
+  BackwardLocation = {
+    -430,
+    -282,
+    80
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_HelixLeap_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    -305,
+    -200,
+    80
+  },
+  Location = {
+    -356,
+    -232,
+    80
+  },
+  Rotation = r0_0.RT_37,
+  Time = 1.2,
+}
+r4_0.Char_FX_HelixLeap_Man = {
+  BackwardLocation = {
+    -513,
+    -335,
+    108
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_HelixLeap_Man",
+  Ease = 14,
+  ForwardLocation = {
+    -390,
+    -254,
+    108
+  },
+  Location = {
+    -442,
+    -285,
+    108
+  },
+  Rotation = r0_0.RT_37,
+  Time = 1.2,
+}
+r4_0.Char_FX_HelixLeap_Woman = {
+  BackwardLocation = {
+    -534,
+    -350,
+    105
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_HelixLeap_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    -377,
+    -247,
+    105
+  },
+  Location = {
+    -440,
+    -292,
+    105
+  },
+  Rotation = r0_0.RT_37,
+  Time = 1.2,
+}
+r4_0.Char_FX_PlungingATK_Boy = {
+  BackwardLocation = {
+    73,
+    450,
+    163
+  },
+  CameraFocal = 24,
+  CameraName = "Char_FX_PlungingATK_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    73,
+    350,
+    163
+  },
+  Location = {
+    73,
+    400,
+    163
+  },
+  Rotation = r0_0.RT_38,
+  Time = 1.2,
+}
+r4_0.Char_FX_PlungingATK_Girl = {
+  BackwardLocation = {
+    60,
+    450,
+    163
+  },
+  CameraFocal = 24,
+  CameraName = "Char_FX_PlungingATK_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    60,
+    315,
+    163
+  },
+  Location = {
+    60,
+    400,
+    163
+  },
+  Rotation = r0_0.RT_38,
+  Time = 1.2,
+}
+r4_0.Char_FX_PlungingATK_Loli = {
+  BackwardLocation = {
+    65,
+    400,
+    153
+  },
+  CameraFocal = 24,
+  CameraName = "Char_FX_PlungingATK_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    65,
+    300,
+    153
+  },
+  Location = {
+    65,
+    350,
+    153
+  },
+  Rotation = r0_0.RT_38,
+  Time = 1.2,
+}
+r4_0.Char_FX_PlungingATK_Man = {
+  BackwardLocation = {
+    81,
+    460,
+    183
+  },
+  CameraFocal = 24,
+  CameraName = "Char_FX_PlungingATK_Man",
+  Ease = 14,
+  ForwardLocation = {
+    81,
+    360,
+    183
+  },
+  Location = {
+    81,
+    420,
+    183
+  },
+  Rotation = r0_0.RT_38,
+  Time = 1.2,
+}
+r4_0.Char_FX_PlungingATK_Woman = {
+  BackwardLocation = {
+    77,
+    450,
+    183
+  },
+  CameraFocal = 24,
+  CameraName = "Char_FX_PlungingATK_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    77,
+    350,
+    183
+  },
+  Location = {
+    77,
+    400,
+    183
+  },
+  Rotation = r0_0.RT_38,
+  Time = 1.2,
+}
+r4_0.Char_FX_Teleport_Boy = {
+  BackwardLocation = {
+    5,
+    650,
+    90
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Teleport_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    5,
+    420,
+    90
+  },
+  Location = {
+    5,
+    520,
+    84
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_FX_Teleport_Girl = {
+  BackwardLocation = {
+    5,
+    500,
+    84
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Teleport_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    0,
+    310,
+    84
+  },
+  Location = {
+    5,
+    405,
+    84
+  },
+  LocationOffset = r0_0.RT_3,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_FX_Teleport_Loli = {
+  BackwardLocation = {
+    5,
+    400,
+    69
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Teleport_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    5,
+    300,
+    69
+  },
+  Location = {
+    5,
+    350,
+    69
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_FX_Teleport_Man = {
+  BackwardLocation = {
+    5,
+    650,
+    99
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Teleport_Man",
+  Ease = 14,
+  ForwardLocation = {
+    5,
+    465,
+    99
+  },
+  Location = {
+    5,
+    575,
+    99
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_FX_Teleport_Woman = {
+  BackwardLocation = {
+    5,
+    570,
+    94
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_FX_Teleport_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    5,
+    360,
+    94
+  },
+  Location = {
+    5,
+    500,
+    94
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Face_Boy = {
+  BackwardLocation = {
+    70,
+    420,
+    90
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Face_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    27,
+    96,
+    150
+  },
+  Location = {
+    40,
+    145,
+    140
+  },
+  Rotation = r0_0.RT_39,
+  Time = 1.2,
+}
+r4_0.Char_Face_Girl = {
+  BackwardLocation = {
+    75,
+    350,
+    85
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Face_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    13,
+    63,
+    145
+  },
+  Location = {
+    50,
+    225,
+    136
+  },
+  LocationOffset = r0_0.RT_3,
+  Rotation = r0_0.RT_39,
+  Time = 1.2,
+}
+r4_0.Char_Face_Loli = {
+  BackwardLocation = {
+    71,
+    330,
+    78
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Face_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    23,
+    110,
+    110
+  },
+  Location = {
+    48,
+    210,
+    102
+  },
+  Rotation = r0_0.RT_39,
+  Time = 1.2,
+}
+r4_0.Char_Face_Man = {
+  BackwardLocation = {
+    93,
+    425,
+    97
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Face_Man",
+  Ease = 14,
+  ForwardLocation = {
+    16,
+    78,
+    175
+  },
+  Location = {
+    50,
+    225,
+    166
+  },
+  Rotation = r0_0.RT_39,
+  Time = 1.2,
+}
+r4_0.Char_Face_Woman = {
+  BackwardLocation = {
+    85,
+    390,
+    95
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Face_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    21,
+    100,
+    160
+  },
+  Location = {
+    45,
+    206,
+    150
+  },
+  Rotation = r0_0.RT_39,
+  Time = 1.2,
+}
+r4_0.Char_Fishing_Boy = {
+  BackwardLocation = r0_0.RT_40,
+  CameraFocal = 38.6,
+  CameraName = "Char_Fishing_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    145,
+    200,
+    168
+  },
+  Location = r0_0.RT_41,
+  Rotation = r0_0.RT_42,
+  Time = 1.2,
+}
+r4_0.Char_Fishing_Girl = {
+  BackwardLocation = r0_0.RT_40,
+  CameraFocal = 38.6,
+  CameraName = "Char_Fishing_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    115,
+    155,
+    158
+  },
+  Location = {
+    250,
+    335,
+    170
+  },
+  Rotation = r0_0.RT_42,
+  Time = 1.2,
+}
+r4_0.Char_Fishing_Loli = {
+  BackwardLocation = {
+    350,
+    470,
+    180
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Fishing_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    145,
+    200,
+    137
+  },
+  Location = {
+    220,
+    290,
+    145
+  },
+  Rotation = r0_0.RT_42,
+  Time = 1.2,
+}
+r4_0.Char_Fishing_Man = {
+  BackwardLocation = r0_0.RT_40,
+  CameraFocal = 38.6,
+  CameraName = "Char_Fishing_Man",
+  Ease = 14,
+  ForwardLocation = {
+    145,
+    200,
+    190
+  },
+  Location = r0_0.RT_41,
+  Rotation = r0_0.RT_42,
+  Time = 1.2,
+}
+r4_0.Char_Fishing_Woman = {
+  BackwardLocation = {
+    350,
+    470,
+    210
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Fishing_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    145,
+    200,
+    180
+  },
+  Location = {
+    255,
+    345,
+    175
+  },
+  Rotation = r0_0.RT_42,
+  Time = 1.2,
+}
+r4_0.Char_Fx_Boy = {
+  CameraFocal = 38.6,
+  CameraName = "Char_Fx_Boy",
+  Ease = 14,
+  Location = r0_0.RT_43,
+  LocationOffset = r0_0.RT_3,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Fx_Girl = {
+  CameraFocal = 38.6,
+  CameraName = "Char_Fx_Girl",
+  Ease = 14,
+  Location = {
+    0,
+    180,
+    175
+  },
+  LocationOffset = r0_0.RT_3,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Fx_Loli = {
+  CameraFocal = 38.6,
+  CameraName = "Char_Fx_Loli",
+  Ease = 14,
+  Location = r0_0.RT_44,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Fx_Man = {
+  CameraFocal = 38.6,
+  CameraName = "Char_Fx_Man",
+  Ease = 14,
+  Location = r0_0.RT_45,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Fx_Switch_Boy = {
+  CameraFocal = 38.6,
+  CameraName = "Char_Fx_Switch_Boy",
+  Ease = 14,
+  Location = r0_0.RT_43,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Fx_Switch_Girl = {
+  CameraFocal = 38.6,
+  CameraName = "Char_Fx_Switch_Girl",
+  Ease = 14,
+  Location = {
+    0,
+    180,
+    155
+  },
+  LocationOffset = r0_0.RT_3,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Fx_Switch_Loli = {
+  CameraFocal = 38.6,
+  CameraName = "Char_Fx_Switch_Loli",
+  Ease = 14,
+  Location = r0_0.RT_44,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Fx_Switch_Man = {
+  CameraFocal = 38.6,
+  CameraName = "Char_Fx_Switch_Man",
+  Ease = 14,
+  Location = r0_0.RT_45,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Fx_Switch_Woman = {
+  CameraFocal = 38.6,
+  CameraName = "Char_Fx_Switch_Woman",
+  Ease = 14,
+  Location = r0_0.RT_46,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Fx_Woman = {
+  CameraFocal = 38.6,
+  CameraName = "Char_Fx_Woman",
+  Ease = 14,
+  Location = r0_0.RT_46,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Gesture_Idle_Boy = {
+  BackwardLocation = r0_0.RT_12,
+  CameraFocal = 38.6,
+  CameraName = "Char_Gesture_Idle_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_13,
+  Location = r0_0.RT_14,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Gesture_Idle_Girl = {
+  BackwardLocation = r0_0.RT_16,
+  CameraFocal = 38.6,
+  CameraName = "Char_Gesture_Idle_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_17,
+  Location = r0_0.RT_18,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Gesture_Idle_Loli = {
+  BackwardLocation = r0_0.RT_19,
+  CameraFocal = 38.6,
+  CameraName = "Char_Gesture_Idle_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_20,
+  Location = r0_0.RT_21,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Gesture_Idle_Man = {
+  BackwardLocation = r0_0.RT_22,
+  CameraFocal = 38.6,
+  CameraName = "Char_Gesture_Idle_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_23,
+  Location = r0_0.RT_22,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Gesture_Idle_Woman = {
+  BackwardLocation = r0_0.RT_24,
+  CameraFocal = 38.6,
+  CameraName = "Char_Gesture_Idle_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_25,
+  Location = r0_0.RT_26,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r5_0 = {
+  BackwardLocation = r0_0.RT_16,
+  CameraFocal = 38.6,
+  CameraName = "Char_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_17,
+  Location = r0_0.RT_18,
+}
+r5_0.LocationOffset = {
+  [1801] = {
+    8,
+    0,
+    0
+  },
+}
+r5_0.Rotation = r0_0.RT_15
+r5_0.Time = 1.2
+r4_0.Char_Girl = r5_0
+r4_0.Char_Head_Boy = {
+  AccessoryLocationOffset = r0_0.RT_49,
+  BackwardLocation = {
+    252,
+    340,
+    90
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Head_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    51,
+    70,
+    156
+  },
+  Location = {
+    92,
+    125,
+    153
+  },
+  Rotation = r0_0.RT_50,
+  Time = 1.2,
+}
+r4_0.Char_Head_Girl = {
+  AccessoryLocationOffset = r0_0.RT_49,
+  BackwardLocation = {
+    223,
+    296,
+    85
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Head_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    48,
+    65,
+    156
+  },
+  Location = {
+    86,
+    117,
+    145
+  },
+  Rotation = r0_0.RT_50,
+  Time = 1.2,
+}
+r4_0.Char_Head_Loli = {
+  AccessoryLocationOffset = r0_0.RT_49,
+  BackwardLocation = {
+    200,
+    265,
+    75
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Head_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    43,
+    60,
+    125
+  },
+  Location = {
+    86,
+    117,
+    140
+  },
+  Rotation = r0_0.RT_50,
+  Time = 1.2,
+}
+r4_0.Char_Head_Man = {
+  AccessoryLocationOffset = r0_0.RT_49,
+  BackwardLocation = {
+    268,
+    362,
+    100
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Head_Man",
+  Ease = 14,
+  ForwardLocation = {
+    57.5,
+    80,
+    180
+  },
+  Location = {
+    90,
+    120,
+    179
+  },
+  Rotation = r0_0.RT_50,
+  Time = 1.2,
+}
+r4_0.Char_Head_Woman = {
+  AccessoryLocationOffset = r0_0.RT_49,
+  BackwardLocation = {
+    235,
+    310,
+    102
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Head_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    41,
+    55,
+    172
+  },
+  Location = {
+    82,
+    112,
+    161
+  },
+  Rotation = r0_0.RT_50,
+  Time = 1.2,
+}
+r4_0.Char_Kaorou_Boy = {
+  BackwardLocation = r0_0.RT_51,
+  CameraFocal = 38.6,
+  CameraName = "Char_Kaorou_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_52,
+  Location = r0_0.RT_53,
+  Rotation = r0_0.RT_42,
+  Time = 1.2,
+}
+r4_0.Char_Kaorou_Girl = {
+  BackwardLocation = r0_0.RT_51,
+  CameraFocal = 38.6,
+  CameraName = "Char_Kaorou_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    250,
+    337,
+    135
+  },
+  Location = r0_0.RT_53,
+  Rotation = r0_0.RT_42,
+  Time = 1.2,
+}
+r4_0.Char_Kaorou_Loli = {
+  BackwardLocation = {
+    290,
+    390,
+    135
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Kaorou_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_52,
+  Location = {
+    235,
+    330,
+    120
+  },
+  Rotation = r0_0.RT_42,
+  Time = 1.2,
+}
+r4_0.Char_Kaorou_Man = {
+  BackwardLocation = r0_0.RT_51,
+  CameraFocal = 38.6,
+  CameraName = "Char_Kaorou_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_52,
+  Location = r0_0.RT_54,
+  Rotation = r0_0.RT_42,
+  Time = 1.2,
+}
+r4_0.Char_Kaorou_Woman = {
+  BackwardLocation = r0_0.RT_51,
+  CameraFocal = 38.6,
+  CameraName = "Char_Kaorou_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    250,
+    337,
+    125
+  },
+  Location = r0_0.RT_54,
+  Rotation = r0_0.RT_42,
+  Time = 1.2,
+}
+r4_0.Char_Loli = {
+  BackwardLocation = r0_0.RT_19,
+  CameraFocal = 38.6,
+  CameraName = "Char_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_20,
+  Location = r0_0.RT_21,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Man = {
+  BackwardLocation = r0_0.RT_22,
+  CameraFocal = 38.6,
+  CameraName = "Char_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_23,
+  Location = r0_0.RT_22,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_MeleeWeapon_Boy = {
+  BackwardLocation = r0_0.RT_12,
+  CameraFocal = 38.6,
+  CameraName = "Char_MeleeWeapon_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_13,
+  Location = r0_0.RT_14,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_MeleeWeapon_Girl = {
+  BackwardLocation = r0_0.RT_16,
+  CameraFocal = 38.6,
+  CameraName = "Char_MeleeWeapon_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_17,
+  Location = r0_0.RT_18,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_MeleeWeapon_Loli = {
+  BackwardLocation = r0_0.RT_19,
+  CameraFocal = 38.6,
+  CameraName = "Char_MeleeWeapon_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_20,
+  Location = r0_0.RT_21,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_MeleeWeapon_Man = {
+  BackwardLocation = r0_0.RT_22,
+  CameraFocal = 38.6,
+  CameraName = "Char_MeleeWeapon_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_23,
+  Location = r0_0.RT_22,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_MeleeWeapon_Woman = {
+  BackwardLocation = r0_0.RT_24,
+  CameraFocal = 38.6,
+  CameraName = "Char_MeleeWeapon_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_25,
+  Location = r0_0.RT_26,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_RangeWeapon_Boy = {
+  BackwardLocation = r0_0.RT_12,
+  CameraFocal = 38.6,
+  CameraName = "Char_RangeWeapon_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_13,
+  Location = r0_0.RT_14,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_RangeWeapon_Girl = {
+  BackwardLocation = r0_0.RT_16,
+  CameraFocal = 38.6,
+  CameraName = "Char_RangeWeapon_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_17,
+  Location = r0_0.RT_18,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_RangeWeapon_Loli = {
+  BackwardLocation = r0_0.RT_19,
+  CameraFocal = 38.6,
+  CameraName = "Char_RangeWeapon_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_20,
+  Location = r0_0.RT_21,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_RangeWeapon_Man = {
+  BackwardLocation = r0_0.RT_22,
+  CameraFocal = 38.6,
+  CameraName = "Char_RangeWeapon_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_23,
+  Location = r0_0.RT_22,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_RangeWeapon_Woman = {
+  BackwardLocation = r0_0.RT_24,
+  CameraFocal = 38.6,
+  CameraName = "Char_RangeWeapon_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_25,
+  Location = r0_0.RT_26,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Saoba_Boy = {
+  BackwardLocation = r0_0.RT_55,
+  CameraFocal = 38.6,
+  CameraName = "Char_Saoba_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_56,
+  Location = {
+    260,
+    255,
+    86
+  },
+  Rotation = r0_0.RT_50,
+  Time = 1.2,
+}
+r4_0.Char_Saoba_Girl = {
+  BackwardLocation = {
+    330,
+    350,
+    180
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Saoba_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    220,
+    200,
+    150
+  },
+  Location = {
+    260,
+    255,
+    147
+  },
+  Rotation = r0_0.RT_42,
+  Time = 1.2,
+}
+r4_0.Char_Saoba_Loli = {
+  BackwardLocation = r0_0.RT_55,
+  CameraFocal = 38.6,
+  CameraName = "Char_Saoba_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_56,
+  Location = {
+    260,
+    255,
+    82
+  },
+  Rotation = r0_0.RT_50,
+  Time = 1.2,
+}
+r4_0.Char_Saoba_Man = {
+  BackwardLocation = r0_0.RT_57,
+  CameraFocal = 38.6,
+  CameraName = "Char_Saoba_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_58,
+  Location = r0_0.RT_59,
+  Rotation = r0_0.RT_42,
+  Time = 1.2,
+}
+r4_0.Char_Saoba_Woman = {
+  BackwardLocation = r0_0.RT_57,
+  CameraFocal = 38.6,
+  CameraName = "Char_Saoba_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_58,
+  Location = r0_0.RT_59,
+  Rotation = r0_0.RT_42,
+  Time = 1.2,
+}
+r4_0.Char_Violin_02_Boy = {
+  BackwardLocation = r0_0.RT_12,
+  CameraFocal = 38.6,
+  CameraName = "Char_Violin_02_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_13,
+  Location = r0_0.RT_14,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Violin_02_Girl = {
+  BackwardLocation = r0_0.RT_16,
+  CameraFocal = 38.6,
+  CameraName = "Char_Violin_02_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_17,
+  Location = r0_0.RT_18,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Violin_02_Loli = {
+  BackwardLocation = r0_0.RT_19,
+  CameraFocal = 38.6,
+  CameraName = "Char_Violin_02_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_20,
+  Location = r0_0.RT_21,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Violin_02_Man = {
+  BackwardLocation = r0_0.RT_22,
+  CameraFocal = 38.6,
+  CameraName = "Char_Violin_02_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_23,
+  Location = r0_0.RT_22,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Violin_02_Woman = {
+  BackwardLocation = r0_0.RT_24,
+  CameraFocal = 38.6,
+  CameraName = "Char_Violin_02_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_25,
+  Location = r0_0.RT_26,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Violin_03_Boy = {
+  BackwardLocation = r0_0.RT_12,
+  CameraFocal = 38.6,
+  CameraName = "Char_Violin_03_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_13,
+  Location = r0_0.RT_14,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Violin_03_Girl = {
+  BackwardLocation = r0_0.RT_16,
+  CameraFocal = 38.6,
+  CameraName = "Char_Violin_03_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_17,
+  Location = r0_0.RT_18,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Violin_03_Loli = {
+  BackwardLocation = r0_0.RT_19,
+  CameraFocal = 38.6,
+  CameraName = "Char_Violin_03_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_20,
+  Location = r0_0.RT_21,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Violin_03_Man = {
+  BackwardLocation = r0_0.RT_22,
+  CameraFocal = 38.6,
+  CameraName = "Char_Violin_03_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_23,
+  Location = r0_0.RT_22,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Violin_03_Woman = {
+  BackwardLocation = r0_0.RT_24,
+  CameraFocal = 38.6,
+  CameraName = "Char_Violin_03_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_25,
+  Location = r0_0.RT_26,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Violin_Boy = {
+  BackwardLocation = r0_0.RT_12,
+  CameraFocal = 38.6,
+  CameraName = "Char_Violin_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_13,
+  Location = r0_0.RT_14,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Violin_Girl = {
+  BackwardLocation = r0_0.RT_16,
+  CameraFocal = 38.6,
+  CameraName = "Char_Violin_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_17,
+  Location = r0_0.RT_18,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Violin_Loli = {
+  BackwardLocation = r0_0.RT_19,
+  CameraFocal = 38.6,
+  CameraName = "Char_Violin_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_20,
+  Location = r0_0.RT_21,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Violin_Man = {
+  BackwardLocation = r0_0.RT_22,
+  CameraFocal = 38.6,
+  CameraName = "Char_Violin_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_23,
+  Location = r0_0.RT_22,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Violin_Woman = {
+  BackwardLocation = r0_0.RT_24,
+  CameraFocal = 38.6,
+  CameraName = "Char_Violin_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_25,
+  Location = r0_0.RT_26,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Waist_Boy = {
+  BackwardLocation = {
+    -300,
+    260,
+    85
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Waist_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    -87,
+    75,
+    90
+  },
+  Location = {
+    -125,
+    110,
+    90
+  },
+  Rotation = r0_0.RT_60,
+  Time = 1.2,
+}
+r4_0.Char_Waist_Girl = {
+  BackwardLocation = {
+    -287,
+    256,
+    85
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Waist_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    -80,
+    73,
+    100
+  },
+  Location = {
+    -85,
+    78,
+    110
+  },
+  LocationOffset = r0_0.RT_3,
+  Rotation = r0_0.RT_60,
+  Time = 1.2,
+}
+r4_0.Char_Waist_Loli = {
+  BackwardLocation = {
+    -256,
+    234,
+    68
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Waist_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    -80,
+    72,
+    78
+  },
+  Location = {
+    -105,
+    87,
+    75
+  },
+  Rotation = r0_0.RT_60,
+  Time = 1.2,
+}
+r4_0.Char_Waist_Man = {
+  BackwardLocation = {
+    -385,
+    335,
+    105
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Waist_Man",
+  Ease = 14,
+  ForwardLocation = {
+    -109,
+    92,
+    115
+  },
+  Location = {
+    -140,
+    105,
+    115
+  },
+  Rotation = r0_0.RT_60,
+  Time = 1.2,
+}
+r4_0.Char_Waist_Woman = {
+  BackwardLocation = {
+    -327,
+    289,
+    95
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Waist_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    -113,
+    98,
+    110
+  },
+  Location = {
+    -125,
+    105,
+    115
+  },
+  Rotation = r0_0.RT_60,
+  Time = 1.2,
+}
+r4_0.Char_Woman = {
+  BackwardLocation = r0_0.RT_24,
+  CameraFocal = 38.6,
+  CameraName = "Char_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_25,
+  Location = r0_0.RT_26,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Char_Yaoren_Boy = {
+  BackwardLocation = r0_0.RT_61,
+  CameraFocal = 38.6,
+  CameraName = "Char_Yaoren_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_62,
+  Location = r0_0.RT_63,
+  Rotation = r0_0.RT_64,
+  Time = 1.2,
+}
+r4_0.Char_Yaoren_Girl = {
+  BackwardLocation = r0_0.RT_61,
+  CameraFocal = 38.6,
+  CameraName = "Char_Yaoren_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_62,
+  Location = r0_0.RT_63,
+  Rotation = r0_0.RT_64,
+  Time = 1.2,
+}
+r4_0.Char_Yaoren_Loli = {
+  BackwardLocation = r0_0.RT_61,
+  CameraFocal = 38.6,
+  CameraName = "Char_Yaoren_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_62,
+  Location = r0_0.RT_63,
+  Rotation = r0_0.RT_64,
+  Time = 1.2,
+}
+r4_0.Char_Yaoren_Man = {
+  BackwardLocation = {
+    530,
+    -236,
+    280
+  },
+  CameraFocal = 38.6,
+  CameraName = "Char_Yaoren_Man",
+  Ease = 14,
+  ForwardLocation = {
+    340,
+    -100,
+    185
+  },
+  Location = r0_0.RT_63,
+  Rotation = r0_0.RT_64,
+  Time = 1.2,
+}
+r4_0.Char_Yaoren_Woman = {
+  BackwardLocation = r0_0.RT_61,
+  CameraFocal = 38.6,
+  CameraName = "Char_Yaoren_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_62,
+  Location = r0_0.RT_63,
+  Rotation = r0_0.RT_64,
+  Time = 1.2,
+}
+r4_0.Char_Zhixiang_01_Boy = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Zhixiang_01_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Zhixiang_01_Girl = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Zhixiang_01_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Zhixiang_01_Loli = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Zhixiang_01_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Zhixiang_01_Man = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Zhixiang_01_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Zhixiang_01_Woman = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Zhixiang_01_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Zhixiang_02_Boy = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Zhixiang_02_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Zhixiang_02_Girl = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Zhixiang_02_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Zhixiang_02_Loli = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Zhixiang_02_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Zhixiang_02_Man = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Zhixiang_02_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Zhixiang_02_Woman = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Zhixiang_02_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Zhixiang_03_Boy = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Zhixiang_03_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Zhixiang_03_Girl = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Zhixiang_03_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Zhixiang_03_Loli = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Zhixiang_03_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Zhixiang_03_Man = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Zhixiang_03_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Char_Zhixiang_03_Woman = {
+  BackwardLocation = r0_0.RT_27,
+  CameraFocal = 38.6,
+  CameraName = "Char_Zhixiang_03_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_28,
+  Location = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
+  Time = 1.2,
+}
+r4_0.Default = {
+  CameraFocal = 70,
+  CameraName = "Default",
+  Ease = 14,
+  Location = {
+    1000,
+    -20,
+    -1
+  },
+  Rotation = {
+    0,
+    0,
+    180
+  },
+  Time = 1.2,
+}
+r4_0.Weapon_Bow_Boy = {
+  BackwardLocation = {
+    36.5,
+    340,
+    100
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Bow_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    20,
+    230,
+    90
+  },
+  Location = {
+    31,
+    300,
+    100
+  },
+  Rotation = r0_0.RT_65,
+  Time = 1.2,
+}
+r4_0.Weapon_Bow_Girl = {
+  BackwardLocation = {
+    32,
+    300,
+    100
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Bow_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    19,
+    230,
+    80
+  },
+  Location = {
+    27,
+    260,
+    100
+  },
+  LocationOffset = r0_0.RT_3,
+  Rotation = r0_0.RT_65,
+  Time = 1.2,
+}
+r4_0.Weapon_Bow_Loli = {
+  BackwardLocation = {
+    25,
+    295,
+    63
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Bow_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    15,
+    210,
+    70
+  },
+  Location = {
+    19,
+    240,
+    80
+  },
+  Rotation = r0_0.RT_65,
+  Time = 1.2,
+}
+r4_0.Weapon_Bow_Man = {
+  BackwardLocation = {
+    30,
+    328,
+    125
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Bow_Man",
+  Ease = 14,
+  ForwardLocation = {
+    16,
+    200,
+    95
+  },
+  Location = {
+    30,
+    290,
+    125
+  },
+  Rotation = r0_0.RT_65,
+  Time = 1.2,
+}
+r4_0.Weapon_Bow_Woman = {
+  BackwardLocation = {
+    32,
+    325,
+    113
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Bow_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    16,
+    190,
+    95
+  },
+  Location = {
+    21.5,
+    265,
+    120
+  },
+  Rotation = r0_0.RT_65,
+  Time = 1.2,
+}
+r4_0.Weapon_Cannon_Boy = {
+  BackwardLocation = {
+    -120,
+    284,
+    100
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Cannon_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    -73.5,
+    180,
+    77
+  },
+  Location = {
+    -110,
+    265,
+    100
+  },
+  Rotation = r0_0.RT_66,
+  Time = 1.2,
+}
+r4_0.Weapon_Cannon_Girl = {
+  BackwardLocation = {
+    -122,
+    290,
+    95
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Cannon_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    -67.5,
+    175,
+    80
+  },
+  Location = {
+    -100,
+    240,
+    102
+  },
+  LocationOffset = r0_0.RT_3,
+  Rotation = r0_0.RT_66,
+  Time = 1.2,
+}
+r4_0.Weapon_Cannon_Loli = {
+  BackwardLocation = {
+    -100,
+    250,
+    77
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Cannon_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    -78,
+    190,
+    60
+  },
+  Location = {
+    -89,
+    226.5,
+    77
+  },
+  Rotation = r0_0.RT_66,
+  Time = 1.2,
+}
+r4_0.Weapon_Cannon_Man = {
+  BackwardLocation = {
+    -125,
+    290,
+    115
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Cannon_Man",
+  Ease = 14,
+  ForwardLocation = {
+    -85,
+    190,
+    86
+  },
+  Location = {
+    -115,
+    260,
+    107
+  },
+  Rotation = r0_0.RT_66,
+  Time = 1.2,
+}
+r4_0.Weapon_Cannon_Woman = {
+  BackwardLocation = {
+    -115,
+    280,
+    110
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Cannon_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    -75,
+    190,
+    90
+  },
+  Location = {
+    -97.5,
+    255,
+    110
+  },
+  Rotation = r0_0.RT_66,
+  Time = 1.2,
+}
+r4_0.Weapon_Claymore_Boy = {
+  BackwardLocation = {
+    35,
+    450,
+    90
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Claymore_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    17,
+    250,
+    120
+  },
+  Location = {
+    27,
+    365,
+    105
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Claymore_Girl = {
+  BackwardLocation = {
+    49,
+    440,
+    90
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Claymore_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    24.5,
+    215,
+    115
+  },
+  Location = {
+    35.5,
+    330,
+    117,
+    5
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Claymore_Loli = {
+  BackwardLocation = {
+    36,
+    340,
+    66
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Claymore_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    21.5,
+    220,
+    85
+  },
+  Location = {
+    35.5,
+    270,
+    71
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Claymore_Man = {
+  BackwardLocation = {
+    38,
+    460,
+    108
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Claymore_Man",
+  Ease = 14,
+  ForwardLocation = {
+    16,
+    270,
+    136,
+    5
+  },
+  Location = {
+    35,
+    390,
+    124
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Claymore_Woman = {
+  BackwardLocation = {
+    10,
+    450,
+    116
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Claymore_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    11,
+    255,
+    143
+  },
+  Location = {
+    10,
+    350,
+    120
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Crossbow_Boy = {
+  BackwardLocation = r0_0.RT_67,
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Crossbow_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_68,
+  Location = r0_0.RT_69,
+  Rotation = r0_0.RT_70,
+  Time = 1.2,
+}
+r4_0.Weapon_Crossbow_Girl = {
+  BackwardLocation = r0_0.RT_71,
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Crossbow_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_72,
+  Location = r0_0.RT_73,
+  Rotation = r0_0.RT_70,
+  Time = 1.2,
+}
+r4_0.Weapon_Crossbow_Loli = {
+  BackwardLocation = r0_0.RT_74,
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Crossbow_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_75,
+  Location = r0_0.RT_76,
+  Rotation = r0_0.RT_70,
+  Time = 1.2,
+}
+r4_0.Weapon_Crossbow_Man = {
+  BackwardLocation = r0_0.RT_77,
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Crossbow_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_78,
+  Location = r0_0.RT_79,
+  Rotation = r0_0.RT_70,
+  Time = 1.2,
+}
+r4_0.Weapon_Crossbow_Woman = {
+  BackwardLocation = r0_0.RT_80,
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Crossbow_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_81,
+  Location = r0_0.RT_82,
+  Rotation = r0_0.RT_70,
+  Time = 1.2,
+}
+r4_0.Weapon_Dualblade_Boy = {
+  BackwardLocation = {
+    -10,
+    400,
+    86
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Dualblade_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    -10,
+    158,
+    95
+  },
+  Location = r0_0.RT_69,
+  Rotation = r0_0.RT_70,
+  Time = 1.2,
+}
+r4_0.Weapon_Dualblade_Girl = {
+  BackwardLocation = {
+    -10,
+    340,
+    86
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Dualblade_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    -10,
+    152,
+    87
+  },
+  Location = {
+    -10,
+    232,
+    112
+  },
+  Rotation = r0_0.RT_70,
+  Time = 1.2,
+}
+r4_0.Weapon_Dualblade_Loli = {
+  BackwardLocation = {
+    -15,
+    330,
+    72
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Dualblade_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    -10,
+    135,
+    80
+  },
+  Location = {
+    -10,
+    200,
+    92
+  },
+  Rotation = r0_0.RT_70,
+  Time = 1.2,
+}
+r4_0.Weapon_Dualblade_Man = {
+  BackwardLocation = {
+    -10,
+    485,
+    110
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Dualblade_Man",
+  Ease = 14,
+  ForwardLocation = {
+    -8,
+    155,
+    110
+  },
+  Location = {
+    -10,
+    315,
+    135
+  },
+  Rotation = r0_0.RT_70,
+  Time = 1.2,
+}
+r4_0.Weapon_Dualblade_Woman = {
+  BackwardLocation = {
+    -15,
+    430,
+    102
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Dualblade_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    -10,
+    153,
+    111
+  },
+  Location = {
+    -12,
+    256,
+    135
+  },
+  Rotation = r0_0.RT_70,
+  Time = 1.2,
+}
+r4_0.Weapon_Katana_Boy = {
+  BackwardLocation = {
+    51,
+    455,
+    90
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Katana_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    26,
+    255,
+    90
+  },
+  Location = {
+    40.5,
+    325,
+    95
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r5_0 = "Weapon_Katana_Girl"
+local r6_0 = {
+  BackwardLocation = {
+    62,
+    430,
+    90
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Katana_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    26,
+    230,
+    90
+  },
+  Location = {
+    41,
+    300,
+    95
+  },
+}
+r6_0.LocationOffset = {
+  [2101] = {
+    0,
+    0,
+    15
+  },
+}
+r6_0.Rotation = r0_0.RT_15
+r6_0.Time = 1.2
+r4_0[r5_0] = r6_0
+r4_0.Weapon_Katana_Loli = {
+  BackwardLocation = {
+    39.5,
+    305,
+    70
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Katana_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    21,
+    184,
+    72
+  },
+  Location = {
+    28.5,
+    200,
+    80
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Katana_Man = {
+  BackwardLocation = {
+    48,
+    435,
+    100
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Katana_Man",
+  Ease = 14,
+  ForwardLocation = {
+    23,
+    180,
+    120
+  },
+  Location = {
+    35,
+    297,
+    128
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Katana_Woman = {
+  BackwardLocation = {
+    50,
+    400,
+    94
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Katana_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    24.5,
+    190,
+    105
+  },
+  Location = {
+    36,
+    239,
+    110
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Machinegun_Boy = {
+  BackwardLocation = r0_0.RT_83,
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Machinegun_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_84,
+  Location = r0_0.RT_85,
+  Rotation = r0_0.RT_65,
+  Time = 1.2,
+}
+r4_0.Weapon_Machinegun_Girl = {
+  BackwardLocation = r0_0.RT_86,
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Machinegun_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_87,
+  Location = r0_0.RT_88,
+  LocationOffset = r0_0.RT_3,
+  Rotation = r0_0.RT_65,
+  Time = 1.2,
+}
+r4_0.Weapon_Machinegun_Loli = {
+  BackwardLocation = {
+    33,
+    292,
+    66.5
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Machinegun_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    21,
+    163,
+    68
+  },
+  Location = {
+    30,
+    228,
+    80
+  },
+  Rotation = r0_0.RT_65,
+  Time = 1.2,
+}
+r4_0.Weapon_Machinegun_Man = {
+  BackwardLocation = {
+    28,
+    367,
+    109
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Machinegun_Man",
+  Ease = 14,
+  ForwardLocation = {
+    18.5,
+    173,
+    115
+  },
+  Location = {
+    28,
+    285,
+    133
+  },
+  Rotation = r0_0.RT_65,
+  Time = 1.2,
+}
+r4_0.Weapon_Machinegun_Woman = {
+  BackwardLocation = {
+    35,
+    418,
+    103
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Machinegun_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    17,
+    158,
+    111
+  },
+  Location = {
+    28,
+    227,
+    130
+  },
+  Rotation = r0_0.RT_65,
+  Time = 1.2,
+}
+r4_0.Weapon_Pistol_Boy = {
+  BackwardLocation = r0_0.RT_67,
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Pistol_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_68,
+  Location = r0_0.RT_69,
+  Rotation = r0_0.RT_70,
+  Time = 1.2,
+}
+r4_0.Weapon_Pistol_Girl = {
+  BackwardLocation = r0_0.RT_71,
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Pistol_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_72,
+  Location = r0_0.RT_73,
+  Rotation = r0_0.RT_70,
+  Time = 1.2,
+}
+r4_0.Weapon_Pistol_Loli = {
+  BackwardLocation = r0_0.RT_74,
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Pistol_Loli",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_75,
+  Location = r0_0.RT_76,
+  Rotation = r0_0.RT_70,
+  Time = 1.2,
+}
+r4_0.Weapon_Pistol_Man = {
+  BackwardLocation = r0_0.RT_77,
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Pistol_Man",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_78,
+  Location = r0_0.RT_79,
+  Rotation = r0_0.RT_70,
+  Time = 1.2,
+}
+r4_0.Weapon_Pistol_Woman = {
+  BackwardLocation = r0_0.RT_80,
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Pistol_Woman",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_81,
+  Location = r0_0.RT_82,
+  Rotation = r0_0.RT_70,
+  Time = 1.2,
+}
+r4_0.Weapon_Polearm_Boy = {
+  BackwardLocation = {
+    55,
+    475,
+    90
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Polearm_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    28,
+    258,
+    120
+  },
+  Location = {
+    45,
+    405,
+    90
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Polearm_Girl = {
+  BackwardLocation = {
+    62,
+    475,
+    95
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Polearm_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    12,
+    217,
+    145
+  },
+  Location = {
+    54,
+    430,
+    95
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Polearm_Loli = {
+  BackwardLocation = {
+    45,
+    392,
+    75
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Polearm_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    16,
+    228,
+    95
+  },
+  Location = {
+    38,
+    335,
+    75
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Polearm_Man = {
+  BackwardLocation = {
+    61,
+    522,
+    100
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Polearm_Man",
+  Ease = 14,
+  ForwardLocation = {
+    22,
+    256,
+    134
+  },
+  Location = {
+    51,
+    456,
+    100
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Polearm_Woman = {
+  BackwardLocation = {
+    64,
+    500,
+    100
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Polearm_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    20,
+    230,
+    150
+  },
+  Location = {
+    51,
+    433,
+    100
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Shotgun_Boy = {
+  BackwardLocation = r0_0.RT_83,
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Shotgun_Boy",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_84,
+  Location = r0_0.RT_85,
+  Rotation = r0_0.RT_65,
+  Time = 1.2,
+}
+r4_0.Weapon_Shotgun_Girl = {
+  BackwardLocation = r0_0.RT_86,
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Shotgun_Girl",
+  Ease = 14,
+  ForwardLocation = r0_0.RT_87,
+  Location = r0_0.RT_88,
+  LocationOffset = r0_0.RT_3,
+  Rotation = r0_0.RT_65,
+  Time = 1.2,
+}
+r4_0.Weapon_Shotgun_Loli = {
+  BackwardLocation = {
+    33,
+    320,
+    75
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Shotgun_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    21,
+    200,
+    72
+  },
+  Location = {
+    30,
+    260,
+    80
+  },
+  Rotation = r0_0.RT_65,
+  Time = 1.2,
+}
+r4_0.Weapon_Shotgun_Man = {
+  BackwardLocation = {
+    28.5,
+    300,
+    135
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Shotgun_Man",
+  Ease = 14,
+  ForwardLocation = {
+    18.5,
+    200,
+    115
+  },
+  Location = {
+    25.5,
+    260,
+    128
+  },
+  Rotation = r0_0.RT_65,
+  Time = 1.2,
+}
+r4_0.Weapon_Shotgun_Woman = {
+  BackwardLocation = {
+    35,
+    370,
+    120
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Shotgun_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    17,
+    190,
+    117
+  },
+  Location = {
+    28.5,
+    270,
+    127
+  },
+  Rotation = r0_0.RT_65,
+  Time = 1.2,
+}
+r4_0.Weapon_Sword_Boy = {
+  BackwardLocation = {
+    35,
+    390,
+    86
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Sword_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    24,
+    230,
+    115
+  },
+  Location = r0_0.RT_89,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Sword_Girl = {
+  BackwardLocation = {
+    35,
+    360,
+    90
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Sword_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    24,
+    210,
+    105
+  },
+  Location = r0_0.RT_89,
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Sword_Loli = {
+  BackwardLocation = {
+    24,
+    310,
+    68
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Sword_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    18,
+    197,
+    87
+  },
+  Location = {
+    24,
+    280,
+    68
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Sword_Man = {
+  BackwardLocation = {
+    23,
+    400,
+    125
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Sword_Man",
+  Ease = 14,
+  ForwardLocation = {
+    17,
+    230,
+    140
+  },
+  Location = {
+    28,
+    303,
+    125
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Sword_Woman = {
+  BackwardLocation = {
+    38,
+    385,
+    106,
+    5
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Sword_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    17,
+    175,
+    120
+  },
+  Location = {
+    30,
+    280,
+    115
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Swordwhip_Boy = {
+  BackwardLocation = {
+    41,
+    378,
+    83
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Swordwhip_Boy",
+  Ease = 14,
+  ForwardLocation = {
+    22.5,
+    220,
+    45
+  },
+  Location = {
+    41.5,
+    370,
+    87
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Swordwhip_Girl = {
+  BackwardLocation = {
+    45,
+    410,
+    80
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Swordwhip_Girl",
+  Ease = 14,
+  ForwardLocation = {
+    28.5,
+    270,
+    50
+  },
+  Location = {
+    41.5,
+    368,
+    80
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Swordwhip_Loli = {
+  BackwardLocation = {
+    36,
+    339,
+    67
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Swordwhip_Loli",
+  Ease = 14,
+  ForwardLocation = {
+    21.5,
+    185,
+    41
+  },
+  Location = {
+    21,
+    310,
+    68
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Swordwhip_Man = {
+  BackwardLocation = {
+    40,
+    490,
+    95
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Swordwhip_Man",
+  Ease = 14,
+  ForwardLocation = {
+    21.5,
+    230,
+    72
+  },
+  Location = {
+    34,
+    438,
+    97
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+r4_0.Weapon_Swordwhip_Woman = {
+  BackwardLocation = {
+    36,
+    442,
+    95
+  },
+  CameraFocal = 38.6,
+  CameraName = "Weapon_Swordwhip_Woman",
+  Ease = 14,
+  ForwardLocation = {
+    16.5,
+    220,
+    60
+  },
+  Location = {
+    39,
+    400,
+    90
+  },
+  Rotation = r0_0.RT_15,
+  Time = 1.2,
+}
+return r2_0(r3_0, r4_0)

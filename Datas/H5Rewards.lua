@@ -1,17 +1,22 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\H5Rewards.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r1_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
 end
-return ReadOnly("H5Rewards", {
-  [18] = {
-    asdaf1 = {
-      MailID = {
-        10001,
-        10002,
-        10003
-      },
-      ServerId = 101,
-      cid = 18,
-      cuid = "asdaf1"
-    }
-  }
-})
+local r2_0 = "H5Rewards"
+local r3_0 = {}
+local r4_0 = {}
+r4_0.asdaf1 = {
+  MailID = {
+    10001,
+    10002,
+    10003
+  },
+  ServerId = 101,
+  cid = 18,
+  cuid = "asdaf1",
+}
+r3_0[18] = r4_0
+return r1_0(r2_0, r3_0)

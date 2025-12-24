@@ -1,4 +1,4 @@
--- filename: @E:/Pack/Branch/OBT10_Geili\Content/Script/Const.lua
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Const.lua
 -- version: lua54
 -- line: [0, 0] id: 0
 local r0_0 = {
@@ -67,6 +67,7 @@ local r0_0 = {
   Custom = 6,
   Slide = 2,
   InvincibleBuffId = 301,
+  SynthesisSpeedUpBuffId = 5000301,
   Forward = 0,
   Right = 1,
   Left = 2,
@@ -106,6 +107,7 @@ local r0_0 = {
   UpFootHeight = FVector(0, 0, 50),
   DownFootHeight = FVector(0, 0, 45),
   XAxisVector = FVector(1, 0, 0),
+  ZeroRotator = FRotator(0, 0, 0),
   FootCheckRadius = 15,
   FootHeight = 10,
   FootHeight2 = 9.5,
@@ -340,9 +342,56 @@ r0_0.ProgressRecoverDungeonType = {
   Excavation = true,
   Rouge = true,
 }
+r0_0.DungeonErrorType = {
+  DungeonGame = "拼接关玩法",
+  StaticCreator = "静态刷新点",
+  MonsterSpawn = "动态刷怪规则",
+  Pet = "宠物系统",
+  Common = "通用错误",
+  Settlement = "结算系统",
+  DungeonIndicator = "关卡指引",
+  Mechanism = "机关",
+  GameMode = "GameMode报错",
+  DungeonDelivery = "副本传送点",
+  DungeonVote = "副本投票",
+}
+r0_0.DungeonErrorTitle = {
+  Config = "配置错误",
+  CallTiming = "调用时机错误",
+  FindObject = "找不到对象",
+  Process = "流程错误",
+  Implement = "方法未实现/参数不合法",
+  ServerData = "服务器数据不存在",
+  DataNil = "数据为空",
+  Other = "其他错误",
+}
+r0_0.RegionErrorType = {
+  RegionData = "区域数据",
+  LevelProxy = "LevelProxy",
+  RandomCreator = "随机点",
+}
+r0_0.RegionErrorTitle = {
+  DataSthNil = "部分数据为空",
+  DataType = "区域数据处理类型错误",
+  CreatorNotFound = "静态点不存在",
+  RandomCreatorNotFound = "随机点不存在",
+  RalyIdNil = "RalyId为空",
+  QuestNotDoing = "任务不在进行中",
+  QuesDatatRepeated = "任务数据重复创建",
+  DataNotFound = "数据不存在",
+  LevelProxyNotFound = "LevelProxy不存在",
+  CanNotCreate = "数据无法恢复",
+  CanNotDestroy = "数据Actor无法销毁",
+  GetRandomCreatorNil = "随机点GetCreator失败",
+  GetRnadomParamActorNil = "随机点GetParamActorId失败",
+}
 r0_0.DungeonEnd_NoReason = 0
 r0_0.DungeonEnd_PlayerDead = 1
 r0_0.DungeonEnd_DefenceCoreDead = 2
+r0_0.ClientEventManagerClassPath = "/Game/AssetDesign/GameMode/ClientEventManager/BP_%sClientEventMananger.BP_%sClientEventMananger"
+r0_0.BattleProgressTimerHandle = "BattleProgress"
+r0_0.DunegonDeliveryPointUpdateInterval = 5
+r0_0.DunegonDeliveryPointUpdateTimerHandle = "DunegonDeliveryPointUpdateTimerHandle"
 r0_0.GameModeEventServer = 0
 r0_0.GameModeEventServerClient = 1
 r0_0.AimProtectYaw = 175
@@ -521,6 +570,14 @@ r0_0.ArmoryIdleTags = {
   Armory_Mod = "Armory_Mod",
   Armory_Grade = "Armory_Grade",
   Armory_Pet = "Armory_Pet",
+  Armory_BullutJump = "Armory_BullutJump",
+  Armory_FallAttack_Sword = "Armory_FallAttack_Sword",
+}
+r0_0.ArmoryWeaponIdleTags = {
+  Armory_FallAttack = "Armory_FallAttack",
+}
+r0_0.ArmoryWeaponIdleTag2WeaponType = {
+  Armory_FallAttack = "Melee",
 }
 r0_0.ArmoryActionIdToArmoryTag = {
   [1] = "Melee",
@@ -536,7 +593,6 @@ r0_0.DefaultMainCityFile = "/Game/Maps/Chapter01_HomeBase"
 r0_0.DefaultLoginSceneFile = "/Game/Maps/Login"
 r0_0.DefaultMainCityRegionId = 210101
 r0_0.DefaultPrologueRegionId = 100103
-r0_0.BigIceLakeRegionId = 1011
 r0_0.BaseSummonOffset = 100
 r2_0 = r0_0.BaseSummonOffset
 r0_0.SummonOffset = {}
@@ -749,6 +805,7 @@ r0_0.DungeonSettlementHideTag = "DungeonSettlement"
 r0_0.GuideMainHideTag = "GuideMain"
 r0_0.BossBattleOpenHideTag = "BossBattleOpen"
 r0_0.LevelSequenceStateRecorderTag = "LevelSequenceStateRecorder"
+r0_0.BossOpeningEnsureTime = 30
 r0_0.Common = 0
 r0_0.Hijack = 1
 r0_0.RougeLike = 2
@@ -793,7 +850,7 @@ r0_0.Popup_AccerateProduce = 100018
 r0_0.Popup_ConfirmLockedMod = 100098
 r0_0.Popup_ConfirmUpgradedMod = 100099
 r0_0.StunTag = "Stun"
-r0_0.DS_Default_GroupId = 102
+r0_0.DS_Default_GroupId = 103
 r0_0.DSVersion = 0
 r0_0.NetWorkFailure_Tag = "NetWorkFailure"
 r0_0.NET_CLIENT_SEND_HEARTBEAT_TIME = 60
@@ -840,6 +897,7 @@ r0_0.SkillFeatureCD = 30
 r0_0.bEnableSkillFeatureCD = true
 r0_0.bHideSkillCD = 1
 r0_0.DungeonBgBluePrint = "/Game/UI/UI_PC/LevelSelect/LevelSelect_Bg/LevelSelect_Bg_Training.LevelSelect_Bg_Training"
+r0_0.LoadingBgBluePrint = "/Game/UI/UI_PC/LevelSelect/LevelSelect_Bg/LevelSelect_Bg_Login.LevelSelect_Bg_Login"
 r0_0.BloodBarAnimTime = 0.3
 r0_0.BloodBarDelayTime = 0.1
 r0_0.SignalStrength = {
@@ -905,6 +963,7 @@ r0_0.CampType = {
 }
 r0_0.EnableCreateUnitLog = false
 r0_0.IsOpenNpcInitOpt = true
+r0_0.IsNpcUseNavFixPawnLoc = false
 r0_0.EnableFXOptimization = true
 r0_0.ToughnessTimeDilation = 0.33
 r0_0.ToughnessShowBloodTip = 0.4
@@ -951,9 +1010,11 @@ r0_0.DialogueSnapShot = {
   ELECTRIC = 7,
   BROADCAST = 8,
   ECHO = 9,
+  WUYOU = 10,
 }
 r0_0.DungeonFrameLoadBreakableItemMaxNum = 2
-r0_0.MaxDungeonMonNum = 60
+r0_0.MaxDungeonMonNum_PC = 150
+r0_0.MaxDungeonMonNum_Mobile = 100
 r0_0.bOverrideHLODDistance = false
 r0_0.HLODDistanceDefault = {
   [0] = 12000,
@@ -997,7 +1058,38 @@ r0_0.IOSSerializeDistanceRatio = {
   [3] = 1,
   [4] = 1,
 }
+r0_0.WCDungeonUnloadSmall = true
+r0_0.WCDungeonDistanceRatio = 0.7
+r0_0.WCDungeonLevelProxyDistanceRatio = 0.7
 r0_0.CanUnloadNavMeshLevel = true
+r0_0.HuaxuFoliagePC = {
+  High = {
+    "_TypH",
+    "_TypM",
+    "_TypL_DenH"
+  },
+  Mid = {
+    "_TypM",
+    "_TypL_DenH"
+  },
+  Low = {
+    "_TypM",
+    "_TypL_DenM"
+  },
+}
+r0_0.HuaxuFoliagePhone = {
+  High = {
+    "_TypM",
+    "_TypL_DenM"
+  },
+  Mid = {
+    "_TypM",
+    "_TypL_DenL"
+  },
+  Low = {
+    "_TypL_DenL"
+  },
+}
 r0_0.SimulateMovementDebugPlatform = ""
 r0_0.CheckDungeonMonId = false
 r0_0.PreFrameRealInitNum = 1
@@ -1009,6 +1101,7 @@ r0_0.bSpawnAIUnitAddToEventQueue = true
 r0_0.bWeaponAndAccessoryItemHcc = true
 r0_0.bMonsterInitByPropertySync = true
 r0_0.OpenLookAtProtect = true
+r0_0.bALSameLM = true
 r0_0.StandAloneMonsterCanCache = true
 r0_0.OnlineMonsterCanCache = true
 r0_0.DungeonPreloadMonster = true
@@ -1025,8 +1118,21 @@ r0_0.NPCDeadCache_IOS = false
 r0_0.NPCDeadCache_Andriod = true
 r0_0.LowMemoryDeviceNPCOptimize = true
 r0_0.OnlineNPCCreateOptimize = true
+r0_0.CNPCDelHide = true
+r0_0.EnableCacheSummonID = {
+  [2] = 210101,
+  [3] = 230101,
+  [11] = 530101,
+}
+r0_0.RegionPreloadSupportSceneId = {
+  [0] = 1041,
+}
+r0_0.RegionStoryPreloadSupportSceneId = {
+  [0] = 1001,
+}
 r0_0.NeedStoreSTLBGM = true
 r0_0.FootstepFXSlowSpeed = 230
+r0_0.FootstepFXFastSpeed = 800
 r0_0.GamepadSpecialLeft = "Gamepad_Special_Left"
 r0_0.GamepadSpecialRight = "Gamepad_Special_Right"
 r0_0.GamepadDPadLeft = "Gamepad_DPad_Left"
@@ -1147,8 +1253,6 @@ r0_0.ShopCacheReason = {
   Persistent = 2,
   Read = 0,
 }
-r0_0.bOpenAntiCheat = true
-r0_0.AntiCheatInterval = 60
 r0_0.bOpenScriptDetectionCheck = true
 r0_0.IsShowRayCreature = false
 r0_0.IsOpenBulletCreature = true
@@ -1163,8 +1267,9 @@ r0_0.SkipShadowBudgetConfig = {
   3102
 }
 r0_0.OpenVerifyArray = true
-r0_0.bNullNetWorkMgr = true
 r0_0.bUseDynamicResolution = true
+r0_0.WCDungeonAirBoxUnitId = 11002
+r0_0.TempleInteractiveCount = 100
 r0_0.ScriptDetectionCheckType = {
   OnMouse = "OnMouse",
   OnKeyboard = "OnKeyboard",

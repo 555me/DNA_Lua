@@ -1,14 +1,17 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("DestroyReason", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\DestroyReason.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("DestroyReason", {
   Breakable = {
     DestroyReason = "Breakable",
     IsClearGuide = true,
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = false,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   Cache = {
     DestroyReason = "Cache",
@@ -16,7 +19,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = false,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   CombatStateChange = {
     DestroyReason = "CombatStateChange",
@@ -24,7 +27,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = false,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   Dispatch = {
     DestroyReason = "Dispatch",
@@ -32,7 +35,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   EngineDestroy = {
     DestroyReason = "EngineDestroy",
@@ -40,7 +43,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   Flexible = {
     DestroyReason = "Flexible",
@@ -48,7 +51,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   GM = {
     DestroyReason = "GM",
@@ -56,7 +59,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   HardBossClear = {
     DestroyReason = "HardBossClear",
@@ -64,7 +67,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   HostageRescueEnd = {
     DestroyReason = "HostageRescueEnd",
@@ -72,7 +75,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   LevelNotExsit = {
     DestroyReason = "LevelNotExsit",
@@ -80,7 +83,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = false,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = true
+    IsTriggrRelationSpawn = true,
   },
   LevelUnloadedNotSaveGame = {
     DestroyReason = "LevelUnloadedNotSaveGame",
@@ -88,7 +91,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = true
+    IsTriggrRelationSpawn = true,
   },
   LevelUnloadedSaveGame = {
     DestroyReason = "LevelUnloadedSaveGame",
@@ -96,7 +99,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = false,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = true
+    IsTriggrRelationSpawn = true,
   },
   MechanismDead = {
     DestroyReason = "MechanismDead",
@@ -104,7 +107,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = false,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   MechanismLifeTime = {
     DestroyReason = "MechanismLifeTime",
@@ -112,7 +115,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = false,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   MechanismSummon = {
     DestroyReason = "MechanismSummon",
@@ -120,7 +123,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = false,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   MonsterDead = {
     DestroyReason = "MonsterDead",
@@ -128,7 +131,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = false,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   MonsterInitiate = {
     DestroyReason = "MonsterInitiate",
@@ -136,7 +139,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   MonsterNestItemClear = {
     DestroyReason = "MonsterNestItemClear",
@@ -144,7 +147,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   MonsterSpawnAdjust = {
     DestroyReason = "MonsterSpawnAdjust",
@@ -152,7 +155,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = false,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = true
+    IsTriggrRelationSpawn = true,
   },
   NoReason = {
     DestroyReason = "NoReason",
@@ -160,7 +163,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   NotTriggerGameModeEvent = {
     DestroyReason = "NotTriggerGameModeEvent",
@@ -168,7 +171,23 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
+  },
+  OwnerLeaveRegion = {
+    DestroyReason = "OwnerLeaveRegion",
+    IsClearGuide = true,
+    IsClearStaticCreatorRef = true,
+    IsMonClearBattleInfo = true,
+    IsTriggerDestroyEvent = false,
+    IsTriggrRelationSpawn = false,
+  },
+  OwnerTagChange = {
+    DestroyReason = "OwnerTagChange",
+    IsClearGuide = true,
+    IsClearStaticCreatorRef = true,
+    IsMonClearBattleInfo = true,
+    IsTriggerDestroyEvent = false,
+    IsTriggrRelationSpawn = false,
   },
   PetAfterInteractive = {
     DestroyReason = "PetAfterInteractive",
@@ -176,7 +195,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = false,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   PhantomChangeRole = {
     DestroyReason = "PhantomChangeRole",
@@ -184,7 +203,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   PhantomDieInRegion = {
     DestroyReason = "PhantomDieInRegion",
@@ -192,7 +211,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   PhantomEnterDungeon = {
     DestroyReason = "PhantomEnterDungeon",
@@ -200,7 +219,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   PhantomExitDungeon = {
     DestroyReason = "PhantomExitDungeon",
@@ -208,7 +227,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   PhantomUseResource = {
     DestroyReason = "PhantomUseResource",
@@ -216,7 +235,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   Pickup = {
     DestroyReason = "Pickup",
@@ -224,7 +243,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = false,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   QuestChainClear = {
     DestroyReason = "QuestChainClear",
@@ -232,7 +251,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   RecoverSubRegionDataCacheButBpBornHasAlreadyDead = {
     DestroyReason = "RecoverSubRegionDataCacheButBpBornHasAlreadyDead",
@@ -240,7 +259,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   RegionExploreGroup = {
     DestroyReason = "RegionExploreGroup",
@@ -248,7 +267,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   RougeLevelUnloaded = {
     DestroyReason = "RougeLevelUnloaded",
@@ -256,7 +275,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   SepcialQuestStart = {
     DestroyReason = "SepcialQuestStart",
@@ -264,7 +283,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   SpawnerClear = {
     DestroyReason = "SpawnerClear",
@@ -272,7 +291,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   StoryLine = {
     DestroyReason = "StoryLine",
@@ -280,7 +299,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   SummonDirectSourceChangeOrDied = {
     DestroyReason = "SummonDirectSourceChangeOrDied",
@@ -288,7 +307,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   TalkContext = {
     DestroyReason = "TalkContext",
@@ -296,7 +315,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   Training = {
     DestroyReason = "Training",
@@ -304,7 +323,7 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = false,
-    IsTriggrRelationSpawn = false
+    IsTriggrRelationSpawn = false,
   },
   UnitLabel = {
     DestroyReason = "UnitLabel",
@@ -312,6 +331,6 @@ return ReadOnly("DestroyReason", {
     IsClearStaticCreatorRef = true,
     IsMonClearBattleInfo = true,
     IsTriggerDestroyEvent = true,
-    IsTriggrRelationSpawn = false
-  }
+    IsTriggrRelationSpawn = false,
+  },
 })

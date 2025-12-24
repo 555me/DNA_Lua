@@ -1,516 +1,598 @@
-local T = {}
-T.RT_1 = {0.8, 0.2}
-T.RT_2 = {201}
-T.RT_3 = {202}
-T.RT_4 = {203}
-T.RT_5 = {204}
-T.RT_6 = {205}
-T.RT_7 = {206}
-T.RT_8 = {
-  [1] = T.RT_2,
-  [2] = T.RT_3,
-  [3] = T.RT_4,
-  [4] = T.RT_5,
-  [5] = T.RT_6,
-  [6] = T.RT_7
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\SurvivalMini.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r0_0 = {
+  RT_1 = {
+    0.8,
+    0.2
+  },
+  RT_2 = {
+    201
+  },
+  RT_3 = {
+    202
+  },
+  RT_4 = {
+    203
+  },
+  RT_5 = {
+    204
+  },
+  RT_6 = {
+    205
+  },
+  RT_7 = {
+    206
+  },
 }
-T.RT_9 = {1, 0.2}
-T.RT_10 = {100201}
-T.RT_11 = {100202}
-T.RT_12 = {100203}
-T.RT_13 = {100204}
-T.RT_14 = {100205}
-T.RT_15 = {100206}
-T.RT_16 = {
-  [1] = T.RT_10,
-  [2] = T.RT_11,
-  [3] = T.RT_12,
-  [4] = T.RT_13,
-  [5] = T.RT_14,
-  [6] = T.RT_15
+r0_0.RT_8 = {
+  [1] = r0_0.RT_2,
+  [2] = r0_0.RT_3,
+  [3] = r0_0.RT_4,
+  [4] = r0_0.RT_5,
+  [5] = r0_0.RT_6,
+  [6] = r0_0.RT_7,
 }
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("SurvivalMini", {
+r0_0.RT_9 = {
+  1,
+  0.2
+}
+r0_0.RT_10 = {
+  100201
+}
+r0_0.RT_11 = {
+  100202
+}
+r0_0.RT_12 = {
+  100203
+}
+r0_0.RT_13 = {
+  100204
+}
+r0_0.RT_14 = {
+  100205
+}
+r0_0.RT_15 = {
+  100206
+}
+r0_0.RT_16 = {
+  [1] = r0_0.RT_10,
+  [2] = r0_0.RT_11,
+  [3] = r0_0.RT_12,
+  [4] = r0_0.RT_13,
+  [5] = r0_0.RT_14,
+  [6] = r0_0.RT_15,
+}
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [63, 63] id: 1
+  return r1_1
+end)("SurvivalMini", {
   [60501] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 60501,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [60502] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 60502,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [62501] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 62501,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [62502] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 62502,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [64501] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 64501,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [64502] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 64502,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90401] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90401,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90402] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90402,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90403] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90403,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90404] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90404,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90405] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90405,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90406] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90406,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90407] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90407,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90408] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90408,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90409] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90409,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90410] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90410,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90411] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90411,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90412] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90412,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90413] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90413,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90414] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90414,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90415] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90415,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90416] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90416,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90417] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90417,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90418] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90418,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90419] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90419,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90420] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90420,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90421] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90421,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90422] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90422,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90423] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90423,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90424] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90424,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90425] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90425,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90426] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90426,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90427] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90427,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90428] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90428,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90429] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90429,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90430] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90430,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90431] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90431,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90432] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90432,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90433] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90433,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90434] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90434,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90435] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90435,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90436] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90436,
-    MonsterSpawnId = T.RT_8,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_8,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90437] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90437,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90438] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90438,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90439] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90439,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90440] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90440,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90441] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90441,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
   },
   [90442] = {
     ButcherMonsterId = 8501002,
     ButcherMonsterSpawnMinWave = 2,
-    ButcherMonsterSpawnProbability = T.RT_1,
+    ButcherMonsterSpawnProbability = r0_0.RT_1,
     DungeonId = 90442,
-    MonsterSpawnId = T.RT_16,
+    EventValue = 50,
+    MonsterSpawnId = r0_0.RT_16,
     TreasureMonsterId = 9500001,
     TreasureMonsterSpawnMinWave = 2,
-    TreasureMonsterSpawnProbability = T.RT_9
-  }
+    TreasureMonsterSpawnProbability = r0_0.RT_9,
+  },
 })

@@ -1,0 +1,10 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\GoodsToDailyPack.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [1, 1] id: 1
+  return r1_1
+end)("GoodsToDailyPack", {
+  ["com.hero.dna.Pay_DailyCharaShards_fushu"] = 9001,
+  ["com.hero.dna.Pay_DailyCharaShards_kezhou"] = 9002,
+})

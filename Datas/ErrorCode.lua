@@ -1,12 +1,17 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("ErrorCode", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\ErrorCode.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("ErrorCode", {
   [-1] = {
     ErrorCodeContent = "未知错误",
-    ErrorCodeId = -1
+    ErrorCodeId = -1,
   },
-  [0] = {ErrorCodeId = 0},
+  [0] = {
+    ErrorCodeId = 0,
+  },
   [1] = {
     ContentDE = "德语文本测试",
     ContentEN = "System error occurs",
@@ -16,7 +21,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "시스템 오류",
     ContentTC = "係統錯誤",
     ErrorCodeContent = "系统错误",
-    ErrorCodeId = 1
+    ErrorCodeId = 1,
   },
   [2] = {
     ContentEN = "Parameter error occurs. Please check the RPC params",
@@ -24,7 +29,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파라미터 오류, RPC 호출 파라미터를 확인하세요.",
     ContentTC = "參數錯誤，請檢查RPC調用參數",
     ErrorCodeContent = "参数错误, 请检查RPC调用参数",
-    ErrorCodeId = 2
+    ErrorCodeId = 2,
   },
   [4] = {
     ContentEN = "UID offline or does not exist",
@@ -32,7 +37,35 @@ return ReadOnly("ErrorCode", {
     ContentKR = "UID가 오프라인이거나 존재하지 않습니다.",
     ContentTC = "UID不線上或不存在",
     ErrorCodeContent = "UID不在线或不存在",
-    ErrorCodeId = 4
+    ErrorCodeId = 4,
+  },
+  [5] = {
+    ErrorCodeContent = "异步操作需要等待",
+    ErrorCodeId = 5,
+  },
+  [6] = {
+    ErrorCodeContent = "UID不存在",
+    ErrorCodeId = 6,
+  },
+  [7] = {
+    ErrorCodeContent = "集群中没有AccountMgr",
+    ErrorCodeId = 7,
+  },
+  [8] = {
+    ErrorCodeContent = "集群中没有RegionOnlineMgr",
+    ErrorCodeId = 8,
+  },
+  [9] = {
+    ErrorCodeContent = "数据库超时",
+    ErrorCodeId = 9,
+  },
+  [10] = {
+    ErrorCodeContent = "集群中没有chatchannelmgr",
+    ErrorCodeId = 10,
+  },
+  [11] = {
+    ErrorCodeContent = "集群中没有OperationHttpMgr",
+    ErrorCodeId = 11,
   },
   [101] = {
     ContentEN = "Area yet to unlock",
@@ -40,7 +73,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 지역이 해제되지 않았습니다.",
     ContentTC = "區域未解鎖",
     ErrorCodeContent = "区域未解锁",
-    ErrorCodeId = 101
+    ErrorCodeId = 101,
   },
   [102] = {
     ContentEN = "Commission yet to unlock",
@@ -48,7 +81,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "스테이지가 해제되지 않았습니다.",
     ContentTC = "委託未解鎖",
     ErrorCodeContent = "关卡未解锁",
-    ErrorCodeId = 102
+    ErrorCodeId = 102,
   },
   [103] = {
     ContentEN = "Chapter yet to unlock",
@@ -56,7 +89,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "챕터가 해제되지 않았습니다.",
     ContentTC = "章節未解鎖",
     ErrorCodeContent = "章节未解锁",
-    ErrorCodeId = 103
+    ErrorCodeId = 103,
   },
   [104] = {
     ContentEN = "Currently occupied in a special quest. Complete it to proceed",
@@ -64,11 +97,11 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 스페셜 스토리 진행 중입니다. 먼저 스토리를 완료해 주세요.",
     ContentTC = "當前在特殊劇情中，請先完成劇情",
     ErrorCodeContent = "当前在特殊剧情中，请先完成剧情。",
-    ErrorCodeId = 104
+    ErrorCodeId = 104,
   },
   [404] = {
     ErrorCodeContent = "404 not found! Please check your network!",
-    ErrorCodeId = 404
+    ErrorCodeId = 404,
   },
   [1001] = {
     ContentEN = "This account does not exist, please try again",
@@ -76,7 +109,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "존재하지 않는 계정입니다. 다시 로그인하세요",
     ContentTC = "當前帳號不存在，請重新登入",
     ErrorCodeContent = "当前账号不存在，请重新登录",
-    ErrorCodeId = 1001
+    ErrorCodeId = 1001,
   },
   [1002] = {
     ContentEN = "User verification failed",
@@ -84,7 +117,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "사용자 인증 실패",
     ContentTC = "用戶驗證失敗",
     ErrorCodeContent = "用户验证失败",
-    ErrorCodeId = 1002
+    ErrorCodeId = 1002,
   },
   [1003] = {
     ContentEN = "Session verification failed, please log in again",
@@ -92,7 +125,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "대화 인증 실패. 다시 로그인하세요",
     ContentTC = "會話驗證失敗，請重新登入",
     ErrorCodeContent = "会话验证失败，请重新登录",
-    ErrorCodeId = 1003
+    ErrorCodeId = 1003,
   },
   [1004] = {
     ContentEN = "Failed to create character",
@@ -100,7 +133,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐릭터 생성 실패",
     ContentTC = "創建角色失敗",
     ErrorCodeContent = "创建角色失败",
-    ErrorCodeId = 1004
+    ErrorCodeId = 1004,
   },
   [1005] = {
     ContentEN = "Failed to load role data",
@@ -108,7 +141,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐릭터 로드 실패",
     ContentTC = "角色載入失敗",
     ErrorCodeContent = "角色加载失败",
-    ErrorCodeId = 1005
+    ErrorCodeId = 1005,
   },
   [1006] = {
     ContentEN = "Version outdated. Please update to continue.",
@@ -116,7 +149,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "새로운 버전이 발견되었습니다. 업데이트를 진행해 주세요.",
     ContentTC = "版本太低,請更新升級",
     ErrorCodeContent = "版本太低,请更新升级",
-    ErrorCodeId = 1006
+    ErrorCodeId = 1006,
   },
   [1007] = {
     ContentEN = "Please log in again",
@@ -124,7 +157,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "다시 로그인하세요.",
     ContentTC = "請重新登入",
     ErrorCodeContent = "请重新登录",
-    ErrorCodeId = 1007
+    ErrorCodeId = 1007,
   },
   [1008] = {
     ContentEN = "Your role has been suspended due to [%s]. Should you have any questions, please contact Customer Service",
@@ -132,7 +165,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "안녕하세요. 사용 중이신 캐릭터가 [%s] 사유로 정지되었습니다. 자세한 내용은 고객 센터에 문의하세요",
     ContentTC = "您好，您的角色由於[%s]已被封停，如有疑問，請聯繫客服",
     ErrorCodeContent = "您好，您的角色由于[%s]已被封停，如有疑问，请联系客服",
-    ErrorCodeId = 1008
+    ErrorCodeId = 1008,
   },
   [1009] = {
     ContentEN = "Your role has been suspended due to [%s]. Should you have any questions, please contact Customer Service",
@@ -140,7 +173,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "안녕하세요. 사용 중이신 캐릭터가 [%s] 사유로 정지되었습니다. 자세한 내용은 고객 센터에 문의하세요",
     ContentTC = "您好，您的角色由於[%s]已被封停，如有疑問，請聯繫客服",
     ErrorCodeContent = "您好，您的角色由于[%s]已被封停，如有疑问，请联系客服",
-    ErrorCodeId = 1009
+    ErrorCodeId = 1009,
   },
   [1010] = {
     ContentEN = "Your role has been suspended due to [%s]. Should you have any questions, please contact Customer Service",
@@ -148,7 +181,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "안녕하세요. 사용 중이신 캐릭터가 [%s] 사유로 정지되었습니다. 자세한 내용은 고객 센터에 문의하세요",
     ContentTC = "您好，您的角色由於[%s]已被封停，如有疑問，請聯繫客服",
     ErrorCodeContent = "您好，您的角色由于[%s]已被封停，如有疑问，请联系客服",
-    ErrorCodeId = 1010
+    ErrorCodeId = 1010,
   },
   [1011] = {
     ContentEN = "Server unavailable, please log in again",
@@ -156,7 +189,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 서버를 이용할 수 없습니다. 다시 로그인하세요",
     ContentTC = "當前伺服器不可用，請重新登入",
     ErrorCodeContent = "当前服务器不可用，请重新登录",
-    ErrorCodeId = 1011
+    ErrorCodeId = 1011,
   },
   [1012] = {
     ContentEN = "Account mismatch detected, please log in again",
@@ -164,7 +197,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "계정이 일치하지 않습니다. 다시 로그인하세요",
     ContentTC = "帳號不一致，請重新登入",
     ErrorCodeContent = "账号不一致，请重新登录",
-    ErrorCodeId = 1012
+    ErrorCodeId = 1012,
   },
   [1013] = {
     ContentEN = "The login queue is full, please try again later",
@@ -172,7 +205,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "접속 대기열이 가득 찼습니다. 잠시 후 다시 시도하세요",
     ContentTC = "登入佇列已滿，請稍候嘗試登入",
     ErrorCodeContent = "登录队列已满，请稍后尝试登录",
-    ErrorCodeId = 1013
+    ErrorCodeId = 1013,
   },
   [1014] = {
     ContentEN = "The server is experiencing heavy traffic, please try again later",
@@ -180,7 +213,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "서버가 혼잡합니다. 잠시 후 다시 시도하세요",
     ContentTC = "伺服器繁忙，請稍候嘗試登入",
     ErrorCodeContent = "服务器繁忙，请稍后尝试登录",
-    ErrorCodeId = 1014
+    ErrorCodeId = 1014,
   },
   [1015] = {
     ContentEN = "You have quit the login queue",
@@ -188,23 +221,23 @@ return ReadOnly("ErrorCode", {
     ContentKR = "접속 대기열을 떠났습니다",
     ContentTC = "您已退出登入佇列",
     ErrorCodeContent = "您已退出登录队列",
-    ErrorCodeId = 1015
+    ErrorCodeId = 1015,
   },
   [1016] = {
-    ContentEN = "There's an issue with your account data that's preventing login. Should you have any questions, please contact Customer Service",
+    ContentEN = "There\'s an issue with your account data that\'s preventing login. Should you have any questions, please contact Customer Service",
     ContentJP = "データに異常が発生したため、ログインできませんでした。質問があればカスタマーサービスにご連絡ください",
     ContentKR = "계정 데이터에 오류가 발생해 접속할 수 없습니다. 자세한 내용은 고객 센터에 문의하세요",
     ContentTC = "您的帳號資料異常，無法登入，如有疑問，請聯繫客服",
     ErrorCodeContent = "您的账号数据异常，无法登录，如有疑问，请联系客服",
-    ErrorCodeId = 1016
+    ErrorCodeId = 1016,
   },
   [1017] = {
-    ContentEN = "You've reached the maximum permitted online time",
+    ContentEN = "You\'ve reached the maximum permitted online time",
     ContentJP = "-- オンライン可能時間の上限に達しました",
     ContentKR = "- 접속 제한 시간을 초과했습니다",
     ContentTC = "-- 您的線上時長已達上限",
     ErrorCodeContent = "-- 您的在线时长已达上限",
-    ErrorCodeId = 1017
+    ErrorCodeId = 1017,
   },
   [1018] = {
     ContentEN = "Real-name verification failed",
@@ -212,7 +245,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "- 실명 인증 실패",
     ContentTC = "-- 實名認證失敗",
     ErrorCodeContent = "-- 实名认证失败",
-    ErrorCodeId = 1018
+    ErrorCodeId = 1018,
   },
   [1019] = {
     ContentEN = "New account registration currently closed",
@@ -220,15 +253,15 @@ return ReadOnly("ErrorCode", {
     ContentKR = "- 신규 회원가입이 종료되었습니다.",
     ContentTC = "-- 新帳號註冊已關閉",
     ErrorCodeContent = "-- 新账号注册已关闭",
-    ErrorCodeId = 1019
+    ErrorCodeId = 1019,
   },
   [1020] = {
-    ContentEN = "The real-name information you've submitted failed verification",
+    ContentEN = "The real-name information you\'ve submitted failed verification",
     ContentJP = "-- 提出された実名情報が審査に通りませんでした",
     ContentKR = "- 제출한 실명 정보를 사용할 수 없습니다.",
     ContentTC = "-- 您提交的實名資訊不通過",
     ErrorCodeContent = "-- 您提交的实名信息不通过",
-    ErrorCodeId = 1020
+    ErrorCodeId = 1020,
   },
   [1021] = {
     ContentEN = "This product is not available in your current region",
@@ -236,7 +269,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 버전은 현재 지역에서 사용할 수 없습니다.",
     ContentTC = "本產品在您當前所在區域不可用",
     ErrorCodeContent = "本产品在您当前所在区域不可用",
-    ErrorCodeId = 1021
+    ErrorCodeId = 1021,
   },
   [1022] = {
     ContentEN = "Account names cannot include Chinese characters",
@@ -244,7 +277,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "계정에 중국어를 입력할 수 없습니다.",
     ContentTC = "帳號不可輸入中文",
     ErrorCodeContent = "账号不可输入中文",
-    ErrorCodeId = 1022
+    ErrorCodeId = 1022,
   },
   [1023] = {
     ContentEN = "Failed to fetch the server list. Please check your internet connection.",
@@ -252,7 +285,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "서버 리스트 불러오기 실패. 기기의 네트워크 연결 상태를 확인해 주세요.",
     ContentTC = "獲取伺服器清單失敗，請檢查設備的網路連接",
     ErrorCodeContent = "获取服务器列表失败，请检查设备的网络连接",
-    ErrorCodeId = 1023
+    ErrorCodeId = 1023,
   },
   [1024] = {
     ContentEN = "Fetching server list, please wait...",
@@ -260,7 +293,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "서버 리스트를 불러오는 중입니다. 잠시만 기다려 주세요.",
     ContentTC = "正在獲取伺服器列表，請稍候",
     ErrorCodeContent = "正在获取服务器列表，请稍后",
-    ErrorCodeId = 1024
+    ErrorCodeId = 1024,
   },
   [1025] = {
     ContentEN = "Account name should not be left blank",
@@ -268,7 +301,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "계정 이름을 비울 수 없습니다.",
     ContentTC = "帳號名不能為空",
     ErrorCodeContent = "账号名不能为空",
-    ErrorCodeId = 1025
+    ErrorCodeId = 1025,
   },
   [1026] = {
     ContentEN = "Please select a server",
@@ -276,15 +309,15 @@ return ReadOnly("ErrorCode", {
     ContentKR = "서버를 선택하세요.",
     ContentTC = "請選擇伺服器",
     ErrorCodeContent = "请选择服务器",
-    ErrorCodeId = 1026
+    ErrorCodeId = 1026,
   },
   [1027] = {
-    ContentEN = "You've already completed real-name verification (%s). No further registration is required.",
+    ContentEN = "You\'ve already completed real-name verification (%s). No further registration is required.",
     ContentJP = "すでに実名認証されています(%s)。再登録する必要はありません",
     ContentKR = "이미 실명 인증(%s)이 완료되었습니다.",
     ContentTC = "你已實名(%s)，無須再次登記",
     ErrorCodeContent = "你已实名(%s)，无须再次登记",
-    ErrorCodeId = 1027
+    ErrorCodeId = 1027,
   },
   [1028] = {
     ContentEN = "Your account is logged in elsewhere",
@@ -292,7 +325,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "다른 환경에서 로그인했습니다.",
     ContentTC = "您已在別處登入",
     ErrorCodeContent = "您已在别处登录",
-    ErrorCodeId = 1028
+    ErrorCodeId = 1028,
   },
   [1029] = {
     ContentEN = "Your allotted game time has ended",
@@ -300,7 +333,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "게임 이용 가능 시간이 모두 소진되었습니다.",
     ContentTC = "遊戲時間耗盡",
     ErrorCodeContent = "游戏时间耗尽",
-    ErrorCodeId = 1029
+    ErrorCodeId = 1029,
   },
   [1030] = {
     ContentEN = "Your trial period has ended. You can continue after completing real-name verification.",
@@ -308,7 +341,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "체험 시간이 종료되었습니다. 실명 인증을 진행해 주세요",
     ContentTC = "體驗時間已過，請進行實名認證",
     ErrorCodeContent = "体验时间已过，请进行实名认证",
-    ErrorCodeId = 1030
+    ErrorCodeId = 1030,
   },
   [1031] = {
     ContentEN = "Verification successful! Please log in again.",
@@ -316,7 +349,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "인증 완료. 다시 로그인하세요.",
     ContentTC = "認證成功，請重新登入",
     ErrorCodeContent = "认证成功，请重新登录",
-    ErrorCodeId = 1031
+    ErrorCodeId = 1031,
   },
   [1032] = {
     ContentEN = "Invalid ID number format. Please enter a valid 18-digit ID number.",
@@ -324,7 +357,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "신분증 번호 양식이 올바르지 않습니다. 18자리의 실제로 유효한 신분증 번호를 입력해 주세요.",
     ContentTC = "證件號格式不對，請填寫18位真實有效的身份證號",
     ErrorCodeContent = "证件号格式不对，请填写18位真实有效的身份证号",
-    ErrorCodeId = 1032
+    ErrorCodeId = 1032,
   },
   [1033] = {
     ContentEN = "Please log in again",
@@ -332,7 +365,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "다시 로그인하세요.",
     ContentTC = "請重新登入",
     ErrorCodeContent = "请重新登录",
-    ErrorCodeId = 1033
+    ErrorCodeId = 1033,
   },
   [1034] = {
     ContentEN = "Please log in to the platform SDK first",
@@ -340,7 +373,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "먼저 채널 SDK에 로그인하세요.",
     ContentTC = "請先登入管道SDK",
     ErrorCodeContent = "请先登录渠道SDK",
-    ErrorCodeId = 1034
+    ErrorCodeId = 1034,
   },
   [1035] = {
     ContentEN = "Cannot log into the same account from multiple devices",
@@ -348,7 +381,27 @@ return ReadOnly("ErrorCode", {
     ContentKR = "동일 계정을 다른 기기에서 로그인할 수 없습니다.",
     ContentTC = "不允許在不同設備登入同一帳號",
     ErrorCodeContent = "不允许在不同设备登陆同一账号",
-    ErrorCodeId = 1035
+    ErrorCodeId = 1035,
+  },
+  [1036] = {
+    ErrorCodeContent = "拒绝绑定设备",
+    ErrorCodeId = 1036,
+  },
+  [1037] = {
+    ErrorCodeContent = "白名单检查失败",
+    ErrorCodeId = 1037,
+  },
+  [1038] = {
+    ErrorCodeContent = "不在内部白名单",
+    ErrorCodeId = 1038,
+  },
+  [1039] = {
+    ErrorCodeContent = "patchversion太低，请更新升级",
+    ErrorCodeId = 1039,
+  },
+  [1040] = {
+    ErrorCodeContent = "登录目标服务器",
+    ErrorCodeId = 1040,
   },
   [2001] = {
     ContentEN = "The character does not exist",
@@ -356,7 +409,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐릭터가 존재하지 않습니다",
     ContentTC = "角色不存在",
     ErrorCodeContent = "角色不存在",
-    ErrorCodeId = 2001
+    ErrorCodeId = 2001,
   },
   [2007] = {
     ContentEN = "Insufficient EXP for character upgrade",
@@ -364,7 +417,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐릭터 레벨업에 필요한 경험치가 부족합니다",
     ContentTC = "角色升級所需經驗不足",
     ErrorCodeContent = "角色升级所需经验材料不足",
-    ErrorCodeId = 2007
+    ErrorCodeId = 2007,
   },
   [2008] = {
     ContentEN = "Insufficient Coins for character upgrade",
@@ -372,7 +425,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐릭터 레벨업에 필요한 은화가 부족합니다",
     ContentTC = "角色升級所需銀幣不足",
     ErrorCodeContent = "角色升级所需铜币不足",
-    ErrorCodeId = 2008
+    ErrorCodeId = 2008,
   },
   [2009] = {
     ContentEN = "The character has reached the maximum level",
@@ -380,7 +433,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 캐릭터의 레벨이 최대 레벨보다 높습니다",
     ContentTC = "當前角色等級大於最大等級",
     ErrorCodeContent = "当前角色等级大于最大等级",
-    ErrorCodeId = 2009
+    ErrorCodeId = 2009,
   },
   [2010] = {
     ContentEN = "Insufficient Resonance level to Ascend",
@@ -388,7 +441,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 레조넌스 레벨이 돌파 조건을 충족하지 않습니다",
     ContentTC = "當前和鳴等級不滿足突破需求",
     ErrorCodeContent = "当前历练等级不满足角色突破需求",
-    ErrorCodeId = 2010
+    ErrorCodeId = 2010,
   },
   [2011] = {
     ContentEN = "Ascending the current character does not require this material",
@@ -396,7 +449,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 캐릭터 돌파는 해당 재료를 필요하지 않습니다",
     ContentTC = "當前角色突破不需要該材料",
     ErrorCodeContent = "当前角色突破不需要该材料",
-    ErrorCodeId = 2011
+    ErrorCodeId = 2011,
   },
   [2012] = {
     ContentEN = "Insufficient materials to Ascend the character",
@@ -404,7 +457,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐릭터 돌파에 필요한 재료가 부족합니다",
     ContentTC = "角色突破所需要的材料不足",
     ErrorCodeContent = "角色突破所需要的材料不足",
-    ErrorCodeId = 2012
+    ErrorCodeId = 2012,
   },
   [2013] = {
     ContentEN = "Incorrect character level",
@@ -412,7 +465,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐릭터 레벨 파라미터가 잘못되었습니다",
     ContentTC = "角色等級參數不正確",
     ErrorCodeContent = "角色等级参数不正确",
-    ErrorCodeId = 2013
+    ErrorCodeId = 2013,
   },
   [2014] = {
     ContentEN = "Incorrect number of attempts for character Ascension",
@@ -420,7 +473,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐릭터 돌파 횟수가 잘못되었습니다",
     ContentTC = "角色突破次數不正確",
     ErrorCodeContent = "角色突破次数不正确",
-    ErrorCodeId = 2014
+    ErrorCodeId = 2014,
   },
   [2015] = {
     ContentEN = "The character has reached the maximum Ascension limit",
@@ -428,7 +481,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐릭터가 최대 돌파 한도에 도달했습니다",
     ContentTC = "角色已達最大突破限度",
     ErrorCodeContent = "角色已达最大突破限度",
-    ErrorCodeId = 2015
+    ErrorCodeId = 2015,
   },
   [2016] = {
     ContentEN = "Insufficient materials to unlock",
@@ -436,7 +489,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "재료가 부족하여 해제할 수 없습니다.",
     ContentTC = "材料不足，無法解鎖",
     ErrorCodeContent = "材料不足，无法解锁",
-    ErrorCodeId = 2016
+    ErrorCodeId = 2016,
   },
   [2017] = {
     ContentEN = "Name change currently unavailable",
@@ -444,7 +497,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 이름 변경을 할 수 없습니다.",
     ContentTC = "改名時間不允許",
     ErrorCodeContent = "改名时间不允许",
-    ErrorCodeId = 2017
+    ErrorCodeId = 2017,
   },
   [2018] = {
     ContentEN = "No name change required",
@@ -452,7 +505,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이름 변경이 필요하지 않습니다.",
     ContentTC = "無需改名",
     ErrorCodeContent = "无需改名",
-    ErrorCodeId = 2018
+    ErrorCodeId = 2018,
   },
   [2019] = {
     ContentEN = "Name length limit exceeded",
@@ -460,7 +513,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이름이 너무 깁니다",
     ContentTC = "名字太長",
     ErrorCodeContent = "名字太长",
-    ErrorCodeId = 2019
+    ErrorCodeId = 2019,
   },
   [2020] = {
     ContentEN = "Incorrect horn visibility parameters",
@@ -468,7 +521,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐릭터의 각 부분 가시성 파라미터가 올바르지 않습니다.",
     ContentTC = "角色角部可視性參數不正確",
     ErrorCodeContent = "角色角部可视性参数不正确",
-    ErrorCodeId = 2020
+    ErrorCodeId = 2020,
   },
   [2021] = {
     ContentEN = "Horn visibility conflict detected",
@@ -476,15 +529,63 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐릭터의 각 부분 가시성에 충돌이 발생했습니다.",
     ContentTC = "角色角部可視性衝突",
     ErrorCodeContent = "角色角部可视性冲突",
-    ErrorCodeId = 2021
+    ErrorCodeId = 2021,
+  },
+  [2022] = {
+    ErrorCodeContent = "名字为空",
+    ErrorCodeId = 2022,
+  },
+  [2023] = {
+    ErrorCodeContent = "角色公共数据不存在",
+    ErrorCodeId = 2023,
+  },
+  [2024] = {
+    ErrorCodeContent = "武器染色部位不正确存在部位重复",
+    ErrorCodeId = 2024,
+  },
+  [2025] = {
+    ErrorCodeContent = "武器染色部位不正确非整数",
+    ErrorCodeId = 2025,
+  },
+  [2026] = {
+    ErrorCodeContent = "武器染色部位不正确",
+    ErrorCodeId = 2026,
+  },
+  [2027] = {
+    ErrorCodeContent = "武器染色当前颜色与新颜色一致",
+    ErrorCodeId = 2027,
+  },
+  [2028] = {
+    ErrorCodeContent = "角色皮肤不存在",
+    ErrorCodeId = 2028,
+  },
+  [2029] = {
+    ErrorCodeContent = "角色皮肤未配表",
+    ErrorCodeId = 2029,
+  },
+  [2030] = {
+    ErrorCodeContent = "外观索引错误",
+    ErrorCodeId = 2030,
+  },
+  [2031] = {
+    ErrorCodeContent = "角色拥有的外观超过最大数量",
+    ErrorCodeId = 2031,
+  },
+  [2032] = {
+    ErrorCodeContent = "角色切换皮肤失败",
+    ErrorCodeId = 2032,
+  },
+  [2033] = {
+    ErrorCodeContent = "CommonChar角色未获取不能设置皮肤",
+    ErrorCodeId = 2033,
+  },
+  [2034] = {
+    ErrorCodeContent = "角色皮肤不存在",
+    ErrorCodeId = 2034,
   },
   [2035] = {
-    ContentEN = "Character already unlocked",
-    ContentJP = "このキャラクターは解放されました",
-    ContentKR = "캐릭터가 이미 해제되었습니다.",
-    ContentTC = "角色已解鎖",
     ErrorCodeContent = "角色已解锁",
-    ErrorCodeId = 2035
+    ErrorCodeId = 2035,
   },
   [3001] = {
     ContentEN = "The weapon does not exist",
@@ -492,7 +593,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 무기가 존재하지 않습니다",
     ContentTC = "該武器不存在",
     ErrorCodeContent = "该武器不存在",
-    ErrorCodeId = 3001
+    ErrorCodeId = 3001,
   },
   [3002] = {
     ContentEN = "Insufficient Weapon EXP for upgrade",
@@ -500,7 +601,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "무기 레벨업에 필요한 숙련도가 부족합니다",
     ContentTC = "武器升級所需熟練值不足",
     ErrorCodeContent = "武器升级所需经验材料不足",
-    ErrorCodeId = 3002
+    ErrorCodeId = 3002,
   },
   [3003] = {
     ContentEN = "Insufficient Coins for weapon upgrade",
@@ -508,7 +609,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "무기 레벨업에 필요한 은화가 부족합니다",
     ContentTC = "武器升級所需銀幣不足",
     ErrorCodeContent = "武器升级所需铜币不足",
-    ErrorCodeId = 3003
+    ErrorCodeId = 3003,
   },
   [3004] = {
     ContentEN = "The weapon has reached the maximum level",
@@ -516,7 +617,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 무기가 이미 최고 레벨에 도달했습니다",
     ContentTC = "當前武器已達最高等級",
     ErrorCodeContent = "当前武器已达最高等级",
-    ErrorCodeId = 3004
+    ErrorCodeId = 3004,
   },
   [3005] = {
     ContentEN = "Insufficient Resonance level to Ascend",
@@ -524,7 +625,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 레조넌스 레벨이 돌파 조건을 충족하지 않습니다",
     ContentTC = "當前和鳴等級不滿足突破需求",
     ErrorCodeContent = "当前历练等级不满足武器突破需求",
-    ErrorCodeId = 3005
+    ErrorCodeId = 3005,
   },
   [3006] = {
     ContentEN = "Ascending the current weapon does not require this material",
@@ -532,7 +633,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 무기 돌파는 해당 재료를 필요하지 않습니다",
     ContentTC = "當前武器突破不需要該材料",
     ErrorCodeContent = "当前武器突破不需要该材料",
-    ErrorCodeId = 3006
+    ErrorCodeId = 3006,
   },
   [3007] = {
     ContentEN = "Insufficient materials to Ascend the weapon",
@@ -540,7 +641,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "무기 돌파에 필요한 재료가 부족합니다",
     ContentTC = "武器突破所需要的材料不足",
     ErrorCodeContent = "武器突破所需要的材料不足",
-    ErrorCodeId = 3007
+    ErrorCodeId = 3007,
   },
   [3008] = {
     ContentEN = "Incorrect weapon level",
@@ -548,7 +649,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "무기 레벨 파라미터가 잘못되었습니다",
     ContentTC = "武器等級參數不正確",
     ErrorCodeContent = "武器等级参数不正确",
-    ErrorCodeId = 3008
+    ErrorCodeId = 3008,
   },
   [3009] = {
     ContentEN = "Weapon type does not exist",
@@ -556,15 +657,11 @@ return ReadOnly("ErrorCode", {
     ContentKR = "존재하지 않는 무기 유형입니다.",
     ContentTC = "武器類型不存在",
     ErrorCodeContent = "武器类型不存在",
-    ErrorCodeId = 3009
+    ErrorCodeId = 3009,
   },
   [3010] = {
-    ContentEN = "Weapon type does not match",
-    ContentJP = "武器タイプがマッチしません",
-    ContentKR = "무기와 유형이 서로 맞지 않습니다.",
-    ContentTC = "武器類型不匹配",
     ErrorCodeContent = "武器类型不匹配",
-    ErrorCodeId = 3010
+    ErrorCodeId = 3010,
   },
   [3011] = {
     ContentEN = "Invalid weapon for enhancement",
@@ -572,7 +669,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 무기는 강화할 수 없습니다.",
     ContentTC = "當前武器無法進行強化",
     ErrorCodeContent = "当前武器无法进行强化",
-    ErrorCodeId = 3011
+    ErrorCodeId = 3011,
   },
   [3012] = {
     ContentEN = "Cannot use a non-existent weapon for enhancement",
@@ -580,7 +677,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "존재하지 않는 무기로는 강화할 수 없습니다.",
     ContentTC = "無法使用不存在的武器進行強化",
     ErrorCodeContent = "无法使用不存在的武器进行强化",
-    ErrorCodeId = 3012
+    ErrorCodeId = 3012,
   },
   [3013] = {
     ContentEN = "Cannot use an equipped weapon for enhancement",
@@ -588,7 +685,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "장착 중인 무기로는 강화할 수 없습니다.",
     ContentTC = "無法使用正在裝備中的武器進行強化",
     ErrorCodeContent = "无法使用正在装备中的武器进行强化",
-    ErrorCodeId = 3013
+    ErrorCodeId = 3013,
   },
   [3014] = {
     ContentEN = "Cannot use a locked weapon for enhancement",
@@ -596,7 +693,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "잠긴 무기로는 강화할 수 없습니다.",
     ContentTC = "無法使用鎖定中的武器進行強化",
     ErrorCodeContent = "无法使用锁定中的武器进行强化",
-    ErrorCodeId = 3014
+    ErrorCodeId = 3014,
   },
   [3015] = {
     ContentEN = "Can only use the same type of weapon for enhancement",
@@ -604,7 +701,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "다른 무기로는 강화할 수 없습니다.",
     ContentTC = "無法使用其他武器進行強化",
     ErrorCodeContent = "无法使用其他武器进行强化",
-    ErrorCodeId = 3015
+    ErrorCodeId = 3015,
   },
   [3017] = {
     ContentEN = "Mismatch between the weapon and tags",
@@ -612,7 +709,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "무기와 태그가 일치하지 않습니다.",
     ContentTC = "武器與tag不匹配",
     ErrorCodeContent = "武器与tag不匹配",
-    ErrorCodeId = 3017
+    ErrorCodeId = 3017,
   },
   [3018] = {
     ContentEN = "Invalid part for colouring",
@@ -620,7 +717,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "염색할 부위가 존재하지 않습니다.",
     ContentTC = "染色部位不存在",
     ErrorCodeContent = "染色部位不存在",
-    ErrorCodeId = 3018
+    ErrorCodeId = 3018,
   },
   [3019] = {
     ContentEN = "Invalid Dyes",
@@ -628,7 +725,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "염료가 존재하지 않습니다.",
     ContentTC = "染劑不存在",
     ErrorCodeContent = "染剂不存在",
-    ErrorCodeId = 3019
+    ErrorCodeId = 3019,
   },
   [3020] = {
     ContentEN = "Insufficient Dyes",
@@ -636,7 +733,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "염료가 부족합니다.",
     ContentTC = "染劑不足",
     ErrorCodeContent = "染剂不足",
-    ErrorCodeId = 3020
+    ErrorCodeId = 3020,
   },
   [3021] = {
     ContentEN = "Current and target colours are the same",
@@ -644,7 +741,59 @@ return ReadOnly("ErrorCode", {
     ContentKR = "염색 색상이 현재 색상과 동일합니다.",
     ContentTC = "染色與使用中色彩一致",
     ErrorCodeContent = "染色与当前颜色一致",
-    ErrorCodeId = 3021
+    ErrorCodeId = 3021,
+  },
+  [3022] = {
+    ErrorCodeContent = "武器外观不存在",
+    ErrorCodeId = 3022,
+  },
+  [3023] = {
+    ErrorCodeContent = "武器挂饰未拥有",
+    ErrorCodeId = 3023,
+  },
+  [3024] = {
+    ErrorCodeContent = "武器当前挂饰与新挂饰一致",
+    ErrorCodeId = 3024,
+  },
+  [3025] = {
+    ErrorCodeContent = "武器皮肤未拥有",
+    ErrorCodeId = 3025,
+  },
+  [3026] = {
+    ErrorCodeContent = "武器当前皮肤与新皮肤一致",
+    ErrorCodeId = 3026,
+  },
+  [3027] = {
+    ErrorCodeContent = "武器皮肤信息不存在",
+    ErrorCodeId = 3027,
+  },
+  [3028] = {
+    ErrorCodeContent = "武器皮肤不适用",
+    ErrorCodeId = 3028,
+  },
+  [3029] = {
+    ErrorCodeContent = "批量分解武器失败",
+    ErrorCodeId = 3029,
+  },
+  [3030] = {
+    ErrorCodeContent = "武器熔炼所消耗的武器包含当前武器",
+    ErrorCodeId = 3030,
+  },
+  [3031] = {
+    ErrorCodeContent = "该武器已经在铸造中",
+    ErrorCodeId = 3031,
+  },
+  [3032] = {
+    ErrorCodeContent = "武器分解失败",
+    ErrorCodeId = 3032,
+  },
+  [3033] = {
+    ErrorCodeContent = "武器染色颜色方案不正确",
+    ErrorCodeId = 3033,
+  },
+  [3034] = {
+    ErrorCodeContent = "武器当前染色方案与新方案一致",
+    ErrorCodeId = 3034,
   },
   [4001] = {
     ContentEN = "The Demon Wedge does not exist",
@@ -652,7 +801,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "악마의 쐐기가 존재하지 않습니다",
     ContentTC = "魔之楔不存在",
     ErrorCodeContent = "魔之楔不存在",
-    ErrorCodeId = 4001
+    ErrorCodeId = 4001,
   },
   [4002] = {
     ContentEN = "The Demon Wedge slot does not exist",
@@ -660,7 +809,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "악마의 쐐기 슬롯이 존재하지 않습니다",
     ContentTC = "魔之楔槽位不存在",
     ErrorCodeContent = "魔之楔槽位不存在",
-    ErrorCodeId = 4002
+    ErrorCodeId = 4002,
   },
   [4003] = {
     ContentEN = "Duplicate setting for the Demon Wedge slot",
@@ -668,7 +817,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "악마의 쐐기 슬롯 중복 설정",
     ContentTC = "魔之楔槽位重複設置",
     ErrorCodeContent = "魔之楔槽位重复设置",
-    ErrorCodeId = 4003
+    ErrorCodeId = 4003,
   },
   [4004] = {
     ContentEN = "The Demon Wedge does not apply",
@@ -676,7 +825,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "악마의 쐐기가 적합하지 않습니다",
     ContentTC = "魔之楔不適用",
     ErrorCodeContent = "魔之楔不适用",
-    ErrorCodeId = 4004
+    ErrorCodeId = 4004,
   },
   [4005] = {
     ContentEN = "Demon Wedge Tolerance exceeded",
@@ -684,15 +833,11 @@ return ReadOnly("ErrorCode", {
     ContentKR = "악마의 쐐기 허용도를 초과했습니다",
     ContentTC = "超過魔之楔耐受值",
     ErrorCodeContent = "超过魔之楔耐受值",
-    ErrorCodeId = 4005
+    ErrorCodeId = 4005,
   },
   [4006] = {
-    ContentEN = "The Demon Wedge config does not exist",
-    ContentJP = "魔の楔の設定が存在しません",
-    ContentKR = "악마의 쐐기 구성이 존재하지 않습니다.",
-    ContentTC = "魔之楔配置不存在",
     ErrorCodeContent = "魔之楔配置不存在",
-    ErrorCodeId = 4006
+    ErrorCodeId = 4006,
   },
   [4007] = {
     ContentEN = "Clashing with the already equipped Demon Wedge %s",
@@ -700,7 +845,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "장착 중인 %s 악마의 쐐기와 충돌",
     ContentTC = "與已裝備的魔之楔 %s 衝突",
     ErrorCodeContent = "与已装备的魔之楔 %s 冲突",
-    ErrorCodeId = 4007
+    ErrorCodeId = 4007,
   },
   [4008] = {
     ContentEN = "The Demon Wedge has reached the maximum level",
@@ -708,7 +853,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 악마의 쐐기 레벨이 최대 레벨보다 높습니다",
     ContentTC = "當前魔之楔等級大於最大等級",
     ErrorCodeContent = "当前魔之楔等级大于最大等级",
-    ErrorCodeId = 4008
+    ErrorCodeId = 4008,
   },
   [4009] = {
     ContentEN = "The Demon Wedge info does not exist",
@@ -716,7 +861,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "악마의 쐐기 정보가 존재하지 않습니다",
     ContentTC = "魔之楔資訊不存在",
     ErrorCodeContent = "魔之楔信息不存在",
-    ErrorCodeId = 4009
+    ErrorCodeId = 4009,
   },
   [4010] = {
     ContentEN = "The Demon Wedge has been disassembled",
@@ -724,7 +869,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "악마의 쐐기를 분해했습니다",
     ContentTC = "魔之楔分解成功",
     ErrorCodeContent = "魔之楔售卖成功",
-    ErrorCodeId = 4010
+    ErrorCodeId = 4010,
   },
   [4011] = {
     ContentEN = "This Demon Wedge cannot be secured",
@@ -732,7 +877,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 악마의 쐐기를 잠금할 수 없습니다",
     ContentTC = "該魔之楔無法鎖定",
     ErrorCodeContent = "该魔之楔无法锁定",
-    ErrorCodeId = 4011
+    ErrorCodeId = 4011,
   },
   [4012] = {
     ContentEN = "The Demon Wedge slot yet to be unlocked",
@@ -740,7 +885,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "악마의 쐐기 슬롯을 해제하지 않았습니다.",
     ContentTC = "魔之楔槽位未解鎖",
     ErrorCodeContent = "魔之楔槽位未解锁",
-    ErrorCodeId = 4012
+    ErrorCodeId = 4012,
   },
   [4013] = {
     ContentEN = "The Track does not exist",
@@ -748,7 +893,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 성향이 존재하지 않습니다",
     ContentTC = "該趨向不存在",
     ErrorCodeContent = "该趋向不存在",
-    ErrorCodeId = 4013
+    ErrorCodeId = 4013,
   },
   [4014] = {
     ContentEN = "The Demon Wedge config does not exist",
@@ -756,7 +901,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "악마의 쐐기 배치가 존재하지 않습니다",
     ContentTC = "魔之楔配置不存在",
     ErrorCodeContent = "魔之楔配置不存在",
-    ErrorCodeId = 4014
+    ErrorCodeId = 4014,
   },
   [4015] = {
     ContentEN = "Demon Wedge unchanged",
@@ -764,7 +909,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 악마의 쐐기는 초기 상태의 악마의 쐐기입니다.",
     ContentTC = "魔之楔是原始魔之楔",
     ErrorCodeContent = "魔之楔是原始魔之楔",
-    ErrorCodeId = 4015
+    ErrorCodeId = 4015,
   },
   [4016] = {
     ContentEN = "This Demon Wedge has not reached the maximum level",
@@ -772,7 +917,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "악마의 쐐기 레벨이 최대 레벨에 도달하지 않았습니다.",
     ContentTC = "魔之楔等級沒有達到最大等級",
     ErrorCodeContent = "魔之楔等级没有达到最大等级",
-    ErrorCodeId = 4016
+    ErrorCodeId = 4016,
   },
   [4017] = {
     ContentEN = "Maximum Ascend level already achieved",
@@ -780,7 +925,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 돌파 레벨이 최대치에 도달했습니다.",
     ContentTC = "當前的突破等級已達最大",
     ErrorCodeContent = "当前的突破等级已达最大",
-    ErrorCodeId = 4017
+    ErrorCodeId = 4017,
   },
   [4018] = {
     ContentEN = "This Demon Wedge cannot be Ascended further",
@@ -788,7 +933,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이 악마의 쐐기는 돌파할 수 없습니다.",
     ContentTC = "該魔之楔不能進行突破",
     ErrorCodeContent = "该魔之楔不能进行突破",
-    ErrorCodeId = 4018
+    ErrorCodeId = 4018,
   },
   [4019] = {
     ContentEN = "Incorrect parameters for Demon Wedge Ascension",
@@ -796,7 +941,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "악마의 쐐기 돌파에 필요한 파라미터가 잘못되었습니다.",
     ContentTC = "魔之楔突破所需要的參數錯誤",
     ErrorCodeContent = "魔之楔突破所需要的参数错误",
-    ErrorCodeId = 4019
+    ErrorCodeId = 4019,
   },
   [4020] = {
     ContentEN = "Mismatch between Demon Wedge SelectParam from client and the table",
@@ -804,7 +949,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "클라이언트에서 전달된 SelectParam의 일부 악마의 쐐기 수량이 테이블과 일치하지 않습니다",
     ContentTC = "用戶端傳來的SelectParam中某一魔之楔數量錯誤與表不一致",
     ErrorCodeContent = "客户端传来的SelectParam中某一魔之楔数量错误与表对不上",
-    ErrorCodeId = 4020
+    ErrorCodeId = 4020,
   },
   [4021] = {
     ContentEN = "Insufficient Demon Wedges selected",
@@ -812,7 +957,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "소모해야 할 악마의 쐐기 수량이 부족합니다.",
     ContentTC = "所需要消耗的魔之楔數量不足",
     ErrorCodeContent = "所需要消耗的魔之楔数量不足",
-    ErrorCodeId = 4021
+    ErrorCodeId = 4021,
   },
   [4022] = {
     ContentEN = "Incorrect number of upgraded Demon Wedges",
@@ -820,7 +965,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "업그레이드 후 악마의 쐐기 수량은 2개만 가능합니다.",
     ContentTC = "對於升級後的魔之楔數量只能為2",
     ErrorCodeContent = "对于升级后的魔之楔数量只能为2",
-    ErrorCodeId = 4022
+    ErrorCodeId = 4022,
   },
   [4023] = {
     ContentEN = "Duplicate Demon Wedges consumption detected",
@@ -828,7 +973,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "중복된 악마의 쐐기가 차감되었습니다.",
     ContentTC = "扣除的魔之楔重複",
     ErrorCodeContent = "扣除的魔之楔重复",
-    ErrorCodeId = 4023
+    ErrorCodeId = 4023,
   },
   [4024] = {
     ContentEN = "Cannot use the original item for the upgrade",
@@ -836,31 +981,83 @@ return ReadOnly("ErrorCode", {
     ContentKR = "자신은 소모 재료로 사용할 수 없습니다.",
     ContentTC = "自身不能作為消耗材料",
     ErrorCodeContent = "自身不能作为消耗材料",
-    ErrorCodeId = 4024
+    ErrorCodeId = 4024,
   },
   [4025] = {
-    ContentEN = "The client count mismatches the server count",
-    ContentJP = "クライアントでの所持数が、サーバーのデータと一致しません",
-    ContentKR = "클라이언트의 현재 보유 수량이 서버와 맞지 않습니다.",
-    ContentTC = "客戶端當前擁有的數量與伺服器對應不上",
     ErrorCodeContent = "客户端当前拥有的数量与服务器对应不上",
-    ErrorCodeId = 4025
+    ErrorCodeId = 4025,
   },
   [4026] = {
-    ContentEN = "This Demon Wedge has reached the maximum level",
-    ContentJP = "魔の楔が最大レベルに達しました",
-    ContentKR = "악마의 쐐기가 이미 최대 레벨입니다.",
-    ContentTC = "魔之楔已經升級到最大等級",
     ErrorCodeContent = "魔之楔已经升级到最大等级",
-    ErrorCodeId = 4026
+    ErrorCodeId = 4026,
   },
   [4027] = {
-    ContentEN = "This Demon Wedge's level mismatches the target's level",
-    ContentJP = "魔の楔のレベルアップでは、現在レベルと目標レベルが混乱しています",
-    ContentKR = "악마의 쐐기 레벨업의 현 레벨과 목표 레벨에 오류가 있습니다.",
-    ContentTC = "魔之楔升級當前與目標等級混亂",
     ErrorCodeContent = "魔之楔升级当前与目标等级混乱",
-    ErrorCodeId = 4027
+    ErrorCodeId = 4027,
+  },
+  [4028] = {
+    ErrorCodeContent = "魔之楔应用槽位错误",
+    ErrorCodeId = 4028,
+  },
+  [4029] = {
+    ErrorCodeContent = "配置名不能为空",
+    ErrorCodeId = 4029,
+  },
+  [4030] = {
+    ErrorCodeContent = "魔之楔槽位存在重复",
+    ErrorCodeId = 4030,
+  },
+  [4031] = {
+    ErrorCodeContent = "图鉴不存在",
+    ErrorCodeId = 4031,
+  },
+  [4032] = {
+    ErrorCodeContent = "图鉴表不存在",
+    ErrorCodeId = 4032,
+  },
+  [4033] = {
+    ErrorCodeContent = "图鉴奖励重复领取",
+    ErrorCodeId = 4033,
+  },
+  [4034] = {
+    ErrorCodeContent = "图鉴列表中魔之楔列表不正确",
+    ErrorCodeId = 4034,
+  },
+  [4035] = {
+    ErrorCodeContent = "图鉴表未解锁",
+    ErrorCodeId = 4035,
+  },
+  [4036] = {
+    ErrorCodeContent = "存在未获取的魔之楔",
+    ErrorCodeId = 4036,
+  },
+  [4037] = {
+    ErrorCodeContent = "没有可卸载的魔之楔",
+    ErrorCodeId = 4037,
+  },
+  [4038] = {
+    ErrorCodeContent = "当前魔之楔不能出售",
+    ErrorCodeId = 4038,
+  },
+  [4039] = {
+    ErrorCodeContent = "魔之楔增幅数量超过目标值",
+    ErrorCodeId = 4039,
+  },
+  [4040] = {
+    ErrorCodeContent = "通用材料不足",
+    ErrorCodeId = 4040,
+  },
+  [4041] = {
+    ErrorCodeContent = "该魔之楔增幅资源错误",
+    ErrorCodeId = 4041,
+  },
+  [4042] = {
+    ErrorCodeContent = "该资源未配置",
+    ErrorCodeId = 4042,
+  },
+  [4043] = {
+    ErrorCodeContent = "选择的资源超过或者小于所需数量",
+    ErrorCodeId = 4043,
   },
   [5001] = {
     ContentEN = "Failed to Invite",
@@ -868,7 +1065,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐릭터 초대 실패",
     ContentTC = "角色邀請失敗",
     ErrorCodeContent = "角色邀请失败",
-    ErrorCodeId = 5001
+    ErrorCodeId = 5001,
   },
   [5002] = {
     ContentEN = "Selected character already invited",
@@ -876,7 +1073,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 초대한 캐릭터를 선택했습니다.",
     ContentTC = "所選角色已邀請",
     ErrorCodeContent = "所选角色已邀请",
-    ErrorCodeId = 5002
+    ErrorCodeId = 5002,
   },
   [5003] = {
     ContentEN = "Selected character not owned",
@@ -884,7 +1081,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "선택한 캐릭터가 없습니다.",
     ContentTC = "所選角色未擁有",
     ErrorCodeContent = "所选角色未拥有",
-    ErrorCodeId = 5003
+    ErrorCodeId = 5003,
   },
   [5004] = {
     ContentEN = "Select the character you wish to invite",
@@ -892,7 +1089,27 @@ return ReadOnly("ErrorCode", {
     ContentKR = "초대할 캐릭터를 선택하세요.",
     ContentTC = "請選擇想要邀請的角色",
     ErrorCodeContent = "请选择想要邀请的角色",
-    ErrorCodeId = 5004
+    ErrorCodeId = 5004,
+  },
+  [5005] = {
+    ErrorCodeContent = "当前每日话题已达上限",
+    ErrorCodeId = 5005,
+  },
+  [5006] = {
+    ErrorCodeContent = "所有每日累计话题已达上限",
+    ErrorCodeId = 5006,
+  },
+  [5007] = {
+    ErrorCodeContent = "看板娘不存在",
+    ErrorCodeId = 5007,
+  },
+  [5008] = {
+    ErrorCodeContent = "看板娘对话有误",
+    ErrorCodeId = 5008,
+  },
+  [5009] = {
+    ErrorCodeContent = "看板娘对话已记录",
+    ErrorCodeId = 5009,
   },
   [6001] = {
     ContentEN = "Quest chain does not exist",
@@ -900,7 +1117,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "연속 퀘스트가 존재하지 않습니다",
     ContentTC = "任務鏈不存在",
     ErrorCodeContent = "任务链不存在",
-    ErrorCodeId = 6001
+    ErrorCodeId = 6001,
   },
   [6002] = {
     ContentEN = "Quest chain is not activated",
@@ -908,7 +1125,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "연속 퀘스트가 활성화되지 않았습니다",
     ContentTC = "任務鏈未啟動",
     ErrorCodeContent = "任务链未激活",
-    ErrorCodeId = 6002
+    ErrorCodeId = 6002,
   },
   [6003] = {
     ContentEN = "Quest chain already completed",
@@ -916,7 +1133,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "연속 퀘스트가 완료되었습니다",
     ContentTC = "任務鏈已經完成",
     ErrorCodeContent = "任务链已经完成",
-    ErrorCodeId = 6003
+    ErrorCodeId = 6003,
   },
   [6004] = {
     ContentEN = "Quest chain does not meet activation conditions. Check for auto-start",
@@ -924,7 +1141,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "연속 퀘스트 활성화 조건을 충족하지 않았습니다. 자동 시작 여부를 확인하세요",
     ContentTC = "任務鏈不滿足啟動條件 確保是否自動開始",
     ErrorCodeContent = "任务链不满足激活条件 确保是否自动开始",
-    ErrorCodeId = 6004
+    ErrorCodeId = 6004,
   },
   [6005] = {
     ContentEN = "Target map for the quest does not exist",
@@ -932,7 +1149,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트 목표 지도가 존재하지 않습니다.",
     ContentTC = "任務目標地圖不存在",
     ErrorCodeContent = "任务目标地图不存在",
-    ErrorCodeId = 6005
+    ErrorCodeId = 6005,
   },
   [6006] = {
     ContentEN = "Target quest ID is not active",
@@ -940,7 +1157,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "목표 퀘스트 ID가 진행 중이지 않습니다.",
     ContentTC = "目標任務ID未在執行中",
     ErrorCodeContent = "目标任务ID未在执行中",
-    ErrorCodeId = 6006
+    ErrorCodeId = 6006,
   },
   [6007] = {
     ContentEN = "Melee weapon ID not set",
@@ -948,7 +1165,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "근접 무기 ID가 설정되지 않았습니다.",
     ContentTC = "未設置近戰武器ID",
     ErrorCodeContent = "未设置近战武器ID",
-    ErrorCodeId = 6007
+    ErrorCodeId = 6007,
   },
   [6008] = {
     ContentEN = "Ranged weapon ID not set",
@@ -956,7 +1173,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "원거리 무기 ID가 설정되지 않았습니다.",
     ContentTC = "未設置遠端武器ID",
     ErrorCodeContent = "未设置远程武器ID",
-    ErrorCodeId = 6008
+    ErrorCodeId = 6008,
   },
   [6009] = {
     ContentEN = "Melee weapon already acquired",
@@ -964,7 +1181,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 근접 무기를 보유 중입니다.",
     ContentTC = "已擁有近戰武器",
     ErrorCodeContent = "已拥有近战武器",
-    ErrorCodeId = 6009
+    ErrorCodeId = 6009,
   },
   [6010] = {
     ContentEN = "Ranged weapon already acquired",
@@ -972,7 +1189,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 원거리 무기를 보유 중입니다.",
     ContentTC = "已擁有遠端武器",
     ErrorCodeContent = "已拥有远程武器",
-    ErrorCodeId = 6010
+    ErrorCodeId = 6010,
   },
   [6011] = {
     ContentEN = "Invalid weapon ID",
@@ -980,7 +1197,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "무기 ID가 유효하지 않습니다.",
     ContentTC = "武器ID無效",
     ErrorCodeContent = "武器ID无效",
-    ErrorCodeId = 6011
+    ErrorCodeId = 6011,
   },
   [6012] = {
     ContentEN = "Please ensure all quest chain requirements are met",
@@ -988,7 +1205,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 퀘스트 체인 완료 조건을 충족하는지 확인해 주세요.",
     ContentTC = "請檢查當前是否滿足任務鏈完成條件",
     ErrorCodeContent = "请检查当前是否满足任务链完成条件",
-    ErrorCodeId = 6012
+    ErrorCodeId = 6012,
   },
   [6013] = {
     ContentEN = "Quest ID not found",
@@ -996,7 +1213,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "존재하지 않는 퀘스트 ID입니다.",
     ContentTC = "不存在任務ID",
     ErrorCodeContent = "不存在任务ID",
-    ErrorCodeId = 6013
+    ErrorCodeId = 6013,
   },
   [6014] = {
     ContentEN = "Target quest already completed",
@@ -1004,7 +1221,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "목표 퀘스트가 이미 완료되었습니다.",
     ContentTC = "目標任務已經完成",
     ErrorCodeContent = "目标任务已经完成",
-    ErrorCodeId = 6014
+    ErrorCodeId = 6014,
   },
   [6015] = {
     ContentEN = "QuestPickId not found",
@@ -1012,7 +1229,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "QuestPickId가 존재하지 않습니다.",
     ContentTC = "QuestPickId不存在",
     ErrorCodeContent = "QuestPickId不存在",
-    ErrorCodeId = 6015
+    ErrorCodeId = 6015,
   },
   [6016] = {
     ContentEN = "Quest chain inactive",
@@ -1020,7 +1237,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트 체인이 진행 중이지 않습니다.",
     ContentTC = "任務鏈未在執行中",
     ErrorCodeContent = "任务链未在执行中",
-    ErrorCodeId = 6016
+    ErrorCodeId = 6016,
   },
   [6017] = {
     ContentEN = "Current QuestPickId already completed. Please configure a new one.",
@@ -1028,7 +1245,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 QuestPickId가 이미 완료되었습니다. 새로운 QuestPickId를 설정해 주세요.",
     ContentTC = "當前QuestPickId已經完成，請重新配置新的QuestPickId",
     ErrorCodeContent = "当前QuestPickId已经完成，请重新配置新的QuestPickId",
-    ErrorCodeId = 6017
+    ErrorCodeId = 6017,
   },
   [6018] = {
     ContentEN = "No Drop available for the current Pick",
@@ -1036,7 +1253,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 Pick에 대응하는 Drop이 존재하지 않습니다.",
     ContentTC = "不存在Pick對應的Drop",
     ErrorCodeContent = "不存在Pick对应的Drop",
-    ErrorCodeId = 6018
+    ErrorCodeId = 6018,
   },
   [6019] = {
     ContentEN = "QuestPickId data already exists. Cannot add duplicates.",
@@ -1044,47 +1261,115 @@ return ReadOnly("ErrorCode", {
     ContentKR = "QuestPickId에 대응하는 데이터가 이미 존재하여 중복 추가가 금지됩니다.",
     ContentTC = "已經存在QuestPickId對應的資料禁止重複添加",
     ErrorCodeContent = "已经存在QuestPickId对应的数据禁止重复添加",
-    ErrorCodeId = 6019
+    ErrorCodeId = 6019,
   },
   [6020] = {
-    ContentEN = "Incorrect parameters for quest delivery",
-    ContentJP = "クエスト伝送パラメータが正しくありません",
-    ContentKR = "퀘스트 전송 파라미터 오류",
-    ContentTC = "任務傳送參數錯誤",
     ErrorCodeContent = "任务传送参数错误",
-    ErrorCodeId = 6020
+    ErrorCodeId = 6020,
   },
   [6021] = {
-    ContentEN = "Quest chain requirements unmet",
-    ContentJP = "連続クエストが未完成です",
-    ContentKR = "퀘스트 체인 미완료",
-    ContentTC = "任務鏈未完成",
     ErrorCodeContent = "任务链未完成",
-    ErrorCodeId = 6021
+    ErrorCodeId = 6021,
   },
   [6022] = {
-    ContentEN = "This quest ID does not exist in the quest chain",
-    ContentJP = "連続クエストテーブルには該当する連続クエストのIDが見つかりません",
-    ContentKR = "퀘스트 체인에 해당 퀘스트 체인 ID가 존재하지 않습니다.",
-    ContentTC = "任務鍊表不存在該任務鏈ID",
     ErrorCodeContent = "任务链表不存在该任务链ID",
-    ErrorCodeId = 6022
+    ErrorCodeId = 6022,
   },
   [6023] = {
-    ContentEN = "GameMode does not exist in the quest operation",
-    ContentJP = "クエスト実行にGameMOdeがありません",
-    ContentKR = "퀘스트 진행 GameMode가 존재하지 않습니다.",
-    ContentTC = "任務運行不存在GameMOde",
     ErrorCodeContent = "任务运行不存在GameMOde",
-    ErrorCodeId = 6023
+    ErrorCodeId = 6023,
   },
   [6024] = {
-    ContentEN = "IsRegionAllReady shows false in the quest operation",
-    ContentJP = "クエスト実行IsRegionAllReadyはfalse",
-    ContentKR = "퀘스트 진행 IsRegionAllReady이 false입니다.",
-    ContentTC = "任務運行IsRegionAllReady為false",
     ErrorCodeContent = "任务运行IsRegionAllReady为false",
-    ErrorCodeId = 6024
+    ErrorCodeId = 6024,
+  },
+  [6025] = {
+    ErrorCodeContent = "当前任务正在运行中禁止重复开始",
+    ErrorCodeId = 6025,
+  },
+  [6026] = {
+    ErrorCodeContent = "存储的任务已经存在",
+    ErrorCodeId = 6026,
+  },
+  [6027] = {
+    ErrorCodeContent = "移除的键值对不存在",
+    ErrorCodeId = 6027,
+  },
+  [6028] = {
+    ErrorCodeContent = "全局变量不存在或者不是全局变量",
+    ErrorCodeId = 6028,
+  },
+  [6029] = {
+    ErrorCodeContent = "前置任务运行必须是解锁状态",
+    ErrorCodeId = 6029,
+  },
+  [6030] = {
+    ErrorCodeContent = "该前置任务需要手动接取完成",
+    ErrorCodeId = 6030,
+  },
+  [6031] = {
+    ErrorCodeContent = "当前任务链状态为解锁且未运行任何前置任务，不能接取",
+    ErrorCodeId = 6031,
+  },
+  [6032] = {
+    ErrorCodeContent = "当前任务不是前置任务",
+    ErrorCodeId = 6032,
+  },
+  [6033] = {
+    ErrorCodeContent = "当前日常任务不存在",
+    ErrorCodeId = 6033,
+  },
+  [6034] = {
+    ErrorCodeContent = "日常成就不存在",
+    ErrorCodeId = 6034,
+  },
+  [6035] = {
+    ErrorCodeContent = "日常任务未完成",
+    ErrorCodeId = 6035,
+  },
+  [6036] = {
+    ErrorCodeContent = "日常任务不是完成状态",
+    ErrorCodeId = 6036,
+  },
+  [6037] = {
+    ErrorCodeContent = "当前进度小于目标进度",
+    ErrorCodeId = 6037,
+  },
+  [6038] = {
+    ErrorCodeContent = "目标进度不存在",
+    ErrorCodeId = 6038,
+  },
+  [6039] = {
+    ErrorCodeContent = "目标进度不是完成状态",
+    ErrorCodeId = 6039,
+  },
+  [6040] = {
+    ErrorCodeContent = "领取失败，没有可领取的奖励",
+    ErrorCodeId = 6040,
+  },
+  [6041] = {
+    ErrorCodeContent = "日常任务为空",
+    ErrorCodeId = 6041,
+  },
+  [6042] = {
+    ErrorCodeContent = "当前追踪的任务链与目标任务链不一致",
+    ErrorCodeId = 6042,
+  },
+  [6043] = {
+    ErrorCodeContent = "进度在表中不存在对应等级奖励",
+    ErrorCodeId = 6043,
+  },
+  [6044] = {
+    ErrorCodeContent = "日常任务未解锁",
+    ErrorCodeId = 6044,
+  },
+  [6045] = {
+    ErrorCodeContent = "日常对话不存在",
+    ErrorCodeId = 6045,
+  },
+  [6046] = {
+    ErrorCodeContent = "日常任务奖励已经领取",
+    ErrorCodeId = 6046,
   },
   [7001] = {
     ContentEN = "Item status change exceeds the allowable range",
@@ -1092,7 +1377,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "아이템 상태 변경 범위가 최대를 초과했습니다.",
     ContentTC = "物品狀態改變超過最大狀態改變的跨度",
     ErrorCodeContent = "物品状态改变超过最大状态改变的跨度",
-    ErrorCodeId = 7001
+    ErrorCodeId = 7001,
   },
   [7002] = {
     ContentEN = "Service unavailable for this item",
@@ -1100,7 +1385,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "서비스에 해당 아이템이 존재하지 않습니다.",
     ContentTC = "服務中不存在該物品",
     ErrorCodeContent = "服务中不存在该物品",
-    ErrorCodeId = 7002
+    ErrorCodeId = 7002,
   },
   [7003] = {
     ContentEN = "This item cannot be sold",
@@ -1108,7 +1393,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 아이템을 판매할 수 없습니다",
     ContentTC = "該物品無法出售",
     ErrorCodeContent = "该物品无法出售",
-    ErrorCodeId = 7003
+    ErrorCodeId = 7003,
   },
   [7004] = {
     ContentEN = "Maximum limit reached. Cannot sell more",
@@ -1116,7 +1401,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "판매 수량 상한에 도달했습니다",
     ContentTC = "出售數量已達上限",
     ErrorCodeContent = "出售数量已达上限",
-    ErrorCodeId = 7004
+    ErrorCodeId = 7004,
   },
   [7005] = {
     ContentEN = "Insufficient item quantity",
@@ -1124,39 +1409,23 @@ return ReadOnly("ErrorCode", {
     ContentKR = "아이템 수량 부족",
     ContentTC = "物品數量不足",
     ErrorCodeContent = "物品数量不足",
-    ErrorCodeId = 7005
+    ErrorCodeId = 7005,
   },
   [7006] = {
-    ContentEN = "Locked Successfully",
-    ContentJP = "ロックしました",
-    ContentKR = "잠금 성공",
-    ContentTC = "鎖定成功",
     ErrorCodeContent = "锁定成功",
-    ErrorCodeId = 7006
+    ErrorCodeId = 7006,
   },
   [7007] = {
-    ContentEN = "Unlocked Successfully",
-    ContentJP = "アンロックしました",
-    ContentKR = "해제 성공",
-    ContentTC = "解鎖成功",
     ErrorCodeContent = "解锁成功",
-    ErrorCodeId = 7007
+    ErrorCodeId = 7007,
   },
   [7008] = {
-    ContentEN = "Sold",
-    ContentJP = "売却しました",
-    ContentKR = "판매 성공",
-    ContentTC = "出售成功",
     ErrorCodeContent = "出售成功",
-    ErrorCodeId = 7008
+    ErrorCodeId = 7008,
   },
   [7009] = {
-    ContentEN = "Item locked",
-    ContentJP = "このアイテムはロックされています",
-    ContentKR = "해당 아이템은 잠금 상태입니다.",
-    ContentTC = "該物品已鎖定",
     ErrorCodeContent = "该物品已锁定",
-    ErrorCodeId = 7009
+    ErrorCodeId = 7009,
   },
   [7010] = {
     ContentEN = "Secured items cannot be sold",
@@ -1164,15 +1433,11 @@ return ReadOnly("ErrorCode", {
     ContentKR = "잠금 아이템을 판매할 수 없습니다",
     ContentTC = "鎖定物品不可出售",
     ErrorCodeContent = "锁定物品不可出售/萃取",
-    ErrorCodeId = 7010
+    ErrorCodeId = 7010,
   },
   [7011] = {
-    ContentEN = "Maximum limit reached. Cannot sell more",
-    ContentJP = "売却可能数が上限に達しています",
-    ContentKR = "판매 가능 수량이 최대치에 도달했습니다.",
-    ContentTC = "可出售數量已達上限",
     ErrorCodeContent = "可出售数量已达上限",
-    ErrorCodeId = 7011
+    ErrorCodeId = 7011,
   },
   [7012] = {
     ContentEN = "Equipped weapons cannot be sold",
@@ -1180,23 +1445,15 @@ return ReadOnly("ErrorCode", {
     ContentKR = "장비 중인 무기를 판매할 수 없습니다",
     ContentTC = "裝備中的武器不可分解",
     ErrorCodeContent = "装备中的武器不可分解",
-    ErrorCodeId = 7012
+    ErrorCodeId = 7012,
   },
   [7013] = {
-    ContentEN = "This item cannot be locked",
-    ContentJP = "このアイテムはロックできません",
-    ContentKR = "해당 아이템을 잠글 수 없습니다.",
-    ContentTC = "該物品無法鎖定",
     ErrorCodeContent = "该物品无法锁定",
-    ErrorCodeId = 7013
+    ErrorCodeId = 7013,
   },
   [7014] = {
-    ContentEN = "This item cannot be locked, sold or extracted",
-    ContentJP = "このアイテムはロック/売却/抽出できません",
-    ContentKR = "해당 아이템은 잠금/판매/추출이 불가능합니다.",
-    ContentTC = "該物品無法鎖定/出售/萃取",
     ErrorCodeContent = "该物品无法锁定/出售/萃取",
-    ErrorCodeId = 7014
+    ErrorCodeId = 7014,
   },
   [7015] = {
     ContentEN = "This item cannot be sold",
@@ -1204,7 +1461,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 아이템을 판매할 수 없습니다",
     ContentTC = "該物品無法出售",
     ErrorCodeContent = "该物品无法出售",
-    ErrorCodeId = 7015
+    ErrorCodeId = 7015,
   },
   [7016] = {
     ContentEN = "This item cannot be secured",
@@ -1212,7 +1469,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 아이템을 잠금할 수 없습니다",
     ContentTC = "該物品無法鎖定",
     ErrorCodeContent = "该物品无法锁定",
-    ErrorCodeId = 7016
+    ErrorCodeId = 7016,
   },
   [7017] = {
     ContentEN = "This item cannot be unlocked",
@@ -1220,7 +1477,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 아이템을 해제할 수 없습니다.",
     ContentTC = "該物品無法解鎖",
     ErrorCodeContent = "该物品无法解锁",
-    ErrorCodeId = 7017
+    ErrorCodeId = 7017,
   },
   [7018] = {
     ContentEN = "Failed to lock the item",
@@ -1228,7 +1485,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "아이템 잠금에 실패했습니다.",
     ContentTC = "物品鎖定失敗",
     ErrorCodeContent = "物品锁定失败",
-    ErrorCodeId = 7018
+    ErrorCodeId = 7018,
   },
   [7019] = {
     ContentEN = "Failed to unlock the item",
@@ -1236,7 +1493,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "아이템 잠금 해제에 실패했습니다.",
     ContentTC = "物品解鎖失敗",
     ErrorCodeContent = "物品解锁失败",
-    ErrorCodeId = 7019
+    ErrorCodeId = 7019,
   },
   [7020] = {
     ContentEN = "Item not locked",
@@ -1244,7 +1501,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "아이템이 잠겨있지 않습니다.",
     ContentTC = "物品沒有上鎖",
     ErrorCodeContent = "物品没有上锁",
-    ErrorCodeId = 7020
+    ErrorCodeId = 7020,
   },
   [7021] = {
     ContentEN = "Item unavailable",
@@ -1252,7 +1509,59 @@ return ReadOnly("ErrorCode", {
     ContentKR = "아이템을 사용할 수 없습니다.",
     ContentTC = "物品不能使用",
     ErrorCodeContent = "物品不能使用",
-    ErrorCodeId = 7021
+    ErrorCodeId = 7021,
+  },
+  [7022] = {
+    ErrorCodeContent = "物品不能自选",
+    ErrorCodeId = 7022,
+  },
+  [7023] = {
+    ErrorCodeContent = "物品自选列表参数错误",
+    ErrorCodeId = 7023,
+  },
+  [7024] = {
+    ErrorCodeContent = "物品自选数量错误",
+    ErrorCodeId = 7024,
+  },
+  [7025] = {
+    ErrorCodeContent = "超过最大值",
+    ErrorCodeId = 7025,
+  },
+  [7026] = {
+    ErrorCodeContent = "重复添加",
+    ErrorCodeId = 7026,
+  },
+  [7027] = {
+    ErrorCodeContent = "不存在该表信息",
+    ErrorCodeId = 7027,
+  },
+  [7028] = {
+    ErrorCodeContent = "不存在该物品",
+    ErrorCodeId = 7028,
+  },
+  [7029] = {
+    ErrorCodeContent = "不存在该来源",
+    ErrorCodeId = 7029,
+  },
+  [7030] = {
+    ErrorCodeContent = "不存在限时道具",
+    ErrorCodeId = 7030,
+  },
+  [7031] = {
+    ErrorCodeContent = "该物品存在",
+    ErrorCodeId = 7031,
+  },
+  [7032] = {
+    ErrorCodeContent = "染色剂不足",
+    ErrorCodeId = 7032,
+  },
+  [7033] = {
+    ErrorCodeContent = "不存在染色剂资源",
+    ErrorCodeId = 7033,
+  },
+  [7034] = {
+    ErrorCodeContent = "该染色剂不支持补充染色资源",
+    ErrorCodeId = 7034,
   },
   [8001] = {
     ContentEN = "Combat in progress, unable to enter the instance",
@@ -1260,7 +1569,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "전투 중에 스테이지에 진입할 수 없습니다.",
     ContentTC = "正在戰鬥中，無法進入副本",
     ErrorCodeContent = "正在战斗中，无法进入委托",
-    ErrorCodeId = 8001
+    ErrorCodeId = 8001,
   },
   [8002] = {
     ContentEN = "Matching in progress, unable to enter the instance",
@@ -1268,7 +1577,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "매칭 중에 스테이지에 진입할 수 없습니다.",
     ContentTC = "正在匹配中，無法進入副本",
     ErrorCodeContent = "正在匹配中，无法进入委托",
-    ErrorCodeId = 8002
+    ErrorCodeId = 8002,
   },
   [8003] = {
     ContentEN = "The instance is not yet unlocked and inaccessible",
@@ -1276,7 +1585,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "스테이지가 해제되지 않아 진입할 수 없습니다.",
     ContentTC = "副本未解鎖，無法進入",
     ErrorCodeContent = "委托未解锁，无法进入",
-    ErrorCodeId = 8003
+    ErrorCodeId = 8003,
   },
   [8004] = {
     ContentEN = "The instance has been closed and is inaccessible",
@@ -1284,7 +1593,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "스테이지가 종료되어 진입할 수 없습니다.",
     ContentTC = "副本已關閉，無法進入",
     ErrorCodeContent = "委托已关闭，无法进入",
-    ErrorCodeId = 8004
+    ErrorCodeId = 8004,
   },
   [8005] = {
     ContentEN = "The instance does not exist",
@@ -1292,7 +1601,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "존재하지 않는 스테이지입니다.",
     ContentTC = "該副本不存在",
     ErrorCodeContent = "该委托不存在",
-    ErrorCodeId = 8005
+    ErrorCodeId = 8005,
   },
   [8006] = {
     ContentEN = "Commission not created",
@@ -1300,7 +1609,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 의뢰가 생성되지 않았습니다.",
     ContentTC = "該委託未創建",
     ErrorCodeContent = "该委托未创建",
-    ErrorCodeId = 8006
+    ErrorCodeId = 8006,
   },
   [8007] = {
     ContentEN = "No Geniemons available in this commission",
@@ -1308,7 +1617,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "스테이지에 생성 가능한 펫이 없습니다.",
     ContentTC = "副本沒有可生成的寵物",
     ErrorCodeContent = "副本没有可生成的魔灵",
-    ErrorCodeId = 8007
+    ErrorCodeId = 8007,
   },
   [8008] = {
     ContentEN = "Event generator called outside of the commission",
@@ -1316,7 +1625,67 @@ return ReadOnly("ErrorCode", {
     ContentKR = "스테이지 이벤트 생성기를 호출할 때 스테이지 내에 있지 않았습니다.",
     ContentTC = "調用副本事件生成器時不在副本中",
     ErrorCodeContent = "调用副本事件生成器时不在副本中",
-    ErrorCodeId = 8008
+    ErrorCodeId = 8008,
+  },
+  [8009] = {
+    ContentEN = "Unable to catch Geniemons after joining ongoing co-op commissions",
+    ContentJP = "マルチプレイの依頼に途中参加する場合、ジェネモンを獲得できません。",
+    ContentKR = "멀티 의뢰에 중도 합류 시 해당 마령을 획득할 수 없습니다.",
+    ContentTC = "中途加入聯機委托，無法獲取該魔靈",
+    ErrorCodeContent = "中途加入联机委托，无法获取该魔灵",
+    ErrorCodeId = 8009,
+  },
+  [8010] = {
+    ErrorCodeContent = "魔灵捕捉失败",
+    ErrorCodeId = 8010,
+  },
+  [8011] = {
+    ErrorCodeContent = "魔灵食物资源不足",
+    ErrorCodeId = 8011,
+  },
+  [8012] = {
+    ErrorCodeContent = "关卡不能多开",
+    ErrorCodeId = 8012,
+  },
+  [8013] = {
+    ErrorCodeContent = "关卡门票无效",
+    ErrorCodeId = 8013,
+  },
+  [8015] = {
+    ErrorCodeContent = "魔灵不允许使用当前饲料",
+    ErrorCodeId = 8015,
+  },
+  [8016] = {
+    ErrorCodeContent = "活动关卡类型无效",
+    ErrorCodeId = 8016,
+  },
+  [8017] = {
+    ErrorCodeContent = "活动关卡未开启",
+    ErrorCodeId = 8017,
+  },
+  [8018] = {
+    ErrorCodeContent = "关卡已到最大轮次",
+    ErrorCodeId = 8018,
+  },
+  [8019] = {
+    ErrorCodeContent = "关卡当前阶段不能选择门票",
+    ErrorCodeId = 8019,
+  },
+  [8020] = {
+    ErrorCodeContent = "关卡无效",
+    ErrorCodeId = 8020,
+  },
+  [8021] = {
+    ErrorCodeContent = "关卡参数无效",
+    ErrorCodeId = 8021,
+  },
+  [8022] = {
+    ErrorCodeContent = "关卡信息不存在",
+    ErrorCodeId = 8022,
+  },
+  [8023] = {
+    ErrorCodeContent = "结算联机场景信息不存在",
+    ErrorCodeId = 8023,
   },
   [9001] = {
     ContentEN = "The skill does not exist",
@@ -1324,7 +1693,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "존재하지 않는 스킬입니다",
     ContentTC = "該技能不存在",
     ErrorCodeContent = "该技能不存在",
-    ErrorCodeId = 9001
+    ErrorCodeId = 9001,
   },
   [9002] = {
     ContentEN = "Skill already maxed out",
@@ -1332,7 +1701,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "스킬이 최대 레벨에 도달했습니다.",
     ContentTC = "技能已滿級",
     ErrorCodeContent = "技能已满级",
-    ErrorCodeId = 9002
+    ErrorCodeId = 9002,
   },
   [9003] = {
     ContentEN = "Higher Ascend level required for further upgrades",
@@ -1340,7 +1709,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 돌파 레벨 제한으로 인해 업그레이드가 제한됩니다.",
     ContentTC = "升級受到當前突破等級限制",
     ErrorCodeContent = "升级受到当前突破等级限制",
-    ErrorCodeId = 9003
+    ErrorCodeId = 9003,
   },
   [9004] = {
     ContentEN = "Skill level parameter error",
@@ -1348,7 +1717,27 @@ return ReadOnly("ErrorCode", {
     ContentKR = "스킬 레벨 파라미터가 잘못되었습니다.",
     ContentTC = "技能等級參數錯誤",
     ErrorCodeContent = "技能等级参数错误",
-    ErrorCodeId = 9004
+    ErrorCodeId = 9004,
+  },
+  [9005] = {
+    ErrorCodeContent = "技能未解锁",
+    ErrorCodeId = 9005,
+  },
+  [9006] = {
+    ErrorCodeContent = "技能树不存在",
+    ErrorCodeId = 9006,
+  },
+  [9007] = {
+    ErrorCodeContent = "技能树节点不存在",
+    ErrorCodeId = 9007,
+  },
+  [9008] = {
+    ErrorCodeContent = "当前技能树节点已激活",
+    ErrorCodeId = 9008,
+  },
+  [9009] = {
+    ErrorCodeContent = "当前技能树节点是技能节点激活依赖角色的突破等级",
+    ErrorCodeId = 9009,
   },
   [10001] = {
     ContentEN = "Unable to exit the current area",
@@ -1356,7 +1745,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 구역에서 떠날 수 없습니다",
     ContentTC = "無法退出該區域",
     ErrorCodeContent = "无法退出该区域",
-    ErrorCodeId = 10001
+    ErrorCodeId = 10001,
   },
   [10002] = {
     ContentEN = "Combat in progress, unable to enter the area",
@@ -1364,7 +1753,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 전투 상태로 구역에 진입할 수 없습니다",
     ContentTC = "當前處於戰鬥狀態，無法進入區域",
     ErrorCodeContent = "当前处于战斗状态，无法进入区域",
-    ErrorCodeId = 10002
+    ErrorCodeId = 10002,
   },
   [10003] = {
     ContentEN = "Matching in progress, unable to enter the area",
@@ -1372,7 +1761,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 매칭 상태로 구역에 진입할 수 없습니다",
     ContentTC = "當前處於匹配階段，無法進入區域",
     ErrorCodeContent = "当前处于匹配阶段，无法进入区域",
-    ErrorCodeId = 10003
+    ErrorCodeId = 10003,
   },
   [10004] = {
     ContentEN = "The area does not exist",
@@ -1380,7 +1769,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 구역이 존재하지 않습니다",
     ContentTC = "該區域不存在",
     ErrorCodeContent = "该区域不存在",
-    ErrorCodeId = 10004
+    ErrorCodeId = 10004,
   },
   [10005] = {
     ContentEN = "Quest data does not exist",
@@ -1388,7 +1777,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트 데이터가 존재하지 않습니다",
     ContentTC = "任務資料不存在",
     ErrorCodeContent = "任务数据不存在",
-    ErrorCodeId = 10005
+    ErrorCodeId = 10005,
   },
   [10006] = {
     ContentEN = "Quest data does not exist",
@@ -1396,7 +1785,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트 데이터가 존재하지 않습니다",
     ContentTC = "任務資料不存在",
     ErrorCodeContent = "任务数据不存在",
-    ErrorCodeId = 10006
+    ErrorCodeId = 10006,
   },
   [10007] = {
     ContentEN = "Real-time location data unavailable in this area",
@@ -1404,7 +1793,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 구역에서 위치 정보를 동기화할 수 없습니다",
     ContentTC = "該區域無法同步位置資訊",
     ErrorCodeContent = "该区域无法同步位置信息",
-    ErrorCodeId = 10007
+    ErrorCodeId = 10007,
   },
   [10008] = {
     ContentDE = "玩家資訊不存在",
@@ -1413,7 +1802,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "플레이어 정보가 존재하지 않습니다",
     ContentTC = "玩家資訊不存在",
     ErrorCodeContent = "玩家信息不存在",
-    ErrorCodeId = 10008
+    ErrorCodeId = 10008,
   },
   [10009] = {
     ContentDE = "已在該區域中，無法跳轉",
@@ -1422,7 +1811,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 해당 구역에 있어 이동할 수 없습니다",
     ContentTC = "已在該區域中，無法跳轉",
     ErrorCodeContent = "已在该区域中，无法跳转",
-    ErrorCodeId = 10009
+    ErrorCodeId = 10009,
   },
   [10010] = {
     ContentDE = "目標在該區域之外",
@@ -1431,7 +1820,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "대상이 해당 구역 밖에 있습니다",
     ContentTC = "目標在該區域之外",
     ErrorCodeContent = "目标在该区域之外",
-    ErrorCodeId = 10010
+    ErrorCodeId = 10010,
   },
   [10011] = {
     ContentDE = "該區域不存在",
@@ -1440,7 +1829,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 구역이 존재하지 않습니다",
     ContentTC = "該區域不存在",
     ErrorCodeContent = "该区域不存在",
-    ErrorCodeId = 10011
+    ErrorCodeId = 10011,
   },
   [10012] = {
     ContentDE = "該區域不在大世界中",
@@ -1449,7 +1838,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 구역이 월드에 존재하지 않습니다",
     ContentTC = "該區域不在大世界中",
     ErrorCodeContent = "该区域不在大世界中",
-    ErrorCodeId = 10012
+    ErrorCodeId = 10012,
   },
   [10013] = {
     ContentDE = "該區域資訊為空",
@@ -1458,7 +1847,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 구역 정보가 비어있습니다",
     ContentTC = "該區域資訊為空",
     ErrorCodeContent = "该区域信息为空",
-    ErrorCodeId = 10013
+    ErrorCodeId = 10013,
   },
   [10014] = {
     ContentDE = "目標已被銷毀，無需儲存",
@@ -1467,7 +1856,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "대상이 소거되어 저장할 필요가 없습니다",
     ContentTC = "目標已被銷毀，無需儲存",
     ErrorCodeContent = "目标已被销毁，无需储存",
-    ErrorCodeId = 10014
+    ErrorCodeId = 10014,
   },
   [10015] = {
     ContentDE = "目標不存在，需新增資料",
@@ -1476,7 +1865,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "대상이 존재하지 않습니다. 새로운 데이터를 추가하세요",
     ContentTC = "目標不存在，需新增資料",
     ErrorCodeContent = "目标不存在，需新增数据",
-    ErrorCodeId = 10015
+    ErrorCodeId = 10015,
   },
   [10016] = {
     ContentDE = "區域類型不存在",
@@ -1485,7 +1874,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "존재하지 않는 구역 유형입니다",
     ContentTC = "區域類型不存在",
     ErrorCodeContent = "区域类型不存在",
-    ErrorCodeId = 10016
+    ErrorCodeId = 10016,
   },
   [10017] = {
     ContentDE = "該區域不在大世界中或者不在野外",
@@ -1494,7 +1883,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 구역이 월드 또는 필드에 존재하지 않습니다",
     ContentTC = "該區域不在大世界中或者不在野外",
     ErrorCodeContent = "该区域不在大世界中或者不在野外",
-    ErrorCodeId = 10017
+    ErrorCodeId = 10017,
   },
   [10018] = {
     ContentDE = "該區域Id不存在",
@@ -1503,7 +1892,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 구역 Id가 존재하지 않습니다",
     ContentTC = "該區域Id不存在",
     ErrorCodeContent = "该区域Id不存在",
-    ErrorCodeId = 10018
+    ErrorCodeId = 10018,
   },
   [10019] = {
     ContentDE = "該區域探索資料不存在",
@@ -1512,16 +1901,16 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 구역의 탐색 데이터가 존재하지 않습니다",
     ContentTC = "該區域探索資料不存在",
     ErrorCodeContent = "该区域探索数据不存在",
-    ErrorCodeId = 10019
+    ErrorCodeId = 10019,
   },
   [10020] = {
     ContentDE = "該區域探索資料索引不存在",
-    ContentEN = "The index for the area's exploration data does not exist",
+    ContentEN = "The index for the area\'s exploration data does not exist",
     ContentJP = "このエリアの探索データのインデックスが見つかりません",
     ContentKR = "해당 구역의 탐색 데이터 색인이 존재하지 않습니다",
     ContentTC = "該區域探索資料索引不存在",
     ErrorCodeContent = "该区域探索数据索引不存在",
-    ErrorCodeId = 10020
+    ErrorCodeId = 10020,
   },
   [10021] = {
     ContentDE = "該區域EId不存在",
@@ -1530,7 +1919,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "존재하지 않는 구역 Eid",
     ContentTC = "該區域EId不存在",
     ErrorCodeContent = "该区域EId不存在",
-    ErrorCodeId = 10021
+    ErrorCodeId = 10021,
   },
   [10022] = {
     ContentDE = "無法添加更多區域資訊",
@@ -1539,7 +1928,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "더 많은 구역 정보를 추가할 수 없습니다",
     ContentTC = "無法添加更多區域資訊",
     ErrorCodeContent = "无法添加更多区域信息",
-    ErrorCodeId = 10022
+    ErrorCodeId = 10022,
   },
   [10023] = {
     ContentDE = "該區域Id不存在",
@@ -1548,7 +1937,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "존재하지 않는 구역 Id",
     ContentTC = "該區域Id不存在",
     ErrorCodeContent = "该区域Id不存在",
-    ErrorCodeId = 10023
+    ErrorCodeId = 10023,
   },
   [10024] = {
     ContentDE = "不存在該標記點",
@@ -1557,7 +1946,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "존재하지 않는 마킹 포인트",
     ContentTC = "不存在該標記點",
     ErrorCodeContent = "不存在该标记点",
-    ErrorCodeId = 10024
+    ErrorCodeId = 10024,
   },
   [10025] = {
     ContentDE = "標記點超過最大數量",
@@ -1566,7 +1955,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "마킹한 포인트가 최대 수량에 도달했습니다",
     ContentTC = "標記點超過最大數量",
     ErrorCodeContent = "标记点超过最大数量",
-    ErrorCodeId = 10025
+    ErrorCodeId = 10025,
   },
   [10026] = {
     ContentDE = "當前Avatar處於正在進入區域狀態",
@@ -1575,7 +1964,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 Avatar가 구역에 진입 중인 상태입니다",
     ContentTC = "當前Avatar處於正在進入區域狀態",
     ErrorCodeContent = "当前Avatar处于正在进入区域状态",
-    ErrorCodeId = 10026
+    ErrorCodeId = 10026,
   },
   [10027] = {
     ContentEN = "LevelDatas not found",
@@ -1583,7 +1972,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "LevelDatas가 존재하지 않습니다.",
     ContentTC = "不存在LevelDatas",
     ErrorCodeContent = "不存在LevelDatas",
-    ErrorCodeId = 10027
+    ErrorCodeId = 10027,
   },
   [10028] = {
     ContentEN = "LevelName not found",
@@ -1591,7 +1980,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "LevelName이 존재하지 않습니다.",
     ContentTC = "不存在LevelName",
     ErrorCodeContent = "不存在LevelName",
-    ErrorCodeId = 10028
+    ErrorCodeId = 10028,
   },
   [10029] = {
     ContentEN = "RegionBaseData not found in cache",
@@ -1599,7 +1988,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐시에 RegionBaseData가 존재하지 않습니다.",
     ContentTC = "緩存中不存在RegionBaseData",
     ErrorCodeContent = "缓存中不存在RegionBaseData",
-    ErrorCodeId = 10029
+    ErrorCodeId = 10029,
   },
   [10030] = {
     ContentEN = "Unknown reason for sync failure",
@@ -1607,7 +1996,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "동기화 중단 원인을 알 수 없습니다.",
     ContentTC = "停止同步的原因未知",
     ErrorCodeContent = "停止同步的原因未知",
-    ErrorCodeId = 10030
+    ErrorCodeId = 10030,
   },
   [10031] = {
     ContentEN = "System error (Failed to switch exploration group)",
@@ -1615,7 +2004,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "탐험 그룹 상태 전환에 실패했습니다.",
     ContentTC = "探索組轉換狀態失敗",
     ErrorCodeContent = "探索组转换状态失败",
-    ErrorCodeId = 10031
+    ErrorCodeId = 10031,
   },
   [10032] = {
     ContentEN = "System error (Failed to update exploration group data)",
@@ -1623,7 +2012,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "탐험 그룹 데이터를 업데이트하는 데 실패했습니다.",
     ContentTC = "更新探索組資料失敗",
     ErrorCodeContent = "更新探索组数据失败",
-    ErrorCodeId = 10032
+    ErrorCodeId = 10032,
   },
   [10033] = {
     ContentEN = "Sync reason not found",
@@ -1631,7 +2020,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "동기화 이유가 존재하지 않습니다.",
     ContentTC = "同步原因不存在",
     ErrorCodeContent = "同步原因不存在",
-    ErrorCodeId = 10033
+    ErrorCodeId = 10033,
   },
   [10034] = {
     ContentEN = "Duplicate static spawn points in the region",
@@ -1639,7 +2028,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "지역에서 정적인 리스폰 포인트가 중복되었습니다.",
     ContentTC = "區域中靜態刷新點重複",
     ErrorCodeContent = "区域中静态刷新点重复",
-    ErrorCodeId = 10034
+    ErrorCodeId = 10034,
   },
   [10035] = {
     ContentEN = "Incorrect SubRegionID in RegionBaseData",
@@ -1647,7 +2036,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "RegionBaseData의 SubRegionID가 잘못되었습니다.",
     ContentTC = "RegionBaseData中的SubRegionID錯誤",
     ErrorCodeContent = "RegionBaseData中的SubRegionID错误",
-    ErrorCodeId = 10035
+    ErrorCodeId = 10035,
   },
   [10036] = {
     ContentEN = "Duplicate WORLDREGIONEID",
@@ -1655,7 +2044,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "WORLDREGIONEID가 중복되었습니다.",
     ContentTC = "WORLDREGIONEID重複",
     ErrorCodeContent = "WORLDREGIONEID重复",
-    ErrorCodeId = 10036
+    ErrorCodeId = 10036,
   },
   [10037] = {
     ContentEN = "System error (Quest data cannot be directly added through data input interface)",
@@ -1663,7 +2052,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트 데이터를 데이터 추가 인터페이스로 직접 추가할 수 없습니다(퀘스트 완료 저장).",
     ContentTC = "任務資料不能直接通過資料添加介面(任務完成存儲)任務資料不能直接通過資料添加介面(任務完成存儲)",
     ErrorCodeContent = "任务数据不能直接通过数据添加接口(任务完成存储)任务数据不能直接通过数据添加接口(任务完成存储)",
-    ErrorCodeId = 10037
+    ErrorCodeId = 10037,
   },
   [10038] = {
     ContentEN = "Associated function not found in the configuration",
@@ -1671,7 +2060,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "연관된 Function이 존재하지 않습니다.",
     ContentTC = "配置所關聯的Function不存在",
     ErrorCodeContent = "配置所关联的Function不存在",
-    ErrorCodeId = 10038
+    ErrorCodeId = 10038,
   },
   [10039] = {
     ContentEN = "Stored Param in the configuration is NULL",
@@ -1679,7 +2068,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "저장된 Param이 NULL입니다.",
     ContentTC = "配置所存儲的的Param是NULL",
     ErrorCodeContent = "配置所存储的的Param是NULL",
-    ErrorCodeId = 10039
+    ErrorCodeId = 10039,
   },
   [10040] = {
     ContentEN = "Special quest already completed",
@@ -1687,7 +2076,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 특수 퀘스트가 이미 완료되었습니다.",
     ContentTC = "該特殊任務已經完成",
     ErrorCodeContent = "该特殊任务已经完成",
-    ErrorCodeId = 10040
+    ErrorCodeId = 10040,
   },
   [10041] = {
     ContentEN = "Currently engaged in a special quest, cannot start another quest",
@@ -1695,7 +2084,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 특수 퀘스트 중이므로 다른 퀘스트를 수행할 수 없습니다.",
     ContentTC = "當前處於特殊任務中，無法進行其他任務",
     ErrorCodeContent = "当前处于特殊任务中，无法进行其他任务",
-    ErrorCodeId = 10041
+    ErrorCodeId = 10041,
   },
   [10042] = {
     ContentEN = "Special quest ID not found",
@@ -1703,7 +2092,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "테이블에 특수 퀘스트 ID가 존재하지 않습니다.",
     ContentTC = "表裡不存在特殊任務ID",
     ErrorCodeContent = "表里不存在特殊任务ID",
-    ErrorCodeId = 10042
+    ErrorCodeId = 10042,
   },
   [10043] = {
     ContentEN = "Incorrect QuestChainID in RegionBaseData",
@@ -1711,7 +2100,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "RegionBaseData의 QuestChainID가 올바르지 않습니다",
     ContentTC = "RegionBaseData中的QuestChainID不正確",
     ErrorCodeContent = "RegionBaseData中的QuestChainID不正确",
-    ErrorCodeId = 10043
+    ErrorCodeId = 10043,
   },
   [10044] = {
     ContentEN = "Incorrect RarelyId in RegionBaseData",
@@ -1719,7 +2108,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "RegionBaseData의 RarelyId가 올바르지 않습니다",
     ContentTC = "RegionBaseData中的RarelyId不正確",
     ErrorCodeContent = "RegionBaseData中的RarelyId不正确",
-    ErrorCodeId = 10044
+    ErrorCodeId = 10044,
   },
   [10045] = {
     ContentEN = "System error (Exploration group not currently active)",
@@ -1727,7 +2116,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "탐험 그룹이 진행 중이지 않습니다.",
     ContentTC = "探索組未在執行中",
     ErrorCodeContent = "探索组未在执行中",
-    ErrorCodeId = 10045
+    ErrorCodeId = 10045,
   },
   [10046] = {
     ContentEN = "Error in quest data type",
@@ -1735,7 +2124,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트 데이터 유형에 오류가 있습니다.",
     ContentTC = "任務資料中類型錯誤",
     ErrorCodeContent = "任务数据中类型错误",
-    ErrorCodeId = 10046
+    ErrorCodeId = 10046,
   },
   [10047] = {
     ContentEN = "Rewards for this item already claimed",
@@ -1743,7 +2132,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 오브젝트의 보상을 이미 수령했습니다.",
     ContentTC = "該物體對應的獎勵已經領取過",
     ErrorCodeContent = "该物体对应的奖励已经领取过",
-    ErrorCodeId = 10047
+    ErrorCodeId = 10047,
   },
   [10048] = {
     ContentEN = "Reward reason does not exist",
@@ -1751,7 +2140,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "보상 사유가 존재하지 않습니다.",
     ContentTC = "獎勵原因不存在",
     ErrorCodeContent = "奖励原因不存在",
-    ErrorCodeId = 10048
+    ErrorCodeId = 10048,
   },
   [10049] = {
     ContentEN = "Unique reward identifier not found",
@@ -1759,7 +2148,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "보상의 고유 식별자가 없습니다.",
     ContentTC = "獎勵唯一標識不存在",
     ErrorCodeContent = "奖励唯一标识不存在",
-    ErrorCodeId = 10049
+    ErrorCodeId = 10049,
   },
   [10050] = {
     ContentEN = "Reward for this Eid already claimed",
@@ -1767,7 +2156,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 Eid의 보상을 이미 수령했습니다.",
     ContentTC = "該Eid下的獎勵已經領取",
     ErrorCodeContent = "该Eid下的奖励已经领取",
-    ErrorCodeId = 10050
+    ErrorCodeId = 10050,
   },
   [10051] = {
     ContentEN = "Configuration key value not found",
@@ -1775,15 +2164,15 @@ return ReadOnly("ErrorCode", {
     ContentKR = "설정된 Key 값이 없습니다.",
     ContentTC = "該配置的Key值不存在",
     ErrorCodeContent = "该配置的Key值不存在",
-    ErrorCodeId = 10051
+    ErrorCodeId = 10051,
   },
   [10052] = {
-    ContentEN = "Stored Region ID does not match the server's Region ID",
+    ContentEN = "Stored Region ID does not match the server\'s Region ID",
     ContentJP = "保存データエリアIDとサーバーエリアIDが一致していません",
     ContentKR = "저장된 데이터의 지역 ID와 서버 지역 ID가 일치하지 않습니다.",
     ContentTC = "存儲資料區域ID與服務端區域ID不一致",
     ErrorCodeContent = "存储数据区域ID与服务端区域ID不一致",
-    ErrorCodeId = 10052
+    ErrorCodeId = 10052,
   },
   [10053] = {
     ContentEN = "Exploration group type is not set to challenge",
@@ -1791,7 +2180,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "탐험 그룹의 유형이 도전 모드가 아닙니다.",
     ContentTC = "探索組的類型不是挑戰類",
     ErrorCodeContent = "探索组的类型不是挑战类",
-    ErrorCodeId = 10053
+    ErrorCodeId = 10053,
   },
   [10054] = {
     ContentEN = "Quest chain is locked. Unable to accept the quest.",
@@ -1799,7 +2188,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트 체인의 상태가 잠금 해제되지 않아 진행할 수 없습니다.",
     ContentTC = "任務鏈的狀態不是解鎖狀態無法進行接取",
     ErrorCodeContent = "任务链的状态不是解锁状态无法进行接取",
-    ErrorCodeId = 10054
+    ErrorCodeId = 10054,
   },
   [10055] = {
     ContentEN = "Failed to change quest status",
@@ -1807,7 +2196,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트 상태 전환에 실패했습니다.",
     ContentTC = "任務狀態轉換失敗",
     ErrorCodeContent = "任务状态转换失败",
-    ErrorCodeId = 10055
+    ErrorCodeId = 10055,
   },
   [10056] = {
     ContentEN = "Quest delivery type error",
@@ -1815,7 +2204,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트 전송 유형이 잘못되었습니다.",
     ContentTC = "任務傳送類型錯誤",
     ErrorCodeContent = "任务传送类型错误",
-    ErrorCodeId = 10056
+    ErrorCodeId = 10056,
   },
   [10057] = {
     ContentEN = "Table error or incorrect stored UnitTypeOrId",
@@ -1823,7 +2212,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "테이블 오류 또는 저장된 UnitTypeOrId가 잘못되었습니다.",
     ContentTC = "配表錯誤，或者存儲的UnitTypeOrId錯誤",
     ErrorCodeContent = "配表错误，或者存储的UnitTypeOrId错误",
-    ErrorCodeId = 10057
+    ErrorCodeId = 10057,
   },
   [10058] = {
     ContentEN = "Interaction ID not found",
@@ -1831,7 +2220,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "상호작용 ID가 존재하지 않습니다.",
     ContentTC = "不存在交互ID",
     ErrorCodeContent = "不存在交互ID",
-    ErrorCodeId = 10058
+    ErrorCodeId = 10058,
   },
   [10059] = {
     ContentEN = "Specific start or end of the quest does not belong to the quest process",
@@ -1839,7 +2228,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "특정 퀘스트 완료 또는 시작이 퀘스트 흐름에 포함되지 않습니다.",
     ContentTC = "特指完成或者開始任務不是任務流程中的一環",
     ErrorCodeContent = "特指完成或者开始任务不是任务流程中的一环",
-    ErrorCodeId = 10059
+    ErrorCodeId = 10059,
   },
   [10060] = {
     ContentEN = "PetID not found in the Geniemon table",
@@ -1847,7 +2236,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "Pet 테이블에 PetId가 존재하지 않습니다.",
     ContentTC = "Pet表不存在PetId",
     ErrorCodeContent = "该魔灵不存在",
-    ErrorCodeId = 10060
+    ErrorCodeId = 10060,
   },
   [10061] = {
     ContentEN = "System error (Data for this Geniemon already added)",
@@ -1855,7 +2244,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "Pet 테이블에 해당 PetId가 존재하지 않습니다.",
     ContentTC = "該pet所對應的資料已經存在特指添加",
     ErrorCodeContent = "该魔灵所对应的数据已经存在特指添加",
-    ErrorCodeId = 10061
+    ErrorCodeId = 10061,
   },
   [10062] = {
     ContentEN = "Geniemon not in an active state",
@@ -1863,7 +2252,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 Pet이 활성화 상태가 아닙니다.",
     ContentTC = "該Pet的狀態不是啟動狀態",
     ErrorCodeContent = "该魔灵的状态不是激活状态",
-    ErrorCodeId = 10062
+    ErrorCodeId = 10062,
   },
   [10063] = {
     ContentEN = "Geniemon data not found",
@@ -1871,7 +2260,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 Pet을 찾을 수 없습니다.",
     ContentTC = "該Pet的狀態不是啟動狀態特指狀態更新",
     ErrorCodeContent = "该魔灵的状态不是激活状态特指状态更新",
-    ErrorCodeId = 10063
+    ErrorCodeId = 10063,
   },
   [10064] = {
     ContentEN = "Marker point already exists",
@@ -1879,7 +2268,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "동일한 마커 포인트가 이미 존재하여 중복 추가할 수 없습니다.",
     ContentTC = "存在相同的標記點，添加重複",
     ErrorCodeContent = "存在相同的标记点，添加重复",
-    ErrorCodeId = 10064
+    ErrorCodeId = 10064,
   },
   [10065] = {
     ContentEN = "No data found for this MarkPointKey",
@@ -1887,7 +2276,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "MarkPointKey에 해당하는 데이터가 존재하지 않습니다.",
     ContentTC = "不存在MarkPointKey對應的資料",
     ErrorCodeContent = "不存在MarkPointKey对应的数据",
-    ErrorCodeId = 10065
+    ErrorCodeId = 10065,
   },
   [10066] = {
     ContentEN = "Name exceeds the 13-character limit",
@@ -1895,7 +2284,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이름 길이가 최대 제한인 13자를 초과했습니다.",
     ContentTC = "名稱長度超過了最大限制13個字元",
     ErrorCodeContent = "名称长度超过了最大限制13个字符",
-    ErrorCodeId = 10066
+    ErrorCodeId = 10066,
   },
   [10067] = {
     ContentEN = "Invalid RandomRuleId for random map point",
@@ -1903,7 +2292,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "랜덤 지점의 RandomRuleId에 오류가 있습니다.",
     ContentTC = "隨機點的RandomRuleId錯誤",
     ErrorCodeContent = "随机点的RandomRuleId错误",
-    ErrorCodeId = 10067
+    ErrorCodeId = 10067,
   },
   [10068] = {
     ContentEN = "RegionDatas for random point is null",
@@ -1911,7 +2300,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "랜덤으로 추가된 RegionDatas가 NULL입니다.",
     ContentTC = "隨機添加的RegionDatas為NULL",
     ErrorCodeContent = "随机添加的RegionDatas为NULL",
-    ErrorCodeId = 10068
+    ErrorCodeId = 10068,
   },
   [10069] = {
     ContentEN = "Invalid method for adding random point. Only specific APIs allowed.",
@@ -1919,7 +2308,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "랜덤 지점 경로 추가 오류(특수 API를 통해서만 추가 가능)",
     ContentTC = "隨機點添加途徑出錯(隻能特殊接口添加)",
     ErrorCodeContent = "随机点添加途径出错(只能特殊接口添加)",
-    ErrorCodeId = 10069
+    ErrorCodeId = 10069,
   },
   [10070] = {
     ContentEN = "Duplicate random rule ID",
@@ -1927,7 +2316,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "랜덤 규칙 ID가 중복되었습니다.",
     ContentTC = "隨機規則ID重複",
     ErrorCodeContent = "随机规则ID重复",
-    ErrorCodeId = 10070
+    ErrorCodeId = 10070,
   },
   [10071] = {
     ContentEN = "SuitType not found",
@@ -1935,7 +2324,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "SuitType이 존재하지 않습니다.",
     ContentTC = "不存在SuitType",
     ErrorCodeContent = "不存在SuitType",
-    ErrorCodeId = 10071
+    ErrorCodeId = 10071,
   },
   [10072] = {
     ContentEN = "Invalid random TableId",
@@ -1943,7 +2332,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "랜덤 TableId에 오류가 있습니다.",
     ContentTC = "隨機TableId錯誤",
     ErrorCodeContent = "随机TableId错误",
-    ErrorCodeId = 10072
+    ErrorCodeId = 10072,
   },
   [10073] = {
     ContentEN = "Auto-exported exploration group data is invalid or missing",
@@ -1951,7 +2340,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "탐색 그룹 자동 내보내기 데이터에 오류가 있거나 데이터가 존재하지 않습니다.",
     ContentTC = "探索組自動導出數據有誤或者不存在",
     ErrorCodeContent = "探索组自动导出数据有误或者不存在",
-    ErrorCodeId = 10073
+    ErrorCodeId = 10073,
   },
   [10074] = {
     ContentEN = "Cannot set status to Challenge Complete",
@@ -1959,7 +2348,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "도전을 완료 상태로 설정할 수 없습니다.",
     ContentTC = "不能設置到挑戰完成",
     ErrorCodeContent = "不能设置到挑战完成",
-    ErrorCodeId = 10074
+    ErrorCodeId = 10074,
   },
   [10075] = {
     ContentEN = "Invalid Dispatch ID. Not found or of incorrect type.",
@@ -1967,7 +2356,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "추가한 파견 ID에 오류가 있습니다. 해당 ID가 존재하지 않거나 유형에 오류가 있습니다.",
     ContentTC = "增加的派遣ID錯誤 不存在或者類型錯誤",
     ErrorCodeContent = "增加的派遣ID错误 不存在或者类型错误",
-    ErrorCodeId = 10075
+    ErrorCodeId = 10075,
   },
   [10076] = {
     ContentEN = "Dispatch entry not found in table",
@@ -1975,7 +2364,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파견 목록에 해당 파견이 존재하지 않습니다.",
     ContentTC = "派遣表中不存在該派遣",
     ErrorCodeContent = "派遣表中不存在该派遣",
-    ErrorCodeId = 10076
+    ErrorCodeId = 10076,
   },
   [10077] = {
     ContentEN = "Dispatch already added",
@@ -1983,7 +2372,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "중복된 파견을 추가했습니다.",
     ContentTC = "重複添加派遣",
     ErrorCodeContent = "重复添加派遣",
-    ErrorCodeId = 10077
+    ErrorCodeId = 10077,
   },
   [10078] = {
     ContentEN = "Reason for dispatch addition not found",
@@ -1991,7 +2380,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파견 추가 사유가 존재하지 않습니다.",
     ContentTC = "添加派遣的原因不存在",
     ErrorCodeContent = "添加派遣的原因不存在",
-    ErrorCodeId = 10078
+    ErrorCodeId = 10078,
   },
   [10079] = {
     ContentEN = "Failed to add multiple dispatch entries",
@@ -1999,7 +2388,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "한 번에 여러 파견 추가 시 오류가 존재합니다.",
     ContentTC = "一次性添加多個派遣存在錯誤",
     ErrorCodeContent = "一次性添加多个派遣存在错误",
-    ErrorCodeId = 10079
+    ErrorCodeId = 10079,
   },
   [10080] = {
     ContentEN = "Incorrect number of agents",
@@ -2007,7 +2396,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파견에 필요한 캐릭터 수가 올바르지 않습니다.",
     ContentTC = "派遣所需的角色數量不正確",
     ErrorCodeContent = "派遣所需的角色数量不正确",
-    ErrorCodeId = 10080
+    ErrorCodeId = 10080,
   },
   [10081] = {
     ContentEN = "Character currently on assignment",
@@ -2015,7 +2404,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐릭터가 현재 파견 상태입니다.",
     ContentTC = "角色正在派遣占用中",
     ErrorCodeContent = "角色正在派遣占用中",
-    ErrorCodeId = 10081
+    ErrorCodeId = 10081,
   },
   [10082] = {
     ContentEN = "Dispatch entry not found or not yet unlocked",
@@ -2023,7 +2412,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파견이 존재하지 않거나 획득하지 않았습니다.",
     ContentTC = "派遣不存在、或者未獲取",
     ErrorCodeContent = "派遣不存在、或者未获取",
-    ErrorCodeId = 10082
+    ErrorCodeId = 10082,
   },
   [10083] = {
     ContentEN = "Dispatch entry not in available list",
@@ -2031,7 +2420,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파견이 파견 가능 목록에 없습니다.",
     ContentTC = "派遣不在可派遣列表中",
     ErrorCodeContent = "派遣不在可派遣列表中",
-    ErrorCodeId = 10083
+    ErrorCodeId = 10083,
   },
   [10084] = {
     ContentEN = "Dispatch cannot be activated in current state",
@@ -2039,7 +2428,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파견 상태가 활성 가능 상태가 아닙니다.",
     ContentTC = "派遣狀態不是可激活狀態",
     ErrorCodeContent = "派遣状态不是可激活状态",
-    ErrorCodeId = 10084
+    ErrorCodeId = 10084,
   },
   [10085] = {
     ContentEN = "Dispatch region not found",
@@ -2047,7 +2436,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파견이 위치한 구역이 존재하지 않습니다.",
     ContentTC = "派遣所在的區域不存在",
     ErrorCodeContent = "派遣所在的区域不存在",
-    ErrorCodeId = 10085
+    ErrorCodeId = 10085,
   },
   [10086] = {
     ContentEN = "Resonance Rank too low",
@@ -2055,7 +2444,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 레조넌스 레벨이 부족합니다.",
     ContentTC = "當前和鳴等級不滿足",
     ErrorCodeContent = "当前和鸣等级不满足",
-    ErrorCodeId = 10086
+    ErrorCodeId = 10086,
   },
   [10087] = {
     ContentEN = "Dispatch requirements not met",
@@ -2063,7 +2452,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 파견 조건을 만족하지 않았습니다.",
     ContentTC = "當前不滿足派遣條件",
     ErrorCodeContent = "当前不满足派遣条件",
-    ErrorCodeId = 10087
+    ErrorCodeId = 10087,
   },
   [10088] = {
     ContentEN = "Unknown error",
@@ -2071,7 +2460,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "알 수 없는 오류가 발생했습니다.",
     ContentTC = "未知錯誤",
     ErrorCodeContent = "未知错误",
-    ErrorCodeId = 10088
+    ErrorCodeId = 10088,
   },
   [10089] = {
     ContentEN = "Dispatch is cooling down (special slot)",
@@ -2079,7 +2468,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파견이 재사용 대기 중입니다(특수 슬롯).",
     ContentTC = "派遣處於冷卻中 特製槽位",
     ErrorCodeContent = "派遣处于冷却中 特制槽位",
-    ErrorCodeId = 10089
+    ErrorCodeId = 10089,
   },
   [10090] = {
     ContentEN = "Dispatch currently in progress",
@@ -2087,7 +2476,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파견이 실행 중 상태입니다.",
     ContentTC = "派遣狀態處於執行中",
     ErrorCodeContent = "派遣状态处于执行中",
-    ErrorCodeId = 10090
+    ErrorCodeId = 10090,
   },
   [10091] = {
     ContentEN = "Dispatch ready for activation",
@@ -2095,7 +2484,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파견이 활성화 가능 상태입니다.",
     ContentTC = "派遣狀態處於可激活",
     ErrorCodeContent = "派遣状态处于可激活",
-    ErrorCodeId = 10091
+    ErrorCodeId = 10091,
   },
   [10092] = {
     ContentEN = "Dispatch has failed",
@@ -2103,7 +2492,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파견이 실패 상태입니다.",
     ContentTC = "派遣狀態處於失敗中",
     ErrorCodeContent = "派遣状态处于失败中",
-    ErrorCodeId = 10092
+    ErrorCodeId = 10092,
   },
   [10093] = {
     ContentEN = "Dispatch not in progress",
@@ -2111,7 +2500,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파견이 진행 중 상태가 아닙니다.",
     ContentTC = "派遣狀態未在進行中",
     ErrorCodeContent = "派遣状态未在进行中",
-    ErrorCodeId = 10093
+    ErrorCodeId = 10093,
   },
   [10094] = {
     ContentEN = "Dispatch region is locked",
@@ -2119,7 +2508,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파견 구역이 잠겨 있습니다.",
     ContentTC = "派遣區域未解鎖",
     ErrorCodeContent = "派遣区域未解锁",
-    ErrorCodeId = 10094
+    ErrorCodeId = 10094,
   },
   [10095] = {
     ContentEN = "Dispatch already exists",
@@ -2127,7 +2516,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파견이 이미 파견 목록에 있습니다.",
     ContentTC = "派遣已經在派遣列表中",
     ErrorCodeContent = "派遣已经在派遣列表中",
-    ErrorCodeId = 10095
+    ErrorCodeId = 10095,
   },
   [10096] = {
     ContentEN = "Dispatch probability too low to be added to list",
@@ -2135,7 +2524,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 파견의 확률이 너무 낮아, 파견 목록에 진입할 수 없습니다.",
     ContentTC = "該派遣的概率過低，不能進入派遣列表中",
     ErrorCodeContent = "该派遣的概率过低，不能进入派遣列表中",
-    ErrorCodeId = 10096
+    ErrorCodeId = 10096,
   },
   [10097] = {
     ContentEN = "Dispatch already complete",
@@ -2143,7 +2532,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파견이 완료 상태입니다.",
     ContentTC = "派遣處於完成狀態",
     ErrorCodeContent = "派遣处于完成状态",
-    ErrorCodeId = 10097
+    ErrorCodeId = 10097,
   },
   [10098] = {
     ContentEN = "At least one agent must be assigned",
@@ -2151,7 +2540,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "최소 1명의 캐릭터를 파견해야 합니다.",
     ContentTC = "最少派遣一名角色",
     ErrorCodeContent = "最少派遣一名角色",
-    ErrorCodeId = 10098
+    ErrorCodeId = 10098,
   },
   [10099] = {
     ContentEN = "Current state in cooldown",
@@ -2159,7 +2548,219 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 재사용 대기 상태입니다.",
     ContentTC = "當前狀態處於冷卻中",
     ErrorCodeContent = "当前状态处于冷却中",
-    ErrorCodeId = 10099
+    ErrorCodeId = 10099,
+  },
+  [10100] = {
+    ErrorCodeContent = "位置信息错误",
+    ErrorCodeId = 10100,
+  },
+  [10101] = {
+    ErrorCodeContent = "派遣状态处于解锁状态",
+    ErrorCodeId = 10101,
+  },
+  [10102] = {
+    ErrorCodeContent = "派遣所对应的事件未解锁",
+    ErrorCodeId = 10102,
+  },
+  [10103] = {
+    ErrorCodeContent = "不存在对应的区域刷新点数据",
+    ErrorCodeId = 10103,
+  },
+  [10104] = {
+    ErrorCodeContent = "不存在对应的刷新点基础数据",
+    ErrorCodeId = 10104,
+  },
+  [10105] = {
+    ErrorCodeContent = "不存在对应排期列表",
+    ErrorCodeId = 10105,
+  },
+  [10106] = {
+    ErrorCodeContent = "一键派遣领取奖励失败",
+    ErrorCodeId = 10106,
+  },
+  [10107] = {
+    ErrorCodeContent = "探索组传递的信息有误",
+    ErrorCodeId = 10107,
+  },
+  [10108] = {
+    ErrorCodeContent = "当前区域不在据点",
+    ErrorCodeId = 10108,
+  },
+  [10109] = {
+    ErrorCodeContent = "不处于邀约系统标记中",
+    ErrorCodeId = 10109,
+  },
+  [10110] = {
+    ErrorCodeContent = "魔灵捕获失败",
+    ErrorCodeId = 10110,
+  },
+  [10111] = {
+    ErrorCodeContent = "当前出战的角色不能派遣",
+    ErrorCodeId = 10111,
+  },
+  [10112] = {
+    ErrorCodeContent = "任务关卡数据添加只在任务完成",
+    ErrorCodeId = 10112,
+  },
+  [10113] = {
+    ErrorCodeContent = "任务链不能开始前置任务",
+    ErrorCodeId = 10113,
+  },
+  [10114] = {
+    ErrorCodeContent = "检定失败",
+    ErrorCodeId = 10114,
+  },
+  [10115] = {
+    ErrorCodeContent = "探索组重复",
+    ErrorCodeId = 10115,
+  },
+  [10116] = {
+    ErrorCodeContent = "该状态下不能同步",
+    ErrorCodeId = 10116,
+  },
+  [10117] = {
+    ErrorCodeContent = "区域存在错误",
+    ErrorCodeId = 10117,
+  },
+  [10118] = {
+    ErrorCodeContent = "只能用于同区域平滑过渡",
+    ErrorCodeId = 10118,
+  },
+  [10119] = {
+    ErrorCodeContent = "特殊标记中",
+    ErrorCodeId = 10119,
+  },
+  [10120] = {
+    ErrorCodeContent = "同步位置子区域与服务器区域对应不上",
+    ErrorCodeId = 10120,
+  },
+  [10121] = {
+    ErrorCodeContent = "宝箱未满足解锁条件",
+    ErrorCodeId = 10121,
+  },
+  [10122] = {
+    ErrorCodeContent = "存在相同的角色进行派遣",
+    ErrorCodeId = 10122,
+  },
+  [10123] = {
+    ErrorCodeContent = "随机点存在相同数据",
+    ErrorCodeId = 10123,
+  },
+  [10124] = {
+    ErrorCodeContent = "当前处于区域联机不能同步",
+    ErrorCodeId = 10124,
+  },
+  [10125] = {
+    ErrorCodeContent = "当前处于探索挑战中",
+    ErrorCodeId = 10125,
+  },
+  [10126] = {
+    ErrorCodeContent = "当前不处于挑战中",
+    ErrorCodeId = 10126,
+  },
+  [10127] = {
+    ErrorCodeContent = "未开启测试",
+    ErrorCodeId = 10127,
+  },
+  [10128] = {
+    ErrorCodeContent = "自动激活的刷新点为空",
+    ErrorCodeId = 10128,
+  },
+  [10129] = {
+    ErrorCodeContent = "派遣系统未解锁",
+    ErrorCodeId = 10129,
+  },
+  [10130] = {
+    ErrorCodeContent = "当前派遣奖励尚不能领取",
+    ErrorCodeId = 10130,
+  },
+  [10131] = {
+    ErrorCodeContent = "当前接口只能任务同伴更新数据",
+    ErrorCodeId = 10131,
+  },
+  [10132] = {
+    ErrorCodeContent = "当前非任务数据",
+    ErrorCodeId = 10132,
+  },
+  [10133] = {
+    ErrorCodeContent = "超过投喂最大值",
+    ErrorCodeId = 10133,
+  },
+  [10134] = {
+    ErrorCodeContent = "随机规则不存在",
+    ErrorCodeId = 10134,
+  },
+  [10135] = {
+    ErrorCodeContent = "随机规则已经存在",
+    ErrorCodeId = 10135,
+  },
+  [10136] = {
+    ErrorCodeContent = "数据已经添加激活",
+    ErrorCodeId = 10136,
+  },
+  [10137] = {
+    ErrorCodeContent = "时间戳不正确",
+    ErrorCodeId = 10137,
+  },
+  [10138] = {
+    ErrorCodeContent = "当前不在区域联机中",
+    ErrorCodeId = 10138,
+  },
+  [10139] = {
+    ErrorCodeContent = "当前坐骑已经获取",
+    ErrorCodeId = 10139,
+  },
+  [10140] = {
+    ErrorCodeContent = "获取坐骑的原因不存在",
+    ErrorCodeId = 10140,
+  },
+  [10141] = {
+    ErrorCodeContent = "不存在坐骑信息",
+    ErrorCodeId = 10141,
+  },
+  [10142] = {
+    ErrorCodeContent = "当前等级与目标等级相等",
+    ErrorCodeId = 10142,
+  },
+  [10143] = {
+    ErrorCodeContent = "当前等级已经升级",
+    ErrorCodeId = 10143,
+  },
+  [10144] = {
+    ErrorCodeContent = "不存在等级表信息",
+    ErrorCodeId = 10144,
+  },
+  [10145] = {
+    ErrorCodeContent = "前置等级未完成",
+    ErrorCodeId = 10145,
+  },
+  [10146] = {
+    ErrorCodeContent = "资源不足",
+    ErrorCodeId = 10146,
+  },
+  [10147] = {
+    ErrorCodeContent = "当前等级未解锁",
+    ErrorCodeId = 10147,
+  },
+  [10148] = {
+    ErrorCodeContent = "坐骑不存在",
+    ErrorCodeId = 10148,
+  },
+  [10149] = {
+    ErrorCodeContent = "资源不足",
+    ErrorCodeId = 10149,
+  },
+  [10150] = {
+    ErrorCodeContent = "该资源不能绑定坐骑",
+    ErrorCodeId = 10150,
+  },
+  [10151] = {
+    ErrorCodeContent = "该资源已经绑定该坐骑",
+    ErrorCodeId = 10151,
+  },
+  [10152] = {
+    ErrorCodeContent = "该资源未绑定该坐骑",
+    ErrorCodeId = 10152,
   },
   [11001] = {
     ContentDE = "DS伺服器不存在",
@@ -2168,7 +2769,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "DS 서버가 존재하지 않음",
     ContentTC = "DS伺服器不存在",
     ErrorCodeContent = "DS服务器不存在",
-    ErrorCodeId = 11001
+    ErrorCodeId = 11001,
   },
   [11002] = {
     ContentDE = "DS伺服器未申請",
@@ -2177,7 +2778,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "DS 서버 미신청",
     ContentTC = "DS伺服器未申請",
     ErrorCodeContent = "DS服务器未申请",
-    ErrorCodeId = 11002
+    ErrorCodeId = 11002,
   },
   [11003] = {
     ContentDE = "DS伺服器連接失敗",
@@ -2186,7 +2787,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "DS 서버 연결 실패",
     ContentTC = "DS伺服器連接失敗",
     ErrorCodeContent = "DS服务器连接失败",
-    ErrorCodeId = 11003
+    ErrorCodeId = 11003,
   },
   [11004] = {
     ContentDE = "該地圖不存在，切換地圖失敗",
@@ -2195,7 +2796,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 지도가 존재하지 않아 지도 전환에 실패했습니다",
     ContentTC = "該地圖不存在，切換地圖失敗",
     ErrorCodeContent = "该地图不存在，切换地图失败",
-    ErrorCodeId = 11004
+    ErrorCodeId = 11004,
   },
   [12001] = {
     ContentDE = "當前設計稿狀態不滿足鑄造需求",
@@ -2204,7 +2805,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 설계도 상태가 주조 조건을 충족하지 않습니다",
     ContentTC = "當前設計稿狀態不滿足鑄造需求",
     ErrorCodeContent = "当前设计稿状态不满足铸造需求",
-    ErrorCodeId = 12001
+    ErrorCodeId = 12001,
   },
   [12002] = {
     ContentDE = "設計稿數量不足",
@@ -2213,7 +2814,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "설계도 수량이 부족합니다",
     ContentTC = "設計稿數量不足",
     ErrorCodeContent = "设计稿数量不足",
-    ErrorCodeId = 12002
+    ErrorCodeId = 12002,
   },
   [12003] = {
     ContentDE = "鑄造所需貨幣不足",
@@ -2222,7 +2823,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "주조에 필요한 화폐가 부족합니다",
     ContentTC = "鑄造所需貨幣不足",
     ErrorCodeContent = "铸造所需铜币不足",
-    ErrorCodeId = 12003
+    ErrorCodeId = 12003,
   },
   [12004] = {
     ContentDE = "鑄造所需材料不足",
@@ -2231,7 +2832,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "주조에 필요한 재료가 부족합니다",
     ContentTC = "鑄造所需材料不足",
     ErrorCodeContent = "铸造所需材料不足",
-    ErrorCodeId = 12004
+    ErrorCodeId = 12004,
   },
   [12005] = {
     ContentDE = "鑄造的設計稿不存在",
@@ -2240,7 +2841,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "주조의 설계도가 존재하지 않습니다",
     ContentTC = "鑄造的設計稿不存在",
     ErrorCodeContent = "铸造的设计稿不存在",
-    ErrorCodeId = 12005
+    ErrorCodeId = 12005,
   },
   [12006] = {
     ContentDE = "未知原因導致鑄造失敗",
@@ -2249,7 +2850,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "알 수 없는 원인으로 주조에 실패했습니다",
     ContentTC = "未知原因導致鑄造失敗",
     ErrorCodeContent = "未知原因导致铸造失败",
-    ErrorCodeId = 12006
+    ErrorCodeId = 12006,
   },
   [12007] = {
     ContentDE = "設計稿未完成",
@@ -2258,7 +2859,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "설계도가 완료되지 않았습니다",
     ContentTC = "設計稿未完成",
     ErrorCodeContent = "设计稿未完成铸造",
-    ErrorCodeId = 12007
+    ErrorCodeId = 12007,
   },
   [12008] = {
     ContentDE = "加速的設計稿未處於鑄造中的狀態",
@@ -2267,7 +2868,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "가속한 설계도가 아직 주조 중인 상태가 아닙니다",
     ContentTC = "加速的設計稿未處於鑄造中的狀態",
     ErrorCodeContent = "加速的设计稿未处于铸造中的状态",
-    ErrorCodeId = 12008
+    ErrorCodeId = 12008,
   },
   [12009] = {
     ContentDE = "未持有加速所需貨幣",
@@ -2276,7 +2877,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "가속에 필요한 화폐가 없습니다",
     ContentTC = "未持有加速所需貨幣",
     ErrorCodeContent = "玩具气锤不存在",
-    ErrorCodeId = 12009
+    ErrorCodeId = 12009,
   },
   [12010] = {
     ContentDE = "加速所需貨幣數量不足",
@@ -2285,7 +2886,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "가속에 필요한 화폐 수량이 부족합니다",
     ContentTC = "加速所需貨幣數量不足",
     ErrorCodeContent = "玩具气锤不足",
-    ErrorCodeId = 12010
+    ErrorCodeId = 12010,
   },
   [12011] = {
     ContentDE = "無法取消鑄造還未開始鑄造的設計稿",
@@ -2294,7 +2895,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "주조를 시작하지 않은 설계도를 취소할 수 없습니다",
     ContentTC = "無法取消鑄造還未開始鑄造的設計稿",
     ErrorCodeContent = "无法取消铸造还未开始铸造的设计稿",
-    ErrorCodeId = 12011
+    ErrorCodeId = 12011,
   },
   [12012] = {
     ContentEN = "Selected weapon is null",
@@ -2302,7 +2903,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "선택한 무기가 빈 값입니다.",
     ContentTC = "選擇的武器是空值",
     ErrorCodeContent = "选择的武器是空值",
-    ErrorCodeId = 12012
+    ErrorCodeId = 12012,
   },
   [12013] = {
     ContentEN = "Selected Demon Wedge is null",
@@ -2310,7 +2911,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "선택한 악마의 쐐기가 빈 값입니다.",
     ContentTC = "選擇的魔之楔是空值",
     ErrorCodeContent = "选择的魔之楔是空值",
-    ErrorCodeId = 12013
+    ErrorCodeId = 12013,
   },
   [12014] = {
     ContentEN = "WeaponID not found in the table for the selected weapon",
@@ -2318,7 +2919,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "테이블에 설정된 WeaponId가 선택한 무기에 존재하지 않습니다.",
     ContentTC = "表裡配置的WeaponId在選擇武器中不存在",
     ErrorCodeContent = "表里配置的WeaponId在选择武器中不存在",
-    ErrorCodeId = 12014
+    ErrorCodeId = 12014,
   },
   [12015] = {
     ContentEN = "Demon Wedge ID not found in the table for the selected Demon Wedge",
@@ -2326,7 +2927,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "테이블에 설정된 악마의 쐐기 ID가 선택한 악마의 쐐기에 존재하지 않습니다.",
     ContentTC = "表裡配置的魔之楔ID在選擇魔之楔中不存在",
     ErrorCodeContent = "表里配置的魔之楔ID在选择魔之楔中不存在",
-    ErrorCodeId = 12015
+    ErrorCodeId = 12015,
   },
   [12016] = {
     ContentEN = "Insufficient target Demon Wedges for forging",
@@ -2334,7 +2935,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "주조에 필요한 목표 악마의 쐐기 수량이 부족합니다.",
     ContentTC = "鑄造所需要消耗的目標魔之楔數量不夠",
     ErrorCodeContent = "铸造所需要消耗的目标魔之楔数量不够",
-    ErrorCodeId = 12016
+    ErrorCodeId = 12016,
   },
   [12017] = {
     ContentEN = "Client-selected Demon Wedge amount does not match the configured quantity",
@@ -2342,7 +2943,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "클라이언트에서 선택한 악마의 쐐기 소모 수량이 설정된 수량과 일치하지 않습니다.",
     ContentTC = "用戶端選擇魔之楔消耗的目標數量與配置數量對應不上",
     ErrorCodeContent = "客户端选择魔之楔消耗的目标数量与配置数量对应不上",
-    ErrorCodeId = 12017
+    ErrorCodeId = 12017,
   },
   [12018] = {
     ContentEN = "Required weapon for forging does not exist or WeaponID does not match",
@@ -2350,7 +2951,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "주조에 필요한 무기가 존재하지 않거나 무기의 WeaponId가 일치하지 않습니다.",
     ContentTC = "鑄造所需要消耗的武器不存在或者武器的Weaponid無法對應",
     ErrorCodeContent = "铸造所需要消耗的武器不存在或者武器的Weaponid无法对应",
-    ErrorCodeId = 12018
+    ErrorCodeId = 12018,
   },
   [12019] = {
     ContentEN = "The client-selected amount does not match the configured quantity",
@@ -2358,7 +2959,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "클라이언트에서 선택한 무기 소모 수량이 설정된 수량과 일치하지 않습니다.",
     ContentTC = "用戶端選擇武器消耗的目標數量與配置數量對應不上",
     ErrorCodeContent = "客户端选择武器消耗的目标数量与配置数量对应不上",
-    ErrorCodeId = 12019
+    ErrorCodeId = 12019,
   },
   [12020] = {
     ContentEN = "Forging quantity must be greater than zero",
@@ -2366,7 +2967,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "주조 수량≤0",
     ContentTC = "鑄造數量≤0",
     ErrorCodeContent = "铸造数量≤0",
-    ErrorCodeId = 12020
+    ErrorCodeId = 12020,
   },
   [12021] = {
     ContentEN = "Duplicate weapons selected for forging",
@@ -2374,7 +2975,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "주조 무기가 중복되었습니다.",
     ContentTC = "鑄造武器重複",
     ErrorCodeContent = "铸造武器重复",
-    ErrorCodeId = 12021
+    ErrorCodeId = 12021,
   },
   [12022] = {
     ContentEN = "Invalid parameters selected for forging",
@@ -2382,7 +2983,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "주조 옵션 파라미터에 문제가 있습니다.",
     ContentTC = "鑄造選擇的參數有問題",
     ErrorCodeContent = "铸造选择的参数有问题",
-    ErrorCodeId = 12022
+    ErrorCodeId = 12022,
   },
   [12023] = {
     ContentEN = "Reason for adding to forging list not found",
@@ -2390,7 +2991,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "주조 추가 사유가 존재하지 않습니다.",
     ContentTC = "鑄造添加原因不存在",
     ErrorCodeContent = "铸造添加原因不存在",
-    ErrorCodeId = 12023
+    ErrorCodeId = 12023,
   },
   [12024] = {
     ContentEN = "Invalid quantity increment",
@@ -2398,7 +2999,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "수량 추가에 오류가 있습니다.",
     ContentTC = "增加數量錯誤",
     ErrorCodeContent = "增加数量错误",
-    ErrorCodeId = 12024
+    ErrorCodeId = 12024,
   },
   [12025] = {
     ContentEN = "Forging ID not found",
@@ -2406,7 +3007,11 @@ return ReadOnly("ErrorCode", {
     ContentKR = "주조 ID가 존재하지 않습니다.",
     ContentTC = "鑄造ID不存在",
     ErrorCodeContent = "铸造ID不存在",
-    ErrorCodeId = 12025
+    ErrorCodeId = 12025,
+  },
+  [12026] = {
+    ErrorCodeContent = "铸造的数量超过最大值",
+    ErrorCodeId = 12026,
   },
   [13001] = {
     ContentDE = "卡池參數錯誤",
@@ -2415,7 +3020,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "기원 파라미터 오류",
     ContentTC = "卡池參數錯誤",
     ErrorCodeContent = "万华参数错误",
-    ErrorCodeId = 13001
+    ErrorCodeId = 13001,
   },
   [13002] = {
     ContentDE = "當前卡池尚未開啟",
@@ -2424,7 +3029,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 기원이 오픈되지 않았습니다",
     ContentTC = "當前卡池尚未開啟",
     ErrorCodeContent = "当前万华尚未开启",
-    ErrorCodeId = 13002
+    ErrorCodeId = 13002,
   },
   [13003] = {
     ContentDE = "當前卡池不存在",
@@ -2433,7 +3038,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 기원이 존재하지 않습니다",
     ContentTC = "當前卡池不存在",
     ErrorCodeContent = "当前万华不存在",
-    ErrorCodeId = 13003
+    ErrorCodeId = 13003,
   },
   [13004] = {
     ContentDE = "月石不足，無法祈願",
@@ -2442,7 +3047,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "월석이 부족해 기원할 수 없습니다",
     ContentTC = "月石不足，無法祈願",
     ErrorCodeContent = "月石不足，无法寻觅",
-    ErrorCodeId = 13004
+    ErrorCodeId = 13004,
   },
   [13005] = {
     ContentDE = "卡池剩餘抽取次數不足",
@@ -2451,7 +3056,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "기원에 남은 뽑기 횟수가 부족합니다",
     ContentTC = "卡池剩餘抽取次數不足",
     ErrorCodeContent = "万华剩余寻觅次数不足",
-    ErrorCodeId = 13005
+    ErrorCodeId = 13005,
   },
   [13006] = {
     ContentEN = "Insufficient daily draw attempts",
@@ -2459,7 +3064,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "오늘 남은 뽑기 횟수가 부족합니다.",
     ContentTC = "今日剩餘抽取次數不足",
     ErrorCodeContent = "今日剩余寻觅次数不足",
-    ErrorCodeId = 13006
+    ErrorCodeId = 13006,
   },
   [13007] = {
     ContentEN = "Chrono prerequisite not met",
@@ -2467,55 +3072,31 @@ return ReadOnly("ErrorCode", {
     ContentKR = "추억 조건을 충족하지 않습니다.",
     ContentTC = "不滿足追覓條件",
     ErrorCodeContent = "不满足万华条件",
-    ErrorCodeId = 13007
+    ErrorCodeId = 13007,
   },
   [13008] = {
-    ContentEN = "Single-time Weave is not allowed",
-    ContentJP = "1回探求はできません",
-    ContentKR = "1회 탐색은 허용되지 않습니다.",
-    ContentTC = "不允許單次尋覓",
     ErrorCodeContent = "不允许单次寻觅",
-    ErrorCodeId = 13008
+    ErrorCodeId = 13008,
   },
   [13009] = {
-    ContentEN = "Selection is not allowed in the Myriad",
-    ContentJP = "万華では自選できません。",
-    ContentKR = "광채를 직접 선택할 수 없습니다.",
-    ContentTC = "萬華無法自選",
     ErrorCodeContent = "万华无法自选",
-    ErrorCodeId = 13009
+    ErrorCodeId = 13009,
   },
   [13010] = {
-    ContentEN = "Invalid item",
-    ContentJP = "選択したアイテムが無効です。",
-    ContentKR = "선택한 아이템이 유효하지 않습니다.",
-    ContentTC = "選擇的道具無效",
     ErrorCodeContent = "选择的道具无效",
-    ErrorCodeId = 13010
+    ErrorCodeId = 13010,
   },
   [13011] = {
-    ContentEN = "Please select a character first",
-    ContentJP = "キャラクターが選択されていません",
-    ContentKR = "캐릭터를 선택하지 않아 기원할 수 없습니다.",
-    ContentTC = "未選擇自選角色，無法祈願",
     ErrorCodeContent = "未选择自选角色，无法祈愿",
-    ErrorCodeId = 13011
+    ErrorCodeId = 13011,
   },
   [13012] = {
-    ContentEN = "Unable to claim Gleamwoven Threads rewards",
-    ContentJP = "「光の糸を紡ぐ」報酬を受け取れません",
-    ContentKR = "뒤얽힌 빛 보상을 수령할 수 없습니다.",
-    ContentTC = "無法領取擷光織縷獎勵",
     ErrorCodeContent = "无法领取撷光织缕奖励",
-    ErrorCodeId = 13012
+    ErrorCodeId = 13012,
   },
   [13013] = {
-    ContentEN = "No Gleamwoven Threads rewards",
-    ContentJP = "受け取れる「光の糸を紡ぐ」報酬はありません",
-    ContentKR = "수령할 수 없는 뒤얽힌 빛 보상",
-    ContentTC = "無可領取的擷光織縷獎勵",
     ErrorCodeContent = "无可领取的撷光织缕奖励",
-    ErrorCodeId = 13013
+    ErrorCodeId = 13013,
   },
   [14001] = {
     ContentDE = "當前商品不存在",
@@ -2524,7 +3105,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "존재하지 않는 상품입니다",
     ContentTC = "當前商品不存在",
     ErrorCodeContent = "当前商品不存在",
-    ErrorCodeId = 14001
+    ErrorCodeId = 14001,
   },
   [14002] = {
     ContentDE = "當前商品已售罄",
@@ -2533,7 +3114,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "판매 종료된 상품입니다",
     ContentTC = "當前商品已售罄",
     ErrorCodeContent = "当前商品已售罄",
-    ErrorCodeId = 14002
+    ErrorCodeId = 14002,
   },
   [14003] = {
     ContentDE = "所購買的商品數量大於商品剩餘購買次數",
@@ -2542,7 +3123,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "구매하려는 상품 수량이 남은 구매 가능 횟수를 초과했습니다",
     ContentTC = "所購買的商品數量大於商品剩餘購買次數",
     ErrorCodeContent = "所购买的商品数量大于商品剩余购买次数",
-    ErrorCodeId = 14003
+    ErrorCodeId = 14003,
   },
   [14004] = {
     ContentDE = "購買商品所需貨幣不足",
@@ -2551,7 +3132,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "상품 구매에 필요한 화폐가 부족합니다",
     ContentTC = "購買商品所需貨幣不足",
     ErrorCodeContent = "购买商品所需货币不足",
-    ErrorCodeId = 14004
+    ErrorCodeId = 14004,
   },
   [14005] = {
     ContentDE = "商品數量參數不正確",
@@ -2560,7 +3141,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "상품 수량 파라미터가 정확하지 않습니다",
     ContentTC = "商品數量參數不正確",
     ErrorCodeContent = "商品数量参数不正确",
-    ErrorCodeId = 14005
+    ErrorCodeId = 14005,
   },
   [14006] = {
     ContentDE = "商品已下架，請返回商城",
@@ -2569,7 +3150,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "상품의 판매가 종료되었습니다. 상점으로 돌아가주세요",
     ContentTC = "商品已下架，請返回商城",
     ErrorCodeContent = "商品已下架",
-    ErrorCodeId = 14006
+    ErrorCodeId = 14006,
   },
   [14007] = {
     ContentEN = "Invalid item type",
@@ -2577,7 +3158,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "상품 유형이 유효하지 않습니다.",
     ContentTC = "商品類型無效",
     ErrorCodeContent = "商品类型无效",
-    ErrorCodeId = 14007
+    ErrorCodeId = 14007,
   },
   [14008] = {
     ContentEN = "Trial Rank requirement not met",
@@ -2585,7 +3166,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "수련 레벨이 부족합니다.",
     ContentTC = "曆練等級不足",
     ErrorCodeContent = "历练等级不足",
-    ErrorCodeId = 14008
+    ErrorCodeId = 14008,
   },
   [14009] = {
     ContentEN = "Item not found",
@@ -2593,7 +3174,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 상품은 존재하지 않습니다.",
     ContentTC = "當前商品不存在",
     ErrorCodeContent = "当前商品不存在",
-    ErrorCodeId = 14009
+    ErrorCodeId = 14009,
   },
   [14010] = {
     ContentEN = "Item not yet unlocked",
@@ -2601,7 +3182,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 상품은 잠겨 있습니다.",
     ContentTC = "當前商品未解鎖",
     ErrorCodeContent = "当前商品未解锁",
-    ErrorCodeId = 14010
+    ErrorCodeId = 14010,
   },
   [14011] = {
     ContentEN = "Item already owned",
@@ -2609,31 +3190,31 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 보유 중인 상품입니다.",
     ContentTC = "當前商品已擁有",
     ErrorCodeContent = "当前商品已拥有",
-    ErrorCodeId = 14011
+    ErrorCodeId = 14011,
   },
   [14012] = {
-    ContentEN = "This item cannot be purchased by Phoxene",
-    ContentJP = "月ノ石で購入できません",
-    ContentKR = "월석으로 구매할 수 있는 상품이 아닙니다.",
-    ContentTC = "不屬於使用月石購買的商品",
     ErrorCodeContent = "不属于使用月石购买的商品",
-    ErrorCodeId = 14012
+    ErrorCodeId = 14012,
   },
   [14013] = {
-    ContentEN = "Invalid item tag information",
-    ContentJP = "商品タグデータにエラー発生",
-    ContentKR = "상품 탭 정보 오류",
-    ContentTC = "商品頁簽信息有誤",
     ErrorCodeContent = "商品页签信息有误",
-    ErrorCodeId = 14013
+    ErrorCodeId = 14013,
   },
   [14014] = {
-    ContentEN = "Item tag not unlocked",
-    ContentJP = "商品タグ未開放",
-    ContentKR = "상품 탭이 해제되지 않았습니다.",
-    ContentTC = "商品頁簽未解鎖",
     ErrorCodeContent = "商品页签未解锁",
-    ErrorCodeId = 14014
+    ErrorCodeId = 14014,
+  },
+  [14015] = {
+    ErrorCodeContent = "商品无需增强红点",
+    ErrorCodeId = 14015,
+  },
+  [14016] = {
+    ErrorCodeContent = "商品增强红点已清除",
+    ErrorCodeId = 14016,
+  },
+  [14017] = {
+    ErrorCodeContent = "商品解锁所需战斗积分不足",
+    ErrorCodeId = 14017,
   },
   [15001] = {
     ContentDE = "狀態切換失敗",
@@ -2642,7 +3223,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "상태 전환에 실패했습니다.",
     ContentTC = "狀態切換失敗",
     ErrorCodeContent = "状态切换失败",
-    ErrorCodeId = 15001
+    ErrorCodeId = 15001,
   },
   [16001] = {
     ContentDE = "該印象加值ID不存在",
@@ -2651,7 +3232,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "상품의 판매가 종료되었습니다. 상점으로 돌아가주세요",
     ContentTC = "該印象加值ID不存在",
     ErrorCodeContent = "该印象加值ID不存在",
-    ErrorCodeId = 16001
+    ErrorCodeId = 16001,
   },
   [16002] = {
     ContentDE = "該印象檢定ID不存在",
@@ -2660,7 +3241,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 인상 판정 ID가 존재하지 않습니다",
     ContentTC = "該印象檢定ID不存在",
     ErrorCodeContent = "该印象检定ID不存在",
-    ErrorCodeId = 16002
+    ErrorCodeId = 16002,
   },
   [16003] = {
     ContentDE = "該對話ID不存在",
@@ -2669,7 +3250,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 대화 ID가 존재하지 않습니다",
     ContentTC = "該對話ID不存在",
     ErrorCodeContent = "该对话ID不存在",
-    ErrorCodeId = 16003
+    ErrorCodeId = 16003,
   },
   [16004] = {
     ContentDE = "該任務鏈不存在",
@@ -2678,7 +3259,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 연속 퀘스트가 존재하지 않습니다",
     ContentTC = "該任務鏈不存在",
     ErrorCodeContent = "该任务链不存在",
-    ErrorCodeId = 16004
+    ErrorCodeId = 16004,
   },
   [16005] = {
     ContentDE = "對話失敗",
@@ -2687,7 +3268,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "대화 실패",
     ContentTC = "對話失敗",
     ErrorCodeContent = "对话失败",
-    ErrorCodeId = 16005
+    ErrorCodeId = 16005,
   },
   [16006] = {
     ContentEN = "Impression check not the first time",
@@ -2695,7 +3276,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "인상 시스템이 처음 검사하는 것이 아닙니다.",
     ContentTC = "印象系統不是第一次進行檢測",
     ErrorCodeContent = "印象系统不是第一次进行检测",
-    ErrorCodeId = 16006
+    ErrorCodeId = 16006,
   },
   [16007] = {
     ContentEN = "Repeated additions not allowed",
@@ -2703,7 +3284,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "중복된 항목을 추가할 수 없습니다.",
     ContentTC = "重複進行添加",
     ErrorCodeContent = "重复进行添加",
-    ErrorCodeId = 16007
+    ErrorCodeId = 16007,
   },
   [16008] = {
     ContentEN = "Inconsistent dice count",
@@ -2711,7 +3292,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "주사위 수량이 일치하지 않습니다.",
     ContentTC = "骰子數量不一致",
     ErrorCodeContent = "骰子数量不一致",
-    ErrorCodeId = 16008
+    ErrorCodeId = 16008,
   },
   [16009] = {
     ContentEN = "Configured resource deduction quantity incorrect",
@@ -2719,7 +3300,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "설정된 리소스 차감 수량에 문제가 있습니다.",
     ContentTC = "配置的扣除資源數量有問題",
     ErrorCodeContent = "配置的扣除资源数量有问题",
-    ErrorCodeId = 16009
+    ErrorCodeId = 16009,
   },
   [16010] = {
     ContentEN = "Target resource for failure deduction missing",
@@ -2727,7 +3308,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "실패 시 차감될 리소스가 존재하지 않습니다.",
     ContentTC = "不存在失敗所扣除的目標資源",
     ErrorCodeContent = "不存在失败所扣除的目标资源",
-    ErrorCodeId = 16010
+    ErrorCodeId = 16010,
   },
   [16011] = {
     ContentEN = "Quest node already completed",
@@ -2735,7 +3316,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 퀘스트 노드가 이미 완료되었습니다.",
     ContentTC = "該任務節點已經完成",
     ErrorCodeContent = "该任务节点已经完成",
-    ErrorCodeId = 16011
+    ErrorCodeId = 16011,
   },
   [16012] = {
     ContentEN = "Node already successfully cleared",
@@ -2743,7 +3324,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 노드가 이미 성공적으로 처리되었습니다.",
     ContentTC = "該節點已經成功",
     ErrorCodeContent = "该节点已经成功",
-    ErrorCodeId = 16012
+    ErrorCodeId = 16012,
   },
   [16013] = {
     ContentEN = "TalkTriggerId not found in the Impression system",
@@ -2751,7 +3332,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 인상 시스템의 talktriggerId가 존재하지 않습니다.",
     ContentTC = "該印象系統talktriggerId不存在",
     ErrorCodeContent = "该印象系统talktriggerId不存在",
-    ErrorCodeId = 16013
+    ErrorCodeId = 16013,
   },
   [16014] = {
     ContentEN = "Script not found",
@@ -2759,7 +3340,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "스크립트가 존재하지 않습니다.",
     ContentTC = "臺本不存在",
     ErrorCodeContent = "台本不存在",
-    ErrorCodeId = 16014
+    ErrorCodeId = 16014,
   },
   [16015] = {
     ContentEN = "Impression item not found",
@@ -2767,7 +3348,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "인상 상품이 존재하지 않습니다.",
     ContentTC = "印象商品不存在",
     ErrorCodeContent = "印象商品不存在",
-    ErrorCodeId = 16015
+    ErrorCodeId = 16015,
   },
   [16016] = {
     ContentEN = "Impression item prerequisite not met",
@@ -2775,7 +3356,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "인상 상품의 조건이 해제되지 않았습니다.",
     ContentTC = "印象商品條件未解鎖",
     ErrorCodeContent = "印象商品条件未解锁",
-    ErrorCodeId = 16016
+    ErrorCodeId = 16016,
   },
   [16017] = {
     ContentEN = "Exceeded maximum purchase limit",
@@ -2783,7 +3364,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "최대 구매 횟수를 초과했습니다.",
     ContentTC = "超過最大購買次數",
     ErrorCodeContent = "超过最大购买次数",
-    ErrorCodeId = 16017
+    ErrorCodeId = 16017,
   },
   [16018] = {
     ContentEN = "Cannot purchase items from another region in the current area",
@@ -2791,7 +3372,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 지역에서는 다른 지역의 상품을 구매할 수 없습니다.",
     ContentTC = "不能在當前區域購買其他區域的商品",
     ErrorCodeContent = "不能在当前区域购买其他区域的商品",
-    ErrorCodeId = 16018
+    ErrorCodeId = 16018,
   },
   [16019] = {
     ContentEN = "Config table error: Impression item data not found",
@@ -2799,7 +3380,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "테이블 오류로 인해 해당 인상 상품의 데이터가 존재하지 않습니다.",
     ContentTC = "配表錯誤特指不存在該印象商品的表格資料",
     ErrorCodeContent = "配表错误特指不存在该印象商品的表格数据",
-    ErrorCodeId = 16019
+    ErrorCodeId = 16019,
   },
   [16020] = {
     ContentEN = "Error in resource consumption config",
@@ -2807,7 +3388,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "상품 소모 리소스 테이블에 오류가 있습니다.",
     ContentTC = "商品消耗資源配表錯誤",
     ErrorCodeContent = "商品消耗资源配表错误",
-    ErrorCodeId = 16020
+    ErrorCodeId = 16020,
   },
   [16021] = {
     ContentEN = "TalkNodeId is null",
@@ -2815,7 +3396,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "TalkNodeId가 비어 있습니다.",
     ContentTC = "TalkNodeId是空",
     ErrorCodeContent = "TalkNodeId是空",
-    ErrorCodeId = 16021
+    ErrorCodeId = 16021,
   },
   [16022] = {
     ContentEN = "Impression increment ID must be a positive integer",
@@ -2823,119 +3404,63 @@ return ReadOnly("ErrorCode", {
     ContentKR = "인상 값 ID가 정수가 아니거나 0 이하입니다.",
     ContentTC = "印象加值ID不是Int或者小於等於0",
     ErrorCodeContent = "印象加值ID不是Int或者小于等于0",
-    ErrorCodeId = 16022
+    ErrorCodeId = 16022,
   },
   [16023] = {
-    ContentEN = "Incorrect prerequisite node for the Impression check",
-    ContentJP = "フィーリングシステムの前のノードにエラー発生",
-    ContentKR = "인상 시스템의 선행 노드에 오류가 있습니다.",
-    ContentTC = "印象系統的前置節點錯誤",
     ErrorCodeContent = "印象系统的前置节点错误",
-    ErrorCodeId = 16023
+    ErrorCodeId = 16023,
   },
   [16024] = {
-    ContentEN = "Prerequisite node not completed for the Impression check",
-    ContentJP = "フィーリングシステムの前のノードが未完了",
-    ContentKR = "인상 시스템의 선행 노드가 완료되지 않았습니다.",
-    ContentTC = "印象系統前置節點未完成",
     ErrorCodeContent = "印象系统前置节点未完成",
-    ErrorCodeId = 16024
+    ErrorCodeId = 16024,
   },
   [16025] = {
-    ContentEN = "Incorrect node for the Impression check",
-    ContentJP = "フィーリングシステムの当該ノードにエラー発生",
-    ContentKR = "인상 시스템의 현재 노드에 오류가 있습니다.",
-    ContentTC = "印象系統當前節點錯誤",
     ErrorCodeContent = "印象系统当前节点错误",
-    ErrorCodeId = 16025
+    ErrorCodeId = 16025,
   },
   [16026] = {
-    ContentEN = "Current node for the Impression check already exists",
-    ContentJP = "フィーリングシステムの当該ノードがすでに存在",
-    ContentKR = "인상 시스템의 현재 노드가 이미 존재합니다.",
-    ContentTC = "印象系統當前節點已經存在",
     ErrorCodeContent = "印象系统当前节点已经存在",
-    ErrorCodeId = 16026
+    ErrorCodeId = 16026,
   },
   [16027] = {
-    ContentEN = "Correct node for the Impression check",
-    ContentJP = "フィーリングノードはもう成功しました",
-    ContentKR = "인상 노드를 이미 성공했습니다.",
-    ContentTC = "印象節點已經成功",
     ErrorCodeContent = "印象节点已经成功",
-    ErrorCodeId = 16027
+    ErrorCodeId = 16027,
   },
   [16028] = {
-    ContentEN = "Misconfigured DialogueId in the Impression Check Table",
-    ContentJP = "アクテイブフィーリングテーブルに設定されたDialogueIdにエラー発生",
-    ContentKR = "인상 시스템 구성의 DialogueId에 오류가 있습니다.",
-    ContentTC = "動態印象表配置的DialogueId錯誤",
     ErrorCodeContent = "动态印象表配置的DialogueId错误",
-    ErrorCodeId = 16028
+    ErrorCodeId = 16028,
   },
   [16029] = {
-    ContentEN = "Invalid storage length",
-    ContentJP = "ストレージの長さが不正",
-    ContentKR = "저장 길이 오류",
-    ContentTC = "存儲長度有問題",
     ErrorCodeContent = "存储长度有问题",
-    ErrorCodeId = 16029
+    ErrorCodeId = 16029,
   },
   [16030] = {
-    ContentEN = "A storage node exists among the prerequisite nodes",
-    ContentJP = "ストレージノードが前のノードに存在",
-    ContentKR = "선행 노드에 저장된 노드가 존재합니다.",
-    ContentTC = "前置節點存在存儲節點",
     ErrorCodeContent = "前置节点存在存储节点",
-    ErrorCodeId = 16030
+    ErrorCodeId = 16030,
   },
   [16031] = {
-    ContentEN = "Subsequent node does not exist",
-    ContentJP = "後ろのノードが存在しません",
-    ContentKR = "후행 노드가 존재하지 않습니다.",
-    ContentTC = "後置節點不存在",
     ErrorCodeContent = "后置节点不存在",
-    ErrorCodeId = 16031
+    ErrorCodeId = 16031,
   },
   [16032] = {
-    ContentEN = "Subsequent node storage error",
-    ContentJP = "後ろのノードにストレージエラー発生",
-    ContentKR = "후행 노드 저장 오류",
-    ContentTC = "後置節點存儲錯誤",
     ErrorCodeContent = "后置节点存储错误",
-    ErrorCodeId = 16032
+    ErrorCodeId = 16032,
   },
   [16033] = {
-    ContentEN = "No subsequent nodes are stored",
-    ContentJP = "後ろのノードにストレージが存在しません",
-    ContentKR = "후행 노드가 모두 저장되지 않았습니다.",
-    ContentTC = "後置節點都未存儲",
     ErrorCodeContent = "后置节点都未存储",
-    ErrorCodeId = 16033
+    ErrorCodeId = 16033,
   },
   [16034] = {
-    ContentEN = "Region usage table does not exist",
-    ContentJP = "エリア適用表が存在しません",
-    ContentKR = "구역 사용 테이블이 존재하지 않습니다.",
-    ContentTC = "區域使用表不存在",
     ErrorCodeContent = "区域使用表不存在",
-    ErrorCodeId = 16034
+    ErrorCodeId = 16034,
   },
   [16035] = {
-    ContentEN = "Region bonus ID does not exist",
-    ContentJP = "エリアボーナスＩＤが存在しません",
-    ContentKR = "구역의 부가 밸류 구역 ID가 존재하지 않습니다.",
-    ContentTC = "區域加值區域Id不存在",
     ErrorCodeContent = "区域加值区域Id不存在",
-    ErrorCodeId = 16035
+    ErrorCodeId = 16035,
   },
   [16036] = {
-    ContentEN = "Bonus cannot be applied to the current region",
-    ContentJP = "現在のエリアにボーナス不能",
-    ContentKR = "밸류 부가가 불가능한 구역입니다.",
-    ContentTC = "當前區域不能加值",
     ErrorCodeContent = "当前区域不能加值",
-    ErrorCodeId = 16036
+    ErrorCodeId = 16036,
   },
   [17001] = {
     ContentDE = "該成就不存在",
@@ -2944,7 +3469,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "존재하지 않는 업적",
     ContentTC = "該成就不存在",
     ErrorCodeContent = "该成就不存在",
-    ErrorCodeId = 17001
+    ErrorCodeId = 17001,
   },
   [17002] = {
     ContentDE = "成就獎勵已經領取",
@@ -2953,7 +3478,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "업적 보상을 수령했습니다",
     ContentTC = "成就獎勵已經領取",
     ErrorCodeContent = "成就奖励已经领取",
-    ErrorCodeId = 17002
+    ErrorCodeId = 17002,
   },
   [17003] = {
     ContentDE = "當前成就未完成",
@@ -2962,7 +3487,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 업적을 달성하지 못했습니다",
     ContentTC = "當前成就未完成",
     ErrorCodeContent = "当前成就未完成",
-    ErrorCodeId = 17003
+    ErrorCodeId = 17003,
   },
   [17004] = {
     ContentDE = "該成就不存在",
@@ -2971,7 +3496,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "존재하지 않는 업적",
     ContentTC = "該成就不存在",
     ErrorCodeContent = "该成就不存在",
-    ErrorCodeId = 17004
+    ErrorCodeId = 17004,
   },
   [17005] = {
     ContentDE = "該成就類型不存在",
@@ -2980,7 +3505,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "존재하지 않는 유형의 업적",
     ContentTC = "該成就類型不存在",
     ErrorCodeContent = "该成就类型不存在",
-    ErrorCodeId = 17005
+    ErrorCodeId = 17005,
   },
   [17006] = {
     ContentDE = "當前成就類型無獎勵可領取",
@@ -2989,7 +3514,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 업적 유형에 수령 가능한 보상이 없습니다",
     ContentTC = "當前成就類型無獎勵可領取",
     ErrorCodeContent = "当前成就类型无奖励可领取",
-    ErrorCodeId = 17006
+    ErrorCodeId = 17006,
   },
   [18001] = {
     ContentDE = "該夢魘殘聲不存在",
@@ -2998,7 +3523,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 악몽의 잔향이 존재하지 않습니다",
     ContentTC = "該夢魘殘聲不存在",
     ErrorCodeContent = "该梦魇残声不存在",
-    ErrorCodeId = 18001
+    ErrorCodeId = 18001,
   },
   [18002] = {
     ContentDE = "該夢魘殘聲難度不存在",
@@ -3007,7 +3532,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 악몽의 잔향 난이도가 존재하지 않습니다",
     ContentTC = "該夢魘殘聲難度不存在",
     ErrorCodeContent = "该梦魇残声难度不存在",
-    ErrorCodeId = 18002
+    ErrorCodeId = 18002,
   },
   [18003] = {
     ContentDE = "當前不滿足夢魘殘聲所需條件",
@@ -3016,7 +3541,11 @@ return ReadOnly("ErrorCode", {
     ContentKR = "악몽의 잔향에 필요한 조건이 충족되지 않았습니다",
     ContentTC = "當前不滿足夢魘殘聲所需條件",
     ErrorCodeContent = "当前不满足梦魇残声所需条件",
-    ErrorCodeId = 18003
+    ErrorCodeId = 18003,
+  },
+  [18004] = {
+    ErrorCodeContent = "梦魇残声不能以单机关卡模式进入",
+    ErrorCodeId = 18004,
   },
   [19001] = {
     ContentDE = "戰術背包不存在",
@@ -3025,7 +3554,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "전술 가방이 존재하지 않습니다",
     ContentTC = "戰術背包不存在",
     ErrorCodeContent = "战术背包不存在",
-    ErrorCodeId = 19001
+    ErrorCodeId = 19001,
   },
   [19002] = {
     ContentDE = "戰術背包空位不存在",
@@ -3034,7 +3563,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "전술 가방에 빈 슬롯이 없습니다",
     ContentTC = "戰術背包空位不存在",
     ErrorCodeContent = "战术背包槽位不存在",
-    ErrorCodeId = 19002
+    ErrorCodeId = 19002,
   },
   [19003] = {
     ContentDE = "無法重複設置戰術背包空位",
@@ -3043,16 +3572,16 @@ return ReadOnly("ErrorCode", {
     ContentKR = "전술 가방의 빈 슬롯을 중복 설정할 수 없습니다",
     ContentTC = "無法重複設置戰術背包空位",
     ErrorCodeContent = "无法重复设置战术背包槽位",
-    ErrorCodeId = 19003
+    ErrorCodeId = 19003,
   },
   [19004] = {
     ContentDE = "武器已被其他角色裝備",
-    ContentEN = "Weapon's been equipped by another character",
+    ContentEN = "Weapon\'s been equipped by another character",
     ContentJP = "この武器が他のキャラに装着されています",
     ContentKR = "무기가 다른 캐릭터에 착용된 상태입니다",
     ContentTC = "武器已被其他角色裝備",
     ErrorCodeContent = "武器已被其他角色装备",
-    ErrorCodeId = 19004
+    ErrorCodeId = 19004,
   },
   [19005] = {
     ContentDE = "戰術背包無法設置重複的戰鬥道具",
@@ -3061,7 +3590,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "전투 가방에 중복되는 전투 아이템을 설정할 수 없습니다",
     ContentTC = "戰術背包無法設置重複的戰鬥道具",
     ErrorCodeContent = "战术背包无法设置重复的道具",
-    ErrorCodeId = 19005
+    ErrorCodeId = 19005,
   },
   [19006] = {
     ContentDE = "攜帶的戰鬥道具已耗盡",
@@ -3070,7 +3599,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "휴대한 전투 아이템이 모두 소진되었습니다",
     ContentTC = "攜帶的戰鬥道具已耗盡",
     ErrorCodeContent = "携带的道具已耗尽",
-    ErrorCodeId = 19006
+    ErrorCodeId = 19006,
   },
   [20001] = {
     ContentDE = "該物品不存在",
@@ -3079,7 +3608,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 아이템이 존재하지 않습니다",
     ContentTC = "該物品不存在",
     ErrorCodeContent = "该物品不存在",
-    ErrorCodeId = 20001
+    ErrorCodeId = 20001,
   },
   [20002] = {
     ContentDE = "協戰同伴沒有裝備武器",
@@ -3088,7 +3617,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "협력 동료가 무기를 장착하지 않았습니다",
     ContentTC = "協戰同伴沒有裝備武器",
     ErrorCodeContent = "协战同伴没有装备武器",
-    ErrorCodeId = 20002
+    ErrorCodeId = 20002,
   },
   [20003] = {
     ContentDE = "戰術背包中沒有配置該物品",
@@ -3097,7 +3626,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "전술 가방에 해당 아이템을 배치하지 않았습니다",
     ContentTC = "戰術背包中沒有配置該物品",
     ErrorCodeContent = "战术背包中没有配置该物品",
-    ErrorCodeId = 20003
+    ErrorCodeId = 20003,
   },
   [20004] = {
     ContentDE = "無法協戰，不存在該角色",
@@ -3106,7 +3635,15 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 캐릭터가 존재하지 않아 전투 협력을 사용할 수 없습니다",
     ContentTC = "無法協戰，不存在該角色",
     ErrorCodeContent = "无法使用协战同伴，不存在该角色",
-    ErrorCodeId = 20004
+    ErrorCodeId = 20004,
+  },
+  [20005] = {
+    ErrorCodeContent = "轮盘配置不存在",
+    ErrorCodeId = 20005,
+  },
+  [20006] = {
+    ErrorCodeContent = "资源数量有误",
+    ErrorCodeId = 20006,
   },
   [21001] = {
     ContentDE = "該信件不存在",
@@ -3115,7 +3652,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 우편이 존재하지 않습니다",
     ContentTC = "該信件不存在",
     ErrorCodeContent = "该邮件不存在",
-    ErrorCodeId = 21001
+    ErrorCodeId = 21001,
   },
   [21002] = {
     ContentDE = "信件箱已滿",
@@ -3124,7 +3661,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "우편함이 가득 찼습니다",
     ContentTC = "信件箱已滿",
     ErrorCodeContent = "收件箱已满",
-    ErrorCodeId = 21002
+    ErrorCodeId = 21002,
   },
   [21003] = {
     ContentDE = "星標信件已滿",
@@ -3133,7 +3670,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "별표 우편이 가득 찼습니다",
     ContentTC = "星標信件已滿",
     ErrorCodeContent = "星标邮件已满",
-    ErrorCodeId = 21003
+    ErrorCodeId = 21003,
   },
   [21004] = {
     ContentDE = "玩家資訊不存在",
@@ -3142,7 +3679,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "플레이어 정보가 존재하지 않습니다",
     ContentTC = "玩家資訊不存在",
     ErrorCodeContent = "玩家信息不存在",
-    ErrorCodeId = 21004
+    ErrorCodeId = 21004,
   },
   [21005] = {
     ContentDE = "信件獎勵已領取",
@@ -3151,7 +3688,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "우편 보상을 수령했습니다",
     ContentTC = "信件獎勵已領取",
     ErrorCodeContent = "邮件奖励已领取",
-    ErrorCodeId = 21005
+    ErrorCodeId = 21005,
   },
   [21006] = {
     ContentDE = "該信件已被標記為已讀",
@@ -3160,7 +3697,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 우편을 읽은 우편으로 변경했습니다",
     ContentTC = "該信件已被標記為已讀",
     ErrorCodeContent = "该邮件已被标记为已读",
-    ErrorCodeId = 21006
+    ErrorCodeId = 21006,
   },
   [21007] = {
     ContentDE = "該信件中無附加獎勵",
@@ -3169,7 +3706,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 우편에 부가된 보상이 없습니다",
     ContentTC = "該信件中無附加獎勵",
     ErrorCodeContent = "该邮件中无附加奖励",
-    ErrorCodeId = 21007
+    ErrorCodeId = 21007,
   },
   [22001] = {
     ContentDE = "該系統引導不存在",
@@ -3178,7 +3715,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 시스템 가이드가 존재하지 않습니다",
     ContentTC = "該系統引導不存在",
     ErrorCodeContent = "该系统引导不存在",
-    ErrorCodeId = 22001
+    ErrorCodeId = 22001,
   },
   [22002] = {
     ContentDE = "該系統引導已完成",
@@ -3187,7 +3724,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 해당 시스템 가이드를 완료했습니다",
     ContentTC = "該系統引導已完成",
     ErrorCodeContent = "该系统引导已完成",
-    ErrorCodeId = 22002
+    ErrorCodeId = 22002,
   },
   [23001] = {
     ContentDE = "該角色不存在",
@@ -3196,7 +3733,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 캐릭터가 존재하지 않습니다",
     ContentTC = "該角色不存在",
     ErrorCodeContent = "该角色不存在",
-    ErrorCodeId = 23001
+    ErrorCodeId = 23001,
   },
   [23002] = {
     ContentDE = "該主題不存在",
@@ -3205,7 +3742,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 테마가 존재하지 않습니다",
     ContentTC = "該主題不存在",
     ErrorCodeContent = "该主题不存在",
-    ErrorCodeId = 23002
+    ErrorCodeId = 23002,
   },
   [23003] = {
     ContentDE = "材料不足",
@@ -3214,7 +3751,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "재료 부족",
     ContentTC = "材料不足",
     ErrorCodeContent = "材料不足",
-    ErrorCodeId = 23003
+    ErrorCodeId = 23003,
   },
   [23004] = {
     ContentDE = "角色已解鎖",
@@ -3223,7 +3760,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐릭터가 해제되었습니다.",
     ContentTC = "角色已解鎖",
     ErrorCodeContent = "角色已解锁",
-    ErrorCodeId = 23004
+    ErrorCodeId = 23004,
   },
   [23005] = {
     ContentDE = "獎勵已領取",
@@ -3232,7 +3769,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "보상을 수령했습니다",
     ContentTC = "獎勵已領取",
     ErrorCodeContent = "奖励已领取",
-    ErrorCodeId = 23005
+    ErrorCodeId = 23005,
   },
   [23006] = {
     ContentDE = "話題尚未完成",
@@ -3241,7 +3778,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "화제가 완료되지 않았습니다",
     ContentTC = "話題尚未完成",
     ErrorCodeContent = "前一话题尚未完成",
-    ErrorCodeId = 23006
+    ErrorCodeId = 23006,
   },
   [23007] = {
     ContentEN = "Conversation topic already unlocked",
@@ -3249,7 +3786,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "대화 주제가 해제되었습니다.",
     ContentTC = "話題聊天已解鎖",
     ErrorCodeContent = "话题聊天已解锁",
-    ErrorCodeId = 23007
+    ErrorCodeId = 23007,
   },
   [23008] = {
     ContentEN = "Conversation topic prerequisite not met",
@@ -3257,7 +3794,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "대화 주제 해제 조건을 충족하지 않았습니다.",
     ContentTC = "話題聊天解鎖條件不滿足",
     ErrorCodeContent = "话题聊天解锁条件不满足",
-    ErrorCodeId = 23008
+    ErrorCodeId = 23008,
   },
   [23009] = {
     ContentEN = "Conversation topic not yet unlocked",
@@ -3265,7 +3802,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "대화 주제가 해제되지 않았습니다.",
     ContentTC = "話題聊天未解鎖",
     ErrorCodeContent = "话题聊天未解锁",
-    ErrorCodeId = 23009
+    ErrorCodeId = 23009,
   },
   [23010] = {
     ContentEN = "Conversation topic already completed",
@@ -3273,7 +3810,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "대화 주제를 이미 완료했습니다.",
     ContentTC = "話題聊天已完成",
     ErrorCodeContent = "话题聊天已完成",
-    ErrorCodeId = 23010
+    ErrorCodeId = 23010,
   },
   [24001] = {
     ContentDE = "精力不足",
@@ -3282,7 +3819,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "에너지 부족",
     ContentTC = "精力不足",
     ErrorCodeContent = "精力不足",
-    ErrorCodeId = 24001
+    ErrorCodeId = 24001,
   },
   [24002] = {
     ContentEN = "Sanergy is full",
@@ -3290,7 +3827,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "에너지가 가득 찼습니다.",
     ContentTC = "精力已滿",
     ErrorCodeContent = "精力已满",
-    ErrorCodeId = 24002
+    ErrorCodeId = 24002,
   },
   [24003] = {
     ContentEN = "Sanergy purchase attempts used up",
@@ -3298,7 +3835,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "에너지 구매 횟수가 상한에 도달했습니다.",
     ContentTC = "精力購買次數已達上限",
     ErrorCodeContent = "精力购买次数已达上限",
-    ErrorCodeId = 24003
+    ErrorCodeId = 24003,
   },
   [24004] = {
     ContentEN = "Insufficient resources for Sanergy purchase",
@@ -3306,7 +3843,27 @@ return ReadOnly("ErrorCode", {
     ContentKR = "정신력 구매에 필요한 리소스가 부족합니다.",
     ContentTC = "精力購買所需資源不足",
     ErrorCodeContent = "精力购买所需资源不足",
-    ErrorCodeId = 24004
+    ErrorCodeId = 24004,
+  },
+  [24005] = {
+    ErrorCodeContent = "体力消耗奖励不在时间范围内",
+    ErrorCodeId = 24005,
+  },
+  [24006] = {
+    ErrorCodeContent = "体力消耗奖励已领取",
+    ErrorCodeId = 24006,
+  },
+  [24007] = {
+    ErrorCodeContent = "体力消耗奖励未满足领取条件",
+    ErrorCodeId = 24007,
+  },
+  [24008] = {
+    ErrorCodeContent = "体力消耗奖励未找到",
+    ErrorCodeId = 24008,
+  },
+  [24009] = {
+    ErrorCodeContent = "体力消耗奖励条件检查失败",
+    ErrorCodeId = 24009,
   },
   [25001] = {
     ContentDE = "與當前裝飾衝突",
@@ -3315,7 +3872,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 장식과 충돌이 있습니다",
     ContentTC = "與當前裝飾衝突",
     ErrorCodeContent = "与当前装饰冲突",
-    ErrorCodeId = 25001
+    ErrorCodeId = 25001,
   },
   [25002] = {
     ContentDE = "配飾不存在",
@@ -3324,7 +3881,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "장식이 존재하지 않습니다",
     ContentTC = "配飾不存在",
     ErrorCodeContent = "配饰不存在",
-    ErrorCodeId = 25002
+    ErrorCodeId = 25002,
   },
   [25003] = {
     ContentDE = "不存在配飾頁",
@@ -3333,7 +3890,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "장식 페이지가 존재하지 않습니다",
     ContentTC = "不存在配飾頁",
     ErrorCodeContent = "不存在配饰页",
-    ErrorCodeId = 25003
+    ErrorCodeId = 25003,
   },
   [25004] = {
     ContentDE = "服務端不存在設置裝飾的方法，表可能發生更改",
@@ -3342,7 +3899,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "서버에 장식을 설정하는 방법이 존재하지 않아 표가 변동될 수 있습니다",
     ContentTC = "服務端不存在設置裝飾的方法，表可能發生更改",
     ErrorCodeContent = "服务端不存在设置装饰的方法，表可能发生更改",
-    ErrorCodeId = 25004
+    ErrorCodeId = 25004,
   },
   [25005] = {
     ContentEN = "Accessory cannot be equipped by this character",
@@ -3350,15 +3907,11 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 장신구가 캐릭터와 충돌하여 장착할 수 없습니다.",
     ContentTC = "當前配飾與角色衝突不許裝備",
     ErrorCodeContent = "当前配饰与角色冲突不许装备",
-    ErrorCodeId = 25005
+    ErrorCodeId = 25005,
   },
   [25006] = {
-    ContentEN = "Server contains an accessory without corresponding configurations",
-    ContentJP = "サーバーサイドには設定されてない装飾があります。",
-    ContentKR = "서버에 구성 테이블이 없는 장신구가 존재합니다.",
-    ContentTC = "服務端存在一個沒有配表的配飾",
     ErrorCodeContent = "服务端存在一个没有配表的配饰",
-    ErrorCodeId = 25006
+    ErrorCodeId = 25006,
   },
   [26001] = {
     ContentEN = "Player avatar ID not found",
@@ -3366,7 +3919,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "유저 프로필 이미지 ID가 존재하지 않습니다.",
     ContentTC = "玩家頭像id不存在",
     ErrorCodeContent = "玩家头像id不存在",
-    ErrorCodeId = 26001
+    ErrorCodeId = 26001,
   },
   [26002] = {
     ContentEN = "Profile bio too long",
@@ -3374,7 +3927,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "유저 상태 메시지가 너무 깁니다",
     ContentTC = "玩家個性簽名過長",
     ErrorCodeContent = "玩家个性签名过长",
-    ErrorCodeId = 26002
+    ErrorCodeId = 26002,
   },
   [26003] = {
     ContentEN = "Maximum allowed birthday modifications reached",
@@ -3382,7 +3935,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "유저의 생일 수정 횟수가 상한에 도달했습니다.",
     ContentTC = "玩家修改生日次數已達上限",
     ErrorCodeContent = "玩家修改生日次数已达上限",
-    ErrorCodeId = 26003
+    ErrorCodeId = 26003,
   },
   [26004] = {
     ContentEN = "Invalid birthday date",
@@ -3390,23 +3943,23 @@ return ReadOnly("ErrorCode", {
     ContentKR = "유저 생일 날짜가 유효하지 않습니다.",
     ContentTC = "玩家生日日期不合法",
     ErrorCodeContent = "玩家生日日期不合法",
-    ErrorCodeId = 26004
+    ErrorCodeId = 26004,
   },
   [26005] = {
-    ContentEN = "Player profile bio contains content that violates the game's rules",
+    ContentEN = "Player profile bio contains content that violates the game\'s rules",
     ContentJP = "ステータスメッセージにはゲームのルールに違反する内容が含まれています",
     ContentKR = "상태 메시지가 규정에 맞지 않습니다.",
     ContentTC = "個性簽名不合規則",
     ErrorCodeContent = "个性签名不合规则",
-    ErrorCodeId = 26005
+    ErrorCodeId = 26005,
   },
   [26006] = {
-    ContentEN = "Player nickname contains content that violates the game's rules",
+    ContentEN = "Player nickname contains content that violates the game\'s rules",
     ContentJP = "ニックネームにはゲームのルールに違反する内容が含まれています",
     ContentKR = "유저 닉네임이 규정에 맞지 않습니다.",
     ContentTC = "玩家昵稱不合規則",
     ErrorCodeContent = "玩家昵称不合规则",
-    ErrorCodeId = 26006
+    ErrorCodeId = 26006,
   },
   [26007] = {
     ContentEN = "Player avatar not owned",
@@ -3414,7 +3967,35 @@ return ReadOnly("ErrorCode", {
     ContentKR = "유저가 해당 프로필 이미지를 보유하고 있지 않습니다.",
     ContentTC = "玩家頭像未擁有",
     ErrorCodeContent = "玩家头像未拥有",
-    ErrorCodeId = 26007
+    ErrorCodeId = 26007,
+  },
+  [26008] = {
+    ErrorCodeContent = "前主角昵称违法",
+    ErrorCodeId = 26008,
+  },
+  [26009] = {
+    ErrorCodeContent = "前主角昵称过长",
+    ErrorCodeId = 26009,
+  },
+  [26010] = {
+    ErrorCodeContent = "当前头像已设置",
+    ErrorCodeId = 26010,
+  },
+  [26011] = {
+    ErrorCodeContent = "当前头像框已设置",
+    ErrorCodeId = 26011,
+  },
+  [26012] = {
+    ErrorCodeContent = "玩家头像框未拥有",
+    ErrorCodeId = 26012,
+  },
+  [26013] = {
+    ErrorCodeContent = "玩家头像框不存在",
+    ErrorCodeId = 26013,
+  },
+  [26014] = {
+    ErrorCodeContent = "玩家移动端布局方案索引有误",
+    ErrorCodeId = 26014,
   },
   [27001] = {
     ContentEN = "Artefacts cannot be obtained more than once",
@@ -3422,7 +4003,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "유물은 중복으로 획득할 수 없습니다.",
     ContentTC = "遺物無法重複獲取",
     ErrorCodeContent = "遗物无法重复获取",
-    ErrorCodeId = 27001
+    ErrorCodeId = 27001,
   },
   [27002] = {
     ContentEN = "Lampwicks cannot be obtained more than once",
@@ -3430,7 +4011,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "심지는 중복으로 획득할 수 없습니다.",
     ContentTC = "燭芯無法重複獲取",
     ErrorCodeContent = "烛芯无法重复获取",
-    ErrorCodeId = 27002
+    ErrorCodeId = 27002,
   },
   [27003] = {
     ContentEN = "Area unaccessible",
@@ -3438,7 +4019,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 지역 진입 불가",
     ContentTC = "無法去往該區域",
     ErrorCodeContent = "无法去往该区域",
-    ErrorCodeId = 27003
+    ErrorCodeId = 27003,
   },
   [27004] = {
     ContentEN = "Maze of Missteps does not exist",
@@ -3446,7 +4027,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "미로의 갈림길이 존재하지 않습니다.",
     ContentTC = "迷津不存在",
     ErrorCodeContent = "迷津不存在",
-    ErrorCodeId = 27004
+    ErrorCodeId = 27004,
   },
   [27005] = {
     ContentEN = "Maze of Missteps not open",
@@ -3454,7 +4035,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "미로의 갈림길이 개방되지 않았습니다.",
     ContentTC = "迷津暫未開啟",
     ErrorCodeContent = "迷津暂未开启",
-    ErrorCodeId = 27005
+    ErrorCodeId = 27005,
   },
   [27006] = {
     ContentEN = "Insufficient Embers",
@@ -3462,7 +4043,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "잿불 부족",
     ContentTC = "餘燼不足",
     ErrorCodeContent = "余烬不足",
-    ErrorCodeId = 27006
+    ErrorCodeId = 27006,
   },
   [27007] = {
     ContentEN = "Abyssoid unaccessible. You have already completed exploration in this Abyssoid.",
@@ -3470,7 +4051,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "탐험이 완료된 그림자는 진입할 수 없습니다.",
     ContentTC = "該幽影已完成探索，無法進入",
     ErrorCodeContent = "该幽影已完成探索，无法进入",
-    ErrorCodeId = 27007
+    ErrorCodeId = 27007,
   },
   [27008] = {
     ContentEN = "Area unaccessible",
@@ -3478,7 +4059,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 지역 진입 불가",
     ContentTC = "無法去往該區域",
     ErrorCodeContent = "无法去往该区域",
-    ErrorCodeId = 27008
+    ErrorCodeId = 27008,
   },
   [27009] = {
     ContentEN = "Artefact does not exist",
@@ -3486,7 +4067,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 유물 획득 완료",
     ContentTC = "遺物不存在",
     ErrorCodeContent = "遗物不存在",
-    ErrorCodeId = 27009
+    ErrorCodeId = 27009,
   },
   [27010] = {
     ContentEN = "Lampwick does not exist",
@@ -3494,7 +4075,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 심지 획득 완료",
     ContentTC = "燭芯不存在",
     ErrorCodeContent = "烛芯不存在",
-    ErrorCodeId = 27010
+    ErrorCodeId = 27010,
   },
   [27011] = {
     ContentEN = "Information error of Maze of Missteps",
@@ -3502,7 +4083,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "미로의 갈림길 정보",
     ContentTC = "迷津信息錯誤",
     ErrorCodeContent = "迷津信息错误",
-    ErrorCodeId = 27011
+    ErrorCodeId = 27011,
   },
   [27012] = {
     ContentEN = "Insufficient refreshing attempts",
@@ -3510,7 +4091,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "새로고침 횟수 부족",
     ContentTC = "刷新次數不足",
     ErrorCodeContent = "刷新次数不足",
-    ErrorCodeId = 27012
+    ErrorCodeId = 27012,
   },
   [27013] = {
     ContentEN = "Refreshing requirement not met yet",
@@ -3518,7 +4099,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "새로고침 조건을 충족하지 않습니다.",
     ContentTC = "當前不滿足刷新條件",
     ErrorCodeContent = "当前不满足刷新条件",
-    ErrorCodeId = 27013
+    ErrorCodeId = 27013,
   },
   [27014] = {
     ContentEN = "Upgrade item does not exist",
@@ -3526,7 +4107,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "레벨업 아이템이 존재하지 않습니다.",
     ContentTC = "升級的道具不存在",
     ErrorCodeContent = "升级的道具不存在",
-    ErrorCodeId = 27014
+    ErrorCodeId = 27014,
   },
   [27015] = {
     ContentEN = "Item max level reached",
@@ -3534,7 +4115,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 아이템은 이미 최고 레벨에 도달하였습니다.",
     ContentTC = "當前道具已提升至最高等級",
     ErrorCodeContent = "当前道具已提升至最高等级",
-    ErrorCodeId = 27015
+    ErrorCodeId = 27015,
   },
   [27016] = {
     ContentEN = "Information of the Mysterious Merchant does not exist",
@@ -3542,7 +4123,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "심연행상 정보가 존재하지 않습니다.",
     ContentTC = "深淵行商信息不存在",
     ErrorCodeContent = "深渊行商信息不存在",
-    ErrorCodeId = 27016
+    ErrorCodeId = 27016,
   },
   [27017] = {
     ContentEN = "Item from the Mysterious Merchant does not exist",
@@ -3550,15 +4131,15 @@ return ReadOnly("ErrorCode", {
     ContentKR = "심연행상 아이템이 존재하지 않습니다.",
     ContentTC = "深淵行商道具不存在",
     ErrorCodeContent = "深渊行商道具不存在",
-    ErrorCodeId = 27017
+    ErrorCodeId = 27017,
   },
   [27018] = {
-    ContentEN = "Insufficient attempts to purchase at the Mysterious Merchant's stall",
+    ContentEN = "Insufficient attempts to purchase at the Mysterious Merchant\'s stall",
     ContentJP = "謎の行商人のところで購入回数が足りません",
     ContentKR = "심연행상 구매 횟수가 부족합니다.",
     ContentTC = "深淵行商處購買次數不足",
     ErrorCodeContent = "深渊行商处购买次数不足",
-    ErrorCodeId = 27018
+    ErrorCodeId = 27018,
   },
   [27019] = {
     ContentEN = "Lantern can not be lit up",
@@ -3566,7 +4147,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "랜턴을 점등할 수 없습니다.",
     ContentTC = "無法點亮提燈",
     ErrorCodeContent = "无法点亮提灯",
-    ErrorCodeId = 27019
+    ErrorCodeId = 27019,
   },
   [27020] = {
     ContentEN = "Insufficient Glazeystal",
@@ -3574,7 +4155,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "유리 부족",
     ContentTC = "所需琉璃不足",
     ErrorCodeContent = "所需琉璃不足",
-    ErrorCodeId = 27020
+    ErrorCodeId = 27020,
   },
   [27021] = {
     ContentEN = "Light up the previous node(s) to proceed",
@@ -3582,7 +4163,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "앞 구역의 랜턴을 점등한 후, 해당 지역의 랜턴 점등이 가능합니다.",
     ContentTC = "點亮提燈前置區域猴才可點亮該區域",
     ErrorCodeContent = "点亮提灯前置区域后才可点亮该区域",
-    ErrorCodeId = 27021
+    ErrorCodeId = 27021,
   },
   [27022] = {
     ContentEN = "An exploration is currently in progress. Uable to save the Light-Up plan.",
@@ -3590,7 +4171,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 진행 중인 탐색이 있어 랜턴 점등 설계도를 저장할 수 없습니다.",
     ContentTC = "當前有正在進行中的探索，無法保存提燈點亮方案",
     ErrorCodeContent = "当前有正在进行中的探索，无法保存提灯点亮方案",
-    ErrorCodeId = 27022
+    ErrorCodeId = 27022,
   },
   [27023] = {
     ContentEN = "This option does not exist",
@@ -3598,7 +4179,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "선택 사항이 존재하지 않습니다.",
     ContentTC = "選項不存在",
     ErrorCodeContent = "选项不存在",
-    ErrorCodeId = 27023
+    ErrorCodeId = 27023,
   },
   [27024] = {
     ContentEN = "Area information error",
@@ -3606,7 +4187,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "지역 정보 불일치",
     ContentTC = "區域信息錯誤",
     ErrorCodeContent = "区域信息错误",
-    ErrorCodeId = 27024
+    ErrorCodeId = 27024,
   },
   [27025] = {
     ContentEN = "No Occurrences in progress",
@@ -3614,15 +4195,11 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 진행 중인 이벤트가 없습니다.",
     ContentTC = "當前沒有進行的事件",
     ErrorCodeContent = "当前没有进行的事件",
-    ErrorCodeId = 27025
+    ErrorCodeId = 27025,
   },
   [27026] = {
-    ContentEN = "Difficulty does not exist",
-    ContentJP = "難​易​度が存在しません",
-    ContentKR = "난이도가 존재하지 않습니다.",
-    ContentTC = "難度不存在",
     ErrorCodeContent = "难度不存在",
-    ErrorCodeId = 27026
+    ErrorCodeId = 27026,
   },
   [27027] = {
     ContentEN = "Insufficient Trial Rank. Unable to enter this Abyssward.",
@@ -3630,7 +4207,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "레조넌스 레벨 부족",
     ContentTC = "歷練等級不足，無法沉潛到該深度",
     ErrorCodeContent = "未满足难度解锁条件",
-    ErrorCodeId = 27027
+    ErrorCodeId = 27027,
   },
   [27028] = {
     ContentEN = "Rewards claimed",
@@ -3638,7 +4215,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 수령하였습니다.",
     ContentTC = "獎勵已領取",
     ErrorCodeContent = "奖励已领取",
-    ErrorCodeId = 27028
+    ErrorCodeId = 27028,
   },
   [27029] = {
     ContentEN = "Reward not found",
@@ -3646,7 +4223,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "보상이 존재하지 않습니다.",
     ContentTC = "獎勵不存在",
     ErrorCodeContent = "奖励不存在",
-    ErrorCodeId = 27029
+    ErrorCodeId = 27029,
   },
   [27030] = {
     ContentEN = "Invalid reward claim count",
@@ -3654,7 +4231,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "보상 획득 횟수가 유효하지 않습니다.",
     ContentTC = "獲取獎勵次數非法",
     ErrorCodeContent = "获取奖励次数非法",
-    ErrorCodeId = 27030
+    ErrorCodeId = 27030,
   },
   [27031] = {
     ContentEN = "Reward claim conditions not met",
@@ -3662,7 +4239,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "보상 수령 조건을 만족하지 않았습니다.",
     ContentTC = "未滿足獎勵領取條件",
     ErrorCodeContent = "未满足奖励领取条件",
-    ErrorCodeId = 27031
+    ErrorCodeId = 27031,
   },
   [27032] = {
     ContentEN = "Story segment not found",
@@ -3670,7 +4247,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "스토리가 존재하지 않습니다.",
     ContentTC = "劇情不存在",
     ErrorCodeContent = "剧情不存在",
-    ErrorCodeId = 27032
+    ErrorCodeId = 27032,
   },
   [27033] = {
     ContentEN = "Story segment not yet completed",
@@ -3678,7 +4255,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "스토리가 완료되지 않았습니다.",
     ContentTC = "劇情未完成",
     ErrorCodeContent = "剧情未完成",
-    ErrorCodeId = 27033
+    ErrorCodeId = 27033,
   },
   [27034] = {
     ContentEN = "Failed to save current Depth",
@@ -3686,7 +4263,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "깊이 저장에 실패했습니다.",
     ContentTC = "深度保存失敗",
     ErrorCodeContent = "深度保存失败",
-    ErrorCodeId = 27034
+    ErrorCodeId = 27034,
   },
   [27035] = {
     ContentEN = "Invalid Depth data",
@@ -3694,7 +4271,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "깊이 정보에 오류가 있습니다.",
     ContentTC = "深度信息錯誤",
     ErrorCodeContent = "深度信息错误",
-    ErrorCodeId = 27035
+    ErrorCodeId = 27035,
   },
   [27036] = {
     ContentEN = "Invalid upgrade data",
@@ -3702,7 +4279,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "레벨업 정보에 오류가 있습니다.",
     ContentTC = "升級信息錯誤",
     ErrorCodeContent = "升级信息错误",
-    ErrorCodeId = 27036
+    ErrorCodeId = 27036,
   },
   [27037] = {
     ContentEN = "Cannot quit",
@@ -3710,7 +4287,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "포기할 수 없습니다.",
     ContentTC = "無法放棄",
     ErrorCodeContent = "无法放弃",
-    ErrorCodeId = 27037
+    ErrorCodeId = 27037,
   },
   [27038] = {
     ContentEN = "Failed to claim Archive collection reward",
@@ -3718,7 +4295,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "수첩 수집 보상 수령에 실패했습니다.",
     ContentTC = "手記收集獎勵領取失敗",
     ErrorCodeContent = "手记收集奖励领取失败",
-    ErrorCodeId = 27038
+    ErrorCodeId = 27038,
   },
   [27039] = {
     ContentEN = "Reward not found",
@@ -3726,7 +4303,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "보상이 존재하지 않습니다.",
     ContentTC = "獎勵不存在",
     ErrorCodeContent = "奖励不存在",
-    ErrorCodeId = 27039
+    ErrorCodeId = 27039,
   },
   [28001] = {
     ContentEN = "Matching information error",
@@ -3734,7 +4311,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "매칭 정보가 존재하지 않습니다.",
     ContentTC = "匹配信息錯誤",
     ErrorCodeContent = "匹配信息错误",
-    ErrorCodeId = 28001
+    ErrorCodeId = 28001,
   },
   [28002] = {
     ContentEN = "Auto-Equip failed due to poor network conditions.",
@@ -3742,7 +4319,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "네트워크 연결 상태가 원활하지 않아, 자동 장착에 실패했습니다.",
     ContentTC = "網絡狀況不佳，自動裝配停止",
     ErrorCodeContent = "网络状况不佳，自动装配中止",
-    ErrorCodeId = 28002
+    ErrorCodeId = 28002,
   },
   [28003] = {
     ContentEN = "Matchmaking server is offline",
@@ -3750,7 +4327,11 @@ return ReadOnly("ErrorCode", {
     ContentKR = "매칭 서버가 닫혔습니다.",
     ContentTC = "匹配伺服器關閉",
     ErrorCodeContent = "匹配服务器关闭",
-    ErrorCodeId = 28003
+    ErrorCodeId = 28003,
+  },
+  [28004] = {
+    ErrorCodeContent = "匹配服务器繁忙",
+    ErrorCodeId = 28004,
   },
   [29001] = {
     ContentEN = "UID not found",
@@ -3758,7 +4339,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 UID가 존재하지 않습니다.",
     ContentTC = "該UID不存在",
     ErrorCodeContent = "该UID不存在",
-    ErrorCodeId = 29001
+    ErrorCodeId = 29001,
   },
   [29002] = {
     ContentEN = "This player is already on your friends list",
@@ -3766,7 +4347,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 유저는 이미 친구입니다.",
     ContentTC = "該玩家已是好友",
     ErrorCodeContent = "该玩家已是好友",
-    ErrorCodeId = 29002
+    ErrorCodeId = 29002,
   },
   [29003] = {
     ContentEN = "Already sent a friend request to this player",
@@ -3774,7 +4355,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 해당 유저에게 친구 신청을 보냈습니다.",
     ContentTC = "已向該玩家發送過好友申請",
     ErrorCodeContent = "已向该玩家发送过好友申请",
-    ErrorCodeId = 29003
+    ErrorCodeId = 29003,
   },
   [29004] = {
     ContentEN = "Friend request attempts used up",
@@ -3782,15 +4363,15 @@ return ReadOnly("ErrorCode", {
     ContentKR = "친구 신청 횟수가 상한에 도달했습니다.",
     ContentTC = "好友申請發送次數已達上限",
     ErrorCodeContent = "好友申请发送次数已达上限",
-    ErrorCodeId = 29004
+    ErrorCodeId = 29004,
   },
   [29005] = {
-    ContentEN = "You've already blocked this player",
+    ContentEN = "You\'ve already blocked this player",
     ContentJP = "このプレイヤーがブラックリストに登録されました",
     ContentKR = "해당 유저는 이미 블랙리스트에 추가되었습니다.",
     ContentTC = "該玩家已被加入黑名單",
     ErrorCodeContent = "该玩家已被加入黑名单",
-    ErrorCodeId = 29005
+    ErrorCodeId = 29005,
   },
   [29006] = {
     ContentEN = "Friend request not found",
@@ -3798,7 +4379,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "친구 신청이 존재하지 않습니다.",
     ContentTC = "好友申請不存在",
     ErrorCodeContent = "好友申请不存在",
-    ErrorCodeId = 29006
+    ErrorCodeId = 29006,
   },
   [29007] = {
     ContentEN = "Friends list full",
@@ -3806,7 +4387,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "친구 수가 상한에 도달했습니다.",
     ContentTC = "好友數量已達上限",
     ErrorCodeContent = "好友数量已达上限",
-    ErrorCodeId = 29007
+    ErrorCodeId = 29007,
   },
   [29008] = {
     ContentEN = "Friend request has expired",
@@ -3814,7 +4395,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "친구 신청 시간이 초과되었습니다.",
     ContentTC = "好友申請超時",
     ErrorCodeContent = "好友申请超时",
-    ErrorCodeId = 29008
+    ErrorCodeId = 29008,
   },
   [29009] = {
     ContentEN = "Blacklist full",
@@ -3822,7 +4403,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "블랙리스트 수가 상한에 도달했습니다.",
     ContentTC = "黑名單數量已達上限",
     ErrorCodeContent = "黑名单数量已达上限",
-    ErrorCodeId = 29009
+    ErrorCodeId = 29009,
   },
   [29010] = {
     ContentEN = "Favourite friends list full",
@@ -3830,7 +4411,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "즐겨찾기 친구 수가 상한에 도달했습니다.",
     ContentTC = "星標好友數量已達上限",
     ErrorCodeContent = "星标好友数量已达上限",
-    ErrorCodeId = 29010
+    ErrorCodeId = 29010,
   },
   [29011] = {
     ContentEN = "Request too frequent. Please try again later.",
@@ -3838,23 +4419,23 @@ return ReadOnly("ErrorCode", {
     ContentKR = "너무 자주 새로 고침 했습니다. 잠시 후 다시 시도해 주세요",
     ContentTC = "刷新過快，請稍候重試",
     ErrorCodeContent = "刷新过快，请稍后重试",
-    ErrorCodeId = 29011
+    ErrorCodeId = 29011,
   },
   [29012] = {
-    ContentEN = "This player's friends list is full",
+    ContentEN = "This player\'s friends list is full",
     ContentJP = "相手のフレンド数が上限に達しています",
     ContentKR = "상대방의 친구 목록이 가득 찼습니다.",
     ContentTC = "對方好友已滿",
     ErrorCodeContent = "对方好友已满",
-    ErrorCodeId = 29012
+    ErrorCodeId = 29012,
   },
   [29013] = {
-    ContentEN = "You've been blocked by this player",
+    ContentEN = "You\'ve been blocked by this player",
     ContentJP = "相手のブラックリストに登録されました",
     ContentKR = "상대방이 당신을 블랙리스트에 추가했습니다.",
     ContentTC = "您被對方加入了黑名單",
     ErrorCodeContent = "您被对方加入了黑名单",
-    ErrorCodeId = 29013
+    ErrorCodeId = 29013,
   },
   [29014] = {
     ContentEN = "Friend request pending",
@@ -3862,7 +4443,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "상대방의 수락을 기다리는 중입니다.",
     ContentTC = "正在等待對方同意",
     ErrorCodeContent = "正在等待对方同意",
-    ErrorCodeId = 29014
+    ErrorCodeId = 29014,
   },
   [29015] = {
     ContentEN = "The message contains sensitive words",
@@ -3870,7 +4451,19 @@ return ReadOnly("ErrorCode", {
     ContentKR = "입력한 내용에 부적절한 단어가 포함되어 있습니다.",
     ContentTC = "輸入的內容包含敏感詞",
     ErrorCodeContent = "输入的内容包含敏感词",
-    ErrorCodeId = 29015
+    ErrorCodeId = 29015,
+  },
+  [29016] = {
+    ErrorCodeContent = "不能添加自己为好友",
+    ErrorCodeId = 29016,
+  },
+  [29017] = {
+    ErrorCodeContent = "已经在黑名单中",
+    ErrorCodeId = 29017,
+  },
+  [29018] = {
+    ErrorCodeContent = "对方今日接收好友申请次数已达上限",
+    ErrorCodeId = 29018,
   },
   [30001] = {
     ContentEN = "Invalid channel",
@@ -3878,7 +4471,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "유효하지 않은 채널입니다.",
     ContentTC = "非法的頻道",
     ErrorCodeContent = "非法的频道",
-    ErrorCodeId = 30001
+    ErrorCodeId = 30001,
   },
   [30002] = {
     ContentEN = "Message cannot be empty",
@@ -3886,7 +4479,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "메시지 내용은 비워둘 수 없습니다.",
     ContentTC = "發送的內容不可為空",
     ErrorCodeContent = "发送的内容不可为空",
-    ErrorCodeId = 30002
+    ErrorCodeId = 30002,
   },
   [30003] = {
     ContentEN = "Message too long",
@@ -3894,7 +4487,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "메시지 내용이 너무 깁니다.",
     ContentTC = "發送的內容太長",
     ErrorCodeContent = "发送的内容太长",
-    ErrorCodeId = 30003
+    ErrorCodeId = 30003,
   },
   [30004] = {
     ContentEN = "Cannot send private messages to players on your blacklist",
@@ -3902,7 +4495,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "블랙리스트에 있는 유저와는 개인 대화를 할 수 없습니다.",
     ContentTC = "黑名單中的玩家不可私聊",
     ErrorCodeContent = "黑名单中的玩家不可私聊",
-    ErrorCodeId = 30004
+    ErrorCodeId = 30004,
   },
   [30005] = {
     ContentEN = "You are currently muted and cannot send messages",
@@ -3910,7 +4503,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "채팅이 금지되었습니다.",
     ContentTC = "您已被禁言",
     ErrorCodeContent = "您已被禁言",
-    ErrorCodeId = 30005
+    ErrorCodeId = 30005,
   },
   [30006] = {
     ContentEN = "This player is offline. Please add them as a friend first.",
@@ -3918,7 +4511,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "상대방이 오프라인 상태입니다. 먼저 친구 신청을 해주세요.",
     ContentTC = "對方已下線，請先申請為好友",
     ErrorCodeContent = "对方已下线，请先申请为好友",
-    ErrorCodeId = 30006
+    ErrorCodeId = 30006,
   },
   [30007] = {
     ContentEN = "Read",
@@ -3926,15 +4519,15 @@ return ReadOnly("ErrorCode", {
     ContentKR = "메시지를 읽었습니다.",
     ContentTC = "留言已讀",
     ErrorCodeContent = "留言已读",
-    ErrorCodeId = 30007
+    ErrorCodeId = 30007,
   },
   [30008] = {
-    ContentEN = "You're sending messages too frequently",
+    ContentEN = "You\'re sending messages too frequently",
     ContentJP = "送信頻度が高すぎます",
     ContentKR = "메시지를 너무 자주 보냈습니다.",
     ContentTC = "發送太頻繁",
     ErrorCodeContent = "发送太频繁",
-    ErrorCodeId = 30008
+    ErrorCodeId = 30008,
   },
   [30009] = {
     ContentEN = "Channel not found",
@@ -3942,7 +4535,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "채널이 존재하지 않습니다.",
     ContentTC = "頻道不存在",
     ErrorCodeContent = "频道不存在",
-    ErrorCodeId = 30009
+    ErrorCodeId = 30009,
   },
   [30010] = {
     ContentEN = "Friend not found",
@@ -3950,7 +4543,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "친구가 존재하지 않습니다.",
     ContentTC = "好友不存在",
     ErrorCodeContent = "好友不存在",
-    ErrorCodeId = 30010
+    ErrorCodeId = 30010,
   },
   [30011] = {
     ContentEN = "Incorrect channel type",
@@ -3958,7 +4551,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "채널 유형이 잘못되었습니다.",
     ContentTC = "頻道類型錯誤",
     ErrorCodeContent = "频道类型错误",
-    ErrorCodeId = 30011
+    ErrorCodeId = 30011,
   },
   [30012] = {
     ContentEN = "You are not currently on this chat channel",
@@ -3966,7 +4559,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "채팅 채널에 가입하지 않았습니다.",
     ContentTC = "未加入聊天頻道",
     ErrorCodeContent = "未加入聊天频道",
-    ErrorCodeId = 30012
+    ErrorCodeId = 30012,
   },
   [30013] = {
     ContentEN = "The message contains sensitive words",
@@ -3974,7 +4567,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "입력한 내용에 부적절한 단어가 포함되어 있습니다.",
     ContentTC = "輸入的內容包含敏感詞",
     ErrorCodeContent = "输入的内容包含敏感词",
-    ErrorCodeId = 30013
+    ErrorCodeId = 30013,
   },
   [30014] = {
     ContentEN = "Sensitive words detection failed. Please try again later.",
@@ -3982,7 +4575,11 @@ return ReadOnly("ErrorCode", {
     ContentKR = "입력한 내용의 부적절한 단어 검사 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.",
     ContentTC = "輸入的內容敏感詞檢測錯誤，請稍候重試",
     ErrorCodeContent = "输入的内容敏感词检测错误，请稍后重试",
-    ErrorCodeId = 30014
+    ErrorCodeId = 30014,
+  },
+  [30015] = {
+    ErrorCodeContent = "频道状态错误",
+    ErrorCodeId = 30015,
   },
   [31001] = {
     ContentEN = "Failed to generate reward",
@@ -3990,7 +4587,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "보상 생성에 실패했습니다.",
     ContentTC = "獎勵生成失敗",
     ErrorCodeContent = "奖励生成失败",
-    ErrorCodeId = 31001
+    ErrorCodeId = 31001,
   },
   [32001] = {
     ContentEN = "The selected Geniemon does not exist",
@@ -3998,7 +4595,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "소모할 펫이 존재하지 않습니다.",
     ContentTC = "消耗的寵物不存在",
     ErrorCodeContent = "消耗的魔灵不存在",
-    ErrorCodeId = 32001
+    ErrorCodeId = 32001,
   },
   [32002] = {
     ContentEN = "Geniemon not found",
@@ -4006,7 +4603,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "펫이 존재하지 않습니다.",
     ContentTC = "寵物不存在",
     ErrorCodeContent = "魔灵不存在",
-    ErrorCodeId = 32002
+    ErrorCodeId = 32002,
   },
   [32003] = {
     ContentEN = "The selected Geniemon not found in the table",
@@ -4014,7 +4611,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "소모할 펫이 테이블에 존재하지 않습니다.",
     ContentTC = "消耗的寵物不存在於表中",
     ErrorCodeContent = "消耗的魔灵不存在于表中",
-    ErrorCodeId = 32003
+    ErrorCodeId = 32003,
   },
   [32004] = {
     ContentEN = "This Geniemon has reached max level",
@@ -4022,7 +4619,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "펫의 레벨이 최대치에 도달했습니다.",
     ContentTC = "寵物等級已滿",
     ErrorCodeContent = "魔灵等级已满",
-    ErrorCodeId = 32004
+    ErrorCodeId = 32004,
   },
   [32005] = {
     ContentEN = "Geniemon level too low",
@@ -4030,7 +4627,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "펫의 레벨이 부족합니다.",
     ContentTC = "寵物等級不足",
     ErrorCodeContent = "魔灵等级不足",
-    ErrorCodeId = 32005
+    ErrorCodeId = 32005,
   },
   [32006] = {
     ContentEN = "Geniemon ID mismatch",
@@ -4038,7 +4635,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "펫 ID가 일치하지 않습니다.",
     ContentTC = "寵物ID不一致",
     ErrorCodeContent = "魔灵ID不一致",
-    ErrorCodeId = 32006
+    ErrorCodeId = 32006,
   },
   [32007] = {
     ContentEN = "Ascend this Geniemon first to proceed",
@@ -4046,7 +4643,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "펫 돌파가 필요합니다.",
     ContentTC = "寵物需要突破",
     ErrorCodeContent = "魔灵需要突破",
-    ErrorCodeId = 32007
+    ErrorCodeId = 32007,
   },
   [32008] = {
     ContentEN = "Geniemon already summoned",
@@ -4054,7 +4651,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "펫이 이미 장착되어 있습니다.",
     ContentTC = "寵物已裝備",
     ErrorCodeContent = "魔灵已装备",
-    ErrorCodeId = 32008
+    ErrorCodeId = 32008,
   },
   [32009] = {
     ContentEN = "Geniemon Feeding Successful",
@@ -4062,7 +4659,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "마령 획득에 성공했습니다.",
     ContentTC = "魔靈投餵成功",
     ErrorCodeContent = "投喂成功",
-    ErrorCodeId = 32009
+    ErrorCodeId = 32009,
   },
   [32010] = {
     ContentEN = "Geniemon Feeding Failed",
@@ -4070,7 +4667,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "마령 획득에 실패했습니다.",
     ContentTC = "魔靈投餵失敗",
     ErrorCodeContent = "投喂失败",
-    ErrorCodeId = 32010
+    ErrorCodeId = 32010,
   },
   [32011] = {
     ContentEN = "Selected Geniemon is locked",
@@ -4078,7 +4675,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "소모하려는 마령이 잠겨 있습니다.",
     ContentTC = "消耗的魔靈已鎖定",
     ErrorCodeContent = "消耗的魔灵已锁定",
-    ErrorCodeId = 32011
+    ErrorCodeId = 32011,
   },
   [32012] = {
     ContentEN = "Selected Geniemon not found in consumption list",
@@ -4086,7 +4683,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "소모하려는 마령이 소모 목록에 없습니다.",
     ContentTC = "消耗的魔靈不在消耗列表中",
     ErrorCodeContent = "消耗的魔灵不在消耗列表中",
-    ErrorCodeId = 32012
+    ErrorCodeId = 32012,
   },
   [32013] = {
     ContentEN = "Insufficient resources for Ascension",
@@ -4094,7 +4691,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "돌파 재료가 부족합니다.",
     ContentTC = "突破資源不足",
     ErrorCodeContent = "突破资源不足",
-    ErrorCodeId = 32013
+    ErrorCodeId = 32013,
   },
   [32016] = {
     ContentEN = "Invalid Potential upgrade",
@@ -4102,7 +4699,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "잠재력 레벨업이 유효하지 않습니다.",
     ContentTC = "潛質升級無效",
     ErrorCodeContent = "潜质升级无效",
-    ErrorCodeId = 32016
+    ErrorCodeId = 32016,
   },
   [32017] = {
     ContentEN = "Insufficient materials for Potential upgrade",
@@ -4110,7 +4707,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "잠재력 레벨업 소모 재료 수량이 부족합니다.",
     ContentTC = "潛質升級耗材數量不足",
     ErrorCodeContent = "潜质升级耗材数量不足",
-    ErrorCodeId = 32017
+    ErrorCodeId = 32017,
   },
   [32018] = {
     ContentEN = "Potential level already at maximum",
@@ -4118,7 +4715,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "잠재력 레벨이 최대입니다.",
     ContentTC = "潛質等級已滿",
     ErrorCodeContent = "潜质等级已满",
-    ErrorCodeId = 32018
+    ErrorCodeId = 32018,
   },
   [32019] = {
     ContentEN = "Invalid Potential replacement",
@@ -4126,7 +4723,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "잠재력 교체가 유효하지 않습니다.",
     ContentTC = "潛質替換無效",
     ErrorCodeContent = "潜质替换无效",
-    ErrorCodeId = 32019
+    ErrorCodeId = 32019,
   },
   [32020] = {
     ContentEN = "Insufficient resources for Potential replacement",
@@ -4134,7 +4731,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "잠재력 교체 재료가 부족합니다.",
     ContentTC = "潛質替換資源不足",
     ErrorCodeContent = "潜质替换资源不足",
-    ErrorCodeId = 32020
+    ErrorCodeId = 32020,
   },
   [32021] = {
     ContentEN = "Geniemon has reached maximum Ascension level",
@@ -4142,7 +4739,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "마령이 이미 최대 레벨을 돌파했습니다.",
     ContentTC = "魔靈已突破至滿級",
     ErrorCodeContent = "魔灵已突破至满级",
-    ErrorCodeId = 32021
+    ErrorCodeId = 32021,
   },
   [32022] = {
     ContentEN = "Geniemon name contains invalid characters",
@@ -4150,7 +4747,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "마령 닉네임에 금칙어가 포함되어 있습니다.",
     ContentTC = "魔靈昵稱違法",
     ErrorCodeContent = "魔灵昵称违法",
-    ErrorCodeId = 32022
+    ErrorCodeId = 32022,
   },
   [32023] = {
     ContentEN = "Geniemon name is too long",
@@ -4158,7 +4755,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "마령 닉네임이 너무 깁니다.",
     ContentTC = "魔靈昵稱過長",
     ErrorCodeContent = "魔灵昵称过长",
-    ErrorCodeId = 32023
+    ErrorCodeId = 32023,
   },
   [32024] = {
     ContentEN = "Insufficient Geniemon EXP materials",
@@ -4166,7 +4763,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "마령 경험치 재료가 부족합니다.",
     ContentTC = "魔靈經驗資源不足",
     ErrorCodeContent = "魔灵经验资源不足",
-    ErrorCodeId = 32024
+    ErrorCodeId = 32024,
   },
   [32025] = {
     ContentEN = "Inactive Geniemon cannot be deployed",
@@ -4174,7 +4771,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "비활성 마령은 출전할 수 없습니다.",
     ContentTC = "失活魔靈無法出戰",
     ErrorCodeContent = "失活魔灵无法出战",
-    ErrorCodeId = 32025
+    ErrorCodeId = 32025,
   },
   [32026] = {
     ContentEN = "Potential not found",
@@ -4182,7 +4779,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "잠재력이 존재하지 않습니다.",
     ContentTC = "潛質不存在",
     ErrorCodeContent = "潜质不存在",
-    ErrorCodeId = 32026
+    ErrorCodeId = 32026,
   },
   [32027] = {
     ContentEN = "Potential already exists",
@@ -4190,7 +4787,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 존재하는 잠재력입니다.",
     ContentTC = "潛質已存在",
     ErrorCodeContent = "潜质已存在",
-    ErrorCodeId = 32027
+    ErrorCodeId = 32027,
   },
   [32028] = {
     ContentEN = "Invalid EXP material",
@@ -4198,7 +4795,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "경험치 재료에 오류가 있습니다.",
     ContentTC = "經驗材料錯誤",
     ErrorCodeContent = "经验材料错误",
-    ErrorCodeId = 32028
+    ErrorCodeId = 32028,
   },
   [33001] = {
     ContentEN = "Quick message index error",
@@ -4206,7 +4803,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "빠른 메시지 인덱스 오류입니다.",
     ContentTC = "快捷消息索引錯誤",
     ErrorCodeContent = "快捷消息索引错误",
-    ErrorCodeId = 33001
+    ErrorCodeId = 33001,
   },
   [33002] = {
     ContentEN = "Quick message exceeds the maximum length",
@@ -4214,7 +4811,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "빠른 메시지가 최대 길이를 초과했습니다.",
     ContentTC = "快捷消息最大長度",
     ErrorCodeContent = "快捷消息最大长度",
-    ErrorCodeId = 33002
+    ErrorCodeId = 33002,
   },
   [34001] = {
     ContentEN = "Invalid sticker ID",
@@ -4222,7 +4819,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이모티콘 ID 오류",
     ContentTC = "表情包ID錯誤",
     ErrorCodeContent = "表情包ID错误",
-    ErrorCodeId = 34001
+    ErrorCodeId = 34001,
   },
   [34002] = {
     ContentEN = "Sticker ID already exists",
@@ -4230,7 +4827,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이모티콘 ID가 이미 존재합니다.",
     ContentTC = "表情包ID已存在",
     ErrorCodeContent = "表情包ID已存在",
-    ErrorCodeId = 34002
+    ErrorCodeId = 34002,
   },
   [34003] = {
     ContentEN = "Sticker ID not found",
@@ -4238,7 +4835,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이모티콘 ID가 존재하지 않습니다.",
     ContentTC = "表情包ID不存在",
     ErrorCodeContent = "表情包ID不存在",
-    ErrorCodeId = 34003
+    ErrorCodeId = 34003,
   },
   [35001] = {
     ContentEN = "Dynamic Encounter not found",
@@ -4246,7 +4843,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "동적 이벤트 상태가 존재하지 않습니다.",
     ContentTC = "動態事件狀態不存在",
     ErrorCodeContent = "动态事件状态不存在",
-    ErrorCodeId = 35001
+    ErrorCodeId = 35001,
   },
   [35002] = {
     ContentEN = "Dynamic Encounter not active",
@@ -4254,7 +4851,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "동적 이벤트 상태가 활성화되지 않았습니다.",
     ContentTC = "動態事件狀態未啟動",
     ErrorCodeContent = "动态事件状态未激活",
-    ErrorCodeId = 35002
+    ErrorCodeId = 35002,
   },
   [35003] = {
     ContentEN = "Dynamic Encounter is on cooldown",
@@ -4262,7 +4859,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "동적 이벤트가 재사용 대기 상태(CD)입니다.",
     ContentTC = "動態事件處於CD",
     ErrorCodeContent = "动态事件处于CD",
-    ErrorCodeId = 35003
+    ErrorCodeId = 35003,
   },
   [35004] = {
     ContentEN = "Player is on global cooldown",
@@ -4270,7 +4867,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "유저가 재사용 대기 상태(GCD)에 있습니다.",
     ContentTC = "玩家處於GCD",
     ErrorCodeContent = "玩家处于GCD",
-    ErrorCodeId = 35004
+    ErrorCodeId = 35004,
   },
   [35005] = {
     ContentEN = "Daily Dynamic Encounter attempts used up",
@@ -4278,7 +4875,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "오늘의 동적 이벤트 사용 가능 횟수가 모두 소진되었습니다.",
     ContentTC = "當日限次動態事件已達上限",
     ErrorCodeContent = "当日限次动态事件已达上限",
-    ErrorCodeId = 35005
+    ErrorCodeId = 35005,
   },
   [35006] = {
     ContentEN = "Maximum completions for this Dynamic Encounter reached",
@@ -4286,7 +4883,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 동적 이벤트 완료 횟수가 상한에 도달했습니다.",
     ContentTC = "當前動態事件完成次數已達上限",
     ErrorCodeContent = "当前动态事件完成次数已达上限",
-    ErrorCodeId = 35006
+    ErrorCodeId = 35006,
   },
   [35007] = {
     ContentEN = "Dynamic Encounter check failed",
@@ -4294,7 +4891,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "동적 이벤트 확률 판정에 실패했습니다.",
     ContentTC = "動態事件機率判定失敗",
     ErrorCodeContent = "动态事件概率判定失败",
-    ErrorCodeId = 35007
+    ErrorCodeId = 35007,
   },
   [35008] = {
     ContentEN = "Incorrect parameters for Dynamic Encounter trigger type",
@@ -4302,7 +4899,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "동적 이벤트 트리거 유형의 파라미터가 올바르지 않습니다.",
     ContentTC = "動態事件觸發類型的參數不正確",
     ErrorCodeContent = "动态事件触发类型的参数不正确",
-    ErrorCodeId = 35008
+    ErrorCodeId = 35008,
   },
   [35009] = {
     ContentEN = "Dynamic Encounter in progress",
@@ -4310,7 +4907,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "동적 이벤트가 진행 중입니다.",
     ContentTC = "動態事件狀態進行中",
     ErrorCodeContent = "动态事件状态进行中",
-    ErrorCodeId = 35009
+    ErrorCodeId = 35009,
   },
   [35010] = {
     ContentEN = "Dynamic Encounter prerequisite not met",
@@ -4318,7 +4915,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "동적 이벤트 트리거 조건이 충족되지 않았습니다.",
     ContentTC = "動態事件觸發條件不滿足",
     ErrorCodeContent = "动态事件触发条件不满足",
-    ErrorCodeId = 35010
+    ErrorCodeId = 35010,
   },
   [35011] = {
     ContentEN = "Failed to set Dynamic Encounter status",
@@ -4326,7 +4923,11 @@ return ReadOnly("ErrorCode", {
     ContentKR = "동적 이벤트 상태 설정에 실패했습니다.",
     ContentTC = "設置動態事件狀態失敗",
     ErrorCodeContent = "设置动态事件状态失败",
-    ErrorCodeId = 35011
+    ErrorCodeId = 35011,
+  },
+  [35012] = {
+    ErrorCodeContent = "动态事件所需玩家等级不匹配，无法触发",
+    ErrorCodeId = 35012,
   },
   [36001] = {
     ContentEN = "Daily login event not found",
@@ -4334,7 +4935,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "일일 로그인 이벤트가 존재하지 않습니다.",
     ContentTC = "每日登入活動不存在",
     ErrorCodeContent = "每日登录活动不存在",
-    ErrorCodeId = 36001
+    ErrorCodeId = 36001,
   },
   [36002] = {
     ContentEN = "Already checked in today",
@@ -4342,7 +4943,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 출석 이벤트에 참여했습니다.",
     ContentTC = "已經簽到",
     ErrorCodeContent = "已经签到",
-    ErrorCodeId = 36002
+    ErrorCodeId = 36002,
   },
   [36003] = {
     ContentEN = "Daily login reward not found",
@@ -4350,7 +4951,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "일일 로그인 보상이 존재하지 않습니다.",
     ContentTC = "每日登入獎勵不存在",
     ErrorCodeContent = "每日登录奖励不存在",
-    ErrorCodeId = 36003
+    ErrorCodeId = 36003,
   },
   [36004] = {
     ContentEN = "Insufficient daily login attempts",
@@ -4358,7 +4959,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "일일 로그인 횟수가 부족합니다.",
     ContentTC = "每日登入次數不足",
     ErrorCodeContent = "每日登录次数不足",
-    ErrorCodeId = 36004
+    ErrorCodeId = 36004,
   },
   [36005] = {
     ContentEN = "Event currently unavailable",
@@ -4366,7 +4967,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이벤트 기간이 아닙니다.",
     ContentTC = "不在活動時間內",
     ErrorCodeContent = "不在活动时间内",
-    ErrorCodeId = 36005
+    ErrorCodeId = 36005,
   },
   [36006] = {
     ContentEN = "Reward already claimed",
@@ -4374,7 +4975,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "보상을 수령했습니다.",
     ContentTC = "獎勵已領取",
     ErrorCodeContent = "奖励已领取",
-    ErrorCodeId = 36006
+    ErrorCodeId = 36006,
   },
   [36007] = {
     ContentEN = "Quest not found",
@@ -4382,7 +4983,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트가 존재하지 않습니다.",
     ContentTC = "任務不存在",
     ErrorCodeContent = "任务不存在",
-    ErrorCodeId = 36007
+    ErrorCodeId = 36007,
   },
   [36008] = {
     ContentEN = "Quest reward already claimed",
@@ -4390,7 +4991,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트 보상을 수령했습니다.",
     ContentTC = "任務獎勵已領取",
     ErrorCodeContent = "任务奖励已领取",
-    ErrorCodeId = 36008
+    ErrorCodeId = 36008,
   },
   [36009] = {
     ContentEN = "Quest not completed",
@@ -4398,7 +4999,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트가 완료되지 않았습니다.",
     ContentTC = "任務未完成",
     ErrorCodeContent = "任务未完成",
-    ErrorCodeId = 36009
+    ErrorCodeId = 36009,
   },
   [36010] = {
     ContentEN = "Quest reward expired",
@@ -4406,7 +5007,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트 보상이 만료되었습니다.",
     ContentTC = "任務獎勵已過期",
     ErrorCodeContent = "任务奖励已过期",
-    ErrorCodeId = 36010
+    ErrorCodeId = 36010,
   },
   [36011] = {
     ContentEN = "Task not currently available",
@@ -4414,7 +5015,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트 시간을 초과했습니다.",
     ContentTC = "不在任務時間內",
     ErrorCodeContent = "不在任务时间内",
-    ErrorCodeId = 36011
+    ErrorCodeId = 36011,
   },
   [37001] = {
     ContentEN = "Team does not exist",
@@ -4422,7 +5023,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파티가 존재하지 않습니다.",
     ContentTC = "隊伍不存在",
     ErrorCodeContent = "队伍不存在",
-    ErrorCodeId = 37001
+    ErrorCodeId = 37001,
   },
   [37002] = {
     ContentEN = "Team member does not exist",
@@ -4430,7 +5031,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파티원이 존재하지 않습니다.",
     ContentTC = "隊伍成員不存在",
     ErrorCodeContent = "队伍成员不存在",
-    ErrorCodeId = 37002
+    ErrorCodeId = 37002,
   },
   [37003] = {
     ContentEN = "You are not the team leader",
@@ -4438,7 +5039,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파티장이 아닙니다.",
     ContentTC = "您不是隊長",
     ErrorCodeContent = "您不是队长",
-    ErrorCodeId = 37003
+    ErrorCodeId = 37003,
   },
   [37004] = {
     ContentEN = "Invitation not found",
@@ -4446,7 +5047,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "초대가 존재하지 않습니다.",
     ContentTC = "邀請不存在",
     ErrorCodeContent = "邀请不存在",
-    ErrorCodeId = 37004
+    ErrorCodeId = 37004,
   },
   [37005] = {
     ContentEN = "Team is full",
@@ -4454,7 +5055,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파티가 가득 찼습니다.",
     ContentTC = "隊伍已滿",
     ErrorCodeContent = "队伍已满",
-    ErrorCodeId = 37005
+    ErrorCodeId = 37005,
   },
   [37006] = {
     ContentEN = "This player is already on the team",
@@ -4462,7 +5063,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "상대방이 이미 파티에 있습니다.",
     ContentTC = "對方已在隊伍中",
     ErrorCodeContent = "对方已在队伍中",
-    ErrorCodeId = 37006
+    ErrorCodeId = 37006,
   },
   [37008] = {
     ContentEN = "No team member",
@@ -4470,7 +5071,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파티 멤버가 없습니다.",
     ContentTC = "隊伍成員為空",
     ErrorCodeContent = "队伍成员为空",
-    ErrorCodeId = 37008
+    ErrorCodeId = 37008,
   },
   [37009] = {
     ContentEN = "You cannot invite yourself",
@@ -4478,7 +5079,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "자신을 초대할 수 없습니다.",
     ContentTC = "不能邀請自己",
     ErrorCodeContent = "不能邀请自己",
-    ErrorCodeId = 37009
+    ErrorCodeId = 37009,
   },
   [37010] = {
     ContentEN = "Invitation attempts used up",
@@ -4486,7 +5087,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "초대 횟수가 상한에 도달했습니다.",
     ContentTC = "邀請次數已達上限",
     ErrorCodeContent = "邀请次数已达上限",
-    ErrorCodeId = 37010
+    ErrorCodeId = 37010,
   },
   [37011] = {
     ContentEN = "Operation unavailable in current state",
@@ -4494,7 +5095,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 상태에서는 해당 작업을 수행할 수 없습니다.",
     ContentTC = "當前狀態不允許該操作",
     ErrorCodeContent = "当前状态不允许该操作",
-    ErrorCodeId = 37011
+    ErrorCodeId = 37011,
   },
   [37012] = {
     ContentEN = "Invitation automatically declined",
@@ -4502,7 +5103,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "자동 거절",
     ContentTC = "自動拒絕",
     ErrorCodeContent = "自动拒绝",
-    ErrorCodeId = 37012
+    ErrorCodeId = 37012,
   },
   [37013] = {
     ContentEN = "System error",
@@ -4510,7 +5111,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파티 성향 검사에 실패했습니다.",
     ContentTC = "組隊傾向檢查失敗",
     ErrorCodeContent = "组队倾向检查失败",
-    ErrorCodeId = 37013
+    ErrorCodeId = 37013,
   },
   [37014] = {
     ContentEN = "At least one team member does not meet the requirements. Cannot start.",
@@ -4518,7 +5119,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "팀원 중 입장 조건을 충족하지 않는 사람이 있습니다.",
     ContentTC = "團隊有成員不滿足進入條件",
     ErrorCodeContent = "团队有成员不满足进入条件",
-    ErrorCodeId = 37014
+    ErrorCodeId = 37014,
   },
   [37015] = {
     ContentEN = "Matchmaking/Commission in progress",
@@ -4526,7 +5127,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파티가 인스턴스/매칭 중입니다.",
     ContentTC = "隊伍正在副本/匹配中",
     ErrorCodeContent = "队伍正在副本/匹配中",
-    ErrorCodeId = 37015
+    ErrorCodeId = 37015,
   },
   [37016] = {
     ContentEN = "Challenge invitation declined by at least one team member",
@@ -4534,7 +5135,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "팀원이 도전 초대를 거절했습니다.",
     ContentTC = "隊友拒絕挑戰邀請",
     ErrorCodeContent = "队友拒绝挑战邀请",
-    ErrorCodeId = 37016
+    ErrorCodeId = 37016,
   },
   [37017] = {
     ContentEN = "Unable to join this team",
@@ -4542,7 +5143,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "현재 파티에 가입할 수 없습니다.",
     ContentTC = "當前隊伍無法加入",
     ErrorCodeContent = "当前队伍无法加入",
-    ErrorCodeId = 37017
+    ErrorCodeId = 37017,
   },
   [37018] = {
     ContentEN = "You cannot remove yourself",
@@ -4550,7 +5151,67 @@ return ReadOnly("ErrorCode", {
     ContentKR = "자기 자신을 제외할 수 없습니다.",
     ContentTC = "無法移除自己",
     ErrorCodeContent = "无法移除自己",
-    ErrorCodeId = 37018
+    ErrorCodeId = 37018,
+  },
+  [37019] = {
+    ErrorCodeContent = "当前无法投票",
+    ErrorCodeId = 37019,
+  },
+  [38001] = {
+    ErrorCodeContent = "区域特殊怪物概率失败",
+    ErrorCodeId = 38001,
+  },
+  [38002] = {
+    ErrorCodeContent = "区域特殊怪物规则不存在",
+    ErrorCodeId = 38002,
+  },
+  [38003] = {
+    ErrorCodeContent = "区域特殊怪物数量已达上限",
+    ErrorCodeId = 38003,
+  },
+  [38004] = {
+    ErrorCodeContent = "区域特殊怪物不在区域内",
+    ErrorCodeId = 38004,
+  },
+  [38005] = {
+    ErrorCodeContent = "区域特殊怪物触发条件失败",
+    ErrorCodeId = 38005,
+  },
+  [38006] = {
+    ErrorCodeContent = "区域特殊怪物冷却中",
+    ErrorCodeId = 38006,
+  },
+  [39003] = {
+    ErrorCodeContent = "CDK使用次数已达上限",
+    ErrorCodeId = 39003,
+  },
+  [39004] = {
+    ErrorCodeContent = "CDK无效",
+    ErrorCodeId = 39004,
+  },
+  [39005] = {
+    ErrorCodeContent = "CDK渠道校验失败",
+    ErrorCodeId = 39005,
+  },
+  [40001] = {
+    ErrorCodeContent = "奖励不存在",
+    ErrorCodeId = 40001,
+  },
+  [40002] = {
+    ErrorCodeContent = "不满足领取条件",
+    ErrorCodeId = 40002,
+  },
+  [40003] = {
+    ErrorCodeContent = "关卡中不能领取奖励",
+    ErrorCodeId = 40003,
+  },
+  [40004] = {
+    ErrorCodeContent = "词条不存在",
+    ErrorCodeId = 40004,
+  },
+  [40005] = {
+    ErrorCodeContent = "词条未解锁",
+    ErrorCodeId = 40005,
   },
   [50001] = {
     ContentEN = "Game mode not found",
@@ -4558,7 +5219,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 콘텐츠는 존재하지 않습니다.",
     ContentTC = "當前玩法不存在",
     ErrorCodeContent = "当前玩法不存在",
-    ErrorCodeId = 50001
+    ErrorCodeId = 50001,
   },
   [50002] = {
     ContentEN = "Invalid number of lineup slots",
@@ -4566,7 +5227,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파티 설정의 인원수가 올바르지 않습니다.",
     ContentTC = "隊伍配置數量不正確",
     ErrorCodeContent = "队伍配置数量不正确",
-    ErrorCodeId = 50002
+    ErrorCodeId = 50002,
   },
   [50003] = {
     ContentEN = "Duplicate characters in lineup",
@@ -4574,7 +5235,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파티 설정에 중복된 캐릭터가 존재합니다.",
     ContentTC = "隊伍配置中存在重複角色",
     ErrorCodeContent = "队伍配置中存在重复角色",
-    ErrorCodeId = 50003
+    ErrorCodeId = 50003,
   },
   [50004] = {
     ContentEN = "Lineup includes unowned characters",
@@ -4582,7 +5243,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파티 설정에 보유하지 않은 캐릭터가 존재합니다.",
     ContentTC = "隊伍配置中存在未擁有角色",
     ErrorCodeContent = "队伍配置中存在未拥有角色",
-    ErrorCodeId = 50004
+    ErrorCodeId = 50004,
   },
   [50005] = {
     ContentEN = "Floor not found",
@@ -4590,7 +5251,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 층은 존재하지 않습니다.",
     ContentTC = "當前層數不存在",
     ErrorCodeContent = "当前层数不存在",
-    ErrorCodeId = 50005
+    ErrorCodeId = 50005,
   },
   [50006] = {
     ContentEN = "Stage not found",
@@ -4598,7 +5259,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 스테이지는 존재하지 않습니다.",
     ContentTC = "當前關卡不存在",
     ErrorCodeContent = "当前关卡不存在",
-    ErrorCodeId = 50006
+    ErrorCodeId = 50006,
   },
   [50007] = {
     ContentEN = "Room not found",
@@ -4606,7 +5267,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 방은 존재하지 않습니다.",
     ContentTC = "當前房間不存在",
     ErrorCodeContent = "当前房间不存在",
-    ErrorCodeId = 50007
+    ErrorCodeId = 50007,
   },
   [50008] = {
     ContentEN = "Invalid challenge progress",
@@ -4614,7 +5275,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 도전 진행도에 오류가 있습니다.",
     ContentTC = "當前挑戰進度錯誤",
     ErrorCodeContent = "当前挑战进度错误",
-    ErrorCodeId = 50008
+    ErrorCodeId = 50008,
   },
   [50009] = {
     ContentEN = "No lineup configured",
@@ -4622,7 +5283,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "파티가 설정되어 있지 않습니다.",
     ContentTC = "未配置隊伍",
     ErrorCodeContent = "未配置队伍",
-    ErrorCodeId = 50009
+    ErrorCodeId = 50009,
   },
   [50010] = {
     ContentEN = "Character missing",
@@ -4630,7 +5291,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐릭터가 없습니다.",
     ContentTC = "角色缺失",
     ErrorCodeContent = "角色缺失",
-    ErrorCodeId = 50010
+    ErrorCodeId = 50010,
   },
   [50011] = {
     ContentEN = "Melee weapon missing",
@@ -4638,7 +5299,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "근접 무기가 없습니다.",
     ContentTC = "近戰武器缺失",
     ErrorCodeContent = "近战武器缺失",
-    ErrorCodeId = 50011
+    ErrorCodeId = 50011,
   },
   [50012] = {
     ContentEN = "Ranged weapon missing",
@@ -4646,7 +5307,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "원거리 무기가 없습니다.",
     ContentTC = "遠程武器缺失",
     ErrorCodeContent = "远程武器缺失",
-    ErrorCodeId = 50012
+    ErrorCodeId = 50012,
   },
   [50013] = {
     ContentEN = "Combat Partner weapon missing",
@@ -4654,7 +5315,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "협력 인장 무기가 없습니다.",
     ContentTC = "協戰印記武器缺失",
     ErrorCodeContent = "协战印记武器缺失",
-    ErrorCodeId = 50013
+    ErrorCodeId = 50013,
   },
   [50014] = {
     ContentEN = "Geniemon not acquired",
@@ -4662,7 +5323,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "보유한 마령이 없습니다.",
     ContentTC = "魔靈未擁有",
     ErrorCodeContent = "魔灵未拥有",
-    ErrorCodeId = 50014
+    ErrorCodeId = 50014,
   },
   [50015] = {
     ContentEN = "Current lineup is locked",
@@ -4670,7 +5331,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 파티 설정은 잠겨 있습니다.",
     ContentTC = "當前隊伍配置已鎖定",
     ErrorCodeContent = "当前队伍配置已锁定",
-    ErrorCodeId = 50015
+    ErrorCodeId = 50015,
   },
   [50016] = {
     ContentEN = "Current lineup is not locked",
@@ -4678,7 +5339,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "해당 파티 설정은 잠겨 있지 않습니다.",
     ContentTC = "當前隊伍配置未鎖定",
     ErrorCodeContent = "当前队伍配置未锁定",
-    ErrorCodeId = 50016
+    ErrorCodeId = 50016,
   },
   [50017] = {
     ContentEN = "Season mismatch",
@@ -4686,7 +5347,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "시즌이 일치하지 않습니다.",
     ContentTC = "賽季不匹配",
     ErrorCodeContent = "赛季不匹配",
-    ErrorCodeId = 50017
+    ErrorCodeId = 50017,
   },
   [50018] = {
     ContentEN = "Prerequisite stage not cleared",
@@ -4694,7 +5355,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "아직 이전 스테이지를 클리어하지 않았습니다.",
     ContentTC = "前置關卡暫未通關",
     ErrorCodeContent = "前置关卡暂未通关",
-    ErrorCodeId = 50018
+    ErrorCodeId = 50018,
   },
   [50019] = {
     ContentEN = "Invalid star rating",
@@ -4702,7 +5363,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "별 개수에 오류가 있습니다.",
     ContentTC = "星數錯誤",
     ErrorCodeContent = "星数错误",
-    ErrorCodeId = 50019
+    ErrorCodeId = 50019,
   },
   [50020] = {
     ContentEN = "Reward already claimed",
@@ -4710,7 +5371,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 보상을 수령했습니다.",
     ContentTC = "獎勵已領取",
     ErrorCodeContent = "奖励已领取",
-    ErrorCodeId = 50020
+    ErrorCodeId = 50020,
   },
   [50021] = {
     ContentEN = "Invalid completion time",
@@ -4718,47 +5379,171 @@ return ReadOnly("ErrorCode", {
     ContentKR = "방 통과 시간에 오류가 있습니다.",
     ContentTC = "房間通過時間錯誤",
     ErrorCodeContent = "房间通过时间错误",
-    ErrorCodeId = 50021
+    ErrorCodeId = 50021,
+  },
+  [51001] = {
+    ErrorCodeContent = "委托密函数量不足",
+    ErrorCodeId = 51001,
+  },
+  [51002] = {
+    ErrorCodeContent = "当前关卡无法使用该委托密函",
+    ErrorCodeId = 51002,
+  },
+  [51003] = {
+    ErrorCodeContent = "不能在关卡外使用委托密函",
+    ErrorCodeId = 51003,
+  },
+  [51004] = {
+    ErrorCodeContent = "关卡类型无法使用委托密函",
+    ErrorCodeId = 51004,
+  },
+  [51005] = {
+    ErrorCodeContent = "选择索引超出范围",
+    ErrorCodeId = 51005,
+  },
+  [51006] = {
+    ErrorCodeContent = "获取委托密函奖励失败",
+    ErrorCodeId = 51006,
+  },
+  [51007] = {
+    ErrorCodeContent = "当前无法选择委托密函",
+    ErrorCodeId = 51007,
+  },
+  [51008] = {
+    ErrorCodeContent = "该关卡未开启委托密函",
+    ErrorCodeId = 51008,
+  },
+  [51009] = {
+    ErrorCodeContent = "当前无法选择委托密函奖励",
+    ErrorCodeId = 51009,
+  },
+  [52001] = {
+    ErrorCodeContent = "区域联机位面不存在",
+    ErrorCodeId = 52001,
+  },
+  [52002] = {
+    ErrorCodeContent = "区域联机位面状态错误",
+    ErrorCodeId = 52002,
+  },
+  [52003] = {
+    ErrorCodeContent = "区域联机位面没有当前角色",
+    ErrorCodeId = 52003,
+  },
+  [52004] = {
+    ErrorCodeContent = "区域联机位面未解锁",
+    ErrorCodeId = 52004,
+  },
+  [52005] = {
+    ErrorCodeContent = "重复进入",
+    ErrorCodeId = 52005,
+  },
+  [52006] = {
+    ErrorCodeContent = "重复离开",
+    ErrorCodeId = 52006,
+  },
+  [52007] = {
+    ErrorCodeContent = "区域联机位面已关闭",
+    ErrorCodeId = 52007,
+  },
+  [52008] = {
+    ErrorCodeContent = "区域不存在该玩家",
+    ErrorCodeId = 52008,
+  },
+  [52009] = {
+    ErrorCodeContent = "区域不存在该创建的机关物品",
+    ErrorCodeId = 52009,
+  },
+  [52010] = {
+    ErrorCodeContent = "当前区域玩家未创建目标物品",
+    ErrorCodeId = 52010,
+  },
+  [52011] = {
+    ErrorCodeContent = "不存在该唯一机关",
+    ErrorCodeId = 52011,
+  },
+  [52012] = {
+    ErrorCodeContent = "该机关已经被他人占用",
+    ErrorCodeId = 52012,
+  },
+  [52013] = {
+    ErrorCodeContent = "物品创建者不能使用机关",
+    ErrorCodeId = 52013,
+  },
+  [52015] = {
+    ErrorCodeContent = "存在物品使用请求",
+    ErrorCodeId = 52015,
+  },
+  [52016] = {
+    ErrorCodeContent = "请求超时",
+    ErrorCodeId = 52016,
+  },
+  [52017] = {
+    ErrorCodeContent = "不存在使用的资源",
+    ErrorCodeId = 52017,
+  },
+  [52018] = {
+    ErrorCodeContent = "不能创建机关",
+    ErrorCodeId = 52018,
+  },
+  [52019] = {
+    ErrorCodeContent = "没有创建该目标坐骑",
+    ErrorCodeId = 52019,
+  },
+  [52020] = {
+    ErrorCodeContent = "不存在该索引的全局机关",
+    ErrorCodeId = 52020,
+  },
+  [52021] = {
+    ErrorCodeContent = "主机玩家不在线",
+    ErrorCodeId = 52021,
+  },
+  [52022] = {
+    ErrorCodeContent = "消息接收方不在线",
+    ErrorCodeId = 52022,
+  },
+  [52023] = {
+    ErrorCodeContent = "不存在交互信息",
+    ErrorCodeId = 52023,
+  },
+  [52024] = {
+    ErrorCodeContent = "请求中，请稍后",
+    ErrorCodeId = 52024,
+  },
+  [52025] = {
+    ErrorCodeContent = "请求超时",
+    ErrorCodeId = 52025,
   },
   [53001] = {
-    ContentEN = "Commission type is not Trial",
-    ContentJP = "ステージタイプがトライアルではありません。",
-    ContentKR = "데모 플레이 유형의 스테이지가 아닙니다.",
-    ContentTC = "副本類型不為試玩類型",
     ErrorCodeContent = "副本类型不为试玩类型",
-    ErrorCodeId = 53001
+    ErrorCodeId = 53001,
   },
   [53002] = {
-    ContentEN = "Trial event does not exist",
-    ContentJP = "テストプレイイベントは存在しません",
-    ContentKR = "데모 플레이 이벤트가 존재하지 않습니다.",
-    ContentTC = "試玩活動不存在",
     ErrorCodeContent = "试玩活动不存在",
-    ErrorCodeId = 53002
+    ErrorCodeId = 53002,
   },
   [53003] = {
-    ContentEN = "Trial event has not started",
-    ContentJP = "テストプレイイベント未開放",
-    ContentKR = "데모 플레이 이벤트가 시작되지 않았습니다.",
-    ContentTC = "試玩活動未開啟",
     ErrorCodeContent = "试玩活动未开启",
-    ErrorCodeId = 53003
+    ErrorCodeId = 53003,
   },
   [53004] = {
-    ContentEN = "Rewards have already been claimed",
-    ContentJP = "報酬受取済み",
-    ContentKR = "이미 보상을 수령했습니다.",
-    ContentTC = "已經領取獎勵",
     ErrorCodeContent = "已经领取奖励",
-    ErrorCodeId = 53004
+    ErrorCodeId = 53004,
   },
   [53005] = {
-    ContentEN = "Trial event is not completed",
-    ContentJP = "テストプレイイベント未完了",
-    ContentKR = "데모 플레이 이벤트를 완료하지 않았습니다.",
-    ContentTC = "試玩活動未完成",
     ErrorCodeContent = "试玩活动未完成",
-    ErrorCodeId = 53005
+    ErrorCodeId = 53005,
+  },
+  [54001] = {
+    ErrorCodeContent = "校验失败",
+    ErrorCodeId = 54001,
+  },
+  [54002] = {
+    ErrorCodeContent = "钓鱼点参数有误不存在",
+    ErrorCodeId = 54002,
+  },
+  [54003] = {
+    ErrorCodeContent = "鱼竿参数有误不存在",
+    ErrorCodeId = 54003,
   },
   [55001] = {
     ContentEN = "Collection entry not found",
@@ -4766,7 +5551,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "도감이 존재하지 않습니다.",
     ContentTC = "圖鑒不存在",
     ErrorCodeContent = "图鉴不存在",
-    ErrorCodeId = 55001
+    ErrorCodeId = 55001,
   },
   [55002] = {
     ContentEN = "Invalid number of collection entries",
@@ -4774,7 +5559,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "도감 수량에 오류가 있습니다.",
     ContentTC = "圖鑒數量錯誤",
     ErrorCodeContent = "图鉴数量错误",
-    ErrorCodeId = 55002
+    ErrorCodeId = 55002,
   },
   [55003] = {
     ContentEN = "Collection rewards already claimed",
@@ -4782,7 +5567,47 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 도감 보상을 획득했습니다.",
     ContentTC = "圖鑒獎勵已獲取",
     ErrorCodeContent = "图鉴奖励已获取",
-    ErrorCodeId = 55003
+    ErrorCodeId = 55003,
+  },
+  [56001] = {
+    ErrorCodeContent = "鱼饵参数有误不存在",
+    ErrorCodeId = 56001,
+  },
+  [56002] = {
+    ErrorCodeContent = "钓鱼点鱼已钓完",
+    ErrorCodeId = 56002,
+  },
+  [56003] = {
+    ErrorCodeContent = "钓鱼成就不存在",
+    ErrorCodeId = 56003,
+  },
+  [56004] = {
+    ErrorCodeContent = "钓鱼成就未完成",
+    ErrorCodeId = 56004,
+  },
+  [56005] = {
+    ErrorCodeContent = "钓鱼成就奖励已领取",
+    ErrorCodeId = 56005,
+  },
+  [56006] = {
+    ErrorCodeContent = "钓鱼尺寸不存在",
+    ErrorCodeId = 56006,
+  },
+  [56007] = {
+    ErrorCodeContent = "鱼资源已经上解锁",
+    ErrorCodeId = 56007,
+  },
+  [56008] = {
+    ErrorCodeContent = "鱼资源已经解锁",
+    ErrorCodeId = 56008,
+  },
+  [56009] = {
+    ErrorCodeContent = "推理失败",
+    ErrorCodeId = 56009,
+  },
+  [56010] = {
+    ErrorCodeContent = "提交失败",
+    ErrorCodeId = 56010,
   },
   [57001] = {
     ContentEN = "Reward already claimed",
@@ -4790,7 +5615,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 보상을 수령했습니다.",
     ContentTC = "獎勵已領取",
     ErrorCodeContent = "奖励已领取",
-    ErrorCodeId = 57001
+    ErrorCodeId = 57001,
   },
   [57002] = {
     ContentEN = "Reward not currently available",
@@ -4798,7 +5623,27 @@ return ReadOnly("ErrorCode", {
     ContentKR = "보상을 수령할 수 없습니다.",
     ContentTC = "獎勵不可領取",
     ErrorCodeContent = "奖励不可领取",
-    ErrorCodeId = 57002
+    ErrorCodeId = 57002,
+  },
+  [58001] = {
+    ErrorCodeContent = "线索不存在",
+    ErrorCodeId = 58001,
+  },
+  [58002] = {
+    ErrorCodeContent = "无结果",
+    ErrorCodeId = 58002,
+  },
+  [58003] = {
+    ErrorCodeContent = "无问题",
+    ErrorCodeId = 58003,
+  },
+  [58004] = {
+    ErrorCodeContent = "角色不存在",
+    ErrorCodeId = 58004,
+  },
+  [58005] = {
+    ErrorCodeContent = "外观不存在",
+    ErrorCodeId = 58005,
   },
   [59001] = {
     ContentEN = "Lineup index already exists",
@@ -4806,7 +5651,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "편성 인덱스가 이미 존재합니다.",
     ContentTC = "陣容索引已存在",
     ErrorCodeContent = "阵容索引已存在",
-    ErrorCodeId = 59001
+    ErrorCodeId = 59001,
   },
   [59002] = {
     ContentEN = "Character not found",
@@ -4814,7 +5659,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐릭터가 존재하지 않습니다.",
     ContentTC = "角色不存在",
     ErrorCodeContent = "角色不存在",
-    ErrorCodeId = 59002
+    ErrorCodeId = 59002,
   },
   [59003] = {
     ContentEN = "Demon Wedge setup for character not found",
@@ -4822,7 +5667,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "캐릭터의 악마의 쐐기 프리셋이 존재하지 않습니다.",
     ContentTC = "角色魔之楔方案不存在",
     ErrorCodeContent = "角色魔之楔方案不存在",
-    ErrorCodeId = 59003
+    ErrorCodeId = 59003,
   },
   [59004] = {
     ContentEN = "Melee weapon not found",
@@ -4830,7 +5675,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "근접 무기가 존재하지 않습니다.",
     ContentTC = "近戰武器不存在",
     ErrorCodeContent = "近战武器不存在",
-    ErrorCodeId = 59004
+    ErrorCodeId = 59004,
   },
   [59005] = {
     ContentEN = "Demon Wedge setup for melee weapon not found",
@@ -4838,7 +5683,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "근접 무기 악마의 쐐기 프리셋이 존재하지 않습니다.",
     ContentTC = "近戰武器魔之楔方案不存在",
     ErrorCodeContent = "近战武器魔之楔方案不存在",
-    ErrorCodeId = 59005
+    ErrorCodeId = 59005,
   },
   [59006] = {
     ContentEN = "Ranged weapon not found",
@@ -4846,7 +5691,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "원거리 무기가 존재하지 않습니다.",
     ContentTC = "遠程武器不存在",
     ErrorCodeContent = "远程武器不存在",
-    ErrorCodeId = 59006
+    ErrorCodeId = 59006,
   },
   [59007] = {
     ContentEN = "Demon Wedge setup for ranged weapon not found",
@@ -4854,7 +5699,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "원거리 무기 악마의 쐐기 프리셋이 존재하지 않습니다.",
     ContentTC = "遠程武器魔之楔方案不存在",
     ErrorCodeContent = "远程武器魔之楔方案不存在",
-    ErrorCodeId = 59007
+    ErrorCodeId = 59007,
   },
   [59008] = {
     ContentEN = "Geniemon not found",
@@ -4862,7 +5707,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "마령이 존재하지 않습니다.",
     ContentTC = "魔靈不存在",
     ErrorCodeContent = "魔灵不存在",
-    ErrorCodeId = 59008
+    ErrorCodeId = 59008,
   },
   [59009] = {
     ContentEN = "Tactical Backpack loadout not found",
@@ -4870,15 +5715,11 @@ return ReadOnly("ErrorCode", {
     ContentKR = "전술 가방 프리셋이 존재하지 않습니다.",
     ContentTC = "戰術背包方案不存在",
     ErrorCodeContent = "战术背包方案不存在",
-    ErrorCodeId = 59009
+    ErrorCodeId = 59009,
   },
   [59010] = {
-    ContentEN = "Combat Partner does not exist",
-    ContentJP = "戦友が存在しません",
-    ContentKR = "협력 동료가 존재하지 않습니다.",
-    ContentTC = "協戰同伴不存在",
     ErrorCodeContent = "协战同伴不存在",
-    ErrorCodeId = 59010
+    ErrorCodeId = 59010,
   },
   [59011] = {
     ContentEN = "Weapon not found",
@@ -4886,7 +5727,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "무기가 존재하지 않습니다.",
     ContentTC = "武器不存在",
     ErrorCodeContent = "武器不存在",
-    ErrorCodeId = 59011
+    ErrorCodeId = 59011,
   },
   [59012] = {
     ContentEN = "Demon Wedge setup for weapon not found",
@@ -4894,7 +5735,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "무기 악마의 쐐기 프리셋이 존재하지 않습니다.",
     ContentTC = "武器魔之楔方案不存在",
     ErrorCodeContent = "武器魔之楔方案不存在",
-    ErrorCodeId = 59012
+    ErrorCodeId = 59012,
   },
   [59013] = {
     ContentEN = "Lineup index not found",
@@ -4902,7 +5743,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "편성 인덱스가 존재하지 않습니다.",
     ContentTC = "陣容索引不存在",
     ErrorCodeContent = "阵容索引不存在",
-    ErrorCodeId = 59013
+    ErrorCodeId = 59013,
   },
   [59014] = {
     ContentEN = "Invalid index parameters",
@@ -4910,7 +5751,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "편성 인덱스가 유효하지 않습니다.",
     ContentTC = "陣容參數無效",
     ErrorCodeContent = "阵容参数无效",
-    ErrorCodeId = 59014
+    ErrorCodeId = 59014,
   },
   [59015] = {
     ContentEN = "Missing lineup parameters",
@@ -4918,7 +5759,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "편성 파라미터가 부족합니다.",
     ContentTC = "陣容缺少參數",
     ErrorCodeContent = "阵容缺少参数",
-    ErrorCodeId = 59015
+    ErrorCodeId = 59015,
   },
   [59016] = {
     ContentEN = "Cannot delete the last remaining lineup",
@@ -4926,7 +5767,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "마지막 편성은 삭제할 수 없습니다.",
     ContentTC = "不能刪除最後一個陣容",
     ErrorCodeContent = "不能删除最后一个阵容",
-    ErrorCodeId = 59016
+    ErrorCodeId = 59016,
   },
   [59017] = {
     ContentEN = "Lineup capacity exceeded",
@@ -4934,7 +5775,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "편성 수량이 최대치를 초과했습니다.",
     ContentTC = "陣容數量超過上限",
     ErrorCodeContent = "阵容数量超过上限",
-    ErrorCodeId = 59017
+    ErrorCodeId = 59017,
   },
   [59018] = {
     ContentEN = "Duplicate characters in lineup",
@@ -4942,7 +5783,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "중복된 캐릭터가 존재합니다.",
     ContentTC = "角色存在重複",
     ErrorCodeContent = "角色存在重复",
-    ErrorCodeId = 59018
+    ErrorCodeId = 59018,
   },
   [59019] = {
     ContentEN = "Invalid weapon tag",
@@ -4950,7 +5791,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "무기 태그에 오류가 있습니다.",
     ContentTC = "武器標簽錯誤",
     ErrorCodeContent = "武器标签错误",
-    ErrorCodeId = 59019
+    ErrorCodeId = 59019,
   },
   [59020] = {
     ContentEN = "Duplicate weapons in lineup",
@@ -4958,7 +5799,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "중복된 무기가 존재합니다.",
     ContentTC = "武器存在重複",
     ErrorCodeContent = "武器存在重复",
-    ErrorCodeId = 59020
+    ErrorCodeId = 59020,
   },
   [59021] = {
     ContentEN = "Combat Partner weapon not found",
@@ -4966,7 +5807,71 @@ return ReadOnly("ErrorCode", {
     ContentKR = "협력 동료 무기가 존재하지 않습니다.",
     ContentTC = "協戰夥伴武器不存在",
     ErrorCodeContent = "协战同伴武器不存在",
-    ErrorCodeId = 59021
+    ErrorCodeId = 59021,
+  },
+  [60001] = {
+    ErrorCodeContent = "角色展示已存在",
+    ErrorCodeId = 60001,
+  },
+  [60002] = {
+    ErrorCodeContent = "角色展示不存在",
+    ErrorCodeId = 60002,
+  },
+  [60004] = {
+    ErrorCodeContent = "展示数量已达上限",
+    ErrorCodeId = 60004,
+  },
+  [60005] = {
+    ErrorCodeContent = "武器不存在",
+    ErrorCodeId = 60005,
+  },
+  [60006] = {
+    ErrorCodeContent = "武器展示已存在",
+    ErrorCodeId = 60006,
+  },
+  [60007] = {
+    ErrorCodeContent = "武器展示不存在",
+    ErrorCodeId = 60007,
+  },
+  [60008] = {
+    ErrorCodeContent = "未找到该玩家信息",
+    ErrorCodeId = 60008,
+  },
+  [60009] = {
+    ErrorCodeContent = "炮台活动错误",
+    ErrorCodeId = 60009,
+  },
+  [60010] = {
+    ErrorCodeContent = "炮台活动数据不存在",
+    ErrorCodeId = 60010,
+  },
+  [60012] = {
+    ErrorCodeContent = "炮台关卡数据不存在",
+    ErrorCodeId = 60012,
+  },
+  [60013] = {
+    ErrorCodeContent = "炮台关卡前置关卡未通关",
+    ErrorCodeId = 60013,
+  },
+  [60014] = {
+    ErrorCodeContent = "月卡未开启",
+    ErrorCodeId = 60014,
+  },
+  [60015] = {
+    ErrorCodeContent = "月卡购买次数达到上限",
+    ErrorCodeId = 60015,
+  },
+  [61001] = {
+    ErrorCodeContent = "月卡没有商品信息",
+    ErrorCodeId = 61001,
+  },
+  [61002] = {
+    ErrorCodeContent = "订单生成失败",
+    ErrorCodeId = 61002,
+  },
+  [61003] = {
+    ErrorCodeContent = "充值道具不存在",
+    ErrorCodeId = 61003,
   },
   [62001] = {
     ContentEN = "Invalid quest type",
@@ -4974,7 +5879,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트 유형에 오류가 있습니다.",
     ContentTC = "任務類型錯誤",
     ErrorCodeContent = "任务类型错误",
-    ErrorCodeId = 62001
+    ErrorCodeId = 62001,
   },
   [62002] = {
     ContentEN = "Invalid quest ID",
@@ -4982,7 +5887,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트 ID에 오류가 있습니다.",
     ContentTC = "任務ID錯誤",
     ErrorCodeContent = "任务ID错误",
-    ErrorCodeId = 62002
+    ErrorCodeId = 62002,
   },
   [62003] = {
     ContentEN = "Quest not yet completed",
@@ -4990,7 +5895,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트가 완료되지 않았습니다.",
     ContentTC = "任務未完成",
     ErrorCodeContent = "任务未完成",
-    ErrorCodeId = 62003
+    ErrorCodeId = 62003,
   },
   [62004] = {
     ContentEN = "Reward already claimed",
@@ -4998,23 +5903,23 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 보상을 수령했습니다.",
     ContentTC = "獎勵已領取",
     ErrorCodeContent = "奖励已领取",
-    ErrorCodeId = 62004
+    ErrorCodeId = 62004,
   },
   [62005] = {
-    ContentEN = "Invalid Bard's Tome level",
+    ContentEN = "Invalid Bard\'s Tome level",
     ContentJP = "詩歌集レベルエラー",
     ContentKR = "음유 시집 레벨에 오류가 있습니다.",
     ContentTC = "吟遊詩集等級錯誤",
     ErrorCodeContent = "吟游诗集等级错误",
-    ErrorCodeId = 62005
+    ErrorCodeId = 62005,
   },
   [62006] = {
-    ContentEN = "Invalid Bard's Tome season",
+    ContentEN = "Invalid Bard\'s Tome season",
     ContentJP = "詩歌集のシーズンエラー",
     ContentKR = "음유 시집 버전에 오류가 있습니다.",
     ContentTC = "吟遊詩集期數錯誤",
     ErrorCodeContent = "吟游诗集期数错误",
-    ErrorCodeId = 62006
+    ErrorCodeId = 62006,
   },
   [62007] = {
     ContentEN = "Binding Design not yet unlocked",
@@ -5022,7 +5927,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "장정 프리셋이 잠겨 있습니다.",
     ContentTC = "裝幀方案未解鎖",
     ErrorCodeContent = "装帧方案未解锁",
-    ErrorCodeId = 62007
+    ErrorCodeId = 62007,
   },
   [62008] = {
     ContentEN = "Level requirement not met",
@@ -5030,7 +5935,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "레벨이 부족합니다.",
     ContentTC = "等級未滿足",
     ErrorCodeContent = "等级未满足",
-    ErrorCodeId = 62008
+    ErrorCodeId = 62008,
   },
   [62009] = {
     ContentEN = "Reward already claimed",
@@ -5038,15 +5943,15 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 보상을 수령했습니다.",
     ContentTC = "獎勵已領取",
     ErrorCodeContent = "奖励已领取",
-    ErrorCodeId = 62009
+    ErrorCodeId = 62009,
   },
   [62010] = {
-    ContentEN = "Bard's Tome not found",
+    ContentEN = "Bard\'s Tome not found",
     ContentJP = "詩歌集が見つかりません",
     ContentKR = "음유 시집이 존재하지 않습니다.",
     ContentTC = "吟遊詩集不存在",
     ErrorCodeContent = "吟游诗集不存在",
-    ErrorCodeId = 62010
+    ErrorCodeId = 62010,
   },
   [62011] = {
     ContentEN = "Geniemon already claimed",
@@ -5054,15 +5959,15 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 마령을 수령했습니다.",
     ContentTC = "魔靈已領取",
     ErrorCodeContent = "魔灵已领取",
-    ErrorCodeId = 62011
+    ErrorCodeId = 62011,
   },
   [62012] = {
-    ContentEN = "Previous Bard's Tome not found",
+    ContentEN = "Previous Bard\'s Tome not found",
     ContentJP = "前シーズンの詩歌集が見つかりません",
     ContentKR = "이전 버전의 음유 시집이 존재하지 않습니다.",
     ContentTC = "上一期吟遊詩集不存在",
     ErrorCodeContent = "上一期吟游诗集不存在",
-    ErrorCodeId = 62012
+    ErrorCodeId = 62012,
   },
   [62013] = {
     ContentEN = "Geniemon not found",
@@ -5070,7 +5975,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "마령이 존재하지 않습니다.",
     ContentTC = "魔靈不存在",
     ErrorCodeContent = "魔灵不存在",
-    ErrorCodeId = 62013
+    ErrorCodeId = 62013,
   },
   [62014] = {
     ContentEN = "Purchase validation failed",
@@ -5078,7 +5983,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "구매 확인에 실패했습니다.",
     ContentTC = "購買檢查失敗",
     ErrorCodeContent = "购买检查失败",
-    ErrorCodeId = 62014
+    ErrorCodeId = 62014,
   },
   [62015] = {
     ContentEN = "Insufficient resources for purchase",
@@ -5086,7 +5991,51 @@ return ReadOnly("ErrorCode", {
     ContentKR = "구매한 재료가 부족합니다.",
     ContentTC = "購買資源不足",
     ErrorCodeContent = "购买资源不足",
-    ErrorCodeId = 62015
+    ErrorCodeId = 62015,
+  },
+  [63001] = {
+    ErrorCodeContent = "订单失败",
+    ErrorCodeId = 63001,
+  },
+  [63002] = {
+    ErrorCodeContent = "道具不可购买",
+    ErrorCodeId = 63002,
+  },
+  [63003] = {
+    ErrorCodeContent = "订单正在处理中",
+    ErrorCodeId = 63003,
+  },
+  [63004] = {
+    ErrorCodeContent = "魔之楔手册任务不存在",
+    ErrorCodeId = 63004,
+  },
+  [63005] = {
+    ErrorCodeContent = "魔之楔手册任务未完成",
+    ErrorCodeId = 63005,
+  },
+  [64001] = {
+    ErrorCodeContent = "魔之楔手册任务奖励已领取",
+    ErrorCodeId = 64001,
+  },
+  [64002] = {
+    ErrorCodeContent = "魔之楔手册任务未解锁",
+    ErrorCodeId = 64002,
+  },
+  [64003] = {
+    ErrorCodeContent = "魔之楔手册任务阶段不存在",
+    ErrorCodeId = 64003,
+  },
+  [64004] = {
+    ErrorCodeContent = "魔之楔手册任务阶段奖励已领取",
+    ErrorCodeId = 64004,
+  },
+  [64005] = {
+    ErrorCodeContent = "炮台活动无效参数",
+    ErrorCodeId = 64005,
+  },
+  [64006] = {
+    ErrorCodeContent = "炮台活动关卡类型配置错误",
+    ErrorCodeId = 64006,
   },
   [65001] = {
     ContentEN = "Event not found",
@@ -5094,7 +6043,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이벤트가 존재하지 않습니다.",
     ContentTC = "活動不存在",
     ErrorCodeContent = "活动不存在",
-    ErrorCodeId = 65001
+    ErrorCodeId = 65001,
   },
   [65002] = {
     ContentEN = "Invalid resource submitted",
@@ -5102,7 +6051,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "제출한 재료에 오류가 있습니다.",
     ContentTC = "提交資源錯誤",
     ErrorCodeContent = "提交资源错误",
-    ErrorCodeId = 65002
+    ErrorCodeId = 65002,
   },
   [65003] = {
     ContentEN = "Insufficient resources submitted",
@@ -5110,15 +6059,11 @@ return ReadOnly("ErrorCode", {
     ContentKR = "제출한 재료가 부족합니다.",
     ContentTC = "提交資源不足",
     ErrorCodeContent = "提交资源不足",
-    ErrorCodeId = 65003
+    ErrorCodeId = 65003,
   },
   [65004] = {
-    ContentEN = "Final reward already claimed",
-    ContentJP = "最終報酬受取済み",
-    ContentKR = "이미 최종 보상을 수령했습니다.",
-    ContentTC = "最終獎勵已領取",
     ErrorCodeContent = "最终奖励已领取",
-    ErrorCodeId = 65004
+    ErrorCodeId = 65004,
   },
   [66001] = {
     ContentEN = "Reward not found",
@@ -5126,7 +6071,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "보상이 존재하지 않습니다.",
     ContentTC = "獎勵不存在",
     ErrorCodeContent = "奖励不存在",
-    ErrorCodeId = 66001
+    ErrorCodeId = 66001,
   },
   [66002] = {
     ContentEN = "Reward already claimed",
@@ -5134,7 +6079,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 보상을 수령했습니다.",
     ContentTC = "獎勵已領取",
     ErrorCodeContent = "奖励已领取",
-    ErrorCodeId = 66002
+    ErrorCodeId = 66002,
   },
   [66003] = {
     ContentEN = "Event has not started",
@@ -5142,7 +6087,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이벤트가 오픈되지 않았습니다.",
     ContentTC = "活動未開啟",
     ErrorCodeContent = "活动未开启",
-    ErrorCodeId = 66003
+    ErrorCodeId = 66003,
   },
   [66004] = {
     ContentEN = "Trial Rank requirement not met",
@@ -5150,7 +6095,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "수련 레벨이 부족합니다.",
     ContentTC = "曆練等級不足",
     ErrorCodeContent = "历练等级不足",
-    ErrorCodeId = 66004
+    ErrorCodeId = 66004,
   },
   [67001] = {
     ContentEN = "Quest not found",
@@ -5158,7 +6103,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트가 존재하지 않습니다.",
     ContentTC = "任務不存在",
     ErrorCodeContent = "任务不存在",
-    ErrorCodeId = 67001
+    ErrorCodeId = 67001,
   },
   [67002] = {
     ContentEN = "Reward already claimed",
@@ -5166,7 +6111,7 @@ return ReadOnly("ErrorCode", {
     ContentKR = "이미 보상을 수령했습니다.",
     ContentTC = "獎勵已領取",
     ErrorCodeContent = "奖励已领取",
-    ErrorCodeId = 67002
+    ErrorCodeId = 67002,
   },
   [67003] = {
     ContentEN = "Quest not yet completed",
@@ -5174,246 +6119,436 @@ return ReadOnly("ErrorCode", {
     ContentKR = "퀘스트가 완료되지 않았습니다.",
     ContentTC = "任務未完成",
     ErrorCodeContent = "任务未完成",
-    ErrorCodeId = 67003
+    ErrorCodeId = 67003,
   },
   [68001] = {
-    ContentEN = "Friendly Games event does not exist",
-    ContentJP = "「平和な賭け事」イベントが見つかりません",
-    ContentKR = "문명 대결 이벤트가 존재하지 않습니다.",
-    ContentTC = "文明博弈活動不存在",
     ErrorCodeContent = "文明博弈活动不存在",
-    ErrorCodeId = 68001
+    ErrorCodeId = 68001,
   },
   [68002] = {
-    ContentEN = "The reward collection period for Friendly Games has ended",
-    ContentJP = "「平和な賭け事」の報酬の受け取りは終了しました",
-    ContentKR = "문명 대결 보상 수령 기간이 종료되었습니다.",
-    ContentTC = "文明博弈獎勵領取時間已結束",
     ErrorCodeContent = "文明博弈奖励领取时间已结束",
-    ErrorCodeId = 68002
+    ErrorCodeId = 68002,
   },
   [68003] = {
-    ContentEN = "No available Luno Collections to claim in Friendly Games",
-    ContentJP = "「平和な賭け事」に受取可能なルーナ族の秘蔵品がありません",
-    ContentKR = "문명 대결에 수령 가능한 루나 소장품이 없습니다.",
-    ContentTC = "文明博弈沒有皎皎珍藏可領取",
     ErrorCodeContent = "文明博弈没有皎皎珍藏可领取",
-    ErrorCodeId = 68003
+    ErrorCodeId = 68003,
   },
   [68004] = {
-    ContentEN = "No available Luno Points to claim in Friendly Games",
-    ContentJP = "「平和な賭け事」に受取可能なルーナ族ポイントがありません",
-    ContentKR = "문명 대결에 수령 가능한 루나 포인트가 없습니다.",
-    ContentTC = "文明博弈沒有皎皎積分可領取",
     ErrorCodeContent = "文明博弈没有皎皎积分可领取",
-    ErrorCodeId = 68004
+    ErrorCodeId = 68004,
   },
   [68005] = {
-    ContentEN = "Friendly Games constant configuration error",
-    ContentJP = "「平和な賭け事」定数設定エラー",
-    ContentKR = "문명 대결 상수가 잘못 설정되었습니다.",
-    ContentTC = "文明博弈常量配置錯誤",
     ErrorCodeContent = "文明博弈常量配置错误",
-    ErrorCodeId = 68005
+    ErrorCodeId = 68005,
   },
   [68006] = {
-    ContentEN = "No available rewards to claim in Friendly Games",
-    ContentJP = "「平和な賭け事」に受取可能な賭け事報酬がありません",
-    ContentKR = "문명 대결에 수령 가능한 대결 보상이 없습니다.",
-    ContentTC = "文明博弈沒有博弈獎勵可領取",
     ErrorCodeContent = "文明博弈没有博弈奖励可领取",
-    ErrorCodeId = 68006
+    ErrorCodeId = 68006,
   },
   [68007] = {
-    ContentEN = "Please claim Luno Collections first",
-    ContentJP = "ルーナ族の秘蔵品を受け取ることが必要です",
-    ContentKR = "먼저 루나의 보물을 수령해야 합니다.",
-    ContentTC = "需要先領取皎皎珍藏",
     ErrorCodeContent = "需要先领取皎皎珍藏",
-    ErrorCodeId = 68007
+    ErrorCodeId = 68007,
   },
   [68008] = {
-    ContentEN = "This game does not exist in Friendly Games",
-    ContentJP = "該当賭け事は「平和な賭け事」に存在しません",
-    ContentKR = "문명 대결에 해당 보상이 없습니다.",
-    ContentTC = "文明博弈沒有該博弈",
     ErrorCodeContent = "文明博弈没有该博弈",
-    ErrorCodeId = 68008
+    ErrorCodeId = 68008,
   },
   [68009] = {
-    ContentEN = "Incorrect Friendly Games reward values",
-    ContentJP = "「平和な賭け事」の報酬データにエラー発生",
-    ContentKR = "문명 대결의 보상 수치가 잘못되었습니다.",
-    ContentTC = "文明博弈的博弈獎勵數值錯誤",
     ErrorCodeContent = "文明博弈的博弈奖励数值错误",
-    ErrorCodeId = 68009
+    ErrorCodeId = 68009,
   },
   [68010] = {
-    ContentEN = "Friendly Games configuration error",
-    ContentJP = "「平和な賭け事」の賭け事に設定エラー発生",
-    ContentKR = "문명 대결의 대결 구성에 오류가 있습니다.",
-    ContentTC = "文明博弈的博弈配置錯誤",
     ErrorCodeContent = "文明博弈的博弈配置错误",
-    ErrorCodeId = 68010
+    ErrorCodeId = 68010,
   },
   [68011] = {
-    ContentEN = "No available Challenge Points to claim in Friendly Games",
-    ContentJP = "「平和な賭け事」に受取可能なチャレンジポイントがありません",
-    ContentKR = "문명 대결에 수령 가능한 도전 포인트가 없습니다.",
-    ContentTC = "文明博弈沒有挑戰積分可領取",
     ErrorCodeContent = "文明博弈没有挑战积分可领取",
-    ErrorCodeId = 68011
+    ErrorCodeId = 68011,
   },
   [68012] = {
-    ContentEN = "No available Challenge Collection to claim in Friendly Games",
-    ContentJP = "「平和な賭け事」に受取可能なチャレンジ秘蔵品がありません",
-    ContentKR = "문명 대결에 수령 가능한 도전 보물이 없습니다.",
-    ContentTC = "文明博弈沒有挑戰珍藏可領取",
     ErrorCodeContent = "文明博弈没有挑战珍藏可领取",
-    ErrorCodeId = 68012
+    ErrorCodeId = 68012,
+  },
+  [69001] = {
+    ErrorCodeContent = "炮台活动不匹配",
+    ErrorCodeId = 69001,
+  },
+  [69002] = {
+    ErrorCodeContent = "炮台活动未开启",
+    ErrorCodeId = 69002,
+  },
+  [69003] = {
+    ErrorCodeContent = "炮台活动当前序号关卡未解锁",
+    ErrorCodeId = 69003,
+  },
+  [69004] = {
+    ErrorCodeContent = "炮台活动无效积分参数",
+    ErrorCodeId = 69004,
+  },
+  [69005] = {
+    ErrorCodeContent = "炮台活动奖励领取超时",
+    ErrorCodeId = 69005,
+  },
+  [69006] = {
+    ErrorCodeContent = "炮台活动积分条件不满足",
+    ErrorCodeId = 69006,
+  },
+  [69007] = {
+    ErrorCodeContent = "炮台活动积分奖励已领取",
+    ErrorCodeId = 69007,
+  },
+  [69008] = {
+    ErrorCodeContent = "炮台活动没有积分奖励可领取",
+    ErrorCodeId = 69008,
+  },
+  [69009] = {
+    ErrorCodeContent = "炮台活动增益未解锁",
+    ErrorCodeId = 69009,
+  },
+  [69010] = {
+    ErrorCodeContent = "条件发奖活动不存在",
+    ErrorCodeId = 69010,
+  },
+  [69011] = {
+    ErrorCodeContent = "条件发奖活动未完成",
+    ErrorCodeId = 69011,
+  },
+  [70001] = {
+    ErrorCodeContent = "条件发奖活动已领取",
+    ErrorCodeId = 70001,
+  },
+  [70002] = {
+    ErrorCodeContent = "无效任务",
+    ErrorCodeId = 70002,
+  },
+  [70003] = {
+    ErrorCodeContent = "无效活动",
+    ErrorCodeId = 70003,
   },
   [71001] = {
-    ContentEN = "Insufficient challenge attempts in Limited-time Demon Wedge commissions",
-    ContentJP = "限定魔の楔依頼の挑戦回数が不足しています",
-    ContentKR = "기간 한정 악마의 쐐기 의뢰의 도전 횟수가 부족합니다.",
-    ContentTC = "限時魔之楔委託的挑戰次數不足",
     ErrorCodeContent = "限时魔之楔委托的挑战次数不足",
-    ErrorCodeId = 71001
+    ErrorCodeId = 71001,
+  },
+  [72001] = {
+    ErrorCodeContent = "活动任务不在奖励领取时间内",
+    ErrorCodeId = 72001,
+  },
+  [72002] = {
+    ErrorCodeContent = "活动任务数据空",
+    ErrorCodeId = 72002,
+  },
+  [72003] = {
+    ErrorCodeContent = "活动任务任务数据不存在",
+    ErrorCodeId = 72003,
+  },
+  [72004] = {
+    ErrorCodeContent = "活动任务奖励领已领取",
+    ErrorCodeId = 72004,
+  },
+  [72005] = {
+    ErrorCodeContent = "活动任务未完成",
+    ErrorCodeId = 72005,
+  },
+  [72006] = {
+    ErrorCodeContent = "活动任务没有奖励可领取",
+    ErrorCodeId = 72006,
+  },
+  [72007] = {
+    ErrorCodeContent = "活动任务无效阶段id",
+    ErrorCodeId = 72007,
+  },
+  [72008] = {
+    ErrorCodeContent = "未配置服务器社媒",
+    ErrorCodeId = 72008,
+  },
+  [72009] = {
+    ErrorCodeContent = "当前服务器不包含此社媒",
+    ErrorCodeId = 72009,
+  },
+  [73001] = {
+    ErrorCodeContent = "该社媒不存在",
+    ErrorCodeId = 73001,
+  },
+  [73002] = {
+    ErrorCodeContent = "该社媒需要注册",
+    ErrorCodeId = 73002,
+  },
+  [73003] = {
+    ErrorCodeContent = "该社媒已关注",
+    ErrorCodeId = 73003,
+  },
+  [73004] = {
+    ErrorCodeContent = "该社媒奖励不可领取",
+    ErrorCodeId = 73004,
+  },
+  [73005] = {
+    ErrorCodeContent = "活动进度错误",
+    ErrorCodeId = 73005,
+  },
+  [73006] = {
+    ErrorCodeContent = "活动数据不存在",
+    ErrorCodeId = 73006,
   },
   [74001] = {
-    ContentEN = "Invalid stage ID",
-    ContentJP = "無効なステージid",
-    ContentKR = "유효하지 않은 스테이지 ID입니다.",
-    ContentTC = "無效關卡id",
     ErrorCodeContent = "无效关卡id",
-    ErrorCodeId = 74001
+    ErrorCodeId = 74001,
   },
   [74002] = {
-    ContentEN = "Invalid event ID",
-    ContentJP = "無効なイベントid",
-    ContentKR = "유효하지 않은 이벤트 ID입니다.",
-    ContentTC = "無效活動id",
     ErrorCodeContent = "无效活动id",
-    ErrorCodeId = 74002
+    ErrorCodeId = 74002,
   },
   [74003] = {
-    ContentEN = "Rewards already claimed",
-    ContentJP = "報酬受取済",
-    ContentKR = "보상를 이미 수령했습니다.",
-    ContentTC = "獎勵已領取",
     ErrorCodeContent = "奖励已领取",
-    ErrorCodeId = 74003
+    ErrorCodeId = 74003,
   },
   [74004] = {
-    ContentEN = "Insufficient star progress",
-    ContentJP = "星数進度が不足しています",
-    ContentKR = "별 개수 진행도가 부족합니다.",
-    ContentTC = "星數進度不足",
     ErrorCodeContent = "星数进度不足",
-    ErrorCodeId = 74004
+    ErrorCodeId = 74004,
   },
   [74005] = {
-    ContentEN = "Invalid commission",
-    ContentJP = "無効なステージ",
-    ContentKR = "유효하지 않은 스테이지입니다.",
-    ContentTC = "無效副本",
     ErrorCodeContent = "无效副本",
-    ErrorCodeId = 74005
+    ErrorCodeId = 74005,
   },
   [74006] = {
-    ContentEN = "Event has not started",
-    ContentJP = "イベント未開放",
-    ContentKR = "이벤트가 시작되지 않았습니다.",
-    ContentTC = "活動未開啟",
     ErrorCodeContent = "活动未开启",
-    ErrorCodeId = 74006
+    ErrorCodeId = 74006,
   },
   [74007] = {
-    ContentEN = "Stage has not started",
-    ContentJP = "ステージ未開放",
-    ContentKR = "스테이지가 시작되지 않았습니다.",
-    ContentTC = "關卡未開啟",
     ErrorCodeContent = "关卡未开启",
-    ErrorCodeId = 74007
+    ErrorCodeId = 74007,
   },
   [74008] = {
-    ContentEN = "Invalid reward KeyID",
-    ContentJP = "無効な報酬keyid",
-    ContentKR = "유효하지 않은 보상 KeyID입니다.",
-    ContentTC = "無效獎勵keyid",
     ErrorCodeContent = "无效奖励keyid",
-    ErrorCodeId = 74008
+    ErrorCodeId = 74008,
   },
   [74009] = {
-    ContentEN = "No avaliable rewards",
-    ContentJP = "受取可能な報酬がありません",
-    ContentKR = "수령할 수 있는 보상이 없습니다.",
-    ContentTC = "沒有獎勵可領取",
     ErrorCodeContent = "没有奖励可领取",
-    ErrorCodeId = 74009
+    ErrorCodeId = 74009,
+  },
+  [75001] = {
+    ErrorCodeContent = "当前状态不能领取奖励",
+    ErrorCodeId = 75001,
+  },
+  [75002] = {
+    ErrorCodeContent = "领取奖励为空",
+    ErrorCodeId = 75002,
+  },
+  [75003] = {
+    ErrorCodeContent = "猫猫名字违法",
+    ErrorCodeId = 75003,
+  },
+  [75004] = {
+    ErrorCodeContent = "剧场活动无效任务",
+    ErrorCodeId = 75004,
+  },
+  [76001] = {
+    ErrorCodeContent = "剧场活动未开启",
+    ErrorCodeId = 76001,
   },
   [77001] = {
-    ContentEN = "Invalid event ID",
-    ContentJP = "イベントidが無効です",
-    ContentKR = "이벤트 ID가 유효하지 않습니다.",
-    ContentTC = "活動Id無效",
     ErrorCodeContent = "活动Id无效",
-    ErrorCodeId = 77001
+    ErrorCodeId = 77001,
   },
   [77002] = {
-    ContentEN = "Invalid Level ID",
-    ContentJP = "無効なlevelId",
-    ContentKR = "유효하지 않은 Level ID입니다.",
-    ContentTC = "無效levelId",
     ErrorCodeContent = "无效levelId",
-    ErrorCodeId = 77002
+    ErrorCodeId = 77002,
   },
   [77003] = {
-    ContentEN = "Current Level not unlocked",
-    ContentJP = "現在のlevelIdまだ未開放",
-    ContentKR = "현재 레벨이 해제되지 않았습니다.",
-    ContentTC = "當前Level未解鎖",
     ErrorCodeContent = "当前Level未解锁",
-    ErrorCodeId = 77003
+    ErrorCodeId = 77003,
   },
   [77004] = {
-    ContentEN = "Event data is null",
-    ContentJP = "イベントデータnil",
-    ContentKR = "이벤트 데이터 nil",
-    ContentTC = "活動數據nil",
     ErrorCodeContent = "活动数据nil",
-    ErrorCodeId = 77004
+    ErrorCodeId = 77004,
   },
   [77005] = {
-    ContentEN = "Reward quest is not completed",
-    ContentJP = "報酬任務未完了",
-    ContentKR = "보상 퀘스트를 완료하지 않았습니다.",
-    ContentTC = "獎勵任務未完成",
     ErrorCodeContent = "奖励任务未完成",
-    ErrorCodeId = 77005
+    ErrorCodeId = 77005,
   },
   [77006] = {
-    ContentEN = "Duplicate reward claim",
-    ContentJP = "報酬受取に重複",
-    ContentKR = "보상 수령이 중복되었습니다.",
-    ContentTC = "領獎重複",
     ErrorCodeContent = "领奖重复",
-    ErrorCodeId = 77006
+    ErrorCodeId = 77006,
   },
   [77007] = {
-    ContentEN = "Rewards are empty",
-    ContentJP = "報酬がなし",
-    ContentKR = "보상이 비어 있습니다.",
-    ContentTC = "獎勵空",
     ErrorCodeContent = "奖励空",
-    ErrorCodeId = 77007
+    ErrorCodeId = 77007,
   },
   [78001] = {
-    ContentEN = "Duplicate first-time identifier for Limited-time Demon Wedge commissions",
-    ContentJP = "限定魔の楔依頼の初回識別子設定が重複しています",
-    ContentKR = "기간 한정 악마의 쐐기 의뢰의 최초 식별자 설정이 중복됩니다.",
-    ContentTC = "限時魔之楔委託首次標識設置重複",
     ErrorCodeContent = "限时魔之楔委托首次标识设置重复",
-    ErrorCodeId = 78001
-  }
+    ErrorCodeId = 78001,
+  },
+  [79001] = {
+    ErrorCodeContent = "剧场活动数据空",
+    ErrorCodeId = 79001,
+  },
+  [79002] = {
+    ErrorCodeContent = "剧场活动任务未完成",
+    ErrorCodeId = 79002,
+  },
+  [79003] = {
+    ErrorCodeContent = "剧场活动任务奖励已领取",
+    ErrorCodeId = 79003,
+  },
+  [79004] = {
+    ErrorCodeContent = "剧场交付材料空",
+    ErrorCodeId = 79004,
+  },
+  [79005] = {
+    ErrorCodeContent = "剧场活动无效",
+    ErrorCodeId = 79005,
+  },
+  [79006] = {
+    ErrorCodeContent = "剧场阶段无效",
+    ErrorCodeId = 79006,
+  },
+  [79007] = {
+    ErrorCodeContent = "剧场交付资源不足",
+    ErrorCodeId = 79007,
+  },
+  [79008] = {
+    ErrorCodeContent = "剧场交付阶段不匹配",
+    ErrorCodeId = 79008,
+  },
+  [79009] = {
+    ErrorCodeContent = "剧场当前阶段的交付需求已完成",
+    ErrorCodeId = 79009,
+  },
+  [79010] = {
+    ErrorCodeContent = "剧场表演小游戏不是接取任务时间",
+    ErrorCodeId = 79010,
+  },
+  [79011] = {
+    ErrorCodeContent = "剧场表演小游戏已经接取过任务",
+    ErrorCodeId = 79011,
+  },
+  [79012] = {
+    ErrorCodeContent = "剧场表演小游戏不是表演时间",
+    ErrorCodeId = 79012,
+  },
+  [79013] = {
+    ErrorCodeContent = "剧场表演小游戏表演不匹配",
+    ErrorCodeId = 79013,
+  },
+  [79014] = {
+    ErrorCodeContent = "剧场表演小游戏未接取任务",
+    ErrorCodeId = 79014,
+  },
+  [79015] = {
+    ErrorCodeContent = "剧场表演小游戏已经表演过",
+    ErrorCodeId = 79015,
+  },
+  [79016] = {
+    ErrorCodeContent = "剧场表演小游戏无效表演",
+    ErrorCodeId = 79016,
+  },
+  [79017] = {
+    ErrorCodeContent = "剧场任务奖励空",
+    ErrorCodeId = 79017,
+  },
+  [79018] = {
+    ErrorCodeContent = "不存在该活动对应的赛季",
+    ErrorCodeId = 79018,
+  },
+  [79019] = {
+    ErrorCodeContent = "当前赛季与关卡赛季不匹配",
+    ErrorCodeId = 79019,
+  },
+  [80001] = {
+    ErrorCodeContent = "不存在对应的赛季关卡",
+    ErrorCodeId = 80001,
+  },
+  [80002] = {
+    ErrorCodeContent = "赛季关卡未到解锁时间",
+    ErrorCodeId = 80002,
+  },
+  [80003] = {
+    ErrorCodeContent = "不存在该关卡类型的判断",
+    ErrorCodeId = 80003,
+  },
+  [80004] = {
+    ErrorCodeContent = "不存在对应的赛季数据",
+    ErrorCodeId = 80004,
+  },
+  [80005] = {
+    ErrorCodeContent = "不是排名赛时间",
+    ErrorCodeId = 80005,
+  },
+  [80006] = {
+    ErrorCodeContent = "不是巅峰赛时间",
+    ErrorCodeId = 80006,
+  },
+  [80007] = {
+    ErrorCodeContent = "无法领取奖励",
+    ErrorCodeId = 80007,
+  },
+  [80008] = {
+    ErrorCodeContent = "重复领奖",
+    ErrorCodeId = 80008,
+  },
+  [80009] = {
+    ErrorCodeContent = "排名赛配置错误",
+    ErrorCodeId = 80009,
+  },
+  [80010] = {
+    ErrorCodeContent = "排名赛奖励配置错误",
+    ErrorCodeId = 80010,
+  },
+  [80011] = {
+    ErrorCodeContent = "排名赛排名数据空",
+    ErrorCodeId = 80011,
+  },
+  [80012] = {
+    ErrorCodeContent = "网页跳转服务器无效",
+    ErrorCodeId = 80012,
+  },
+  [80013] = {
+    ErrorCodeContent = "网页跳转表配置空",
+    ErrorCodeId = 80013,
+  },
+  [81001] = {
+    ErrorCodeContent = "网页已跳转",
+    ErrorCodeId = 81001,
+  },
+  [81002] = {
+    ErrorCodeContent = "网页跳转无法领取奖励",
+    ErrorCodeId = 81002,
+  },
+  [81003] = {
+    ErrorCodeContent = "属性节点表里信息不存在或者有误",
+    ErrorCodeId = 81003,
+  },
+  [81004] = {
+    ErrorCodeContent = "技能树属性节点激活所需材料不足",
+    ErrorCodeId = 81004,
+  },
+  [90010] = {
+    ErrorCodeContent = "技能树属性节点激活所需角色突破等级不足",
+    ErrorCodeId = 90010,
+  },
+  [90011] = {
+    ErrorCodeContent = "技能树属性节点激活所需条件不满足",
+    ErrorCodeId = 90011,
+  },
+  [90012] = {
+    ErrorCodeContent = "上一节点暂未激活",
+    ErrorCodeId = 90012,
+  },
+  [90013] = {
+    ErrorCodeContent = "技能树属性节点激活所需角色等级不满足",
+    ErrorCodeId = 90013,
+  },
+  [90014] = {
+    ErrorCodeContent = "技能树属性节点激活所需角色技能等级不满足",
+    ErrorCodeId = 90014,
+  },
+  [90015] = {
+    ErrorCodeContent = "魔之楔方案不存在",
+    ErrorCodeId = 90015,
+  },
+  [90016] = {
+    ErrorCodeId = 90016,
+  },
+  [600003] = {
+    ErrorCodeId = 600003,
+  },
 })

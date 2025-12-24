@@ -1,1475 +1,1478 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("CountryRegionCode", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\CountryRegionCode.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("CountryRegionCode", {
   AD = {
     CountryRegionCode = "AD",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   AE = {
     CountryRegionCode = "AE",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   AF = {
     CountryRegionCode = "AF",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   AG = {
     CountryRegionCode = "AG",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   AI = {
     CountryRegionCode = "AI",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   AL = {
     CountryRegionCode = "AL",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   AM = {
     CountryRegionCode = "AM",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   AN = {
     CountryRegionCode = "AN",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   AO = {
     CountryRegionCode = "AO",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   AQ = {
     CountryRegionCode = "AQ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   AR = {
     CountryRegionCode = "AR",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   AS = {
     CountryRegionCode = "AS",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   AT = {
     CountryRegionCode = "AT",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   AU = {
     CountryRegionCode = "AU",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   AW = {
     CountryRegionCode = "AW",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   AX = {
     CountryRegionCode = "AX",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   AZ = {
     CountryRegionCode = "AZ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   BA = {
     CountryRegionCode = "BA",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   BB = {
     CountryRegionCode = "BB",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   BD = {
     CountryRegionCode = "BD",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   BE = {
     CountryRegionCode = "BE",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   BF = {
     CountryRegionCode = "BF",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   BG = {
     CountryRegionCode = "BG",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   BH = {
     CountryRegionCode = "BH",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   BI = {
     CountryRegionCode = "BI",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   BJ = {
     CountryRegionCode = "BJ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   BM = {
     CountryRegionCode = "BM",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   BN = {
     CountryRegionCode = "BN",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "SEA"
+    ServerArea = "SEA",
   },
   BO = {
     CountryRegionCode = "BO",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   BR = {
     CountryRegionCode = "BR",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   BS = {
     CountryRegionCode = "BS",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   BT = {
     CountryRegionCode = "BT",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   BV = {
     CountryRegionCode = "BV",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   BW = {
     CountryRegionCode = "BW",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   BY = {
     CountryRegionCode = "BY",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   BZ = {
     CountryRegionCode = "BZ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   CA = {
     CountryRegionCode = "CA",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   CC = {
     CountryRegionCode = "CC",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   CD = {
     CountryRegionCode = "CD",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   CF = {
     CountryRegionCode = "CF",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   CG = {
     CountryRegionCode = "CG",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   CH = {
     CountryRegionCode = "CH",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   CI = {
     CountryRegionCode = "CI",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   CK = {
     CountryRegionCode = "CK",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   CL = {
     CountryRegionCode = "CL",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   CM = {
     CountryRegionCode = "CM",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   CN = {
     CountryRegionCode = "CN",
     MoneyCode = "CNY",
     MoneySymbol = "￥",
-    ServerArea = "HMT"
+    ServerArea = "HMT",
   },
   CO = {
     CountryRegionCode = "CO",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   CR = {
     CountryRegionCode = "CR",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   CU = {
     CountryRegionCode = "CU",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   CV = {
     CountryRegionCode = "CV",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   CX = {
     CountryRegionCode = "CX",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   CY = {
     CountryRegionCode = "CY",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   CZ = {
     CountryRegionCode = "CZ",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   DE = {
     CountryRegionCode = "DE",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   DJ = {
     CountryRegionCode = "DJ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   DK = {
     CountryRegionCode = "DK",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   DM = {
     CountryRegionCode = "DM",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   DO = {
     CountryRegionCode = "DO",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   DZ = {
     CountryRegionCode = "DZ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   EC = {
     CountryRegionCode = "EC",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   EE = {
     CountryRegionCode = "EE",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   EG = {
     CountryRegionCode = "EG",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   EH = {
     CountryRegionCode = "EH",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   ER = {
     CountryRegionCode = "ER",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   ES = {
     CountryRegionCode = "ES",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   ET = {
     CountryRegionCode = "ET",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   FI = {
     CountryRegionCode = "FI",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   FJ = {
     CountryRegionCode = "FJ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   FK = {
     CountryRegionCode = "FK",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   FM = {
     CountryRegionCode = "FM",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   FO = {
     CountryRegionCode = "FO",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   FR = {
     CountryRegionCode = "FR",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   GA = {
     CountryRegionCode = "GA",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   GB = {
     CountryRegionCode = "GB",
     MoneyCode = "GBP",
     MoneySymbol = "GBP",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   GD = {
     CountryRegionCode = "GD",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   GE = {
     CountryRegionCode = "GE",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   GF = {
     CountryRegionCode = "GF",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   GG = {
     CountryRegionCode = "GG",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   GH = {
     CountryRegionCode = "GH",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   GI = {
     CountryRegionCode = "GI",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   GL = {
     CountryRegionCode = "GL",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   GM = {
     CountryRegionCode = "GM",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   GN = {
     CountryRegionCode = "GN",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   GP = {
     CountryRegionCode = "GP",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   GQ = {
     CountryRegionCode = "GQ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   GR = {
     CountryRegionCode = "GR",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   GS = {
     CountryRegionCode = "GS",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   GT = {
     CountryRegionCode = "GT",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   GU = {
     CountryRegionCode = "GU",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   GW = {
     CountryRegionCode = "GW",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   GY = {
     CountryRegionCode = "GY",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   HK = {
     CountryRegionCode = "HK",
     MoneyCode = "HKD",
     MoneySymbol = "HKD",
-    ServerArea = "HMT"
+    ServerArea = "HMT",
   },
   HM = {
     CountryRegionCode = "HM",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   HN = {
     CountryRegionCode = "HN",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   HR = {
     CountryRegionCode = "HR",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   HT = {
     CountryRegionCode = "HT",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   HU = {
     CountryRegionCode = "HU",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   ID = {
     CountryRegionCode = "ID",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "SEA"
+    ServerArea = "SEA",
   },
   IE = {
     CountryRegionCode = "IE",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   IL = {
     CountryRegionCode = "IL",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   IM = {
     CountryRegionCode = "IM",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   IN = {
     CountryRegionCode = "IN",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   IO = {
     CountryRegionCode = "IO",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   IQ = {
     CountryRegionCode = "IQ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   IR = {
     CountryRegionCode = "IR",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   IS = {
     CountryRegionCode = "IS",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   IT = {
     CountryRegionCode = "IT",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   JE = {
     CountryRegionCode = "JE",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   JM = {
     CountryRegionCode = "JM",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   JO = {
     CountryRegionCode = "JO",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   JP = {
     CountryRegionCode = "JP",
     MoneyCode = "JPY",
     MoneySymbol = "JPY",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   KE = {
     CountryRegionCode = "KE",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   KG = {
     CountryRegionCode = "KG",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   KH = {
     CountryRegionCode = "KH",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "SEA"
+    ServerArea = "SEA",
   },
   KI = {
     CountryRegionCode = "KI",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   KM = {
     CountryRegionCode = "KM",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   KN = {
     CountryRegionCode = "KN",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   KP = {
     CountryRegionCode = "KP",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   KR = {
     CountryRegionCode = "KR",
     MoneyCode = "KRW",
     MoneySymbol = "KRW",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   KW = {
     CountryRegionCode = "KW",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   KY = {
     CountryRegionCode = "KY",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   KZ = {
     CountryRegionCode = "KZ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   LA = {
     CountryRegionCode = "LA",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "SEA"
+    ServerArea = "SEA",
   },
   LB = {
     CountryRegionCode = "LB",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   LC = {
     CountryRegionCode = "LC",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   LI = {
     CountryRegionCode = "LI",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   LK = {
     CountryRegionCode = "LK",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   LR = {
     CountryRegionCode = "LR",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   LS = {
     CountryRegionCode = "LS",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   LT = {
     CountryRegionCode = "LT",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   LU = {
     CountryRegionCode = "LU",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   LV = {
     CountryRegionCode = "LV",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   LY = {
     CountryRegionCode = "LY",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   MA = {
     CountryRegionCode = "MA",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   MC = {
     CountryRegionCode = "MC",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   MD = {
     CountryRegionCode = "MD",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   ME = {
     CountryRegionCode = "ME",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   MG = {
     CountryRegionCode = "MG",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   MH = {
     CountryRegionCode = "MH",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   MK = {
     CountryRegionCode = "MK",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   ML = {
     CountryRegionCode = "ML",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   MM = {
     CountryRegionCode = "MM",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "SEA"
+    ServerArea = "SEA",
   },
   MN = {
     CountryRegionCode = "MN",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   MO = {
     CountryRegionCode = "MO",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "HMT"
+    ServerArea = "HMT",
   },
   MP = {
     CountryRegionCode = "MP",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   MQ = {
     CountryRegionCode = "MQ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   MR = {
     CountryRegionCode = "MR",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   MS = {
     CountryRegionCode = "MS",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   MT = {
     CountryRegionCode = "MT",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   MU = {
     CountryRegionCode = "MU",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   MV = {
     CountryRegionCode = "MV",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   MW = {
     CountryRegionCode = "MW",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   MX = {
     CountryRegionCode = "MX",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   MY = {
     CountryRegionCode = "MY",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "SEA"
+    ServerArea = "SEA",
   },
   MZ = {
     CountryRegionCode = "MZ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   NA = {
     CountryRegionCode = "NA",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   NC = {
     CountryRegionCode = "NC",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   NE = {
     CountryRegionCode = "NE",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   NF = {
     CountryRegionCode = "NF",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   NG = {
     CountryRegionCode = "NG",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   NI = {
     CountryRegionCode = "NI",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   NL = {
     CountryRegionCode = "NL",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   NO = {
     CountryRegionCode = "NO",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   NP = {
     CountryRegionCode = "NP",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   NR = {
     CountryRegionCode = "NR",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   NU = {
     CountryRegionCode = "NU",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   NZ = {
     CountryRegionCode = "NZ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   OM = {
     CountryRegionCode = "OM",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   PA = {
     CountryRegionCode = "PA",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   PE = {
     CountryRegionCode = "PE",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   PF = {
     CountryRegionCode = "PF",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   PG = {
     CountryRegionCode = "PG",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   PH = {
     CountryRegionCode = "PH",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "SEA"
+    ServerArea = "SEA",
   },
   PK = {
     CountryRegionCode = "PK",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   PL = {
     CountryRegionCode = "PL",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   PM = {
     CountryRegionCode = "PM",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   PN = {
     CountryRegionCode = "PN",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   PR = {
     CountryRegionCode = "PR",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   PS = {
     CountryRegionCode = "PS",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   PT = {
     CountryRegionCode = "PT",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   PW = {
     CountryRegionCode = "PW",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   PY = {
     CountryRegionCode = "PY",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   QA = {
     CountryRegionCode = "QA",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   RE = {
     CountryRegionCode = "RE",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   RO = {
     CountryRegionCode = "RO",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   RS = {
     CountryRegionCode = "RS",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   RU = {
     CountryRegionCode = "RU",
     MoneyCode = "RUB",
     MoneySymbol = "RUB",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   RW = {
     CountryRegionCode = "RW",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   SA = {
     CountryRegionCode = "SA",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   SB = {
     CountryRegionCode = "SB",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   SC = {
     CountryRegionCode = "SC",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   SD = {
     CountryRegionCode = "SD",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   SE = {
     CountryRegionCode = "SE",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   SG = {
     CountryRegionCode = "SG",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "SEA"
+    ServerArea = "SEA",
   },
   SH = {
     CountryRegionCode = "SH",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   SI = {
     CountryRegionCode = "SI",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   SJ = {
     CountryRegionCode = "SJ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   SK = {
     CountryRegionCode = "SK",
     MoneyCode = "EUR",
     MoneySymbol = "EUR",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   SL = {
     CountryRegionCode = "SL",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   SM = {
     CountryRegionCode = "SM",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   SN = {
     CountryRegionCode = "SN",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   SO = {
     CountryRegionCode = "SO",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   SR = {
     CountryRegionCode = "SR",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   ST = {
     CountryRegionCode = "ST",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   SV = {
     CountryRegionCode = "SV",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   SY = {
     CountryRegionCode = "SY",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   SZ = {
     CountryRegionCode = "SZ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   TC = {
     CountryRegionCode = "TC",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   TD = {
     CountryRegionCode = "TD",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   TF = {
     CountryRegionCode = "TF",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   TG = {
     CountryRegionCode = "TG",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   TH = {
     CountryRegionCode = "TH",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "SEA"
+    ServerArea = "SEA",
   },
   TJ = {
     CountryRegionCode = "TJ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   TK = {
     CountryRegionCode = "TK",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   TL = {
     CountryRegionCode = "TL",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "SEA"
+    ServerArea = "SEA",
   },
   TM = {
     CountryRegionCode = "TM",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   TN = {
     CountryRegionCode = "TN",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   TO = {
     CountryRegionCode = "TO",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   TR = {
     CountryRegionCode = "TR",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   TT = {
     CountryRegionCode = "TT",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   TV = {
     CountryRegionCode = "TV",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   TW = {
     CountryRegionCode = "TW",
     MoneyCode = "TWD",
     MoneySymbol = "$NT",
-    ServerArea = "HMT"
+    ServerArea = "HMT",
   },
   TZ = {
     CountryRegionCode = "TZ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   UA = {
     CountryRegionCode = "UA",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   UG = {
     CountryRegionCode = "UG",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   UM = {
     CountryRegionCode = "UM",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   US = {
     CountryRegionCode = "US",
     MoneyCode = "USD",
     MoneySymbol = "USD",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   UY = {
     CountryRegionCode = "UY",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   UZ = {
     CountryRegionCode = "UZ",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   VA = {
     CountryRegionCode = "VA",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Europe"
+    ServerArea = "Europe",
   },
   VC = {
     CountryRegionCode = "VC",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   VE = {
     CountryRegionCode = "VE",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   VG = {
     CountryRegionCode = "VG",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   VI = {
     CountryRegionCode = "VI",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   VN = {
     CountryRegionCode = "VN",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "SEA"
+    ServerArea = "SEA",
   },
   VU = {
     CountryRegionCode = "VU",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   WF = {
     CountryRegionCode = "WF",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   WS = {
     CountryRegionCode = "WS",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   YE = {
     CountryRegionCode = "YE",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "Asia"
+    ServerArea = "Asia",
   },
   YT = {
     CountryRegionCode = "YT",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   YU = {
     CountryRegionCode = "YU",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   ZA = {
     CountryRegionCode = "ZA",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   ZM = {
     CountryRegionCode = "ZM",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
+    ServerArea = "America",
   },
   ZW = {
     CountryRegionCode = "ZW",
     MoneyCode = "USD",
     MoneySymbol = "$",
-    ServerArea = "America"
-  }
+    ServerArea = "America",
+  },
 })

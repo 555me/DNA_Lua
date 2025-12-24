@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("VisualEffectHasTexturePath", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\VisualEffectHasTexturePath.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [1, 1] id: 1
+  return r1_1
+end)("VisualEffectHasTexturePath", {
   [1] = "/Game/UI/Texture/Dynamic/Atlas/Buff/T_Buff_Damage_Up.T_Buff_Damage_Up",
   [2] = "/Game/UI/Texture/Dynamic/Image/FxBuff/Fx_Buff_Common_Buff.Fx_Buff_Common_Buff",
   [3] = "/Game/UI/Texture/Dynamic/Image/FxBuff/Fx_Buff_Atk.Fx_Buff_Atk",
@@ -29,5 +32,5 @@ return ReadOnly("VisualEffectHasTexturePath", {
   [25] = "/Game/UI/Texture/Dynamic/Image/FxBuff/Fx_Buff_BonusDmg_Dark.Fx_Buff_BonusDmg_Dark",
   [26] = "/Game/UI/Texture/Dynamic/Image/FxBuff/Fx_Buff_BonusDmg_Light.Fx_Buff_BonusDmg_Light",
   [27] = "/Game/UI/Texture/Dynamic/Image/FxBuff/Fx_Buff_Common_Debuff.Fx_Buff_Common_Debuff",
-  [28] = "/Game/UI/Texture/Dynamic/Image/FxBuff/Fx_Buff_Slowdown.Fx_Buff_Slowdown"
+  [28] = "/Game/UI/Texture/Dynamic/Image/FxBuff/Fx_Buff_Slowdown.Fx_Buff_Slowdown",
 })

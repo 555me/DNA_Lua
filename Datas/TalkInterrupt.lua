@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("TalkInterrupt", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\TalkInterrupt.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("TalkInterrupt", {
   AudioOnly = {
     Bubble = "Ignore",
     Guide = "Ignore",
@@ -9,7 +12,7 @@ return ReadOnly("TalkInterrupt", {
     PanFixSimple = "Queue",
     QueueGuide = "Ignore",
     TalkType = "AudioOnly",
-    UnimportGuide = "Ignore"
+    UnimportGuide = "Ignore",
   },
   Black = {
     AudioOnly = "Interrupt",
@@ -21,7 +24,7 @@ return ReadOnly("TalkInterrupt", {
     PanFixSimple = "Queue",
     QueueGuide = "Interrupt",
     TalkType = "Black",
-    UnimportGuide = "Interrupt"
+    UnimportGuide = "Interrupt",
   },
   BlackISS = {
     AudioOnly = "Interrupt",
@@ -33,7 +36,7 @@ return ReadOnly("TalkInterrupt", {
     PanFixSimple = "Queue",
     QueueGuide = "Interrupt",
     TalkType = "BlackISS",
-    UnimportGuide = "Interrupt"
+    UnimportGuide = "Interrupt",
   },
   Boss = {
     AudioOnly = "Ignore",
@@ -43,7 +46,7 @@ return ReadOnly("TalkInterrupt", {
     HintGuide = "Interrupt",
     PanFixSimple = "Queue",
     TalkType = "Boss",
-    UnimportGuide = "Interrupt"
+    UnimportGuide = "Interrupt",
   },
   Bubble = {
     AudioOnly = "Ignore",
@@ -55,7 +58,7 @@ return ReadOnly("TalkInterrupt", {
     PanFixSimple = "Queue",
     QueueGuide = "Ignore",
     TalkType = "Bubble",
-    UnimportGuide = "Ignore"
+    UnimportGuide = "Ignore",
   },
   Cinematic = {
     AudioOnly = "Interrupt",
@@ -71,7 +74,7 @@ return ReadOnly("TalkInterrupt", {
     SpecialQuestFail = "Queue",
     TalkType = "Cinematic",
     UnimportGuide = "Interrupt",
-    White = "Queue"
+    White = "Queue",
   },
   FaultBlack = {
     AudioOnly = "Interrupt",
@@ -83,7 +86,7 @@ return ReadOnly("TalkInterrupt", {
     PanFixSimple = "Queue",
     QueueGuide = "Interrupt",
     TalkType = "FaultBlack",
-    UnimportGuide = "Interrupt"
+    UnimportGuide = "Interrupt",
   },
   FixSimple = {
     AudioOnly = "Interrupt",
@@ -95,7 +98,7 @@ return ReadOnly("TalkInterrupt", {
     PanFixSimple = "Queue",
     QueueGuide = "Interrupt",
     TalkType = "FixSimple",
-    UnimportGuide = "Interrupt"
+    UnimportGuide = "Interrupt",
   },
   ForgingGuide = {
     AudioOnly = "Ignore",
@@ -108,7 +111,7 @@ return ReadOnly("TalkInterrupt", {
     Impression = "Ignore",
     PanFixSimple = "Queue",
     TalkType = "ForgingGuide",
-    UnimportGuide = "Interrupt"
+    UnimportGuide = "Interrupt",
   },
   FreeSimple = {
     AudioOnly = "Interrupt",
@@ -120,7 +123,7 @@ return ReadOnly("TalkInterrupt", {
     PanFixSimple = "Queue",
     QueueGuide = "Pause",
     TalkType = "FreeSimple",
-    UnimportGuide = "Interrupt"
+    UnimportGuide = "Interrupt",
   },
   Guide = {
     AudioOnly = "Ignore",
@@ -144,7 +147,7 @@ return ReadOnly("TalkInterrupt", {
     SpecialQuestFail = "Queue",
     TalkType = "Guide",
     UnimportGuide = "Interrupt",
-    White = "Queue"
+    White = "Queue",
   },
   HintGuide = {
     AudioOnly = "Ignore",
@@ -157,7 +160,7 @@ return ReadOnly("TalkInterrupt", {
     PanFixSimple = "Queue",
     QueueGuide = "Interrupt",
     TalkType = "HintGuide",
-    UnimportGuide = "Interrupt"
+    UnimportGuide = "Interrupt",
   },
   Impression = {
     AudioOnly = "Interrupt",
@@ -169,7 +172,7 @@ return ReadOnly("TalkInterrupt", {
     PanFixSimple = "Queue",
     QueueGuide = "Pause",
     TalkType = "Impression",
-    UnimportGuide = "Interrupt"
+    UnimportGuide = "Interrupt",
   },
   LevelSequence = {
     AudioOnly = "Interrupt",
@@ -185,7 +188,7 @@ return ReadOnly("TalkInterrupt", {
     SpecialQuestFail = "Queue",
     TalkType = "LevelSequence",
     UnimportGuide = "Ignore",
-    White = "Queue"
+    White = "Queue",
   },
   NoIntFixSimple = {
     AudioOnly = "Ignore",
@@ -197,7 +200,7 @@ return ReadOnly("TalkInterrupt", {
     PanFixSimple = "Queue",
     QueueGuide = "Ignore",
     TalkType = "NoIntFixSimple",
-    UnimportGuide = "Ignore"
+    UnimportGuide = "Ignore",
   },
   PanFixSimple = {
     AudioOnly = "Interrupt",
@@ -221,7 +224,7 @@ return ReadOnly("TalkInterrupt", {
     SpecialQuestFail = "Queue",
     TalkType = "PanFixSimple",
     UnimportGuide = "Interrupt",
-    White = "Queue"
+    White = "Queue",
   },
   QuestImpression = {
     AudioOnly = "Interrupt",
@@ -233,7 +236,7 @@ return ReadOnly("TalkInterrupt", {
     PanFixSimple = "Queue",
     QueueGuide = "Interrupt",
     TalkType = "QuestImpression",
-    UnimportGuide = "Interrupt"
+    UnimportGuide = "Interrupt",
   },
   QueueGuide = {
     AudioOnly = "Ignore",
@@ -257,7 +260,7 @@ return ReadOnly("TalkInterrupt", {
     SpecialQuestFail = "Queue",
     TalkType = "QueueGuide",
     UnimportGuide = "Interrupt",
-    White = "Queue"
+    White = "Queue",
   },
   RougeLike = {
     AudioOnly = "Ignore",
@@ -270,7 +273,7 @@ return ReadOnly("TalkInterrupt", {
     Impression = "Ignore",
     PanFixSimple = "Queue",
     TalkType = "RougeLike",
-    UnimportGuide = "Interrupt"
+    UnimportGuide = "Interrupt",
   },
   SpecialQuestFail = {
     AudioOnly = "Interrupt",
@@ -293,7 +296,7 @@ return ReadOnly("TalkInterrupt", {
     QueueGuide = "Interrupt",
     TalkType = "SpecialQuestFail",
     UnimportGuide = "Interrupt",
-    White = "Queue"
+    White = "Queue",
   },
   UnimportGuide = {
     AudioOnly = "Ignore",
@@ -315,7 +318,7 @@ return ReadOnly("TalkInterrupt", {
     SpecialQuestFail = "Queue",
     TalkType = "UnimportGuide",
     UnimportGuide = "Interrupt",
-    White = "Queue"
+    White = "Queue",
   },
   White = {
     AudioOnly = "Interrupt",
@@ -327,6 +330,6 @@ return ReadOnly("TalkInterrupt", {
     PanFixSimple = "Queue",
     QueueGuide = "Interrupt",
     TalkType = "White",
-    UnimportGuide = "Interrupt"
-  }
+    UnimportGuide = "Interrupt",
+  },
 })

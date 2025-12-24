@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("RecommendModId2ArchiveId", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\RecommendModId2ArchiveId.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [1, 1] id: 1
+  return r1_1
+end)("RecommendModId2ArchiveId", {
   [22007] = 2010,
   [22111] = 2010,
   [22112] = 2010,
@@ -44,5 +47,5 @@ return ReadOnly("RecommendModId2ArchiveId", {
   [33321] = 3040,
   [33331] = 3040,
   [33332] = 3040,
-  [33411] = 3040
+  [33411] = 3040,
 })

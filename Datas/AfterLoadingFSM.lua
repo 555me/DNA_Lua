@@ -1,42 +1,51 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("AfterLoadingFSM", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\AfterLoadingFSM.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("AfterLoadingFSM", {
   BeginState = {
     FSMState = "BeginState",
-    NextState = "JumpToRogueMain"
+    NextState = "JumpToRogueMain",
   },
   DungeonUI = {
     FSMState = "DungeonUI",
-    NextState = "OpenForcePopup"
+    NextState = "OpenForcePopup",
   },
   DynamicQuest = {
     FSMState = "DynamicQuest",
-    NextState = "EndState"
+    NextState = "EndState",
   },
-  EndState = {FSMState = "EndState"},
+  EndState = {
+    FSMState = "EndState",
+  },
   GameplayReward = {
     FSMState = "GameplayReward",
-    NextState = "SystemUnlock"
+    NextState = "SystemUnlock",
   },
   JumpToRogueMain = {
     FSMState = "JumpToRogueMain",
-    NextState = "GameplayReward"
+    NextState = "GameplayReward",
+  },
+  LayoutPlan = {
+    FSMState = "LayoutPlan",
+    NextState = "DynamicQuest",
   },
   MainLineQuest = {
     FSMState = "MainLineQuest",
-    NextState = "DynamicQuest"
+    NextState = "LayoutPlan",
   },
   OpenForcePopup = {
     FSMState = "OpenForcePopup",
-    NextState = "MainLineQuest"
+    NextState = "MainLineQuest",
   },
   SystemUnlock = {
     FSMState = "SystemUnlock",
-    NextState = "TriggerGuide"
+    NextState = "TriggerGuide",
   },
   TriggerGuide = {
     FSMState = "TriggerGuide",
-    NextState = "DungeonUI"
-  }
+    NextState = "DungeonUI",
+  },
 })

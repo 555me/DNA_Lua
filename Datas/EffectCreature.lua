@@ -1,3 +1,6 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\EffectCreature.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 local r0_0 = {
   RT_1 = {
     "FX_Dead"
@@ -14,7 +17,7 @@ local r0_0 = {
     -5
   },
   RT_5 = {
-    "FX_Body"
+    "FX_Footprint"
   },
 }
 local r2_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
@@ -490,7 +493,7 @@ r4_0[4934] = {
   EffectCreatureAnimPath = "/Game/Asset/Char/Player/Common/Pet/Pet019_YYD/Animation/Sequence/Locomotion/Pet_YYD01_Idle.Pet_YYD01_Idle",
   EffectCreatureId = 4934,
   EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Pet/BP_EffectCreature_BattlePet_New.BP_EffectCreature_BattlePet_New",
-  MeshResourceId = 499,
+  MeshResourceId = 490,
   SocketName = "Root",
 }
 r4_0[6011] = {
@@ -531,14 +534,12 @@ r4_0[9011] = {
 r4_0[10101] = {
   EffectCreatureAnimPath = "/Game/Asset/Char/Player/Common/Part/Show/Animation/Montage/Show_Kaorou01_Girl_Montage.Show_Kaorou01_Girl_Montage",
   EffectCreatureId = 10101,
-  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Kaorou.BP_EffectCreature_Gesture_Kaorou",
   MeshResourceId = 301,
   SocketName = "Root",
 }
 r4_0[10102] = {
   EffectCreatureAnimPath = "/Game/Asset/Char/Player/Common/Part/Show/Animation/Montage/Show_Kaorou01_Loli_Montage.Show_Kaorou01_Loli_Montage",
   EffectCreatureId = 10102,
-  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Kaorou.BP_EffectCreature_Gesture_Kaorou",
   MeshResourceId = 302,
   SocketName = "Root",
 }
@@ -712,6 +713,27 @@ r4_0[10715] = {
   MeshResourceId = 307,
   SocketName = "hook_arm_l",
 }
+r4_0[10716] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Common/Part/Show/Animation/Montage/Show_Violin01A_NewWoman_Montage.Show_Violin01A_NewWoman_Montage",
+  EffectCreatureId = 10716,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Violin01.BP_EffectCreature_Gesture_Violin01",
+  MeshResourceId = 307,
+  SocketName = "hook_arm_l",
+}
+r4_0[10717] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Common/Part/Show/Animation/Montage/Show_Violin01A_NewWoman_Montage.Show_Violin01A_NewWoman_Montage",
+  EffectCreatureId = 10717,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Violin02.BP_EffectCreature_Gesture_Violin02",
+  MeshResourceId = 307,
+  SocketName = "hook_arm_l",
+}
+r4_0[10718] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Common/Part/Show/Animation/Montage/Show_Violin01A_NewWoman_Montage.Show_Violin01A_NewWoman_Montage",
+  EffectCreatureId = 10718,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Violin03.BP_EffectCreature_Gesture_Violin03",
+  MeshResourceId = 307,
+  SocketName = "hook_arm_l",
+}
 r4_0[10801] = {
   EffectCreatureAnimPath = "/Game/Asset/Char/Player/Common/Part/Show/Animation/Montage/Show_Violin01B_Girl_Montage.Show_Violin01B_Girl_Montage",
   EffectCreatureId = 10801,
@@ -813,6 +835,27 @@ r4_0[10814] = {
 r4_0[10815] = {
   EffectCreatureAnimPath = "/Game/Asset/Char/Player/Common/Part/Show/Animation/Montage/Show_Violin01B_Boy_Montage.Show_Violin01B_Boy_Montage",
   EffectCreatureId = 10815,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Violin03.BP_EffectCreature_Gesture_Violin03",
+  MeshResourceId = 308,
+  SocketName = "hook_arm_r",
+}
+r4_0[10816] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Common/Part/Show/Animation/Montage/Show_Violin01B_NewWoman_Montage.Show_Violin01B_NewWoman_Montage",
+  EffectCreatureId = 10816,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Violin01.BP_EffectCreature_Gesture_Violin01",
+  MeshResourceId = 308,
+  SocketName = "hook_arm_r",
+}
+r4_0[10817] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Common/Part/Show/Animation/Montage/Show_Violin01B_NewWoman_Montage.Show_Violin01B_NewWoman_Montage",
+  EffectCreatureId = 10817,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Violin02.BP_EffectCreature_Gesture_Violin02",
+  MeshResourceId = 308,
+  SocketName = "hook_arm_r",
+}
+r4_0[10818] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Common/Part/Show/Animation/Montage/Show_Violin01B_NewWoman_Montage.Show_Violin01B_NewWoman_Montage",
+  EffectCreatureId = 10818,
   EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Violin03.BP_EffectCreature_Gesture_Violin03",
   MeshResourceId = 308,
   SocketName = "hook_arm_r",
@@ -922,6 +965,27 @@ r4_0[10915] = {
   MeshResourceId = 309,
   SocketName = "hook_arm_l",
 }
+r4_0[10916] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Common/Part/Show/Animation/Montage/Show_Violin01C_NewWoman_Montage.Show_Violin01C_NewWoman_Montage",
+  EffectCreatureId = 10916,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Violin01.BP_EffectCreature_Gesture_Violin01",
+  MeshResourceId = 309,
+  SocketName = "hook_arm_l",
+}
+r4_0[10917] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Common/Part/Show/Animation/Montage/Show_Violin01C_NewWoman_Montage.Show_Violin01C_NewWoman_Montage",
+  EffectCreatureId = 10917,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Violin02.BP_EffectCreature_Gesture_Violin02",
+  MeshResourceId = 309,
+  SocketName = "hook_arm_l",
+}
+r4_0[10918] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Common/Part/Show/Animation/Montage/Show_Violin01C_NewWoman_Montage.Show_Violin01C_NewWoman_Montage",
+  EffectCreatureId = 10918,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Violin03.BP_EffectCreature_Gesture_Violin03",
+  MeshResourceId = 309,
+  SocketName = "hook_arm_l",
+}
 r4_0[11001] = {
   EffectCreatureId = 11001,
   EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Violin04.BP_EffectCreature_Gesture_Violin04",
@@ -975,16 +1039,68 @@ r4_0[11105] = {
 r4_0[11201] = {
   EffectCreatureId = 11201,
   EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Car01.BP_EffectCreature_Gesture_Car01",
+  NotScaledByParent = true,
   SocketName = "root",
 }
 r4_0[11202] = {
   EffectCreatureId = 11202,
   EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Car02.BP_EffectCreature_Gesture_Car02",
+  NotScaledByParent = true,
   SocketName = "root",
 }
 r4_0[11203] = {
   EffectCreatureId = 11203,
   EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Car03.BP_EffectCreature_Gesture_Car03",
+  NotScaledByParent = true,
+  SocketName = "root",
+}
+r4_0[11301] = {
+  EffectCreatureId = 11301,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Beach01.BP_EffectCreature_Gesture_Beach01",
+  NotScaledByParent = true,
+  SocketName = "root",
+}
+r4_0[11302] = {
+  EffectCreatureId = 11302,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Beach02.BP_EffectCreature_Gesture_Beach02",
+  NotScaledByParent = true,
+  SocketName = "root",
+}
+r4_0[11303] = {
+  EffectCreatureId = 11303,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Beach03.BP_EffectCreature_Gesture_Beach03",
+  NotScaledByParent = true,
+  SocketName = "root",
+}
+r4_0[11401] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Common/Part/Show/Animation/Sequence/Show_Bubblegun.Show_Bubblegun",
+  EffectCreatureId = 11401,
+  MeshResourceId = 311,
+  SocketName = "hook_arm_r",
+}
+r4_0[11501] = {
+  EffectCreatureId = 11501,
+  MeshResourceId = 312,
+  SocketName = "root",
+}
+r4_0[11601] = {
+  EffectCreatureId = 11601,
+  MeshResourceId = 313,
+  SocketName = "root",
+}
+r4_0[11701] = {
+  EffectCreatureId = 11701,
+  MeshResourceId = 314,
+  SocketName = "root",
+}
+r4_0[11801] = {
+  EffectCreatureId = 11801,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Tree01.BP_EffectCreature_Gesture_Tree01",
+  SocketName = "root",
+}
+r4_0[11901] = {
+  EffectCreatureId = 11901,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Gesture/BP_EffectCreature_Gesture_Tree02.BP_EffectCreature_Gesture_Tree02",
   SocketName = "root",
 }
 r4_0[14001] = {
@@ -1058,11 +1174,11 @@ r4_0[30140] = {
   SocketName = "hook_arm_l",
 }
 r4_0[42001] = {
-  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Common/Pet/Pet006_Zisha/Animation/Montage/Pet_Zisha_Skill01_Montage.Pet_Zisha_Skill01_Montage",
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Common/Pet/SPet001_Qianji/Animation/Montage/SPet_Qianji_Idle_Montage.SPet_Qianji_Idle_Montage",
   EffectCreatureId = 42001,
   EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Pet/BP_EffectCreature_Prop_42001.BP_EffectCreature_Prop_42001",
   EffectCreatureTag = r0_0.RT_3,
-  MeshResourceId = 401,
+  MeshResourceId = 42002,
   SocketName = "Root",
 }
 r4_0[42002] = {
@@ -1073,29 +1189,62 @@ r4_0[42002] = {
   MeshResourceId = 42002,
   SocketName = "Root",
 }
-r4_0[80001] = {
-  EffectCreatureId = 80001,
-  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/DeadFx/BP_EffectCreature_BodyFx.BP_EffectCreature_BodyFx",
+r4_0[70001] = {
+  EffectCreatureId = 70001,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/FootFx/BP_EffectCreature_FootFx_01.BP_EffectCreature_FootFx_01",
   EffectCreatureTag = r0_0.RT_5,
-  SocketName = "Root_Effect",
+  IsDestroyWithOwner = true,
 }
-r4_0[80011] = {
-  EffectCreatureId = 80011,
-  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/DeadFx/BP_EffectCreature_BodyFx_R.BP_EffectCreature_BodyFx_R",
+r4_0[70002] = {
+  EffectCreatureId = 70002,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/FootFx/BP_EffectCreature_FootFx_02.BP_EffectCreature_FootFx_02",
   EffectCreatureTag = r0_0.RT_5,
-  SocketName = "Root_Effect",
+  IsDestroyWithOwner = true,
 }
-r4_0[80012] = {
-  EffectCreatureId = 80012,
-  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/DeadFx/BP_EffectCreature_BodyFx_V.BP_EffectCreature_BodyFx_V",
+r4_0[70011] = {
+  EffectCreatureId = 70011,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/FootFx/BP_EffectCreature_FootFx_01_01.BP_EffectCreature_FootFx_01_01",
   EffectCreatureTag = r0_0.RT_5,
-  SocketName = "Root_Effect",
+  IsDestroyWithOwner = true,
 }
-r4_0[80013] = {
-  EffectCreatureId = 80013,
-  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/DeadFx/BP_EffectCreature_BodyFx_W.BP_EffectCreature_BodyFx_W",
+r4_0[70012] = {
+  EffectCreatureId = 70012,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/FootFx/BP_EffectCreature_FootFx_01_02.BP_EffectCreature_FootFx_01_02",
   EffectCreatureTag = r0_0.RT_5,
-  SocketName = "Root_Effect",
+  IsDestroyWithOwner = true,
+}
+r4_0[70013] = {
+  EffectCreatureId = 70013,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/FootFx/BP_EffectCreature_FootFx_01_03.BP_EffectCreature_FootFx_01_03",
+  EffectCreatureTag = r0_0.RT_5,
+  IsDestroyWithOwner = true,
+}
+r4_0[70021] = {
+  EffectCreatureId = 70021,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/FootFx/BP_EffectCreature_FootFx_02_01.BP_EffectCreature_FootFx_02_01",
+  EffectCreatureTag = r0_0.RT_5,
+  IsDestroyWithOwner = true,
+}
+r4_0[70022] = {
+  EffectCreatureId = 70022,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/FootFx/BP_EffectCreature_FootFx_02_02.BP_EffectCreature_FootFx_02_02",
+  EffectCreatureTag = r0_0.RT_5,
+  IsDestroyWithOwner = true,
+}
+r4_0[70023] = {
+  EffectCreatureId = 70023,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/FootFx/BP_EffectCreature_FootFx_02_03.BP_EffectCreature_FootFx_02_03",
+  EffectCreatureTag = r0_0.RT_5,
+  IsDestroyWithOwner = true,
+}
+r4_0[80003] = {
+  EffectCreatureId = 80003,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/BodyFx/BP_EffectCreature_BodyFx_03.BP_EffectCreature_BodyFx_03",
+  EffectCreatureTag = {
+    "FX_Body"
+  },
+  IsDestroyWithOwner = true,
+  SocketName = "Root",
 }
 r4_0[110101] = {
   EffectCreatureId = 110101,
@@ -1130,8 +1279,54 @@ r4_0[110112] = {
   SocketName = "hook_arm_r",
 }
 r4_0[110201] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char016_Fuluo/Animation/Summon/Montage/Fuluo_Sum_Idle_Montage.Fuluo_Sum_Idle_Montage",
   EffectCreatureId = 110201,
   EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Fuluo_Doll.BP_EffectCreature_Fuluo_Doll",
+  MeshResourceId = 110201,
+  SocketName = "Root",
+}
+r4_0[110202] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char016_Fuluo/Animation/Summon/Montage/Fuluo_Sum_Attack_Montage.Fuluo_Sum_Attack_Montage",
+  EffectCreatureId = 110202,
+  MeshResourceId = 110201,
+}
+r4_0[110221] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char016_Fuluo/Animation/Summon/Sequence/Fuluo_Sum_Skill02_1.Fuluo_Sum_Skill02_1",
+  EffectCreatureId = 110221,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Fuluo_Skill02.BP_EffectCreature_Fuluo_Skill02",
+  EnterPool = true,
+  MeshResourceId = 110201,
+  SocketName = "Root",
+}
+r4_0[110222] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char016_Fuluo/Animation/Summon/Sequence/Fuluo_Sum_Skill02_2.Fuluo_Sum_Skill02_2",
+  EffectCreatureId = 110222,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Fuluo_Skill02.BP_EffectCreature_Fuluo_Skill02",
+  EnterPool = true,
+  MeshResourceId = 110201,
+  SocketName = "Root",
+}
+r4_0[110223] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char016_Fuluo/Animation/Summon/Sequence/Fuluo_Sum_Skill02_3.Fuluo_Sum_Skill02_3",
+  EffectCreatureId = 110223,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Fuluo_Skill02.BP_EffectCreature_Fuluo_Skill02",
+  EnterPool = true,
+  MeshResourceId = 110201,
+  SocketName = "Root",
+}
+r4_0[110224] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char016_Fuluo/Animation/Summon/Sequence/Fuluo_Sum_Skill02_4.Fuluo_Sum_Skill02_4",
+  EffectCreatureId = 110224,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Fuluo_Skill02.BP_EffectCreature_Fuluo_Skill02",
+  EnterPool = true,
+  MeshResourceId = 110201,
+  SocketName = "Root",
+}
+r4_0[110225] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char016_Fuluo/Animation/Summon/Sequence/Fuluo_Sum_Skill02_5.Fuluo_Sum_Skill02_5",
+  EffectCreatureId = 110225,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Fuluo_Skill02.BP_EffectCreature_Fuluo_Skill02",
+  EnterPool = true,
   MeshResourceId = 110201,
   SocketName = "Root",
 }
@@ -1283,22 +1478,41 @@ r4_0[150350] = {
   MeshResourceId = 150315,
   SocketName = "hook_arm_r",
 }
-r4_0[150401] = {
-  EffectCreatureId = 150401,
-  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Suyi_UAV01.BP_EffectCreature_Suyi_UAV01",
-  MeshResourceId = 150401,
-  SocketName = "Root",
-}
 r4_0[150411] = {
   EffectCreatureId = 150411,
   EffectCreaturePath = "/Game/Asset/Effect/Blueprint/Child/EF_BP_Decal_Bullet03.EF_BP_Decal_Bullet03",
   EnterPool = true,
 }
-r4_0[150412] = {
-  EffectCreatureId = 150412,
-  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Suyi_Funnel.BP_EffectCreature_Suyi_Funnel",
-  MeshResourceId = 150402,
+r4_0[150413] = {
+  EffectCreatureId = 150413,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Suyi_Skill02Off_Creature.BP_EffectCreature_Suyi_Skill02Off_Creature",
+  MeshResourceId = 150401,
   SocketName = "Root",
+}
+r4_0[150502] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char037_SpBaonu/Animation/Summon/Montage/SpBaonu_Sum_Skill02_Montage.SpBaonu_Sum_Skill02_Montage",
+  EffectCreatureId = 150502,
+  MeshResourceId = 150502,
+}
+r4_0[150511] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char037_SpBaonu/Animation/Summon/Montage/SpBaonu_Sum_Attack01_Montage.SpBaonu_Sum_Attack01_Montage",
+  EffectCreatureId = 150511,
+  MeshResourceId = 150502,
+}
+r4_0[150512] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char037_SpBaonu/Animation/Summon/Montage/SpBaonu_Sum_Attack02_Montage.SpBaonu_Sum_Attack02_Montage",
+  EffectCreatureId = 150512,
+  MeshResourceId = 150502,
+}
+r4_0[150513] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char037_SpBaonu/Animation/Summon/Montage/SpBaonu_Sum_End01_Montage.SpBaonu_Sum_End01_Montage",
+  EffectCreatureId = 150513,
+  MeshResourceId = 150502,
+}
+r4_0[150514] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char037_SpBaonu/Animation/Summon/Montage/SpBaonu_Sum_End02_Montage.SpBaonu_Sum_End02_Montage",
+  EffectCreatureId = 150514,
+  MeshResourceId = 150502,
 }
 r4_0[160101] = {
   EffectCreatureId = 160101,
@@ -1424,7 +1638,11 @@ r4_0[240104] = {
 r4_0[240105] = {
   EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char015_Baiheng/Animation/Summon/Sequnence/Baiheng_Emo_IdleShow_01_Summon.Baiheng_Emo_IdleShow_01_Summon",
   EffectCreatureId = 240105,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Common/BP_EffectCreature_CustomDepth1.BP_EffectCreature_CustomDepth1",
   MeshResourceId = 240101,
+  ReplaceBySkin = {
+    [240199] = 240135,
+  },
   SocketName = "Root",
 }
 r4_0[240107] = {
@@ -1432,11 +1650,6 @@ r4_0[240107] = {
   EffectCreatureId = 240107,
   MeshResourceId = 240102,
   SocketName = "Root_hook_arm_r",
-}
-r4_0[240108] = {
-  EffectCreatureId = 240108,
-  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Baiheng_Skill02_Buff.BP_EffectCreature_Baiheng_Skill02_Buff",
-  SocketName = "Root",
 }
 r4_0[240109] = {
   EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char015_Baiheng/Animation/Summon/Montage/Interactive/Baiheng_Part_Interactive_Sit02_Montage.Baiheng_Part_Interactive_Sit02_Montage",
@@ -1450,19 +1663,65 @@ r4_0[240111] = {
   MeshResourceId = 240102,
   SocketName = "hook_arm_r",
 }
-r4_0[240115] = {
+r4_0[240112] = {
   EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char015_Baiheng/Animation/Summon/Montage/Combat/Skill/Baiheng_Summon_Skill02_EffectCreature01_Montage.Baiheng_Summon_Skill02_EffectCreature01_Montage",
-  EffectCreatureId = 240115,
+  EffectCreatureId = 240112,
   EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Common/BP_EffectCreature_CustomDepth1.BP_EffectCreature_CustomDepth1",
   EnterPool = true,
   MeshResourceId = 240101,
+  ReplaceBySkin = {
+    [240199] = 240142,
+  },
+  SocketName = "Root",
+}
+r4_0[240113] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char015_Baiheng/Animation/Summon/Sequnence/Baiheng_Skill02_Part01.Baiheng_Skill02_Part01",
+  EffectCreatureId = 240113,
+  EnterPool = true,
+  MeshResourceId = 240102,
+  ReplaceBySkin = {
+    [240199] = 240143,
+  },
+  SocketName = "Root",
+}
+r4_0[240114] = {
+  EffectCreatureId = 240114,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Baiheng_Skill02_01.BP_EffectCreature_Baiheng_Skill02_01",
+  ReplaceBySkin = {
+    [240199] = 240144,
+  },
+  SocketName = "Root",
+}
+r4_0[240115] = {
+  EffectCreatureId = 240115,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Baiheng_Skill02_02.BP_EffectCreature_Baiheng_Skill02_02",
+  ReplaceBySkin = {
+    [240199] = 240145,
+  },
   SocketName = "Root",
 }
 r4_0[240116] = {
-  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char015_Baiheng/Animation/Summon/Sequnence/Baiheng_Skill02_Part01.Baiheng_Skill02_Part01",
   EffectCreatureId = 240116,
-  EnterPool = true,
-  MeshResourceId = 240102,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Baiheng_Skill02_03.BP_EffectCreature_Baiheng_Skill02_03",
+  ReplaceBySkin = {
+    [240199] = 240146,
+  },
+  SocketName = "Root",
+}
+r4_0[240117] = {
+  EffectCreatureId = 240117,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Baiheng_Skill02_04.BP_EffectCreature_Baiheng_Skill02_04",
+  ReplaceBySkin = {
+    [240199] = 240147,
+  },
+  SocketName = "Root",
+}
+r4_0[240118] = {
+  EffectCreatureId = 240118,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Baiheng_Skill02_Buff.BP_EffectCreature_Baiheng_Skill02_Buff",
+  ReplaceBySkin = {
+    [240199] = 240148,
+  },
   SocketName = "Root",
 }
 r4_0[240121] = {
@@ -1472,24 +1731,51 @@ r4_0[240121] = {
   MeshResourceId = 416,
   SocketName = "Root",
 }
-r4_0[240131] = {
-  EffectCreatureId = 240131,
-  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Baiheng_Skill02_01.BP_EffectCreature_Baiheng_Skill02_01",
+r4_0[240135] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char015_Baiheng/Animation/Summon/Sequnence/Baiheng_Emo_IdleShow_01_Summon.Baiheng_Emo_IdleShow_01_Summon",
+  EffectCreatureId = 240135,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_CustomDepth_Baiheng01.BP_EffectCreature_CustomDepth_Baiheng01",
+  MeshResourceId = 240101,
   SocketName = "Root",
 }
-r4_0[240132] = {
-  EffectCreatureId = 240132,
-  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Baiheng_Skill02_02.BP_EffectCreature_Baiheng_Skill02_02",
+r4_0[240142] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char015_Baiheng/Animation/Summon/Montage/Combat/Skill/Baiheng_Summon_Skill02_EffectCreature01_Montage.Baiheng_Summon_Skill02_EffectCreature01_Montage",
+  EffectCreatureId = 240142,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_CustomDepth_Baiheng01.BP_EffectCreature_CustomDepth_Baiheng01",
+  EnterPool = true,
+  MeshResourceId = 240101,
   SocketName = "Root",
 }
-r4_0[240133] = {
-  EffectCreatureId = 240133,
-  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Baiheng_Skill02_03.BP_EffectCreature_Baiheng_Skill02_03",
+r4_0[240143] = {
+  EffectCreatureAnimPath = "/Game/Asset/Char/Player/Char015_Baiheng/Animation/Summon/Sequnence/Baiheng_Skill02_Part01.Baiheng_Skill02_Part01",
+  EffectCreatureId = 240143,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Baiheng01_Skill02_Shanzi.BP_EffectCreature_Baiheng01_Skill02_Shanzi",
+  MeshResourceId = 240102,
   SocketName = "Root",
 }
-r4_0[240134] = {
-  EffectCreatureId = 240134,
-  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Baiheng_Skill02_04.BP_EffectCreature_Baiheng_Skill02_04",
+r4_0[240144] = {
+  EffectCreatureId = 240144,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Baiheng01_Skill02_01.BP_EffectCreature_Baiheng01_Skill02_01",
+  SocketName = "Root",
+}
+r4_0[240145] = {
+  EffectCreatureId = 240145,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Baiheng01_Skill02_02.BP_EffectCreature_Baiheng01_Skill02_02",
+  SocketName = "Root",
+}
+r4_0[240146] = {
+  EffectCreatureId = 240146,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Baiheng01_Skill02_03.BP_EffectCreature_Baiheng01_Skill02_03",
+  SocketName = "Root",
+}
+r4_0[240147] = {
+  EffectCreatureId = 240147,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Baiheng01_Skill02_04.BP_EffectCreature_Baiheng01_Skill02_04",
+  SocketName = "Root",
+}
+r4_0[240148] = {
+  EffectCreatureId = 240148,
+  EffectCreaturePath = "/Game/BluePrints/Combat/EffectCreature/Skill/BP_EffectCreature_Baiheng01_Skill02_Buff.BP_EffectCreature_Baiheng01_Skill02_Buff",
   SocketName = "Root",
 }
 r4_0[310101] = {
@@ -1613,8 +1899,12 @@ r4_0[320205] = {
 }
 r4_0[320206] = {
   EffectCreatureId = 320206,
-  EnterPool = true,
   MeshResourceId = 320205,
+  SocketName = "hook_arm_r",
+}
+r4_0[320207] = {
+  EffectCreatureId = 320207,
+  MeshResourceId = 320203,
   SocketName = "hook_arm_r",
 }
 r4_0[330110] = {

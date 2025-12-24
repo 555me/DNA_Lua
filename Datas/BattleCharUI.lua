@@ -1,45 +1,62 @@
-local T = {}
-T.RT_1 = {MaxSummonerCount = 3, SummonerId = 210101}
-T.RT_2 = {0, 1}
-T.RT_3 = {
-  ID = 1,
-  Params = T.RT_1,
-  ScaleNode = "Main",
-  SkillGrade = T.RT_2,
-  UIName = "UISkillShuimu"
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\BattleCharUI.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r0_0 = {
+  RT_1 = {
+    MaxSummonerCount = 3,
+    SummonerId = 210101,
+  },
+  RT_2 = {
+    0,
+    1
+  },
 }
-T.RT_4 = {MaxSummonerCount = 5, SummonerId = 210101}
-T.RT_5 = {
+r0_0.RT_3 = {
+  ID = 1,
+  Params = r0_0.RT_1,
+  ScaleNode = "Main",
+  SkillGrade = r0_0.RT_2,
+  UIName = "UISkillShuimu",
+}
+r0_0.RT_4 = {
+  MaxSummonerCount = 5,
+  SummonerId = 210101,
+}
+r0_0.RT_5 = {
   2,
   3,
   4,
   5,
   6
 }
-T.RT_6 = {
+r0_0.RT_6 = {
   ID = 1,
-  Params = T.RT_4,
+  Params = r0_0.RT_4,
   ScaleNode = "Main",
-  SkillGrade = T.RT_5,
-  UIName = "UISkillShuimu"
+  SkillGrade = r0_0.RT_5,
+  UIName = "UISkillShuimu",
 }
-T.RT_7 = {SpecialUI = 0}
-T.RT_8 = {
+r0_0.RT_7 = {
+  SpecialUI = 0,
+}
+r0_0.RT_8 = {
   ID = 10,
-  Params = T.RT_7,
+  Params = r0_0.RT_7,
   ScaleNode = "Main",
-  SkillGrade = T.RT_2,
-  UIName = "UISkillXibi"
+  SkillGrade = r0_0.RT_2,
+  UIName = "UISkillXibi",
 }
-T.RT_9 = {SpecialUI = 1}
-T.RT_10 = {
+r0_0.RT_9 = {
+  SpecialUI = 1,
+}
+r0_0.RT_10 = {
   ID = 10,
-  Params = T.RT_9,
+  Params = r0_0.RT_9,
   ScaleNode = "Main",
-  SkillGrade = T.RT_5,
-  UIName = "UISkillXibi"
+  SkillGrade = r0_0.RT_5,
+  UIName = "UISkillXibi",
 }
-T.RT_11 = {
+r0_0.RT_11 = {
   0,
   1,
   2,
@@ -48,13 +65,13 @@ T.RT_11 = {
   5,
   6
 }
-T.RT_12 = {
+r0_0.RT_12 = {
   ID = 11,
-  SkillGrade = T.RT_11,
+  SkillGrade = r0_0.RT_11,
   TriggerBuffId = 3,
-  UIName = "UISkillNvzhu"
+  UIName = "UISkillNvzhu",
 }
-T.RT_13 = {
+r0_0.RT_13 = {
   [180131] = 1,
   [180132] = 2,
   [180133] = 3,
@@ -62,91 +79,106 @@ T.RT_13 = {
   [180135] = 1,
   [180136] = 2,
   [180137] = 3,
-  [180138] = 4
+  [180138] = 4,
 }
-T.RT_14 = {
+r0_0.RT_14 = {
   ID = 12,
-  Params = T.RT_13,
+  Params = r0_0.RT_13,
   ScaleNode = "Main",
-  SkillGrade = T.RT_11,
-  UIName = "UISkillFeina"
+  SkillGrade = r0_0.RT_11,
+  UIName = "UISkillFeina",
 }
-T.RT_15 = {SummonerId = 420201}
-T.RT_16 = {
+r0_0.RT_15 = {
+  SummonerId = 420201,
+}
+r0_0.RT_16 = {
   ID = 13,
-  Params = T.RT_15,
+  Params = r0_0.RT_15,
   ScaleNode = "Main",
-  SkillGrade = T.RT_11,
+  SkillGrade = r0_0.RT_11,
   TriggerBuffId = 420211,
-  UIName = "UISkillLandi"
+  UIName = "UISkillLandi",
 }
-T.RT_17 = {MaxSummonerCount = 2, UnitId = 240101}
-T.RT_18 = {
+r0_0.RT_17 = {
+  MaxSummonerCount = 2,
+  UnitId = 240101,
+}
+r0_0.RT_18 = {
   ID = 14,
-  Params = T.RT_17,
-  SkillGrade = T.RT_2,
-  UIName = "UISKillFushu"
+  Params = r0_0.RT_17,
+  ScaleNode = "Main",
+  SkillGrade = r0_0.RT_2,
+  UIName = "UISKillFushu",
 }
-T.RT_19 = {MaxSummonerCount = 3, UnitId = 240101}
-T.RT_20 = {
+r0_0.RT_19 = {
+  MaxSummonerCount = 3,
+  UnitId = 240101,
+}
+r0_0.RT_20 = {
   ID = 14,
-  Params = T.RT_19,
-  SkillGrade = T.RT_5,
-  UIName = "UISKillFushu"
+  Params = r0_0.RT_19,
+  ScaleNode = "Main",
+  SkillGrade = r0_0.RT_5,
+  UIName = "UISKillFushu",
 }
-T.RT_21 = {
+r0_0.RT_21 = {
   ID = 16,
   ScaleNode = "Main",
-  SkillGrade = T.RT_11,
-  UIName = "UISkillLise"
+  SkillGrade = r0_0.RT_11,
+  UIName = "UISkillLise",
 }
-T.RT_22 = {
+r0_0.RT_22 = {
   ID = 17,
-  SkillGrade = T.RT_11,
+  SkillGrade = r0_0.RT_11,
   TriggerBuffDelay = 1.5,
   TriggerBuffId = 110302,
-  UIName = "UISkill2Tuosi"
+  UIName = "UISkill2Tuosi",
 }
-T.RT_23 = {FireBuffId = 110331}
-T.RT_24 = {
+r0_0.RT_23 = {
+  FireBuffId = 110331,
+}
+r0_0.RT_24 = {
   ID = 18,
-  Params = T.RT_23,
-  SkillGrade = T.RT_11,
-  UIName = "UISkillTuosi"
+  Params = r0_0.RT_23,
+  ScaleNode = "Main",
+  SkillGrade = r0_0.RT_11,
+  UIName = "UISkillTuosi",
 }
-T.RT_25 = {
+r0_0.RT_25 = {
   PassiveEffectId = 410201,
   ThunderBuffId = 410201,
-  WindBuffId = 410202
+  WindBuffId = 410202,
 }
-T.RT_26 = {
+r0_0.RT_26 = {
   ID = 19,
-  Params = T.RT_25,
+  Params = r0_0.RT_25,
   ScaleNode = "Main",
-  SkillGrade = T.RT_11,
-  UIName = "UISkillZhiliu"
+  SkillGrade = r0_0.RT_11,
+  UIName = "UISkillZhiliu",
 }
-T.RT_27 = {
+r0_0.RT_27 = {
   ID = 2,
-  SkillGrade = T.RT_11,
+  SkillGrade = r0_0.RT_11,
   TriggerBuffDelay = 0.8,
   TriggerBuffId = 110101,
-  UIName = "UISkillSpade"
+  UIName = "UISkillSpade",
 }
-T.RT_28 = {SummonId = 310202}
-T.RT_29 = {
+r0_0.RT_28 = {
+  SummonId = 310202,
+}
+r0_0.RT_29 = {
   ID = 20,
-  Params = T.RT_28,
+  Params = r0_0.RT_28,
   ScaleNode = "Main",
-  SkillGrade = T.RT_11,
-  UIName = "UISkillXier"
+  SkillGrade = r0_0.RT_11,
+  UIName = "UISkillXier",
 }
-T.RT_30 = {
+r0_0.RT_30 = {
   MeleeBuffId = 150307,
   MeleeWeakBuffId = 150325,
-  RangedBuffId = 150308
+  RangedBuffId = 150308,
 }
-T.RT_31 = {
+r0_0.RT_31 = {
   1,
   2,
   3,
@@ -154,351 +186,392 @@ T.RT_31 = {
   5,
   6
 }
-T.RT_32 = {
+r0_0.RT_32 = {
   ID = 21,
-  Params = T.RT_30,
+  Params = r0_0.RT_30,
   ScaleNode = "Main",
-  SkillGrade = T.RT_31,
-  UIName = "UISkillKezhou"
+  SkillGrade = r0_0.RT_31,
+  UIName = "UISkillKezhou",
 }
-T.RT_33 = {
+r0_0.RT_33 = {
   ID = 23,
-  SkillGrade = T.RT_11,
-  UIName = "UISkillSaqiUltiSkin1"
+  SkillGrade = r0_0.RT_11,
+  UIName = "UISkillSaqiUltiSkin1",
 }
-T.RT_34 = {FlashLevel = 1}
-T.RT_35 = {
+r0_0.RT_34 = {
+  FlashLevel = 1,
+}
+r0_0.RT_35 = {
   ID = 24,
-  Params = T.RT_34,
-  SkillGrade = T.RT_11,
+  Params = r0_0.RT_34,
+  SkillGrade = r0_0.RT_11,
   TriggerBuffId = 240151,
-  UIName = "UIFushuNearDeath"
+  UIName = "UIFushuNearDeath",
 }
-T.RT_36 = {FlashLevel = 2}
-T.RT_37 = {
+r0_0.RT_36 = {
+  FlashLevel = 2,
+}
+r0_0.RT_37 = {
   ID = 25,
-  Params = T.RT_36,
-  SkillGrade = T.RT_11,
+  Params = r0_0.RT_36,
+  SkillGrade = r0_0.RT_11,
   TriggerBuffId = 240152,
-  UIName = "UIFushuNearDeath"
+  UIName = "UIFushuNearDeath",
 }
-T.RT_38 = {FlashLevel = 3}
-T.RT_39 = {
+r0_0.RT_38 = {
+  FlashLevel = 3,
+}
+r0_0.RT_39 = {
   ID = 26,
-  Params = T.RT_38,
-  SkillGrade = T.RT_11,
+  Params = r0_0.RT_38,
+  SkillGrade = r0_0.RT_11,
   TriggerBuffId = 240153,
-  UIName = "UIFushuNearDeath"
+  UIName = "UIFushuNearDeath",
 }
-T.RT_40 = {
+r0_0.RT_40 = {
   ID = 27,
   ScaleNode = "Main",
-  SkillGrade = T.RT_11,
+  SkillGrade = r0_0.RT_11,
   TriggerBuffId = 150421,
-  UIName = "UISkillLise"
+  UIName = "UISkillLise",
 }
-T.RT_41 = {BuffId = 150101}
-T.RT_42 = {
+r0_0.RT_41 = {
+  BuffId = 150101,
+}
+r0_0.RT_42 = {
   ID = 28,
-  Params = T.RT_41,
-  SkillGrade = T.RT_11,
-  UIName = "UISkillBaonu"
+  Params = r0_0.RT_41,
+  ScaleNode = "Main",
+  SkillGrade = r0_0.RT_11,
+  UIName = "UISkillBaonu",
 }
-T.RT_43 = {
+r0_0.RT_43 = {
+  CreatureId = 320202,
+}
+r0_0.RT_44 = {
+  ID = 29,
+  Params = r0_0.RT_43,
+  ScaleNode = "Main",
+  SkillGrade = r0_0.RT_11,
+  UIName = "UISkillKami",
+}
+r0_0.RT_45 = {
   ID = 3,
-  SkillGrade = T.RT_11,
+  SkillGrade = r0_0.RT_11,
   TriggerBuffId = 530101,
-  UIName = "UISkillSaqiUlti"
+  UIName = "UISkillSaqiUlti",
 }
-T.RT_44 = {EnhancedReloadBuffId = 310131, FirepowerSuppressionBuffId = 310132}
-T.RT_45 = {
+r0_0.RT_46 = {
+  EnhancedReloadBuffId = 310131,
+  FirepowerSuppressionBuffId = 310132,
+}
+r0_0.RT_47 = {
   ID = 4,
-  Params = T.RT_44,
+  Params = r0_0.RT_46,
   ScaleNode = "Main",
-  SkillGrade = T.RT_11,
-  UIName = "UISkillLinen"
+  SkillGrade = r0_0.RT_11,
+  UIName = "UISkillLinen",
 }
-T.RT_46 = {RideBuff = 510121, SummonerId = 510101}
-T.RT_47 = {
+r0_0.RT_48 = {
+  RideBuff = 510121,
+  SummonerId = 510101,
+}
+r0_0.RT_49 = {
   ID = 5,
-  Params = T.RT_46,
+  Params = r0_0.RT_48,
   ScaleNode = "Main",
-  SkillGrade = T.RT_11,
-  UIName = "UISkillSonglu"
+  SkillGrade = r0_0.RT_11,
+  UIName = "UISkillSonglu",
 }
-T.RT_48 = {SummonerId = 420101}
-T.RT_49 = {
+r0_0.RT_50 = {
+  SummonerId = 420101,
+}
+r0_0.RT_51 = {
   ID = 6,
-  Params = T.RT_48,
+  Params = r0_0.RT_50,
   ScaleNode = "Main",
-  SkillGrade = T.RT_11,
-  UIName = "UISkillHeilong"
+  SkillGrade = r0_0.RT_11,
+  UIName = "UISkillHeilong",
 }
-T.RT_50 = {
+r0_0.RT_52 = {
   ID = 7,
   ScaleNode = "Main",
-  SkillGrade = T.RT_11,
+  SkillGrade = r0_0.RT_11,
   TriggerBuffId = 310122,
-  UIName = "UISkill2Linen"
+  UIName = "UISkill2Linen",
 }
-T.RT_51 = {
+r0_0.RT_53 = {
   ID = 8,
-  SkillGrade = T.RT_11,
+  SkillGrade = r0_0.RT_11,
   TriggerBuffId = 850405,
-  UIName = "UISkillSaqiUlti"
+  UIName = "UISkillSaqiUlti",
 }
-T.RT_52 = {
+r0_0.RT_54 = {
   ID = 9,
-  SkillGrade = T.RT_11,
+  SkillGrade = r0_0.RT_11,
   TriggerBuffId = 310301,
-  UIName = "UISkilYeerUlti"
+  UIName = "UISkilYeerUlti",
 }
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
+local r2_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [312, 312] id: 1
+  return r1_1
 end
-return ReadOnly("BattleCharUI", {
+local r3_0 = "BattleCharUI"
+local r4_0 = {
   [1] = {
-    [0] = T.RT_3,
-    [1] = T.RT_3,
-    [2] = T.RT_6,
-    [3] = T.RT_6,
-    [4] = T.RT_6,
-    [5] = T.RT_6,
-    [6] = T.RT_6
+    [0] = r0_0.RT_3,
+    [1] = r0_0.RT_3,
+    [2] = r0_0.RT_6,
+    [3] = r0_0.RT_6,
+    [4] = r0_0.RT_6,
+    [5] = r0_0.RT_6,
+    [6] = r0_0.RT_6,
   },
   [2] = {
-    [0] = T.RT_27,
-    [1] = T.RT_27,
-    [2] = T.RT_27,
-    [3] = T.RT_27,
-    [4] = T.RT_27,
-    [5] = T.RT_27,
-    [6] = T.RT_27
+    [0] = r0_0.RT_27,
+    [1] = r0_0.RT_27,
+    [2] = r0_0.RT_27,
+    [3] = r0_0.RT_27,
+    [4] = r0_0.RT_27,
+    [5] = r0_0.RT_27,
+    [6] = r0_0.RT_27,
   },
   [3] = {
-    [0] = T.RT_43,
-    [1] = T.RT_43,
-    [2] = T.RT_43,
-    [3] = T.RT_43,
-    [4] = T.RT_43,
-    [5] = T.RT_43,
-    [6] = T.RT_43
+    [0] = r0_0.RT_45,
+    [1] = r0_0.RT_45,
+    [2] = r0_0.RT_45,
+    [3] = r0_0.RT_45,
+    [4] = r0_0.RT_45,
+    [5] = r0_0.RT_45,
+    [6] = r0_0.RT_45,
   },
   [4] = {
-    [0] = T.RT_45,
-    [1] = T.RT_45,
-    [2] = T.RT_45,
-    [3] = T.RT_45,
-    [4] = T.RT_45,
-    [5] = T.RT_45,
-    [6] = T.RT_45
+    [0] = r0_0.RT_47,
+    [1] = r0_0.RT_47,
+    [2] = r0_0.RT_47,
+    [3] = r0_0.RT_47,
+    [4] = r0_0.RT_47,
+    [5] = r0_0.RT_47,
+    [6] = r0_0.RT_47,
   },
   [5] = {
-    [0] = T.RT_47,
-    [1] = T.RT_47,
-    [2] = T.RT_47,
-    [3] = T.RT_47,
-    [4] = T.RT_47,
-    [5] = T.RT_47,
-    [6] = T.RT_47
+    [0] = r0_0.RT_49,
+    [1] = r0_0.RT_49,
+    [2] = r0_0.RT_49,
+    [3] = r0_0.RT_49,
+    [4] = r0_0.RT_49,
+    [5] = r0_0.RT_49,
+    [6] = r0_0.RT_49,
   },
   [6] = {
-    [0] = T.RT_49,
-    [1] = T.RT_49,
-    [2] = T.RT_49,
-    [3] = T.RT_49,
-    [4] = T.RT_49,
-    [5] = T.RT_49,
-    [6] = T.RT_49
+    [0] = r0_0.RT_51,
+    [1] = r0_0.RT_51,
+    [2] = r0_0.RT_51,
+    [3] = r0_0.RT_51,
+    [4] = r0_0.RT_51,
+    [5] = r0_0.RT_51,
+    [6] = r0_0.RT_51,
   },
   [7] = {
-    [0] = T.RT_50,
-    [1] = T.RT_50,
-    [2] = T.RT_50,
-    [3] = T.RT_50,
-    [4] = T.RT_50,
-    [5] = T.RT_50,
-    [6] = T.RT_50
+    [0] = r0_0.RT_52,
+    [1] = r0_0.RT_52,
+    [2] = r0_0.RT_52,
+    [3] = r0_0.RT_52,
+    [4] = r0_0.RT_52,
+    [5] = r0_0.RT_52,
+    [6] = r0_0.RT_52,
   },
   [8] = {
-    [0] = T.RT_51,
-    [1] = T.RT_51,
-    [2] = T.RT_51,
-    [3] = T.RT_51,
-    [4] = T.RT_51,
-    [5] = T.RT_51,
-    [6] = T.RT_51
+    [0] = r0_0.RT_53,
+    [1] = r0_0.RT_53,
+    [2] = r0_0.RT_53,
+    [3] = r0_0.RT_53,
+    [4] = r0_0.RT_53,
+    [5] = r0_0.RT_53,
+    [6] = r0_0.RT_53,
   },
   [9] = {
-    [0] = T.RT_52,
-    [1] = T.RT_52,
-    [2] = T.RT_52,
-    [3] = T.RT_52,
-    [4] = T.RT_52,
-    [5] = T.RT_52,
-    [6] = T.RT_52
+    [0] = r0_0.RT_54,
+    [1] = r0_0.RT_54,
+    [2] = r0_0.RT_54,
+    [3] = r0_0.RT_54,
+    [4] = r0_0.RT_54,
+    [5] = r0_0.RT_54,
+    [6] = r0_0.RT_54,
   },
   [10] = {
-    [0] = T.RT_8,
-    [1] = T.RT_8,
-    [2] = T.RT_10,
-    [3] = T.RT_10,
-    [4] = T.RT_10,
-    [5] = T.RT_10,
-    [6] = T.RT_10
+    [0] = r0_0.RT_8,
+    [1] = r0_0.RT_8,
+    [2] = r0_0.RT_10,
+    [3] = r0_0.RT_10,
+    [4] = r0_0.RT_10,
+    [5] = r0_0.RT_10,
+    [6] = r0_0.RT_10,
   },
   [11] = {
-    [0] = T.RT_12,
-    [1] = T.RT_12,
-    [2] = T.RT_12,
-    [3] = T.RT_12,
-    [4] = T.RT_12,
-    [5] = T.RT_12,
-    [6] = T.RT_12
+    [0] = r0_0.RT_12,
+    [1] = r0_0.RT_12,
+    [2] = r0_0.RT_12,
+    [3] = r0_0.RT_12,
+    [4] = r0_0.RT_12,
+    [5] = r0_0.RT_12,
+    [6] = r0_0.RT_12,
   },
   [12] = {
-    [0] = T.RT_14,
-    [1] = T.RT_14,
-    [2] = T.RT_14,
-    [3] = T.RT_14,
-    [4] = T.RT_14,
-    [5] = T.RT_14,
-    [6] = T.RT_14
+    [0] = r0_0.RT_14,
+    [1] = r0_0.RT_14,
+    [2] = r0_0.RT_14,
+    [3] = r0_0.RT_14,
+    [4] = r0_0.RT_14,
+    [5] = r0_0.RT_14,
+    [6] = r0_0.RT_14,
   },
   [13] = {
-    [0] = T.RT_16,
-    [1] = T.RT_16,
-    [2] = T.RT_16,
-    [3] = T.RT_16,
-    [4] = T.RT_16,
-    [5] = T.RT_16,
-    [6] = T.RT_16
+    [0] = r0_0.RT_16,
+    [1] = r0_0.RT_16,
+    [2] = r0_0.RT_16,
+    [3] = r0_0.RT_16,
+    [4] = r0_0.RT_16,
+    [5] = r0_0.RT_16,
+    [6] = r0_0.RT_16,
   },
   [14] = {
-    [0] = T.RT_18,
-    [1] = T.RT_18,
-    [2] = T.RT_20,
-    [3] = T.RT_20,
-    [4] = T.RT_20,
-    [5] = T.RT_20,
-    [6] = T.RT_20
+    [0] = r0_0.RT_18,
+    [1] = r0_0.RT_18,
+    [2] = r0_0.RT_20,
+    [3] = r0_0.RT_20,
+    [4] = r0_0.RT_20,
+    [5] = r0_0.RT_20,
+    [6] = r0_0.RT_20,
   },
   [16] = {
-    [0] = T.RT_21,
-    [1] = T.RT_21,
-    [2] = T.RT_21,
-    [3] = T.RT_21,
-    [4] = T.RT_21,
-    [5] = T.RT_21,
-    [6] = T.RT_21
+    [0] = r0_0.RT_21,
+    [1] = r0_0.RT_21,
+    [2] = r0_0.RT_21,
+    [3] = r0_0.RT_21,
+    [4] = r0_0.RT_21,
+    [5] = r0_0.RT_21,
+    [6] = r0_0.RT_21,
   },
   [17] = {
-    [0] = T.RT_22,
-    [1] = T.RT_22,
-    [2] = T.RT_22,
-    [3] = T.RT_22,
-    [4] = T.RT_22,
-    [5] = T.RT_22,
-    [6] = T.RT_22
+    [0] = r0_0.RT_22,
+    [1] = r0_0.RT_22,
+    [2] = r0_0.RT_22,
+    [3] = r0_0.RT_22,
+    [4] = r0_0.RT_22,
+    [5] = r0_0.RT_22,
+    [6] = r0_0.RT_22,
   },
   [18] = {
-    [0] = T.RT_24,
-    [1] = T.RT_24,
-    [2] = T.RT_24,
-    [3] = T.RT_24,
-    [4] = T.RT_24,
-    [5] = T.RT_24,
-    [6] = T.RT_24
+    [0] = r0_0.RT_24,
+    [1] = r0_0.RT_24,
+    [2] = r0_0.RT_24,
+    [3] = r0_0.RT_24,
+    [4] = r0_0.RT_24,
+    [5] = r0_0.RT_24,
+    [6] = r0_0.RT_24,
   },
   [19] = {
-    [0] = T.RT_26,
-    [1] = T.RT_26,
-    [2] = T.RT_26,
-    [3] = T.RT_26,
-    [4] = T.RT_26,
-    [5] = T.RT_26,
-    [6] = T.RT_26
+    [0] = r0_0.RT_26,
+    [1] = r0_0.RT_26,
+    [2] = r0_0.RT_26,
+    [3] = r0_0.RT_26,
+    [4] = r0_0.RT_26,
+    [5] = r0_0.RT_26,
+    [6] = r0_0.RT_26,
   },
   [20] = {
-    [0] = T.RT_29,
-    [1] = T.RT_29,
-    [2] = T.RT_29,
-    [3] = T.RT_29,
-    [4] = T.RT_29,
-    [5] = T.RT_29,
-    [6] = T.RT_29
+    [0] = r0_0.RT_29,
+    [1] = r0_0.RT_29,
+    [2] = r0_0.RT_29,
+    [3] = r0_0.RT_29,
+    [4] = r0_0.RT_29,
+    [5] = r0_0.RT_29,
+    [6] = r0_0.RT_29,
   },
-  [21] = {
-    [0] = {
-      ID = 21,
-      Params = {
-        MeleeBuffId = 150301,
-        MeleeWeakBuffId = 150325,
-        RangedBuffId = 150302
-      },
-      ScaleNode = "Main",
-      SkillGrade = {0},
-      UIName = "UISkillKezhou"
-    },
-    [1] = T.RT_32,
-    [2] = T.RT_32,
-    [3] = T.RT_32,
-    [4] = T.RT_32,
-    [5] = T.RT_32,
-    [6] = T.RT_32
+}
+local r5_0 = {}
+r5_0[0] = {
+  ID = 21,
+  Params = {
+    MeleeBuffId = 150301,
+    MeleeWeakBuffId = 150325,
+    RangedBuffId = 150302,
   },
-  [23] = {
-    [0] = T.RT_33,
-    [1] = T.RT_33,
-    [2] = T.RT_33,
-    [3] = T.RT_33,
-    [4] = T.RT_33,
-    [5] = T.RT_33,
-    [6] = T.RT_33
+  ScaleNode = "Main",
+  SkillGrade = {
+    0
   },
-  [24] = {
-    [0] = T.RT_35,
-    [1] = T.RT_35,
-    [2] = T.RT_35,
-    [3] = T.RT_35,
-    [4] = T.RT_35,
-    [5] = T.RT_35,
-    [6] = T.RT_35
-  },
-  [25] = {
-    [0] = T.RT_37,
-    [1] = T.RT_37,
-    [2] = T.RT_37,
-    [3] = T.RT_37,
-    [4] = T.RT_37,
-    [5] = T.RT_37,
-    [6] = T.RT_37
-  },
-  [26] = {
-    [0] = T.RT_39,
-    [1] = T.RT_39,
-    [2] = T.RT_39,
-    [3] = T.RT_39,
-    [4] = T.RT_39,
-    [5] = T.RT_39,
-    [6] = T.RT_39
-  },
-  [27] = {
-    [0] = T.RT_40,
-    [1] = T.RT_40,
-    [2] = T.RT_40,
-    [3] = T.RT_40,
-    [4] = T.RT_40,
-    [5] = T.RT_40,
-    [6] = T.RT_40
-  },
-  [28] = {
-    [0] = T.RT_42,
-    [1] = T.RT_42,
-    [2] = T.RT_42,
-    [3] = T.RT_42,
-    [4] = T.RT_42,
-    [5] = T.RT_42,
-    [6] = T.RT_42
-  }
-})
+  UIName = "UISkillKezhou",
+}
+r5_0[1] = r0_0.RT_32
+r5_0[2] = r0_0.RT_32
+r5_0[3] = r0_0.RT_32
+r5_0[4] = r0_0.RT_32
+r5_0[5] = r0_0.RT_32
+r5_0[6] = r0_0.RT_32
+r4_0[21] = r5_0
+r4_0[23] = {
+  [0] = r0_0.RT_33,
+  [1] = r0_0.RT_33,
+  [2] = r0_0.RT_33,
+  [3] = r0_0.RT_33,
+  [4] = r0_0.RT_33,
+  [5] = r0_0.RT_33,
+  [6] = r0_0.RT_33,
+}
+r4_0[24] = {
+  [0] = r0_0.RT_35,
+  [1] = r0_0.RT_35,
+  [2] = r0_0.RT_35,
+  [3] = r0_0.RT_35,
+  [4] = r0_0.RT_35,
+  [5] = r0_0.RT_35,
+  [6] = r0_0.RT_35,
+}
+r4_0[25] = {
+  [0] = r0_0.RT_37,
+  [1] = r0_0.RT_37,
+  [2] = r0_0.RT_37,
+  [3] = r0_0.RT_37,
+  [4] = r0_0.RT_37,
+  [5] = r0_0.RT_37,
+  [6] = r0_0.RT_37,
+}
+r4_0[26] = {
+  [0] = r0_0.RT_39,
+  [1] = r0_0.RT_39,
+  [2] = r0_0.RT_39,
+  [3] = r0_0.RT_39,
+  [4] = r0_0.RT_39,
+  [5] = r0_0.RT_39,
+  [6] = r0_0.RT_39,
+}
+r4_0[27] = {
+  [0] = r0_0.RT_40,
+  [1] = r0_0.RT_40,
+  [2] = r0_0.RT_40,
+  [3] = r0_0.RT_40,
+  [4] = r0_0.RT_40,
+  [5] = r0_0.RT_40,
+  [6] = r0_0.RT_40,
+}
+r4_0[28] = {
+  [0] = r0_0.RT_42,
+  [1] = r0_0.RT_42,
+  [2] = r0_0.RT_42,
+  [3] = r0_0.RT_42,
+  [4] = r0_0.RT_42,
+  [5] = r0_0.RT_42,
+  [6] = r0_0.RT_42,
+}
+r4_0[29] = {
+  [0] = r0_0.RT_44,
+  [1] = r0_0.RT_44,
+  [2] = r0_0.RT_44,
+  [3] = r0_0.RT_44,
+  [4] = r0_0.RT_44,
+  [5] = r0_0.RT_44,
+  [6] = r0_0.RT_44,
+}
+return r2_0(r3_0, r4_0)

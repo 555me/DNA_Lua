@@ -1,362 +1,398 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/UnLua.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 if _UNLUA ~= nil then
-  return
+  return 
 end
 _UNLUA = 1
-local rawget = _ENV.rawget
-local rawset = _ENV.rawset
-local type = _ENV.type
-local getmetatable = _ENV.getmetatable
-local setmetatable = _ENV.setmetatable
-local require = _ENV.require
-local str_sub = string.sub
-local GetUProperty = _ENV.GetUProperty
-local SetUProperty = _ENV.SetUProperty
-local RegisterClass = _ENV.RegisterClass
-local RegisterEnum = _ENV.RegisterEnum
-local print = UEPrint or _ENV.print
-local netprint = NetPrint
-local UE = _ENV.UE
-_NotExist = _NotExist or {}
-local NotExist = _NotExist
-
-local function Index(t, k)
-  local mt = getmetatable(t)
-  local p = rawget(mt, k)
-  if nil == p then
-    p = mt[k]
-    if nil == p then
-      rawset(mt, k, NotExist)
+local r0_0 = rawget
+local r1_0 = rawset
+local r2_0 = type
+local r3_0 = getmetatable
+local r4_0 = setmetatable
+local r5_0 = require
+local r6_0 = string.sub
+local r7_0 = GetUProperty
+local r8_0 = SetUProperty
+local r9_0 = RegisterClass
+local r10_0 = RegisterEnum
+local r11_0 = UEPrint and print
+local r12_0 = NetPrint
+local r13_0 = UE
+_NotExist = _NotExist and {}
+local r14_0 = _NotExist
+local function r15_0(r0_1, r1_1)
+  -- line: [94, 125] id: 1
+  local r2_1 = r3_0(r0_1)
+  local r3_1 = r0_0(r2_1, r1_1)
+  if r3_1 == nil then
+    r3_1 = r2_1[r1_1]
+    if r3_1 == nil then
+      r1_0(r2_1, r1_1, r14_0)
       return nil
     end
-    rawset(mt, k, p)
+    r1_0(r2_1, r1_1, r3_1)
   end
-  if rawequal(p, NotExist) then
+  if rawequal(r3_1, r14_0) then
     return nil
   end
-  if "userdata" == type(p) then
-    return GetUProperty(t, p)
+  if r2_0(r3_1) == "userdata" then
+    return r7_0(r0_1, r3_1)
   end
-  rawset(t, k, p)
-  return p
+  r1_0(r0_1, r1_1, r3_1)
+  return r3_1
 end
-
-local function NewIndex(t, k, v)
-  local mt = getmetatable(t)
-  local p = mt[k]
-  if "userdata" == type(p) then
-    return SetUProperty(t, p, v)
+local function r16_0(r0_2, r1_2, r2_2)
+  -- line: [127, 134] id: 2
+  local r4_2 = r3_0(r0_2)[r1_2]
+  if r2_0(r4_2) == "userdata" then
+    return r8_0(r0_2, r4_2, r2_2)
   end
-  rawset(t, k, v)
+  r1_0(r0_2, r1_2, r2_2)
 end
-
-local function copy_table(source, target)
-  for k, f in pairs(source) do
-    if "__index" ~= k and "__newindex" ~= k and "Super" ~= k and "function" == type(f) then
-      rawset(target, k, f)
+local function r17_0(r0_3, r1_3)
+  -- line: [136, 150] id: 3
+  for r6_3, r7_3 in pairs(r0_3) do
+    if r6_3 ~= "__index" and r6_3 ~= "__newindex" and r6_3 ~= "Super" and r2_0(r7_3) == "function" then
+      r1_0(r1_3, r6_3, r7_3)
     end
   end
+  -- close: r2_3
 end
-
-local a
-
-local function Get_G()
-  return a
+local r18_0 = nil
+local function r19_0()
+  -- line: [153, 155] id: 4
+  return r18_0
 end
-
-local function Class(super_name)
-  local new_class = {}
-  new_class.__index = Index
-  new_class.__newindex = NewIndex
-  new_class.Super = nil
-  if "table" == type(super_name) then
-    for i, v in pairs(super_name) do
-      local require_module
-      if "table" == type(v) then
-        require_module = v
+local function r20_0(r0_5)
+  -- line: [157, 205] id: 5
+  local r1_5 = {
+    __index = r15_0,
+    __newindex = r16_0,
+    Super = nil,
+  }
+  if r2_0(r0_5) == "table" then
+    for r6_5, r7_5 in pairs(r0_5) do
+      local r8_5 = nil
+      if r2_0(r7_5) == "table" then
+        r8_5 = r7_5
       else
-        require_module = require(v)
+        r8_5 = r5_0(r7_5)
       end
-      if nil == require_module then
-        print("Can not require file " .. tostring(v))
+      if r8_5 == nil then
+        r11_0("Can not require file " .. tostring(r7_5))
       else
-        if new_class.Super == nil then
-          new_class.Super = require_module
-          setmetatable(new_class, getmetatable(new_class.Super))
+        if r1_5.Super == nil then
+          r1_5.Super = r8_5
+          r4_0(r1_5, r3_0(r1_5.Super))
         end
-        copy_table(require_module, new_class)
+        r17_0(r8_5, r1_5)
       end
     end
-  elseif nil ~= super_name then
-    local require_module = require(super_name)
-    if nil == require_module then
-      print("Can not require file " .. tostring(super_name))
+    -- close: r2_5
+  elseif r0_5 ~= nil then
+    local r2_5 = r5_0(r0_5)
+    if r2_5 == nil then
+      r11_0("Can not require file " .. tostring(r0_5))
     else
-      new_class.Super = require_module
-      setmetatable(new_class, getmetatable(new_class.Super))
-      copy_table(require_module, new_class)
+      r1_5.Super = r2_5
+      r4_0(r1_5, r3_0(r1_5.Super))
+      r17_0(r2_5, r1_5)
     end
   end
-  new_class.Get_G = Get_G
-  
-  function new_class.add_ref(ref_table)
-    if not new_class.ref_tables then
-      new_class.ref_tables = setmetatable({}, {__mode = "kv"})
+  r1_5.Get_G = r19_0
+  function r1_5.add_ref(r0_6)
+    -- line: [196, 203] id: 6
+    if not r1_5.ref_tables then
+      r1_5.ref_tables = r4_0({}, {
+        __mode = "kv",
+      })
     end
-    table.insert(new_class.ref_tables, ref_table)
+    table.insert(r1_5.ref_tables, r0_6)
   end
-  
-  return new_class
+  return r1_5
 end
-
-local function IsInExceptionList(Name, ExceptionList)
-  if not ExceptionList then
+local function r21_0(r0_7, r1_7)
+  -- line: [207, 217] id: 7
+  if not r1_7 then
     return false
   end
-  for i, v in pairs(ExceptionList) do
-    if Name == v then
+  for r6_7, r7_7 in pairs(r1_7) do
+    if r0_7 == r7_7 then
       return true
     end
   end
+  -- close: r2_7
   return false
 end
-
-local function AssembleComponents(M, ExceptionList)
-  local NameToFuncTable = {}
-  for name, value in pairs(M) do
-    if "function" == type(value) and string.sub(name, 1, 2) ~= "__" then
-      if nil == NameToFuncTable[name] then
-        NameToFuncTable[name] = {}
+local function r22_0(r0_8, r1_8)
+  -- line: [220, 261] id: 8
+  local r2_8 = {}
+  for r7_8, r8_8 in pairs(r0_8) do
+    if r2_0(r8_8) == "function" and string.sub(r7_8, 1, 2) ~= "__" then
+      if r2_8[r7_8] == nil then
+        r2_8[r7_8] = {}
       end
-      table.insert(NameToFuncTable[name], value)
+      table.insert(r2_8[r7_8], r8_8)
     end
   end
-  local components = rawget(M, "_components")
-  if "table" == type(components) then
-    for _, component_name in ipairs(components) do
-      local component = require(component_name)
-      for name, value in pairs(component) do
-        local NameInExceptionList = IsInExceptionList(name, ExceptionList)
-        if "function" == type(value) and string.sub(name, 1, 2) ~= "__" and not NameInExceptionList then
-          if nil == NameToFuncTable[name] then
-            NameToFuncTable[name] = {}
+  -- close: r3_8
+  local r3_8 = r0_0(r0_8, "_components")
+  if r2_0(r3_8) == "table" then
+    for r8_8, r9_8 in ipairs(r3_8) do
+      for r15_8, r16_8 in pairs(r5_0(r9_8)) do
+        local r17_8 = r21_0(r15_8, r1_8)
+        if r2_0(r16_8) == "function" and string.sub(r15_8, 1, 2) ~= "__" and not r17_8 then
+          if r2_8[r15_8] == nil then
+            r2_8[r15_8] = {}
           end
-          table.insert(NameToFuncTable[name], value)
+          table.insert(r2_8[r15_8], r16_8)
         end
       end
+      -- close: r11_8
     end
+    -- close: r4_8
   end
-  for name, func_t in pairs(NameToFuncTable) do
-    if 1 == #func_t then
-      rawset(M, name, func_t[1])
+  for r8_8, r9_8 in pairs(r2_8) do
+    if #r9_8 == 1 then
+      r1_0(r0_8, r8_8, r9_8[1])
     else
-      local function _wrapper(...)
-        for _, func in ipairs(func_t) do
-          func(...)
+      r1_0(r0_8, r8_8, function(...)
+        -- line: [252, 256] id: 9
+        for r4_9, r5_9 in ipairs(r9_8) do
+          r5_9(...)
         end
+        -- close: r0_9
+      end)
+    end
+    -- close: r8_8
+  end
+  -- close: r4_8
+end
+local function r23_0(r0_10, r1_10)
+  -- line: [263, 274] id: 10
+  if r2_0(r1_10) == "string" then
+    local r2_10 = r6_0(r1_10, 1, 1)
+    if r2_10 == "U" or r2_10 == "A" or r2_10 == "F" or r2_10 == "E" or r2_10 == "T" then
+      local r3_10 = r13_0[r1_10]
+      if r3_10 ~= nil then
+        r1_0(r0_10, r1_10, r3_10)
       end
-      
-      rawset(M, name, _wrapper)
     end
   end
+  return r0_0(r0_10, r1_10)
 end
-
-local function global_index(t, k)
-  if "string" == type(k) then
-    local s = str_sub(k, 1, 1)
-    if "U" == s or "A" == s or "F" == s or "E" == s or "T" == s then
-      local v = UE[k]
-      if nil ~= v then
-        rawset(t, k, v)
-      end
-    end
-  end
-  return rawget(t, k)
-end
-
 if WITH_UE4_NAMESPACE then
-  local global_mt = {}
-  global_mt.__index = global_index
-  setmetatable(_G, global_mt)
-  _G.UE4 = UE
-  print("WITH_UE4_NAMESPACE==true")
+  r4_0(_G, {
+    __index = r23_0,
+  })
+  _G.UE4 = r13_0
+  r11_0("WITH_UE4_NAMESPACE==true")
 else
-  local global_mt = {}
-  global_mt.__index = global_index
-  setmetatable(_G, global_mt)
+  r4_0(_G, {
+    __index = r23_0,
+  })
   _G.UE4 = _G
   _G.UE = _G
-  print("WITH_UE4_NAMESPACE==false")
+  r11_0("WITH_UE4_NAMESPACE==false")
 end
-
-local function print_t(logTag, ...)
-  if _G.LogTag == "nil" then
-    print(logTag, ...)
-  elseif logTag == _G.LogTag then
-    print(logTag, ...)
+math.clamp = function(r0_12, r1_12, r2_12)
+  -- line: [305, 313] id: 12
+  if r0_12 < r1_12 then
+    return r1_12
   end
-end
-
-function math.clamp(v, minValue, maxValue)
-  if v < minValue then
-    return minValue
+  if r2_12 < r0_12 then
+    return r2_12
   end
-  if maxValue < v then
-    return maxValue
-  end
-  return v
+  return r0_12
 end
-
-function math.lerp(a, b, t)
-  return a + (b - a) * t
+math.lerp = function(r0_13, r1_13, r2_13)
+  -- line: [315, 317] id: 13
+  return r0_13 + (r1_13 - r0_13) * r2_13
 end
-
-function math.sign(number)
-  if number > 0 then
+math.sign = function(r0_14)
+  -- line: [319, 323] id: 14
+  if r0_14 > 0 then
     return 1
   end
-  if number < 0 then
+  if r0_14 < 0 then
     return -1
   end
   return 0
 end
-
-function table.slice(t, i, j)
+table.slice = function(r0_15, r1_15, r2_15)
+  -- line: [325, 327] id: 15
   return {
-    table.unpack(t, i, j)
+    table.unpack(r0_15, r1_15, r2_15)
   }
 end
-
-function table.reverse(t)
-  local n = #t
-  for i = 1, math.floor(n / 2) do
-    t[i], t[n - i + 1] = t[n - i + 1], t[i]
+table.reverse = function(r0_16)
+  -- line: [329, 335] id: 16
+  local r1_16 = #r0_16
+  for r5_16 = 1, math.floor(r1_16 / 2), 1 do
+    r0_16[r1_16 - r5_16 + 1] = r0_16[r5_16]
+    r0_16[r5_16] = r0_16[r1_16 - r5_16 + 1]
   end
-  return t
+  return r0_16
 end
-
-function table.join(...)
-  local tt = {
+table.join = function(...)
+  -- line: [337, 346] id: 17
+  local r0_17 = {
     ...
   }
-  local nt = {}
-  for _, t in ipairs(tt) do
-    for _, v in ipairs(t) do
-      table.insert(nt, v)
+  local r1_17 = {}
+  for r6_17, r7_17 in ipairs(r0_17) do
+    for r12_17, r13_17 in ipairs(r7_17) do
+      table.insert(r1_17, r13_17)
+    end
+    -- close: r8_17
+  end
+  -- close: r2_17
+  return r1_17
+end
+table.isempty = function(r0_18)
+  -- line: [348, 350] id: 18
+  local r1_18 = nil	-- notice: implicit variable refs by block#[4]
+  if r0_18 ~= nil then
+    r1_18 = next(r0_18) == nil
+  else
+    goto label_8	-- block#3 is visited secondly
+  end
+  return r1_18
+end
+table.findValue = function(r0_19, r1_19, r2_19)
+  -- line: [352, 363] id: 19
+  if not r2_19 then
+    function r2_19(r0_20, r1_20)
+      -- line: [354, 356] id: 20
+      return r0_20 == r1_20
     end
   end
-  return nt
-end
-
-function table.isempty(t)
-  return nil == t or nil == next(t)
-end
-
-function table.findValue(t, targetValue, finder)
-  finder = finder or function(v, target)
-    return v == target
-  end
-  for i, v in pairs(t) do
-    if finder(v, targetValue) then
-      return v, i
+  for r7_19, r8_19 in pairs(r0_19) do
+    if r2_19(r8_19, r1_19) then
+      return r8_19, r7_19
     end
   end
+  -- close: r3_19
 end
-
-function string.split(str, reps)
-  local resultStrList = {}
-  string.gsub(str, "[^" .. reps .. "]+", function(w)
-    table.insert(resultStrList, w)
+string.split = function(r0_21, r1_21)
+  -- line: [366, 372] id: 21
+  local r2_21 = {}
+  string.gsub(r0_21, "[^" .. r1_21 .. "]+", function(r0_22)
+    -- line: [368, 370] id: 22
+    table.insert(r2_21, r0_22)
   end)
-  return resultStrList
+  return r2_21
 end
-
-function string.trim(str)
-  return (string.gsub(str, "^[%s\n\r\t]*(.-)[%s\n\r\t]*$", "%1"))
+string.trim = function(r0_23)
+  -- line: [374, 376] id: 23
+  return string.gsub(r0_23, "^[%s\n\r\t]*(.-)[%s\n\r\t]*$", "%1")
 end
-
-function string.startswith(str, prefix)
-  return string.sub(str, 1, string.len(prefix)) == prefix
+string.startswith = function(r0_24, r1_24)
+  -- line: [378, 380] id: 24
+  return string.sub(r0_24, 1, string.len(r1_24)) == r1_24
 end
-
-function string.endswith(str, postfix)
-  local strLen = string.len(str)
-  return string.sub(str, strLen - string.len(postfix) + 1, strLen) == postfix
+string.endswith = function(r0_25, r1_25)
+  -- line: [382, 385] id: 25
+  local r2_25 = string.len(r0_25)
+  return string.sub(r0_25, r2_25 - string.len(r1_25) + 1, r2_25) == r1_25
 end
-
-function string.insert(str, pos, rep)
-  return string.sub(str, 1, pos) .. rep .. string.sub(str, pos + 1)
+string.insert = function(r0_26, r1_26, r2_26)
+  -- line: [387, 389] id: 26
+  return string.sub(r0_26, 1, r1_26) .. r2_26 .. string.sub(r0_26, r1_26 + 1)
 end
-
-function string.isempty(str)
-  return nil == str or "" == str
+string.isempty = function(r0_27)
+  -- line: [391, 393] id: 27
+  local r1_27 = nil	-- notice: implicit variable refs by block#[4]
+  if r0_27 ~= nil then
+    r1_27 = r0_27 == ""
+  else
+    goto label_5	-- block#3 is visited secondly
+  end
+  return r1_27
 end
-
-function try(block, ...)
-  if not block.catch then
-    function block.catch(err)
-      LogError(Traceback(ErrorTag, err, false))
-      
-      local EMSentrySubsystem = USubsystemBlueprintLibrary.GetGameInstanceSubsystem(GWorld and GWorld.GameInstance, UEMSentrySubsystem)
-      if EMSentrySubsystem then
-        local SceneId = WorldTravelSubsystem and tostring(WorldTravelSubsystem():GetCurrentSceneId()) or "nil"
-        local ErrorMsg = debug.traceback(tostring(err), 2)
-        EMSentrySubsystem:ReportLuaTrace(ErrorMsg, {
-          SceneId = SceneId,
+local function r25_0(r0_28, ...)
+  -- line: [403, 428] id: 28
+  if not r0_28.catch then
+    function r0_28.catch(r0_29)
+      -- line: [405, 418] id: 29
+      LogError(Traceback(ErrorTag, r0_29, false))
+      local r1_29 = USubsystemBlueprintLibrary.GetGameInstanceSubsystem(GWorld and GWorld.GameInstance, UEMSentrySubsystem)
+      if r1_29 then
+        local r2_29 = "nil"
+        if WorldTravelSubsystem and WorldTravelSubsystem() then
+          r2_29 = tostring(WorldTravelSubsystem():GetCurrentSceneId())
+        end
+        r1_29:ReportLuaTrace(debug.traceback(tostring(r0_29), 2), {
+          SceneId = r2_29,
           SceneName = "unlua.try",
-          Location = "unlua.try"
+          Location = "unlua.try",
         })
       end
     end
   end
-  local Res = table.pack(xpcall(block.exec, block.catch, ...))
-  local ok = Res[1]
-  if block.final then
-    block.final(ok, ...)
+  local r1_28 = table.pack(xpcall(r0_28.exec, r0_28.catch, ...))
+  local r2_28 = r1_28[1]
+  if r0_28.final then
+    r0_28.final(r2_28, ...)
   end
-  if ok then
-    return table.unpack(Res, 2)
+  if r2_28 then
+    return table.unpack(r1_28, 2)
   end
 end
-
-function CreateCoroutine(Func, ...)
+_G.try = r25_0
+_G.CreateCoroutine = function(r0_30, ...)
+  -- line: [435, 439] id: 30
   return coroutine.create(function(...)
-    try({exec = Func}, ...)
+    -- line: [436, 438] id: 31
+    r25_0({
+      exec = r0_30,
+    }, ...)
   end)
 end
-
-function RunAsyncTask(Obj, TaskName, TaskFunc)
-  if Obj[TaskName] then
-    return
+_G.RunAsyncTask = function(r0_32, r1_32, r2_32)
+  -- line: [446, 455] id: 32
+  if r0_32[r1_32] then
+    return 
   end
-  Obj[TaskName] = coroutine.create(function()
-    local Co = Obj[TaskName]
-    try({exec = TaskFunc}, Co, Obj)
-    Obj[TaskName] = nil
-    coroutine.close(Co)
+  r0_32[r1_32] = coroutine.create(function()
+    -- line: [448, 453] id: 33
+    local r0_33 = r0_32[r1_32]
+    r25_0({
+      exec = r2_32,
+    }, r0_33, r0_32)
+    r0_32[r1_32] = nil
+    coroutine.close(r0_33)
   end)
-  coroutine.resume(Obj[TaskName])
+  coroutine.resume(r0_32[r1_32])
 end
-
-function ForceStopAsyncTask(Obj, TaskName)
-  if not Obj[TaskName] then
-    return
+_G.ForceStopAsyncTask = function(r0_34, r1_34)
+  -- line: [458, 466] id: 34
+  if not r0_34[r1_34] then
+    return 
   end
-  local Co = Obj[TaskName]
-  Obj[TaskName] = nil
-  local Status = coroutine.status(Co)
-  if "running" == Status or "suspended" == Status then
-    coroutine.close(Co)
+  local r2_34 = r0_34[r1_34]
+  r0_34[r1_34] = nil
+  local r3_34 = coroutine.status(r2_34)
+  if r3_34 == "running" or r3_34 == "suspended" then
+    coroutine.close(r2_34)
   end
 end
-
-_G.print = print_t
-_G.Get_G = Get_G
-_G.netprint = netprint
+_G.print = function(r0_11, ...)
+  -- line: [296, 302] id: 11
+  if _G.LogTag == "nil" then
+    r11_0(r0_11, ...)
+  elseif r0_11 == _G.LogTag then
+    r11_0(r0_11, ...)
+  end
+end
+_G.Get_G = r19_0
+_G.netprint = r12_0
 _G.ServerPrint = LogEMServer
-_G.Index = Index
-_G.NewIndex = NewIndex
-_G.Class = Class
-_G.CopyTable = copy_table
+_G.Index = r15_0
+_G.NewIndex = r16_0
+_G.Class = r20_0
+_G.CopyTable = r17_0
 _G.DrawDebugTest = false
 _G.AutoCameraReset = true
 _G.ShouldUseCreaturePool = true
@@ -364,71 +400,70 @@ _G.LogTag = "nil"
 _G.ErrorTag = "::Error::"
 _G.WarningTag = "::Warning::"
 _G.DebugTag = "::Debug::"
-_G.AssembleComponents = AssembleComponents
-_G.TypeClassModule = require("NetworkEngine.Class")
+_G.AssembleComponents = r22_0
+_G.TypeClassModule = r5_0("NetworkEngine.Class")
 _G.TypeClass = _G.TypeClassModule.Class
-_G.DataMgr = require("DataMgr")
-_G.CommonConst = require("CommonConst")
-_G.Const = require("Const")
-_G.UIConst = require("BluePrints.UI.UIConst")
-_G.GWorld = require("GWorld")
-_G.BattleEventName = require("BluePrints/Combat/BattleEvents/BattleEventName")
-_G.EventManager, _G.EventID = table.unpack(require("BluePrints.Managers.EventManager"))
-_G.DialogEvent = require("BluePrints.UI.UI_PC.Common.Common_Dialog.DialogEvent")
-_G.ErrorCode = require("BluePrints.Client.ErrorCode")
-_G.ConditionUtils = require("BluePrints.Common.ConditionUtils")
-_G.AvatarUtils = require("BluePrints.Client.AvatarUtils")
-_G.ItemUtils = require("Utils.ItemUtils")
-_G.CommonUtils = require("Utils.CommonUtils")
-_G.RpcUtils = require("Utils.RpcUtils")
-_G.RewardUtils = require("Utils.RewardUtils")
-_G.UIUtils = require("Utils.UIUtils")
+_G.DataMgr = r5_0("DataMgr")
+_G.CommonConst = r5_0("CommonConst")
+_G.Const = r5_0("Const")
+_G.UIConst = r5_0("BluePrints.UI.UIConst")
+_G.GWorld = r5_0("GWorld")
+_G.BattleEventName = r5_0("BluePrints/Combat/BattleEvents/BattleEventName")
+_G.EventManager, _G.EventID = table.unpack(r5_0("BluePrints.Managers.EventManager"))
+_G.DialogEvent = r5_0("BluePrints.UI.UI_PC.Common.Common_Dialog.DialogEvent")
+_G.ErrorCode = r5_0("BluePrints.Client.ErrorCode")
+_G.ConditionUtils = r5_0("BluePrints.Common.ConditionUtils")
+_G.AvatarUtils = r5_0("BluePrints.Client.AvatarUtils")
+_G.ItemUtils = r5_0("Utils.ItemUtils")
+_G.CommonUtils = r5_0("Utils.CommonUtils")
+_G.RpcUtils = r5_0("Utils.RpcUtils")
+_G.RewardUtils = r5_0("Utils.RewardUtils")
+_G.UIUtils = r5_0("Utils.UIUtils")
 _G.UseDungeonLevelBounds = false
 _G.UseMinimumLoad = true
-_G.LuaMemoryManager = require("LuaMemoryManager")
-_G.SystemGuideManager = require("BluePrints.Managers.SystemGuideManager")
-_G.MissionIndicatorManager = require("BluePrints.Managers.MissionIndicatorManager")
-_G.ReddotManager = require("BluePrints.UI.Reddot.ReddotManager")
-_G.I18nUtils = require("Utils.I18nUtils")
-_G.PageJumpUtils = require("Utils.PageJumpUtils")
-_G.ShopUtils = require("Utils.ShopUtils")
-_G.RougeUtils = require("Utils.RougeUtils")
-_G.SerializeUtils = require("Utils.SerializeUtils")
-_G.TestClass = TestClass or function()
-  local Class = {}
-  Class.__index = Class
-  
-  function Class.New()
-    local o = {}
-    setmetatable(o, Class)
-    return o
+_G.LuaMemoryManager = r5_0("LuaMemoryManager")
+_G.SystemGuideManager = r5_0("BluePrints.Managers.SystemGuideManager")
+_G.MissionIndicatorManager = r5_0("BluePrints.Managers.MissionIndicatorManager")
+_G.ReddotManager = r5_0("BluePrints.UI.Reddot.ReddotManager")
+_G.I18nUtils = r5_0("Utils.I18nUtils")
+_G.PageJumpUtils = r5_0("Utils.PageJumpUtils")
+_G.ShopUtils = r5_0("Utils.ShopUtils")
+_G.RougeUtils = r5_0("Utils.RougeUtils")
+_G.SerializeUtils = r5_0("Utils.SerializeUtils")
+_G.TestClass = TestClass and function()
+  -- line: [517, 526] id: 35
+  local r0_35 = {}
+  r0_35.__index = r0_35
+  function r0_35.New()
+    -- line: [520, 524] id: 36
+    local r0_36 = {}
+    r4_0(r0_36, r0_35)
+    return r0_36
   end
-  
-  return Class
+  return r0_35
 end
-_G.Serpent = require("Utils.Serpent")
-_G.EMGlobalLuaTable = require("EMGlobalLuaTable")
-_G.bEnableNewSTLDataFeature = false
-_G.ServerConfig = require("ServerConfig")
-_G.Json = require("rapidjson")
-_G.bson = require("bson")
-_G.Utils = require("Utils")
-_G.TimeUtils = require("Utils.TimeUtils")
-_G.StubFunctionList = require("StubFunctionList")
-local Utils = require("Utils")
-for k, v in pairs(Utils) do
-  rawset(_G, k, v)
+_G.Serpent = r5_0("Utils.Serpent")
+_G.EMGlobalLuaTable = r5_0("EMGlobalLuaTable")
+_G.ServerConfig = r5_0("ServerConfig")
+_G.Json = r5_0("rapidjson")
+_G.bson = r5_0("bson")
+_G.Utils = r5_0("Utils")
+_G.TimeUtils = r5_0("Utils.TimeUtils")
+_G.StubInfos = r5_0("StubInfos")
+_G.EMCache = r5_0("EMCache.EMCache")
+for r34_0, r35_0 in pairs(r5_0("Utils")) do
+  r1_0(_G, r34_0, r35_0)
 end
-local FEffectStruct = UE.FEffectStruct
-local FEffectSkillInfo = UE.FSkillEffectInfo
-local FMonsterSpawnPointParam = UE.FMonsterSpawnPointParam
-local FPointCheckInfo = UE.FPointCheckInfo
-local FNameArray = UE.FNameArray
-local FMonsterEidArray = UE.FMonsterEidArray
-local FClientTimerStruct = UE.FClientTimerStruct
-local FClientTimerInfo = UE.FClientTimerInfo
-local FSkillLevelStruct = UE.FSkillLevelStruct
-local FMessage = UE.FMessage
-local SetupClient = require("SetupClient")
-SetupClient:Setup()
-require("LogPrint")
+-- close: r30_0
+local r30_0 = r13_0.FEffectStruct
+local r31_0 = r13_0.FSkillEffectInfo
+local r32_0 = r13_0.FMonsterSpawnPointParam
+local r33_0 = r13_0.FPointCheckInfo
+local r34_0 = r13_0.FNameArray
+local r35_0 = r13_0.FMonsterEidArray
+local r36_0 = r13_0.FClientTimerStruct
+local r37_0 = r13_0.FClientTimerInfo
+local r38_0 = r13_0.FSkillLevelStruct
+local r39_0 = r13_0.FMessage
+r5_0("SetupClient"):Setup()
+r5_0("LogPrint")

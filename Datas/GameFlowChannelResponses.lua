@@ -1,93 +1,116 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("GameFlowChannelResponses", {
-  AfterEntertainment = {
-    AfterEntertainment = "Ignore",
-    Channel = "AfterEntertainment",
-    GetItemPage = "Ignore",
-    GuideMain = "Block",
-    ImmersiveStory = "Block",
-    OpenSystemUI = "Ignore",
-    SkillFeature = "Ignore",
-    SystemGuideWithUI = "Block",
-    SystemGuideWithoutUI = "Block"
-  },
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\GameFlowChannelResponses.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("GameFlowChannelResponses", {
   GetItemPage = {
-    AfterEntertainment = "Ignore",
     Channel = "GetItemPage",
     GetItemPage = "Block",
     GuideMain = "Block",
     ImmersiveStory = "Block",
+    LevelDelivery = "Block",
     OpenSystemUI = "Ignore",
     SkillFeature = "Block",
+    Sojourn = "Ignore",
     SystemGuideWithUI = "Block",
-    SystemGuideWithoutUI = "Block"
+    SystemGuideWithoutUI = "Block",
   },
   GuideMain = {
-    AfterEntertainment = "Block",
     Channel = "GuideMain",
     GetItemPage = "Block",
     GuideMain = "Ignore",
     ImmersiveStory = "Block",
+    LevelDelivery = "Block",
     OpenSystemUI = "Ignore",
     SkillFeature = "Block",
+    Sojourn = "Block",
     SystemGuideWithUI = "Ignore",
-    SystemGuideWithoutUI = "Ignore"
+    SystemGuideWithoutUI = "Ignore",
   },
   ImmersiveStory = {
-    AfterEntertainment = "Block",
     Channel = "ImmersiveStory",
     GetItemPage = "Block",
     GuideMain = "Block",
     ImmersiveStory = "Block",
+    LevelDelivery = "Block",
     OpenSystemUI = "Block",
     SkillFeature = "Block",
+    Sojourn = "Ignore",
     SystemGuideWithUI = "Ignore",
-    SystemGuideWithoutUI = "Block"
+    SystemGuideWithoutUI = "Block",
+  },
+  LevelDelivery = {
+    Channel = "LevelDelivery",
+    GetItemPage = "Block",
+    GuideMain = "Block",
+    ImmersiveStory = "Block",
+    LevelDelivery = "Block",
+    OpenSystemUI = "Block",
+    SkillFeature = "Block",
+    Sojourn = "Block",
+    SystemGuideWithUI = "Block",
+    SystemGuideWithoutUI = "Block",
   },
   OpenSystemUI = {
-    AfterEntertainment = "Ignore",
     Channel = "OpenSystemUI",
     GetItemPage = "Ignore",
     GuideMain = "Ignore",
     ImmersiveStory = "Block",
+    LevelDelivery = "Block",
     OpenSystemUI = "Ignore",
     SkillFeature = "Ignore",
+    Sojourn = "Ignore",
     SystemGuideWithUI = "Ignore",
-    SystemGuideWithoutUI = "Ignore"
+    SystemGuideWithoutUI = "Ignore",
   },
   SkillFeature = {
-    AfterEntertainment = "Ignore",
     Channel = "SkillFeature",
     GetItemPage = "Block",
     GuideMain = "Block",
     ImmersiveStory = "Block",
+    LevelDelivery = "Block",
     OpenSystemUI = "Ignore",
     SkillFeature = "Block",
+    Sojourn = "Ignore",
     SystemGuideWithUI = "Block",
-    SystemGuideWithoutUI = "Block"
+    SystemGuideWithoutUI = "Block",
+  },
+  Sojourn = {
+    Channel = "Sojourn",
+    GetItemPage = "Ignore",
+    GuideMain = "Block",
+    ImmersiveStory = "Ignore",
+    LevelDelivery = "Block",
+    OpenSystemUI = "Ignore",
+    SkillFeature = "Ignore",
+    Sojourn = "Ignore",
+    SystemGuideWithUI = "Block",
+    SystemGuideWithoutUI = "Block",
   },
   SystemGuideWithUI = {
-    AfterEntertainment = "Block",
     Channel = "SystemGuideWithUI",
     GetItemPage = "Block",
     GuideMain = "Ignore",
     ImmersiveStory = "Ignore",
+    LevelDelivery = "Block",
     OpenSystemUI = "Ignore",
     SkillFeature = "Block",
+    Sojourn = "Block",
     SystemGuideWithUI = "Block",
-    SystemGuideWithoutUI = "Block"
+    SystemGuideWithoutUI = "Block",
   },
   SystemGuideWithoutUI = {
-    AfterEntertainment = "Block",
     Channel = "SystemGuideWithoutUI",
     GetItemPage = "Block",
     GuideMain = "Ignore",
     ImmersiveStory = "Block",
+    LevelDelivery = "Block",
     OpenSystemUI = "Block",
     SkillFeature = "Block",
+    Sojourn = "Block",
     SystemGuideWithUI = "Block",
-    SystemGuideWithoutUI = "Block"
-  }
+    SystemGuideWithoutUI = "Block",
+  },
 })

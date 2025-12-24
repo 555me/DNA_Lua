@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("LevelUp", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\LevelUp.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("LevelUp", {
   [1] = {
     ATKA = 1,
     ATKElite = 0.1,
@@ -40,7 +43,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1,
     RougeMaxESTrap = 0.8,
     RougeMaxHpMon = 1,
-    RougeMaxHpTrap = 0.8
+    RougeMaxHpTrap = 0.8,
   },
   [2] = {
     ATKA = 1.0422,
@@ -80,7 +83,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1.0422,
     RougeMaxESTrap = 0.8359,
     RougeMaxHpMon = 1.0422,
-    RougeMaxHpTrap = 0.8359
+    RougeMaxHpTrap = 0.8359,
   },
   [3] = {
     ATKA = 1.086,
@@ -120,7 +123,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1.086,
     RougeMaxESTrap = 0.8731,
     RougeMaxHpMon = 1.086,
-    RougeMaxHpTrap = 0.8731
+    RougeMaxHpTrap = 0.8731,
   },
   [4] = {
     ATKA = 1.1305,
@@ -160,7 +163,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1.1305,
     RougeMaxESTrap = 0.9112,
     RougeMaxHpMon = 1.1305,
-    RougeMaxHpTrap = 0.9112
+    RougeMaxHpTrap = 0.9112,
   },
   [5] = {
     ATKA = 1.1774,
@@ -200,7 +203,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1.1774,
     RougeMaxESTrap = 0.9513,
     RougeMaxHpMon = 1.1774,
-    RougeMaxHpTrap = 0.9513
+    RougeMaxHpTrap = 0.9513,
   },
   [6] = {
     ATKA = 1.3988,
@@ -240,7 +243,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1.3988,
     RougeMaxESTrap = 1.133,
     RougeMaxHpMon = 1.3988,
-    RougeMaxHpTrap = 1.133
+    RougeMaxHpTrap = 1.133,
   },
   [7] = {
     ATKA = 1.4474,
@@ -280,7 +283,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1.4474,
     RougeMaxESTrap = 1.1753,
     RougeMaxHpMon = 1.4474,
-    RougeMaxHpTrap = 1.1753
+    RougeMaxHpTrap = 1.1753,
   },
   [8] = {
     ATKA = 1.5012,
@@ -320,7 +323,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1.5012,
     RougeMaxESTrap = 1.222,
     RougeMaxHpMon = 1.5012,
-    RougeMaxHpTrap = 1.222
+    RougeMaxHpTrap = 1.222,
   },
   [9] = {
     ATKA = 1.5589,
@@ -360,7 +363,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1.5589,
     RougeMaxESTrap = 1.272,
     RougeMaxHpMon = 1.5589,
-    RougeMaxHpTrap = 1.272
+    RougeMaxHpTrap = 1.272,
   },
   [10] = {
     ATKA = 1.6157,
@@ -400,7 +403,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1.6157,
     RougeMaxESTrap = 1.3217,
     RougeMaxHpMon = 1.6157,
-    RougeMaxHpTrap = 1.3217
+    RougeMaxHpTrap = 1.3217,
   },
   [11] = {
     ATKA = 1.8331,
@@ -440,7 +443,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1.8331,
     RougeMaxESTrap = 1.5031,
     RougeMaxHpMon = 1.8331,
-    RougeMaxHpTrap = 1.5031
+    RougeMaxHpTrap = 1.5031,
   },
   [12] = {
     ATKA = 1.8921,
@@ -480,7 +483,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1.8921,
     RougeMaxESTrap = 1.5553,
     RougeMaxHpMon = 1.8921,
-    RougeMaxHpTrap = 1.5553
+    RougeMaxHpTrap = 1.5553,
   },
   [13] = {
     ATKA = 1.9527,
@@ -520,7 +523,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1.9527,
     RougeMaxESTrap = 1.609,
     RougeMaxHpMon = 1.9527,
-    RougeMaxHpTrap = 1.609
+    RougeMaxHpTrap = 1.609,
   },
   [14] = {
     ATKA = 2.0162,
@@ -560,7 +563,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2.0162,
     RougeMaxESTrap = 1.6654,
     RougeMaxHpMon = 2.0162,
-    RougeMaxHpTrap = 1.6654
+    RougeMaxHpTrap = 1.6654,
   },
   [15] = {
     ATKA = 2.0813,
@@ -600,7 +603,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2.0813,
     RougeMaxESTrap = 1.7233,
     RougeMaxHpMon = 2.0813,
-    RougeMaxHpTrap = 1.7233
+    RougeMaxHpTrap = 1.7233,
   },
   [16] = {
     ATKA = 2.3128,
@@ -640,7 +643,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2.3128,
     RougeMaxESTrap = 1.9196,
     RougeMaxHpMon = 2.3128,
-    RougeMaxHpTrap = 1.9196
+    RougeMaxHpTrap = 1.9196,
   },
   [17] = {
     ATKA = 2.3809,
@@ -680,7 +683,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2.3809,
     RougeMaxESTrap = 1.9809,
     RougeMaxHpMon = 2.3809,
-    RougeMaxHpTrap = 1.9809
+    RougeMaxHpTrap = 1.9809,
   },
   [18] = {
     ATKA = 2.4505,
@@ -720,7 +723,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2.4505,
     RougeMaxESTrap = 2.0437,
     RougeMaxHpMon = 2.4505,
-    RougeMaxHpTrap = 2.0437
+    RougeMaxHpTrap = 2.0437,
   },
   [19] = {
     ATKA = 2.5186,
@@ -760,7 +763,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2.5186,
     RougeMaxESTrap = 2.1056,
     RougeMaxHpMon = 2.5186,
-    RougeMaxHpTrap = 2.1056
+    RougeMaxHpTrap = 2.1056,
   },
   [20] = {
     ATKA = 2.5897,
@@ -800,7 +803,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2.5897,
     RougeMaxESTrap = 2.1702,
     RougeMaxHpMon = 2.5897,
-    RougeMaxHpTrap = 2.1702
+    RougeMaxHpTrap = 2.1702,
   },
   [21] = {
     ATKA = 2.8339,
@@ -840,7 +843,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2.8339,
     RougeMaxESTrap = 2.3805,
     RougeMaxHpMon = 2.8339,
-    RougeMaxHpTrap = 2.3805
+    RougeMaxHpTrap = 2.3805,
   },
   [22] = {
     ATKA = 2.9053,
@@ -880,7 +883,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2.9053,
     RougeMaxESTrap = 2.4462,
     RougeMaxHpMon = 2.9053,
-    RougeMaxHpTrap = 2.4462
+    RougeMaxHpTrap = 2.4462,
   },
   [23] = {
     ATKA = 2.9795,
@@ -920,7 +923,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2.9795,
     RougeMaxESTrap = 2.5147,
     RougeMaxHpMon = 2.9795,
-    RougeMaxHpTrap = 2.5147
+    RougeMaxHpTrap = 2.5147,
   },
   [24] = {
     ATKA = 3.0538,
@@ -960,7 +963,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 3.0538,
     RougeMaxESTrap = 2.5835,
     RougeMaxHpMon = 3.0538,
-    RougeMaxHpTrap = 2.5835
+    RougeMaxHpTrap = 2.5835,
   },
   [25] = {
     ATKA = 3.1288,
@@ -1000,7 +1003,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 3.1288,
     RougeMaxESTrap = 2.6532,
     RougeMaxHpMon = 3.1288,
-    RougeMaxHpTrap = 2.6532
+    RougeMaxHpTrap = 2.6532,
   },
   [26] = {
     ATKA = 3.3098,
@@ -1040,7 +1043,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 3.3098,
     RougeMaxESTrap = 2.8133,
     RougeMaxHpMon = 3.3098,
-    RougeMaxHpTrap = 2.8133
+    RougeMaxHpTrap = 2.8133,
   },
   [27] = {
     ATKA = 3.5538,
@@ -1080,7 +1083,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 3.5538,
     RougeMaxESTrap = 3.0278,
     RougeMaxHpMon = 3.5538,
-    RougeMaxHpTrap = 3.0278
+    RougeMaxHpTrap = 3.0278,
   },
   [28] = {
     ATKA = 3.6327,
@@ -1120,7 +1123,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 3.6327,
     RougeMaxESTrap = 3.1024,
     RougeMaxHpMon = 3.6327,
-    RougeMaxHpTrap = 3.1024
+    RougeMaxHpTrap = 3.1024,
   },
   [29] = {
     ATKA = 3.7117,
@@ -1160,7 +1163,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 3.7117,
     RougeMaxESTrap = 3.1772,
     RougeMaxHpMon = 3.7117,
-    RougeMaxHpTrap = 3.1772
+    RougeMaxHpTrap = 3.1772,
   },
   [30] = {
     ATKA = 3.7921,
@@ -1200,7 +1203,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 4.6347,
     RougeMaxESTrap = 3.2536,
     RougeMaxHpMon = 4.6347,
-    RougeMaxHpTrap = 3.2536
+    RougeMaxHpTrap = 3.2536,
   },
   [31] = {
     ATKA = 4.1028,
@@ -1240,7 +1243,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 5.2894,
     RougeMaxESTrap = 3.5992,
     RougeMaxHpMon = 5.2894,
-    RougeMaxHpTrap = 3.5992
+    RougeMaxHpTrap = 3.5992,
   },
   [32] = {
     ATKA = 4.1842,
@@ -1280,7 +1283,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 5.6822,
     RougeMaxESTrap = 3.7522,
     RougeMaxHpMon = 5.6822,
-    RougeMaxHpTrap = 3.7522
+    RougeMaxHpTrap = 3.7522,
   },
   [33] = {
     ATKA = 4.2765,
@@ -1320,7 +1323,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 6.1093,
     RougeMaxESTrap = 3.9191,
     RougeMaxHpMon = 6.1093,
-    RougeMaxHpTrap = 3.9191
+    RougeMaxHpTrap = 3.9191,
   },
   [34] = {
     ATKA = 4.3725,
@@ -1360,7 +1363,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 6.5626,
     RougeMaxESTrap = 4.094,
     RougeMaxHpMon = 6.5626,
-    RougeMaxHpTrap = 4.094
+    RougeMaxHpTrap = 4.094,
   },
   [35] = {
     ATKA = 4.4705,
@@ -1400,7 +1403,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 7.0411,
     RougeMaxESTrap = 4.2757,
     RougeMaxHpMon = 7.0411,
-    RougeMaxHpTrap = 4.2757
+    RougeMaxHpTrap = 4.2757,
   },
   [36] = {
     ATKA = 4.8047,
@@ -1440,7 +1443,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 7.932,
     RougeMaxESTrap = 4.693,
     RougeMaxHpMon = 7.932,
-    RougeMaxHpTrap = 4.693
+    RougeMaxHpTrap = 4.693,
   },
   [37] = {
     ATKA = 4.9053,
@@ -1480,7 +1483,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 8.4791,
     RougeMaxESTrap = 4.892,
     RougeMaxHpMon = 8.4791,
-    RougeMaxHpTrap = 4.892
+    RougeMaxHpTrap = 4.892,
   },
   [38] = {
     ATKA = 5.0059,
@@ -1520,7 +1523,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 9.0506,
     RougeMaxESTrap = 5.0961,
     RougeMaxHpMon = 9.0506,
-    RougeMaxHpTrap = 5.0961
+    RougeMaxHpTrap = 5.0961,
   },
   [39] = {
     ATKA = 5.1021,
@@ -1560,7 +1563,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 9.639,
     RougeMaxESTrap = 5.3011,
     RougeMaxHpMon = 9.639,
-    RougeMaxHpTrap = 5.3011
+    RougeMaxHpTrap = 5.3011,
   },
   [40] = {
     ATKA = 5.1933,
@@ -1600,7 +1603,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 10.2424,
     RougeMaxESTrap = 5.5059,
     RougeMaxHpMon = 10.2424,
-    RougeMaxHpTrap = 5.5059
+    RougeMaxHpTrap = 5.5059,
   },
   [41] = {
     ATKA = 5.5294,
@@ -1640,7 +1643,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 11.374,
     RougeMaxESTrap = 5.9805,
     RougeMaxHpMon = 11.374,
-    RougeMaxHpTrap = 5.9805
+    RougeMaxHpTrap = 5.9805,
   },
   [42] = {
     ATKA = 5.621,
@@ -1680,7 +1683,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 12.049,
     RougeMaxESTrap = 6.2012,
     RougeMaxHpMon = 12.049,
-    RougeMaxHpTrap = 6.2012
+    RougeMaxHpTrap = 6.2012,
   },
   [43] = {
     ATKA = 5.7141,
@@ -1720,7 +1723,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 12.7533,
     RougeMaxESTrap = 6.4287,
     RougeMaxHpMon = 12.7533,
-    RougeMaxHpTrap = 6.4287
+    RougeMaxHpTrap = 6.4287,
   },
   [44] = {
     ATKA = 5.8079,
@@ -1760,7 +1763,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 13.486,
     RougeMaxESTrap = 6.6623,
     RougeMaxHpMon = 13.486,
-    RougeMaxHpTrap = 6.6623
+    RougeMaxHpTrap = 6.6623,
   },
   [45] = {
     ATKA = 5.9032,
@@ -1800,7 +1803,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 14.2496,
     RougeMaxESTrap = 6.9031,
     RougeMaxHpMon = 14.2496,
-    RougeMaxHpTrap = 6.9031
+    RougeMaxHpTrap = 6.9031,
   },
   [46] = {
     ATKA = 6.2508,
@@ -1840,7 +1843,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 15.6742,
     RougeMaxESTrap = 7.4503,
     RougeMaxHpMon = 15.6742,
-    RougeMaxHpTrap = 7.4503
+    RougeMaxHpTrap = 7.4503,
   },
   [47] = {
     ATKA = 6.348,
@@ -1880,7 +1883,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 16.5238,
     RougeMaxESTrap = 7.7103,
     RougeMaxHpMon = 16.5238,
-    RougeMaxHpTrap = 7.7103
+    RougeMaxHpTrap = 7.7103,
   },
   [48] = {
     ATKA = 6.4451,
@@ -1920,7 +1923,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 17.4033,
     RougeMaxESTrap = 7.9763,
     RougeMaxHpMon = 17.4033,
-    RougeMaxHpTrap = 7.9763
+    RougeMaxHpTrap = 7.9763,
   },
   [49] = {
     ATKA = 6.5437,
@@ -1960,7 +1963,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 18.3174,
     RougeMaxESTrap = 8.25,
     RougeMaxHpMon = 18.3174,
-    RougeMaxHpTrap = 8.25
+    RougeMaxHpTrap = 8.25,
   },
   [50] = {
     ATKA = 6.6416,
@@ -2000,7 +2003,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 19.2607,
     RougeMaxESTrap = 8.5288,
     RougeMaxHpMon = 19.2607,
-    RougeMaxHpTrap = 8.5288
+    RougeMaxHpTrap = 8.5288,
   },
   [51] = {
     ATKA = 6.8191,
@@ -2040,7 +2043,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 20.4749,
     RougeMaxESTrap = 8.9179,
     RougeMaxHpMon = 20.4749,
-    RougeMaxHpTrap = 8.9179
+    RougeMaxHpTrap = 8.9179,
   },
   [52] = {
     ATKA = 7.1079,
@@ -2080,7 +2083,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 22.0835,
     RougeMaxESTrap = 9.4651,
     RougeMaxHpMon = 22.0835,
-    RougeMaxHpTrap = 9.4651
+    RougeMaxHpTrap = 9.4651,
   },
   [53] = {
     ATKA = 7.2107,
@@ -2120,7 +2123,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 23.1679,
     RougeMaxESTrap = 9.7756,
     RougeMaxHpMon = 23.1679,
-    RougeMaxHpTrap = 9.7756
+    RougeMaxHpTrap = 9.7756,
   },
   [54] = {
     ATKA = 7.3127,
@@ -2160,7 +2163,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 24.2848,
     RougeMaxESTrap = 10.0917,
     RougeMaxHpMon = 24.2848,
-    RougeMaxHpTrap = 10.0917
+    RougeMaxHpTrap = 10.0917,
   },
   [55] = {
     ATKA = 7.4155,
@@ -2200,7 +2203,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 25.4393,
     RougeMaxESTrap = 10.4155,
     RougeMaxHpMon = 25.4393,
-    RougeMaxHpTrap = 10.4155
+    RougeMaxHpTrap = 10.4155,
   },
   [56] = {
     ATKA = 7.7876,
@@ -2240,7 +2243,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 27.5836,
     RougeMaxESTrap = 11.1311,
     RougeMaxHpMon = 27.5836,
-    RougeMaxHpTrap = 11.1311
+    RougeMaxHpTrap = 11.1311,
   },
   [57] = {
     ATKA = 7.8938,
@@ -2280,7 +2283,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 28.8534,
     RougeMaxESTrap = 11.4802,
     RougeMaxHpMon = 28.8534,
-    RougeMaxHpTrap = 11.4802
+    RougeMaxHpTrap = 11.4802,
   },
   [58] = {
     ATKA = 7.9999,
@@ -2320,7 +2323,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 30.1615,
     RougeMaxESTrap = 11.8366,
     RougeMaxHpMon = 30.1615,
-    RougeMaxHpTrap = 11.8366
+    RougeMaxHpTrap = 11.8366,
   },
   [59] = {
     ATKA = 8.1061,
@@ -2360,7 +2363,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 31.5084,
     RougeMaxESTrap = 12.2001,
     RougeMaxHpMon = 31.5084,
-    RougeMaxHpTrap = 12.2001
+    RougeMaxHpTrap = 12.2001,
   },
   [60] = {
     ATKA = 8.5685,
@@ -2400,7 +2403,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 34.3218,
     RougeMaxESTrap = 13.1164,
     RougeMaxHpMon = 34.3218,
-    RougeMaxHpTrap = 13.1164
+    RougeMaxHpTrap = 13.1164,
   },
   [61] = {
     ATKA = 8.6863,
@@ -2440,7 +2443,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 36.197,
     RougeMaxESTrap = 13.522,
     RougeMaxHpMon = 36.197,
-    RougeMaxHpTrap = 13.522
+    RougeMaxHpTrap = 13.522,
   },
   [62] = {
     ATKA = 8.803,
@@ -2480,7 +2483,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 38.1429,
     RougeMaxESTrap = 13.9341,
     RougeMaxHpMon = 38.1429,
-    RougeMaxHpTrap = 13.9341
+    RougeMaxHpTrap = 13.9341,
   },
   [63] = {
     ATKA = 8.9214,
@@ -2520,7 +2523,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 40.1737,
     RougeMaxESTrap = 14.3574,
     RougeMaxHpMon = 40.1737,
-    RougeMaxHpTrap = 14.3574
+    RougeMaxHpTrap = 14.3574,
   },
   [64] = {
     ATKA = 9.0424,
@@ -2560,7 +2563,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 42.2955,
     RougeMaxESTrap = 14.7931,
     RougeMaxHpMon = 42.2955,
-    RougeMaxHpTrap = 14.7931
+    RougeMaxHpTrap = 14.7931,
   },
   [65] = {
     ATKA = 9.7101,
@@ -2600,7 +2603,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 47.1547,
     RougeMaxESTrap = 16.1465,
     RougeMaxHpMon = 47.1547,
-    RougeMaxHpTrap = 16.1465
+    RougeMaxHpTrap = 16.1465,
   },
   [66] = {
     ATKA = 9.7488,
@@ -2640,7 +2643,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 49.1288,
     RougeMaxESTrap = 16.4754,
     RougeMaxHpMon = 49.1288,
-    RougeMaxHpTrap = 16.4754
+    RougeMaxHpTrap = 16.4754,
   },
   [67] = {
     ATKA = 9.8684,
@@ -2680,7 +2683,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 51.584,
     RougeMaxESTrap = 16.9477,
     RougeMaxHpMon = 51.584,
-    RougeMaxHpTrap = 16.9477
+    RougeMaxHpTrap = 16.9477,
   },
   [68] = {
     ATKA = 9.9916,
@@ -2720,7 +2723,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 54.1487,
     RougeMaxESTrap = 17.4352,
     RougeMaxHpMon = 54.1487,
-    RougeMaxHpTrap = 17.4352
+    RougeMaxHpTrap = 17.4352,
   },
   [69] = {
     ATKA = 10.1107,
@@ -2760,7 +2763,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 56.7848,
     RougeMaxESTrap = 17.9249,
     RougeMaxHpMon = 56.7848,
-    RougeMaxHpTrap = 17.9249
+    RougeMaxHpTrap = 17.9249,
   },
   [70] = {
     ATKA = 10.2122,
@@ -2800,7 +2803,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 59.4121,
     RougeMaxESTrap = 18.3917,
     RougeMaxHpMon = 59.4121,
-    RougeMaxHpTrap = 18.3917
+    RougeMaxHpTrap = 18.3917,
   },
   [71] = {
     ATKA = 11.236,
@@ -2840,7 +2843,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 70.1921,
     RougeMaxESTrap = 20.2787,
     RougeMaxHpMon = 70.1921,
-    RougeMaxHpTrap = 20.2787
+    RougeMaxHpTrap = 20.2787,
   },
   [72] = {
     ATKA = 11.3504,
@@ -2880,7 +2883,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 75.947,
     RougeMaxESTrap = 20.5288,
     RougeMaxHpMon = 75.947,
-    RougeMaxHpTrap = 20.5288
+    RougeMaxHpTrap = 20.5288,
   },
   [73] = {
     ATKA = 11.459,
@@ -2920,7 +2923,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 81.9333,
     RougeMaxESTrap = 20.7692,
     RougeMaxHpMon = 81.9333,
-    RougeMaxHpTrap = 20.7692
+    RougeMaxHpTrap = 20.7692,
   },
   [74] = {
     ATKA = 11.5667,
@@ -2960,7 +2963,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 88.188,
     RougeMaxESTrap = 21.0088,
     RougeMaxHpMon = 88.188,
-    RougeMaxHpTrap = 21.0088
+    RougeMaxHpTrap = 21.0088,
   },
   [75] = {
     ATKA = 11.9809,
@@ -3000,7 +3003,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 97.212,
     RougeMaxESTrap = 21.8072,
     RougeMaxHpMon = 97.212,
-    RougeMaxHpTrap = 21.8072
+    RougeMaxHpTrap = 21.8072,
   },
   [76] = {
     ATKA = 12.093,
@@ -3040,7 +3043,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 104.2304,
     RougeMaxESTrap = 22.0577,
     RougeMaxHpMon = 104.2304,
-    RougeMaxHpTrap = 22.0577
+    RougeMaxHpTrap = 22.0577,
   },
   [77] = {
     ATKA = 12.2051,
@@ -3080,7 +3083,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 111.5551,
     RougeMaxESTrap = 22.309,
     RougeMaxHpMon = 111.5551,
-    RougeMaxHpTrap = 22.309
+    RougeMaxHpTrap = 22.309,
   },
   [78] = {
     ATKA = 12.3222,
@@ -3120,7 +3123,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 119.2427,
     RougeMaxESTrap = 22.5704,
     RougeMaxHpMon = 119.2427,
-    RougeMaxHpTrap = 22.5704
+    RougeMaxHpTrap = 22.5704,
   },
   [79] = {
     ATKA = 12.4372,
@@ -3160,7 +3163,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 127.2364,
     RougeMaxESTrap = 22.8288,
     RougeMaxHpMon = 127.2364,
-    RougeMaxHpTrap = 22.8288
+    RougeMaxHpTrap = 22.8288,
   },
   [80] = {
     ATKA = 12.5522,
@@ -3200,7 +3203,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 135.5639,
     RougeMaxESTrap = 23.088,
     RougeMaxHpMon = 135.5639,
-    RougeMaxHpTrap = 23.088
+    RougeMaxHpTrap = 23.088,
   },
   [81] = {
     ATKA = 8.2137,
@@ -3240,7 +3243,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 142.3421,
     RougeMaxESTrap = 23.1362,
     RougeMaxHpMon = 142.3421,
-    RougeMaxHpTrap = 23.1362
+    RougeMaxHpTrap = 23.1362,
   },
   [82] = {
     ATKA = 8.2137,
@@ -3280,7 +3283,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 149.4592,
     RougeMaxESTrap = 23.1844,
     RougeMaxHpMon = 149.4592,
-    RougeMaxHpTrap = 23.1844
+    RougeMaxHpTrap = 23.1844,
   },
   [83] = {
     ATKA = 8.2137,
@@ -3320,7 +3323,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 156.9322,
     RougeMaxESTrap = 23.2326,
     RougeMaxHpMon = 156.9322,
-    RougeMaxHpTrap = 23.2326
+    RougeMaxHpTrap = 23.2326,
   },
   [84] = {
     ATKA = 8.2137,
@@ -3360,7 +3363,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 164.7788,
     RougeMaxESTrap = 23.2808,
     RougeMaxHpMon = 164.7788,
-    RougeMaxHpTrap = 23.2808
+    RougeMaxHpTrap = 23.2808,
   },
   [85] = {
     ATKA = 8.2137,
@@ -3400,7 +3403,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 173.0177,
     RougeMaxESTrap = 23.329,
     RougeMaxHpMon = 173.0177,
-    RougeMaxHpTrap = 23.329
+    RougeMaxHpTrap = 23.329,
   },
   [86] = {
     ATKA = 8.2137,
@@ -3440,7 +3443,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 181.6686,
     RougeMaxESTrap = 23.3772,
     RougeMaxHpMon = 181.6686,
-    RougeMaxHpTrap = 23.3772
+    RougeMaxHpTrap = 23.3772,
   },
   [87] = {
     ATKA = 8.2137,
@@ -3480,7 +3483,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 190.752,
     RougeMaxESTrap = 23.4254,
     RougeMaxHpMon = 190.752,
-    RougeMaxHpTrap = 23.4254
+    RougeMaxHpTrap = 23.4254,
   },
   [88] = {
     ATKA = 8.2137,
@@ -3520,7 +3523,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 200.2896,
     RougeMaxESTrap = 23.4736,
     RougeMaxHpMon = 200.2896,
-    RougeMaxHpTrap = 23.4736
+    RougeMaxHpTrap = 23.4736,
   },
   [89] = {
     ATKA = 8.2137,
@@ -3560,7 +3563,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 210.3041,
     RougeMaxESTrap = 23.5218,
     RougeMaxHpMon = 210.3041,
-    RougeMaxHpTrap = 23.5218
+    RougeMaxHpTrap = 23.5218,
   },
   [90] = {
     ATKA = 8.2137,
@@ -3600,7 +3603,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 220.8193,
     RougeMaxESTrap = 23.57,
     RougeMaxHpMon = 220.8193,
-    RougeMaxHpTrap = 23.57
+    RougeMaxHpTrap = 23.57,
   },
   [91] = {
     ATKA = 8.2137,
@@ -3640,7 +3643,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 231.8603,
     RougeMaxESTrap = 23.6182,
     RougeMaxHpMon = 231.8603,
-    RougeMaxHpTrap = 23.6182
+    RougeMaxHpTrap = 23.6182,
   },
   [92] = {
     ATKA = 8.2137,
@@ -3680,7 +3683,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 243.4533,
     RougeMaxESTrap = 23.6664,
     RougeMaxHpMon = 243.4533,
-    RougeMaxHpTrap = 23.6664
+    RougeMaxHpTrap = 23.6664,
   },
   [93] = {
     ATKA = 8.2137,
@@ -3720,7 +3723,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 255.626,
     RougeMaxESTrap = 23.7146,
     RougeMaxHpMon = 255.626,
-    RougeMaxHpTrap = 23.7146
+    RougeMaxHpTrap = 23.7146,
   },
   [94] = {
     ATKA = 8.2137,
@@ -3760,7 +3763,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 268.4073,
     RougeMaxESTrap = 23.7628,
     RougeMaxHpMon = 268.4073,
-    RougeMaxHpTrap = 23.7628
+    RougeMaxHpTrap = 23.7628,
   },
   [95] = {
     ATKA = 8.2137,
@@ -3800,7 +3803,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 281.8276,
     RougeMaxESTrap = 23.811,
     RougeMaxHpMon = 281.8276,
-    RougeMaxHpTrap = 23.811
+    RougeMaxHpTrap = 23.811,
   },
   [96] = {
     ATKA = 8.2137,
@@ -3840,7 +3843,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 295.919,
     RougeMaxESTrap = 23.8592,
     RougeMaxHpMon = 295.919,
-    RougeMaxHpTrap = 23.8592
+    RougeMaxHpTrap = 23.8592,
   },
   [97] = {
     ATKA = 8.2137,
@@ -3880,7 +3883,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 310.715,
     RougeMaxESTrap = 23.9074,
     RougeMaxHpMon = 310.715,
-    RougeMaxHpTrap = 23.9074
+    RougeMaxHpTrap = 23.9074,
   },
   [98] = {
     ATKA = 8.2137,
@@ -3920,7 +3923,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 326.2507,
     RougeMaxESTrap = 23.9556,
     RougeMaxHpMon = 326.2507,
-    RougeMaxHpTrap = 23.9556
+    RougeMaxHpTrap = 23.9556,
   },
   [99] = {
     ATKA = 8.2137,
@@ -3960,7 +3963,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 342.5632,
     RougeMaxESTrap = 24.0038,
     RougeMaxHpMon = 342.5632,
-    RougeMaxHpTrap = 24.0038
+    RougeMaxHpTrap = 24.0038,
   },
   [100] = {
     ATKA = 8.2137,
@@ -4000,7 +4003,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 359.6914,
     RougeMaxESTrap = 24.052,
     RougeMaxHpMon = 359.6914,
-    RougeMaxHpTrap = 24.052
+    RougeMaxHpTrap = 24.052,
   },
   [101] = {
     ATKA = 8.2137,
@@ -4040,7 +4043,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 377.676,
     RougeMaxESTrap = 24.1003,
     RougeMaxHpMon = 377.676,
-    RougeMaxHpTrap = 24.1003
+    RougeMaxHpTrap = 24.1003,
   },
   [102] = {
     ATKA = 8.2137,
@@ -4080,7 +4083,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 396.5598,
     RougeMaxESTrap = 24.1485,
     RougeMaxHpMon = 396.5598,
-    RougeMaxHpTrap = 24.1485
+    RougeMaxHpTrap = 24.1485,
   },
   [103] = {
     ATKA = 8.2137,
@@ -4120,7 +4123,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 416.3878,
     RougeMaxESTrap = 24.1967,
     RougeMaxHpMon = 416.3878,
-    RougeMaxHpTrap = 24.1967
+    RougeMaxHpTrap = 24.1967,
   },
   [104] = {
     ATKA = 8.2137,
@@ -4160,7 +4163,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 437.2071,
     RougeMaxESTrap = 24.2449,
     RougeMaxHpMon = 437.2071,
-    RougeMaxHpTrap = 24.2449
+    RougeMaxHpTrap = 24.2449,
   },
   [105] = {
     ATKA = 8.2137,
@@ -4200,7 +4203,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 459.0675,
     RougeMaxESTrap = 24.2931,
     RougeMaxHpMon = 459.0675,
-    RougeMaxHpTrap = 24.2931
+    RougeMaxHpTrap = 24.2931,
   },
   [106] = {
     ATKA = 8.2137,
@@ -4240,7 +4243,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 482.0209,
     RougeMaxESTrap = 24.3413,
     RougeMaxHpMon = 482.0209,
-    RougeMaxHpTrap = 24.3413
+    RougeMaxHpTrap = 24.3413,
   },
   [107] = {
     ATKA = 8.2137,
@@ -4280,7 +4283,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 506.1219,
     RougeMaxESTrap = 24.3895,
     RougeMaxHpMon = 506.1219,
-    RougeMaxHpTrap = 24.3895
+    RougeMaxHpTrap = 24.3895,
   },
   [108] = {
     ATKA = 8.2137,
@@ -4320,7 +4323,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 531.428,
     RougeMaxESTrap = 24.4377,
     RougeMaxHpMon = 531.428,
-    RougeMaxHpTrap = 24.4377
+    RougeMaxHpTrap = 24.4377,
   },
   [109] = {
     ATKA = 8.2137,
@@ -4360,7 +4363,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 557.9994,
     RougeMaxESTrap = 24.4859,
     RougeMaxHpMon = 557.9994,
-    RougeMaxHpTrap = 24.4859
+    RougeMaxHpTrap = 24.4859,
   },
   [110] = {
     ATKA = 8.2137,
@@ -4400,7 +4403,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 585.8994,
     RougeMaxESTrap = 24.5341,
     RougeMaxHpMon = 585.8994,
-    RougeMaxHpTrap = 24.5341
+    RougeMaxHpTrap = 24.5341,
   },
   [111] = {
     ATKA = 8.2137,
@@ -4440,7 +4443,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 615.1944,
     RougeMaxESTrap = 24.5823,
     RougeMaxHpMon = 615.1944,
-    RougeMaxHpTrap = 24.5823
+    RougeMaxHpTrap = 24.5823,
   },
   [112] = {
     ATKA = 8.2137,
@@ -4480,7 +4483,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 645.9541,
     RougeMaxESTrap = 24.6305,
     RougeMaxHpMon = 645.9541,
-    RougeMaxHpTrap = 24.6305
+    RougeMaxHpTrap = 24.6305,
   },
   [113] = {
     ATKA = 8.2137,
@@ -4520,7 +4523,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 678.2518,
     RougeMaxESTrap = 24.6787,
     RougeMaxHpMon = 678.2518,
-    RougeMaxHpTrap = 24.6787
+    RougeMaxHpTrap = 24.6787,
   },
   [114] = {
     ATKA = 8.2137,
@@ -4560,7 +4563,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 712.1644,
     RougeMaxESTrap = 24.7269,
     RougeMaxHpMon = 712.1644,
-    RougeMaxHpTrap = 24.7269
+    RougeMaxHpTrap = 24.7269,
   },
   [115] = {
     ATKA = 8.2137,
@@ -4600,7 +4603,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 747.7726,
     RougeMaxESTrap = 24.7751,
     RougeMaxHpMon = 747.7726,
-    RougeMaxHpTrap = 24.7751
+    RougeMaxHpTrap = 24.7751,
   },
   [116] = {
     ATKA = 8.2137,
@@ -4640,7 +4643,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 785.1612,
     RougeMaxESTrap = 24.8233,
     RougeMaxHpMon = 785.1612,
-    RougeMaxHpTrap = 24.8233
+    RougeMaxHpTrap = 24.8233,
   },
   [117] = {
     ATKA = 8.2137,
@@ -4680,7 +4683,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 824.4193,
     RougeMaxESTrap = 24.8715,
     RougeMaxHpMon = 824.4193,
-    RougeMaxHpTrap = 24.8715
+    RougeMaxHpTrap = 24.8715,
   },
   [118] = {
     ATKA = 8.2137,
@@ -4720,7 +4723,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 865.6403,
     RougeMaxESTrap = 24.9197,
     RougeMaxHpMon = 865.6403,
-    RougeMaxHpTrap = 24.9197
+    RougeMaxHpTrap = 24.9197,
   },
   [119] = {
     ATKA = 8.2137,
@@ -4760,7 +4763,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 908.9223,
     RougeMaxESTrap = 24.9679,
     RougeMaxHpMon = 908.9223,
-    RougeMaxHpTrap = 24.9679
+    RougeMaxHpTrap = 24.9679,
   },
   [120] = {
     ATKA = 8.2137,
@@ -4800,7 +4803,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 954.3684,
     RougeMaxESTrap = 25.0161,
     RougeMaxHpMon = 954.3684,
-    RougeMaxHpTrap = 25.0161
+    RougeMaxHpTrap = 25.0161,
   },
   [121] = {
     ATKA = 8.2137,
@@ -4840,7 +4843,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1002.0868,
     RougeMaxESTrap = 25.0643,
     RougeMaxHpMon = 1002.0868,
-    RougeMaxHpTrap = 25.0643
+    RougeMaxHpTrap = 25.0643,
   },
   [122] = {
     ATKA = 8.2137,
@@ -4880,7 +4883,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1052.1911,
     RougeMaxESTrap = 25.1125,
     RougeMaxHpMon = 1052.1911,
-    RougeMaxHpTrap = 25.1125
+    RougeMaxHpTrap = 25.1125,
   },
   [123] = {
     ATKA = 8.2137,
@@ -4920,7 +4923,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1104.8007,
     RougeMaxESTrap = 25.1607,
     RougeMaxHpMon = 1104.8007,
-    RougeMaxHpTrap = 25.1607
+    RougeMaxHpTrap = 25.1607,
   },
   [124] = {
     ATKA = 8.2137,
@@ -4960,7 +4963,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1160.0407,
     RougeMaxESTrap = 25.2089,
     RougeMaxHpMon = 1160.0407,
-    RougeMaxHpTrap = 25.2089
+    RougeMaxHpTrap = 25.2089,
   },
   [125] = {
     ATKA = 8.2137,
@@ -5000,7 +5003,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1218.0428,
     RougeMaxESTrap = 25.2571,
     RougeMaxHpMon = 1218.0428,
-    RougeMaxHpTrap = 25.2571
+    RougeMaxHpTrap = 25.2571,
   },
   [126] = {
     ATKA = 8.2137,
@@ -5040,7 +5043,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1278.9449,
     RougeMaxESTrap = 25.3053,
     RougeMaxHpMon = 1278.9449,
-    RougeMaxHpTrap = 25.3053
+    RougeMaxHpTrap = 25.3053,
   },
   [127] = {
     ATKA = 8.2137,
@@ -5080,7 +5083,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1342.8921,
     RougeMaxESTrap = 25.3535,
     RougeMaxHpMon = 1342.8921,
-    RougeMaxHpTrap = 25.3535
+    RougeMaxHpTrap = 25.3535,
   },
   [128] = {
     ATKA = 8.2137,
@@ -5120,7 +5123,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1410.0368,
     RougeMaxESTrap = 25.4017,
     RougeMaxHpMon = 1410.0368,
-    RougeMaxHpTrap = 25.4017
+    RougeMaxHpTrap = 25.4017,
   },
   [129] = {
     ATKA = 8.2137,
@@ -5160,7 +5163,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1480.5386,
     RougeMaxESTrap = 25.4499,
     RougeMaxHpMon = 1480.5386,
-    RougeMaxHpTrap = 25.4499
+    RougeMaxHpTrap = 25.4499,
   },
   [130] = {
     ATKA = 8.2137,
@@ -5200,7 +5203,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1554.5655,
     RougeMaxESTrap = 25.4981,
     RougeMaxHpMon = 1554.5655,
-    RougeMaxHpTrap = 25.4981
+    RougeMaxHpTrap = 25.4981,
   },
   [131] = {
     ATKA = 8.2137,
@@ -5240,7 +5243,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1632.2938,
     RougeMaxESTrap = 25.5463,
     RougeMaxHpMon = 1632.2938,
-    RougeMaxHpTrap = 25.5463
+    RougeMaxHpTrap = 25.5463,
   },
   [132] = {
     ATKA = 8.2137,
@@ -5280,7 +5283,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1713.9085,
     RougeMaxESTrap = 25.5945,
     RougeMaxHpMon = 1713.9085,
-    RougeMaxHpTrap = 25.5945
+    RougeMaxHpTrap = 25.5945,
   },
   [133] = {
     ATKA = 8.2137,
@@ -5320,7 +5323,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1799.6039,
     RougeMaxESTrap = 25.6427,
     RougeMaxHpMon = 1799.6039,
-    RougeMaxHpTrap = 25.6427
+    RougeMaxHpTrap = 25.6427,
   },
   [134] = {
     ATKA = 8.2137,
@@ -5360,7 +5363,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1889.5841,
     RougeMaxESTrap = 25.6909,
     RougeMaxHpMon = 1889.5841,
-    RougeMaxHpTrap = 25.6909
+    RougeMaxHpTrap = 25.6909,
   },
   [135] = {
     ATKA = 8.2137,
@@ -5400,7 +5403,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 1984.0633,
     RougeMaxESTrap = 25.7391,
     RougeMaxHpMon = 1984.0633,
-    RougeMaxHpTrap = 25.7391
+    RougeMaxHpTrap = 25.7391,
   },
   [136] = {
     ATKA = 8.2137,
@@ -5440,7 +5443,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2083.2665,
     RougeMaxESTrap = 25.7873,
     RougeMaxHpMon = 2083.2665,
-    RougeMaxHpTrap = 25.7873
+    RougeMaxHpTrap = 25.7873,
   },
   [137] = {
     ATKA = 8.2137,
@@ -5480,7 +5483,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2187.4298,
     RougeMaxESTrap = 25.8355,
     RougeMaxHpMon = 2187.4298,
-    RougeMaxHpTrap = 25.8355
+    RougeMaxHpTrap = 25.8355,
   },
   [138] = {
     ATKA = 8.2137,
@@ -5520,7 +5523,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2296.8013,
     RougeMaxESTrap = 25.8837,
     RougeMaxHpMon = 2296.8013,
-    RougeMaxHpTrap = 25.8837
+    RougeMaxHpTrap = 25.8837,
   },
   [139] = {
     ATKA = 8.2137,
@@ -5560,7 +5563,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2411.6414,
     RougeMaxESTrap = 25.9319,
     RougeMaxHpMon = 2411.6414,
-    RougeMaxHpTrap = 25.9319
+    RougeMaxHpTrap = 25.9319,
   },
   [140] = {
     ATKA = 8.2137,
@@ -5600,7 +5603,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2532.2234,
     RougeMaxESTrap = 25.9801,
     RougeMaxHpMon = 2532.2234,
-    RougeMaxHpTrap = 25.9801
+    RougeMaxHpTrap = 25.9801,
   },
   [141] = {
     ATKA = 8.2137,
@@ -5640,7 +5643,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2658.8346,
     RougeMaxESTrap = 26.0283,
     RougeMaxHpMon = 2658.8346,
-    RougeMaxHpTrap = 26.0283
+    RougeMaxHpTrap = 26.0283,
   },
   [142] = {
     ATKA = 8.2137,
@@ -5680,7 +5683,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2791.7763,
     RougeMaxESTrap = 26.0765,
     RougeMaxHpMon = 2791.7763,
-    RougeMaxHpTrap = 26.0765
+    RougeMaxHpTrap = 26.0765,
   },
   [143] = {
     ATKA = 8.2137,
@@ -5720,7 +5723,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 2931.3651,
     RougeMaxESTrap = 26.1247,
     RougeMaxHpMon = 2931.3651,
-    RougeMaxHpTrap = 26.1247
+    RougeMaxHpTrap = 26.1247,
   },
   [144] = {
     ATKA = 8.2137,
@@ -5760,7 +5763,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 3077.9334,
     RougeMaxESTrap = 26.1729,
     RougeMaxHpMon = 3077.9334,
-    RougeMaxHpTrap = 26.1729
+    RougeMaxHpTrap = 26.1729,
   },
   [145] = {
     ATKA = 8.2137,
@@ -5800,7 +5803,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 3231.8301,
     RougeMaxESTrap = 26.2211,
     RougeMaxHpMon = 3231.8301,
-    RougeMaxHpTrap = 26.2211
+    RougeMaxHpTrap = 26.2211,
   },
   [146] = {
     ATKA = 8.2137,
@@ -5840,7 +5843,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 3393.4216,
     RougeMaxESTrap = 26.2693,
     RougeMaxHpMon = 3393.4216,
-    RougeMaxHpTrap = 26.2693
+    RougeMaxHpTrap = 26.2693,
   },
   [147] = {
     ATKA = 8.2137,
@@ -5880,7 +5883,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 3563.0926,
     RougeMaxESTrap = 26.3175,
     RougeMaxHpMon = 3563.0926,
-    RougeMaxHpTrap = 26.3175
+    RougeMaxHpTrap = 26.3175,
   },
   [148] = {
     ATKA = 8.2137,
@@ -5920,7 +5923,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 3741.2473,
     RougeMaxESTrap = 26.3657,
     RougeMaxHpMon = 3741.2473,
-    RougeMaxHpTrap = 26.3657
+    RougeMaxHpTrap = 26.3657,
   },
   [149] = {
     ATKA = 8.2137,
@@ -5960,7 +5963,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 3928.3096,
     RougeMaxESTrap = 26.4139,
     RougeMaxHpMon = 3928.3096,
-    RougeMaxHpTrap = 26.4139
+    RougeMaxHpTrap = 26.4139,
   },
   [150] = {
     ATKA = 8.2137,
@@ -6000,7 +6003,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 4124.7251,
     RougeMaxESTrap = 26.4621,
     RougeMaxHpMon = 4124.7251,
-    RougeMaxHpTrap = 26.4621
+    RougeMaxHpTrap = 26.4621,
   },
   [151] = {
     ATKA = 8.2137,
@@ -6040,7 +6043,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 4330.9614,
     RougeMaxESTrap = 26.5103,
     RougeMaxHpMon = 4330.9614,
-    RougeMaxHpTrap = 26.5103
+    RougeMaxHpTrap = 26.5103,
   },
   [152] = {
     ATKA = 8.2137,
@@ -6080,7 +6083,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 4547.5095,
     RougeMaxESTrap = 26.5585,
     RougeMaxHpMon = 4547.5095,
-    RougeMaxHpTrap = 26.5585
+    RougeMaxHpTrap = 26.5585,
   },
   [153] = {
     ATKA = 8.2137,
@@ -6120,7 +6123,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 4774.8849,
     RougeMaxESTrap = 26.6067,
     RougeMaxHpMon = 4774.8849,
-    RougeMaxHpTrap = 26.6067
+    RougeMaxHpTrap = 26.6067,
   },
   [154] = {
     ATKA = 8.2137,
@@ -6160,7 +6163,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 5013.6292,
     RougeMaxESTrap = 26.6549,
     RougeMaxHpMon = 5013.6292,
-    RougeMaxHpTrap = 26.6549
+    RougeMaxHpTrap = 26.6549,
   },
   [155] = {
     ATKA = 8.2137,
@@ -6200,7 +6203,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 5264.3106,
     RougeMaxESTrap = 26.7031,
     RougeMaxHpMon = 5264.3106,
-    RougeMaxHpTrap = 26.7031
+    RougeMaxHpTrap = 26.7031,
   },
   [156] = {
     ATKA = 8.2137,
@@ -6240,7 +6243,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 5527.5262,
     RougeMaxESTrap = 26.7513,
     RougeMaxHpMon = 5527.5262,
-    RougeMaxHpTrap = 26.7513
+    RougeMaxHpTrap = 26.7513,
   },
   [157] = {
     ATKA = 8.2137,
@@ -6280,7 +6283,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 5803.9025,
     RougeMaxESTrap = 26.7995,
     RougeMaxHpMon = 5803.9025,
-    RougeMaxHpTrap = 26.7995
+    RougeMaxHpTrap = 26.7995,
   },
   [158] = {
     ATKA = 8.2137,
@@ -6320,7 +6323,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 6094.0976,
     RougeMaxESTrap = 26.8477,
     RougeMaxHpMon = 6094.0976,
-    RougeMaxHpTrap = 26.8477
+    RougeMaxHpTrap = 26.8477,
   },
   [159] = {
     ATKA = 8.2137,
@@ -6360,7 +6363,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 6398.8025,
     RougeMaxESTrap = 26.8959,
     RougeMaxHpMon = 6398.8025,
-    RougeMaxHpTrap = 26.8959
+    RougeMaxHpTrap = 26.8959,
   },
   [160] = {
     ATKA = 8.2137,
@@ -6400,7 +6403,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 6718.7426,
     RougeMaxESTrap = 26.9441,
     RougeMaxHpMon = 6718.7426,
-    RougeMaxHpTrap = 26.9441
+    RougeMaxHpTrap = 26.9441,
   },
   [161] = {
     ATKA = 8.2137,
@@ -6440,7 +6443,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 7054.6797,
     RougeMaxESTrap = 26.9923,
     RougeMaxHpMon = 7054.6797,
-    RougeMaxHpTrap = 26.9923
+    RougeMaxHpTrap = 26.9923,
   },
   [162] = {
     ATKA = 8.2137,
@@ -6480,7 +6483,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 7407.4137,
     RougeMaxESTrap = 27.0405,
     RougeMaxHpMon = 7407.4137,
-    RougeMaxHpTrap = 27.0405
+    RougeMaxHpTrap = 27.0405,
   },
   [163] = {
     ATKA = 8.2137,
@@ -6520,7 +6523,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 7777.7844,
     RougeMaxESTrap = 27.0887,
     RougeMaxHpMon = 7777.7844,
-    RougeMaxHpTrap = 27.0887
+    RougeMaxHpTrap = 27.0887,
   },
   [164] = {
     ATKA = 8.2137,
@@ -6560,7 +6563,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 8166.6736,
     RougeMaxESTrap = 27.1369,
     RougeMaxHpMon = 8166.6736,
-    RougeMaxHpTrap = 27.1369
+    RougeMaxHpTrap = 27.1369,
   },
   [165] = {
     ATKA = 8.2137,
@@ -6600,7 +6603,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 8575.0073,
     RougeMaxESTrap = 27.1851,
     RougeMaxHpMon = 8575.0073,
-    RougeMaxHpTrap = 27.1851
+    RougeMaxHpTrap = 27.1851,
   },
   [166] = {
     ATKA = 8.2137,
@@ -6640,7 +6643,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 9003.7577,
     RougeMaxESTrap = 27.2333,
     RougeMaxHpMon = 9003.7577,
-    RougeMaxHpTrap = 27.2333
+    RougeMaxHpTrap = 27.2333,
   },
   [167] = {
     ATKA = 8.2137,
@@ -6680,7 +6683,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 9453.9455,
     RougeMaxESTrap = 27.2815,
     RougeMaxHpMon = 9453.9455,
-    RougeMaxHpTrap = 27.2815
+    RougeMaxHpTrap = 27.2815,
   },
   [168] = {
     ATKA = 8.2137,
@@ -6720,7 +6723,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 9926.6428,
     RougeMaxESTrap = 27.3297,
     RougeMaxHpMon = 9926.6428,
-    RougeMaxHpTrap = 27.3297
+    RougeMaxHpTrap = 27.3297,
   },
   [169] = {
     ATKA = 8.2137,
@@ -6760,7 +6763,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 10422.975,
     RougeMaxESTrap = 27.3779,
     RougeMaxHpMon = 10422.975,
-    RougeMaxHpTrap = 27.3779
+    RougeMaxHpTrap = 27.3779,
   },
   [170] = {
     ATKA = 8.2137,
@@ -6800,7 +6803,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 10944.1237,
     RougeMaxESTrap = 27.4261,
     RougeMaxHpMon = 10944.1237,
-    RougeMaxHpTrap = 27.4261
+    RougeMaxHpTrap = 27.4261,
   },
   [171] = {
     ATKA = 8.2137,
@@ -6840,7 +6843,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 11491.3299,
     RougeMaxESTrap = 27.4743,
     RougeMaxHpMon = 11491.3299,
-    RougeMaxHpTrap = 27.4743
+    RougeMaxHpTrap = 27.4743,
   },
   [172] = {
     ATKA = 8.2137,
@@ -6880,7 +6883,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 12065.8964,
     RougeMaxESTrap = 27.5225,
     RougeMaxHpMon = 12065.8964,
-    RougeMaxHpTrap = 27.5225
+    RougeMaxHpTrap = 27.5225,
   },
   [173] = {
     ATKA = 8.2137,
@@ -6920,7 +6923,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 12669.1912,
     RougeMaxESTrap = 27.5707,
     RougeMaxHpMon = 12669.1912,
-    RougeMaxHpTrap = 27.5707
+    RougeMaxHpTrap = 27.5707,
   },
   [174] = {
     ATKA = 8.2137,
@@ -6960,7 +6963,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 13302.6508,
     RougeMaxESTrap = 27.6189,
     RougeMaxHpMon = 13302.6508,
-    RougeMaxHpTrap = 27.6189
+    RougeMaxHpTrap = 27.6189,
   },
   [175] = {
     ATKA = 8.2137,
@@ -7000,7 +7003,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 13967.7833,
     RougeMaxESTrap = 27.6671,
     RougeMaxHpMon = 13967.7833,
-    RougeMaxHpTrap = 27.6671
+    RougeMaxHpTrap = 27.6671,
   },
   [176] = {
     ATKA = 8.2137,
@@ -7040,7 +7043,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 14666.1725,
     RougeMaxESTrap = 27.7153,
     RougeMaxHpMon = 14666.1725,
-    RougeMaxHpTrap = 27.7153
+    RougeMaxHpTrap = 27.7153,
   },
   [177] = {
     ATKA = 8.2137,
@@ -7080,7 +7083,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 15399.4811,
     RougeMaxESTrap = 27.7635,
     RougeMaxHpMon = 15399.4811,
-    RougeMaxHpTrap = 27.7635
+    RougeMaxHpTrap = 27.7635,
   },
   [178] = {
     ATKA = 8.2137,
@@ -7120,7 +7123,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 16169.4552,
     RougeMaxESTrap = 27.8117,
     RougeMaxHpMon = 16169.4552,
-    RougeMaxHpTrap = 27.8117
+    RougeMaxHpTrap = 27.8117,
   },
   [179] = {
     ATKA = 8.2137,
@@ -7160,7 +7163,7 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 16977.9279,
     RougeMaxESTrap = 27.8599,
     RougeMaxHpMon = 16977.9279,
-    RougeMaxHpTrap = 27.8599
+    RougeMaxHpTrap = 27.8599,
   },
   [180] = {
     ATKA = 8.2137,
@@ -7200,6 +7203,6 @@ return ReadOnly("LevelUp", {
     RougeMaxESMon = 17826.8243,
     RougeMaxESTrap = 27.9081,
     RougeMaxHpMon = 17826.8243,
-    RougeMaxHpTrap = 27.9081
-  }
+    RougeMaxHpTrap = 27.9081,
+  },
 })

@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("MiniGameCapture", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\MiniGameCapture.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("MiniGameCapture", {
   [1] = {
     FoodLV0 = 0.25,
     FoodLV1 = 0.1,
@@ -11,7 +14,7 @@ return ReadOnly("MiniGameCapture", {
     PointerSpeed = 1,
     XFactor = 3,
     Xmax = 3,
-    yFactor = 3
+    yFactor = 3,
   },
   [2] = {
     FoodLV0 = 0.45,
@@ -22,7 +25,7 @@ return ReadOnly("MiniGameCapture", {
     PointerSpeed = 1,
     XFactor = 2,
     Xmax = 3,
-    yFactor = 3
+    yFactor = 3,
   },
   [3] = {
     FoodLV0 = 0.81,
@@ -33,7 +36,7 @@ return ReadOnly("MiniGameCapture", {
     PointerSpeed = 1,
     XFactor = 2,
     Xmax = 3,
-    yFactor = 3
+    yFactor = 3,
   },
   [201] = {
     FoodLV0 = 0.38,
@@ -44,7 +47,7 @@ return ReadOnly("MiniGameCapture", {
     PointerSpeed = 1,
     XFactor = 4.5,
     Xmax = 2,
-    yFactor = 3
+    yFactor = 3,
   },
   [202] = {
     FoodLV0 = 0.38,
@@ -55,7 +58,7 @@ return ReadOnly("MiniGameCapture", {
     PointerSpeed = 1,
     XFactor = 4.5,
     Xmax = 3,
-    yFactor = 3
+    yFactor = 3,
   },
   [203] = {
     FoodLV0 = 0.38,
@@ -66,7 +69,7 @@ return ReadOnly("MiniGameCapture", {
     PointerSpeed = 1,
     XFactor = 4.5,
     Xmax = 4,
-    yFactor = 3
+    yFactor = 3,
   },
   [301] = {
     FoodLV0 = 0.56,
@@ -77,7 +80,7 @@ return ReadOnly("MiniGameCapture", {
     PointerSpeed = 1,
     XFactor = 3.5,
     Xmax = 2,
-    yFactor = 3
+    yFactor = 3,
   },
   [302] = {
     FoodLV0 = 0.56,
@@ -88,7 +91,7 @@ return ReadOnly("MiniGameCapture", {
     PointerSpeed = 1,
     XFactor = 3.5,
     Xmax = 3,
-    yFactor = 3
+    yFactor = 3,
   },
   [303] = {
     FoodLV0 = 0.56,
@@ -99,7 +102,7 @@ return ReadOnly("MiniGameCapture", {
     PointerSpeed = 1,
     XFactor = 3.5,
     Xmax = 4,
-    yFactor = 3
+    yFactor = 3,
   },
   [401] = {
     FoodLV0 = 0.75,
@@ -110,7 +113,7 @@ return ReadOnly("MiniGameCapture", {
     PointerSpeed = 1,
     XFactor = 2.6,
     Xmax = 2,
-    yFactor = 3
+    yFactor = 3,
   },
   [402] = {
     FoodLV0 = 0.75,
@@ -121,7 +124,7 @@ return ReadOnly("MiniGameCapture", {
     PointerSpeed = 1,
     XFactor = 2.6,
     Xmax = 3,
-    yFactor = 3
+    yFactor = 3,
   },
   [403] = {
     FoodLV0 = 0.75,
@@ -132,7 +135,7 @@ return ReadOnly("MiniGameCapture", {
     PointerSpeed = 1,
     XFactor = 2.6,
     Xmax = 4,
-    yFactor = 3
+    yFactor = 3,
   },
   [501] = {
     FoodLV0 = 0.51,
@@ -143,7 +146,7 @@ return ReadOnly("MiniGameCapture", {
     PointerSpeed = 1,
     XFactor = 1.5,
     Xmax = 2,
-    yFactor = 2
+    yFactor = 2,
   },
   [502] = {
     FoodLV0 = 0.51,
@@ -154,7 +157,7 @@ return ReadOnly("MiniGameCapture", {
     PointerSpeed = 1,
     XFactor = 1.5,
     Xmax = 2.7,
-    yFactor = 2
+    yFactor = 2,
   },
   [503] = {
     FoodLV0 = 0.51,
@@ -165,7 +168,7 @@ return ReadOnly("MiniGameCapture", {
     PointerSpeed = 1,
     XFactor = 1.5,
     Xmax = 3.4,
-    yFactor = 2
+    yFactor = 2,
   },
   [901] = {
     FoodLV0 = 0,
@@ -176,6 +179,6 @@ return ReadOnly("MiniGameCapture", {
     PointerSpeed = 1,
     XFactor = 5,
     Xmax = 3,
-    yFactor = 3
-  }
+    yFactor = 3,
+  },
 })

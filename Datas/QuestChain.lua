@@ -1,4 +1,4 @@
--- filename: @E:/Pack/Branch/OBT10_Geili\Content/Script/Datas\QuestChain.lua
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\QuestChain.lua
 -- version: lua54
 -- line: [0, 0] id: 0
 local r1_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
@@ -625,11 +625,141 @@ r3_0[120002] = {
   StoryPath = "MainStory/1200/120002.story",
   UnlockCondition = 120001,
 }
+r3_0[120003] = {
+  ChapterBeginEndIconPath = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Chapter/T_Chapter_Icon03.T_Chapter_Icon03\'",
+  ChapterName = "UI_ChapterName_E0",
+  ChapterNumber = "UI_ChapterNumber_E0",
+  EndTime = 8204788800,
+  Episode = "Episode_1200",
+  EpisodeName = "Episode_1200",
+  IfAutoStart = true,
+  MainStoryUnlockMessage = "Textmap_UnlockTitle",
+  QuestChainId = 120003,
+  QuestChainName = "Name_120003",
+  QuestChainReward = {
+    50530
+  },
+  QuestChainType = 6,
+  ShowCondition = 120002,
+  StartTime = 1766455200,
+  StoryPath = "MainStory/1200/120003.story",
+  UnlockCondition = 12000201,
+}
+r3_0[120101] = {
+  ChapterBeginEndIconPath = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Chapter/T_Chapter_Icon03.T_Chapter_Icon03\'",
+  ChapterName = "UI_ChapterName_E0",
+  ChapterNumber = "UI_ChapterNumber_E0",
+  Episode = "Episode_1201",
+  EpisodeName = "Episode_1201_01",
+  IfAutoStart = true,
+  MainStoryUnlockMessage = "Textmap_UnlockTitle",
+  QuestChainId = 120101,
+  QuestChainName = "Name_120101",
+  QuestChainReward = {
+    50532
+  },
+  QuestChainType = 1,
+  ShowCondition = 120100,
+  StoryPath = "MainStory/1201/120101.story",
+  UnlockCondition = 12010001,
+}
+r3_0[120102] = {
+  ChapterBeginEndIconPath = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Chapter/T_Chapter_Icon03.T_Chapter_Icon03\'",
+  ChapterName = "UI_ChapterName_E0",
+  ChapterNumber = "UI_ChapterNumber_E0",
+  Episode = "Episode_1201",
+  EpisodeName = "Episode_1201_02",
+  IfAutoStart = true,
+  MainStoryUnlockMessage = "Textmap_UnlockTitle",
+  QuestChainId = 120102,
+  QuestChainName = "Name_120102",
+  QuestChainReward = {
+    50533
+  },
+  QuestChainType = 1,
+  ShowCondition = 120101,
+  StoryPath = "MainStory/1201/120102.story",
+  UnlockCondition = 120101,
+}
+r3_0[120103] = {
+  ChapterBeginEndIconPath = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Chapter/T_Chapter_Icon03.T_Chapter_Icon03\'",
+  ChapterName = "UI_ChapterName_E0",
+  ChapterNumber = "UI_ChapterNumber_E0",
+  Episode = "Episode_1201",
+  EpisodeName = "Episode_1201_03",
+  IfAutoStart = true,
+  MainStoryUnlockMessage = "Textmap_UnlockTitle",
+  QuestChainId = 120103,
+  QuestChainName = "Name_120103",
+  QuestChainReward = {
+    50534
+  },
+  QuestChainType = 1,
+  QuestReward = {
+    [12010306] = 4000017,
+  },
+  ShowCondition = 120102,
+  StoryPath = "MainStory/1201/120103.story",
+  UnlockCondition = 120102,
+}
+r3_0[120104] = {
+  ChapterBeginEndIconPath = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Chapter/T_Chapter_Icon03.T_Chapter_Icon03\'",
+  ChapterName = "UI_ChapterName_E0",
+  ChapterNumber = "UI_ChapterNumber_E0",
+  Episode = "Episode_1201",
+  EpisodeName = "Episode_1201_04",
+  IfAutoStart = true,
+  MainStoryUnlockMessage = "Textmap_UnlockTitle",
+  QuestChainId = 120104,
+  QuestChainName = "Name_120104",
+  QuestChainReward = {
+    50535
+  },
+  QuestChainType = 1,
+  ShowCondition = 12010301,
+  StoryPath = "MainStory/1201/120104.story",
+  UnlockCondition = 12010301,
+}
+r3_0[120105] = {
+  ChapterBeginEndIconPath = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Chapter/T_Chapter_Icon03.T_Chapter_Icon03\'",
+  ChapterName = "UI_ChapterName_E0",
+  ChapterNumber = "UI_ChapterNumber_E0",
+  Episode = "Episode_1201",
+  EpisodeName = "Episode_1201_05",
+  IfAutoStart = true,
+  MainStoryUnlockMessage = "Textmap_UnlockTitle",
+  QuestChainId = 120105,
+  QuestChainName = "Name_120105",
+  QuestChainReward = {
+    50536
+  },
+  QuestChainType = 1,
+  ShowCondition = 12010302,
+  StoryPath = "MainStory/1201/120105.story",
+  UnlockCondition = 12010302,
+}
+r3_0[120106] = {
+  ChapterBeginEndIconPath = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Chapter/T_Chapter_Icon03.T_Chapter_Icon03\'",
+  ChapterName = "UI_ChapterName_E0",
+  ChapterNumber = "UI_ChapterNumber_E0",
+  Episode = "Episode_1201",
+  EpisodeName = "Episode_1201_06",
+  IfAutoStart = true,
+  MainStoryUnlockMessage = "Textmap_UnlockTitle",
+  QuestChainId = 120106,
+  QuestChainName = "Name_120106",
+  QuestChainReward = {
+    50537
+  },
+  QuestChainType = 1,
+  ShowCondition = 12010601,
+  StoryPath = "MainStory/1201/120106.story",
+  UnlockCondition = 12010601,
+}
 r3_0[120111] = {
   ChapterBeginEndIconPath = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Chapter/T_Chapter_Icon03.T_Chapter_Icon03\'",
   ChapterName = "UI_ChapterName_E0",
   ChapterNumber = "UI_ChapterNumber_W0",
-  EndTime = 8204788800,
   Episode = "Episode_Feina",
   EpisodeName = "Name_120111",
   IfAutoStart = true,
@@ -649,7 +779,6 @@ r3_0[120112] = {
   ChapterBeginEndIconPath = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Chapter/T_Chapter_Icon03.T_Chapter_Icon03\'",
   ChapterName = "UI_ChapterName_E0",
   ChapterNumber = "UI_ChapterNumber_W0",
-  EndTime = 8204788800,
   Episode = "Episode_Feina",
   EpisodeName = "Name_120112",
   IfAutoStart = true,
@@ -669,7 +798,6 @@ r3_0[120113] = {
   ChapterBeginEndIconPath = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Chapter/T_Chapter_Icon03.T_Chapter_Icon03\'",
   ChapterName = "UI_ChapterName_E0",
   ChapterNumber = "UI_ChapterNumber_W0",
-  EndTime = 8204788800,
   Episode = "Episode_Feina",
   EpisodeName = "Name_120113",
   IfAutoStart = true,
@@ -689,7 +817,6 @@ r3_0[120114] = {
   ChapterBeginEndIconPath = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Chapter/T_Chapter_Icon03.T_Chapter_Icon03\'",
   ChapterName = "UI_ChapterName_E0",
   ChapterNumber = "UI_ChapterNumber_W0",
-  EndTime = 8204788800,
   Episode = "Episode_Feina",
   EpisodeName = "Name_120114",
   IfAutoStart = true,
@@ -753,9 +880,9 @@ r3_0[200103] = {
     50577
   },
   QuestChainType = 4,
-  ShowCondition = 100202,
+  ShowCondition = 10020202,
   StoryPath = "SpecialSideStory/2001/200103.story",
-  UnlockCondition = 100202,
+  UnlockCondition = 10020202,
 }
 r3_0[200104] = {
   ChapterName = "UI_ChapterName_01",
@@ -769,9 +896,9 @@ r3_0[200104] = {
     50578
   },
   QuestChainType = 4,
-  ShowCondition = 100208,
+  ShowCondition = 10020803,
   StoryPath = "SpecialSideStory/2001/200104.story",
-  UnlockCondition = 100208,
+  UnlockCondition = 10020803,
 }
 r3_0[200201] = {
   ChapterName = "UI_ChapterName_01",
@@ -961,9 +1088,9 @@ r3_0[200211] = {
   QuestDescription = "Description_200211_1",
   QuestDetail = "Content_200211_1",
   QuestNpcId = 700012,
-  ShowCondition = 100208,
+  ShowCondition = 10020802,
   StoryPath = "SpecialSideStory/2002/200211_Faye.story",
-  UnlockCondition = 100208,
+  UnlockCondition = 10020802,
 }
 r3_0[200212] = {
   ChapterName = "UI_ChapterName_01",
@@ -981,9 +1108,9 @@ r3_0[200212] = {
   QuestDescription = "Description_200212_2",
   QuestDetail = "Content_200212_2",
   QuestNpcId = 700113,
-  ShowCondition = 100208,
+  ShowCondition = 10020802,
   StoryPath = "SpecialSideStory/2002/200212_Lali.story",
-  UnlockCondition = 100208,
+  UnlockCondition = 10020802,
 }
 r3_0[200213] = {
   ChapterName = "UI_ChapterName_01",
@@ -1004,9 +1131,9 @@ r3_0[200213] = {
   QuestReward = {
     [20021300] = 4000001,
   },
-  ShowCondition = 100208,
+  ShowCondition = 10020802,
   StoryPath = "SpecialSideStory/2002/200213_Maer_Start.story",
-  UnlockCondition = 100208,
+  UnlockCondition = 10020802,
 }
 r3_0[200215] = {
   ChapterName = "UI_ChapterName_01",
@@ -1366,6 +1493,123 @@ r3_0[200236] = {
   StoryPath = "SpecialSideStory/2002/200236_Walnut.story",
   UnlockCondition = 4340,
 }
+r3_0[200301] = {
+  ChapterName = "UI_ChapterName_E0",
+  Episode = "Name_200301",
+  EpisodeName = "Name_200301",
+  IfAutoStart = true,
+  IsShowWindow = true,
+  MainStoryUnlockMessage = "Textmap_UnlockTitle",
+  QuestChainId = 200301,
+  QuestChainName = "Name_200301",
+  QuestChainReward = {
+    50596
+  },
+  QuestChainType = 3,
+  QuestDescription = "Description_200301_1",
+  QuestDetail = "Content_200301_1",
+  ShowCondition = 120106,
+  StoryPath = "SpecialSideStory/2003/200301_God.story",
+  UnlockCondition = 120106,
+}
+r3_0[200302] = {
+  ChapterName = "UI_ChapterName_E0",
+  Episode = "Name_200302",
+  EpisodeName = "Name_200302",
+  IfAutoStart = true,
+  IsShowWindow = true,
+  MainStoryUnlockMessage = "Textmap_UnlockTitle",
+  QuestChainId = 200302,
+  QuestChainName = "Name_200302",
+  QuestChainReward = {
+    50597
+  },
+  QuestChainType = 3,
+  QuestDescription = "Description_200302_1",
+  QuestDetail = "Content_200302_1",
+  QuestNpcId = 700321,
+  ShowCondition = 120106,
+  StoryPath = "SpecialSideStory/2003/200302_ZhuXing.story",
+  UnlockCondition = 120106,
+}
+r3_0[200303] = {
+  ChapterName = "UI_ChapterName_E0",
+  Episode = "Name_200303",
+  EpisodeName = "Name_200303",
+  IfAutoStart = true,
+  IsShowWindow = true,
+  MainStoryUnlockMessage = "Textmap_UnlockTitle",
+  QuestChainId = 200303,
+  QuestChainName = "Name_200303",
+  QuestChainReward = {
+    50598
+  },
+  QuestChainType = 3,
+  QuestDescription = "Description_200303_1",
+  QuestDetail = "Content_200303_1",
+  QuestNpcId = 700322,
+  ShowCondition = 120106,
+  StoryPath = "SpecialSideStory/2003/200303_DaFengZhiXi.story",
+  UnlockCondition = 120106,
+}
+r3_0[200304] = {
+  ChapterName = "UI_ChapterName_E0",
+  Episode = "Name_200304",
+  EpisodeName = "Name_200304",
+  IfAutoStart = true,
+  IsShowWindow = true,
+  MainStoryUnlockMessage = "Textmap_UnlockTitle",
+  QuestChainId = 200304,
+  QuestChainName = "Name_200304",
+  QuestChainReward = {
+    50599
+  },
+  QuestChainType = 3,
+  QuestDescription = "Description_200304_1",
+  QuestDetail = "Content_200304_1",
+  QuestNpcId = 700324,
+  ShowCondition = 20030401,
+  StoryPath = "SpecialSideStory/2003/200304_MuXi.story",
+  UnlockCondition = 20030401,
+}
+r3_0[200306] = {
+  ChapterName = "UI_ChapterName_E0",
+  Episode = "Name_200306",
+  EpisodeName = "Name_200306",
+  IfAutoStart = true,
+  MainStoryUnlockMessage = "Textmap_UnlockTitle",
+  QuestChainId = 200306,
+  QuestChainName = "Name_200306",
+  QuestChainReward = {
+    50601
+  },
+  QuestChainType = 3,
+  QuestDescription = "Description_200306_1",
+  QuestDetail = "Content_200306_1",
+  QuestNpcId = 700323,
+  ShowCondition = 12010306,
+  StoryPath = "SpecialSideStory/2003/200306_JiShu.story",
+  UnlockCondition = 12010306,
+}
+r3_0[200309] = {
+  ChapterName = "UI_ChapterName_E0",
+  Episode = "Name_200309",
+  EpisodeName = "Name_200309",
+  IfAutoStart = true,
+  IsShowWindow = true,
+  MainStoryUnlockMessage = "Textmap_UnlockTitle",
+  QuestChainId = 200309,
+  QuestChainName = "Name_200309",
+  QuestChainReward = {
+    50604
+  },
+  QuestChainType = 3,
+  QuestDescription = "Description_200309_1",
+  QuestDetail = "Content_200309_1",
+  ShowCondition = 120106,
+  StoryPath = "SpecialSideStory/2003/200309_weishengbaozhu.story",
+  UnlockCondition = 120106,
+}
 r3_0[400101] = {
   ActivelyAccept = true,
   ChapterBeginEndIconPath = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Chapter/T_Chapter_Icon03.T_Chapter_Icon03\'",
@@ -1524,6 +1768,27 @@ r3_0[400107] = {
   StartTime = 1765659600,
   StoryPath = "ActiveQuest/East00ac/400107.story",
   UnlockCondition = 120002,
+  UnlockContent = "Textmap_UnlockContent",
+  UnlockTitle = "Textmap_UnlockTitle",
+}
+r3_0[400111] = {
+  ChapterBeginEndIconPath = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Chapter/T_Chapter_Icon03.T_Chapter_Icon03\'",
+  ChapterName = "UI_ChapterName_E0",
+  EndTime = 1768856400,
+  Episode = "Name_400111",
+  EpisodeName = "Name_400111",
+  IfAutoStart = true,
+  MainStoryUnlockMessage = "Textmap_UnlockTitle",
+  QuestChainId = 400111,
+  QuestChainName = "Name_400111",
+  QuestChainReward = {
+    50603
+  },
+  QuestChainType = 5,
+  ShowCondition = 100307,
+  StartTime = 1766628000,
+  StoryPath = "ActiveQuest/ActiveThea/400111.story",
+  UnlockCondition = 100307,
   UnlockContent = "Textmap_UnlockContent",
   UnlockTitle = "Textmap_UnlockTitle",
 }

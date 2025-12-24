@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("RougeLikeRoomType", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\RougeLikeRoomType.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("RougeLikeRoomType", {
   [1] = {
     DeliveryUnitId = 60001,
     ESCIcon = "/Game/UI/Texture/Dynamic/Image/RougeLike/T_Rouge_Room01.T_Rouge_Room01",
@@ -11,7 +14,7 @@ return ReadOnly("RougeLikeRoomType", {
     IsShowBattlePanel = 1,
     Name = "RougeLike_RoomType_Name_1",
     RoomTypeId = 1,
-    SuccessText = "RougeLike_Room_B_Success"
+    SuccessText = "RougeLike_Room_B_Success",
   },
   [2] = {
     DeliveryUnitId = 60002,
@@ -22,28 +25,28 @@ return ReadOnly("RougeLikeRoomType", {
     IsShowBattlePanel = 1,
     Name = "RougeLike_RoomType_Name_2",
     RoomTypeId = 2,
-    SuccessText = "RougeLike_Room_EB_Success"
+    SuccessText = "RougeLike_Room_EB_Success",
   },
   [3] = {
     DeliveryUnitId = 60003,
     ESCIcon = "/Game/UI/Texture/Dynamic/Image/RougeLike/T_Rouge_BlessingRoom_Event.T_Rouge_BlessingRoom_Event",
     Icon = "/Game/UI/Texture/Dynamic/Image/RougeLike/T_Rouge_BlessingRoom_Event.T_Rouge_BlessingRoom_Event",
     Name = "RougeLike_RoomType_Name_3",
-    RoomTypeId = 3
+    RoomTypeId = 3,
   },
   [4] = {
     DeliveryUnitId = 60004,
     ESCIcon = "/Game/UI/Texture/Dynamic/Image/RougeLike/T_Rouge_BlessingRoom_Shop.T_Rouge_BlessingRoom_Shop",
     Icon = "/Game/UI/Texture/Dynamic/Image/RougeLike/T_Rouge_BlessingRoom_Shop.T_Rouge_BlessingRoom_Shop",
     Name = "RougeLike_RoomType_Name_4",
-    RoomTypeId = 4
+    RoomTypeId = 4,
   },
   [5] = {
     DeliveryUnitId = 60005,
     ESCIcon = "/Game/UI/Texture/Dynamic/Image/RougeLike/T_Rouge_Room03.T_Rouge_Room03",
     Icon = "/Game/UI/Texture/Dynamic/Image/RougeLike/T_Rouge_Room03.T_Rouge_Room03",
     Name = "RougeLike_RoomType_Name_5",
-    RoomTypeId = 5
+    RoomTypeId = 5,
   },
   [6] = {
     DeliveryUnitId = 60010,
@@ -54,6 +57,6 @@ return ReadOnly("RougeLikeRoomType", {
     IsShowBattlePanel = 1,
     Name = "RougeLike_RoomType_Name_6",
     RoomTypeId = 6,
-    SuccessText = "RougeLike_Room_B_Success"
-  }
+    SuccessText = "RougeLike_Room_B_Success",
+  },
 })

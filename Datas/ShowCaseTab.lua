@@ -1,15 +1,18 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("ShowCaseTab", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\ShowCaseTab.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("ShowCaseTab", {
   [1] = {
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Tab/T_Tab_Role",
     TabId = 1,
-    TabName = "UI_PersonInfo_ShowCase_Char"
+    TabName = "UI_PersonInfo_ShowCase_Char",
   },
   [2] = {
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Tab/T_Tab_Weapon",
     TabId = 2,
-    TabName = "UI_PersonInfo_ShowCase_Weapon"
-  }
+    TabName = "UI_PersonInfo_ShowCase_Weapon",
+  },
 })

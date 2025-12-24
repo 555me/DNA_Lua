@@ -1,275 +1,285 @@
-local T = {}
-T.RT_1 = {
-  Damping = 0.9,
-  LimitAngle = 0,
-  Radius = 3.0,
-  Stiffness = 0.7,
-  Width = 5,
-  WordDampingLocation = 0.9,
-  WordDampingRotation = 0.5
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\KawaiiParams.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r0_0 = {
+  RT_1 = {
+    Damping = 0.9,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.7,
+    Width = 5,
+    WordDampingLocation = 0.9,
+    WordDampingRotation = 0.5,
+  },
+  RT_2 = {
+    Damping = 0.8,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.6,
+    Width = 5,
+    WordDampingLocation = 0.9,
+    WordDampingRotation = 0.5,
+  },
+  RT_3 = {
+    Damping = 0.8,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.8,
+    Width = 5,
+    WordDampingLocation = 0.9,
+    WordDampingRotation = 0.5,
+  },
+  RT_4 = {
+    Damping = 0.9,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.8,
+    Width = 5,
+    WordDampingLocation = 0.9,
+    WordDampingRotation = 0.5,
+  },
+  RT_5 = {
+    Damping = 0.1,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.8,
+    Width = 5,
+    WordDampingLocation = 0.9,
+    WordDampingRotation = 0.5,
+  },
+  RT_6 = {
+    Damping = 0.6,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.3,
+    Width = 5,
+    WordDampingLocation = 0.9,
+    WordDampingRotation = 0.5,
+  },
 }
-T.RT_2 = {
-  Damping = 0.8,
-  LimitAngle = 0,
-  Radius = 3.0,
-  Stiffness = 0.6,
-  Width = 5,
-  WordDampingLocation = 0.9,
-  WordDampingRotation = 0.5
-}
-T.RT_3 = {
-  Damping = 0.8,
-  LimitAngle = 0,
-  Radius = 3.0,
-  Stiffness = 0.8,
-  Width = 5,
-  WordDampingLocation = 0.9,
-  WordDampingRotation = 0.5
-}
-T.RT_4 = {
-  Damping = 0.9,
-  LimitAngle = 0,
-  Radius = 3.0,
-  Stiffness = 0.8,
-  Width = 5,
-  WordDampingLocation = 0.9,
-  WordDampingRotation = 0.5
-}
-T.RT_5 = {
-  Damping = 0.1,
-  LimitAngle = 0,
-  Radius = 3.0,
-  Stiffness = 0.8,
-  Width = 5,
-  WordDampingLocation = 0.9,
-  WordDampingRotation = 0.5
-}
-T.RT_6 = {
-  Damping = 0.6,
-  LimitAngle = 0,
-  Radius = 3.0,
-  Stiffness = 0.3,
-  Width = 5,
-  WordDampingLocation = 0.9,
-  WordDampingRotation = 0.5
-}
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
+local r1_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [57, 57] id: 1
+  return r1_1
 end
-return ReadOnly("KawaiiParams", {
-  [1001] = {
-    KawaiiId = 1001,
-    KawaiiParament = {
-      EnterJump = {
-        Damping = 0.8,
-        LimitAngle = 0,
-        Radius = 3.0,
-        Stiffness = 0.7,
-        Width = 5,
-        WordDampingLocation = 0.9,
-        WordDampingRotation = 0.5
-      },
-      EnterSecJump = T.RT_1,
-      Idle = T.RT_2,
-      InAir = T.RT_1,
-      Land = T.RT_3,
-      LevelEnter = T.RT_2,
-      RunLoop = {
-        Damping = 0.9,
-        LimitAngle = 0,
-        Radius = 3.0,
-        Stiffness = 0.65,
-        Width = 5,
-        WordDampingLocation = 0.9,
-        WordDampingRotation = 0.5
-      },
-      RunStart = T.RT_2,
-      RunStop = T.RT_3,
-      SlideToIdle = T.RT_2,
-      StartSlide = T.RT_2
-    },
-    KawaiiType = "hair"
+local r4_0 = {}
+local r6_0 = {
+  KawaiiId = 1001,
+}
+r6_0.KawaiiParament = {
+  EnterJump = {
+    Damping = 0.8,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.7,
+    Width = 5,
+    WordDampingLocation = 0.9,
+    WordDampingRotation = 0.5,
   },
-  [1002] = {
-    KawaiiId = 1002,
-    KawaiiParament = {
-      EnterJump = {
-        Damping = 0.8,
-        LimitAngle = 0,
-        Radius = 3.0,
-        Stiffness = 0.6,
-        Width = 5,
-        WordDampingLocation = 0.7,
-        WordDampingRotation = 0.5
-      },
-      EnterSecJump = {
-        Damping = 0.8,
-        LimitAngle = 0,
-        Radius = 3.0,
-        Stiffness = 0.5,
-        Width = 5,
-        WordDampingLocation = 0.7,
-        WordDampingRotation = 0.5
-      },
-      Idle = T.RT_3,
-      InAir = {
-        Damping = 0.7,
-        LimitAngle = 0,
-        Radius = 3.0,
-        Stiffness = 0.5,
-        Width = 5,
-        WordDampingLocation = 0.7,
-        WordDampingRotation = 0.5
-      },
-      Land = T.RT_4,
-      LevelEnter = {
-        Damping = 0.8,
-        LimitAngle = 0,
-        Radius = 3.0,
-        Stiffness = 0.8,
-        Width = 5,
-        WordDampingLocation = 0.7,
-        WordDampingRotation = 0.5
-      },
-      RunLoop = T.RT_3,
-      RunStart = T.RT_3,
-      RunStop = T.RT_3,
-      SlideToIdle = T.RT_3,
-      StartSlide = T.RT_3
-    },
-    KawaiiType = "cloak"
+  EnterSecJump = r0_0.RT_1,
+  Idle = r0_0.RT_2,
+  InAir = r0_0.RT_1,
+  Land = r0_0.RT_3,
+  LevelEnter = r0_0.RT_2,
+  RunLoop = {
+    Damping = 0.9,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.65,
+    Width = 5,
+    WordDampingLocation = 0.9,
+    WordDampingRotation = 0.5,
   },
-  [1003] = {
-    KawaiiId = 1003,
-    KawaiiParament = {
-      EnterJump = T.RT_3,
-      EnterSecJump = T.RT_3,
-      Idle = T.RT_3,
-      InAir = T.RT_3,
-      Land = T.RT_3,
-      LevelEnter = T.RT_3,
-      RunLoop = T.RT_3,
-      RunStart = T.RT_3,
-      RunStop = T.RT_3,
-      SlideToIdle = T.RT_3,
-      StartSlide = T.RT_3
-    },
-    KawaiiType = "skirt"
+  RunStart = r0_0.RT_2,
+  RunStop = r0_0.RT_3,
+  SlideToIdle = r0_0.RT_2,
+  StartSlide = r0_0.RT_2,
+}
+r6_0.KawaiiType = "hair"
+r4_0[1001] = r6_0
+r6_0 = {
+  KawaiiId = 1002,
+}
+r6_0.KawaiiParament = {
+  EnterJump = {
+    Damping = 0.8,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.6,
+    Width = 5,
+    WordDampingLocation = 0.7,
+    WordDampingRotation = 0.5,
   },
-  [1004] = {
-    KawaiiId = 1004,
-    KawaiiParament = {
-      EnterJump = T.RT_5,
-      EnterSecJump = T.RT_5,
-      Idle = T.RT_5,
-      InAir = T.RT_5,
-      Land = T.RT_5,
-      LevelEnter = T.RT_5,
-      RunLoop = T.RT_5,
-      RunStart = T.RT_5,
-      RunStop = T.RT_5,
-      SlideToIdle = T.RT_5,
-      StartSlide = T.RT_5
-    },
-    KawaiiType = "hair"
+  EnterSecJump = {
+    Damping = 0.8,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.5,
+    Width = 5,
+    WordDampingLocation = 0.7,
+    WordDampingRotation = 0.5,
   },
-  [1005] = {
-    KawaiiId = 1005,
-    KawaiiParament = {
-      EnterJump = T.RT_6,
-      EnterSecJump = T.RT_6,
-      Idle = T.RT_6,
-      InAir = {
-        Damping = 0.7,
-        LimitAngle = 0,
-        Radius = 3.0,
-        Stiffness = 0.5,
-        Width = 5,
-        WordDampingLocation = 0.8,
-        WordDampingRotation = 0.5
-      },
-      Land = {
-        Damping = 0.7,
-        LimitAngle = 0,
-        Radius = 3.0,
-        Stiffness = 0.3,
-        Width = 5,
-        WordDampingLocation = 0.9,
-        WordDampingRotation = 0.5
-      },
-      LevelEnter = T.RT_6,
-      RunLoop = {
-        Damping = 0.6,
-        LimitAngle = 0,
-        Radius = 3.0,
-        Stiffness = 0.3,
-        Width = 5,
-        WordDampingLocation = 0.8,
-        WordDampingRotation = 0.5
-      },
-      RunStart = T.RT_6,
-      RunStop = T.RT_6,
-      SlideToIdle = T.RT_6,
-      StartSlide = {
-        Damping = 0.6,
-        LimitAngle = 0,
-        Radius = 3.0,
-        Stiffness = 0.3,
-        Width = 5,
-        WordDampingLocation = 0.7,
-        WordDampingRotation = 0.5
-      }
-    },
-    KawaiiType = "cloak"
+  Idle = r0_0.RT_3,
+  InAir = {
+    Damping = 0.7,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.5,
+    Width = 5,
+    WordDampingLocation = 0.7,
+    WordDampingRotation = 0.5,
   },
-  [1006] = {
-    KawaiiId = 1006,
-    KawaiiParament = {
-      EnterJump = T.RT_3,
-      EnterSecJump = T.RT_3,
-      Idle = T.RT_3,
-      InAir = {
-        Damping = 0.9,
-        LimitAngle = 0,
-        Radius = 3.0,
-        Stiffness = 0.9,
-        Width = 5,
-        WordDampingLocation = 0.9,
-        WordDampingRotation = 0.5
-      },
-      Land = T.RT_3,
-      LevelEnter = T.RT_3,
-      RunLoop = T.RT_3,
-      RunStart = T.RT_3,
-      RunStop = T.RT_4,
-      SlideToIdle = T.RT_3,
-      StartSlide = T.RT_3
-    },
-    KawaiiType = "hair"
+  Land = r0_0.RT_4,
+  LevelEnter = {
+    Damping = 0.8,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.8,
+    Width = 5,
+    WordDampingLocation = 0.7,
+    WordDampingRotation = 0.5,
   },
-  [1007] = {
-    KawaiiId = 1007,
-    KawaiiParament = {
-      EnterJump = T.RT_2,
-      EnterSecJump = T.RT_2,
-      Idle = T.RT_2,
-      InAir = {
-        Damping = 0.7,
-        LimitAngle = 0,
-        Radius = 3.0,
-        Stiffness = 0.6,
-        Width = 5,
-        WordDampingLocation = 0.9,
-        WordDampingRotation = 0.5
-      },
-      Land = T.RT_2,
-      LevelEnter = T.RT_2,
-      RunLoop = T.RT_2,
-      RunStart = T.RT_2,
-      RunStop = T.RT_2,
-      SlideToIdle = T.RT_2,
-      StartSlide = T.RT_2
-    },
-    KawaiiType = "cloak"
-  }
-})
+  RunLoop = r0_0.RT_3,
+  RunStart = r0_0.RT_3,
+  RunStop = r0_0.RT_3,
+  SlideToIdle = r0_0.RT_3,
+  StartSlide = r0_0.RT_3,
+}
+r6_0.KawaiiType = "cloak"
+r4_0[1002] = r6_0
+r4_0[1003] = {
+  KawaiiId = 1003,
+  KawaiiParament = {
+    EnterJump = r0_0.RT_3,
+    EnterSecJump = r0_0.RT_3,
+    Idle = r0_0.RT_3,
+    InAir = r0_0.RT_3,
+    Land = r0_0.RT_3,
+    LevelEnter = r0_0.RT_3,
+    RunLoop = r0_0.RT_3,
+    RunStart = r0_0.RT_3,
+    RunStop = r0_0.RT_3,
+    SlideToIdle = r0_0.RT_3,
+    StartSlide = r0_0.RT_3,
+  },
+  KawaiiType = "skirt",
+}
+r4_0[1004] = {
+  KawaiiId = 1004,
+  KawaiiParament = {
+    EnterJump = r0_0.RT_5,
+    EnterSecJump = r0_0.RT_5,
+    Idle = r0_0.RT_5,
+    InAir = r0_0.RT_5,
+    Land = r0_0.RT_5,
+    LevelEnter = r0_0.RT_5,
+    RunLoop = r0_0.RT_5,
+    RunStart = r0_0.RT_5,
+    RunStop = r0_0.RT_5,
+    SlideToIdle = r0_0.RT_5,
+    StartSlide = r0_0.RT_5,
+  },
+  KawaiiType = "hair",
+}
+r6_0 = {
+  KawaiiId = 1005,
+}
+r6_0.KawaiiParament = {
+  EnterJump = r0_0.RT_6,
+  EnterSecJump = r0_0.RT_6,
+  Idle = r0_0.RT_6,
+  InAir = {
+    Damping = 0.7,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.5,
+    Width = 5,
+    WordDampingLocation = 0.8,
+    WordDampingRotation = 0.5,
+  },
+  Land = {
+    Damping = 0.7,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.3,
+    Width = 5,
+    WordDampingLocation = 0.9,
+    WordDampingRotation = 0.5,
+  },
+  LevelEnter = r0_0.RT_6,
+  RunLoop = {
+    Damping = 0.6,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.3,
+    Width = 5,
+    WordDampingLocation = 0.8,
+    WordDampingRotation = 0.5,
+  },
+  RunStart = r0_0.RT_6,
+  RunStop = r0_0.RT_6,
+  SlideToIdle = r0_0.RT_6,
+  StartSlide = {
+    Damping = 0.6,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.3,
+    Width = 5,
+    WordDampingLocation = 0.7,
+    WordDampingRotation = 0.5,
+  },
+}
+r6_0.KawaiiType = "cloak"
+r4_0[1005] = r6_0
+r6_0 = {
+  KawaiiId = 1006,
+}
+r6_0.KawaiiParament = {
+  EnterJump = r0_0.RT_3,
+  EnterSecJump = r0_0.RT_3,
+  Idle = r0_0.RT_3,
+  InAir = {
+    Damping = 0.9,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.9,
+    Width = 5,
+    WordDampingLocation = 0.9,
+    WordDampingRotation = 0.5,
+  },
+  Land = r0_0.RT_3,
+  LevelEnter = r0_0.RT_3,
+  RunLoop = r0_0.RT_3,
+  RunStart = r0_0.RT_3,
+  RunStop = r0_0.RT_4,
+  SlideToIdle = r0_0.RT_3,
+  StartSlide = r0_0.RT_3,
+}
+r6_0.KawaiiType = "hair"
+r4_0[1006] = r6_0
+r6_0 = {
+  KawaiiId = 1007,
+}
+r6_0.KawaiiParament = {
+  EnterJump = r0_0.RT_2,
+  EnterSecJump = r0_0.RT_2,
+  Idle = r0_0.RT_2,
+  InAir = {
+    Damping = 0.7,
+    LimitAngle = 0,
+    Radius = 3,
+    Stiffness = 0.6,
+    Width = 5,
+    WordDampingLocation = 0.9,
+    WordDampingRotation = 0.5,
+  },
+  Land = r0_0.RT_2,
+  LevelEnter = r0_0.RT_2,
+  RunLoop = r0_0.RT_2,
+  RunStart = r0_0.RT_2,
+  RunStop = r0_0.RT_2,
+  SlideToIdle = r0_0.RT_2,
+  StartSlide = r0_0.RT_2,
+}
+r6_0.KawaiiType = "cloak"
+r4_0[1007] = r6_0
+return r1_0("KawaiiParams", r4_0)

@@ -1,176 +1,152 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/UnLuaPerformanceTestProxy.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local UnLuaPerformanceTestProxy = Class()
-
-function UnLuaPerformanceTestProxy:ReceiveBeginPlay()
-  local N = 1000000
-  local Multiplier = 1.0E9 / N
-  local RawObject = self.Object
-  for i = 1, N do
-    self:NOP()
+local r0_0 = Class()
+function r0_0.ReceiveBeginPlay(r0_1)
+  -- line: [5, 204] id: 1
+  local r1_1 = 1000000
+  local r2_1 = 1000000000 / r1_1
+  local r3_1 = r0_1.Object
+  for r7_1 = 1, r1_1, 1 do
+    r0_1:NOP()
   end
-  local StartTime = Seconds()
-  for i = 1, N do
-    local MeshID = RawObject.MeshID
+  local r4_1 = Seconds()
+  for r8_1 = 1, r1_1, 1 do
+    local r9_1 = r3_1.MeshID
   end
-  local EndTime = Seconds()
-  local Message = "read int32 ; " .. tostring((EndTime - StartTime) * Multiplier)
-  StartTime = Seconds()
-  for i = 1, N do
-    RawObject.MeshID = i
+  local r6_1 = "read int32 ; " .. tostring((Seconds() - r4_1) * r2_1)
+  r4_1 = Seconds()
+  for r10_1 = 1, r1_1, 1 do
+    r3_1.MeshID = r10_1
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "write int32 ; " .. tostring((EndTime - StartTime) * Multiplier)
-  StartTime = Seconds()
-  for i = 1, N do
-    local MeshName = RawObject.MeshName
+  r6_1 = r6_1 .. "\n" .. "write int32 ; " .. tostring((Seconds() - r4_1) * r2_1)
+  r4_1 = Seconds()
+  for r10_1 = 1, r1_1, 1 do
+    local r11_1 = r3_1.MeshName
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "read FString ; " .. tostring((EndTime - StartTime) * Multiplier)
-  StartTime = Seconds()
-  for i = 1, N do
-    RawObject.MeshName = "9527"
+  r6_1 = r6_1 .. "\n" .. "read FString ; " .. tostring((Seconds() - r4_1) * r2_1)
+  r4_1 = Seconds()
+  for r10_1 = 1, r1_1, 1 do
+    r3_1.MeshName = "9527"
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "write FString ; " .. tostring((EndTime - StartTime) * Multiplier)
-  StartTime = Seconds()
-  for i = 1, N do
-    local COM = RawObject.COM
+  r6_1 = r6_1 .. "\n" .. "write FString ; " .. tostring((Seconds() - r4_1) * r2_1)
+  r4_1 = Seconds()
+  for r10_1 = 1, r1_1, 1 do
+    local r11_1 = r3_1.COM
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "read FVector ; " .. tostring((EndTime - StartTime) * Multiplier)
-  local COM = UE.FVector(1.0, 1.0, 1.0)
-  StartTime = Seconds()
-  for i = 1, N do
-    RawObject.COM = COM
+  r6_1 = r6_1 .. "\n" .. "read FVector ; " .. tostring((Seconds() - r4_1) * r2_1)
+  local r7_1 = UE.FVector(1, 1, 1)
+  r4_1 = Seconds()
+  for r11_1 = 1, r1_1, 1 do
+    r3_1.COM = r7_1
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "write FVector ; " .. tostring((EndTime - StartTime) * Multiplier)
-  StartTime = Seconds()
-  for i = 1, N do
-    local Positions = RawObject.Positions
+  r6_1 = r6_1 .. "\n" .. "write FVector ; " .. tostring((Seconds() - r4_1) * r2_1)
+  r4_1 = Seconds()
+  for r11_1 = 1, r1_1, 1 do
+    local r12_1 = r3_1.Positions
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "read TArray<FVector> ; " .. tostring((EndTime - StartTime) * Multiplier)
-  local PredictedPositions = UE.TArray(UE.FVector)
-  StartTime = Seconds()
-  for i = 1, N do
-    RawObject.PredictedPositions = PredictedPositions
+  r6_1 = r6_1 .. "\n" .. "read TArray<FVector> ; " .. tostring((Seconds() - r4_1) * r2_1)
+  local r8_1 = UE.TArray(UE.FVector)
+  r4_1 = Seconds()
+  for r12_1 = 1, r1_1, 1 do
+    r3_1.PredictedPositions = r8_1
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "write TArray<FVector> ; " .. tostring((EndTime - StartTime) * Multiplier)
-  StartTime = Seconds()
-  for i = 1, N do
-    self:NOP()
+  r6_1 = r6_1 .. "\n" .. "write TArray<FVector> ; " .. tostring((Seconds() - r4_1) * r2_1)
+  r4_1 = Seconds()
+  for r12_1 = 1, r1_1, 1 do
+    r0_1:NOP()
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "void NOP() ; " .. tostring((EndTime - StartTime) * Multiplier)
-  StartTime = Seconds()
-  for i = 1, N do
-    self:Simulate(0.0167)
+  r6_1 = r6_1 .. "\n" .. "void NOP() ; " .. tostring((Seconds() - r4_1) * r2_1)
+  r4_1 = Seconds()
+  for r12_1 = 1, r1_1, 1 do
+    r0_1:Simulate(0.0167)
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "void Simulate(float) ; " .. tostring((EndTime - StartTime) * Multiplier)
-  StartTime = Seconds()
-  for i = 1, N do
-    local MeshID = self:GetMeshID()
+  r6_1 = r6_1 .. "\n" .. "void Simulate(float) ; " .. tostring((Seconds() - r4_1) * r2_1)
+  r4_1 = Seconds()
+  for r12_1 = 1, r1_1, 1 do
+    local r13_1 = r0_1:GetMeshID()
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "int32 GetMeshID() const ; " .. tostring((EndTime - StartTime) * Multiplier)
-  StartTime = Seconds()
-  for i = 1, N do
-    local MeshName = self:GetMeshName()
+  r6_1 = r6_1 .. "\n" .. "int32 GetMeshID() const ; " .. tostring((Seconds() - r4_1) * r2_1)
+  r4_1 = Seconds()
+  for r12_1 = 1, r1_1, 1 do
+    local r13_1 = r0_1:GetMeshName()
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "const FString& GetMeshName() const ; " .. tostring((EndTime - StartTime) * Multiplier)
-  StartTime = Seconds()
-  for i = 1, N do
-    self:GetCOM(COM)
+  r6_1 = r6_1 .. "\n" .. "const FString& GetMeshName() const ; " .. tostring((Seconds() - r4_1) * r2_1)
+  r4_1 = Seconds()
+  for r12_1 = 1, r1_1, 1 do
+    r0_1:GetCOM(r7_1)
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "const FVector& GetCOM() const ; " .. tostring((EndTime - StartTime) * Multiplier)
-  StartTime = Seconds()
-  for i = 1, N do
-    local NewMeshID = self:UpdateMeshID(1024)
+  r6_1 = r6_1 .. "\n" .. "const FVector& GetCOM() const ; " .. tostring((Seconds() - r4_1) * r2_1)
+  r4_1 = Seconds()
+  for r12_1 = 1, r1_1, 1 do
+    local r13_1 = r0_1:UpdateMeshID(1024)
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "int32 UpdateMeshID(int32) ; " .. tostring((EndTime - StartTime) * Multiplier)
-  StartTime = Seconds()
-  for i = 1, N do
-    local NewMeshName = self:UpdateMeshName("1024")
+  r6_1 = r6_1 .. "\n" .. "int32 UpdateMeshID(int32) ; " .. tostring((Seconds() - r4_1) * r2_1)
+  r4_1 = Seconds()
+  for r12_1 = 1, r1_1, 1 do
+    local r13_1 = r0_1:UpdateMeshName("1024")
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "FString UpdateMeshName(const FString&) ; " .. tostring((EndTime - StartTime) * Multiplier)
-  local Origin = UE.FVector(1.0, 1.0, 1.0)
-  local Direction = UE.FVector(1.0, 0.0, 0.0)
-  StartTime = Seconds()
-  for i = 1, N do
-    local bHit = self:Raycast(Origin, Direction)
+  r6_1 = r6_1 .. "\n" .. "FString UpdateMeshName(const FString&) ; " .. tostring((Seconds() - r4_1) * r2_1)
+  local r9_1 = UE.FVector(1, 1, 1)
+  local r10_1 = UE.FVector(1, 0, 0)
+  r4_1 = Seconds()
+  for r14_1 = 1, r1_1, 1 do
+    local r15_1 = r0_1:Raycast(r9_1, r10_1)
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "bool Raycast(const FVector&, const FVector&) const ; " .. tostring((EndTime - StartTime) * Multiplier)
-  local Indices = UE.TArray(0)
-  StartTime = Seconds()
-  for i = 1, N do
-    self:GetIndices(Indices)
+  r6_1 = r6_1 .. "\n" .. "bool Raycast(const FVector&, const FVector&) const ; " .. tostring((Seconds() - r4_1) * r2_1)
+  local r11_1 = UE.TArray(0)
+  r4_1 = Seconds()
+  for r15_1 = 1, r1_1, 1 do
+    r0_1:GetIndices(r11_1)
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "void GetIndices(TArray<int32>&) const ; " .. tostring((EndTime - StartTime) * Multiplier)
-  for i = 1, 1024 do
-    Indices:Add(i)
+  r6_1 = r6_1 .. "\n" .. "void GetIndices(TArray<int32>&) const ; " .. tostring((Seconds() - r4_1) * r2_1)
+  for r15_1 = 1, 1024, 1 do
+    r11_1:Add(r15_1)
   end
-  StartTime = Seconds()
-  for i = 1, N do
-    self:GetIndices(Indices)
+  r4_1 = Seconds()
+  for r15_1 = 1, r1_1, 1 do
+    r0_1:GetIndices(r11_1)
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "void GetIndices(TArray<int32>&) const with 1024 items ; " .. tostring((EndTime - StartTime) * Multiplier)
-  StartTime = Seconds()
-  for i = 1, N do
-    self:UpdateIndices(Indices)
+  r6_1 = r6_1 .. "\n" .. "void GetIndices(TArray<int32>&) const with 1024 items ; " .. tostring((Seconds() - r4_1) * r2_1)
+  r4_1 = Seconds()
+  for r15_1 = 1, r1_1, 1 do
+    r0_1:UpdateIndices(r11_1)
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "void UpdateIndices(const TArray<int32>&) ; " .. tostring((EndTime - StartTime) * Multiplier)
-  local Positions = UE.TArray(UE.FVector)
-  StartTime = Seconds()
-  for i = 1, N do
-    self:GetPositions(Positions)
+  r6_1 = r6_1 .. "\n" .. "void UpdateIndices(const TArray<int32>&) ; " .. tostring((Seconds() - r4_1) * r2_1)
+  local r12_1 = UE.TArray(UE.FVector)
+  r4_1 = Seconds()
+  for r16_1 = 1, r1_1, 1 do
+    r0_1:GetPositions(r12_1)
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "void GetPositions(TArray<FVector>&) const ; " .. tostring((EndTime - StartTime) * Multiplier)
-  for i = 1, 1024 do
-    Positions:Add(UE.FVector(i, i, i))
+  r6_1 = r6_1 .. "\n" .. "void GetPositions(TArray<FVector>&) const ; " .. tostring((Seconds() - r4_1) * r2_1)
+  for r16_1 = 1, 1024, 1 do
+    r12_1:Add(UE.FVector(r16_1, r16_1, r16_1))
   end
-  StartTime = Seconds()
-  for i = 1, N do
-    self:GetPositions(Positions)
+  r4_1 = Seconds()
+  for r16_1 = 1, r1_1, 1 do
+    r0_1:GetPositions(r12_1)
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "void GetPositions(TArray<FVector>&) const with 1024 items ; " .. tostring((EndTime - StartTime) * Multiplier)
-  StartTime = Seconds()
-  for i = 1, N do
-    self:UpdatePositions(Positions)
+  r6_1 = r6_1 .. "\n" .. "void GetPositions(TArray<FVector>&) const with 1024 items ; " .. tostring((Seconds() - r4_1) * r2_1)
+  r4_1 = Seconds()
+  for r16_1 = 1, r1_1, 1 do
+    r0_1:UpdatePositions(r12_1)
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "void UpdatePositions(const TArray<FVector>&) ; " .. tostring((EndTime - StartTime) * Multiplier)
-  StartTime = Seconds()
-  for i = 1, N do
-    self:GetPredictedPositions(PredictedPositions)
+  r6_1 = r6_1 .. "\n" .. "void UpdatePositions(const TArray<FVector>&) ; " .. tostring((Seconds() - r4_1) * r2_1)
+  r4_1 = Seconds()
+  for r16_1 = 1, r1_1, 1 do
+    r0_1:GetPredictedPositions(r8_1)
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "const TArray<FVector>& GetPredictedPositions() const ; " .. tostring((EndTime - StartTime) * Multiplier)
-  StartTime = Seconds()
-  for i = 1, N do
-    local ID, Name, bResult = self:GetMeshInfo(0, "", COM, Indices, Positions, PredictedPositions)
+  r6_1 = r6_1 .. "\n" .. "const TArray<FVector>& GetPredictedPositions() const ; " .. tostring((Seconds() - r4_1) * r2_1)
+  r4_1 = Seconds()
+  for r16_1 = 1, r1_1, 1 do
+    local r17_1, r18_1, r19_1 = r0_1:GetMeshInfo(0, "", r7_1, r11_1, r12_1, r8_1)
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "bool GetMeshInfo(int32&, FString&, FVector&, TArray<int32>&, TArray<FVector>&, TArray<FVector>&) const ; " .. tostring((EndTime - StartTime) * Multiplier)
-  StartTime = Seconds()
-  for i = 1, N do
-    local HitResult = UE.FHitResult()
+  r6_1 = r6_1 .. "\n" .. "bool GetMeshInfo(int32&, FString&, FVector&, TArray<int32>&, TArray<FVector>&, TArray<FVector>&) const ; " .. tostring((Seconds() - r4_1) * r2_1)
+  r4_1 = Seconds()
+  for r16_1 = 1, r1_1, 1 do
+    local r17_1 = UE.FHitResult()
   end
-  EndTime = Seconds()
-  Message = Message .. "\n" .. "FHitResult() ; " .. tostring((EndTime - StartTime) * Multiplier)
-  LogPerformanceData(Message)
+  LogPerformanceData(r6_1 .. "\n" .. "FHitResult() ; " .. tostring((Seconds() - r4_1) * r2_1))
 end
-
-return UnLuaPerformanceTestProxy
+return r0_0

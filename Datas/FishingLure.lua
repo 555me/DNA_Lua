@@ -1,13 +1,16 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("FishingLure", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\FishingLure.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("FishingLure", {
   [101] = {
     FishingLureId = 101,
     FishingLureSort = 2,
     FishingLureType = 1,
     ItemId = 801001,
-    ResourceId = 5210100
+    ResourceId = 5210100,
   },
   [102] = {
     FishingLureId = 102,
@@ -16,7 +19,7 @@ return ReadOnly("FishingLure", {
     Function = "AccelerateHook",
     ItemId = 801002,
     Param = 0.2,
-    ResourceId = 5210200
+    ResourceId = 5210200,
   },
   [103] = {
     FishingLureId = 103,
@@ -25,7 +28,7 @@ return ReadOnly("FishingLure", {
     Function = "AddVariationProb",
     ItemId = 801003,
     Param = 0.3,
-    ResourceId = 5210300
+    ResourceId = 5210300,
   },
   [104] = {
     FishingLureId = 104,
@@ -34,6 +37,6 @@ return ReadOnly("FishingLure", {
     Function = "AddRareFishProb",
     ItemId = 801004,
     Param = 1,
-    ResourceId = 5210400
-  }
+    ResourceId = 5210400,
+  },
 })

@@ -1,303 +1,491 @@
-local T = {}
-T.RT_1 = {-3172, -5484}
-T.RT_2 = {101107}
-T.RT_3 = {
-  101701,
-  101702,
-  101703
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\RegionPoint.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r0_0 = {
+  RT_1 = {
+    -3172,
+    -5484
+  },
+  RT_2 = {
+    101107
+  },
+  RT_3 = {
+    101701,
+    101702,
+    101703
+  },
+  RT_4 = {
+    101108
+  },
 }
-T.RT_4 = {101108}
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
+local r2_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [18, 18] id: 1
+  return r1_1
 end
-return ReadOnly("RegionPoint", {
-  [2001] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Homebase.T_Gp_Homebase",
-    Id = 2001,
-    ManualItemId = 1199997,
-    Name = "UI_SUBREGION_NAME_210101",
-    Pos = {-5221, 6000},
-    SubRegion = 101101,
-    TargetSubRegion = {210101},
-    TelepointId = 1011,
-    TeleportPointPos = 15,
-    TeleportSubRegion = 101101,
-    UnlockConditionId = 311
+local r3_0 = "RegionPoint"
+local r4_0 = {}
+r4_0[2001] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Homebase.T_Gp_Homebase",
+  Id = 2001,
+  ManualItemId = 1199997,
+  Name = "UI_SUBREGION_NAME_210101",
+  Pos = {
+    -5221,
+    6000
   },
-  [2002] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Tavern.T_Gp_Tavern",
-    Id = 2002,
-    ManualItemId = 1199999,
-    Name = "UI_SUBREGION_NAME_101107",
-    Pos = T.RT_1,
-    SubRegion = 101101,
-    TargetSubRegion = T.RT_2,
-    TelepointId = 1011,
-    TeleportPointPos = 16,
-    TeleportSubRegion = 101101,
-    UnlockConditionId = 31
+  SubRegion = 101101,
+  TargetSubRegion = {
+    210101
   },
-  [2003] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Sanatorium.T_Gp_Sanatorium",
-    Id = 2003,
-    ManualItemId = 1199996,
-    Name = "UI_SUBREGION_NAME_101106",
-    Pos = {-2360, 13561},
-    SubRegion = 101101,
-    TargetSubRegion = {101106},
-    TelepointId = 1012,
-    TeleportPointPos = 17,
-    TeleportSubRegion = 101101,
-    UnlockConditionId = 310
+  TelepointId = 1011,
+  TeleportPointPos = 15,
+  TeleportSubRegion = 101101,
+  UnlockConditionId = 311,
+}
+r4_0[2002] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Tavern.T_Gp_Tavern",
+  Id = 2002,
+  ManualItemId = 1199999,
+  Name = "UI_SUBREGION_NAME_101107",
+  Pos = r0_0.RT_1,
+  SubRegion = 101101,
+  TargetSubRegion = r0_0.RT_2,
+  TelepointId = 1011,
+  TeleportPointPos = 16,
+  TeleportSubRegion = 101101,
+  UnlockConditionId = 31,
+}
+r4_0[2003] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Sanatorium.T_Gp_Sanatorium",
+  Id = 2003,
+  ManualItemId = 1199996,
+  Name = "UI_SUBREGION_NAME_101106",
+  Pos = {
+    -2360,
+    13561
   },
-  [2004] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_OutsidersHome.T_Gp_OutsidersHome",
-    Id = 2004,
-    ManualItemId = 1199998,
-    Name = "UI_SUBREGION_NAME_101105",
-    Pos = {-1768, -12190},
-    SubRegion = 101101,
-    TargetSubRegion = {101105},
-    TelepointId = 1011,
-    TeleportPointPos = 18,
-    TeleportSubRegion = 101101,
-    UnlockConditionId = 313
+  SubRegion = 101101,
+  TargetSubRegion = {
+    101106
   },
-  [2005] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Kuangkeng.T_Gp_Kuangkeng",
-    Id = 2005,
-    ManualItemId = 1189999,
-    Name = "UI_REGIONMAP_NAME_201",
-    Pos = {-32320, -14330},
-    SubRegion = 101103,
-    TargetSubRegion = {
-      101301,
-      101302,
-      101303,
-      101304
-    },
-    TelepointId = 1014,
-    TeleportPointPos = 15,
-    TeleportSubRegion = 101103,
-    UnlockConditionId = 314
+  TelepointId = 1012,
+  TeleportPointPos = 17,
+  TeleportSubRegion = 101101,
+  UnlockConditionId = 310,
+}
+r4_0[2004] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_OutsidersHome.T_Gp_OutsidersHome",
+  Id = 2004,
+  ManualItemId = 1199998,
+  Name = "UI_SUBREGION_NAME_101105",
+  Pos = {
+    -1768,
+    -12190
   },
-  [2006] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Sew.T_Gp_Sew",
-    Id = 2006,
-    ManualItemId = 1199995,
-    Name = "UI_REGIONMAP_NAME_202",
-    Pos = {-8372, -675},
-    SubRegion = 101101,
-    TargetSubRegion = T.RT_3,
-    TelepointId = 1011,
-    TeleportPointPos = 19,
-    TeleportSubRegion = 101101,
-    UnlockConditionId = 312
+  SubRegion = 101101,
+  TargetSubRegion = {
+    101105
   },
-  [2007] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Sew.T_Gp_Sew",
-    Id = 2007,
-    ManualItemId = 1193001,
-    Name = "UI_REGIONMAP_NAME_202",
-    Pos = {100, -7250},
-    SubRegion = 101101,
-    TargetSubRegion = T.RT_3,
-    TelepointId = 1011,
-    TeleportPointPos = 20,
-    TeleportSubRegion = 101101,
-    UnlockConditionId = 320
+  TelepointId = 1011,
+  TeleportPointPos = 18,
+  TeleportSubRegion = 101101,
+  UnlockConditionId = 313,
+}
+r4_0[2005] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Kuangkeng.T_Gp_Kuangkeng",
+  Id = 2005,
+  ManualItemId = 1189999,
+  Name = "UI_REGIONMAP_NAME_201",
+  Pos = {
+    -32320,
+    -14330
   },
-  [2008] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Secr.T_Gp_Secr",
-    Id = 2008,
-    ManualItemId = 118001,
-    Name = "UI_SUBREGION_NAME_101108",
-    Pos = {-39499, 2240},
-    SubRegion = 101103,
-    TargetSubRegion = T.RT_4,
-    TelepointId = 1010,
-    TeleportPointPos = 16,
-    TeleportSubRegion = 101103,
-    UnlockConditionId = 315
+  SubRegion = 101103,
+  TargetSubRegion = {
+    101301,
+    101302,
+    101303,
+    101304
   },
-  [2009] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Thea.T_Gp_Thea",
-    Id = 2009,
-    ManualItemId = 119004,
-    Name = "UI_SUBREGION_NAME_101901",
-    Pos = {699, 5940},
-    SubRegion = 101101,
-    TargetSubRegion = {101901},
-    TelepointId = 1011,
-    TeleportPointPos = 21,
-    TeleportSubRegion = 101101,
-    UnlockConditionId = 317
+  TelepointId = 1014,
+  TeleportPointPos = 15,
+  TeleportSubRegion = 101103,
+  UnlockConditionId = 314,
+}
+r4_0[2006] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Sew.T_Gp_Sew",
+  Id = 2006,
+  ManualItemId = 1199995,
+  Name = "UI_REGIONMAP_NAME_202",
+  Pos = {
+    -8372,
+    -675
   },
-  [2011] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Flow.T_Gp_Flow",
-    Id = 2011,
-    ManualItemId = 119002,
-    Name = "UI_SUBREGION_NAME_101111",
-    Pos = {-8023, -7696},
-    SubRegion = 101101,
-    TargetSubRegion = {101111},
-    TelepointId = 1011,
-    TeleportPointPos = 22,
-    TeleportSubRegion = 101101,
-    UnlockConditionId = 31
+  SubRegion = 101101,
+  TargetSubRegion = r0_0.RT_3,
+  TelepointId = 1011,
+  TeleportPointPos = 19,
+  TeleportSubRegion = 101101,
+  UnlockConditionId = 312,
+}
+r4_0[2007] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Sew.T_Gp_Sew",
+  Id = 2007,
+  ManualItemId = 1193001,
+  Name = "UI_REGIONMAP_NAME_202",
+  Pos = {
+    100,
+    -7250
   },
-  [2012] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Secr.T_Gp_Secr",
-    Id = 2012,
-    ManualItemId = 118003,
-    Name = "UI_SUBREGION_NAME_101108",
-    Pos = {-39990, 6541},
-    SubRegion = 101103,
-    TargetSubRegion = T.RT_4,
-    TelepointId = 1010,
-    TeleportPointPos = 38,
-    TeleportSubRegion = 101103,
-    UnlockConditionId = 321
+  SubRegion = 101101,
+  TargetSubRegion = r0_0.RT_3,
+  TelepointId = 1011,
+  TeleportPointPos = 20,
+  TeleportSubRegion = 101101,
+  UnlockConditionId = 320,
+}
+r4_0[2008] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Secr.T_Gp_Secr",
+  Id = 2008,
+  ManualItemId = 118001,
+  Name = "UI_SUBREGION_NAME_101108",
+  Pos = {
+    -39499,
+    2240
   },
-  [2612] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Shop.T_Gp_Shop",
-    Id = 2612,
-    Name = "UI_ImpressionShop_ShopName_1011",
-    Pos = {-1185, -4530},
-    StaticId = 1190177,
-    SubRegion = 101101,
-    TelepointId = 1011,
-    TeleportPointPos = 23,
-    TeleportSubRegion = 101101,
-    UnlockConditionId = 101103
+  SubRegion = 101103,
+  TargetSubRegion = r0_0.RT_4,
+  TelepointId = 1010,
+  TeleportPointPos = 16,
+  TeleportSubRegion = 101103,
+  UnlockConditionId = 315,
+}
+r4_0[2009] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Thea.T_Gp_Thea",
+  Id = 2009,
+  ManualItemId = 119004,
+  Name = "UI_SUBREGION_NAME_101901",
+  Pos = {
+    699,
+    5940
   },
-  [2613] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Shop.T_Gp_Shop",
-    Id = 2613,
-    Name = "UI_SHOP_ExploreBadge",
-    Pos = {44, -2924},
-    StaticId = 1190879,
-    SubRegion = 101101,
-    TelepointId = 1011,
-    TeleportPointPos = 24,
-    TeleportSubRegion = 101101,
-    UnlockConditionId = 10101001
+  SubRegion = 101101,
+  TargetSubRegion = {
+    101901
   },
-  [2614] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Shop.T_Gp_Shop",
-    Id = 2614,
-    Name = "UI_SHOP_Fishing",
-    Pos = {-5184, -621},
-    StaticId = 1190986,
-    SubRegion = 101101,
-    TelepointId = 1011,
-    TeleportPointPos = 25,
-    TeleportSubRegion = 101101,
-    UnlockConditionId = 20021501
+  TelepointId = 1011,
+  TeleportPointPos = 21,
+  TeleportSubRegion = 101101,
+  UnlockConditionId = 317,
+}
+r4_0[2011] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Flow.T_Gp_Flow",
+  Id = 2011,
+  ManualItemId = 119002,
+  Name = "UI_SUBREGION_NAME_101111",
+  Pos = {
+    -8023,
+    -7696
   },
-  [2814] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Angling.T_Gp_Angling",
-    Id = 2814,
-    ManualItemId = 159001,
-    Name = "FishingSpot_Name_10010101",
-    Pos = {-4222, 11076},
-    SubRegion = 100101,
-    TelepointId = 1001,
-    TeleportPointPos = 7,
-    TeleportSubRegion = 100101,
-    UnlockConditionId = 20021502
+  SubRegion = 101101,
+  TargetSubRegion = {
+    101111
   },
-  [2815] = {
-    BuildingNameAndId = "Icelake_L-1",
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Angling.T_Gp_Angling",
-    Id = 2815,
-    ManualItemId = 124020,
-    Name = "FishingSpot_Name_10110301",
-    Pos = {-31071, 25822},
-    SubRegion = 101103,
-    TelepointId = 1017,
-    TeleportPointPos = 17,
-    TeleportSubRegion = 101103,
-    UnlockConditionId = 20021503
+  TelepointId = 1011,
+  TeleportPointPos = 22,
+  TeleportSubRegion = 101101,
+  UnlockConditionId = 31,
+}
+r4_0[2012] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Secr.T_Gp_Secr",
+  Id = 2012,
+  ManualItemId = 118003,
+  Name = "UI_SUBREGION_NAME_101108",
+  Pos = {
+    -39990,
+    6541
   },
-  [2816] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Angling.T_Gp_Angling",
-    Id = 2816,
-    ManualItemId = 173077,
-    Name = "FishingSpot_Name_10170101",
-    Pos = {-28245, -18056},
-    SubRegion = 101702,
-    TelepointId = 1032,
-    TeleportPointPos = 8,
-    TeleportSubRegion = 101702,
-    UnlockConditionId = 20021504
+  SubRegion = 101103,
+  TargetSubRegion = r0_0.RT_4,
+  TelepointId = 1010,
+  TeleportPointPos = 38,
+  TeleportSubRegion = 101103,
+  UnlockConditionId = 321,
+}
+r4_0[2013] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Office.T_Gp_Office",
+  Id = 2013,
+  ManualItemId = 210001,
+  Name = "UI_SUBREGION_NAME_104901",
+  Pos = {
+    -25203,
+    6819
   },
-  [2817] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Zhiliu.T_Gp_Zhiliu",
-    Id = 2817,
-    ManualItemId = 1199999,
-    Name = "Event_Title_103005",
-    Pos = T.RT_1,
-    SingleCreate = true,
-    SubRegion = 101101,
-    TargetSubRegion = T.RT_2,
-    TelepointId = 1011,
-    TeleportPointPos = 2,
-    TeleportSubRegion = 101107
+  SubRegion = 104109,
+  TargetSubRegion = {
+    104901
   },
-  [2818] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Angling.T_Gp_Angling",
-    Id = 2818,
-    ManualItemId = 209001,
-    Name = "FishingSpot_Name_10410801",
-    Pos = {29818, 63347},
-    SubRegion = 104108,
-    TelepointId = 1100,
-    TeleportSubRegion = 104108,
-    UnlockConditionId = 20021501
+  TelepointId = 1105,
+  TeleportPointPos = 2,
+  TeleportSubRegion = 104109,
+  UnlockConditionId = 323,
+}
+r4_0[2014] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Leave.T_Gp_Leave",
+  Id = 2014,
+  ManualItemId = 206001,
+  Name = "UI_SUBREGION_NAME_105701",
+  Pos = {
+    -9753,
+    -36781
   },
-  [2819] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Angling.T_Gp_Angling",
-    Id = 2819,
-    ManualItemId = 209002,
-    Name = "FishingSpot_Name_10411001",
-    Pos = {29374, 2540},
-    SubRegion = 104110,
-    TelepointId = 1100,
-    TeleportSubRegion = 104108,
-    UnlockConditionId = 20021501
+  SubRegion = 104105,
+  TargetSubRegion = {
+    105701
   },
-  [2820] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Angling.T_Gp_Angling",
-    Id = 2820,
-    ManualItemId = 209003,
-    Name = "FishingSpot_Name_10410701",
-    Pos = {29770, 63360},
-    SubRegion = 104103,
-    TelepointId = 1100,
-    TeleportSubRegion = 104108,
-    UnlockConditionId = 20021501
+  TelepointId = 1107,
+  TeleportPointPos = 3,
+  TeleportSubRegion = 104105,
+  UnlockConditionId = 324,
+}
+r4_0[2612] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Shop.T_Gp_Shop",
+  Id = 2612,
+  Name = "UI_ImpressionShop_ShopName",
+  Pos = {
+    -1185,
+    -4530
   },
-  [2821] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Angling.T_Gp_Angling",
-    Id = 2821,
-    ManualItemId = 209004,
-    Name = "FishingSpot_Name_10410601",
-    Pos = {-5619, 31992},
-    SubRegion = 104106,
-    TelepointId = 1100,
-    TeleportSubRegion = 104108,
-    UnlockConditionId = 20021501
+  StaticId = 1190177,
+  SubRegion = 101101,
+  TelepointId = 1011,
+  TeleportPointPos = 23,
+  TeleportSubRegion = 101101,
+  UnlockConditionId = 101103,
+}
+r4_0[2613] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Shop.T_Gp_Shop",
+  Id = 2613,
+  Name = "UI_SHOP_ExploreBadge",
+  Pos = {
+    44,
+    -2924
   },
-  [2822] = {
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Angling.T_Gp_Angling",
-    Id = 2822,
-    ManualItemId = 209005,
-    Name = "FishingSpot_Name_10410901",
-    Pos = {-23243, 13894},
-    SubRegion = 104109,
-    TelepointId = 1100,
-    TeleportSubRegion = 104108,
-    UnlockConditionId = 20021501
-  }
-})
+  StaticId = 1190879,
+  SubRegion = 101101,
+  TelepointId = 1011,
+  TeleportPointPos = 24,
+  TeleportSubRegion = 101101,
+  UnlockConditionId = 10101001,
+}
+r4_0[2614] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Shop.T_Gp_Shop",
+  Id = 2614,
+  Name = "UI_SHOP_Fishing_Chapter01",
+  Pos = {
+    -5184,
+    -621
+  },
+  StaticId = 1190986,
+  SubRegion = 101101,
+  TelepointId = 1011,
+  TeleportPointPos = 25,
+  TeleportSubRegion = 101101,
+  UnlockConditionId = 20021501,
+}
+r4_0[2814] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Angling.T_Gp_Angling",
+  Id = 2814,
+  ManualItemId = 159001,
+  Name = "FishingSpot_Name_10010101",
+  Pos = {
+    -4222,
+    11076
+  },
+  SubRegion = 100101,
+  TelepointId = 1001,
+  TeleportPointPos = 7,
+  TeleportSubRegion = 100101,
+  UnlockConditionId = 20021502,
+}
+r4_0[2815] = {
+  BuildingNameAndId = "Icelake_L-1",
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Angling.T_Gp_Angling",
+  Id = 2815,
+  ManualItemId = 124020,
+  Name = "FishingSpot_Name_10110301",
+  Pos = {
+    -31071,
+    25822
+  },
+  SubRegion = 101103,
+  TelepointId = 1017,
+  TeleportPointPos = 17,
+  TeleportSubRegion = 101103,
+  UnlockConditionId = 20021503,
+}
+r4_0[2816] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Angling.T_Gp_Angling",
+  Id = 2816,
+  ManualItemId = 173077,
+  Name = "FishingSpot_Name_10170101",
+  Pos = {
+    -28245,
+    -18056
+  },
+  SubRegion = 101702,
+  TelepointId = 1032,
+  TeleportPointPos = 8,
+  TeleportSubRegion = 101702,
+  UnlockConditionId = 20021504,
+}
+r4_0[2817] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Zhiliu.T_Gp_Zhiliu",
+  Id = 2817,
+  ManualItemId = 1199999,
+  Name = "Event_Title_103005",
+  Pos = r0_0.RT_1,
+  SingleCreate = true,
+  SubRegion = 101101,
+  TargetSubRegion = r0_0.RT_2,
+  TelepointId = 1011,
+  TeleportPointPos = 2,
+  TeleportSubRegion = 101107,
+}
+r4_0[2818] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Angling.T_Gp_Angling",
+  Id = 2818,
+  ManualItemId = 209001,
+  Name = "FishingSpot_Name_10410801",
+  Pos = {
+    30373,
+    61000
+  },
+  SubRegion = 104108,
+  TelepointId = 1100,
+  TeleportPointPos = 6,
+  TeleportSubRegion = 104108,
+  UnlockConditionId = 20021505,
+}
+r4_0[2819] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Angling.T_Gp_Angling",
+  Id = 2819,
+  ManualItemId = 209002,
+  Name = "FishingSpot_Name_10411001",
+  Pos = {
+    29404,
+    1702
+  },
+  SubRegion = 104110,
+  TelepointId = 1102,
+  TeleportPointPos = 5,
+  TeleportSubRegion = 104110,
+  UnlockConditionId = 20021506,
+}
+r4_0[2820] = {
+  BuildingNameAndId = "Yanjindu_L-1",
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Angling.T_Gp_Angling",
+  Id = 2820,
+  ManualItemId = 209003,
+  Name = "FishingSpot_Name_10410301",
+  Pos = {
+    -5619,
+    31992
+  },
+  SubRegion = 104103,
+  TelepointId = 1104,
+  TeleportPointPos = 2,
+  TeleportSubRegion = 104103,
+  UnlockConditionId = 20021507,
+}
+r4_0[2821] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Angling.T_Gp_Angling",
+  Id = 2821,
+  ManualItemId = 209004,
+  Name = "FishingSpot_Name_10410601",
+  Pos = {
+    14677,
+    -13509
+  },
+  SubRegion = 104106,
+  TelepointId = 1110,
+  TeleportPointPos = 3,
+  TeleportSubRegion = 104106,
+  UnlockConditionId = 20021508,
+}
+r4_0[2822] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Angling.T_Gp_Angling",
+  Id = 2822,
+  ManualItemId = 209005,
+  Name = "FishingSpot_Name_10410901",
+  Pos = {
+    -22464,
+    11542
+  },
+  SubRegion = 104109,
+  TelepointId = 1105,
+  TeleportPointPos = 4,
+  TeleportSubRegion = 104109,
+  UnlockConditionId = 20021509,
+}
+r4_0[2823] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Shop.T_Gp_Shop",
+  Id = 2823,
+  Name = "UI_SHOP_ExploreBadge",
+  Pos = {
+    -16004,
+    8005
+  },
+  StaticId = 2100256,
+  SubRegion = 104109,
+  TelepointId = 1105,
+  TeleportPointPos = 5,
+  TeleportSubRegion = 104109,
+  UnlockConditionId = 10101001,
+}
+r4_0[2824] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Shop.T_Gp_Shop",
+  Id = 2824,
+  Name = "UI_SHOP_Fishing_East01",
+  Pos = {
+    31820,
+    48650
+  },
+  StaticId = 2090755,
+  SubRegion = 104108,
+  TelepointId = 1100,
+  TeleportPointPos = 8,
+  TeleportSubRegion = 104108,
+  UnlockConditionId = 20021501,
+}
+r4_0[2825] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Shop.T_Gp_Shop",
+  Id = 2825,
+  Name = "HuaxuExploreShop",
+  Pos = {
+    26370,
+    -5100
+  },
+  StaticId = 2110173,
+  SubRegion = 104110,
+  TelepointId = 1102,
+  TeleportPointPos = 6,
+  TeleportSubRegion = 104110,
+  UnlockConditionId = 12010203,
+}
+r4_0[2826] = {
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Shop.T_Gp_Shop",
+  Id = 2826,
+  Name = "UI_ImpressionShop_ShopName",
+  Pos = {
+    32634,
+    -7003
+  },
+  StaticId = 2110174,
+  SubRegion = 104110,
+  TelepointId = 1102,
+  TeleportPointPos = 7,
+  TeleportSubRegion = 104110,
+  UnlockConditionId = 101103,
+}
+return r2_0(r3_0, r4_0)

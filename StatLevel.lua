@@ -1,215 +1,217 @@
-local M = {}
-local TmpPlayer
-local AllStat = {}
-local HitPosTable = {}
-local StatNum = 5
-local StrOutput = ""
-local StrLine = "\n"
-local StrSpace = ","
-local GridFrameClass = LoadClass("/Game/BluePrints/Scene/BP_GridFrame.BP_GridFrame")
-local CurrentNiagaraPath
-M.BeginStat = false
-
-function M:Stat(GM)
-  self.BeginStat = not self.BeginStat
-  if self.BeginStat then
-    self:StatStart(GM)
+-- filename: @C:/Pack/Branch/geili11\Content/Script/StatLevel.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r0_0 = {}
+local r1_0 = nil
+local r2_0 = {}
+local r3_0 = {}
+local r4_0 = 5
+local r5_0 = ""
+local r6_0 = "\n"
+local r7_0 = ","
+local r8_0 = LoadClass("/Game/BluePrints/Scene/BP_GridFrame.BP_GridFrame")
+local r9_0 = nil
+r0_0.BeginStat = false
+function r0_0.Stat(r0_1, r1_1)
+  -- line: [17, 24] id: 1
+  r0_1.BeginStat = not r0_1.BeginStat
+  if r0_1.BeginStat then
+    r0_1:StatStart(r1_1)
   else
-    self:StatEnd(GM)
+    r0_1:StatEnd(r1_1)
   end
 end
-
-function ToString(tab, cnt)
-  cnt = cnt or 1
-  local tp = type(tab)
-  if "table" ~= tp then
-    return tostring(tab)
+ToString = function(r0_2, r1_2)
+  -- line: [26, 67] id: 2
+  if not r1_2 then
+    r1_2 = 1
   end
-  if cnt >= 10 then
-    return tostring(tab)
+  if type(r0_2) ~= "table" then
+    return tostring(r0_2)
   end
-  
-  local function getSpace(count)
-    local temp = {}
-    for i = 1, count * 4 do
-      table.insert(temp, " ")
+  if r1_2 >= 10 then
+    return tostring(r0_2)
+  end
+  local function r3_2(r0_3)
+    -- line: [37, 43] id: 3
+    local r1_3 = {}
+    for r5_3 = 1, r0_3 * 4, 1 do
+      table.insert(r1_3, " ")
     end
-    return table.concat(temp)
+    return table.concat(r1_3)
   end
-  
-  local tabStr = {}
-  table.insert(tabStr, "{\n")
-  local spaceStr = getSpace(cnt)
-  for k, v in pairs(tab) do
-    table.insert(tabStr, spaceStr)
-    local IsNumber = type(k) == "number"
-    if IsNumber then
-      table.insert(tabStr, "[")
+  local r4_2 = {}
+  table.insert(r4_2, "{\n")
+  local r5_2 = r3_2(r1_2)
+  for r10_2, r11_2 in pairs(r0_2) do
+    table.insert(r4_2, r5_2)
+    local r12_2 = type(r10_2) == "number"
+    if r12_2 then
+      table.insert(r4_2, "[")
     end
-    table.insert(tabStr, ToString(k, cnt + 1))
-    if IsNumber then
-      table.insert(tabStr, "]")
+    table.insert(r4_2, ToString(r10_2, r1_2 + 1))
+    if r12_2 then
+      table.insert(r4_2, "]")
     end
-    table.insert(tabStr, " = ")
-    table.insert(tabStr, ToString(v, cnt + 1))
-    table.insert(tabStr, "\n")
+    table.insert(r4_2, " = ")
+    table.insert(r4_2, ToString(r11_2, r1_2 + 1))
+    table.insert(r4_2, "\n")
   end
-  table.insert(tabStr, getSpace(cnt - 1))
-  table.insert(tabStr, "}")
-  return table.concat(tabStr)
+  -- close: r6_2
+  table.insert(r4_2, r3_2(r1_2 + -1))
+  table.insert(r4_2, "}")
+  return table.concat(r4_2)
 end
-
-function M:StatStart(GM)
-  assert(GM.Player, "缺少Player")
-  self.Player = GM.Player
-  self.GM = GM
-  self:GetPositionMap()
-  UE4.UKismetSystemLibrary.ExecuteConsoleCommand(self.Player, "stat unit", self.Player:GetController())
-  self.PointCount = 0
-  self.TravelNext(self)
+function r0_0.StatStart(r0_4, r1_4)
+  -- line: [69, 79] id: 4
+  assert(r1_4.Player, "缺少Player")
+  r0_4.Player = r1_4.Player
+  r0_4.GM = r1_4
+  r0_4:GetPositionMap()
+  UE4.UKismetSystemLibrary.ExecuteConsoleCommand(r0_4.Player, "stat unit", r0_4.Player:GetController())
+  r0_4.PointCount = 0
+  r0_4.TravelNext(r0_4)
 end
-
-function M:TraceNext(ActorSize, ActorLocation, XBias)
-  local YBias = 1
-  local StartPoint = ActorLocation - ActorSize + FVector(0, 0, 1) * ActorSize.Z * 2 + FVector(1, 0, 0) * 1000 * XBias + FVector(0, 1, 0) * 1000 * YBias
-  if not UE4.UKismetMathLibrary.IsPointInBox(StartPoint, ActorLocation, ActorSize) then
-    return
+function r0_0.TraceNext(r0_5, r1_5, r2_5, r3_5)
+  -- line: [81, 130] id: 5
+  local r4_5 = 1
+  local r5_5 = r2_5 - r1_5 + FVector(0, 0, 1) * r1_5.Z * 2 + FVector(1, 0, 0) * 1000 * r3_5 + FVector(0, 1, 0) * 1000 * r4_5
+  if not UE4.UKismetMathLibrary.IsPointInBox(r5_5, r2_5, r1_5) then
+    return 
   end
-  while UE4.UKismetMathLibrary.IsPointInBox(StartPoint, ActorLocation, ActorSize) do
-    local EndPoint = StartPoint - FVector(0, 0, 1) * ActorSize.Z * 2
-    local ActorToIgnore = TArray(AActor)
-    local OutHits = TArray(FHitResult)
-    UE4.UKismetSystemLibrary.LineTraceMulti(self.Player, StartPoint, EndPoint, UE4.ETraceTypeQuery.TraceOverlap, false, ActorToIgnore, 1, OutHits, true)
-    local LastImpactPointZ
-    local firstmatch = false
-    for k, v in pairs(OutHits) do
-      local IsStatciMeshActor = UE4.UKismetMathLibrary.EqualEqual_ClassClass(v.Actor:GetClass(), AStaticMeshActor:StaticClass())
-      local IsLandScapeActor = UE4.UKismetMathLibrary.EqualEqual_ClassClass(v.Actor:GetClass(), ALandscape:StaticClass())
-      if 1 == v.ImpactNormal.Z and (IsStatciMeshActor or IsLandScapeActor) then
-        LastImpactPointZ = LastImpactPointZ or v.ImpactPoint.Z - (self.Player.CapsuleComponent:GetUnscaledCapsuleHalfHeight() * 2 + 4)
-        local HightDiff = v.ImpactPoint.Z - LastImpactPointZ
-        local DiffHigthEnough = math.abs(HightDiff) > self.Player.CapsuleComponent:GetUnscaledCapsuleHalfHeight() * 2
-        LastImpactPointZ = v.ImpactPoint.Z
-        local FindFloorResult = FFindFloorResult()
-        local CheckFloorLocation = FVector(v.ImpactPoint.X, v.ImpactPoint.Y, v.ImpactPoint.Z) + FVector(0, 0, 1) * (self.Player.CapsuleComponent:GetUnscaledCapsuleHalfHeight() - 2)
-        self.Player:GetMovementComponent():K2_FindFloor(CheckFloorLocation, FindFloorResult)
-        if DiffHigthEnough and FindFloorResult.bWalkableFloor then
-          if firstmatch then
-            print(_G.LogTag, "77777", k, v.ImpactPoint, UE4.UKismetSystemLibrary.GetDisplayName(v.Actor), FindFloorResult.bWalkableFloor, FindFloorResult.bBlockingHit)
-            local InsertResult = FVector(v.ImpactPoint.X, v.ImpactPoint.Y, v.ImpactPoint.Z)
-            table.insert(HitPosTable, InsertResult)
+  while UE4.UKismetMathLibrary.IsPointInBox(r5_5, r2_5, r1_5) do
+    local r6_5 = FVector(0, 0, 1)
+    r6_5 = r5_5 - r6_5 * r1_5.Z * 2
+    local r7_5 = TArray(AActor)
+    local r8_5 = TArray(FHitResult)
+    UE4.UKismetSystemLibrary.LineTraceMulti(r0_5.Player, r5_5, r6_5, UE4.ETraceTypeQuery.TraceOverlap, false, r7_5, 1, r8_5, true)
+    local r9_5 = nil
+    local r10_5 = false
+    for r15_5, r16_5 in pairs(r8_5) do
+      local r17_5 = UE4.UKismetMathLibrary.EqualEqual_ClassClass(r16_5.Actor:GetClass(), AStaticMeshActor:StaticClass())
+      local r18_5 = UE4.UKismetMathLibrary.EqualEqual_ClassClass(r16_5.Actor:GetClass(), ALandscape:StaticClass())
+      if r16_5.ImpactNormal.Z == 1 and (r17_5 or r18_5) then
+        if not r9_5 then
+          r9_5 = r16_5.ImpactPoint.Z - r0_5.Player.CapsuleComponent:GetUnscaledCapsuleHalfHeight() * 2 + 4
+        end
+        local r20_5 = r0_5.Player.CapsuleComponent:GetUnscaledCapsuleHalfHeight() * 2 < math.abs(r16_5.ImpactPoint.Z - r9_5)
+        r9_5 = r16_5.ImpactPoint.Z
+        local r21_5 = FFindFloorResult()
+        r0_5.Player:GetMovementComponent():K2_FindFloor(FVector(r16_5.ImpactPoint.X, r16_5.ImpactPoint.Y, r16_5.ImpactPoint.Z) + FVector(0, 0, 1) * (r0_5.Player.CapsuleComponent:GetUnscaledCapsuleHalfHeight() + -2), r21_5)
+        if r20_5 and r21_5.bWalkableFloor then
+          if r10_5 then
+            print(_G.LogTag, "77777", r15_5, r16_5.ImpactPoint, UE4.UKismetSystemLibrary.GetDisplayName(r16_5.Actor), r21_5.bWalkableFloor, r21_5.bBlockingHit)
+            table.insert(r3_0, FVector(r16_5.ImpactPoint.X, r16_5.ImpactPoint.Y, r16_5.ImpactPoint.Z))
           end
-          firstmatch = firstmatch or true
+          if not r10_5 then
+            r10_5 = true
+          end
         end
       end
     end
-    YBias = YBias + 1
-    StartPoint = ActorLocation - ActorSize + FVector(0, 0, 1) * ActorSize.Z * 2 + FVector(1, 0, 0) * 1000 * XBias + FVector(0, 1, 0) * 1000 * YBias
+    -- close: r11_5
+    r4_5 = r4_5 + 1
+    r5_5 = r2_5 - r1_5 + FVector(0, 0, 1) * r1_5.Z * 2 + FVector(1, 0, 0) * 1000 * r3_5 + FVector(0, 1, 0) * 1000 * r4_5
   end
-  self:TraceNext(ActorSize, ActorLocation, XBias + 1)
+  r0_5:TraceNext(r1_5, r2_5, r3_5 + 1)
 end
-
-function M:GetPositionMap()
-  local GridFrame = UE4.UGameplayStatics.GetActorOfClass(self.Player, GridFrameClass)
-  if not GridFrame then
-    DebugPrint("当前关卡并可非拼接子关卡   ", UE4.UGameplayStatics.GetCurrentLevelName(self.Player))
-    return
+function r0_0.GetPositionMap(r0_6)
+  -- line: [132, 149] id: 6
+  local r1_6 = UE4.UGameplayStatics.GetActorOfClass(r0_6.Player, r8_0)
+  if not r1_6 then
+    DebugPrint("当前关卡并可非拼接子关卡   ", UE4.UGameplayStatics.GetCurrentLevelName(r0_6.Player))
+    return 
   end
-  local ActorSize = GridFrame:GetActorScale3D() * 100 / 2
-  local ActorLocation = GridFrame:K2_GetActorLocation()
-  self:TraceNext(ActorSize, ActorLocation, 1)
-  print(_G.LogTag, "111111111111111111111111111111", #HitPosTable)
-  print(_G.LogTag, "111111111", ToString(HitPosTable))
+  r0_6:TraceNext(r1_6:GetActorScale3D() * 100 / 2, r1_6:K2_GetActorLocation(), 1)
+  print(_G.LogTag, "111111111111111111111111111111", #r3_0)
+  print(_G.LogTag, "111111111", ToString(r3_0))
 end
-
-function M:TravelNext()
-  self.PointCount = self.PointCount + 1
-  if self.PointCount > #HitPosTable then
+function r0_0.TravelNext(r0_7)
+  -- line: [151, 171] id: 7
+  r0_7.PointCount = r0_7.PointCount + 1
+  if #r3_0 < r0_7.PointCount then
     print(_G.LogTag, "Point Scan Over")
-    self:StatEnd(self.GM)
-    return
+    r0_7:StatEnd(r0_7.GM)
+    return 
   end
-  self.Player:AddGravityModifier(UE4.EGravityModifierTag.AnimNotify, 0)
-  local ImpactLocation = HitPosTable[self.PointCount]
-  print(_G.LogTag, "get one Point ", self.PointCount, HitPosTable[self.PointCount])
-  local Location = FVector(ImpactLocation.X, ImpactLocation.Y, ImpactLocation.Z) + FVector(0, 0, 1) * (self.Player.CapsuleComponent:GetUnscaledCapsuleHalfHeight() - 2)
-  local FindFloorResult = FFindFloorResult()
-  self.Player:GetMovementComponent():K2_FindFloor(Location, FindFloorResult)
-  print(_G.LogTag, "Start New Poin", self.PointCount, Location, FindFloorResult.bBlockingHit, FindFloorResult.bWalkableFloor)
-  self.Player:K2_SetActorLocation(Location, false, nil, false)
-  self.RotCount = 0
-  self.InitialForward = FVector(1, 0, 0)
-  M.RotateCamera(nil, self)
+  r0_7.Player:AddGravityModifier(UE4.EGravityModifierTag.AnimNotify, 0)
+  local r1_7 = r3_0[r0_7.PointCount]
+  print(_G.LogTag, "get one Point ", r0_7.PointCount, r3_0[r0_7.PointCount])
+  local r2_7 = FVector(r1_7.X, r1_7.Y, r1_7.Z) + FVector(0, 0, 1) * (r0_7.Player.CapsuleComponent:GetUnscaledCapsuleHalfHeight() + -2)
+  local r3_7 = FFindFloorResult()
+  r0_7.Player:GetMovementComponent():K2_FindFloor(r2_7, r3_7)
+  print(_G.LogTag, "Start New Poin", r0_7.PointCount, r2_7, r3_7.bBlockingHit, r3_7.bWalkableFloor)
+  r0_7.Player:K2_SetActorLocation(r2_7, false, nil, false)
+  r0_7.RotCount = 0
+  r0_7.InitialForward = FVector(1, 0, 0)
+  r0_0.RotateCamera(nil, r0_7)
 end
-
-function M.RotateCamera(Player, StatTable)
-  local Controller = StatTable.Player:GetController()
-  local RotAngle = FRotator(0, 90 * StatTable.RotCount, 0)
-  local DesiredRot = UE4.UKismetMathLibrary.GreaterGreater_VectorRotator(StatTable.InitialForward, RotAngle):ToRotator()
-  DesiredRot.Pitch = 15
-  StatTable.RotCount = StatTable.RotCount + 1
-  Controller:SetControlRotation(DesiredRot)
-  if StatTable.RotCount > 4 then
+function r0_0.RotateCamera(r0_8, r1_8)
+  -- line: [173, 191] id: 8
+  local r2_8 = r1_8.Player:GetController()
+  local r4_8 = UE4.UKismetMathLibrary.GreaterGreater_VectorRotator(r1_8.InitialForward, FRotator(0, r1_8.RotCount * 90, 0)):ToRotator()
+  r4_8.Pitch = 15
+  r1_8.RotCount = r1_8.RotCount + 1
+  r2_8:SetControlRotation(r4_8)
+  if r1_8.RotCount > 4 then
     print("One Point Rot Done")
-    StatTable:TravelNext()
-    return
+    r1_8:TravelNext()
+    return 
   end
-  print(_G.LogTag, "Start New Rot", DesiredRot)
-  StatTable.Player:AddTimer(1, M.RecordInfo, false, 0, "Test_StatLevelRecorder", false, StatTable)
-  StatTable.Player:AddTimer(2, M.RotateCamera, false, 0, "Test_StatLevelTimer", false, StatTable)
+  print(_G.LogTag, "Start New Rot", r4_8)
+  r1_8.Player:AddTimer(1, r0_0.RecordInfo, false, 0, "Test_StatLevelRecorder", false, r1_8)
+  r1_8.Player:AddTimer(2, r0_0.RotateCamera, false, 0, "Test_StatLevelTimer", false, r1_8)
 end
-
-function M.RecordInfo(Player, StatTable)
-  local EMData = UE4.URuntimeCommonFunctionLibrary.GetStatUnitData(StatTable.Player)
-  local ActorLocation = StatTable.Player:K2_GetActorLocation()
-  local Controller = StatTable.Player:GetController()
-  local Forward = Controller:GetControllerForwardOrRight(true)
-  local NewRecord = {}
-  NewRecord.Position = {}
-  NewRecord.Position.X = ActorLocation.X
-  NewRecord.Position.Y = ActorLocation.Y
-  NewRecord.Position.Z = ActorLocation.Z
-  NewRecord.Forward = {}
-  NewRecord.Forward.X = Forward.X
-  NewRecord.Forward.Y = Forward.Y
-  NewRecord.Forward.Z = Forward.Z
-  NewRecord.FrameTime = EMData.FrameTime
-  NewRecord.GameThreadTime = EMData.GameThreadTime
-  NewRecord.RenderThreadTime = EMData.RenderThreadTime
-  NewRecord.GPUFrameTime = EMData.GPUFrameTime
-  NewRecord.NumDrawCalls = EMData.NumDrawCalls
-  NewRecord.NumPrimitives = EMData.NumPrimitives
-  table.insert(AllStat, NewRecord)
+function r0_0.RecordInfo(r0_9, r1_9)
+  -- line: [193, 215] id: 9
+  local r2_9 = UE4.URuntimeCommonFunctionLibrary.GetStatUnitData(r1_9.Player)
+  local r3_9 = r1_9.Player:K2_GetActorLocation()
+  local r5_9 = r1_9.Player:GetController():GetControllerForwardOrRight(true)
+  local r6_9 = {
+    Position = {},
+  }
+  r6_9.Position.X = r3_9.X
+  r6_9.Position.Y = r3_9.Y
+  r6_9.Position.Z = r3_9.Z
+  r6_9.Forward = {}
+  r6_9.Forward.X = r5_9.X
+  r6_9.Forward.Y = r5_9.Y
+  r6_9.Forward.Z = r5_9.Z
+  r6_9.FrameTime = r2_9.FrameTime
+  r6_9.GameThreadTime = r2_9.GameThreadTime
+  r6_9.RenderThreadTime = r2_9.RenderThreadTime
+  r6_9.GPUFrameTime = r2_9.GPUFrameTime
+  r6_9.NumDrawCalls = r2_9.NumDrawCalls
+  r6_9.NumPrimitives = r2_9.NumPrimitives
+  table.insert(r2_0, r6_9)
   print(_G.LogTag, "hhhhhhhhhhhhhhhhhhhhhhhhhh one imformation recorded")
 end
-
-function M:StatEnd(GM)
-  assert(GM.Player, "缺少Player")
+function r0_0.StatEnd(r0_10, r1_10)
+  -- line: [217, 263] id: 10
+  assert(r1_10.Player, "缺少Player")
   print("Scan Done")
-  GM.Player:RemoveTimer("Test_StatLevelTimer")
-  GM.Player:RemoveTimer("Test_StatLevelRecorder")
-  print(_G.LogTag, "11111111111111111111111", ToString(AllStat))
-  local MaxFrameTime = 0
-  local MaxFrameTimeRecord = {}
-  local MaxDrawCalls = 0
-  local MaxDrawCallsRecord = {}
-  for idx, Record in pairs(AllStat) do
-    if MaxFrameTime < Record.FrameTime then
-      MaxFrameTime = Record.FrameTime
-      MaxFrameTimeRecord = Record
+  r1_10.Player:RemoveTimer("Test_StatLevelTimer")
+  r1_10.Player:RemoveTimer("Test_StatLevelRecorder")
+  print(_G.LogTag, "11111111111111111111111", ToString(r2_0))
+  local r2_10 = 0
+  local r3_10 = {}
+  local r4_10 = 0
+  local r5_10 = {}
+  for r10_10, r11_10 in pairs(r2_0) do
+    if r2_10 < r11_10.FrameTime then
+      r2_10 = r11_10.FrameTime
+      r3_10 = r11_10
     end
-    if MaxDrawCalls < Record.NumDrawCalls then
-      MaxDrawCalls = Record.NumDrawCalls
-      MaxDrawCallsRecord = Record
+    if r4_10 < r11_10.NumDrawCalls then
+      r4_10 = r11_10.NumDrawCalls
+      r5_10 = r11_10
     end
   end
-  local Path = UE4.UBlueprintPathsLibrary.ProjectLogDir() .. "/StatLevel_" .. UE4.UGameplayStatics.GetCurrentLevelName(GM.Player) .. "_" .. os.date("%Y.%m.%d-%H.%M.%S") .. ".txt"
-  local File = io.open(Path, "w+")
-  io.output(File)
-  local FullString = "All Record Info = " .. ToString(AllStat) .. "," .. "\n" .. "MaxFrameTimeRecord = " .. ToString(MaxFrameTimeRecord) .. "," .. "\n" .. "MaxDrawCallsRecord = " .. ToString(MaxDrawCallsRecord)
-  io.write(FullString)
-  io.close(File)
-  UE4.UKismetSystemLibrary.ExecuteConsoleCommand(self.Player, "stat unit", self.Player:GetController())
+  -- close: r6_10
+  local r7_10 = io.open(UE4.UBlueprintPathsLibrary.ProjectLogDir() .. "/StatLevel_" .. UE4.UGameplayStatics.GetCurrentLevelName(r1_10.Player) .. "_" .. os.date("%Y.%m.%d-%H.%M.%S") .. ".txt", "w+")
+  io.output(r7_10)
+  io.write("All Record Info = " .. ToString(r2_0) .. "," .. "\n" .. "MaxFrameTimeRecord = " .. ToString(r3_10) .. "," .. "\n" .. "MaxDrawCallsRecord = " .. ToString(r5_10))
+  io.close(r7_10)
+  UE4.UKismetSystemLibrary.ExecuteConsoleCommand(r0_10.Player, "stat unit", r0_10.Player:GetController())
 end
-
-return M
+return r0_0

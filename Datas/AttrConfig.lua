@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("AttrConfig", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\AttrConfig.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("AttrConfig", {
   ATK = {
     Id = "ATK",
     Name = "Attr_ATK_Name",
@@ -9,7 +12,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 1,
     SortIndex2 = 1,
     SortIndex3 = 1,
-    SortIndex4 = 1
+    SortIndex4 = 1,
   },
   ATK_Dark = {
     AttrDesc = "ATTR_DESC_ATK_Dark",
@@ -19,7 +22,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 5,
     SortIndex2 = 5,
     SortIndex3 = 5,
-    SortIndex4 = 5
+    SortIndex4 = 5,
   },
   ATK_Fire = {
     AttrDesc = "ATTR_DESC_ATK_Fire",
@@ -29,7 +32,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 3,
     SortIndex2 = 3,
     SortIndex3 = 3,
-    SortIndex4 = 3
+    SortIndex4 = 3,
   },
   ATK_Light = {
     AttrDesc = "ATTR_DESC_ATK_Light",
@@ -39,7 +42,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 6,
     SortIndex2 = 6,
     SortIndex3 = 6,
-    SortIndex4 = 6
+    SortIndex4 = 6,
   },
   ATK_Slash = {
     AttrDesc = "ATTR_DESC_ATK_Slash",
@@ -49,7 +52,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 7,
     SortIndex2 = 7,
     SortIndex3 = 7,
-    SortIndex4 = 7
+    SortIndex4 = 7,
   },
   ATK_Smash = {
     AttrDesc = "ATTR_DESC_ATK_Smash",
@@ -59,7 +62,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 9,
     SortIndex2 = 9,
     SortIndex3 = 9,
-    SortIndex4 = 9
+    SortIndex4 = 9,
   },
   ATK_Spike = {
     AttrDesc = "ATTR_DESC_ATK_Spike",
@@ -69,7 +72,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 8,
     SortIndex2 = 8,
     SortIndex3 = 8,
-    SortIndex4 = 8
+    SortIndex4 = 8,
   },
   ATK_Thunder = {
     AttrDesc = "ATTR_DESC_ATK_Thunder",
@@ -79,7 +82,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 4,
     SortIndex2 = 4,
     SortIndex3 = 4,
-    SortIndex4 = 4
+    SortIndex4 = 4,
   },
   ATK_Water = {
     AttrDesc = "ATTR_DESC_ATK_Water",
@@ -89,18 +92,18 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 2,
     SortIndex2 = 2,
     SortIndex3 = 2,
-    SortIndex4 = 2
+    SortIndex4 = 2,
   },
   ATK_Wind = {
     AttrDesc = "ATTR_DESC_ATK_Wind",
     Id = "ATK_Wind",
     Name = "Attr_ATK_Wind_Name",
     ShowInInspector = true,
-    SortIndex1 = 4.5
+    SortIndex1 = 4.5,
   },
   AdditionalRecoverTime = {
     Id = "AdditionalRecoverTime",
-    Name = "Attr_AdditionalRecoverTime_Name"
+    Name = "Attr_AdditionalRecoverTime_Name",
   },
   AttackRange_Bullet = {
     Id = "AttackRange_Bullet",
@@ -110,7 +113,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 24,
     SortIndex2 = 24,
     SortIndex3 = 24,
-    SortIndex4 = 24
+    SortIndex4 = 24,
   },
   AttackRange_Normal = {
     Id = "AttackRange_Normal",
@@ -120,7 +123,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 23,
     SortIndex2 = 23,
     SortIndex3 = 23,
-    SortIndex4 = 23
+    SortIndex4 = 23,
   },
   AttackSpeed_FallAttack = {
     Id = "AttackSpeed_FallAttack",
@@ -129,7 +132,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 20.4,
     SortIndex2 = 20.4,
     SortIndex3 = 20.4,
-    SortIndex4 = 20.4
+    SortIndex4 = 20.4,
   },
   AttackSpeed_HeavyAttack = {
     Id = "AttackSpeed_HeavyAttack",
@@ -138,7 +141,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 20.2,
     SortIndex2 = 20.2,
     SortIndex3 = 20.2,
-    SortIndex4 = 20.2
+    SortIndex4 = 20.2,
   },
   AttackSpeed_Normal = {
     AttrLimit = "DefaultMaxAttackSpeed",
@@ -149,7 +152,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 20,
     SortIndex2 = 20,
     SortIndex3 = 20,
-    SortIndex4 = 20
+    SortIndex4 = 20,
   },
   AttackSpeed_Reload = {
     Id = "AttackSpeed_Reload",
@@ -158,7 +161,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 21,
     SortIndex2 = 21,
     SortIndex3 = 21,
-    SortIndex4 = 21
+    SortIndex4 = 21,
   },
   AttackSpeed_SlideAttack = {
     Id = "AttackSpeed_SlideAttack",
@@ -167,7 +170,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 20.5,
     SortIndex2 = 20.5,
     SortIndex3 = 20.5,
-    SortIndex4 = 20.5
+    SortIndex4 = 20.5,
   },
   BulletConver = {
     AttrDesc = "ATTR_DESC_BulletConver",
@@ -178,12 +181,12 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 28.5,
     SortIndex2 = 28.5,
     SortIndex3 = 28.5,
-    SortIndex4 = 28.5
+    SortIndex4 = 28.5,
   },
   BulletJumpVelocityModifier = {
     Id = "BulletJumpVelocityModifier",
     IsPercent = true,
-    Name = "Attr_BulletJumpVelocityModifier_Name"
+    Name = "Attr_BulletJumpVelocityModifier_Name",
   },
   BulletMax = {
     Id = "BulletMax",
@@ -192,12 +195,12 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 28,
     SortIndex2 = 28,
     SortIndex3 = 28,
-    SortIndex4 = 28
+    SortIndex4 = 28,
   },
   BulletSpeed = {
     Id = "BulletSpeed",
     IsPercent = true,
-    Name = "Attr_BulletSpeed_Name"
+    Name = "Attr_BulletSpeed_Name",
   },
   CRD = {
     Id = "CRD",
@@ -207,7 +210,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 19,
     SortIndex2 = 19,
     SortIndex3 = 19,
-    SortIndex4 = 19
+    SortIndex4 = 19,
   },
   CRI = {
     AttrDesc = "ATTR_DESC_CRI",
@@ -218,7 +221,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 18,
     SortIndex2 = 18,
     SortIndex3 = 18,
-    SortIndex4 = 18
+    SortIndex4 = 18,
   },
   ComboHoldTime = {
     Id = "ComboHoldTime",
@@ -227,7 +230,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 25,
     SortIndex2 = 25,
     SortIndex3 = 25,
-    SortIndex4 = 25
+    SortIndex4 = 25,
   },
   DEF = {
     Id = "DEF",
@@ -236,7 +239,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 12,
     SortIndex2 = 12,
     SortIndex3 = 12,
-    SortIndex4 = 12
+    SortIndex4 = 12,
   },
   DamageRate = {
     Id = "DamageRate",
@@ -246,12 +249,22 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 9.5,
     SortIndex2 = 9.5,
     SortIndex3 = 9.5,
-    SortIndex4 = 9.5
+    SortIndex4 = 9.5,
+  },
+  DamagedRate = {
+    Id = "DamagedRate",
+    IsPercent = true,
+    Name = "Attr_DamagedRate_Nmae",
+    ShowInInspector = true,
+    SortIndex1 = 9.6,
+    SortIndex2 = 9.6,
+    SortIndex3 = 9.6,
+    SortIndex4 = 9.6,
   },
   DropDistance = {
     Id = "DropDistance",
     Name = "Attr_DropDistance_Name",
-    NumCorrect = 0.01
+    NumCorrect = 0.01,
   },
   EnmityValue = {
     AttrDesc = "ATTR_DESC_EnmityValue",
@@ -262,7 +275,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 17.3,
     SortIndex2 = 17.3,
     SortIndex3 = 17.3,
-    SortIndex4 = 17.3
+    SortIndex4 = 17.3,
   },
   ExcelWeaponTag = {
     AttrDesc = "ATTR_DESC_ExcelWeaponTag",
@@ -272,22 +285,22 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 14,
     SortIndex2 = 14,
     SortIndex3 = 14,
-    SortIndex4 = 14
+    SortIndex4 = 14,
   },
   FallAttackRate = {
     Id = "FallAttackRate",
     IsPercent = true,
-    Name = "Attr_FallAttackRate_Name"
+    Name = "Attr_FallAttackRate_Name",
   },
   HitMontageRate = {
     Id = "HitMontageRate",
     IsPercent = true,
-    Name = "HitMontageRate_Name"
+    Name = "HitMontageRate_Name",
   },
   JumpVelocityModifier = {
     Id = "JumpVelocityModifier",
     IsPercent = true,
-    Name = "Attr_JumpVelocityModifier_Name"
+    Name = "Attr_JumpVelocityModifier_Name",
   },
   LevelLimit = {
     Id = "LevelLimit",
@@ -296,7 +309,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 29,
     SortIndex2 = 29,
     SortIndex3 = 29,
-    SortIndex4 = 29
+    SortIndex4 = 29,
   },
   MagazineCapacity = {
     Id = "MagazineCapacity",
@@ -305,11 +318,11 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 27,
     SortIndex2 = 27,
     SortIndex3 = 27,
-    SortIndex4 = 27
+    SortIndex4 = 27,
   },
   MaxAvoidExecuteTimes = {
     Id = "MaxAvoidExecuteTimes",
-    Name = "Attr_MaxAvoidExecuteTimes_Name"
+    Name = "Attr_MaxAvoidExecuteTimes_Name",
   },
   MaxES = {
     Id = "MaxES",
@@ -318,7 +331,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 11,
     SortIndex2 = 11,
     SortIndex3 = 11,
-    SortIndex4 = 11
+    SortIndex4 = 11,
   },
   MaxHp = {
     Id = "MaxHp",
@@ -327,7 +340,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 10,
     SortIndex2 = 10,
     SortIndex3 = 10,
-    SortIndex4 = 10
+    SortIndex4 = 10,
   },
   MaxSp = {
     Id = "MaxSp",
@@ -336,7 +349,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 13,
     SortIndex2 = 13,
     SortIndex3 = 13,
-    SortIndex4 = 13
+    SortIndex4 = 13,
   },
   ModSlotNum = {
     Id = "ModSlotNum",
@@ -345,7 +358,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 31,
     SortIndex2 = 31,
     SortIndex3 = 31,
-    SortIndex4 = 31
+    SortIndex4 = 31,
   },
   ModVolume = {
     Id = "ModVolume",
@@ -354,7 +367,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 30,
     SortIndex2 = 30,
     SortIndex3 = 30,
-    SortIndex4 = 30
+    SortIndex4 = 30,
   },
   MultiShoot = {
     AttrDesc = "ATTR_DESC_MultiShoot",
@@ -364,33 +377,33 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 26,
     SortIndex2 = 26,
     SortIndex3 = 26,
-    SortIndex4 = 26
+    SortIndex4 = 26,
   },
   MultiShootModifierRate = {
     Id = "MultiShootModifierRate",
     IsPercent = true,
-    Name = "Attr_MultiShootModifierRate_Name"
+    Name = "Attr_MultiShootModifierRate_Name",
   },
   OnceDamagedPercent = {
     Id = "OnceDamagedPercent",
     IsPercent = true,
-    Name = "Attr_OnceDamagedPercent_Name"
+    Name = "Attr_OnceDamagedPercent_Name",
   },
   Positioning = {
     Id = "Positioning",
     Name = "Attr_Positioning",
     ShowInInspector = true,
-    SortIndex1 = 0.5
+    SortIndex1 = 0.5,
   },
   RayLength = {
     Id = "RayLength",
     IsPercent = true,
-    Name = "Attr_RayLength_Name"
+    Name = "Attr_RayLength_Name",
   },
   ReloadBulletNoLoss = {
     Id = "ReloadBulletNoLoss",
     IsPercent = true,
-    Name = "Attr_ReloadBulletNoLoss_Name"
+    Name = "Attr_ReloadBulletNoLoss_Name",
   },
   SkillEfficiency = {
     AttrDesc = "ATTR_DESC_SkillEfficiency",
@@ -402,7 +415,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 17,
     SortIndex2 = 17,
     SortIndex3 = 17,
-    SortIndex4 = 17
+    SortIndex4 = 17,
   },
   SkillIntensity = {
     AttrDesc = "ATTR_DESC_SkillIntensity",
@@ -413,7 +426,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 14.5,
     SortIndex2 = 14.5,
     SortIndex3 = 14.5,
-    SortIndex4 = 14.5
+    SortIndex4 = 14.5,
   },
   SkillRange = {
     AttrDesc = "ATTR_DESC_SkillRange",
@@ -425,7 +438,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 15,
     SortIndex2 = 15,
     SortIndex3 = 15,
-    SortIndex4 = 15
+    SortIndex4 = 15,
   },
   SkillSustain = {
     AttrDesc = "ATTR_DESC_SkillSustain",
@@ -437,21 +450,21 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 16,
     SortIndex2 = 16,
     SortIndex3 = 16,
-    SortIndex4 = 16
+    SortIndex4 = 16,
   },
   SlideAttackRate = {
     Id = "SlideAttackRate",
     IsPercent = true,
-    Name = "Attr_SlideAttackRate_Name"
+    Name = "Attr_SlideAttackRate_Name",
   },
   SlideFrictionModifier = {
     Id = "SlideFrictionModifier",
     IsPercent = true,
-    Name = "Attr_SlideFrictionModifier_Name"
+    Name = "Attr_SlideFrictionModifier_Name",
   },
   SpRecoverValue = {
     Id = "SpRecoverValue",
-    Name = "Attr_SpRecoverValue_Name"
+    Name = "Attr_SpRecoverValue_Name",
   },
   StrongValue = {
     AttrDesc = "ATTR_DESC_StrongValue",
@@ -462,17 +475,17 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 17.1,
     SortIndex2 = 17.1,
     SortIndex3 = 17.1,
-    SortIndex4 = 17.1
+    SortIndex4 = 17.1,
   },
   TriggerEsRate = {
     Id = "TriggerEsRate",
     IsPercent = true,
-    Name = "Attr_TriggerEsRate_Name"
+    Name = "Attr_TriggerEsRate_Name",
   },
   TriggerHpRate = {
     Id = "TriggerHpRate",
     IsPercent = true,
-    Name = "Attr_TriggerHpRate_Name"
+    Name = "Attr_TriggerHpRate_Name",
   },
   TriggerProbModifierValue = {
     Id = "TriggerProbModifierValue",
@@ -482,7 +495,7 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 22.5,
     SortIndex2 = 22.5,
     SortIndex3 = 22.5,
-    SortIndex4 = 22.5
+    SortIndex4 = 22.5,
   },
   TriggerProbability = {
     AttrDesc = "ATTR_DESC_TriggerProbability",
@@ -493,12 +506,12 @@ return ReadOnly("AttrConfig", {
     SortIndex1 = 22,
     SortIndex2 = 22,
     SortIndex3 = 22,
-    SortIndex4 = 22
+    SortIndex4 = 22,
   },
   WeaponCRIModifierRate = {
     Id = "WeaponCRIModifierRate",
     IsPercent = true,
-    Name = "Attr_WeaponCRIModifierRate_Name"
+    Name = "Attr_WeaponCRIModifierRate_Name",
   },
   WeaponType = {
     Id = "WeaponType",
@@ -506,6 +519,6 @@ return ReadOnly("AttrConfig", {
     ShowInInspector = true,
     SortIndex2 = 0.5,
     SortIndex3 = 0.5,
-    SortIndex4 = 0.5
-  }
+    SortIndex4 = 0.5,
+  },
 })

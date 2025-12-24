@@ -1,14 +1,17 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("CharDispatchTag", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\CharDispatchTag.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("CharDispatchTag", {
   Battle = {
     Description = "UI_DispatchTag_Des_Battle",
     DispatchEffect = "battle",
     DispatchTag = "Battle",
     DispatchTagId = 1,
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Dispatch/T_Dispatch_A09.T_Dispatch_A09",
-    Name = "UI_DispatchTag_Battle"
+    Name = "UI_DispatchTag_Battle",
   },
   Benefit = {
     Description = "UI_DispatchTag_Des_Benefit",
@@ -16,7 +19,7 @@ return ReadOnly("CharDispatchTag", {
     DispatchTag = "Benefit",
     DispatchTagId = 6,
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Dispatch/T_Dispatch_B02.T_Dispatch_B02",
-    Name = "UI_DispatchTag_Benefit"
+    Name = "UI_DispatchTag_Benefit",
   },
   Chaos = {
     Description = "UI_DispatchTag_Des_Chaos",
@@ -24,7 +27,7 @@ return ReadOnly("CharDispatchTag", {
     DispatchTag = "Chaos",
     DispatchTagId = 10,
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Dispatch/T_Dispatch_B04.T_Dispatch_B04",
-    Name = "UI_DispatchTag_Chaos"
+    Name = "UI_DispatchTag_Chaos",
   },
   Collect = {
     Description = "UI_DispatchTag_Des_Collect",
@@ -32,7 +35,7 @@ return ReadOnly("CharDispatchTag", {
     DispatchTag = "Collect",
     DispatchTagId = 2,
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Dispatch/T_Dispatch_A03.T_Dispatch_A03",
-    Name = "UI_DispatchTag_Collect"
+    Name = "UI_DispatchTag_Collect",
   },
   Empathy = {
     Description = "UI_DispatchTag_Des_Empathy",
@@ -40,7 +43,7 @@ return ReadOnly("CharDispatchTag", {
     DispatchTag = "Empathy",
     DispatchTagId = 9,
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Dispatch/T_Dispatch_B03.T_Dispatch_B03",
-    Name = "UI_DispatchTag_Empathy"
+    Name = "UI_DispatchTag_Empathy",
   },
   Fish = {
     Description = "UI_DispatchTag_Des_Fish",
@@ -48,7 +51,7 @@ return ReadOnly("CharDispatchTag", {
     DispatchTag = "Fish",
     DispatchTagId = 4,
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Dispatch/T_Dispatch_A04.T_Dispatch_A04",
-    Name = "UI_DispatchTag_Fish"
+    Name = "UI_DispatchTag_Fish",
   },
   Lucky = {
     Description = "UI_DispatchTag_Des_Lucky",
@@ -58,7 +61,7 @@ return ReadOnly("CharDispatchTag", {
     DispatchTagId = 14,
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Dispatch/T_Dispatch_A08.T_Dispatch_A08",
     IsBuff = 1,
-    Name = "UI_DispatchTag_Lucky"
+    Name = "UI_DispatchTag_Lucky",
   },
   Mine = {
     Description = "UI_DispatchTag_Des_Mine",
@@ -66,7 +69,7 @@ return ReadOnly("CharDispatchTag", {
     DispatchTag = "Mine",
     DispatchTagId = 3,
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Dispatch/T_Dispatch_A07.T_Dispatch_A07",
-    Name = "UI_DispatchTag_Mine"
+    Name = "UI_DispatchTag_Mine",
   },
   Morality = {
     Description = "UI_DispatchTag_Des_Morality",
@@ -74,7 +77,7 @@ return ReadOnly("CharDispatchTag", {
     DispatchTag = "Morality",
     DispatchTagId = 7,
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Dispatch/T_Dispatch_B01.T_Dispatch_B01",
-    Name = "UI_DispatchTag_Morality"
+    Name = "UI_DispatchTag_Morality",
   },
   Pet = {
     Description = "UI_DispatchTag_Des_Pet",
@@ -82,7 +85,7 @@ return ReadOnly("CharDispatchTag", {
     DispatchTag = "Pet",
     DispatchTagId = 5,
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Dispatch/T_Dispatch_A01.T_Dispatch_A01",
-    Name = "UI_DispatchTag_Pet"
+    Name = "UI_DispatchTag_Pet",
   },
   Rigorous = {
     Description = "UI_DispatchTag_Des_Rigorous",
@@ -92,7 +95,7 @@ return ReadOnly("CharDispatchTag", {
     DispatchTagId = 12,
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Dispatch/T_Dispatch_B05.T_Dispatch_B05",
     IsBuff = 1,
-    Name = "UI_DispatchTag_Rigorous"
+    Name = "UI_DispatchTag_Rigorous",
   },
   Skilled = {
     Description = "UI_DispatchTag_Des_Skilled",
@@ -102,7 +105,7 @@ return ReadOnly("CharDispatchTag", {
     DispatchTagId = 13,
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Dispatch/T_Dispatch_A06.T_Dispatch_A06",
     IsBuff = 1,
-    Name = "UI_DispatchTag_Skilled"
+    Name = "UI_DispatchTag_Skilled",
   },
   Wisdom = {
     Description = "UI_DispatchTag_Des_Wisdom",
@@ -110,7 +113,7 @@ return ReadOnly("CharDispatchTag", {
     DispatchTag = "Wisdom",
     DispatchTagId = 8,
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Dispatch/T_Dispatch_A02.T_Dispatch_A02",
-    Name = "UI_DispatchTag_Wisdom"
+    Name = "UI_DispatchTag_Wisdom",
   },
   Workaholic = {
     Description = "UI_DispatchTag_Des_Workaholic",
@@ -120,6 +123,6 @@ return ReadOnly("CharDispatchTag", {
     DispatchTagId = 11,
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Dispatch/T_Dispatch_A05.T_Dispatch_A05",
     IsBuff = 1,
-    Name = "UI_DispatchTag_Workaholic"
-  }
+    Name = "UI_DispatchTag_Workaholic",
+  },
 })

@@ -1,45 +1,43 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("ExamineCDNWeight", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\ExamineCDNWeight.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("ExamineCDNWeight", {
   ["http://pan01-1-examine-eo.shyxhy.com/Patches/FinalPatch/"] = {
     CDNPath = "http://pan01-1-examine-eo.shyxhy.com/Patches/FinalPatch/",
     IsGlobal = false,
-    Weight = 80
-  },
-  ["http://pan01-1-examine-huawei.shyxhy.com/Patches/FinalPatch/"] = {
-    CDNPath = "http://pan01-1-examine-huawei.shyxhy.com/Patches/FinalPatch/",
-    IsGlobal = false,
-    Weight = 30
+    Weight = 80,
   },
   ["http://pan01-1-examine-huoshan.shyxhy.com/Patches/FinalPatch/"] = {
     CDNPath = "http://pan01-1-examine-huoshan.shyxhy.com/Patches/FinalPatch/",
     IsGlobal = false,
-    Weight = 25
+    Weight = 25,
   },
   ["http://pan01-1-examine.shyxhy.com//Patches/FinalPatch/"] = {
     CDNPath = "http://pan01-1-examine.shyxhy.com//Patches/FinalPatch/",
     IsGlobal = false,
-    Weight = 100
+    Weight = 100,
   },
   ["http://pan01-2-examine-aws.dna-panstudio.com/Patches/FinalPatch/"] = {
     CDNPath = "http://pan01-2-examine-aws.dna-panstudio.com/Patches/FinalPatch/",
     IsGlobal = true,
-    Weight = 15
+    Weight = 15,
   },
   ["http://pan01-2-examine-eo.dna-panstudio.com/Patches/FinalPatch/"] = {
     CDNPath = "http://pan01-2-examine-eo.dna-panstudio.com/Patches/FinalPatch/",
     IsGlobal = true,
-    Weight = 50
+    Weight = 50,
   },
   ["http://pan01-2-examine-huoshan.dna-panstudio.com/Patches/FinalPatch/"] = {
     CDNPath = "http://pan01-2-examine-huoshan.dna-panstudio.com/Patches/FinalPatch/",
     IsGlobal = true,
-    Weight = 20
+    Weight = 20,
   },
   ["http://pan01-2-examine.dna-panstudio.com/Patches/FinalPatch/"] = {
     CDNPath = "http://pan01-2-examine.dna-panstudio.com/Patches/FinalPatch/",
     IsGlobal = true,
-    Weight = 50
-  }
+    Weight = 50,
+  },
 })

@@ -1,3 +1,6 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\ShopItem2ShopSubId.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 local r0_0 = {
   RT_1 = {},
 }
@@ -5,11 +8,15 @@ r0_0.RT_2 = {
   AbyssShop = r0_0.RT_1,
   ExploreBadgeShop = r0_0.RT_1,
   FishingShop = r0_0.RT_1,
+  HuaxuEventShop = r0_0.RT_1,
+  HuaxuExploreShop = r0_0.RT_1,
+  RaidShopSeason01 = r0_0.RT_1,
   Rouge = r0_0.RT_1,
   Shop = r0_0.RT_1,
+  WeeklyDungeonShop = r0_0.RT_1,
 }
 local r1_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
-  -- line: [11, 11] id: 1
+  -- line: [15, 15] id: 1
   return r1_1
 end
 local r4_0 = {
@@ -19,6 +26,9 @@ local r5_0 = {
   AbyssShop = r0_0.RT_1,
   ExploreBadgeShop = r0_0.RT_1,
   FishingShop = r0_0.RT_1,
+  HuaxuEventShop = r0_0.RT_1,
+  HuaxuExploreShop = r0_0.RT_1,
+  RaidShopSeason01 = r0_0.RT_1,
   Rouge = r0_0.RT_1,
 }
 local r6_0 = {}
@@ -83,6 +93,12 @@ r6_0[10031] = {
 r6_0[10035] = {
   [1] = {
     ShopItemId = 120217,
+    SubTabId = 1202,
+  },
+}
+r6_0[10036] = {
+  [1] = {
+    ShopItemId = 120225,
     SubTabId = 1202,
   },
 }
@@ -158,9 +174,48 @@ r6_0[10048] = {
     SubTabId = 1402,
   },
 }
+r6_0[10049] = {
+  [1] = {
+    ShopItemId = 120224,
+    SubTabId = 1202,
+  },
+}
 r6_0[10050] = {
   [1] = {
     ShopItemId = 120201,
+    SubTabId = 1202,
+  },
+}
+r6_0[10053] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140243,
+    SubTabId = 1401,
+  },
+}
+r6_0[10054] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140244,
+    SubTabId = 1401,
+  },
+}
+r6_0[10055] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140245,
+    SubTabId = 1401,
+  },
+}
+r6_0[10056] = {
+  [1] = {
+    ShopItemId = 120226,
+    SubTabId = 1202,
+  },
+}
+r6_0[10057] = {
+  [1] = {
+    ShopItemId = 120230,
     SubTabId = 1202,
   },
 }
@@ -180,6 +235,56 @@ r6_0[10060] = {
   [1] = {
     ShopItemId = 120223,
     SubTabId = 1202,
+  },
+}
+r6_0[10061] = {
+  [1] = {
+    ShopItemId = 120228,
+    SubTabId = 1202,
+  },
+}
+r6_0[10062] = {
+  [1] = {
+    ShopItemId = 120229,
+    SubTabId = 1202,
+  },
+}
+r6_0[10063] = {
+  [1] = {
+    ShopItemId = 120227,
+    SubTabId = 1202,
+  },
+}
+r6_0[10064] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140246,
+    SubTabId = 1401,
+  },
+}
+r6_0[10065] = {
+  [1] = {
+    ShopItemId = 120232,
+    SubTabId = 1202,
+  },
+}
+r6_0[10066] = {
+  [1] = {
+    ShopItemId = 120231,
+    SubTabId = 1202,
+  },
+}
+r6_0[11002] = {
+  [1] = {
+    ShopItemId = 120702,
+    SubTabId = 1207,
+  },
+}
+r6_0[11003] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140242,
+    SubTabId = 1401,
   },
 }
 r6_0[20005] = {
@@ -293,6 +398,73 @@ r6_0[20039] = {
     SubTabId = 1402,
   },
 }
+r6_0[20040] = {
+  [1] = {
+    ShopItemId = 120307,
+    SubTabId = 1203,
+  },
+}
+r6_0[20041] = {
+  [1] = {
+    ShopItemId = 120311,
+    SubTabId = 1203,
+  },
+}
+r6_0[20042] = {
+  [1] = {
+    ShopItemId = 120312,
+    SubTabId = 1203,
+  },
+}
+r6_0[20045] = {
+  [1] = {
+    ShopItemId = 120308,
+    SubTabId = 1203,
+  },
+}
+r6_0[20046] = {
+  [1] = {
+    ShopItemId = 120309,
+    SubTabId = 1203,
+  },
+}
+r6_0[20047] = {
+  [1] = {
+    ShopItemId = 120310,
+    SubTabId = 1203,
+  },
+}
+r6_0[20049] = {
+  [1] = {
+    ShopItemId = 120314,
+    SubTabId = 1203,
+  },
+}
+r6_0[20050] = {
+  [1] = {
+    ShopItemId = 120315,
+    SubTabId = 1203,
+  },
+}
+r6_0[20051] = {
+  [1] = {
+    ShopItemId = 120313,
+    SubTabId = 1203,
+  },
+}
+r6_0[21002] = {
+  [1] = {
+    ShopItemId = 120701,
+    SubTabId = 1207,
+  },
+}
+r6_0[21003] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140241,
+    SubTabId = 1401,
+  },
+}
 r6_0[30002] = {
   [1] = {
     ShopItemId = 120401,
@@ -305,9 +477,27 @@ r6_0[30007] = {
     SubTabId = 1204,
   },
 }
+r6_0[30016] = {
+  [1] = {
+    ShopItemId = 120413,
+    SubTabId = 1204,
+  },
+}
 r6_0[30017] = {
   [1] = {
     ShopItemId = 120403,
+    SubTabId = 1204,
+  },
+}
+r6_0[30018] = {
+  [1] = {
+    ShopItemId = 120407,
+    SubTabId = 1204,
+  },
+}
+r6_0[30019] = {
+  [1] = {
+    ShopItemId = 120412,
     SubTabId = 1204,
   },
 }
@@ -329,6 +519,24 @@ r6_0[30024] = {
     SubTabId = 1204,
   },
 }
+r6_0[30025] = {
+  [1] = {
+    ShopItemId = 120408,
+    SubTabId = 1204,
+  },
+}
+r6_0[30026] = {
+  [1] = {
+    ShopItemId = 120410,
+    SubTabId = 1204,
+  },
+}
+r6_0[30027] = {
+  [1] = {
+    ShopItemId = 120409,
+    SubTabId = 1204,
+  },
+}
 r6_0[40001] = {
   [1] = {
     ShopItemId = 120502,
@@ -345,6 +553,42 @@ r6_0[40005] = {
   [1] = {
     ShopItemId = 140118,
     SubTabId = 1402,
+  },
+}
+r6_0[40009] = {
+  [1] = {
+    ShopItemId = 120509,
+    SubTabId = 1205,
+  },
+}
+r6_0[40011] = {
+  [1] = {
+    ShopItemId = 120411,
+    SubTabId = 1204,
+  },
+}
+r6_0[40012] = {
+  [1] = {
+    ShopItemId = 120510,
+    SubTabId = 1205,
+  },
+}
+r6_0[40014] = {
+  [1] = {
+    ShopItemId = 120507,
+    SubTabId = 1205,
+  },
+}
+r6_0[40015] = {
+  [1] = {
+    ShopItemId = 120508,
+    SubTabId = 1205,
+  },
+}
+r6_0[40016] = {
+  [1] = {
+    ShopItemId = 120514,
+    SubTabId = 1205,
   },
 }
 r6_0[40017] = {
@@ -371,10 +615,47 @@ r6_0[40020] = {
     SubTabId = 1205,
   },
 }
+r6_0[40021] = {
+  [1] = {
+    ShopItemId = 120512,
+    SubTabId = 1205,
+  },
+}
+r6_0[40022] = {
+  [1] = {
+    ShopItemId = 120513,
+    SubTabId = 1205,
+  },
+}
+r6_0[40023] = {
+  [1] = {
+    ShopItemId = 120511,
+    SubTabId = 1205,
+  },
+}
+r6_0[40024] = {
+  [1] = {
+    ShopItemId = 120516,
+    SubTabId = 1205,
+  },
+}
+r6_0[40025] = {
+  [1] = {
+    ShopItemId = 120515,
+    SubTabId = 1205,
+  },
+}
 r6_0[70001] = {
   [1] = {
     AccessOrder = 2,
     ShopItemId = 140219,
+    SubTabId = 1401,
+  },
+}
+r6_0[70002] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140237,
     SubTabId = 1401,
   },
 }
@@ -399,10 +680,38 @@ r6_0[70013] = {
     SubTabId = 1401,
   },
 }
+r6_0[70021] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140238,
+    SubTabId = 1401,
+  },
+}
+r6_0[70022] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140239,
+    SubTabId = 1401,
+  },
+}
+r6_0[70023] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140240,
+    SubTabId = 1401,
+  },
+}
 r6_0[80001] = {
   [1] = {
     AccessOrder = 2,
     ShopItemId = 140206,
+    SubTabId = 1401,
+  },
+}
+r6_0[80002] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140232,
     SubTabId = 1401,
   },
 }
@@ -427,12 +736,37 @@ r6_0[80013] = {
     SubTabId = 1401,
   },
 }
+r6_0[80021] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140233,
+    SubTabId = 1401,
+  },
+}
+r6_0[80022] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140234,
+    SubTabId = 1401,
+  },
+}
+r6_0[80023] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140235,
+    SubTabId = 1401,
+  },
+}
 r5_0.Shop = r6_0
+r5_0.WeeklyDungeonShop = r0_0.RT_1
 r4_0.CharAccessory = r5_0
 r5_0 = {
   AbyssShop = r0_0.RT_1,
   ExploreBadgeShop = r0_0.RT_1,
   FishingShop = r0_0.RT_1,
+  HuaxuEventShop = r0_0.RT_1,
+  HuaxuExploreShop = r0_0.RT_1,
+  RaidShopSeason01 = r0_0.RT_1,
 }
 r6_0 = {}
 r6_0[154001] = {
@@ -527,421 +861,679 @@ r6_0[154103] = {
 }
 r6_0[155001] = {
   [1] = {
-    ShopItemId = 10002301,
+    ShopItemId = 10002355,
     SubTabId = 100023,
   },
   [2] = {
-    ShopItemId = 10002355,
+    ShopItemId = 10002301,
     SubTabId = 100023,
   },
 }
 r6_0[155002] = {
   [1] = {
-    ShopItemId = 10002302,
+    ShopItemId = 10002356,
     SubTabId = 100023,
   },
   [2] = {
-    ShopItemId = 10002356,
+    ShopItemId = 10002302,
     SubTabId = 100023,
   },
 }
 r6_0[155003] = {
   [1] = {
-    ShopItemId = 10002303,
+    ShopItemId = 10002357,
     SubTabId = 100023,
   },
   [2] = {
-    ShopItemId = 10002357,
+    ShopItemId = 10002303,
     SubTabId = 100023,
   },
 }
 r6_0[155004] = {
   [1] = {
-    ShopItemId = 10002304,
+    ShopItemId = 10002358,
     SubTabId = 100023,
   },
   [2] = {
-    ShopItemId = 10002358,
+    ShopItemId = 10002304,
     SubTabId = 100023,
   },
 }
 r6_0[155005] = {
   [1] = {
-    ShopItemId = 10002305,
+    ShopItemId = 10002359,
     SubTabId = 100023,
   },
   [2] = {
-    ShopItemId = 10002359,
+    ShopItemId = 10002305,
     SubTabId = 100023,
   },
 }
 r6_0[155006] = {
   [1] = {
-    ShopItemId = 10002306,
+    ShopItemId = 10002360,
     SubTabId = 100023,
   },
   [2] = {
-    ShopItemId = 10002360,
+    ShopItemId = 10002306,
     SubTabId = 100023,
   },
 }
 r6_0[155101] = {
   [1] = {
-    ShopItemId = 10002307,
+    ShopItemId = 10002361,
     SubTabId = 100023,
   },
   [2] = {
-    ShopItemId = 10002361,
+    ShopItemId = 10002307,
     SubTabId = 100023,
   },
 }
 r6_0[155102] = {
   [1] = {
-    ShopItemId = 10002308,
+    ShopItemId = 10002362,
     SubTabId = 100023,
   },
   [2] = {
-    ShopItemId = 10002362,
+    ShopItemId = 10002308,
     SubTabId = 100023,
   },
 }
 r6_0[155103] = {
   [1] = {
-    ShopItemId = 10002309,
+    ShopItemId = 10002363,
     SubTabId = 100023,
   },
   [2] = {
-    ShopItemId = 10002363,
+    ShopItemId = 10002309,
     SubTabId = 100023,
   },
 }
 r5_0.Rouge = r6_0
 r5_0.Shop = r0_0.RT_1
+r6_0 = {}
+r6_0[151411] = {
+  [1] = {
+    ShopItemId = 10003101,
+    SubTabId = 100031,
+  },
+}
+r6_0[151412] = {
+  [1] = {
+    ShopItemId = 10003102,
+    SubTabId = 100031,
+  },
+}
+r6_0[151413] = {
+  [1] = {
+    ShopItemId = 10003103,
+    SubTabId = 100031,
+  },
+}
+r6_0[151414] = {
+  [1] = {
+    ShopItemId = 10003104,
+    SubTabId = 100031,
+  },
+}
+r6_0[151415] = {
+  [1] = {
+    ShopItemId = 10003105,
+    SubTabId = 100031,
+  },
+}
+r6_0[151421] = {
+  [1] = {
+    ShopItemId = 10003106,
+    SubTabId = 100031,
+  },
+}
+r6_0[151422] = {
+  [1] = {
+    ShopItemId = 10003107,
+    SubTabId = 100031,
+  },
+}
+r6_0[151423] = {
+  [1] = {
+    ShopItemId = 10003108,
+    SubTabId = 100031,
+  },
+}
+r6_0[151424] = {
+  [1] = {
+    ShopItemId = 10003109,
+    SubTabId = 100031,
+  },
+}
+r6_0[151425] = {
+  [1] = {
+    ShopItemId = 10003110,
+    SubTabId = 100031,
+  },
+}
+r6_0[151431] = {
+  [1] = {
+    ShopItemId = 10003111,
+    SubTabId = 100031,
+  },
+}
+r6_0[151432] = {
+  [1] = {
+    ShopItemId = 10003112,
+    SubTabId = 100031,
+  },
+}
+r6_0[151433] = {
+  [1] = {
+    ShopItemId = 10003113,
+    SubTabId = 100031,
+  },
+}
+r6_0[151434] = {
+  [1] = {
+    ShopItemId = 10003114,
+    SubTabId = 100031,
+  },
+}
+r6_0[151435] = {
+  [1] = {
+    ShopItemId = 10003115,
+    SubTabId = 100031,
+  },
+}
+r6_0[151441] = {
+  [1] = {
+    ShopItemId = 10003116,
+    SubTabId = 100031,
+  },
+}
+r6_0[151442] = {
+  [1] = {
+    ShopItemId = 10003117,
+    SubTabId = 100031,
+  },
+}
+r6_0[151443] = {
+  [1] = {
+    ShopItemId = 10003118,
+    SubTabId = 100031,
+  },
+}
+r6_0[151444] = {
+  [1] = {
+    ShopItemId = 10003119,
+    SubTabId = 100031,
+  },
+}
+r6_0[151445] = {
+  [1] = {
+    ShopItemId = 10003120,
+    SubTabId = 100031,
+  },
+}
+r6_0[151451] = {
+  [1] = {
+    ShopItemId = 10003121,
+    SubTabId = 100031,
+  },
+}
+r6_0[151452] = {
+  [1] = {
+    ShopItemId = 10003122,
+    SubTabId = 100031,
+  },
+}
+r6_0[151453] = {
+  [1] = {
+    ShopItemId = 10003123,
+    SubTabId = 100031,
+  },
+}
+r6_0[151454] = {
+  [1] = {
+    ShopItemId = 10003124,
+    SubTabId = 100031,
+  },
+}
+r6_0[151455] = {
+  [1] = {
+    ShopItemId = 10003125,
+    SubTabId = 100031,
+  },
+}
+r6_0[151461] = {
+  [1] = {
+    ShopItemId = 10003126,
+    SubTabId = 100031,
+  },
+}
+r6_0[151462] = {
+  [1] = {
+    ShopItemId = 10003127,
+    SubTabId = 100031,
+  },
+}
+r6_0[151463] = {
+  [1] = {
+    ShopItemId = 10003128,
+    SubTabId = 100031,
+  },
+}
+r6_0[151464] = {
+  [1] = {
+    ShopItemId = 10003129,
+    SubTabId = 100031,
+  },
+}
+r6_0[151465] = {
+  [1] = {
+    ShopItemId = 10003130,
+    SubTabId = 100031,
+  },
+}
+r5_0.WeeklyDungeonShop = r6_0
 r4_0.Draft = r5_0
 r4_0.Drop = r0_0.RT_2
 r4_0.HeadFrame = r0_0.RT_2
-r4_0.HeadSculpture = r0_0.RT_2
-r5_0 = {}
+r6_0 = {
+  AbyssShop = r0_0.RT_1,
+  ExploreBadgeShop = r0_0.RT_1,
+  FishingShop = r0_0.RT_1,
+  HuaxuEventShop = r0_0.RT_1,
+  HuaxuExploreShop = r0_0.RT_1,
+}
+local r7_0 = {}
+r7_0[30022] = {
+  [1] = {
+    ShopItemId = 10004119,
+    SubTabId = 100041,
+  },
+}
+r7_0[30023] = {
+  [1] = {
+    ShopItemId = 10004120,
+    SubTabId = 100041,
+  },
+}
+r7_0[30024] = {
+  [1] = {
+    ShopItemId = 10004121,
+    SubTabId = 100041,
+  },
+}
+r6_0.RaidShopSeason01 = r7_0
+r6_0.Rouge = r0_0.RT_1
+r7_0 = {}
+r7_0[30089] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140253,
+    SubTabId = 1401,
+  },
+}
+r7_0[30090] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140254,
+    SubTabId = 1401,
+  },
+}
+r7_0[30091] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140255,
+    SubTabId = 1401,
+  },
+}
+r7_0[30092] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140256,
+    SubTabId = 1401,
+  },
+}
+r7_0[30093] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140257,
+    SubTabId = 1401,
+  },
+}
+r7_0[30094] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140258,
+    SubTabId = 1401,
+  },
+}
+r6_0.Shop = r7_0
+r6_0.WeeklyDungeonShop = r0_0.RT_1
+r4_0.HeadSculpture = r6_0
 r6_0 = {}
-r6_0[101002] = {
+r7_0 = {}
+r7_0[101002] = {
   [1] = {
     ShopItemId = 10000501,
     SubTabId = 100001,
   },
 }
-r6_0[102001] = {
+r7_0[102001] = {
   [1] = {
     ShopItemId = 10000500,
     SubTabId = 100001,
   },
 }
-r6_0[102004] = {
+r7_0[102004] = {
   [1] = {
     ShopItemId = 10000503,
     SubTabId = 100001,
   },
 }
-r6_0[106001] = {
+r7_0[106001] = {
   [1] = {
     ShopItemId = 10000502,
     SubTabId = 100001,
   },
 }
-r5_0.AbyssShop = r6_0
-r6_0 = {}
-r6_0[31502] = {
+r6_0.AbyssShop = r7_0
+r7_0 = {}
+r7_0[31502] = {
   [1] = {
     ShopItemId = 702007,
     SubTabId = 7020,
   },
 }
-r6_0[31513] = {
+r7_0[31513] = {
   [1] = {
     ShopItemId = 703004,
     SubTabId = 7030,
   },
 }
-r6_0[31521] = {
+r7_0[31521] = {
   [1] = {
     ShopItemId = 701004,
     SubTabId = 7010,
   },
 }
-r6_0[31522] = {
+r7_0[31522] = {
   [1] = {
     ShopItemId = 703005,
     SubTabId = 7030,
   },
 }
-r6_0[31523] = {
+r7_0[31523] = {
   [1] = {
     ShopItemId = 702008,
     SubTabId = 7020,
   },
 }
-r6_0[31524] = {
+r7_0[31524] = {
   [1] = {
     ShopItemId = 703006,
     SubTabId = 7030,
   },
 }
-r6_0[31525] = {
+r7_0[31525] = {
   [1] = {
     ShopItemId = 702010,
     SubTabId = 7020,
   },
 }
-r6_0[31526] = {
+r7_0[31526] = {
   [1] = {
     ShopItemId = 701005,
     SubTabId = 7010,
   },
 }
-r6_0[31531] = {
+r7_0[31531] = {
   [1] = {
     ShopItemId = 702009,
     SubTabId = 7020,
   },
 }
-r6_0[31532] = {
+r7_0[31532] = {
   [1] = {
     ShopItemId = 701003,
     SubTabId = 7010,
   },
 }
-r5_0.ExploreBadgeShop = r6_0
-r6_0 = {}
-r6_0[103002] = {
+r6_0.ExploreBadgeShop = r7_0
+r7_0 = {}
+r7_0[103002] = {
   [1] = {
     ShopItemId = 801201,
     SubTabId = 8011,
   },
 }
-r6_0[104001] = {
+r7_0[104001] = {
   [1] = {
     ShopItemId = 801202,
     SubTabId = 8011,
   },
 }
-r5_0.FishingShop = r6_0
-r6_0 = {}
-r6_0[24001] = {
+r6_0.FishingShop = r7_0
+r6_0.HuaxuEventShop = r0_0.RT_1
+r6_0.HuaxuExploreShop = r0_0.RT_1
+r6_0.RaidShopSeason01 = r0_0.RT_1
+r7_0 = {}
+r7_0[24001] = {
   [1] = {
     ShopItemId = 10002228,
     SubTabId = 100022,
   },
 }
-r6_0[24002] = {
+r7_0[24002] = {
   [1] = {
     ShopItemId = 10002229,
     SubTabId = 100022,
   },
 }
-r6_0[24003] = {
+r7_0[24003] = {
   [1] = {
     ShopItemId = 10002230,
     SubTabId = 100022,
   },
 }
-r6_0[24004] = {
+r7_0[24004] = {
   [1] = {
     ShopItemId = 10002231,
     SubTabId = 100022,
   },
 }
-r6_0[24005] = {
+r7_0[24005] = {
   [1] = {
     ShopItemId = 10002232,
     SubTabId = 100022,
   },
 }
-r6_0[24006] = {
+r7_0[24006] = {
   [1] = {
     ShopItemId = 10002233,
     SubTabId = 100022,
   },
 }
-r6_0[24101] = {
+r7_0[24101] = {
   [1] = {
     ShopItemId = 10002234,
     SubTabId = 100022,
   },
 }
-r6_0[24102] = {
+r7_0[24102] = {
   [1] = {
     ShopItemId = 10002235,
     SubTabId = 100022,
   },
 }
-r6_0[24103] = {
+r7_0[24103] = {
   [1] = {
     ShopItemId = 10002236,
     SubTabId = 100022,
   },
 }
-r6_0[25001] = {
+r7_0[25001] = {
   [1] = {
     ShopItemId = 10002328,
     SubTabId = 100023,
   },
 }
-r6_0[25002] = {
+r7_0[25002] = {
   [1] = {
     ShopItemId = 10002329,
     SubTabId = 100023,
   },
 }
-r6_0[25003] = {
+r7_0[25003] = {
   [1] = {
     ShopItemId = 10002330,
     SubTabId = 100023,
   },
 }
-r6_0[25004] = {
+r7_0[25004] = {
   [1] = {
     ShopItemId = 10002331,
     SubTabId = 100023,
   },
 }
-r6_0[25005] = {
+r7_0[25005] = {
   [1] = {
     ShopItemId = 10002332,
     SubTabId = 100023,
   },
 }
-r6_0[25006] = {
+r7_0[25006] = {
   [1] = {
     ShopItemId = 10002333,
     SubTabId = 100023,
   },
 }
-r6_0[25101] = {
+r7_0[25101] = {
   [1] = {
     ShopItemId = 10002334,
     SubTabId = 100023,
   },
 }
-r6_0[25102] = {
+r7_0[25102] = {
   [1] = {
     ShopItemId = 10002335,
     SubTabId = 100023,
   },
 }
-r6_0[25103] = {
+r7_0[25103] = {
   [1] = {
     ShopItemId = 10002336,
     SubTabId = 100023,
   },
 }
-r6_0[34001] = {
+r7_0[34001] = {
   [1] = {
     ShopItemId = 10002219,
     SubTabId = 100022,
   },
 }
-r6_0[34002] = {
+r7_0[34002] = {
   [1] = {
     ShopItemId = 10002220,
     SubTabId = 100022,
   },
 }
-r6_0[34003] = {
+r7_0[34003] = {
   [1] = {
     ShopItemId = 10002221,
     SubTabId = 100022,
   },
 }
-r6_0[34004] = {
+r7_0[34004] = {
   [1] = {
     ShopItemId = 10002222,
     SubTabId = 100022,
   },
 }
-r6_0[34005] = {
+r7_0[34005] = {
   [1] = {
     ShopItemId = 10002223,
     SubTabId = 100022,
   },
 }
-r6_0[34006] = {
+r7_0[34006] = {
   [1] = {
     ShopItemId = 10002224,
     SubTabId = 100022,
   },
 }
-r6_0[34101] = {
+r7_0[34101] = {
   [1] = {
     ShopItemId = 10002225,
     SubTabId = 100022,
   },
 }
-r6_0[34102] = {
+r7_0[34102] = {
   [1] = {
     ShopItemId = 10002226,
     SubTabId = 100022,
   },
 }
-r6_0[34103] = {
+r7_0[34103] = {
   [1] = {
     ShopItemId = 10002227,
     SubTabId = 100022,
   },
 }
-r6_0[35001] = {
+r7_0[35001] = {
   [1] = {
     ShopItemId = 10002319,
     SubTabId = 100023,
   },
 }
-r6_0[35002] = {
+r7_0[35002] = {
   [1] = {
     ShopItemId = 10002320,
     SubTabId = 100023,
   },
 }
-r6_0[35003] = {
+r7_0[35003] = {
   [1] = {
     ShopItemId = 10002321,
     SubTabId = 100023,
   },
 }
-r6_0[35004] = {
+r7_0[35004] = {
   [1] = {
     ShopItemId = 10002322,
     SubTabId = 100023,
   },
 }
-r6_0[35005] = {
+r7_0[35005] = {
   [1] = {
     ShopItemId = 10002323,
     SubTabId = 100023,
   },
 }
-r6_0[35006] = {
+r7_0[35006] = {
   [1] = {
     ShopItemId = 10002324,
     SubTabId = 100023,
   },
 }
-r6_0[35101] = {
+r7_0[35101] = {
   [1] = {
     ShopItemId = 10002325,
     SubTabId = 100023,
   },
 }
-r6_0[35102] = {
+r7_0[35102] = {
   [1] = {
     ShopItemId = 10002326,
     SubTabId = 100023,
   },
 }
-r6_0[35103] = {
+r7_0[35103] = {
   [1] = {
     ShopItemId = 10002327,
     SubTabId = 100023,
   },
 }
-r6_0[44001] = {
+r7_0[44001] = {
   [1] = {
     ShopItemId = 10002210,
     SubTabId = 100022,
@@ -951,7 +1543,7 @@ r6_0[44001] = {
     SubTabId = 100022,
   },
 }
-r6_0[44002] = {
+r7_0[44002] = {
   [1] = {
     ShopItemId = 10002211,
     SubTabId = 100022,
@@ -961,7 +1553,7 @@ r6_0[44002] = {
     SubTabId = 100022,
   },
 }
-r6_0[44003] = {
+r7_0[44003] = {
   [1] = {
     ShopItemId = 10002212,
     SubTabId = 100022,
@@ -971,7 +1563,7 @@ r6_0[44003] = {
     SubTabId = 100022,
   },
 }
-r6_0[44004] = {
+r7_0[44004] = {
   [1] = {
     ShopItemId = 10002213,
     SubTabId = 100022,
@@ -981,7 +1573,7 @@ r6_0[44004] = {
     SubTabId = 100022,
   },
 }
-r6_0[44005] = {
+r7_0[44005] = {
   [1] = {
     ShopItemId = 10002214,
     SubTabId = 100022,
@@ -991,7 +1583,7 @@ r6_0[44005] = {
     SubTabId = 100022,
   },
 }
-r6_0[44006] = {
+r7_0[44006] = {
   [1] = {
     ShopItemId = 10002215,
     SubTabId = 100022,
@@ -1001,7 +1593,7 @@ r6_0[44006] = {
     SubTabId = 100022,
   },
 }
-r6_0[44101] = {
+r7_0[44101] = {
   [1] = {
     ShopItemId = 10002216,
     SubTabId = 100022,
@@ -1011,7 +1603,7 @@ r6_0[44101] = {
     SubTabId = 100022,
   },
 }
-r6_0[44102] = {
+r7_0[44102] = {
   [1] = {
     ShopItemId = 10002217,
     SubTabId = 100022,
@@ -1021,7 +1613,7 @@ r6_0[44102] = {
     SubTabId = 100022,
   },
 }
-r6_0[44103] = {
+r7_0[44103] = {
   [1] = {
     ShopItemId = 10002218,
     SubTabId = 100022,
@@ -1031,67 +1623,67 @@ r6_0[44103] = {
     SubTabId = 100022,
   },
 }
-r6_0[45001] = {
+r7_0[45001] = {
   [1] = {
-    ShopItemId = 10002310,
-    SubTabId = 100023,
-  },
-  [2] = {
     ShopItemId = 10002364,
     SubTabId = 100023,
   },
-}
-r6_0[45002] = {
-  [1] = {
-    ShopItemId = 10002311,
+  [2] = {
+    ShopItemId = 10002310,
     SubTabId = 100023,
   },
-  [2] = {
+}
+r7_0[45002] = {
+  [1] = {
     ShopItemId = 10002365,
     SubTabId = 100023,
   },
-}
-r6_0[45003] = {
-  [1] = {
-    ShopItemId = 10002312,
+  [2] = {
+    ShopItemId = 10002311,
     SubTabId = 100023,
   },
-  [2] = {
+}
+r7_0[45003] = {
+  [1] = {
     ShopItemId = 10002366,
     SubTabId = 100023,
   },
-}
-r6_0[45004] = {
-  [1] = {
-    ShopItemId = 10002313,
+  [2] = {
+    ShopItemId = 10002312,
     SubTabId = 100023,
   },
-  [2] = {
+}
+r7_0[45004] = {
+  [1] = {
     ShopItemId = 10002367,
     SubTabId = 100023,
   },
-}
-r6_0[45005] = {
-  [1] = {
-    ShopItemId = 10002314,
+  [2] = {
+    ShopItemId = 10002313,
     SubTabId = 100023,
   },
-  [2] = {
+}
+r7_0[45005] = {
+  [1] = {
     ShopItemId = 10002368,
     SubTabId = 100023,
   },
-}
-r6_0[45006] = {
-  [1] = {
-    ShopItemId = 10002315,
+  [2] = {
+    ShopItemId = 10002314,
     SubTabId = 100023,
   },
-  [2] = {
+}
+r7_0[45006] = {
+  [1] = {
     ShopItemId = 10002369,
     SubTabId = 100023,
   },
+  [2] = {
+    ShopItemId = 10002315,
+    SubTabId = 100023,
+  },
 }
-r6_0[45101] = {
+r7_0[45101] = {
   [1] = {
     ShopItemId = 10002316,
     SubTabId = 100023,
@@ -1101,7 +1693,7 @@ r6_0[45101] = {
     SubTabId = 100023,
   },
 }
-r6_0[45102] = {
+r7_0[45102] = {
   [1] = {
     ShopItemId = 10002317,
     SubTabId = 100023,
@@ -1111,7 +1703,7 @@ r6_0[45102] = {
     SubTabId = 100023,
   },
 }
-r6_0[45103] = {
+r7_0[45103] = {
   [1] = {
     ShopItemId = 10002318,
     SubTabId = 100023,
@@ -1121,36 +1713,67 @@ r6_0[45103] = {
     SubTabId = 100023,
   },
 }
-r6_0[101001] = {
+r7_0[101001] = {
   [1] = {
     ShopItemId = 10002106,
     SubTabId = 100021,
   },
 }
-r6_0[102002] = {
+r7_0[102002] = {
   [1] = {
     ShopItemId = 10002109,
     SubTabId = 100021,
   },
 }
-r6_0[103001] = {
+r7_0[103001] = {
   [1] = {
     ShopItemId = 10002108,
     SubTabId = 100021,
   },
 }
-r6_0[104002] = {
+r7_0[104002] = {
   [1] = {
     ShopItemId = 10002107,
     SubTabId = 100021,
   },
 }
-r5_0.Rouge = r6_0
-r5_0.Shop = r0_0.RT_1
-r4_0.Mod = r5_0
-r4_0.Pet = r0_0.RT_2
+r7_0[104003] = {
+  [1] = {
+    ShopItemId = 10002110,
+    SubTabId = 100021,
+  },
+}
+r6_0.Rouge = r7_0
+r6_0.Shop = r0_0.RT_1
+r6_0.WeeklyDungeonShop = r0_0.RT_1
+r4_0.Mod = r6_0
+r6_0 = {
+  AbyssShop = r0_0.RT_1,
+  ExploreBadgeShop = r0_0.RT_1,
+}
+r7_0 = {}
+r7_0[4942] = {
+  [1] = {
+    ShopItemId = 802005,
+    SubTabId = 8020,
+  },
+}
+r7_0[4943] = {
+  [1] = {
+    ShopItemId = 802006,
+    SubTabId = 8020,
+  },
+}
+r6_0.FishingShop = r7_0
+r6_0.HuaxuEventShop = r0_0.RT_1
+r6_0.HuaxuExploreShop = r0_0.RT_1
+r6_0.RaidShopSeason01 = r0_0.RT_1
+r6_0.Rouge = r0_0.RT_1
+r6_0.Shop = r0_0.RT_1
+r6_0.WeeklyDungeonShop = r0_0.RT_1
+r4_0.Pet = r6_0
 r6_0 = {}
-local r7_0 = {}
+r7_0 = {}
 r7_0[101] = {
   [1] = {
     ShopItemId = 10000104,
@@ -1160,9 +1783,21 @@ r7_0[101] = {
     ShopItemId = 10000107,
     SubTabId = 100001,
   },
+  [3] = {
+    ShopItemId = 10000607,
+    SubTabId = 100001,
+  },
+  [4] = {
+    ShopItemId = 10000604,
+    SubTabId = 100001,
+  },
 }
 r7_0[102] = {
   [1] = {
+    ShopItemId = 10000605,
+    SubTabId = 100001,
+  },
+  [2] = {
     ShopItemId = 10000105,
     SubTabId = 100001,
   },
@@ -1172,10 +1807,18 @@ r7_0[2009] = {
     ShopItemId = 10000102,
     SubTabId = 100001,
   },
+  [2] = {
+    ShopItemId = 10000602,
+    SubTabId = 100001,
+  },
 }
 r7_0[2013] = {
   [1] = {
     ShopItemId = 10000101,
+    SubTabId = 100001,
+  },
+  [2] = {
+    ShopItemId = 10000601,
     SubTabId = 100001,
   },
 }
@@ -1184,10 +1827,18 @@ r7_0[3006] = {
     ShopItemId = 10000103,
     SubTabId = 100001,
   },
+  [2] = {
+    ShopItemId = 10000603,
+    SubTabId = 100001,
+  },
 }
 r7_0[3007] = {
   [1] = {
     ShopItemId = 10000106,
+    SubTabId = 100001,
+  },
+  [2] = {
+    ShopItemId = 10000606,
     SubTabId = 100001,
   },
 }
@@ -1196,10 +1847,18 @@ r7_0[20027] = {
     ShopItemId = 10000110,
     SubTabId = 100001,
   },
+  [2] = {
+    ShopItemId = 10000608,
+    SubTabId = 100001,
+  },
 }
 r7_0[20028] = {
   [1] = {
     ShopItemId = 10000111,
+    SubTabId = 100001,
+  },
+  [2] = {
+    ShopItemId = 10000609,
     SubTabId = 100001,
   },
 }
@@ -1207,28 +1866,36 @@ r6_0.AbyssShop = r7_0
 r7_0 = {}
 r7_0[201] = {
   [1] = {
+    ShopItemId = 704002,
+    SubTabId = 7040,
+  },
+  [2] = {
     ShopItemId = 703002,
     SubTabId = 7030,
   },
-  [2] = {
+  [3] = {
     ShopItemId = 702005,
     SubTabId = 7020,
   },
-  [3] = {
+  [4] = {
     ShopItemId = 701001,
     SubTabId = 7010,
   },
 }
 r7_0[202] = {
   [1] = {
+    ShopItemId = 704003,
+    SubTabId = 7040,
+  },
+  [2] = {
     ShopItemId = 703003,
     SubTabId = 7030,
   },
-  [2] = {
+  [3] = {
     ShopItemId = 702006,
     SubTabId = 7020,
   },
-  [3] = {
+  [4] = {
     ShopItemId = 701002,
     SubTabId = 7010,
   },
@@ -1247,14 +1914,18 @@ r7_0[2013] = {
 }
 r7_0[10100] = {
   [1] = {
+    ShopItemId = 704001,
+    SubTabId = 7040,
+  },
+  [2] = {
     ShopItemId = 703001,
     SubTabId = 7030,
   },
-  [2] = {
+  [3] = {
     ShopItemId = 702001,
     SubTabId = 7020,
   },
-  [3] = {
+  [4] = {
     ShopItemId = 702002,
     SubTabId = 7020,
   },
@@ -1263,45 +1934,69 @@ r6_0.ExploreBadgeShop = r7_0
 r7_0 = {}
 r7_0[101] = {
   [1] = {
-    ShopItemId = 801104,
-    SubTabId = 8011,
-  },
-  [2] = {
     ShopItemId = 801118,
     SubTabId = 8011,
   },
-  [3] = {
+  [2] = {
     ShopItemId = 801129,
     SubTabId = 8011,
   },
-  [4] = {
+  [3] = {
     ShopItemId = 801140,
     SubTabId = 8011,
   },
+  [4] = {
+    ShopItemId = 802119,
+    SubTabId = 8021,
+  },
   [5] = {
+    ShopItemId = 802109,
+    SubTabId = 8021,
+  },
+  [6] = {
+    ShopItemId = 802104,
+    SubTabId = 8021,
+  },
+  [7] = {
     ShopItemId = 801109,
+    SubTabId = 8011,
+  },
+  [8] = {
+    ShopItemId = 801104,
     SubTabId = 8011,
   },
 }
 r7_0[102] = {
   [1] = {
-    ShopItemId = 801105,
-    SubTabId = 8011,
-  },
-  [2] = {
     ShopItemId = 801130,
     SubTabId = 8011,
   },
-  [3] = {
+  [2] = {
     ShopItemId = 801141,
     SubTabId = 8011,
   },
+  [3] = {
+    ShopItemId = 802120,
+    SubTabId = 8021,
+  },
   [4] = {
+    ShopItemId = 802110,
+    SubTabId = 8021,
+  },
+  [5] = {
+    ShopItemId = 802105,
+    SubTabId = 8021,
+  },
+  [6] = {
     ShopItemId = 801119,
     SubTabId = 8011,
   },
-  [5] = {
+  [7] = {
     ShopItemId = 801110,
+    SubTabId = 8011,
+  },
+  [8] = {
+    ShopItemId = 801105,
     SubTabId = 8011,
   },
 }
@@ -1335,19 +2030,27 @@ r7_0[202] = {
 }
 r7_0[211] = {
   [1] = {
-    ShopItemId = 801114,
-    SubTabId = 8011,
-  },
-  [2] = {
     ShopItemId = 801125,
     SubTabId = 8011,
   },
-  [3] = {
+  [2] = {
     ShopItemId = 801136,
     SubTabId = 8011,
   },
-  [4] = {
+  [3] = {
     ShopItemId = 801147,
+    SubTabId = 8011,
+  },
+  [4] = {
+    ShopItemId = 802125,
+    SubTabId = 8021,
+  },
+  [5] = {
+    ShopItemId = 802115,
+    SubTabId = 8021,
+  },
+  [6] = {
+    ShopItemId = 801114,
     SubTabId = 8011,
   },
 }
@@ -1361,31 +2064,57 @@ r7_0[1001] = {
     SubTabId = 8011,
   },
   [3] = {
+    ShopItemId = 802122,
+    SubTabId = 8021,
+  },
+  [4] = {
+    ShopItemId = 802112,
+    SubTabId = 8021,
+  },
+  [5] = {
     ShopItemId = 801121,
     SubTabId = 8011,
   },
-  [4] = {
+  [6] = {
     ShopItemId = 801112,
     SubTabId = 8011,
   },
 }
+r7_0[1002] = {
+  [1] = {
+    ShopItemId = 802123,
+    SubTabId = 8021,
+  },
+  [2] = {
+    ShopItemId = 802113,
+    SubTabId = 8021,
+  },
+}
 r7_0[2008] = {
   [1] = {
+    ShopItemId = 802102,
+    SubTabId = 8021,
+  },
+  [2] = {
     ShopItemId = 801107,
     SubTabId = 8011,
   },
-  [2] = {
+  [3] = {
     ShopItemId = 801102,
     SubTabId = 8011,
   },
 }
 r7_0[2009] = {
   [1] = {
-    ShopItemId = 801116,
+    ShopItemId = 801127,
     SubTabId = 8011,
   },
   [2] = {
-    ShopItemId = 801127,
+    ShopItemId = 802107,
+    SubTabId = 8021,
+  },
+  [3] = {
+    ShopItemId = 801116,
     SubTabId = 8011,
   },
 }
@@ -1394,24 +2123,36 @@ r7_0[2010] = {
     ShopItemId = 801138,
     SubTabId = 8011,
   },
+  [2] = {
+    ShopItemId = 802117,
+    SubTabId = 8021,
+  },
 }
 r7_0[2012] = {
   [1] = {
+    ShopItemId = 802101,
+    SubTabId = 8021,
+  },
+  [2] = {
     ShopItemId = 801106,
     SubTabId = 8011,
   },
-  [2] = {
+  [3] = {
     ShopItemId = 801101,
     SubTabId = 8011,
   },
 }
 r7_0[2013] = {
   [1] = {
-    ShopItemId = 801115,
+    ShopItemId = 801126,
     SubTabId = 8011,
   },
   [2] = {
-    ShopItemId = 801126,
+    ShopItemId = 802106,
+    SubTabId = 8021,
+  },
+  [3] = {
+    ShopItemId = 801115,
     SubTabId = 8011,
   },
 }
@@ -1420,36 +2161,52 @@ r7_0[2014] = {
     ShopItemId = 801137,
     SubTabId = 8011,
   },
+  [2] = {
+    ShopItemId = 802116,
+    SubTabId = 8021,
+  },
 }
 r7_0[3001] = {
   [1] = {
-    ShopItemId = 801113,
-    SubTabId = 8011,
-  },
-  [2] = {
     ShopItemId = 801133,
     SubTabId = 8011,
   },
-  [3] = {
+  [2] = {
     ShopItemId = 801144,
     SubTabId = 8011,
   },
+  [3] = {
+    ShopItemId = 802124,
+    SubTabId = 8021,
+  },
   [4] = {
+    ShopItemId = 802114,
+    SubTabId = 8021,
+  },
+  [5] = {
     ShopItemId = 801122,
+    SubTabId = 8011,
+  },
+  [6] = {
+    ShopItemId = 801113,
     SubTabId = 8011,
   },
 }
 r7_0[3005] = {
   [1] = {
-    ShopItemId = 801103,
+    ShopItemId = 801203,
     SubTabId = 8011,
   },
   [2] = {
+    ShopItemId = 802103,
+    SubTabId = 8021,
+  },
+  [3] = {
     ShopItemId = 801108,
     SubTabId = 8011,
   },
-  [3] = {
-    ShopItemId = 801203,
+  [4] = {
+    ShopItemId = 801103,
     SubTabId = 8011,
   },
 }
@@ -1466,6 +2223,14 @@ r7_0[3006] = {
     ShopItemId = 801139,
     SubTabId = 8011,
   },
+  [4] = {
+    ShopItemId = 802118,
+    SubTabId = 8021,
+  },
+  [5] = {
+    ShopItemId = 802108,
+    SubTabId = 8021,
+  },
 }
 r7_0[10100] = {
   [1] = {
@@ -1477,10 +2242,18 @@ r7_0[10100] = {
     SubTabId = 8011,
   },
   [3] = {
+    ShopItemId = 802121,
+    SubTabId = 8021,
+  },
+  [4] = {
+    ShopItemId = 802111,
+    SubTabId = 8021,
+  },
+  [5] = {
     ShopItemId = 801120,
     SubTabId = 8011,
   },
-  [4] = {
+  [6] = {
     ShopItemId = 801111,
     SubTabId = 8011,
   },
@@ -1517,29 +2290,209 @@ r7_0[5110500] = {
 }
 r7_0[5210100] = {
   [1] = {
+    ShopItemId = 802001,
+    SubTabId = 8020,
+  },
+  [2] = {
     ShopItemId = 801001,
     SubTabId = 8010,
   },
 }
 r7_0[5210200] = {
   [1] = {
+    ShopItemId = 802002,
+    SubTabId = 8020,
+  },
+  [2] = {
     ShopItemId = 801002,
     SubTabId = 8010,
   },
 }
 r7_0[5210300] = {
   [1] = {
+    ShopItemId = 802003,
+    SubTabId = 8020,
+  },
+  [2] = {
     ShopItemId = 801003,
     SubTabId = 8010,
   },
 }
 r7_0[5210400] = {
   [1] = {
+    ShopItemId = 802004,
+    SubTabId = 8020,
+  },
+  [2] = {
     ShopItemId = 801004,
     SubTabId = 8010,
   },
 }
 r6_0.FishingShop = r7_0
+r7_0 = {}
+r7_0[101] = {
+  [1] = {
+    ShopItemId = 10001104,
+    SubTabId = 100011,
+  },
+}
+r7_0[102] = {
+  [1] = {
+    ShopItemId = 10001103,
+    SubTabId = 100011,
+  },
+}
+r7_0[2013] = {
+  [1] = {
+    ShopItemId = 10001102,
+    SubTabId = 100011,
+  },
+}
+r7_0[10100] = {
+  [1] = {
+    ShopItemId = 10001101,
+    SubTabId = 100011,
+  },
+}
+r6_0.HuaxuEventShop = r7_0
+r7_0 = {}
+r7_0[101] = {
+  [1] = {
+    ShopItemId = 10005106,
+    SubTabId = 100051,
+  },
+}
+r7_0[211] = {
+  [1] = {
+    ShopItemId = 10005102,
+    SubTabId = 100051,
+  },
+}
+r7_0[1002] = {
+  [1] = {
+    ShopItemId = 10005103,
+    SubTabId = 100051,
+  },
+}
+r7_0[10100] = {
+  [1] = {
+    ShopItemId = 10005104,
+    SubTabId = 100051,
+  },
+}
+r7_0[20013] = {
+  [1] = {
+    ShopItemId = 10005105,
+    SubTabId = 100051,
+  },
+}
+r6_0.HuaxuExploreShop = r7_0
+r7_0 = {}
+r7_0[101] = {
+  [1] = {
+    ShopItemId = 10004107,
+    SubTabId = 100041,
+  },
+  [2] = {
+    ShopItemId = 10004115,
+    SubTabId = 100041,
+  },
+}
+r7_0[102] = {
+  [1] = {
+    ShopItemId = 10004116,
+    SubTabId = 100041,
+  },
+  [2] = {
+    ShopItemId = 10004108,
+    SubTabId = 100041,
+  },
+}
+r7_0[1006] = {
+  [1] = {
+    ShopItemId = 10004102,
+    SubTabId = 100041,
+  },
+}
+r7_0[2009] = {
+  [1] = {
+    ShopItemId = 10004118,
+    SubTabId = 100041,
+  },
+}
+r7_0[2010] = {
+  [1] = {
+    ShopItemId = 10004110,
+    SubTabId = 100041,
+  },
+}
+r7_0[2013] = {
+  [1] = {
+    ShopItemId = 10004117,
+    SubTabId = 100041,
+  },
+}
+r7_0[2014] = {
+  [1] = {
+    ShopItemId = 10004109,
+    SubTabId = 100041,
+  },
+}
+r7_0[3006] = {
+  [1] = {
+    ShopItemId = 10004112,
+    SubTabId = 100041,
+  },
+}
+r7_0[3007] = {
+  [1] = {
+    ShopItemId = 10004104,
+    SubTabId = 100041,
+  },
+}
+r7_0[3016] = {
+  [1] = {
+    ShopItemId = 10004101,
+    SubTabId = 100041,
+  },
+}
+r7_0[10100] = {
+  [1] = {
+    ShopItemId = 10004103,
+    SubTabId = 100041,
+  },
+}
+r7_0[20013] = {
+  [1] = {
+    ShopItemId = 10004111,
+    SubTabId = 100041,
+  },
+}
+r7_0[20021] = {
+  [1] = {
+    ShopItemId = 10004114,
+    SubTabId = 100041,
+  },
+}
+r7_0[20024] = {
+  [1] = {
+    ShopItemId = 10004113,
+    SubTabId = 100041,
+  },
+}
+r7_0[20027] = {
+  [1] = {
+    ShopItemId = 10004105,
+    SubTabId = 100041,
+  },
+}
+r7_0[20028] = {
+  [1] = {
+    ShopItemId = 10004106,
+    SubTabId = 100041,
+  },
+}
+r6_0.RaidShopSeason01 = r7_0
 r7_0 = {}
 r7_0[101] = {
   [1] = {
@@ -1594,6 +2547,14 @@ r7_0[99] = {
   },
   [6] = {
     ShopItemId = 110106,
+    SubTabId = 1101,
+  },
+  [7] = {
+    ShopItemId = 110107,
+    SubTabId = 1101,
+  },
+  [8] = {
+    ShopItemId = 110108,
     SubTabId = 1101,
   },
 }
@@ -1843,6 +2804,34 @@ r7_0[41018] = {
     SubTabId = 1401,
   },
 }
+r7_0[41019] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140236,
+    SubTabId = 1401,
+  },
+}
+r7_0[41020] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140227,
+    SubTabId = 1401,
+  },
+}
+r7_0[41021] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140228,
+    SubTabId = 1401,
+  },
+}
+r7_0[41022] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140229,
+    SubTabId = 1401,
+  },
+}
 r7_0[110006] = {
   [1] = {
     ShopItemId = 120105,
@@ -1854,6 +2843,20 @@ r7_0[110006] = {
   },
   [3] = {
     ShopItemId = 120107,
+    SubTabId = 1201,
+  },
+}
+r7_0[110012] = {
+  [1] = {
+    ShopItemId = 120109,
+    SubTabId = 1201,
+  },
+  [2] = {
+    ShopItemId = 120110,
+    SubTabId = 1201,
+  },
+  [3] = {
+    ShopItemId = 120111,
     SubTabId = 1201,
   },
 }
@@ -1881,6 +2884,12 @@ r7_0[1001502] = {
     SubTabId = 1502,
   },
 }
+r7_0[1001503] = {
+  [1] = {
+    ShopItemId = 150120,
+    SubTabId = 1502,
+  },
+}
 r7_0[1001801] = {
   [1] = {
     ShopItemId = 150122,
@@ -1896,6 +2905,12 @@ r7_0[1002101] = {
 r7_0[1002301] = {
   [1] = {
     ShopItemId = 150124,
+    SubTabId = 1502,
+  },
+}
+r7_0[1002401] = {
+  [1] = {
+    ShopItemId = 150125,
     SubTabId = 1502,
   },
 }
@@ -1966,11 +2981,15 @@ r7_0[1005401] = {
   },
 }
 r6_0.Shop = r7_0
+r6_0.WeeklyDungeonShop = r0_0.RT_1
 r4_0.Resource = r6_0
 r6_0 = {
   AbyssShop = r0_0.RT_1,
   ExploreBadgeShop = r0_0.RT_1,
   FishingShop = r0_0.RT_1,
+  HuaxuEventShop = r0_0.RT_1,
+  HuaxuExploreShop = r0_0.RT_1,
+  RaidShopSeason01 = r0_0.RT_1,
   Rouge = r0_0.RT_1,
 }
 r7_0 = {}
@@ -2168,6 +3187,30 @@ r7_0[12056] = {
     SubTabId = 1605,
   },
 }
+r7_0[12057] = {
+  [1] = {
+    ShopItemId = 160214,
+    SubTabId = 1605,
+  },
+}
+r7_0[12058] = {
+  [1] = {
+    ShopItemId = 160215,
+    SubTabId = 1605,
+  },
+}
+r7_0[12059] = {
+  [1] = {
+    ShopItemId = 160216,
+    SubTabId = 1605,
+  },
+}
+r7_0[12060] = {
+  [1] = {
+    ShopItemId = 160217,
+    SubTabId = 1605,
+  },
+}
 r7_0[12101] = {
   [1] = {
     ShopItemId = 160101,
@@ -2214,15 +3257,106 @@ r7_0[12107] = {
     SubTabId = 1601,
   },
 }
+r7_0[12110] = {
+  [1] = {
+    ShopItemId = 160112,
+    SubTabId = 1601,
+  },
+}
+r7_0[12111] = {
+  [1] = {
+    ShopItemId = 160113,
+    SubTabId = 1601,
+  },
+}
+r7_0[12112] = {
+  [1] = {
+    ShopItemId = 160114,
+    SubTabId = 1601,
+  },
+}
+r7_0[12113] = {
+  [1] = {
+    ShopItemId = 160115,
+    SubTabId = 1601,
+  },
+}
+r7_0[12114] = {
+  [1] = {
+    ShopItemId = 160116,
+    SubTabId = 1601,
+  },
+}
+r7_0[12115] = {
+  [1] = {
+    ShopItemId = 160117,
+    SubTabId = 1601,
+  },
+}
+r7_0[12116] = {
+  [1] = {
+    ShopItemId = 160317,
+    SubTabId = 1606,
+  },
+  [2] = {
+    ShopItemId = 160118,
+    SubTabId = 1601,
+  },
+}
+r7_0[12119] = {
+  [1] = {
+    ShopItemId = 160121,
+    SubTabId = 1601,
+  },
+  [2] = {
+    ShopItemId = 160120,
+    SubTabId = 1601,
+  },
+  [3] = {
+    ShopItemId = 160119,
+    SubTabId = 1601,
+  },
+}
+r7_0[12120] = {
+  [1] = {
+    ShopItemId = 160124,
+    SubTabId = 1601,
+  },
+  [2] = {
+    ShopItemId = 160123,
+    SubTabId = 1601,
+  },
+  [3] = {
+    ShopItemId = 160122,
+    SubTabId = 1601,
+  },
+}
+r7_0[12121] = {
+  [1] = {
+    ShopItemId = 160125,
+    SubTabId = 1601,
+  },
+}
 r6_0.Shop = r7_0
+r6_0.WeeklyDungeonShop = r0_0.RT_1
 r4_0.Reward = r6_0
 r6_0 = {
   AbyssShop = r0_0.RT_1,
   ExploreBadgeShop = r0_0.RT_1,
   FishingShop = r0_0.RT_1,
+  HuaxuEventShop = r0_0.RT_1,
+  HuaxuExploreShop = r0_0.RT_1,
+  RaidShopSeason01 = r0_0.RT_1,
   Rouge = r0_0.RT_1,
 }
 r7_0 = {}
+r7_0[240101] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140230,
+    SubTabId = 1401,
+  },
+}
 r7_0[530101] = {
   [1] = {
     AccessOrder = 2,
@@ -2231,8 +3365,58 @@ r7_0[530101] = {
   },
 }
 r6_0.Shop = r7_0
+r6_0.WeeklyDungeonShop = r0_0.RT_1
 r4_0.Skin = r6_0
-r4_0.Title = r0_0.RT_2
+r6_0 = {
+  AbyssShop = r0_0.RT_1,
+  ExploreBadgeShop = r0_0.RT_1,
+}
+r7_0 = {}
+r7_0[10022] = {
+  [1] = {
+    ShopItemId = 802126,
+    SubTabId = 8021,
+  },
+}
+r7_0[20061] = {
+  [1] = {
+    ShopItemId = 802127,
+    SubTabId = 8021,
+  },
+}
+r7_0[20065] = {
+  [1] = {
+    ShopItemId = 802128,
+    SubTabId = 8021,
+  },
+}
+r6_0.FishingShop = r7_0
+r6_0.HuaxuEventShop = r0_0.RT_1
+r6_0.HuaxuExploreShop = r0_0.RT_1
+r7_0 = {}
+r7_0[10075] = {
+  [1] = {
+    ShopItemId = 10004122,
+    SubTabId = 100041,
+  },
+}
+r7_0[10076] = {
+  [1] = {
+    ShopItemId = 10004123,
+    SubTabId = 100041,
+  },
+}
+r7_0[10077] = {
+  [1] = {
+    ShopItemId = 10004124,
+    SubTabId = 100041,
+  },
+}
+r6_0.RaidShopSeason01 = r7_0
+r6_0.Rouge = r0_0.RT_1
+r6_0.Shop = r0_0.RT_1
+r6_0.WeeklyDungeonShop = r0_0.RT_1
+r4_0.Title = r6_0
 r4_0.TitleFrame = r0_0.RT_2
 r6_0 = {}
 r7_0 = {}
@@ -2243,6 +3427,26 @@ r7_0[2029] = {
   },
   [2] = {
     ShopItemId = 10000109,
+    SubTabId = 100001,
+  },
+}
+r7_0[2047] = {
+  [1] = {
+    ShopItemId = 10000114,
+    SubTabId = 100001,
+  },
+  [2] = {
+    ShopItemId = 10000115,
+    SubTabId = 100001,
+  },
+}
+r7_0[2049] = {
+  [1] = {
+    ShopItemId = 10000116,
+    SubTabId = 100001,
+  },
+  [2] = {
+    ShopItemId = 10000117,
     SubTabId = 100001,
   },
 }
@@ -2259,11 +3463,20 @@ r7_0[2050] = {
 r6_0.AbyssShop = r7_0
 r6_0.ExploreBadgeShop = r0_0.RT_1
 r6_0.FishingShop = r0_0.RT_1
+r6_0.HuaxuEventShop = r0_0.RT_1
+r6_0.HuaxuExploreShop = r0_0.RT_1
+r6_0.RaidShopSeason01 = r0_0.RT_1
 r6_0.Rouge = r0_0.RT_1
 r7_0 = {}
 r7_0[1000] = {
   [1] = {
     ShopItemId = 151000,
+    SubTabId = 1801,
+  },
+}
+r7_0[1002] = {
+  [1] = {
+    ShopItemId = 151002,
     SubTabId = 1801,
   },
 }
@@ -2294,6 +3507,12 @@ r7_0[1009] = {
 r7_0[1014] = {
   [1] = {
     ShopItemId = 151014,
+    SubTabId = 1801,
+  },
+}
+r7_0[1015] = {
+  [1] = {
+    ShopItemId = 151015,
     SubTabId = 1801,
   },
 }
@@ -2474,6 +3693,30 @@ r7_0[2025] = {
 r7_0[2026] = {
   [1] = {
     ShopItemId = 152026,
+    SubTabId = 1802,
+  },
+}
+r7_0[2028] = {
+  [1] = {
+    ShopItemId = 152028,
+    SubTabId = 1802,
+  },
+}
+r7_0[2040] = {
+  [1] = {
+    ShopItemId = 152040,
+    SubTabId = 1802,
+  },
+}
+r7_0[2042] = {
+  [1] = {
+    ShopItemId = 152042,
+    SubTabId = 1802,
+  },
+}
+r7_0[2044] = {
+  [1] = {
+    ShopItemId = 152044,
     SubTabId = 1802,
   },
 }
@@ -2669,6 +3912,18 @@ r7_0[151754] = {
     SubTabId = 1803,
   },
 }
+r7_0[151755] = {
+  [1] = {
+    ShopItemId = 651755,
+    SubTabId = 1803,
+  },
+}
+r7_0[151756] = {
+  [1] = {
+    ShopItemId = 651756,
+    SubTabId = 1803,
+  },
+}
 r7_0[151761] = {
   [1] = {
     ShopItemId = 651761,
@@ -2748,11 +4003,15 @@ r7_0[151962] = {
   },
 }
 r6_0.Shop = r7_0
+r6_0.WeeklyDungeonShop = r0_0.RT_1
 r4_0.Walnut = r6_0
 r6_0 = {
   AbyssShop = r0_0.RT_1,
   ExploreBadgeShop = r0_0.RT_1,
   FishingShop = r0_0.RT_1,
+  HuaxuEventShop = r0_0.RT_1,
+  HuaxuExploreShop = r0_0.RT_1,
+  RaidShopSeason01 = r0_0.RT_1,
   Rouge = r0_0.RT_1,
 }
 r7_0 = {}
@@ -2819,6 +4078,13 @@ r7_0[10206] = {
     SubTabId = 1503,
   },
 }
+r7_0[10208] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 159155,
+    SubTabId = 1503,
+  },
+}
 r7_0[10301] = {
   [1] = {
     AccessOrder = 2,
@@ -2865,6 +4131,13 @@ r7_0[10501] = {
   [1] = {
     AccessOrder = 2,
     ShopItemId = 159122,
+    SubTabId = 1503,
+  },
+}
+r7_0[10502] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 159123,
     SubTabId = 1503,
   },
 }
@@ -3029,6 +4302,13 @@ r7_0[20504] = {
     SubTabId = 1503,
   },
 }
+r7_0[20506] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 159156,
+    SubTabId = 1503,
+  },
+}
 r7_0[20507] = {
   [1] = {
     AccessOrder = 2,
@@ -3040,6 +4320,13 @@ r7_0[20509] = {
   [1] = {
     AccessOrder = 2,
     ShopItemId = 159150,
+    SubTabId = 1503,
+  },
+}
+r7_0[20510] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 159149,
     SubTabId = 1503,
   },
 }
@@ -3072,13 +4359,37 @@ r7_0[20604] = {
   },
 }
 r6_0.Shop = r7_0
+r6_0.WeeklyDungeonShop = r0_0.RT_1
 r4_0.Weapon = r6_0
 r6_0 = {
   AbyssShop = r0_0.RT_1,
-  ExploreBadgeShop = r0_0.RT_1,
-  FishingShop = r0_0.RT_1,
-  Rouge = r0_0.RT_1,
 }
+r7_0 = {}
+r7_0[10017] = {
+  [1] = {
+    ShopItemId = 704004,
+    SubTabId = 7040,
+  },
+}
+r7_0[10021] = {
+  [1] = {
+    ShopItemId = 704005,
+    SubTabId = 7040,
+  },
+}
+r6_0.ExploreBadgeShop = r7_0
+r6_0.FishingShop = r0_0.RT_1
+r6_0.HuaxuEventShop = r0_0.RT_1
+r7_0 = {}
+r7_0[10022] = {
+  [1] = {
+    ShopItemId = 10005101,
+    SubTabId = 100051,
+  },
+}
+r6_0.HuaxuExploreShop = r7_0
+r6_0.RaidShopSeason01 = r0_0.RT_1
+r6_0.Rouge = r0_0.RT_1
 r7_0 = {}
 r7_0[10001] = {
   [1] = {
@@ -3180,12 +4491,58 @@ r7_0[10016] = {
     SubTabId = 1402,
   },
 }
+r7_0[10024] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140247,
+    SubTabId = 1401,
+  },
+}
+r7_0[10025] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140248,
+    SubTabId = 1401,
+  },
+}
+r7_0[10026] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140249,
+    SubTabId = 1401,
+  },
+}
+r7_0[10027] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140250,
+    SubTabId = 1401,
+  },
+}
+r7_0[10028] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140251,
+    SubTabId = 1401,
+  },
+}
+r7_0[10029] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140252,
+    SubTabId = 1401,
+  },
+}
 r6_0.Shop = r7_0
+r6_0.WeeklyDungeonShop = r0_0.RT_1
 r4_0.WeaponAccessory = r6_0
 r6_0 = {
   AbyssShop = r0_0.RT_1,
   ExploreBadgeShop = r0_0.RT_1,
   FishingShop = r0_0.RT_1,
+  HuaxuEventShop = r0_0.RT_1,
+  HuaxuExploreShop = r0_0.RT_1,
+  RaidShopSeason01 = r0_0.RT_1,
   Rouge = r0_0.RT_1,
 }
 r7_0 = {}
@@ -3201,6 +4558,24 @@ r7_0[3010102] = {
     SubTabId = 1201,
   },
 }
+r7_0[3010104] = {
+  [1] = {
+    ShopItemId = 120119,
+    SubTabId = 1201,
+  },
+}
+r7_0[3010105] = {
+  [1] = {
+    ShopItemId = 120130,
+    SubTabId = 1201,
+  },
+}
+r7_0[3010106] = {
+  [1] = {
+    ShopItemId = 120114,
+    SubTabId = 1201,
+  },
+}
 r7_0[3010201] = {
   [1] = {
     ShopItemId = 120104,
@@ -3213,6 +4588,30 @@ r7_0[3010202] = {
     SubTabId = 1201,
   },
 }
+r7_0[3010203] = {
+  [1] = {
+    ShopItemId = 120132,
+    SubTabId = 1201,
+  },
+}
+r7_0[3010204] = {
+  [1] = {
+    ShopItemId = 120112,
+    SubTabId = 1201,
+  },
+}
+r7_0[3010302] = {
+  [1] = {
+    ShopItemId = 120125,
+    SubTabId = 1201,
+  },
+}
+r7_0[3010303] = {
+  [1] = {
+    ShopItemId = 120129,
+    SubTabId = 1201,
+  },
+}
 r7_0[3010401] = {
   [1] = {
     AccessOrder = 2,
@@ -3220,6 +4619,110 @@ r7_0[3010401] = {
     SubTabId = 1401,
   },
 }
+r7_0[3010403] = {
+  [1] = {
+    ShopItemId = 120118,
+    SubTabId = 1201,
+  },
+}
+r7_0[3010404] = {
+  [1] = {
+    ShopItemId = 120133,
+    SubTabId = 1201,
+  },
+}
+r7_0[3010405] = {
+  [1] = {
+    ShopItemId = 120113,
+    SubTabId = 1201,
+  },
+}
+r7_0[3010501] = {
+  [1] = {
+    AccessOrder = 2,
+    ShopItemId = 140231,
+    SubTabId = 1401,
+  },
+}
+r7_0[3010502] = {
+  [1] = {
+    ShopItemId = 120124,
+    SubTabId = 1201,
+  },
+}
+r7_0[3010601] = {
+  [1] = {
+    ShopItemId = 120122,
+    SubTabId = 1201,
+  },
+}
+r7_0[3010603] = {
+  [1] = {
+    ShopItemId = 120131,
+    SubTabId = 1201,
+  },
+}
+r7_0[3010605] = {
+  [1] = {
+    ShopItemId = 120117,
+    SubTabId = 1201,
+  },
+}
+r7_0[3010701] = {
+  [1] = {
+    ShopItemId = 120120,
+    SubTabId = 1201,
+  },
+}
+r7_0[3010703] = {
+  [1] = {
+    ShopItemId = 120134,
+    SubTabId = 1201,
+  },
+}
+r7_0[3010705] = {
+  [1] = {
+    ShopItemId = 120115,
+    SubTabId = 1201,
+  },
+}
+r7_0[3010801] = {
+  [1] = {
+    ShopItemId = 120121,
+    SubTabId = 1201,
+  },
+}
+r7_0[3010802] = {
+  [1] = {
+    ShopItemId = 120135,
+    SubTabId = 1201,
+  },
+}
+r7_0[3010901] = {
+  [1] = {
+    ShopItemId = 120126,
+    SubTabId = 1201,
+  },
+}
+r7_0[3011001] = {
+  [1] = {
+    ShopItemId = 120128,
+    SubTabId = 1201,
+  },
+}
+r7_0[3011101] = {
+  [1] = {
+    ShopItemId = 120123,
+    SubTabId = 1201,
+  },
+}
+r7_0[3011201] = {
+  [1] = {
+    ShopItemId = 120127,
+    SubTabId = 1201,
+  },
+}
 r6_0.Shop = r7_0
+r6_0.WeeklyDungeonShop = r0_0.RT_1
 r4_0.WeaponSkin = r6_0
 return r1_0("ShopItem2ShopSubId", r4_0)

@@ -1,12 +1,15 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("RewardType", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\RewardType.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("RewardType", {
   Char = {
     DungeonRewardSeq = 90,
     OperationGM = true,
     Remark = "角色",
-    RewardType = "Char"
+    RewardType = "Char",
   },
   CharAccessory = {
     DungeonRewardSeq = 70,
@@ -14,98 +17,100 @@ return ReadOnly("RewardType", {
     OperationGM = true,
     Remark = "角色配饰",
     RewardType = "CharAccessory",
-    UniqueType = true
+    UniqueType = true,
   },
   Draft = {
     DungeonRewardSeq = 41,
     DungeonRewardType = true,
     OperationGM = true,
     Remark = "铸造图纸",
-    RewardType = "Draft"
+    RewardType = "Draft",
   },
-  Drop = {RewardType = "Drop"},
+  Drop = {
+    RewardType = "Drop",
+  },
   HeadFrame = {
     DungeonRewardSeq = 53,
     OperationGM = true,
     Remark = "头像框",
     RewardType = "HeadFrame",
-    UniqueType = true
+    UniqueType = true,
   },
   HeadSculpture = {
     DungeonRewardSeq = 60,
     OperationGM = true,
     Remark = "头像",
     RewardType = "HeadSculpture",
-    UniqueType = true
+    UniqueType = true,
   },
   Mod = {
     DungeonRewardSeq = 50,
     DungeonRewardType = true,
     OperationGM = true,
     Remark = "魔之楔",
-    RewardType = "Mod"
+    RewardType = "Mod",
   },
   Pet = {
     DungeonRewardSeq = 51,
     DungeonRewardType = true,
     OperationGM = true,
     Remark = "宠物",
-    RewardType = "Pet"
+    RewardType = "Pet",
   },
   Resource = {
     DungeonRewardSeq = 1,
     DungeonRewardType = true,
     OperationGM = true,
     Remark = "资源",
-    RewardType = "Resource"
+    RewardType = "Resource",
   },
   Skin = {
     DungeonRewardSeq = 72,
     OperationGM = true,
     Remark = "角色皮肤",
     RewardType = "Skin",
-    UniqueType = true
+    UniqueType = true,
   },
   Title = {
     DungeonRewardSeq = 62,
     OperationGM = true,
-    Remark = "称号",
+    Remark = "头像",
     RewardType = "Title",
-    UniqueType = true
+    UniqueType = true,
   },
   TitleFrame = {
     DungeonRewardSeq = 63,
     OperationGM = true,
-    Remark = "称号框",
+    Remark = "头像框",
     RewardType = "TitleFrame",
-    UniqueType = true
+    UniqueType = true,
   },
   Walnut = {
     DungeonRewardSeq = 40,
     DungeonRewardType = true,
     OperationGM = true,
     Remark = "密函",
-    RewardType = "Walnut"
+    RewardType = "Walnut",
   },
   Weapon = {
     DungeonRewardSeq = 80,
     DungeonRewardType = true,
     OperationGM = true,
     Remark = "武器",
-    RewardType = "Weapon"
+    RewardType = "Weapon",
   },
   WeaponAccessory = {
     DungeonRewardSeq = 61,
     OperationGM = true,
     Remark = "武器配饰",
     RewardType = "WeaponAccessory",
-    UniqueType = true
+    UniqueType = true,
   },
   WeaponSkin = {
     DungeonRewardSeq = 71,
     OperationGM = true,
     Remark = "武器皮肤",
     RewardType = "WeaponSkin",
-    UniqueType = true
-  }
+    UniqueType = true,
+  },
 })

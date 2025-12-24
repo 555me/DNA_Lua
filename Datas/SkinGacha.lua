@@ -1,59 +1,117 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("SkinGacha", {
-  [9001] = {
-    ConditionId = 4041,
-    GachaCoreDes = "UI_SkinGacha_Core_GoldSkin",
-    GachaCoreDesColor = 5,
-    GachaCostNum10 = 10,
-    GachaCostRes = {1001},
-    GachaDes = "SkinGacha_Des_Normal",
-    GachaDisplayPath = "FileMediaSource'/Game/Asset/UIVideo/Gacha/Gacha_Pool_SongluShuimu01.Gacha_Pool_SongluShuimu01'",
-    GachaDisplayType = 1,
-    GachaEndTime = 2209003200,
-    GachaHistoryType = 2,
-    GachaId = 9001,
-    GachaName = "SkinGacha_Name_Normal_1",
-    GachaNameBp = "WidgetBlueprint'/Game/UI/WBP/GachaNew/Widget/Title/WBP_Gacha_PoolTitle_Normal.WBP_Gacha_PoolTitle_Normal'",
-    GachaStartTime = 1704081600,
-    GachaTimes = 1,
-    GachaType = "GACHA_SKIN_TYPE_NORMAL",
-    GachaWarning = "SkinGacha_Warning_Normal",
-    IsHIdeCountdown = true,
-    ProbabilityId = 9999,
-    Sequence = 1,
-    Star3ItemId = 99993,
-    Star4ItemId = 99992,
-    Star5ItemId = 99991,
-    TabId = 1
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\SkinGacha.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r0_0 = {
+  RT_1 = {
+    99,
+    1004,
+    1003
   },
-  [9002] = {
-    BgBGM = "event:/bgm/1_0/0088_saiqi_skin",
-    BgMusic = "event:/ui/btc/gacha_pool_saiqi_skin01",
-    BubbleShowGoods = 140207,
-    ConditionId = 4041,
-    GachaCoreDes = "UI_SkinGacha_Core_GoldSkin",
-    GachaCoreDesColor = 5,
-    GachaCostNum10 = 10,
-    GachaCostRes = {1004, 1003},
-    GachaDes = "SkinGacha_Des_Special",
-    GachaDisplayPath = "FileMediaSource'/Game/Asset/UIVideo/Gacha/Gacha_Pool_Saiqi01.Gacha_Pool_Saiqi01'",
-    GachaDisplayType = 1,
-    GachaEndTime = 1766394000,
-    GachaHistoryType = 2,
-    GachaId = 9002,
-    GachaName = "SkinGacha_Name_Special_1",
-    GachaNameBp = "WidgetBlueprint'/Game/UI/WBP/GachaNew/Widget/Title/WBP_Gacha_PoolTitle_Saiqi01.WBP_Gacha_PoolTitle_Saiqi01'",
-    GachaStartTime = 1704081600,
-    GachaTimes = 1,
-    GachaType = "GACHA_SKIN_TYPE_SPECIAL",
-    GachaWarning = "SkinGacha_Warning_Special",
-    ProbabilityId = 1001,
-    Sequence = 2,
-    Star3ItemId = 99983,
-    Star4ItemId = 99982,
-    Star5ItemId = 99981,
-    TabId = 2
-  }
-})
+  RT_2 = {
+    1004,
+    1003
+  },
+}
+local r2_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [12, 12] id: 1
+  return r1_1
+end
+local r3_0 = "SkinGacha"
+local r4_0 = {}
+r4_0[9001] = {
+  ConditionId = 4041,
+  DisplayCostRes = {
+    99,
+    100,
+    1001
+  },
+  GachaCoreDes = "UI_SkinGacha_Core_GoldSkin",
+  GachaCoreDesColor = 5,
+  GachaCostNum10 = 10,
+  GachaCostRes = {
+    1001
+  },
+  GachaDes = "SkinGacha_Des_Normal",
+  GachaDisplayPath = "FileMediaSource\'/Game/Asset/UIVideo/Gacha/Gacha_Pool_SongluShuimu01.Gacha_Pool_SongluShuimu01\'",
+  GachaDisplayType = 1,
+  GachaEndTime = 2209003200,
+  GachaHistoryType = 2,
+  GachaId = 9001,
+  GachaName = "SkinGacha_Name_Normal_1",
+  GachaNameBp = "WidgetBlueprint\'/Game/UI/WBP/GachaNew/Widget/Title/WBP_Gacha_PoolTitle_Normal.WBP_Gacha_PoolTitle_Normal\'",
+  GachaStartTime = 1704081600,
+  GachaTimes = 1,
+  GachaType = "GACHA_SKIN_TYPE_NORMAL",
+  GachaWarning = "SkinGacha_Warning_Normal",
+  IsHIdeCountdown = true,
+  ProbabilityId = 9999,
+  Sequence = 1,
+  Star3ItemId = 99993,
+  Star4ItemId = 99992,
+  Star5ItemId = 99991,
+  TabId = 1,
+}
+r4_0[9002] = {
+  BgBGM = "event:/bgm/1_0/0088_saiqi_skin",
+  BgMusic = "event:/ui/btc/gacha_pool_saiqi_skin01",
+  BubbleShowGoods = {
+    140205
+  },
+  ConditionId = 4041,
+  DisplayCostRes = r0_0.RT_1,
+  GachaCoreDes = "UI_SkinGacha_Core_GoldSkin",
+  GachaCoreDesColor = 5,
+  GachaCostNum10 = 10,
+  GachaCostRes = r0_0.RT_2,
+  GachaDes = "SkinGacha_Des_Special",
+  GachaDisplayPath = "FileMediaSource\'/Game/Asset/UIVideo/Gacha/Gacha_Pool_Saiqi01.Gacha_Pool_Saiqi01\'",
+  GachaDisplayType = 1,
+  GachaEndTime = 1766394000,
+  GachaHistoryType = 2,
+  GachaId = 9002,
+  GachaName = "SkinGacha_Name_Special_1",
+  GachaNameBp = "WidgetBlueprint\'/Game/UI/WBP/GachaNew/Widget/Title/WBP_Gacha_PoolTitle_Saiqi01.WBP_Gacha_PoolTitle_Saiqi01\'",
+  GachaStartTime = 1704081600,
+  GachaTimes = 1,
+  GachaType = "GACHA_SKIN_TYPE_SPECIAL",
+  GachaWarning = "SkinGacha_Warning_Special",
+  ProbabilityId = 1001,
+  Sequence = 2,
+  Star3ItemId = 99983,
+  Star4ItemId = 99982,
+  Star5ItemId = 99981,
+  TabId = 2,
+}
+r4_0[9003] = {
+  BgMusic = "event:/ui/btc/gacha_pool_fushu_skin01",
+  BubbleShowGoods = {
+    140227,
+    140229,
+    140228
+  },
+  ConditionId = 4041,
+  DisplayCostRes = r0_0.RT_1,
+  GachaCoreDes = "UI_SkinGacha_Core_GoldSkin",
+  GachaCoreDesColor = 5,
+  GachaCostNum10 = 10,
+  GachaCostRes = r0_0.RT_2,
+  GachaDes = "SkinGacha_Des_Special",
+  GachaDisplayPath = "FileMediaSource\'/Game/Asset/UIVideo/Gacha/Gacha_Pool_Baiheng01.Gacha_Pool_Baiheng01\'",
+  GachaDisplayType = 1,
+  GachaEndTime = 1770667200,
+  GachaHistoryType = 2,
+  GachaId = 9003,
+  GachaName = "SkinGacha_Name_Special_2",
+  GachaNameBp = "WidgetBlueprint\'/Game/UI/WBP/GachaNew/Widget/Title/WBP_Gacha_PoolTitle_Baiheng01.WBP_Gacha_PoolTitle_Baiheng01\'",
+  GachaStartTime = 1766408400,
+  GachaTimes = 1,
+  GachaType = "GACHA_SKIN_TYPE_SPECIAL_2",
+  GachaWarning = "SkinGacha_Warning_Special_2",
+  ProbabilityId = 1001,
+  Sequence = 2,
+  Star3ItemId = 99973,
+  Star4ItemId = 99972,
+  Star5ItemId = 99971,
+  TabId = 3,
+}
+return r2_0(r3_0, r4_0)

@@ -1,1237 +1,1241 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\CharCardLevelUp.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r0_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
 end
-return ReadOnly("CharCardLevelUp", {
-  [1101] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001101,
-      ResourceNum1 = 30,
-      RoleId = 1101
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001101,
-      ResourceNum1 = 30,
-      RoleId = 1101
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001101,
-      ResourceNum1 = 30,
-      RoleId = 1101
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001101,
-      ResourceNum1 = 30,
-      RoleId = 1101
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001101,
-      ResourceNum1 = 30,
-      RoleId = 1101
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001101,
-      ResourceNum1 = 30,
-      RoleId = 1101
-    }
+local r3_0 = {}
+r3_0[1101] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001101,
+    ResourceNum1 = 30,
+    RoleId = 1101,
   },
-  [1103] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001103,
-      ResourceNum1 = 30,
-      RoleId = 1103
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001103,
-      ResourceNum1 = 30,
-      RoleId = 1103
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001103,
-      ResourceNum1 = 30,
-      RoleId = 1103
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001103,
-      ResourceNum1 = 30,
-      RoleId = 1103
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001103,
-      ResourceNum1 = 30,
-      RoleId = 1103
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001103,
-      ResourceNum1 = 30,
-      RoleId = 1103
-    }
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001101,
+    ResourceNum1 = 30,
+    RoleId = 1101,
   },
-  [1104] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001104,
-      ResourceNum1 = 30,
-      RoleId = 1104
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001104,
-      ResourceNum1 = 30,
-      RoleId = 1104
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001104,
-      ResourceNum1 = 30,
-      RoleId = 1104
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001104,
-      ResourceNum1 = 30,
-      RoleId = 1104
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001104,
-      ResourceNum1 = 30,
-      RoleId = 1104
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001104,
-      ResourceNum1 = 30,
-      RoleId = 1104
-    }
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001101,
+    ResourceNum1 = 30,
+    RoleId = 1101,
   },
-  [1501] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001501,
-      ResourceNum1 = 30,
-      RoleId = 1501
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001501,
-      ResourceNum1 = 30,
-      RoleId = 1501
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001501,
-      ResourceNum1 = 30,
-      RoleId = 1501
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001501,
-      ResourceNum1 = 30,
-      RoleId = 1501
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001501,
-      ResourceNum1 = 30,
-      RoleId = 1501
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001501,
-      ResourceNum1 = 30,
-      RoleId = 1501
-    }
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001101,
+    ResourceNum1 = 30,
+    RoleId = 1101,
   },
-  [1502] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001502,
-      ResourceNum1 = 30,
-      RoleId = 1502
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001502,
-      ResourceNum1 = 30,
-      RoleId = 1502
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001502,
-      ResourceNum1 = 30,
-      RoleId = 1502
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001502,
-      ResourceNum1 = 30,
-      RoleId = 1502
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001502,
-      ResourceNum1 = 30,
-      RoleId = 1502
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001502,
-      ResourceNum1 = 30,
-      RoleId = 1502
-    }
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001101,
+    ResourceNum1 = 30,
+    RoleId = 1101,
   },
-  [1503] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001503,
-      ResourceNum1 = 30,
-      RoleId = 1503
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001503,
-      ResourceNum1 = 30,
-      RoleId = 1503
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001503,
-      ResourceNum1 = 30,
-      RoleId = 1503
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001503,
-      ResourceNum1 = 30,
-      RoleId = 1503
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001503,
-      ResourceNum1 = 30,
-      RoleId = 1503
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001503,
-      ResourceNum1 = 30,
-      RoleId = 1503
-    }
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001101,
+    ResourceNum1 = 30,
+    RoleId = 1101,
   },
-  [1504] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001504,
-      ResourceNum1 = 30,
-      RoleId = 1504
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001504,
-      ResourceNum1 = 30,
-      RoleId = 1504
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001504,
-      ResourceNum1 = 30,
-      RoleId = 1504
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001504,
-      ResourceNum1 = 30,
-      RoleId = 1504
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001504,
-      ResourceNum1 = 30,
-      RoleId = 1504
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001504,
-      ResourceNum1 = 30,
-      RoleId = 1504
-    }
+}
+r3_0[1103] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001103,
+    ResourceNum1 = 30,
+    RoleId = 1103,
   },
-  [1601] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001601,
-      ResourceNum1 = 30,
-      RoleId = 1601
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001601,
-      ResourceNum1 = 30,
-      RoleId = 1601
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001601,
-      ResourceNum1 = 30,
-      RoleId = 1601
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001601,
-      ResourceNum1 = 30,
-      RoleId = 1601
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001601,
-      ResourceNum1 = 30,
-      RoleId = 1601
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001601,
-      ResourceNum1 = 30,
-      RoleId = 1601
-    }
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001103,
+    ResourceNum1 = 30,
+    RoleId = 1103,
   },
-  [1801] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001801,
-      ResourceNum1 = 30,
-      RoleId = 1801
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001801,
-      ResourceNum1 = 30,
-      RoleId = 1801
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001801,
-      ResourceNum1 = 30,
-      RoleId = 1801
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001801,
-      ResourceNum1 = 30,
-      RoleId = 1801
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001801,
-      ResourceNum1 = 30,
-      RoleId = 1801
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001801,
-      ResourceNum1 = 30,
-      RoleId = 1801
-    }
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001103,
+    ResourceNum1 = 30,
+    RoleId = 1103,
   },
-  [2101] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002101,
-      ResourceNum1 = 30,
-      RoleId = 2101
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002101,
-      ResourceNum1 = 30,
-      RoleId = 2101
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002101,
-      ResourceNum1 = 30,
-      RoleId = 2101
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002101,
-      ResourceNum1 = 30,
-      RoleId = 2101
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002101,
-      ResourceNum1 = 30,
-      RoleId = 2101
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002101,
-      ResourceNum1 = 30,
-      RoleId = 2101
-    }
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001103,
+    ResourceNum1 = 30,
+    RoleId = 1103,
   },
-  [2301] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002301,
-      ResourceNum1 = 30,
-      RoleId = 2301
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002301,
-      ResourceNum1 = 30,
-      RoleId = 2301
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002301,
-      ResourceNum1 = 30,
-      RoleId = 2301
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002301,
-      ResourceNum1 = 30,
-      RoleId = 2301
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002301,
-      ResourceNum1 = 30,
-      RoleId = 2301
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002301,
-      ResourceNum1 = 30,
-      RoleId = 2301
-    }
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001103,
+    ResourceNum1 = 30,
+    RoleId = 1103,
   },
-  [2401] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002401,
-      ResourceNum1 = 30,
-      RoleId = 2401
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002401,
-      ResourceNum1 = 30,
-      RoleId = 2401
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002401,
-      ResourceNum1 = 30,
-      RoleId = 2401
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002401,
-      ResourceNum1 = 30,
-      RoleId = 2401
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002401,
-      ResourceNum1 = 30,
-      RoleId = 2401
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1002401,
-      ResourceNum1 = 30,
-      RoleId = 2401
-    }
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001103,
+    ResourceNum1 = 30,
+    RoleId = 1103,
   },
-  [3101] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003101,
-      ResourceNum1 = 30,
-      RoleId = 3101
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003101,
-      ResourceNum1 = 30,
-      RoleId = 3101
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003101,
-      ResourceNum1 = 30,
-      RoleId = 3101
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003101,
-      ResourceNum1 = 30,
-      RoleId = 3101
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003101,
-      ResourceNum1 = 30,
-      RoleId = 3101
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003101,
-      ResourceNum1 = 30,
-      RoleId = 3101
-    }
+}
+r3_0[1104] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001104,
+    ResourceNum1 = 30,
+    RoleId = 1104,
   },
-  [3102] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003102,
-      ResourceNum1 = 30,
-      RoleId = 3102
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003102,
-      ResourceNum1 = 30,
-      RoleId = 3102
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003102,
-      ResourceNum1 = 30,
-      RoleId = 3102
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003102,
-      ResourceNum1 = 30,
-      RoleId = 3102
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003102,
-      ResourceNum1 = 30,
-      RoleId = 3102
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003102,
-      ResourceNum1 = 30,
-      RoleId = 3102
-    }
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001104,
+    ResourceNum1 = 30,
+    RoleId = 1104,
   },
-  [3103] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003103,
-      ResourceNum1 = 30,
-      RoleId = 3103
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003103,
-      ResourceNum1 = 30,
-      RoleId = 3103
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003103,
-      ResourceNum1 = 30,
-      RoleId = 3103
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003103,
-      ResourceNum1 = 30,
-      RoleId = 3103
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003103,
-      ResourceNum1 = 30,
-      RoleId = 3103
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003103,
-      ResourceNum1 = 30,
-      RoleId = 3103
-    }
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001104,
+    ResourceNum1 = 30,
+    RoleId = 1104,
   },
-  [3201] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003201,
-      ResourceNum1 = 30,
-      RoleId = 3201
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003201,
-      ResourceNum1 = 30,
-      RoleId = 3201
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003201,
-      ResourceNum1 = 30,
-      RoleId = 3201
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003201,
-      ResourceNum1 = 30,
-      RoleId = 3201
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003201,
-      ResourceNum1 = 30,
-      RoleId = 3201
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003201,
-      ResourceNum1 = 30,
-      RoleId = 3201
-    }
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001104,
+    ResourceNum1 = 30,
+    RoleId = 1104,
   },
-  [3202] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003202,
-      ResourceNum1 = 30,
-      RoleId = 3202
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003202,
-      ResourceNum1 = 30,
-      RoleId = 3202
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003202,
-      ResourceNum1 = 30,
-      RoleId = 3202
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003202,
-      ResourceNum1 = 30,
-      RoleId = 3202
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003202,
-      ResourceNum1 = 30,
-      RoleId = 3202
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003202,
-      ResourceNum1 = 30,
-      RoleId = 3202
-    }
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001104,
+    ResourceNum1 = 30,
+    RoleId = 1104,
   },
-  [3301] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003301,
-      ResourceNum1 = 30,
-      RoleId = 3301
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003301,
-      ResourceNum1 = 30,
-      RoleId = 3301
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003301,
-      ResourceNum1 = 30,
-      RoleId = 3301
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003301,
-      ResourceNum1 = 30,
-      RoleId = 3301
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003301,
-      ResourceNum1 = 30,
-      RoleId = 3301
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1003301,
-      ResourceNum1 = 30,
-      RoleId = 3301
-    }
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001104,
+    ResourceNum1 = 30,
+    RoleId = 1104,
   },
-  [4101] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004101,
-      ResourceNum1 = 30,
-      RoleId = 4101
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004101,
-      ResourceNum1 = 30,
-      RoleId = 4101
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004101,
-      ResourceNum1 = 30,
-      RoleId = 4101
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004101,
-      ResourceNum1 = 30,
-      RoleId = 4101
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004101,
-      ResourceNum1 = 30,
-      RoleId = 4101
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004101,
-      ResourceNum1 = 30,
-      RoleId = 4101
-    }
+}
+r3_0[1501] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001501,
+    ResourceNum1 = 30,
+    RoleId = 1501,
   },
-  [4102] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004102,
-      ResourceNum1 = 30,
-      RoleId = 4102
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004102,
-      ResourceNum1 = 30,
-      RoleId = 4102
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004102,
-      ResourceNum1 = 30,
-      RoleId = 4102
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004102,
-      ResourceNum1 = 30,
-      RoleId = 4102
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004102,
-      ResourceNum1 = 30,
-      RoleId = 4102
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004102,
-      ResourceNum1 = 30,
-      RoleId = 4102
-    }
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001501,
+    ResourceNum1 = 30,
+    RoleId = 1501,
   },
-  [4201] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004201,
-      ResourceNum1 = 30,
-      RoleId = 4201
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004201,
-      ResourceNum1 = 30,
-      RoleId = 4201
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004201,
-      ResourceNum1 = 30,
-      RoleId = 4201
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004201,
-      ResourceNum1 = 30,
-      RoleId = 4201
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004201,
-      ResourceNum1 = 30,
-      RoleId = 4201
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004201,
-      ResourceNum1 = 30,
-      RoleId = 4201
-    }
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001501,
+    ResourceNum1 = 30,
+    RoleId = 1501,
   },
-  [4202] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004202,
-      ResourceNum1 = 30,
-      RoleId = 4202
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004202,
-      ResourceNum1 = 30,
-      RoleId = 4202
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004202,
-      ResourceNum1 = 30,
-      RoleId = 4202
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004202,
-      ResourceNum1 = 30,
-      RoleId = 4202
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004202,
-      ResourceNum1 = 30,
-      RoleId = 4202
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004202,
-      ResourceNum1 = 30,
-      RoleId = 4202
-    }
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001501,
+    ResourceNum1 = 30,
+    RoleId = 1501,
   },
-  [4301] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004301,
-      ResourceNum1 = 30,
-      RoleId = 4301
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004301,
-      ResourceNum1 = 30,
-      RoleId = 4301
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004301,
-      ResourceNum1 = 30,
-      RoleId = 4301
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004301,
-      ResourceNum1 = 30,
-      RoleId = 4301
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004301,
-      ResourceNum1 = 30,
-      RoleId = 4301
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1004301,
-      ResourceNum1 = 30,
-      RoleId = 4301
-    }
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001501,
+    ResourceNum1 = 30,
+    RoleId = 1501,
   },
-  [5101] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005101,
-      ResourceNum1 = 30,
-      RoleId = 5101
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005101,
-      ResourceNum1 = 30,
-      RoleId = 5101
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005101,
-      ResourceNum1 = 30,
-      RoleId = 5101
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005101,
-      ResourceNum1 = 30,
-      RoleId = 5101
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005101,
-      ResourceNum1 = 30,
-      RoleId = 5101
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005101,
-      ResourceNum1 = 30,
-      RoleId = 5101
-    }
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001501,
+    ResourceNum1 = 30,
+    RoleId = 1501,
   },
-  [5102] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005102,
-      ResourceNum1 = 30,
-      RoleId = 5102
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005102,
-      ResourceNum1 = 30,
-      RoleId = 5102
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005102,
-      ResourceNum1 = 30,
-      RoleId = 5102
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005102,
-      ResourceNum1 = 30,
-      RoleId = 5102
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005102,
-      ResourceNum1 = 30,
-      RoleId = 5102
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005102,
-      ResourceNum1 = 30,
-      RoleId = 5102
-    }
+}
+r3_0[1502] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001502,
+    ResourceNum1 = 30,
+    RoleId = 1502,
   },
-  [5301] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005301,
-      ResourceNum1 = 30,
-      RoleId = 5301
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005301,
-      ResourceNum1 = 30,
-      RoleId = 5301
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005301,
-      ResourceNum1 = 30,
-      RoleId = 5301
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005301,
-      ResourceNum1 = 30,
-      RoleId = 5301
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005301,
-      ResourceNum1 = 30,
-      RoleId = 5301
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005301,
-      ResourceNum1 = 30,
-      RoleId = 5301
-    }
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001502,
+    ResourceNum1 = 30,
+    RoleId = 1502,
   },
-  [5401] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005401,
-      ResourceNum1 = 30,
-      RoleId = 5401
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005401,
-      ResourceNum1 = 30,
-      RoleId = 5401
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005401,
-      ResourceNum1 = 30,
-      RoleId = 5401
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005401,
-      ResourceNum1 = 30,
-      RoleId = 5401
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005401,
-      ResourceNum1 = 30,
-      RoleId = 5401
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1005401,
-      ResourceNum1 = 30,
-      RoleId = 5401
-    }
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001502,
+    ResourceNum1 = 30,
+    RoleId = 1502,
   },
-  [160101] = {
-    [0] = {
-      CardLevel = 0,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001601,
-      ResourceNum1 = 30,
-      RoleId = 160101
-    },
-    [1] = {
-      CardLevel = 1,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001601,
-      ResourceNum1 = 30,
-      RoleId = 160101
-    },
-    [2] = {
-      CardLevel = 2,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001601,
-      ResourceNum1 = 30,
-      RoleId = 160101
-    },
-    [3] = {
-      CardLevel = 3,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001601,
-      ResourceNum1 = 30,
-      RoleId = 160101
-    },
-    [4] = {
-      CardLevel = 4,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001601,
-      ResourceNum1 = 30,
-      RoleId = 160101
-    },
-    [5] = {
-      CardLevel = 5,
-      CollectRewardExp = 250,
-      ResourceId1 = 1001601,
-      ResourceNum1 = 30,
-      RoleId = 160101
-    }
-  }
-})
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001502,
+    ResourceNum1 = 30,
+    RoleId = 1502,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001502,
+    ResourceNum1 = 30,
+    RoleId = 1502,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001502,
+    ResourceNum1 = 30,
+    RoleId = 1502,
+  },
+}
+r3_0[1503] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001503,
+    ResourceNum1 = 30,
+    RoleId = 1503,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001503,
+    ResourceNum1 = 30,
+    RoleId = 1503,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001503,
+    ResourceNum1 = 30,
+    RoleId = 1503,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001503,
+    ResourceNum1 = 30,
+    RoleId = 1503,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001503,
+    ResourceNum1 = 30,
+    RoleId = 1503,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001503,
+    ResourceNum1 = 30,
+    RoleId = 1503,
+  },
+}
+r3_0[1504] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001504,
+    ResourceNum1 = 30,
+    RoleId = 1504,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001504,
+    ResourceNum1 = 30,
+    RoleId = 1504,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001504,
+    ResourceNum1 = 30,
+    RoleId = 1504,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001504,
+    ResourceNum1 = 30,
+    RoleId = 1504,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001504,
+    ResourceNum1 = 30,
+    RoleId = 1504,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001504,
+    ResourceNum1 = 30,
+    RoleId = 1504,
+  },
+}
+r3_0[1601] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001601,
+    ResourceNum1 = 30,
+    RoleId = 1601,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001601,
+    ResourceNum1 = 30,
+    RoleId = 1601,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001601,
+    ResourceNum1 = 30,
+    RoleId = 1601,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001601,
+    ResourceNum1 = 30,
+    RoleId = 1601,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001601,
+    ResourceNum1 = 30,
+    RoleId = 1601,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001601,
+    ResourceNum1 = 30,
+    RoleId = 1601,
+  },
+}
+r3_0[1801] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001801,
+    ResourceNum1 = 30,
+    RoleId = 1801,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001801,
+    ResourceNum1 = 30,
+    RoleId = 1801,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001801,
+    ResourceNum1 = 30,
+    RoleId = 1801,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001801,
+    ResourceNum1 = 30,
+    RoleId = 1801,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001801,
+    ResourceNum1 = 30,
+    RoleId = 1801,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001801,
+    ResourceNum1 = 30,
+    RoleId = 1801,
+  },
+}
+r3_0[2101] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002101,
+    ResourceNum1 = 30,
+    RoleId = 2101,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002101,
+    ResourceNum1 = 30,
+    RoleId = 2101,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002101,
+    ResourceNum1 = 30,
+    RoleId = 2101,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002101,
+    ResourceNum1 = 30,
+    RoleId = 2101,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002101,
+    ResourceNum1 = 30,
+    RoleId = 2101,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002101,
+    ResourceNum1 = 30,
+    RoleId = 2101,
+  },
+}
+r3_0[2301] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002301,
+    ResourceNum1 = 30,
+    RoleId = 2301,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002301,
+    ResourceNum1 = 30,
+    RoleId = 2301,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002301,
+    ResourceNum1 = 30,
+    RoleId = 2301,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002301,
+    ResourceNum1 = 30,
+    RoleId = 2301,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002301,
+    ResourceNum1 = 30,
+    RoleId = 2301,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002301,
+    ResourceNum1 = 30,
+    RoleId = 2301,
+  },
+}
+r3_0[2401] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002401,
+    ResourceNum1 = 30,
+    RoleId = 2401,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002401,
+    ResourceNum1 = 30,
+    RoleId = 2401,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002401,
+    ResourceNum1 = 30,
+    RoleId = 2401,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002401,
+    ResourceNum1 = 30,
+    RoleId = 2401,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002401,
+    ResourceNum1 = 30,
+    RoleId = 2401,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1002401,
+    ResourceNum1 = 30,
+    RoleId = 2401,
+  },
+}
+r3_0[3101] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003101,
+    ResourceNum1 = 30,
+    RoleId = 3101,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003101,
+    ResourceNum1 = 30,
+    RoleId = 3101,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003101,
+    ResourceNum1 = 30,
+    RoleId = 3101,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003101,
+    ResourceNum1 = 30,
+    RoleId = 3101,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003101,
+    ResourceNum1 = 30,
+    RoleId = 3101,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003101,
+    ResourceNum1 = 30,
+    RoleId = 3101,
+  },
+}
+r3_0[3102] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003102,
+    ResourceNum1 = 30,
+    RoleId = 3102,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003102,
+    ResourceNum1 = 30,
+    RoleId = 3102,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003102,
+    ResourceNum1 = 30,
+    RoleId = 3102,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003102,
+    ResourceNum1 = 30,
+    RoleId = 3102,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003102,
+    ResourceNum1 = 30,
+    RoleId = 3102,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003102,
+    ResourceNum1 = 30,
+    RoleId = 3102,
+  },
+}
+r3_0[3103] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003103,
+    ResourceNum1 = 30,
+    RoleId = 3103,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003103,
+    ResourceNum1 = 30,
+    RoleId = 3103,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003103,
+    ResourceNum1 = 30,
+    RoleId = 3103,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003103,
+    ResourceNum1 = 30,
+    RoleId = 3103,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003103,
+    ResourceNum1 = 30,
+    RoleId = 3103,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003103,
+    ResourceNum1 = 30,
+    RoleId = 3103,
+  },
+}
+r3_0[3201] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003201,
+    ResourceNum1 = 30,
+    RoleId = 3201,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003201,
+    ResourceNum1 = 30,
+    RoleId = 3201,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003201,
+    ResourceNum1 = 30,
+    RoleId = 3201,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003201,
+    ResourceNum1 = 30,
+    RoleId = 3201,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003201,
+    ResourceNum1 = 30,
+    RoleId = 3201,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003201,
+    ResourceNum1 = 30,
+    RoleId = 3201,
+  },
+}
+r3_0[3202] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003202,
+    ResourceNum1 = 30,
+    RoleId = 3202,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003202,
+    ResourceNum1 = 30,
+    RoleId = 3202,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003202,
+    ResourceNum1 = 30,
+    RoleId = 3202,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003202,
+    ResourceNum1 = 30,
+    RoleId = 3202,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003202,
+    ResourceNum1 = 30,
+    RoleId = 3202,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003202,
+    ResourceNum1 = 30,
+    RoleId = 3202,
+  },
+}
+r3_0[3301] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003301,
+    ResourceNum1 = 30,
+    RoleId = 3301,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003301,
+    ResourceNum1 = 30,
+    RoleId = 3301,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003301,
+    ResourceNum1 = 30,
+    RoleId = 3301,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003301,
+    ResourceNum1 = 30,
+    RoleId = 3301,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003301,
+    ResourceNum1 = 30,
+    RoleId = 3301,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1003301,
+    ResourceNum1 = 30,
+    RoleId = 3301,
+  },
+}
+r3_0[4101] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004101,
+    ResourceNum1 = 30,
+    RoleId = 4101,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004101,
+    ResourceNum1 = 30,
+    RoleId = 4101,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004101,
+    ResourceNum1 = 30,
+    RoleId = 4101,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004101,
+    ResourceNum1 = 30,
+    RoleId = 4101,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004101,
+    ResourceNum1 = 30,
+    RoleId = 4101,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004101,
+    ResourceNum1 = 30,
+    RoleId = 4101,
+  },
+}
+r3_0[4102] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004102,
+    ResourceNum1 = 30,
+    RoleId = 4102,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004102,
+    ResourceNum1 = 30,
+    RoleId = 4102,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004102,
+    ResourceNum1 = 30,
+    RoleId = 4102,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004102,
+    ResourceNum1 = 30,
+    RoleId = 4102,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004102,
+    ResourceNum1 = 30,
+    RoleId = 4102,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004102,
+    ResourceNum1 = 30,
+    RoleId = 4102,
+  },
+}
+r3_0[4201] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004201,
+    ResourceNum1 = 30,
+    RoleId = 4201,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004201,
+    ResourceNum1 = 30,
+    RoleId = 4201,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004201,
+    ResourceNum1 = 30,
+    RoleId = 4201,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004201,
+    ResourceNum1 = 30,
+    RoleId = 4201,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004201,
+    ResourceNum1 = 30,
+    RoleId = 4201,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004201,
+    ResourceNum1 = 30,
+    RoleId = 4201,
+  },
+}
+r3_0[4202] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004202,
+    ResourceNum1 = 30,
+    RoleId = 4202,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004202,
+    ResourceNum1 = 30,
+    RoleId = 4202,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004202,
+    ResourceNum1 = 30,
+    RoleId = 4202,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004202,
+    ResourceNum1 = 30,
+    RoleId = 4202,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004202,
+    ResourceNum1 = 30,
+    RoleId = 4202,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004202,
+    ResourceNum1 = 30,
+    RoleId = 4202,
+  },
+}
+r3_0[4301] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004301,
+    ResourceNum1 = 30,
+    RoleId = 4301,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004301,
+    ResourceNum1 = 30,
+    RoleId = 4301,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004301,
+    ResourceNum1 = 30,
+    RoleId = 4301,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004301,
+    ResourceNum1 = 30,
+    RoleId = 4301,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004301,
+    ResourceNum1 = 30,
+    RoleId = 4301,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1004301,
+    ResourceNum1 = 30,
+    RoleId = 4301,
+  },
+}
+r3_0[5101] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005101,
+    ResourceNum1 = 30,
+    RoleId = 5101,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005101,
+    ResourceNum1 = 30,
+    RoleId = 5101,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005101,
+    ResourceNum1 = 30,
+    RoleId = 5101,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005101,
+    ResourceNum1 = 30,
+    RoleId = 5101,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005101,
+    ResourceNum1 = 30,
+    RoleId = 5101,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005101,
+    ResourceNum1 = 30,
+    RoleId = 5101,
+  },
+}
+r3_0[5102] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005102,
+    ResourceNum1 = 30,
+    RoleId = 5102,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005102,
+    ResourceNum1 = 30,
+    RoleId = 5102,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005102,
+    ResourceNum1 = 30,
+    RoleId = 5102,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005102,
+    ResourceNum1 = 30,
+    RoleId = 5102,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005102,
+    ResourceNum1 = 30,
+    RoleId = 5102,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005102,
+    ResourceNum1 = 30,
+    RoleId = 5102,
+  },
+}
+r3_0[5301] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005301,
+    ResourceNum1 = 30,
+    RoleId = 5301,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005301,
+    ResourceNum1 = 30,
+    RoleId = 5301,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005301,
+    ResourceNum1 = 30,
+    RoleId = 5301,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005301,
+    ResourceNum1 = 30,
+    RoleId = 5301,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005301,
+    ResourceNum1 = 30,
+    RoleId = 5301,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005301,
+    ResourceNum1 = 30,
+    RoleId = 5301,
+  },
+}
+r3_0[5401] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005401,
+    ResourceNum1 = 30,
+    RoleId = 5401,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005401,
+    ResourceNum1 = 30,
+    RoleId = 5401,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005401,
+    ResourceNum1 = 30,
+    RoleId = 5401,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005401,
+    ResourceNum1 = 30,
+    RoleId = 5401,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005401,
+    ResourceNum1 = 30,
+    RoleId = 5401,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1005401,
+    ResourceNum1 = 30,
+    RoleId = 5401,
+  },
+}
+r3_0[160101] = {
+  [0] = {
+    CardLevel = 0,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001601,
+    ResourceNum1 = 30,
+    RoleId = 160101,
+  },
+  [1] = {
+    CardLevel = 1,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001601,
+    ResourceNum1 = 30,
+    RoleId = 160101,
+  },
+  [2] = {
+    CardLevel = 2,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001601,
+    ResourceNum1 = 30,
+    RoleId = 160101,
+  },
+  [3] = {
+    CardLevel = 3,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001601,
+    ResourceNum1 = 30,
+    RoleId = 160101,
+  },
+  [4] = {
+    CardLevel = 4,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001601,
+    ResourceNum1 = 30,
+    RoleId = 160101,
+  },
+  [5] = {
+    CardLevel = 5,
+    CollectRewardExp = 250,
+    ResourceId1 = 1001601,
+    ResourceNum1 = 30,
+    RoleId = 160101,
+  },
+}
+return r0_0("CharCardLevelUp", r3_0)

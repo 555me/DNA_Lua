@@ -1,11 +1,16 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("WeaponTag", {
-  Abstract = {WeaponTag = "Abstract"},
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\WeaponTag.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("WeaponTag", {
+  Abstract = {
+    WeaponTag = "Abstract",
+  },
   Almighty = {
     WeaponTag = "Almighty",
-    WeaponTagTextmap = "WeaponType_Almighty"
+    WeaponTagTextmap = "WeaponType_Almighty",
   },
   Bow = {
     GachaIcon = "/Game/UI/Texture/Dynamic/Image/WeaponType/T_Gacha_WeaponType_Bow.T_Gacha_WeaponType_Bow",
@@ -14,10 +19,16 @@ return ReadOnly("WeaponTag", {
     ImageType = 2,
     WeaponTag = "Bow",
     WeaponTagTextmap = "WeaponType_Bow",
-    WeaponTagfilter = "RangedType"
+    WeaponTagfilter = "RangedType",
   },
-  Bow01 = {WeaponTag = "Bow01"},
-  Bow02 = {WeaponTag = "Bow02"},
+  Bow01 = {
+    WeaponTag = "Bow01",
+    WeaponTagTextmap = "WeaponType_Bow01",
+  },
+  Bow02 = {
+    WeaponTag = "Bow02",
+    WeaponTagTextmap = "WeaponType_Bow02",
+  },
   Cannon = {
     GachaIcon = "/Game/UI/Texture/Dynamic/Image/WeaponType/T_Gacha_WeaponType_Cannon.T_Gacha_WeaponType_Cannon",
     GachaSpine = "/Game/UI/WBP/Gacha/Widget/CampAni/WBP_Gacha_CampAni_Cannon.WBP_Gacha_CampAni_Cannon",
@@ -25,7 +36,7 @@ return ReadOnly("WeaponTag", {
     ImageType = 1,
     WeaponTag = "Cannon",
     WeaponTagTextmap = "WeaponType_Cannon",
-    WeaponTagfilter = "RangedType"
+    WeaponTagfilter = "RangedType",
   },
   Claymore = {
     GachaIcon = "/Game/UI/Texture/Dynamic/Image/WeaponType/T_Gacha_WeaponType_Claymore.T_Gacha_WeaponType_Claymore",
@@ -34,9 +45,11 @@ return ReadOnly("WeaponTag", {
     ImageType = 0,
     WeaponTag = "Claymore",
     WeaponTagTextmap = "WeaponType_Claymore",
-    WeaponTagfilter = "MeleeType"
+    WeaponTagfilter = "MeleeType",
   },
-  Condemn = {WeaponTag = "Condemn"},
+  Condemn = {
+    WeaponTag = "Condemn",
+  },
   Crossbow = {
     GachaIcon = "/Game/UI/Texture/Dynamic/Image/WeaponType/T_Gacha_WeaponType_Crossbow.T_Gacha_WeaponType_Crossbow",
     GachaSpine = "/Game/UI/WBP/Gacha/Widget/CampAni/WBP_Gacha_CampAni_Crossbow.WBP_Gacha_CampAni_Crossbow",
@@ -44,7 +57,7 @@ return ReadOnly("WeaponTag", {
     ImageType = 2,
     WeaponTag = "Crossbow",
     WeaponTagTextmap = "WeaponType_Crossbow",
-    WeaponTagfilter = "RangedType"
+    WeaponTagfilter = "RangedType",
   },
   Dualblade = {
     GachaIcon = "/Game/UI/Texture/Dynamic/Image/WeaponType/T_Gacha_WeaponType_Dualblade.T_Gacha_WeaponType_Dualblade",
@@ -53,7 +66,7 @@ return ReadOnly("WeaponTag", {
     ImageType = 1,
     WeaponTag = "Dualblade",
     WeaponTagTextmap = "WeaponType_Dualblade",
-    WeaponTagfilter = "MeleeType"
+    WeaponTagfilter = "MeleeType",
   },
   Katana = {
     GachaIcon = "/Game/UI/Texture/Dynamic/Image/WeaponType/T_Gacha_WeaponType_Katana.T_Gacha_WeaponType_Katana",
@@ -62,7 +75,7 @@ return ReadOnly("WeaponTag", {
     ImageType = 1,
     WeaponTag = "Katana",
     WeaponTagTextmap = "WeaponType_Katana",
-    WeaponTagfilter = "MeleeType"
+    WeaponTagfilter = "MeleeType",
   },
   Machinegun = {
     GachaIcon = "/Game/UI/Texture/Dynamic/Image/WeaponType/T_Gacha_WeaponType_Machinegun.T_Gacha_WeaponType_Machinegun",
@@ -71,14 +84,29 @@ return ReadOnly("WeaponTag", {
     ImageType = 2,
     WeaponTag = "Machinegun",
     WeaponTagTextmap = "WeaponType_Machinegun",
-    WeaponTagfilter = "RangedType"
+    WeaponTagfilter = "RangedType",
   },
-  Melee = {WeaponTag = "Melee"},
-  Mon = {WeaponTag = "Mon"},
-  MonBlade = {WeaponTag = "MonBlade"},
-  MonDual = {WeaponTag = "MonDual", WeaponTagFloat = 3},
-  MonGun = {WeaponTag = "MonGun", WeaponTagFloat = 1},
-  MonSingle = {WeaponTag = "MonSingle", WeaponTagFloat = 2},
+  Melee = {
+    WeaponTag = "Melee",
+  },
+  Mon = {
+    WeaponTag = "Mon",
+  },
+  MonBlade = {
+    WeaponTag = "MonBlade",
+  },
+  MonDual = {
+    WeaponTag = "MonDual",
+    WeaponTagFloat = 3,
+  },
+  MonGun = {
+    WeaponTag = "MonGun",
+    WeaponTagFloat = 1,
+  },
+  MonSingle = {
+    WeaponTag = "MonSingle",
+    WeaponTagFloat = 2,
+  },
   Pistol = {
     GachaIcon = "/Game/UI/Texture/Dynamic/Image/WeaponType/T_Gacha_WeaponType_Pistol.T_Gacha_WeaponType_Pistol",
     GachaSpine = "/Game/UI/WBP/Gacha/Widget/CampAni/WBP_Gacha_CampAni_Singlegun.WBP_Gacha_CampAni_Singlegun",
@@ -86,7 +114,7 @@ return ReadOnly("WeaponTag", {
     ImageType = 2,
     WeaponTag = "Pistol",
     WeaponTagTextmap = "WeaponType_Pistol",
-    WeaponTagfilter = "RangedType"
+    WeaponTagfilter = "RangedType",
   },
   Polearm = {
     GachaIcon = "/Game/UI/Texture/Dynamic/Image/WeaponType/T_Gacha_WeaponType_Polearm.T_Gacha_WeaponType_Polearm",
@@ -95,9 +123,11 @@ return ReadOnly("WeaponTag", {
     ImageType = 0,
     WeaponTag = "Polearm",
     WeaponTagTextmap = "WeaponType_Polearm",
-    WeaponTagfilter = "MeleeType"
+    WeaponTagfilter = "MeleeType",
   },
-  Ranged = {WeaponTag = "Ranged"},
+  Ranged = {
+    WeaponTag = "Ranged",
+  },
   Shotgun = {
     GachaIcon = "/Game/UI/Texture/Dynamic/Image/WeaponType/T_Gacha_WeaponType_Shotgun.T_Gacha_WeaponType_Shotgun",
     GachaSpine = "/Game/UI/WBP/Gacha/Widget/CampAni/WBP_Gacha_CampAni_Shotgun.WBP_Gacha_CampAni_Shotgun",
@@ -105,7 +135,7 @@ return ReadOnly("WeaponTag", {
     ImageType = 2,
     WeaponTag = "Shotgun",
     WeaponTagTextmap = "WeaponType_Shotgun",
-    WeaponTagfilter = "RangedType"
+    WeaponTagfilter = "RangedType",
   },
   Sword = {
     GachaIcon = "/Game/UI/Texture/Dynamic/Image/WeaponType/T_Gacha_WeaponType_Sword.T_Gacha_WeaponType_Sword",
@@ -114,7 +144,7 @@ return ReadOnly("WeaponTag", {
     ImageType = 1,
     WeaponTag = "Sword",
     WeaponTagTextmap = "WeaponType_Sword",
-    WeaponTagfilter = "MeleeType"
+    WeaponTagfilter = "MeleeType",
   },
   Swordwhip = {
     GachaIcon = "/Game/UI/Texture/Dynamic/Image/WeaponType/T_Gacha_WeaponType_Swordwhip.T_Gacha_WeaponType_Swordwhip",
@@ -123,7 +153,9 @@ return ReadOnly("WeaponTag", {
     ImageType = 1,
     WeaponTag = "Swordwhip",
     WeaponTagTextmap = "WeaponType_Swordwhip",
-    WeaponTagfilter = "MeleeType"
+    WeaponTagfilter = "MeleeType",
   },
-  Ultra = {WeaponTag = "Ultra"}
+  Ultra = {
+    WeaponTag = "Ultra",
+  },
 })

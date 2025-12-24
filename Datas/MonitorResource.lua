@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("MonitorResource", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\MonitorResource.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [1, 1] id: 1
+  return r1_1
+end)("MonitorResource", {
   ["100_0_1"] = 50000,
   ["100_0_1440"] = 1000000,
   ["100_0_60"] = 200000,
@@ -13,5 +16,5 @@ return ReadOnly("MonitorResource", {
   ["204_0_60"] = 100,
   ["211_0_1"] = 2000,
   ["211_0_1440"] = 100000,
-  ["211_0_60"] = 7500
+  ["211_0_60"] = 7500,
 })

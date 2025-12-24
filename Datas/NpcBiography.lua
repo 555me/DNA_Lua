@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("NpcBiography", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\NpcBiography.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("NpcBiography", {
   [100101] = {
     ConditionId = 1007,
     DispConditionId = 1004,
@@ -9,7 +12,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 100101,
     NpcInformation = "NpcBiography_Information_Alice_1",
     NpcName = "UI_CMNpc_Name_Alice_1",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [100102] = {
     ConditionId = 1008,
@@ -18,7 +21,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 100102,
     NpcInformation = "NpcBiography_Information_Alice_2",
     NpcName = "UI_CMNpc_Name_Alice",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [100103] = {
     ConditionId = 1077,
@@ -27,7 +30,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 100103,
     NpcInformation = "NpcBiography_Information_Alice_3",
     NpcName = "UI_CMNpc_Name_Alice_Ani",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [100201] = {
     ConditionId = 1004,
@@ -36,7 +39,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 100201,
     NpcInformation = "NpcBiography_Information_Aier",
     NpcName = "UI_CMNpc_Name_Aier",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [100202] = {
     ConditionId = 1077,
@@ -45,7 +48,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 100202,
     NpcInformation = "NpcBiography_Information_Aier_2",
     NpcName = "UI_CMNpc_Name_Aier",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [100301] = {
     ConditionId = 1069,
@@ -54,7 +57,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 100301,
     NpcInformation = "NpcBiography_Information_Xilin_1",
     NpcName = "UI_CMNpc_Name_Xilin",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [100302] = {
     ConditionId = 1001,
@@ -63,7 +66,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 100302,
     NpcInformation = "NpcBiography_Information_Xilin_2",
     NpcName = "UI_CMNpc_Name_Xilin",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [100401] = {
     ConditionId = 1001,
@@ -72,14 +75,14 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 100401,
     NpcInformation = "NpcBiography_Information_Shali",
     NpcName = "UI_CMNpc_Name_Shali",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [100501] = {
     NpcAge = "20",
     NpcBiographyId = 100501,
     NpcInformation = "NpcBiography_Information_Jiexi",
     NpcName = "UI_CMNpc_Name_Jiexi",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [100601] = {
     ConditionId = 1009,
@@ -88,7 +91,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 100601,
     NpcInformation = "NpcBiography_Information_Mading",
     NpcName = "UI_CMNpc_Name_Mading",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [100701] = {
     ConditionId = 1012,
@@ -96,7 +99,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 100701,
     NpcInformation = "NpcBiography_Information_Kenong",
     NpcName = "UI_CMNpc_Name_Kenong",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [100801] = {
     ConditionId = 1013,
@@ -105,7 +108,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 100801,
     NpcInformation = "NpcBiography_Information_Dien",
     NpcName = "UI_CMNpc_Name_Dien",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [100901] = {
     ConditionId = 1014,
@@ -113,7 +116,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 100901,
     NpcInformation = "NpcBiography_Information_Sangni",
     NpcName = "UI_CMNpc_Name_Sangni",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [101001] = {
     ConditionId = 1015,
@@ -121,7 +124,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 101001,
     NpcInformation = "NpcBiography_Information_Liao",
     NpcName = "UI_CMNpc_Name_Liao",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [101101] = {
     ConditionId = 1016,
@@ -129,7 +132,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 101101,
     NpcInformation = "NpcBiography_Information_Hainuo",
     NpcName = "UI_CMNpc_Name_Hainuo",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [101201] = {
     ConditionId = 20022200,
@@ -137,7 +140,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 101201,
     NpcInformation = "NpcBiography_Information_Dadun",
     NpcName = "UI_CMNpc_Name_Dadun",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [101301] = {
     ConditionId = 1020,
@@ -146,7 +149,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 101301,
     NpcInformation = "NpcBiography_Information_Blue",
     NpcName = "UI_CMNpc_Name_Blue",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [101401] = {
     ConditionId = 1019,
@@ -155,7 +158,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 101401,
     NpcInformation = "NpcBiography_Information_Weier",
     NpcName = "UI_Npc_Name_Weier",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [101501] = {
     ConditionId = 1028,
@@ -164,7 +167,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 101501,
     NpcInformation = "NpcBiography_Information_Bake",
     NpcName = "UI_CMNpc_Name_Bake",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [101601] = {
     ConditionId = 1029,
@@ -173,7 +176,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 101601,
     NpcInformation = "NpcBiography_Information_Anuo",
     NpcName = "UI_CMNpc_Name_Anuo",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [101701] = {
     ConditionId = 1030,
@@ -182,7 +185,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 101701,
     NpcInformation = "NpcBiography_Information_Aima",
     NpcName = "UI_CMNpc_Name_Aima",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [101801] = {
     ConditionId = 1031,
@@ -191,7 +194,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 101801,
     NpcInformation = "NpcBiography_Information_Beilinda",
     NpcName = "UI_CMNpc_Name_Beilinda",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [101901] = {
     ConditionId = 1032,
@@ -200,7 +203,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 101901,
     NpcInformation = "NpcBiography_Information_Laina",
     NpcName = "UI_CMNpc_Name_Laina",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [102001] = {
     ConditionId = 1033,
@@ -209,7 +212,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 102001,
     NpcInformation = "NpcBiography_Information_Luna",
     NpcName = "UI_CMNpc_Name_Luna",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [102101] = {
     ConditionId = 1034,
@@ -218,7 +221,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 102101,
     NpcInformation = "NpcBiography_Information_Heerluo",
     NpcName = "UI_CMNpc_Name_Heerluo",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [102201] = {
     ConditionId = 1035,
@@ -227,7 +230,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 102201,
     NpcInformation = "NpcBiography_Information_Feiyi_1",
     NpcName = "UI_CMNpc_Name_Feiyi",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [102202] = {
     ConditionId = 1036,
@@ -236,7 +239,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 102202,
     NpcInformation = "NpcBiography_Information_Feiyi_2",
     NpcName = "UI_CMNpc_Name_Feiyi",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [102301] = {
     ConditionId = 20021200,
@@ -245,7 +248,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 102301,
     NpcInformation = "NpcBiography_Information_Lali",
     NpcName = "UI_CMNpc_Name_Lali",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [102401] = {
     ConditionId = 1038,
@@ -254,7 +257,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 102401,
     NpcInformation = "NpcBiography_Information_Makusi",
     NpcName = "UI_CMNpc_Name_Makusi",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [102501] = {
     ConditionId = 1067,
@@ -262,7 +265,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 102501,
     NpcInformation = "NpcBiography_Information_Maer",
     NpcName = "UI_Npc_Name_Maerjie",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [102601] = {
     ConditionId = 1068,
@@ -271,7 +274,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 102601,
     NpcInformation = "NpcBiography_Information_Sanxiongdi",
     NpcName = "UI_CMNpc_Name_SanXiongdi",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [102701] = {
     ConditionId = 1070,
@@ -280,7 +283,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 102701,
     NpcInformation = "NpcBiography_Information_Xueli",
     NpcName = "UI_CMNpc_Name_Xueli",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [102801] = {
     ConditionId = 200223,
@@ -289,7 +292,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 102801,
     NpcInformation = "NpcBiography_Information_XiAo_1",
     NpcName = "UI_CMNpc_Name_Xiao",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [102802] = {
     ConditionId = 200224,
@@ -298,7 +301,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 102802,
     NpcInformation = "NpcBiography_Information_XiAo_2",
     NpcName = "UI_CMNpc_Name_Xiao",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [102901] = {
     ConditionId = 1078,
@@ -306,7 +309,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 102901,
     NpcInformation = "NpcBiography_Information_Kaiwen",
     NpcName = "UI_Npc_Name_Kevin",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [103001] = {
     ConditionId = 1079,
@@ -314,7 +317,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 103001,
     NpcInformation = "NpcBiography_Information_Jimu",
     NpcName = "UI_CMNpc_Name_Jimu",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [103101] = {
     ConditionId = 1080,
@@ -322,7 +325,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 103101,
     NpcInformation = "NpcBiography_Information_Beiguanjiaojiao",
     NpcName = "UI_CMNpc_Name_Beiguanjiaojiao",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [103201] = {
     ConditionId = 1081,
@@ -330,7 +333,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 103201,
     NpcInformation = "NpcBiography_Information_Walun",
     NpcName = "UI_CMNpc_Name_Walun",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [103301] = {
     ConditionId = 1082,
@@ -338,7 +341,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 103301,
     NpcInformation = "NpcBiography_Information_Kongkongjiaojiao",
     NpcName = "UI_CMNpc_Name_Kongkongjiaojiao",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [103401] = {
     ConditionId = 1083,
@@ -347,7 +350,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 103401,
     NpcInformation = "NpcBiography_Information_Donat",
     NpcName = "UI_CMNpc_Name_Donat",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [103501] = {
     ConditionId = 1084,
@@ -356,7 +359,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 103501,
     NpcInformation = "NpcBiography_Information_Lars",
     NpcName = "UI_CMNpc_Name_Lars",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [103601] = {
     ConditionId = 1085,
@@ -365,7 +368,7 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 103601,
     NpcInformation = "NpcBiography_Information_Violetta",
     NpcName = "UI_CMNpc_Name_Violetta",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
   },
   [103701] = {
     ConditionId = 1086,
@@ -374,6 +377,168 @@ return ReadOnly("NpcBiography", {
     NpcBiographyId = 103701,
     NpcInformation = "NpcBiography_Information_Giselle",
     NpcName = "UI_CMNpc_Name_Giselle",
-    ProbeFailedTip = "NpcBiography_ProbeFailedTip1"
-  }
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [103801] = {
+    ConditionId = 1087,
+    DispConditionId = 1087,
+    NpcAge = "25",
+    NpcBiographyId = 103801,
+    NpcInformation = "NpcBiography_Information_Hesite",
+    NpcName = "UI_CMNpc_Name_Hesite",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [103901] = {
+    ConditionId = 1130,
+    DispConditionId = 1130,
+    NpcAge = "59",
+    NpcBiographyId = 103901,
+    NpcInformation = "NpcBiography_Information_MrCheng",
+    NpcName = "UI_CMNpc_Yanjindu_Name_MrCheng",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [104001] = {
+    ConditionId = 1131,
+    DispConditionId = 1131,
+    NpcAge = "59",
+    NpcBiographyId = 104001,
+    NpcInformation = "NpcBiography_Information_MrsCheng",
+    NpcName = "UI_CMNpc_Yanjindu_Name_MrsCheng",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [104101] = {
+    ConditionId = 1132,
+    DispConditionId = 1132,
+    NpcAge = "10",
+    NpcBiographyId = 104101,
+    NpcInformation = "NpcBiography_Information_JiangZhengyi",
+    NpcName = "UI_CMNpc_Yanjindu_Name_JiangZhengyi",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [104201] = {
+    ConditionId = 1133,
+    DispConditionId = 1133,
+    NpcAge = "31",
+    NpcBiographyId = 104201,
+    NpcInformation = "NpcBiography_Information_SaMi",
+    NpcName = "UI_CMNpc_Yanjindu_Name_SaMi",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [104301] = {
+    ConditionId = 1134,
+    DispConditionId = 1134,
+    NpcAge = "30",
+    NpcBiographyId = 104301,
+    NpcInformation = "NpcBiography_Information_LiShi",
+    NpcName = "UI_CMNpc_Yanjindu_Name_LiShi",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [104401] = {
+    ConditionId = 1135,
+    DispConditionId = 1135,
+    NpcAge = "29",
+    NpcBiographyId = 104401,
+    NpcInformation = "NpcBiography_Information_DuPing",
+    NpcName = "UI_CMNpc_Yanjindu_Name_DuPing",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [104501] = {
+    ConditionId = 1136,
+    DispConditionId = 1136,
+    NpcAge = "？？",
+    NpcBiographyId = 104501,
+    NpcInformation = "NpcBiography_Information_YiSheng",
+    NpcName = "UI_CMNpc_Yanjindu_Name_YiSheng",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [104601] = {
+    ConditionId = 1137,
+    DispConditionId = 1137,
+    NpcAge = "40",
+    NpcBiographyId = 104601,
+    NpcInformation = "NpcBiography_Information_LaMeng",
+    NpcName = "UI_CMNpc_Yanjindu_Name_LaMeng",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [104701] = {
+    ConditionId = 1138,
+    DispConditionId = 1138,
+    NpcAge = "21",
+    NpcBiographyId = 104701,
+    NpcInformation = "NpcBiography_Information_XiaoYun",
+    NpcName = "UI_CMNpc_Yanjindu_Name_XiaoYun",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [104801] = {
+    ConditionId = 1139,
+    DispConditionId = 1139,
+    NpcAge = "28",
+    NpcBiographyId = 104801,
+    NpcInformation = "NpcBiography_Information_JuMu",
+    NpcName = "UI_CMNpc_Yanjindu_Name_JuMu",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [104901] = {
+    ConditionId = 1140,
+    DispConditionId = 1140,
+    NpcAge = "44",
+    NpcBiographyId = 104901,
+    NpcInformation = "NpcBiography_Information_QuanDoutong",
+    NpcName = "UI_CMNpc_Yanjindu_Name_QuanDoutong",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [105001] = {
+    ConditionId = 1141,
+    DispConditionId = 1141,
+    NpcAge = "43",
+    NpcBiographyId = 105001,
+    NpcInformation = "NpcBiography_Information_DrHuang",
+    NpcName = "UI_CMNpc_Yanjindu_Name_DrHuang",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [105101] = {
+    ConditionId = 1142,
+    DispConditionId = 1142,
+    NpcAge = "20",
+    NpcBiographyId = 105101,
+    NpcInformation = "NpcBiography_Information_YuXia",
+    NpcName = "UI_CMNpc_Yanjindu_Name_YuXia",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [105201] = {
+    ConditionId = 1143,
+    DispConditionId = 1143,
+    NpcAge = "30",
+    NpcBiographyId = 105201,
+    NpcInformation = "NpcBiography_Information_KunSheng",
+    NpcName = "UI_CMNpc_Yanjindu_Name_KunSheng",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [105301] = {
+    ConditionId = 1144,
+    DispConditionId = 1144,
+    NpcAge = "50.0",
+    NpcBiographyId = 105301,
+    NpcInformation = "NpcBiography_Information_JiuPiaoZi",
+    NpcName = "UI_CMNpc_Yanjindu_Name_JiuPiaoZi",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [105401] = {
+    ConditionId = 1145,
+    DispConditionId = 1145,
+    NpcAge = "29.0",
+    NpcBiographyId = 105401,
+    NpcInformation = "NpcBiography_Information_FengDeng",
+    NpcName = "UI_CMNpc_Yanjindu_Name_FengDeng",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
+  [105501] = {
+    ConditionId = 1146,
+    DispConditionId = 1146,
+    NpcAge = "？？",
+    NpcBiographyId = 105501,
+    NpcInformation = "NpcBiography_Information_MysteryWhite",
+    NpcName = "UI_CMNpc_Yanjindu_Name_MysteryWhite",
+    ProbeFailedTip = "NpcBiography_ProbeFailedTip1",
+  },
 })

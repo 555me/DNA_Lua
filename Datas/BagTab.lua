@@ -1,20 +1,23 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("BagTab", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\BagTab.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("BagTab", {
   [2] = {
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Tab/T_Tab_Mod",
     Sequence = 90,
     TabDefaultSlot = 999,
     TabId = 2,
-    TabName = "UI_BAG_SUBTAB_NAME_MOD"
+    TabName = "UI_BAG_SUBTAB_NAME_MOD",
   },
   [3] = {
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Tab/T_Tab_ShopResource",
     Sequence = 100,
     TabDefaultSlot = 999,
     TabId = 3,
-    TabName = "UI_BAG_SUBTAB_NAME_RESOURCE"
+    TabName = "UI_BAG_SUBTAB_NAME_RESOURCE",
   },
   [4] = {
     HideSell = true,
@@ -22,7 +25,7 @@ return ReadOnly("BagTab", {
     Sequence = 60,
     TabDefaultSlot = 999,
     TabId = 4,
-    TabName = "UI_BAG_SUBTAB_NAME_TASK"
+    TabName = "UI_BAG_SUBTAB_NAME_TASK",
   },
   [5] = {
     HideSell = true,
@@ -30,21 +33,21 @@ return ReadOnly("BagTab", {
     Sequence = 50,
     TabDefaultSlot = 999,
     TabId = 5,
-    TabName = "UI_BAG_SUBTAB_NAME_READ"
+    TabName = "UI_BAG_SUBTAB_NAME_READ",
   },
   [6] = {
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Tab/T_Tab_Angling00",
     Sequence = 65,
     TabDefaultSlot = 999,
     TabId = 6,
-    TabName = "UI_BAG_SUBTAB_NAME_FISH"
+    TabName = "UI_BAG_SUBTAB_NAME_FISH",
   },
   [7] = {
     Icon = "/Game/UI/Texture/Dynamic/Atlas/Tab/T_Tab_Consumable",
     Sequence = 45,
     TabDefaultSlot = 999,
     TabId = 7,
-    TabName = "UI_BAG_SUBTAB_NAME_CONSUMABLE"
+    TabName = "UI_BAG_SUBTAB_NAME_CONSUMABLE",
   },
   [101] = {
     HideSell = true,
@@ -52,7 +55,7 @@ return ReadOnly("BagTab", {
     Sequence = 80,
     TabDefaultSlot = 999,
     TabId = 101,
-    TabName = "UI_BAG_SUBTAB_NAME_MELEEWEAPON"
+    TabName = "UI_BAG_SUBTAB_NAME_MELEEWEAPON",
   },
   [102] = {
     HideSell = true,
@@ -60,6 +63,6 @@ return ReadOnly("BagTab", {
     Sequence = 70,
     TabDefaultSlot = 999,
     TabId = 102,
-    TabName = "UI_BAG_SUBTAB_NAME_RNAGEWEAPON"
-  }
+    TabName = "UI_BAG_SUBTAB_NAME_RNAGEWEAPON",
+  },
 })

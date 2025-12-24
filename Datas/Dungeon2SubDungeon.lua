@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("Dungeon2SubDungeon", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\Dungeon2SubDungeon.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [1, 1] id: 1
+  return r1_1
+end)("Dungeon2SubDungeon", {
   [90401] = 90401,
   [90402] = 90401,
   [90403] = 90401,
@@ -48,5 +51,5 @@ return ReadOnly("Dungeon2SubDungeon", {
   [90513] = 90513,
   [90514] = 90513,
   [90515] = 90513,
-  [90518] = 90513
+  [90518] = 90513,
 })

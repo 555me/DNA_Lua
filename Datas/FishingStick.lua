@@ -1,16 +1,20 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\FishingStick.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r0_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
 end
-return ReadOnly("FishingStick", {
-  [1] = {
-    FishingStickId = 1,
-    MoveCurve = {
-      [1] = "OutSine",
-      [2] = "InSine"
-    },
-    MoveParam = {
-      [1] = 1.5,
-      [2] = 0.9
-    }
-  }
-})
+local r3_0 = {}
+r3_0[1] = {
+  FishingStickId = 1,
+  MoveCurve = {
+    [1] = "OutSine",
+    [2] = "InSine",
+  },
+  MoveParam = {
+    [1] = 1.5,
+    [2] = 0.9,
+  },
+}
+return r0_0("FishingStick", r3_0)

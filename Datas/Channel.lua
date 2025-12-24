@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("Channel", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\Channel.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("Channel", {
   [1] = {
     ChannelType = 1,
     Des = "UI_Channel_Notice_1",
@@ -13,7 +16,7 @@ return ReadOnly("Channel", {
     Name = "UI_Channel_Name_1",
     PlayerMax = 3000,
     Remark = "组队频道",
-    SIcon = "/Game/UI/Texture/Dynamic/Atlas/Chat/T_Chat_ChannelRecruit_B"
+    SIcon = "/Game/UI/Texture/Dynamic/Atlas/Chat/T_Chat_ChannelRecruit_B",
   },
   [2] = {
     ChannelType = 2,
@@ -26,7 +29,7 @@ return ReadOnly("Channel", {
     Name = "UI_Channel_Name_2",
     PlayerMax = 3000,
     Remark = "疑难解答频道",
-    SIcon = "/Game/UI/Texture/Dynamic/Atlas/Chat/T_ChatChannel_Question_B"
+    SIcon = "/Game/UI/Texture/Dynamic/Atlas/Chat/T_ChatChannel_Question_B",
   },
   [3] = {
     ChannelType = 3,
@@ -39,7 +42,7 @@ return ReadOnly("Channel", {
     Name = "UI_Channel_Name_4",
     PlayerMax = 4,
     Remark = "小队频道",
-    SIcon = "/Game/UI/Texture/Dynamic/Atlas/Chat/T_Chat_ChannelTeam_B"
+    SIcon = "/Game/UI/Texture/Dynamic/Atlas/Chat/T_Chat_ChannelTeam_B",
   },
   [4] = {
     ChannelType = 4,
@@ -52,7 +55,7 @@ return ReadOnly("Channel", {
     Name = "UI_Channel_Name_5",
     PlayerMax = 2,
     Remark = "好友频道",
-    SIcon = "/Game/UI/Texture/Dynamic/Atlas/Chat/T_Chat_ChannelFriend_B"
+    SIcon = "/Game/UI/Texture/Dynamic/Atlas/Chat/T_Chat_ChannelFriend_B",
   },
   [5] = {
     ChannelType = 5,
@@ -65,12 +68,12 @@ return ReadOnly("Channel", {
     Name = "UI_Channel_Name_6",
     PlayerMax = 3000,
     Remark = "区域联机",
-    SIcon = "/Game/UI/Texture/Dynamic/Atlas/Chat/T_ChatChannel_Area_B"
+    SIcon = "/Game/UI/Texture/Dynamic/Atlas/Chat/T_ChatChannel_Area_B",
   },
   [6] = {
     ChannelType = 6,
     Des = "UI_Channel_Notice_5",
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/Chat/T_Chatchannel_Result",
+    Icon = "/Game/UI/Texture/Dynamic/Atlas/Chat/T_ChatChannel_Friend",
     IsNotice = true,
     JoinOption = 1,
     MessageCD = 0,
@@ -78,6 +81,6 @@ return ReadOnly("Channel", {
     Name = "UI_Channel_Name_7",
     PlayerMax = 4,
     Remark = "临时小队频道",
-    SIcon = "/Game/UI/Texture/Dynamic/Atlas/Chat/T_Chatchannel_Result_B"
-  }
+    SIcon = "/Game/UI/Texture/Dynamic/Atlas/Chat/T_Chat_ChannelFriend_B",
+  },
 })

@@ -1,98 +1,100 @@
-local M = {}
-local TmpPlayer
-local AllStat = {}
-local StatNum = 5
-local StrOutput = ""
-local StrLine = "\n"
-local StrSpace = ","
-local CurrentIndex = 0
-local NiagaraPaths
-local NiagaraCount = 10
-local CurrentNiagaraPath
-M.BeginStat = false
-
-function M:Stat(GM, InNiagaraCount)
-  NiagaraCount = InNiagaraCount or 10
-  self.BeginStat = not self.BeginStat
-  if self.BeginStat then
-    self:StatStart(GM)
+-- filename: @C:/Pack/Branch/geili11\Content/Script/StatFX.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r0_0 = {}
+local r1_0 = nil
+local r2_0 = {}
+local r3_0 = 5
+local r4_0 = ""
+local r5_0 = "\n"
+local r6_0 = ","
+local r7_0 = 0
+local r8_0 = nil
+local r9_0 = 10
+local r10_0 = nil
+r0_0.BeginStat = false
+function r0_0.Stat(r0_1, r1_1, r2_1)
+  -- line: [18, 26] id: 1
+  r9_0 = r2_1 and 10
+  r0_1.BeginStat = not r0_1.BeginStat
+  if r0_1.BeginStat then
+    r0_1:StatStart(r1_1)
   else
-    self:StatEnd(GM)
+    r0_1:StatEnd(r1_1)
   end
 end
-
-function M:StatStart(GM)
-  assert(GM.Player, "缺少Player")
-  local RecordInterval = 0.5
-  local PlayFXInterval = 5
-  CurrentIndex = 0
-  NiagaraPaths = URuntimeCommonFunctionLibrary.GetAllNiagaraPath()
-  GM.Player:AddTimer(RecordInterval, self.StatRecordTimer, true, 0, "Test_StatRecordTimer")
-  GM.Player:AddTimer(PlayFXInterval, self.RepeatFXTimer, true, 0, "Test_RepeatFXTimer")
-  TmpPlayer = GM.Player
+function r0_0.StatStart(r0_2, r1_2)
+  -- line: [28, 37] id: 2
+  assert(r1_2.Player, "缺少Player")
+  local r3_2 = 5
+  r7_0 = 0
+  r8_0 = URuntimeCommonFunctionLibrary.GetAllNiagaraPath()
+  r1_2.Player:AddTimer(0.5, r0_2.StatRecordTimer, true, 0, "Test_StatRecordTimer")
+  r1_2.Player:AddTimer(r3_2, r0_2.RepeatFXTimer, true, 0, "Test_RepeatFXTimer")
+  r1_0 = r1_2.Player
 end
-
-function M:StatRecordTimer()
-  if not CurrentNiagaraPath then
-    return
+function r0_0.StatRecordTimer(r0_3)
+  -- line: [39, 64] id: 3
+  if not r10_0 then
+    return 
   end
-  if "" == StrOutput then
-    StrOutput = "NiagaraPath" .. StrSpace .. "Frame" .. StrSpace .. "CPU" .. StrSpace .. "Draw" .. StrSpace .. "GPU" .. StrLine
+  if r4_0 == "" then
+    r4_0 = "NiagaraPath" .. r6_0 .. "Frame" .. r6_0 .. "CPU" .. r6_0 .. "Draw" .. r6_0 .. "GPU" .. r5_0
   end
-  local EMData = UE4.URuntimeCommonFunctionLibrary.GetStatUnitData(TmpPlayer)
-  StrOutput = StrOutput .. CurrentNiagaraPath .. StrSpace .. EMData.FrameTime .. StrSpace .. EMData.GameThreadTime .. StrSpace .. EMData.RenderThreadTime .. StrSpace .. EMData.GPUFrameTime .. StrLine
-  if 0 == #AllStat then
-    for i = 1, StatNum do
-      AllStat[i] = {}
+  local r1_3 = UE4.URuntimeCommonFunctionLibrary.GetStatUnitData(r1_0)
+  r4_0 = r4_0 .. r10_0 .. r6_0 .. r1_3.FrameTime .. r6_0 .. r1_3.GameThreadTime .. r6_0 .. r1_3.RenderThreadTime .. r6_0 .. r1_3.GPUFrameTime .. r5_0
+  if #r2_0 == 0 then
+    for r5_3 = 1, r3_0, 1 do
+      r2_0[r5_3] = {}
     end
   end
-  table.insert(AllStat[1], CurrentNiagaraPath)
-  table.insert(AllStat[2], EMData.FrameTime)
-  table.insert(AllStat[3], EMData.GameThreadTime)
-  table.insert(AllStat[4], EMData.RenderThreadTime)
-  table.insert(AllStat[5], EMData.GPUFrameTime)
+  table.insert(r2_0[1], r10_0)
+  table.insert(r2_0[2], r1_3.FrameTime)
+  table.insert(r2_0[3], r1_3.GameThreadTime)
+  table.insert(r2_0[4], r1_3.RenderThreadTime)
+  table.insert(r2_0[5], r1_3.GPUFrameTime)
 end
-
-function M:RepeatFXTimer()
-  CurrentIndex = CurrentIndex + 1 > NiagaraPaths:Num() and 1 or CurrentIndex + 1
-  CurrentNiagaraPath = NiagaraPaths:GetRef(CurrentIndex)
-  local SideCount = math.floor(math.sqrt(NiagaraCount))
-  local HalfSideCount = math.floor(SideCount / 2)
-  local OriLocation = TmpPlayer:K2_GetActorLocation()
-  for i = 0, NiagaraCount - 1 do
-    local XCount = math.floor(i / SideCount)
-    local X = XCount * 100 + OriLocation.X
-    local YCount = i % SideCount
-    local Y = (YCount - HalfSideCount) * 100 + OriLocation.Y
-    UNiagaraFunctionLibrary.SpawnSystemAtLocation(TmpPlayer, LoadObject(CurrentNiagaraPath), FVector(X, Y, OriLocation.Z))
+function r0_0.RepeatFXTimer(r0_4)
+  -- line: [66, 80] id: 4
+  local r1_4 = r7_0 + 1
+  if r8_0:Num() < r1_4 then
+    r1_4 = 1 and r7_0 + 1
+  else
+    goto label_11	-- block#2 is visited secondly
   end
-  UKismetSystemLibrary.ExecuteConsoleCommand(TmpPlayer, "fx.ParticlePerfStats.RunTest 60", nil)
+  r7_0 = r1_4
+  r10_0 = r8_0:GetRef(r7_0)
+  r1_4 = math.floor(math.sqrt(r9_0))
+  local r2_4 = math.floor(r1_4 / 2)
+  local r3_4 = r1_0:K2_GetActorLocation()
+  for r7_4 = 0, r9_0 + -1, 1 do
+    UNiagaraFunctionLibrary.SpawnSystemAtLocation(r1_0, LoadObject(r10_0), FVector(math.floor(r7_4 / r1_4) * 100 + r3_4.X, (r7_4 % r1_4 - r2_4) * 100 + r3_4.Y, r3_4.Z))
+  end
+  UKismetSystemLibrary.ExecuteConsoleCommand(r1_0, "fx.ParticlePerfStats.RunTest 60", nil)
 end
-
-function M:StatEnd(GM)
-  assert(GM.Player, "缺少Player")
-  GM.Player:RemoveTimer("Test_RepeatSkillTimer")
-  GM.Player:RemoveTimer("Test_RepeatFXTimer")
-  StrOutput = StrOutput .. "Average" .. StrLine .. ","
-  local StrTmpMax = ","
-  for i = 2, #AllStat do
-    local TotalStat = 0
-    local MaxStat = 0
-    for j = 1, #AllStat[i] do
-      TotalStat = TotalStat + AllStat[i][j]
-      if MaxStat < AllStat[i][j] then
-        MaxStat = AllStat[i][j]
+function r0_0.StatEnd(r0_5, r1_5)
+  -- line: [82, 108] id: 5
+  assert(r1_5.Player, "缺少Player")
+  r1_5.Player:RemoveTimer("Test_RepeatSkillTimer")
+  r1_5.Player:RemoveTimer("Test_RepeatFXTimer")
+  r4_0 = r4_0 .. "Average" .. r5_0 .. ","
+  local r2_5 = ","
+  for r6_5 = 2, #r2_0, 1 do
+    local r7_5 = 0
+    local r8_5 = 0
+    for r12_5 = 1, #r2_0[r6_5], 1 do
+      r7_5 = r7_5 + r2_0[r6_5][r12_5]
+      if r8_5 < r2_0[r6_5][r12_5] then
+        r8_5 = r2_0[r6_5][r12_5]
       end
     end
-    StrTmpMax = StrTmpMax .. MaxStat .. StrSpace
-    StrOutput = StrOutput .. TotalStat / #AllStat[i] .. StrSpace
+    r2_5 = r2_5 .. r8_5 .. r6_0
+    r4_0 = r4_0 .. r7_5 / #r2_0[r6_5] .. r6_0
   end
-  StrOutput = StrOutput .. StrLine .. "Max" .. StrLine .. StrTmpMax
-  local Path = UE4.UBlueprintPathsLibrary.ProfilingDir() .. "/ParticlePerf/StatFX_" .. os.date("%Y.%m.%d-%H.%M.%S") .. ".csv"
-  local File = io.open(Path, "w+")
-  io.output(File)
-  io.write(StrOutput)
-  io.close(File)
+  r4_0 = r4_0 .. r5_0 .. "Max" .. r5_0 .. r2_5
+  local r4_5 = io.open(UE4.UBlueprintPathsLibrary.ProfilingDir() .. "/ParticlePerf/StatFX_" .. os.date("%Y.%m.%d-%H.%M.%S") .. ".csv", "w+")
+  io.output(r4_5)
+  io.write(r4_0)
+  io.close(r4_5)
 end
-
-return M
+return r0_0

@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("ImpressionCheck", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\ImpressionCheck.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("ImpressionCheck", {
   [1001] = {
     BenefitCheck = 65,
     ChaosCheck = 0,
@@ -10,7 +13,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1002] = {
     BenefitCheck = 0,
@@ -20,7 +23,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 65
+    WisdomCheck = 65,
   },
   [1003] = {
     BenefitCheck = 0,
@@ -30,7 +33,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1004] = {
     BenefitCheck = 0,
@@ -40,7 +43,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1005] = {
     BenefitCheck = 55,
@@ -50,7 +53,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1006] = {
     BenefitCheck = 0,
@@ -60,7 +63,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 60
+    WisdomCheck = 60,
   },
   [1007] = {
     BenefitCheck = 0,
@@ -70,7 +73,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 40
+    WisdomCheck = 40,
   },
   [1008] = {
     BenefitCheck = 50,
@@ -80,7 +83,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1009] = {
     BenefitCheck = 0,
@@ -90,7 +93,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 50,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1010] = {
     BenefitCheck = 0,
@@ -100,7 +103,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 50
+    WisdomCheck = 50,
   },
   [1011] = {
     BenefitCheck = 0,
@@ -110,7 +113,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1012] = {
     BenefitCheck = 0,
@@ -120,7 +123,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 60,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1013] = {
     BenefitCheck = 0,
@@ -130,7 +133,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 60
+    WisdomCheck = 60,
   },
   [1014] = {
     BenefitCheck = 0,
@@ -140,7 +143,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 60
+    WisdomCheck = 60,
   },
   [1015] = {
     BenefitCheck = 0,
@@ -150,7 +153,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1016] = {
     BenefitCheck = 80,
@@ -160,7 +163,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1017] = {
     BenefitCheck = 0,
@@ -170,7 +173,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1018] = {
     BenefitCheck = 0,
@@ -180,7 +183,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 80
+    WisdomCheck = 80,
   },
   [1019] = {
     BenefitCheck = 0,
@@ -190,7 +193,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 55
+    WisdomCheck = 55,
   },
   [1020] = {
     BenefitCheck = 0,
@@ -200,7 +203,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 60
+    WisdomCheck = 60,
   },
   [1021] = {
     BenefitCheck = 0,
@@ -210,7 +213,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 60,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1022] = {
     BenefitCheck = 0,
@@ -220,7 +223,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 65
+    WisdomCheck = 65,
   },
   [1023] = {
     BenefitCheck = 0,
@@ -230,7 +233,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 65
+    WisdomCheck = 65,
   },
   [1024] = {
     BenefitCheck = 0,
@@ -240,7 +243,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1025] = {
     BenefitCheck = 0,
@@ -250,7 +253,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 110
+    WisdomCheck = 110,
   },
   [1026] = {
     BenefitCheck = 0,
@@ -260,7 +263,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1027] = {
     BenefitCheck = 110,
@@ -269,7 +272,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1027,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1028] = {
     BenefitCheck = 0,
@@ -279,7 +282,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1029] = {
     BenefitCheck = 0,
@@ -289,7 +292,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 100
+    WisdomCheck = 100,
   },
   [1030] = {
     BenefitCheck = 0,
@@ -299,7 +302,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 70,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1031] = {
     BenefitCheck = 70,
@@ -309,7 +312,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1032] = {
     BenefitCheck = 40,
@@ -318,7 +321,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1032,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1033] = {
     BenefitCheck = 0,
@@ -327,7 +330,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1033,
     MoralityCheck = 40,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1034] = {
     BenefitCheck = 0,
@@ -336,7 +339,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1034,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 40
+    WisdomCheck = 40,
   },
   [1035] = {
     BenefitCheck = 0,
@@ -345,7 +348,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1035,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1036] = {
     BenefitCheck = 0,
@@ -354,7 +357,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1036,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1037] = {
     BenefitCheck = 60,
@@ -363,7 +366,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1037,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1038] = {
     BenefitCheck = 0,
@@ -372,7 +375,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1038,
     MoralityCheck = 60,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1039] = {
     BenefitCheck = 0,
@@ -381,7 +384,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1039,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 60
+    WisdomCheck = 60,
   },
   [1040] = {
     BenefitCheck = 0,
@@ -391,7 +394,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 120,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1041] = {
     BenefitCheck = 0,
@@ -401,7 +404,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1042] = {
     BenefitCheck = 0,
@@ -411,7 +414,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 120
+    WisdomCheck = 120,
   },
   [1043] = {
     BenefitCheck = 0,
@@ -420,7 +423,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1043,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1044] = {
     BenefitCheck = 0,
@@ -429,7 +432,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1044,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1045] = {
     BenefitCheck = 80,
@@ -438,7 +441,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1045,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1046] = {
     BenefitCheck = 0,
@@ -447,7 +450,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1046,
     MoralityCheck = 80,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1047] = {
     BenefitCheck = 0,
@@ -456,7 +459,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1047,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 80
+    WisdomCheck = 80,
   },
   [1048] = {
     BenefitCheck = 0,
@@ -465,7 +468,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1048,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1049] = {
     BenefitCheck = 0,
@@ -474,7 +477,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1049,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1050] = {
     BenefitCheck = 100,
@@ -483,7 +486,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1050,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1051] = {
     BenefitCheck = 0,
@@ -492,7 +495,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1051,
     MoralityCheck = 100,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1052] = {
     BenefitCheck = 0,
@@ -501,7 +504,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1052,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 100
+    WisdomCheck = 100,
   },
   [1053] = {
     BenefitCheck = 0,
@@ -510,7 +513,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1053,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1054] = {
     BenefitCheck = 0,
@@ -519,7 +522,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1054,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1055] = {
     BenefitCheck = 120,
@@ -528,7 +531,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1055,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1056] = {
     BenefitCheck = 0,
@@ -537,7 +540,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1056,
     MoralityCheck = 120,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1057] = {
     BenefitCheck = 0,
@@ -546,7 +549,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1057,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 120
+    WisdomCheck = 120,
   },
   [1058] = {
     BenefitCheck = 0,
@@ -555,7 +558,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1058,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1059] = {
     BenefitCheck = 0,
@@ -564,7 +567,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1059,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1060] = {
     BenefitCheck = 0,
@@ -574,7 +577,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 130
+    WisdomCheck = 130,
   },
   [1061] = {
     BenefitCheck = 0,
@@ -584,7 +587,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 55,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1062] = {
     BenefitCheck = 0,
@@ -594,7 +597,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 40
+    WisdomCheck = 40,
   },
   [1063] = {
     BenefitCheck = 0,
@@ -604,7 +607,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 100,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1064] = {
     BenefitCheck = 0,
@@ -614,7 +617,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 40
+    WisdomCheck = 40,
   },
   [1065] = {
     BenefitCheck = 40,
@@ -623,7 +626,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1065,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1066] = {
     BenefitCheck = 0,
@@ -632,7 +635,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1066,
     MoralityCheck = 40,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1067] = {
     BenefitCheck = 0,
@@ -641,7 +644,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1067,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 40
+    WisdomCheck = 40,
   },
   [1068] = {
     BenefitCheck = 0,
@@ -650,7 +653,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1068,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1069] = {
     BenefitCheck = 0,
@@ -659,7 +662,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1069,
     MoralityCheck = 0,
     RegionId = 1011,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1070] = {
     BenefitCheck = 0,
@@ -669,7 +672,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 120
+    WisdomCheck = 120,
   },
   [1071] = {
     BenefitCheck = 0,
@@ -679,17 +682,17 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 70
+    WisdomCheck = 70,
   },
   [1072] = {
-    BenefitCheck = 70,
+    BenefitCheck = 65,
     ChaosCheck = 0,
     EmpathyCheck = 0,
     ImprCheckId = 1072,
     MoralityCheck = 0,
     RegionId = 1041,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1073] = {
     BenefitCheck = 0,
@@ -699,7 +702,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1041,
     RewardId = 7070,
-    WisdomCheck = 70
+    WisdomCheck = 40,
   },
   [1074] = {
     BenefitCheck = 0,
@@ -709,7 +712,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1075] = {
     BenefitCheck = 0,
@@ -719,7 +722,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1076] = {
     BenefitCheck = 0,
@@ -729,7 +732,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1077] = {
     BenefitCheck = 20,
@@ -739,7 +742,7 @@ return ReadOnly("ImpressionCheck", {
     MoralityCheck = 0,
     RegionId = 1011,
     RewardId = 7070,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1078] = {
     BenefitCheck = 0,
@@ -748,7 +751,7 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1078,
     MoralityCheck = 0,
     RegionId = 1041,
-    WisdomCheck = 0
+    WisdomCheck = 0,
   },
   [1079] = {
     BenefitCheck = 0,
@@ -757,6 +760,436 @@ return ReadOnly("ImpressionCheck", {
     ImprCheckId = 1079,
     MoralityCheck = 0,
     RegionId = 1041,
-    WisdomCheck = 20
-  }
+    WisdomCheck = 20,
+  },
+  [1090] = {
+    BenefitCheck = 40,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1090,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1091] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1091,
+    MoralityCheck = 40,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1092] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1092,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 40,
+  },
+  [1093] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 40,
+    ImprCheckId = 1093,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1094] = {
+    BenefitCheck = 0,
+    ChaosCheck = 40,
+    EmpathyCheck = 0,
+    ImprCheckId = 1094,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1095] = {
+    BenefitCheck = 60,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1095,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1096] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1096,
+    MoralityCheck = 60,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1097] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1097,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 60,
+  },
+  [1098] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 60,
+    ImprCheckId = 1098,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1099] = {
+    BenefitCheck = 0,
+    ChaosCheck = 60,
+    EmpathyCheck = 0,
+    ImprCheckId = 1099,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1100] = {
+    BenefitCheck = 80,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1100,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1101] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1101,
+    MoralityCheck = 80,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1102] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1102,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 80,
+  },
+  [1103] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 80,
+    ImprCheckId = 1103,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1104] = {
+    BenefitCheck = 0,
+    ChaosCheck = 80,
+    EmpathyCheck = 0,
+    ImprCheckId = 1104,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1105] = {
+    BenefitCheck = 100,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1105,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1106] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1106,
+    MoralityCheck = 100,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1107] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1107,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 100,
+  },
+  [1108] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 100,
+    ImprCheckId = 1108,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1109] = {
+    BenefitCheck = 0,
+    ChaosCheck = 100,
+    EmpathyCheck = 0,
+    ImprCheckId = 1109,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1110] = {
+    BenefitCheck = 120,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1110,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1111] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1111,
+    MoralityCheck = 120,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1112] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1112,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 120,
+  },
+  [1113] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 120,
+    ImprCheckId = 1113,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1114] = {
+    BenefitCheck = 0,
+    ChaosCheck = 120,
+    EmpathyCheck = 0,
+    ImprCheckId = 1114,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1115] = {
+    BenefitCheck = 0,
+    ChaosCheck = 50,
+    EmpathyCheck = 0,
+    ImprCheckId = 1115,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    RewardId = 7070,
+    WisdomCheck = 0,
+  },
+  [1116] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1116,
+    MoralityCheck = 50,
+    RegionId = 1041,
+    RewardId = 7070,
+    WisdomCheck = 0,
+  },
+  [1117] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1117,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    RewardId = 7070,
+    WisdomCheck = 40,
+  },
+  [1118] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1118,
+    MoralityCheck = 50,
+    RegionId = 1041,
+    RewardId = 7070,
+    WisdomCheck = 0,
+  },
+  [1119] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 50,
+    ImprCheckId = 1119,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    RewardId = 7070,
+    WisdomCheck = 0,
+  },
+  [1120] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1120,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    RewardId = 7070,
+    WisdomCheck = 40,
+  },
+  [1121] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1121,
+    MoralityCheck = 50,
+    RegionId = 1041,
+    RewardId = 7070,
+    WisdomCheck = 0,
+  },
+  [1122] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1122,
+    MoralityCheck = 50,
+    RegionId = 1041,
+    RewardId = 7070,
+    WisdomCheck = 0,
+  },
+  [1123] = {
+    BenefitCheck = 50,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1123,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    RewardId = 7070,
+    WisdomCheck = 0,
+  },
+  [1124] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1124,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    RewardId = 7070,
+    WisdomCheck = 40,
+  },
+  [1125] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1125,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    RewardId = 7070,
+    WisdomCheck = 40,
+  },
+  [1126] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1126,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    RewardId = 7070,
+    WisdomCheck = 40,
+  },
+  [1127] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1127,
+    MoralityCheck = 50,
+    RegionId = 1041,
+    RewardId = 7070,
+    WisdomCheck = 0,
+  },
+  [1128] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1128,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    RewardId = 7070,
+    WisdomCheck = 40,
+  },
+  [1129] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1129,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    RewardId = 7070,
+    WisdomCheck = 40,
+  },
+  [1130] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 50,
+    ImprCheckId = 1130,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    RewardId = 7070,
+    WisdomCheck = 0,
+  },
+  [1131] = {
+    BenefitCheck = 40,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1131,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1132] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1132,
+    MoralityCheck = 40,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1133] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 0,
+    ImprCheckId = 1133,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 40,
+  },
+  [1134] = {
+    BenefitCheck = 0,
+    ChaosCheck = 0,
+    EmpathyCheck = 40,
+    ImprCheckId = 1134,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
+  [1135] = {
+    BenefitCheck = 0,
+    ChaosCheck = 40,
+    EmpathyCheck = 0,
+    ImprCheckId = 1135,
+    MoralityCheck = 0,
+    RegionId = 1041,
+    WisdomCheck = 0,
+  },
 })

@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("ParkourSkill", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\ParkourSkill.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("ParkourSkill", {
   [1] = {
     EffectBasic = 3,
     EffectConstatnce = 1,
@@ -14,7 +17,7 @@ return ReadOnly("ParkourSkill", {
     Target = 1,
     WeightBasic = 1000,
     WeightConstant = 0,
-    WeightFactor = -10
+    WeightFactor = -10,
   },
   [2] = {
     EffectBasic = 5,
@@ -28,7 +31,7 @@ return ReadOnly("ParkourSkill", {
     Target = 3,
     WeightBasic = 1000,
     WeightConstant = 2,
-    WeightFactor = -15
+    WeightFactor = -15,
   },
   [3] = {
     EffectBasic = 7,
@@ -41,7 +44,7 @@ return ReadOnly("ParkourSkill", {
     Target = 0,
     WeightBasic = 1000,
     WeightConstant = 0,
-    WeightFactor = -30
+    WeightFactor = -30,
   },
   [4] = {
     EffectBasic = 5,
@@ -55,7 +58,7 @@ return ReadOnly("ParkourSkill", {
     Target = 0,
     WeightBasic = 1000,
     WeightConstant = 0,
-    WeightFactor = 50
+    WeightFactor = 50,
   },
   [5] = {
     EffectBasic = 7,
@@ -68,7 +71,7 @@ return ReadOnly("ParkourSkill", {
     Target = 0,
     WeightBasic = 1000,
     WeightConstant = 2,
-    WeightFactor = -10
+    WeightFactor = -10,
   },
   [6] = {
     EffectBasic = 7,
@@ -81,6 +84,6 @@ return ReadOnly("ParkourSkill", {
     Target = 0,
     WeightBasic = 1000,
     WeightConstant = 3,
-    WeightFactor = 0
-  }
+    WeightFactor = 0,
+  },
 })

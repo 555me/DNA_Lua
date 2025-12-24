@@ -1,125 +1,242 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("DamageType", {
-  Dark = {
-    AdditionalBuff = {BuffId = 101, LastTime = 6},
-    DamageTypeUIIconPath = "/Game/UI/Texture/Dynamic/Atlas/Battle/T_Battle_Type_Dark02.T_Battle_Type_Dark02",
-    ID = "Dark",
-    ParticipationTrigger = true,
-    ShildCalPriority = 2,
-    WeaknessIcon = "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_Light.T_Armory_Light",
-    WeaknessTypeID = 1
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\DamageTag.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("DamageTag", {
+  Attack = {
+    DamageTag = "Attack",
   },
-  Default = {
-    ID = "Default",
-    ShildCalPriority = 2,
-    WeaknessTypeID = 0
+  BaihengSkill01HpConsume = {
+    DamageTag = "BaihengSkill01HpConsume",
   },
-  EsDamage = {
-    DisableAddColor = 1,
-    ID = "EsDamage",
-    IgnoreHp = 1,
-    ShildCalPriority = 2
+  Blood = {
+    DamageTag = "Blood",
   },
-  Fire = {
-    AdditionalBuff = {BuffId = 103, LastTime = 6},
-    DamageTypeUIIconPath = "/Game/UI/Texture/Dynamic/Atlas/Battle/T_Battle_Type_Fire02.T_Battle_Type_Fire02",
-    DamageTypeUIIndex = 2,
-    ID = "Fire",
-    ParticipationTrigger = true,
-    ShildCalPriority = 2,
-    WeaknessIcon = "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_Wind.T_Armory_Wind",
-    WeaknessTypeID = 3
+  BonusDamage = {
+    DamageTag = "BonusDamage",
   },
-  HpConsume = {
-    DisableAddColor = 1,
-    DisablePassiveEffect = true,
-    DisableUIEffect = 1,
-    ID = "HpConsume",
-    IgnoreDamageRate = true,
-    IgnoreEnergyShield = true,
-    IgnoreInvincible = true,
-    ShildCalPriority = 2
+  Burst = {
+    DamageTag = "Burst",
   },
-  Light = {
-    AdditionalBuff = {BuffId = 106, LastTime = 6},
-    DamageTypeUIIconPath = "/Game/UI/Texture/Dynamic/Atlas/Battle/T_Battle_Type_Light02.T_Battle_Type_Light02",
-    ID = "Light",
-    ParticipationTrigger = true,
-    ShildCalPriority = 2,
-    WeaknessIcon = "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_Dark.T_Armory_Dark",
-    WeaknessTypeID = 6
+  Catch = {
+    DamageTag = "Catch",
   },
-  SaiqiHpConsume = {
-    DisableAddColor = 1,
-    DisableUIEffect = 1,
-    ID = "SaiqiHpConsume",
-    IgnoreDamageRate = true,
-    IgnoreEnergyShield = true,
-    IgnoreInvincible = true,
-    ShildCalPriority = 2
+  Cyclone = {
+    DamageTag = "Cyclone",
   },
-  Slash = {
-    DamageTypeUIIconPath = "/Game/UI/Texture/Dynamic/Atlas/Battle/T_Battle_Type_Slash02.T_Battle_Type_Slash02",
-    DamageTypeUIIndex = 5,
-    ESRate = 1,
-    ID = "Slash",
-    ParticipationTrigger = true,
-    ShildCalPriority = 1
+  Dodge = {
+    DamageTag = "Dodge",
   },
-  Smash = {
-    CutToughnessRate = 1,
-    DamageTypeUIIconPath = "/Game/UI/Texture/Dynamic/Atlas/Battle/T_Battle_Type_Smash02.T_Battle_Type_Smash02",
-    DamageTypeUIIndex = 7,
-    ID = "Smash",
-    ParticipationTrigger = true,
-    ShildCalPriority = 2
+  DongGuoWysSkill01 = {
+    DamageTag = "DongGuoWysSkill01",
   },
-  Spike = {
-    DamageTypeUIIconPath = "/Game/UI/Texture/Dynamic/Atlas/Battle/T_Battle_Type_Spike02.T_Battle_Type_Spike02",
-    DamageTypeUIIndex = 6,
-    HpRate = 0.5,
-    ID = "Spike",
-    ParticipationTrigger = true,
-    ShildCalPriority = 3
+  Dot = {
+    DamageTag = "Dot",
   },
-  Thunder = {
-    AdditionalBuff = {BuffId = 104, LastTime = 6},
-    DamageTypeUIIconPath = "/Game/UI/Texture/Dynamic/Atlas/Battle/T_Battle_Type_Thunder02.T_Battle_Type_Thunder02",
-    DamageTypeUIIndex = 3,
-    ID = "Thunder",
-    ParticipationTrigger = true,
-    ShildCalPriority = 2,
-    WeaknessIcon = "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_Water.T_Armory_Water",
-    WeaknessTypeID = 4
+  Explode = {
+    DamageTag = "Explode",
   },
-  TrueDamage = {
-    DisableAddColor = 1,
-    DisablePassiveEffect = true,
-    ID = "TrueDamage",
-    IgnoreDamageRate = true,
-    IgnoreEnergyShield = true,
-    ShildCalPriority = 2
+  Fade = {
+    DamageTag = "Fade",
   },
-  Water = {
-    AdditionalBuff = {BuffId = 102, LastTime = 6},
-    DamageTypeUIIconPath = "/Game/UI/Texture/Dynamic/Atlas/Battle/T_Battle_Type_Water02.T_Battle_Type_Water02",
-    DamageTypeUIIndex = 4,
-    ID = "Water",
-    ParticipationTrigger = true,
-    ShildCalPriority = 2,
-    WeaknessIcon = "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_Fire.T_Armory_Fire",
-    WeaknessTypeID = 2
+  FallAttack = {
+    DamageTag = "FallAttack",
   },
-  Wind = {
-    AdditionalBuff = {BuffId = 105, LastTime = 6},
-    DamageTypeUIIconPath = "/Game/UI/Texture/Dynamic/Atlas/Battle/T_Battle_Type_Wind02.T_Battle_Type_Wind02",
-    DamageTypeUIIndex = 1,
-    ID = "Wind",
-    ParticipationTrigger = true,
-    ShildCalPriority = 2,
-    WeaknessIcon = "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_Thunder.T_Armory_Thunder",
-    WeaknessTypeID = 5
-  }
+  Falu_Skill1 = {
+    DamageTag = "Falu_Skill1",
+  },
+  FeinaColorBlue = {
+    DamageTag = "FeinaColorBlue",
+  },
+  FeinaColorGreen = {
+    DamageTag = "FeinaColorGreen",
+  },
+  FeinaColorRed = {
+    DamageTag = "FeinaColorRed",
+  },
+  HeavyAttack = {
+    DamageTag = "HeavyAttack",
+  },
+  Hot = {
+    DamageTag = "Hot",
+  },
+  IceOrb = {
+    DamageTag = "IceOrb",
+  },
+  KamiPassive = {
+    DamageTag = "KamiPassive",
+  },
+  KezhouShadowSword = {
+    DamageTag = "KezhouShadowSword",
+  },
+  LandMine = {
+    DamageTag = "LandMine",
+  },
+  LandiGrade6 = {
+    DamageTag = "LandiGrade6",
+  },
+  MagicMissile = {
+    DamageTag = "MagicMissile",
+  },
+  MajoDodge = {
+    DamageTag = "MajoDodge",
+  },
+  Melee = {
+    DamageTag = "Melee",
+  },
+  MeleeWord = {
+    DamageTag = "MeleeWord",
+  },
+  Mod = {
+    DamageTag = "Mod",
+  },
+  NifuDark = {
+    DamageTag = "NifuDark",
+  },
+  NifuLight = {
+    DamageTag = "NifuLight",
+  },
+  NifuSpLight = {
+    DamageTag = "NifuSpLight",
+  },
+  NoCombo = {
+    DamageTag = "NoCombo",
+  },
+  PhantomAvoid = {
+    DamageTag = "PhantomAvoid",
+  },
+  Poison = {
+    DamageTag = "Poison",
+  },
+  Prop42001Ray = {
+    DamageTag = "Prop42001Ray",
+  },
+  Prop42002Ray = {
+    DamageTag = "Prop42002Ray",
+  },
+  QiuxianSpSkill1 = {
+    DamageTag = "QiuxianSpSkill1",
+  },
+  RaidLink = {
+    DamageTag = "RaidLink",
+  },
+  Ranged = {
+    DamageTag = "Ranged",
+  },
+  Ranged20502 = {
+    DamageTag = "Ranged20502",
+  },
+  Ray = {
+    DamageTag = "Ray",
+  },
+  Reflect = {
+    DamageTag = "Reflect",
+  },
+  RouB101 = {
+    DamageTag = "RouB101",
+  },
+  RouB102 = {
+    DamageTag = "RouB102",
+  },
+  RouB103 = {
+    DamageTag = "RouB103",
+  },
+  RouB104 = {
+    DamageTag = "RouB104",
+  },
+  RouB105 = {
+    DamageTag = "RouB105",
+  },
+  RouB105Group4 = {
+    DamageTag = "RouB105Group4",
+  },
+  RouB106 = {
+    DamageTag = "RouB106",
+  },
+  RouB107106 = {
+    DamageTag = "RouB107106",
+  },
+  RouT103 = {
+    DamageTag = "RouT103",
+  },
+  Saiqi = {
+    DamageTag = "Saiqi",
+  },
+  SaiqiSkill01 = {
+    DamageTag = "SaiqiSkill01",
+  },
+  Skill = {
+    DamageTag = "Skill",
+  },
+  Skill1 = {
+    DamageTag = "Skill1",
+  },
+  Skill2 = {
+    DamageTag = "Skill2",
+  },
+  SlideAttack = {
+    DamageTag = "SlideAttack",
+  },
+  SpiritualFire = {
+    DamageTag = "SpiritualFire",
+  },
+  Support = {
+    DamageTag = "Support",
+  },
+  SuyiSkill02Creature = {
+    DamageTag = "SuyiSkill02Creature",
+  },
+  SuyiWeapon = {
+    DamageTag = "SuyiWeapon",
+  },
+  ThunderLaser = {
+    DamageTag = "ThunderLaser",
+  },
+  TuosiCombo = {
+    DamageTag = "TuosiCombo",
+  },
+  TuosiFinish = {
+    DamageTag = "TuosiFinish",
+  },
+  UnlockChest = {
+    DamageTag = "UnlockChest",
+  },
+  Weapon = {
+    DamageTag = "Weapon",
+  },
+  XibiSkill01 = {
+    DamageTag = "XibiSkill01",
+  },
+  XibiSkill01SP = {
+    DamageTag = "XibiSkill01SP",
+  },
+  XierGrade6Laser = {
+    DamageTag = "XierGrade6Laser",
+  },
+  XierSkill1Laser = {
+    DamageTag = "XierSkill1Laser",
+  },
+  XierSkill2 = {
+    DamageTag = "XierSkill2",
+  },
+  YeerGrade1 = {
+    DamageTag = "YeerGrade1",
+  },
+  YeerSkill2Bomb = {
+    DamageTag = "YeerSkill2Bomb",
+  },
+  YumingExtra = {
+    DamageTag = "YumingExtra",
+  },
+  Zhangyu = {
+    DamageTag = "Zhangyu",
+  },
+  ZhujueDark = {
+    DamageTag = "ZhujueDark",
+  },
+  ZhujueDarkPassive = {
+    DamageTag = "ZhujueDarkPassive",
+  },
 })

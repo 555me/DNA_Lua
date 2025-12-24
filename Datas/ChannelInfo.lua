@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("ChannelInfo", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\ChannelInfo.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("ChannelInfo", {
   [18] = {
     AccountPrefix = "hero",
     ChannelId = 18,
@@ -10,7 +13,7 @@ return ReadOnly("ChannelInfo", {
     OS = "android",
     Provider = "hero",
     Region = "china",
-    SDKChannelId = 0
+    SDKChannelId = 0,
   },
   [46] = {
     AccountPrefix = "bilibili",
@@ -20,7 +23,7 @@ return ReadOnly("ChannelInfo", {
     OS = "android",
     Provider = "bilibili",
     Region = "china",
-    SDKChannelId = 3
+    SDKChannelId = 3,
   },
   [56] = {
     AccountPrefix = "hero",
@@ -30,7 +33,7 @@ return ReadOnly("ChannelInfo", {
     OS = "ios",
     Provider = "hero",
     Region = "china",
-    SDKChannelId = 0
+    SDKChannelId = 0,
   },
   [160] = {
     AccountPrefix = "hero",
@@ -40,7 +43,7 @@ return ReadOnly("ChannelInfo", {
     OS = "android",
     Provider = "hero",
     Region = "global",
-    SDKChannelId = 1
+    SDKChannelId = 1,
   },
   [171] = {
     AccountPrefix = "hero",
@@ -50,7 +53,7 @@ return ReadOnly("ChannelInfo", {
     OS = "ios",
     Provider = "hero",
     Region = "global",
-    SDKChannelId = 1
+    SDKChannelId = 1,
   },
   [237] = {
     AccountPrefix = "hero",
@@ -60,7 +63,7 @@ return ReadOnly("ChannelInfo", {
     OS = "windows",
     Provider = "hero",
     Region = "china",
-    SDKChannelId = 0
+    SDKChannelId = 0,
   },
   [240] = {
     AccountPrefix = "hero",
@@ -70,7 +73,7 @@ return ReadOnly("ChannelInfo", {
     OS = "windows",
     Provider = "hero",
     Region = "global",
-    SDKChannelId = 1
+    SDKChannelId = 1,
   },
   [269] = {
     AccountPrefix = "bilibili",
@@ -80,7 +83,7 @@ return ReadOnly("ChannelInfo", {
     OS = "windows",
     Provider = "bilibili",
     Region = "china",
-    SDKChannelId = 3
+    SDKChannelId = 3,
   },
   [286] = {
     AccountPrefix = "hero",
@@ -90,7 +93,7 @@ return ReadOnly("ChannelInfo", {
     OS = "windows",
     Provider = "wegame",
     Region = "china",
-    SDKChannelId = 0
+    SDKChannelId = 0,
   },
   [295] = {
     AccountPrefix = "hero",
@@ -100,7 +103,7 @@ return ReadOnly("ChannelInfo", {
     OS = "windows",
     Provider = "hero",
     Region = "global",
-    SDKChannelId = 1
+    SDKChannelId = 1,
   },
   [297] = {
     AccountPrefix = "hero",
@@ -110,7 +113,7 @@ return ReadOnly("ChannelInfo", {
     OS = "windows",
     Provider = "lenovo",
     Region = "china",
-    SDKChannelId = 0
+    SDKChannelId = 0,
   },
   [300] = {
     AccountPrefix = "hero",
@@ -118,9 +121,9 @@ return ReadOnly("ChannelInfo", {
     DeviceType = "mobile",
     Name = "安卓云游戏",
     OS = "android",
-    Provider = "hero",
+    Provider = "cloud",
     Region = "china",
-    SDKChannelId = 0
+    SDKChannelId = 0,
   },
   [301] = {
     AccountPrefix = "hero",
@@ -128,9 +131,9 @@ return ReadOnly("ChannelInfo", {
     DeviceType = "mobile",
     Name = "iOS云游戏",
     OS = "ios",
-    Provider = "hero",
+    Provider = "cloud",
     Region = "china",
-    SDKChannelId = 0
+    SDKChannelId = 0,
   },
   [303] = {
     AccountPrefix = "hero",
@@ -138,8 +141,28 @@ return ReadOnly("ChannelInfo", {
     DeviceType = "mobile",
     Name = "OPPO",
     OS = "android",
-    Provider = "hero",
+    Provider = "oppo",
     Region = "china",
-    SDKChannelId = 0
-  }
+    SDKChannelId = 0,
+  },
+  [305] = {
+    AccountPrefix = "hero",
+    ChannelId = 305,
+    DeviceType = "pc",
+    Name = "全球官方steam-pc",
+    OS = "windows",
+    Provider = "hero",
+    Region = "global",
+    SDKChannelId = 0,
+  },
+  [314] = {
+    AccountPrefix = "hero",
+    ChannelId = 314,
+    DeviceType = "pc",
+    Name = "PC云游戏",
+    OS = "windows",
+    Provider = "cloud",
+    Region = "china",
+    SDKChannelId = 0,
+  },
 })

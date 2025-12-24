@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("AbyssLevel", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\AbyssLevel.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("AbyssLevel", {
   [1101] = {
     AbyssDungeon1 = 2011011,
     AbyssDungeon2 = 2011012,
@@ -11,7 +14,7 @@ return ReadOnly("AbyssLevel", {
     InitLevel = 20,
     LevelId = 1101,
     NextLevelId = 1102,
-    RecLevel = 20
+    RecLevel = 20,
   },
   [1102] = {
     AbyssDungeon1 = 2011021,
@@ -22,7 +25,7 @@ return ReadOnly("AbyssLevel", {
     InitLevel = 25,
     LevelId = 1102,
     NextLevelId = 1103,
-    RecLevel = 25
+    RecLevel = 25,
   },
   [1103] = {
     AbyssDungeon1 = 2011031,
@@ -33,7 +36,7 @@ return ReadOnly("AbyssLevel", {
     InitLevel = 30,
     LevelId = 1103,
     NextLevelId = 1104,
-    RecLevel = 30
+    RecLevel = 30,
   },
   [1104] = {
     AbyssDungeon1 = 2011041,
@@ -44,7 +47,7 @@ return ReadOnly("AbyssLevel", {
     InitLevel = 35,
     LevelId = 1104,
     NextLevelId = 1105,
-    RecLevel = 35
+    RecLevel = 35,
   },
   [1105] = {
     AbyssDungeon1 = 2011051,
@@ -55,7 +58,7 @@ return ReadOnly("AbyssLevel", {
     InitLevel = 40,
     LevelId = 1105,
     NextLevelId = 1106,
-    RecLevel = 40
+    RecLevel = 40,
   },
   [1106] = {
     AbyssDungeon1 = 2011061,
@@ -66,7 +69,7 @@ return ReadOnly("AbyssLevel", {
     InitLevel = 45,
     LevelId = 1106,
     NextLevelId = 1107,
-    RecLevel = 45
+    RecLevel = 45,
   },
   [1107] = {
     AbyssDungeon1 = 2011071,
@@ -76,7 +79,7 @@ return ReadOnly("AbyssLevel", {
     DungeonReward2 = 5,
     InitLevel = 50,
     LevelId = 1107,
-    RecLevel = 50
+    RecLevel = 50,
   },
   [1201] = {
     AbyssDungeon1 = 2012011,
@@ -89,7 +92,7 @@ return ReadOnly("AbyssLevel", {
     InitLevel = 50,
     LevelId = 1201,
     NextLevelId = 1202,
-    RecLevel = 50
+    RecLevel = 50,
   },
   [1202] = {
     AbyssDungeon1 = 2012021,
@@ -102,7 +105,7 @@ return ReadOnly("AbyssLevel", {
     InitLevel = 55,
     LevelId = 1202,
     NextLevelId = 1203,
-    RecLevel = 55
+    RecLevel = 55,
   },
   [1203] = {
     AbyssDungeon1 = 2012031,
@@ -114,7 +117,7 @@ return ReadOnly("AbyssLevel", {
     DungeonReward2 = 5,
     InitLevel = 60,
     LevelId = 1203,
-    RecLevel = 60
+    RecLevel = 60,
   },
   [1301] = {
     AbyssDungeon1 = 2013011,
@@ -125,7 +128,7 @@ return ReadOnly("AbyssLevel", {
     LevelAddOn = 12,
     LevelId = 1301,
     NextLevelId = 1302,
-    RecLevel = 70
+    RecLevel = 70,
   },
   [1302] = {
     AbyssDungeon1 = 2013021,
@@ -136,7 +139,7 @@ return ReadOnly("AbyssLevel", {
     LevelAddOn = 12,
     LevelId = 1302,
     NextLevelId = 1303,
-    RecLevel = 70
+    RecLevel = 70,
   },
   [1303] = {
     AbyssDungeon1 = 2013031,
@@ -147,7 +150,7 @@ return ReadOnly("AbyssLevel", {
     LevelAddOn = 12,
     LevelId = 1303,
     NextLevelId = 1304,
-    RecLevel = 70
+    RecLevel = 70,
   },
   [1304] = {
     AbyssDungeon1 = 2013041,
@@ -158,7 +161,7 @@ return ReadOnly("AbyssLevel", {
     LevelAddOn = 12,
     LevelId = 1304,
     NextLevelId = 1305,
-    RecLevel = 70
+    RecLevel = 70,
   },
   [1305] = {
     AbyssDungeon1 = 2013051,
@@ -169,7 +172,7 @@ return ReadOnly("AbyssLevel", {
     LevelAddOn = 12,
     LevelId = 1305,
     NextLevelId = 1306,
-    RecLevel = 70
+    RecLevel = 70,
   },
   [1306] = {
     AbyssDungeon1 = 2013061,
@@ -180,7 +183,7 @@ return ReadOnly("AbyssLevel", {
     LevelAddOn = 12,
     LevelId = 1306,
     NextLevelId = 1301,
-    RecLevel = 70
+    RecLevel = 70,
   },
   [2201] = {
     AbyssDungeon1 = 2022011,
@@ -193,7 +196,7 @@ return ReadOnly("AbyssLevel", {
     InitLevel = 50,
     LevelId = 2201,
     NextLevelId = 2202,
-    RecLevel = 50
+    RecLevel = 50,
   },
   [2202] = {
     AbyssDungeon1 = 2022021,
@@ -206,7 +209,7 @@ return ReadOnly("AbyssLevel", {
     InitLevel = 55,
     LevelId = 2202,
     NextLevelId = 2203,
-    RecLevel = 55
+    RecLevel = 55,
   },
   [2203] = {
     AbyssDungeon1 = 2022031,
@@ -218,7 +221,7 @@ return ReadOnly("AbyssLevel", {
     DungeonReward2 = 5,
     InitLevel = 60,
     LevelId = 2203,
-    RecLevel = 60
+    RecLevel = 60,
   },
   [2301] = {
     AbyssDungeon1 = 2023011,
@@ -229,7 +232,7 @@ return ReadOnly("AbyssLevel", {
     LevelAddOn = 12,
     LevelId = 2301,
     NextLevelId = 2302,
-    RecLevel = 70
+    RecLevel = 70,
   },
   [2302] = {
     AbyssDungeon1 = 2023021,
@@ -240,7 +243,7 @@ return ReadOnly("AbyssLevel", {
     LevelAddOn = 12,
     LevelId = 2302,
     NextLevelId = 2303,
-    RecLevel = 70
+    RecLevel = 70,
   },
   [2303] = {
     AbyssDungeon1 = 2023031,
@@ -251,7 +254,7 @@ return ReadOnly("AbyssLevel", {
     LevelAddOn = 12,
     LevelId = 2303,
     NextLevelId = 2304,
-    RecLevel = 70
+    RecLevel = 70,
   },
   [2304] = {
     AbyssDungeon1 = 2023041,
@@ -262,7 +265,7 @@ return ReadOnly("AbyssLevel", {
     LevelAddOn = 12,
     LevelId = 2304,
     NextLevelId = 2305,
-    RecLevel = 70
+    RecLevel = 70,
   },
   [2305] = {
     AbyssDungeon1 = 2023051,
@@ -273,7 +276,7 @@ return ReadOnly("AbyssLevel", {
     LevelAddOn = 12,
     LevelId = 2305,
     NextLevelId = 2306,
-    RecLevel = 70
+    RecLevel = 70,
   },
   [2306] = {
     AbyssDungeon1 = 2023061,
@@ -284,6 +287,214 @@ return ReadOnly("AbyssLevel", {
     LevelAddOn = 12,
     LevelId = 2306,
     NextLevelId = 2301,
-    RecLevel = 70
-  }
+    RecLevel = 70,
+  },
+  [11021] = {
+    AbyssDungeon1 = 2111011,
+    AbyssDungeon2 = 2111012,
+    AbyssType = 2,
+    AttributeType1 = "Wind",
+    AttributeType2 = "Water",
+    DungeonReward1 = 5,
+    DungeonReward2 = 5,
+    InitLevel = 60,
+    LevelId = 11021,
+    NextLevelId = 11022,
+    RecLevel = 60,
+  },
+  [11022] = {
+    AbyssDungeon1 = 2111021,
+    AbyssDungeon2 = 2111022,
+    AbyssType = 2,
+    AttributeType1 = "Wind",
+    AttributeType2 = "Water",
+    DungeonReward1 = 5,
+    DungeonReward2 = 5,
+    InitLevel = 70,
+    LevelId = 11022,
+    NextLevelId = 11023,
+    RecLevel = 70,
+  },
+  [11023] = {
+    AbyssDungeon1 = 2111031,
+    AbyssDungeon2 = 2111032,
+    AbyssType = 2,
+    AttributeType1 = "Wind",
+    AttributeType2 = "Water",
+    DungeonReward1 = 5,
+    DungeonReward2 = 5,
+    InitLevel = 80,
+    LevelId = 11023,
+    RecLevel = 80,
+  },
+  [11031] = {
+    AbyssDungeon1 = 2112011,
+    AbyssType = 3,
+    AttributeType1 = "Wind,Water",
+    DungeonReward1 = 5,
+    InitLevel = 85,
+    LevelAddOn = 18,
+    LevelId = 11031,
+    NextLevelId = 11032,
+    RecLevel = 80,
+  },
+  [11032] = {
+    AbyssDungeon1 = 2112021,
+    AbyssType = 3,
+    AttributeType1 = "Wind,Water",
+    DungeonReward1 = 5,
+    InitLevel = 88,
+    LevelAddOn = 18,
+    LevelId = 11032,
+    NextLevelId = 11033,
+    RecLevel = 80,
+  },
+  [11033] = {
+    AbyssDungeon1 = 2112031,
+    AbyssType = 3,
+    AttributeType1 = "Wind,Water",
+    DungeonReward1 = 5,
+    InitLevel = 91,
+    LevelAddOn = 18,
+    LevelId = 11033,
+    NextLevelId = 11034,
+    RecLevel = 80,
+  },
+  [11034] = {
+    AbyssDungeon1 = 2112041,
+    AbyssType = 3,
+    AttributeType1 = "Wind,Water",
+    DungeonReward1 = 5,
+    InitLevel = 94,
+    LevelAddOn = 18,
+    LevelId = 11034,
+    NextLevelId = 11035,
+    RecLevel = 80,
+  },
+  [11035] = {
+    AbyssDungeon1 = 2112051,
+    AbyssType = 3,
+    AttributeType1 = "Wind,Water",
+    DungeonReward1 = 5,
+    InitLevel = 97,
+    LevelAddOn = 18,
+    LevelId = 11035,
+    NextLevelId = 11036,
+    RecLevel = 80,
+  },
+  [11036] = {
+    AbyssDungeon1 = 2112061,
+    AbyssType = 3,
+    AttributeType1 = "Wind,Water",
+    DungeonReward1 = 5,
+    InitLevel = 100,
+    LevelAddOn = 18,
+    LevelId = 11036,
+    NextLevelId = 11031,
+    RecLevel = 80,
+  },
+  [11121] = {
+    AbyssDungeon1 = 2113011,
+    AbyssDungeon2 = 2113012,
+    AbyssType = 2,
+    AttributeType1 = "Water",
+    AttributeType2 = "Light",
+    DungeonReward1 = 5,
+    DungeonReward2 = 5,
+    InitLevel = 60,
+    LevelId = 11121,
+    NextLevelId = 11122,
+    RecLevel = 60,
+  },
+  [11122] = {
+    AbyssDungeon1 = 2113021,
+    AbyssDungeon2 = 2113022,
+    AbyssType = 2,
+    AttributeType1 = "Water",
+    AttributeType2 = "Light",
+    DungeonReward1 = 5,
+    DungeonReward2 = 5,
+    InitLevel = 70,
+    LevelId = 11122,
+    NextLevelId = 11123,
+    RecLevel = 70,
+  },
+  [11123] = {
+    AbyssDungeon1 = 2113031,
+    AbyssDungeon2 = 2113032,
+    AbyssType = 2,
+    AttributeType1 = "Water",
+    AttributeType2 = "Light",
+    DungeonReward1 = 5,
+    DungeonReward2 = 5,
+    InitLevel = 80,
+    LevelId = 11123,
+    RecLevel = 80,
+  },
+  [11131] = {
+    AbyssDungeon1 = 2114011,
+    AbyssType = 3,
+    AttributeType1 = "Water,Light",
+    DungeonReward1 = 5,
+    InitLevel = 85,
+    LevelAddOn = 18,
+    LevelId = 11131,
+    NextLevelId = 11132,
+    RecLevel = 80,
+  },
+  [11132] = {
+    AbyssDungeon1 = 2114021,
+    AbyssType = 3,
+    AttributeType1 = "Water,Light",
+    DungeonReward1 = 5,
+    InitLevel = 88,
+    LevelAddOn = 18,
+    LevelId = 11132,
+    NextLevelId = 11133,
+    RecLevel = 80,
+  },
+  [11133] = {
+    AbyssDungeon1 = 2114031,
+    AbyssType = 3,
+    AttributeType1 = "Water,Light",
+    DungeonReward1 = 5,
+    InitLevel = 91,
+    LevelAddOn = 18,
+    LevelId = 11133,
+    NextLevelId = 11134,
+    RecLevel = 80,
+  },
+  [11134] = {
+    AbyssDungeon1 = 2114041,
+    AbyssType = 3,
+    AttributeType1 = "Water,Light",
+    DungeonReward1 = 5,
+    InitLevel = 94,
+    LevelAddOn = 18,
+    LevelId = 11134,
+    NextLevelId = 11135,
+    RecLevel = 80,
+  },
+  [11135] = {
+    AbyssDungeon1 = 2114051,
+    AbyssType = 3,
+    AttributeType1 = "Water,Light",
+    DungeonReward1 = 5,
+    InitLevel = 97,
+    LevelAddOn = 18,
+    LevelId = 11135,
+    NextLevelId = 11136,
+    RecLevel = 80,
+  },
+  [11136] = {
+    AbyssDungeon1 = 2114061,
+    AbyssType = 3,
+    AttributeType1 = "Water,Light",
+    DungeonReward1 = 5,
+    InitLevel = 100,
+    LevelAddOn = 18,
+    LevelId = 11136,
+    NextLevelId = 11131,
+    RecLevel = 80,
+  },
 })

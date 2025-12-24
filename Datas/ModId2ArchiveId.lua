@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("ModId2ArchiveId", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\ModId2ArchiveId.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [1, 1] id: 1
+  return r1_1
+end)("ModId2ArchiveId", {
   [21005] = 1010,
   [21006] = 1010,
   [21401] = 1020,
@@ -25,6 +28,7 @@ return ReadOnly("ModId2ArchiveId", {
   [24003] = 4020,
   [24004] = 4020,
   [24005] = 4020,
+  [24006] = 4020,
   [24101] = 4010,
   [24102] = 4010,
   [24103] = 4010,
@@ -201,6 +205,8 @@ return ReadOnly("ModId2ArchiveId", {
   [41752] = 1240,
   [41753] = 1240,
   [41754] = 1240,
+  [41755] = 1111,
+  [41756] = 1111,
   [41761] = 1230,
   [41762] = 1230,
   [41763] = 1230,
@@ -360,6 +366,8 @@ return ReadOnly("ModId2ArchiveId", {
   [51752] = 1520,
   [51753] = 1520,
   [51754] = 1520,
+  [51755] = 1640,
+  [51756] = 1640,
   [51761] = 1510,
   [51762] = 1510,
   [51763] = 1510,
@@ -419,6 +427,10 @@ return ReadOnly("ModId2ArchiveId", {
   [55101] = 5100,
   [55102] = 5100,
   [55103] = 5100,
+  [56151] = 1660,
+  [56152] = 1680,
+  [56153] = 1660,
+  [56154] = 1680,
   [101001] = 2161,
   [101002] = 2161,
   [102001] = 2130,
@@ -429,5 +441,6 @@ return ReadOnly("ModId2ArchiveId", {
   [103002] = 2140,
   [104001] = 2150,
   [104002] = 2150,
-  [106001] = 2160
+  [104003] = 2150,
+  [106001] = 2160,
 })

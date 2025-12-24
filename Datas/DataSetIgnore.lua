@@ -1,47 +1,59 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("DataSetIgnore", {
-  BaonuEnd = {ID = "BaonuEnd"},
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\DataSetIgnore.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("DataSetIgnore", {
+  BaonuEnd = {
+    ID = "BaonuEnd",
+  },
   BaonuFinish = {
-    ID = "BaonuFinish"
+    ID = "BaonuFinish",
   },
   BlockOverride = {
-    ID = "BlockOverride"
+    ID = "BlockOverride",
   },
   CamBlendTime = {
-    ID = "CamBlendTime"
-  },
-  CollisionName = {
-    ID = "CollisionName"
+    ID = "CamBlendTime",
   },
   DeadDissolveTime = {
-    ID = "DeadDissolveTime"
+    ID = "DeadDissolveTime",
   },
-  HitMoveDis = {ID = "HitMoveDis"},
+  HitMoveDis = {
+    ID = "HitMoveDis",
+  },
   IsDestructPart = {
-    ID = "IsDestructPart"
+    ID = "IsDestructPart",
   },
   LinenSkill02Range = {
-    ID = "LinenSkill02Range"
+    ID = "LinenSkill02Range",
   },
   Maer_Skill02_Level1 = {
-    ID = "Maer_Skill02_Level1"
+    ID = "Maer_Skill02_Level1",
   },
   Maer_Skill02_Level2 = {
-    ID = "Maer_Skill02_Level2"
+    ID = "Maer_Skill02_Level2",
   },
   Maer_Skill02_Level3 = {
-    ID = "Maer_Skill02_Level3"
+    ID = "Maer_Skill02_Level3",
+  },
+  NiagaraTriggerComponent = {
+    ID = "NiagaraTriggerComponent",
   },
   NotifyMonMoveSpeed = {
-    ID = "NotifyMonMoveSpeed"
+    ID = "NotifyMonMoveSpeed",
   },
   Skill01Count1 = {
-    ID = "Skill01Count1"
+    ID = "Skill01Count1",
   },
   Skill01Count2 = {
-    ID = "Skill01Count2"
+    ID = "Skill01Count2",
   },
-  ToExplode = {ID = "ToExplode"}
+  ToExplode = {
+    ID = "ToExplode",
+  },
+  Weapon20402_Scale = {
+    ID = "Weapon20402_Scale",
+  },
 })

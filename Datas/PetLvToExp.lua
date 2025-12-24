@@ -1,7 +1,10 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("PetLvToExp", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\PetLvToExp.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [1, 1] id: 1
+  return r1_1
+end)("PetLvToExp", {
   [2] = 50,
   [3] = 105,
   [4] = 165,
@@ -61,5 +64,5 @@ return ReadOnly("PetLvToExp", {
   [58] = 10830,
   [59] = 11165,
   [60] = 11505,
-  [61] = 11850
+  [61] = 11850,
 })

@@ -1,0 +1,88 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\FakeQuest.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r1_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end
+local r2_0 = "FakeQuest"
+local r3_0 = {}
+r3_0[10020108] = {
+  FakeFinishQuestChainId = {
+    100201,
+    100202,
+    100203,
+    100204,
+    100205,
+    100206,
+    100207,
+    100208,
+    200101,
+    200102,
+    200103,
+    200104,
+    200215,
+    200220,
+    200229,
+    200235,
+    200236
+  },
+  FakeVar = "FakeQuest1002",
+  FinishSysGuideId = {
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2014,
+    2015,
+    2016,
+    2022,
+    2023,
+    2031,
+    2036,
+    2038,
+    2039,
+    2054,
+    2055,
+    2058,
+    2060,
+    2061,
+    2067,
+    2068,
+    2069,
+    2070,
+    2071,
+    2072,
+    2073,
+    2074,
+    2075,
+    2076,
+    2077,
+    2078
+  },
+  PopUIContent = {
+    [1] = "UI_SPECIALPOP_TEXT_CONTENT_1_1",
+    [2] = "UI_SPECIALPOP_TEXT_CONTENT_1_2",
+    [3] = "UI_COMMONPOP_TEXT_100275",
+    [4] = "UI_COMMONPOP_TEXT_100277",
+  },
+  PopUITitle = "UI_SPECIALPOP_TEXT_TITLE_1",
+  QuestId = 10020108,
+  SystemUIId = "101.0",
+  UnLockTeleportPoint = {
+    1010,
+    1011,
+    1012,
+    1013,
+    1014,
+    1015,
+    1016,
+    1017,
+    1018,
+    1020,
+    1021,
+    1031
+  },
+}
+return r1_0(r2_0, r3_0)

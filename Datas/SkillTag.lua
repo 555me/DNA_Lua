@@ -1,11 +1,14 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("SkillTag", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\SkillTag.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("SkillTag", {
   NotRealSkill1 = {
-    SkillTag = "NotRealSkill1"
+    SkillTag = "NotRealSkill1",
   },
   NotRealSkill2 = {
-    SkillTag = "NotRealSkill2"
-  }
+    SkillTag = "NotRealSkill2",
+  },
 })

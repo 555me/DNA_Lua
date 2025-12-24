@@ -1,66 +1,74 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("SystemUIConfig", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\SystemUIConfig.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("SystemUIConfig", {
   BattleHitDirection = {
     AllowMulti = true,
     ConfigName = "BattleHitDirection",
-    LimitCount = 4
+    LimitCount = 4,
   },
-  Default = {ConfigName = "Default"},
+  Default = {
+    ConfigName = "Default",
+  },
   MultiAndNotAddToStack = {
     AddToStack = false,
     AllowMulti = true,
-    ConfigName = "MultiAndNotAddToStack"
+    ConfigName = "MultiAndNotAddToStack",
   },
   OnlyAddToStack = {
     AddToStack = true,
-    ConfigName = "OnlyAddToStack"
+    ConfigName = "OnlyAddToStack",
   },
   OnlyAllowMulti = {
     AllowMulti = true,
-    ConfigName = "OnlyAllowMulti"
+    ConfigName = "OnlyAllowMulti",
   },
   OnlyForceShow = {
     ConfigName = "OnlyForceShow",
-    SpecialVisibleMode = "forceshow"
+    SpecialVisibleMode = "forceshow",
   },
-  OnlyUIMode = {ConfigName = "OnlyUIMode", NeedUIMode = true},
+  OnlyUIMode = {
+    ConfigName = "OnlyUIMode",
+    NeedUIMode = true,
+  },
   StackAndFullScreen = {
     AddToStack = true,
     ConfigName = "StackAndFullScreen",
     NeedUIMode = true,
-    StopWorldRender = true
+    StopWorldRender = true,
   },
   StackAndMulti = {
     AddToStack = true,
     AllowMulti = true,
-    ConfigName = "StackAndMulti"
+    ConfigName = "StackAndMulti",
   },
   StackAndUIMode = {
     AddToStack = true,
     ConfigName = "StackAndUIMode",
-    NeedUIMode = true
+    NeedUIMode = true,
   },
   UIModeAndForceShow = {
     ConfigName = "UIModeAndForceShow",
     NeedUIMode = true,
-    SpecialVisibleMode = "forceshow"
+    SpecialVisibleMode = "forceshow",
   },
   UIModeAndMulti = {
     AllowMulti = true,
     ConfigName = "UIModeAndMulti",
-    NeedUIMode = true
+    NeedUIMode = true,
   },
   UIModeAndMultiStack = {
     AddToStack = true,
     AllowMulti = true,
     ConfigName = "UIModeAndMultiStack",
-    NeedUIMode = true
+    NeedUIMode = true,
   },
   UIModeAndNotAddToStack = {
     AddToStack = false,
     ConfigName = "UIModeAndNotAddToStack",
-    NeedUIMode = true
-  }
+    NeedUIMode = true,
+  },
 })

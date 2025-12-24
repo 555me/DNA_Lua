@@ -1,8 +1,11 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("DailyTalkNpc", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\DailyTalkNpc.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [1, 1] id: 1
+  return r1_1
+end)("DailyTalkNpc", {
   [888888] = {
-    [1] = 88888801
-  }
+    [1] = 88888801,
+  },
 })

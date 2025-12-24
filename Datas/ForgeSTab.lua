@@ -1,14 +1,17 @@
-local ReadOnly = (DataMgr or {}).ReadOnly or function(n, x)
-  return x
-end
-return ReadOnly("ForgeSTab", {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Datas\ForgeSTab.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+return ((DataMgr and {}).ReadOnly and function(r0_1, r1_1)
+  -- line: [2, 2] id: 1
+  return r1_1
+end)("ForgeSTab", {
   [1] = {
     Id = 1,
     ProductType = "Weapon_All",
     Sequence = 90,
     TabDefaultSlot = 999,
     TabId = 4,
-    TabName = "UI_TAB_NAME_ALL"
+    TabName = "UI_TAB_NAME_ALL",
   },
   [2] = {
     Id = 2,
@@ -16,7 +19,7 @@ return ReadOnly("ForgeSTab", {
     Sequence = 80,
     TabDefaultSlot = 999,
     TabId = 4,
-    TabName = "UI_Armory_Meleeweapon"
+    TabName = "UI_Armory_Meleeweapon",
   },
   [3] = {
     Id = 3,
@@ -24,7 +27,7 @@ return ReadOnly("ForgeSTab", {
     Sequence = 70,
     TabDefaultSlot = 999,
     TabId = 4,
-    TabName = "UI_Armory_Longrange"
+    TabName = "UI_Armory_Longrange",
   },
   [4] = {
     Id = 4,
@@ -32,7 +35,7 @@ return ReadOnly("ForgeSTab", {
     Sequence = 90,
     TabDefaultSlot = 999,
     TabId = 5,
-    TabName = "UI_TAB_NAME_ALL"
+    TabName = "UI_TAB_NAME_ALL",
   },
   [5] = {
     Id = 5,
@@ -40,7 +43,7 @@ return ReadOnly("ForgeSTab", {
     Sequence = 80,
     TabDefaultSlot = 999,
     TabId = 5,
-    TabName = "UI_Armory_Char"
+    TabName = "UI_Armory_Char",
   },
   [6] = {
     Id = 6,
@@ -48,7 +51,7 @@ return ReadOnly("ForgeSTab", {
     Sequence = 70,
     TabDefaultSlot = 999,
     TabId = 5,
-    TabName = "UI_Armory_Meleeweapon"
+    TabName = "UI_Armory_Meleeweapon",
   },
   [7] = {
     Id = 7,
@@ -56,7 +59,7 @@ return ReadOnly("ForgeSTab", {
     Sequence = 60,
     TabDefaultSlot = 999,
     TabId = 5,
-    TabName = "UI_Armory_Longrange"
+    TabName = "UI_Armory_Longrange",
   },
   [8] = {
     Id = 8,
@@ -64,7 +67,7 @@ return ReadOnly("ForgeSTab", {
     Sequence = 50,
     TabDefaultSlot = 999,
     TabId = 5,
-    TabName = "UI_Armory_Signatureweapon"
+    TabName = "UI_Armory_Signatureweapon",
   },
   [9] = {
     Id = 9,
@@ -72,7 +75,7 @@ return ReadOnly("ForgeSTab", {
     Sequence = 90,
     TabDefaultSlot = 999,
     TabId = 6,
-    TabName = "UI_TAB_NAME_ALL"
+    TabName = "UI_TAB_NAME_ALL",
   },
   [10] = {
     Id = 10,
@@ -80,7 +83,7 @@ return ReadOnly("ForgeSTab", {
     Sequence = 80,
     TabDefaultSlot = 999,
     TabId = 6,
-    TabName = "Draft_Resource_Consume"
+    TabName = "Draft_Resource_Consume",
   },
   [11] = {
     Id = 11,
@@ -88,7 +91,7 @@ return ReadOnly("ForgeSTab", {
     Sequence = 70,
     TabDefaultSlot = 999,
     TabId = 6,
-    TabName = "Draft_Resource_Education"
+    TabName = "Draft_Resource_Education",
   },
   [12] = {
     Id = 12,
@@ -96,7 +99,7 @@ return ReadOnly("ForgeSTab", {
     Sequence = 60,
     TabDefaultSlot = 999,
     TabId = 6,
-    TabName = "Draft_Resource_Combat"
+    TabName = "Draft_Resource_Combat",
   },
   [14] = {
     Id = 14,
@@ -104,7 +107,7 @@ return ReadOnly("ForgeSTab", {
     Sequence = 90,
     TabDefaultSlot = 999,
     TabId = 7,
-    TabName = "UI_TAB_NAME_ALL"
+    TabName = "UI_TAB_NAME_ALL",
   },
   [15] = {
     Id = 15,
@@ -112,7 +115,7 @@ return ReadOnly("ForgeSTab", {
     Sequence = 80,
     TabDefaultSlot = 999,
     TabId = 7,
-    TabName = "UI_Dress_Head"
+    TabName = "UI_Dress_Head",
   },
   [16] = {
     Id = 16,
@@ -120,7 +123,7 @@ return ReadOnly("ForgeSTab", {
     Sequence = 70,
     TabDefaultSlot = 999,
     TabId = 7,
-    TabName = "UI_Dress_Face"
+    TabName = "UI_Dress_Face",
   },
   [17] = {
     Id = 17,
@@ -128,7 +131,7 @@ return ReadOnly("ForgeSTab", {
     Sequence = 60,
     TabDefaultSlot = 999,
     TabId = 7,
-    TabName = "UI_Dress_Waist"
+    TabName = "UI_Dress_Waist",
   },
   [18] = {
     Id = 18,
@@ -136,6 +139,6 @@ return ReadOnly("ForgeSTab", {
     Sequence = 50,
     TabDefaultSlot = 999,
     TabId = 7,
-    TabName = "UI_Dress_Back"
-  }
+    TabName = "UI_Dress_Back",
+  },
 })
