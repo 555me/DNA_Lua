@@ -37,12 +37,10 @@ end)("FirstBonusNum", {
   },
   [110107] = {
     BonusNum = 3340,
-    FirstBonusNum = 12880,
     ItemId = 110107,
   },
   [110108] = {
     BonusNum = 8550,
-    FirstBonusNum = 32980,
     ItemId = 110108,
   },
 })

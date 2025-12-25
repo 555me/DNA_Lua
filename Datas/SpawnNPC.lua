@@ -147,7 +147,7 @@ r4_0[900003] = {
   },
   CameraRotationDeltaM = {
     0,
-    10,
+    7,
     0
   },
   CameraRotationM = r0_0.RT_10,
@@ -318,7 +318,7 @@ r4_0[910003] = {
   },
   CameraRotationDeltaM = {
     0,
-    6.5,
+    3.5,
     0
   },
   CameraRotationM = {

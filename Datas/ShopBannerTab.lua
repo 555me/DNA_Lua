@@ -6,14 +6,11 @@ local r0_0 = {
     2401
   },
   RT_2 = {
-    120101
-  },
-  RT_3 = {
     1503
   },
 }
 local r2_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
-  -- line: [12, 12] id: 1
+  -- line: [9, 9] id: 1
   return r1_1
 end
 local r3_0 = "ShopBannerTab"
@@ -70,7 +67,9 @@ r4_0[4] = {
   BannerIcon = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Shop/T_Shop_Recommend_WeaponSkin01.T_Shop_Recommend_WeaponSkin01\'",
   Bp = "WBP_Shop_Recommend_WeaponSkin",
   Id = 4,
-  ItemIds = r0_0.RT_2,
+  ItemIds = {
+    120101
+  },
   MarkText = "UI_Banner_Tab_WeaponSkinForNew",
   PreviewEntryText = "UI_WeaponSkin_Preview",
   PreviewId = {
@@ -143,7 +142,7 @@ r4_0[113] = {
   Sequence = 3,
   StartTime = 1766408400,
   SwitchTime = 5,
-  Text1 = "UI_CHAR_NAME_2401",
+  Text1 = "RESOURCE_NAME_1002401",
 }
 r4_0[114] = {
   BannerIcon = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Shop/T_Shop_Recommend_0001.T_Shop_Recommend_0001\'",
@@ -180,7 +179,7 @@ r4_0[115] = {
   },
   MarkText = "UI_Banner_Tab_NewSkin",
   PreviewEntryText = "UI_Banner_SkinPreview",
-  PreviewType = "GeneralSkin",
+  PreviewType = "SkinSeries",
   Sequence = 11,
   SkinSeries = "BP_02",
   StartTime = 1766408400,
@@ -194,7 +193,7 @@ r4_0[116] = {
   Bp = "WBP_Shop_Recommend_PageGift",
   EndTime = 1768770000,
   Id = 116,
-  MarkText = "UI_Banner_Tab_SpSale_200",
+  MarkText = "UI_Banner_Tab_SpSale_230",
   PreviewEntryText = "UI_DailyPack_CharPreview",
   PreviewId = r0_0.RT_1,
   PreviewType = "Char",
@@ -207,15 +206,17 @@ r4_0[116] = {
 r4_0[117] = {
   BannerIcon = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Shop/T_Shop_Recommend_0012.T_Shop_Recommend_0012\'",
   Bp = "WBP_Shop_Recommend_Common",
-  DisplayId = 30002,
-  DisplayType = "CharAccessory",
+  DisplayId = 3010803,
+  DisplayType = "WeaponSkin",
   EndTime = 1768770000,
   Id = 117,
-  ItemIds = r0_0.RT_2,
+  ItemIds = {
+    120116
+  },
   MarkText = "UI_Banner_Tab_NewWeaponSkin",
   Sequence = 5005,
   StartTime = 1766408400,
-  Text1 = "UI_Accessory_Name_30002",
+  Text1 = "UI_WeaponSkin_Name_3010803",
 }
 r4_0[120] = {
   BannerIcon = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Shop/T_Shop_Recommend_0011.T_Shop_Recommend_0011\'",
@@ -230,12 +231,12 @@ r4_0[120] = {
   },
   MarkText = "UI_Banner_Tab_NewChar",
   PreviewEntryText = "UI_DailyPack_CharPreview",
-  PreviewId = r0_0.RT_3,
+  PreviewId = r0_0.RT_2,
   PreviewType = "Char",
   Sequence = 5,
-  StartTime = 1768874400,
+  StartTime = 1768856400,
   SwitchTime = 5,
-  Text1 = "UI_CHAR_NAME_1503",
+  Text1 = "RESOURCE_NAME_1001503",
 }
 r4_0[121] = {
   BannerIcon = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Shop/T_Shop_Recommend_0006.T_Shop_Recommend_0006\'",
@@ -255,24 +256,24 @@ r4_0[121] = {
   },
   PreviewType = "Weapon",
   Sequence = 6,
-  StartTime = 1768874400,
+  StartTime = 1768856400,
   SwitchTime = 5,
   Text1 = "UI_WEAPON_NAME_20510",
 }
 r4_0[122] = {
   BannerIcon = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Shop/T_Shop_Recommend_0007.T_Shop_Recommend_0007\'",
   Bp = "WBP_Shop_Recommend_Common",
-  DisplayId = 3010502,
+  DisplayId = 3010404,
   DisplayType = "WeaponSkin",
   EndTime = 1770667200,
   Id = 122,
   ItemIds = {
-    120124
+    120133
   },
   MarkText = "UI_Banner_Tab_NewWeaponSkin",
   Sequence = 10,
-  StartTime = 1768874400,
-  Text1 = "UI_WeaponSkin_Name_3010502",
+  StartTime = 1769479200,
+  Text1 = "UI_WeaponSkin_Name_3010404",
 }
 r4_0[123] = {
   BannerIcon = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Shop/T_Shop_Recommend_0004.T_Shop_Recommend_0004\'",
@@ -310,9 +311,9 @@ r4_0[125] = {
   Bp = "WBP_Shop_Recommend_PageGift",
   EndTime = 1770667200,
   Id = 125,
-  MarkText = "UI_Banner_Tab_SpSale_200",
+  MarkText = "UI_Banner_Tab_SpSale_230",
   PreviewEntryText = "UI_DailyPack_CharPreview",
-  PreviewId = r0_0.RT_3,
+  PreviewId = r0_0.RT_2,
   PreviewType = "Char",
   Sequence = 5001,
   StartTime = 1768874400,

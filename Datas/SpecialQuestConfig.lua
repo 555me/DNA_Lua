@@ -248,8 +248,8 @@ local r4_0 = {
     ServerEffectId = r0_0.RT_3,
     SpecialConfigId = 1004,
     StoryPath = "SpecialQuest\\1101\\ProtectDafu.story",
+    SubRegionIds = r0_0.RT_4,
     TalkTriggerId = 1001,
-    TriggerBoxStaticCreatorId = 1640042,
     UniversalConfigId = 1004,
   },
   [1005] = {

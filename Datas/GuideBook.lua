@@ -638,6 +638,7 @@ end)("GuideBook", {
     GuideId = 94,
     GuideNoteId = 119,
     GuideNoteTab = 3,
+    MechanismTag = "GravityBall",
     RewardId = 7000,
   },
   [120] = {
@@ -646,6 +647,7 @@ end)("GuideBook", {
     GuideId = 95,
     GuideNoteId = 120,
     GuideNoteTab = 3,
+    MechanismTag = "MoInteractive",
     RewardId = 7000,
   },
   [121] = {

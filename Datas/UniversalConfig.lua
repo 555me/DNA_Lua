@@ -47,11 +47,17 @@ local r0_0 = {
   RT_12 = {
     "RDT_QuestData",
     "RDT_RarelyData",
+    "RDT_None",
+    "RDT_CommonData"
+  },
+  RT_13 = {
+    "RDT_QuestData",
+    "RDT_RarelyData",
     "RDT_CommonData"
   },
 }
 local r2_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
-  -- line: [50, 50] id: 1
+  -- line: [56, 56] id: 1
   return r1_1
 end
 local r3_0 = "UniversalConfig"
@@ -1081,6 +1087,7 @@ r4_0[2021] = {
   IfStartStoryMode = 1,
   IfWaitDead = 1,
   QuestBattleWheelID = 10001,
+  RegionDataType = r0_0.RT_12,
   UniversalConfigId = 2021,
 }
 r4_0[2022] = {
@@ -1105,12 +1112,7 @@ r4_0[2023] = {
   IfDestoryPhantom = 1,
   IfInitPlayer = true,
   IfWaitDead = 1,
-  RegionDataType = {
-    "RDT_QuestData",
-    "RDT_RarelyData",
-    "RDT_None",
-    "RDT_CommonData"
-  },
+  RegionDataType = r0_0.RT_12,
   StartBlackScreen = r0_0.RT_8,
   UniversalConfigId = 2023,
 }
@@ -1125,7 +1127,7 @@ r4_0[2024] = {
   IfStartStoryMode = 1,
   IfWaitDead = 1,
   QuestBattleWheelID = 10001,
-  RegionDataType = r0_0.RT_12,
+  RegionDataType = r0_0.RT_13,
   StartBlackScreen = r0_0.RT_4,
   SuccessBlackScreen = r0_0.RT_4,
   UniversalConfigId = 2024,
@@ -1140,7 +1142,7 @@ r4_0[2025] = {
   IfStartStoryMode = 1,
   IfWaitDead = 1,
   QuestBattleWheelID = 10001,
-  RegionDataType = r0_0.RT_12,
+  RegionDataType = r0_0.RT_13,
   StartBlackScreen = r0_0.RT_4,
   SuccessBlackScreen = r0_0.RT_4,
   UniversalConfigId = 2025,
@@ -1155,7 +1157,7 @@ r4_0[2026] = {
   IfStartStoryMode = 1,
   IfWaitDead = 1,
   QuestBattleWheelID = 10001,
-  RegionDataType = r0_0.RT_12,
+  RegionDataType = r0_0.RT_13,
   StartBlackScreen = r0_0.RT_4,
   SuccessBlackScreen = r0_0.RT_4,
   UniversalConfigId = 2026,
@@ -1170,7 +1172,7 @@ r4_0[2027] = {
   IfStartStoryMode = 1,
   IfWaitDead = 1,
   QuestBattleWheelID = 10001,
-  RegionDataType = r0_0.RT_12,
+  RegionDataType = r0_0.RT_13,
   StartBlackScreen = r0_0.RT_4,
   SuccessBlackScreen = r0_0.RT_4,
   UniversalConfigId = 2027,
@@ -1185,7 +1187,7 @@ r4_0[2028] = {
   IfStartStoryMode = 1,
   IfWaitDead = 1,
   QuestBattleWheelID = 10001,
-  RegionDataType = r0_0.RT_12,
+  RegionDataType = r0_0.RT_13,
   StartBlackScreen = r0_0.RT_4,
   SuccessBlackScreen = r0_0.RT_4,
   UniversalConfigId = 2028,
@@ -1200,7 +1202,7 @@ r4_0[2029] = {
   IfStartStoryMode = 1,
   IfWaitDead = 1,
   QuestBattleWheelID = 10001,
-  RegionDataType = r0_0.RT_12,
+  RegionDataType = r0_0.RT_13,
   StartBlackScreen = r0_0.RT_4,
   SuccessBlackScreen = r0_0.RT_4,
   UniversalConfigId = 2029,
@@ -1215,7 +1217,7 @@ r4_0[2030] = {
   IfStartStoryMode = 1,
   IfWaitDead = 1,
   QuestBattleWheelID = 10001,
-  RegionDataType = r0_0.RT_12,
+  RegionDataType = r0_0.RT_13,
   StartBlackScreen = r0_0.RT_4,
   SuccessBlackScreen = r0_0.RT_4,
   UniversalConfigId = 2030,
@@ -1230,7 +1232,7 @@ r4_0[2031] = {
   IfStartStoryMode = 1,
   IfWaitDead = 1,
   QuestBattleWheelID = 10001,
-  RegionDataType = r0_0.RT_12,
+  RegionDataType = r0_0.RT_13,
   StartBlackScreen = r0_0.RT_4,
   SuccessBlackScreen = r0_0.RT_4,
   UniversalConfigId = 2031,

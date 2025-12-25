@@ -23,8 +23,26 @@ r0_0.RT_3 = {
   MechanismTag = "Petal",
   RewardId = 7000,
 }
+r0_0.RT_4 = {
+  CompleteUIGuideId = 95,
+  FinishQuest = 12010309,
+  GuideId = 95,
+  GuideNoteId = 120,
+  GuideNoteTab = 3,
+  MechanismTag = "MoInteractive",
+  RewardId = 7000,
+}
+r0_0.RT_5 = {
+  CompleteUIGuideId = 94,
+  FinishQuest = 12010309,
+  GuideId = 94,
+  GuideNoteId = 119,
+  GuideNoteTab = 3,
+  MechanismTag = "GravityBall",
+  RewardId = 7000,
+}
 local r1_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
-  -- line: [22, 22] id: 1
+  -- line: [40, 40] id: 1
   return r1_1
 end
 local r4_0 = {}
@@ -264,22 +282,8 @@ r5_0[12010309] = {
     GuideNoteTab = 3,
     RewardId = 7000,
   },
-  [5] = {
-    CompleteUIGuideId = 94,
-    FinishQuest = 12010309,
-    GuideId = 94,
-    GuideNoteId = 119,
-    GuideNoteTab = 3,
-    RewardId = 7000,
-  },
-  [6] = {
-    CompleteUIGuideId = 95,
-    FinishQuest = 12010309,
-    GuideId = 95,
-    GuideNoteId = 120,
-    GuideNoteTab = 3,
-    RewardId = 7000,
-  },
+  [5] = r0_0.RT_5,
+  [6] = r0_0.RT_4,
   [7] = r0_0.RT_3,
 }
 r5_0[12010310] = {
@@ -562,6 +566,9 @@ r5_0.GongMing = {
     RewardId = 7000,
   },
 }
+r5_0.GravityBall = {
+  [1] = r0_0.RT_5,
+}
 r5_0.HuaRui = {
   [1] = {
     CompleteUIGuideId = 109,
@@ -600,6 +607,9 @@ r5_0.MirrorPuzzle = {
     MechanismTag = "MirrorPuzzle",
     RewardId = 7000,
   },
+}
+r5_0.MoInteractive = {
+  [1] = r0_0.RT_4,
 }
 r5_0.Petal = {
   [1] = r0_0.RT_3,

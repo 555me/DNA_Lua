@@ -193,6 +193,10 @@ r4_0[11] = {
   FuncName = "Not_In_Battle",
   Id = 11,
 }
+r4_0[12] = {
+  FuncName = "Not_In_Dungeon",
+  Id = 12,
+}
 r4_0[15] = {
   ConditionVars = r0_0.RT_9,
   FuncName = "Check_Buff",

@@ -1,2202 +1,2491 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\WBP\Play\Widget\Depute\WBP_Play_DeputeDetail_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local CommonUtils = require("Utils.CommonUtils")
-local MonsterUtils = require("Utils.MonsterUtils")
-local WalnutBagController = require("BluePrints.UI.WBP.Walnut.WalnutBag.WalnutBagController")
-local WalnutBagModel = WalnutBagController:GetModel()
-local TimeUtils = require("Utils.TimeUtils")
-local EMCache = require("EMCache.EMCache")
-local M = Class({
+local r0_0 = require("Utils.CommonUtils")
+local r1_0 = require("Utils.MonsterUtils")
+local r3_0 = require("BluePrints.UI.WBP.Walnut.WalnutBag.WalnutBagController"):GetModel()
+local r4_0 = require("Utils.TimeUtils")
+local r5_0 = require("EMCache.EMCache")
+local r6_0 = Class({
   "BluePrints.UI.BP_UIState_C"
 })
-M._components = {
+r6_0._components = {
   "BluePrints.UI.WBP.Play.Widget.Depute.DoubleModDropView"
 }
-local TypeSort = {
+local r7_0 = {
   Char = 1,
   Weapon = 2,
   Mod = 3,
   Draft = 4,
   Reward = 5,
-  Resource = 6
+  Resource = 6,
 }
-local DungeonSelectCache = {}
-
-function M:Construct()
-  M.bOpened = true
-  M.Super.Construct(self)
-  self.Button_Solo:SetText(GText("DUNGEONSINGLE"))
-  self.Button_Multi:SetText(GText("DUNGEONMATCH"))
-  self.Text_TypeSelect:SetText(GText("UI_Dungeon_Type_List"))
-  self.Text_TypeSelect02:SetText(GText("UI_Armory_ShowAttribute"))
-  self.Text_Warning:SetText(GText("UI_Warning_CharLevel_Low"))
-  self.Button_Multi:BindEventOnClicked(self, self.OnClickMulti)
-  self.Button_Solo:BindEventOnClicked(self, self.ShowDialogChar)
-  self.Button_DoubleMod:BindEventOnClicked(self, self.ShowDialogChar)
-  self.Stats_ListView.BP_OnEntryInitialized:Add(self, self.OnElementEntryInitialized)
-  self.ScrollBox_List.OnUserScrolled:Add(self, self.OnUserScrolled)
-  self.Button_Type.OnHovered:Add(self, self.OnButtonAttibuteHovered)
-  self.Button_Type.OnUnhovered:Add(self, self.OnButtonAttibuteUnhovered)
-  self:AddDispatcher(EventID.OnChangeActionPoint, self, self.UpdateActionPoint)
-  self:AddDispatcher(EventID.TeamMatchTimingStart, self, self.TeamMatchTimingStart)
-  self:AddDispatcher(EventID.TeamMatchTimingEnd, self, self.TeamMatchTimingEnd)
-  self:AddDispatcher(EventID.SelectedWalnut, self, self.EnterWalnutDungeon)
-  self:AddDispatcher(EventID.OnRefreshDeputeBtn, self, self.RefreshBtnState)
-  self:AddDispatcher(EventID.OnDungeonsUpdate, self, self.OnDungeonsUpdate)
-  self:AddDispatcher(EventID.CurrentSquadChange, self, self.OnCurrentSquadChange)
-  self:AddDispatcher(EventID.FoucsDungeonSelectLevel, self, self.OnSelectCellFocus)
-  self:AddDispatcher(EventID.OnDisableEscOnDungeonLoading, self, self.DisableEscOnDungeonLoading)
-  self.List_Prop.OnCreateEmptyContent:Bind(self, self.CreateAndAddEmptyItem)
-  self.List_Event.OnCreateEmptyContent:Bind(self, self.CreateEventAndAddEmptyItem)
-  self.HB_Cost:SetVisibility(UE4.ESlateVisibility.Collapsed)
-  self:AddInputMethodChangedListen()
-  self.List_Prop:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
-  self.List_Prop:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
-  self.List_Prop:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
-  self.List_Prop:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
-  self.List_Monster:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
-  self.List_Monster:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
-  self.List_Monster:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
-  self.List_Monster:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
-  self.List_Event:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
-  self.List_Event:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
-  self.List_Event:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
-  self.List_Event:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
-  self.WB_EliteProp:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
-  self.WB_EliteProp:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
-  self.WB_EliteProp:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
-  self.WB_EliteProp:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
-  self.IsFocusProp = false
-  self.IsFocus_Monster = false
-  self.IsFocusEliteProp = false
-  self.SquadId = 1
-  self.MaxMonNum = 2
-  self.WalnutId = nil
-  self.Mobile = "Mobile" == CommonUtils.GetDeviceTypeByPlatformName(self)
-  self.Gamepad = UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad
-  self.FocusTypeName = nil
-  self.PressedKeys = {}
-  self.Cost:SetVisibility(ESlateVisibility.Collapsed)
-  self.Group_Double:SetVisibility(ESlateVisibility.Collapsed)
-  self.HB_Counsume:SetVisibility(ESlateVisibility.Collapsed)
-  if self.Arrow_Up then
-    self.Arrow_Up:SetVisibility(UIConst.VisibilityOp.Collapsed)
+local r8_0 = {}
+function r6_0.Construct(r0_1)
+  -- line: [31, 144] id: 1
+  r6_0.bOpened = true
+  r6_0.Super.Construct(r0_1)
+  r0_1.Button_Solo:SetText(GText("DUNGEONSINGLE"))
+  r0_1.Button_Multi:SetText(GText("DUNGEONMATCH"))
+  r0_1.Text_TypeSelect:SetText(GText("UI_Dungeon_Type_List"))
+  r0_1.Text_TypeSelect02:SetText(GText("UI_Armory_ShowAttribute"))
+  r0_1.Text_Warning:SetText(GText("UI_Warning_CharLevel_Low"))
+  r0_1.Button_Multi:BindEventOnClicked(r0_1, r0_1.OnClickMulti)
+  r0_1.Button_Solo:BindEventOnClicked(r0_1, r0_1.ShowDialogChar)
+  r0_1.Button_DoubleMod:BindEventOnClicked(r0_1, r0_1.ShowDialogChar)
+  r0_1.Stats_ListView.BP_OnEntryInitialized:Add(r0_1, r0_1.OnElementEntryInitialized)
+  r0_1.ScrollBox_List.OnUserScrolled:Add(r0_1, r0_1.OnUserScrolled)
+  r0_1.Button_Type.OnHovered:Add(r0_1, r0_1.OnButtonAttibuteHovered)
+  r0_1.Button_Type.OnUnhovered:Add(r0_1, r0_1.OnButtonAttibuteUnhovered)
+  r0_1:AddDispatcher(EventID.OnChangeActionPoint, r0_1, r0_1.UpdateActionPoint)
+  r0_1:AddDispatcher(EventID.TeamMatchTimingStart, r0_1, r0_1.TeamMatchTimingStart)
+  r0_1:AddDispatcher(EventID.TeamMatchTimingEnd, r0_1, r0_1.TeamMatchTimingEnd)
+  r0_1:AddDispatcher(EventID.SelectedWalnut, r0_1, r0_1.EnterWalnutDungeon)
+  r0_1:AddDispatcher(EventID.TeamMatchOneRefused, r0_1, function()
+    -- line: [51, 51] id: 2
+    r0_1:BlockAllUIInput(false)
+  end)
+  r0_1:AddDispatcher(EventID.OnRefreshDeputeBtn, r0_1, r0_1.RefreshBtnState)
+  r0_1:AddDispatcher(EventID.OnDungeonsUpdate, r0_1, r0_1.OnDungeonsUpdate)
+  r0_1:AddDispatcher(EventID.CurrentSquadChange, r0_1, r0_1.OnCurrentSquadChange)
+  r0_1:AddDispatcher(EventID.FoucsDungeonSelectLevel, r0_1, r0_1.OnSelectCellFocus)
+  r0_1:AddDispatcher(EventID.OnDisableEscOnDungeonLoading, r0_1, r0_1.DisableEscOnDungeonLoading)
+  TeamController:RegisterEvent(r0_1, function(r0_3, r1_3, ...)
+    -- line: [59, 63] id: 3
+    if r1_3 == TeamCommon.EventId.TeamOnInit or r1_3 == TeamCommon.EventId.TeamLeave then
+      r0_3:RefreshBtnState()
+    end
+  end)
+  r0_1.List_Prop.OnCreateEmptyContent:Bind(r0_1, r0_1.CreateAndAddEmptyItem)
+  r0_1.List_Prop.BP_OnEntryInitialized:Add(r0_1, function(r0_4, r1_4, r2_4)
+    -- line: [66, 72] id: 4
+    if r1_4.Id ~= 0 then
+      r2_4:BindEvents(r0_4, {
+        OnMenuOpenChanged = r0_4.OnStuffMenuOpenChanged,
+      })
+    end
+  end)
+  r0_1.List_Event.OnCreateEmptyContent:Bind(r0_1, r0_1.CreateEventAndAddEmptyItem)
+  r0_1.HB_Cost:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  r0_1:AddInputMethodChangedListen()
+  r0_1.List_Prop:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
+  r0_1.List_Prop:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
+  r0_1.List_Prop:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
+  r0_1.List_Prop:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
+  r0_1.List_Monster:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
+  r0_1.List_Monster:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
+  r0_1.List_Monster:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
+  r0_1.List_Monster:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
+  r0_1.List_Event:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
+  r0_1.List_Event:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
+  r0_1.List_Event:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
+  r0_1.List_Event:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
+  r0_1.WB_EliteProp:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
+  r0_1.WB_EliteProp:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
+  r0_1.WB_EliteProp:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
+  r0_1.WB_EliteProp:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
+  r0_1.IsFocusProp = false
+  r0_1.IsFocus_Monster = false
+  r0_1.IsFocusEliteProp = false
+  r0_1.SquadId = 1
+  r0_1.MaxMonNum = 2
+  r0_1.WalnutId = nil
+  r0_1.Mobile = r0_0.GetDeviceTypeByPlatformName(r0_1) == "Mobile"
+  r0_1.Gamepad = UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad
+  r0_1.FocusTypeName = nil
+  r0_1.PressedKeys = {}
+  r0_1.Cost:SetVisibility(ESlateVisibility.Collapsed)
+  r0_1.Group_Double:SetVisibility(ESlateVisibility.Collapsed)
+  r0_1.HB_Counsume:SetVisibility(ESlateVisibility.Collapsed)
+  if r0_1.Arrow_Up then
+    r0_1.Arrow_Up:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
-  if self.Arrow_Down then
-    self.Arrow_Down:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  if r0_1.Arrow_Down then
+    r0_1.Arrow_Down:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
-  self.Btn_Qa:Init({
-    OwnerWidget = self,
+  r0_1.Btn_Qa:Init({
+    OwnerWidget = r0_1,
     PopupID = 100241,
     ClickCallback = function()
-      UIManager(self):ShowCommonPopupUI(100241)
-    end
+      -- line: [138, 140] id: 5
+      UIManager(r0_1):ShowCommonPopupUI(100241)
+    end,
   })
-  self.StyleOfPlay = UIManager(self):GetUIObj("StyleOfPlay")
+  r0_1.StyleOfPlay = UIManager(r0_1):GetUIObj("StyleOfPlay")
 end
-
-function M:Destruct()
-  M.Super.Destruct(self)
-  M.bOpened = false
-  M.SelectedDungeonId = nil
-  self.Button_Multi:UnBindEventOnClickedByObj(self)
-  self.Button_Solo:UnBindEventOnClickedByObj(self)
-  self.Button_DoubleMod:UnBindEventOnClickedByObj(self)
+function r6_0.Destruct(r0_6)
+  -- line: [147, 156] id: 6
+  r6_0.Super.Destruct(r0_6)
+  r6_0.bOpened = false
+  r6_0.SelectedDungeonId = nil
+  r0_6.Button_Multi:UnBindEventOnClickedByObj(r0_6)
+  r0_6.Button_Solo:UnBindEventOnClickedByObj(r0_6)
+  r0_6.Button_DoubleMod:UnBindEventOnClickedByObj(r0_6)
+  TeamController:UnRegisterEvent(r0_6)
 end
-
-function M:InitLevelList(DungeonList, SelectDungeonId, DeputeType, WalnutId)
-  AudioManager(self):PlayUISound(self, "event:/ui/armory/open", "Play_DeputeDetail", nil)
-  self:SetFocus()
-  self.MonsterIdToItem = {}
-  self.TypeTable = {}
-  self.TypeTableKeys = {}
-  self.HB_Type:ClearChildren()
-  self.CurrentTabIdx = 1
-  self.SelectCell = nil
-  self.FirstEnter = true
-  if not DeputeType then
-    self.DeputeType = Const.DeputeType.RegularDepute
+function r6_0.InitLevelList(r0_7, r1_7, r2_7, r3_7, r4_7)
+  -- line: [161, 356] id: 7
+  AudioManager(r0_7):PlayUISound(r0_7, "event:/ui/armory/open", "Play_DeputeDetail", nil)
+  local r5_7 = UIManager(r0_7):GetUIObj("StyleOfPlay")
+  if r5_7 then
+    r0_7.CurTabId = r5_7.CurTabId
+  end
+  r0_7:SetFocus()
+  r0_7.MonsterIdToItem = {}
+  r0_7.TypeTable = {}
+  r0_7.TypeTableKeys = {}
+  r0_7.HB_Type:ClearChildren()
+  r0_7.CurrentTabIdx = 1
+  r0_7.SelectCell = nil
+  r0_7.FirstEnter = true
+  if not r3_7 then
+    r0_7.DeputeType = Const.DeputeType.RegularDepute
   else
-    self.DeputeType = DeputeType
+    r0_7.DeputeType = r3_7
   end
-  if WalnutId then
-    self.WalnutId = WalnutId
+  if r4_7 then
+    r0_7.WalnutId = r4_7
   end
-  if SelectDungeonId then
-    DungeonSelectCache = {}
+  if r2_7 then
+    r8_0 = {}
   end
-  if not DungeonList then
-    return
+  if not r1_7 then
+    return 
   end
-  self.ActionPointId = DataMgr.ResourceSType2Resource.ActionPoint[1]
-  local IsNightFlight = self.DeputeType == Const.DeputeType.NightFlightManualDepute
-  local SubTabList = {
-    {
-      Text = GText("UI_DUNGEON_ObtainType"),
-      Id = IsNightFlight and 1 or 2
-    },
-    {
-      Text = GText("UI_DUNGEON_MonsterType"),
-      Id = IsNightFlight and 2 or 3
-    }
-  }
-  self.ObtainTabId = IsNightFlight and 2 or 1
-  self.MonsterTabId = IsNightFlight and 3 or 2
-  if IsNightFlight then
-    table.insert(SubTabList, 1, {
+  r0_7.ActionPointId = DataMgr.ResourceSType2Resource.ActionPoint[1]
+  local r6_7 = r0_7.DeputeType == Const.DeputeType.NightFlightManualDepute
+  local r7_7 = {}
+  local r8_7 = {}
+  local r9_7 = GText("UI_DUNGEON_ObtainType")
+  r8_7.Text = r9_7
+  if r6_7 then
+    r9_7 = 1 and 2
+  else
+    goto label_81	-- block#16 is visited secondly
+  end
+  r8_7.Id = r9_7
+  r9_7 = {}
+  local r10_7 = GText("UI_DUNGEON_MonsterType")
+  r9_7.Text = r10_7
+  if r6_7 then
+    r10_7 = 2 and 3
+  else
+    goto label_94	-- block#19 is visited secondly
+  end
+  r9_7.Id = r10_7
+  -- setlist for #7 failed
+  if r6_7 then
+    r8_7 = 2 and 1
+  else
+    goto label_102	-- block#22 is visited secondly
+  end
+  r0_7.ObtainTabId = r8_7
+  if r6_7 then
+    r8_7 = 3 and 2
+  else
+    goto label_109	-- block#25 is visited secondly
+  end
+  r0_7.MonsterTabId = r8_7
+  if r6_7 then
+    table.insert(r7_7, 1, {
       Text = GText("UI_Dungeon_SpecialMonster"),
-      Id = 1
+      Id = 1,
     })
-    self.SpecialMonsterTabId = 1
+    r0_7.SpecialMonsterTabId = 1
   end
-  self.Tab_Info:Init({
+  r0_7.Tab_Info:Init({
     LeftKey = "A",
     RightKey = "D",
-    Tabs = SubTabList,
-    ChildWidgetBPPath = "WidgetBlueprint'/Game/UI/WBP/Common/Tab/Widget/WBP_Com_TabSubItem01.WBP_Com_TabSubItem01'",
-    SoundFunc = self.PlayTabSound,
-    SoundFuncReceiver = self
+    Tabs = r7_7,
+    ChildWidgetBPPath = "WidgetBlueprint\'/Game/UI/WBP/Common/Tab/Widget/WBP_Com_TabSubItem01.WBP_Com_TabSubItem01\'",
+    SoundFunc = r0_7.PlayTabSound,
+    SoundFuncReceiver = r0_7,
   })
-  self.Tab_Info:BindEventOnTabSelected(self, self.OnSubTabChanged)
-  self.Tab_Info:SelectTab(1)
-  self.ScrollBox_List:ClearChildren()
-  self.ScrollBox_List:ScrollToStart()
-  self.ScrollBox_List:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Wrap)
-  self.ScrollBox_List:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
-  self.ScrollBox_List:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
-  self.ScrollBox_List:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
-  self.ScrollBox_List:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
-  self.WB_EliteProp:ClearChildren()
-  self.WB_EliteProp:SetVisibility(ESlateVisibility.Collapsed)
-  self.Bg_Consume:SetVisibility(ESlateVisibility.Collapsed)
-  if self.DeputeType == Const.DeputeType.WalnutDepute then
-    if not self.WalnutTypeData then
-      return
+  r0_7.Tab_Info:BindEventOnTabSelected(r0_7, r0_7.OnSubTabChanged)
+  r0_7.Tab_Info:SelectTab(1)
+  r0_7.ScrollBox_List:ClearChildren()
+  r0_7.ScrollBox_List:ScrollToStart()
+  r0_7.ScrollBox_List:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Wrap)
+  r0_7.ScrollBox_List:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
+  r0_7.ScrollBox_List:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
+  r0_7.ScrollBox_List:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
+  r0_7.ScrollBox_List:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
+  r0_7.WB_EliteProp:ClearChildren()
+  r0_7.WB_EliteProp:SetVisibility(ESlateVisibility.Collapsed)
+  r0_7.Bg_Consume:SetVisibility(ESlateVisibility.Collapsed)
+  if r0_7.DeputeType == Const.DeputeType.WalnutDepute then
+    if not r0_7.WalnutTypeData then
+      return 
     end
-    self.Panel_Walnut:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-    self.HB_WalnutCost:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-    self.Button_Solo:SetText(GText("UI_Walnut_Choice"))
-    if self.WalnutTypeTextColor then
-      local Text_WalnutMat = self.Text_Walnut:GetDynamicFontMaterial()
-      Text_WalnutMat:SetVectorParameterValue("MainColor", self.WalnutTypeTextColor)
+    r0_7.Panel_Walnut:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    r0_7.HB_WalnutCost:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    r0_7.Button_Solo:SetText(GText("UI_Walnut_Choice"))
+    if r0_7.WalnutTypeTextColor then
+      r0_7.Text_Walnut:GetDynamicFontMaterial():SetVectorParameterValue("MainColor", r0_7.WalnutTypeTextColor)
     end
-    local Icon = LoadObject(self.WalnutTypeData.TypeIcon)
-    self.Icon_Walnut:SetBrushResourceObject(Icon)
-    self.Text_Walnut:SetText(GText(self.WalnutTypeData.Name))
-    self.Text_WalnutCost:SetText(GText("UI_Walnut_Dungeon_Available"))
-    self.Panel_WalnutTime:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-    self.Text_WalnutTime:SetText(GText("UI_Walnut_Dungeon_Refresh"))
-    self.LeftTimeDict = WalnutBagModel:GetDungeonNextRefreshTime()
-    if self:IsExistTimer("UpdateTimeContent") then
-      self:RemoveTimer("UpdateTimeContent")
+    r0_7.Icon_Walnut:SetBrushResourceObject(LoadObject(r0_7.WalnutTypeData.TypeIcon))
+    r0_7.Text_Walnut:SetText(GText(r0_7.WalnutTypeData.Name))
+    r0_7.Text_WalnutCost:SetText(GText("UI_Walnut_Dungeon_Available"))
+    r0_7.Panel_WalnutTime:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    r0_7.Text_WalnutTime:SetText(GText("UI_Walnut_Dungeon_Refresh"))
+    r0_7.LeftTimeDict = r3_0:GetDungeonNextRefreshTime()
+    if r0_7:IsExistTimer("UpdateTimeContent") then
+      r0_7:RemoveTimer("UpdateTimeContent")
     end
-    self:UpdateTimeCountDown()
-    self:AddTimer(1.0, self.UpdateTimeCountDown, true, 0, "UpdateTimeContent", true)
+    r0_7:UpdateTimeCountDown()
+    r0_7:AddTimer(1, r0_7.UpdateTimeCountDown, true, 0, "UpdateTimeContent", true)
   else
-    self.Panel_Walnut:SetVisibility(ESlateVisibility.Collapsed)
-    self.HB_WalnutCost:SetVisibility(ESlateVisibility.Collapsed)
-    self.Panel_WalnutTime:SetVisibility(ESlateVisibility.Collapsed)
+    r0_7.Panel_Walnut:SetVisibility(ESlateVisibility.Collapsed)
+    r0_7.HB_WalnutCost:SetVisibility(ESlateVisibility.Collapsed)
+    r0_7.Panel_WalnutTime:SetVisibility(ESlateVisibility.Collapsed)
   end
-  local Avatar = GWorld:GetAvatar()
-  if not Avatar then
-    return
+  r8_7 = GWorld:GetAvatar()
+  if not r8_7 then
+    return 
   end
-  if self.DeputeType == Const.DeputeType.DeputeWeekly then
-    self.HB_Weekly:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-    self.Bg_Consume:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-    self.WeeklyDungeonRewardLeft = Avatar.WeeklyDungeonRewardLeft
-    self.Text_WeeklyDescNumNow:SetText(self.WeeklyDungeonRewardLeft)
-    self.Text_WeeklyDescNumTotal:SetText(DataMgr.GlobalConstant.DungeonRewardRefresh.ConstantValue)
-    if self.WeeklyDungeonRewardLeft > 0 then
-      if self.ColorNowNormal then
-        self.Text_WeeklyDescNumNow:SetColorAndOpacity(self.ColorNowNormal)
+  if r0_7.DeputeType == Const.DeputeType.DeputeWeekly then
+    r0_7.HB_Weekly:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    r0_7.Bg_Consume:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    r0_7.WeeklyDungeonRewardLeft = r8_7.WeeklyDungeonRewardLeft
+    r0_7.Text_WeeklyDescNumNow:SetText(r0_7.WeeklyDungeonRewardLeft)
+    r0_7.Text_WeeklyDescNumTotal:SetText(DataMgr.GlobalConstant.DungeonRewardRefresh.ConstantValue)
+    if r0_7.WeeklyDungeonRewardLeft > 0 then
+      if r0_7.ColorNowNormal then
+        r0_7.Text_WeeklyDescNumNow:SetColorAndOpacity(r0_7.ColorNowNormal)
       else
-        self.Text_WeeklyDescNumNow:SetColorAndOpacity(self.ColorNowEmpty)
+        r0_7.Text_WeeklyDescNumNow:SetColorAndOpacity(r0_7.ColorNowEmpty)
       end
     end
-    self.Text_WeeklyDescNumTitle:SetText(GText("UI_WeeklyDungeon_ChancesRemain"))
+    r0_7.Text_WeeklyDescNumTitle:SetText(GText("UI_WeeklyDungeon_ChancesRemain"))
   else
-    self.HB_Weekly:SetVisibility(ESlateVisibility.Collapsed)
+    r0_7.HB_Weekly:SetVisibility(ESlateVisibility.Collapsed)
   end
-  local LatestUnlockedDungeonId
-  for _, DungeonId in pairs(DungeonList) do
-    if PageJumpUtils:CheckDungeonCondition(DataMgr.Dungeon[DungeonId].Condition) then
-      LatestUnlockedDungeonId = DungeonId
+  r9_7 = nil
+  for r14_7, r15_7 in pairs(r1_7) do
+    if PageJumpUtils:CheckDungeonCondition(DataMgr.Dungeon[r15_7].Condition) then
+      r9_7 = r15_7
     end
   end
-  for i, DungeonId in pairs(DungeonList) do
-    local Item = self:CreateWidgetNew("DungeonSelectLevel")
-    Item:BindEventOnClicked(self, self.OnClickedLevelCell, Item)
-    if self.DeputeType == Const.DeputeType.RegularDepute or self.DeputeType == Const.DeputeType.DeputeWeekly then
-      Item:InitDungeonInfo(DungeonId, i, false, self)
+  -- close: r10_7
+  for r14_7, r15_7 in pairs(r1_7) do
+    local r16_7 = r0_7:CreateWidgetNew("DungeonSelectLevel")
+    r16_7:BindEventOnClicked(r0_7, r0_7.OnClickedLevelCell, r16_7)
+    local r17_7 = r0_7.DeputeType
+    if r17_7 ~= Const.DeputeType.RegularDepute then
+      r17_7 = r0_7.DeputeType
+      if r17_7 == Const.DeputeType.DeputeWeekly then
+        ::label_411::
+        r16_7:InitDungeonInfo(r15_7, r14_7, false, r0_7)
+      else
+        r16_7:InitDungeonInfo(r15_7, r14_7, true, r0_7)
+      end
     else
-      Item:InitDungeonInfo(DungeonId, i, true, self)
+      goto label_411	-- block#53 is visited secondly
     end
-    local ShouldSelect = not SelectDungeonId and DungeonId == LatestUnlockedDungeonId or SelectDungeonId == DungeonId or DataMgr.Dungeon2SubDungeon[SelectDungeonId] == DungeonId
-    if ShouldSelect then
-      if PageJumpUtils:CheckDungeonCondition(DataMgr.Dungeon[DungeonId].Condition) then
-        self.SelectCell = Item
-        Item.Bg_List.IsSelect = true
-        Item.Bg_List:PlayAnimation(Item.Bg_List.Select)
-        Item:PlayAnimation(Item.Select)
-        self.CurCellDungeonId = SelectDungeonId and DataMgr.Dungeon2SubDungeon[SelectDungeonId] or DungeonId
-        self:InitListCellInfo(SelectDungeonId or DungeonId)
+    if (r2_7 or r15_7 ~= r9_7) and r2_7 ~= r15_7 then
+      r17_7 = DataMgr.Dungeon2SubDungeon[r2_7] == r15_7
+    else
+      goto label_436	-- block#60 is visited secondly
+    end
+    if r17_7 then
+      local r18_7 = PageJumpUtils:CheckDungeonCondition(DataMgr.Dungeon[r15_7].Condition)
+      if r18_7 then
+        r0_7.SelectCell = r16_7
+        r16_7.Bg_List.IsSelect = true
+        r16_7.Bg_List:PlayAnimation(r16_7.Bg_List.Select)
+        r16_7:PlayAnimation(r16_7.Select)
+        if r2_7 then
+          r18_7 = DataMgr.Dungeon2SubDungeon[r2_7] and r15_7
+        else
+          goto label_466	-- block#65 is visited secondly
+        end
+        r0_7.CurCellDungeonId = r18_7
+        r0_7:InitListCellInfo(r2_7 and r15_7)
       else
-        self.Panel_Detail:SetVisibility(ESlateVisibility.Collapsed)
+        r0_7.Panel_Detail:SetVisibility(ESlateVisibility.Collapsed)
       end
     end
-    self.ScrollBox_List:AddChild(Item)
+    r0_7.ScrollBox_List:AddChild(r16_7)
   end
-  if self.SelectCell then
-    self:SelectCellFocus()
-    self.ScrollBox_List:ScrollWidgetIntoView(self.SelectCell, true, EDescendantScrollDestination.Center)
+  -- close: r10_7
+  if r0_7.SelectCell then
+    r0_7:SelectCellFocus()
+    r0_7.ScrollBox_List:ScrollWidgetIntoView(r0_7.SelectCell, true, EDescendantScrollDestination.Center)
   end
-  self.ScrollBox_List:GetChildAt(0):SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
-  self.ScrollBox_List:GetChildAt(self.ScrollBox_List:GetChildrenCount() - 1):SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
-  self:PlayAnimation(self.In)
+  r0_7.ScrollBox_List:GetChildAt(0):SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
+  r0_7.ScrollBox_List:GetChildAt(r0_7.ScrollBox_List:GetChildrenCount() + -1):SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
+  r0_7:PlayAnimation(r0_7.In)
   if UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad then
-    self:UpdateUIStyleInPlatform(false)
+    r0_7:UpdateUIStyleInPlatform(false)
   end
 end
-
-function M:SetWalnutTitleMatColor(WalnutType)
-  if 1 == WalnutType then
-    self.WalnutTypeTextColor = self.Sx_Text_WalnutTypeTitleMatColor
-  elseif 2 == WalnutType then
-    self.WalnutTypeTextColor = self.Zl_Text_WalnutTypeTitleMatColor
+function r6_0.SetWalnutTitleMatColor(r0_8, r1_8)
+  -- line: [359, 367] id: 8
+  if r1_8 == 1 then
+    r0_8.WalnutTypeTextColor = r0_8.Sx_Text_WalnutTypeTitleMatColor
+  elseif r1_8 == 2 then
+    r0_8.WalnutTypeTextColor = r0_8.Zl_Text_WalnutTypeTitleMatColor
   else
-    self.WalnutTypeTextColor = self.Hl_Text_WalnutTypeTitleMatColor
+    r0_8.WalnutTypeTextColor = r0_8.Hl_Text_WalnutTypeTitleMatColor
   end
 end
-
-function M:UpdateTimeCountDown()
-  local RemainTimeDict, TimeCount = UIUtils.GetLeftTimeStrStyle2(self.LeftTimeDict)
-  self.Time_Refresh:SetTimeText("UI_Walnut_Dungeon_Refresh", RemainTimeDict)
+function r6_0.UpdateTimeCountDown(r0_9)
+  -- line: [369, 372] id: 9
+  local r1_9, r2_9 = UIUtils.GetLeftTimeStrStyle2(r0_9.LeftTimeDict)
+  r0_9.Time_Refresh:SetTimeText("UI_Walnut_Dungeon_Refresh", r1_9)
 end
-
-function M:SetPanelDetails(Idx)
-  self.Com_Btn_Details:UnBindEventOnClickedByObj(self)
-  if Idx == self.ObtainTabId then
-    self.Com_Btn_Details:BindEventOnClicked(self, self.OpenRewardDetails)
-    self.Text_Details:SetText(GText("UI_CTL_Details"))
+function r6_0.SetPanelDetails(r0_10, r1_10)
+  -- line: [376, 421] id: 10
+  r0_10.Com_Btn_Details:UnBindEventOnClickedByObj(r0_10)
+  if r1_10 == r0_10.ObtainTabId then
+    r0_10.Com_Btn_Details:BindEventOnClicked(r0_10, r0_10.OpenRewardDetails)
+    r0_10.Text_Details:SetText(GText("UI_CTL_Details"))
     if UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad then
-      self.Switch_Details_Icon:SetActiveWidgetIndex(2)
-      self.Key_Details_GamePad:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-      self.Key_Details_GamePad:CreateCommonKey({
+      r0_10.Switch_Details_Icon:SetActiveWidgetIndex(2)
+      r0_10.Key_Details_GamePad:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+      r0_10.Key_Details_GamePad:CreateCommonKey({
         KeyInfoList = {
-          {Type = "Img", ImgShortPath = "Down"}
-        }
+          {
+            Type = "Img",
+            ImgShortPath = "Down",
+          }
+        },
       })
     else
-      self.Switch_Details_Icon:SetActiveWidgetIndex(1)
-      if not self.Mobile then
-        self.Key_Details_GamePad:SetVisibility(ESlateVisibility.Collapsed)
+      r0_10.Switch_Details_Icon:SetActiveWidgetIndex(1)
+      if not r0_10.Mobile then
+        r0_10.Key_Details_GamePad:SetVisibility(ESlateVisibility.Collapsed)
       end
     end
   else
-    self.Com_Btn_Details:BindEventOnClicked(self, self.OpenCommanderDetails)
-    self.Text_Details:SetText(GText("UI_Dungeon_More"))
+    r0_10.Com_Btn_Details:BindEventOnClicked(r0_10, r0_10.OpenCommanderDetails)
+    r0_10.Text_Details:SetText(GText("UI_Dungeon_More"))
     if UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad then
-      self.Switch_Details_Icon:SetActiveWidgetIndex(2)
-      self.Key_Details_GamePad:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-      self.Key_Details_GamePad:CreateCommonKey({
+      r0_10.Switch_Details_Icon:SetActiveWidgetIndex(2)
+      r0_10.Key_Details_GamePad:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+      r0_10.Key_Details_GamePad:CreateCommonKey({
         KeyInfoList = {
-          {Type = "Img", ImgShortPath = "Down"}
-        }
+          {
+            Type = "Img",
+            ImgShortPath = "Down",
+          }
+        },
       })
     else
-      self.Switch_Details_Icon:SetActiveWidgetIndex(0)
-      if not self.Mobile then
-        self.Key_Details_GamePad:SetVisibility(ESlateVisibility.Collapsed)
+      r0_10.Switch_Details_Icon:SetActiveWidgetIndex(0)
+      if not r0_10.Mobile then
+        r0_10.Key_Details_GamePad:SetVisibility(ESlateVisibility.Collapsed)
       end
     end
   end
 end
-
-function M:OnSubTabChanged(TabWidget)
-  self.CurrentTabIdx = TabWidget.Idx
-  self:PlayAnimation(self.Switch_Tab)
-  if TabWidget.Idx == self.ObtainTabId then
-    self.List_Prop:SetVisibility(ESlateVisibility.Visible)
-    self.List_Monster:SetVisibility(ESlateVisibility.Collapsed)
-    self.List_Event:SetVisibility(ESlateVisibility.Collapsed)
-    self:SetPanelDetailsVis(ESlateVisibility.SelfHitTestInvisible)
-    self.WB_EliteProp:SetVisibility(ESlateVisibility.Collapsed)
-    if self.CurrentFocusType == "List" then
-      self.List_Prop:SetFocus()
-      self:UpdatKeyDisplay("RewardWidget")
+function r6_0.OnSubTabChanged(r0_11, r1_11)
+  -- line: [423, 462] id: 11
+  r0_11.CurrentTabIdx = r1_11.Idx
+  r0_11:PlayAnimation(r0_11.Switch_Tab)
+  if r1_11.Idx == r0_11.ObtainTabId then
+    r0_11.List_Prop:SetVisibility(ESlateVisibility.Visible)
+    r0_11.List_Monster:SetVisibility(ESlateVisibility.Collapsed)
+    r0_11.List_Event:SetVisibility(ESlateVisibility.Collapsed)
+    r0_11:SetPanelDetailsVis(ESlateVisibility.SelfHitTestInvisible)
+    r0_11.WB_EliteProp:SetVisibility(ESlateVisibility.Collapsed)
+    if r0_11.CurrentFocusType == "List" then
+      r0_11.List_Prop:SetFocus()
+      r0_11:UpdatKeyDisplay("RewardWidget")
     end
-    self.Btn_Area.OnClicked:Add(self, self.OpenIntro)
-    self:SetPanelDetails(TabWidget.Idx)
-  elseif TabWidget.Idx == self.MonsterTabId then
-    self.List_Prop:SetVisibility(ESlateVisibility.Collapsed)
-    self.List_Monster:SetVisibility(ESlateVisibility.Visible)
-    self.List_Event:SetVisibility(ESlateVisibility.Collapsed)
-    self:SetPanelDetailsVis(ESlateVisibility.Collapsed)
-    self.WB_EliteProp:SetVisibility(ESlateVisibility.Collapsed)
-    if self.CurrentFocusType == "List" then
-      self.List_Monster:SetFocus()
-      self:UpdatKeyDisplay("RewardWidget")
+    r0_11.Btn_Area.OnClicked:Add(r0_11, r0_11.OpenIntro)
+    r0_11:SetPanelDetails(r1_11.Idx)
+  elseif r1_11.Idx == r0_11.MonsterTabId then
+    r0_11.List_Prop:SetVisibility(ESlateVisibility.Collapsed)
+    r0_11.List_Monster:SetVisibility(ESlateVisibility.Visible)
+    r0_11.List_Event:SetVisibility(ESlateVisibility.Collapsed)
+    r0_11:SetPanelDetailsVis(ESlateVisibility.Collapsed)
+    r0_11.WB_EliteProp:SetVisibility(ESlateVisibility.Collapsed)
+    if r0_11.CurrentFocusType == "List" then
+      r0_11.List_Monster:SetFocus()
+      r0_11:UpdatKeyDisplay("RewardWidget")
     end
-  elseif self.TitleEventTabId and TabWidget.Idx == self.TitleEventTabId then
-    self.List_Event:SetVisibility(ESlateVisibility.Visible)
-    self.List_Prop:SetVisibility(ESlateVisibility.Collapsed)
-    self.List_Monster:SetVisibility(ESlateVisibility.Collapsed)
-    self:SetPanelDetailsVis(ESlateVisibility.Collapsed)
-    self.WB_EliteProp:SetVisibility(ESlateVisibility.Collapsed)
-    if self.CurrentFocusType == "List" then
-      self.List_Event:SetFocus()
-      self:UpdatKeyDisplay("EventWidget")
+  elseif r0_11.TitleEventTabId and r1_11.Idx == r0_11.TitleEventTabId then
+    r0_11.List_Event:SetVisibility(ESlateVisibility.Visible)
+    r0_11.List_Prop:SetVisibility(ESlateVisibility.Collapsed)
+    r0_11.List_Monster:SetVisibility(ESlateVisibility.Collapsed)
+    r0_11:SetPanelDetailsVis(ESlateVisibility.Collapsed)
+    r0_11.WB_EliteProp:SetVisibility(ESlateVisibility.Collapsed)
+    if r0_11.CurrentFocusType == "List" then
+      r0_11.List_Event:SetFocus()
+      r0_11:UpdatKeyDisplay("EventWidget")
     end
   end
-  self:SetNightFlightManualText_MoreHide(TabWidget.Idx)
+  r0_11:SetNightFlightManualText_MoreHide(r1_11.Idx)
 end
-
-function M:IsShowKeyMore()
-  if self.CurrentTabIdx == self.SpecialMonsterTabId then
-    return self.MonNum and self.MonNum > self.MaxMonNum
+function r6_0.IsShowKeyMore(r0_12)
+  -- line: [464, 469] id: 12
+  if r0_12.CurrentTabIdx == r0_12.SpecialMonsterTabId then
+    return r0_12.MonNum and r0_12.MaxMonNum < r0_12.MonNum
   end
-  return self.CurrentTabIdx == self.ObtainTabId
+  return r0_12.CurrentTabIdx == r0_12.ObtainTabId
 end
-
-function M:ItemMenuAnchorChanged(bIsOpen)
+function r6_0.ItemMenuAnchorChanged(r0_13, r1_13)
+  -- line: [472, 482] id: 13
   if UIUtils.UtilsGetCurrentInputType() ~= ECommonInputType.Gamepad then
-    return
+    return 
   end
-  if bIsOpen then
-    self:UpdatKeyDisplay("")
+  if r1_13 then
+    r0_13:UpdatKeyDisplay("")
   else
-    self:UpdatKeyDisplay("SelfWidget")
-    self:SelectCellFocus()
+    r0_13:UpdatKeyDisplay("SelfWidget")
+    r0_13:SelectCellFocus()
   end
 end
-
-function M:SetNightFlightManualText_MoreHide(Idx)
-  if self.DeputeType == Const.DeputeType.NightFlightManualDepute and Idx == self.SpecialMonsterTabId then
-    self:SetNightFlightManualEliteProp(self.CurSelectedDungeonId)
-    if self.MonNum and self.MonNum > self.MaxMonNum then
-      self:SetPanelDetails(Idx)
-      self:SetPanelDetailsVis(ESlateVisibility.SelfHitTestInvisible)
-      self.List_Prop:SetVisibility(ESlateVisibility.Collapsed)
-      self.List_Monster:SetVisibility(ESlateVisibility.Collapsed)
+function r6_0.SetNightFlightManualText_MoreHide(r0_14, r1_14)
+  -- line: [485, 510] id: 14
+  if r0_14.DeputeType == Const.DeputeType.NightFlightManualDepute and r1_14 == r0_14.SpecialMonsterTabId then
+    r0_14:SetNightFlightManualEliteProp(r0_14.CurSelectedDungeonId)
+    if r0_14.MonNum and r0_14.MaxMonNum < r0_14.MonNum then
+      r0_14:SetPanelDetails(r1_14)
+      r0_14:SetPanelDetailsVis(ESlateVisibility.SelfHitTestInvisible)
+      r0_14.List_Prop:SetVisibility(ESlateVisibility.Collapsed)
+      r0_14.List_Monster:SetVisibility(ESlateVisibility.Collapsed)
     else
-      self:SetPanelDetailsVis(ESlateVisibility.Collapsed)
-      self.List_Prop:SetVisibility(ESlateVisibility.Collapsed)
-      self.List_Monster:SetVisibility(ESlateVisibility.Collapsed)
+      r0_14:SetPanelDetailsVis(ESlateVisibility.Collapsed)
+      r0_14.List_Prop:SetVisibility(ESlateVisibility.Collapsed)
+      r0_14.List_Monster:SetVisibility(ESlateVisibility.Collapsed)
     end
-    self.WB_EliteProp:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-    if self.CurrentFocusType == "List" and self.WB_EliteProp:GetChildAt(0) then
-      self.WB_EliteProp:GetChildAt(0):SetFocus()
+    r0_14.WB_EliteProp:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    if r0_14.CurrentFocusType == "List" and r0_14.WB_EliteProp:GetChildAt(0) then
+      r0_14.WB_EliteProp:GetChildAt(0):SetFocus()
     end
   end
 end
-
-function M:SetNightFlightManualRewardView(DungeonRewardView)
-  self.DungeonRewardView = DungeonRewardView
+function r6_0.SetNightFlightManualRewardView(r0_15, r1_15)
+  -- line: [512, 514] id: 15
+  r0_15.DungeonRewardView = r1_15
 end
-
-function M:SetNightFlightManualEliteProp(DungeonId)
-  self.WB_EliteProp:ClearChildren()
-  self.MonsterWeaknessIconCache = {}
-  local MonIds = DataMgr.ModDungeon2Monster[DungeonId]
-  if not MonIds or 0 == #MonIds then
-    DebugPrint("SL No monsters found for DungeonId:", DungeonId)
-    return
+function r6_0.SetNightFlightManualEliteProp(r0_16, r1_16)
+  -- line: [516, 584] id: 16
+  r0_16.WB_EliteProp:ClearChildren()
+  r0_16.MonsterWeaknessIconCache = {}
+  local r2_16 = DataMgr.ModDungeon2Monster[r1_16]
+  if not r2_16 or #r2_16 == 0 then
+    DebugPrint("SL No monsters found for DungeonId:", r1_16)
+    return 
   end
-  self.MonNum = CommonUtils.TableLength(MonIds)
-  local Num = math.min(self.MonNum, 2)
-  for i = 1, Num do
-    local Id = MonIds[i]
-    local Item = self:CreateWidgetNew("DeputeEliteInfo")
-    local WeaknessIcon = self:GetMonsterWeaknessIcon(Id)
-    Item:InitItemContent(Id, WeaknessIcon, self, self.DungeonRewardView)
-    self.WB_EliteProp:AddChild(Item)
+  r0_16.MonNum = r0_0.TableLength(r2_16)
+  for r7_16 = 1, math.min(r0_16.MonNum, 2), 1 do
+    local r8_16 = r2_16[r7_16]
+    local r9_16 = r0_16:CreateWidgetNew("DeputeEliteInfo")
+    r9_16:InitItemContent(r8_16, r0_16:GetMonsterWeaknessIcon(r8_16), r0_16, r0_16.DungeonRewardView)
+    r0_16.WB_EliteProp:AddChild(r9_16)
   end
-  if self.WB_EliteProp:GetChildrenCount() <= 1 then
-    local Item = self:CreateWidgetNew("DeputeEliteInfo")
-    Item:InitItemContent()
-    self.WB_EliteProp:AddChild(Item)
+  if r0_16.WB_EliteProp:GetChildrenCount() <= 1 then
+    local r4_16 = r0_16:CreateWidgetNew("DeputeEliteInfo")
+    r4_16:InitItemContent()
+    r0_16.WB_EliteProp:AddChild(r4_16)
   end
-  if 1 == self.WB_EliteProp:GetChildrenCount() then
-    self.WB_EliteProp:GetChildAt(0):SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
-    self.WB_EliteProp:GetChildAt(0):SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
-    self.WB_EliteProp:GetChildAt(0):SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
-  elseif 2 == self.WB_EliteProp:GetChildrenCount() and self.WB_EliteProp:GetChildAt(1).Id then
-    self.WB_EliteProp:GetChildAt(0):SetNavigationRuleExplicit(EUINavigation.Right, self.WB_EliteProp:GetChildAt(1))
-    self.WB_EliteProp:GetChildAt(0):SetNavigationRuleExplicit(EUINavigation.Left, self.WB_EliteProp:GetChildAt(1))
-    self.WB_EliteProp:GetChildAt(1):SetNavigationRuleExplicit(EUINavigation.Left, self.WB_EliteProp:GetChildAt(0))
-    self.WB_EliteProp:GetChildAt(1):SetNavigationRuleExplicit(EUINavigation.Right, self.WB_EliteProp:GetChildAt(0))
-    self.WB_EliteProp:GetChildAt(0):SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
-    self.WB_EliteProp:GetChildAt(1):SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
+  if r0_16.WB_EliteProp:GetChildrenCount() == 1 then
+    r0_16.WB_EliteProp:GetChildAt(0):SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
+    r0_16.WB_EliteProp:GetChildAt(0):SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
+    r0_16.WB_EliteProp:GetChildAt(0):SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
+  elseif r0_16.WB_EliteProp:GetChildrenCount() == 2 and r0_16.WB_EliteProp:GetChildAt(1).Id then
+    r0_16.WB_EliteProp:GetChildAt(0):SetNavigationRuleExplicit(EUINavigation.Right, r0_16.WB_EliteProp:GetChildAt(1))
+    r0_16.WB_EliteProp:GetChildAt(0):SetNavigationRuleExplicit(EUINavigation.Left, r0_16.WB_EliteProp:GetChildAt(1))
+    r0_16.WB_EliteProp:GetChildAt(1):SetNavigationRuleExplicit(EUINavigation.Left, r0_16.WB_EliteProp:GetChildAt(0))
+    r0_16.WB_EliteProp:GetChildAt(1):SetNavigationRuleExplicit(EUINavigation.Right, r0_16.WB_EliteProp:GetChildAt(0))
+    r0_16.WB_EliteProp:GetChildAt(0):SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
+    r0_16.WB_EliteProp:GetChildAt(1):SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
   end
 end
-
-function M:GetMonsterWeaknessIcon(MonsterId)
-  local MonsterWeaknessIcon = self.MonsterWeaknessIconCache or {}
-  self.MonsterWeaknessIconCache = MonsterWeaknessIcon
-  if MonsterWeaknessIcon[MonsterId] then
-    return MonsterWeaknessIcon[MonsterId]
+function r6_0.GetMonsterWeaknessIcon(r0_17, r1_17)
+  -- line: [596, 622] id: 17
+  local r2_17 = r0_17.MonsterWeaknessIconCache and {}
+  r0_17.MonsterWeaknessIconCache = r2_17
+  if r2_17[r1_17] then
+    return r2_17[r1_17]
   end
-  local AllBuffs = MonsterUtils.GetRealMonsterBuffs(self.CurSelectedDungeonId, MonsterId)
-  for _, BuffId in ipairs(AllBuffs) do
-    local BuffInfo = DataMgr.Buff[BuffId]
-    if BuffInfo and BuffInfo.WeaknessType then
-      local WeaknessIcon = DataMgr.DamageType[BuffInfo.WeaknessType] and DataMgr.DamageType[BuffInfo.WeaknessType].WeaknessIcon
-      if WeaknessIcon then
-        MonsterWeaknessIcon[MonsterId] = MonsterWeaknessIcon[MonsterId] or {}
-        MonsterWeaknessIcon[MonsterId][WeaknessIcon] = true
+  for r8_17, r9_17 in ipairs(r1_0.GetRealMonsterBuffs(r0_17.CurSelectedDungeonId, r1_17)) do
+    local r10_17 = DataMgr.Buff[r9_17]
+    if r10_17 and r10_17.WeaknessType then
+      local r11_17 = DataMgr.DamageType[r10_17.WeaknessType] and DataMgr.DamageType[r10_17.WeaknessType].WeaknessIcon
+      if r11_17 then
+        r2_17[r1_17] = r2_17[r1_17] and {}
+        r2_17[r1_17][r11_17] = true
       end
     end
   end
-  return MonsterWeaknessIcon[MonsterId]
+  -- close: r4_17
+  return r2_17[r1_17]
 end
-
-function M:SetWalnutType(WalnutTypeData)
-  self.WalnutTypeData = WalnutTypeData
+function r6_0.SetWalnutType(r0_18, r1_18)
+  -- line: [625, 627] id: 18
+  r0_18.WalnutTypeData = r1_18
 end
-
-function M:OnClickedLevelCell(LevelCell)
-  if self.SelectCell ~= nil then
-    self.SelectCell:PlayAnimationReverse(self.SelectCell.Select)
-    local SubCell = self.SelectCell.Bg_List
-    SubCell:StopAllAnimations()
-    SubCell:PlayAnimation(SubCell.Normal)
-    SubCell.IsSelect = false
+function r6_0.OnClickedLevelCell(r0_19, r1_19)
+  -- line: [631, 648] id: 19
+  if r0_19.SelectCell ~= nil then
+    r0_19.SelectCell:PlayAnimationReverse(r0_19.SelectCell.Select)
+    local r2_19 = r0_19.SelectCell.Bg_List
+    r2_19:StopAllAnimations()
+    r2_19:PlayAnimation(r2_19.Normal)
+    r2_19.IsSelect = false
   end
-  self.SelectCell = LevelCell
-  self.TypeTable = {}
-  self.TypeTableKeys = {}
-  self.HB_Type:ClearChildren()
-  self.LastMarkType = nil
-  self.CurCellDungeonId = LevelCell.DungeonId
-  self:InitListCellInfo(LevelCell.DungeonId)
+  r0_19.SelectCell = r1_19
+  r0_19.TypeTable = {}
+  r0_19.TypeTableKeys = {}
+  r0_19.HB_Type:ClearChildren()
+  r0_19.LastMarkType = nil
+  r0_19.CurCellDungeonId = r1_19.DungeonId
+  r0_19:InitListCellInfo(r1_19.DungeonId)
 end
-
-function M:OnTypeClicked(TypeId, bDefault)
-  DungeonSelectCache[self.CurCellDungeonId] = TypeId
-  local DungeonAttribute = DataMgr.Dungeon[TypeId].AttributeType
-  self.DungeonAttribute = DungeonAttribute
-  self:SetElementIcon(DungeonAttribute)
-  self:IsShowAttributeTips()
-  self.TypeTable[TypeId]:OnClicked(bDefault)
-  if self.LastMarkType and self.LastMarkType ~= self.TypeTable[TypeId] then
-    self.LastMarkType.IsSelect = false
-    self.LastMarkType:PlayAnimation(self.LastMarkType.Normal)
+function r6_0.OnTypeClicked(r0_20, r1_20, r2_20)
+  -- line: [652, 668] id: 20
+  r8_0[r0_20.CurCellDungeonId] = r1_20
+  local r3_20 = DataMgr.Dungeon[r1_20].AttributeType
+  r0_20.DungeonAttribute = r3_20
+  r0_20:SetElementIcon(r3_20)
+  r0_20:IsShowAttributeTips()
+  r0_20.TypeTable[r1_20]:OnClicked(r2_20)
+  if r0_20.LastMarkType and r0_20.LastMarkType ~= r0_20.TypeTable[r1_20] then
+    r0_20.LastMarkType.IsSelect = false
+    r0_20.LastMarkType:PlayAnimation(r0_20.LastMarkType.Normal)
   end
-  self.LastMarkType = self.TypeTable[TypeId]
-  self.CurSelectedDungeonId = TypeId
-  M.SelectedDungeonId = TypeId
-  self:RefreshLevelCellContent(TypeId)
+  r0_20.LastMarkType = r0_20.TypeTable[r1_20]
+  r0_20.CurSelectedDungeonId = r1_20
+  r6_0.SelectedDungeonId = r1_20
+  r0_20:RefreshLevelCellContent(r1_20)
 end
-
-function M:IsShowAttributeTips()
-  if not self.DungeonAttribute then
-    return
+function r6_0.IsShowAttributeTips(r0_21)
+  -- line: [670, 693] id: 21
+  if not r0_21.DungeonAttribute then
+    return 
   end
-  local CurrentCharId = self.DefaultList.CurrentCharId
-  if CurrentCharId then
-    local CharAttributeType = DataMgr.BattleChar[CurrentCharId].Attribute
-    if DataMgr.Attribute[CharAttributeType].CounterType ~= self.DungeonAttribute then
-      for ID, Config in pairs(DataMgr.Attribute) do
-        if Config.CounterType == self.DungeonAttribute then
-          local TipsText = string.format(GText("UI_Squad_Elemental_Weakness"), GText("UI_Attr_" .. Config.ID .. "_Name"))
-          self.Text_Warning_Attribute:SetText(TipsText)
+  local r1_21 = r0_21.DefaultList.CurrentCharId
+  if r1_21 then
+    if DataMgr.Attribute[DataMgr.BattleChar[r1_21].Attribute].CounterType ~= r0_21.DungeonAttribute then
+      for r7_21, r8_21 in pairs(DataMgr.Attribute) do
+        if r8_21.CounterType == r0_21.DungeonAttribute then
+          r0_21.Text_Warning_Attribute:SetText(string.format(GText("UI_Squad_Elemental_Weakness"), GText("UI_Attr_" .. r8_21.ID .. "_Name")))
           break
         end
       end
-      self.Panel_WarningHint_Attribute:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+      -- close: r3_21
+      r0_21.Panel_WarningHint_Attribute:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
     else
-      self.Panel_WarningHint_Attribute:SetVisibility(ESlateVisibility.Collapsed)
+      r0_21.Panel_WarningHint_Attribute:SetVisibility(ESlateVisibility.Collapsed)
     end
   else
-    self.Panel_WarningHint_Attribute:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    r0_21.Panel_WarningHint_Attribute:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
   end
 end
-
-function M:InitListCellInfo(DungeonId)
-  if self.SelectCell then
-    self:SelectCellFocus()
+function r6_0.InitListCellInfo(r0_22, r1_22)
+  -- line: [697, 843] id: 22
+  -- notice: unreachable block#8
+  if r0_22.SelectCell then
+    r0_22:SelectCellFocus()
   end
-  local Dungeon2SubDungeon = DataMgr.Dungeon2SubDungeon
-  self.CurSelectedDungeonId = DungeonId
-  M.SelectedDungeonId = DungeonId
-  self.HasTypeSelect = false
-  self.Stats:SetRenderOpacity(0)
-  self:RefreshDeputeEvent(DungeonId)
-  if not self.TitleEventTabId and self.List_Event:GetNumItems() > 0 then
-    local SubTabList = self.Tab_Info.Tabs
-    local Id = #self.Tab_Info.Tabs + 1
-    table.insert(SubTabList, Id, {
+  local r2_22 = DataMgr.Dungeon2SubDungeon
+  r0_22.CurSelectedDungeonId = r1_22
+  r6_0.SelectedDungeonId = r1_22
+  r0_22.HasTypeSelect = false
+  r0_22.Stats:SetRenderOpacity(0)
+  r0_22:RefreshDeputeEvent(r1_22)
+  if not r0_22.TitleEventTabId and r0_22.List_Event:GetNumItems() > 0 then
+    local r3_22 = r0_22.Tab_Info.Tabs
+    local r4_22 = #r0_22.Tab_Info.Tabs + 1
+    table.insert(r3_22, r4_22, {
       Text = GText("UI_Dungeon_Title_Event"),
-      Id = Id
+      Id = r4_22,
     })
-    self.TitleEventTabId = Id
-    self.Tab_Info:UpdateTabs(SubTabList)
+    r0_22.TitleEventTabId = r4_22
+    r0_22.Tab_Info:UpdateTabs(r3_22)
   end
-  self.Tab_Info:SelectTab(1)
-  local bSquad = DataMgr.Dungeon[self.CurSelectedDungeonId].Squad
-  if bSquad then
-    self.DefaultList:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-    local DungeonType = DataMgr.Dungeon[self.CurSelectedDungeonId].DungeonType
-    local bDisablePhantom = "Rouge" == DungeonType or false
-    local Avatar = GWorld:GetAvatar()
-    if Avatar then
-      local SquadId = Avatar.DungeonSquad[DungeonType] and Avatar.DungeonSquad[DungeonType] or 0
-      self.DefaultList:Init(self, bDisablePhantom, SquadId, self.CurSelectedDungeonId)
+  r0_22.Tab_Info:SelectTab(1)
+  if DataMgr.Dungeon[r0_22.CurSelectedDungeonId].Squad then
+    r0_22.DefaultList:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    local r4_22 = DataMgr.Dungeon[r0_22.CurSelectedDungeonId].DungeonType
+    local r5_22 = r4_22 == "Rouge"
+    local r6_22 = GWorld:GetAvatar()
+    if r6_22 then
+      local r7_22 = r6_22.DungeonSquad[r4_22]
+      if r7_22 then
+        r7_22 = r6_22.DungeonSquad[r4_22] and 0
+      else
+        goto label_89	-- block#13 is visited secondly
+      end
+      r0_22.DefaultList:Init(r0_22, r5_22, r7_22, r0_22.CurSelectedDungeonId)
     end
   else
-    self.DefaultList:SetVisibility(ESlateVisibility.Collapsed)
+    r0_22.DefaultList:SetVisibility(ESlateVisibility.Collapsed)
   end
-  if Dungeon2SubDungeon[DungeonId] then
-    self.List_Type:SetVisibility(ESlateVisibility.Visible)
-    self.Panel_Type:SetVisibility(ESlateVisibility.Visible)
-    if not self.Mobile then
+  local r11_22 = nil	-- notice: implicit variable refs by block#[50, 61, 64, 72, 75]
+  local r12_22 = nil	-- notice: implicit variable refs by block#[53]
+  if r2_22[r1_22] then
+    r0_22.List_Type:SetVisibility(ESlateVisibility.Visible)
+    r0_22.Panel_Type:SetVisibility(ESlateVisibility.Visible)
+    if not r0_22.Mobile then
       if UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad then
-        self.Key_Qa_GamePad:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+        r0_22.Key_Qa_GamePad:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
       else
-        self.Key_Qa_GamePad:SetVisibility(ESlateVisibility.Collapsed)
+        r0_22.Key_Qa_GamePad:SetVisibility(ESlateVisibility.Collapsed)
       end
     end
-    local SubDungeonList = DataMgr.Dungeon[Dungeon2SubDungeon[DungeonId]].SubDungeonId
-    local SubDungeonData = {}
-    table.insert(SubDungeonData, Dungeon2SubDungeon[DungeonId])
-    if not SubDungeonList then
+    local r4_22 = DataMgr.Dungeon[r2_22[r1_22]].SubDungeonId
+    local r5_22 = {}
+    table.insert(r5_22, r2_22[r1_22])
+    if not r4_22 then
       DebugPrint("ZDX SubDungeonList is nil")
-      return
+      return 
     end
-    for k, v in pairs(SubDungeonList) do
-      table.insert(SubDungeonData, v)
-      if not DataMgr.Dungeon[v].AttributeType then
+    for r10_22, r11_22 in pairs(r4_22) do
+      table.insert(r5_22, r11_22)
+      r12_22 = DataMgr.Dungeon[r11_22].AttributeType
+      if not r12_22 then
         DebugPrint("ZDX Dungeon AttributeType is nil")
       end
     end
-    table.sort(SubDungeonData, function(A, B)
-      local PriorityA = DataMgr.Attribute[DataMgr.Dungeon[A].AttributeType].DisplayPriority
-      local PriorityB = DataMgr.Attribute[DataMgr.Dungeon[B].AttributeType].DisplayPriority
-      return PriorityA < PriorityB
+    -- close: r6_22
+    table.sort(r5_22, function(r0_23, r1_23)
+      -- line: [759, 763] id: 23
+      return DataMgr.Attribute[DataMgr.Dungeon[r0_23].AttributeType].DisplayPriority < DataMgr.Attribute[DataMgr.Dungeon[r1_23].AttributeType].DisplayPriority
     end)
-    for k, v in pairs(SubDungeonData) do
-      local Item = self:CreateWidgetNew("DeputeTypeIcon")
-      Item:InitContent(DataMgr.Dungeon[v].AttributeType)
-      Item.Button_Area.OnClicked:Add(self, function()
-        self:OnTypeClicked(v)
+    for r10_22, r11_22 in pairs(r5_22) do
+      r12_22 = r0_22:CreateWidgetNew("DeputeTypeIcon")
+      r12_22:InitContent(DataMgr.Dungeon[r11_22].AttributeType)
+      r12_22.Button_Area.OnClicked:Add(r0_22, function()
+        -- line: [768, 770] id: 24
+        r0_22:OnTypeClicked(r11_22)
       end)
-      Item.Select = true
-      self.HB_Type:AddChild(Item)
-      self.TypeTable[v] = Item
-      table.insert(self.TypeTableKeys, v)
+      r12_22.Select = true
+      r0_22.HB_Type:AddChild(r12_22)
+      r0_22.TypeTable[r11_22] = r12_22
+      table.insert(r0_22.TypeTableKeys, r11_22)
+      -- close: r10_22
     end
-    self:OnTypeClicked(DungeonSelectCache[self.CurSelectedDungeonId] or self.CurSelectedDungeonId, true)
-    self.HasTypeSelect = true
+    -- close: r6_22
+    r0_22:OnTypeClicked(r8_0[r0_22.CurSelectedDungeonId] and r0_22.CurSelectedDungeonId, true)
+    r0_22.HasTypeSelect = true
   else
-    self.List_Type:SetVisibility(ESlateVisibility.Collapsed)
-    self.Panel_Type:SetVisibility(ESlateVisibility.Collapsed)
-    self.Panel_WarningHint_Attribute:SetVisibility(ESlateVisibility.Collapsed)
-    self:RefreshLevelCellContent(self.CurSelectedDungeonId)
+    r0_22.List_Type:SetVisibility(ESlateVisibility.Collapsed)
+    r0_22.Panel_Type:SetVisibility(ESlateVisibility.Collapsed)
+    r0_22.Panel_WarningHint_Attribute:SetVisibility(ESlateVisibility.Collapsed)
+    r0_22:RefreshLevelCellContent(r0_22.CurSelectedDungeonId)
   end
-  local IsNightFlight = self.DeputeType == Const.DeputeType.NightFlightManualDepute
-  if not IsNightFlight then
-    self.Group_TimeTips:SetVisibility(ESlateVisibility.Collapsed)
-    return
+  if not (r0_22.DeputeType == Const.DeputeType.NightFlightManualDepute) then
+    r0_22.Group_TimeTips:SetVisibility(ESlateVisibility.Collapsed)
+    return 
   end
-  local CfgDrop = DataMgr.DoubleModDrop and DataMgr.DoubleModDrop[CommonConst.DoubleModDropEventID]
-  if not CfgDrop then
-    self.Group_TimeTips:SetVisibility(ESlateVisibility.Collapsed)
-    return
+  if not (DataMgr.DoubleModDrop and DataMgr.DoubleModDrop[CommonConst.DoubleModDropEventID]) then
+    r0_22.Group_TimeTips:SetVisibility(ESlateVisibility.Collapsed)
+    return 
   end
-  local IsDoubleModDungeon, IsEliteRushDungeon = self:CheckDungeonType(DungeonId)
-  if not IsDoubleModDungeon and not IsEliteRushDungeon then
-    self.Group_TimeTips:SetVisibility(ESlateVisibility.Collapsed)
-    return
+  local r6_22, r7_22 = r0_22:CheckDungeonType(r1_22)
+  if not r6_22 and not r7_22 then
+    r0_22.Group_TimeTips:SetVisibility(ESlateVisibility.Collapsed)
+    return 
   end
-  self.IsDoubleMod = self:IsDoubleMod()
-  if not self.IsDoubleMod then
-    self.Group_TimeTips:SetVisibility(ESlateVisibility.Collapsed)
-    return
+  r0_22.IsDoubleModOpen = r0_22:IsDoubleMod()
+  if not r0_22.IsDoubleModOpen then
+    r0_22.Group_TimeTips:SetVisibility(ESlateVisibility.Collapsed)
+    return 
   end
-  self.Group_TimeTips:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-  self.Bg_Consume:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-  local DropInfo = self:GetDoubleModDropData() or {}
-  local IsElite = EMCache:Get("Is_DoubleMod_SwitchTab", true) or false
-  local TitleKey = IsElite and "UI_Event_ModDrop_ChallengeRemain" or "UI_Event_ModDrop_DropRemain"
-  self.Text_TimeTipsTitle:SetText(GText(TitleKey))
-  local MdConst = DataMgr.ModDropConstant or {}
-  local DailyFree = MdConst.DailyFreeTicketAmount and MdConst.DailyFreeTicketAmount.ConstantValue or 0
-  local DailyMod = MdConst.DailyModDungeonAmount and MdConst.DailyModDungeonAmount.ConstantValue or 0
-  local CfgValue = IsElite and DailyFree or DailyMod
-  local UsedTimes = IsElite and (DropInfo.EliteRushTimes or 0) or DropInfo.DropTimes or 0
-  local Remaining = math.max(0, math.floor(CfgValue - UsedTimes))
-  local TextValue = Remaining <= 0 and "<Warning>0</>/" .. CfgValue or Remaining .. "/" .. CfgValue
-  self.Text_Times:SetText(TextValue)
-  self.Text_ModUpNum:SetVisibility(IsElite and UE4.ESlateVisibility.Collapsed or UE4.ESlateVisibility.SelfHitTestInvisible)
-  if not IsElite then
-    local BonusConst = MdConst.EventBonus and MdConst.EventBonus.ConstantValue or 0
-    local BonusPct = math.floor(BonusConst / 100)
-    self.Text_ModUpNum:SetText("+" .. BonusPct .. "%")
+  local r8_22, r9_22 = r0_22:CheckDungeonType(r0_22.CurSelectedDungeonId)
+  r0_22.Group_TimeTips:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  r0_22.Bg_Consume:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  local r10_22 = r0_22:GetDoubleModDropData() and {}
+  r11_22 = r9_22
+  if r11_22 then
+    r12_22 = "UI_Event_ModDrop_ChallengeRemain"
+    if not r12_22 then
+      ::label_328::
+      r12_22 = "UI_Event_ModDrop_DropRemain"
+    end
+  else
+    goto label_328	-- block#52 is visited secondly
+  end
+  r0_22.Text_TimeTipsTitle:SetText(GText(r12_22))
+  local r13_22 = DataMgr.ModDropConstant and {}
+  local r14_22 = r13_22.DailyFreeTicketAmount
+  if r14_22 then
+    r14_22 = r13_22.DailyFreeTicketAmount.ConstantValue and 0
+  else
+    goto label_348	-- block#57 is visited secondly
+  end
+  local r15_22 = r13_22.DailyModDungeonAmount
+  if r15_22 then
+    r15_22 = r13_22.DailyModDungeonAmount.ConstantValue and 0
+  else
+    goto label_356	-- block#60 is visited secondly
+  end
+  local r16_22 = nil	-- notice: implicit variable refs by block#[69, 70, 71]
+  if r11_22 then
+    r16_22 = r14_22
+    if r16_22 then
+      ::label_361::
+      r16_22 = r15_22
+    end
+  else
+    goto label_361	-- block#63 is visited secondly
+  end
+  local r17_22 = nil	-- notice: implicit variable refs by block#[69]
+  if r11_22 then
+    r17_22 = r10_22.EliteRushTimes
+    if not r17_22 then
+      r17_22 = 0
+      if not r17_22 then
+        ::label_370::
+        r17_22 = r10_22.DropTimes
+        if not r17_22 then
+          r17_22 = 0
+        end
+      end
+    end
+  else
+    goto label_370	-- block#67 is visited secondly
+  end
+  local r18_22 = math.max(0, math.floor(r16_22 - r17_22))
+  local r19_22 = nil	-- notice: implicit variable refs by block#[72]
+  if r18_22 <= 0 then
+    r19_22 = "<Warning>0</>/" .. r16_22
+    if not r19_22 then
+      ::label_390::
+      r19_22 = r18_22 .. "/" .. r16_22
+    end
+  else
+    goto label_390	-- block#71 is visited secondly
+  end
+  r0_22.Text_Times:SetText(r19_22)
+  local r20_22 = r0_22.Text_ModUpNum
+  local r22_22 = nil	-- notice: implicit variable refs by block#[75]
+  if r11_22 then
+    r22_22 = UE4.ESlateVisibility.Collapsed
+    if not r22_22 then
+      ::label_407::
+      r22_22 = UE4.ESlateVisibility.SelfHitTestInvisible
+    end
+  else
+    goto label_407	-- block#74 is visited secondly
+  end
+  r20_22:SetVisibility(r22_22)
+  if not r11_22 then
+    r20_22 = r13_22.EventBonus
+    if r20_22 then
+      r20_22 = r13_22.EventBonus.ConstantValue and 0
+    else
+      goto label_420	-- block#78 is visited secondly
+    end
+    r0_22.Text_ModUpNum:SetText("+" .. math.floor(r20_22 / 100) .. "%")
   end
 end
-
-function M:RefreshLevelCellContent(DungeonId)
-  if not DungeonId then
+function r6_0.RefreshLevelCellContent(r0_25, r1_25)
+  -- line: [846, 951] id: 25
+  if not r1_25 then
     DebugPrint("ZDX DungeonId is nil")
-    return
+    return 
   end
-  local DungeonData = DataMgr.Dungeon[DungeonId]
-  self.List_Prop:ClearListItems()
-  self.List_Monster:ClearListItems()
-  self.Title_Level:SetText(GText(DungeonData.DungeonName))
-  self.Text_Summary:SetText(GText(DungeonData.DungeonDes))
-  self.Text_Description:SetText(GText(DungeonData.DungeonContent))
-  self.Btn_Check.Btn_Click.OnClicked:Add(self, self.OpenDetails)
-  self.Btn_Detail:SetVisibility(ESlateVisibility.Collapsed)
-  if DungeonData.AttributeType then
-    self.Type:SetVisibility(ESlateVisibility.Visible)
-    self.Icon_Type:SetBrushResourceObject(LoadObject(DataMgr.Attribute[DungeonData.AttributeType].Icon))
+  local r2_25 = DataMgr.Dungeon[r1_25]
+  r0_25.List_Prop:ClearListItems()
+  r0_25.List_Monster:ClearListItems()
+  r0_25.Title_Level:SetText(GText(r2_25.DungeonName))
+  r0_25.Text_Summary:SetText(GText(r2_25.DungeonDes))
+  r0_25.Text_Description:SetText(GText(r2_25.DungeonContent))
+  r0_25.Btn_Check.Btn_Click.OnClicked:Add(r0_25, r0_25.OpenDetails)
+  r0_25.Btn_Detail:SetVisibility(ESlateVisibility.Collapsed)
+  if r2_25.AttributeType then
+    r0_25.Type:SetVisibility(ESlateVisibility.Visible)
+    r0_25.Icon_Type:SetBrushResourceObject(LoadObject(DataMgr.Attribute[r2_25.AttributeType].Icon))
   else
-    self.Type:SetVisibility(ESlateVisibility.Collapsed)
+    r0_25.Type:SetVisibility(ESlateVisibility.Collapsed)
   end
-  local Avatar = GWorld:GetAvatar()
-  if not Avatar then
-    return
+  if not GWorld:GetAvatar() then
+    return 
   end
-  self:PlayAnimation(self.Switch_Type)
-  self:RefreshMonsterInfoList(DungeonId)
-  self:RefreshRewardInfoList(DungeonId)
-  self:RefreshBtnState()
-  if self.DeputeType == Const.DeputeType.NightFlightManualDepute and self.CurrentTabIdx == self.SpecialMonsterTabId then
-    self:SetNightFlightManualEliteProp(DungeonId)
+  r0_25:PlayAnimation(r0_25.Switch_Type)
+  r0_25:RefreshMonsterInfoList(r1_25)
+  r0_25:RefreshRewardInfoList(r1_25)
+  r0_25:RefreshBtnState()
+  if r0_25.DeputeType == Const.DeputeType.NightFlightManualDepute and r0_25.CurrentTabIdx == r0_25.SpecialMonsterTabId then
+    r0_25:SetNightFlightManualEliteProp(r1_25)
   end
-  self:SetNightFlightManualText_MoreHide(self.CurrentTabIdx)
-  self.Btn_Qa.Btn_Click.OnClicked:Add(self, self.OpenIntro)
-  self.Panel_WarningHint:SetVisibility(ESlateVisibility.Collapsed)
-  if self.DefaultList.CurrentCharLevel <= DataMgr.Dungeon[self.CurSelectedDungeonId].DungeonLevel - DataMgr.GlobalConstant.TaskWarningLevel.ConstantValue then
-    self.Panel_WarningHint:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  r0_25:SetNightFlightManualText_MoreHide(r0_25.CurrentTabIdx)
+  r0_25.Btn_Qa.Btn_Click.OnClicked:Add(r0_25, r0_25.OpenIntro)
+  r0_25.Panel_WarningHint:SetVisibility(ESlateVisibility.Collapsed)
+  local r4_25 = r0_25.DefaultList.CurrentCharLevel
+  if r4_25 <= DataMgr.Dungeon[r0_25.CurSelectedDungeonId].DungeonLevel - DataMgr.GlobalConstant.TaskWarningLevel.ConstantValue then
+    r0_25.Panel_WarningHint:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
   end
-  local DungeonUIBG = DungeonData and DungeonData.DungeonUIBG or Const.DungeonBgBluePrint
-  if self.DungeonUIBG and self.DungeonUIBG == DungeonUIBG then
-    return
-  end
-  self.DungeonUIBG = DungeonUIBG
-  local Item = UIManager(self):CreateWidget(DungeonUIBG)
-  if self.DeputeType == Const.DeputeType.RegularDepute then
-    self.Panel_Bg:ClearChildren()
+  if r2_25 then
+    r4_25 = r2_25.DungeonUIBG and Const.DungeonBgBluePrint
   else
-    local ChildrenCount = self.Panel_Bg:GetChildrenCount()
-    if ChildrenCount >= 2 then
-      self.Panel_Bg:RemoveChildAt(0)
+    goto label_139	-- block#14 is visited secondly
+  end
+  if r0_25.DungeonUIBG and r0_25.DungeonUIBG == r4_25 then
+    return 
+  end
+  r0_25.DungeonUIBG = r4_25
+  local r5_25 = UIManager(r0_25):CreateWidget(r4_25)
+  local r7_25 = Const.DeputeType.RegularDepute
+  if r0_25.DeputeType == r7_25 then
+    r0_25.Panel_Bg:ClearChildren()
+  else
+    r0_25.Panel_Bg:ClearChildren()
+    local r6_25 = r0_25.Panel_Bg:GetChildrenCount()
+    if r6_25 >= 2 then
+      r0_25.Panel_Bg:RemoveChildAt(0)
     end
-    local OldItem = ChildrenCount > 0 and self.Panel_Bg:GetChildAt(0) or nil
-    if OldItem then
-      self:AddDelayFrameFunc(function()
-        if OldItem and OldItem:IsValid() then
-          self.Panel_Bg:RemoveChild(OldItem)
+    if r6_25 > 0 then
+      r7_25 = r0_25.Panel_Bg:GetChildAt(0) and nil
+    else
+      goto label_185	-- block#24 is visited secondly
+    end
+    if r7_25 then
+      r0_25:AddDelayFrameFunc(function()
+        -- line: [918, 922] id: 26
+        if r7_25 and r7_25:IsValid() then
+          r0_25.Panel_Bg:RemoveChild(r7_25)
         end
       end, 8, "RemoveOldDungeonBG")
     end
+    -- close: r6_25
   end
-  if Item then
-    self.Panel_Bg:AddChild(Item)
-    if Item.Loop then
-      Item:PlayAnimation(Item.Loop, 0, 0)
+  if r5_25 then
+    r0_25.Panel_Bg:AddChild(r5_25)
+    if r5_25.Loop then
+      r5_25:PlayAnimation(r5_25.Loop, 0, 0)
     end
-    Item.Slot:SetHorizontalAlignment(EHorizontalAlignment.HAlign_Fill)
-    Item.Slot:SetVerticalAlignment(EVerticalAlignment.VAlign_Fill)
-    if Item.In then
-      if self.DeputeType == Const.DeputeType.RegularDepute and self.FirstEnter then
-        Item:PlayAnimation(Item.In)
-      elseif self.DeputeType ~= Const.DeputeType.RegularDepute then
-        Item:PlayAnimation(Item.In)
+    r5_25.Slot:SetHorizontalAlignment(EHorizontalAlignment.HAlign_Fill)
+    r5_25.Slot:SetVerticalAlignment(EVerticalAlignment.VAlign_Fill)
+    if r5_25.In then
+      if r0_25.DeputeType == Const.DeputeType.RegularDepute and r0_25.FirstEnter then
+        r5_25:PlayAnimation(r5_25.In)
+      elseif r0_25.DeputeType ~= Const.DeputeType.RegularDepute then
+        r5_25:PlayAnimation(r5_25.In)
       end
     end
-    if self.DeputeType == Const.DeputeType.RegularDepute then
-      self.FirstEnter = false
+    if r0_25.DeputeType == Const.DeputeType.RegularDepute then
+      r0_25.FirstEnter = false
     end
   else
     DebugPrint("SL DungeonUIBG Create Failed")
   end
 end
-
-function M:CheckDungeonType(DungeonId)
-  local CfgDrop = DataMgr.DoubleModDrop and DataMgr.DoubleModDrop[CommonConst.DoubleModDropEventID]
-  if not DungeonId or not CfgDrop then
+function r6_0.CheckDungeonType(r0_27, r1_27)
+  -- line: [953, 981] id: 27
+  local r2_27 = DataMgr.DoubleModDrop and DataMgr.DoubleModDrop[CommonConst.DoubleModDropEventID]
+  if not r1_27 or not r2_27 then
     return false, false
   end
-  local DungeonIds = CfgDrop.ModDungeonId or {}
-  local EliteRushDungeonIds = CfgDrop.EliteRushDungeonId or {}
-  local IsDoubleModDungeon = false
-  for _, V in pairs(DungeonIds) do
-    if DungeonId == V then
-      IsDoubleModDungeon = true
+  local r3_27 = r2_27.ModDungeonId and {}
+  local r4_27 = r2_27.EliteRushDungeonId and {}
+  local r5_27 = false
+  for r10_27, r11_27 in pairs(r3_27) do
+    if r1_27 == r11_27 then
+      r5_27 = true
       break
     end
   end
-  local IsEliteRushDungeon = false
-  if not IsDoubleModDungeon then
-    for _, V in pairs(EliteRushDungeonIds) do
-      if DungeonId == V then
-        IsEliteRushDungeon = true
+  -- close: r6_27
+  local r6_27 = false
+  if not r5_27 then
+    for r11_27, r12_27 in pairs(r4_27) do
+      if r1_27 == r12_27 then
+        r6_27 = true
         break
       end
     end
+    -- close: r7_27
   end
-  return IsDoubleModDungeon, IsEliteRushDungeon
+  return r5_27, r6_27
 end
-
-function M:OpenRewardDetails()
-  AudioManager(self):PlayUISound(self, "event:/ui/common/tip_show_click", nil, nil)
-  local Params = {}
-  Params.RewardList = self.RewardList
-  
-  function Params.CloseBtnCallbackFunction()
-    self:SelectCellFocus()
+function r6_0.OpenRewardDetails(r0_28)
+  -- line: [984, 997] id: 28
+  AudioManager(r0_28):PlayUISound(r0_28, "event:/ui/common/tip_show_click", nil, nil)
+  local r2_28 = UIManager(r0_28):ShowCommonPopupUI(100156, {
+    RewardList = r0_28.RewardList,
+    CloseBtnCallbackFunction = function()
+      -- line: [990, 992] id: 29
+      r0_28:SelectCellFocus()
+    end,
+    AutoFocus = true,
+    Checked = r0_28.Com_CheckBox_LeftText:IsChecked(),
+  })
+end
+function r6_0.OpenCommanderDetails(r0_30)
+  -- line: [1000, 1007] id: 30
+  local r2_30 = UIManager(r0_30):ShowCommonPopupUI(100155, {
+    DungeonId = r0_30.CurSelectedDungeonId,
+    Parent = r0_30,
+    AutoFocus = true,
+  })
+end
+function r6_0.RefreshRewardInfoList(r0_31, r1_31)
+  -- line: [1011, 1129] id: 31
+  assert(DataMgr.Dungeon[r1_31], "副本信息不存在:" .. r1_31)
+  local r2_31 = GWorld:GetAvatar()
+  if not r2_31 then
+    return 
   end
-  
-  Params.AutoFocus = true
-  Params.Checked = self.Com_CheckBox_LeftText:IsChecked()
-  local UI = UIManager(self):ShowCommonPopupUI(100156, Params)
-end
-
-function M:OpenCommanderDetails()
-  local Params = {}
-  Params.DungeonId = self.CurSelectedDungeonId
-  Params.Parent = self
-  Params.AutoFocus = true
-  local UI = UIManager(self):ShowCommonPopupUI(100155, Params)
-end
-
-function M:RefreshRewardInfoList(DungeonId)
-  assert(DataMgr.Dungeon[DungeonId], "副本信息不存在:" .. DungeonId)
-  local Avatar = GWorld:GetAvatar()
-  if not Avatar then
-    return
-  end
-  local FirstRewardList
-  if not Avatar.Dungeons[DungeonId] or not Avatar.Dungeons[DungeonId].IsPass then
-    local RewardInfo = DataMgr.Reward[DataMgr.Dungeon[DungeonId].FirstCompleteReward]
-    if RewardInfo then
-      FirstRewardList = {}
-      local RewardIds = RewardInfo.Id or {}
-      local RewardCounts = RewardInfo.Count or {}
-      local RewardTypes = RewardInfo.Type or {}
-      for i = 1, #RewardIds do
-        local ItemId = RewardIds[i]
-        local Count = RewardUtils:GetCount(RewardCounts[i])
-        local Icon = ItemUtils.GetItemIcon(ItemId, RewardTypes[i])
-        local Rarity = ItemUtils.GetItemRarity(ItemId, RewardTypes[i])
-        local ItemType = RewardTypes[i]
-        local RewardContent = {
-          Id = ItemId,
-          Type = ItemType,
-          ItemCount = Count,
-          Icon = Icon,
-          Rarity = Rarity,
+  local r3_31 = nil
+  if not r2_31.Dungeons[r1_31] or not r2_31.Dungeons[r1_31].IsPass then
+    local r4_31 = DataMgr.Reward[DataMgr.Dungeon[r1_31].FirstCompleteReward]
+    if r4_31 then
+      r3_31 = {}
+      local r5_31 = r4_31.Id and {}
+      local r6_31 = r4_31.Count and {}
+      local r7_31 = r4_31.Type and {}
+      for r11_31 = 1, #r5_31, 1 do
+        local r12_31 = r5_31[r11_31]
+        table.insert(r3_31, {
+          Id = r12_31,
+          Type = r7_31[r11_31],
+          ItemCount = RewardUtils:GetCount(r6_31[r11_31]),
+          Icon = ItemUtils.GetItemIcon(r12_31, r7_31[r11_31]),
+          Rarity = ItemUtils.GetItemRarity(r12_31, r7_31[r11_31]),
           bFirst = true,
-          DropType = "FirstReward"
-        }
-        table.insert(FirstRewardList, RewardContent)
-      end
-    end
-  end
-  local RewardList = RewardUtils:GetRewardViewInfoById(DataMgr.Dungeon[DungeonId].DungeonRewardView)
-  
-  local function SortFunc(A, B)
-    if A.Rarity == B.Rarity then
-      if TypeSort[A.Type] and TypeSort[B.Type] then
-        if TypeSort[A.Type] == TypeSort[B.Type] then
-          return A.Id < B.Id
-        end
-        return TypeSort[A.Type] < TypeSort[B.Type]
-      end
-      return A.Id < B.Id
-    end
-    return A.Rarity > B.Rarity
-  end
-  
-  if FirstRewardList then
-    table.sort(FirstRewardList, SortFunc)
-  end
-  table.sort(RewardList, SortFunc)
-  self.RewardList = {}
-  if FirstRewardList then
-    for _, v in ipairs(FirstRewardList) do
-      table.insert(self.RewardList, v)
-    end
-  end
-  for _, v in ipairs(RewardList) do
-    table.insert(self.RewardList, v)
-  end
-  local CheckBoxIsChecked = self.Com_CheckBox_LeftText:IsChecked()
-  for _, ItemData in ipairs(self.RewardList) do
-    local Content = NewObject(UIUtils.GetCommonItemContentClass())
-    Content.Id = ItemData.Id
-    Content.Icon = ItemUtils.GetItemIconPath(ItemData.Id, ItemData.Type)
-    Content.ParentWidget = self
-    Content.ItemType = ItemData.Type
-    Content.Rarity = ItemData.Rarity or 1
-    Content.IsShowDetails = true
-    Content.UIName = "DeputeDetail"
-    if ItemData.bFirst then
-      Content.BonusType = 2
-    end
-    local BaseCount = ItemData.ItemCount or nil
-    if ItemData.Quantity then
-      if #ItemData.Quantity > 1 then
-        Content.MaxCount = ItemData.Quantity[2]
-      end
-      BaseCount = ItemData.Quantity[1] or nil
-    end
-    if BaseCount then
-      if CheckBoxIsChecked and not ItemData.bFirst then
-        Content.Count = BaseCount * 2
-      else
-        Content.Count = BaseCount
-      end
-    end
-    self.List_Prop:AddItem(Content)
-  end
-  if self:IsExistTimer(self.NextFrameListEmpty) then
-    self:RemoveTimer(self.NextFrameListEmpty)
-  end
-  self.NextFrameListEmpty = self:AddTimer(0.01, function()
-    local len = self.List_Prop:GetNumItems()
-    for i = 1, len do
-      local entryWidget = UE4.URuntimeCommonFunctionLibrary.GetEntryWidgetFromItem(self.List_Prop, i - 1)
-      if entryWidget then
-        entryWidget:BindEvents(self, {
-          OnMenuOpenChanged = self.OnStuffMenuOpenChanged
+          DropType = "FirstReward",
         })
       end
     end
-    local RewardItemUIs = self.List_Prop:GetDisplayedEntryWidgets()
-    self.List_Prop:RequestFillEmptyContent()
-  end, false, 0, "DeputeDetailListView")
+  end
+  local r4_31 = RewardUtils:GetRewardViewInfoById(DataMgr.Dungeon[r1_31].DungeonRewardView)
+  local function r5_31(r0_32, r1_32)
+    -- line: [1047, 1058] id: 32
+    if r0_32.Rarity == r1_32.Rarity then
+      if r7_0[r0_32.Type] and r7_0[r1_32.Type] then
+        if r7_0[r0_32.Type] == r7_0[r1_32.Type] then
+          return r0_32.Id < r1_32.Id
+        end
+        return r7_0[r0_32.Type] < r7_0[r1_32.Type]
+      end
+      return r0_32.Id < r1_32.Id
+    end
+    return r1_32.Rarity < r0_32.Rarity
+  end
+  if r3_31 then
+    table.sort(r3_31, r5_31)
+  end
+  table.sort(r4_31, r5_31)
+  r0_31.RewardList = {}
+  if r3_31 then
+    for r10_31, r11_31 in ipairs(r3_31) do
+      table.insert(r0_31.RewardList, r11_31)
+    end
+    -- close: r6_31
+  end
+  for r10_31, r11_31 in ipairs(r4_31) do
+    table.insert(r0_31.RewardList, r11_31)
+  end
+  -- close: r6_31
+  local r6_31, r7_31 = r0_31:IsInTimeRange(r1_31)
+  if r6_31 and r7_31 then
+    local r8_31 = RewardUtils:GetRewardViewInfoById(r7_31.RewardView)
+    table.sort(r8_31, r5_31)
+    for r13_31, r14_31 in ipairs(r8_31) do
+      table.insert(r0_31.RewardList, r14_31)
+    end
+    -- close: r9_31
+  end
+  local r8_31 = r0_31.Com_CheckBox_LeftText:IsChecked()
+  for r13_31, r14_31 in ipairs(r0_31.RewardList) do
+    local r15_31 = NewObject(UIUtils.GetCommonItemContentClass())
+    r15_31.Id = r14_31.Id
+    r15_31.Icon = ItemUtils.GetItemIconPath(r14_31.Id, r14_31.Type)
+    r15_31.ParentWidget = r0_31
+    r15_31.ItemType = r14_31.Type
+    r15_31.Rarity = r14_31.Rarity and 1
+    r15_31.IsShowDetails = true
+    r15_31.UIName = "DeputeDetail"
+    if r14_31.bFirst then
+      r15_31.BonusType = 2
+    end
+    local r16_31 = r14_31.ItemCount and nil
+    if r14_31.Quantity then
+      if #r14_31.Quantity > 1 then
+        r15_31.MaxCount = r14_31.Quantity[2]
+      end
+      r16_31 = r14_31.Quantity[1] and nil
+    end
+    if r16_31 then
+      if r8_31 and not r14_31.bFirst then
+        r15_31.Count = r16_31 * 2
+      else
+        r15_31.Count = r16_31
+      end
+    end
+    r0_31.List_Prop:AddItem(r15_31)
+  end
+  -- close: r9_31
+  if r0_31.List_Prop:GetNumItems() == 0 then
+    r0_31.List_Prop:AddItem(r0_31:CreateAndAddEmptyItem())
+  end
+  r0_31.List_Prop:RequestFillEmptyContent()
 end
-
-function M:CreateEventAndAddEmptyItem()
-  local Content = NewObject(UIUtils.GetCommonItemContentClass())
-  Content.IsEmpty = true
-  return Content
+function r6_0.IsInTimeRange(r0_33, r1_33)
+  -- line: [1132, 1149] id: 33
+  local r2_33 = os.time()
+  local r3_33 = DataMgr.EventDungeonReward[r1_33]
+  if not r3_33 then
+    return false
+  end
+  for r8_33, r9_33 in pairs(r3_33) do
+    if type(r9_33) == "table" then
+      for r14_33, r15_33 in pairs(r9_33) do
+        if r8_33 <= r2_33 and r2_33 <= r14_33 then
+          return true, r15_33
+        end
+      end
+      -- close: r10_33
+    end
+  end
+  -- close: r4_33
+  return false
 end
-
-function M:CreateAndAddEmptyItem()
-  local Content = NewObject(UIUtils.GetCommonItemContentClass())
-  Content.Id = 0
-  return Content
+function r6_0.CreateEventAndAddEmptyItem(r0_34)
+  -- line: [1151, 1155] id: 34
+  local r1_34 = NewObject(UIUtils.GetCommonItemContentClass())
+  r1_34.IsEmpty = true
+  return r1_34
 end
-
-function M:OnStuffMenuOpenChanged(bIsOpen)
+function r6_0.CreateAndAddEmptyItem(r0_35)
+  -- line: [1157, 1161] id: 35
+  local r1_35 = NewObject(UIUtils.GetCommonItemContentClass())
+  r1_35.Id = 0
+  return r1_35
+end
+function r6_0.OnStuffMenuOpenChanged(r0_36, r1_36)
+  -- line: [1163, 1182] id: 36
   if UIUtils.UtilsGetCurrentInputType() ~= ECommonInputType.Gamepad then
-    return
+    return 
   end
-  self.MenuOpen = bIsOpen
-  if bIsOpen then
-    self.Button_Multi:SetPCVisibility(true)
-    self.Button_Solo:SetPCVisibility(true)
-    self.Button_DoubleMod:SetPCVisibility(true)
-    self:UpdatKeyDisplay("")
-    self.Switch_Details_Icon:SetActiveWidgetIndex(self.CurrentTabIdx == self.ObtainTabId and 0 or 1)
+  r0_36.MenuOpen = r1_36
+  if r1_36 then
+    r0_36.Button_Multi:SetPCVisibility(true)
+    r0_36.Button_Solo:SetPCVisibility(true)
+    r0_36.Button_DoubleMod:SetPCVisibility(true)
+    r0_36:UpdatKeyDisplay("")
+    local r2_36 = r0_36.Switch_Details_Icon
+    local r4_36 = r0_36.CurrentTabIdx
+    if r4_36 == r0_36.ObtainTabId then
+      r4_36 = 0 and 1
+    else
+      goto label_35	-- block#5 is visited secondly
+    end
+    r2_36:SetActiveWidgetIndex(r4_36)
   else
-    self.Button_Multi:SetPCVisibility(false)
-    self.Button_Solo:SetPCVisibility(false)
-    self.Button_DoubleMod:SetPCVisibility(true)
-    self:UpdatKeyDisplay("RewardWidget")
-    self.List_Prop:SetFocus()
-    self.Switch_Details_Icon:SetActiveWidgetIndex(2)
+    r0_36.Button_Multi:SetPCVisibility(false)
+    r0_36.Button_Solo:SetPCVisibility(false)
+    r0_36.Button_DoubleMod:SetPCVisibility(true)
+    r0_36:UpdatKeyDisplay("RewardWidget")
+    r0_36.List_Prop:SetFocus()
+    r0_36.Switch_Details_Icon:SetActiveWidgetIndex(2)
   end
 end
-
-function M:RefreshDeputeEvent(DungeonId)
-  local uniqueEventTypeSet = {}
-  for _, EventData in pairs(DataMgr.DungeonRandomEvent) do
-    for _, Id in ipairs(EventData.Dungeons) do
-      if Id == DungeonId then
-        uniqueEventTypeSet[EventData.EventType] = true
+function r6_0.RefreshDeputeEvent(r0_37, r1_37)
+  -- line: [1186, 1222] id: 37
+  local r2_37 = {}
+  for r7_37, r8_37 in pairs(DataMgr.DungeonRandomEvent) do
+    for r13_37, r14_37 in ipairs(r8_37.Dungeons) do
+      if r14_37 == r1_37 then
+        r2_37[r8_37.EventType] = true
         break
       end
     end
+    -- close: r9_37
   end
-  local UniqueEventTypeList = {}
-  for EventType, _ in pairs(uniqueEventTypeSet) do
-    table.insert(UniqueEventTypeList, EventType)
+  -- close: r3_37
+  local r3_37 = {}
+  for r8_37, r9_37 in pairs(r2_37) do
+    table.insert(r3_37, r8_37)
   end
-  self.List_Event:ClearListItems()
-  for Index = 1, #UniqueEventTypeList do
-    local eventType = UniqueEventTypeList[Index]
-    local Icon = DataMgr.DungeonRandomEventType[eventType] and DataMgr.DungeonRandomEventType[eventType].Icon
-    local Des = DataMgr.DungeonRandomEventType[eventType] and DataMgr.DungeonRandomEventType[eventType].Des
-    local Content = NewObject(UIUtils.GetCommonItemContentClass())
-    Content.Id = Index
-    Content.Icon = Icon
-    Content.Des = Des
-    self.List_Event:AddItem(Content)
+  -- close: r4_37
+  r0_37.List_Event:ClearListItems()
+  for r7_37 = 1, #r3_37, 1 do
+    local r8_37 = r3_37[r7_37]
+    local r9_37 = DataMgr.DungeonRandomEventType[r8_37] and DataMgr.DungeonRandomEventType[r8_37].Icon
+    local r10_37 = DataMgr.DungeonRandomEventType[r8_37] and DataMgr.DungeonRandomEventType[r8_37].Des
+    local r11_37 = NewObject(UIUtils.GetCommonItemContentClass())
+    r11_37.Id = r7_37
+    r11_37.Icon = r9_37
+    r11_37.Des = r10_37
+    r0_37.List_Event:AddItem(r11_37)
   end
-  if self:IsExistTimer(self.NextEventFrameListEmpty) then
-    self:RemoveTimer(self.NextEventFrameListEmpty)
+  if #r3_37 > 0 then
+    r0_37.List_Event:RequestFillEmptyContent()
   end
-  self.NextEventFrameListEmpty = self:AddTimer(0.01, function()
-    self.List_Event:RequestFillEmptyContent()
-  end, false, 0, "List_EventDeputeDetailListView")
 end
-
-function M:OnClickedCell(LvCell)
-  if self.SelectLvTabCell ~= nil then
-    self.SelectLvTabCell:OnCellUnSelect()
+function r6_0.OnClickedCell(r0_38, r1_38)
+  -- line: [1224, 1231] id: 38
+  if r0_38.SelectLvTabCell ~= nil then
+    r0_38.SelectLvTabCell:OnCellUnSelect()
   end
-  self.SelectLvTabCell = LvCell
-  LvCell:SelectCell()
+  r0_38.SelectLvTabCell = r1_38
+  r1_38:SelectCell()
 end
-
-function M:RefreshMonsterInfoList(DungeonId)
-  local DungeonInfo = DataMgr.Dungeon[DungeonId]
-  if not (DungeonInfo and DungeonInfo.DungeonMonsters) or 0 == #DungeonInfo.DungeonMonsters then
+function r6_0.RefreshMonsterInfoList(r0_39, r1_39)
+  -- line: [1235, 1276] id: 39
+  local r2_39 = DataMgr.Dungeon[r1_39]
+  if not r2_39 or not r2_39.DungeonMonsters or #r2_39.DungeonMonsters == 0 then
     DebugPrint("ZDX DungeonMonster is nil")
-    return
+    return 
   end
-  local DisplayMonsters = CommonUtils.DeepCopy(DungeonInfo.DungeonMonsters)
-  table.sort(DisplayMonsters, MonsterUtils.CompareMonsters)
-  self.MonsterWeaknessIcon = {}
-  self:InitMonsterWeakness(DungeonId)
-  for _, MonsterId in ipairs(DisplayMonsters) do
-    local MonsterData = DataMgr.Monster[MonsterId]
-    if MonsterData and not MonsterData.IsNotRelease then
-      local Content = NewObject(self.MonsterItemContentClass)
-      Content.ParentWidget = self
-      Content.MonsterId = MonsterId
-      Content.DisableSelect = true
-      Content.SoundEvent = "event:/ui/common/click_mid"
-      Content.WeaknessIcon = self.MonsterWeaknessIcon[MonsterId]
-      self.List_Monster:AddItem(Content)
+  local r3_39 = r0_0.DeepCopy(r2_39.DungeonMonsters)
+  table.sort(r3_39, r1_0.CompareMonsters)
+  r0_39.MonsterWeaknessIcon = {}
+  r0_39:InitMonsterWeakness(r1_39)
+  local r4_39 = UE4.UGameplayStatics.GetGameState(r0_39)
+  for r9_39, r10_39 in ipairs(r3_39) do
+    if DataMgr.Monster[r10_39] and r4_39.IsUnitRelease(r10_39) then
+      local r12_39 = NewObject(r0_39.MonsterItemContentClass)
+      r12_39.ParentWidget = r0_39
+      r12_39.MonsterId = r10_39
+      r12_39.DisableSelect = true
+      r12_39.SoundEvent = "event:/ui/common/click_mid"
+      r12_39.WeaknessIcon = r0_39.MonsterWeaknessIcon[r10_39]
+      r0_39.List_Monster:AddItem(r12_39)
     end
   end
+  -- close: r5_39
 end
-
-function M:InitMonsterWeakness(DungeonId)
-  assert(DungeonId, "dungeon id is nil")
-  local DungeonInfo = DataMgr.Dungeon[DungeonId]
-  assert(DungeonInfo, string.format("dungeon id [%d] is wrong, cant find dungeonInfo", DungeonId))
-  local MonsterBuff = DungeonInfo.MonsterBuff
-  local Monsters = DungeonInfo.DungeonMonsters
-  if MonsterBuff then
-    for _, MonsterId in ipairs(Monsters) do
-      if type(MonsterId) == "number" then
-        local AllBuffs = MonsterUtils.GetRealMonsterBuffs(DungeonId, MonsterId)
-        for _, BuffId in ipairs(AllBuffs) do
-          local BuffInfo = DataMgr.Buff[BuffId]
-          if BuffInfo and BuffInfo.WeaknessType then
-            local HasWeakness = not not BuffInfo.WeaknessType
-            if HasWeakness then
-              local WeaknessIcon = DataMgr.DamageType[BuffInfo.WeaknessType].WeaknessIcon
-              if WeaknessIcon then
-                self.MonsterWeaknessIcon[MonsterId] = self.MonsterWeaknessIcon[MonsterId] or {}
-                self.MonsterWeaknessIcon[MonsterId][WeaknessIcon] = true
-              end
+function r6_0.InitMonsterWeakness(r0_40, r1_40)
+  -- line: [1279, 1309] id: 40
+  assert(r1_40, "dungeon id is nil")
+  local r2_40 = DataMgr.Dungeon[r1_40]
+  assert(r2_40, string.format("dungeon id [%d] is wrong, cant find dungeonInfo", r1_40))
+  local r4_40 = r2_40.DungeonMonsters
+  if r2_40.MonsterBuff then
+    for r9_40, r10_40 in ipairs(r4_40) do
+      if type(r10_40) == "number" then
+        for r16_40, r17_40 in ipairs(r1_0.GetRealMonsterBuffs(r1_40, r10_40)) do
+          local r18_40 = DataMgr.Buff[r17_40]
+          if r18_40 and r18_40.WeaknessType and not not r18_40.WeaknessType then
+            local r20_40 = DataMgr.DamageType[r18_40.WeaknessType].WeaknessIcon
+            if r20_40 then
+              r0_40.MonsterWeaknessIcon[r10_40] = r0_40.MonsterWeaknessIcon[r10_40] and {}
+              r0_40.MonsterWeaknessIcon[r10_40][r20_40] = true
             end
           end
         end
+        -- close: r12_40
       end
     end
+    -- close: r5_40
   end
 end
-
-function M:ShowDialogChar()
-  local Avatar = GWorld:GetAvatar()
-  if not Avatar then
-    return
+function r6_0.ShowDialogChar(r0_41)
+  -- line: [1312, 1346] id: 41
+  -- notice: unreachable block#19
+  local r1_41 = GWorld:GetAvatar()
+  if not r1_41 then
+    return 
   end
-  local bIsInTeam = Avatar:IsInTeam()
-  if not bIsInTeam and Avatar.Chars[Avatar.CurrentChar] and Avatar.Chars[Avatar.CurrentChar].CharId == 3201 and DataMgr.Dungeon[self.CurSelectedDungeonId].DungeonType == "Hijack" then
-    local Param = {
-      RightCallbackObj = self,
-      RightCallbackFunction = self.OnClickSolo
-    }
-    UIManager(self):ShowCommonPopupUI(100106, Param, self)
-  elseif self.DeputeType == Const.DeputeType.DeputeWeekly and self.WeeklyDungeonRewardLeft <= 0 then
-    local IsDeputeWeeklyNum = EMCache:Get("Is_DeputeWeeklyNum", true) or false
-    local IsNoMorePrompts = self:CheckNeedShowWindow()
-    if IsDeputeWeeklyNum and IsNoMorePrompts then
-      self:OnClickSolo()
+  if not r1_41:IsInTeam() and r1_41.Chars[r1_41.CurrentChar] and r1_41.Chars[r1_41.CurrentChar].CharId == 3201 and DataMgr.Dungeon[r0_41.CurSelectedDungeonId].DungeonType == "Hijack" then
+    UIManager(r0_41):ShowCommonPopupUI(100106, {
+      RightCallbackObj = r0_41,
+      RightCallbackFunction = r0_41.OnClickSolo,
+    }, r0_41)
+  elseif r0_41.DeputeType == Const.DeputeType.DeputeWeekly and r0_41.WeeklyDungeonRewardLeft <= 0 then
+    local r3_41 = r5_0:Get("Is_DeputeWeeklyNum", true) and false
+    local r4_41 = r0_41:CheckNeedShowWindow()
+    if r3_41 and r4_41 then
+      r0_41:OnClickSolo()
     else
-      self:ShowConfirmWindow(true)
+      r0_41:ShowConfirmWindow(true)
     end
   else
-    if self.DeputeType == Const.DeputeType.DeputeWeekly then
-      local Dungeon = Avatar.Dungeons[self.CurSelectedDungeonId]
-      local bPassCount = Dungeon and 1 == Dungeon.PassCount or false
-      if not bPassCount then
-        self:ShowFirstDeputeWeeklyConfirmWindow(true)
+    if r0_41.DeputeType == Const.DeputeType.DeputeWeekly then
+      local r4_41 = r0_41.CurSelectedDungeonId
+      local r3_41 = r1_41.Dungeons[r4_41]
+      if r3_41 then
+        r4_41 = r3_41.PassCount == 1
       else
-        self:OnClickSolo()
+        goto label_86	-- block#18 is visited secondly
       end
-      return
+      if not r4_41 then
+        r0_41:ShowFirstDeputeWeeklyConfirmWindow(true)
+      else
+        r0_41:OnClickSolo()
+      end
+      return 
     end
-    self:OnClickSolo()
+    r0_41:OnClickSolo()
   end
 end
-
-function M:ShowFirstDeputeWeeklyConfirmWindow(bIsSolo)
-  local CommonDialogParams = {}
-  
-  function CommonDialogParams.RightCallbackFunction(_, Data)
-    if bIsSolo then
-      self:OnClickSolo()
-    else
-      self:TryEnterMultiDungeon()
-    end
-  end
-  
-  local GameInstance = UE4.UGameplayStatics.GetGameInstance(self)
-  local UIManager = GameInstance:GetGameUIManager()
-  UIManager:ShowCommonPopupUI(100238, CommonDialogParams, self)
+function r6_0.ShowFirstDeputeWeeklyConfirmWindow(r0_42, r1_42)
+  -- line: [1349, 1364] id: 42
+  UE4.UGameplayStatics.GetGameInstance(r0_42):GetGameUIManager():ShowCommonPopupUI(100238, {
+    RightCallbackFunction = function(r0_43, r1_43)
+      -- line: [1351, 1358] id: 43
+      if r1_42 then
+        r0_42:OnClickSolo()
+      else
+        r0_42:TryEnterMultiDungeon()
+      end
+    end,
+  }, r0_42)
 end
-
-function M:ShowConfirmWindow(bIsSolo)
-  local CommonDialogParams = {}
-  
-  function CommonDialogParams.RightCallbackFunction(_, Data)
-    if bIsSolo then
-      self:OnClickSolo()
-    else
-      self:TryEnterMultiDungeon()
-    end
-    self:UpdateSelectedInfo(Data)
-  end
-  
-  function CommonDialogParams.LeftCallbackFunction(_, Data)
-    self:UpdateSelectedInfo(Data)
-  end
-  
-  local GameInstance = UE4.UGameplayStatics.GetGameInstance(self)
-  local UIManager = GameInstance:GetGameUIManager()
-  UIManager:ShowCommonPopupUI(100211, CommonDialogParams, self)
+function r6_0.ShowConfirmWindow(r0_44, r1_44)
+  -- line: [1366, 1381] id: 44
+  UE4.UGameplayStatics.GetGameInstance(r0_44):GetGameUIManager():ShowCommonPopupUI(100211, {
+    RightCallbackFunction = function(r0_45, r1_45)
+      -- line: [1368, 1375] id: 45
+      if r1_44 then
+        r0_44:OnClickSolo()
+      else
+        r0_44:TryEnterMultiDungeon()
+      end
+      r0_44:UpdateSelectedInfo(r1_45)
+    end,
+    LeftCallbackFunction = function(r0_46, r1_46)
+      -- line: [1376, 1376] id: 46
+      r0_44:UpdateSelectedInfo(r1_46)
+    end,
+  }, r0_44)
 end
-
-function M:UpdateSelectedInfo(Data)
-  local IsSelected = Data.SelectHint.IsSelected
-  local CurTimestamp = TimeUtils.NowTime()
-  EMCache:Set("Is_DeputeWeeklyNum", IsSelected, true)
-  EMCache:Set("IsWeeklyDungeonTimestamp", CurTimestamp, true)
+function r6_0.UpdateSelectedInfo(r0_47, r1_47)
+  -- line: [1383, 1388] id: 47
+  local r3_47 = r4_0.NowTime()
+  r5_0:Set("Is_DeputeWeeklyNum", r1_47.SelectHint.IsSelected, true)
+  r5_0:Set("IsWeeklyDungeonTimestamp", r3_47, true)
 end
-
-function M:CheckNeedShowWindow()
-  local IsNoMorePrompts = false
-  if TimeUtils then
-    local CachedTimestamp = EMCache:Get("IsWeeklyDungeonTimestamp", true)
-    IsNoMorePrompts = TimeUtils.IsTimestampInCurrentWeek(CachedTimestamp)
+function r6_0.CheckNeedShowWindow(r0_48)
+  -- line: [1391, 1398] id: 48
+  local r1_48 = false
+  if r4_0 then
+    r1_48 = r4_0.IsTimestampInCurrentWeek(r5_0:Get("IsWeeklyDungeonTimestamp", true))
   end
-  return IsNoMorePrompts
+  return r1_48
 end
-
-function M:OnClickSolo()
-  self.IsSoloStart = true
-  self.MultiWalnut = false
-  self.MultiTicket = false
-  if not self.CurSelectedDungeonId then
+function r6_0.OnClickSolo(r0_49)
+  -- line: [1406, 1492] id: 49
+  r0_49.IsSoloStart = true
+  r0_49.MultiWalnut = false
+  r0_49.MultiTicket = false
+  if not r0_49.CurSelectedDungeonId then
     DebugPrint("ZDX CurSelectedDungeonId is nil")
-    return
+    return 
   end
-  if not PageJumpUtils:CheckDungeonCondition(DataMgr.Dungeon[self.CurSelectedDungeonId].Condition) then
-    UIManager(self):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Tosat_Level_Locked"))
-    return
+  if not PageJumpUtils:CheckDungeonCondition(DataMgr.Dungeon[r0_49.CurSelectedDungeonId].Condition) then
+    UIManager(r0_49):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Tosat_Level_Locked"))
+    return 
   end
-  if self:IsAnimationPlaying(self.Out_Loading) then
-    return
+  if r0_49:IsAnimationPlaying(r0_49.Out_Loading) then
+    return 
   end
-  local DungeonData = DataMgr.Dungeon[self.CurSelectedDungeonId]
-  if DungeonData.TicketId and 0 ~= #DungeonData.TicketId or DungeonData.NoTicketEnter then
-    local Avatar = GWorld:GetAvatar()
-    if not Avatar then
-      return
+  local r1_49 = DataMgr.Dungeon[r0_49.CurSelectedDungeonId]
+  if r1_49.TicketId and #r1_49.TicketId ~= 0 or r1_49.NoTicketEnter then
+    local r2_49 = GWorld:GetAvatar()
+    if not r2_49 then
+      return 
     end
-    local bIsInTeam = Avatar:IsInTeam()
-    if not bIsInTeam then
-      self:OpenTicketDialog(self.CurSelectedDungeonId)
-      return
+    local r3_49 = r2_49:IsInTeam()
+    if r0_49.DeputeType == Const.DeputeType.NightFlightManualDepute then
+      local r4_49 = r0_49.IsDoubleModOpen and r0_49.ContinuousCombat
+      if not r3_49 then
+        if r4_49 then
+          UIManager(r0_49):ShowCommonPopupUI(100284, {
+            RightCallbackObj = r0_49,
+            RightCallbackFunction = r0_49.OpenTicketDialog,
+          }, r0_49)
+        else
+          r0_49:OpenTicketDialog()
+        end
+        return 
+      end
+    elseif not r3_49 then
+      r0_49:OpenTicketDialog()
+      return 
     end
   end
-  if self.DungeonCost and self.MyActionPoint < self.DungeonCost then
-    UIUtils.ShowActionRecover(self)
-    return
+  if r0_49.DungeonCost and r0_49.MyActionPoint < r0_49.DungeonCost then
+    UIUtils.ShowActionRecover(r0_49)
+    return 
   end
-  local Avatar = GWorld:GetAvatar()
-  local bIsInTeam = Avatar:IsInTeam()
-  if bIsInTeam then
-    self.IsSoloStart = false
+  local r2_49 = GWorld:GetAvatar()
+  if r2_49:IsInTeam() then
+    r0_49.IsSoloStart = false
     TeamController:GetModel().bPressedSolo = true
-    if self.WalnutId then
-      TeamController:GetModel().WalnutId = self.WalnutId
+    if r0_49.WalnutId then
+      TeamController:GetModel().WalnutId = r0_49.WalnutId
     end
-    self:TryEnterDungeon(Avatar, self.CurSelectedDungeonId, CommonConst.DungeonNetMode.Standalone, function(RetCode, ...)
-      local bCanEnter = self.HandleEnterDungeonRetCode(RetCode, ...)
-      if bCanEnter then
-        UIManager(self):LoadUINew("DungeonMatchTimingBar", self.CurSelectedDungeonId, Const.DUNGEON_MATCH_BAR_STATE.SPONSOR_WAITING_CONFIRM, false)
+    r0_49:TryEnterDungeon(r2_49, r0_49.CurSelectedDungeonId, CommonConst.DungeonNetMode.Standalone, function(r0_50, ...)
+      -- line: [1471, 1479] id: 50
+      r0_49:BlockAllUIInput(false)
+      if r0_49.HandleEnterDungeonRetCode(r0_50, ...) then
+        UIManager(r0_49):LoadUINew("DungeonMatchTimingBar", r0_49.CurSelectedDungeonId, Const.DUNGEON_MATCH_BAR_STATE.SPONSOR_WAITING_CONFIRM, false)
       end
     end)
-    self:RefreshBtnState()
+    r0_49:RefreshBtnState()
   else
-    if DungeonData.IsWalnutDungeon then
-      local WalnutChoiceUI = UIManager(self):LoadUINew("WalnutChoice", CommonConst.WalnutUser.Depute, self.CurSelectedDungeonId)
-      if self.WalnutId then
-        WalnutChoiceUI:SelectWalnutById(self.WalnutId)
+    if r1_49.IsWalnutDungeon then
+      local r4_49 = UIManager(r0_49):LoadUINew("WalnutChoice", CommonConst.WalnutUser.Depute, r0_49.CurSelectedDungeonId)
+      if r0_49.WalnutId then
+        r4_49:SelectWalnutById(r0_49.WalnutId)
       end
-      return
+      return 
     end
-    self:EnterStandalone()
+    r0_49:EnterStandalone()
   end
 end
-
-function M:OnClickMulti()
-  self.IsSoloStart = false
-  self.MultiWalnut = false
-  self.MultiTicket = false
-  if not self.CurSelectedDungeonId then
+function r6_0.OnClickMulti(r0_51)
+  -- line: [1495, 1574] id: 51
+  -- notice: unreachable block#14
+  r0_51.IsSoloStart = false
+  r0_51.MultiWalnut = false
+  r0_51.MultiTicket = false
+  if not r0_51.CurSelectedDungeonId then
     DebugPrint("ZDX CurSelectedDungeonId is nil")
-    return
+    return 
   end
-  local Avatar = GWorld:GetAvatar()
-  assert(Avatar, "NO AVATAR")
-  if self.DeputeType == Const.DeputeType.DeputeWeekly and self.WeeklyDungeonRewardLeft <= 0 then
-    local IsDeputeWeeklyNum = EMCache:Get("Is_DeputeWeeklyNum", true) or false
-    local IsNoMorePrompts = self:CheckNeedShowWindow()
-    if IsDeputeWeeklyNum and IsNoMorePrompts then
-      self:TryEnterMultiDungeon()
-      return
+  local r1_51 = GWorld:GetAvatar()
+  assert(r1_51, "NO AVATAR")
+  if r0_51.DeputeType == Const.DeputeType.DeputeWeekly and r0_51.WeeklyDungeonRewardLeft <= 0 then
+    local r2_51 = r5_0:Get("Is_DeputeWeeklyNum", true) and false
+    local r3_51 = r0_51:CheckNeedShowWindow()
+    if r2_51 and r3_51 then
+      r0_51:TryEnterMultiDungeon()
+      return 
     else
-      self:ShowConfirmWindow(false)
-      return
+      r0_51:ShowConfirmWindow(false)
+      return 
     end
-  elseif self.DeputeType == Const.DeputeType.DeputeWeekly then
-    local Dungeon = Avatar.Dungeons[self.CurSelectedDungeonId]
-    local bPassCount = Dungeon and 1 == Dungeon.PassCount or false
-    if not bPassCount then
-      self:ShowFirstDeputeWeeklyConfirmWindow(false)
+  elseif r0_51.DeputeType == Const.DeputeType.DeputeWeekly then
+    local r3_51 = r0_51.CurSelectedDungeonId
+    local r2_51 = r1_51.Dungeons[r3_51]
+    if r2_51 then
+      r3_51 = r2_51.PassCount == 1
     else
-      self:TryEnterMultiDungeon()
+      goto label_63	-- block#13 is visited secondly
     end
-    return
-  end
-  local DungeonData = DataMgr.Dungeon[self.CurSelectedDungeonId]
-  if DungeonData.TicketId and 0 ~= #DungeonData.TicketId or DungeonData.NoTicketEnter then
-    local bIsInTeam = Avatar:IsInTeam()
-    if not bIsInTeam then
-      self.MultiTicket = true
-      self:OpenTicketDialog(self.CurSelectedDungeonId)
-      return
+    if not r3_51 then
+      r0_51:ShowFirstDeputeWeeklyConfirmWindow(false)
+    else
+      r0_51:TryEnterMultiDungeon()
     end
+    return 
   end
-  if not Avatar:CheckUIUnlocked("Match") then
-    UIManager(self):ShowUITip(UIConst.Tip_CommonToast, GText(DataMgr.UIUnlockRule.Match.UIUnlockDesc))
-    return
+  local r2_51 = DataMgr.Dungeon[r0_51.CurSelectedDungeonId]
+  if (r2_51.TicketId and #r2_51.TicketId ~= 0 or r2_51.NoTicketEnter) and not r1_51:IsInTeam() then
+    r0_51.MultiTicket = true
+    r0_51:OpenTicketDialog()
+    return 
   end
-  if not PageJumpUtils:CheckDungeonCondition(DataMgr.Dungeon[self.CurSelectedDungeonId].Condition) then
-    UIManager(self):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Tosat_Level_Locked"))
-    return
+  if not r1_51:CheckUIUnlocked("Match") then
+    UIManager(r0_51):ShowUITip(UIConst.Tip_CommonToast, GText(DataMgr.UIUnlockRule.Match.UIUnlockDesc))
+    return 
   end
-  if self:IsAnimationPlaying(self.Out_Loading) then
-    return
+  if not PageJumpUtils:CheckDungeonCondition(DataMgr.Dungeon[r0_51.CurSelectedDungeonId].Condition) then
+    UIManager(r0_51):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Tosat_Level_Locked"))
+    return 
   end
-  if self.DungeonCost and self.MyActionPoint < self.DungeonCost then
-    UIUtils.ShowActionRecover(self)
-    return
+  if r0_51:IsAnimationPlaying(r0_51.Out_Loading) then
+    return 
   end
-  local DungeonData = DataMgr.Dungeon[self.CurSelectedDungeonId]
-  local bIsInTeam = Avatar:IsInTeam()
-  if not bIsInTeam and DungeonData.IsWalnutDungeon then
-    self.MultiWalnut = true
-    local WalnutChoiceUI = UIManager(self):LoadUINew("WalnutChoice", CommonConst.WalnutUser.Depute, self.CurSelectedDungeonId)
-    if self.WalnutId then
-      WalnutChoiceUI:SelectWalnutById(self.WalnutId)
+  if r0_51.DungeonCost and r0_51.MyActionPoint < r0_51.DungeonCost then
+    UIUtils.ShowActionRecover(r0_51)
+    return 
+  end
+  local r3_51 = DataMgr.Dungeon[r0_51.CurSelectedDungeonId]
+  if not r1_51:IsInTeam() and r3_51.IsWalnutDungeon then
+    r0_51.MultiWalnut = true
+    local r5_51 = UIManager(r0_51):LoadUINew("WalnutChoice", CommonConst.WalnutUser.Depute, r0_51.CurSelectedDungeonId)
+    if r0_51.WalnutId then
+      r5_51:SelectWalnutById(r0_51.WalnutId)
     end
-    return
+    return 
   end
-  self:TryEnterMultiDungeon()
+  r0_51:TryEnterMultiDungeon()
 end
-
-function M:TryEnterMultiDungeon()
+function r6_0.TryEnterMultiDungeon(r0_52)
+  -- line: [1576, 1604] id: 52
   TeamController:GetModel().bPressedMulti = true
-  local Avatar = GWorld:GetAvatar()
-  assert(Avatar, "NO AVATAR")
-  self:TryEnterDungeon(Avatar, self.CurSelectedDungeonId, CommonConst.DungeonNetMode.DedicatedServer, function(RetCode, ...)
-    local bCanEnter = self.HandleEnterDungeonRetCode(RetCode, ...)
-    DebugPrint("gmy@WBP_Play_DeputeDetail_C M:OnClickMulti", bCanEnter)
-    if bCanEnter then
-      local bIsInTeam = Avatar:IsInTeam()
-      if bIsInTeam then
-        UIManager(self):LoadUINew("DungeonMatchTimingBar", self.CurSelectedDungeonId, Const.DUNGEON_MATCH_BAR_STATE.SPONSOR_WAITING_CONFIRM, true)
+  local r1_52 = GWorld:GetAvatar()
+  assert(r1_52, "NO AVATAR")
+  r0_52:TryEnterDungeon(r1_52, r0_52.CurSelectedDungeonId, CommonConst.DungeonNetMode.DedicatedServer, function(r0_53, ...)
+    -- line: [1582, 1602] id: 53
+    local r1_53 = r0_52.HandleEnterDungeonRetCode(r0_53, ...)
+    DebugPrint("gmy@WBP_Play_DeputeDetail_C M:OnClickMulti", r1_53)
+    r0_52:BlockAllUIInput(false)
+    if r1_53 then
+      if r1_52:IsInTeam() then
+        UIManager(r0_52):LoadUINew("DungeonMatchTimingBar", r0_52.CurSelectedDungeonId, Const.DUNGEON_MATCH_BAR_STATE.SPONSOR_WAITING_CONFIRM, true)
       else
-        UIManager(self):LoadUINew("DungeonMatchTimingBar", self.CurSelectedDungeonId, Const.DUNGEON_MATCH_BAR_STATE.WAITING_MATCHING_WITH_CANCEL, true)
+        UIManager(r0_52):LoadUINew("DungeonMatchTimingBar", r0_52.CurSelectedDungeonId, Const.DUNGEON_MATCH_BAR_STATE.WAITING_MATCHING_WITH_CANCEL, true)
       end
     end
-  end, self.TicketId)
-  self:RefreshBtnState()
+  end, r0_52.TicketId)
+  r0_52:RefreshBtnState()
 end
-
-function M:EnterWalnutDungeon()
-  if self.IsSoloStart then
-    self:EnterStandalone()
+function r6_0.EnterWalnutDungeon(r0_54)
+  -- line: [1609, 1616] id: 54
+  if r0_54.IsSoloStart then
+    r0_54:EnterStandalone()
   end
-  if self.MultiWalnut then
-    self:TryEnterMultiDungeon()
+  if r0_54.MultiWalnut then
+    r0_54:TryEnterMultiDungeon()
   end
 end
-
-function M:EnterTicketDungeon(TicketId)
-  if self.IsSoloStart then
-    self:EnterStandalone(TicketId)
+function r6_0.EnterTicketDungeon(r0_55, r1_55)
+  -- line: [1619, 1629] id: 55
+  if r0_55.IsSoloStart then
+    r0_55:EnterStandalone(r1_55)
   end
-  if self.MultiTicket then
-    if -1 ~= TicketId then
-      self.TicketId = TicketId
+  if r0_55.MultiTicket then
+    if r1_55 ~= -1 then
+      r0_55.TicketId = r1_55
     end
-    self:TryEnterMultiDungeon()
+    r0_55:TryEnterMultiDungeon()
   end
 end
-
-function M:EnterStandalone(TicketId)
-  if self.DungeonCost and self.MyActionPoint < self.DungeonCost then
-    UIUtils.ShowActionRecover(self)
-    return
+function r6_0.EnterStandalone(r0_56, r1_56)
+  -- line: [1631, 1670] id: 56
+  if r0_56.DungeonCost and r0_56.MyActionPoint < r0_56.DungeonCost then
+    UIUtils.ShowActionRecover(r0_56)
+    return 
   end
-  local Avatar = GWorld:GetAvatar()
-  if -1 ~= TicketId then
-    self.TicketId = TicketId
+  local r2_56 = GWorld:GetAvatar()
+  if r1_56 ~= -1 then
+    r0_56.TicketId = r1_56
   end
-  local StyleOfPlay = UIManager(self):GetUI("StyleOfPlay")
-  AudioManager(self):PlayUISound(self, "event:/ui/common/map_click_enter_level", nil, nil)
-  local Avatar = GWorld:GetAvatar()
-  if Avatar then
-    self:TryEnterDungeon(Avatar, self.CurSelectedDungeonId, CommonConst.DungeonNetMode.Standalone, function(RetCode, ...)
-      local bRetCode = self.HandleEnterDungeonRetCode(RetCode, ...)
-      if not bRetCode then
-        local StyleOfPlay = UIManager(self):GetUIObj("StyleOfPlay")
-        if StyleOfPlay then
-          StyleOfPlay:PlayAnimation(StyleOfPlay.In)
+  local r3_56 = UIManager(r0_56):GetUI("StyleOfPlay")
+  AudioManager(r0_56):PlayUISound(r0_56, "event:/ui/common/map_click_enter_level", nil, nil)
+  local r4_56 = GWorld:GetAvatar()
+  if r4_56 then
+    r0_56:TryEnterDungeon(r4_56, r0_56.CurSelectedDungeonId, CommonConst.DungeonNetMode.Standalone, function(r0_57, ...)
+      -- line: [1649, 1659] id: 57
+      r0_56:BlockAllUIInput(false)
+      if not r0_56.HandleEnterDungeonRetCode(r0_57, ...) then
+        local r2_57 = UIManager(r0_56):GetUIObj("StyleOfPlay")
+        if r2_57 then
+          r2_57:PlayAnimation(r2_57.In)
         end
-        self:PlayAnimation(self.In)
+        r0_56:PlayAnimation(r0_56.In)
       end
-    end, self.TicketId)
+    end, r0_56.TicketId)
+    r0_56:BlockAllUIInput(true)
+    r0_56:AddTimer(10, function()
+      -- line: [1661, 1665] id: 58
+      if r0_56 and r0_56:IsAllUIInputBlocked() then
+        r0_56:BlockAllUIInput(false)
+      end
+    end)
   else
-    WorldTravelSubsystem(self):ChangeDungeonByDungeonId(self.CurSelectedDungeonId, CommonConst.DungeonNetMode.Standalone)
+    WorldTravelSubsystem(r0_56):ChangeDungeonByDungeonId(r0_56.CurSelectedDungeonId, CommonConst.DungeonNetMode.Standalone)
   end
 end
-
-function M:OnBtnCheckClicked()
-  if not self:IsAnimationPlaying(self.Out) then
-    UIManager(self):LoadUINew("MonsterDetailInfo", self.CurSelectedDungeonId, self)
+function r6_0.OnBtnCheckClicked(r0_59)
+  -- line: [1673, 1677] id: 59
+  if not r0_59:IsAnimationPlaying(r0_59.Out) then
+    UIManager(r0_59):LoadUINew("MonsterDetailInfo", r0_59.CurSelectedDungeonId, r0_59)
   end
 end
-
-function M:SelectMonsterInfoItem(MonsterId)
-  UIManager(self):LoadUINew("MonsterDetailInfo", self.CurSelectedDungeonId, self, MonsterId)
+function r6_0.SelectMonsterInfoItem(r0_60, r1_60)
+  -- line: [1680, 1682] id: 60
+  UIManager(r0_60):LoadUINew("MonsterDetailInfo", r0_60.CurSelectedDungeonId, r0_60, r1_60)
 end
-
-function M:SetElementIcon(ElementType)
-  if ElementType then
-    self.Type:SetVisibility(ESlateVisibility.Visible)
+function r6_0.SetElementIcon(r0_61, r1_61)
+  -- line: [1686, 1701] id: 61
+  if r1_61 then
+    r0_61.Type:SetVisibility(ESlateVisibility.Visible)
   else
-    self.Type:SetVisibility(ESlateVisibility.Collapsed)
-    return
+    r0_61.Type:SetVisibility(ESlateVisibility.Collapsed)
+    return 
   end
-  local IconPath = DataMgr.Attribute[ElementType].Icon
-  local Icon = LoadObject(IconPath)
-  self.Icon_Type:SetBrushResourceObject(Icon)
-  self.Stats_ListView:ClearListItems()
-  local ElmtTypes, ElmtNames = UIUtils.GetAllElementTypes()
-  for idx, Type in ipairs(ElmtTypes) do
-    self.Stats_ListView:AddItem(self:NewElmtIconContent(Type, ElmtNames[idx], Type == ElementType))
+  r0_61.Icon_Type:SetBrushResourceObject(LoadObject(DataMgr.Attribute[r1_61].Icon))
+  r0_61.Stats_ListView:ClearListItems()
+  local r4_61, r5_61 = UIUtils.GetAllElementTypes()
+  for r10_61, r11_61 in ipairs(r4_61) do
+    r0_61.Stats_ListView:AddItem(r0_61:NewElmtIconContent(r11_61, r5_61[r10_61], r11_61 == r1_61))
   end
+  -- close: r6_61
 end
-
-function M:NewElmtIconContent(ElmtType, ElmtName, IsSelected)
-  local Obj = NewObject(self.AttributeContentClass)
-  local IconPath = DataMgr.Attribute[ElmtType].Icon
-  Obj.Icon = LoadObject(IconPath)
-  Obj.Text = GText(ElmtName)
-  Obj.IsSelected = IsSelected
-  return Obj
+function r6_0.NewElmtIconContent(r0_62, r1_62, r2_62, r3_62)
+  -- line: [1703, 1710] id: 62
+  local r4_62 = NewObject(r0_62.AttributeContentClass)
+  r4_62.Icon = LoadObject(DataMgr.Attribute[r1_62].Icon)
+  r4_62.Text = GText(r2_62)
+  r4_62.IsSelected = r3_62
+  return r4_62
 end
-
-function M:OnElementEntryInitialized(Content, Widget)
-  if Content.IsSelected then
-    Widget.Bg_On:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+function r6_0.OnElementEntryInitialized(r0_63, r1_63, r2_63)
+  -- line: [1712, 1720] id: 63
+  if r1_63.IsSelected then
+    r2_63.Bg_On:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
   else
-    Widget.Bg_On:SetVisibility(ESlateVisibility.Collapsed)
+    r2_63.Bg_On:SetVisibility(ESlateVisibility.Collapsed)
   end
-  Widget.Image_Attribute:SetBrushResourceObject(Content.Icon)
-  Widget.Stats_Name:SetText(Content.Text)
+  r2_63.Image_Attribute:SetBrushResourceObject(r1_63.Icon)
+  r2_63.Stats_Name:SetText(r1_63.Text)
 end
-
-function M:OnButtonAttibuteHovered()
-  self.IsOpenAttibute = true
-  self:StopAnimation(self.Tips_In)
-  self:PlayAnimation(self.Tips_In)
+function r6_0.OnButtonAttibuteHovered(r0_64)
+  -- line: [1722, 1727] id: 64
+  r0_64.IsOpenAttibute = true
+  r0_64:StopAnimation(r0_64.Tips_In)
+  r0_64:PlayAnimation(r0_64.Tips_In)
 end
-
-function M:OnButtonAttibuteUnhovered()
-  self.IsOpenAttibute = false
-  self:StopAnimation(self.Tips_In)
-  self:PlayAnimationReverse(self.Tips_In)
+function r6_0.OnButtonAttibuteUnhovered(r0_65)
+  -- line: [1729, 1734] id: 65
+  r0_65.IsOpenAttibute = false
+  r0_65:StopAnimation(r0_65.Tips_In)
+  r0_65:PlayAnimationReverse(r0_65.Tips_In)
 end
-
-function M:OnUserScrolled()
-  if CommonUtils.GetDeviceTypeByPlatformName() == "Mobile" then
-    return
+function r6_0.OnUserScrolled(r0_66)
+  -- line: [1736, 1739] id: 66
+  if r0_0.GetDeviceTypeByPlatformName() == "Mobile" then
+    return 
   end
-  UIUtils.UpdateScrollBoxArrow(self.ScrollBox_List, self.List_ArrowTop, self.List_ArrowBottom)
+  UIUtils.UpdateScrollBoxArrow(r0_66.ScrollBox_List, r0_66.List_ArrowTop, r0_66.List_ArrowBottom)
 end
-
-function M:OpenDetails()
-  UIManager(self):LoadUINew("ItemInformation", {
-    Name = DataMgr.Dungeon[self.CurSelectedDungeonId].DungeonName,
-    Desc = DataMgr.Dungeon[self.CurSelectedDungeonId].DungeonContent
+function r6_0.OpenDetails(r0_67)
+  -- line: [1741, 1749] id: 67
+  UIManager(r0_67):LoadUINew("ItemInformation", {
+    Name = DataMgr.Dungeon[r0_67.CurSelectedDungeonId].DungeonName,
+    Desc = DataMgr.Dungeon[r0_67.CurSelectedDungeonId].DungeonContent,
   }, "LevelDatail")
 end
-
-function M:OnReturnKeyDown()
-  AudioManager(self):SetEventSoundParam(self, "Play_DeputeDetail", {ToEnd = 1})
-  if not self:IsAnimationPlaying(self.Out) then
-    self:SetVisibility(ESlateVisibility.HitTestInvisible)
-    self:PlayAnimation(self.Out)
+function r6_0.OnReturnKeyDown(r0_68)
+  -- line: [1752, 1762] id: 68
+  if not UIManager(r0_68):GetUIObj("StyleOfPlay") then
+    return 
+  end
+  AudioManager(r0_68):SetEventSoundParam(r0_68, "Play_DeputeDetail", {
+    ToEnd = 1,
+  })
+  if not r0_68:IsAnimationPlaying(r0_68.Out) then
+    r0_68:SetVisibility(ESlateVisibility.HitTestInvisible)
+    r0_68:PlayAnimation(r0_68.Out)
   end
 end
-
-function M:OnAnimationFinished(InAnimation)
-  if InAnimation == self.Out then
-    self:RemoveFromParent()
-    local PlayEntry = UIManager(self):GetUIObj("StyleOfPlay")
-    PlayEntry.SubUI[PlayEntry.CurTabId] = nil
-    if self.IsFromJump then
-      if PlayEntry.IsHome then
-        PlayEntry:SwitchCamera()
-        PlayEntry:PlayNPCAnim(21000502)
+function r6_0.OnAnimationFinished(r0_69, r1_69)
+  -- line: [1764, 1807] id: 69
+  if r1_69 == r0_69.Out then
+    r0_69:RemoveFromParent()
+    local r2_69 = UIManager(r0_69):GetUIObj("StyleOfPlay")
+    r2_69.SubUI[r0_69.CurTabId] = nil
+    if r0_69.IsFromJump then
+      if r2_69.IsHome then
+        r2_69:SwitchCamera()
+        r2_69:PlayNPCAnim(21000502)
       else
-        UIManager(self):SwitchUINpcCamera(false, "StyleOfPlay", PlayEntry.NpcId, {
+        UIManager(r0_69):SwitchUINpcCamera(false, "StyleOfPlay", r2_69.NpcId, {
           bDestroyNpc = true,
-          IsHaveInOutAnim = PlayEntry.IsNeedPlayNpcAnim
+          IsHaveInOutAnim = r2_69.IsNeedPlayNpcAnim,
         })
       end
-      PlayEntry:OnReturnKeyDown()
+      r2_69:OnReturnKeyDown()
     else
-      PlayEntry:OpenSubUI("NewDeputeRoot")
+      r2_69:OpenSubUI("NewDeputeRoot")
     end
   end
 end
-
-function M:RefreshOpInfoByInputDevice(CurInputDevice, CurGamepadName)
-  if CurInputDevice == ECommonInputType.Touch then
-    return
+function r6_0.RefreshOpInfoByInputDevice(r0_70, r1_70, r2_70)
+  -- line: [1809, 1833] id: 70
+  if r1_70 == ECommonInputType.Touch then
+    return 
   end
-  local IsUseKeyAndMouse = CurInputDevice == ECommonInputType.MouseAndKeyboard
-  local ActiveWidgetIndex = IsUseKeyAndMouse and 0 or 1
-  if not IsUseKeyAndMouse and (self:HasFocusedDescendants() or self:HasAnyUserFocus()) then
-    local isInvisible = self.DefaultList:GetVisibility() == ESlateVisibility.SelfHitTestInvisible
-    local isNotShown = not self.DefaultList.IsShow
-    if isInvisible and isNotShown or not isInvisible then
-      self:SelectCellFocus()
+  local r3_70 = r1_70 == ECommonInputType.MouseAndKeyboard
+  if not r3_70 or not 0 then
+    local r4_70 = 1
+  end
+  if not r3_70 and (r0_70:HasFocusedDescendants() or r0_70:HasAnyUserFocus()) then
+    local r5_70 = r0_70.DefaultList:GetVisibility() == ESlateVisibility.SelfHitTestInvisible
+    local r6_70 = not r0_70.DefaultList.IsShow
+    if r5_70 and r6_70 or not r5_70 then
+      r0_70:SelectCellFocus()
     end
-  elseif self.Image_Select and self.Image_Select:GetRenderOpacity() > 0 then
-    self:PlayAnimation(self.UnHover)
+  elseif r0_70.Image_Select and r0_70.Image_Select:GetRenderOpacity() > 0 then
+    r0_70:PlayAnimation(r0_70.UnHover)
   end
-  self:UpdateUIStyleInPlatform(IsUseKeyAndMouse)
-  self.Super.RefreshOpInfoByInputDevice(self, CurInputDevice, CurGamepadName)
+  r0_70:UpdateUIStyleInPlatform(r3_70)
+  r0_70.Super.RefreshOpInfoByInputDevice(r0_70, r1_70, r2_70)
 end
-
-function M:UpdatKeyDisplay(FocusTypeName)
-  if CommonUtils.GetDeviceTypeByPlatformName(self) == "Mobile" then
-    return
+function r6_0.UpdatKeyDisplay(r0_71, r1_71)
+  -- line: [1835, 2023] id: 71
+  if r0_0.GetDeviceTypeByPlatformName(r0_71) == "Mobile" then
+    return 
   end
-  local StyleOfPlay = UIManager(self):GetUIObj("StyleOfPlay")
-  if not StyleOfPlay then
-    return
+  local r2_71 = UIManager(r0_71):GetUIObj("StyleOfPlay")
+  if not r2_71 then
+    return 
   end
-  if self.DefaultList:GetVisibility() == ESlateVisibility.SelfHitTestInvisible and self.DefaultList.IsShow then
-    return
+  if r0_71.DefaultList:GetVisibility() == ESlateVisibility.SelfHitTestInvisible and r0_71.DefaultList.IsShow then
+    return 
   end
-  self.FocusTypeName = FocusTypeName
-  if "RewardWidget" == FocusTypeName then
-    local BottomKeyInfo = {
+  r0_71.FocusTypeName = r1_71
+  if r1_71 == "RewardWidget" then
+    r2_71:UpdateOtherPageTab({
       {
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "A",
-            Owner = self
+            Owner = r0_71,
           }
         },
         Desc = GText("UI_Controller_CheckDetails"),
-        bLongPress = false
+        bLongPress = false,
       },
       {
         KeyInfoList = {
           {
             Type = "Text",
             Text = "Esc",
-            ClickCallback = self.OnReturnKeyDown,
-            Owner = self
+            ClickCallback = r0_71.OnReturnKeyDown,
+            Owner = r0_71,
           }
         },
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "B",
-            Owner = self
+            Owner = r0_71,
           }
         },
-        Desc = GText("UI_BACK")
+        Desc = GText("UI_BACK"),
       }
-    }
-    StyleOfPlay:UpdateOtherPageTab(BottomKeyInfo)
-    self:UpdateUIStyleInPlatform(true)
-    StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    self.Tab_Info:UpdateUIStyleInPlatform(true)
+    })
+    r0_71:UpdateUIStyleInPlatform(true)
+    r2_71.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r2_71.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r0_71.Tab_Info:UpdateUIStyleInPlatform(true)
     if UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad then
-      self.Button_Multi:SetPCVisibility(true)
-      self.Button_Solo:SetPCVisibility(true)
-      self.Button_DoubleMod:SetPCVisibility(true)
+      r0_71.Button_Multi:SetPCVisibility(true)
+      r0_71.Button_Solo:SetPCVisibility(true)
+      r0_71.Button_DoubleMod:SetPCVisibility(true)
     end
-    self.DefaultList:ApplyPcUiLayout()
-  elseif "SelfWidget" == FocusTypeName then
-    local BottomKeyInfo = {}
-    if self.Panel_Type:GetVisibility() == ESlateVisibility.Visible then
-      BottomKeyInfo = {
+    r0_71.DefaultList:ApplyPcUiLayout()
+  elseif r1_71 == "SelfWidget" then
+    local r3_71 = {}
+    if r0_71.Panel_Type:GetVisibility() == ESlateVisibility.Visible then
+      r3_71 = {
         {
           GamePadInfoList = {
-            {Type = "Add"},
-            GamePadSubKeyInfoList = {
-              {
-                Type = "Img",
-                ImgShortPath = "Up",
-                Owner = self
-              },
-              {
-                Type = "Img",
-                ImgShortPath = "X",
-                Owner = self
-              }
+            {
+              Type = "Add",
             }
           },
           Desc = GText("UI_CTL_CheckProperty"),
-          bLongPress = false
+          bLongPress = false,
         },
         {
           GamePadInfoList = {
-            {Type = "Add"},
-            GamePadSubKeyInfoList = {
-              {
-                Type = "Img",
-                ImgShortPath = "Up",
-                Owner = self
-              },
-              {
-                Type = "Img",
-                ImgShortPath = "Y",
-                Owner = self
-              }
+            {
+              Type = "Add",
             }
           },
           Desc = GText("UI_CTL_DeputeInfo"),
-          bLongPress = false
+          bLongPress = false,
         }
       }
     else
-      BottomKeyInfo = {
+      r3_71 = {
         {
           GamePadInfoList = {
-            {Type = "Add"},
-            GamePadSubKeyInfoList = {
-              {
-                Type = "Img",
-                ImgShortPath = "Up",
-                Owner = self
-              },
-              {
-                Type = "Img",
-                ImgShortPath = "Y",
-                Owner = self
-              }
+            {
+              Type = "Add",
             }
           },
           Desc = GText("UI_CTL_DeputeInfo"),
-          bLongPress = false
+          bLongPress = false,
         }
       }
     end
-    table.insert(BottomKeyInfo, {
+    table.insert(r3_71, {
       KeyInfoList = {
         {
           Type = "Text",
           Text = "Esc",
-          ClickCallback = self.OnReturnKeyDown,
-          Owner = self
+          ClickCallback = r0_71.OnReturnKeyDown,
+          Owner = r0_71,
         }
       },
       GamePadInfoList = {
         {
           Type = "Img",
           ImgShortPath = "B",
-          Owner = self
+          Owner = r0_71,
         }
       },
-      Desc = GText("UI_BACK")
+      Desc = GText("UI_BACK"),
     })
-    StyleOfPlay:UpdateOtherPageTab(BottomKeyInfo)
+    r2_71:UpdateOtherPageTab(r3_71)
     if UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad then
-      self:UpdateUIStyleInPlatform(false)
-      StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-      StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-      self.Tab_Info:UpdateUIStyleInPlatform(true)
-      self.Button_Multi:SetPCVisibility(false)
-      self.Button_Solo:SetPCVisibility(false)
-      self.Button_DoubleMod:SetPCVisibility(false)
-      self.IsFocusProp = false
-      self.IsFocus_Monster = false
-      self.IsFocusEliteProp = false
-      self.DefaultList:InitWidgetInfoInGamePad()
+      r0_71:UpdateUIStyleInPlatform(false)
+      r2_71.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+      r2_71.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+      r0_71.Tab_Info:UpdateUIStyleInPlatform(true)
+      r0_71.Button_Multi:SetPCVisibility(false)
+      r0_71.Button_Solo:SetPCVisibility(false)
+      r0_71.Button_DoubleMod:SetPCVisibility(false)
+      r0_71.IsFocusProp = false
+      r0_71.IsFocus_Monster = false
+      r0_71.IsFocusEliteProp = false
+      r0_71.DefaultList:InitWidgetInfoInGamePad()
     end
-  elseif "EventWidget" == FocusTypeName then
-    local BottomKeyInfo = {
+  elseif r1_71 == "EventWidget" then
+    r2_71:UpdateOtherPageTab({
       {
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "B",
-            Owner = self
+            Owner = r0_71,
           }
         },
         Desc = GText("UI_BACK"),
-        bLongPress = false
+        bLongPress = false,
       }
-    }
-    StyleOfPlay:UpdateOtherPageTab(BottomKeyInfo)
-    self:UpdateUIStyleInPlatform(true)
-    StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-  elseif "EliteProp" == FocusTypeName then
-    local BottomKeyInfo = {
+    })
+    r0_71:UpdateUIStyleInPlatform(true)
+    r2_71.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r2_71.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  elseif r1_71 == "EliteProp" then
+    r2_71:UpdateOtherPageTab({
       {
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "LS",
-            Owner = self
+            Owner = r0_71,
           }
         },
         Desc = GText("UI_Controller_CheckReward"),
-        bLongPress = false
+        bLongPress = false,
       },
       {
         KeyInfoList = {
           {
             Type = "Text",
             Text = "Esc",
-            ClickCallback = self.OnReturnKeyDown,
-            Owner = self
+            ClickCallback = r0_71.OnReturnKeyDown,
+            Owner = r0_71,
           }
         },
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "B",
-            Owner = self
+            Owner = r0_71,
           }
         },
-        Desc = GText("UI_BACK")
+        Desc = GText("UI_BACK"),
       }
-    }
-    StyleOfPlay:UpdateOtherPageTab(BottomKeyInfo)
-    self:UpdateUIStyleInPlatform(true)
-    StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-  elseif "MenuAnchor" == FocusTypeName then
-    local BottomKeyInfo = {
+    })
+    r0_71:UpdateUIStyleInPlatform(true)
+    r2_71.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r2_71.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  elseif r1_71 == "MenuAnchor" then
+    r2_71:UpdateOtherPageTab({
       {
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "B",
-            Owner = self
+            Owner = r0_71,
           }
         },
         Desc = GText("UI_CTL_CloseTips"),
-        bLongPress = false
+        bLongPress = false,
       }
-    }
-    StyleOfPlay:UpdateOtherPageTab(BottomKeyInfo)
-    self:UpdateUIStyleInPlatform(true)
-    StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    })
+    r0_71:UpdateUIStyleInPlatform(true)
+    r2_71.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r2_71.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
   else
-    local BottomKeyInfo = {}
-    StyleOfPlay:UpdateOtherPageTab(BottomKeyInfo)
-    self:UpdateUIStyleInPlatform(true)
-    StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    self.Tab_Info:UpdateUIStyleInPlatform(false)
+    r2_71:UpdateOtherPageTab({})
+    r0_71:UpdateUIStyleInPlatform(true)
+    r2_71.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r2_71.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r0_71.Tab_Info:UpdateUIStyleInPlatform(false)
   end
 end
-
-function M:SetPanelDetailsVis(SlateVisibility)
-  self.Panel_Details:SetVisibility(SlateVisibility)
+function r6_0.SetPanelDetailsVis(r0_72, r1_72)
+  -- line: [2025, 2027] id: 72
+  r0_72.Panel_Details:SetVisibility(r1_72)
 end
-
-function M:UpdateUIStyleInPlatform(IsUseKeyAndMouse)
-  if CommonUtils.GetDeviceTypeByPlatformName(self) == "Mobile" then
-    return
+function r6_0.UpdateUIStyleInPlatform(r0_73, r1_73)
+  -- line: [2029, 2105] id: 73
+  if r0_0.GetDeviceTypeByPlatformName(r0_73) == "Mobile" then
+    return 
   end
-  if IsUseKeyAndMouse then
-    self.Key_Check_GamePad:SetVisibility(ESlateVisibility.Collapsed)
-    self.Com_Key_More:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    self.Key_Qa_GamePad:SetVisibility(ESlateVisibility.Collapsed)
-    self.Com_CheckBox_LeftText.Com_KeyImg:SetVisibility(ESlateVisibility.Collapsed)
-    self.Key_LT:SetVisibility(ESlateVisibility.Collapsed)
-    self.Key_LR:SetVisibility(ESlateVisibility.Collapsed)
-    self.Btn_Qa:SetVisibility(ESlateVisibility.Visible)
-    self:SetPanelDetailsVis(self:IsShowKeyMore() and ESlateVisibility.SelfHitTestInvisible or ESlateVisibility.Collapsed)
-    if self.List_Type:GetVisibility() == ESlateVisibility.Visible then
-      self.Key_Qa_GamePad:SetVisibility(ESlateVisibility.Collapsed)
+  if r1_73 then
+    r0_73.Key_Check_GamePad:SetVisibility(ESlateVisibility.Collapsed)
+    r0_73.Com_Key_More:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r0_73.Key_Qa_GamePad:SetVisibility(ESlateVisibility.Collapsed)
+    r0_73.Com_CheckBox_LeftText.Com_KeyImg:SetVisibility(ESlateVisibility.Collapsed)
+    r0_73.Key_LT:SetVisibility(ESlateVisibility.Collapsed)
+    r0_73.Key_LR:SetVisibility(ESlateVisibility.Collapsed)
+    r0_73.Btn_Qa:SetVisibility(ESlateVisibility.Visible)
+    local r4_73 = r0_73:IsShowKeyMore()
+    if r4_73 then
+      r4_73 = ESlateVisibility.SelfHitTestInvisible and ESlateVisibility.Collapsed
+    else
+      goto label_54	-- block#5 is visited secondly
+    end
+    r0_73:SetPanelDetailsVis(r4_73)
+    if r0_73.List_Type:GetVisibility() == ESlateVisibility.Visible then
+      r0_73.Key_Qa_GamePad:SetVisibility(ESlateVisibility.Collapsed)
     end
   else
-    if self.List_Type:GetVisibility() == ESlateVisibility.Visible then
-      self.Btn_Qa:SetVisibility(ESlateVisibility.Collapsed)
-      self.Key_Qa_GamePad:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-      self.Key_Qa_GamePad:CreateCommonKey({
+    if r0_73.List_Type:GetVisibility() == ESlateVisibility.Visible then
+      r0_73.Btn_Qa:SetVisibility(ESlateVisibility.Collapsed)
+      r0_73.Key_Qa_GamePad:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+      r0_73.Key_Qa_GamePad:CreateCommonKey({
         KeyInfoList = {
-          {Type = "Img", ImgShortPath = "Up"},
-          {Type = "Img", ImgShortPath = "B"}
+          {
+            Type = "Img",
+            ImgShortPath = "Up",
+          },
+          {
+            Type = "Img",
+            ImgShortPath = "B",
+          }
         },
-        Type = "Add"
+        Type = "Add",
       })
     end
-    self:SetPanelDetailsVis(self:IsShowKeyMore() and ESlateVisibility.SelfHitTestInvisible or ESlateVisibility.Collapsed)
-    self.Key_LT:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-    self.Key_LT:CreateCommonKey({
+    local r4_73 = r0_73:IsShowKeyMore()
+    if r4_73 then
+      r4_73 = ESlateVisibility.SelfHitTestInvisible and ESlateVisibility.Collapsed
+    else
+      goto label_114	-- block#12 is visited secondly
+    end
+    r0_73:SetPanelDetailsVis(r4_73)
+    r0_73.Key_LT:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    r0_73.Key_LT:CreateCommonKey({
       KeyInfoList = {
-        {Type = "Img", ImgShortPath = "LB"}
-      }
+        {
+          Type = "Img",
+          ImgShortPath = "LB",
+        }
+      },
     })
-    self.Key_LR:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-    self.Key_LR:CreateCommonKey({
+    r0_73.Key_LR:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    r0_73.Key_LR:CreateCommonKey({
       KeyInfoList = {
-        {Type = "Img", ImgShortPath = "RB"}
-      }
+        {
+          Type = "Img",
+          ImgShortPath = "RB",
+        }
+      },
     })
-    self.Com_Key_More:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-    self.Com_Key_More:CreateCommonKey({
+    r0_73.Com_Key_More:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    r0_73.Com_Key_More:CreateCommonKey({
       KeyInfoList = {
-        {Type = "Img", ImgShortPath = "LS"}
+        {
+          Type = "Img",
+          ImgShortPath = "LS",
+        }
       },
       bLongPress = false,
-      Desc = GText("UI_Controller_Check")
+      Desc = GText("UI_Controller_Check"),
     })
   end
-  self:SetPanelDetails(self.CurrentTabIdx)
+  r0_73:SetPanelDetails(r0_73.CurrentTabIdx)
 end
-
-function M:HandleKeyDown(MyGeometry, InKeyEvent)
-  local InKey = UE4.UKismetInputLibrary.GetKey(InKeyEvent)
-  local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-  local IsEventHandled = false
-  if UE4.UKismetInputLibrary.Key_IsGamepadKey(InKey) then
-    IsEventHandled = self:OnGamePadDown(InKeyName)
-  elseif "Escape" == InKeyName then
-    IsEventHandled = true
-    if self.DisableEsc and self.DisableEsc == true then
-      return IsEventHandled
+function r6_0.HandleKeyDown(r0_74, r1_74, r2_74)
+  -- line: [2107, 2138] id: 74
+  local r3_74 = UE4.UKismetInputLibrary.GetKey(r2_74)
+  local r4_74 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_74)
+  local r5_74 = false
+  if UE4.UKismetInputLibrary.Key_IsGamepadKey(r3_74) then
+    r5_74 = r0_74:OnGamePadDown(r4_74)
+  elseif r4_74 == "Escape" then
+    r5_74 = true
+    if r0_74.DisableEsc and r0_74.DisableEsc == true then
+      return r5_74
     end
-    if self.DefaultList:GetVisibility() == ESlateVisibility.SelfHitTestInvisible and self.DefaultList.IsShow then
-      self.DefaultList:OnCloseSquadGamepad()
+    if r0_74.DefaultList:GetVisibility() == ESlateVisibility.SelfHitTestInvisible and r0_74.DefaultList.IsShow then
+      r0_74.DefaultList:OnCloseSquadGamepad()
     else
-      self:OnReturnKeyDown()
+      r0_74:OnReturnKeyDown()
     end
-  elseif "A" == InKeyName then
-    if self.Tab_Info then
-      self.Tab_Info:TabToLeft()
-      IsEventHandled = true
-    end
-  elseif "D" == InKeyName and self.Tab_Info then
-    self.Tab_Info:TabToRight()
-    IsEventHandled = true
+  elseif r4_74 == "A" and r0_74.Tab_Info then
+    r0_74.Tab_Info:TabToLeft()
+    r5_74 = true
+  elseif r4_74 == "D" and r0_74.Tab_Info then
+    r0_74.Tab_Info:TabToRight()
+    r5_74 = true
   end
-  return IsEventHandled
+  return r5_74
 end
-
-function M:OnGamePadDown(InKeyName)
-  DebugPrint("SL OnGamePadDown is InKeyName Detail", InKeyName)
-  local IsEventHandled = false
-  self.PressedKeys[InKeyName] = true
-  local IsDpadUp = true == self.PressedKeys[Const.GamepadDPadUp]
-  if "Gamepad_FaceButton_Right" == InKeyName then
-    self.PressedKeys.Gamepad_DPad_Up = nil
-    self.PressedKeys.Gamepad_FaceButton_Right = nil
-    self.Image_Select:SetRenderOpacity(0)
-    if self.Image_Select:GetRenderOpacity() > 0 then
-      self:PlayAnimation(self.UnHover)
+function r6_0.OnGamePadDown(r0_75, r1_75)
+  -- line: [2140, 2270] id: 75
+  DebugPrint("SL OnGamePadDown is InKeyName Detail", r1_75)
+  local r2_75 = false
+  r0_75.PressedKeys[r1_75] = true
+  local r3_75 = r0_75.PressedKeys[Const.GamepadDPadUp] == true
+  if r1_75 == "Gamepad_FaceButton_Right" then
+    r0_75.PressedKeys.Gamepad_DPad_Up = nil
+    r0_75.PressedKeys.Gamepad_FaceButton_Right = nil
+    r0_75.Image_Select:SetRenderOpacity(0)
+    if r0_75.Image_Select:GetRenderOpacity() > 0 then
+      r0_75:PlayAnimation(r0_75.UnHover)
     end
-    if IsDpadUp then
-      UIManager(self):ShowCommonPopupUI(100241)
+    if r3_75 then
+      UIManager(r0_75):ShowCommonPopupUI(100241)
       return true
     end
-    if self.SelectCell then
-      local btnArea = self.SelectCell.Bg_List and self.SelectCell.Bg_List.Button_Area
-      if btnArea and not btnArea:HasAnyUserFocus() then
-        self:SelectCellFocus()
-        IsEventHandled = true
+    if r0_75.SelectCell then
+      local r4_75 = r0_75.SelectCell.Bg_List and r0_75.SelectCell.Bg_List.Button_Area
+      if r4_75 and not r4_75:HasAnyUserFocus() then
+        r0_75:SelectCellFocus()
+        r2_75 = true
       else
-        if self.IsOpenAttibute then
-          self:OnButtonAttibuteUnhovered()
+        if r0_75.IsOpenAttibute then
+          r0_75:OnButtonAttibuteUnhovered()
         else
-          self:OnReturnKeyDown()
+          r0_75:OnReturnKeyDown()
         end
-        IsEventHandled = true
+        r2_75 = true
       end
     end
-    if self.DefaultList and self.DefaultList.IsShow and self.DefaultList:GetVisibility() == ESlateVisibility.SelfHitTestInvisible then
-      self.DefaultList:OnCloseSquadGamepad()
-      self:UpdatKeyDisplay("SelfWidget")
-      IsEventHandled = true
+    if r0_75.DefaultList and r0_75.DefaultList.IsShow and r0_75.DefaultList:GetVisibility() == ESlateVisibility.SelfHitTestInvisible then
+      r0_75.DefaultList:OnCloseSquadGamepad()
+      r0_75:UpdatKeyDisplay("SelfWidget")
+      r2_75 = true
     end
   end
-  if self.DefaultList:GetVisibility() == ESlateVisibility.SelfHitTestInvisible and self.DefaultList.IsShow then
-    return IsEventHandled
+  if r0_75.DefaultList:GetVisibility() == ESlateVisibility.SelfHitTestInvisible and r0_75.DefaultList.IsShow then
+    return r2_75
   end
-  if "Gamepad_LeftTrigger" == InKeyName or "Gamepad_RightTrigger" == InKeyName then
-    if self.Tab_Info then
-      self.Tab_Info:Handle_KeyEventOnGamePad(InKeyName)
-      IsEventHandled = true
+  if (r1_75 == "Gamepad_LeftTrigger" or r1_75 == "Gamepad_RightTrigger") and r0_75.Tab_Info then
+    r0_75.Tab_Info:Handle_KeyEventOnGamePad(r1_75)
+    r2_75 = true
+  elseif r1_75 == "Gamepad_RightShoulder" and r0_75.Key_LR:GetVisibility() == ESlateVisibility.SelfHitTestInvisible then
+    r0_75:OnTypeItemPadRight()
+    r2_75 = true
+  elseif r1_75 == "Gamepad_LeftShoulder" and r0_75.Key_LT:GetVisibility() == ESlateVisibility.SelfHitTestInvisible then
+    r0_75:OnTypeItemPadLeft()
+    r2_75 = true
+  elseif r1_75 == "Gamepad_FaceButton_Left" and r0_75.FocusTypeName ~= "RewardWidget" then
+    if r3_75 and not r0_75.IsOpenAttibute then
+      r0_75:OnButtonAttibuteHovered()
+    elseif r0_75.Button_Multi:GetVisibility() == ESlateVisibility.Visible then
+      r0_75:OnClickMulti()
     end
-  elseif "Gamepad_RightShoulder" == InKeyName then
-    if self.Key_LR:GetVisibility() == ESlateVisibility.SelfHitTestInvisible then
-      self:OnTypeItemPadRight()
-      IsEventHandled = true
+    r2_75 = true
+  elseif r1_75 == "Gamepad_FaceButton_Top" and r0_75.FocusTypeName ~= "RewardWidget" then
+    r0_75.PressedKeys.Gamepad_DPad_Up = nil
+    r0_75.PressedKeys.Gamepad_FaceButton_Top = nil
+    if r3_75 then
+      r0_75:OpenDetails()
+    elseif r0_75.Button_DoubleMod:GetVisibility() == ESlateVisibility.Visible and r0_75.Button_DoubleMod:IsBtnForbidden() then
+      r0_75:OnForbiddenDoubleModBtnClicked()
+    else
+      r0_75:ShowDialogChar()
     end
-  elseif "Gamepad_LeftShoulder" == InKeyName then
-    if self.Key_LT:GetVisibility() == ESlateVisibility.SelfHitTestInvisible then
-      self:OnTypeItemPadLeft()
-      IsEventHandled = true
-    end
-  elseif "Gamepad_FaceButton_Left" == InKeyName then
-    if self.FocusTypeName ~= "RewardWidget" then
-      if IsDpadUp then
-        if not self.IsOpenAttibute then
-          self:OnButtonAttibuteHovered()
-        end
-      elseif self.Button_Multi:GetVisibility() == ESlateVisibility.Visible then
-        self:OnClickMulti()
+    r2_75 = true
+  elseif r1_75 == "Gamepad_LeftThumbstick" then
+    if r0_75.CurrentFocusType ~= "SelectCell" then
+      return r2_75
+    elseif r0_75.CurrentFocusType == "SelectCell" then
+      if r0_75.CurrentTabIdx == r0_75.ObtainTabId then
+        r0_75.List_Prop:SetFocus()
+        r0_75:UpdatKeyDisplay("RewardWidget")
+      elseif r0_75.CurrentTabIdx == r0_75.MonsterTabId then
+        r0_75.List_Monster:SetFocus()
+        r0_75:UpdatKeyDisplay("RewardWidget")
+      elseif r0_75.CurrentTabIdx == r0_75.SpecialMonsterTabId then
+        r0_75.WB_EliteProp:GetChildAt(0):SetFocus()
+        r0_75:UpdatKeyDisplay("EliteProp")
+      elseif r0_75.CurrentTabIdx == r0_75.TitleEventTabId then
+        r0_75.List_Event:SetFocus()
+        r0_75:UpdatKeyDisplay("EventWidget")
       end
-      IsEventHandled = true
-    end
-  elseif "Gamepad_FaceButton_Top" == InKeyName then
-    if self.FocusTypeName ~= "RewardWidget" then
-      self.PressedKeys.Gamepad_DPad_Up = nil
-      self.PressedKeys.Gamepad_FaceButton_Top = nil
-      if IsDpadUp then
-        self:OpenDetails()
-      elseif self.Button_DoubleMod:GetVisibility() == ESlateVisibility.Visible and self.Button_DoubleMod:IsBtnForbidden() then
-        self:OnForbiddenDoubleModBtnClicked()
-      else
-        self:ShowDialogChar()
+      r0_75:PlayAnimation(r0_75.Hover)
+      r0_75.CurrentFocusType = "List"
+      if r0_75.StyleOfPlay then
+        r0_75.StyleOfPlay.IsKeyEventOnGamePad = false
       end
-      IsEventHandled = true
-    end
-  elseif "Gamepad_LeftThumbstick" == InKeyName then
-    if "SelectCell" ~= self.CurrentFocusType then
-      return IsEventHandled
-    elseif "SelectCell" == self.CurrentFocusType then
-      if self.CurrentTabIdx == self.ObtainTabId then
-        self.List_Prop:SetFocus()
-        self:UpdatKeyDisplay("RewardWidget")
-      elseif self.CurrentTabIdx == self.MonsterTabId then
-        self.List_Monster:SetFocus()
-        self:UpdatKeyDisplay("RewardWidget")
-      elseif self.CurrentTabIdx == self.SpecialMonsterTabId then
-        self.WB_EliteProp:GetChildAt(0):SetFocus()
-        self:UpdatKeyDisplay("EliteProp")
-      elseif self.CurrentTabIdx == self.TitleEventTabId then
-        self.List_Event:SetFocus()
-        self:UpdatKeyDisplay("EventWidget")
-      end
-      self:PlayAnimation(self.Hover)
-      self.CurrentFocusType = "List"
-      if self.StyleOfPlay then
-        self.StyleOfPlay.IsKeyEventOnGamePad = false
-      end
-      IsEventHandled = true
+      r2_75 = true
     end
   end
-  return IsEventHandled
+  return r2_75
 end
-
-function M:OnKeyUp(MyGeometry, InKeyEvent)
-  local InKey = UE4.UKismetInputLibrary.GetKey(InKeyEvent)
-  local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-  local IsEventHandled = false
-  if UE4.UKismetInputLibrary.Key_IsGamepadKey(InKey) then
-    IsEventHandled = self:OnGamePadUp(InKeyName)
+function r6_0.OnKeyUp(r0_76, r1_76, r2_76)
+  -- line: [2272, 2286] id: 76
+  local r3_76 = UE4.UKismetInputLibrary.GetKey(r2_76)
+  local r4_76 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_76)
+  local r5_76 = false
+  if UE4.UKismetInputLibrary.Key_IsGamepadKey(r3_76) then
+    r5_76 = r0_76:OnGamePadUp(r4_76)
   end
-  if IsEventHandled then
+  if r5_76 then
     return UE4.UWidgetBlueprintLibrary.Handled()
   else
     return UE4.UWidgetBlueprintLibrary.UnHandled()
   end
 end
-
-function M:OnGamePadUp(InKeyName)
-  local IsEventHandled = false
-  self.PressedKeys[InKeyName] = false
-  if "Gamepad_FaceButton_Left" == InKeyName and self.IsOpenAttibute then
-    self:OnButtonAttibuteUnhovered()
+function r6_0.OnGamePadUp(r0_77, r1_77)
+  -- line: [2288, 2304] id: 77
+  local r2_77 = false
+  r0_77.PressedKeys[r1_77] = false
+  if r1_77 == "Gamepad_FaceButton_Left" and r0_77.IsOpenAttibute then
+    r0_77:OnButtonAttibuteUnhovered()
   end
-  return IsEventHandled
+  return r2_77
 end
-
-function M:OnPreviewKeyDown(MyGeometry, InKeyEvent)
-  if self.DefaultList:GetVisibility() == ESlateVisibility.SelfHitTestInvisible and self.DefaultList.IsShow then
+function r6_0.OnPreviewKeyDown(r0_78, r1_78, r2_78)
+  -- line: [2306, 2354] id: 78
+  if r0_78.DefaultList:GetVisibility() == ESlateVisibility.SelfHitTestInvisible and r0_78.DefaultList.IsShow then
     return UWidgetBlueprintLibrary.UnHandled()
   end
-  local InKey = UE4.UKismetInputLibrary.GetKey(InKeyEvent)
-  local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-  local IsEventHandled = false
-  self.PressedKeys[InKeyName] = true
-  if UE4.UKismetInputLibrary.Key_IsGamepadKey(InKey) then
-    if "Gamepad_DPad_Up" == InKeyName then
-      IsEventHandled = true
-    elseif "Gamepad_DPad_Down" == InKeyName then
-      if self.CurrentTabIdx == self.SpecialMonsterTabId and not self.MenuOpen then
-        if self.MonNum and self.MonNum > self.MaxMonNum then
-          self:OpenCommanderDetails()
-          IsEventHandled = true
+  local r3_78 = UE4.UKismetInputLibrary.GetKey(r2_78)
+  local r4_78 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_78)
+  local r5_78 = false
+  r0_78.PressedKeys[r4_78] = true
+  if UE4.UKismetInputLibrary.Key_IsGamepadKey(r3_78) then
+    if r4_78 == "Gamepad_DPad_Up" then
+      r5_78 = true
+    elseif r4_78 == "Gamepad_DPad_Down" then
+      if r0_78.CurrentTabIdx == r0_78.SpecialMonsterTabId and not r0_78.MenuOpen and r0_78.MonNum and r0_78.MaxMonNum < r0_78.MonNum then
+        r0_78:OpenCommanderDetails()
+        r5_78 = true
+      elseif r0_78.CurrentTabIdx == r0_78.ObtainTabId and not r0_78.MenuOpen then
+        r0_78:OpenRewardDetails()
+        r5_78 = true
+      end
+      r5_78 = true
+    elseif r4_78 == "Gamepad_DPad_Right" and not r0_78:IsFocusList() then
+      if r0_78.DefaultList:GetVisibility() ~= ESlateVisibility.SelfHitTestInvisible then
+        return r5_78
+      end
+      if not r0_78.DefaultList.IsShow then
+        local r6_78 = not r0_78.DefaultList.Preview.Switch_Summon:GetChecked()
+        r0_78.DefaultList.Preview.Switch_Summon:SetChecked(r6_78)
+        local r7_78 = GWorld:GetAvatar()
+        if not r7_78 then
+          r5_78 = true
+          return 
         end
-      elseif self.CurrentTabIdx == self.ObtainTabId and not self.MenuOpen then
-        self:OpenRewardDetails()
-        IsEventHandled = true
+        r7_78:SwitchSquadAutoPhantom(r6_78)
+        r5_78 = true
       end
-      IsEventHandled = true
-    elseif "Gamepad_DPad_Right" == InKeyName and not self:IsFocusList() then
-      if self.DefaultList:GetVisibility() ~= ESlateVisibility.SelfHitTestInvisible then
-        return IsEventHandled
+    elseif r4_78 == "Gamepad_DPad_Left" and not r0_78:IsFocusList() then
+      if r0_78.DefaultList:GetVisibility() ~= ESlateVisibility.SelfHitTestInvisible then
+        return r5_78
       end
-      if not self.DefaultList.IsShow then
-        local IsChecked = not self.DefaultList.Preview.Switch_Summon:GetChecked()
-        self.DefaultList.Preview.Switch_Summon:SetChecked(IsChecked)
-        local Avatar = GWorld:GetAvatar()
-        if not Avatar then
-          IsEventHandled = true
-          return
-        end
-        Avatar:SwitchSquadAutoPhantom(IsChecked)
-        IsEventHandled = true
-      end
-    elseif "Gamepad_DPad_Left" == InKeyName and not self:IsFocusList() then
-      if self.DefaultList:GetVisibility() ~= ESlateVisibility.SelfHitTestInvisible then
-        return IsEventHandled
-      end
-      if not self.DefaultList.IsShow then
-        self.DefaultList.Preview:OpenDefaultMenuAnchor()
-        self:UpdatKeyDisplay("MenuAnchor")
-        IsEventHandled = true
+      if not r0_78.DefaultList.IsShow then
+        r0_78.DefaultList.Preview:OpenDefaultMenuAnchor()
+        r0_78:UpdatKeyDisplay("MenuAnchor")
+        r5_78 = true
       end
     end
   end
-  if IsEventHandled then
+  if r5_78 then
     return UWidgetBlueprintLibrary.Handled()
   else
     return UWidgetBlueprintLibrary.UnHandled()
   end
 end
-
-function M:OnTypeItemPadLeft()
-  if not self.LastMarkType then
-    return
+function r6_0.OnTypeItemPadLeft(r0_79)
+  -- line: [2357, 2364] id: 79
+  if not r0_79.LastMarkType then
+    return 
   end
-  local CurrentIndex = self:GetItemIndex()
-  if CurrentIndex and CurrentIndex > 1 then
-    self:SelectTypeItemByIndex(CurrentIndex - 1)
-  end
-end
-
-function M:OnTypeItemPadRight()
-  if not self.LastMarkType then
-    return
-  end
-  local CurrentIndex = self:GetItemIndex()
-  if CurrentIndex and CurrentIndex < #self.TypeTableKeys then
-    self:SelectTypeItemByIndex(CurrentIndex + 1)
+  local r1_79 = r0_79:GetItemIndex()
+  if r1_79 and r1_79 > 1 then
+    r0_79:SelectTypeItemByIndex(r1_79 + -1)
   end
 end
-
-function M:SelectTypeItemByIndex(Index)
-  local TargetKey = self.TypeTableKeys[Index]
-  if TargetKey then
-    self:OnTypeClicked(TargetKey)
+function r6_0.OnTypeItemPadRight(r0_80)
+  -- line: [2367, 2374] id: 80
+  if not r0_80.LastMarkType then
+    return 
+  end
+  local r1_80 = r0_80:GetItemIndex()
+  if r1_80 and r1_80 < #r0_80.TypeTableKeys then
+    r0_80:SelectTypeItemByIndex(r1_80 + 1)
   end
 end
-
-function M:GetItemIndex()
-  for Index, Key in ipairs(self.TypeTableKeys) do
-    if self.TypeTable[Key] == self.LastMarkType then
-      return Index
+function r6_0.SelectTypeItemByIndex(r0_81, r1_81)
+  -- line: [2377, 2382] id: 81
+  local r2_81 = r0_81.TypeTableKeys[r1_81]
+  if r2_81 then
+    r0_81:OnTypeClicked(r2_81)
+  end
+end
+function r6_0.GetItemIndex(r0_82)
+  -- line: [2385, 2392] id: 82
+  for r5_82, r6_82 in ipairs(r0_82.TypeTableKeys) do
+    if r0_82.TypeTable[r6_82] == r0_82.LastMarkType then
+      return r5_82
     end
   end
+  -- close: r1_82
   return nil
 end
-
-function M:SelectCellFocus()
-  self:UpdatKeyDisplay("SelfWidget")
-  if not self.SelectCell.Bg_List.Button_Area:HasAnyUserFocus() then
-    self.SelectCell.Bg_List.Button_Area:SetFocus()
-    if self.StyleOfPlay then
-      self.StyleOfPlay.IsKeyEventOnGamePad = true
+function r6_0.SelectCellFocus(r0_83)
+  -- line: [2394, 2402] id: 83
+  r0_83:UpdatKeyDisplay("SelfWidget")
+  if not r0_83.SelectCell.Bg_List.Button_Area:HasAnyUserFocus() then
+    r0_83.SelectCell.Bg_List.Button_Area:SetFocus()
+    if r0_83.StyleOfPlay then
+      r0_83.StyleOfPlay.IsKeyEventOnGamePad = true
     end
   end
 end
-
-function M:OnSelectCellFocus()
-  if self.Image_Select then
-    self.Image_Select:SetRenderOpacity(0)
+function r6_0.OnSelectCellFocus(r0_84)
+  -- line: [2404, 2414] id: 84
+  if r0_84.Image_Select then
+    r0_84.Image_Select:SetRenderOpacity(0)
   end
-  self.CurrentFocusType = "SelectCell"
-  if self.CurrentFocusType ~= "SelectCell" and self.Gamepad then
-    self:UpdatKeyDisplay("SelfWidget")
-  end
-end
-
-function M:IsFocusList()
-  return self.CurrentFocusType == "List"
-end
-
-function M:OnForbiddenRightBtnClicked()
-  UIManager(self):ShowUITip(UIConst.Tip_CommonToast, "UI_REGISTER_COMINGSOON")
-end
-
-function M:OnForbiddenLeftBtnClicked()
-  if self.IsComMissing and self.DefaultList:GetVisibility() == ESlateVisibility.SelfHitTestInvisible then
-    UIManager(self):ShowUITip(UIConst.Tip_CommonToast, "UI_Squad_Miss_Challenge")
+  r0_84.CurrentFocusType = "SelectCell"
+  if r0_84.CurrentFocusType ~= "SelectCell" and r0_84.Gamepad then
+    r0_84:UpdatKeyDisplay("SelfWidget")
   end
 end
-
-function M:OnForbiddenDoubleModBtnClicked()
-  if self.IsDoubleMod and self.ContinuousCombat then
-    UIManager(self):ShowUITip(UIConst.Tip_CommonToast, "UI_Event_ModDrop_Exhausted")
+function r6_0.IsFocusList(r0_85)
+  -- line: [2416, 2418] id: 85
+  return r0_85.CurrentFocusType == "List"
+end
+function r6_0.OnForbiddenRightBtnClicked(r0_86)
+  -- line: [2428, 2430] id: 86
+  UIManager(r0_86):ShowUITip(UIConst.Tip_CommonToast, GText("UI_REGISTER_COMINGSOON"))
+end
+function r6_0.OnForbiddenLeftBtnClicked(r0_87)
+  -- line: [2432, 2437] id: 87
+  if r0_87.IsComMissing and r0_87.DefaultList:GetVisibility() == ESlateVisibility.SelfHitTestInvisible then
+    UIManager(r0_87):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Squad_Miss_Challenge"))
   end
 end
-
-function M:ShowIntro()
+function r6_0.OnForbiddenDoubleModBtnClicked(r0_88)
+  -- line: [2439, 2443] id: 88
+  if r0_88.IsDoubleModOpen and r0_88.ContinuousCombat then
+    UIManager(r0_88):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Event_ModDrop_Exhausted"))
+  end
 end
-
-function M:OpenIntro()
+function r6_0.ShowIntro(r0_89)
+  -- line: [2445, 2447] id: 89
 end
-
-function M:UpdateActionPoint(ActionPointID)
+function r6_0.OpenIntro(r0_90)
+  -- line: [2449, 2452] id: 90
 end
-
-function M:OnDungeonsUpdate()
-  if self.DeputeType == Const.DeputeType.WalnutDepute then
-    local Params = {}
-    
-    function Params.RightCallbackFunction()
-      self:OnReturnKeyDown()
+function r6_0.UpdateActionPoint(r0_91, r1_91)
+  -- line: [2454, 2465] id: 91
+end
+function r6_0.OnDungeonsUpdate(r0_92)
+  -- line: [2467, 2480] id: 92
+  if r0_92.DeputeType == Const.DeputeType.WalnutDepute then
+    UIManager(r0_92):ShowCommonPopupUI(100157, {
+      RightCallbackFunction = function()
+        -- line: [2470, 2472] id: 93
+        r0_92:OnReturnKeyDown()
+      end,
+    })
+    local r2_92 = UIManager(r0_92):GetUI("WalnutChoice")
+    if r2_92 then
+      r2_92:Close()
     end
-    
-    UIManager(self):ShowCommonPopupUI(100157, Params)
-    local WalnutChoice = UIManager(self):GetUI("WalnutChoice")
-    if WalnutChoice then
-      WalnutChoice:Close()
-    end
   end
 end
-
-function M:OnCurrentSquadChange(SquadId, IsComMissing)
-  self.SquadId = SquadId
-  self.IsComMissing = IsComMissing
-  self:IsShowAttributeTips()
-  if self.DefaultList.CurrentCharLevel <= DataMgr.Dungeon[self.CurSelectedDungeonId].DungeonLevel - DataMgr.GlobalConstant.TaskWarningLevel.ConstantValue then
-    self.Panel_WarningHint:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+function r6_0.OnCurrentSquadChange(r0_94, r1_94, r2_94)
+  -- line: [2482, 2493] id: 94
+  r0_94.SquadId = r1_94
+  r0_94.IsComMissing = r2_94
+  r0_94:IsShowAttributeTips()
+  if r0_94.DefaultList.CurrentCharLevel <= DataMgr.Dungeon[r0_94.CurSelectedDungeonId].DungeonLevel - DataMgr.GlobalConstant.TaskWarningLevel.ConstantValue then
+    r0_94.Panel_WarningHint:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
   else
-    self.Panel_WarningHint:SetVisibility(ESlateVisibility.Collapsed)
+    r0_94.Panel_WarningHint:SetVisibility(ESlateVisibility.Collapsed)
   end
 end
-
-function M:RefreshBtnState(bInIsMatching)
-  DebugPrint("gmy@WBP_Play_DeputeDetail_C M:RefreshBtnState", bInIsMatching)
-  if not self.CurSelectedDungeonId then
-    return
+function r6_0.RefreshBtnState(r0_95, r1_95)
+  -- line: [2496, 2676] id: 95
+  -- notice: unreachable block#70
+  DebugPrint("gmy@WBP_Play_DeputeDetail_C M:RefreshBtnState", r1_95)
+  if not r0_95.CurSelectedDungeonId then
+    return 
   end
-  local Avatar = GWorld:GetAvatar()
-  if not Avatar then
-    return
+  local r2_95 = GWorld:GetAvatar()
+  if not r2_95 then
+    return 
   end
-  local UIUnlockRuleId = DataMgr.UIUnlockRule.Match.UIUnlockRuleId
-  local bIsUnlock = Avatar:CheckUIUnlocked(UIUnlockRuleId) or false
-  local DungeonData = DataMgr.Dungeon[self.CurSelectedDungeonId]
-  if not DungeonData then
-    return
+  local r4_95 = r2_95:CheckUIUnlocked(DataMgr.UIUnlockRule.Match.UIUnlockRuleId) and false
+  local r5_95 = DataMgr.Dungeon[r0_95.CurSelectedDungeonId]
+  if not r5_95 then
+    return 
   end
-  local IsComMissing = self.IsComMissing or false
-  local IsMultiDungeon = DungeonData.IsMultiDungeon and true or false
-  local found = false
-  if Avatar.CdnHideData and Avatar.CdnHideData.dungeon then
-    for _, Data in pairs(Avatar.CdnHideData.dungeon) do
-      for __, ConfigName in pairs(Data.gameCtrlDungeon or {}) do
-        if "multidungeon" == ConfigName then
-          IsMultiDungeon = Data.config and true or false
-          found = true
+  local r6_95 = r0_95.IsComMissing and false
+  local r7_95 = r5_95.IsMultiDungeon
+  if r7_95 then
+    r7_95 = true and false
+  else
+    goto label_41	-- block#12 is visited secondly
+  end
+  local r8_95 = false
+  local r19_95 = nil	-- notice: implicit variable refs by block#[49]
+  local r20_95 = nil	-- notice: implicit variable refs by block#[49]
+  if r2_95.CdnHideData and r2_95.CdnHideData.dungeon then
+    for r13_95, r14_95 in pairs(r2_95.CdnHideData.dungeon) do
+      for r19_95, r20_95 in pairs(r14_95.gameCtrlDungeon and {}) do
+        if r20_95 == "multidungeon" then
+          if r14_95.config then
+            r7_95 = true and false
+          else
+            goto label_71	-- block#22 is visited secondly
+          end
+          r8_95 = true
           break
         end
       end
-      if found then
+      -- close: r15_95
+      if r8_95 then
         break
       end
     end
+    -- close: r9_95
   end
-  local IsMatching = bInIsMatching
-  if nil == IsMatching then
-    IsMatching = self:IsMatching()
+  local r9_95 = r1_95
+  if r9_95 == nil then
+    r9_95 = r0_95:IsMatching()
   end
-  self.ContinuousCombat = EMCache:Get("Is_DoubleMod_SwitchTab", true) or false
-  local _, IsEliteRushDungeon = self:CheckDungeonType(self.CurSelectedDungeonId)
-  local ShowDouble = not IsMultiDungeon and self.IsDoubleMod and IsEliteRushDungeon and self.ContinuousCombat
-  local RemainOK = true
-  if ShowDouble then
-    local DoubleModDropInfo = self:GetDoubleModDropData() or {}
-    local ConfigValue = DataMgr.ModDropConstant.DailyFreeTicketAmount and DataMgr.ModDropConstant.DailyFreeTicketAmount.ConstantValue or 0
-    local UsedTimes = DoubleModDropInfo.EliteRushTimes or 0
-    local Remaining = math.floor(ConfigValue - UsedTimes)
-    RemainOK = Remaining > 0
-  end
-  local Sig = table.concat({
-    tostring(self.CurSelectedDungeonId),
-    tostring(IsMatching),
-    tostring(bIsUnlock),
-    tostring(IsMultiDungeon),
-    tostring(self.DeputeType),
-    tostring(IsComMissing),
-    tostring(ShowDouble or false),
-    tostring(RemainOK)
-  }, "|")
-  if self._Btn_sig == Sig then
-    return
-  end
-  self._Btn_sig = Sig
-  DebugPrint("SL@WBP_Play_DeputeDetail_C M:RefreshBtnState")
-  if self.DeputeType == Const.DeputeType.WalnutDepute then
-    self.Button_Solo:SetText(GText("UI_Walnut_Choice"))
-  else
-    self.Button_Solo:SetText(GText("DUNGEONSINGLE"))
-  end
-  if IsMatching then
-    self.Button_Multi:ForbidBtn(true)
-    self.Button_Solo:ForbidBtn(true)
-    self.Button_Multi:UnBindEventOnClickedByObj(self)
-    self.Button_Solo:UnBindEventOnClickedByObj(self)
-    self.Button_Multi:BindForbidStateExecuteEvent(self, function()
-    end)
-    self.Button_Solo:BindForbidStateExecuteEvent(self, function()
-    end)
-  else
-    if not IsMultiDungeon then
-      self.Button_Multi:SetVisibility(ESlateVisibility.Collapsed)
-      if ShowDouble then
-        self.Button_Solo:SetVisibility(ESlateVisibility.Collapsed)
-        self.Button_DoubleMod:SetVisibility(ESlateVisibility.Visible)
-        self.Button_DoubleMod:SetText(GText("UI_Event_ModDrop_ChallengeStart"))
-        self.Button_DoubleMod:ForbidBtn(not RemainOK and self.ContinuousCombat or false)
-      else
-        self.Button_DoubleMod:SetVisibility(ESlateVisibility.Collapsed)
-        self.Button_Solo:SetText(GText("UI_Ticket_Choose"))
-        self.Button_Solo:SetVisibility(ESlateVisibility.Visible)
+  local r10_95 = r2_95:IsInTeam()
+  local r11_95, r12_95 = r0_95:CheckDungeonType(r0_95.CurSelectedDungeonId)
+  r0_95.ContinuousCombat = r12_95
+  local r13_95 = r0_95:IsDoubleMod()
+  local r14_95 = true
+  if r13_95 then
+    local r15_95 = r0_95:GetDoubleModDropData() and {}
+    local r16_95 = DataMgr.ModDropConstant and {}
+    local r17_95 = r16_95.DailyFreeTicketAmount
+    if r17_95 then
+      r17_95 = r16_95.DailyFreeTicketAmount.ConstantValue and 0
+    else
+      goto label_118	-- block#37 is visited secondly
+    end
+    local r18_95 = r16_95.DailyModDungeonAmount
+    if r18_95 then
+      r18_95 = r16_95.DailyModDungeonAmount.ConstantValue and 0
+    else
+      goto label_126	-- block#40 is visited secondly
+    end
+    if r12_95 then
+      r19_95 = r17_95
+      if r19_95 then
+        ::label_131::
+        r19_95 = r18_95
       end
     else
-      self.Button_Multi:SetVisibility(bIsUnlock and ESlateVisibility.Visible or ESlateVisibility.Collapsed)
+      goto label_131	-- block#43 is visited secondly
     end
-    self.Button_Multi:ForbidBtn(not IsMultiDungeon)
-    self.Button_Multi:UnBindEventOnClickedByObj(self)
-    self.Button_Solo:UnBindEventOnClickedByObj(self)
-    self.Button_Solo:ForbidBtn(false)
-    self.Button_Multi:SetDefaultGamePadImg("X")
-    self.Button_Solo:SetDefaultGamePadImg("Y")
-    self.Button_DoubleMod:SetDefaultGamePadImg("Y")
-    self.Button_Multi:BindEventOnClicked(self, self.OnClickMulti)
-    self.Button_Solo:BindEventOnClicked(self, self.ShowDialogChar)
-    self.Button_Multi:BindForbidStateExecuteEvent(self, self.OnForbiddenRightBtnClicked)
-    self.Button_DoubleMod:BindForbidStateExecuteEvent(self, self.OnForbiddenDoubleModBtnClicked)
+    if r12_95 then
+      r20_95 = r15_95.EliteRushTimes
+      if not r20_95 then
+        r20_95 = 0
+        if not r20_95 then
+          ::label_140::
+          r20_95 = r15_95.DropTimes
+          if not r20_95 then
+            r20_95 = 0
+          end
+        end
+      end
+    else
+      goto label_140	-- block#47 is visited secondly
+    end
+    r14_95 = math.floor(r19_95 - r20_95) > 0
   end
-  if IsComMissing then
-    self.Button_Multi:ForbidBtn(true)
-    self.Button_Solo:ForbidBtn(true)
-    self.Button_Multi:UnBindEventOnClickedByObj(self)
-    self.Button_Solo:UnBindEventOnClickedByObj(self)
-    self.Button_Solo:BindForbidStateExecuteEvent(self, self.OnForbiddenLeftBtnClicked)
-    self.Button_Multi:BindForbidStateExecuteEvent(self, self.OnForbiddenLeftBtnClicked)
+  local r15_95 = table.concat
+  local r16_95 = {}
+  local r17_95 = tostring(r0_95.CurSelectedDungeonId)
+  local r18_95 = tostring(r9_95)
+  r19_95 = tostring(r4_95)
+  r20_95 = tostring(r7_95)
+  local r21_95 = tostring(r0_95.DeputeType)
+  local r22_95 = tostring(r6_95)
+  local r23_95 = tostring(r13_95 and false)
+  local r24_95 = tostring(r14_95)
+  local r25_95 = tostring(r10_95)
+  ... = tostring(r0_95.ContinuousCombat) -- error: untaken top expr
+  -- setlist for #16 failed
+  r15_95 = r15_95(r16_95, "|")
+  if r0_95._Btn_sig == r15_95 then
+    return 
+  end
+  r0_95._Btn_sig = r15_95
+  DebugPrint("SL@WBP_Play_DeputeDetail_C M:RefreshBtnState")
+  if r0_95.DeputeType == Const.DeputeType.WalnutDepute then
+    r0_95.Button_Solo:SetText(GText("UI_Walnut_Choice"))
+  else
+    r0_95.Button_Solo:SetText(GText("DUNGEONSINGLE"))
+  end
+  if r9_95 then
+    r0_95.Button_Multi:ForbidBtn(true)
+    r0_95.Button_Solo:ForbidBtn(true)
+    r0_95.Button_Multi:UnBindEventOnClickedByObj(r0_95)
+    r0_95.Button_Solo:UnBindEventOnClickedByObj(r0_95)
+    r0_95.Button_Multi:BindForbidStateExecuteEvent(r0_95, function()
+      -- line: [2589, 2589] id: 96
+    end)
+    r0_95.Button_Solo:BindForbidStateExecuteEvent(r0_95, function()
+      -- line: [2590, 2590] id: 97
+    end)
+  else
+    if not r7_95 then
+      r0_95.Button_Multi:SetVisibility(ESlateVisibility.Collapsed)
+    else
+      r16_95 = r0_95.Button_Multi
+      if r4_95 then
+        r18_95 = ESlateVisibility.Visible and ESlateVisibility.Collapsed
+      else
+        goto label_264	-- block#65 is visited secondly
+      end
+      r16_95:SetVisibility(r18_95)
+    end
+    r0_95.Button_Multi:ForbidBtn(not r7_95)
+    r16_95 = r0_95.Button_Solo
+    if not r7_95 then
+      r18_95 = r10_95
+    else
+      r18_95 = false
+    end
+    r16_95:ForbidBtn(r18_95)
+    r0_95.Button_Multi:UnBindEventOnClickedByObj(r0_95)
+    r0_95.Button_Solo:UnBindEventOnClickedByObj(r0_95)
+    r0_95.Button_Multi:SetDefaultGamePadImg("X")
+    r0_95.Button_Solo:SetDefaultGamePadImg("Y")
+    r0_95.Button_DoubleMod:SetDefaultGamePadImg("Y")
+    r0_95.Button_Multi:BindEventOnClicked(r0_95, r0_95.OnClickMulti)
+    r0_95.Button_Solo:BindEventOnClicked(r0_95, r0_95.ShowDialogChar)
+    r0_95.Button_Multi:BindForbidStateExecuteEvent(r0_95, r0_95.OnForbiddenRightBtnClicked)
+    r0_95.Button_DoubleMod:BindForbidStateExecuteEvent(r0_95, r0_95.OnForbiddenDoubleModBtnClicked)
+    r0_95.Button_Solo:BindForbidStateExecuteEvent(r0_95, function()
+      -- line: [2620, 2624] id: 98
+      if not r7_95 and r10_95 then
+        UIManager(r0_95):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Team_CanNotEnterDungeon"))
+      end
+    end)
+  end
+  if r6_95 then
+    r0_95.Button_Multi:ForbidBtn(true)
+    r0_95.Button_Solo:ForbidBtn(true)
+    r0_95.Button_Multi:UnBindEventOnClickedByObj(r0_95)
+    r0_95.Button_Solo:UnBindEventOnClickedByObj(r0_95)
+    r0_95.Button_Solo:BindForbidStateExecuteEvent(r0_95, r0_95.OnForbiddenLeftBtnClicked)
+    r0_95.Button_Multi:BindForbidStateExecuteEvent(r0_95, r0_95.OnForbiddenLeftBtnClicked)
+  end
+  if r0_95.CurSelectedDungeonId then
+    r16_95 = DataMgr.Dungeon[r0_95.CurSelectedDungeonId]
+    if r16_95 and r16_95.bDisableMatch then
+      r0_95.Button_Multi:SetVisibility(ESlateVisibility.Collapsed)
+    end
+  end
+  if r0_95.DeputeType == Const.DeputeType.NightFlightManualDepute then
+    if r13_95 and r0_95.ContinuousCombat then
+      r0_95.Button_Solo:SetVisibility(ESlateVisibility.Collapsed)
+      r0_95.Button_DoubleMod:SetVisibility(ESlateVisibility.Visible)
+      r0_95.Button_DoubleMod:SetText(GText("UI_Event_ModDrop_ChallengeStart"))
+      r16_95 = r0_95.Button_DoubleMod
+      if not r14_95 then
+        r18_95 = r0_95.ContinuousCombat and false
+      else
+        goto label_404	-- block#83 is visited secondly
+      end
+      r16_95:ForbidBtn(r18_95)
+    else
+      r0_95.Button_DoubleMod:SetVisibility(ESlateVisibility.Collapsed)
+      r0_95.Button_Solo:SetText(GText("UI_Ticket_Choose"))
+      r0_95.Button_Solo:SetVisibility(ESlateVisibility.Visible)
+    end
+    if not r14_95 then
+      r0_95.Button_Multi:ForbidBtn(true)
+      r0_95.Button_Solo:ForbidBtn(true)
+      r0_95.Button_DoubleMod:ForbidBtn(true)
+      r0_95.Button_Multi:UnBindEventOnClickedByObj(r0_95)
+      r0_95.Button_Solo:UnBindEventOnClickedByObj(r0_95)
+      r0_95.Button_DoubleMod:UnBindEventOnClickedByObj(r0_95)
+      r0_95.Button_Multi:BindForbidStateExecuteEvent(r0_95, function()
+        -- line: [2665, 2667] id: 99
+        UIManager(r0_95):ShowUITip("CommonToastMain", GText("UI_Event_ModDrop_Exhausted"))
+      end)
+      r0_95.Button_Solo:BindForbidStateExecuteEvent(r0_95, function()
+        -- line: [2668, 2670] id: 100
+        UIManager(r0_95):ShowUITip("CommonToastMain", GText("UI_Event_ModDrop_Exhausted"))
+      end)
+      r0_95.Button_DoubleMod:BindForbidStateExecuteEvent(r0_95, function()
+        -- line: [2671, 2673] id: 101
+        UIManager(r0_95):ShowUITip("CommonToastMain", GText("UI_Event_ModDrop_Exhausted"))
+      end)
+    end
   end
 end
-
-function M:IsMatching()
+function r6_0.IsMatching(r0_102)
+  -- line: [2678, 2680] id: 102
   return TeamController:GetModel():IsMatching()
 end
-
-function M:OpenTicketDialog(DungeonId)
-  local CommonDialog = UIManager(self):ShowCommonPopupUI(100123, {
-    DungeonId = self.CurSelectedDungeonId,
-    RightCallbackObj = self,
-    RightCallbackFunction = function(Obj, PackageData)
-      self:EnterTicketDungeon(PackageData.Content_1.TicketId)
+function r6_0.OpenTicketDialog(r0_103)
+  -- line: [2682, 2692] id: 103
+  local r1_103 = UIManager(r0_103):ShowCommonPopupUI(100123, {
+    DungeonId = r0_103.CurSelectedDungeonId,
+    RightCallbackObj = r0_103,
+    RightCallbackFunction = function(r0_104, r1_104)
+      -- line: [2686, 2688] id: 104
+      r0_103:EnterTicketDungeon(r1_104.Content_1.TicketId)
     end,
-    ForbiddenRightCallbackObj = self,
-    AutoFocus = true
-  }, self)
+    ForbiddenRightCallbackObj = r0_103,
+    AutoFocus = true,
+  }, r0_103)
 end
-
-function M:PlayTabSound()
-  AudioManager(self):PlayUISound(self, "event:/ui/common/click_level_03", nil, nil)
+function r6_0.PlayTabSound(r0_105)
+  -- line: [2694, 2696] id: 105
+  AudioManager(r0_105):PlayUISound(r0_105, "event:/ui/common/click_level_03", nil, nil)
 end
-
-function M:TryEnterDungeon(Avatar, DungeonId, DungeonNetMode, OtherCallback, TicketId)
-  if self:DoCheckCanEnterDungeon(Avatar, DungeonId) then
-    DebugPrint("gmy@M:TryEnterDungeon ", Avatar, DungeonId, DungeonNetMode, OtherCallback, TicketId)
-    if self.DefaultList:GetVisibility() == ESlateVisibility.Collapsed then
-      Avatar:EnterDungeon(DungeonId, DungeonNetMode, OtherCallback, TicketId)
+function r6_0.TryEnterDungeon(r0_106, r1_106, r2_106, r3_106, r4_106, r5_106)
+  -- line: [2698, 2711] id: 106
+  if r0_106:DoCheckCanEnterDungeon(r1_106, r2_106) then
+    r0_106:BlockAllUIInput(true)
+    DebugPrint("gmy@M:TryEnterDungeon ", r1_106, r2_106, r3_106, r4_106, r5_106)
+    if r0_106.DefaultList:GetVisibility() == ESlateVisibility.Collapsed then
+      r1_106:EnterDungeon(r2_106, r3_106, r4_106, r5_106)
     else
-      Avatar:EnterDungeon(DungeonId, DungeonNetMode, OtherCallback, TicketId, self.SquadId)
+      r1_106:EnterDungeon(r2_106, r3_106, r4_106, r5_106, r0_106.SquadId)
     end
   else
     TeamController:GetModel().bPressedSolo = false
     TeamController:GetModel().bPressedMulti = false
   end
 end
-
-function M.HandleEnterDungeonRetCode(RetCode, ...)
-  DebugPrint("gmy@M.EnterDungeonCallback RetCode", RetCode)
-  if RetCode == ErrorCode.RET_SUCCESS then
-    return true
+function r6_0.HandleEnterDungeonRetCode(r0_107, ...)
+  -- line: [2713, 2728] id: 107
+  DebugPrint("gmy@M.EnterDungeonCallback RetCode", r0_107)
+  local r1_107 = ErrorCode.RET_SUCCESS
+  if r0_107 == r1_107 then
+    r1_107 = true
+    return r1_107
   else
-    TeamController:DoWhenEnterDungeonCheckFailed(RetCode, ...)
+    ... = ... -- error: untaken top expr
+    if r1_107 then
+      TeamController:DoWhenEnterDungeonCheckFailed(r0_107, r1_107)
+    else
+      ErrorCode:Check(r0_107)
+    end
     EventManager:FireEvent(EventID.TeamMatchTimingEnd)
     return false
   end
 end
-
-function M:DoCheckCanEnterDungeon(Avatar, DungeonId)
-  if not TeamController:DoCheckCanEnterDungeon(DungeonId) then
+function r6_0.DoCheckCanEnterDungeon(r0_108, r1_108, r2_108)
+  -- line: [2730, 2737] id: 108
+  if not TeamController:DoCheckCanEnterDungeon(r2_108) then
     DebugPrint("gmy@M:DoCheckCanEnterDungeon bTeammateNotReady")
     return false
   end
   return true
 end
-
-function M:TeamMatchTimingStart(arg)
+function r6_0.TeamMatchTimingStart(r0_109, r1_109)
+  -- line: [2739, 2743] id: 109
   TeamController:GetModel().bPressedSolo = true
   TeamController:GetModel().bPressedMulti = true
-  self:RefreshBtnState(arg)
+  r0_109:RefreshBtnState(r1_109)
 end
-
-function M:TeamMatchTimingEnd(arg)
+function r6_0.TeamMatchTimingEnd(r0_110, r1_110)
+  -- line: [2745, 2749] id: 110
   TeamController:GetModel().bPressedSolo = false
   TeamController:GetModel().bPressedMulti = false
-  self:RefreshBtnState(arg)
+  r0_110:RefreshBtnState(r1_110)
 end
-
-function M:DisableEscOnDungeonLoading()
-  self.DisableEsc = true
+function r6_0.DisableEscOnDungeonLoading(r0_111)
+  -- line: [2752, 2754] id: 111
+  r0_111.DisableEsc = true
 end
-
-AssembleComponents(M)
-return M
+AssembleComponents(r6_0)
+return r6_0

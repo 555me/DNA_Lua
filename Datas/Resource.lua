@@ -209,11 +209,17 @@ local r0_0 = {
     "Shop_Fishing"
   },
   RT_60 = {
+    [1] = 12,
+  },
+  RT_61 = {
+    [1] = "UI_DO_NOT_PASS_CONDITION",
+  },
+  RT_62 = {
     "Text_Fish"
   },
 }
 local r2_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
-  -- line: [212, 212] id: 1
+  -- line: [218, 218] id: 1
   return r1_1
 end
 local r3_0 = "Resource"
@@ -1240,6 +1246,7 @@ r4_0[3015] = {
   Type = "Ordinary",
 }
 r4_0[3016] = {
+  AccessKey = r0_0.RT_4,
   DetailDes = "RESOURCE_DESC_3016",
   FunctionDes = "RESOURCE_FUNCTION_MODITEM",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Resourece_GeneralModLevelUpItem.T_Resourece_GeneralModLevelUpItem",
@@ -6745,6 +6752,8 @@ r4_0[41035] = {
   UseBPFunction = "Gesture",
 }
 r4_0[42001] = {
+  CombatConditionID = r0_0.RT_60,
+  CombatConditionToast = r0_0.RT_61,
   FunctionDes = "RESOURCE_FUNCTION_EXPLORE",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Icon_CentralSquare_Equip.T_Icon_CentralSquare_Equip",
   Rarity = 4,
@@ -6758,6 +6767,8 @@ r4_0[42001] = {
   UseParam = 42001,
 }
 r4_0[42002] = {
+  CombatConditionID = r0_0.RT_60,
+  CombatConditionToast = r0_0.RT_61,
   DetailDes = "RESOURCE_DESC_42002",
   FunctionDes = "RESOURCE_FUNCTION_EXPLORE",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Icon_CentralSquare_Equip.T_Icon_CentralSquare_Equip",
@@ -10189,7 +10200,7 @@ r4_0[4030006] = {
   Type = "Ordinary",
 }
 r4_0[5011010] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5011010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_Normal_1",
@@ -10205,7 +10216,7 @@ r4_0[5011010] = {
   Type = "Ordinary",
 }
 r4_0[5011011] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5011010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_Normal_1_1",
@@ -10221,7 +10232,7 @@ r4_0[5011011] = {
   Type = "Ordinary",
 }
 r4_0[5011020] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5011020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_Normal_2",
@@ -10237,7 +10248,7 @@ r4_0[5011020] = {
   Type = "Ordinary",
 }
 r4_0[5011021] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5011020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_Normal_2_1",
@@ -10253,7 +10264,7 @@ r4_0[5011021] = {
   Type = "Ordinary",
 }
 r4_0[5011030] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5011030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_Normal_3",
@@ -10269,7 +10280,7 @@ r4_0[5011030] = {
   Type = "Ordinary",
 }
 r4_0[5011031] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5011030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_Normal_3_1",
@@ -10285,7 +10296,7 @@ r4_0[5011031] = {
   Type = "Ordinary",
 }
 r4_0[5012010] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5012010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Normal_1",
@@ -10301,7 +10312,7 @@ r4_0[5012010] = {
   Type = "Ordinary",
 }
 r4_0[5012011] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5012010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Normal_1_1",
@@ -10317,7 +10328,7 @@ r4_0[5012011] = {
   Type = "Ordinary",
 }
 r4_0[5012020] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5012020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Normal_2",
@@ -10333,7 +10344,7 @@ r4_0[5012020] = {
   Type = "Ordinary",
 }
 r4_0[5012021] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5012020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Normal_2_1",
@@ -10349,7 +10360,7 @@ r4_0[5012021] = {
   Type = "Ordinary",
 }
 r4_0[5012030] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5012030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Normal_3",
@@ -10365,7 +10376,7 @@ r4_0[5012030] = {
   Type = "Ordinary",
 }
 r4_0[5012031] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5012030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_Normal_3_1",
@@ -10381,7 +10392,7 @@ r4_0[5012031] = {
   Type = "Ordinary",
 }
 r4_0[5013010] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5013010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_Normal_1",
@@ -10397,7 +10408,7 @@ r4_0[5013010] = {
   Type = "Ordinary",
 }
 r4_0[5013011] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5013010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_Normal_1_1",
@@ -10413,7 +10424,7 @@ r4_0[5013011] = {
   Type = "Ordinary",
 }
 r4_0[5013020] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5013020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_Normal_2",
@@ -10429,7 +10440,7 @@ r4_0[5013020] = {
   Type = "Ordinary",
 }
 r4_0[5013021] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5013020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_Normal_2_1",
@@ -10445,7 +10456,7 @@ r4_0[5013021] = {
   Type = "Ordinary",
 }
 r4_0[5013030] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5013030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_Normal_3",
@@ -10461,7 +10472,7 @@ r4_0[5013030] = {
   Type = "Ordinary",
 }
 r4_0[5013031] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5013030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_Normal_3_1",
@@ -10477,7 +10488,7 @@ r4_0[5013031] = {
   Type = "Ordinary",
 }
 r4_0[5021010] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5021010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_Village_1",
@@ -10493,7 +10504,7 @@ r4_0[5021010] = {
   Type = "Ordinary",
 }
 r4_0[5021011] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5021010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_Village_1_1",
@@ -10509,7 +10520,7 @@ r4_0[5021011] = {
   Type = "Ordinary",
 }
 r4_0[5021020] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5021020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_Village_2",
@@ -10525,7 +10536,7 @@ r4_0[5021020] = {
   Type = "Ordinary",
 }
 r4_0[5021021] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5021020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_Village_2_1",
@@ -10541,7 +10552,7 @@ r4_0[5021021] = {
   Type = "Ordinary",
 }
 r4_0[5021030] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5021030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_Village_4",
@@ -10557,7 +10568,7 @@ r4_0[5021030] = {
   Type = "Ordinary",
 }
 r4_0[5021031] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5021030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_Village_4_1",
@@ -10573,7 +10584,7 @@ r4_0[5021031] = {
   Type = "Ordinary",
 }
 r4_0[5021040] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5021040",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_Village_3",
@@ -10589,7 +10600,7 @@ r4_0[5021040] = {
   Type = "Ordinary",
 }
 r4_0[5021041] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5021040",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_Village_3_1",
@@ -10605,7 +10616,7 @@ r4_0[5021041] = {
   Type = "Ordinary",
 }
 r4_0[5021050] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5021050",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_Village_5",
@@ -10621,7 +10632,7 @@ r4_0[5021050] = {
   Type = "Ordinary",
 }
 r4_0[5021051] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5021050",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_Village_5_1",
@@ -10637,7 +10648,7 @@ r4_0[5021051] = {
   Type = "Ordinary",
 }
 r4_0[5022010] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5022010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_1",
@@ -10653,7 +10664,7 @@ r4_0[5022010] = {
   Type = "Ordinary",
 }
 r4_0[5022011] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5022010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_1_1",
@@ -10669,7 +10680,7 @@ r4_0[5022011] = {
   Type = "Ordinary",
 }
 r4_0[5022020] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5022020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_2",
@@ -10685,7 +10696,7 @@ r4_0[5022020] = {
   Type = "Ordinary",
 }
 r4_0[5022021] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5022020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_2_1",
@@ -10701,7 +10712,7 @@ r4_0[5022021] = {
   Type = "Ordinary",
 }
 r4_0[5022030] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5022030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_4",
@@ -10717,7 +10728,7 @@ r4_0[5022030] = {
   Type = "Ordinary",
 }
 r4_0[5022031] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5022030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_4_1",
@@ -10733,7 +10744,7 @@ r4_0[5022031] = {
   Type = "Ordinary",
 }
 r4_0[5022040] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5022040",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_3",
@@ -10749,7 +10760,7 @@ r4_0[5022040] = {
   Type = "Ordinary",
 }
 r4_0[5022041] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5022040",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_3_1",
@@ -10765,7 +10776,7 @@ r4_0[5022041] = {
   Type = "Ordinary",
 }
 r4_0[5022050] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5022050",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_5",
@@ -10781,7 +10792,7 @@ r4_0[5022050] = {
   Type = "Ordinary",
 }
 r4_0[5022051] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5022050",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_5_1",
@@ -10797,7 +10808,7 @@ r4_0[5022051] = {
   Type = "Ordinary",
 }
 r4_0[5023010] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5023010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_IceLake_3",
@@ -10813,7 +10824,7 @@ r4_0[5023010] = {
   Type = "Ordinary",
 }
 r4_0[5023011] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5023010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_IceLake_3_1",
@@ -10829,7 +10840,7 @@ r4_0[5023011] = {
   Type = "Ordinary",
 }
 r4_0[5023020] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5023020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_IceLake_2",
@@ -10845,7 +10856,7 @@ r4_0[5023020] = {
   Type = "Ordinary",
 }
 r4_0[5023021] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5023020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_IceLake_2_1",
@@ -10861,7 +10872,7 @@ r4_0[5023021] = {
   Type = "Ordinary",
 }
 r4_0[5023030] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5023030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_IceLake_4",
@@ -10877,7 +10888,7 @@ r4_0[5023030] = {
   Type = "Ordinary",
 }
 r4_0[5023031] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5023030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_IceLake_4_1",
@@ -10893,7 +10904,7 @@ r4_0[5023031] = {
   Type = "Ordinary",
 }
 r4_0[5023040] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5023040",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_IceLake_1",
@@ -10909,7 +10920,7 @@ r4_0[5023040] = {
   Type = "Ordinary",
 }
 r4_0[5023041] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5023040",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_IceLake_1_1",
@@ -10925,7 +10936,7 @@ r4_0[5023041] = {
   Type = "Ordinary",
 }
 r4_0[5023050] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5023050",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_IceLake_5",
@@ -10941,7 +10952,7 @@ r4_0[5023050] = {
   Type = "Ordinary",
 }
 r4_0[5023051] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5023050",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_IceLake_5_1",
@@ -10957,7 +10968,7 @@ r4_0[5023051] = {
   Type = "Ordinary",
 }
 r4_0[5024010] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5024010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_1",
@@ -10973,7 +10984,7 @@ r4_0[5024010] = {
   Type = "Ordinary",
 }
 r4_0[5024011] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5024010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_1_1",
@@ -10989,7 +11000,7 @@ r4_0[5024011] = {
   Type = "Ordinary",
 }
 r4_0[5024020] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5024020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_2",
@@ -11005,7 +11016,7 @@ r4_0[5024020] = {
   Type = "Ordinary",
 }
 r4_0[5024021] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5024020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_2_1",
@@ -11021,7 +11032,7 @@ r4_0[5024021] = {
   Type = "Ordinary",
 }
 r4_0[5024030] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5024030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_4",
@@ -11037,7 +11048,7 @@ r4_0[5024030] = {
   Type = "Ordinary",
 }
 r4_0[5024031] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5024030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_4_1",
@@ -11053,7 +11064,7 @@ r4_0[5024031] = {
   Type = "Ordinary",
 }
 r4_0[5024040] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5024040",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_3",
@@ -11069,7 +11080,7 @@ r4_0[5024040] = {
   Type = "Ordinary",
 }
 r4_0[5024041] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5024040",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_3_1",
@@ -11085,7 +11096,7 @@ r4_0[5024041] = {
   Type = "Ordinary",
 }
 r4_0[5024050] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5024050",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_5",
@@ -11101,7 +11112,7 @@ r4_0[5024050] = {
   Type = "Ordinary",
 }
 r4_0[5024051] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5024050",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_5_1",
@@ -11117,7 +11128,7 @@ r4_0[5024051] = {
   Type = "Ordinary",
 }
 r4_0[5025010] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5025010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_Sew_1",
@@ -11133,7 +11144,7 @@ r4_0[5025010] = {
   Type = "Ordinary",
 }
 r4_0[5025011] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5025010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_Sew_1_1",
@@ -11149,7 +11160,7 @@ r4_0[5025011] = {
   Type = "Ordinary",
 }
 r4_0[5025020] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5025020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_Sew_2",
@@ -11165,7 +11176,7 @@ r4_0[5025020] = {
   Type = "Ordinary",
 }
 r4_0[5025021] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5025020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_Sew_2_1",
@@ -11181,7 +11192,7 @@ r4_0[5025021] = {
   Type = "Ordinary",
 }
 r4_0[5025030] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5025030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_Sew_4",
@@ -11197,7 +11208,7 @@ r4_0[5025030] = {
   Type = "Ordinary",
 }
 r4_0[5025031] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5025030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_Sew_4_1",
@@ -11213,7 +11224,7 @@ r4_0[5025031] = {
   Type = "Ordinary",
 }
 r4_0[5025040] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5025040",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_Sew_3",
@@ -11229,7 +11240,7 @@ r4_0[5025040] = {
   Type = "Ordinary",
 }
 r4_0[5025041] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5025040",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_Sew_3_1",
@@ -11245,7 +11256,7 @@ r4_0[5025041] = {
   Type = "Ordinary",
 }
 r4_0[5025050] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5025050",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_Sew_5",
@@ -11261,7 +11272,7 @@ r4_0[5025050] = {
   Type = "Ordinary",
 }
 r4_0[5025051] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5025050",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_Sew_5_1",
@@ -11277,7 +11288,7 @@ r4_0[5025051] = {
   Type = "Ordinary",
 }
 r4_0[5026010] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5026010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_6",
@@ -11293,7 +11304,7 @@ r4_0[5026010] = {
   Type = "Ordinary",
 }
 r4_0[5026011] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5026010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_6_1",
@@ -11309,7 +11320,7 @@ r4_0[5026011] = {
   Type = "Ordinary",
 }
 r4_0[5026020] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5026020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_7",
@@ -11325,7 +11336,7 @@ r4_0[5026020] = {
   Type = "Ordinary",
 }
 r4_0[5026021] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5026020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_7_1",
@@ -11341,7 +11352,7 @@ r4_0[5026021] = {
   Type = "Ordinary",
 }
 r4_0[5026030] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5026030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_8",
@@ -11357,7 +11368,7 @@ r4_0[5026030] = {
   Type = "Ordinary",
 }
 r4_0[5026031] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5026030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_8_1",
@@ -11373,7 +11384,7 @@ r4_0[5026031] = {
   Type = "Ordinary",
 }
 r4_0[5026040] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5026040",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_9",
@@ -11389,7 +11400,7 @@ r4_0[5026040] = {
   Type = "Ordinary",
 }
 r4_0[5026041] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5026040",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_9_1",
@@ -11405,7 +11416,7 @@ r4_0[5026041] = {
   Type = "Ordinary",
 }
 r4_0[5026050] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5026050",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_10",
@@ -11421,7 +11432,7 @@ r4_0[5026050] = {
   Type = "Ordinary",
 }
 r4_0[5026051] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5026050",
   FunctionDes = "RESOURCE_FUNCTION_FISH_1",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_Sea_East_10_1",
@@ -11437,7 +11448,7 @@ r4_0[5026051] = {
   Type = "Ordinary",
 }
 r4_0[5027010] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5027010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_6",
@@ -11453,7 +11464,7 @@ r4_0[5027010] = {
   Type = "Ordinary",
 }
 r4_0[5027011] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5027010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_6_1",
@@ -11469,7 +11480,7 @@ r4_0[5027011] = {
   Type = "Ordinary",
 }
 r4_0[5027020] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5027020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_7",
@@ -11485,7 +11496,7 @@ r4_0[5027020] = {
   Type = "Ordinary",
 }
 r4_0[5027021] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5027020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_7_1",
@@ -11501,7 +11512,7 @@ r4_0[5027021] = {
   Type = "Ordinary",
 }
 r4_0[5027030] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5027030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_8",
@@ -11517,7 +11528,7 @@ r4_0[5027030] = {
   Type = "Ordinary",
 }
 r4_0[5027031] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5027030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_8_1",
@@ -11533,7 +11544,7 @@ r4_0[5027031] = {
   Type = "Ordinary",
 }
 r4_0[5027040] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5027040",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_9",
@@ -11549,7 +11560,7 @@ r4_0[5027040] = {
   Type = "Ordinary",
 }
 r4_0[5027041] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5027040",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_9_1",
@@ -11565,7 +11576,7 @@ r4_0[5027041] = {
   Type = "Ordinary",
 }
 r4_0[5027050] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5027050",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_10",
@@ -11581,7 +11592,7 @@ r4_0[5027050] = {
   Type = "Ordinary",
 }
 r4_0[5027051] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5027050",
   FunctionDes = "RESOURCE_FUNCTION_FISH_2",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_FreshWater_East_10_1",
@@ -11597,7 +11608,7 @@ r4_0[5027051] = {
   Type = "Ordinary",
 }
 r4_0[5028010] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5028010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_East_1",
@@ -11613,7 +11624,7 @@ r4_0[5028010] = {
   Type = "Ordinary",
 }
 r4_0[5028011] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5028010",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_East_1_1",
@@ -11629,7 +11640,7 @@ r4_0[5028011] = {
   Type = "Ordinary",
 }
 r4_0[5028020] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5028020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_East_2",
@@ -11645,7 +11656,7 @@ r4_0[5028020] = {
   Type = "Ordinary",
 }
 r4_0[5028021] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5028020",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_East_2_1",
@@ -11661,7 +11672,7 @@ r4_0[5028021] = {
   Type = "Ordinary",
 }
 r4_0[5028030] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5028030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_East_3",
@@ -11677,7 +11688,7 @@ r4_0[5028030] = {
   Type = "Ordinary",
 }
 r4_0[5028031] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5028030",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_East_3_1",
@@ -11693,7 +11704,7 @@ r4_0[5028031] = {
   Type = "Ordinary",
 }
 r4_0[5028040] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5028040",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_East_4",
@@ -11709,7 +11720,7 @@ r4_0[5028040] = {
   Type = "Ordinary",
 }
 r4_0[5028041] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5028040",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_East_4_1",
@@ -11725,7 +11736,7 @@ r4_0[5028041] = {
   Type = "Ordinary",
 }
 r4_0[5028050] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5028050",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_East_5",
@@ -11741,7 +11752,7 @@ r4_0[5028050] = {
   Type = "Ordinary",
 }
 r4_0[5028051] = {
-  AccessKey = r0_0.RT_60,
+  AccessKey = r0_0.RT_62,
   DetailDes = "RESOURCE_DESC_5028050",
   FunctionDes = "RESOURCE_FUNCTION_FISH_3",
   Icon = "/Game/UI/Texture/Dynamic/Atlas/AngLingFish/T_Fish_DirtyWater_East_5_1",

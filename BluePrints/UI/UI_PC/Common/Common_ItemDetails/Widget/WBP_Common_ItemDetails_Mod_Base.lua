@@ -1,149 +1,156 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\UI_PC\Common\Common_ItemDetails\Widget\WBP_Common_ItemDetails_Mod_Base.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local CommonUtils = require("Utils.CommonUtils")
-local ArmoryUtils = require("BluePrints.UI.WBP.Armory.ArmoryUtils")
-local ModModel = ModController:GetModel()
-local M = Class("BluePrints.UI.BP_UIState_C")
-
-function M:InitItemInfo(ItemType, ItemId, UnitId)
-  self.EffectDetails:ClearChildren()
-  local ModInfo = DataMgr.Mod[ItemId]
-  local ModName = GText(ModInfo.TypeName) .. GText(ModInfo.Name)
+local r0_0 = require("Utils.CommonUtils")
+local r1_0 = require("BluePrints.UI.WBP.Armory.ArmoryUtils")
+local r2_0 = ModController:GetModel()
+local r3_0 = Class("BluePrints.UI.BP_UIState_C")
+function r3_0.InitItemInfo(r0_1, r1_1, r2_1, r3_1)
+  -- line: [18, 126] id: 1
+  r0_1.EffectDetails:ClearChildren()
+  local r4_1 = DataMgr.Mod[r2_1]
+  local r5_1 = GText(r4_1.TypeName) .. GText(r4_1.Name)
   if ModCommon.DebugMode then
-    ModName = ModName .. "_" .. ItemId
+    r5_1 = r5_1 .. "_" .. r2_1
   end
-  self.ParentWidget.Text_ItemName:SetText(ModName)
-  if ModInfo and ModInfo.FunctionDes then
-    self.Text_Describe:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-    self.Text_Describe:SetText(GText(ModInfo.FunctionDes))
+  r0_1.ParentWidget.Text_ItemName:SetText(r5_1)
+  if r4_1 and r4_1.FunctionDes then
+    r0_1.Text_Describe:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    r0_1.Text_Describe:SetText(GText(r4_1.FunctionDes))
   else
-    self.Text_Describe:SetVisibility(ESlateVisibility.Collapsed)
+    r0_1.Text_Describe:SetVisibility(ESlateVisibility.Collapsed)
   end
-  self.Text_Polarity01:SetText(GText("UI_Tips_Polarity_Cost"))
-  if ModInfo.Polarity ~= CommonConst.NonePolarity then
-    self.Text_Polarity:SetVisibility(UIConst.VisibilityOp.Visible)
-    local PolarityText = ModModel:GetPolarityText(ModInfo.Polarity)
-    self.Text_Polarity:SetText(PolarityText)
+  r0_1.Text_Polarity01:SetText(GText("UI_Tips_Polarity_Cost"))
+  if r4_1.Polarity ~= CommonConst.NonePolarity then
+    r0_1.Text_Polarity:SetVisibility(UIConst.VisibilityOp.Visible)
+    r0_1.Text_Polarity:SetText(r2_0:GetPolarityText(r4_1.Polarity))
   else
-    self.Text_Polarity:SetVisibility(UIConst.VisibilityOp.Collapsed)
+    r0_1.Text_Polarity:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
-  self.Text_MaxLevel:SetText(ModInfo.MaxLevel)
-  local ModLevel, ModCost, ModServerData
-  local ModCardLvel = 0
-  local Count = 0
-  local PlayerAvatar = ModController:GetAvatar()
-  if PlayerAvatar and ItemId and PlayerAvatar.GetModCount2ModId then
-    Count = PlayerAvatar:GetModCount2ModId(ItemId)
+  r0_1.Text_MaxLevel:SetText(r4_1.MaxLevel)
+  local r6_1 = nil
+  local r7_1 = nil
+  local r8_1 = nil
+  local r9_1 = 0
+  local r10_1 = 0
+  local r11_1 = ModController:GetAvatar()
+  if r11_1 and r2_1 and r11_1.GetModCount2ModId then
+    r10_1 = r11_1:GetModCount2ModId(r2_1)
   end
-  if UnitId then
-    if type(UnitId) == "string" and CommonUtils.IsObjIdStr(UnitId) then
-      UnitId = CommonUtils.Str2ObjId(UnitId)
+  if r3_1 then
+    if type(r3_1) == "string" and r0_0.IsObjIdStr(r3_1) then
+      r3_1 = r0_0.Str2ObjId(r3_1)
     end
-    ModServerData = PlayerAvatar.Mods[UnitId]
-    assert(ModServerData)
-    if ModModel:IsBugMod(UnitId) then
-      if self.ParentWidget then
-        self.ParentWidget.ParentWidget:CloseItemDetailsWidget()
+    r8_1 = r11_1.Mods[r3_1]
+    if not r8_1 then
+      DebugPrint(WarningTag, "Wbp_common_itemdetails_mod_base,,InitItemInfo , ModServerdata is nil, unitId:", r3_1)
+      return 
+    end
+    if r2_0:IsBugMod(r3_1) then
+      if r0_1.ParentWidget then
+        r0_1.ParentWidget.ParentWidget:CloseItemDetailsWidget()
       end
-      return
+      return 
     end
-    ModLevel = ModServerData.Level
-    ModCost = ModServerData.CostMod
-    ModCardLvel = ModServerData.CurrentModCardLevel or 0
+    r6_1 = r8_1.Level
+    r7_1 = r8_1.CostMod
+    if r8_1.CurrentModCardLevel then
+      r9_1 = 0
+    end
   else
-    self.ParentWidget:SetConflictLine(true, GText("UI_ModTips_MaxLvPreview"), 2)
-    ModLevel = ModInfo.MaxLevel
-    ModCost = ModInfo.Cost + ModInfo.MaxLevel * ModInfo.CostChange
+    r0_1.ParentWidget:SetConflictLine(true, GText("UI_ModTips_MaxLvPreview"), 2)
+    r6_1 = r4_1.MaxLevel
+    r7_1 = r4_1.Cost + r4_1.MaxLevel * r4_1.CostChange
   end
-  if self.ParentWidget.Content.Cost then
-    ModCost = self.ParentWidget.Content.Cost
+  if r0_1.ParentWidget.Content.Cost then
+    r7_1 = r0_1.ParentWidget.Content.Cost
   end
-  self.Text_Level:SetText(ModLevel)
-  if ModLevel >= ModInfo.MaxLevel then
-    local MatPath = "/Game/UI/UI_PC/Common/UIVX/Material/MI_Word_Wavenew.MI_Word_Wavenew"
-    UResourceLibrary.LoadObjectAsync(self, MatPath, {
-      self,
-      function(self, Mat)
-        self.Text_Level.Font.FontMaterial = Mat
-        self.Text_Level:SetColorAndOpacity(UUIFunctionLibrary.StringToSlateColor("FFFFFFFF"))
-        self.Text_Plus.Font.FontMaterial = Mat
-        self.Text_Plus:SetColorAndOpacity(UUIFunctionLibrary.StringToSlateColor("FFFFFFFF"))
+  r0_1.Text_Level:SetText(r6_1)
+  if r4_1.MaxLevel <= r6_1 then
+    UResourceLibrary.LoadObjectAsync(r0_1, "/Game/UI/UI_PC/Common/UIVX/Material/MI_Word_Wavenew.MI_Word_Wavenew", {
+      r0_1,
+      function(r0_2, r1_2)
+        -- line: [88, 93] id: 2
+        r0_2.Text_Level.Font.FontMaterial = r1_2
+        r0_2.Text_Level:SetColorAndOpacity(UUIFunctionLibrary.StringToSlateColor("FFFFFFFF"))
+        r0_2.Text_Plus.Font.FontMaterial = r1_2
+        r0_2.Text_Plus:SetColorAndOpacity(UUIFunctionLibrary.StringToSlateColor("FFFFFFFF"))
       end
     })
   end
-  self.Text_Polarity02:SetText(ModCost)
-  self:UpdataEffectDetails(ModInfo, ModLevel, ModServerData)
-  self.ParentWidget.Text_Hold02:SetText(Count)
-  if self.Text_Tag then
-    self.Text_Tag:SetVisibility(UIConst.VisibilityOp.Visible)
-    local AppTypeTexts = {}
-    for i, TagText in ipairs(DataMgr.ModTag[ModInfo.ApplicationType].ModTagText) do
-      table.insert(AppTypeTexts, GText(TagText))
+  r0_1.Text_Polarity02:SetText(r7_1)
+  r0_1:UpdataEffectDetails(r4_1, r6_1, r8_1)
+  r0_1.ParentWidget.Text_Hold02:SetText(r10_1)
+  if r0_1.Text_Tag then
+    r0_1.Text_Tag:SetVisibility(UIConst.VisibilityOp.Visible)
+    local r12_1 = {}
+    for r17_1, r18_1 in ipairs(DataMgr.ModTag[r4_1.ApplicationType].ModTagText) do
+      table.insert(r12_1, GText(r18_1))
     end
-    local AppTypeText = GText("UI_Tips_ModApplicationType") .. table.concat(AppTypeTexts, ", ")
-    self.Text_Tag:SetText(AppTypeText)
+    -- close: r13_1
+    r0_1.Text_Tag:SetText(GText("UI_Tips_ModApplicationType") .. table.concat(r12_1, ", "))
   end
-  if ModServerData and ModServerData:HasCardLevel() then
-    self:ShowModStarLevel(ModServerData)
+  if r8_1 and r8_1:HasCardLevel() then
+    r0_1:ShowModStarLevel(r8_1)
   else
-    self.ParentWidget.List_ModStar:SetVisibility(UIConst.VisibilityOp.Collapsed)
+    r0_1.ParentWidget.List_ModStar:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
-  if self.ParentWidget.Img_Aura then
-    if ModInfo.ApplySlot and 1 == #ModInfo.ApplySlot and 9 == ModInfo.ApplySlot[1] then
-      self.ParentWidget.Img_Aura:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  if r0_1.ParentWidget.Img_Aura then
+    if r4_1.ApplySlot and #r4_1.ApplySlot == 1 and r4_1.ApplySlot[1] == 9 then
+      r0_1.ParentWidget.Img_Aura:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
     else
-      self.ParentWidget.Img_Aura:SetVisibility(ESlateVisibility.Collapsed)
+      r0_1.ParentWidget.Img_Aura:SetVisibility(ESlateVisibility.Collapsed)
     end
   end
-  self:OnInitItemInfo(ModInfo, ModServerData)
+  r0_1:OnInitItemInfo(r4_1, r8_1)
 end
-
-function M:ShowModStarLevel(Target)
-  self.ParentWidget.List_ModStar:SetVisibility(UIConst.VisibilityOp.Visible)
-  self.ParentWidget.List_ModStar:ClearListItems()
-  for i = 1, Target.ModCardLevelMax do
-    local StarContent = NewObject(UIUtils.GetCommonItemContentClass())
-    StarContent.Idx = i
-    StarContent.bActivate = i <= Target.CurrentModCardLevel
-    StarContent.bGolden = false
-    self.ParentWidget.List_ModStar:AddItem(StarContent)
+function r3_0.ShowModStarLevel(r0_3, r1_3)
+  -- line: [128, 139] id: 3
+  r0_3.ParentWidget.List_ModStar:SetVisibility(UIConst.VisibilityOp.Visible)
+  r0_3.ParentWidget.List_ModStar:ClearListItems()
+  for r5_3 = 1, r1_3.ModCardLevelMax, 1 do
+    local r6_3 = NewObject(UIUtils.GetCommonItemContentClass())
+    r6_3.Idx = r5_3
+    r6_3.bActivate = r5_3 <= r1_3.CurrentModCardLevel
+    r6_3.bGolden = false
+    r0_3.ParentWidget.List_ModStar:AddItem(r6_3)
   end
-  self.ParentWidget.List_ModStar:RegenerateAllEntries()
+  r0_3.ParentWidget.List_ModStar:RegenerateAllEntries()
 end
-
-function M:OnInitItemInfo(ModInfo, ModServerData)
+function r3_0.OnInitItemInfo(r0_4, r1_4, r2_4)
+  -- line: [142, 143] id: 4
 end
-
-function M:UpdataEffectDetails(ModDataInfo, ModLevel, ModServerData)
-  local ModAttrs = ModDataInfo.AddAttrs
-  if ModAttrs then
-    for _, ModAttr in ipairs(ModAttrs) do
-      local AttrConfig = DataMgr.AttrConfig[ModAttr.AttrName]
-      if not AttrConfig then
-      else
-        local _, ValueStr = ArmoryUtils:GenModAttrData(ModAttr, ModLevel, AttrConfig, ModDataInfo.Id)
-        local ModAttrText = GText(AttrConfig.Name) .. ValueStr
-        local EffectItem = UIManager(self):_CreateWidgetNew("CommonItemDetailsEffect")
-        EffectItem.Text_Effect:SetText(ModAttrText)
-        EffectItem.Switch_Type:SetActiveWidgetIndex(0)
-        self.EffectDetails:AddChild(EffectItem)
+function r3_0.UpdataEffectDetails(r0_5, r1_5, r2_5, r3_5)
+  -- line: [145, 175] id: 5
+  local r4_5 = r1_5.AddAttrs
+  if r4_5 then
+    for r9_5, r10_5 in ipairs(r4_5) do
+      local r11_5 = DataMgr.AttrConfig[r10_5.AttrName]
+      if r11_5 then
+        local r12_5, r13_5 = r1_0:GenModAttrData(r10_5, r2_5, r11_5, r1_5.Id)
+        local r14_5 = GText(r11_5.Name)
+        local r15_5 = UIManager(r0_5):_CreateWidgetNew("CommonItemDetailsEffect")
+        r15_5.Text_Effect:SetText(r14_5 .. r13_5)
+        r15_5.Switch_Type:SetActiveWidgetIndex(0)
+        r0_5.EffectDetails:AddChild(r15_5)
       end
     end
+    -- close: r5_5
   end
-  if ModServerData and ModServerData.AddCharModCost then
-    local ValueStr = "+" .. ModServerData:CalcExtralCharVolume()
-    local ModAttrText = GText("UI_Mod_CostIncrease") .. ValueStr
-    local EffectItem = UIManager(self):_CreateWidgetNew("CommonItemDetailsEffect")
-    EffectItem.Text_Effect:SetText(ModAttrText)
-    EffectItem.Switch_Type:SetActiveWidgetIndex(0)
-    self.EffectDetails:AddChild(EffectItem)
+  if r3_5 and r3_5.AddCharModCost then
+    local r6_5 = GText("UI_Mod_CostIncrease")
+    local r7_5 = UIManager(r0_5):_CreateWidgetNew("CommonItemDetailsEffect")
+    r7_5.Text_Effect:SetText(r6_5 .. "+" .. r3_5:CalcExtralCharVolume())
+    r7_5.Switch_Type:SetActiveWidgetIndex(0)
+    r0_5.EffectDetails:AddChild(r7_5)
   end
-  if ModDataInfo.PassiveEffectsDesc then
-    local ModDescText = ArmoryUtils:GenModPassiveEffectDesc(ModDataInfo, ModLevel)
-    local EffectItem = UIManager(self):_CreateWidgetNew("CommonItemDetailsEffect")
-    EffectItem.Text_Effect01:SetText(GText("UI_MOD_Effect") .. ModDescText)
-    EffectItem.Switch_Type:SetActiveWidgetIndex(1)
-    self.EffectDetails:AddChild(EffectItem)
+  if r1_5.PassiveEffectsDesc then
+    local r5_5 = r1_0:GenModPassiveEffectDesc(r1_5, r2_5)
+    local r6_5 = UIManager(r0_5):_CreateWidgetNew("CommonItemDetailsEffect")
+    r6_5.Text_Effect01:SetText(GText("UI_MOD_Effect") .. r5_5)
+    r6_5.Switch_Type:SetActiveWidgetIndex(1)
+    r0_5.EffectDetails:AddChild(r6_5)
   end
 end
-
-return M
+return r3_0

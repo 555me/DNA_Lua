@@ -264,59 +264,6 @@ r4_0[1103] = {
     ItemNum = r0_0.RT_15,
   },
 }
-r4_0[1104] = {
-  [1] = {
-    CharBreakLevel = 20,
-    CharBreakNum = 1,
-    CharId = 1104,
-    CollectRewardExp = 50,
-    ItemId = r0_0.RT_1,
-    ItemNum = r0_0.RT_2,
-  },
-  [2] = {
-    CharBreakLevel = 30,
-    CharBreakNum = 2,
-    CharId = 1104,
-    CollectReward = 61001,
-    CollectRewardExp = 100,
-    ItemId = r0_0.RT_3,
-    ItemNum = r0_0.RT_4,
-  },
-  [3] = {
-    CharBreakLevel = 40,
-    CharBreakNum = 3,
-    CharId = 1104,
-    CollectRewardExp = 200,
-    ItemId = r0_0.RT_3,
-    ItemNum = r0_0.RT_5,
-  },
-  [4] = {
-    CharBreakLevel = 50,
-    CharBreakNum = 4,
-    CharId = 1104,
-    CollectReward = 61002,
-    CollectRewardExp = 400,
-    ItemId = r0_0.RT_6,
-    ItemNum = r0_0.RT_7,
-  },
-  [5] = {
-    CharBreakLevel = 60,
-    CharBreakNum = 5,
-    CharId = 1104,
-    CollectRewardExp = 800,
-    ItemId = r0_0.RT_6,
-    ItemNum = r0_0.RT_8,
-  },
-  [6] = {
-    CharBreakLevel = 70,
-    CharBreakNum = 6,
-    CharId = 1104,
-    CollectReward = 61003,
-    CollectRewardExp = 1600,
-    ItemId = r0_0.RT_6,
-    ItemNum = r0_0.RT_9,
-  },
-}
 r4_0[1501] = {
   [1] = {
     CharBreakLevel = 20,

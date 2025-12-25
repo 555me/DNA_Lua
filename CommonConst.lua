@@ -1482,6 +1482,7 @@ r0_0.MonitorCheatType = {
   Mouse = 8,
   Keyboard = 9,
   Raid = 11,
+  DungeonReward = 12,
 }
 r0_0.MonitorReportPeriod = 1
 r0_0.MonitorCheatPeriod = {

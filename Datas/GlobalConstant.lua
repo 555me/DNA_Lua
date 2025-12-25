@@ -405,6 +405,10 @@ end)("GlobalConstant", {
     ConstantName = "ExterminateGuideInterval",
     ConstantValue = 5,
   },
+  FORBIDDEN_INVALID_REWARD_IN_DUNGEON = {
+    ConstantName = "FORBIDDEN_INVALID_REWARD_IN_DUNGEON",
+    ConstantValue = 0,
+  },
   FishingGameInitialProgress = {
     ConstantName = "FishingGameInitialProgress",
     ConstantValue = 0.2,

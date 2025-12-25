@@ -1,1456 +1,1689 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/Utils\UIUtils.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local EMCache = require("EMCache.EMCache")
-local StrLib = require("BluePrints.Common.DataStructure")
-local ArmoryUtils = require("BluePrints.UI.WBP.Armory.ArmoryUtils")
-local TimeUtils = require("Utils.TimeUtils")
-local RewardBox = require("BluePrints.Client.CustomTypes.SimpleRewardBox")
-local SkillUtils = require("Utils.SkillUtils")
-local Utils = require("Utils")
-local MiscUtils = require("Utils.MiscUtils")
-local BagCommon = require("BluePrints.UI.WBP.Bag.BagCommon")
-local Deque = StrLib.Deque
-local UIUtils = Class()
-UIUtils._components = {
+local r0_0 = require("EMCache.EMCache")
+local r1_0 = require("BluePrints.Common.DataStructure")
+local r2_0 = require("BluePrints.UI.WBP.Armory.ArmoryUtils")
+local r3_0 = require("Utils.TimeUtils")
+local r4_0 = require("BluePrints.Client.CustomTypes.SimpleRewardBox")
+local r5_0 = require("Utils.SkillUtils")
+local r6_0 = require("Utils")
+local r7_0 = require("Utils.MiscUtils")
+local r8_0 = require("BluePrints.UI.WBP.Bag.BagCommon")
+local r9_0 = r1_0.Deque
+local r10_0 = Class()
+r10_0._components = {
   "BluePrints.Combat.Components.UIHitFeedbackComponent"
 }
-UIUtils.Handled = UE4.UWidgetBlueprintLibrary.Handled()
-UIUtils.Handle = UIUtils.Handled
-UIUtils.Unhandled = UE4.UWidgetBlueprintLibrary.Unhandled()
-
-function UIUtils.ShowGotItemTipsUI(TableTypeName, ItemId, ItemCount, AdditionalParam)
-  local ItemData = DataMgr[TableTypeName][ItemId]
-  if not ItemData or not ItemData.Icon then
-    return
+r10_0.Handled = UE4.UWidgetBlueprintLibrary.Handled()
+r10_0.Handle = r10_0.Handled
+r10_0.Unhandled = UE4.UWidgetBlueprintLibrary.Unhandled()
+function r10_0.ShowGotItemTipsUI(r0_1, r1_1, r2_1, r3_1)
+  -- line: [24, 109] id: 1
+  local r4_1 = DataMgr[r0_1][r1_1]
+  if not r4_1 or not r4_1.Icon then
+    return 
   end
-  local GameInstance = GWorld.GameInstance
-  local Player = UGameplayStatics.GetPlayerCharacter(GameInstance, 0)
-  local UIManager = GameInstance:GetGameUIManager()
-  local PickUpCache = EMCache:Get("PickUp", true) or {}
-  local IsSpecialReward = false
-  if "Pet" == TableTypeName then
-    IsSpecialReward = true
+  local r5_1 = GWorld.GameInstance
+  local r6_1 = UGameplayStatics.GetPlayerCharacter(r5_1, 0)
+  local r7_1 = r5_1:GetGameUIManager()
+  local r8_1 = r0_0:Get("PickUp", true) and {}
+  local r9_1 = false
+  if r0_1 == "Pet" then
+    r9_1 = true
   end
-  if ("Resource" == TableTypeName or "Mod" == TableTypeName) and ItemData.Type ~= "Ordinary" then
-    IsSpecialReward = true
+  if (r0_1 == "Resource" or r0_1 == "Mod") and r4_1.Type ~= "Ordinary" then
+    r9_1 = true
   end
-  if ItemData.UseEffectType ~= "GetResource" and ItemData.UseEffectType ~= "GetWeapon" and ItemData.UseEffectType ~= "GetMod" or "Pet" == TableTypeName then
-    local BattleMain = UIManager:GetUIObj("BattleMain")
-    if not BattleMain then
+  if r4_1.UseEffectType ~= "GetResource" and r4_1.UseEffectType ~= "GetWeapon" and r4_1.UseEffectType ~= "GetMod" or r0_1 == "Pet" then
+    local r10_1 = r7_1:GetUIObj("BattleMain")
+    if not r10_1 then
       DebugPrint("ZDX BattleMain is nil")
-      return
+      return 
     end
-    local PickUpUI
-    local bNew = nil == PickUpCache[TableTypeName] or nil == PickUpCache[TableTypeName][ItemId]
-    if bNew or IsSpecialReward then
-      if BattleMain.Pos_SpecialDrops and not BattleMain.Pos_SpecialDrops:HasAnyChildren() then
-        PickUpUI = UIManager:_CreateWidgetNew("BattleSpecialDrops")
-        BattleMain.Pos_SpecialDrops:AddChildToOverlay(PickUpUI)
-      elseif BattleMain.Pos_Drops then
-        PickUpUI = BattleMain.Pos_SpecialDrops:GetChildAt(0)
+    local r11_1 = nil
+    local r12_1 = r8_1[r0_1]
+    if r12_1 ~= nil then
+      r12_1 = r8_1[r0_1][r1_1] == nil
+    else
+      goto label_68	-- block#20 is visited secondly
+    end
+    if r12_1 or r9_1 then
+      if r10_1.Pos_SpecialDrops and not r10_1.Pos_SpecialDrops:HasAnyChildren() then
+        r11_1 = r7_1:_CreateWidgetNew("BattleSpecialDrops")
+        r10_1.Pos_SpecialDrops:AddChildToOverlay(r11_1)
+      elseif r10_1.Pos_Drops then
+        r11_1 = r10_1.Pos_SpecialDrops:GetChildAt(0)
       end
-      if PickUpUI then
-        if PickUpUI.bShowing and "Pet" ~= PickUpUI.ItemType and PickUpUI.ItemType == TableTypeName and PickUpUI.ItemId == ItemId then
-          PickUpUI.ItemCount = PickUpUI.ItemCount + ItemCount
-          PickUpUI.Text_Num:SetText(PickUpUI.ItemCount)
-          return
+      if r11_1 then
+        if r11_1.bShowing and r11_1.ItemType ~= "Pet" and r11_1.ItemType == r0_1 and r11_1.ItemId == r1_1 then
+          r11_1.ItemCount = r11_1.ItemCount + r2_1
+          r11_1.Text_Num:SetText(r11_1.ItemCount)
+          return 
         end
-        if PickUpUI.ItemDataInfoDict[TableTypeName] and PickUpUI.ItemDataInfoDict[TableTypeName][ItemId] and not PickUpUI.ItemDataInfoDict[TableTypeName][ItemId].IsNew then
-          PickUpUI.ItemDataInfoDict[TableTypeName][ItemId].ItemCount = PickUpUI.ItemDataInfoDict[TableTypeName][ItemId].ItemCount + ItemCount
+        if r11_1.ItemDataInfoDict[r0_1] and r11_1.ItemDataInfoDict[r0_1][r1_1] and not r11_1.ItemDataInfoDict[r0_1][r1_1].IsNew then
+          r11_1.ItemDataInfoDict[r0_1][r1_1].ItemCount = r11_1.ItemDataInfoDict[r0_1][r1_1].ItemCount + r2_1
         else
-          PickUpUI.UITopTipsList:PushBack({ItemId = ItemId, ItemType = TableTypeName})
-          if not PickUpUI.ItemDataInfoDict[TableTypeName] then
-            PickUpUI.ItemDataInfoDict[TableTypeName] = {}
+          r11_1.UITopTipsList:PushBack({
+            ItemId = r1_1,
+            ItemType = r0_1,
+          })
+          if not r11_1.ItemDataInfoDict[r0_1] then
+            r11_1.ItemDataInfoDict[r0_1] = {}
           end
-          if not PickUpUI.ItemDataInfoDict[TableTypeName][ItemId] then
-            PickUpUI.ItemDataInfoDict[TableTypeName][ItemId] = {
-              ItemId = ItemId,
-              ItemType = TableTypeName,
-              ItemCount = ItemCount,
-              IsNew = bNew,
-              AdditionalParam = AdditionalParam
+          if not r11_1.ItemDataInfoDict[r0_1][r1_1] then
+            r11_1.ItemDataInfoDict[r0_1][r1_1] = {
+              ItemId = r1_1,
+              ItemType = r0_1,
+              ItemCount = r2_1,
+              IsNew = r12_1,
+              AdditionalParam = r3_1,
             }
           end
         end
       end
-      if nil == PickUpCache[TableTypeName] then
-        PickUpCache[TableTypeName] = {}
+      if r8_1[r0_1] == nil then
+        r8_1[r0_1] = {}
       end
-      if nil == PickUpCache[TableTypeName][ItemId] then
-        PickUpCache[TableTypeName][ItemId] = 1
-        EMCache:Set("PickUp", PickUpCache, true)
+      if r8_1[r0_1][r1_1] == nil then
+        r8_1[r0_1][r1_1] = 1
+        r0_0:Set("PickUp", r8_1, true)
       end
-      PickUpUI:PopSpecialDropQueue()
+      r11_1:PopSpecialDropQueue()
     end
-    if not IsSpecialReward and not bNew then
-      BattleMain:SetSubSystemVisibility("Pos_Drops", ESlateVisibility.SelfHitTestInvisible)
-      if BattleMain.Pos_Drops and not BattleMain.Pos_Drops:HasAnyChildren() then
-        PickUpUI = UIManager:_CreateWidgetNew("BattleNormalDrops")
-        BattleMain.Pos_Drops:AddChildToOverlay(PickUpUI)
-      elseif BattleMain.Pos_Drops then
-        PickUpUI = BattleMain.Pos_Drops:GetChildAt(0)
+    if not r9_1 and not r12_1 then
+      r10_1:SetSubSystemVisibility("Pos_Drops", ESlateVisibility.SelfHitTestInvisible)
+      if r10_1.Pos_Drops and not r10_1.Pos_Drops:HasAnyChildren() then
+        r11_1 = r7_1:_CreateWidgetNew("BattleNormalDrops")
+        r10_1.Pos_Drops:AddChildToOverlay(r11_1)
+      elseif r10_1.Pos_Drops then
+        r11_1 = r10_1.Pos_Drops:GetChildAt(0)
       end
-      if PickUpUI then
-        table.insert(PickUpUI.TickWaitingList, {
-          ItemId = ItemId,
-          ItemCount = ItemCount,
-          TableName = TableTypeName
+      if r11_1 then
+        table.insert(r11_1.TickWaitingList, {
+          ItemId = r1_1,
+          ItemCount = r2_1,
+          TableName = r0_1,
         })
-        PickUpUI:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+        r11_1:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
       end
     end
   end
 end
-
-function UIUtils.ShowHudReward(TitleText, RewardInfoList)
-  local GameInstance = GWorld.GameInstance
-  local UIManager = GameInstance:GetGameUIManager()
-  local RewardUI = UIManager:LoadUINew("CommonHudReward", TitleText, RewardInfoList)
-  RewardUI:InitRewardInfo(TitleText, RewardInfoList)
-  return RewardUI
+function r10_0.ShowHudReward(r0_2, r1_2)
+  -- line: [119, 179] id: 2
+  local r4_2 = GWorld.GameInstance:GetGameUIManager():LoadUINew("CommonHudReward", r0_2, r1_2)
+  r4_2:InitRewardInfo(r0_2, r1_2)
+  return r4_2
 end
-
-function UIUtils.ShowHudRewardConvert(TitleText, Rewards)
-  local List = {}
-  for Types, Table in pairs(Rewards) do
-    local Type = Types
-    Type = string.match(Type, "^(.*)s$") or Type
-    for Id, v in pairs(Table) do
-      local Count = 0
-      for SourceType, Num in pairs(v) do
-        Count = Count + Num
+function r10_0.ShowHudRewardConvert(r0_3, r1_3)
+  -- line: [182, 201] id: 3
+  local r2_3 = {}
+  for r7_3, r8_3 in pairs(r1_3) do
+    local r9_3 = string.match(r7_3, "^(.*)s$")
+    if r9_3 then
+      r9_3 = r9_3
+    end
+    for r14_3, r15_3 in pairs(r8_3) do
+      local r16_3 = 0
+      for r21_3, r22_3 in pairs(r15_3) do
+        r16_3 = r16_3 + r22_3
       end
-      table.insert(List, {
-        ItemId = Id,
-        ItemType = Type,
-        Count = Count,
-        Rarity = ItemUtils.GetItemRarity(Id, Type)
+      -- close: r17_3
+      table.insert(r2_3, {
+        ItemId = r14_3,
+        ItemType = r9_3,
+        Count = r16_3,
+        Rarity = ItemUtils.GetItemRarity(r14_3, r9_3),
       })
     end
+    -- close: r10_3
   end
-  return UIUtils.ShowHudReward(TitleText, List)
+  -- close: r3_3
+  return r10_0.ShowHudReward(r0_3, r2_3)
 end
-
-function UIUtils.ShowGetItemPage(ItemType, ItemId, Count, PurchaseRewards, bSpecial, func, ParentWidget, IsReAttachFocusToPage, bOnlyItemPage)
-  local FlowManager = USubsystemBlueprintLibrary.GetWorldSubsystem(GWorld.GameInstance, UGameFlowManager)
-  local Flow = FlowManager:CreateFlow("GetItemPage")
-  local UIManager = GWorld.GameInstance:GetGameUIManager()
-  Flow.OnBegin:Add(Flow, function()
-    local UIName = bSpecial and "GetItemPageSP" or "GetItemPage"
-    UIUtils.ShowGetItemPageInternal(ItemType, ItemId, Count, PurchaseRewards, bSpecial, func, ParentWidget, IsReAttachFocusToPage, bOnlyItemPage)
-    UIManager:AddFlow(UIName, Flow)
+function r10_0.ShowGetItemPage(r0_4, r1_4, r2_4, r3_4, r4_4, r5_4, r6_4, r7_4, r8_4, r9_4, r10_4)
+  -- line: [212, 223] id: 4
+  local r11_4 = USubsystemBlueprintLibrary.GetWorldSubsystem(GWorld.GameInstance, UGameFlowManager)
+  local r12_4 = r11_4:CreateFlow("GetItemPage")
+  local r13_4 = GWorld.GameInstance:GetGameUIManager()
+  r12_4.OnBegin:Add(r12_4, function()
+    -- line: [217, 221] id: 5
+    local r0_5 = r4_4
+    if r0_5 then
+      r0_5 = "GetItemPageSP" and "GetItemPage"
+    else
+      goto label_6	-- block#2 is visited secondly
+    end
+    r10_0.ShowGetItemPageInternal(r0_4, r1_4, r2_4, r3_4, r4_4, r5_4, r6_4, r7_4, r8_4, r9_4, r10_4)
+    r13_4:AddFlow(r0_5, r12_4)
   end)
-  FlowManager:AddFlow(Flow)
+  r11_4:AddFlow(r12_4)
 end
-
-function UIUtils.ShowGetItemPageInternal(ItemType, ItemId, Count, PurchaseRewards, bSpecial, func, ParentWidget, IsReAttachFocusToPage, bOnlyItemPage)
-  ItemType = ItemType or -1
-  ItemId = ItemId or -1
-  Count = Count or -1
-  func = func or -1
-  ParentWidget = ParentWidget or -1
-  IsReAttachFocusToPage = IsReAttachFocusToPage or false
-  local SystemUIName = "GetItemPage"
-  if bSpecial then
-    SystemUIName = "GetItemPageSP"
+function r10_0.ShowGetItemPageInternal(r0_6, r1_6, r2_6, r3_6, r4_6, r5_6, r6_6, r7_6, r8_6, r9_6, r10_6)
+  -- line: [225, 268] id: 6
+  if not r0_6 then
+    r0_6 = -1
   end
-  local GameInstance = GWorld.GameInstance
-  local UIManager = GameInstance:GetGameUIManager()
-  
-  local function ShowFinish()
-    UIManager:LoadUINew(SystemUIName, ItemType, ItemId, Count, PurchaseRewards, func, ParentWidget, IsReAttachFocusToPage)
+  if not r1_6 then
+    r1_6 = -1
   end
-  
-  if PurchaseRewards then
-    UIUtils.ShowGetCharWeaponPage(PurchaseRewards, ShowFinish, nil, nil, bOnlyItemPage)
+  if not r2_6 then
+    r2_6 = -1
+  end
+  if not r5_6 then
+    r5_6 = -1
+  end
+  if not r6_6 then
+    r6_6 = -1
+  end
+  if not r7_6 then
+    r7_6 = false
+  end
+  local r11_6 = "GetItemPage"
+  if r4_6 then
+    r11_6 = "GetItemPageSP"
+  end
+  local r13_6 = GWorld.GameInstance:GetGameUIManager()
+  local function r14_6()
+    -- line: [251, 260] id: 7
+    if r0_6 == "Char" and not r9_6 then
+      local r1_7 = r1_6
+      local r0_7 = DataMgr.Char[r1_7]
+      if r0_7 then
+        r1_7 = r0_7.RegainCharItemId and nil
+      else
+        goto label_15	-- block#4 is visited secondly
+      end
+      local r2_7 = nil	-- notice: implicit variable refs by block#[8]
+      if r0_7 then
+        r2_7 = r0_7.RegainCharItemNum
+        if not r2_7 then
+          ::label_21::
+          r2_7 = nil
+        end
+      else
+        goto label_21	-- block#7 is visited secondly
+      end
+      r13_6:LoadUINew(r11_6, "Resource", r1_7, r2_7, r3_6, r5_6, r6_6, r7_6, r10_6)
+    else
+      r13_6:LoadUINew(r11_6, r0_6, r1_6, r2_6, r3_6, r5_6, r6_6, r7_6, r10_6)
+    end
+  end
+  if r3_6 then
+    r10_0.ShowGetCharWeaponPage(r3_6, r14_6, nil, nil, r8_6)
   else
-    local TargetTable = {}
-    TargetTable[ItemType .. "s"] = {
-      [ItemId] = Count
-    }
-    UIUtils.ShowGetCharWeaponPage(TargetTable, ShowFinish, nil, nil, bOnlyItemPage)
+    r10_0.ShowGetCharWeaponPage({
+      [r0_6 .. "s"] = {
+        [r1_6] = r2_6,
+      },
+    }, r14_6, nil, nil, r8_6)
   end
 end
-
-function UIUtils.ShowGetCharWeaponPage(TargetTable, CallbackFunc, ParentWidget, bGacha, bOnlyItemPage)
-  local GameInstance = GWorld.GameInstance
-  local UIManager = GameInstance:GetGameUIManager()
-  local ShowSort = {
+function r10_0.ShowGetCharWeaponPage(r0_8, r1_8, r2_8, r3_8, r4_8)
+  -- line: [274, 353] id: 8
+  local r6_8 = GWorld.GameInstance:GetGameUIManager()
+  local r7_8 = {
     {
       ShowType = CommonConst.DataType.Skin,
-      UIName = "GetCharPage"
+      UIName = "GetCharPage",
     },
     {
       ShowType = CommonConst.DataType.Char,
-      UIName = "GetCharPage"
+      UIName = "GetCharPage",
     },
     {
       ShowType = CommonConst.DataType.WeaponSkin,
-      UIName = "GetWeaponPage"
+      UIName = "GetWeaponPage",
     },
     {
       ShowType = CommonConst.DataType.Weapon,
-      UIName = "GetWeaponPage"
+      UIName = "GetWeaponPage",
     },
     {
       ShowType = CommonConst.DataType.Resource,
-      UIName = "GetCharPage"
+      UIName = "GetCharPage",
     }
   }
-  local AsyncFunc = coroutine.create(function()
-    local co = coroutine.running()
-    for _, ShowData in ipairs(ShowSort) do
-      local ShowType = ShowData.ShowType
-      local TargetList
-      if TargetTable then
-        TargetList = TargetTable[ShowType .. "s"]
+  coroutine.resume(coroutine.create(function()
+    -- line: [299, 351] id: 9
+    local r0_9 = coroutine.running()
+    for r5_9, r6_9 in ipairs(r7_8) do
+      local r7_9 = r6_9.ShowType
+      local r8_9 = nil
+      if r0_8 then
+        r8_9 = r0_8[r7_9 .. "s"]
       end
-      if bOnlyItemPage then
-        TargetList = nil
+      if r4_8 then
+        r8_9 = nil
       end
-      if TargetList and next(TargetList) then
-        local ShowTargetList = {}
-        for Id, Count in pairs(TargetList) do
-          local NeedInsert = true
-          if ShowType == CommonConst.DataType.Resource and not ItemUtils.CheckGestureItemResourceNeedDisplay(Id) then
-            NeedInsert = false
+      if r8_9 and next(r8_9) then
+        local r9_9 = {}
+        for r14_9, r15_9 in pairs(r8_9) do
+          local r16_9 = true
+          if r7_9 == CommonConst.DataType.Resource and not ItemUtils.CheckGestureItemResourceNeedDisplay(r14_9) then
+            r16_9 = false
           end
-          if ShowType == CommonConst.DataType.Skin and not ItemUtils.CheckGestureSkinNeedDisplay(Id) then
-            NeedInsert = false
+          if r7_9 == CommonConst.DataType.Skin and not ItemUtils.CheckGestureSkinNeedDisplay(r14_9) then
+            r16_9 = false
           end
-          if NeedInsert then
-            if bGacha then
-              for i = 1, Count do
-                table.insert(ShowTargetList, Id)
+          if r16_9 then
+            if r3_8 then
+              for r20_9 = 1, r15_9, 1 do
+                table.insert(r9_9, r14_9)
               end
             else
-              table.insert(ShowTargetList, Id)
+              table.insert(r9_9, r14_9)
             end
           end
         end
-        if ShowTargetList and next(ShowTargetList) then
-          local ShowTargetParams = {
-            TargetIdList = ShowTargetList,
-            TargetType = ShowType,
-            CallbackObj = self,
+        -- close: r10_9
+        if r9_9 and next(r9_9) then
+          r6_8:LoadUINew(r6_9.UIName, {
+            TargetIdList = r9_9,
+            TargetType = r7_9,
             CallbackFunc = function()
-              coroutine.resume(co)
+              -- line: [338, 340] id: 10
+              coroutine.resume(r0_9)
             end,
-            bGacha = bGacha
-          }
-          UIManager:LoadUINew(ShowData.UIName, ShowTargetParams)
+            bGacha = r3_8,
+          })
           coroutine.yield()
         end
       end
     end
-    if CallbackFunc then
-      CallbackFunc(ParentWidget)
+    -- close: r1_9
+    if r1_8 then
+      r1_8(r2_8)
     end
-  end)
-  coroutine.resume(AsyncFunc)
+  end))
 end
-
-function UIUtils.ShowGetItemPageAndOpenBagIfNeeded(ItemType, ItemId, Count, PurchaseRewards, bSpecial, func, ParentWidget, IsReAttachFocusToPage)
-  local needOpenBag = false
-  local OpenBagId
-  if PurchaseRewards and PurchaseRewards.Resources then
-    for Id, resource in pairs(PurchaseRewards.Resources) do
-      local RewardData = DataMgr.Resource[Id]
-      if RewardData and RewardData.MaterialClassify == BagCommon.ItemTypeToTabId.ConsumableItem then
-        needOpenBag = true
-        OpenBagId = tostring(Id)
+function r10_0.ShowGetItemPageAndOpenBagIfNeeded(r0_11, r1_11, r2_11, r3_11, r4_11, r5_11, r6_11, r7_11, r8_11, r9_11, r10_11)
+  -- line: [364, 409] id: 11
+  local r11_11 = false
+  local r12_11 = nil
+  local r13_11 = r10_11 and nil
+  local r14_11 = false
+  if r3_11 and r3_11.Resources then
+    for r19_11, r20_11 in pairs(r3_11.Resources) do
+      local r21_11 = DataMgr.Resource[r19_11]
+      if r21_11 and r21_11.MaterialClassify == r8_0.ItemTypeToTabId.ConsumableItem then
+        r11_11 = true
+        r12_11 = tostring(r19_11)
+      end
+      if r21_11 and r21_11.ResourceSType == "GestureItem" then
+        r14_11 = true
       end
     end
-  elseif ItemId then
-    local RewardData = DataMgr.Resource[ItemId]
-    if RewardData and RewardData.MaterialClassify == BagCommon.ItemTypeToTabId.ConsumableItem then
-      needOpenBag = true
-      OpenBagId = tostring(ItemId)
+    -- close: r15_11
+  elseif r1_11 then
+    local r15_11 = DataMgr.Resource[r1_11]
+    if r15_11 and r15_11.MaterialClassify == r8_0.ItemTypeToTabId.ConsumableItem then
+      r11_11 = true
+      r12_11 = tostring(r1_11)
+    end
+    if r15_11 and r15_11.ResourceSType == "GestureItem" then
+      r14_11 = true
     end
   end
-  
-  local function callback()
-    if needOpenBag then
-      local Params = {}
-      Params.LeftCallbackFunction = func
-      
-      function Params.RightCallbackFunction(Obj, Result, PopUI)
-        UIUtils.OpenSystem(2, false, BagCommon.ItemTypeToTabId.ConsumableItem, OpenBagId)
-      end
-      
-      local UIManager = GWorld.GameInstance:GetGameUIManager()
-      UIManager:ShowCommonPopupUI(100250, Params)
-    elseif func then
-      func()
+  if r14_11 and r13_11 == nil then
+    r13_11 = GText("UI_GestureItem_Goto_Bag")
+  end
+  r10_0.ShowGetItemPage(r0_11, r1_11, r2_11, r3_11, r4_11, function()
+    -- line: [393, 407] id: 12
+    if r11_11 then
+      GWorld.GameInstance:GetGameUIManager():ShowCommonPopupUI(100250, {
+        LeftCallbackFunction = r5_11,
+        RightCallbackFunction = function(r0_13, r1_13, r2_13)
+          -- line: [397, 399] id: 13
+          r10_0.OpenSystem(2, false, r8_0.ItemTypeToTabId.ConsumableItem, r12_11)
+        end,
+      })
+    elseif r5_11 then
+      r5_11()
     end
-  end
-  
-  UIUtils.ShowGetItemPage(ItemType, ItemId, Count, PurchaseRewards, bSpecial, callback, ParentWidget, IsReAttachFocusToPage)
+  end, r6_11, r7_11, r8_11, r9_11, r13_11)
 end
-
-function UIUtils.GetCommonDragDropOperationClass()
-  if not UIUtils._DragDropOperationClass then
-    UIUtils._DragDropOperationClass = MiscUtils.LazyLoadClass("/Game/UI/Blueprint/CommonDragDropOperation.CommonDragDropOperation_C", true)
+function r10_0.GetCommonDragDropOperationClass()
+  -- line: [414, 419] id: 14
+  if not r10_0._DragDropOperationClass then
+    r10_0._DragDropOperationClass = r7_0.LazyLoadClass("/Game/UI/Blueprint/CommonDragDropOperation.CommonDragDropOperation_C", true)
   end
-  return UIUtils._DragDropOperationClass:get()
+  return r10_0._DragDropOperationClass:get()
 end
-
-function UIUtils.GetCommonItemContentClass()
-  if not UIUtils._ItemObjectClass then
-    UIUtils._ItemObjectClass = MiscUtils.LazyLoadClass("/Game/UI/Blueprint/CommonItemContent.CommonItemContent_C", true)
+function r10_0.GetCommonItemContentClass()
+  -- line: [424, 429] id: 15
+  if not r10_0._ItemObjectClass then
+    r10_0._ItemObjectClass = r7_0.LazyLoadClass("/Game/UI/Blueprint/CommonItemContent.CommonItemContent_C", true)
   end
-  return UIUtils._ItemObjectClass:get()
+  return r10_0._ItemObjectClass:get()
 end
-
-function UIUtils.GetMaxScrollOffsetOfListView(ListView)
-  local ItemUIs = ListView:GetDisplayedEntryWidgets()
-  if 0 == ItemUIs:Length() then
+function r10_0.GetMaxScrollOffsetOfListView(r0_16)
+  -- line: [432, 449] id: 16
+  local r1_16 = r0_16:GetDisplayedEntryWidgets()
+  if r1_16:Length() == 0 then
     return 0
   end
-  local ItemSize = UIManager(ListView):GetWidgetRenderSize(ItemUIs:GetRef(1))
-  local ListSize = UIManager(ListView):GetWidgetRenderSize(ListView)
-  if 0 == ListSize then
-    ListView:ForceLayoutPrepass()
-    ListSize = UIManager:GetWidgetRenderSize(ListView)
+  local r2_16 = UIManager(r0_16):GetWidgetRenderSize(r1_16:GetRef(1))
+  local r3_16 = UIManager(r0_16):GetWidgetRenderSize(r0_16)
+  if r3_16 == 0 then
+    r0_16:ForceLayoutPrepass()
+    r3_16 = UIManager:GetWidgetRenderSize(r0_16)
   end
-  local ItemNum = ListView:GetNumItems()
-  local MaxScrollOffset = 0
-  if ListView.Orientation == EOrientation.Orient_Horizontal then
-    MaxScrollOffset = ((ItemNum - 1) * ListView.EntrySpacing + ItemNum * ItemSize.X - ListSize.X) / ItemSize.X
-  elseif ListView.Orientation == EOrientation.Orient_Vertical then
-    MaxScrollOffset = ((ItemNum - 1) * ListView.EntrySpacing + ItemNum * ItemSize.Y - ListSize.Y) / ItemSize.Y
+  local r4_16 = r0_16:GetNumItems()
+  local r5_16 = 0
+  if r0_16.Orientation == EOrientation.Orient_Horizontal then
+    r5_16 = ((r4_16 + -1) * r0_16.EntrySpacing + r4_16 * r2_16.X - r3_16.X) / r2_16.X
+  elseif r0_16.Orientation == EOrientation.Orient_Vertical then
+    r5_16 = ((r4_16 + -1) * r0_16.EntrySpacing + r4_16 * r2_16.Y - r3_16.Y) / r2_16.Y
   end
-  return MaxScrollOffset
+  return r5_16
 end
-
-local CountPad = 0.05
-
-function UIUtils.GetListViewContentMaxCount(ListView, ItemUIs, bDontChangeScrollbar, bDontSetEmptyGridItemCount)
-  if not ListView:IsVisible() then
-    Utils.Traceback(WarningTag, LXYTag .. "UIUtils.GetListViewContentMaxCount：ListView必须是可见的")
+local r11_0 = 0.05
+function r10_0.GetListViewContentMaxCount(r0_17, r1_17, r2_17, r3_17)
+  -- line: [461, 518] id: 17
+  if not r0_17:IsVisible() then
+    r6_0.Traceback(WarningTag, LXYTag .. "UIUtils.GetListViewContentMaxCount：ListView必须是可见的")
     return 0
   end
-  ItemUIs = ItemUIs or ListView:GetDisplayedEntryWidgets()
-  if 0 == ItemUIs:Length() then
-    Utils.Traceback(WarningTag, LXYTag .. "UIUtils.GetListViewContentMaxCount：ListView必须先生成一个ItemUI才能准确计算个数")
+  if not r1_17 then
+    r1_17 = r0_17:GetDisplayedEntryWidgets()
+  end
+  if r1_17:Length() == 0 then
+    r6_0.Traceback(WarningTag, LXYTag .. "UIUtils.GetListViewContentMaxCount：ListView必须先生成一个ItemUI才能准确计算个数")
     return 0
   end
-  local UIManager = GWorld.GameInstance:GetGameUIManager()
-  local ListSize = UIManager:GetWidgetRenderSize(ListView)
-  local Parent = ListView:GetParent()
-  if Parent:Cast(UScrollBox) then
-    ListSize = UIManager:GetWidgetRenderSize(Parent)
+  local r4_17 = GWorld.GameInstance:GetGameUIManager()
+  local r5_17 = r4_17:GetWidgetRenderSize(r0_17)
+  local r6_17 = r0_17:GetParent()
+  if r6_17:Cast(UScrollBox) then
+    r5_17 = r4_17:GetWidgetRenderSize(r6_17)
   end
-  local ItemSize = UIManager:GetWidgetRenderSize(ItemUIs:GetRef(1).WidgetTree.RootWidget)
-  if ListView.Orientation == EOrientation.Orient_Horizontal then
-    ListSize, ItemSize = ListSize.X, ItemSize.X + ListView.EntrySpacing
-  elseif ListView.Orientation == EOrientation.Orient_Vertical then
-    ListSize, ItemSize = ListSize.Y, ItemSize.Y + ListView.EntrySpacing
+  local r7_17 = r4_17:GetWidgetRenderSize(r1_17:GetRef(1).WidgetTree.RootWidget)
+  if r0_17.Orientation == EOrientation.Orient_Horizontal then
+    r7_17 = r7_17.X + r0_17.EntrySpacing
+    r5_17 = r5_17.X
+  elseif r0_17.Orientation == EOrientation.Orient_Vertical then
+    r7_17 = r7_17.Y + r0_17.EntrySpacing
+    r5_17 = r5_17.Y
   end
-  local RawCount = ListSize / ItemSize - ListView.EntrySpacing / ItemSize
-  local Count = math.ceil(RawCount - CountPad)
-  if bDontChangeScrollbar then
-    ListView:SetScrollbarVisibility(UIConst.VisibilityOp.Collapsed)
+  local r8_17 = r5_17 / r7_17 - r0_17.EntrySpacing / r7_17
+  local r9_17 = math.ceil(r8_17 - r11_0)
+  if r2_17 then
+    r0_17:SetScrollbarVisibility(UIConst.VisibilityOp.Collapsed)
   else
-    ListView:SetScrollbarVisibility(UIConst.VisibilityOp.Hidden)
+    r0_17:SetScrollbarVisibility(UIConst.VisibilityOp.Hidden)
   end
-  if ListView.SetControlScrollbarInside then
-    ListView:SetControlScrollbarInside(false)
+  if r0_17.SetControlScrollbarInside then
+    r0_17:SetControlScrollbarInside(false)
   end
-  local CurItemCount = ListView:GetNumItems()
-  if (not (not (Count - RawCount > CountPad) or bDontChangeScrollbar) or Count < CurItemCount) and ListView.SetControlScrollbarInside then
-    ListView:SetControlScrollbarInside(true)
+  local r10_17 = r0_17:GetNumItems()
+  if (r11_0 < r9_17 - r8_17 and not r2_17 or r9_17 < r10_17) and r0_17.SetControlScrollbarInside then
+    r0_17:SetControlScrollbarInside(true)
   end
-  if CommonUtils.GetDeviceTypeByPlatformName() == "Mobile" and ListView.bControlScrollbarInside then
-    if ListView.SetControlScrollbarInside then
-      ListView:SetControlScrollbarInside(false)
+  local r11_17 = CommonUtils.GetDeviceTypeByPlatformName()
+  if r11_17 == "Mobile" then
+    r11_17 = r0_17.bControlScrollbarInside
+    if r11_17 then
+      r11_17 = r0_17.SetControlScrollbarInside
+      if r11_17 then
+        r0_17:SetControlScrollbarInside(false)
+      end
+      r0_17:SetScrollbarVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
     end
-    ListView:SetScrollbarVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
   end
-  if CurItemCount > 0 then
-    local EmptyItemNum = not bDontSetEmptyGridItemCount and math.max(0, Count - CurItemCount) or 0
-    ListView:SetEmptyGridItemCount(EmptyItemNum)
+  if r10_17 > 0 then
+    if not r3_17 then
+      r11_17 = math.max(0, r9_17 - r10_17) and 0
+    else
+      goto label_157	-- block#30 is visited secondly
+    end
+    r0_17:SetEmptyGridItemCount(r11_17)
   else
     DebugPrint(ErrorTag, "GetListViewContentMaxCount: 当前列表没有填充过Item, 请手动调用列表的SetEmptyGridItemCount来设置空态格子数")
   end
-  DebugPrint("ListViewCount", RawCount, Count)
-  return Count
+  DebugPrint("ListViewCount", r8_17, r9_17)
+  return r9_17
 end
-
-function UIUtils.GetTileViewContentMaxCount(TileView, Option, bDontChangeScrollbar, bDontSetEmptyGridItemCount)
-  local UIManager = GWorld.GameInstance:GetGameUIManager()
-  local ListSize = UIManager:GetWidgetRenderSize(TileView)
-  local Parent = TileView:GetParent()
-  if Parent:Cast(UScrollBox) then
-    ListSize = UIManager:GetWidgetRenderSize(Parent)
+function r10_0.GetTileViewContentMaxCount(r0_18, r1_18, r2_18, r3_18)
+  -- line: [528, 605] id: 18
+  local r4_18 = GWorld.GameInstance:GetGameUIManager()
+  local r5_18 = r4_18:GetWidgetRenderSize(r0_18)
+  local r6_18 = r0_18:GetParent()
+  if r6_18:Cast(UScrollBox) then
+    r5_18 = r4_18:GetWidgetRenderSize(r6_18)
   end
-  local ListSizeX, ItemSizeX = ListSize.X, TileView:GetEntryWidth()
-  local ListSizeY, ItemSizeY = ListSize.Y, TileView:GetEntryHeight()
-  local XCount, YCount = 0, 0
-  if bDontChangeScrollbar then
-    TileView:SetScrollbarVisibility(ESlateVisibility.Collapsed)
+  local r7_18 = r5_18.X
+  local r8_18 = r0_18:GetEntryWidth()
+  local r9_18 = r5_18.Y
+  local r10_18 = r0_18:GetEntryHeight()
+  local r11_18 = 0
+  local r12_18 = 0
+  if r2_18 then
+    r0_18:SetScrollbarVisibility(ESlateVisibility.Collapsed)
   else
-    TileView:SetScrollbarVisibility(ESlateVisibility.Hidden)
+    r0_18:SetScrollbarVisibility(ESlateVisibility.Hidden)
   end
-  if TileView.SetControlScrollbarInside then
-    TileView:SetControlScrollbarInside(false)
+  if r0_18.SetControlScrollbarInside then
+    r0_18:SetControlScrollbarInside(false)
   end
-  if TileView.Orientation == EOrientation.Orient_Horizontal then
-    local RawXCount = ListSizeX / ItemSizeX
-    XCount = math.ceil(RawXCount - CountPad)
-    if XCount - RawXCount > CountPad and not bDontChangeScrollbar and TileView.SetControlScrollbarInside then
-      TileView:SetControlScrollbarInside(true)
+  if r0_18.Orientation == EOrientation.Orient_Horizontal then
+    local r13_18 = r7_18 / r8_18
+    r11_18 = math.ceil(r13_18 - r11_0)
+    if r11_0 < r11_18 - r13_18 and not r2_18 and r0_18.SetControlScrollbarInside then
+      r0_18:SetControlScrollbarInside(true)
     end
-    YCount = 1
-  elseif TileView.Orientation == EOrientation.Orient_Vertical then
-    local ScrollBarSize = TileView.ScrollBarDesireSize
-    XCount = math.floor((ListSizeX - ScrollBarSize) / ItemSizeX)
-    local RawYCount = ListSizeY / ItemSizeY
-    YCount = math.ceil(RawYCount - CountPad)
-    DebugPrint("TileViewCount", RawYCount, YCount)
-    if YCount - RawYCount > CountPad and not bDontChangeScrollbar and TileView.SetControlScrollbarInside then
-      TileView:SetControlScrollbarInside(true)
+    r12_18 = 1
+  elseif r0_18.Orientation == EOrientation.Orient_Vertical then
+    r11_18 = math.floor((r7_18 - r0_18.ScrollBarDesireSize) / r8_18)
+    local r14_18 = r9_18 / r10_18
+    r12_18 = math.ceil(r14_18 - r11_0)
+    DebugPrint("TileViewCount", r14_18, r12_18)
+    if r11_0 < r12_18 - r14_18 and not r2_18 and r0_18.SetControlScrollbarInside then
+      r0_18:SetControlScrollbarInside(true)
     end
   end
-  if TileView:GetNumItems() > XCount * YCount and TileView.SetControlScrollbarInside then
-    TileView:SetControlScrollbarInside(true)
+  if r11_18 * r12_18 < r0_18:GetNumItems() and r0_18.SetControlScrollbarInside then
+    r0_18:SetControlScrollbarInside(true)
   end
-  if CommonUtils.GetDeviceTypeByPlatformName() == "Mobile" and TileView.bControlScrollbarInside then
-    if TileView.SetControlScrollbarInside then
-      TileView:SetControlScrollbarInside(false)
+  if CommonUtils.GetDeviceTypeByPlatformName() == "Mobile" and r0_18.bControlScrollbarInside then
+    if r0_18.SetControlScrollbarInside then
+      r0_18:SetControlScrollbarInside(false)
     end
-    TileView:SetScrollbarVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+    r0_18:SetScrollbarVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
   end
-  local CurItemCount = TileView:GetNumItems()
-  if CurItemCount > 0 then
-    local EmptyItemNum = 0
-    if not bDontSetEmptyGridItemCount then
-      if CurItemCount - XCount * YCount <= 0 then
-        EmptyItemNum = XCount * YCount - CurItemCount
+  local r13_18 = r0_18:GetNumItems()
+  if r13_18 > 0 then
+    local r14_18 = 0
+    if not r3_18 then
+      if r13_18 - r11_18 * r12_18 <= 0 then
+        r14_18 = r11_18 * r12_18 - r13_18
       else
-        EmptyItemNum = XCount - CurItemCount % XCount
+        r14_18 = r11_18 - r13_18 % r11_18
       end
     end
-    TileView:SetEmptyGridItemCount(EmptyItemNum)
+    r0_18:SetEmptyGridItemCount(r14_18)
   else
     DebugPrint(ErrorTag, "GetTileViewContentMaxCount: 当前列表没有填充过Item, 请手动调用列表的SetEmptyGridItemCount来设置空态格子数")
   end
-  if not Option then
-    return XCount * YCount
-  elseif "X" == Option then
-    return XCount
-  elseif "Y" == Option then
-    return YCount
-  elseif "XY" == Option then
-    return XCount, YCount
+  if not r1_18 then
+    return r11_18 * r12_18
+  elseif r1_18 == "X" then
+    return r11_18
+  elseif r1_18 == "Y" then
+    return r12_18
+  elseif r1_18 == "XY" then
+    return r11_18, r12_18
   end
   assert(false, "UIUtils.GetTileViewContentMaxCount: Option参数错误")
 end
-
-function UIUtils.PlayListViewFramingInAnimation(UIState, ListView, Params)
-  Params = Params or {
-    Interval = nil,
-    AnimName = nil,
-    Visiblity = nil,
-    Callback = nil,
-    ListViewOpacity = nil,
-    bInteractableInAnim = nil
-  }
-  local Interval = Params.Interval ~= nil and 0 ~= Params.Interval and Params.Interval or 0.0333
-  local AnimName = nil ~= Params.AnimName and Params.AnimName or "In"
-  local TimerKeys = Deque.New()
-  ListView:SetRenderOpacity(0)
-  if Params.bInteractableInAnim == false then
-    ListView:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
+function r10_0.PlayListViewFramingInAnimation(r0_19, r1_19, r2_19)
+  -- line: [615, 664] id: 19
+  if not r2_19 then
+    r2_19 = {
+      Interval = nil,
+      AnimName = nil,
+      Visiblity = nil,
+      Callback = nil,
+      ListViewOpacity = nil,
+      bInteractableInAnim = nil,
+    }
   end
-  local _, TimerKey = UIState:AddTimer(0.01, function()
-    ListView:SetRenderOpacity(Params.ListViewOpacity or 1)
-    local DisplayedEntries = ListView:GetDisplayedEntryWidgets()
-    local NumPerLine = 1
-    if ListView:IsA(UTileView) and ListView.GetNumItemsPerLine then
-      NumPerLine = ListView:GetNumItemsPerLine()
+  local r3_19 = r2_19.Interval
+  if r3_19 ~= nil then
+    r3_19 = r2_19.Interval
+    if r3_19 ~= 0 then
+      r3_19 = r2_19.Interval and 0.0333
     end
-    local ColunmCount = math.floor(DisplayedEntries:Num() / NumPerLine)
-    for i = 1, ColunmCount do
-      local LineWidgets = {}
-      local VisitedCount = (i - 1) * NumPerLine
-      for j = 1, NumPerLine do
-        local Entry = DisplayedEntries:GetRef(VisitedCount + j)
-        Entry:StopAnimation(Entry[AnimName])
-        Entry:SetVisibility(UIConst.VisibilityOp.Collapsed)
-        table.insert(LineWidgets, Entry)
+  else
+    goto label_20	-- block#5 is visited secondly
+  end
+  local r4_19 = r2_19.AnimName
+  if r4_19 ~= nil then
+    r4_19 = r2_19.AnimName and "In"
+  else
+    goto label_27	-- block#8 is visited secondly
+  end
+  local r5_19 = r9_0.New()
+  r1_19:SetRenderOpacity(0)
+  if r2_19.bInteractableInAnim == false then
+    r1_19:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
+  end
+  local r6_19, r7_19 = r0_19:AddTimer(0.01, function()
+    -- line: [624, 661] id: 20
+    r1_19:SetRenderOpacity(r2_19.ListViewOpacity and 1)
+    local r0_20 = r1_19:GetDisplayedEntryWidgets()
+    local r1_20 = 1
+    if r1_19:IsA(UTileView) and r1_19.GetNumItemsPerLine then
+      r1_20 = r1_19:GetNumItemsPerLine()
+    end
+    for r6_20 = 1, math.floor(r0_20:Num() / r1_20), 1 do
+      local r7_20 = {}
+      local r8_20 = (r6_20 + -1) * r1_20
+      for r12_20 = 1, r1_20, 1 do
+        local r13_20 = r0_20:GetRef(r8_20 + r12_20)
+        r13_20:StopAnimation(r13_20[r4_19])
+        r13_20:SetVisibility(UIConst.VisibilityOp.Collapsed)
+        table.insert(r7_20, r13_20)
       end
-      local _, TimerKey
-      _, TimerKey = UIState:AddTimer(i * Interval, function()
-        local Visiblity = Params.Visibility ~= nil and Params.Visibility or UIConst.VisibilityOp.Visible
-        for _, Entry in ipairs(LineWidgets) do
-          Entry:SetVisibility(Visiblity)
-          Entry:StopAllAnimations()
-          Entry:PlayAnimation(Entry[AnimName])
+      local r9_20 = nil
+      local r10_20 = nil
+      r9_20, r10_20 = r0_19:AddTimer(r6_20 * r3_19, function()
+        -- line: [643, 657] id: 21
+        local r0_21 = r2_19.Visibility
+        if r0_21 ~= nil then
+          r0_21 = r2_19.Visibility and UIConst.VisibilityOp.Visible
+        else
+          goto label_6	-- block#2 is visited secondly
         end
-        TimerKeys:PopFront()
-        if TimerKeys:IsEmpty() then
-          if Params.bInteractableInAnim == false then
-            ListView:SetVisibility(UIConst.VisibilityOp.Visible)
+        for r5_21, r6_21 in ipairs(r7_20) do
+          r6_21:SetVisibility(r0_21)
+          r6_21:StopAllAnimations()
+          r6_21:PlayAnimation(r6_21[r4_19])
+        end
+        -- close: r1_21
+        r5_19:PopFront()
+        if r5_19:IsEmpty() then
+          if r2_19.bInteractableInAnim == false then
+            r1_19:SetVisibility(UIConst.VisibilityOp.Visible)
           end
-          if Params.Callback then
-            Params.Callback()
+          if r2_19.Callback then
+            r2_19.Callback()
           end
         end
       end, false, 0, nil, true)
-      TimerKeys:PushBack(TimerKey)
+      r5_19:PushBack(r10_20)
+      -- close: r7_20
     end
-    TimerKeys:PopFront()
+    r5_19:PopFront()
   end, false, 0, nil, true)
-  TimerKeys:PushBack(TimerKey)
-  return TimerKeys
+  r5_19:PushBack(r7_19)
+  return r5_19
 end
-
-function UIUtils.StopListViewFramingInAnimation(ListView, Params)
-  Params = Params or {
-    UIState = nil,
-    TimerKeys = nil,
-    Visibility = UIConst.VisibilityOp.Visible
-  }
-  ListView:SetRenderOpacity(0)
-  local DisplayedEntries = ListView:GetDisplayedEntryWidgets()
-  for i = 1, DisplayedEntries:Length() do
-    local Entry = DisplayedEntries:GetRef(i)
-    if Entry.Normal then
-      Entry:PlayAnimationForward(Entry.Normal, 10000)
+function r10_0.StopListViewFramingInAnimation(r0_22, r1_22)
+  -- line: [673, 693] id: 22
+  if not r1_22 then
+    r1_22 = {
+      UIState = nil,
+      TimerKeys = nil,
+      Visibility = UIConst.VisibilityOp.Visible,
+    }
+  end
+  r0_22:SetRenderOpacity(0)
+  local r2_22 = r0_22:GetDisplayedEntryWidgets()
+  for r6_22 = 1, r2_22:Length(), 1 do
+    local r7_22 = r2_22:GetRef(r6_22)
+    if r7_22.Normal then
+      r7_22:PlayAnimationForward(r7_22.Normal, 10000)
     end
-    Entry:SetVisibility(Params.Visibility and Params.Visibility or UIConst.VisibilityOp.Visible)
+    local r10_22 = r1_22.Visibility
+    if r10_22 then
+      r10_22 = r1_22.Visibility and UIConst.VisibilityOp.Visible
+    else
+      goto label_38	-- block#7 is visited secondly
+    end
+    r7_22:SetVisibility(r10_22)
   end
-  if not Params.TimerKeys or not Params.UIState then
-    return
+  if not r1_22.TimerKeys or not r1_22.UIState then
+    return 
   end
-  for _, TimerKey in ipairs(Params.TimerKeys:ToArr()) do
-    if Params.UIState:IsExistTimer(TimerKey) then
-      Params.UIState:RemoveTimer(TimerKey, true)
+  for r7_22, r8_22 in ipairs(r1_22.TimerKeys:ToArr()) do
+    if r1_22.UIState:IsExistTimer(r8_22) then
+      r1_22.UIState:RemoveTimer(r8_22, true)
     end
   end
+  -- close: r3_22
 end
-
-function UIUtils.UpdateListReddot(ListView, List_FrontRedDot, List_BackRedDot, List_FrontNew, List_BackNew, ReddotAndNewCalFunc)
-  if not ListView then
-    return
+function r10_0.UpdateListReddot(r0_23, r1_23, r2_23, r3_23, r4_23, r5_23)
+  -- line: [706, 807] id: 23
+  -- notice: unreachable block#45
+  -- notice: unreachable block#41
+  if not r0_23 then
+    return 
   end
-  local PartialStart = TArray(UObject)
-  local FullyVisible = TArray(UObject)
-  local PartialEnd = TArray(UObject)
-  ListView:GetEntryWidgetsVisibilityState(PartialStart, FullyVisible, PartialEnd)
-  PartialStart = PartialStart:ToTable()
-  FullyVisible = FullyVisible:ToTable()
-  PartialEnd = PartialEnd:ToTable()
-  local AllItems = ListView:GetListItems():ToTable()
-  if 0 == #AllItems then
-    return
+  local r6_23 = TArray(UObject)
+  local r7_23 = TArray(UObject)
+  local r8_23 = TArray(UObject)
+  r0_23:GetEntryWidgetsVisibilityState(r6_23, r7_23, r8_23)
+  r6_23 = r6_23:ToTable()
+  r7_23 = r7_23:ToTable()
+  r8_23 = r8_23:ToTable()
+  local r9_23 = r0_23:GetListItems():ToTable()
+  if #r9_23 == 0 then
+    return 
   end
-  
-  local function GetWidgetContentArray(widgets)
-    local result = {}
-    for _, w in ipairs(widgets) do
-      if w.Content then
-        table.insert(result, w.Content)
+  local function r10_23(r0_24)
+    -- line: [717, 723] id: 24
+    local r1_24 = {}
+    for r6_24, r7_24 in ipairs(r0_24) do
+      if r7_24.Content then
+        table.insert(r1_24, r7_24.Content)
       end
     end
-    return result
+    -- close: r2_24
+    return r1_24
   end
-  
-  local PartiallyOutOfStartItems = GetWidgetContentArray(PartialStart)
-  local FullyVisibleItems = GetWidgetContentArray(FullyVisible)
-  local PartiallyOutOfEndItems = GetWidgetContentArray(PartialEnd)
-  
-  local function GetItemIndex(Item)
-    for i, v in ipairs(AllItems) do
-      if v == Item then
-        return i
+  local r11_23 = r10_23(r6_23)
+  local r12_23 = r10_23(r7_23)
+  local r13_23 = r10_23(r8_23)
+  local function r14_23(r0_25)
+    -- line: [727, 732] id: 25
+    for r5_25, r6_25 in ipairs(r9_23) do
+      if r6_25 == r0_25 then
+        return r5_25
       end
     end
+    -- close: r1_25
     return nil
   end
-  
-  local TopIndex = 1
-  local BottomIndex = #AllItems
-  if #FullyVisibleItems > 0 or #PartiallyOutOfStartItems > 0 or #PartiallyOutOfEndItems > 0 then
-    local TopItem = PartiallyOutOfStartItems[1] or FullyVisibleItems[1] or PartiallyOutOfEndItems[1]
-    local BottomItem = PartiallyOutOfEndItems[#PartiallyOutOfEndItems] or FullyVisibleItems[#FullyVisibleItems] or PartiallyOutOfStartItems[#PartiallyOutOfStartItems]
-    
-    local function GetIndexByItem(Item)
-      for i, v in ipairs(AllItems) do
-        if v == Item then
-          return i
+  local r15_23 = 1
+  local r16_23 = #r9_23
+  if #r12_23 > 0 or #r11_23 > 0 or #r13_23 > 0 then
+    local r17_23 = r11_23[1] and r12_23[1] and r13_23[1]
+    local r18_23 = r13_23[#r13_23] and r12_23[#r12_23] and r11_23[#r11_23]
+    local function r19_23(r0_26)
+      -- line: [738, 743] id: 26
+      for r5_26, r6_26 in ipairs(r9_23) do
+        if r6_26 == r0_26 then
+          return r5_26
         end
       end
+      -- close: r1_26
       return nil
     end
-    
-    TopIndex = TopItem and GetIndexByItem(TopItem) or 1
-    BottomIndex = BottomItem and GetIndexByItem(BottomItem) or #AllItems
-  end
-  local FullyOutOfStartItems = {}
-  local FullyOutOfEndItems = {}
-  for i, item in ipairs(AllItems) do
-    if TopIndex and i < TopIndex then
-      table.insert(FullyOutOfStartItems, item)
-    elseif BottomIndex and i > BottomIndex then
-      table.insert(FullyOutOfEndItems, item)
+    if r17_23 then
+      r15_23 = r19_23(r17_23) and 1
+    else
+      goto label_81	-- block#15 is visited secondly
+    end
+    if r18_23 then
+      r16_23 = r19_23(r18_23) and #r9_23
+    else
+      goto label_89	-- block#18 is visited secondly
     end
   end
-  local FrontIndicatorItems = {}
-  for _, v in ipairs(FullyOutOfStartItems) do
-    table.insert(FrontIndicatorItems, v)
+  local r17_23 = {}
+  local r18_23 = {}
+  for r23_23, r24_23 in ipairs(r9_23) do
+    if r15_23 and r23_23 < r15_23 then
+      table.insert(r17_23, r24_23)
+    elseif r16_23 and r16_23 < r23_23 then
+      table.insert(r18_23, r24_23)
+    end
   end
-  for _, v in ipairs(PartiallyOutOfStartItems) do
-    table.insert(FrontIndicatorItems, v)
+  -- close: r19_23
+  local r19_23 = {}
+  for r24_23, r25_23 in ipairs(r17_23) do
+    table.insert(r19_23, r25_23)
   end
-  local BackIndicatorItems = {}
-  for _, v in ipairs(FullyOutOfEndItems) do
-    table.insert(BackIndicatorItems, v)
+  -- close: r20_23
+  for r24_23, r25_23 in ipairs(r11_23) do
+    table.insert(r19_23, r25_23)
   end
-  local bHasFrontReddot, bHasBackReddot = false, false
-  local bHasFrontNew, bHasBackNew = false, false
-  
-  local function CheckIndicators(ItemList)
-    for _, item in ipairs(ItemList) do
-      local hasRed, hasNew = false, false
-      if ReddotAndNewCalFunc then
-        hasRed, hasNew = ReddotAndNewCalFunc(item)
+  -- close: r20_23
+  local r20_23 = {}
+  for r25_23, r26_23 in ipairs(r18_23) do
+    table.insert(r20_23, r26_23)
+  end
+  -- close: r21_23
+  local r21_23 = false
+  local r22_23 = false
+  local r23_23 = false
+  local r24_23 = false
+  local function r25_23(r0_27)
+    -- line: [764, 781] id: 27
+    for r5_27, r6_27 in ipairs(r0_27) do
+      local r7_27 = false
+      local r8_27 = false
+      if r5_23 then
+        r7_27, r8_27 = r5_23(r6_27)
       end
-      local idx = GetItemIndex(item)
-      if idx and TopIndex and BottomIndex then
-        if idx <= TopIndex then
-          if hasRed then
-            bHasFrontReddot = true
+      local r9_27 = r14_23(r6_27)
+      if r9_27 and r15_23 and r16_23 then
+        if r9_27 <= r15_23 then
+          if r7_27 then
+            r21_23 = true
           end
-          if hasNew and not hasRed then
-            bHasFrontNew = true
+          if r8_27 and not r7_27 then
+            r23_23 = true
           end
-        elseif idx >= BottomIndex then
-          if hasRed then
-            bHasBackReddot = true
+        elseif r16_23 <= r9_27 then
+          if r7_27 then
+            r22_23 = true
           end
-          if hasNew and not hasRed then
-            bHasBackNew = true
+          if r8_27 and not r7_27 then
+            r24_23 = true
           end
         end
       end
     end
+    -- close: r1_27
   end
-  
-  CheckIndicators(FrontIndicatorItems)
-  CheckIndicators(BackIndicatorItems)
-  local FrontAnim = "Loop_T"
-  local BackAnim = "Loop_D"
-  if ListView.Orientation == UE.EOrientation.Orient_Horizontal then
-    FrontAnim = "Loop_L"
-    BackAnim = "Loop_R"
+  r25_23(r19_23)
+  r25_23(r20_23)
+  local r26_23 = "Loop_T"
+  local r27_23 = "Loop_D"
+  if r0_23.Orientation == UE.EOrientation.Orient_Horizontal then
+    r26_23 = "Loop_L"
+    r27_23 = "Loop_R"
   end
-  
-  local function SetListIndicator(Widget, bVisible, AnimName)
-    if not Widget then
-      return
+  local function r28_23(r0_28, r1_28, r2_28)
+    -- line: [790, 801] id: 28
+    if not r0_28 then
+      return 
     end
-    local AnimObject = Widget[AnimName]
-    if bVisible then
-      Widget:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-      if AnimObject and not Widget:IsAnimationPlaying(AnimObject) then
-        Widget:PlayAnimation(AnimObject, 0, 0)
+    local r3_28 = r0_28[r2_28]
+    if r1_28 then
+      r0_28:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+      if r3_28 and not r0_28:IsAnimationPlaying(r3_28) then
+        r0_28:PlayAnimation(r3_28, 0, 0)
       end
     else
-      Widget:SetVisibility(UIConst.VisibilityOp.Collapsed)
+      r0_28:SetVisibility(UIConst.VisibilityOp.Collapsed)
     end
   end
-  
-  SetListIndicator(List_FrontRedDot, bHasFrontReddot, FrontAnim)
-  SetListIndicator(List_FrontNew, not bHasFrontReddot and bHasFrontNew, FrontAnim)
-  SetListIndicator(List_BackRedDot, bHasBackReddot, BackAnim)
-  SetListIndicator(List_BackNew, not bHasBackReddot and bHasBackNew, BackAnim)
-end
-
-function UIUtils.UpdateScrollBoxReddot(TargetScrollBox, ScrollBox_FrontRedDot, ScrollBox_BackRedDot, ScrollBox_FrontNew, ScrollBox_BackNew, ReddotAndNewCalFunc)
-  if not TargetScrollBox then
-    return
+  r28_23(r1_23, r21_23, r26_23)
+  local r29_23 = r28_23
+  local r30_23 = r3_23
+  local r31_23 = nil	-- notice: implicit variable refs by block#[42, 46]
+  if not r21_23 then
+    r31_23 = r23_23
+  else
+    r31_23 = false
   end
-  local OutFullyOutOfStartArray = TArray(UObject)
-  local OutPartiallyOutOfStartArray = TArray(UObject)
-  local OutFullyVisibleArray = TArray(UObject)
-  local OutPartiallyOutOfEndArray = TArray(UObject)
-  local OutFullyOutOfEndArray = TArray(UObject)
-  TargetScrollBox:GetChildWidgetsPosInScrollBox(OutFullyOutOfStartArray, OutPartiallyOutOfStartArray, OutFullyVisibleArray, OutPartiallyOutOfEndArray, OutFullyOutOfEndArray)
-  local bHasFrontReddot = false
-  local bHasBackReddot = false
-  local bHasFrontNew = false
-  local bHasBackNew = false
-  
-  local function CalbHas(TargetTable)
-    local HasReddot = false
-    local HasNew = false
-    for _, Widget in pairs(TargetTable) do
-      local bHasReddot, bHasNew
-      if nil ~= ReddotAndNewCalFunc then
-        bHasReddot, bHasNew = ReddotAndNewCalFunc(Widget)
+  r29_23(r30_23, r31_23, r26_23)
+  r28_23(r2_23, r22_23, r27_23)
+  r29_23 = r28_23
+  r30_23 = r4_23
+  if not r22_23 then
+    r31_23 = r24_23
+  else
+    r31_23 = false
+  end
+  r29_23(r30_23, r31_23, r27_23)
+end
+function r10_0.UpdateScrollBoxReddot(r0_29, r1_29, r2_29, r3_29, r4_29, r5_29)
+  -- line: [818, 902] id: 29
+  -- notice: unreachable block#30
+  -- notice: unreachable block#22
+  if not r0_29 then
+    return 
+  end
+  local r6_29 = TArray(UObject)
+  local r7_29 = TArray(UObject)
+  local r8_29 = TArray(UObject)
+  local r9_29 = TArray(UObject)
+  local r10_29 = TArray(UObject)
+  r0_29:GetChildWidgetsPosInScrollBox(r6_29, r7_29, r8_29, r9_29, r10_29)
+  local r11_29 = false
+  local r12_29 = false
+  local r13_29 = false
+  local r14_29 = false
+  local function r15_29(r0_30)
+    -- line: [832, 850] id: 30
+    local r1_30 = false
+    local r2_30 = false
+    for r7_30, r8_30 in pairs(r0_30) do
+      local r9_30 = nil
+      local r10_30 = nil
+      if r5_29 ~= nil then
+        r9_30, r10_30 = r5_29(r8_30)
       else
-        bHasReddot, bHasNew = false, false
+        r10_30 = false
+        r9_30 = false
       end
-      if bHasReddot then
-        HasReddot = true
+      if r9_30 then
+        r1_30 = true
       end
-      if bHasNew then
-        HasNew = true
+      if r10_30 then
+        r2_30 = true
       end
     end
-    return HasReddot, HasNew
+    -- close: r3_30
+    return r1_30, r2_30
   end
-  
-  local TableHasReddot = false
-  local TableHasNew = false
-  TableHasReddot, TableHasNew = CalbHas(OutFullyOutOfStartArray:ToTable())
-  if TableHasReddot then
-    bHasFrontReddot = true
+  local r16_29 = false
+  local r17_29 = false
+  r16_29, r17_29 = r15_29(r6_29:ToTable())
+  if r16_29 then
+    r11_29 = true
   end
-  if TableHasNew then
-    bHasFrontNew = true
+  if r17_29 then
+    r13_29 = true
   end
-  TableHasReddot, TableHasNew = CalbHas(OutPartiallyOutOfStartArray:ToTable())
-  if TableHasReddot then
-    bHasFrontReddot = true
+  r16_29, r17_29 = r15_29(r7_29:ToTable())
+  if r16_29 then
+    r11_29 = true
   end
-  if TableHasNew then
-    bHasFrontNew = true
+  if r17_29 then
+    r13_29 = true
   end
-  TableHasReddot, TableHasNew = CalbHas(OutFullyOutOfEndArray:ToTable())
-  if TableHasReddot then
-    bHasBackReddot = true
+  r16_29, r17_29 = r15_29(r10_29:ToTable())
+  if r16_29 then
+    r12_29 = true
   end
-  if TableHasNew then
-    bHasBackNew = true
+  if r17_29 then
+    r14_29 = true
   end
-  local FrontAnim = "Loop_T"
-  local BackAnim = "Loop_D"
-  if TargetScrollBox.Orientation == EOrientation.Orient_Horizontal then
-    FrontAnim = "Loop_L"
-    BackAnim = "Loop_R"
+  local r18_29 = "Loop_T"
+  local r19_29 = "Loop_D"
+  local r21_29 = EOrientation.Orient_Horizontal
+  if r0_29.Orientation == r21_29 then
+    r18_29 = "Loop_L"
+    r19_29 = "Loop_R"
   end
-  
-  local function SetListIndicator(Widget, bVisible, AnimName)
-    if not Widget then
-      return
+  local function r20_29(r0_31, r1_31, r2_31)
+    -- line: [870, 882] id: 31
+    if not r0_31 then
+      return 
     end
-    local AnimObject = Widget[AnimName]
-    if bVisible then
-      Widget:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-      if AnimObject and not Widget:IsAnimationPlaying(AnimObject) then
-        Widget:PlayAnimation(AnimObject, 0, 0)
+    local r3_31 = r0_31[r2_31]
+    if r1_31 then
+      r0_31:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+      if r3_31 and not r0_31:IsAnimationPlaying(r3_31) then
+        r0_31:PlayAnimation(r3_31, 0, 0)
       end
     else
-      Widget:SetVisibility(UIConst.VisibilityOp.Collapsed)
+      r0_31:SetVisibility(UIConst.VisibilityOp.Collapsed)
     end
   end
-  
-  print("lgc@ :", "bHasFrontReddot", tostring(bHasFrontReddot), "bHasBackReddot", tostring(bHasBackReddot), "bHasFrontNew", tostring(bHasFrontNew), "bHasBackNew", tostring(bHasBackNew))
-  if ScrollBox_FrontRedDot then
-    SetListIndicator(ScrollBox_FrontRedDot, bHasFrontReddot, FrontAnim)
+  print("lgc@ :", "bHasFrontReddot", tostring(r11_29), "bHasBackReddot", tostring(r12_29), "bHasFrontNew", tostring(r13_29), "bHasBackNew", tostring(r14_29))
+  if r1_29 then
+    r20_29(r1_29, r11_29, r18_29)
   end
-  if ScrollBox_FrontNew then
-    local showTopNew = not bHasFrontReddot and bHasFrontNew
-    SetListIndicator(ScrollBox_FrontNew, showTopNew, FrontAnim)
-  end
-  if ScrollBox_BackRedDot then
-    SetListIndicator(ScrollBox_BackRedDot, bHasBackReddot, BackAnim)
-  end
-  if ScrollBox_BackNew then
-    local showBottomNew = not bHasBackReddot and bHasBackNew
-    SetListIndicator(ScrollBox_BackNew, showBottomNew, BackAnim)
-  end
-end
-
-function UIUtils.UpdateScrollBoxArrow(ScrollBox, List_ArrowTop, List_ArrowBottom)
-  if not ScrollBox then
-    return
-  end
-  local Offset = ScrollBox:GetScrollOffset()
-  local EndOffset = ScrollBox:GetScrollOffsetOfEnd()
-  if List_ArrowTop then
-    if Offset > 0 then
-      List_ArrowTop:SetVisibility(ESlateVisibility.Visible)
+  if r3_29 then
+    if not r11_29 then
+      r21_29 = r13_29
     else
-      List_ArrowTop:SetVisibility(ESlateVisibility.Collapsed)
+      r21_29 = false
     end
+    r20_29(r3_29, r21_29, r18_29)
   end
-  if List_ArrowBottom then
-    if Offset == EndOffset then
-      List_ArrowBottom:SetVisibility(ESlateVisibility.Collapsed)
+  if r2_29 then
+    r20_29(r2_29, r12_29, r19_29)
+  end
+  if r4_29 then
+    if not r12_29 then
+      r21_29 = r14_29
     else
-      List_ArrowBottom:SetVisibility(ESlateVisibility.Visible)
+      r21_29 = false
+    end
+    r20_29(r4_29, r21_29, r19_29)
+  end
+end
+function r10_0.UpdateScrollBoxArrow(r0_32, r1_32, r2_32, r3_32)
+  -- line: [909, 929] id: 32
+  if not r0_32 then
+    return 
+  end
+  local r4_32 = r0_32:GetScrollOffset()
+  local r5_32 = r0_32:GetScrollOffsetOfEnd()
+  if not r3_32 then
+    r3_32 = 0
+  end
+  if r1_32 then
+    if r4_32 > 0 and r3_32 < r4_32 then
+      r1_32:SetVisibility(ESlateVisibility.Visible)
+    else
+      r1_32:SetVisibility(ESlateVisibility.Collapsed)
+    end
+  end
+  if r2_32 then
+    local r6_32 = r5_32 - r4_32
+    if r4_32 < r5_32 and r3_32 < r6_32 then
+      r2_32:SetVisibility(ESlateVisibility.Visible)
+    else
+      r2_32:SetVisibility(ESlateVisibility.Collapsed)
     end
   end
 end
-
-function UIUtils.UpdateListArrow(ListView, List_ArrowTop, List_ArrowBottom)
-  if not ListView then
-    return
+function r10_0.UpdateListArrow(r0_33, r1_33, r2_33)
+  -- line: [935, 966] id: 33
+  if not r0_33 then
+    return 
   end
-  local DisplayedWidgets = ListView:GetDisplayedEntryWidgets():ToTable()
-  local ListItems = ListView:GetListItems():ToTable()
-  if 0 == #DisplayedWidgets or 0 == #ListItems then
-    if List_ArrowTop then
-      List_ArrowTop:SetVisibility(ESlateVisibility.Collapsed)
+  local r3_33 = r0_33:GetDisplayedEntryWidgets():ToTable()
+  local r4_33 = r0_33:GetListItems():ToTable()
+  if #r3_33 == 0 or #r4_33 == 0 then
+    if r1_33 then
+      r1_33:SetVisibility(ESlateVisibility.Collapsed)
     end
-    if List_ArrowBottom then
-      List_ArrowBottom:SetVisibility(ESlateVisibility.Collapsed)
+    if r2_33 then
+      r2_33:SetVisibility(ESlateVisibility.Collapsed)
     end
-    return
+    return 
   end
-  local VisibleIndexMin = 100000
-  local VisibleIndexMax = -1
-  for _, Widget in ipairs(DisplayedWidgets) do
-    local ItemObject = Widget.Content
-    local Index = ListView:GetIndexForItem(ItemObject)
-    if Index then
-      VisibleIndexMin = math.min(VisibleIndexMin, Index)
-      VisibleIndexMax = math.max(VisibleIndexMax, Index)
+  local r5_33 = 100000
+  local r6_33 = -1
+  for r11_33, r12_33 in ipairs(r3_33) do
+    local r14_33 = r0_33:GetIndexForItem(r12_33.Content)
+    if r14_33 then
+      r5_33 = math.min(r5_33, r14_33)
+      r6_33 = math.max(r6_33, r14_33)
     end
   end
-  if List_ArrowTop then
-    local bShowTopArrow = VisibleIndexMin > 0
-    List_ArrowTop:SetVisibility(bShowTopArrow and ESlateVisibility.Visible or ESlateVisibility.Collapsed)
+  -- close: r7_33
+  local r10_33 = nil	-- notice: implicit variable refs by block#[20, 28]
+  if r1_33 then
+    if r5_33 > 0 then
+      r10_33 = ESlateVisibility.Visible
+      if not r10_33 then
+        ::label_70::
+        r10_33 = ESlateVisibility.Collapsed
+      end
+    else
+      goto label_70	-- block#19 is visited secondly
+    end
+    r1_33:SetVisibility(r10_33)
   end
-  if List_ArrowBottom then
-    local bShowBottomArrow = VisibleIndexMax < #ListItems - 1
-    List_ArrowBottom:SetVisibility(bShowBottomArrow and ESlateVisibility.Visible or ESlateVisibility.Collapsed)
+  if r2_33 then
+    if r6_33 < #r4_33 + -1 then
+      r10_33 = ESlateVisibility.Visible
+      if not r10_33 then
+        ::label_89::
+        r10_33 = ESlateVisibility.Collapsed
+      end
+    else
+      goto label_89	-- block#27 is visited secondly
+    end
+    r2_33:SetVisibility(r10_33)
   end
 end
-
-function UIUtils.UpdateListArrowAndReddot(ListView, List_FrontRedDot, List_BackRedDot, List_ArrowTop, List_ArrowBottom, ReddotCalFunc)
-  if not ListView then
-    return
+function r10_0.UpdateListArrowAndReddot(r0_34, r1_34, r2_34, r3_34, r4_34, r5_34)
+  -- line: [976, 1121] id: 34
+  if not r0_34 then
+    return 
   end
-  local TargetList = ListView
-  local PartialStart = TArray(UObject)
-  local FullyVisible = TArray(UObject)
-  local PartialEnd = TArray(UObject)
-  ListView:GetEntryWidgetsVisibilityState(PartialStart, FullyVisible, PartialEnd)
-  PartialStart = PartialStart:ToTable()
-  FullyVisible = FullyVisible:ToTable()
-  PartialEnd = PartialEnd:ToTable()
-  local ListItems = ListView:GetListItems():ToTable()
-  if 0 == #ListItems then
-    return
+  local r6_34 = r0_34
+  local r7_34 = TArray(UObject)
+  local r8_34 = TArray(UObject)
+  local r9_34 = TArray(UObject)
+  r0_34:GetEntryWidgetsVisibilityState(r7_34, r8_34, r9_34)
+  r7_34 = r7_34:ToTable()
+  r8_34 = r8_34:ToTable()
+  r9_34 = r9_34:ToTable()
+  local r10_34 = r0_34:GetListItems():ToTable()
+  if #r10_34 == 0 then
+    return 
   end
-  
-  local function GetWidgetContentArray(widgets)
-    local result = {}
-    for _, w in ipairs(widgets) do
-      if w.Content then
-        table.insert(result, w.Content)
+  local function r11_34(r0_35)
+    -- line: [989, 995] id: 35
+    local r1_35 = {}
+    for r6_35, r7_35 in ipairs(r0_35) do
+      if r7_35.Content then
+        table.insert(r1_35, r7_35.Content)
       end
     end
-    return result
+    -- close: r2_35
+    return r1_35
   end
-  
-  local PartiallyOutOfStartItems = GetWidgetContentArray(PartialStart)
-  local FullyVisibleItems = GetWidgetContentArray(FullyVisible)
-  local PartiallyOutOfEndItems = GetWidgetContentArray(PartialEnd)
-  
-  local function GetItemIndex(Item)
-    for i, v in ipairs(ListItems) do
-      if v == Item then
-        return i
+  local r12_34 = r11_34(r7_34)
+  local r13_34 = r11_34(r8_34)
+  local r14_34 = r11_34(r9_34)
+  local function r15_34(r0_36)
+    -- line: [999, 1004] id: 36
+    for r5_36, r6_36 in ipairs(r10_34) do
+      if r6_36 == r0_36 then
+        return r5_36
       end
     end
+    -- close: r1_36
     return nil
   end
-  
-  table.sort(PartiallyOutOfStartItems, function(a, b)
-    return GetItemIndex(a) < GetItemIndex(b)
+  table.sort(r12_34, function(r0_37, r1_37)
+    -- line: [1005, 1005] id: 37
+    return r15_34(r0_37) < r15_34(r1_37)
   end)
-  table.sort(PartiallyOutOfEndItems, function(a, b)
-    return GetItemIndex(a) > GetItemIndex(b)
+  table.sort(r14_34, function(r0_38, r1_38)
+    -- line: [1006, 1006] id: 38
+    return r15_34(r1_38) < r15_34(r0_38)
   end)
-  local TopIndex = 1
-  local BottomIndex = #ListItems
-  if #FullyVisibleItems > 0 or #PartiallyOutOfStartItems > 0 or #PartiallyOutOfEndItems > 0 then
-    local TopItem = PartiallyOutOfStartItems[1] or FullyVisibleItems[1] or PartiallyOutOfEndItems[1]
-    local BottomItem = PartiallyOutOfEndItems[1] or FullyVisibleItems[#FullyVisibleItems] or PartiallyOutOfStartItems[1]
-    TopIndex = TopItem and GetItemIndex(TopItem) or 1
-    BottomIndex = BottomItem and GetItemIndex(BottomItem) or #ListItems
-  end
-  local FullyOutOfStartItems = {}
-  local FullyOutOfEndItems = {}
-  for i, item in ipairs(ListItems) do
-    if TopIndex and i < TopIndex then
-      table.insert(FullyOutOfStartItems, item)
-    elseif BottomIndex and i > BottomIndex then
-      table.insert(FullyOutOfEndItems, item)
+  local r16_34 = nil
+  local r17_34 = 1
+  local r18_34 = nil
+  local r19_34 = #r10_34
+  if #r13_34 > 0 or #r12_34 > 0 or #r14_34 > 0 then
+    r16_34 = r12_34[1] and r13_34[1] and r14_34[1]
+    r18_34 = r14_34[1] and r13_34[#r13_34] and r12_34[1]
+    if r16_34 then
+      r17_34 = r15_34(r16_34) and 1
+    else
+      goto label_91	-- block#15 is visited secondly
+    end
+    if r18_34 then
+      r19_34 = r15_34(r18_34) and #r10_34
+    else
+      goto label_99	-- block#18 is visited secondly
     end
   end
-  local FrontIndicatorItems = {}
-  for _, v in ipairs(FullyOutOfStartItems) do
-    table.insert(FrontIndicatorItems, v)
+  local r20_34 = {}
+  local r21_34 = {}
+  for r26_34, r27_34 in ipairs(r10_34) do
+    if r17_34 and r26_34 < r17_34 then
+      table.insert(r20_34, r27_34)
+    elseif r19_34 and r19_34 < r26_34 then
+      table.insert(r21_34, r27_34)
+    end
   end
-  for _, v in ipairs(PartiallyOutOfStartItems) do
-    table.insert(FrontIndicatorItems, v)
+  -- close: r22_34
+  local r22_34 = {}
+  for r27_34, r28_34 in ipairs(r20_34) do
+    table.insert(r22_34, r28_34)
   end
-  local BackIndicatorItems = {}
-  for _, v in ipairs(FullyOutOfEndItems) do
-    table.insert(BackIndicatorItems, v)
+  -- close: r23_34
+  for r27_34, r28_34 in ipairs(r12_34) do
+    table.insert(r22_34, r28_34)
   end
-  local bHasFrontReddot, bHasBackReddot = false, false
-  
-  local function CheckIndicators(ItemList)
-    for _, item in ipairs(ItemList) do
-      local hasRed = false, false
-      if ReddotCalFunc then
-        hasRed = ReddotCalFunc(item)
+  -- close: r23_34
+  local r23_34 = {}
+  for r28_34, r29_34 in ipairs(r21_34) do
+    table.insert(r23_34, r29_34)
+  end
+  -- close: r24_34
+  local r24_34 = false
+  local r25_34 = false
+  local function r26_34(r0_39)
+    -- line: [1033, 1048] id: 39
+    for r5_39, r6_39 in ipairs(r0_39) do
+      local r7_39 = false
+      local r8_39 = false
+      if r5_34 then
+        r7_39 = r5_34(r6_39)
       end
-      local idx = GetItemIndex(item)
-      if idx and TopIndex and BottomIndex then
-        if idx <= TopIndex then
-          if hasRed then
-            bHasFrontReddot = true
-          end
-        elseif idx >= BottomIndex and hasRed then
-          bHasBackReddot = true
-        end
+      r8_39 = r15_34(r6_39)
+      if r8_39 and r17_34 and r19_34 and r19_34 <= r8_39 and r7_39 then
+        r25_34 = true
       end
     end
+    -- close: r1_39
+    -- warn: not visited block [8]
+    -- block#8:
+    -- bHasFrontReddot = true
+    -- goto label_39
   end
-  
-  CheckIndicators(FrontIndicatorItems)
-  CheckIndicators(BackIndicatorItems)
-  if not FullyVisible or #FullyVisible <= 3 then
-    if List_FrontRedDot then
-      List_FrontRedDot:SetVisibility(ESlateVisibility.Collapsed)
+  r26_34(r22_34)
+  r26_34(r23_34)
+  if not r8_34 or #r8_34 <= 3 then
+    if r1_34 then
+      r1_34:SetVisibility(ESlateVisibility.Collapsed)
     end
-    if List_BackRedDot then
-      List_BackRedDot:SetVisibility(ESlateVisibility.Collapsed)
+    if r2_34 then
+      r2_34:SetVisibility(ESlateVisibility.Collapsed)
     end
-    if List_ArrowTop then
-      List_ArrowTop:SetVisibility(ESlateVisibility.Collapsed)
+    if r3_34 then
+      r3_34:SetVisibility(ESlateVisibility.Collapsed)
     end
-    if List_ArrowBottom then
-      List_ArrowBottom:SetVisibility(ESlateVisibility.Collapsed)
+    if r4_34 then
+      r4_34:SetVisibility(ESlateVisibility.Collapsed)
     end
-    return
+    return 
   end
-  if not ListItems or 0 == #ListItems then
-    if List_FrontRedDot then
-      List_FrontRedDot:SetVisibility(ESlateVisibility.Collapsed)
+  if not r10_34 or #r10_34 == 0 then
+    if r1_34 then
+      r1_34:SetVisibility(ESlateVisibility.Collapsed)
     end
-    if List_BackRedDot then
-      List_BackRedDot:SetVisibility(ESlateVisibility.Collapsed)
+    if r2_34 then
+      r2_34:SetVisibility(ESlateVisibility.Collapsed)
     end
-    if List_ArrowTop then
-      List_ArrowTop:SetVisibility(ESlateVisibility.Collapsed)
+    if r3_34 then
+      r3_34:SetVisibility(ESlateVisibility.Collapsed)
     end
-    if List_ArrowBottom then
-      List_ArrowBottom:SetVisibility(ESlateVisibility.Collapsed)
+    if r4_34 then
+      r4_34:SetVisibility(ESlateVisibility.Collapsed)
     end
-    return
+    return 
   end
-  if #FullyVisible >= #ListItems then
-    if List_FrontRedDot then
-      List_FrontRedDot:SetVisibility(ESlateVisibility.Collapsed)
+  if #r10_34 <= #r8_34 then
+    if r1_34 then
+      r1_34:SetVisibility(ESlateVisibility.Collapsed)
     end
-    if List_BackRedDot then
-      List_BackRedDot:SetVisibility(ESlateVisibility.Collapsed)
+    if r2_34 then
+      r2_34:SetVisibility(ESlateVisibility.Collapsed)
     end
-    if List_ArrowTop then
-      List_ArrowTop:SetVisibility(ESlateVisibility.Collapsed)
+    if r3_34 then
+      r3_34:SetVisibility(ESlateVisibility.Collapsed)
     end
-    if List_ArrowBottom then
-      List_ArrowBottom:SetVisibility(ESlateVisibility.Collapsed)
+    if r4_34 then
+      r4_34:SetVisibility(ESlateVisibility.Collapsed)
     end
-    return
+    return 
   end
-  local FrontAnim = "Loop_T"
-  local BackAnim = "Loop_D"
-  if TargetList.Orientation == EOrientation.Orient_Horizontal then
-    FrontAnim = "Loop_L"
-    BackAnim = "Loop_R"
+  local r27_34 = "Loop_T"
+  local r28_34 = "Loop_D"
+  if r6_34.Orientation == EOrientation.Orient_Horizontal then
+    r27_34 = "Loop_L"
+    r28_34 = "Loop_R"
   end
-  
-  local function SetListIndicator(Widget, bVisible, AnimName)
-    if not Widget then
-      return
+  local function r29_34(r0_40, r1_40, r2_40)
+    -- line: [1084, 1095] id: 40
+    if not r0_40 then
+      return 
     end
-    local AnimObject = Widget[AnimName]
-    if bVisible then
-      Widget:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-      if AnimObject and not Widget:IsAnimationPlaying(AnimObject) then
-        Widget:PlayAnimation(AnimObject, 0, 0)
+    local r3_40 = r0_40[r2_40]
+    if r1_40 then
+      r0_40:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+      if r3_40 and not r0_40:IsAnimationPlaying(r3_40) then
+        r0_40:PlayAnimation(r3_40, 0, 0)
       end
     else
-      Widget:SetVisibility(UIConst.VisibilityOp.Collapsed)
+      r0_40:SetVisibility(UIConst.VisibilityOp.Collapsed)
     end
   end
-  
-  local bShowTopArrow = TopIndex > 1
-  local bShowBottomArrow = BottomIndex < #ListItems - 1
-  if List_FrontRedDot then
-    SetListIndicator(List_FrontRedDot, bHasFrontReddot, FrontAnim)
+  local r30_34 = r17_34 > 1
+  local r31_34 = r19_34 < #r10_34
+  if not r18_34 or r18_34.IsEmpty then
+    r31_34 = false
   end
-  if List_ArrowTop then
-    local bShowArrow = bShowTopArrow and not bHasFrontReddot
-    List_ArrowTop:SetVisibility(bShowArrow and ESlateVisibility.Visible or ESlateVisibility.Collapsed)
+  if r1_34 then
+    r29_34(r1_34, r24_34, r27_34)
   end
-  if List_BackRedDot then
-    SetListIndicator(List_BackRedDot, bHasBackReddot, BackAnim)
+  local r35_34 = nil	-- notice: implicit variable refs by block#[87, 96]
+  if r3_34 then
+    if r30_34 and not r24_34 then
+      r35_34 = ESlateVisibility.Visible
+      if not r35_34 then
+        ::label_312::
+        r35_34 = ESlateVisibility.Collapsed
+      end
+    else
+      goto label_312	-- block#86 is visited secondly
+    end
+    r3_34:SetVisibility(r35_34)
   end
-  if List_ArrowBottom then
-    local bShowArrow = bShowBottomArrow and not bHasBackReddot
-    List_ArrowBottom:SetVisibility(bShowArrow and ESlateVisibility.Visible or ESlateVisibility.Collapsed)
+  if r2_34 then
+    r29_34(r2_34, r25_34, r28_34)
+  end
+  if r4_34 then
+    if r31_34 and not r25_34 then
+      r35_34 = ESlateVisibility.Visible
+      if not r35_34 then
+        ::label_334::
+        r35_34 = ESlateVisibility.Collapsed
+      end
+    else
+      goto label_334	-- block#95 is visited secondly
+    end
+    r4_34:SetVisibility(r35_34)
   end
 end
-
-function UIUtils.BindScrollBoxReddotAndNewClickEvent(TargetScrollBox, ScrollBox_FrontRedDot, ScrollBox_BackRedDot, ScrollBox_FrontNew, ScrollBox_BackNew, ReddotAndNewCalFunc)
-  if not TargetScrollBox then
-    return
+function r10_0.BindScrollBoxReddotAndNewClickEvent(r0_41, r1_41, r2_41, r3_41, r4_41, r5_41)
+  -- line: [1131, 1199] id: 41
+  if not r0_41 then
+    return 
   end
-  
-  local function BindClickEvent(indicator, isFront, isReddot)
-    if not indicator or not indicator.Btn_Click then
-      return
+  local function r6_41(r0_42, r1_42, r2_42)
+    -- line: [1133, 1185] id: 42
+    if not r0_42 or not r0_42.Btn_Click then
+      return 
     end
-    indicator.Btn_Click.OnClicked:Clear()
-    indicator.Btn_Click.OnHovered:Clear()
-    indicator.Btn_Click.OnHovered:Add(TargetScrollBox, function()
-      AudioManager(indicator):PlayUISound(nil, "event:/ui/common/red_point_out_bound", nil, nil)
+    r0_42.Btn_Click.OnClicked:Clear()
+    r0_42.Btn_Click.OnHovered:Clear()
+    r0_42.Btn_Click.OnHovered:Add(r0_41, function()
+      -- line: [1137, 1139] id: 43
+      AudioManager(r0_42):PlayUISound(nil, "event:/ui/common/red_point_out_bound", nil, nil)
     end)
-    indicator.Btn_Click.OnClicked:Add(TargetScrollBox, function()
-      AudioManager(indicator):PlayUISound(nil, "event:/ui/common/click_btn_small", nil, nil)
-      local OutFullyOutOfStartArray = TArray(UObject)
-      local OutPartiallyOutOfStartArray = TArray(UObject)
-      local OutFullyVisibleArray = TArray(UObject)
-      local OutPartiallyOutOfEndArray = TArray(UObject)
-      local OutFullyOutOfEndArray = TArray(UObject)
-      TargetScrollBox:GetChildWidgetsPosInScrollBox(OutFullyOutOfStartArray, OutPartiallyOutOfStartArray, OutFullyVisibleArray, OutPartiallyOutOfEndArray, OutFullyOutOfEndArray)
-      local targetWidgets = {}
-      if isFront then
-        for _, widget in ipairs(OutFullyOutOfStartArray:ToTable()) do
-          table.insert(targetWidgets, widget)
+    r0_42.Btn_Click.OnClicked:Add(r0_41, function()
+      -- line: [1140, 1184] id: 44
+      AudioManager(r0_42):PlayUISound(nil, "event:/ui/common/click_btn_small", nil, nil)
+      local r0_44 = TArray(UObject)
+      local r1_44 = TArray(UObject)
+      local r2_44 = TArray(UObject)
+      local r3_44 = TArray(UObject)
+      local r4_44 = TArray(UObject)
+      r0_41:GetChildWidgetsPosInScrollBox(r0_44, r1_44, r2_44, r3_44, r4_44)
+      local r5_44 = {}
+      if r1_42 then
+        for r10_44, r11_44 in ipairs(r0_44:ToTable()) do
+          table.insert(r5_44, r11_44)
         end
-        for _, widget in ipairs(OutPartiallyOutOfStartArray:ToTable()) do
-          table.insert(targetWidgets, widget)
+        -- close: r6_44
+        for r10_44, r11_44 in ipairs(r1_44:ToTable()) do
+          table.insert(r5_44, r11_44)
         end
-        for _, widget in ipairs(targetWidgets) do
-          local bHasReddot, bHasNew = ReddotAndNewCalFunc(widget)
-          if isReddot and bHasReddot or not isReddot and bHasNew then
-            TargetScrollBox:ScrollWidgetIntoView(widget, true)
-            return
+        -- close: r6_44
+        for r10_44, r11_44 in ipairs(r5_44) do
+          local r12_44, r13_44 = r5_41(r11_44)
+          if r2_42 and r12_44 or not r2_42 and r13_44 then
+            r0_41:ScrollWidgetIntoView(r11_44, true)
+            return 
           end
         end
+        -- close: r6_44
       else
-        for _, widget in ipairs(OutPartiallyOutOfEndArray:ToTable()) do
-          table.insert(targetWidgets, widget)
+        for r10_44, r11_44 in ipairs(r3_44:ToTable()) do
+          table.insert(r5_44, r11_44)
         end
-        for _, widget in ipairs(OutFullyOutOfEndArray:ToTable()) do
-          table.insert(targetWidgets, widget)
+        -- close: r6_44
+        for r10_44, r11_44 in ipairs(r4_44:ToTable()) do
+          table.insert(r5_44, r11_44)
         end
-        for i = #targetWidgets, 1, -1 do
-          local widget = targetWidgets[i]
-          local bHasReddot, bHasNew = ReddotAndNewCalFunc(widget)
-          if isReddot and bHasReddot or not isReddot and bHasNew then
-            TargetScrollBox:ScrollWidgetIntoView(widget, true)
-            return
+        -- close: r6_44
+        for r9_44 = #r5_44, 1, -1 do
+          local r10_44 = r5_44[r9_44]
+          local r11_44, r12_44 = r5_41(r10_44)
+          if r2_42 and r11_44 or not r2_42 and r12_44 then
+            r0_41:ScrollWidgetIntoView(r10_44, true)
+            return 
           end
         end
       end
     end)
   end
-  
-  BindClickEvent(ScrollBox_FrontRedDot, true, true)
-  BindClickEvent(ScrollBox_BackRedDot, false, true)
-  BindClickEvent(ScrollBox_FrontNew, true, false)
-  BindClickEvent(ScrollBox_BackNew, false, false)
-  
-  local function PlayNormalAnim(Target)
-    if Target and Target.Normal and Target.PlayAnimation then
-      Target:PlayAnimation(Target.Normal)
+  r6_41(r1_41, true, true)
+  r6_41(r2_41, false, true)
+  r6_41(r3_41, true, false)
+  r6_41(r4_41, false, false)
+  local function r7_41(r0_45)
+    -- line: [1190, 1194] id: 45
+    if r0_45 and r0_45.Normal and r0_45.PlayAnimation then
+      r0_45:PlayAnimation(r0_45.Normal)
     end
   end
-  
-  PlayNormalAnim(ScrollBox_FrontRedDot)
-  PlayNormalAnim(ScrollBox_BackRedDot)
-  PlayNormalAnim(ScrollBox_FrontNew)
-  PlayNormalAnim(ScrollBox_BackNew)
+  r7_41(r1_41)
+  r7_41(r2_41)
+  r7_41(r3_41)
+  r7_41(r4_41)
 end
-
-function UIUtils.GetListViewEntryItemsVisibilityState(ListView, OutFullyOutOfStartArray, OutPartiallyOutOfStartArray, OutFullyVisibleArray, OutPartiallyOutOfEndArray, OutFullyOutOfEndArray)
-  if not ListView then
-    return
+function r10_0.GetListViewEntryItemsVisibilityState(r0_46, r1_46, r2_46, r3_46, r4_46, r5_46)
+  -- line: [1210, 1291] id: 46
+  if not r0_46 then
+    return 
   end
-  for i = #OutFullyOutOfStartArray, 1, -1 do
-    table.remove(OutFullyOutOfStartArray, i)
+  for r9_46 = #r1_46, 1, -1 do
+    table.remove(r1_46, r9_46)
   end
-  for i = #OutPartiallyOutOfStartArray, 1, -1 do
-    table.remove(OutPartiallyOutOfStartArray, i)
+  for r9_46 = #r2_46, 1, -1 do
+    table.remove(r2_46, r9_46)
   end
-  for i = #OutFullyVisibleArray, 1, -1 do
-    table.remove(OutFullyVisibleArray, i)
+  for r9_46 = #r3_46, 1, -1 do
+    table.remove(r3_46, r9_46)
   end
-  for i = #OutPartiallyOutOfEndArray, 1, -1 do
-    table.remove(OutPartiallyOutOfEndArray, i)
+  for r9_46 = #r4_46, 1, -1 do
+    table.remove(r4_46, r9_46)
   end
-  for i = #OutFullyOutOfEndArray, 1, -1 do
-    table.remove(OutFullyOutOfEndArray, i)
+  for r9_46 = #r5_46, 1, -1 do
+    table.remove(r5_46, r9_46)
   end
-  local AllItems = ListView:GetListItems():ToTable()
-  if 0 == #AllItems then
-    return
+  local r6_46 = r0_46:GetListItems():ToTable()
+  if #r6_46 == 0 then
+    return 
   end
-  local PartialStart = TArray(UObject)
-  local FullyVisible = TArray(UObject)
-  local PartialEnd = TArray(UObject)
-  ListView:GetEntryWidgetsVisibilityState(PartialStart, FullyVisible, PartialEnd)
-  
-  local function GetWidgetContentArray(widgets)
-    local result = {}
-    for _, w in ipairs(widgets) do
-      if w.Content then
-        table.insert(result, w.Content)
+  local r7_46 = TArray(UObject)
+  local r8_46 = TArray(UObject)
+  local r9_46 = TArray(UObject)
+  r0_46:GetEntryWidgetsVisibilityState(r7_46, r8_46, r9_46)
+  local function r10_46(r0_47)
+    -- line: [1233, 1239] id: 47
+    local r1_47 = {}
+    for r6_47, r7_47 in ipairs(r0_47) do
+      if r7_47.Content then
+        table.insert(r1_47, r7_47.Content)
       end
     end
-    return result
+    -- close: r2_47
+    return r1_47
   end
-  
-  local PartiallyOutOfStartItems = GetWidgetContentArray(PartialStart:ToTable())
-  local FullyVisibleItems = GetWidgetContentArray(FullyVisible:ToTable())
-  local PartiallyOutOfEndItems = GetWidgetContentArray(PartialEnd:ToTable())
-  
-  local function GetItemIndex(Item)
-    for i, v in ipairs(AllItems) do
-      if v == Item then
-        return i
+  local r11_46 = r10_46(r7_46:ToTable())
+  local r12_46 = r10_46(r8_46:ToTable())
+  local r13_46 = r10_46(r9_46:ToTable())
+  local function r14_46(r0_48)
+    -- line: [1243, 1248] id: 48
+    for r5_48, r6_48 in ipairs(r6_46) do
+      if r6_48 == r0_48 then
+        return r5_48
       end
     end
+    -- close: r1_48
     return nil
   end
-  
-  local TopIndex = 1
-  local BottomIndex = #AllItems
-  if #FullyVisibleItems > 0 or #PartiallyOutOfStartItems > 0 or #PartiallyOutOfEndItems > 0 then
-    local TopItem = PartiallyOutOfStartItems[1] or FullyVisibleItems[1] or PartiallyOutOfEndItems[1]
-    local BottomItem = PartiallyOutOfEndItems[#PartiallyOutOfEndItems] or FullyVisibleItems[#FullyVisibleItems] or PartiallyOutOfStartItems[#PartiallyOutOfStartItems]
-    TopIndex = TopItem and GetItemIndex(TopItem) or 1
-    BottomIndex = BottomItem and GetItemIndex(BottomItem) or #AllItems
-  end
-  for i, item in ipairs(AllItems) do
-    if i < TopIndex then
-      table.insert(OutFullyOutOfStartArray, item)
-    elseif i > BottomIndex then
-      table.insert(OutFullyOutOfEndArray, item)
+  local r15_46 = 1
+  local r16_46 = #r6_46
+  if #r12_46 > 0 or #r11_46 > 0 or #r13_46 > 0 then
+    local r17_46 = r11_46[1] and r12_46[1] and r13_46[1]
+    local r18_46 = r13_46[#r13_46] and r12_46[#r12_46] and r11_46[#r11_46]
+    if r17_46 then
+      r15_46 = r14_46(r17_46) and 1
     else
-      local found = false
-      for _, visibleItem in ipairs(PartiallyOutOfStartItems) do
-        if visibleItem == item then
-          table.insert(OutPartiallyOutOfStartArray, item)
-          found = true
+      goto label_124	-- block#30 is visited secondly
+    end
+    if r18_46 then
+      r16_46 = r14_46(r18_46) and #r6_46
+    else
+      goto label_132	-- block#33 is visited secondly
+    end
+  end
+  for r21_46, r22_46 in ipairs(r6_46) do
+    if r21_46 < r15_46 then
+      table.insert(r1_46, r22_46)
+    elseif r16_46 < r21_46 then
+      table.insert(r5_46, r22_46)
+    else
+      local r23_46 = false
+      for r28_46, r29_46 in ipairs(r11_46) do
+        if r29_46 == r22_46 then
+          table.insert(r2_46, r22_46)
+          r23_46 = true
           break
         end
       end
-      if not found then
-        for _, visibleItem in ipairs(FullyVisibleItems) do
-          if visibleItem == item then
-            table.insert(OutFullyVisibleArray, item)
-            found = true
+      -- close: r24_46
+      if not r23_46 then
+        for r28_46, r29_46 in ipairs(r12_46) do
+          if r29_46 == r22_46 then
+            table.insert(r3_46, r22_46)
+            r23_46 = true
             break
           end
         end
+        -- close: r24_46
       end
-      if not found then
-        for _, visibleItem in ipairs(PartiallyOutOfEndItems) do
-          if visibleItem == item then
-            table.insert(OutPartiallyOutOfEndArray, item)
-            found = true
+      if not r23_46 then
+        for r28_46, r29_46 in ipairs(r13_46) do
+          if r29_46 == r22_46 then
+            table.insert(r4_46, r22_46)
+            r23_46 = true
             break
           end
         end
+        -- close: r24_46
       end
     end
   end
+  -- close: r17_46
 end
-
-function UIUtils.BindListViewReddotAndNewClickEvent(TargetListView, ListView_FrontRedDot, ListView_BackRedDot, ListView_FrontNew, ListView_BackNew, ReddotAndNewCalFunc)
-  if not TargetListView then
-    return
+function r10_0.BindListViewReddotAndNewClickEvent(r0_49, r1_49, r2_49, r3_49, r4_49, r5_49)
+  -- line: [1301, 1371] id: 49
+  if not r0_49 then
+    return 
   end
-  
-  local function BindClickEvent(indicator, isFront, isReddot)
-    if not indicator or not indicator.Btn_Click then
-      return
+  local function r6_49(r0_50, r1_50, r2_50)
+    -- line: [1303, 1357] id: 50
+    if not r0_50 or not r0_50.Btn_Click then
+      return 
     end
-    indicator.Btn_Click.OnClicked:Clear()
-    indicator.Btn_Click.OnHovered:Clear()
-    indicator.Btn_Click.OnHovered:Add(TargetListView, function()
-      AudioManager(indicator):PlayUISound(nil, "event:/ui/common/red_point_out_bound", nil, nil)
+    r0_50.Btn_Click.OnClicked:Clear()
+    r0_50.Btn_Click.OnHovered:Clear()
+    r0_50.Btn_Click.OnHovered:Add(r0_49, function()
+      -- line: [1307, 1309] id: 51
+      AudioManager(r0_50):PlayUISound(nil, "event:/ui/common/red_point_out_bound", nil, nil)
     end)
-    indicator.Btn_Click.OnClicked:Add(TargetListView, function()
-      AudioManager(indicator):PlayUISound(nil, "event:/ui/common/click_btn_small", nil, nil)
-      local OutFullyOutOfStartArray = {}
-      local OutPartiallyOutOfStartArray = {}
-      local OutFullyVisibleArray = {}
-      local OutPartiallyOutOfEndArray = {}
-      local OutFullyOutOfEndArray = {}
-      UIUtils.GetListViewEntryItemsVisibilityState(TargetListView, OutFullyOutOfStartArray, OutPartiallyOutOfStartArray, OutFullyVisibleArray, OutPartiallyOutOfEndArray, OutFullyOutOfEndArray)
-      local targetItems = {}
-      if isFront then
-        for _, item in ipairs(OutFullyOutOfStartArray) do
-          table.insert(targetItems, item)
+    r0_50.Btn_Click.OnClicked:Add(r0_49, function()
+      -- line: [1310, 1356] id: 52
+      AudioManager(r0_50):PlayUISound(nil, "event:/ui/common/click_btn_small", nil, nil)
+      local r0_52 = {}
+      local r1_52 = {}
+      local r2_52 = {}
+      local r3_52 = {}
+      local r4_52 = {}
+      r10_0.GetListViewEntryItemsVisibilityState(r0_49, r0_52, r1_52, r2_52, r3_52, r4_52)
+      local r5_52 = {}
+      if r1_50 then
+        for r10_52, r11_52 in ipairs(r0_52) do
+          table.insert(r5_52, r11_52)
         end
-        for _, item in ipairs(OutPartiallyOutOfStartArray) do
-          table.insert(targetItems, item)
+        -- close: r6_52
+        for r10_52, r11_52 in ipairs(r1_52) do
+          table.insert(r5_52, r11_52)
         end
-        for _, item in ipairs(targetItems) do
-          local bHasReddot, bHasNew = ReddotAndNewCalFunc(item)
-          if isReddot and bHasReddot or not isReddot and bHasNew then
-            TargetListView:ScrollItemIntoViewWithAnim(item, true, UE4.EDescendantScrollDestination.TopOrLeft)
-            return
+        -- close: r6_52
+        for r10_52, r11_52 in ipairs(r5_52) do
+          local r12_52, r13_52 = r5_49(r11_52)
+          if r2_50 and r12_52 or not r2_50 and r13_52 then
+            r0_49:ScrollItemIntoViewWithAnim(r11_52, true, UE4.EDescendantScrollDestination.TopOrLeft)
+            return 
           end
         end
+        -- close: r6_52
       else
-        for _, item in ipairs(OutPartiallyOutOfEndArray) do
-          table.insert(targetItems, item)
+        for r10_52, r11_52 in ipairs(r3_52) do
+          table.insert(r5_52, r11_52)
         end
-        for _, item in ipairs(OutFullyOutOfEndArray) do
-          table.insert(targetItems, item)
+        -- close: r6_52
+        for r10_52, r11_52 in ipairs(r4_52) do
+          table.insert(r5_52, r11_52)
         end
-        for i = #targetItems, 1, -1 do
-          local item = targetItems[i]
-          local bHasReddot, bHasNew = ReddotAndNewCalFunc(item)
-          if isReddot and bHasReddot or not isReddot and bHasNew then
-            TargetListView:ScrollItemIntoViewWithAnim(item, true, UE4.EDescendantScrollDestination.BottomOrRight)
-            return
+        -- close: r6_52
+        for r9_52 = #r5_52, 1, -1 do
+          local r10_52 = r5_52[r9_52]
+          local r11_52, r12_52 = r5_49(r10_52)
+          if r2_50 and r11_52 or not r2_50 and r12_52 then
+            r0_49:ScrollItemIntoViewWithAnim(r10_52, true, UE4.EDescendantScrollDestination.BottomOrRight)
+            return 
           end
         end
       end
     end)
   end
-  
-  BindClickEvent(ListView_FrontRedDot, true, true)
-  BindClickEvent(ListView_BackRedDot, false, true)
-  BindClickEvent(ListView_FrontNew, true, false)
-  BindClickEvent(ListView_BackNew, false, false)
-  
-  local function PlayNormalAnim(Target)
-    if Target and Target.Normal and Target.PlayAnimation then
-      Target:PlayAnimation(Target.Normal)
+  r6_49(r1_49, true, true)
+  r6_49(r2_49, false, true)
+  r6_49(r3_49, true, false)
+  r6_49(r4_49, false, false)
+  local function r7_49(r0_53)
+    -- line: [1362, 1366] id: 53
+    if r0_53 and r0_53.Normal and r0_53.PlayAnimation then
+      r0_53:PlayAnimation(r0_53.Normal)
     end
   end
-  
-  PlayNormalAnim(ListView_FrontRedDot)
-  PlayNormalAnim(ListView_BackRedDot)
-  PlayNormalAnim(ListView_FrontNew)
-  PlayNormalAnim(ListView_BackNew)
+  r7_49(r1_49)
+  r7_49(r2_49)
+  r7_49(r3_49)
+  r7_49(r4_49)
 end
-
-function UIUtils.OpenSystem(SystemId, Option, ...)
-  local Player = UE4.UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
-  if not Player or not IsValid(Player) then
-    return
+function r10_0.OpenSystem(r0_54, r1_54, ...)
+  -- line: [1422, 1486] id: 54
+  local r2_54 = UE4.UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
+  if not r2_54 or not IsValid(r2_54) then
+    return 
   end
-  local SystemData = DataMgr.MainUI[SystemId]
-  local SystemUIName
-  if SystemData and SystemData.SystemUIName then
-    SystemUIName = SystemData.SystemUIName
+  local r3_54 = DataMgr.MainUI[r0_54]
+  local r4_54 = nil
+  if r3_54 and r3_54.SystemUIName then
+    r4_54 = r3_54.SystemUIName
   else
-    return
+    return 
   end
-  local NeedAnimation = false
-  if SystemData.ShowCondition then
-    NeedAnimation = true
+  local r5_54 = false
+  if r3_54.ShowCondition or r3_54.EscShowCondition then
+    r5_54 = true
   end
-  if SystemData and UIUtils.CheckCdnHide(SystemUIName, true) then
-    return
+  if r3_54 and r10_0.CheckCdnHide(r4_54, true) then
+    return 
   end
-  local SystemUI = DataMgr.SystemUI[SystemUIName]
-  if not UIUtils.CheckSystemCanOpen(SystemUI) then
-    return
+  if not r10_0.CheckSystemCanOpen(DataMgr.SystemUI[r4_54]) then
+    return 
   end
-  local UIManager = GWorld.GameInstance:GetGameUIManager()
-  local MenuUI = UIManager:GetUI(UIConst.MenuWorld)
-  local IsEscMenu = false
-  if type(Option) == "boolean" then
-    IsEscMenu = true
-  elseif type(Option) == "string" then
-    MenuUI[Option] = true
+  local r7_54 = GWorld.GameInstance:GetGameUIManager()
+  local r8_54 = r7_54:GetUI(UIConst.MenuWorld)
+  local r9_54 = false
+  if type(r1_54) == "boolean" then
+    r9_54 = true
+  elseif type(r1_54) == "string" then
+    r8_54[r1_54] = true
   end
-  local UIUnlockRuleName = SystemData.UIUnlockRuleName
-  if SystemId == CommonConst.ArmoryEnterId then
-    local bInSkillAndSafeToCancel = Player:CharacterInTag("Skill") and Player:IsSafeToCancelSkill()
-    if Player:CanEnterInteractive() and (Player:CharacterInTag("Idle") or bInSkillAndSafeToCancel) and Player.PlayerAnimInstance and (Player.PlayerAnimInstance.IdletagName == "0" or Player.PlayerAnimInstance.IdletagName == "EmoIdle") then
-      if UIUtils.CheckSystemIsUnlock(SystemUIName, UIUnlockRuleName, IsEscMenu, NeedAnimation, ...) and bInSkillAndSafeToCancel then
-        Player:StopSkill(UE.ESkillStopReason.ArmoryCancel)
+  local r10_54 = r3_54.UIUnlockRuleName
+  if r0_54 == CommonConst.ArmoryEnterId then
+    local r11_54 = r2_54:CharacterInTag("Skill") and r2_54:IsSafeToCancelSkill()
+    if r2_54:CanEnterInteractive() and (r2_54:CharacterInTag("Idle") or r11_54) and r2_54.PlayerAnimInstance and (r2_54.PlayerAnimInstance.IdletagName == "0" or r2_54.PlayerAnimInstance.IdletagName == "EmoIdle") then
+      if r10_0.CheckSystemIsUnlock(r4_54, r10_54, r9_54, r5_54, ...) and r11_54 then
+        r2_54:StopSkill(UE.ESkillStopReason.ArmoryCancel)
       end
-    elseif not IsEscMenu then
-      UIManager:ShowUITip(UIConst.Tip_CommonTop, GText("UI_Toast_Armory_Forbid"))
+    elseif not r9_54 then
+      r7_54:ShowUITip(UIConst.Tip_CommonTop, GText("UI_Toast_Armory_Forbid"))
     else
-      UIManager:ShowUITip(UIConst.Tip_CommonToast, GText("UI_Toast_Armory_Forbid"))
+      r7_54:ShowUITip(UIConst.Tip_CommonToast, GText("UI_Toast_Armory_Forbid"))
     end
-  elseif "NpcSwitchMain" == SystemUIName then
-    if Player:IsSeating() then
-      UIManager:ShowUITip(UIConst.Tip_CommonTop, GText("UI_Toast_NpcSwitch_Forbid"))
+  elseif r4_54 == "NpcSwitchMain" then
+    if r2_54:IsSeating() then
+      r7_54:ShowUITip(UIConst.Tip_CommonTop, GText("UI_Toast_NpcSwitch_Forbid"))
     else
-      UIUtils.CheckSystemIsUnlock(SystemUIName, UIUnlockRuleName, IsEscMenu, ...)
+      r10_0.CheckSystemIsUnlock(r4_54, r10_54, r9_54, r5_54, ...)
     end
-  elseif "ShopMain" == SystemUIName then
-    UIUtils.CheckSystemIsUnlock(SystemUIName, UIUnlockRuleName, IsEscMenu, NeedAnimation, nil, nil, nil, "Shop")
+  elseif r4_54 == "ShopMain" then
+    r10_0.CheckSystemIsUnlock(r4_54, r10_54, r9_54, r5_54, nil, nil, nil, "Shop")
   else
-    UIUtils.CheckSystemIsUnlock(SystemUIName, UIUnlockRuleName, IsEscMenu, NeedAnimation, ...)
+    r10_0.CheckSystemIsUnlock(r4_54, r10_54, r9_54, r5_54, ...)
   end
 end
-
-function UIUtils.CheckSystemCanOpen(SystemUI)
-  local UIManager = GWorld.GameInstance:GetGameUIManager()
-  local Player = UE4.UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
-  if SystemUI and SystemUI.CombatconditionIdList ~= nil then
-    local IsConditionSuccess, TargetConditionIdx = true
-    for i, v in ipairs(SystemUI.CombatconditionIdList) do
-      local TraceInfo = "From Guide_Touch:Init"
-      if not Battle(Player):CheckConditionNew(v, Player, nil, TraceInfo) then
-        IsConditionSuccess = false
-        TargetConditionIdx = i
+function r10_0.CheckSystemCanOpen(r0_55)
+  -- line: [1489, 1516] id: 55
+  local r1_55 = GWorld.GameInstance:GetGameUIManager()
+  local r2_55 = UE4.UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
+  if r0_55 and r0_55.CombatconditionIdList ~= nil then
+    local r3_55 = true
+    local r4_55 = nil
+    for r9_55, r10_55 in ipairs(r0_55.CombatconditionIdList) do
+      if not Battle(r2_55):CheckConditionNew(r10_55, r2_55, nil, "From Guide_Touch:Init") then
+        r3_55 = false
+        r4_55 = r9_55
         break
       end
     end
-    if not IsConditionSuccess then
-      if SystemUI.ConditiontextList and nil ~= SystemUI.ConditiontextList[TargetConditionIdx] then
-        DebugPrint("The UI Load in fail, Because Combatcondition is not met, The CombatconditionId is", SystemUI.CombatconditionIdList[TargetConditionIdx])
-        UIManager:ShowUITip(UIConst.Tip_CommonTop, GText(SystemUI.ConditiontextList[TargetConditionIdx]))
+    -- close: r5_55
+    if not r3_55 then
+      if r0_55.ConditiontextList and r0_55.ConditiontextList[r4_55] ~= nil then
+        DebugPrint("The UI Load in fail, Because Combatcondition is not met, The CombatconditionId is", r0_55.CombatconditionIdList[r4_55])
+        r1_55:ShowUITip(UIConst.Tip_CommonTop, GText(r0_55.ConditiontextList[r4_55]))
       end
       return false
     end
   end
   return true
 end
-
-function UIUtils.CheckSystemIsUnlock(SystemUIName, UIUnlockRuleName, IsEscMenu, NeedAnimation, ...)
-  local Param1, Param2, Param3, Param4, Param5 = ...
-  local UIManager = GWorld.GameInstance:GetGameUIManager()
-  if UIUnlockRuleName then
-    local UIUnlockRule = DataMgr.UIUnlockRule
-    local UIUnlockRuleId = UIUnlockRule[UIUnlockRuleName].UIUnlockRuleId
-    local OpenDescs = UIUnlockRule[UIUnlockRuleName].OpenSystemDesc
-    local OpenConditionId = UIUnlockRule[UIUnlockRuleName].OpenConditionId
-    local Avatar = GWorld:GetAvatar()
-    if Avatar then
-      local bUnlocked = Avatar:CheckUIUnlocked(UIUnlockRuleId)
-      if bUnlocked then
-        local IsCanOpen, FailedIdIndex = Avatar:CheckSystemUICanOpen(UIUnlockRuleId)
-        if IsCanOpen then
-          UIUtils.FinalOpenSystem(SystemUIName, IsEscMenu, NeedAnimation, Param1, Param2, Param3, Param4, Param5)
+function r10_0.CheckSystemIsUnlock(r0_56, r1_56, r2_56, r3_56, ...)
+  -- line: [1519, 1553] id: 56
+  ... = ... -- error: untaken top expr
+  local r9_56 = GWorld.GameInstance:GetGameUIManager()
+  if r1_56 then
+    local r10_56 = DataMgr.UIUnlockRule
+    local r11_56 = r10_56[r1_56].UIUnlockRuleId
+    local r12_56 = r10_56[r1_56].OpenSystemDesc
+    local r13_56 = r10_56[r1_56].OpenConditionId
+    local r14_56 = GWorld:GetAvatar()
+    if r14_56 then
+      if r14_56:CheckUIUnlocked(r11_56) then
+        local r16_56, r17_56 = r14_56:CheckSystemUICanOpen(r11_56)
+        local r4_56 = nil	-- notice: implicit variable refs by block#[4]
+        local r5_56 = nil	-- notice: implicit variable refs by block#[4]
+        local r6_56 = nil	-- notice: implicit variable refs by block#[4]
+        local r7_56 = nil	-- notice: implicit variable refs by block#[4]
+        local r8_56 = nil	-- notice: implicit variable refs by block#[4]
+        if r16_56 then
+          r10_0.FinalOpenSystem(r0_56, r2_56, r3_56, r4_56, r5_56, r6_56, r7_56, r8_56)
           return true
-        elseif #OpenConditionId == #OpenDescs then
-          for _, Value in pairs(FailedIdIndex) do
-            UIManager:ShowUITip(UIConst.Tip_CommonToast, OpenDescs[Value])
+        elseif #r13_56 == #r12_56 then
+          for r22_56, r23_56 in pairs(r17_56) do
+            r9_56:ShowUITip(UIConst.Tip_CommonToast, r12_56[r23_56])
           end
+          -- close: r18_56
         else
-          UIManager:ShowUITip(UIConst.Tip_CommonToast, OpenDescs[1])
+          r9_56:ShowUITip(UIConst.Tip_CommonToast, r12_56[1])
         end
       else
-        UIManager:ShowUITip(UIConst.Tip_CommonToast, UIUnlockRule[UIUnlockRuleName].UIUnlockDesc)
+        r9_56:ShowUITip(UIConst.Tip_CommonToast, r10_56[r1_56].UIUnlockDesc)
       end
     end
   else
-    UIUtils.FinalOpenSystem(SystemUIName, IsEscMenu, NeedAnimation, ...)
+    r10_0.FinalOpenSystem(r0_56, r2_56, r3_56, ...)
     return true
   end
   return false
 end
-
-function UIUtils.FinalOpenSystem(SystemUIName, IsEscMenu, NeedAnimation, ...)
-  local Params = {
+function r10_0.FinalOpenSystem(r0_57, r1_57, r2_57, ...)
+  -- line: [1556, 1577] id: 57
+  local r3_57 = {
     ...
   }
-  if "AnnouncementMain" == SystemUIName then
-    UIUtils.FinalOpenSystemInternal(SystemUIName, IsEscMenu, NeedAnimation, table.unpack(Params))
+  if r0_57 == "AnnouncementMain" then
+    r10_0.FinalOpenSystemInternal(r0_57, r1_57, r2_57, table.unpack(r3_57))
   else
-    local FlowManager = USubsystemBlueprintLibrary.GetWorldSubsystem(GWorld.GameInstance, UGameFlowManager)
-    local Flow = FlowManager:CreateFlow("OpenSystemUI")
-    local UIManager = GWorld.GameInstance:GetGameUIManager()
-    Flow.OnBegin:Add(Flow, function()
-      local ExistUIObj = UIManager:GetUI(SystemUIName)
-      if IsValid(ExistUIObj) then
-        DebugPrint("JLY 系统ui重复打开，请检查逻辑, Name is ", SystemUIName)
-        FlowManager:RemoveFlow(Flow)
+    local r4_57 = USubsystemBlueprintLibrary.GetWorldSubsystem(GWorld.GameInstance, UGameFlowManager)
+    local r5_57 = r4_57:CreateFlow("OpenSystemUI")
+    local r6_57 = GWorld.GameInstance:GetGameUIManager()
+    r5_57.OnBegin:Add(r5_57, function()
+      -- line: [1564, 1574] id: 58
+      if IsValid(r6_57:GetUI(r0_57)) then
+        DebugPrint("JLY 系统ui重复打开，请检查逻辑, Name is ", r0_57)
+        r4_57:RemoveFlow(r5_57)
       else
-        UIUtils.FinalOpenSystemInternal(SystemUIName, IsEscMenu, NeedAnimation, table.unpack(Params))
-        UIManager:AddFlow(SystemUIName, Flow)
+        r10_0.FinalOpenSystemInternal(r0_57, r1_57, r2_57, table.unpack(r3_57))
+        r6_57:AddFlow(r0_57, r5_57)
       end
     end)
-    FlowManager:AddFlow(Flow)
+    r4_57:AddFlow(r5_57)
+    -- close: r4_57
   end
 end
-
-function UIUtils.FinalOpenSystemInternal(SystemUIName, IsEscMenu, NeedAnimation, ...)
-  local UIManager = GWorld.GameInstance:GetGameUIManager()
-  if IsEscMenu then
-    if "AnnouncementMain" == SystemUIName then
-      local AnnouncementUtils = require("BluePrints.UI.WBP.Announcement.AnnounceUtils")
-      local MenuUI = UIManager:GetUI(UIConst.MenuWorld)
-      AnnouncementUtils:OpenAnnouncementMain(AnnounceCommon.ShowTag.InGame, nil, nil, MenuUI)
-      return
+function r10_0.FinalOpenSystemInternal(r0_59, r1_59, r2_59, ...)
+  -- line: [1580, 1613] id: 59
+  local r3_59 = GWorld.GameInstance:GetGameUIManager()
+  if r1_59 then
+    if r0_59 == "AnnouncementMain" then
+      require("BluePrints.UI.WBP.Announcement.AnnounceUtils"):OpenAnnouncementMain(AnnounceCommon.ShowTag.InGame, nil, nil, r3_59:GetUI(UIConst.MenuWorld))
+      return 
     end
-    UIManager:LoadUINew(SystemUIName, ...)
-    return
+    r3_59:LoadUINew(r0_59, ...)
+    return 
   else
-    local BattleMainUI = UIManager:GetUI("BattleMain")
-    if nil ~= BattleMainUI and nil ~= BattleMainUI.Char_Skill and type(BattleMainUI.Char_Skill.HandleEventByInterrupt) == "function" then
-      BattleMainUI.Char_Skill:HandleEventByInterrupt()
+    local r4_59 = r3_59:GetUI("BattleMain")
+    if r4_59 ~= nil and r4_59.Char_Skill ~= nil and type(r4_59.Char_Skill.HandleEventByInterrupt) == "function" then
+      r4_59.Char_Skill:HandleEventByInterrupt()
     end
-    if nil ~= BattleMainUI and not IsEscMenu and NeedAnimation then
-      BattleMainUI:PlayOutAnim()
-      local UI = UIManager:LoadUINew(SystemUIName, ...)
-      if nil == UI then
-        BattleMainUI:TryRecoverUI()
-      else
+    if r4_59 ~= nil and not r1_59 and r2_59 then
+      r4_59:PlayOutAnim(nil, nil, r0_59)
+      if r3_59:LoadUINew(r0_59, ...) == nil then
+        r4_59:RemovePlayInOutSystems(r0_59)
+        r4_59:TryRecoverUI()
       end
     else
-      UIManager:LoadUINew(SystemUIName, ...)
+      r3_59:LoadUINew(r0_59, ...)
     end
   end
 end
-
-function UIUtils.OpenEsc()
-  local Player = UE4.UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
-  if Player and Player.SkillFeature then
-    return
+function r10_0.OpenEsc()
+  -- line: [1615, 1641] id: 60
+  local r0_60 = UE4.UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
+  if r0_60 and r0_60.SkillFeature then
+    return 
   end
-  if Player:GetESCMenuForbiddenState() then
-    return
+  if r0_60:GetESCMenuForbiddenState() then
+    return 
   end
-  local UIManager = GWorld.GameInstance:GetGameUIManager()
-  local Avatar = GWorld:GetAvatar()
-  local SystemUIConfig = DataMgr.SystemUI[UIConst.CommonSetUP]
-  if SystemUIConfig and SystemUIConfig.Params.BlockedUIName then
-    for _, UIName in ipairs(SystemUIConfig.Params.BlockedUIName) do
-      local BlockedUI = UIManager:GetUIObj(UIName)
-      if BlockedUI and BlockedUI:IsPlayingAnimation() then
-        return
+  local r1_60 = GWorld.GameInstance:GetGameUIManager()
+  local r2_60 = GWorld:GetAvatar()
+  local r3_60 = DataMgr.SystemUI[UIConst.CommonSetUP]
+  if r3_60 and r3_60.Params.BlockedUIName then
+    for r8_60, r9_60 in ipairs(r3_60.Params.BlockedUIName) do
+      local r10_60 = r1_60:GetUIObj(r9_60)
+      if r10_60 and r10_60:IsPlayingAnimation() then
+        return 
       end
     end
+    -- close: r4_60
   end
-  if UIUtils.IsMenuWorld() then
-    UIManager:LoadUINew(UIConst.MenuWorld)
+  if r10_0.IsMenuWorld() then
+    r1_60:LoadUINew(UIConst.MenuWorld)
   else
-    UIManager:LoadUINew(UIConst.MenuLevel)
+    r1_60:LoadUINew(UIConst.MenuLevel)
   end
 end
-
-function UIUtils.IsMenuWorld()
-  local DungeonId = GWorld.GameInstance:GetCurrentDungeonId()
-  local Avatar = GWorld:GetAvatar()
-  if Avatar and DungeonId and DungeonId <= 0 then
-    local InHardBoss = Avatar:IsInHardBoss()
-    local SpecialQuestChange = false
-    local SpecialQuestConfig = DataMgr.SpecialQuestConfig[Avatar.SpecialQuestId]
-    if SpecialQuestConfig and SpecialQuestConfig.UniversalConfigId then
-      local UniversalConfig = DataMgr.UniversalConfig[SpecialQuestConfig.UniversalConfigId]
-      if UniversalConfig and UniversalConfig.IfChangeESC then
-        SpecialQuestChange = true
+function r10_0.IsMenuWorld()
+  -- line: [1643, 1666] id: 61
+  local r0_61 = GWorld.GameInstance:GetCurrentDungeonId()
+  local r1_61 = GWorld:GetAvatar()
+  if r1_61 and r0_61 and r0_61 <= 0 then
+    local r2_61 = r1_61:IsInHardBoss()
+    local r3_61 = false
+    if r1_61:IsInSpecialQuest() then
+      local r4_61 = DataMgr.SpecialQuestConfig[r1_61.SpecialQuestId]
+      if r4_61 and r4_61.UniversalConfigId then
+        local r5_61 = DataMgr.UniversalConfig[r4_61.UniversalConfigId]
+        if r5_61 and r5_61.IfChangeESC then
+          r3_61 = true
+        end
       end
     end
-    if InHardBoss or Avatar.SpecialQuestId and SpecialQuestChange then
+    if r2_61 or r1_61.SpecialQuestId and r3_61 then
       return false
     else
       return true
@@ -1459,573 +1692,609 @@ function UIUtils.IsMenuWorld()
     return false
   end
 end
-
-function UIUtils.PlayBattleMainInAnim()
-  local UIManager = GWorld.GameInstance:GetGameUIManager()
-  local BattleMainUI = UIManager:GetUI("BattleMain")
-  if nil ~= BattleMainUI then
-    BattleMainUI:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-    BattleMainUI:TryRecoverUI()
+function r10_0.PlayBattleMainInAnim()
+  -- line: [1668, 1675] id: 62
+  local r1_62 = GWorld.GameInstance:GetGameUIManager():GetUI("BattleMain")
+  if r1_62 ~= nil then
+    r1_62:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    r1_62:TryRecoverUI()
   end
 end
-
-function UIUtils.CheckAndPlayBattleMainInAnim(UIName)
-  local UIManager = GWorld.GameInstance:GetGameUIManager()
-  local BattleMainUI = UIManager:GetUI("BattleMain")
-  if nil ~= BattleMainUI then
-    local IsPlayInAnimSucc = BattleMainUI:UnLoadSystem(UIName)
-    if IsPlayInAnimSucc then
-      BattleMainUI:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-    end
+function r10_0.CheckAndPlayBattleMainInAnim(r0_63)
+  -- line: [1677, 1687] id: 63
+  local r2_63 = GWorld.GameInstance:GetGameUIManager():GetUI("BattleMain")
+  if r2_63 ~= nil then
+    r2_63:UnLoadSystem(r0_63)
   end
 end
-
-function UIUtils.PlayCommonBtnSe(context)
+function r10_0.CheckIsShouldHandleAnalogInput(r0_64)
+  -- line: [1691, 1698] id: 64
+  if r10_0.UtilsGetCurrentGamepadName() == "PS" then
+    return 0.015 < math.abs(r0_64)
+  end
+  return true
+end
+function r10_0.PlayCommonBtnSe(r0_65)
+  -- line: [1701, 1704] id: 65
   UE4.UFMODBlueprintStatics.PlayEvent2D(nil, UE4.UFMODBlueprintStatics.FindEventbyName("event:/ui/common/click"))
 end
-
-function UIUtils.PlayCommonForbiddenBtnSe(context)
+function r10_0.PlayCommonForbiddenBtnSe(r0_66)
+  -- line: [1705, 1707] id: 66
   UE4.UFMODBlueprintStatics.PlayEvent2D(nil, UE4.UFMODBlueprintStatics.FindEventbyName("event:/ui/common/click_btn_disable"))
 end
-
-function UIUtils.GetAllElementTypes()
-  if not UIUtils.ElementTypes then
-    UIUtils.ElementTypes = {}
-    UIUtils.ElementTypeNames = {}
-    local list = {}
-    for id, value in pairs(DataMgr.Attribute) do
-      if value.DisplayPriority then
-        table.insert(list, value)
+function r10_0.GetAllElementTypes()
+  -- line: [1710, 1727] id: 67
+  if not r10_0.ElementTypes then
+    r10_0.ElementTypes = {}
+    r10_0.ElementTypeNames = {}
+    local r0_67 = {}
+    for r5_67, r6_67 in pairs(DataMgr.Attribute) do
+      if r6_67.DisplayPriority then
+        table.insert(r0_67, r6_67)
       end
     end
-    table.sort(list, function(a, b)
-      return a.DisplayPriority < b.DisplayPriority
+    -- close: r1_67
+    table.sort(r0_67, function(r0_68, r1_68)
+      -- line: [1720, 1720] id: 68
+      return r0_68.DisplayPriority < r1_68.DisplayPriority
     end)
-    for index, value in ipairs(list) do
-      table.insert(UIUtils.ElementTypes, value.ID)
-      table.insert(UIUtils.ElementTypeNames, "UI_Attr_" .. value.ID .. "_Name")
+    for r5_67, r6_67 in ipairs(r0_67) do
+      table.insert(r10_0.ElementTypes, r6_67.ID)
+      table.insert(r10_0.ElementTypeNames, "UI_Attr_" .. r6_67.ID .. "_Name")
     end
+    -- close: r1_67
   end
-  return UIUtils.ElementTypes, UIUtils.ElementTypeNames
+  return r10_0.ElementTypes, r10_0.ElementTypeNames
 end
-
-function UIUtils.GetAllWeaponTags()
-  if not UIUtils.MeleeTags or not UIUtils.RangedTags then
-    UIUtils.MeleeTags = {}
-    UIUtils.MeleeTagNames = {}
-    UIUtils.RangedTags = {}
-    UIUtils.RangedTagNames = {}
-    local list = {}
-    for WeaponTag, value in pairs(DataMgr.WeaponTag) do
-      if value.WeaponTagfilter == "MeleeType" then
-        table.insert(UIUtils.MeleeTags, WeaponTag)
-      elseif value.WeaponTagfilter == "RangedType" then
-        table.insert(UIUtils.RangedTags, WeaponTag)
+function r10_0.GetAllWeaponTags()
+  -- line: [1729, 1753] id: 69
+  if not r10_0.MeleeTags or not r10_0.RangedTags then
+    r10_0.MeleeTags = {}
+    r10_0.MeleeTagNames = {}
+    r10_0.RangedTags = {}
+    r10_0.RangedTagNames = {}
+    local r0_69 = {}
+    for r5_69, r6_69 in pairs(DataMgr.WeaponTag) do
+      if r6_69.WeaponTagfilter == "MeleeType" then
+        table.insert(r10_0.MeleeTags, r5_69)
+      elseif r6_69.WeaponTagfilter == "RangedType" then
+        table.insert(r10_0.RangedTags, r5_69)
       end
     end
-    table.sort(UIUtils.MeleeTags)
-    table.sort(UIUtils.RangedTags)
-    for _, WeaponTag in ipairs(UIUtils.MeleeTags) do
-      table.insert(UIUtils.MeleeTagNames, DataMgr.WeaponTag[WeaponTag].WeaponTagTextmap or "")
+    -- close: r1_69
+    table.sort(r10_0.MeleeTags)
+    table.sort(r10_0.RangedTags)
+    for r5_69, r6_69 in ipairs(r10_0.MeleeTags) do
+      table.insert(r10_0.MeleeTagNames, DataMgr.WeaponTag[r6_69].WeaponTagTextmap and "")
     end
-    for _, value in ipairs(UIUtils.RangedTags) do
-      table.insert(UIUtils.RangedTagNames, DataMgr.WeaponTag[value].WeaponTagTextmap or "")
+    -- close: r1_69
+    for r5_69, r6_69 in ipairs(r10_0.RangedTags) do
+      table.insert(r10_0.RangedTagNames, DataMgr.WeaponTag[r6_69].WeaponTagTextmap and "")
     end
+    -- close: r1_69
   end
-  return UIUtils.MeleeTags, UIUtils.MeleeTagNames, UIUtils.RangedTags, UIUtils.RangedTagNames
+  return r10_0.MeleeTags, r10_0.MeleeTagNames, r10_0.RangedTags, r10_0.RangedTagNames
 end
-
-function UIUtils.CanApplyWeaponSkin(WeaponId, SkinApplicationType)
-  local Data = DataMgr.Weapon[WeaponId]
-  if Data and Data.SkinApplicationType then
-    for key, value in pairs(Data.SkinApplicationType) do
-      if value == SkinApplicationType then
+function r10_0.CanApplyWeaponSkin(r0_70, r1_70)
+  -- line: [1755, 1765] id: 70
+  local r2_70 = DataMgr.Weapon[r0_70]
+  if r2_70 and r2_70.SkinApplicationType then
+    for r7_70, r8_70 in pairs(r2_70.SkinApplicationType) do
+      if r8_70 == r1_70 then
         return true
       end
     end
+    -- close: r3_70
   end
   return false
 end
-
-function UIUtils.ShowDungeonRewardUI(Rewards, Reason, TableTypeName)
-  if not Rewards then
-    return
+function r10_0.ShowDungeonRewardUI(r0_71, r1_71, r2_71)
+  -- line: [1767, 1787] id: 71
+  if not r0_71 then
+    return 
   end
   if not IsStandAlone(GWorld.GameInstance) and not IsClient(GWorld.GameInstance) then
-    return
+    return 
   end
-  local TalkContext = GWorld.GameInstance:GetTalkContext()
-  if TalkContext:HasHiddenGameUI() then
+  if GWorld.GameInstance:GetTalkContext():HasHiddenGameUI() then
     table.insert(GWorld.GameInstance.CacheShowRewardUIParams, {
-      Rewards,
-      Reason,
-      TableTypeName
+      r0_71,
+      r1_71,
+      r2_71
     })
-    return
+    return 
   end
-  for ItemId, Count in pairs(Rewards) do
-    if "table" == type(Count) then
-      Count = RewardBox:GetCount(Count)
+  for r8_71, r9_71 in pairs(r0_71) do
+    if type(r9_71) == "table" then
+      r9_71 = r4_0:GetCount(r9_71)
     end
-    UIUtils.ShowGotItemTipsUI(TableTypeName, ItemId, Count)
+    r10_0.ShowGotItemTipsUI(r2_71, r8_71, r9_71)
   end
+  -- close: r4_71
 end
-
-function UIUtils.OnGetRewardShowUI(Rewards, Reason)
-  UIUtils.ShowDungeonRewardUI(Rewards.Resources, Reason, "Resource")
-  UIUtils.ShowDungeonRewardUI(Rewards.Weapons, Reason, "Weapon")
-  UIUtils.ShowDungeonRewardUI(Rewards.Mods, Reason, "Mod")
+function r10_0.OnGetRewardShowUI(r0_72, r1_72)
+  -- line: [1789, 1793] id: 72
+  r10_0.ShowDungeonRewardUI(r0_72.Resources, r1_72, "Resource")
+  r10_0.ShowDungeonRewardUI(r0_72.Weapons, r1_72, "Weapon")
+  r10_0.ShowDungeonRewardUI(r0_72.Mods, r1_72, "Mod")
 end
-
-function UIUtils.GenRougeBlessingDesc(BlessingId, ModLevel, ComparedGradeLevel)
-  local ItemData = DataMgr.RougeLikeBlessing[BlessingId]
-  local ModData = DataMgr.Mod[ItemData.BlessingMod]
-  local DescStr = GText(ItemData.Desc)
-  if ItemData then
-    for i, Attr in pairs(ModData.AddAttrs or {}) do
-      local AttrConf = DataMgr.AttrConfig[Attr.AttrName]
-      if not AttrConf then
-      else
-        local OldValue, OldValStr = UIUtils.GenRougeModAttrData(Attr, ModLevel, AttrConf, ItemData.BlessingMod)
-        local index = string.find(OldValStr, "%%", 1)
-        if index then
-          OldValStr = OldValStr .. "%"
+function r10_0.GenRougeBlessingDesc(r0_73, r1_73, r2_73)
+  -- line: [1796, 1824] id: 73
+  local r3_73 = DataMgr.RougeLikeBlessing[r0_73]
+  local r4_73 = DataMgr.Mod[r3_73.BlessingMod]
+  local r5_73 = GText(r3_73.Desc)
+  if r3_73 then
+    for r10_73, r11_73 in pairs(r4_73.AddAttrs and {}) do
+      local r12_73 = DataMgr.AttrConfig[r11_73.AttrName]
+      if r12_73 then
+        local r13_73, r14_73 = r10_0.GenRougeModAttrData(r11_73, r1_73, r12_73, r3_73.BlessingMod)
+        local r15_73 = string.find(r14_73, "%%", 1)
+        if r15_73 then
+          r14_73 = r14_73 .. "%"
         end
-        if ComparedGradeLevel then
-          local ComparedValue, ComparedValueStr = UIUtils.GenRougeModAttrData(Attr, ComparedGradeLevel, AttrConf, ItemData.BlessingMod)
-          if index then
-            ComparedValueStr = ComparedValueStr .. "%"
+        if r2_73 then
+          local r16_73, r17_73 = r10_0.GenRougeModAttrData(r11_73, r2_73, r12_73, r3_73.BlessingMod)
+          if r15_73 then
+            r17_73 = r17_73 .. "%"
           end
-          if OldValStr ~= ComparedValueStr then
-            OldValStr = OldValStr .. "->" .. ComparedValueStr
+          if r14_73 ~= r17_73 then
+            r14_73 = r14_73 .. "->" .. r17_73
           end
         end
-        DescStr = string.gsub(DescStr, "#" .. i, OldValStr)
+        r5_73 = string.gsub(r5_73, "#" .. r10_73, r14_73)
       end
     end
-    DescStr = UIUtils.GenRougeModPassiveEffectDesc(DescStr, ModData, ModLevel, ComparedGradeLevel, false, true)
+    -- close: r6_73
+    r5_73 = r10_0.GenRougeModPassiveEffectDesc(r5_73, r4_73, r1_73, r2_73, false, true)
   end
-  return DescStr
+  return r5_73
 end
-
-function UIUtils.GenRougeBlessingSimpleDesc(BlessingId)
-  local ItemData = DataMgr.RougeLikeBlessing[BlessingId]
-  local DescStr = GText(ItemData.SimpleDesc)
-  return DescStr
+function r10_0.GenRougeBlessingSimpleDesc(r0_74)
+  -- line: [1826, 1830] id: 74
+  return GText(DataMgr.RougeLikeBlessing[r0_74].SimpleDesc)
 end
-
-function UIUtils.GenRougeModPassiveEffectDesc(Desc, ModConf, BaseLevel, ExpectLevel, CastTo, ForbidFormat)
-  if not ArmoryUtils then
-    ArmoryUtils = require("BluePrints.UI.WBP.Armory.ArmoryUtils")
+function r10_0.GenRougeModPassiveEffectDesc(r0_75, r1_75, r2_75, r3_75, r4_75, r5_75)
+  -- line: [1832, 1851] id: 75
+  if not r2_0 then
+    r2_0 = require("BluePrints.UI.WBP.Armory.ArmoryUtils")
   end
-  ExpectLevel = nil == ExpectLevel and BaseLevel or ExpectLevel
-  for i, DescValue in pairs(ModConf.DescValues or {}) do
-    local Percent = string.match(DescValue, "%%") or ""
-    local ValStr = ArmoryUtils:_ModAttrGrowDesc2(DescValue, BaseLevel, BaseLevel, Percent, CastTo, ForbidFormat) or ""
-    ValStr = "" == ValStr and ArmoryUtils:_SkillGrowDesc(DescValue, BaseLevel, BaseLevel, Percent, CastTo, ForbidFormat) or ValStr
-    if ExpectLevel then
-      local ComparedValStr = ArmoryUtils:_ModAttrGrowDesc2(DescValue, ExpectLevel, ExpectLevel, Percent, CastTo, ForbidFormat) or ""
-      ComparedValStr = "" == ComparedValStr and ArmoryUtils:_SkillGrowDesc(DescValue, ExpectLevel, ExpectLevel, Percent, CastTo, ForbidFormat) or ComparedValStr
-      if ValStr ~= ComparedValStr then
-        ValStr = ValStr .. "->" .. ComparedValStr
+  if r3_75 == nil then
+    r3_75 = r2_75 and r3_75
+  end
+  for r10_75, r11_75 in pairs(r1_75.DescValues and {}) do
+    local r12_75 = string.match(r11_75, "%%") and ""
+    local r13_75 = r2_0:_ModAttrGrowDesc2(r11_75, r2_75, r2_75, r12_75, r4_75, r5_75) and ""
+    if r13_75 == "" then
+      r13_75 = r2_0:_SkillGrowDesc(r11_75, r2_75, r2_75, r12_75, r4_75, r5_75)
+      if r13_75 then
+        r13_75 = r13_75
       end
     end
-    Desc = string.gsub(Desc, "$" .. i, ValStr)
-  end
-  return Desc
-end
-
-function UIUtils.GenRougeTreasureDesc(TreasureId)
-  if not ArmoryUtils then
-    ArmoryUtils = require("BluePrints.UI.WBP.Armory.ArmoryUtils")
-  end
-  local ItemData = DataMgr.RougeLikeTreasure[TreasureId]
-  if ItemData then
-    local DescStr = GText(ItemData.Desc)
-    local ModData = DataMgr.Mod[ItemData.TreasureMod]
-    if not ItemData.ServerBuild and not ItemData.ClientBuild and not ModData then
-      local String = tostring(TreasureId) .. "号宝物不是ServerBuild与ClientBuild，但Mod数据为空请策划检查"
-      UE.ARougeLikeManager.ShowRougeLikeError(String)
-    end
-    if ModData then
-      for i, Attr in pairs(ModData.AddAttrs or {}) do
-        local AttrConf = DataMgr.AttrConfig[Attr.AttrName]
-        if not AttrConf then
-        else
-          local OldValue, OldValStr = UIUtils.GenRougeModAttrData(Attr, 0, AttrConf, ItemData.TreasureMod)
-          local Percent = string.match(OldValStr, "%%") or ""
-          DescStr = string.gsub(DescStr, "#" .. i, OldValStr .. Percent)
+    if r3_75 then
+      local r14_75 = r2_0:_ModAttrGrowDesc2(r11_75, r3_75, r3_75, r12_75, r4_75, r5_75) and ""
+      if r14_75 == "" then
+        r14_75 = r2_0:_SkillGrowDesc(r11_75, r3_75, r3_75, r12_75, r4_75, r5_75)
+        if r14_75 then
+          r14_75 = r14_75
         end
       end
-      DescStr = UIUtils.GenRougeModPassiveEffectDesc(DescStr, ModData, 0, nil, false, true)
+      if r13_75 ~= r14_75 then
+        r13_75 = r13_75 .. "->" .. r14_75
+      end
     end
-    DescStr = UIUtils.GenRougeServerDesc(DescStr, ItemData, 0)
-    return DescStr
+    r0_75 = string.gsub(r0_75, "$" .. r10_75, r13_75)
+  end
+  -- close: r6_75
+  return r0_75
+end
+function r10_0.GenRougeTreasureDesc(r0_76)
+  -- line: [1853, 1882] id: 76
+  if not r2_0 then
+    r2_0 = require("BluePrints.UI.WBP.Armory.ArmoryUtils")
+  end
+  local r1_76 = DataMgr.RougeLikeTreasure[r0_76]
+  if r1_76 then
+    local r2_76 = GText(r1_76.Desc)
+    local r3_76 = DataMgr.Mod[r1_76.TreasureMod]
+    if not r1_76.ServerBuild and not r1_76.ClientBuild and not r3_76 then
+      UE.ARougeLikeManager.ShowRougeLikeError(tostring(r0_76) .. "号宝物不是ServerBuild与ClientBuild，但Mod数据为空请策划检查")
+    end
+    if r3_76 then
+      for r8_76, r9_76 in pairs(r3_76.AddAttrs and {}) do
+        local r10_76 = DataMgr.AttrConfig[r9_76.AttrName]
+        if r10_76 then
+          local r11_76, r12_76 = r10_0.GenRougeModAttrData(r9_76, 0, r10_76, r1_76.TreasureMod)
+          r2_76 = string.gsub(r2_76, "#" .. r8_76, r12_76 .. (string.match(r12_76, "%%") and ""))
+        end
+      end
+      -- close: r4_76
+      r2_76 = r10_0.GenRougeModPassiveEffectDesc(r2_76, r3_76, 0, nil, false, true)
+    end
+    return r10_0.GenRougeServerDesc(r2_76, r1_76, 0)
   else
-    local String = tostring(TreasureId) .. "号宝物数据为空请策划检查"
-    UE.ARougeLikeManager.ShowRougeLikeError(String)
+    UE.ARougeLikeManager.ShowRougeLikeError(tostring(r0_76) .. "号宝物数据为空请策划检查")
   end
 end
-
-function UIUtils.GenRougeServerDesc(Desc, TreasureConf, BaseLevel)
-  for i, DescValue in pairs(TreasureConf.ServerBuildValue or {}) do
-    local Percent = string.match(DescValue, "%%") or ""
-    local ValStr = ""
-    ValStr = SkillUtils.CalcSkillDesc(DescValue, BaseLevel) .. Percent
-    Desc = string.gsub(Desc, "@" .. i, ValStr)
+function r10_0.GenRougeServerDesc(r0_77, r1_77, r2_77)
+  -- line: [1884, 1892] id: 77
+  for r7_77, r8_77 in pairs(r1_77.ServerBuildValue and {}) do
+    local r9_77 = string.match(r8_77, "%%") and ""
+    local r10_77 = ""
+    r0_77 = string.gsub(r0_77, "@" .. r7_77, r5_0.CalcSkillDesc(r8_77, r2_77) .. r9_77)
   end
-  return Desc
+  -- close: r3_77
+  return r0_77
 end
-
-function UIUtils.GetRealCurrentTreasureGroupNum(TreasureId)
-  local Num = 0
+function r10_0.GetRealCurrentTreasureGroupNum(r0_78)
+  -- line: [1895, 1915] id: 78
+  local r1_78 = 0
   if UE.ARougeLikeManager then
-    local TreasureGroupData = DataMgr.TreasureGroup
-    local TreasureData = DataMgr.RougeLikeTreasure
-    if not TreasureData[TreasureId] or not TreasureData[TreasureId].TreasureGroup then
+    local r2_78 = DataMgr.TreasureGroup
+    local r3_78 = DataMgr.RougeLikeTreasure
+    if not r3_78[r0_78] or not r3_78[r0_78].TreasureGroup then
       return 0
     end
-    local GroupId = TreasureData[TreasureId].TreasureGroup
-    if not TreasureGroupData[GroupId] then
+    local r4_78 = r3_78[r0_78].TreasureGroup
+    if not r2_78[r4_78] then
       return 0
     end
-    for _, value in pairs(TreasureGroupData[GroupId].ActivateNeed) do
-      if UE.ARougeLikeManager.IsTreasureExist(GWorld.GameInstance, value) then
-        Num = Num + 1
+    for r9_78, r10_78 in pairs(r2_78[r4_78].ActivateNeed) do
+      if UE.ARougeLikeManager.IsTreasureExist(GWorld.GameInstance, r10_78) then
+        r1_78 = r1_78 + 1
       end
     end
-    return Num
+    -- close: r5_78
+    return r1_78
   end
-  return Num
+  return r1_78
 end
-
-function UIUtils.GetCurrentTreasureGroupNum(TreasureId)
-  local Num = 0
+function r10_0.GetCurrentTreasureGroupNum(r0_79)
+  -- line: [1917, 1937] id: 79
+  local r1_79 = 0
   if UE.ARougeLikeManager then
-    local TreasureGroupData = DataMgr.TreasureGroup
-    local TreasureData = DataMgr.RougeLikeTreasure
-    if not TreasureData[TreasureId] or not TreasureData[TreasureId].TreasureGroup then
+    local r2_79 = DataMgr.TreasureGroup
+    local r3_79 = DataMgr.RougeLikeTreasure
+    if not r3_79[r0_79] or not r3_79[r0_79].TreasureGroup then
       return 0
     end
-    local GroupId = TreasureData[TreasureId].TreasureGroup
-    if not TreasureGroupData[GroupId] then
+    local r4_79 = r3_79[r0_79].TreasureGroup
+    if not r2_79[r4_79] then
       return 0
     end
-    for _, value in pairs(TreasureGroupData[GroupId].ActivateNeed) do
-      if value ~= TreasureId and UE.ARougeLikeManager.IsTreasureExist(GWorld.GameInstance, value) then
-        Num = Num + 1
+    for r9_79, r10_79 in pairs(r2_79[r4_79].ActivateNeed) do
+      if r10_79 ~= r0_79 and UE.ARougeLikeManager.IsTreasureExist(GWorld.GameInstance, r10_79) then
+        r1_79 = r1_79 + 1
       end
     end
-    return Num
+    -- close: r5_79
+    return r1_79
   end
-  return Num
+  return r1_79
 end
-
-function UIUtils.GetTreasureGroupNum(TreasureId)
-  local Num = 0
+function r10_0.GetTreasureGroupNum(r0_80)
+  -- line: [1939, 1955] id: 80
+  local r1_80 = 0
   if UE.ARougeLikeManager then
-    local TreasureGroupData = DataMgr.TreasureGroup
-    local TreasureData = DataMgr.RougeLikeTreasure
-    if not TreasureData[TreasureId] or not TreasureData[TreasureId].TreasureGroup then
+    local r2_80 = DataMgr.TreasureGroup
+    local r3_80 = DataMgr.RougeLikeTreasure
+    if not r3_80[r0_80] or not r3_80[r0_80].TreasureGroup then
       return 0
     end
-    local GroupId = TreasureData[TreasureId].TreasureGroup
-    if not TreasureGroupData[GroupId] or not TreasureGroupData[GroupId].ActivateNeed then
+    local r4_80 = r3_80[r0_80].TreasureGroup
+    if not r2_80[r4_80] or not r2_80[r4_80].ActivateNeed then
       return 0
     end
-    Num = #TreasureGroupData[GroupId].ActivateNeed
-    return Num
+    r1_80 = #r2_80[r4_80].ActivateNeed
+    return r1_80
   end
-  return Num
+  return r1_80
 end
-
-function UIUtils.GenRougeTreasureSimpleDesc(TreasureId)
-  local ItemData = DataMgr.RougeLikeTreasure[TreasureId]
-  local DescStr = GText(ItemData.SimpleDesc)
-  return DescStr
+function r10_0.GenRougeTreasureSimpleDesc(r0_81)
+  -- line: [1958, 1962] id: 81
+  return GText(DataMgr.RougeLikeTreasure[r0_81].SimpleDesc)
 end
-
-function UIUtils.GenRougeTalentDesc(TalentId)
-  local ItemData = DataMgr.RougeLikeTalent[TalentId]
-  local ModData = DataMgr.Mod[ItemData.TalentMod]
-  local DescStr = GText(ItemData.Desc)
-  if ItemData then
-    if ModData then
-      for i, Attr in pairs(ModData.AddAttrs or {}) do
-        local AttrConf = DataMgr.AttrConfig[Attr.AttrName]
-        if not AttrConf then
-        else
-          local OldValue, OldValStr = UIUtils.GenRougeModAttrData(Attr, 0, AttrConf, ItemData.TalentMod)
-          local Percent = string.match(OldValStr, "%%") or ""
-          DescStr = string.gsub(DescStr, "#" .. i, OldValStr .. Percent)
+function r10_0.GenRougeTalentDesc(r0_82)
+  -- line: [1964, 1983] id: 82
+  local r1_82 = DataMgr.RougeLikeTalent[r0_82]
+  local r2_82 = DataMgr.Mod[r1_82.TalentMod]
+  local r3_82 = GText(r1_82.Desc)
+  if r1_82 then
+    if r2_82 then
+      for r8_82, r9_82 in pairs(r2_82.AddAttrs and {}) do
+        local r10_82 = DataMgr.AttrConfig[r9_82.AttrName]
+        if r10_82 then
+          local r11_82, r12_82 = r10_0.GenRougeModAttrData(r9_82, 0, r10_82, r1_82.TalentMod)
+          r3_82 = string.gsub(r3_82, "#" .. r8_82, r12_82 .. (string.match(r12_82, "%%") and ""))
         end
       end
-      DescStr = UIUtils.GenRougeModPassiveEffectDesc(DescStr, ModData, 0)
+      -- close: r4_82
+      r3_82 = r10_0.GenRougeModPassiveEffectDesc(r3_82, r2_82, 0)
     end
-    DescStr = UIUtils.GenRougeServerDesc(DescStr, ItemData, 0)
+    r3_82 = r10_0.GenRougeServerDesc(r3_82, r1_82, 0)
   end
-  return DescStr
+  return r3_82
 end
-
-function UIUtils.GetLeftTimeStrStyle1(EndTime, StartTime)
-  if EndTime <= TimeUtils.NowTime() then
+function r10_0.GetLeftTimeStrStyle1(r0_83, r1_83)
+  -- line: [1985, 2011] id: 83
+  if r0_83 <= r3_0.NowTime() then
     return "TimeOut"
   end
-  local FixEndTime = URuntimeCommonFunctionLibrary.GetDateTimeFromUnixTime(EndTime)
-  local FixStartTime = URuntimeCommonFunctionLibrary.GetDateTimeFromUnixTime(StartTime or TimeUtils.NowTime())
-  local RemainTime = UKismetMathLibrary.Subtract_DateTimeDateTime(FixEndTime, FixStartTime)
-  local RemainTimeStr = ""
-  local TimeCount = 0
-  if UKismetMathLibrary.GetDays(RemainTime) > 0 then
-    TimeCount = TimeCount + 1
-    RemainTimeStr = RemainTimeStr .. string.format(GText("UI_SHOP_REMAINTIME_DAY"), UKismetMathLibrary.GetDays(RemainTime))
+  local r4_83 = UKismetMathLibrary.Subtract_DateTimeDateTime(URuntimeCommonFunctionLibrary.GetDateTimeFromUnixTime(r0_83), URuntimeCommonFunctionLibrary.GetDateTimeFromUnixTime(r1_83 and r3_0.NowTime()))
+  local r5_83 = ""
+  local r6_83 = 0
+  if UKismetMathLibrary.GetDays(r4_83) > 0 then
+    r6_83 = r6_83 + 1
+    r5_83 = r5_83 .. string.format(GText("UI_SHOP_REMAINTIME_DAY"), UKismetMathLibrary.GetDays(r4_83))
   end
-  if UKismetMathLibrary.GetHours(RemainTime) > 0 or 1 == TimeCount then
-    TimeCount = TimeCount + 1
-    RemainTimeStr = RemainTimeStr .. string.format(GText("UI_SHOP_REMAINTIME_HOUR"), UKismetMathLibrary.GetHours(RemainTime))
+  if UKismetMathLibrary.GetHours(r4_83) > 0 or r6_83 == 1 then
+    r6_83 = r6_83 + 1
+    r5_83 = r5_83 .. string.format(GText("UI_SHOP_REMAINTIME_HOUR"), UKismetMathLibrary.GetHours(r4_83))
   end
-  if UKismetMathLibrary.GetMinutes(RemainTime) > 0 and TimeCount < 2 or 1 == TimeCount then
-    TimeCount = TimeCount + 1
-    RemainTimeStr = RemainTimeStr .. string.format(GText("UI_SHOP_REMAINTIME_MINUTE"), UKismetMathLibrary.GetMinutes(RemainTime))
+  if UKismetMathLibrary.GetMinutes(r4_83) > 0 and r6_83 < 2 or r6_83 == 1 then
+    r6_83 = r6_83 + 1
+    r5_83 = r5_83 .. string.format(GText("UI_SHOP_REMAINTIME_MINUTE"), UKismetMathLibrary.GetMinutes(r4_83))
   end
-  if UKismetMathLibrary.GetSeconds(RemainTime) > 0 and TimeCount < 2 or 1 == TimeCount then
-    TimeCount = TimeCount + 1
-    RemainTimeStr = RemainTimeStr .. string.format(GText("UI_SHOP_REMAINTIME_SECOND"), UKismetMathLibrary.GetSeconds(RemainTime))
+  if UKismetMathLibrary.GetSeconds(r4_83) > 0 and r6_83 < 2 or r6_83 == 1 then
+    r6_83 = r6_83 + 1
+    r5_83 = r5_83 .. string.format(GText("UI_SHOP_REMAINTIME_SECOND"), UKismetMathLibrary.GetSeconds(r4_83))
   end
-  return RemainTimeStr
+  return r5_83
 end
-
-function UIUtils.GetLeftTimeStrStyle2(EndTime, StartTime)
-  if nil == EndTime or EndTime <= TimeUtils.NowTime() then
+function r10_0.GetLeftTimeStrStyle2(r0_84, r1_84)
+  -- line: [2013, 2047] id: 84
+  if r0_84 == nil or r0_84 <= r3_0.NowTime() then
     return {
-      {TimeType = "Min", TimeValue = 0},
-      {TimeType = "Sec", TimeValue = 0}
+      {
+        TimeType = "Min",
+        TimeValue = 0,
+      },
+      {
+        TimeType = "Sec",
+        TimeValue = 0,
+      }
     }, 0
   end
-  local FixEndTime = URuntimeCommonFunctionLibrary.GetDateTimeFromUnixTime(EndTime)
-  local FixStartTime = URuntimeCommonFunctionLibrary.GetDateTimeFromUnixTime(StartTime or TimeUtils.NowTime())
-  local RemainTime = UKismetMathLibrary.Subtract_DateTimeDateTime(FixEndTime, FixStartTime)
-  local RemainTimeDict = {}
-  local TimeCount = 0
-  local LeftDayTime = UKismetMathLibrary.GetDays(RemainTime)
-  if LeftDayTime > 0 then
-    TimeCount = TimeCount + 1
-    table.insert(RemainTimeDict, {TimeType = "Day", TimeValue = LeftDayTime})
+  local r4_84 = UKismetMathLibrary.Subtract_DateTimeDateTime(URuntimeCommonFunctionLibrary.GetDateTimeFromUnixTime(r0_84), URuntimeCommonFunctionLibrary.GetDateTimeFromUnixTime(r1_84 and r3_0.NowTime()))
+  local r5_84 = {}
+  local r6_84 = 0
+  local r7_84 = UKismetMathLibrary.GetDays(r4_84)
+  if r7_84 > 0 then
+    r6_84 = r6_84 + 1
+    table.insert(r5_84, {
+      TimeType = "Day",
+      TimeValue = r7_84,
+    })
   end
-  local LeftHourTime = UKismetMathLibrary.GetHours(RemainTime)
-  if LeftHourTime > 0 or 1 == TimeCount then
-    TimeCount = TimeCount + 1
-    table.insert(RemainTimeDict, {TimeType = "Hour", TimeValue = LeftHourTime})
+  local r8_84 = UKismetMathLibrary.GetHours(r4_84)
+  if r8_84 > 0 or r6_84 == 1 then
+    r6_84 = r6_84 + 1
+    table.insert(r5_84, {
+      TimeType = "Hour",
+      TimeValue = r8_84,
+    })
   end
-  local LeftMinuteTime = UKismetMathLibrary.GetMinutes(RemainTime)
-  if TimeCount <= 1 then
-    TimeCount = TimeCount + 1
-    table.insert(RemainTimeDict, {TimeType = "Min", TimeValue = LeftMinuteTime})
+  local r9_84 = UKismetMathLibrary.GetMinutes(r4_84)
+  if r6_84 <= 1 then
+    r6_84 = r6_84 + 1
+    table.insert(r5_84, {
+      TimeType = "Min",
+      TimeValue = r9_84,
+    })
   end
-  local LeftSecondTime = UKismetMathLibrary.GetSeconds(RemainTime)
-  if LeftSecondTime > 0 and TimeCount < 2 or 1 == TimeCount then
-    TimeCount = TimeCount + 1
-    table.insert(RemainTimeDict, {TimeType = "Sec", TimeValue = LeftSecondTime})
+  local r10_84 = UKismetMathLibrary.GetSeconds(r4_84)
+  if r10_84 > 0 and r6_84 < 2 or r6_84 == 1 then
+    r6_84 = r6_84 + 1
+    table.insert(r5_84, {
+      TimeType = "Sec",
+      TimeValue = r10_84,
+    })
   end
-  return RemainTimeDict, TimeCount
+  return r5_84, r6_84
 end
-
-function UIUtils.GenRougeModAttrData(ModAttrConf, ModLevel, AttrConf, ModId)
-  if not ArmoryUtils then
-    ArmoryUtils = require("BluePrints.UI.WBP.Armory.ArmoryUtils")
+function r10_0.GenRougeModAttrData(r0_85, r1_85, r2_85, r3_85)
+  -- line: [2049, 2057] id: 85
+  if not r2_0 then
+    r2_0 = require("BluePrints.UI.WBP.Armory.ArmoryUtils")
   end
-  local IsRate = ModAttrConf.Rate ~= nil
-  local Value = ArmoryUtils:CalcModAttrByLevel(ModAttrConf, ModLevel, nil, ModId)
-  local ValueStr = CommonUtils.AttrValueToString(AttrConf, Value, IsRate, true)
-  return Value, ValueStr
+  local r4_85 = r0_85.Rate ~= nil
+  local r5_85 = r2_0:CalcModAttrByLevel(r0_85, r1_85, nil, r3_85)
+  return r5_85, CommonUtils.AttrValueToString(r2_85, r5_85, r4_85, true)
 end
-
-function UIUtils.SwitchGuideHead(RawName, MID)
-  local Path = "/Game/UI/Blueprint/EMUIFunctionLibrary"
-  local UIFunctionLibClass = LoadClass(Path)
-  if UIFunctionLibClass then
-    return UIFunctionLibClass.SwitchGuideHead(RawName, MID)
+function r10_0.SwitchGuideHead(r0_86, r1_86)
+  -- line: [2059, 2068] id: 86
+  local r2_86 = "/Game/UI/Blueprint/EMUIFunctionLibrary"
+  local r3_86 = LoadClass(r2_86)
+  if r3_86 then
+    return r3_86.SwitchGuideHead(r0_86, r1_86)
   else
-    DebugPrint("Error: UIFunctionLibClass不存在，路径", Path)
+    DebugPrint("Error: UIFunctionLibClass不存在，路径", r2_86)
     return false
   end
 end
-
-function UIUtils.ShowActionRecover(Obj)
+function r10_0.ShowActionRecover(r0_87)
+  -- line: [2070, 2082] id: 87
 end
-
-function UIUtils.GetCharName(Character)
-  if Character:IsPlayer() then
-    return Character:GetNickName()
-  elseif Character:IsPhantom() then
-    local CurRoleId = Character.CurrentRoleId
-    return GText(DataMgr.BattleChar[CurRoleId].CharName)
+function r10_0.GetCharName(r0_88)
+  -- line: [2085, 2094] id: 88
+  if r0_88:IsPlayer() then
+    return r0_88:GetNickName()
+  elseif r0_88:IsPhantom() then
+    return GText(DataMgr.BattleChar[r0_88.CurrentRoleId].CharName)
   end
   return "nil"
 end
-
-function UIUtils.UtilsGetCurrentInputType()
-  local GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(GWorld.GameInstance)
-  if IsValid(GameInputModeSubsystem) then
-    return GameInputModeSubsystem:GetCurrentInputType()
+function r10_0.UtilsGetCurrentInputType()
+  -- line: [2096, 2102] id: 89
+  local r0_89 = UGameInputModeSubsystem.GetGameInputModeSubsystem(GWorld.GameInstance)
+  if IsValid(r0_89) then
+    return r0_89:GetCurrentInputType()
   end
   return ECommonInputType.MouseAndKeyboard
 end
-
-function UIUtils.IsKeyboardInput()
-  local InputType = UIUtils.UtilsGetCurrentInputType()
-  return InputType == UE4.ECommonInputType.MouseAndKeyboard and CommonUtils.GetDeviceTypeByPlatformName(self) == "PC"
+function r10_0.IsKeyboardInput()
+  -- line: [2104, 2107] id: 90
+  local r0_90 = r10_0.UtilsGetCurrentInputType()
+  local r1_90 = UE4.ECommonInputType.MouseAndKeyboard
+  if r0_90 == r1_90 then
+    r1_90 = CommonUtils.GetDeviceTypeByPlatformName() == "PC"
+  else
+    goto label_12	-- block#2 is visited secondly
+  end
+  return r1_90
 end
-
-function UIUtils.IsGamepadInput()
-  local InputType = UIUtils.UtilsGetCurrentInputType()
-  return InputType == UE4.ECommonInputType.Gamepad
+function r10_0.IsGamepadInput()
+  -- line: [2109, 2112] id: 91
+  return r10_0.UtilsGetCurrentInputType() == UE4.ECommonInputType.Gamepad
 end
-
-function UIUtils.IsMobileInput()
-  return CommonUtils.GetDeviceTypeByPlatformName(self) == "Mobile"
+function r10_0.IsMobileInput()
+  -- line: [2114, 2116] id: 92
+  return CommonUtils.GetDeviceTypeByPlatformName() == "Mobile"
 end
-
-function UIUtils.UtilsGetCurrentGamepadName()
+function r10_0.IsPCInput()
+  -- line: [2118, 2120] id: 93
+  return CommonUtils.GetDeviceTypeByPlatformName() == "PC"
+end
+function r10_0.UtilsGetCurrentGamepadName()
+  -- line: [2122, 2131] id: 94
   if CommonUtils.GetDeviceTypeByPlatformName() == "Mobile" then
     return "Generic"
   end
-  local GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(GWorld.GameInstance)
-  if IsValid(GameInputModeSubsystem) then
-    return GameInputModeSubsystem:GetCurrentGamepadName()
+  local r0_94 = UGameInputModeSubsystem.GetGameInputModeSubsystem(GWorld.GameInstance)
+  if IsValid(r0_94) then
+    return r0_94:GetCurrentGamepadName()
   end
   return "Generic"
 end
-
-function UIUtils.UtilsGetKeyIconPathInGamepad(KeyIconName, GamepadName)
-  if nil == GamepadName then
-    GamepadName = UIUtils.UtilsGetCurrentGamepadName()
+function r10_0.UtilsGetKeyIconPathInGamepad(r0_95, r1_95)
+  -- line: [2135, 2148] id: 95
+  if r1_95 == nil then
+    r1_95 = r10_0.UtilsGetCurrentGamepadName()
   end
-  local FixPath, ImgPath
-  local ReplaceKey = string.gsub(KeyIconName, " ", "_")
-  if "PS" == GamepadName then
-    FixPath = "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Key/PS5/T_Key_%s.T_Key_%s'"
+  local r2_95 = nil
+  local r3_95 = nil
+  local r4_95 = string.gsub(r0_95, " ", "_")
+  if r1_95 == "PS" then
+    r2_95 = "Texture2D\'/Game/UI/Texture/Dynamic/Atlas/Key/PS5/T_Key_%s.T_Key_%s\'"
   else
-    FixPath = "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Key/XBOX/T_Key_%s.T_Key_%s'"
+    r2_95 = "Texture2D\'/Game/UI/Texture/Dynamic/Atlas/Key/XBOX/T_Key_%s.T_Key_%s\'"
   end
-  ImgPath = string.format(FixPath, ReplaceKey, ReplaceKey)
-  return ImgPath
+  return string.format(r2_95, r4_95, r4_95)
 end
-
-function UIUtils.UtilsGetKeyIconPathInGamepadByInstruction(KeyIconName, GamepadName)
-  if nil == GamepadName then
-    GamepadName = UIUtils.UtilsGetCurrentGamepadName()
+function r10_0.UtilsGetKeyIconPathInGamepadByInstruction(r0_96, r1_96)
+  -- line: [2150, 2163] id: 96
+  if r1_96 == nil then
+    r1_96 = r10_0.UtilsGetCurrentGamepadName()
   end
-  local FixPath, ImgPath
-  local ReplaceKey = string.gsub(KeyIconName, " ", "_")
-  if "PS" == GamepadName then
-    FixPath = "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Instruction/PS5/T_Key_%s.T_Key_%s'"
+  local r2_96 = nil
+  local r3_96 = nil
+  local r4_96 = string.gsub(r0_96, " ", "_")
+  if r1_96 == "PS" then
+    r2_96 = "Texture2D\'/Game/UI/Texture/Dynamic/Atlas/Instruction/PS5/T_Key_%s.T_Key_%s\'"
   else
-    FixPath = "Texture2D'/Game/UI/Texture/Dynamic/Atlas/Instruction/XBOX/T_Key_%s.T_Key_%s'"
+    r2_96 = "Texture2D\'/Game/UI/Texture/Dynamic/Atlas/Instruction/XBOX/T_Key_%s.T_Key_%s\'"
   end
-  ImgPath = string.format(FixPath, ReplaceKey, ReplaceKey)
-  return ImgPath
+  return string.format(r2_96, r4_96, r4_96)
 end
-
-function UIUtils.GetNoneAccessoryIconPath()
+function r10_0.GetNoneAccessoryIconPath()
+  -- line: [2166, 2168] id: 97
   return "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_Forbid.T_Armory_Forbid"
 end
-
-function UIUtils.TrySubReddotCacheDetail(Id, ReddotName)
-  local CacheKey = tostring(Id)
-  local CacheDetail = ReddotManager.GetLeafNodeCacheDetail(ReddotName)
-  if CacheDetail and CacheDetail[CacheKey] then
-    CacheDetail[CacheKey] = false
-    ReddotManager.DecreaseLeafNodeCount(ReddotName)
+function r10_0.TrySubReddotCacheDetail(r0_98, r1_98)
+  -- line: [2171, 2178] id: 98
+  local r2_98 = tostring(r0_98)
+  local r3_98 = ReddotManager.GetLeafNodeCacheDetail(r1_98)
+  if r3_98 and r3_98[r2_98] then
+    r3_98[r2_98] = false
+    ReddotManager.DecreaseLeafNodeCount(r1_98)
   end
 end
-
-function UIUtils.TryAddReddotCacheDetail(Id, ReddotName)
-  local CacheKey = tostring(Id)
-  local CacheDetail = ReddotManager.GetLeafNodeCacheDetail(ReddotName)
-  if CacheDetail and not CacheDetail[CacheKey] then
-    CacheDetail[CacheKey] = true
-    ReddotManager.IncreaseLeafNodeCount(ReddotName)
+function r10_0.TryAddReddotCacheDetail(r0_99, r1_99)
+  -- line: [2180, 2187] id: 99
+  local r2_99 = tostring(r0_99)
+  local r3_99 = ReddotManager.GetLeafNodeCacheDetail(r1_99)
+  if r3_99 and not r3_99[r2_99] then
+    r3_99[r2_99] = true
+    ReddotManager.IncreaseLeafNodeCount(r1_99)
   end
 end
-
-function UIUtils.TrySubReddotCacheDetailNumber(Id, ReddotName)
-  local CacheKey = Id
-  local CacheDetail = ReddotManager.GetLeafNodeCacheDetail(ReddotName)
-  if CacheDetail and CacheDetail[CacheKey] then
-    CacheDetail[CacheKey] = false
-    ReddotManager.DecreaseLeafNodeCount(ReddotName)
+function r10_0.TrySubReddotCacheDetailNumber(r0_100, r1_100)
+  -- line: [2188, 2195] id: 100
+  local r2_100 = r0_100
+  local r3_100 = ReddotManager.GetLeafNodeCacheDetail(r1_100)
+  if r3_100 and r3_100[r2_100] then
+    r3_100[r2_100] = false
+    ReddotManager.DecreaseLeafNodeCount(r1_100)
   end
 end
-
-function UIUtils.TryAddReddotCacheDetailNumber(Id, ReddotName)
-  local CacheKey = Id
-  local CacheDetail = ReddotManager.GetLeafNodeCacheDetail(ReddotName)
-  if CacheDetail and not CacheDetail[CacheKey] then
-    CacheDetail[CacheKey] = true
-    ReddotManager.IncreaseLeafNodeCount(ReddotName)
+function r10_0.TryAddReddotCacheDetailNumber(r0_101, r1_101)
+  -- line: [2197, 2204] id: 101
+  local r2_101 = r0_101
+  local r3_101 = ReddotManager.GetLeafNodeCacheDetail(r1_101)
+  if r3_101 and not r3_101[r2_101] then
+    r3_101[r2_101] = true
+    ReddotManager.IncreaseLeafNodeCount(r1_101)
   end
 end
-
-function UIUtils.SetReddotTreeLeafNodeCount(ReddotName, Count)
-  local Node = ReddotManager.GetTreeNode(ReddotName)
-  assert(Node, "[jiangtianyi]ReddotManager.SetReddotTreeLeafNodeCount: Failed to find leaf node " .. ReddotName)
-  local CurrentCount = Node.Count
-  if Count < CurrentCount then
-    ReddotManager.DecreaseLeafNodeCount(ReddotName, CurrentCount - Count)
-  elseif Count > CurrentCount then
-    ReddotManager.IncreaseLeafNodeCount(ReddotName, Count - CurrentCount)
+function r10_0.SetReddotTreeLeafNodeCount(r0_102, r1_102)
+  -- line: [2207, 2216] id: 102
+  local r2_102 = ReddotManager.GetTreeNode(r0_102)
+  assert(r2_102, "[jiangtianyi]ReddotManager.SetReddotTreeLeafNodeCount: Failed to find leaf node " .. r0_102)
+  local r3_102 = r2_102.Count
+  if r1_102 < r3_102 then
+    ReddotManager.DecreaseLeafNodeCount(r0_102, r3_102 - r1_102)
+  elseif r3_102 < r1_102 then
+    ReddotManager.IncreaseLeafNodeCount(r0_102, r1_102 - r3_102)
   end
 end
-
-function UIUtils.GetExcelWeaponTagString(CharId)
-  local Data = DataMgr.BattleChar[CharId]
-  local ExcelWeaponTags = Data and Data.ExcelWeaponTags
-  if ExcelWeaponTags then
-    local TagString
-    if type(ExcelWeaponTags) == "table" then
-      TagString = GText(DataMgr.WeaponTag[ExcelWeaponTags[1]].WeaponTagTextmap)
-      for i = 2, #ExcelWeaponTags do
-        TagString = TagString .. "/" .. GText(DataMgr.WeaponTag[ExcelWeaponTags[i]].WeaponTagTextmap)
+function r10_0.GetExcelWeaponTagString(r0_103)
+  -- line: [2218, 2233] id: 103
+  local r1_103 = DataMgr.BattleChar[r0_103]
+  local r2_103 = r1_103 and r1_103.ExcelWeaponTags
+  if r2_103 then
+    local r3_103 = nil
+    if type(r2_103) == "table" then
+      r3_103 = GText(DataMgr.WeaponTag[r2_103[1]].WeaponTagTextmap)
+      for r7_103 = 2, #r2_103, 1 do
+        r3_103 = r3_103 .. "/" .. GText(DataMgr.WeaponTag[r2_103[r7_103]].WeaponTagTextmap)
       end
     else
-      TagString = GText(DataMgr.WeaponTag[ExcelWeaponTags].WeaponTagTextmap)
+      r3_103 = GText(DataMgr.WeaponTag[r2_103].WeaponTagTextmap)
     end
-    return TagString
+    return r3_103
   end
 end
-
-function UIUtils.GetExcelWeaponTags(CharId)
-  local Data = DataMgr.BattleChar[CharId]
-  local ExcelWeaponTags = Data and Data.ExcelWeaponTags
-  local Tags = {}
-  if ExcelWeaponTags then
-    if type(ExcelWeaponTags) == "table" then
-      table.insert(Tags, ExcelWeaponTags[1])
-      for i = 2, #ExcelWeaponTags do
-        table.insert(Tags, ExcelWeaponTags[i])
+function r10_0.GetExcelWeaponTags(r0_104)
+  -- line: [2235, 2250] id: 104
+  local r1_104 = DataMgr.BattleChar[r0_104]
+  local r2_104 = r1_104 and r1_104.ExcelWeaponTags
+  local r3_104 = {}
+  if r2_104 then
+    if type(r2_104) == "table" then
+      table.insert(r3_104, r2_104[1])
+      for r7_104 = 2, #r2_104, 1 do
+        table.insert(r3_104, r2_104[r7_104])
       end
     else
-      table.insert(Tags, ExcelWeaponTags)
+      table.insert(r3_104, r2_104)
     end
-    return Tags
+    return r3_104
   end
 end
-
-function UIUtils.GetDispathchColorNameByType(Type)
-  if "Battle" == Type then
+function r10_0.GetDispathchColorNameByType(r0_105)
+  -- line: [2252, 2262] id: 105
+  if r0_105 == "Battle" then
     return "Red"
-  elseif "Collect" == Type or "Mine" == Type or "Fish" == Type or "Pet" == Type then
+  elseif r0_105 == "Collect" or r0_105 == "Mine" or r0_105 == "Fish" or r0_105 == "Pet" then
     return "Blue"
-  elseif "Benefit" == Type or "Morality" == Type or "Wisdom" == Type or "Empathy" == Type or "Chaos" == Type then
+  elseif r0_105 == "Benefit" or r0_105 == "Morality" or r0_105 == "Wisdom" or r0_105 == "Empathy" or r0_105 == "Chaos" then
     return "Green"
-  elseif "Workaholic" == Type or "Rigorous" == Type or "Skilled" == Type or "Lucky" == Type then
+  elseif r0_105 == "Workaholic" or r0_105 == "Rigorous" or r0_105 == "Skilled" or r0_105 == "Lucky" then
     return "Special"
   end
 end
-
-function UIUtils.NumberToChinese(Num)
-  local ChineseNums = {
+function r10_0.NumberToChinese(r0_106)
+  -- line: [2264, 2270] id: 106
+  return ({
     "零",
     "一",
     "二",
@@ -2036,482 +2305,821 @@ function UIUtils.NumberToChinese(Num)
     "七",
     "八",
     "九"
-  }
-  return ChineseNums[Num + 1]
+  })[r0_106 + 1]
 end
-
-function UIUtils.GenAbyssEntryDesc(Desc, EntryConf, BaseLevel, ExpectLevel)
-  if not ArmoryUtils then
-    ArmoryUtils = require("BluePrints.UI.WBP.Armory.ArmoryUtils")
+function r10_0.GenAbyssEntryDesc(r0_107, r1_107, r2_107, r3_107)
+  -- line: [2272, 2291] id: 107
+  if not r2_0 then
+    r2_0 = require("BluePrints.UI.WBP.Armory.ArmoryUtils")
   end
-  ExpectLevel = nil == ExpectLevel and BaseLevel or ExpectLevel
-  for i, DescValue in pairs(EntryConf or {}) do
-    local Percent = string.match(DescValue, "%%") or ""
-    local ValStr = IsModAttr2 and ArmoryUtils:_ModAttrGrowDesc2(DescValue, BaseLevel, BaseLevel, Percent) or ""
-    ValStr = "" == ValStr and SkillUtils.CalcSkillDesc(DescValue, BaseLevel) .. Percent or ValStr
-    if ExpectLevel then
-      local ComparedValStr = IsModAttr2 and ArmoryUtils:_ModAttrGrowDesc2(DescValue, ExpectLevel, ExpectLevel, Percent) or ""
-      ComparedValStr = "" == ComparedValStr and SkillUtils.CalcSkillDesc(DescValue, BaseLevel) .. Percent or ComparedValStr
-      if ValStr ~= ComparedValStr then
-        ValStr = ValStr .. "->" .. ComparedValStr
+  if r3_107 == nil then
+    r3_107 = r2_107 and r3_107
+  end
+  for r8_107, r9_107 in pairs(r1_107 and {}) do
+    local r10_107 = string.match(r9_107, "%%") and ""
+    local r11_107 = r2_0:_ModAttrGrowDesc2(r9_107, r2_107, r2_107, r10_107) and ""
+    if r11_107 == "" then
+      r11_107 = r5_0.CalcSkillDesc(r9_107, r2_107) .. r10_107
+      if r11_107 then
+        r11_107 = r11_107
       end
     end
-    Desc = string.gsub(Desc, "#" .. i, ValStr)
-  end
-  return Desc
-end
-
-function UIUtils.GenerateArmoryPreviewParamsBySquadInfo(InOutParams, SquadInfo)
-  local ModUuid = 1
-  
-  local function InitTargetModInfo(TargetInfo, Target)
-    if not TargetInfo.ModData then
-      return
+    if r3_107 then
+      local r12_107 = r2_0:_ModAttrGrowDesc2(r9_107, r3_107, r3_107, r10_107) and ""
+      if r12_107 == "" then
+        r12_107 = r5_0.CalcSkillDesc(r9_107, r2_107) .. r10_107
+        if r12_107 then
+          r12_107 = r12_107
+        end
+      end
+      if r11_107 ~= r12_107 then
+        r11_107 = r11_107 .. "->" .. r12_107
+      end
     end
-    local ModSlotPolarity = Target and Target.ModSlotPolarity or {}
-    TargetInfo.ModSuitIndex = 1
-    TargetInfo.SlotData = {}
-    for i, value in ipairs(TargetInfo.ModData) do
-      value.Uuid = ModUuid
-      TargetInfo.SlotData[i] = {
-        SlotId = i,
-        Polarity = ModSlotPolarity[i] or -1,
-        ModEid = ModUuid
-      }
-      ModUuid = ModUuid + 1
+    r0_107 = string.gsub(r0_107, "#" .. r8_107, r11_107)
+  end
+  -- close: r4_107
+  return r0_107
+end
+function r10_0.GenerateArmoryPreviewParamsBySquadInfo(r0_108, r1_108)
+  -- line: [2293, 2321] id: 108
+  local r2_108 = 1
+  local function r3_108(r0_109, r1_109)
+    -- line: [2295, 2305] id: 109
+    local r2_109 = r0_109.ModData
+    if not r2_109 then
+      return 
     end
-  end
-  
-  local Avatar = InOutParams.Avatar or GWorld:GetAvatar()
-  local AvatarBattleInfo = AvatarUtils:GetDefaultBattleInfo(Avatar, SquadInfo) or {}
-  InitTargetModInfo(AvatarBattleInfo.RoleInfo, SquadInfo.Char)
-  InOutParams.PreviewCharInfos = {
-    AvatarBattleInfo.RoleInfo
-  }
-  InitTargetModInfo(AvatarBattleInfo.MeleeWeapon, SquadInfo.MeleeWeapon)
-  InitTargetModInfo(AvatarBattleInfo.RangedWeapon, SquadInfo.RangedWeapon)
-  InOutParams.PreviewWeaponInfos = {
-    AvatarBattleInfo.MeleeWeapon,
-    AvatarBattleInfo.RangedWeapon
-  }
-  InOutParams.PreviewUWeaponInfos = {}
-  if AvatarBattleInfo.UltraWeapons then
-    for i, value in ipairs(AvatarBattleInfo.UltraWeapons) do
-      InitTargetModInfo(value, SquadInfo.UltraWeapons[i])
-      table.insert(InOutParams.PreviewUWeaponInfos, value)
-    end
-  end
-  return InOutParams
-end
-
-function UIUtils.LoadSkillIconById(SkillId)
-  local SkillData = DataMgr.Skill[SkillId]
-  local Data = SkillData and SkillData[1] and SkillData[1][0]
-  local Icon
-  if Data then
-    local IconName = Data.SkillBtnIcon
-    if IconName then
-      Icon = LoadObject("/Game/UI/Texture/Dynamic/Atlas/Skill/T_" .. IconName .. ".T_" .. IconName)
-    end
-  end
-  Icon = Icon or LoadObject("/Game/UI/Texture/Dynamic/Atlas/Skill/T_Skill_Heitao_Skill01.T_Skill_Heitao_Skill01")
-  return Icon
-end
-
-function UIUtils.CalcWidgetCenter(Widget)
-  local Geometry = Widget:GetTickSpaceGeometry()
-  local LocalCenter = USlateBlueprintLibrary.GetLocalSize(Geometry) / 2
-  return USlateBlueprintLibrary.LocalToAbsolute(Geometry, LocalCenter)
-end
-
-function UIUtils.CheckScrollBoxCanScroll(Widget)
-  local Offset = Widget:GetScrollOffsetOfEnd()
-  return Offset > 5
-end
-
-function UIUtils.ScrollBoxByGamepad(ScrollBox, InAnalogInputEvent, Velocity, DeadZone)
-  Velocity = Velocity or 20
-  DeadZone = DeadZone or 5
-  local DeltaOffset = -1 * UKismetInputLibrary.GetAnalogValue(InAnalogInputEvent) * Velocity
-  if DeadZone > math.abs(DeltaOffset) then
-    return
-  end
-  local CurrentOffset = ScrollBox:GetScrollOffset()
-  local OffsetToEnd = ScrollBox:GetScrollOffsetOfEnd()
-  local NextOffset = math.clamp(CurrentOffset + DeltaOffset, 0, OffsetToEnd)
-  ScrollBox:SetScrollOffset(NextOffset)
-end
-
-function UIUtils.HasAnyFocus(Widget)
-  return Widget:HasAnyUserFocus() or Widget:HasFocusedDescendants()
-end
-
-function UIUtils.GetIconListByActionName(ActionName)
-  local GamepadLayout = EMCache:Get("GamepadLayout") or tonumber(DataMgr.Option.GamepadPreset.DefaultValue)
-  local IconList
-  local ActionData = DataMgr.GamepadMap[ActionName]
-  if ActionData then
-    IconList = ActionData.GamepadIcon[GamepadLayout]
-  else
-    print(_G.ErrorTag, ActionName, "：此Action没有对应的键位，请检查拼写或检查GamepadSet表里是否有填写")
-  end
-  if not IconList then
-    print(_G.ErrorTag, ActionName, "：目前的预设方案没有对应的键位，请检查GamepadSet表里是否有填写")
-  else
-    return IconList
-  end
-end
-
-function UIUtils.GetIconListByActionNameAndSetNum(ActionName, Num)
-  local ActionData = DataMgr.GamepadMap[ActionName]
-  if ActionData then
-    return ActionData.GamepadIcon[Num]
-  end
-end
-
-function UIUtils.GetTextFont(TextWidget)
-  assert(TextWidget:IsA(UTextLayoutWidget), "UIUtils.GetTextFont, 错误，参数TextWidget必须是文本控件")
-  local Font
-  if TextWidget:IsA(URichTextBlock) then
-    if TextWidget.bOverrideDefaultStyle then
-      Font = TextWidget.DefaultTextStyleOverride.Font
+    if r1_109 then
+      r2_109 = r1_109.ModSlotPolarity and {}
     else
-      Font = TextWidget.DefaultTextStyle.Font
+      goto label_9	-- block#4 is visited secondly
     end
-  elseif TextWidget:IsA(UTextBlock) then
-    Font = TextWidget.Font
-  elseif TextWidget:IsA(UMultiLineEditableText) then
-    Font = TextWidget.WidgetStyle.Font
-  elseif TextWidget:IsA(UMultiLineEditableTextBox) then
-    Font = TextWidget.WidgetStyle.Font
+    r0_109.ModSuitIndex = 1
+    r0_109.SlotData = {}
+    for r7_109, r8_109 in ipairs(r0_109.ModData) do
+      r8_109.Uuid = r2_108
+      local r9_109 = r0_109.SlotData
+      local r10_109 = {
+        SlotId = r7_109,
+        Polarity = r2_109[r7_109] and -1,
+        ModEid = r2_108,
+      }
+      r9_109[r7_109] = r10_109
+      r2_108 = r2_108 + 1
+    end
+    -- close: r3_109
   end
-  if not Font then
+  local r5_108 = AvatarUtils:GetDefaultBattleInfo(r0_108.Avatar and GWorld:GetAvatar(), r1_108) and {}
+  r3_108(r5_108.RoleInfo, r1_108.Char)
+  r0_108.PreviewCharInfos = {
+    r5_108.RoleInfo
+  }
+  r3_108(r5_108.MeleeWeapon, r1_108.MeleeWeapon)
+  r3_108(r5_108.RangedWeapon, r1_108.RangedWeapon)
+  r0_108.PreviewWeaponInfos = {
+    r5_108.MeleeWeapon,
+    r5_108.RangedWeapon
+  }
+  r0_108.PreviewUWeaponInfos = {}
+  if r5_108.UltraWeapons then
+    for r10_108, r11_108 in ipairs(r5_108.UltraWeapons) do
+      r3_108(r11_108, r1_108.UltraWeapons[r10_108])
+      table.insert(r0_108.PreviewUWeaponInfos, r11_108)
+    end
+    -- close: r6_108
+  end
+  return r0_108
+end
+function r10_0.LoadSkillIconById(r0_110)
+  -- line: [2323, 2335] id: 110
+  local r1_110 = DataMgr.Skill[r0_110]
+  local r2_110 = r1_110 and r1_110[1] and r1_110[1][0]
+  local r3_110 = nil
+  if r2_110 then
+    local r4_110 = r2_110.SkillBtnIcon
+    if r4_110 then
+      r3_110 = LoadObject("/Game/UI/Texture/Dynamic/Atlas/Skill/T_" .. r4_110 .. ".T_" .. r4_110)
+    end
+  end
+  if not r3_110 then
+    r3_110 = LoadObject("/Game/UI/Texture/Dynamic/Atlas/Skill/T_Skill_Heitao_Skill01.T_Skill_Heitao_Skill01")
+  end
+  return r3_110
+end
+function r10_0.CalcWidgetCenter(r0_111)
+  -- line: [2337, 2341] id: 111
+  local r1_111 = r0_111:GetTickSpaceGeometry()
+  return USlateBlueprintLibrary.LocalToAbsolute(r1_111, USlateBlueprintLibrary.GetLocalSize(r1_111) / 2)
+end
+function r10_0.CheckScrollBoxCanScroll(r0_112)
+  -- line: [2345, 2348] id: 112
+  return r0_112:GetScrollOffsetOfEnd() > 5
+end
+function r10_0.ScrollBoxByGamepad(r0_113, r1_113, r2_113, r3_113)
+  -- line: [2355, 2365] id: 113
+  if not r2_113 then
+    r2_113 = 20
+  end
+  if not r3_113 then
+    r3_113 = 5
+  end
+  local r4_113 = UKismetInputLibrary.GetAnalogValue(r1_113) * -1 * r2_113
+  if math.abs(r4_113) < r3_113 then
+    return 
+  end
+  r0_113:SetScrollOffset(math.clamp(r0_113:GetScrollOffset() + r4_113, 0, r0_113:GetScrollOffsetOfEnd()))
+end
+function r10_0.HasAnyFocus(r0_114)
+  -- line: [2367, 2369] id: 114
+  return r0_114:HasAnyUserFocus() and r0_114:HasFocusedDescendants()
+end
+function r10_0.GetIconListByActionName(r0_115)
+  -- line: [2372, 2386] id: 115
+  local r1_115 = r0_0:Get("GamepadLayout") and tonumber(DataMgr.Option.GamepadPreset.DefaultValue)
+  local r2_115 = nil
+  local r3_115 = DataMgr.GamepadMap[r0_115]
+  if r3_115 then
+    r2_115 = r3_115.GamepadIcon[r1_115]
+  else
+    print(_G.ErrorTag, r0_115, "：此Action没有对应的键位，请检查拼写或检查GamepadSet表里是否有填写")
+  end
+  if not r2_115 then
+    print(_G.ErrorTag, r0_115, "：目前的预设方案没有对应的键位，请检查GamepadSet表里是否有填写")
+  else
+    return r2_115
+  end
+end
+function r10_0.GetIconListByActionNameAndSetNum(r0_116, r1_116)
+  -- line: [2388, 2393] id: 116
+  local r2_116 = DataMgr.GamepadMap[r0_116]
+  if r2_116 then
+    return r2_116.GamepadIcon[r1_116]
+  end
+end
+function r10_0.GetTextFont(r0_117)
+  -- line: [2401, 2422] id: 117
+  assert(r0_117:IsA(UTextLayoutWidget), "UIUtils.GetTextFont, 错误，参数TextWidget必须是文本控件")
+  local r1_117 = nil
+  if r0_117:IsA(URichTextBlock) then
+    if r0_117.bOverrideDefaultStyle then
+      r1_117 = r0_117.DefaultTextStyleOverride.Font
+    else
+      r1_117 = r0_117.DefaultTextStyle.Font
+    end
+  elseif r0_117:IsA(UTextBlock) then
+    r1_117 = r0_117.Font
+  elseif r0_117:IsA(UMultiLineEditableText) then
+    r1_117 = r0_117.WidgetStyle.Font
+  elseif r0_117:IsA(UMultiLineEditableTextBox) then
+    r1_117 = r0_117.WidgetStyle.Font
+  end
+  if not r1_117 then
     GWorld.logger.error("UIUtils.GetTextFont 参数TextWidget是不支持的文本文本控件，其他文本控件类型有需要的再考虑扩展")
   end
-  return Font
+  return r1_117
 end
-
-function UIUtils.CheckCdnHide(UIName, ShowToast)
-  local Avatar = GWorld:GetAvatar()
-  local UIData = {}
-  if Avatar and Avatar.CdnHideData and Avatar.CdnHideData.game_ui then
-    UIData = Avatar.CdnHideData.game_ui
+function r10_0.CheckCdnHide(r0_118, r1_118)
+  -- line: [2424, 2447] id: 118
+  local r2_118 = GWorld:GetAvatar()
+  local r3_118 = {}
+  if r2_118 and r2_118.CdnHideData and r2_118.CdnHideData.game_ui then
+    r3_118 = r2_118.CdnHideData.game_ui
   else
     return false
   end
-  for _, MainUIConfig in pairs(DataMgr.MainUI) do
-    if UIName == MainUIConfig.SystemUIName then
-      for __, Data in pairs(UIData) do
-        if Data.config == false then
-          for ___, HideUIName in pairs(Data.gameCtrlGameUI) do
-            if HideUIName == MainUIConfig.Name then
-              UIUtils.ShowMainUIFobidToast(MainUIConfig)
+  for r8_118, r9_118 in pairs(DataMgr.MainUI) do
+    if r0_118 == r9_118.SystemUIName then
+      for r14_118, r15_118 in pairs(r3_118) do
+        if r15_118.config == false then
+          for r20_118, r21_118 in pairs(r15_118.gameCtrlGameUI) do
+            if r21_118 == r9_118.Name then
+              r10_0.ShowMainUIFobidToast(r9_118)
               return true
             end
           end
+          -- close: r16_118
         end
       end
+      -- close: r10_118
     end
   end
+  -- close: r4_118
   return false
 end
-
-function UIUtils.ShowMainUIFobidToast(MainUIConfig)
-  if MainUIConfig.UIUnlockRuleName then
-    local UIUnlockRule = DataMgr.UIUnlockRule
-    local OpenDescs = UIUnlockRule[MainUIConfig.UIUnlockRuleName].OpenSystemDesc
-    if OpenDescs and ShowToast then
-      local UIManager = GWorld.GameInstance:GetGameUIManager()
-      if UIManager then
-        UIManager:ShowUITip(UIConst.Tip_CommonToast, OpenDescs[1])
+function r10_0.ShowMainUIFobidToast(r0_119)
+  -- line: [2449, 2460] id: 119
+  if r0_119.UIUnlockRuleName then
+    local r2_119 = DataMgr.UIUnlockRule[r0_119.UIUnlockRuleName].OpenSystemDesc
+    if r2_119 then
+      local r3_119 = GWorld.GameInstance:GetGameUIManager()
+      if r3_119 then
+        r3_119:ShowUITip(UIConst.Tip_CommonToast, r2_119[1])
       end
     end
   end
 end
-
-function UIUtils.CalcOnelineTextDesireHeight(TextWidget)
-  assert(TextWidget:IsA(UTextLayoutWidget), "UIUtils.CalcOnelineTextDesireHeight, 错误，参数TextWidget必须是文本控件")
-  local Font = UIUtils.GetTextFont(TextWidget)
-  if not Font then
-    return
+function r10_0.CalcOnelineTextDesireHeight(r0_120)
+  -- line: [2466, 2474] id: 120
+  assert(r0_120:IsA(UTextLayoutWidget), "UIUtils.CalcOnelineTextDesireHeight, 错误，参数TextWidget必须是文本控件")
+  local r1_120 = r10_0.GetTextFont(r0_120)
+  if not r1_120 then
+    return 
   end
-  local FontHeight = UUIFunctionLibrary.GetFontHeight(Font) * TextWidget.LineHeightPercentage
-  local OnelineDesireHeight = TextWidget.Margin.Top + TextWidget.Margin.Bottom + FontHeight
-  return OnelineDesireHeight
+  return r0_120.Margin.Top + r0_120.Margin.Bottom + UUIFunctionLibrary.GetFontHeight(r1_120) * r0_120.LineHeightPercentage
 end
-
-function UIUtils.SetTextJustificationByLineCount(TextWidget, bForceCenter, ExpectLine, Justifications)
-  assert(TextWidget:IsA(UTextLayoutWidget), "UIUtils.LayoutTextByLineRule, 错误，参数TextWidget必须是文本控件")
-  local DesireHeight = TextWidget:GetDesiredSize().Y
-  if 0 == DesireHeight then
-    TextWidget:ForceLayoutPrepass()
-    DesireHeight = TextWidget:GetDesiredSize().Y
+function r10_0.SetTextJustificationByLineCount(r0_121, r1_121, r2_121, r3_121)
+  -- line: [2481, 2519] id: 121
+  assert(r0_121:IsA(UTextLayoutWidget), "UIUtils.LayoutTextByLineRule, 错误，参数TextWidget必须是文本控件")
+  local r4_121 = r0_121:GetDesiredSize().Y
+  if r4_121 == 0 then
+    r0_121:ForceLayoutPrepass()
+    r4_121 = r0_121:GetDesiredSize().Y
   end
-  if 0 == DesireHeight then
+  if r4_121 == 0 then
     GWorld.logger.error("UIUtils.LayoutTextByLineRule 参数TextWidget没有绘制完或者自身高度就是0，无法判断什么时候该换行")
-    return
+    return 
   end
-  ExpectLine = ExpectLine or 1
-  Justifications = Justifications or {
-    ETextJustify.Center,
-    ETextJustify.Left
-  }
-  if bForceCenter then
-    for _, Justification in ipairs(Justifications) do
-      if Justification == ETextJustify.Center then
-        TextWidget:SetJustification(Justification)
-        return
+  if not r2_121 then
+    r2_121 = 1
+  end
+  if not r3_121 then
+    r3_121 = {
+      ETextJustify.Center,
+      ETextJustify.Left
+    }
+  end
+  if r1_121 then
+    for r9_121, r10_121 in ipairs(r3_121) do
+      if r10_121 == ETextJustify.Center then
+        r0_121:SetJustification(r10_121)
+        return 
       end
     end
+    -- close: r5_121
   end
-  local Factor = 0.5
-  if UIUtils.IsGamepadInput() then
-    local Text = TextWidget:GetText()
-    if string.match(Text, "<img.-%s*></>") then
-      Factor = 1
-    end
+  local r5_121 = 0.5
+  if r10_0.IsGamepadInput() and string.match(r0_121:GetText(), "<img.-%s*></>") then
+    r5_121 = 1
   end
-  local OnelineDesireHeight = UIUtils.CalcOnelineTextDesireHeight(TextWidget)
-  if DesireHeight <= OnelineDesireHeight * (ExpectLine + Factor) then
-    TextWidget:SetJustification(Justifications[1])
+  if r4_121 <= r10_0.CalcOnelineTextDesireHeight(r0_121) * (r2_121 + r5_121) then
+    r0_121:SetJustification(r3_121[1])
   else
-    TextWidget:SetJustification(Justifications[2])
+    r0_121:SetJustification(r3_121[2])
   end
 end
-
-function UIUtils.LoadPreviewSkillDetails(Parent, Params)
-  if not Parent then
-    return
+function r10_0.LoadPreviewSkillDetails(r0_122, r1_122)
+  -- line: [2522, 2585] id: 122
+  if not r0_122 then
+    return 
   end
-  Params = Params or {}
-  local UIConfig = DataMgr.SystemUI.SkillDetails
-  local GameInstance = GWorld.GameInstance
-  local Player = UE4.UGameplayStatics.GetPlayerCharacter(GameInstance, 0)
-  local CharInfo = {}
-  if not IsStandAlone(Player) then
-    local Avatar = GWorld:GetAvatar()
-    for _, Value in pairs(Avatar.Chars) do
-      if Value.CharId == Player.CurrentRoleId then
-        CharInfo = AvatarUtils:GetCharBattleInfo(Avatar, Value, Value.ModSuitIndex).RoleInfo
+  if not r1_122 then
+    r1_122 = {}
+  end
+  local r2_122 = DataMgr.SystemUI.SkillDetails
+  local r4_122 = UE4.UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
+  local r5_122 = {}
+  local r6_122 = {}
+  local r7_122 = nil
+  local r8_122 = nil
+  local r9_122 = nil
+  if not IsStandAlone(r4_122) then
+    local r10_122 = GWorld:GetAvatar()
+    for r15_122, r16_122 in pairs(r10_122.Chars) do
+      if r16_122.CharId == r4_122.CurrentRoleId then
+        r5_122 = AvatarUtils:GetCharBattleInfo(r10_122, r16_122, r16_122.ModSuitIndex).RoleInfo
         break
       end
     end
+    -- close: r11_122
   else
-    CharInfo = CommonUtils.CopyTable(Player.InfoForInit)
+    r9_122 = r4_122.InfoForInit
+    r5_122 = CommonUtils.CopyTable(r4_122.InfoForInit)
   end
-  CharInfo.ModSuitIndex = CharInfo.ModSuitIndex or 1
-  CharInfo.SlotData = CharInfo.SlotData or {}
-  for index, value in ipairs(CharInfo.ModData or {}) do
-    CharInfo.SlotData[index] = CharInfo.SlotData[index] or {}
-    local SlotData = CharInfo.SlotData[index]
-    SlotData.SlotId = SlotData.SlotId or index
-    SlotData.Polarity = SlotData.Polarity or -1
-    if not value.Uuid or value.Uuid == "" or 0 == value.Uuid or -1 == value.Uuid then
-      value.Uuid = index
+  if r9_122 then
+    if r9_122.MeleeWeapon then
+      r7_122 = CommonUtils.CopyTable(r9_122.MeleeWeapon)
+      if r7_122 then
+        table.insert(r6_122, r7_122)
+      end
     end
-    if not SlotData.ModEid or "" == SlotData.ModEid or 0 == SlotData.ModEid or -1 == SlotData.ModEid then
-      SlotData.ModEid = value.Uuid
+    if r9_122.RangedWeapon then
+      r8_122 = CommonUtils.CopyTable(r9_122.RangedWeapon)
+      if r8_122 then
+        table.insert(r6_122, r8_122)
+      end
     end
   end
-  UIManager(Parent):LoadUI(UIConst.LoadInConfig, UIConfig.UIName, Parent:GetZOrder(), {
-    OnClosedObj = Parent,
-    OnClosedCallback = Params.OnClosedCallback,
-    PreviewCharInfo = CharInfo,
-    IsPreviewMode = true
+  r5_122.ModSuitIndex = r5_122.ModSuitIndex and 1
+  r5_122.SlotData = r5_122.SlotData and {}
+  for r14_122, r15_122 in ipairs(r5_122.ModData and {}) do
+    r5_122.SlotData[r14_122] = r5_122.SlotData[r14_122] and {}
+    local r16_122 = r5_122.SlotData[r14_122]
+    r16_122.SlotId = r16_122.SlotId and r14_122
+    r16_122.Polarity = r16_122.Polarity and -1
+    if not r15_122.Uuid or r15_122.Uuid == "" or r15_122.Uuid == 0 or r15_122.Uuid == -1 then
+      r15_122.Uuid = r14_122
+    end
+    if not r16_122.ModEid or r16_122.ModEid == "" or r16_122.ModEid == 0 or r16_122.ModEid == -1 then
+      r16_122.ModEid = r15_122.Uuid
+    end
+  end
+  -- close: r10_122
+  UIManager(r0_122):LoadUI(UIConst.LoadInConfig, r2_122.UIName, r0_122:GetZOrder(), {
+    OnClosedObj = r0_122,
+    OnClosedCallback = r1_122.OnClosedCallback,
+    PreviewCharInfos = {
+      r5_122
+    },
+    PreviewWeaponInfos = r6_122,
+    MeleeWeapon = r7_122,
+    RangedWeapon = r8_122,
+    IsPreviewMode = true,
   })
 end
-
-function UIUtils.GenRougeCombatTermDesc(SkillDesc, Terms)
-  local results = {SkillDesc}
-  UIUtils.AddHyperLink(results, Terms, 1)
-  local DescText = ""
-  for index, value in ipairs(results) do
-    DescText = DescText .. value
-  end
-  return DescText
-end
-
-function UIUtils.AddHyperLink(StrArray, Terms, TermIdx)
-  if TermIdx > #Terms then
-    return
-  end
-  local Term = GText(DataMgr.CombatTerm[Terms[TermIdx]].CombatTerm)
-  local LStr, RStr, bSuccess = UKismetStringLibrary.Split(StrArray[#StrArray], Term)
-  if not bSuccess then
-    UIUtils.AddHyperLink(StrArray, Terms, TermIdx + 1)
-  else
-    StrArray[#StrArray] = LStr
-    UIUtils.AddHyperLink(StrArray, Terms, TermIdx + 1)
-    table.insert(StrArray, "<H_Under>" .. Term .. "</>")
-    table.insert(StrArray, RStr)
-    UIUtils.AddHyperLink(StrArray, Terms, TermIdx)
-  end
-end
-
-function UIUtils.AddPositioningTagToPanel(Panel, CharId)
-  if not Panel or not CharId then
-    return
-  end
-  local WidgetCount = 0
-  local Data = DataMgr.BattleChar[CharId]
-  if Data and Data.Positioning then
-    local IconWidget = Panel:GetChildAt(0)
-    if not IconWidget then
-      return
-    end
-    local UIManager = UIManager(Panel)
-    local IconWidgetClass = UGameplayStatics.GetObjectClass(IconWidget)
-    for _, value in pairs(Data.Positioning) do
-      local PData = DataMgr.Positioning[value]
-      if PData then
-        IconWidget = Panel:GetChildAt(WidgetCount)
-        if not IconWidget then
-          IconWidget = UIManager:CreateWidget(IconWidgetClass)
-          Panel:AddChild(IconWidget)
-        end
-        if PData.Icon then
-          IconWidget:SetIcon(LoadObject(PData.Icon))
-        end
-        WidgetCount = WidgetCount + 1
-      end
-    end
-  end
-  if WidgetCount > 0 then
-    Panel:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-    local Start, End = WidgetCount, Panel:GetChildrenCount() - 1
-    for i = End, Start, -1 do
-      Panel:RemoveChildAt(i)
-    end
-  else
-    Panel:SetVisibility(UIConst.VisibilityOp.Collapsed)
-  end
-end
-
-function UIUtils.GetCharMiniIconPath(CharId)
-  local PhantomGuideIconImg = "T_Normal_" .. DataMgr.BattleChar[CharId].GuideIconImg
-  return "Texture2D'/Game/UI/Texture/Dynamic/Image/Head/Mini/" .. PhantomGuideIconImg .. "." .. PhantomGuideIconImg .. "'"
-end
-
-function UIUtils.OpenPopupToArmory(OtherPopupParms)
-  local function OpenArmoryFromPopup(Obj, Data, DialogWidget)
-    DialogWidget.ClickResult = true
-  end
-  
-  local function OnDialogClosedCallback(Obj, Data, DialogWidget)
-    if DialogWidget.ClickResult == true then
-      DebugPrint("OpenArmoryFromPopup")
-      PageJumpUtils:JumpToTargetPageByJumpId(52)
-      local ArmoryMain = UIManager(self):GetUIObj("ArmoryMain")
-      if ArmoryMain then
-        UIManager(self):GetUIObj("ArmoryMain").OnCloseDelegate = {
-          nil,
-          function()
-            UIUtils:OpenPopupToArmory()
-          end,
-          self
-        }
-      else
-        ScreenPrint("没有找到军械库界面，关闭界面后不会打开弹窗。")
-      end
-    end
-  end
-  
-  local Parms = {
-    RightCallbackFunction = OpenArmoryFromPopup,
-    RightCallbackObj = self,
-    OnCloseCallbackFunction = OnDialogClosedCallback
+function r10_0.GenRougeCombatTermDesc(r0_123, r1_123)
+  -- line: [2587, 2595] id: 123
+  local r2_123 = {
+    r0_123
   }
-  UIManager(self):ShowCommonPopupUI(100217, Parms, self)
-end
-
-function UIUtils.CalculateHoleTitle(TitleBefore, TitleAfter)
-  local TitleBeforeText, TitleAfterText
-  if -1 ~= TitleBefore and DataMgr.Title[TitleBefore] then
-    TitleBeforeText = DataMgr.Title[TitleBefore].Name or nil
+  r10_0.AddHyperLink(r2_123, r1_123, 1)
+  local r3_123 = ""
+  for r8_123, r9_123 in ipairs(r2_123) do
+    r3_123 = r3_123 .. r9_123
   end
-  if -1 ~= TitleAfter and DataMgr.Title[TitleAfter].Name then
-    TitleAfterText = DataMgr.Title[TitleAfter].Name or nil
-  end
-  TitleBeforeText = TitleBeforeText and (GText(TitleBeforeText) or "")
-  TitleAfterText = TitleAfterText and (GText(TitleAfterText) or "")
-  local WholeTitle = (TitleBeforeText or "") .. (TitleAfterText or "")
-  return WholeTitle
+  -- close: r4_123
+  return r3_123
 end
-
-function UIUtils.GetSortedTitleTable()
-  local Avatar = GWorld:GetAvatar()
-  local PrefixTitles = {}
-  local SuffixTitles = {}
-  local AllTitles = Avatar.Titles
-  for index, value in pairs(AllTitles) do
-    if DataMgr.Title[index] then
-      local TitleData = DataMgr.Title[index]
-      local TitleContent = {
-        Name = TitleData.Name,
-        TitleID = TitleData.TitleID
-      }
-      if TitleData.IfSuffix then
-        table.insert(SuffixTitles, TitleContent)
+function r10_0.AddHyperLink(r0_124, r1_124, r2_124)
+  -- line: [2597, 2612] id: 124
+  if #r1_124 < r2_124 then
+    return 
+  end
+  local r3_124 = GText(DataMgr.CombatTerm[r1_124[r2_124]].CombatTerm)
+  local r4_124, r5_124, r6_124 = UKismetStringLibrary.Split(r0_124[#r0_124], r3_124)
+  if not r6_124 then
+    r10_0.AddHyperLink(r0_124, r1_124, r2_124 + 1)
+  else
+    r0_124[#r0_124] = r4_124
+    r10_0.AddHyperLink(r0_124, r1_124, r2_124 + 1)
+    table.insert(r0_124, "<H_Under>" .. r3_124 .. "</>")
+    table.insert(r0_124, r5_124)
+    r10_0.AddHyperLink(r0_124, r1_124, r2_124)
+  end
+end
+function r10_0.OnDefinitionLinkClicked(r0_125, r1_125, r2_125)
+  -- line: [2618, 2643] id: 125
+  if not r0_125 or not r1_125 or not next(r1_125) then
+    return 
+  end
+  local r3_125 = {
+    DefinitionItems = {},
+  }
+  for r8_125, r9_125 in ipairs(r1_125) do
+    local r10_125 = DataMgr.CombatTerm[r9_125]
+    if r10_125 then
+      if r2_125 == r9_125 then
+        r3_125.CurrentItemIndex = r8_125 + -1
+      end
+      table.insert(r3_125.DefinitionItems, {
+        Index = r8_125 + -1,
+        Name = GText(r10_125.CombatTerm),
+        Des = GText(r10_125.CombatTermExplaination),
+      })
+    end
+  end
+  -- close: r4_125
+  r0_125.DefinitionWidget = UIManager(r0_125):ShowCommonPopupUI(100266, r3_125)
+end
+function r10_0.AddDefinitionHyperLink(r0_126, r1_126, r2_126)
+  -- line: [2646, 2665] id: 126
+  if #r1_126 < r2_126 then
+    return 
+  end
+  if not DataMgr.CombatTerm[r1_126[r2_126]] then
+    return 
+  end
+  local r4_126 = GText(DataMgr.CombatTerm[r1_126[r2_126]].CombatTerm)
+  local r5_126, r6_126, r7_126 = UKismetStringLibrary.Split(r0_126[#r0_126], r4_126)
+  if not r7_126 then
+    r10_0.AddDefinitionHyperLink(r0_126, r1_126, r2_126 + 1)
+  else
+    r0_126[#r0_126] = r5_126
+    r10_0.AddDefinitionHyperLink(r0_126, r1_126, r2_126 + 1)
+    table.insert(r0_126, table.concat({
+      "<a href=\"",
+      r1_126[r2_126],
+      "\"",
+      " color=\"#E0A24A\">",
+      r4_126,
+      "</>"
+    }))
+    table.insert(r0_126, r6_126)
+    r10_0.AddDefinitionHyperLink(r0_126, r1_126, r2_126)
+  end
+end
+function r10_0.SetDefinitionText(r0_127, r1_127)
+  -- line: [2670, 2680] id: 127
+  if not r0_127 or not r1_127 or not r1_127 then
+    return 
+  end
+  local r3_127 = {
+    tostring(r0_127:GetText())
+  }
+  r10_0.AddDefinitionHyperLink(r3_127, r1_127, 1)
+  r0_127:SetText(GText(table.concat(r3_127)))
+end
+function r10_0.InitDefinitionTextWidget(r0_128, r1_128, r2_128, r3_128)
+  -- line: [2687, 2707] id: 128
+  if not r0_128 or not r1_128 then
+    return 
+  end
+  local r5_128 = r1_128:GetDecoratorByClass(UE.UClass.Load("/Game/UI/Blueprint/BP_HyperLinkDecorator.BP_HyperLinkDecorator_C"))
+  if r5_128 then
+    r5_128.BP_OnClicked:Clear()
+    r5_128.BP_OnClicked:Add(r0_128, function(r0_129, r1_129)
+      -- line: [2695, 2702] id: 129
+      if not r0_129 then
+        return 
+      end
+      if r3_128 and type(r3_128) == "function" then
+        r3_128(r0_129, r0_128[r2_128], r1_129)
       else
-        table.insert(PrefixTitles, TitleContent)
+        r10_0.OnDefinitionLinkClicked(r0_128, r0_128[r2_128], r1_129)
+      end
+    end)
+  end
+  r0_128:AddDelayFrameFunc(function()
+    -- line: [2704, 2706] id: 130
+    r10_0.SetDefinitionText(r1_128, r0_128[r2_128])
+  end, 2, "UpdateTargetTextFunc")
+end
+function r10_0.AddPositioningTagToPanel(r0_131, r1_131)
+  -- line: [2709, 2747] id: 131
+  if not r0_131 or not r1_131 then
+    return 
+  end
+  local r2_131 = 0
+  local r3_131 = DataMgr.BattleChar[r1_131]
+  if r3_131 and r3_131.Positioning then
+    local r4_131 = r0_131:GetChildAt(0)
+    if not r4_131 then
+      return 
+    end
+    local r5_131 = UIManager(r0_131)
+    local r6_131 = UGameplayStatics.GetObjectClass(r4_131)
+    for r11_131, r12_131 in pairs(r3_131.Positioning) do
+      local r13_131 = DataMgr.Positioning[r12_131]
+      if r13_131 then
+        r4_131 = r0_131:GetChildAt(r2_131)
+        if not r4_131 then
+          r4_131 = r5_131:CreateWidget(r6_131)
+          r0_131:AddChild(r4_131)
+        end
+        if r13_131.Icon then
+          r4_131:SetIcon(LoadObject(r13_131.Icon))
+        end
+        r2_131 = r2_131 + 1
+      end
+    end
+    -- close: r7_131
+  end
+  if r2_131 > 0 then
+    r0_131:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+    for r9_131 = r0_131:GetChildrenCount() + -1, r2_131, -1 do
+      r0_131:RemoveChildAt(r9_131)
+    end
+  else
+    r0_131:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  end
+end
+function r10_0.GetCharMiniIconPath(r0_132)
+  -- line: [2749, 2752] id: 132
+  local r1_132 = "T_Normal_" .. DataMgr.BattleChar[r0_132].GuideIconImg
+  return "Texture2D\'/Game/UI/Texture/Dynamic/Image/Head/Mini/" .. r1_132 .. "." .. r1_132 .. "\'"
+end
+function r10_0.OpenPopupToArmory(r0_133, r1_133)
+  -- line: [2758, 2786] id: 133
+  UIManager(r0_133):ShowCommonPopupUI(100217, {
+    RightCallbackFunction = function(r0_134, r1_134, r2_134)
+      -- line: [2760, 2762] id: 134
+      r2_134.ClickResult = true
+    end,
+    RightCallbackObj = r0_133,
+    OnCloseCallbackFunction = function(r0_135, r1_135, r2_135)
+      -- line: [2764, 2778] id: 135
+      if r2_135.ClickResult == true then
+        DebugPrint("OpenArmoryFromPopup")
+        PageJumpUtils:JumpToTargetPageByJumpId(52)
+        if UIManager(r0_133):GetUIObj("ArmoryMain") then
+          UIManager(r0_133):GetUIObj("ArmoryMain").OnCloseDelegate = {
+            nil,
+            function()
+              -- line: [2770, 2772] id: 136
+              r10_0:OpenPopupToArmory()
+            end,
+            r0_133
+          }
+        else
+          ScreenPrint("没有找到军械库界面，关闭界面后不会打开弹窗。")
+        end
+      end
+    end,
+  }, r0_133)
+end
+function r10_0.CalculateHoleTitle(r0_137, r1_137)
+  -- line: [2789, 2807] id: 137
+  local r2_137 = nil
+  local r3_137 = nil
+  if r0_137 ~= -1 and DataMgr.Title[r0_137] then
+    r2_137 = DataMgr.Title[r0_137].Name and nil
+  end
+  if r1_137 ~= -1 and DataMgr.Title[r1_137].Name then
+    r3_137 = DataMgr.Title[r1_137].Name and nil
+  end
+  if r2_137 then
+    r2_137 = GText(r2_137) and ""
+  end
+  if r3_137 then
+    r3_137 = GText(r3_137) and ""
+  end
+  local r4_137 = r2_137 and ""
+  return r4_137 .. (r3_137 and "")
+end
+function r10_0.GetSortedTitleTable()
+  -- line: [2810, 2833] id: 138
+  local r0_138 = GWorld:GetAvatar()
+  local r1_138 = {}
+  local r2_138 = {}
+  for r8_138, r9_138 in pairs(r0_138.Titles) do
+    if DataMgr.Title[r8_138] then
+      local r10_138 = DataMgr.Title[r8_138]
+      local r11_138 = {
+        Name = r10_138.Name,
+        TitleID = r10_138.TitleID,
+      }
+      if r10_138.IfSuffix then
+        table.insert(r2_138, r11_138)
+      else
+        table.insert(r1_138, r11_138)
       end
     end
   end
-  return PrefixTitles, SuffixTitles
+  -- close: r4_138
+  return r1_138, r2_138
 end
-
-function UIUtils:SetTextColorInMaterialByRarity(UI, Text, Rarity)
-  local FontMaterial = Text:GetDynamicFontMaterial()
-  if 5 == Rarity then
-    FontMaterial:SetTextureParameterValue("IconTex", UI.Img_Text_5)
-  elseif 4 == Rarity then
-    FontMaterial:SetTextureParameterValue("IconTex", UI.Img_Text_4)
-  elseif 3 == Rarity then
-    FontMaterial:SetTextureParameterValue("IconTex", UI.Img_Text_3)
-  elseif 2 == Rarity then
-    FontMaterial:SetTextureParameterValue("IconTex", UI.Img_Text_2)
-  elseif 1 == Rarity then
-    FontMaterial:SetTextureParameterValue("IconTex", UI.Img_Text_1)
+function r10_0.SetTextColorInMaterialByRarity(r0_139, r1_139, r2_139, r3_139)
+  -- line: [2838, 2854] id: 139
+  local r4_139 = r2_139:GetDynamicFontMaterial()
+  if r3_139 == 5 then
+    r4_139:SetTextureParameterValue("IconTex", r1_139.Img_Text_5)
+  elseif r3_139 == 4 then
+    r4_139:SetTextureParameterValue("IconTex", r1_139.Img_Text_4)
+  elseif r3_139 == 3 then
+    r4_139:SetTextureParameterValue("IconTex", r1_139.Img_Text_3)
+  elseif r3_139 == 2 then
+    r4_139:SetTextureParameterValue("IconTex", r1_139.Img_Text_2)
+  elseif r3_139 == 1 then
+    r4_139:SetTextureParameterValue("IconTex", r1_139.Img_Text_1)
   else
-    FontMaterial:SetTextureParameterValue("IconTex", UI.Img_Text_0)
+    r4_139:SetTextureParameterValue("IconTex", r1_139.Img_Text_0)
   end
 end
-
-function UIUtils.SetTitle(TitleWidget, TitleInfo)
-  if TitleWidget then
-    TitleWidget:ClearChildren()
-    TitleWidget:SetVisibility(UIConst.VisibilityOp.Collapsed)
+function r10_0.SetTitle(r0_140, r1_140, r2_140)
+  -- line: [2860, 2897] id: 140
+  if r0_140 then
+    r0_140:ClearChildren()
+    r0_140:SetVisibility(UIConst.VisibilityOp.Collapsed)
   else
-    return
+    return 
   end
-  if not TitleInfo then
-    return
+  if not r1_140 then
+    return 
   end
-  local PrefixId = TitleInfo.TitleBefore
-  local SuffixId = TitleInfo.TitleAfter
-  local TitleFrameId = TitleInfo.TitleFrame
-  if (not PrefixId or PrefixId <= 0) and (not SuffixId or SuffixId <= 0) then
-    return
+  local r3_140 = r1_140.TitleBefore
+  local r4_140 = r1_140.TitleAfter
+  local r5_140 = r1_140.TitleFrame
+  if (not r3_140 or r3_140 <= 0) and (not r4_140 or r4_140 <= 0) then
+    return 
   end
-  TitleWidget:SetVisibility(UIConst.VisibilityOp.Visible)
-  local GameInstance = GWorld.GameInstance
-  local UIManager = GameInstance:GetGameUIManager()
-  if UIManager and UIManager.LoadTitleFrameWidget then
-    local TitleFrameWidget = UIManager:LoadTitleFrameWidget(TitleFrameId or -1)
-    if TitleFrameWidget then
-      local SlotWidget = TitleWidget:AddChild(TitleFrameWidget)
-      if SlotWidget then
-        if TitleFrameWidget.SetTitleContent then
-          TitleFrameWidget:SetTitleContent(PrefixId, SuffixId)
-        elseif TitleFrameWidget.SetTitle then
-          TitleFrameWidget:SetTitle(PrefixId, SuffixId)
-        elseif TitleFrameWidget.SetEmpty and (not PrefixId or PrefixId <= 0) and (not SuffixId or SuffixId <= 0) then
-          TitleFrameWidget:SetEmpty()
+  r0_140:SetVisibility(UIConst.VisibilityOp.Visible)
+  local r7_140 = GWorld.GameInstance:GetGameUIManager()
+  if r7_140 and r7_140.LoadTitleFrameWidget then
+    local r8_140 = r7_140:LoadTitleFrameWidget(r5_140 and -1)
+    if r8_140 then
+      if r0_140:AddChild(r8_140) then
+        if r8_140.SetTitleContent then
+          r8_140:SetTitleContent(r3_140, r4_140)
+        elseif r8_140.SetTitle then
+          r8_140:SetTitle(r3_140, r4_140)
+        elseif r8_140.SetEmpty and (not r3_140 or r3_140 <= 0) and (not r4_140 or r4_140 <= 0) then
+          r8_140:SetEmpty()
+        end
+      end
+      if r2_140 and r8_140.In then
+        r8_140:PlayAnimation(r8_140.In)
+      end
+    end
+  end
+end
+function r10_0.SetUpScrollBox(r0_141)
+  -- line: [2899, 2911] id: 141
+  if not r0_141 then
+    DebugPrint("Invalid scroll box parameter")
+    return 
+  end
+  if r10_0.IsMobileInput() then
+    r0_141:SetControlScrollbarInside(false)
+  else
+    r0_141:SetScrollBarVisibility(UIConst.VisibilityOp.Hidden)
+    r0_141:SetControlScrollbarInside(true)
+  end
+end
+function r10_0.GetRootUWidget(r0_142)
+  -- line: [2916, 2928] id: 142
+  if not r0_142 then
+    return nil
+  end
+  if r0_142.GetUWidgetSoul then
+    return r0_142:GetUWidgetSoul()
+  elseif r0_142.WidgetTree and r0_142.WidgetTree.RootWidget then
+    return r0_142.WidgetTree.RootWidget
+  end
+  return nil
+end
+function r10_0.GatFastKeyInfo(r0_143, r1_143, r2_143)
+  -- line: [2930, 2940] id: 143
+  if not r1_143 then
+    r1_143 = "A"
+  end
+  return {
+    KeyInfoList = {
+      {
+        Type = "Img",
+        ImgShortPath = r1_143,
+      }
+    },
+    Desc = r2_143,
+  }
+end
+function r10_0.GetDynamicRewardInfo(r0_144, r1_144)
+  -- line: [2942, 2957] id: 144
+  if not r1_144 then
+    r1_144 = r3_0.NowTime()
+  end
+  local r2_144 = DataMgr.DynamicReward[r0_144]
+  if not r2_144 then
+    return 
+  end
+  for r7_144, r8_144 in pairs(r2_144) do
+    if r7_144 <= r1_144 then
+      for r13_144, r14_144 in pairs(r8_144) do
+        if r1_144 <= r13_144 then
+          return r14_144
+        end
+      end
+      -- close: r9_144
+    end
+  end
+  -- close: r3_144
+end
+function r10_0.LongPressKey(r0_145, r1_145, r2_145, r3_145)
+  -- line: [2959, 2992] id: 145
+  if r1_145:IsAnimationPlaying(r1_145.LongPress) then
+    return 
+  end
+  AudioManager(r1_145):PlayUISound(r1_145, "event:/ui/common/btn_press", "LongPress", nil)
+  r1_145:UnbindAllFromAnimationFinished(r1_145.LongPress)
+  r1_145:BindToAnimationFinished(r1_145.LongPress, function()
+    -- line: [2968, 2985] id: 146
+    ScreenPrint("LongPressKey")
+    if not r1_145.IsLongPressing then
+      return 
+    end
+    AudioManager(r1_145):StopSound(r1_145, "LongPress")
+    if r2_145 then
+      r2_145()
+    end
+    r1_145:PlayAnimation(r1_145.Normal)
+    r1_145.IsLongPressing = false
+  end)
+  if not r1_145 then
+    return 
+  end
+  r1_145.IsLongPressing = true
+  r1_145:PlayAnimation(r1_145.LongPress)
+end
+function r10_0.StopLongPressKey(r0_147, r1_147)
+  -- line: [2994, 3006] id: 147
+  if not r1_147.IsLongPressing then
+    return 
+  end
+  AudioManager(r1_147):StopSound(r1_147, "LongPress")
+  r1_147:UnbindAllFromAnimationFinished(r1_147.LongPress)
+  r1_147:StopAllAnimations()
+  r1_147:PlayAnimation(r1_147.Normal)
+  r1_147.IsLongPressing = false
+end
+function r10_0.GetMinAndMaxDisplayedItemIndex(r0_148)
+  -- line: [3009, 3023] id: 148
+  local r1_148 = r0_148:GetDisplayedEntryWidgets():ToTable()
+  local r2_148 = #r1_148
+  local r3_148 = 0
+  for r8_148, r9_148 in ipairs(r1_148) do
+    local r10_148 = r0_148:GetIndexForItem(UUserObjectListEntryLibrary.GetListItemObject(r9_148)) + 1
+    if r10_148 < r2_148 then
+      r2_148 = r10_148
+    end
+    if r3_148 < r10_148 then
+      r3_148 = r10_148
+    end
+  end
+  -- close: r4_148
+  return r2_148, r3_148
+end
+function r10_0.OpenMultiplayerChallengeLevelChoose(r0_149)
+  -- line: [3026, 3030] id: 149
+  GWorld.GameInstance:GetGameUIManager():LoadUINew("MultiplayerChallenge", r0_149)
+end
+function r10_0.SetFocusSecretly(r0_150)
+  -- line: [3033, 3042] id: 150
+  local r1_150 = UGameInputModeSubsystem.GetGameInputModeSubsystem(r0_150)
+  r1_150:SetNavigateWidgetOpacity(0)
+  r0_150:SetFocus()
+  require("BluePrints.Common.StageTimerMgr").AddTimer(r0_150, 0.25, function()
+    -- line: [3038, 3040] id: 151
+    r1_150:SetNavigateWidgetOpacity(1)
+  end, nil, nil, nil, true, UE4.ETickingGroup.TG_EndPhysics)
+end
+function r10_0.GetRelativePositionInParent(r0_152, r1_152, r2_152)
+  -- line: [3049, 3092] id: 152
+  local r3_152 = r0_152:GetParent() and r0_152
+  local r4_152 = r3_152:GetCachedGeometry()
+  local r5_152 = UE4.USlateBlueprintLibrary.AbsoluteToLocal(r4_152, r1_152)
+  local r6_152 = UE4.USlateBlueprintLibrary.GetLocalSize(r4_152)
+  local r7_152 = r3_152.Slot
+  if r7_152 then
+    local r8_152 = FVector2D(r7_152:GetPosition().X, r7_152:GetPosition().Y)
+    local r9_152 = nil
+    local r11_152 = UE4.USlateBlueprintLibrary.GetLocalSize(r0_152:GetCachedGeometry())
+    local r12_152 = r0_152.Slot:GetAnchors()
+    local r13_152 = r0_152.Slot:GetAlignment()
+    if r2_152 == nil then
+      r9_152 = FVector2D(r11_152.X * (r13_152.X - 0.5), r11_152.Y * (r13_152.Y - 0.5))
+    else
+      r9_152 = FVector2D(r11_152.X * (r13_152.X - r2_152.X / r11_152.X), r11_152.Y * (r13_152.Y - r2_152.Y / r11_152.Y))
+    end
+    return FVector2D(r8_152.X + r5_152.X - r6_152.X * math.max(r12_152.Maximum.X, r12_152.Minimum.X) + r9_152.X, r8_152.Y + r5_152.Y - r6_152.Y * math.max(r12_152.Maximum.Y, r12_152.Minimum.Y) + r9_152.Y)
+  end
+  return r5_152
+end
+function r10_0.RefreshFeinaRewardReddot()
+  -- line: [3094, 3144] id: 153
+  local r0_153 = GWorld:GetAvatar()
+  if not r0_153 then
+    return 
+  end
+  if not ReddotManager.GetTreeNode("FeinaEventReward") then
+    ReddotManager.AddNodeEx("FeinaEventReward")
+  end
+  ReddotManager.ClearLeafNodeCount("FeinaEventReward", true)
+  local r2_153 = ReddotManager.GetLeafNodeCacheDetail("FeinaEventReward")
+  for r7_153, r8_153 in pairs(DataMgr.FeinaEvent) do
+    local r9_153 = false
+    for r14_153, r15_153 in pairs(r8_153.DungeonId) do
+      local r16_153 = r0_153:GetFeinaRewardInfo(r15_153)
+      if r16_153 then
+        local r17_153 = false
+        for r22_153, r23_153 in pairs(r16_153) do
+          if r23_153 == 1 then
+            if not r2_153[r7_153] then
+              r2_153[r7_153] = {}
+            end
+            if not r2_153[r7_153][r15_153] then
+              r2_153[r7_153][r15_153] = {}
+            end
+            if not r2_153[r7_153][r15_153][r22_153] then
+              r2_153[r7_153][r15_153][r22_153] = 1
+            end
+            ReddotManager.IncreaseLeafNodeCount("FeinaEventReward")
+            r17_153 = true
+            r9_153 = true
+          elseif r23_153 == 2 and r2_153[r7_153] and r2_153[r7_153][r15_153] and r2_153[r7_153][r15_153][r22_153] then
+            r2_153[r7_153][r15_153][r22_153] = nil
+          end
+        end
+        -- close: r18_153
+        if not r17_153 and r2_153[r7_153] and r2_153[r7_153][r15_153] then
+          r2_153[r7_153][r15_153] = nil
         end
       end
     end
+    -- close: r10_153
+    if not r9_153 and r2_153[r7_153] then
+      r2_153[r7_153] = nil
+    end
   end
+  -- close: r3_153
 end
-
-AssembleComponents(UIUtils)
-return UIUtils
+AssembleComponents(r10_0)
+return r10_0

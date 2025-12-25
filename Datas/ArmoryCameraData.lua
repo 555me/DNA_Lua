@@ -549,47 +549,47 @@ r0_0.RT_110 = {
   -40
 }
 r0_0.RT_111 = {
-  0,
-  -7,
-  -40
-}
-r0_0.RT_112 = {
-  0,
-  0,
-  -70
-}
-r0_0.RT_113 = {
-  [3102] = r0_0.RT_112,
-}
-r0_0.RT_114 = {
-  -115,
-  95,
-  145
-}
-r0_0.RT_115 = {
-  -125,
-  118,
-  130
-}
-r0_0.RT_116 = {
-  -120,
-  101,
-  173
-}
-r0_0.RT_117 = {
-  -113,
-  100,
-  171
-}
-r0_0.RT_118 = {
   10,
   0,
   0
 }
-r0_0.RT_119 = {
+r0_0.RT_112 = {
   0,
   0,
   -10
+}
+r0_0.RT_113 = {
+  0,
+  -7,
+  -40
+}
+r0_0.RT_114 = {
+  0,
+  0,
+  -70
+}
+r0_0.RT_115 = {
+  [3102] = r0_0.RT_114,
+}
+r0_0.RT_116 = {
+  -115,
+  95,
+  145
+}
+r0_0.RT_117 = {
+  -125,
+  118,
+  130
+}
+r0_0.RT_118 = {
+  -120,
+  101,
+  173
+}
+r0_0.RT_119 = {
+  -113,
+  100,
+  171
 }
 r0_0.RT_120 = {
   170,
@@ -597,8 +597,8 @@ r0_0.RT_120 = {
   -3
 }
 r0_0.RT_121 = {
-  [1502] = r0_0.RT_118,
-  [2401] = r0_0.RT_119,
+  [1502] = r0_0.RT_111,
+  [2401] = r0_0.RT_112,
   [3102] = r0_0.RT_120,
 }
 r0_0.RT_122 = {
@@ -3430,6 +3430,8 @@ r6_0 = {
   },
 }
 r6_0.LocationOffset = {
+  [1502] = r0_0.RT_111,
+  [2401] = r0_0.RT_112,
   [3102] = {
     200,
     57,
@@ -3444,15 +3446,15 @@ r6_0.MobileLocationOffset = {
     0
   },
 }
-r6_0.Rotation = r0_0.RT_111
-r6_0.RotationOffset = r0_0.RT_113
+r6_0.Rotation = r0_0.RT_113
+r6_0.RotationOffset = r0_0.RT_115
 r6_0.Time = 1.2
 r4_0[r5_0] = r6_0
 r4_0.Char_Skill_Girl = {
   CameraFocal = 38.6,
   CameraName = "Char_Skill_Girl",
   Ease = 14,
-  Location = r0_0.RT_114,
+  Location = r0_0.RT_116,
   LocationOffset = r0_0.RT_103,
   Rotation = r0_0.RT_108,
   Time = 1.2,
@@ -3461,7 +3463,7 @@ r4_0.Char_Skill_Loli = {
   CameraFocal = 38.6,
   CameraName = "Char_Skill_Loli",
   Ease = 14,
-  Location = r0_0.RT_115,
+  Location = r0_0.RT_117,
   Rotation = r0_0.RT_109,
   Time = 1.2,
 }
@@ -3469,7 +3471,7 @@ r4_0.Char_Skill_Man = {
   CameraFocal = 38.6,
   CameraName = "Char_Skill_Man",
   Ease = 14,
-  Location = r0_0.RT_116,
+  Location = r0_0.RT_118,
   Rotation = r0_0.RT_110,
   Time = 1.2,
 }
@@ -3485,7 +3487,7 @@ r4_0.Char_Skill_Switch_Girl = {
   CameraFocal = 38.6,
   CameraName = "Char_Skill_Switch_Girl",
   Ease = 14,
-  Location = r0_0.RT_114,
+  Location = r0_0.RT_116,
   LocationOffset = r0_0.RT_103,
   Rotation = r0_0.RT_108,
   Time = 1.2,
@@ -3494,7 +3496,7 @@ r4_0.Char_Skill_Switch_Loli = {
   CameraFocal = 38.6,
   CameraName = "Char_Skill_Switch_Loli",
   Ease = 14,
-  Location = r0_0.RT_115,
+  Location = r0_0.RT_117,
   Rotation = r0_0.RT_109,
   Time = 1.2,
 }
@@ -3502,7 +3504,7 @@ r4_0.Char_Skill_Switch_Man = {
   CameraFocal = 38.6,
   CameraName = "Char_Skill_Switch_Man",
   Ease = 14,
-  Location = r0_0.RT_116,
+  Location = r0_0.RT_118,
   Rotation = r0_0.RT_110,
   Time = 1.2,
 }
@@ -3510,20 +3512,20 @@ r4_0.Char_Skill_Switch_Woman = {
   CameraFocal = 38.6,
   CameraName = "Char_Skill_Switch_Woman",
   Ease = 14,
-  Location = r0_0.RT_117,
+  Location = r0_0.RT_119,
   LocationOffset = r0_0.RT_121,
-  Rotation = r0_0.RT_111,
-  RotationOffset = r0_0.RT_113,
+  Rotation = r0_0.RT_113,
+  RotationOffset = r0_0.RT_115,
   Time = 1.2,
 }
 r4_0.Char_Skill_Woman = {
   CameraFocal = 38.6,
   CameraName = "Char_Skill_Woman",
   Ease = 14,
-  Location = r0_0.RT_117,
+  Location = r0_0.RT_119,
   LocationOffset = r0_0.RT_121,
-  Rotation = r0_0.RT_111,
-  RotationOffset = r0_0.RT_113,
+  Rotation = r0_0.RT_113,
+  RotationOffset = r0_0.RT_115,
   Time = 1.2,
 }
 r4_0.Char_Special_Boy = {

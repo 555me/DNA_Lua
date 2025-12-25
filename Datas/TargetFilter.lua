@@ -137,272 +137,272 @@ local r0_0 = {
     Type = "Cylinder",
   },
   RT_28 = {
+    CylinderHeight = 300,
+    Radius = 300,
+    Type = "Cylinder",
+  },
+  RT_29 = {
     HalfHeight = 200,
     HalfWidth = 1000,
     Length = 2000,
     Type = "Rectangle",
   },
-  RT_29 = {
+  RT_30 = {
     0,
     0,
     -180
   },
-  RT_30 = {
+  RT_31 = {
     CylinderHeight = 400,
     Radius = 300,
     Type = "Cylinder",
   },
-  RT_31 = {
+  RT_32 = {
     CylinderHeight = 200,
     Radius = 450,
     Type = "Cylinder",
   },
-  RT_32 = {
+  RT_33 = {
     CrossHeight = 100,
     CrossLength = 750,
     CrossWidth = 110,
     Type = "Cross",
   },
-  RT_33 = {
+  RT_34 = {
     0,
     150,
     0
   },
-  RT_34 = {
+  RT_35 = {
     CylinderHeight = 350,
     Radius = 700,
     Type = "Cylinder",
   },
-  RT_35 = {
+  RT_36 = {
     0,
     315,
     0
   },
-  RT_36 = {
+  RT_37 = {
     0,
     0,
     10
   },
-  RT_37 = {
+  RT_38 = {
     0,
     0,
     -300
   },
-  RT_38 = {
+  RT_39 = {
     ActorName = "Lianhuo_Skill07",
   },
-  RT_39 = {
+  RT_40 = {
     CylinderHeight = 500,
     Radius = 800,
     Type = "Cylinder",
   },
-  RT_40 = {
+  RT_41 = {
     Radius = 1500,
     Type = "Sphere",
   },
-  RT_41 = {
+  RT_42 = {
     CylinderHeight = 500,
     Radius = 200,
     Type = "Cylinder",
   },
-  RT_42 = {
+  RT_43 = {
     RingInnerRadius = 500,
   },
-  RT_43 = {
+  RT_44 = {
     CylinderHeight = 500,
     Radius = 1000,
     Type = "Cylinder",
   },
-  RT_44 = {
+  RT_45 = {
     RingInnerRadius = 1000,
   },
-  RT_45 = {
+  RT_46 = {
     CylinderHeight = 500,
     Radius = 1500,
     Type = "Cylinder",
   },
-  RT_46 = {
+  RT_47 = {
     Radius = 5000,
     Type = "Sphere",
   },
-  RT_47 = {
+  RT_48 = {
     CylinderHeight = 500,
     Radius = 400,
     Type = "Cylinder",
   },
-  RT_48 = {
+  RT_49 = {
     CylinderHeight = 500,
     Radius = 1200,
     Type = "Cylinder",
   },
-  RT_49 = {
+  RT_50 = {
     CylinderHeight = 400,
     Radius = 650,
     Type = "Cylinder",
   },
-  RT_50 = {
+  RT_51 = {
     Radius = 150,
     Type = "Sphere",
   },
-  RT_51 = {
+  RT_52 = {
     Radius = 500,
     Type = "Sphere",
   },
-  RT_52 = {
+  RT_53 = {
     250,
     0,
     0
   },
-  RT_53 = {
+  RT_54 = {
     CylinderHeight = 350,
     Radius = 550,
     Type = "Cylinder",
   },
-  RT_54 = {
+  RT_55 = {
     CylinderHeight = 400,
     Radius = 250,
     Type = "Cylinder",
   },
-  RT_55 = {
+  RT_56 = {
     CylinderHeight = 500,
     Radius = 2500,
     Type = "Cylinder",
   },
-  RT_56 = {
+  RT_57 = {
     RingInnerRadius = 800,
   },
-  RT_57 = {
+  RT_58 = {
     CylinderHeight = 500,
     Radius = 3000,
     Type = "Cylinder",
   },
-  RT_58 = {
+  RT_59 = {
     CylinderHeight = 400,
     Radius = 600,
     Type = "Cylinder",
   },
-  RT_59 = {
+  RT_60 = {
     CylinderHeight = 400,
     Radius = 800,
     Type = "Cylinder",
   },
-  RT_60 = {
+  RT_61 = {
     50,
     0,
     0
   },
-  RT_61 = {
+  RT_62 = {
     100,
     0,
     0
   },
-  RT_62 = {
+  RT_63 = {
     CylinderHeight = 1000,
     Radius = 1500,
     Type = "Cylinder",
   },
-  RT_63 = {
+  RT_64 = {
     CylinderHeight = 1000,
     Radius = 1000,
     Type = "Cylinder",
   },
-  RT_64 = {
+  RT_65 = {
     CylinderHeight = 300,
     Radius = 1000,
     Type = "Cylinder",
   },
-  RT_65 = {
+  RT_66 = {
     550,
     -500,
     -550
   },
-  RT_66 = {
+  RT_67 = {
     CylinderHeight = 350,
     Radius = 320,
     Type = "Cylinder",
   },
-  RT_67 = {
+  RT_68 = {
     0,
     0,
     -550
   },
-  RT_68 = {
+  RT_69 = {
     CylinderHeight = 450,
     Radius = 600,
     Type = "Cylinder",
   },
-  RT_69 = {
+  RT_70 = {
     600,
     0,
     -550
   },
-  RT_70 = {
+  RT_71 = {
     CylinderHeight = 1100,
     Radius = 1400,
     Type = "Cylinder",
   },
-  RT_71 = {
+  RT_72 = {
     RingInnerRadius = 1400,
   },
-  RT_72 = {
+  RT_73 = {
     CylinderHeight = 1100,
     Radius = 1800,
     Type = "Cylinder",
   },
-  RT_73 = {
+  RT_74 = {
     CylinderHeight = 1100,
     Radius = 2200,
     Type = "Cylinder",
   },
-  RT_74 = {
+  RT_75 = {
     CylinderHeight = 800,
     Radius = 1300,
     Type = "Cylinder",
   },
-  RT_75 = {
+  RT_76 = {
     Radius = 3000,
     Type = "Sphere",
   },
-  RT_76 = {
+  RT_77 = {
     CylinderHeight = 200,
     Radius = 600,
     Type = "Cylinder",
   },
-  RT_77 = {
+  RT_78 = {
     CylinderHeight = 200,
     Radius = 500,
     Type = "Cylinder",
   },
-  RT_78 = {
+  RT_79 = {
     0,
     0,
     -60
   },
-  RT_79 = {
+  RT_80 = {
     HalfHeight = 60,
     HalfWidth = 315,
     Length = 833,
     Type = "Rectangle",
   },
-  RT_80 = {
+  RT_81 = {
     HalfHeight = 100,
     HalfWidth = 165,
     Length = 1500,
     Type = "Rectangle",
   },
-  RT_81 = {
+  RT_82 = {
     0,
     0,
     -50
   },
-  RT_82 = {
+  RT_83 = {
     CylinderHeight = 75,
     Radius = 450,
-    Type = "Cylinder",
-  },
-  RT_83 = {
-    CylinderHeight = 300,
-    Radius = 300,
     Type = "Cylinder",
   },
   RT_84 = {
@@ -1106,6 +1106,18 @@ r4_0.BossJuque_Creature_Rectangle = {
     Type = "Rectangle",
   },
 }
+r4_0.BossJuque_Skill01_Cylinder = {
+  CampFilter = "Enemy",
+  CenterOffset = {
+    90,
+    -50,
+    -70
+  },
+  ID = "BossJuque_Skill01_Cylinder",
+  LuaFilter = "CheckRangeHit",
+  LuaFilterParaments = r0_0.RT_28,
+  RangeAngle = 180,
+}
 r4_0.BossJuque_Skill09_Rectangle = {
   CampFilter = "Enemy",
   CenterOffset = {
@@ -1115,7 +1127,7 @@ r4_0.BossJuque_Skill09_Rectangle = {
   },
   ID = "BossJuque_Skill09_Rectangle",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_28,
+  LuaFilterParaments = r0_0.RT_29,
   Rotation = {
     0,
     5,
@@ -1131,7 +1143,7 @@ r4_0.BossJuque_Skill10_Rectangle = {
   },
   ID = "BossJuque_Skill10_Rectangle",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_28,
+  LuaFilterParaments = r0_0.RT_29,
   Rotation = {
     0,
     -5,
@@ -1140,7 +1152,7 @@ r4_0.BossJuque_Skill10_Rectangle = {
 }
 r4_0.BossJushi_Passive_Dot = {
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_29,
+  CenterOffset = r0_0.RT_30,
   ID = "BossJushi_Passive_Dot",
   LuaFilter = "CheckRangeHit",
   LuaFilterParaments = {
@@ -1179,13 +1191,13 @@ r4_0.BossJushi_Skill07_Burst = {
   },
   ID = "BossJushi_Skill07_Burst",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_30,
+  LuaFilterParaments = r0_0.RT_31,
 }
 r4_0.BossKuxiu_Attack = {
   CampFilter = "Enemy",
   ID = "BossKuxiu_Attack",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_31,
+  LuaFilterParaments = r0_0.RT_32,
   RangeAngle = 180,
 }
 r4_0.BossKuxiu_ShockWave = {
@@ -1218,17 +1230,17 @@ r4_0.BossLianhuo_Skill01_Cross = {
   },
   ID = "BossLianhuo_Skill01_Cross",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_32,
+  LuaFilterParaments = r0_0.RT_33,
   Rotation = r0_0.RT_24,
 }
 r4_0.BossLianhuo_Skill01_Cylinder_01 = {
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_33,
+  CenterOffset = r0_0.RT_34,
   ID = "BossLianhuo_Skill01_Cylinder_01",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_34,
+  LuaFilterParaments = r0_0.RT_35,
   RangeAngle = 250,
-  Rotation = r0_0.RT_35,
+  Rotation = r0_0.RT_36,
 }
 r4_0.BossLianhuo_Skill01_Cylinder_02 = {
   CampFilter = "Enemy",
@@ -1239,7 +1251,7 @@ r4_0.BossLianhuo_Skill01_Cylinder_02 = {
   },
   ID = "BossLianhuo_Skill01_Cylinder_02",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_34,
+  LuaFilterParaments = r0_0.RT_35,
   RangeAngle = 250,
   Rotation = {
     0,
@@ -1259,30 +1271,30 @@ r4_0.BossLianhuo_Skill02_Cylinder = {
 }
 r4_0.BossLianhuo_Skill02_Cylinder_01 = {
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_33,
+  CenterOffset = r0_0.RT_34,
   ID = "BossLianhuo_Skill02_Cylinder_01",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_34,
+  LuaFilterParaments = r0_0.RT_35,
   RangeAngle = 250,
-  Rotation = r0_0.RT_36,
+  Rotation = r0_0.RT_37,
 }
 r4_0.BossLianhuo_Skill02_Cylinder_02 = {
   CampFilter = "Enemy",
   CenterOffset = r0_0.RT_10,
   ID = "BossLianhuo_Skill02_Cylinder_02",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_34,
+  LuaFilterParaments = r0_0.RT_35,
   RangeAngle = 250,
-  Rotation = r0_0.RT_35,
+  Rotation = r0_0.RT_36,
 }
 r4_0.BossLianhuo_Skill02_Cylinder_03 = {
   CampFilter = "Enemy",
   CenterOffset = r0_0.RT_10,
   ID = "BossLianhuo_Skill02_Cylinder_03",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_34,
+  LuaFilterParaments = r0_0.RT_35,
   RangeAngle = 250,
-  Rotation = r0_0.RT_36,
+  Rotation = r0_0.RT_37,
 }
 r4_0.BossLianhuo_Skill03_Cylinder = {
   CampFilter = "Enemy",
@@ -1298,7 +1310,7 @@ r4_0.BossLianhuo_Skill04_Cross = {
   CampFilter = "Enemy",
   ID = "BossLianhuo_Skill04_Cross",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_32,
+  LuaFilterParaments = r0_0.RT_33,
 }
 r4_0.BossLianhuo_Skill05_Cross = {
   CampFilter = "Enemy",
@@ -1313,7 +1325,7 @@ r4_0.BossLianhuo_Skill05_Cross = {
 }
 r4_0.BossLianhuo_Skill06_Cylinder = {
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_37,
+  CenterOffset = r0_0.RT_38,
   ID = "BossLianhuo_Skill06_Cylinder",
   LuaFilter = "CheckRangeHit",
   LuaFilterParaments = r0_0.RT_26,
@@ -1331,11 +1343,11 @@ r4_0.BossLianhuo_Skill07_GetActor = {
   CampFilter = "Enemy",
   ID = "BossLianhuo_Skill07_GetActor",
   LuaFilter = "GetActor",
-  LuaFilterParaments = r0_0.RT_38,
+  LuaFilterParaments = r0_0.RT_39,
 }
 r4_0.BossLianhuo_Skill07_Select = {
   BPFilter = "Grab_SelectRandomOne",
-  BPFilterVars = r0_0.RT_38,
+  BPFilterVars = r0_0.RT_39,
   CampFilter = "Enemy",
   ID = "BossLianhuo_Skill07_Select",
   LuaFilter = "CheckRangeHit",
@@ -1347,10 +1359,10 @@ r4_0.BossLianhuo_Skill07_Select = {
 }
 r4_0.BossLianhuo_Skill08_Cylinder = {
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_37,
+  CenterOffset = r0_0.RT_38,
   ID = "BossLianhuo_Skill08_Cylinder",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_39,
+  LuaFilterParaments = r0_0.RT_40,
 }
 r4_0.BossLianhuo_Skill08_Field = {
   BPFilter = "Mon_DisFilter",
@@ -1385,13 +1397,13 @@ r4_0.BossLiecheBomb_Burst = {
   CampFilter = "Enemy",
   ID = "BossLiecheBomb_Burst",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_40,
+  LuaFilterParaments = r0_0.RT_41,
 }
 r4_0.BossLiecheCore_Skill02Burst = {
   CampFilter = "Enemy",
   ID = "BossLiecheCore_Skill02Burst",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_41,
+  LuaFilterParaments = r0_0.RT_42,
 }
 r4_0.BossLiecheCore_Skill05Burst1 = {
   CampFilter = "Enemy",
@@ -1401,19 +1413,19 @@ r4_0.BossLiecheCore_Skill05Burst1 = {
 }
 r4_0.BossLiecheCore_Skill05Burst2 = {
   BPFilter = "Mon_DisFilter",
-  BPFilterVars = r0_0.RT_42,
+  BPFilterVars = r0_0.RT_43,
   CampFilter = "Enemy",
   ID = "BossLiecheCore_Skill05Burst2",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_43,
+  LuaFilterParaments = r0_0.RT_44,
 }
 r4_0.BossLiecheCore_Skill05Burst3 = {
   BPFilter = "Mon_DisFilter",
-  BPFilterVars = r0_0.RT_44,
+  BPFilterVars = r0_0.RT_45,
   CampFilter = "Enemy",
   ID = "BossLiecheCore_Skill05Burst3",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_45,
+  LuaFilterParaments = r0_0.RT_46,
 }
 r4_0.BossLiecheHand_FindLiecheHand = {
   CampFilter = "OtherFriend",
@@ -1433,13 +1445,13 @@ r4_0.BossLiecheHand_Skill01 = {
   },
   ID = "BossLiecheHand_Skill01",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_45,
+  LuaFilterParaments = r0_0.RT_46,
 }
 r4_0.BossLieche_Skill04Target = {
   CampFilter = "Enemy",
   ID = "BossLieche_Skill04Target",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_46,
+  LuaFilterParaments = r0_0.RT_47,
 }
 r4_0.BossLieche_Skill07AllLieche = {
   CampFilter = "Enemy",
@@ -1464,7 +1476,7 @@ r4_0.BossLieche_Skill07Step01 = {
   CampFilter = "Enemy",
   ID = "BossLieche_Skill07Step01",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_47,
+  LuaFilterParaments = r0_0.RT_48,
 }
 r4_0.BossLieche_Skill07Step02 = {
   CampFilter = "Enemy",
@@ -1480,13 +1492,13 @@ r4_0.BossLieche_Skill07Step03 = {
   CampFilter = "Enemy",
   ID = "BossLieche_Skill07Step03",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_48,
+  LuaFilterParaments = r0_0.RT_49,
 }
 r4_0.BossLinen_Skill01 = {
   CampFilter = "Enemy",
   ID = "BossLinen_Skill01",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_49,
+  LuaFilterParaments = r0_0.RT_50,
   RangeAngle = 240,
 }
 r4_0.BossLinen_Skill02_Scene = {
@@ -1503,7 +1515,7 @@ r4_0.BossLinen_Skill03_Scene1 = {
   CampFilter = "Enemy",
   ID = "BossLinen_Skill03_Scene1",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_50,
+  LuaFilterParaments = r0_0.RT_51,
 }
 r4_0.BossLinen_Skill03_Scene2 = {
   CampFilter = "Enemy",
@@ -1518,7 +1530,7 @@ r4_0.BossLinen_Skill06_Scene1 = {
   CampFilter = "Enemy",
   ID = "BossLinen_Skill06_Scene1",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_51,
+  LuaFilterParaments = r0_0.RT_52,
 }
 r4_0.BossLinen_Skill06_Scene2 = {
   CampFilter = "Enemy",
@@ -1542,7 +1554,7 @@ r4_0.BossLinen_Skill07_Scene = {
   CampFilter = "Enemy",
   ID = "BossLinen_Skill07_Scene",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_51,
+  LuaFilterParaments = r0_0.RT_52,
 }
 r4_0.BossLizhan_Skill01_HalfCylinder = {
   CampFilter = "Enemy",
@@ -1557,7 +1569,7 @@ r4_0.BossLizhan_Skill01_HalfCylinder = {
 }
 r4_0.BossLizhan_Skill02_Cylinder = {
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_52,
+  CenterOffset = r0_0.RT_53,
   ID = "BossLizhan_Skill02_Cylinder",
   LuaFilter = "CheckRangeHit",
   LuaFilterParaments = {
@@ -1570,7 +1582,7 @@ r4_0.BossLizhan_Skill04_Cylinder = {
   CampFilter = "Enemy",
   ID = "BossLizhan_Skill04_Cylinder",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_53,
+  LuaFilterParaments = r0_0.RT_54,
 }
 r4_0.BossLizhan_Skill04_HalfCylinder = {
   CampFilter = "Enemy",
@@ -1587,7 +1599,7 @@ r4_0.BossLizhan_Skill05_Cylinder = {
   CampFilter = "Enemy",
   ID = "BossLizhan_Skill05_Cylinder",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_54,
+  LuaFilterParaments = r0_0.RT_55,
 }
 r4_0.BossLizhan_Skill07_Cylinder_120 = {
   CampFilter = "Enemy",
@@ -1614,7 +1626,7 @@ r4_0.BossLizhan_Skill11_Cylinder = {
   CampFilter = "Enemy",
   ID = "BossLizhan_Skill11_Cylinder",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_53,
+  LuaFilterParaments = r0_0.RT_54,
 }
 r4_0.BossOnline_FilterT = {
   BPFilter = "Mon_FilterBuffType",
@@ -1657,14 +1669,14 @@ r4_0.BossOnline_Skill01Cylinder1 = {
   CampFilter = "Enemy",
   ID = "BossOnline_Skill01Cylinder1",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_55,
+  LuaFilterParaments = r0_0.RT_56,
   RangeAngle = 180,
 }
 r4_0.BossOnline_Skill01Cylinder2 = {
   CampFilter = "Enemy",
   ID = "BossOnline_Skill01Cylinder2",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_55,
+  LuaFilterParaments = r0_0.RT_56,
   RangeAngle = 180,
 }
 r4_0.BossOnline_Skill02Cylinder1 = {
@@ -1681,7 +1693,7 @@ r4_0.BossOnline_Skill04Cylinder1 = {
   CampFilter = "Enemy",
   ID = "BossOnline_Skill04Cylinder1",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_47,
+  LuaFilterParaments = r0_0.RT_48,
 }
 r4_0.BossOnline_Skill05Damage = {
   BPFilter = "Mon_DisFilter",
@@ -1691,7 +1703,7 @@ r4_0.BossOnline_Skill05Damage = {
   CampFilter = "Enemy",
   ID = "BossOnline_Skill05Damage",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_55,
+  LuaFilterParaments = r0_0.RT_56,
 }
 r4_0.BossOnline_Skill06Damage = {
   CampFilter = "Enemy",
@@ -1705,11 +1717,11 @@ r4_0.BossOnline_Skill06Damage = {
 }
 r4_0.BossOnline_Skill07Damage = {
   BPFilter = "Mon_DisFilter",
-  BPFilterVars = r0_0.RT_56,
+  BPFilterVars = r0_0.RT_57,
   CampFilter = "Enemy",
   ID = "BossOnline_Skill07Damage",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_55,
+  LuaFilterParaments = r0_0.RT_56,
 }
 r4_0.BossOnline_Skill10Damage = {
   CampFilter = "Enemy",
@@ -1727,7 +1739,7 @@ r4_0.BossOnline_Skill12Cylinder1 = {
   CampFilter = "Enemy",
   ID = "BossOnline_Skill12Cylinder1",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_55,
+  LuaFilterParaments = r0_0.RT_56,
   RangeAngle = 60,
   Rotation = r0_0.RT_10,
 }
@@ -1735,7 +1747,7 @@ r4_0.BossOnline_Skill12Cylinder2 = {
   CampFilter = "Enemy",
   ID = "BossOnline_Skill12Cylinder2",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_55,
+  LuaFilterParaments = r0_0.RT_56,
   RangeAngle = 60,
   Rotation = {
     0,
@@ -1747,7 +1759,7 @@ r4_0.BossOnline_Skill12Cylinder3 = {
   CampFilter = "Enemy",
   ID = "BossOnline_Skill12Cylinder3",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_55,
+  LuaFilterParaments = r0_0.RT_56,
   RangeAngle = 60,
   Rotation = {
     0,
@@ -1759,7 +1771,7 @@ r4_0.BossOnline_Skill12Cylinder4 = {
   CampFilter = "Enemy",
   ID = "BossOnline_Skill12Cylinder4",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_55,
+  LuaFilterParaments = r0_0.RT_56,
   RangeAngle = 60,
   Rotation = r0_0.RT_17,
 }
@@ -1767,7 +1779,7 @@ r4_0.BossOnline_Skill12Cylinder5 = {
   CampFilter = "Enemy",
   ID = "BossOnline_Skill12Cylinder5",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_55,
+  LuaFilterParaments = r0_0.RT_56,
   RangeAngle = 60,
   Rotation = {
     0,
@@ -1779,7 +1791,7 @@ r4_0.BossOnline_Skill12Cylinder6 = {
   CampFilter = "Enemy",
   ID = "BossOnline_Skill12Cylinder6",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_55,
+  LuaFilterParaments = r0_0.RT_56,
   RangeAngle = 60,
   Rotation = {
     0,
@@ -1815,7 +1827,7 @@ r4_0.BossOnline_Skill14Cylinder1 = {
   CampFilter = "Enemy",
   ID = "BossOnline_Skill14Cylinder1",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_39,
+  LuaFilterParaments = r0_0.RT_40,
 }
 r4_0.BossOnline_Skill14SPTarget01 = {
   BPFilter = "Mon_SpecificTarget",
@@ -1848,21 +1860,21 @@ r4_0.BossOnline_Skill15Cylinder1 = {
   CampFilter = "Enemy",
   ID = "BossOnline_Skill15Cylinder1",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_48,
+  LuaFilterParaments = r0_0.RT_49,
   RangeAngle = 100,
 }
 r4_0.BossOnline_Skill16Cylinder1 = {
   CampFilter = "Enemy",
   ID = "BossOnline_Skill16Cylinder1",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_47,
+  LuaFilterParaments = r0_0.RT_48,
   RangeAngle = 180,
 }
 r4_0.BossOnline_Skill18Cylinder1 = {
   CampFilter = "Enemy",
   ID = "BossOnline_Skill18Cylinder1",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_57,
+  LuaFilterParaments = r0_0.RT_58,
   RangeAngle = 180,
   Rotation = r0_0.RT_12,
 }
@@ -1870,7 +1882,7 @@ r4_0.BossOnline_Skill19Cylinder1 = {
   CampFilter = "Enemy",
   ID = "BossOnline_Skill19Cylinder1",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_57,
+  LuaFilterParaments = r0_0.RT_58,
   RangeAngle = 180,
   Rotation = r0_0.RT_22,
 }
@@ -1888,13 +1900,13 @@ r4_0.BossRobot_Skill02_Cylinder = {
   CampFilter = "Enemy",
   ID = "BossRobot_Skill02_Cylinder",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_58,
+  LuaFilterParaments = r0_0.RT_59,
 }
 r4_0.BossRobot_Skill06_Cylinder = {
   CampFilter = "Enemy",
   ID = "BossRobot_Skill06_Cylinder",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_59,
+  LuaFilterParaments = r0_0.RT_60,
 }
 r4_0.BossRobot_Skill07_Cylinder = {
   CampFilter = "Enemy",
@@ -1925,15 +1937,15 @@ r4_0.BossSaiqi02_Cylinder_750_2500_360 = {
 }
 r4_0.BossSaiqi_Skill01_Cylinder_450_200_270 = {
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_60,
+  CenterOffset = r0_0.RT_61,
   ID = "BossSaiqi_Skill01_Cylinder_450_200_270",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_31,
+  LuaFilterParaments = r0_0.RT_32,
   RangeAngle = 270,
 }
 r4_0.BossSaiqi_Skill04_Cylinder_300_200_360 = {
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_61,
+  CenterOffset = r0_0.RT_62,
   ID = "BossSaiqi_Skill04_Cylinder_300_200_360",
   LuaFilter = "CheckRangeHit",
   LuaFilterParaments = r0_0.RT_19,
@@ -1958,11 +1970,11 @@ r4_0.BossSaiqi_Skill10_Cylinder_1500_1000_360 = {
   CampFilter = "Enemy",
   ID = "BossSaiqi_Skill10_Cylinder_1500_1000_360",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_62,
+  LuaFilterParaments = r0_0.RT_63,
 }
 r4_0.BossSaiqi_Skill13_Cylinder_300_200_360 = {
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_52,
+  CenterOffset = r0_0.RT_53,
   ID = "BossSaiqi_Skill13_Cylinder_300_200_360",
   LuaFilter = "CheckRangeHit",
   LuaFilterParaments = r0_0.RT_19,
@@ -1971,7 +1983,7 @@ r4_0.BossSaiqi_Skill23_Cylinder_1000_1000_360 = {
   CampFilter = "Enemy",
   ID = "BossSaiqi_Skill23_Cylinder_1000_1000_360",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_63,
+  LuaFilterParaments = r0_0.RT_64,
 }
 r4_0.BossSaiqi_Skill23_Cylinder_3500_1000_360 = {
   CampFilter = "Enemy",
@@ -1987,7 +1999,7 @@ r4_0.BossShenpan_GroundHit = {
   CampFilter = "Enemy",
   ID = "BossShenpan_GroundHit",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_41,
+  LuaFilterParaments = r0_0.RT_42,
 }
 r4_0.BossShenpan_Skill07 = {
   CampFilter = "Enemy",
@@ -1998,7 +2010,7 @@ r4_0.BossShenpan_Skill07 = {
   },
   ID = "BossShenpan_Skill07",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_31,
+  LuaFilterParaments = r0_0.RT_32,
   RangeAngle = 180,
 }
 r4_0.BossShenpan_Skill08 = {
@@ -2017,7 +2029,7 @@ r4_0.BossShijingzhe_Cylinder_1000_200_360 = {
   CampFilter = "Enemy",
   ID = "BossShijingzhe_Cylinder_1000_200_360",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_64,
+  LuaFilterParaments = r0_0.RT_65,
 }
 r4_0.BossShijingzhe_Cylinder_100_100_360 = {
   BPFilter = "Mon_ExceptShijingzhePillar",
@@ -2033,10 +2045,10 @@ r4_0.BossShijingzhe_Cylinder_100_100_360 = {
 r4_0.BossShijingzhe_Cylinder_320_250_360 = {
   BPFilter = "Mon_ExceptShijingzhePillar",
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_65,
+  CenterOffset = r0_0.RT_66,
   ID = "BossShijingzhe_Cylinder_320_250_360",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_66,
+  LuaFilterParaments = r0_0.RT_67,
 }
 r4_0.BossShijingzhe_Cylinder_600_200_360 = {
   BPFilter = "Mon_ExceptShijingzhePillar",
@@ -2052,10 +2064,10 @@ r4_0.BossShijingzhe_Cylinder_600_200_360 = {
 r4_0.BossShijingzhe_Cylinder_600_350_360 = {
   BPFilter = "Mon_ExceptShijingzhePillar",
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_67,
+  CenterOffset = r0_0.RT_68,
   ID = "BossShijingzhe_Cylinder_600_350_360",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_68,
+  LuaFilterParaments = r0_0.RT_69,
 }
 r4_0.BossShijingzhe_Cylinder_skill12_L = {
   BPFilter = "Mon_ExceptShijingzhePillar",
@@ -2067,7 +2079,7 @@ r4_0.BossShijingzhe_Cylinder_skill12_L = {
   },
   ID = "BossShijingzhe_Cylinder_skill12_L",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_68,
+  LuaFilterParaments = r0_0.RT_69,
 }
 r4_0.BossShijingzhe_Cylinder_skill12_R = {
   BPFilter = "Mon_ExceptShijingzhePillar",
@@ -2079,7 +2091,7 @@ r4_0.BossShijingzhe_Cylinder_skill12_R = {
   },
   ID = "BossShijingzhe_Cylinder_skill12_R",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_68,
+  LuaFilterParaments = r0_0.RT_69,
 }
 r4_0.BossShijingzhe_Skill01_L = {
   BPFilter = "Mon_ExceptShijingzhePillar",
@@ -2110,10 +2122,10 @@ r4_0.BossShijingzhe_Skill01_R = {
 r4_0.BossShijingzhe_Skill02_Cylinder01 = {
   BPFilter = "Mon_ExceptShijingzhePillar",
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_65,
+  CenterOffset = r0_0.RT_66,
   ID = "BossShijingzhe_Skill02_Cylinder01",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_66,
+  LuaFilterParaments = r0_0.RT_67,
 }
 r4_0.BossShijingzhe_Skill02_Cylinder02 = {
   BPFilter = "Mon_ExceptShijingzhePillar",
@@ -2141,7 +2153,7 @@ r4_0.BossShijingzhe_Skill03_Cylinder_1000_200_360 = {
   },
   ID = "BossShijingzhe_Skill03_Cylinder_1000_200_360",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_64,
+  LuaFilterParaments = r0_0.RT_65,
 }
 r4_0.BossShijingzhe_Skill05_RushPillar = {
   BPFilter = "Mon_ShijingzhePillar",
@@ -2153,12 +2165,12 @@ r4_0.BossShijingzhe_Skill05_RushPillar = {
   },
   ID = "BossShijingzhe_Skill05_RushPillar",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_49,
+  LuaFilterParaments = r0_0.RT_50,
 }
 r4_0.BossShijingzhe_Skill07_Cylinder01 = {
   BPFilter = "Mon_ExceptShijingzhePillar",
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_69,
+  CenterOffset = r0_0.RT_70,
   ID = "BossShijingzhe_Skill07_Cylinder01",
   LuaFilter = "CheckRangeHit",
   LuaFilterParaments = {
@@ -2170,15 +2182,15 @@ r4_0.BossShijingzhe_Skill07_Cylinder01 = {
 r4_0.BossShijingzhe_Skill07_Cylinder02 = {
   BPFilter = "Mon_ExceptShijingzhePillar",
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_69,
+  CenterOffset = r0_0.RT_70,
   ID = "BossShijingzhe_Skill07_Cylinder02",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_34,
+  LuaFilterParaments = r0_0.RT_35,
 }
 r4_0.BossShijingzhe_Skill07_Cylinder03 = {
   BPFilter = "Mon_ExceptShijingzhePillar",
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_69,
+  CenterOffset = r0_0.RT_70,
   ID = "BossShijingzhe_Skill07_Cylinder03",
   LuaFilter = "CheckRangeHit",
   LuaFilterParaments = {
@@ -2189,40 +2201,40 @@ r4_0.BossShijingzhe_Skill07_Cylinder03 = {
 }
 r4_0.BossShijingzhe_Skill11_Donut01 = {
   BPFilter = "Mon_ShijingzheSkill11",
-  BPFilterVars = r0_0.RT_44,
+  BPFilterVars = r0_0.RT_45,
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_67,
+  CenterOffset = r0_0.RT_68,
   ID = "BossShijingzhe_Skill11_Donut01",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_70,
+  LuaFilterParaments = r0_0.RT_71,
   RangeAngle = 120,
 }
 r4_0.BossShijingzhe_Skill11_Donut01_Pillar = {
   BPFilter = "Mon_ShijingzhePillar",
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_67,
+  CenterOffset = r0_0.RT_68,
   ID = "BossShijingzhe_Skill11_Donut01_Pillar",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_70,
+  LuaFilterParaments = r0_0.RT_71,
   RangeAngle = 120,
 }
 r4_0.BossShijingzhe_Skill11_Donut02 = {
   BPFilter = "Mon_ShijingzheSkill11",
-  BPFilterVars = r0_0.RT_71,
+  BPFilterVars = r0_0.RT_72,
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_67,
+  CenterOffset = r0_0.RT_68,
   ID = "BossShijingzhe_Skill11_Donut02",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_72,
+  LuaFilterParaments = r0_0.RT_73,
   RangeAngle = 120,
 }
 r4_0.BossShijingzhe_Skill11_Donut02_Pillar = {
   BPFilter = "Mon_ShijingzhePillar",
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_67,
+  CenterOffset = r0_0.RT_68,
   ID = "BossShijingzhe_Skill11_Donut02_Pillar",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_72,
+  LuaFilterParaments = r0_0.RT_73,
   RangeAngle = 120,
 }
 r4_0.BossShijingzhe_Skill11_Donut03 = {
@@ -2231,19 +2243,19 @@ r4_0.BossShijingzhe_Skill11_Donut03 = {
     RingInnerRadius = 1800,
   },
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_67,
+  CenterOffset = r0_0.RT_68,
   ID = "BossShijingzhe_Skill11_Donut03",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_73,
+  LuaFilterParaments = r0_0.RT_74,
   RangeAngle = 120,
 }
 r4_0.BossShijingzhe_Skill11_Donut03_Pillar = {
   BPFilter = "Mon_ShijingzhePillar",
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_67,
+  CenterOffset = r0_0.RT_68,
   ID = "BossShijingzhe_Skill11_Donut03_Pillar",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_73,
+  LuaFilterParaments = r0_0.RT_74,
   RangeAngle = 120,
 }
 r4_0.BossShijingzhe_Skill13_GetActor = {
@@ -2260,19 +2272,19 @@ r4_0.BossShijingzhe_Skill13_Howl = {
     RingInnerRadius = 300,
   },
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_67,
+  CenterOffset = r0_0.RT_68,
   ID = "BossShijingzhe_Skill13_Howl",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_74,
+  LuaFilterParaments = r0_0.RT_75,
   RangeAngle = 120,
 }
 r4_0.BossShijingzhe_Skill13_Howl_Pillar = {
   BPFilter = "Mon_ShijingzhePillar",
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_67,
+  CenterOffset = r0_0.RT_68,
   ID = "BossShijingzhe_Skill13_Howl_Pillar",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_74,
+  LuaFilterParaments = r0_0.RT_75,
   RangeAngle = 120,
 }
 r4_0.BossShijingzhe_Skill13_Select = {
@@ -2282,10 +2294,10 @@ r4_0.BossShijingzhe_Skill13_Select = {
     RingInnerRadius = 300,
   },
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_67,
+  CenterOffset = r0_0.RT_68,
   ID = "BossShijingzhe_Skill13_Select",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_74,
+  LuaFilterParaments = r0_0.RT_75,
   RangeAngle = 120,
 }
 r4_0.BossShijingzhe_Skill15Target = {
@@ -2297,7 +2309,7 @@ r4_0.BossShijingzhe_Skill15Target = {
 r4_0.BossShijingzhe_Skill15_ClearPillar = {
   BPFilter = "Mon_ShijingzhePillar",
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_67,
+  CenterOffset = r0_0.RT_68,
   ID = "BossShijingzhe_Skill15_ClearPillar",
   LuaFilter = "CheckRangeHit",
   LuaFilterParaments = {
@@ -2311,7 +2323,7 @@ r4_0.BossShijingzhe_Sphere_3000_360_NoMch = {
   CampFilter = "Enemy",
   ID = "BossShijingzhe_Sphere_3000_360_NoMch",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_75,
+  LuaFilterParaments = r0_0.RT_76,
 }
 r4_0.BossShijingzhe_Target = {
   BPFilter = "Mon_ExceptShijingzhePillar",
@@ -2324,7 +2336,7 @@ r4_0.BossTuisheng_Skill01_Cylinder1 = {
   CenterOffset = r0_0.RT_10,
   ID = "BossTuisheng_Skill01_Cylinder1",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_76,
+  LuaFilterParaments = r0_0.RT_77,
   RangeAngle = 180,
 }
 r4_0.BossTuisheng_Skill02_Cylinder1 = {
@@ -2332,7 +2344,7 @@ r4_0.BossTuisheng_Skill02_Cylinder1 = {
   CenterOffset = r0_0.RT_10,
   ID = "BossTuisheng_Skill02_Cylinder1",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_77,
+  LuaFilterParaments = r0_0.RT_78,
   RangeAngle = 300,
 }
 r4_0.BossTuosi_Skill01_Cylinder01 = {
@@ -2368,7 +2380,7 @@ r4_0.BossTuosi_Skill02_Cylinder02 = {
 }
 r4_0.BossTuosi_Skill04_Box = {
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_78,
+  CenterOffset = r0_0.RT_79,
   ID = "BossTuosi_Skill04_Box",
   LuaFilter = "CheckRangeHit",
   LuaFilterParaments = {
@@ -2380,10 +2392,10 @@ r4_0.BossTuosi_Skill04_Box = {
 }
 r4_0.BossTuosi_Skill05_Box01 = {
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_78,
+  CenterOffset = r0_0.RT_79,
   ID = "BossTuosi_Skill05_Box01",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_79,
+  LuaFilterParaments = r0_0.RT_80,
 }
 r4_0.BossTuosi_Skill05_Box02 = {
   CampFilter = "Enemy",
@@ -2394,7 +2406,7 @@ r4_0.BossTuosi_Skill05_Box02 = {
   },
   ID = "BossTuosi_Skill05_Box02",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_79,
+  LuaFilterParaments = r0_0.RT_80,
 }
 r4_0.BossTuosi_Skill05_Box03 = {
   CampFilter = "Enemy",
@@ -2405,7 +2417,7 @@ r4_0.BossTuosi_Skill05_Box03 = {
   },
   ID = "BossTuosi_Skill05_Box03",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_79,
+  LuaFilterParaments = r0_0.RT_80,
 }
 r4_0["BossTuosi_Skill06_BoxRotate+45"] = {
   CampFilter = "Enemy",
@@ -2416,7 +2428,7 @@ r4_0["BossTuosi_Skill06_BoxRotate+45"] = {
   },
   ID = "BossTuosi_Skill06_BoxRotate+45",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_80,
+  LuaFilterParaments = r0_0.RT_81,
   Rotation = r0_0.RT_24,
 }
 r4_0["BossTuosi_Skill06_BoxRotate-45"] = {
@@ -2428,7 +2440,7 @@ r4_0["BossTuosi_Skill06_BoxRotate-45"] = {
   },
   ID = "BossTuosi_Skill06_BoxRotate-45",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_80,
+  LuaFilterParaments = r0_0.RT_81,
   Rotation = r0_0.RT_23,
 }
 r4_0.BossTuosi_Skill06_BoxRotate0 = {
@@ -2440,7 +2452,7 @@ r4_0.BossTuosi_Skill06_BoxRotate0 = {
   },
   ID = "BossTuosi_Skill06_BoxRotate0",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_80,
+  LuaFilterParaments = r0_0.RT_81,
   Rotation = r0_0.RT_10,
 }
 r4_0.BossTuosi_Skill06_Cylinder01 = {
@@ -2452,10 +2464,10 @@ r4_0.BossTuosi_Skill06_Cylinder01 = {
 }
 r4_0.BossTuosi_Skill06_Cylinder02 = {
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_60,
+  CenterOffset = r0_0.RT_61,
   ID = "BossTuosi_Skill06_Cylinder02",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_77,
+  LuaFilterParaments = r0_0.RT_78,
 }
 r4_0.BossTuosi_Skill07_Hit = {
   CampFilter = "Enemy",
@@ -2472,7 +2484,7 @@ r4_0.BossTuosi_Skill08_AroundBurstCylinder = {
   CampFilter = "Enemy",
   ID = "BossTuosi_Skill08_AroundBurstCylinder",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_41,
+  LuaFilterParaments = r0_0.RT_42,
 }
 r4_0.BossTuosi_Skill08_BigBurst = {
   CampFilter = "Enemy",
@@ -2502,30 +2514,30 @@ r4_0.BossXibi_Dash_Sword = {
 }
 r4_0.BossXibi_Dash_Whip01 = {
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_81,
+  CenterOffset = r0_0.RT_82,
   ID = "BossXibi_Dash_Whip01",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_82,
+  LuaFilterParaments = r0_0.RT_83,
 }
 r4_0.BossXibi_Dash_Whip02 = {
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_81,
+  CenterOffset = r0_0.RT_82,
   ID = "BossXibi_Dash_Whip02",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_82,
+  LuaFilterParaments = r0_0.RT_83,
 }
 r4_0.BossXibi_Skill01_Whip01 = {
   CampFilter = "Enemy",
   ID = "BossXibi_Skill01_Whip01",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_83,
+  LuaFilterParaments = r0_0.RT_28,
   RangeAngle = 180,
 }
 r4_0.BossXibi_Skill01_Whip02 = {
   CampFilter = "Enemy",
   ID = "BossXibi_Skill01_Whip02",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_83,
+  LuaFilterParaments = r0_0.RT_28,
   RangeAngle = 180,
 }
 r4_0.BossXibi_Skill02_Sword01 = {
@@ -2577,23 +2589,23 @@ r4_0.BossXibi_Skill06_Donut01 = {
 }
 r4_0.BossXibi_Skill06_Donut02 = {
   BPFilter = "Mon_DisFilter",
-  BPFilterVars = r0_0.RT_42,
+  BPFilterVars = r0_0.RT_43,
   CampFilter = "Enemy",
   ID = "BossXibi_Skill06_Donut02",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_63,
+  LuaFilterParaments = r0_0.RT_64,
 }
 r4_0.BossXibi_Skill06_Donut03 = {
   BPFilter = "Mon_DisFilter",
-  BPFilterVars = r0_0.RT_44,
+  BPFilterVars = r0_0.RT_45,
   CampFilter = "Enemy",
   ID = "BossXibi_Skill06_Donut03",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_62,
+  LuaFilterParaments = r0_0.RT_63,
 }
 r4_0.BossXibi_Skill06_Field01 = {
   BPFilter = "Mon_DisFilter",
-  BPFilterVars = r0_0.RT_42,
+  BPFilterVars = r0_0.RT_43,
   CampFilter = "Enemy",
   ID = "BossXibi_Skill06_Field01",
   LuaFilter = "CheckRangeHit",
@@ -2605,7 +2617,7 @@ r4_0.BossXibi_Skill06_Field01 = {
 }
 r4_0.BossXibi_Skill06_Field02 = {
   BPFilter = "Mon_DisFilter",
-  BPFilterVars = r0_0.RT_44,
+  BPFilterVars = r0_0.RT_45,
   CampFilter = "Enemy",
   ID = "BossXibi_Skill06_Field02",
   LuaFilter = "CheckRangeHit",
@@ -2668,7 +2680,7 @@ r4_0.BossXibi_StageSkill_Donut02 = {
 }
 r4_0.BossXibi_StageSkill_Donut03 = {
   BPFilter = "Mon_DisFilter",
-  BPFilterVars = r0_0.RT_71,
+  BPFilterVars = r0_0.RT_72,
   CampFilter = "Enemy",
   ID = "BossXibi_StageSkill_Donut03",
   LuaFilter = "CheckRangeHit",
@@ -2686,7 +2698,7 @@ r4_0.BossXibi_StageSkill_Field01 = {
 }
 r4_0.BossXibi_StageSkill_Field02 = {
   BPFilter = "Mon_DisFilter",
-  BPFilterVars = r0_0.RT_71,
+  BPFilterVars = r0_0.RT_72,
   CampFilter = "Enemy",
   ID = "BossXibi_StageSkill_Field02",
   LuaFilter = "CheckRangeHit",
@@ -2732,7 +2744,7 @@ r4_0.Char_Crossbow_20203 = {
   CampFilter = "Enemy",
   ID = "Char_Crossbow_20203",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_40,
+  LuaFilterParaments = r0_0.RT_41,
 }
 r4_0.Char_Cylinder_Large = {
   CampFilter = "Enemy",
@@ -2826,34 +2838,34 @@ r4_0.Char_Cylinder_Middle = {
   CampFilter = "Enemy",
   ID = "Char_Cylinder_Middle",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_58,
+  LuaFilterParaments = r0_0.RT_59,
 }
 r4_0.Char_Cylinder_Middle120 = {
   CampFilter = "Enemy",
   ID = "Char_Cylinder_Middle120",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_58,
+  LuaFilterParaments = r0_0.RT_59,
   RangeAngle = 120,
 }
 r4_0.Char_Cylinder_Middle180 = {
   CampFilter = "Enemy",
   ID = "Char_Cylinder_Middle180",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_58,
+  LuaFilterParaments = r0_0.RT_59,
   RangeAngle = 180,
 }
 r4_0.Char_Cylinder_Middle240 = {
   CampFilter = "Enemy",
   ID = "Char_Cylinder_Middle240",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_58,
+  LuaFilterParaments = r0_0.RT_59,
   RangeAngle = 240,
 }
 r4_0.Char_Cylinder_Middle_Frd = {
   CampFilter = "Friend",
   ID = "Char_Cylinder_Middle_Frd",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_58,
+  LuaFilterParaments = r0_0.RT_59,
 }
 r4_0.Char_Cylinder_Middle_Trgt = {
   CampFilter = "Enemy",
@@ -2951,7 +2963,7 @@ r4_0.Char_Machinegun_20508 = {
   CampFilter = "Enemy",
   ID = "Char_Machinegun_20508",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_40,
+  LuaFilterParaments = r0_0.RT_41,
 }
 r4_0.Char_Polearm_HeavyAttack02 = {
   CampFilter = "Enemy",
@@ -3047,7 +3059,7 @@ r4_0.Char_Shotgun_20402_4 = {
   CampFilter = "Enemy",
   ID = "Char_Shotgun_20402_4",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_51,
+  LuaFilterParaments = r0_0.RT_52,
 }
 r4_0.Char_Sphere_Middle = {
   CampFilter = "Enemy",
@@ -3139,7 +3151,7 @@ r4_0.Event_Wys_GP40104_RealSummon = {
   CampFilter = "OtherFriend",
   ID = "Event_Wys_GP40104_RealSummon",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_43,
+  LuaFilterParaments = r0_0.RT_44,
 }
 r4_0.Fuluo_SummonNum = {
   BPFilter = "Common_RoleIdFilter",
@@ -3186,7 +3198,7 @@ r4_0.Jt_Commander_Cylinder_1500_500_360 = {
   CampFilter = "OtherFriend",
   ID = "Jt_Commander_Cylinder_1500_500_360",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_45,
+  LuaFilterParaments = r0_0.RT_46,
 }
 r4_0.Jt_Ranger_LandMine = {
   CampFilter = "Enemy",
@@ -3204,10 +3216,10 @@ r4_0.Jt_Ranger_LandMine_Fr = {
 }
 r4_0.Landi_Skill01 = {
   CampFilter = "Friend",
-  CenterOffset = r0_0.RT_60,
+  CenterOffset = r0_0.RT_61,
   ID = "Landi_Skill01",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_58,
+  LuaFilterParaments = r0_0.RT_59,
   RangeAngle = -180,
 }
 r4_0.LaserTarget = {
@@ -3222,7 +3234,7 @@ r4_0.Linen_Skill02 = {
   ID = "Linen_Skill02",
   LineTraceFilter = true,
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_46,
+  LuaFilterParaments = r0_0.RT_47,
 }
 r4_0.Lise_Skill02_CharToEnemy = {
   BPFilter = "Common_NotBreakableItem",
@@ -3230,7 +3242,7 @@ r4_0.Lise_Skill02_CharToEnemy = {
   DontCullPartTarget = true,
   ID = "Lise_Skill02_CharToEnemy",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_46,
+  LuaFilterParaments = r0_0.RT_47,
 }
 r4_0.Lise_Skill02_EnemyToEnemy = {
   BPFilter = "Common_NotBreakableItem",
@@ -3260,7 +3272,7 @@ r4_0.Mech_Bomb = {
   CampFilter = "Enemy",
   ID = "Mech_Bomb",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_51,
+  LuaFilterParaments = r0_0.RT_52,
 }
 r4_0.Mech_Bomb_MonAndSelf = {
   CampFilter = "OtherFriend",
@@ -3273,7 +3285,7 @@ r4_0.Mech_Bomb_Monster = {
   CampFilter = "Enemy",
   ID = "Mech_Bomb_Monster",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_51,
+  LuaFilterParaments = r0_0.RT_52,
 }
 r4_0.Mech_Bomb_Player = {
   BPFilter = "Common_ConditionFilter",
@@ -3281,7 +3293,7 @@ r4_0.Mech_Bomb_Player = {
   CampFilter = "Enemy",
   ID = "Mech_Bomb_Player",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_51,
+  LuaFilterParaments = r0_0.RT_52,
 }
 r4_0.Mech_Bomb_PlayerSingle = {
   BPFilter = "Common_ConditionFilter",
@@ -3293,7 +3305,7 @@ r4_0.Mech_Bomb_PlayerSingle = {
 r4_0.Mech_Cylinder_300_400_360 = {
   ID = "Mech_Cylinder_300_400_360",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_30,
+  LuaFilterParaments = r0_0.RT_31,
 }
 r4_0.Mech_Cylinder_500_40_360 = {
   ID = "Mech_Cylinder_500_40_360",
@@ -3510,7 +3522,7 @@ r4_0.Mon_Cylinder_250_400_180 = {
   CampFilter = "Enemy",
   ID = "Mon_Cylinder_250_400_180",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_54,
+  LuaFilterParaments = r0_0.RT_55,
   RangeAngle = 180,
 }
 r4_0.Mon_Cylinder_250_600_360 = {
@@ -3537,7 +3549,7 @@ r4_0.Mon_Cylinder_300_200_180_180 = {
   LuaFilter = "CheckRangeHit",
   LuaFilterParaments = r0_0.RT_19,
   RangeAngle = 180,
-  Rotation = r0_0.RT_29,
+  Rotation = r0_0.RT_30,
 }
 r4_0.Mon_Cylinder_300_200_360 = {
   CampFilter = "Enemy",
@@ -3568,7 +3580,7 @@ r4_0.Mon_Cylinder_300_400_360 = {
   CampFilter = "Enemy",
   ID = "Mon_Cylinder_300_400_360",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_30,
+  LuaFilterParaments = r0_0.RT_31,
 }
 r4_0.Mon_Cylinder_300_40_360 = {
   CampFilter = "Enemy",
@@ -3622,7 +3634,7 @@ r4_0.Mon_Cylinder_400_200_240 = {
 }
 r4_0.Mon_Cylinder_400_200_360 = {
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_81,
+  CenterOffset = r0_0.RT_82,
   ID = "Mon_Cylinder_400_200_360",
   LuaFilter = "CheckRangeHit",
   LuaFilterParaments = r0_0.RT_111,
@@ -3637,7 +3649,7 @@ r4_0.Mon_Cylinder_500_200_360 = {
   CampFilter = "Enemy",
   ID = "Mon_Cylinder_500_200_360",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_77,
+  LuaFilterParaments = r0_0.RT_78,
 }
 r4_0.Mon_Cylinder_500_400_360 = {
   CampFilter = "Enemy",
@@ -3675,13 +3687,13 @@ r4_0.Mon_Cylinder_600_200_360 = {
   CampFilter = "Enemy",
   ID = "Mon_Cylinder_600_200_360",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_76,
+  LuaFilterParaments = r0_0.RT_77,
 }
 r4_0.Mon_Cylinder_600_400_360 = {
   CampFilter = "Enemy",
   ID = "Mon_Cylinder_600_400_360",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_58,
+  LuaFilterParaments = r0_0.RT_59,
 }
 r4_0.Mon_Cylinder_600_40_360 = {
   CampFilter = "Enemy",
@@ -3729,7 +3741,7 @@ r4_0.Mon_Cylinder_800_400_360 = {
   CampFilter = "Enemy",
   ID = "Mon_Cylinder_800_400_360",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_59,
+  LuaFilterParaments = r0_0.RT_60,
 }
 r4_0.Mon_Rectangle_80_200_100 = {
   CampFilter = "Enemy",
@@ -3792,7 +3804,7 @@ r4_0.Mon_Sphere_150_360 = {
   CampFilter = "Enemy",
   ID = "Mon_Sphere_150_360",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_50,
+  LuaFilterParaments = r0_0.RT_51,
 }
 r4_0.Mon_Sphere_200_360 = {
   CampFilter = "Enemy",
@@ -3870,27 +3882,27 @@ r4_0.Mon_Sphere_500_360 = {
   CampFilter = "Enemy",
   ID = "Mon_Sphere_500_360",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_51,
+  LuaFilterParaments = r0_0.RT_52,
 }
 r4_0.Mon_Sphere_500_360_Fr = {
   CampFilter = "OtherFriend",
   ID = "Mon_Sphere_500_360_Fr",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_51,
+  LuaFilterParaments = r0_0.RT_52,
 }
 r4_0.Mon_Sphere_500_360_NoMch = {
   BPFilter = "Mon_ExceptMechanism",
   CampFilter = "Enemy",
   ID = "Mon_Sphere_500_360_NoMch",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_51,
+  LuaFilterParaments = r0_0.RT_52,
 }
 r4_0.Mon_Sphere_500_360_Tianwei = {
   CampFilter = "Enemy",
   CenterOffset = r0_0.RT_109,
   ID = "Mon_Sphere_500_360_Tianwei",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_51,
+  LuaFilterParaments = r0_0.RT_52,
 }
 r4_0.Mon_Sphere_50_360 = {
   CampFilter = "Enemy",
@@ -3967,7 +3979,7 @@ r4_0.NEWuyou_Skill02Burst1 = {
   CampFilter = "Enemy",
   ID = "NEWuyou_Skill02Burst1",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_47,
+  LuaFilterParaments = r0_0.RT_48,
 }
 r4_0.NEWuyou_Skill02Burst2 = {
   BPFilter = "Mon_DisFilter",
@@ -3977,15 +3989,15 @@ r4_0.NEWuyou_Skill02Burst2 = {
   CampFilter = "Enemy",
   ID = "NEWuyou_Skill02Burst2",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_39,
+  LuaFilterParaments = r0_0.RT_40,
 }
 r4_0.NEWuyou_Skill02Burst3 = {
   BPFilter = "Mon_DisFilter",
-  BPFilterVars = r0_0.RT_56,
+  BPFilterVars = r0_0.RT_57,
   CampFilter = "Enemy",
   ID = "NEWuyou_Skill02Burst3",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_48,
+  LuaFilterParaments = r0_0.RT_49,
 }
 r4_0.RootSource = {
   ID = "RootSource",
@@ -4061,13 +4073,13 @@ r4_0.Rou_10105_Cylinder_800 = {
   CampFilter = "Enemy",
   ID = "Rou_10105_Cylinder_800",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_59,
+  LuaFilterParaments = r0_0.RT_60,
 }
 r4_0.Rou_10105_Cylinder_800_Fr = {
   CampFilter = "OtherFriend",
   ID = "Rou_10105_Cylinder_800_Fr",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_59,
+  LuaFilterParaments = r0_0.RT_60,
 }
 r4_0.Rou_10106101_Search = {
   BPFilter = "Mon_ExceptMechanism",
@@ -4116,7 +4128,7 @@ r4_0.Rou_10107_Group3Damage = {
   DontCullPartTarget = true,
   ID = "Rou_10107_Group3Damage",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_48,
+  LuaFilterParaments = r0_0.RT_49,
 }
 r4_0.Rou_20134_Cylinder_XLarge120 = {
   CampFilter = "Enemy",
@@ -4134,7 +4146,7 @@ r4_0.SQ_Baozha_Die_Sphere = {
 }
 r4_0.SQ_Baozha_Skill03_Sphere = {
   CampFilter = "Enemy",
-  CenterOffset = r0_0.RT_61,
+  CenterOffset = r0_0.RT_62,
   ID = "SQ_Baozha_Skill03_Sphere",
   LuaFilter = "CheckRangeHit",
   LuaFilterParaments = r0_0.RT_93,
@@ -4144,19 +4156,19 @@ r4_0.SQ_Wanju_Skill02_Sphere = {
   CampFilter = "OtherFriend",
   ID = "SQ_Wanju_Skill02_Sphere",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_40,
+  LuaFilterParaments = r0_0.RT_41,
 }
 r4_0.Saiqi_Skill01_Search_L = {
   CampFilter = "Enemy",
   ID = "Saiqi_Skill01_Search_L",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_46,
+  LuaFilterParaments = r0_0.RT_47,
 }
 r4_0.Saiqi_Skill01_Search_M = {
   CampFilter = "Enemy",
   ID = "Saiqi_Skill01_Search_M",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_75,
+  LuaFilterParaments = r0_0.RT_76,
 }
 r4_0.Saiqi_Skill01_Search_S = {
   CampFilter = "Enemy",
@@ -4285,7 +4297,7 @@ r4_0.Xierda_Passive_Search = {
   ID = "Xierda_Passive_Search",
   LineTraceFilter = true,
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_40,
+  LuaFilterParaments = r0_0.RT_41,
 }
 r4_0.Yeer_Skill01_Enemy = {
   CampFilter = "Enemy",
@@ -4322,7 +4334,7 @@ r4_0.Zhangyu_TentacleBirth = {
   CampFilter = "Enemy",
   ID = "Zhangyu_TentacleBirth",
   LuaFilter = "CheckRangeHit",
-  LuaFilterParaments = r0_0.RT_30,
+  LuaFilterParaments = r0_0.RT_31,
 }
 r4_0.Zhiliu_TT = {
   CampFilter = "Enemy",

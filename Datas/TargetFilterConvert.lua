@@ -56,6 +56,7 @@ end)("TargetFilterConvert", {
     BossJishi_Attack02 = 364.00549446403,
     BossJishi_Skill02 = 424.26406871193,
     BossJuque_Creature_Rectangle = 734.84692283495,
+    BossJuque_Skill01_Cylinder = 335.41019662497,
     BossJuque_Skill09_Rectangle = 1428.2856857086,
     BossJuque_Skill10_Rectangle = 1428.2856857086,
     BossJushi_Passive_Dot = 181.72781845386,

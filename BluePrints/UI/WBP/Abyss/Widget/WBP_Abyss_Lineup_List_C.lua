@@ -1,399 +1,420 @@
-local WBP_Abyss_Lineup_List_C = Class({
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\WBP\Abyss\Widget\WBP_Abyss_Lineup_List_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r0_0 = Class({
   "BluePrints.UI.BP_EMUserWidget_C",
   "BluePrints.Common.TimerMgr"
 })
-WBP_Abyss_Lineup_List_C._components = {
+r0_0._components = {
   "BluePrints.UI.UI_PC.Common.LSFocusComp"
 }
-
-function WBP_Abyss_Lineup_List_C:Construct()
-  self.bAllowRefreshList = true
-  self.Platform = CommonUtils.GetDeviceTypeByPlatformName(GWorld.GameInstance)
-  self.List_Select.BP_OnItemClicked:Clear()
-  self.List_Select.BP_OnEntryInitialized:Clear()
-  self.List_Select.BP_OnEntryInitialized:Add(self, self.OnListItemInited)
-  self.List_Select.BP_OnItemIsHoveredChanged:Add(self, self.OnItemIsHoverChanged)
-  self.EMListView_Filter.BP_OnItemClicked:Clear()
-  self.EMListView_Filter.BP_OnItemClicked:Add(self, self.OnFilterListItemClicked)
-  self.EMListView_Filter.BP_OnEntryInitialized:Clear()
-  self.EMListView_Filter.BP_OnEntryInitialized:Add(self, self.OnFilterListItemInited)
-  self.EMListView_Filter.BP_OnItemIsHoveredChanged:Clear()
-  self.EMListView_Filter.BP_OnItemIsHoveredChanged:Add(self, self.OnFilterListItemHovered)
-  self.Text_Empty:SetText(GText("UI_Armory_Pet_Empty"))
-  self:AddLSFocusTarget(nil, {
-    self.Sort
+function r0_0.Construct(r0_1)
+  -- line: [8, 25] id: 1
+  r0_1.bAllowRefreshList = true
+  r0_1.Platform = CommonUtils.GetDeviceTypeByPlatformName(GWorld.GameInstance)
+  r0_1.List_Select.BP_OnItemClicked:Clear()
+  r0_1.List_Select.BP_OnEntryInitialized:Clear()
+  r0_1.List_Select.BP_OnEntryInitialized:Add(r0_1, r0_1.OnListItemInited)
+  r0_1.List_Select.BP_OnItemIsHoveredChanged:Add(r0_1, r0_1.OnItemIsHoverChanged)
+  r0_1.EMListView_Filter.BP_OnItemClicked:Clear()
+  r0_1.EMListView_Filter.BP_OnItemClicked:Add(r0_1, r0_1.OnFilterListItemClicked)
+  r0_1.EMListView_Filter.BP_OnEntryInitialized:Clear()
+  r0_1.EMListView_Filter.BP_OnEntryInitialized:Add(r0_1, r0_1.OnFilterListItemInited)
+  r0_1.EMListView_Filter.BP_OnItemIsHoveredChanged:Clear()
+  r0_1.EMListView_Filter.BP_OnItemIsHoveredChanged:Add(r0_1, r0_1.OnFilterListItemHovered)
+  r0_1.Text_Empty:SetText(GText("UI_Armory_Pet_Empty"))
+  r0_1:AddLSFocusTarget(nil, {
+    r0_1.Sort
   })
-  self:InitKeyInfo()
-  self:RefreshBaseInfo()
+  r0_1:InitKeyInfo()
+  r0_1:RefreshBaseInfo()
 end
-
-function WBP_Abyss_Lineup_List_C:Destruct()
-  self.List_Select.BP_OnItemClicked:Clear()
-  self.List_Select.BP_OnEntryInitialized:Clear()
-  self.EMListView_Filter.BP_OnItemClicked:Clear()
-  self.EMListView_Filter.BP_OnEntryInitialized:Clear()
-  if IsValid(self.GameInputModeSubsystem) then
-    self.GameInputModeSubsystem.OnInputMethodChanged:Remove(self, self.RefreshOpInfoByInputDevice)
+function r0_0.Destruct(r0_2)
+  -- line: [27, 35] id: 2
+  r0_2.List_Select.BP_OnItemClicked:Clear()
+  r0_2.List_Select.BP_OnEntryInitialized:Clear()
+  r0_2.EMListView_Filter.BP_OnItemClicked:Clear()
+  r0_2.EMListView_Filter.BP_OnEntryInitialized:Clear()
+  if IsValid(r0_2.GameInputModeSubsystem) then
+    r0_2.GameInputModeSubsystem.OnInputMethodChanged:Remove(r0_2, r0_2.RefreshOpInfoByInputDevice)
   end
 end
-
-function WBP_Abyss_Lineup_List_C:IsMobile()
-  return self.Platform == CommonConst.CLIENT_DEVICE_TYPE.MOBILE
+function r0_0.IsMobile(r0_3)
+  -- line: [37, 39] id: 3
+  return r0_3.Platform == CommonConst.CLIENT_DEVICE_TYPE.MOBILE
 end
-
-function WBP_Abyss_Lineup_List_C:InitKeyInfo()
-  if self:IsMobile() then
-    return
+function r0_0.InitKeyInfo(r0_4)
+  -- line: [41, 85] id: 4
+  if r0_4:IsMobile() then
+    return 
   end
-  self.Key_L:CreateCommonKey({
+  r0_4.Key_L:CreateCommonKey({
     KeyInfoList = {
-      {Type = "Text", Text = "Q"}
-    }
+      {
+        Type = "Text",
+        Text = "A",
+      }
+    },
   })
-  self.Key_R:CreateCommonKey({
+  r0_4.Key_R:CreateCommonKey({
     KeyInfoList = {
-      {Type = "Text", Text = "E"}
-    }
+      {
+        Type = "Text",
+        Text = "D",
+      }
+    },
   })
-  self.Key_Controller_L:CreateCommonKey({
+  r0_4.Key_Controller_L:CreateCommonKey({
     KeyInfoList = {
-      {Type = "Img", ImgShortPath = "LB"}
-    }
+      {
+        Type = "Img",
+        ImgShortPath = "LB",
+      }
+    },
   })
-  self.Key_Controller_R:CreateCommonKey({
+  r0_4.Key_Controller_R:CreateCommonKey({
     KeyInfoList = {
-      {Type = "Img", ImgShortPath = "RB"}
-    }
+      {
+        Type = "Img",
+        ImgShortPath = "RB",
+      }
+    },
   })
 end
-
-function WBP_Abyss_Lineup_List_C:OnListItemInited(Content, EntryUI)
-  if self.Event_OnEntryInitialized then
-    self.Event_OnEntryInitialized(self.EventReceiver, Content, EntryUI)
+function r0_0.OnListItemInited(r0_5, r1_5, r2_5)
+  -- line: [87, 91] id: 5
+  if r0_5.Event_OnEntryInitialized then
+    r0_5.Event_OnEntryInitialized(r0_5.EventReceiver, r1_5, r2_5)
   end
 end
-
-function WBP_Abyss_Lineup_List_C:RefreshBaseInfo()
-  local PlayerController = UE4.UGameplayStatics.GetPlayerController(self, 0)
-  self.GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(PlayerController)
+function r0_0.RefreshBaseInfo(r0_6)
+  -- line: [93, 97] id: 6
+  r0_6.GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(UE4.UGameplayStatics.GetPlayerController(r0_6, 0))
 end
-
-function WBP_Abyss_Lineup_List_C:OnUpdateUIStyleByInputTypeChange(CurInputDevice, CurGamepadName)
-  if CurInputDevice == ECommonInputType.Touch then
-    self.Switch_Mode_L:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    self.Switch_Mode_R:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    self.Sort.Controller:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    return
+function r0_0.OnUpdateUIStyleByInputTypeChange(r0_7, r1_7, r2_7)
+  -- line: [99, 124] id: 7
+  if r1_7 == ECommonInputType.Touch then
+    r0_7.Switch_Mode_L:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r0_7.Switch_Mode_R:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r0_7.Sort.Controller:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    return 
   else
-    self.Switch_Mode_L:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-    self.Switch_Mode_R:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    r0_7.Switch_Mode_L:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    r0_7.Switch_Mode_R:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
   end
-  local IsUseKeyAndMouse = CurInputDevice == ECommonInputType.MouseAndKeyboard
-  if IsUseKeyAndMouse then
-    self.Switch_Mode_L:SetActiveWidgetIndex(0)
-    self.Switch_Mode_R:SetActiveWidgetIndex(0)
-    self.Sort.Controller:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  if r1_7 == ECommonInputType.MouseAndKeyboard then
+    r0_7.Switch_Mode_L:SetActiveWidgetIndex(0)
+    r0_7.Switch_Mode_R:SetActiveWidgetIndex(0)
+    r0_7.Sort.Controller:SetVisibility(UE4.ESlateVisibility.Collapsed)
   else
-    self.Switch_Mode_L:SetActiveWidgetIndex(1)
-    self.Switch_Mode_R:SetActiveWidgetIndex(1)
-    if not self:IsInLSMode() then
-      self.Sort.Controller:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    r0_7.Switch_Mode_L:SetActiveWidgetIndex(1)
+    r0_7.Switch_Mode_R:SetActiveWidgetIndex(1)
+    if not r0_7:IsInLSMode() then
+      r0_7.Sort.Controller:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
     end
   end
 end
-
-function WBP_Abyss_Lineup_List_C:OnListKeyUp(MyGeometry, InKeyEvent)
-  local IsHandled = self:OnKeyDownForLSComp(MyGeometry, InKeyEvent)
-  return IsHandled
+function r0_0.OnListKeyUp(r0_8, r1_8, r2_8)
+  -- line: [126, 130] id: 8
+  return r0_8:OnKeyDownForLSComp(r1_8, r2_8)
 end
-
-function WBP_Abyss_Lineup_List_C:Init(Parent, Params)
-  self.Parent = Parent
-  self.Params = Params
-  self.Filters = Params.Filters or {}
-  self.FilterMod = Params.FilterMod or "Single"
-  self.FilterIdxes = {}
-  self.Type = Params.Type
-  self.SortType = Params.SortType
-  self.AllItemContents = Params.ItemContents
-  self.OrderByDisplayNames = Params.OrderByDisplayNames
-  self.EMListView_Filter:ClearListItems()
-  self.SelectedFilterContents = {}
-  self.FilteredContents = {}
-  if self.AllItemContents then
-    for index, value in ipairs(self.AllItemContents) do
-      table.insert(self.FilteredContents, value)
+function r0_0.Init(r0_9, r1_9, r2_9)
+  -- line: [132, 196] id: 9
+  r0_9.Parent = r1_9
+  r0_9.Params = r2_9
+  r0_9.Filters = r2_9.Filters and {}
+  r0_9.FilterMod = r2_9.FilterMod and "Single"
+  r0_9.FilterIdxes = {}
+  r0_9.Type = r2_9.Type
+  r0_9.SortType = r2_9.SortType
+  r0_9.AllItemContents = r2_9.ItemContents
+  r0_9.OrderByDisplayNames = r2_9.OrderByDisplayNames
+  r0_9.EMListView_Filter:ClearListItems()
+  r0_9.SelectedFilterContents = {}
+  r0_9.FilteredContents = {}
+  if r0_9.AllItemContents then
+    for r7_9, r8_9 in ipairs(r0_9.AllItemContents) do
+      table.insert(r0_9.FilteredContents, r8_9)
     end
+    -- close: r3_9
   end
-  self.FilterContentObj_All = nil
-  if #self.Filters > 0 then
-    self.FilterContentObj_All = NewObject(UIUtils.GetCommonItemContentClass())
-    self.FilterContentObj_All.IsSelecte = true
-    self.FilterContentObj_All.Index = 0
-    self.FilterContentObj_All.Icon = "/Game/UI/Texture/Static/Atlas/Armory/T_Armory_Select.T_Armory_Select"
-    self.FilterContentObj_All.IsSelected = true
-    self.EMListView_Filter:AddItem(self.FilterContentObj_All)
-    self.Tab_Sub:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+  r0_9.FilterContentObj_All = nil
+  if #r0_9.Filters > 0 then
+    r0_9.FilterContentObj_All = NewObject(UIUtils.GetCommonItemContentClass())
+    r0_9.FilterContentObj_All.IsSelecte = true
+    r0_9.FilterContentObj_All.Index = 0
+    r0_9.FilterContentObj_All.Icon = "/Game/UI/Texture/Static/Atlas/Armory/T_Armory_Select.T_Armory_Select"
+    r0_9.FilterContentObj_All.IsSelected = true
+    r0_9.EMListView_Filter:AddItem(r0_9.FilterContentObj_All)
+    r0_9.Tab_Sub:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
   else
-    self.Tab_Sub:SetVisibility(UIConst.VisibilityOp.Collapsed)
+    r0_9.Tab_Sub:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
-  self.bAllowRefreshList = false
-  for Index, Tag in ipairs(self.Filters) do
-    local Obj = NewObject(UIUtils.GetCommonItemContentClass())
-    for key, value in pairs(Tag) do
-      Obj[key] = value
+  r0_9.bAllowRefreshList = false
+  for r7_9, r8_9 in ipairs(r0_9.Filters) do
+    local r9_9 = NewObject(UIUtils.GetCommonItemContentClass())
+    for r14_9, r15_9 in pairs(r8_9) do
+      r9_9[r14_9] = r15_9
     end
-    Obj.Index = Index
-    self.EMListView_Filter:AddItem(Obj)
+    -- close: r10_9
+    r9_9.Index = r7_9
+    r0_9.EMListView_Filter:AddItem(r9_9)
   end
-  self.CurrentTabIdx = 0
-  self:AddTimer(0.2, function()
-    self.bAllowRefreshList = true
+  -- close: r3_9
+  r0_9.CurrentTabIdx = 0
+  r0_9:AddTimer(0.2, function()
+    -- line: [174, 176] id: 10
+    r0_9.bAllowRefreshList = true
   end, false, 0, "DelaySetAllowRefreshList", true)
-  self.Sort:Init(self.Parent, self.OrderByDisplayNames, self.SortType or CommonConst.DESC)
-  self.Sort:BindEventOnSelectionsChanged(self, self.OnSortListSelectionsChanged)
-  self.Sort:BindEventOnSortTypeChanged(self, self.OnSortTypeChanged)
-  self.Sort.Controller:SetVisibility(UE4.ESlateVisibility.Collapsed)
-  if IsValid(self.Sort.GameInputModeSubsystem) then
-    self.GameInputModeSubsystem.OnInputMethodChanged:Remove(self.Sort, self.Sort.RefreshOpInfoByInputDevice)
+  r0_9.Sort:Init(r0_9.Parent, r0_9.OrderByDisplayNames, r0_9.SortType and CommonConst.DESC)
+  r0_9.Sort:BindEventOnSelectionsChanged(r0_9, r0_9.OnSortListSelectionsChanged)
+  r0_9.Sort:BindEventOnSortTypeChanged(r0_9, r0_9.OnSortTypeChanged)
+  r0_9.Sort.Controller:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  if IsValid(r0_9.Sort.GameInputModeSubsystem) then
+    r0_9.GameInputModeSubsystem.OnInputMethodChanged:Remove(r0_9.Sort, r0_9.Sort.RefreshOpInfoByInputDevice)
   end
-  self:FillListView()
-  self:OnSortTypeChanged()
-  self:SetEmptyText(self.Type)
+  r0_9:FillListView()
+  r0_9:OnSortTypeChanged()
+  r0_9:SetEmptyText(r0_9.Type)
 end
-
-local WeaponTags = {
+local r1_0 = {
   CommonConst.ArmoryTag.Melee,
   CommonConst.ArmoryTag.Ranged
 }
-
-function WBP_Abyss_Lineup_List_C:SetEmptyText(Type)
-  for _, Tag in pairs(WeaponTags) do
-    if Type == Tag then
-      Type = CommonConst.ArmoryType.Weapon
+function r0_0.SetEmptyText(r0_11, r1_11)
+  -- line: [200, 210] id: 11
+  for r6_11, r7_11 in pairs(r1_0) do
+    if r1_11 == r7_11 then
+      r1_11 = CommonConst.ArmoryType.Weapon
       break
     end
   end
-  if Type and "" ~= Type then
-    self.Text_Empty:SetText(GText("UI_Armory_" .. Type .. "_Empty"))
+  -- close: r2_11
+  if r1_11 and r1_11 ~= "" then
+    r0_11.Text_Empty:SetText(GText("UI_Armory_" .. r1_11 .. "_Empty"))
   end
 end
-
-function WBP_Abyss_Lineup_List_C:BindEvents(EventReceiver, Events)
-  self.EventReceiver = EventReceiver
-  self.Event_SortFuncion = Events.SortFuncion
-  self.Event_FilterFunction = Events.FilterFunction
-  self.Event_OnListItemInited = Events.OnListItemInited
-  self.Event_OnEntryInitialized = Events.OnEntryInitialized
-  self.Event_OnItemIsHoverChanged = Events.OnItemIsHoverChanged
+function r0_0.BindEvents(r0_12, r1_12, r2_12)
+  -- line: [212, 219] id: 12
+  r0_12.EventReceiver = r1_12
+  r0_12.Event_SortFuncion = r2_12.SortFuncion
+  r0_12.Event_FilterFunction = r2_12.FilterFunction
+  r0_12.Event_OnListItemInited = r2_12.OnListItemInited
+  r0_12.Event_OnEntryInitialized = r2_12.OnEntryInitialized
+  r0_12.Event_OnItemIsHoverChanged = r2_12.OnItemIsHoverChanged
 end
-
-function WBP_Abyss_Lineup_List_C:SetSortWidgetFocus()
-  self.Sort:SetFocus()
+function r0_0.SetSortWidgetFocus(r0_13)
+  -- line: [221, 223] id: 13
+  r0_13.Sort:SetFocus()
 end
-
-function WBP_Abyss_Lineup_List_C:OnItemIsHoverChanged(Content, bHovered)
-  if self.Event_OnItemIsHoverChanged then
-    self.Event_OnItemIsHoverChanged(self.EventReceiver, Content, bHovered)
+function r0_0.OnItemIsHoverChanged(r0_14, r1_14, r2_14)
+  -- line: [225, 229] id: 14
+  if r0_14.Event_OnItemIsHoverChanged then
+    r0_14.Event_OnItemIsHoverChanged(r0_14.EventReceiver, r1_14, r2_14)
   end
 end
-
-function WBP_Abyss_Lineup_List_C:OnFilterListItemClicked(Content)
-  if self.FilterMod == "Single" then
-    if Content.IsSelected then
-      return
+function r0_0.OnFilterListItemClicked(r0_15, r1_15)
+  -- line: [232, 267] id: 15
+  if r0_15.FilterMod == "Single" then
+    if r1_15.IsSelected then
+      return 
     end
-    for Tag, Value in pairs(self.SelectedFilterContents) do
-      if Value ~= Content then
-        self:SetFilterContentIsSelected(Value, false)
-        self.SelectedFilterContents[Tag] = nil
+    for r6_15, r7_15 in pairs(r0_15.SelectedFilterContents) do
+      if r7_15 ~= r1_15 then
+        r0_15:SetFilterContentIsSelected(r7_15, false)
+        r0_15.SelectedFilterContents[r6_15] = nil
       end
     end
-    if self.FilterContentObj_All ~= Content then
-      self:SetFilterContentIsSelected(self.FilterContentObj_All, false)
-    else
+    -- close: r2_15
+    if r0_15.FilterContentObj_All ~= r1_15 then
+      r0_15:SetFilterContentIsSelected(r0_15.FilterContentObj_All, false)
     end
-    self:SetFilterContentIsSelected(Content, true)
+    r0_15:SetFilterContentIsSelected(r1_15, true)
+  end
+  AudioManager(r0_15):PlayUISound(r0_15, "event:/ui/common/click_btn_sort_tab", nil, nil)
+  r0_15:UpdateFilterInfos()
+  local r2_15 = r0_15.FilterIdxes
+  if r0_15.Event_FilterFunction then
+    r0_15.FilteredContents = r0_15.Event_FilterFunction(r0_15.EventReceiver, r0_15.AllItemContents, r2_15) and {}
+    if r0_15.Event_SortFuncion then
+      local r3_15, r4_15 = r0_15.Sort:GetSortInfos()
+      r0_15.Event_SortFuncion(r0_15.EventReceiver, r0_15.FilteredContents, r3_15, r4_15)
+    end
+    r0_15:FillListView()
+  end
+  if IsValid(r0_15.GameInputModeSubsystem) then
+    r0_15.GameInputModeSubsystem:SetTargetUIFocusWidget(r1_15.UI)
+    r0_15.GameInputModeSubsystem:UpdateCurrentFocusWidgetPos()
+  end
+  r0_15.CurrentTabIdx = r1_15.Index
+end
+function r0_0.OnFilterListItemHovered(r0_16, r1_16, r2_16)
+  -- line: [269, 280] id: 16
+  if r0_16.GameInputModeSubsystem:GetCurrentInputType() ~= ECommonInputType.Gamepad then
+    return 
+  end
+  if not r0_16.bAllowRefreshList then
+    return 
+  end
+  if not r2_16 then
+    return 
+  end
+  r0_16:OnFilterListItemClicked(r1_16)
+end
+function r0_0.OnFilterListItemInited(r0_17, r1_17, r2_17)
+  -- line: [282, 286] id: 17
+  if r2_17 then
+    r1_17.UI = r2_17
+  end
+end
+function r0_0.SetCurrentTabItemFocus(r0_18)
+  -- line: [288, 290] id: 18
+  r0_18.EMListView_Filter:NavigateToIndex(r0_18.CurrentTabIdx)
+end
+function r0_0.SetFilterContentIsSelected(r0_19, r1_19, r2_19)
+  -- line: [292, 300] id: 19
+  r1_19.IsSelected = r2_19
+  if r1_19.UI then
+    r1_19.UI:SetIsSelected(r1_19.IsSelected)
+  end
+  if r1_19.Tag then
+    r0_19.SelectedFilterContents[r1_19.Tag] = r1_19
+  end
+end
+function r0_0.UpdateFilterInfos(r0_20)
+  -- line: [302, 320] id: 20
+  local r1_20 = {}
+  local r2_20 = next(r0_20.SelectedFilterContents) ~= nil
+  local r3_20 = r0_20.EMListView_Filter:GetListItems()
+  local r4_20 = r3_20:Length()
+  if r2_20 then
+    for r8_20 = 2, r4_20, 1 do
+      if r0_20.SelectedFilterContents[r3_20[r8_20].Tag] then
+        table.insert(r1_20, r3_20[r8_20].Index)
+      end
+    end
   else
-  end
-  AudioManager(self):PlayUISound(self, "event:/ui/common/click_btn_sort_tab", nil, nil)
-  self:UpdateFilterInfos()
-  local FilterIdxes = self.FilterIdxes
-  if self.Event_FilterFunction then
-    self.FilteredContents = self.Event_FilterFunction(self.EventReceiver, self.AllItemContents, FilterIdxes) or {}
-    if self.Event_SortFuncion then
-      local SortByIdx, SortType = self.Sort:GetSortInfos()
-      self.Event_SortFuncion(self.EventReceiver, self.FilteredContents, SortByIdx, SortType)
+    for r8_20 = 2, r4_20, 1 do
+      table.insert(r1_20, r3_20[r8_20].Index)
     end
-    self:FillListView()
   end
-  if IsValid(self.GameInputModeSubsystem) then
-    self.GameInputModeSubsystem:SetTargetUIFocusWidget(Content.UI)
-    self.GameInputModeSubsystem:UpdateCurrentFocusWidgetPos()
-  end
-  self.CurrentTabIdx = Content.Index
+  r0_20.FilterIdxes = r1_20
+  return r0_20.FilterIdxes
 end
-
-function WBP_Abyss_Lineup_List_C:OnFilterListItemHovered(Content, bHovered)
-  if self.GameInputModeSubsystem:GetCurrentInputType() ~= ECommonInputType.Gamepad then
-    return
-  end
-  if not self.bAllowRefreshList then
-    return
-  end
-  if not bHovered then
-    return
-  end
-  self:OnFilterListItemClicked(Content)
-end
-
-function WBP_Abyss_Lineup_List_C:OnFilterListItemInited(Content, EntryUI)
-  if EntryUI then
-    Content.UI = EntryUI
+function r0_0.OnSortListSelectionsChanged(r0_21)
+  -- line: [323, 329] id: 21
+  local r1_21, r2_21 = r0_21.Sort:GetSortInfos()
+  if r0_21.Event_SortFuncion then
+    r0_21.Event_SortFuncion(r0_21.EventReceiver, r0_21.FilteredContents, r1_21, r2_21)
+    r0_21:FillListView()
   end
 end
-
-function WBP_Abyss_Lineup_List_C:SetCurrentTabItemFocus()
-  self.EMListView_Filter:NavigateToIndex(self.CurrentTabIdx)
-end
-
-function WBP_Abyss_Lineup_List_C:SetFilterContentIsSelected(Content, IsSelected)
-  Content.IsSelected = IsSelected
-  if Content.UI then
-    Content.UI:SetIsSelected(Content.IsSelected)
-  end
-  if Content.Tag then
-    self.SelectedFilterContents[Content.Tag] = Content
+function r0_0.OnSortTypeChanged(r0_22)
+  -- line: [332, 338] id: 22
+  local r1_22, r2_22 = r0_22.Sort:GetSortInfos()
+  if r0_22.Event_SortFuncion then
+    r0_22.Event_SortFuncion(r0_22.EventReceiver, r0_22.FilteredContents, r1_22, r2_22)
+    r0_22:FillListView()
   end
 end
-
-function WBP_Abyss_Lineup_List_C:UpdateFilterInfos()
-  local Indexes = {}
-  local bHasItem = next(self.SelectedFilterContents) ~= nil
-  local Items = self.EMListView_Filter:GetListItems()
-  local Len = Items:Length()
-  if bHasItem then
-    for i = 2, Len do
-      if self.SelectedFilterContents[Items[i].Tag] then
-        table.insert(Indexes, Items[i].Index)
-      end
-    end
+function r0_0.FillListView(r0_23)
+  -- line: [340, 376] id: 23
+  r0_23:PlayAnimation(r0_23.List_Change)
+  r0_23:SetLastItemNavigationRule(true)
+  r0_23.List_Select:ClearListItems()
+  for r5_23, r6_23 in ipairs(r0_23.FilteredContents) do
+    r0_23.List_Select:AddItem(r6_23)
+  end
+  -- close: r1_23
+  local r1_23 = false
+  if #r0_23.FilteredContents <= 0 then
+    r0_23.List_Select:SetVisibility(UIConst.VisibilityOp.Collapsed)
+    r0_23.Empty:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+    r1_23 = true
   else
-    for i = 2, Len do
-      table.insert(Indexes, Items[i].Index)
-    end
-  end
-  self.FilterIdxes = Indexes
-  return self.FilterIdxes
-end
-
-function WBP_Abyss_Lineup_List_C:OnSortListSelectionsChanged()
-  local SortByIdx, SortType = self.Sort:GetSortInfos()
-  if self.Event_SortFuncion then
-    self.Event_SortFuncion(self.EventReceiver, self.FilteredContents, SortByIdx, SortType)
-    self:FillListView()
-  end
-end
-
-function WBP_Abyss_Lineup_List_C:OnSortTypeChanged()
-  local SortByIdx, SortType = self.Sort:GetSortInfos()
-  if self.Event_SortFuncion then
-    self.Event_SortFuncion(self.EventReceiver, self.FilteredContents, SortByIdx, SortType)
-    self:FillListView()
-  end
-end
-
-function WBP_Abyss_Lineup_List_C:FillListView()
-  self:PlayAnimation(self.List_Change)
-  self:SetLastItemNavigationRule(true)
-  self.List_Select:ClearListItems()
-  for _, value in ipairs(self.FilteredContents) do
-    self.List_Select:AddItem(value)
-  end
-  local bListEmpty = false
-  if #self.FilteredContents <= 0 then
-    self.List_Select:SetVisibility(UIConst.VisibilityOp.Collapsed)
-    self.Empty:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-    bListEmpty = true
-  else
-    self.Empty:SetVisibility(UIConst.VisibilityOp.Collapsed)
-    self.List_Select:SetVisibility(UIConst.VisibilityOp.Visible)
-    self:AddTimer(0.01, function()
-      local ItemUIs = self.List_Select:GetDisplayedEntryWidgets()
-      local XCount, YCount = UIUtils.GetTileViewContentMaxCount(self.List_Select, "XY")
-      local ItemLen = ItemUIs:Length()
-      local RestCount = XCount * YCount - ItemLen
-      if RestCount <= 0 then
-        RestCount = XCount - #self.FilteredContents % XCount
+    r0_23.Empty:SetVisibility(UIConst.VisibilityOp.Collapsed)
+    r0_23.List_Select:SetVisibility(UIConst.VisibilityOp.Visible)
+    r0_23:AddTimer(0.01, function()
+      -- line: [355, 373] id: 24
+      local r0_24 = r0_23.List_Select:GetDisplayedEntryWidgets()
+      local r1_24, r2_24 = UIUtils.GetTileViewContentMaxCount(r0_23.List_Select, "XY")
+      local r3_24 = r0_24:Length()
+      local r4_24 = r1_24 * r2_24 - r3_24
+      if r4_24 <= 0 then
+        r4_24 = r1_24 - #r0_23.FilteredContents % r1_24
       end
-      self:FillEmptyItems(RestCount)
-      self.List_Select:RegenerateAllEntries()
-      self.List_Select:ScrollToTop()
-      if self.Event_OnListItemInited then
-        self.Event_OnListItemInited(self.EventReceiver)
+      r0_23:FillEmptyItems(r4_24)
+      r0_23.List_Select:RegenerateAllEntries()
+      r0_23.List_Select:ScrollToTop()
+      if r0_23.Event_OnListItemInited then
+        r0_23.Event_OnListItemInited(r0_23.EventReceiver)
       end
-      self:AddTimer(0.01, function()
-        self:SetLastItemNavigationRule(false, ItemLen)
+      r0_23:AddTimer(0.01, function()
+        -- line: [370, 372] id: 25
+        r0_23:SetLastItemNavigationRule(false, r3_24)
       end, false, 0, "DelaySetNavigation", true)
     end, false, 0, "DelayAddEmptyItem", true)
   end
-  self.Parent:OnListInited(bListEmpty)
+  r0_23.Parent:OnListInited(r1_23)
 end
-
-function WBP_Abyss_Lineup_List_C:SetLastItemNavigationRule(bClear, Index)
-  if self:IsMobile() then
-    return
+function r0_0.SetLastItemNavigationRule(r0_26, r1_26, r2_26)
+  -- line: [379, 398] id: 26
+  if r0_26:IsMobile() then
+    return 
   end
-  if bClear then
-    if not self.LastWidget then
-      return
+  if r1_26 then
+    if not r0_26.LastWidget then
+      return 
     end
-    self.LastWidget:SetAllNavigationRules(EUINavigationRule.Escape, 0)
-    self.LastWidget = nil
+    r0_26.LastWidget:SetAllNavigationRules(EUINavigationRule.Escape, 0)
+    r0_26.LastWidget = nil
   else
-    local LastItem = self.List_Select:GetItemAt(Index - 1)
-    if not LastItem or not LastItem.SelfWidget then
-      return
+    local r3_26 = r0_26.List_Select:GetItemAt(r2_26 + -1)
+    if not r3_26 or not r3_26.SelfWidget then
+      return 
     end
-    local LastWidget = LastItem.SelfWidget
-    LastWidget:SetNavigationRuleExplicit(EUINavigation.Right, self.EMListView_Filter)
-    self.LastWidget = LastWidget
+    local r4_26 = r3_26.SelfWidget
+    r4_26:SetNavigationRuleExplicit(EUINavigation.Right, r0_26.EMListView_Filter)
+    r0_26.LastWidget = r4_26
   end
 end
-
-function WBP_Abyss_Lineup_List_C:FillEmptyItems(Count)
-  for i = 1, Count do
-    self.List_Select:AddItem(NewObject(UIUtils.GetCommonItemContentClass()))
+function r0_0.FillEmptyItems(r0_27, r1_27)
+  -- line: [400, 404] id: 27
+  for r5_27 = 1, r1_27, 1 do
+    r0_27.List_Select:AddItem(NewObject(UIUtils.GetCommonItemContentClass()))
   end
 end
-
-function WBP_Abyss_Lineup_List_C:ScrollItemIntoView(Content)
-  if Content then
-    self.List_Select:BP_ScrollItemIntoView(Content)
+function r0_0.ScrollItemIntoView(r0_28, r1_28)
+  -- line: [406, 410] id: 28
+  if r1_28 then
+    r0_28.List_Select:BP_ScrollItemIntoView(r1_28)
   end
 end
-
-function WBP_Abyss_Lineup_List_C:PlayInAnim()
-  AudioManager(self):PlayUISound(self, "event:/ui/common/sub_panel_expand", "Selective_Listing_In", nil)
-  self:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-  self:StopAnimation(self.Out)
-  self:PlayAnimation(self.In)
+function r0_0.PlayInAnim(r0_29)
+  -- line: [412, 417] id: 29
+  AudioManager(r0_29):PlayUISound(r0_29, "event:/ui/common/sub_panel_expand", "Selective_Listing_In", nil)
+  r0_29:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+  r0_29:StopAnimation(r0_29.Out)
+  r0_29:PlayAnimation(r0_29.In)
 end
-
-function WBP_Abyss_Lineup_List_C:PlayOutAnim()
-  AudioManager(self):PlayUISound(self, "event:/ui/common/sub_panel_expand", "Selective_Listing_In", {ToEnd = 1})
-  self:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
-  self:StopAnimation(self.In)
-  self:PlayAnimation(self.Out)
+function r0_0.PlayOutAnim(r0_30)
+  -- line: [419, 424] id: 30
+  AudioManager(r0_30):PlayUISound(r0_30, "event:/ui/common/sub_panel_expand", "Selective_Listing_In", {
+    ToEnd = 1,
+  })
+  r0_30:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
+  r0_30:StopAnimation(r0_30.In)
+  r0_30:PlayAnimation(r0_30.Out)
 end
-
-function WBP_Abyss_Lineup_List_C:Destruct()
-  if AudioManager(self):IsSoundPlaying(self, "Selective_Listing_In") then
-    AudioManager(self):SetEventSoundParam(self, "Selective_Listing_In", {ToEnd = 1})
+function r0_0.Destruct(r0_31)
+  -- line: [426, 432] id: 31
+  if AudioManager(r0_31):IsSoundPlaying(r0_31, "Selective_Listing_In") then
+    AudioManager(r0_31):SetEventSoundParam(r0_31, "Selective_Listing_In", {
+      ToEnd = 1,
+    })
   end
-  self:RemoveTimer("DelayAddEmptyItem")
-  self:RemoveTimer("DelaySetNavigation")
+  r0_31:RemoveTimer("DelayAddEmptyItem")
+  r0_31:RemoveTimer("DelaySetNavigation")
 end
-
-AssembleComponents(WBP_Abyss_Lineup_List_C)
-return WBP_Abyss_Lineup_List_C
+AssembleComponents(r0_0)
+return r0_0

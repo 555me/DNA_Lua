@@ -47,6 +47,22 @@ r0_0.RT_10 = {
   [4] = "Resource",
   [5] = "Resource",
   [6] = "Resource",
+  [7] = "HeadSculpture",
+  [8] = "Resource",
+  [9] = "Resource",
+  [10] = "Resource",
+  [11] = "Resource",
+  [12] = "Resource",
+  [13] = "Resource",
+  [14] = "Resource",
+}
+r0_0.RT_11 = {
+  [1] = "Resource",
+  [2] = "Resource",
+  [3] = "Resource",
+  [4] = "Resource",
+  [5] = "Resource",
+  [6] = "Resource",
   [7] = "Resource",
   [8] = "Resource",
   [9] = "Resource",
@@ -54,61 +70,61 @@ r0_0.RT_10 = {
   [11] = "Resource",
   [12] = "Resource",
 }
-r0_0.RT_11 = {
+r0_0.RT_12 = {
   [1] = "Resource",
   [2] = "Resource",
 }
-r0_0.RT_12 = {
+r0_0.RT_13 = {
   [1] = "DropType_Fixed",
   [2] = "DropType_Fixed",
 }
-r0_0.RT_13 = {
+r0_0.RT_14 = {
   [1] = 101,
   [2] = 10101,
 }
-r0_0.RT_14 = {
+r0_0.RT_15 = {
   10000
 }
-r0_0.RT_15 = {
-  [1] = r0_0.RT_14,
+r0_0.RT_16 = {
+  [1] = r0_0.RT_15,
   [2] = r0_0.RT_4,
 }
-r0_0.RT_16 = {
+r0_0.RT_17 = {
   [1] = "DropType_Fixed",
   [2] = "DropType_Fixed",
   [3] = "DropType_Rare",
 }
-r0_0.RT_17 = {
+r0_0.RT_18 = {
   3
 }
-r0_0.RT_18 = {
+r0_0.RT_19 = {
   3,
   5
 }
-r0_0.RT_19 = {
-  [1] = r0_0.RT_14,
-  [2] = r0_0.RT_17,
-  [3] = r0_0.RT_18,
-}
 r0_0.RT_20 = {
+  [1] = r0_0.RT_15,
+  [2] = r0_0.RT_18,
+  [3] = r0_0.RT_19,
+}
+r0_0.RT_21 = {
   [1] = "Resource",
   [2] = "Resource",
   [3] = "Walnut",
 }
-r0_0.RT_21 = {
+r0_0.RT_22 = {
   [1] = "Resource",
   [2] = "Resource",
   [3] = "Resource",
   [4] = "Resource",
   [5] = "Resource",
 }
-r0_0.RT_22 = {
+r0_0.RT_23 = {
   6
 }
-r0_0.RT_23 = {
+r0_0.RT_24 = {
   4
 }
-r0_0.RT_24 = {
+r0_0.RT_25 = {
   [1] = "Resource",
   [2] = "Resource",
   [3] = "Resource",
@@ -117,16 +133,16 @@ r0_0.RT_24 = {
   [6] = "Resource",
   [7] = "Resource",
 }
-r0_0.RT_25 = {
+r0_0.RT_26 = {
   12
 }
-r0_0.RT_26 = {
+r0_0.RT_27 = {
   10
 }
-r0_0.RT_27 = {
+r0_0.RT_28 = {
   8
 }
-r0_0.RT_28 = {
+r0_0.RT_29 = {
   [1] = "Resource",
   [2] = "Resource",
   [3] = "Resource",
@@ -134,39 +150,39 @@ r0_0.RT_28 = {
   [5] = "Resource",
   [6] = "Resource",
 }
-r0_0.RT_29 = {
+r0_0.RT_30 = {
   18
 }
-r0_0.RT_30 = {
+r0_0.RT_31 = {
   1000
 }
-r0_0.RT_31 = {
+r0_0.RT_32 = {
   15
 }
-r0_0.RT_32 = {
+r0_0.RT_33 = {
   1500
 }
-r0_0.RT_33 = {
+r0_0.RT_34 = {
   [1] = 211,
 }
-r0_0.RT_34 = {
+r0_0.RT_35 = {
   [1] = "Resource",
 }
-r0_0.RT_35 = {
+r0_0.RT_36 = {
   65
 }
-r0_0.RT_36 = {
+r0_0.RT_37 = {
   30
 }
-r0_0.RT_37 = {
+r0_0.RT_38 = {
   280
 }
-r0_0.RT_38 = {
-  [1] = r0_0.RT_35,
-  [2] = r0_0.RT_36,
-  [3] = r0_0.RT_37,
-}
 r0_0.RT_39 = {
+  [1] = r0_0.RT_36,
+  [2] = r0_0.RT_37,
+  [3] = r0_0.RT_38,
+}
+r0_0.RT_40 = {
   [1] = "Walnut",
   [2] = "Walnut",
   [3] = "Resource",
@@ -176,116 +192,116 @@ r0_0.RT_39 = {
   [7] = "Resource",
   [8] = "Resource",
 }
-r0_0.RT_40 = {
+r0_0.RT_41 = {
   [1] = r0_0.RT_2,
 }
-r0_0.RT_41 = {
+r0_0.RT_42 = {
   20
 }
-r0_0.RT_42 = {
+r0_0.RT_43 = {
   240
 }
-r0_0.RT_43 = {
+r0_0.RT_44 = {
   [1] = "Resource",
   [2] = "Resource",
   [3] = "Resource",
 }
-r0_0.RT_44 = {
+r0_0.RT_45 = {
   600
 }
-r0_0.RT_45 = {
+r0_0.RT_46 = {
   [1] = 211,
   [2] = 2009,
   [3] = 2013,
   [4] = 102,
 }
-r0_0.RT_46 = {
+r0_0.RT_47 = {
   60
 }
-r0_0.RT_47 = {
-  [1] = r0_0.RT_2,
-  [2] = r0_0.RT_17,
-  [3] = r0_0.RT_17,
-  [4] = r0_0.RT_42,
-}
 r0_0.RT_48 = {
-  80
+  [1] = r0_0.RT_2,
+  [2] = r0_0.RT_18,
+  [3] = r0_0.RT_18,
+  [4] = r0_0.RT_43,
 }
 r0_0.RT_49 = {
+  80
+}
+r0_0.RT_50 = {
   [1] = 211,
   [2] = 10100,
   [3] = 201,
   [4] = 202,
 }
-r0_0.RT_50 = {
+r0_0.RT_51 = {
   40
 }
-r0_0.RT_51 = {
+r0_0.RT_52 = {
   100
 }
-r0_0.RT_52 = {
+r0_0.RT_53 = {
   [1] = 217,
 }
-r0_0.RT_53 = {
+r0_0.RT_54 = {
   [1] = 218,
 }
-r0_0.RT_54 = {
-  [1] = r0_0.RT_36,
-}
 r0_0.RT_55 = {
-  [1] = r0_0.RT_50,
+  [1] = r0_0.RT_37,
 }
 r0_0.RT_56 = {
-  50
+  [1] = r0_0.RT_51,
 }
 r0_0.RT_57 = {
-  [1] = r0_0.RT_56,
+  50
 }
 r0_0.RT_58 = {
-  [1] = "DropTag_EventReward",
+  [1] = r0_0.RT_57,
 }
 r0_0.RT_59 = {
+  [1] = "DropTag_EventReward",
+}
+r0_0.RT_60 = {
   [1] = r0_0.RT_2,
   [2] = r0_0.RT_2,
 }
-r0_0.RT_60 = {
+r0_0.RT_61 = {
   60000
 }
-r0_0.RT_61 = {
+r0_0.RT_62 = {
   25
 }
-r0_0.RT_62 = {
+r0_0.RT_63 = {
   [1] = "Resource",
   [2] = "Resource",
   [3] = "Resource",
   [4] = "Title",
 }
-r0_0.RT_63 = {
-  [1] = r0_0.RT_26,
-  [2] = r0_0.RT_60,
-  [3] = r0_0.RT_17,
+r0_0.RT_64 = {
+  [1] = r0_0.RT_27,
+  [2] = r0_0.RT_61,
+  [3] = r0_0.RT_18,
   [4] = r0_0.RT_2,
 }
-r0_0.RT_64 = {
+r0_0.RT_65 = {
   [1] = "Mod",
   [2] = "Mod",
   [3] = "Mod",
 }
-r0_0.RT_65 = {
-  [1] = "DropType_Rare",
-}
 r0_0.RT_66 = {
-  [1] = "Draft",
-  [2] = "Draft",
-  [3] = "Draft",
+  [1] = "DropType_Rare",
 }
 r0_0.RT_67 = {
   [1] = "Draft",
   [2] = "Draft",
   [3] = "Draft",
-  [4] = "Draft",
 }
 r0_0.RT_68 = {
+  [1] = "Draft",
+  [2] = "Draft",
+  [3] = "Draft",
+  [4] = "Draft",
+}
+r0_0.RT_69 = {
   [1] = "DropTag_Prob",
   [2] = "DropTag_Prob",
   [3] = "DropTag_Prob",
@@ -330,7 +346,7 @@ r0_0.RT_68 = {
   [42] = "DropTag_Prob",
   [43] = "DropTag_Prob",
 }
-r0_0.RT_69 = {
+r0_0.RT_70 = {
   [1] = 41322,
   [2] = 41332,
   [3] = 41323,
@@ -357,7 +373,7 @@ r0_0.RT_69 = {
   [24] = 43003,
   [25] = 43006,
 }
-r0_0.RT_70 = {
+r0_0.RT_71 = {
   [1] = "Mod",
   [2] = "Mod",
   [3] = "Mod",
@@ -384,7 +400,7 @@ r0_0.RT_70 = {
   [24] = "Mod",
   [25] = "Mod",
 }
-r0_0.RT_71 = {
+r0_0.RT_72 = {
   [1] = 152001,
   [2] = 152004,
   [3] = 152005,
@@ -402,7 +418,7 @@ r0_0.RT_71 = {
   [15] = 153102,
   [16] = 153103,
 }
-r0_0.RT_72 = {
+r0_0.RT_73 = {
   [1] = "Draft",
   [2] = "Draft",
   [3] = "Draft",
@@ -420,16 +436,16 @@ r0_0.RT_72 = {
   [15] = "Draft",
   [16] = "Draft",
 }
-r0_0.RT_73 = {
-  [1] = r0_0.RT_51,
-}
 r0_0.RT_74 = {
-  [1] = 101,
+  [1] = r0_0.RT_52,
 }
 r0_0.RT_75 = {
-  [1] = 102,
+  [1] = 101,
 }
 r0_0.RT_76 = {
+  [1] = 102,
+}
+r0_0.RT_77 = {
   [1] = 216,
   [2] = 101,
   [3] = 102,
@@ -465,7 +481,7 @@ r0_0.RT_76 = {
   [33] = 151464,
   [34] = 151465,
 }
-r0_0.RT_77 = {
+r0_0.RT_78 = {
   [1] = "Resource",
   [2] = "Resource",
   [3] = "Resource",
@@ -501,29 +517,29 @@ r0_0.RT_77 = {
   [33] = "Draft",
   [34] = "Draft",
 }
-r0_0.RT_78 = {
+r0_0.RT_79 = {
   [1] = "DropType_Fixed",
 }
-r0_0.RT_79 = {
+r0_0.RT_80 = {
   [1] = 20013,
 }
-r0_0.RT_80 = {
+r0_0.RT_81 = {
   [1] = r0_0.RT_3,
 }
-r0_0.RT_81 = {
+r0_0.RT_82 = {
   [1] = 20013,
   [2] = 20021,
   [3] = 20024,
 }
-r0_0.RT_82 = {
+r0_0.RT_83 = {
   9
 }
-r0_0.RT_83 = {
+r0_0.RT_84 = {
   [1] = "DropType_Fixed",
   [2] = "DropType_Fixed",
   [3] = "DropType_Fixed",
 }
-r0_0.RT_84 = {
+r0_0.RT_85 = {
   [1] = "DropTag_Prob",
   [2] = "DropTag_Prob",
   [3] = "DropTag_Prob",
@@ -554,7 +570,7 @@ r0_0.RT_84 = {
   [28] = "DropTag_Prob",
   [29] = "DropTag_Prob",
 }
-r0_0.RT_85 = {
+r0_0.RT_86 = {
   [1] = 31322,
   [2] = 31323,
   [3] = 31325,
@@ -585,7 +601,7 @@ r0_0.RT_85 = {
   [28] = 31401,
   [29] = 31406,
 }
-r0_0.RT_86 = {
+r0_0.RT_87 = {
   [1] = "Mod",
   [2] = "Mod",
   [3] = "Mod",
@@ -616,7 +632,7 @@ r0_0.RT_86 = {
   [28] = "Mod",
   [29] = "Mod",
 }
-r0_0.RT_87 = {
+r0_0.RT_88 = {
   [1] = 41421,
   [2] = 41422,
   [3] = 41423,
@@ -661,7 +677,7 @@ r0_0.RT_87 = {
   [42] = 43003,
   [43] = 43006,
 }
-r0_0.RT_88 = {
+r0_0.RT_89 = {
   [1] = "Mod",
   [2] = "Mod",
   [3] = "Mod",
@@ -706,7 +722,7 @@ r0_0.RT_88 = {
   [42] = "Mod",
   [43] = "Mod",
 }
-r0_0.RT_89 = {
+r0_0.RT_90 = {
   [1] = 41421,
   [2] = 41422,
   [3] = 41423,
@@ -726,7 +742,7 @@ r0_0.RT_89 = {
   [17] = 43003,
   [18] = 43006,
 }
-r0_0.RT_90 = {
+r0_0.RT_91 = {
   [1] = "Mod",
   [2] = "Mod",
   [3] = "Mod",
@@ -746,7 +762,7 @@ r0_0.RT_90 = {
   [17] = "Mod",
   [18] = "Mod",
 }
-r0_0.RT_91 = {
+r0_0.RT_92 = {
   [1] = 41431,
   [2] = 41432,
   [3] = 41433,
@@ -766,7 +782,7 @@ r0_0.RT_91 = {
   [17] = 43003,
   [18] = 43006,
 }
-r0_0.RT_92 = {
+r0_0.RT_93 = {
   [1] = 41451,
   [2] = 41452,
   [3] = 41453,
@@ -786,7 +802,7 @@ r0_0.RT_92 = {
   [17] = 43003,
   [18] = 43006,
 }
-r0_0.RT_93 = {
+r0_0.RT_94 = {
   [1] = 41441,
   [2] = 41442,
   [3] = 41443,
@@ -806,7 +822,7 @@ r0_0.RT_93 = {
   [17] = 43003,
   [18] = 43006,
 }
-r0_0.RT_94 = {
+r0_0.RT_95 = {
   [1] = 41411,
   [2] = 41412,
   [3] = 41413,
@@ -826,7 +842,7 @@ r0_0.RT_94 = {
   [17] = 43003,
   [18] = 43006,
 }
-r0_0.RT_95 = {
+r0_0.RT_96 = {
   [1] = 41461,
   [2] = 41462,
   [3] = 41463,
@@ -846,7 +862,7 @@ r0_0.RT_95 = {
   [17] = 43003,
   [18] = 43006,
 }
-r0_0.RT_96 = {
+r0_0.RT_97 = {
   [1] = "Mod",
   [2] = "Mod",
   [3] = "Mod",
@@ -863,7 +879,7 @@ r0_0.RT_96 = {
   [14] = "Mod",
   [15] = "Mod",
 }
-r0_0.RT_97 = {
+r0_0.RT_98 = {
   [1] = "DropTag_Prob",
   [2] = "DropTag_Prob",
   [3] = "DropTag_Prob",
@@ -899,7 +915,7 @@ r0_0.RT_97 = {
   [33] = "DropTag_Prob",
   [34] = "DropTag_Prob",
 }
-r0_0.RT_98 = {
+r0_0.RT_99 = {
   [1] = "Mod",
   [2] = "Mod",
   [3] = "Mod",
@@ -935,15 +951,15 @@ r0_0.RT_98 = {
   [33] = "Mod",
   [34] = "Mod",
 }
-r0_0.RT_99 = {
+r0_0.RT_100 = {
   480
 }
-r0_0.RT_100 = {
+r0_0.RT_101 = {
   [1] = "DropTag_Prob",
   [2] = "DropTag_Prob",
   [3] = "DropTag_Prob",
 }
-r0_0.RT_101 = {
+r0_0.RT_102 = {
   [1] = "Mod",
   [2] = "Mod",
   [3] = "Mod",
@@ -952,7 +968,7 @@ r0_0.RT_101 = {
   [6] = "Mod",
   [7] = "Mod",
 }
-r0_0.RT_102 = {
+r0_0.RT_103 = {
   [1] = "Mod",
   [2] = "Mod",
   [3] = "Mod",
@@ -966,7 +982,7 @@ r0_0.RT_102 = {
   [11] = "Mod",
   [12] = "Mod",
 }
-r0_0.RT_103 = {
+r0_0.RT_104 = {
   [1] = "DropType_Fixed",
   [2] = "DropType_Fixed",
   [3] = "DropType_Fixed",
@@ -976,7 +992,7 @@ r0_0.RT_103 = {
   [7] = "DropType_Fixed",
   [8] = "DropType_Fixed",
 }
-r0_0.RT_104 = {
+r0_0.RT_105 = {
   [1] = 10200,
   [2] = 10203,
   [3] = 10206,
@@ -986,7 +1002,7 @@ r0_0.RT_104 = {
   [7] = 10207,
   [8] = 10210,
 }
-r0_0.RT_105 = {
+r0_0.RT_106 = {
   [1] = "Resource",
   [2] = "Resource",
   [3] = "Resource",
@@ -996,7 +1012,7 @@ r0_0.RT_105 = {
   [7] = "Resource",
   [8] = "Resource",
 }
-r0_0.RT_106 = {
+r0_0.RT_107 = {
   [1] = "Mod",
   [2] = "Mod",
   [3] = "Mod",
@@ -1021,7 +1037,7 @@ r0_0.RT_106 = {
   [22] = "Mod",
   [23] = "Mod",
 }
-r0_0.RT_107 = {
+r0_0.RT_108 = {
   [1] = 43341,
   [2] = 43501,
   [3] = 43502,
@@ -1035,91 +1051,91 @@ r0_0.RT_107 = {
   [11] = 43401,
   [12] = 43402,
 }
-r0_0.RT_108 = {
+r0_0.RT_109 = {
   [1] = 10009,
   [2] = 10010,
 }
-r0_0.RT_109 = {
-  [1] = r0_0.RT_17,
+r0_0.RT_110 = {
+  [1] = r0_0.RT_18,
   [2] = r0_0.RT_2,
 }
-r0_0.RT_110 = {
+r0_0.RT_111 = {
   [1] = 10005,
   [2] = 10006,
 }
-r0_0.RT_111 = {
+r0_0.RT_112 = {
   [1] = 10013,
   [2] = 10014,
 }
-r0_0.RT_112 = {
+r0_0.RT_113 = {
   [1] = 10001,
   [2] = 10002,
 }
-r0_0.RT_113 = {
+r0_0.RT_114 = {
   [1] = 10021,
   [2] = 10022,
 }
-r0_0.RT_114 = {
+r0_0.RT_115 = {
   [1] = 10017,
   [2] = 10018,
 }
-r0_0.RT_115 = {
+r0_0.RT_116 = {
   [1] = r0_0.RT_3,
   [2] = r0_0.RT_4,
 }
-r0_0.RT_116 = {
+r0_0.RT_117 = {
   7
 }
-r0_0.RT_117 = {
-  [1] = r0_0.RT_116,
-  [2] = r0_0.RT_17,
-}
 r0_0.RT_118 = {
+  [1] = r0_0.RT_117,
+  [2] = r0_0.RT_18,
+}
+r0_0.RT_119 = {
   [1] = 10009,
   [2] = 10010,
   [3] = 10011,
 }
-r0_0.RT_119 = {
-  [1] = r0_0.RT_23,
+r0_0.RT_120 = {
+  [1] = r0_0.RT_24,
   [2] = r0_0.RT_4,
   [3] = r0_0.RT_2,
 }
-r0_0.RT_120 = {
+r0_0.RT_121 = {
   [1] = 10005,
   [2] = 10006,
   [3] = 10007,
 }
-r0_0.RT_121 = {
+r0_0.RT_122 = {
   [1] = 10013,
   [2] = 10014,
   [3] = 10015,
 }
-r0_0.RT_122 = {
+r0_0.RT_123 = {
   [1] = 10001,
   [2] = 10002,
   [3] = 10003,
 }
-r0_0.RT_123 = {
+r0_0.RT_124 = {
   [1] = 10021,
   [2] = 10022,
   [3] = 10023,
 }
-r0_0.RT_124 = {
+r0_0.RT_125 = {
   [1] = 10017,
   [2] = 10018,
   [3] = 10019,
 }
-r0_0.RT_125 = {
-  [1] = r0_0.RT_23,
+r0_0.RT_126 = {
+  [1] = r0_0.RT_24,
   [2] = r0_0.RT_4,
   [3] = r0_0.RT_4,
 }
-r0_0.RT_126 = {
-  [1] = r0_0.RT_22,
-  [2] = r0_0.RT_4,
-  [3] = r0_0.RT_17,
-}
 r0_0.RT_127 = {
+  [1] = r0_0.RT_23,
+  [2] = r0_0.RT_4,
+  [3] = r0_0.RT_18,
+}
+r0_0.RT_128 = {
   [1] = "DropTag_Prob",
   [2] = "DropTag_Prob",
   [3] = "DropTag_Prob",
@@ -1133,7 +1149,7 @@ r0_0.RT_127 = {
   [11] = "DropTag_Prob",
   [12] = "DropTag_Prob",
 }
-r0_0.RT_128 = {
+r0_0.RT_129 = {
   [1] = 11002,
   [2] = 11005,
   [3] = 11008,
@@ -1147,7 +1163,7 @@ r0_0.RT_128 = {
   [11] = 11013,
   [12] = 11016,
 }
-r0_0.RT_129 = {
+r0_0.RT_130 = {
   [1] = "DropTag_Prob",
   [2] = "DropTag_Prob",
   [3] = "DropTag_Prob",
@@ -1167,7 +1183,7 @@ r0_0.RT_129 = {
   [17] = "DropTag_Prob",
   [18] = "DropTag_Prob",
 }
-r0_0.RT_130 = {
+r0_0.RT_131 = {
   [1] = 11003,
   [2] = 11006,
   [3] = 11009,
@@ -1187,7 +1203,7 @@ r0_0.RT_130 = {
   [17] = 11013,
   [18] = 11016,
 }
-r0_0.RT_131 = {
+r0_0.RT_132 = {
   [1] = "Resource",
   [2] = "Resource",
   [3] = "Resource",
@@ -1207,44 +1223,44 @@ r0_0.RT_131 = {
   [17] = "Resource",
   [18] = "Resource",
 }
-r0_0.RT_132 = {
+r0_0.RT_133 = {
   [1] = 2011,
   [2] = 2012,
 }
-r0_0.RT_133 = {
-  [1] = r0_0.RT_23,
-  [2] = r0_0.RT_17,
-}
 r0_0.RT_134 = {
-  [1] = r0_0.RT_26,
-  [2] = r0_0.RT_23,
+  [1] = r0_0.RT_24,
+  [2] = r0_0.RT_18,
 }
 r0_0.RT_135 = {
   [1] = r0_0.RT_27,
-  [2] = r0_0.RT_116,
+  [2] = r0_0.RT_24,
 }
 r0_0.RT_136 = {
-  [1] = r0_0.RT_25,
-  [2] = r0_0.RT_82,
+  [1] = r0_0.RT_28,
+  [2] = r0_0.RT_117,
 }
 r0_0.RT_137 = {
-  [1] = r0_0.RT_23,
+  [1] = r0_0.RT_26,
+  [2] = r0_0.RT_83,
+}
+r0_0.RT_138 = {
+  [1] = r0_0.RT_24,
   [2] = r0_0.RT_3,
   [3] = r0_0.RT_4,
 }
-r0_0.RT_138 = {
+r0_0.RT_139 = {
   [1] = 2012,
   [2] = 2013,
 }
-r0_0.RT_139 = {
-  [1] = r0_0.RT_3,
-  [2] = r0_0.RT_17,
-}
 r0_0.RT_140 = {
-  [1] = r0_0.RT_27,
-  [2] = r0_0.RT_17,
+  [1] = r0_0.RT_3,
+  [2] = r0_0.RT_18,
 }
 r0_0.RT_141 = {
+  [1] = r0_0.RT_28,
+  [2] = r0_0.RT_18,
+}
+r0_0.RT_142 = {
   [1] = "DropType_Fixed",
   [2] = "DropType_Fixed",
   [3] = "DropType_Fixed",
@@ -1256,7 +1272,7 @@ r0_0.RT_141 = {
   [9] = "DropTag_Prob",
   [10] = "DropTag_Prob",
 }
-r0_0.RT_142 = {
+r0_0.RT_143 = {
   [1] = 20009,
   [2] = 20002,
   [3] = 20012,
@@ -1268,7 +1284,7 @@ r0_0.RT_142 = {
   [9] = 20020,
   [10] = 20018,
 }
-r0_0.RT_143 = {
+r0_0.RT_144 = {
   [1] = "Resource",
   [2] = "Resource",
   [3] = "Resource",
@@ -1280,14 +1296,14 @@ r0_0.RT_143 = {
   [9] = "Resource",
   [10] = "Resource",
 }
-r0_0.RT_144 = {
-  [1] = r0_0.RT_82,
-  [2] = r0_0.RT_82,
-  [3] = r0_0.RT_82,
-  [4] = r0_0.RT_82,
-  [5] = r0_0.RT_82,
-}
 r0_0.RT_145 = {
+  [1] = r0_0.RT_83,
+  [2] = r0_0.RT_83,
+  [3] = r0_0.RT_83,
+  [4] = r0_0.RT_83,
+  [5] = r0_0.RT_83,
+}
+r0_0.RT_146 = {
   [1] = "DropType_Fixed",
   [2] = "DropType_Fixed",
   [3] = "DropType_Fixed",
@@ -1304,7 +1320,7 @@ r0_0.RT_145 = {
   [14] = "DropTag_Prob",
   [15] = "DropTag_Prob",
 }
-r0_0.RT_146 = {
+r0_0.RT_147 = {
   [1] = 20009,
   [2] = 20002,
   [3] = 20012,
@@ -1321,7 +1337,7 @@ r0_0.RT_146 = {
   [14] = 20025,
   [15] = 20026,
 }
-r0_0.RT_147 = {
+r0_0.RT_148 = {
   [1] = "Resource",
   [2] = "Resource",
   [3] = "Resource",
@@ -1338,15 +1354,15 @@ r0_0.RT_147 = {
   [14] = "Resource",
   [15] = "Resource",
 }
-r0_0.RT_148 = {
+r0_0.RT_149 = {
   [1] = 2007,
   [2] = 2008,
 }
-r0_0.RT_149 = {
+r0_0.RT_150 = {
   [1] = 2008,
   [2] = 2009,
 }
-r0_0.RT_150 = {
+r0_0.RT_151 = {
   [1] = "DropTag_WeeklyReward",
   [2] = "DropTag_SynthesisChest",
   [3] = "DropTag_SynthesisChest",
@@ -1382,7 +1398,7 @@ r0_0.RT_150 = {
   [33] = "DropTag_WeeklyReward",
   [34] = "DropTag_WeeklyReward",
 }
-r0_0.RT_151 = {
+r0_0.RT_152 = {
   [1] = "DropTag_Prob",
   [2] = "DropTag_Prob",
   [3] = "DropTag_Prob",
@@ -1412,7 +1428,7 @@ r0_0.RT_151 = {
   [27] = "DropTag_Prob",
   [43] = "DropTag_Prob",
 }
-r0_0.RT_152 = {
+r0_0.RT_153 = {
   [1] = 21402,
   [2] = 21403,
   [3] = 21404,
@@ -1441,7 +1457,7 @@ r0_0.RT_152 = {
   [26] = 13102,
   [27] = 13103,
 }
-r0_0.RT_153 = {
+r0_0.RT_154 = {
   [1] = "Mod",
   [2] = "Mod",
   [3] = "Mod",
@@ -1470,7 +1486,7 @@ r0_0.RT_153 = {
   [26] = "Mod",
   [27] = "Mod",
 }
-r0_0.RT_154 = {
+r0_0.RT_155 = {
   [1] = 31005,
   [2] = 31006,
   [3] = 31008,
@@ -1495,7 +1511,7 @@ r0_0.RT_154 = {
   [22] = 43003,
   [23] = 43006,
 }
-r0_0.RT_155 = {
+r0_0.RT_156 = {
   [1] = 41323,
   [2] = 41333,
   [3] = 41001,
@@ -1512,7 +1528,7 @@ r0_0.RT_155 = {
   [14] = 43003,
   [15] = 43006,
 }
-r0_0.RT_156 = {
+r0_0.RT_157 = {
   [1] = 41324,
   [2] = 41334,
   [3] = 41001,
@@ -1529,7 +1545,7 @@ r0_0.RT_156 = {
   [14] = 43003,
   [15] = 43006,
 }
-r0_0.RT_157 = {
+r0_0.RT_158 = {
   [1] = 41325,
   [2] = 41335,
   [3] = 41001,
@@ -1546,7 +1562,7 @@ r0_0.RT_157 = {
   [14] = 43003,
   [15] = 43006,
 }
-r0_0.RT_158 = {
+r0_0.RT_159 = {
   [1] = 41321,
   [2] = 41331,
   [3] = 41001,
@@ -1563,7 +1579,7 @@ r0_0.RT_158 = {
   [14] = 43003,
   [15] = 43006,
 }
-r0_0.RT_159 = {
+r0_0.RT_160 = {
   [1] = 41326,
   [2] = 41336,
   [3] = 41001,
@@ -1580,7 +1596,7 @@ r0_0.RT_159 = {
   [14] = 43003,
   [15] = 43006,
 }
-r0_0.RT_160 = {
+r0_0.RT_161 = {
   [1] = "DropTag_Prob",
   [2] = "DropTag_Prob",
   [3] = "DropTag_Prob",
@@ -1599,7 +1615,7 @@ r0_0.RT_160 = {
   [16] = "DropTag_Prob",
   [17] = "DropTag_Prob",
 }
-r0_0.RT_161 = {
+r0_0.RT_162 = {
   [1] = "Mod",
   [2] = "Mod",
   [3] = "Mod",
@@ -1618,7 +1634,7 @@ r0_0.RT_161 = {
   [16] = "Mod",
   [17] = "Mod",
 }
-r0_0.RT_162 = {
+r0_0.RT_163 = {
   [1] = 41721,
   [2] = 41722,
   [3] = 41723,
@@ -1637,7 +1653,7 @@ r0_0.RT_162 = {
   [16] = 43003,
   [17] = 43006,
 }
-r0_0.RT_163 = {
+r0_0.RT_164 = {
   [1] = 41751,
   [2] = 41752,
   [3] = 41753,
@@ -1656,7 +1672,7 @@ r0_0.RT_163 = {
   [16] = 43003,
   [17] = 43006,
 }
-r0_0.RT_164 = {
+r0_0.RT_165 = {
   [1] = 41761,
   [2] = 41762,
   [3] = 41763,
@@ -1676,330 +1692,330 @@ r0_0.RT_164 = {
   [17] = 43006,
 }
 local r2_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
-  -- line: [1675, 1675] id: 1
+  -- line: [1691, 1691] id: 1
   return r1_1
 end
 local r3_0 = "RewardView"
 local r4_0 = {
   [1016] = {
-    DropType = r0_0.RT_12,
-    Id = r0_0.RT_13,
-    Quantity = r0_0.RT_15,
+    DropType = r0_0.RT_13,
+    Id = r0_0.RT_14,
+    Quantity = r0_0.RT_16,
     RewardViewId = 1016,
-    Type = r0_0.RT_11,
+    Type = r0_0.RT_12,
   },
 }
 r4_0[1017] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10101,
     [3] = 2029,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1017,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1018] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10101,
     [3] = 1022,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1018,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1019] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10101,
     [3] = 2035,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1019,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1020] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10101,
     [3] = 2036,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1020,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1021] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10101,
     [3] = 2039,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1021,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1022] = {
-  DropType = r0_0.RT_12,
+  DropType = r0_0.RT_13,
   Id = {
     [1] = 101,
     [2] = 10102,
   },
-  Quantity = r0_0.RT_15,
+  Quantity = r0_0.RT_16,
   RewardViewId = 1022,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[1023] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10102,
     [3] = 2028,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1023,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1024] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10102,
     [3] = 1011,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1024,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1025] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10102,
     [3] = 2032,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1025,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1026] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10102,
     [3] = 2037,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1026,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1027] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10102,
     [3] = 1020,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1027,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1028] = {
-  DropType = r0_0.RT_12,
+  DropType = r0_0.RT_13,
   Id = {
     [1] = 101,
     [2] = 10103,
   },
-  Quantity = r0_0.RT_15,
+  Quantity = r0_0.RT_16,
   RewardViewId = 1028,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[1029] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10103,
     [3] = 2027,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1029,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1030] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10103,
     [3] = 1015,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1030,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1031] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10103,
     [3] = 2034,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1031,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1032] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10103,
     [3] = 2040,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1032,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1033] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10103,
     [3] = 2042,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1033,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1034] = {
-  DropType = r0_0.RT_12,
+  DropType = r0_0.RT_13,
   Id = {
     [1] = 101,
     [2] = 10104,
   },
-  Quantity = r0_0.RT_15,
+  Quantity = r0_0.RT_16,
   RewardViewId = 1034,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[1035] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10104,
     [3] = 2030,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1035,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1036] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10104,
     [3] = 1012,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1036,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1037] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10104,
     [3] = 2038,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1037,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1038] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10104,
     [3] = 2044,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1038,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1039] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10104,
     [3] = 2043,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1039,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1040] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_13,
-  Quantity = r0_0.RT_15,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_14,
+  Quantity = r0_0.RT_16,
   RewardViewId = 1040,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[1041] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10101,
     [3] = 2033,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1041,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1042] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10101,
     [3] = 1002,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1042,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1043] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10101,
     [3] = 2031,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1043,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1044] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10101,
     [3] = 2041,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1044,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1045] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10101,
     [3] = 1001,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1045,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 local r5_0 = 6001
 local r6_0 = {
@@ -2019,7 +2035,7 @@ r6_0.Quantity = {
   [2] = r0_0.RT_2,
 }
 r6_0.RewardViewId = 6001
-r6_0.Type = r0_0.RT_11
+r6_0.Type = r0_0.RT_12
 r4_0[r5_0] = r6_0
 r4_0[50510] = {
   Id = {
@@ -2031,9 +2047,9 @@ r4_0[50510] = {
     [6] = 2008,
     [7] = 2012,
   },
-  Quantity = r0_0.RT_54,
+  Quantity = r0_0.RT_55,
   RewardViewId = 50510,
-  Type = r0_0.RT_24,
+  Type = r0_0.RT_25,
 }
 r4_0[50518] = {
   Id = {
@@ -2043,9 +2059,9 @@ r4_0[50518] = {
     [4] = 101,
     [5] = 2008,
   },
-  Quantity = r0_0.RT_54,
+  Quantity = r0_0.RT_55,
   RewardViewId = 50518,
-  Type = r0_0.RT_21,
+  Type = r0_0.RT_22,
 }
 r5_0 = 50577
 r6_0 = {
@@ -2062,7 +2078,7 @@ r6_0 = {
   },
 }
 r6_0.Quantity = {
-  [1] = r0_0.RT_41,
+  [1] = r0_0.RT_42,
   [2] = r0_0.RT_2,
   [3] = r0_0.RT_2,
   [4] = {
@@ -2070,9 +2086,9 @@ r6_0.Quantity = {
   },
   [5] = r0_0.RT_3,
   [6] = r0_0.RT_2,
-  [7] = r0_0.RT_51,
+  [7] = r0_0.RT_52,
   [8] = r0_0.RT_2,
-  [9] = r0_0.RT_30,
+  [9] = r0_0.RT_31,
 }
 r6_0.RewardViewId = 50577
 r6_0.Type = {
@@ -2088,14 +2104,14 @@ r6_0.Type = {
 }
 r4_0[r5_0] = r6_0
 r4_0[60101] = {
-  Id = r0_0.RT_74,
+  Id = r0_0.RT_75,
   RewardViewId = 60101,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[90000] = {
-  Id = r0_0.RT_74,
+  Id = r0_0.RT_75,
   RewardViewId = 90000,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[90001] = {
   Id = {
@@ -2104,7 +2120,7 @@ r4_0[90001] = {
     [3] = 2011,
   },
   RewardViewId = 90001,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90002] = {
   Id = {
@@ -2113,12 +2129,12 @@ r4_0[90002] = {
     [3] = 2007,
   },
   RewardViewId = 90002,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90003] = {
-  Id = r0_0.RT_74,
+  Id = r0_0.RT_75,
   RewardViewId = 90003,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[90004] = {
   Id = {
@@ -2126,12 +2142,12 @@ r4_0[90004] = {
     [2] = 10200,
   },
   RewardViewId = 90004,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90005] = {
-  Id = r0_0.RT_74,
+  Id = r0_0.RT_75,
   RewardViewId = 90005,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[90006] = {
   Id = {
@@ -2151,7 +2167,7 @@ r4_0[90007] = {
     [3] = 10001,
   },
   RewardViewId = 90007,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90008] = {
   Id = {
@@ -2160,12 +2176,12 @@ r4_0[90008] = {
     [3] = 11004,
   },
   RewardViewId = 90008,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90009] = {
-  Id = r0_0.RT_75,
+  Id = r0_0.RT_76,
   RewardViewId = 90009,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[90010] = {
   Id = {
@@ -2174,7 +2190,7 @@ r4_0[90010] = {
     [3] = 20013,
   },
   RewardViewId = 90010,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90011] = {
   Id = {
@@ -2183,237 +2199,237 @@ r4_0[90011] = {
     [3] = 20002,
   },
   RewardViewId = 90011,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90012] = {
-  Id = r0_0.RT_76,
+  Id = r0_0.RT_77,
   RewardViewId = 90012,
-  Type = r0_0.RT_77,
+  Type = r0_0.RT_78,
 }
 r4_0[90102] = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_79,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_80,
   Quantity = {
-    [1] = r0_0.RT_23,
+    [1] = r0_0.RT_24,
   },
   RewardViewId = 90102,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[90103] = {
   DropType = {
     [1] = "DropTag_Prob",
   },
-  Id = r0_0.RT_79,
+  Id = r0_0.RT_80,
   RewardViewId = 90103,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[90104] = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_79,
-  Quantity = r0_0.RT_80,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_80,
+  Quantity = r0_0.RT_81,
   RewardViewId = 90104,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[90105] = {
   DropType = {
     [1] = "DropTag_Prob",
     [2] = "DropTag_Prob",
   },
-  Id = r0_0.RT_81,
+  Id = r0_0.RT_82,
   RewardViewId = 90105,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90106] = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_79,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_80,
   Quantity = {
-    [1] = r0_0.RT_22,
+    [1] = r0_0.RT_23,
   },
   RewardViewId = 90106,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[90108] = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_79,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_80,
   Quantity = {
-    [1] = r0_0.RT_82,
+    [1] = r0_0.RT_83,
   },
   RewardViewId = 90108,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[90110] = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_79,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_80,
   Quantity = {
-    [1] = r0_0.RT_26,
+    [1] = r0_0.RT_27,
   },
   RewardViewId = 90110,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[90112] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_81,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_82,
   Quantity = {
-    [1] = r0_0.RT_26,
+    [1] = r0_0.RT_27,
     [2] = r0_0.RT_2,
     [3] = r0_0.RT_2,
   },
   RewardViewId = 90112,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90114] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_81,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_82,
   Quantity = {
-    [1] = r0_0.RT_26,
+    [1] = r0_0.RT_27,
     [2] = r0_0.RT_4,
     [3] = r0_0.RT_4,
   },
   RewardViewId = 90114,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90159] = {
-  DropType = r0_0.RT_84,
-  Id = r0_0.RT_85,
+  DropType = r0_0.RT_85,
+  Id = r0_0.RT_86,
   RewardViewId = 90159,
-  Type = r0_0.RT_86,
+  Type = r0_0.RT_87,
 }
 r4_0[90160] = {
-  DropType = r0_0.RT_84,
-  Id = r0_0.RT_85,
+  DropType = r0_0.RT_85,
+  Id = r0_0.RT_86,
   RewardViewId = 90160,
-  Type = r0_0.RT_86,
+  Type = r0_0.RT_87,
 }
 r4_0[90161] = {
-  DropType = r0_0.RT_84,
-  Id = r0_0.RT_85,
+  DropType = r0_0.RT_85,
+  Id = r0_0.RT_86,
   RewardViewId = 90161,
-  Type = r0_0.RT_86,
+  Type = r0_0.RT_87,
 }
 r4_0[90162] = {
-  DropType = r0_0.RT_84,
-  Id = r0_0.RT_85,
+  DropType = r0_0.RT_85,
+  Id = r0_0.RT_86,
   RewardViewId = 90162,
-  Type = r0_0.RT_86,
+  Type = r0_0.RT_87,
 }
 r4_0[90163] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_87,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_88,
   RewardViewId = 90163,
-  Type = r0_0.RT_88,
+  Type = r0_0.RT_89,
 }
 r4_0[90164] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_87,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_88,
   RewardViewId = 90164,
-  Type = r0_0.RT_88,
+  Type = r0_0.RT_89,
 }
 r4_0[90165] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_87,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_88,
   RewardViewId = 90165,
-  Type = r0_0.RT_88,
+  Type = r0_0.RT_89,
 }
 r4_0[90166] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_87,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_88,
   RewardViewId = 90166,
-  Type = r0_0.RT_88,
+  Type = r0_0.RT_89,
 }
 r4_0[90167] = {
-  Id = r0_0.RT_87,
+  Id = r0_0.RT_88,
   RewardViewId = 90167,
-  Type = r0_0.RT_88,
+  Type = r0_0.RT_89,
 }
 r4_0[90168] = {
-  Id = r0_0.RT_87,
+  Id = r0_0.RT_88,
   RewardViewId = 90168,
-  Type = r0_0.RT_88,
+  Type = r0_0.RT_89,
 }
 r4_0[90169] = {
-  Id = r0_0.RT_87,
+  Id = r0_0.RT_88,
   RewardViewId = 90169,
-  Type = r0_0.RT_88,
+  Type = r0_0.RT_89,
 }
 r4_0[90170] = {
-  Id = r0_0.RT_87,
+  Id = r0_0.RT_88,
   RewardViewId = 90170,
-  Type = r0_0.RT_88,
+  Type = r0_0.RT_89,
 }
 r4_0[90171] = {
-  Id = r0_0.RT_87,
+  Id = r0_0.RT_88,
   RewardViewId = 90171,
-  Type = r0_0.RT_88,
+  Type = r0_0.RT_89,
 }
 r4_0[90172] = {
-  Id = r0_0.RT_87,
+  Id = r0_0.RT_88,
   RewardViewId = 90172,
-  Type = r0_0.RT_88,
+  Type = r0_0.RT_89,
 }
 r4_0[90173] = {
-  Id = r0_0.RT_89,
+  Id = r0_0.RT_90,
   RewardViewId = 90173,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r4_0[90174] = {
-  Id = r0_0.RT_91,
+  Id = r0_0.RT_92,
   RewardViewId = 90174,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r4_0[90175] = {
-  Id = r0_0.RT_92,
+  Id = r0_0.RT_93,
   RewardViewId = 90175,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r4_0[90176] = {
-  Id = r0_0.RT_93,
+  Id = r0_0.RT_94,
   RewardViewId = 90176,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r4_0[90177] = {
-  Id = r0_0.RT_94,
+  Id = r0_0.RT_95,
   RewardViewId = 90177,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r4_0[90178] = {
-  Id = r0_0.RT_95,
+  Id = r0_0.RT_96,
   RewardViewId = 90178,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r4_0[90179] = {
-  Id = r0_0.RT_89,
+  Id = r0_0.RT_90,
   RewardViewId = 90179,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r4_0[90180] = {
-  Id = r0_0.RT_91,
+  Id = r0_0.RT_92,
   RewardViewId = 90180,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r4_0[90181] = {
-  Id = r0_0.RT_92,
+  Id = r0_0.RT_93,
   RewardViewId = 90181,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r4_0[90182] = {
-  Id = r0_0.RT_93,
+  Id = r0_0.RT_94,
   RewardViewId = 90182,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r4_0[90183] = {
-  Id = r0_0.RT_94,
+  Id = r0_0.RT_95,
   RewardViewId = 90183,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r4_0[90184] = {
-  Id = r0_0.RT_95,
+  Id = r0_0.RT_96,
   RewardViewId = 90184,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r5_0 = 90201
 r6_0 = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_74,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_75,
 }
 r6_0.Quantity = {
   [1] = {
@@ -2421,12 +2437,12 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 90201
-r6_0.Type = r0_0.RT_34
+r6_0.Type = r0_0.RT_35
 r4_0[r5_0] = r6_0
 r5_0 = 90202
 r6_0 = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_74,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_75,
 }
 r6_0.Quantity = {
   [1] = {
@@ -2434,12 +2450,12 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 90202
-r6_0.Type = r0_0.RT_34
+r6_0.Type = r0_0.RT_35
 r4_0[r5_0] = r6_0
 r5_0 = 90203
 r6_0 = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_74,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_75,
 }
 r6_0.Quantity = {
   [1] = {
@@ -2447,12 +2463,12 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 90203
-r6_0.Type = r0_0.RT_34
+r6_0.Type = r0_0.RT_35
 r4_0[r5_0] = r6_0
 r5_0 = 90204
 r6_0 = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_74,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_75,
 }
 r6_0.Quantity = {
   [1] = {
@@ -2460,12 +2476,12 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 90204
-r6_0.Type = r0_0.RT_34
+r6_0.Type = r0_0.RT_35
 r4_0[r5_0] = r6_0
 r5_0 = 90205
 r6_0 = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_74,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_75,
 }
 r6_0.Quantity = {
   [1] = {
@@ -2473,12 +2489,12 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 90205
-r6_0.Type = r0_0.RT_34
+r6_0.Type = r0_0.RT_35
 r4_0[r5_0] = r6_0
 r5_0 = 90206
 r6_0 = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_74,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_75,
 }
 r6_0.Quantity = {
   [1] = {
@@ -2486,12 +2502,12 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 90206
-r6_0.Type = r0_0.RT_34
+r6_0.Type = r0_0.RT_35
 r4_0[r5_0] = r6_0
 r5_0 = 90207
 r6_0 = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_74,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_75,
 }
 r6_0.Quantity = {
   [1] = {
@@ -2499,7 +2515,7 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 90207
-r6_0.Type = r0_0.RT_34
+r6_0.Type = r0_0.RT_35
 r4_0[r5_0] = r6_0
 r4_0[90320] = {
   DropType = {
@@ -2537,7 +2553,7 @@ r4_0[90320] = {
     [15] = 33204,
   },
   RewardViewId = 90320,
-  Type = r0_0.RT_96,
+  Type = r0_0.RT_97,
 }
 r4_0[90321] = {
   DropType = {
@@ -2591,7 +2607,7 @@ r4_0[90321] = {
   },
 }
 r4_0[90322] = {
-  DropType = r0_0.RT_97,
+  DropType = r0_0.RT_98,
   Id = {
     [1] = 41213,
     [2] = 41214,
@@ -2629,10 +2645,10 @@ r4_0[90322] = {
     [34] = 43604,
   },
   RewardViewId = 90322,
-  Type = r0_0.RT_98,
+  Type = r0_0.RT_99,
 }
 r4_0[90323] = {
-  DropType = r0_0.RT_97,
+  DropType = r0_0.RT_98,
   Id = {
     [1] = 41321,
     [2] = 41322,
@@ -2670,12 +2686,12 @@ r4_0[90323] = {
     [34] = 43512,
   },
   RewardViewId = 90323,
-  Type = r0_0.RT_98,
+  Type = r0_0.RT_99,
 }
 r5_0 = 90330
 r6_0 = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_75,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_76,
 }
 r6_0.Quantity = {
   [1] = {
@@ -2683,12 +2699,12 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 90330
-r6_0.Type = r0_0.RT_34
+r6_0.Type = r0_0.RT_35
 r4_0[r5_0] = r6_0
 r5_0 = 90331
 r6_0 = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_75,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_76,
 }
 r6_0.Quantity = {
   [1] = {
@@ -2696,12 +2712,12 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 90331
-r6_0.Type = r0_0.RT_34
+r6_0.Type = r0_0.RT_35
 r4_0[r5_0] = r6_0
 r5_0 = 90332
 r6_0 = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_75,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_76,
 }
 r6_0.Quantity = {
   [1] = {
@@ -2709,12 +2725,12 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 90332
-r6_0.Type = r0_0.RT_34
+r6_0.Type = r0_0.RT_35
 r4_0[r5_0] = r6_0
 r5_0 = 90333
 r6_0 = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_75,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_76,
 }
 r6_0.Quantity = {
   [1] = {
@@ -2722,12 +2738,12 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 90333
-r6_0.Type = r0_0.RT_34
+r6_0.Type = r0_0.RT_35
 r4_0[r5_0] = r6_0
 r5_0 = 90334
 r6_0 = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_75,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_76,
 }
 r6_0.Quantity = {
   [1] = {
@@ -2735,21 +2751,21 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 90334
-r6_0.Type = r0_0.RT_34
+r6_0.Type = r0_0.RT_35
 r4_0[r5_0] = r6_0
 r4_0[90335] = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_75,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_76,
   Quantity = {
-    [1] = r0_0.RT_99,
+    [1] = r0_0.RT_100,
   },
   RewardViewId = 90335,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r5_0 = 90336
 r6_0 = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_75,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_76,
 }
 r6_0.Quantity = {
   [1] = {
@@ -2757,10 +2773,10 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 90336
-r6_0.Type = r0_0.RT_34
+r6_0.Type = r0_0.RT_35
 r4_0[r5_0] = r6_0
 r4_0[90350] = {
-  DropType = r0_0.RT_100,
+  DropType = r0_0.RT_101,
   Id = {
     [1] = 12001,
     [2] = 12002,
@@ -2771,10 +2787,10 @@ r4_0[90350] = {
     [7] = 12103,
   },
   RewardViewId = 90350,
-  Type = r0_0.RT_101,
+  Type = r0_0.RT_102,
 }
 r4_0[90351] = {
-  DropType = r0_0.RT_100,
+  DropType = r0_0.RT_101,
   Id = {
     [1] = 22007,
     [2] = 22008,
@@ -2790,7 +2806,7 @@ r4_0[90351] = {
     [12] = 12103,
   },
   RewardViewId = 90351,
-  Type = r0_0.RT_102,
+  Type = r0_0.RT_103,
 }
 r4_0[90352] = {
   DropType = {
@@ -2815,8 +2831,8 @@ r4_0[90352] = {
   Type = r0_0.RT_9,
 }
 r4_0[90353] = {
-  DropType = r0_0.RT_103,
-  Id = r0_0.RT_104,
+  DropType = r0_0.RT_104,
+  Id = r0_0.RT_105,
   Quantity = {
     [1] = r0_0.RT_2,
     [2] = r0_0.RT_2,
@@ -2828,11 +2844,11 @@ r4_0[90353] = {
     [8] = r0_0.RT_2,
   },
   RewardViewId = 90353,
-  Type = r0_0.RT_105,
+  Type = r0_0.RT_106,
 }
 r4_0[90354] = {
-  DropType = r0_0.RT_103,
-  Id = r0_0.RT_104,
+  DropType = r0_0.RT_104,
+  Id = r0_0.RT_105,
   Quantity = {
     [1] = r0_0.RT_4,
     [2] = r0_0.RT_4,
@@ -2844,27 +2860,27 @@ r4_0[90354] = {
     [8] = r0_0.RT_2,
   },
   RewardViewId = 90354,
-  Type = r0_0.RT_105,
+  Type = r0_0.RT_106,
 }
 r4_0[90355] = {
-  DropType = r0_0.RT_103,
-  Id = r0_0.RT_104,
+  DropType = r0_0.RT_104,
+  Id = r0_0.RT_105,
   Quantity = {
-    [1] = r0_0.RT_17,
-    [2] = r0_0.RT_17,
-    [3] = r0_0.RT_17,
-    [4] = r0_0.RT_17,
+    [1] = r0_0.RT_18,
+    [2] = r0_0.RT_18,
+    [3] = r0_0.RT_18,
+    [4] = r0_0.RT_18,
     [5] = r0_0.RT_2,
     [6] = r0_0.RT_2,
     [7] = r0_0.RT_2,
     [8] = r0_0.RT_2,
   },
   RewardViewId = 90355,
-  Type = r0_0.RT_105,
+  Type = r0_0.RT_106,
 }
 r4_0[90356] = {
-  DropType = r0_0.RT_103,
-  Id = r0_0.RT_104,
+  DropType = r0_0.RT_104,
+  Id = r0_0.RT_105,
   Quantity = {
     [1] = r0_0.RT_4,
     [2] = r0_0.RT_4,
@@ -2876,10 +2892,10 @@ r4_0[90356] = {
     [8] = r0_0.RT_4,
   },
   RewardViewId = 90356,
-  Type = r0_0.RT_105,
+  Type = r0_0.RT_106,
 }
 r4_0[90370] = {
-  DropType = r0_0.RT_100,
+  DropType = r0_0.RT_101,
   Id = {
     [1] = 13001,
     [2] = 13002,
@@ -2890,10 +2906,10 @@ r4_0[90370] = {
     [7] = 13103,
   },
   RewardViewId = 90370,
-  Type = r0_0.RT_101,
+  Type = r0_0.RT_102,
 }
 r4_0[90371] = {
-  DropType = r0_0.RT_100,
+  DropType = r0_0.RT_101,
   Id = {
     [1] = 23008,
     [2] = 23111,
@@ -2923,7 +2939,7 @@ r4_0[90371] = {
   },
 }
 r4_0[90372] = {
-  DropType = r0_0.RT_100,
+  DropType = r0_0.RT_101,
   Id = {
     [1] = 33004,
     [2] = 33005,
@@ -2969,7 +2985,7 @@ r4_0[90372] = {
   },
 }
 r4_0[90373] = {
-  DropType = r0_0.RT_100,
+  DropType = r0_0.RT_101,
   Id = {
     [1] = 43001,
     [2] = 43002,
@@ -2998,10 +3014,10 @@ r4_0[90373] = {
     [25] = 23113,
   },
   RewardViewId = 90373,
-  Type = r0_0.RT_70,
+  Type = r0_0.RT_71,
 }
 r4_0[90374] = {
-  DropType = r0_0.RT_100,
+  DropType = r0_0.RT_101,
   Id = {
     [1] = 43341,
     [2] = 43501,
@@ -3028,19 +3044,19 @@ r4_0[90374] = {
     [23] = 33203,
   },
   RewardViewId = 90374,
-  Type = r0_0.RT_106,
+  Type = r0_0.RT_107,
 }
 r4_0[90375] = {
-  DropType = r0_0.RT_100,
-  Id = r0_0.RT_107,
+  DropType = r0_0.RT_101,
+  Id = r0_0.RT_108,
   RewardViewId = 90375,
-  Type = r0_0.RT_102,
+  Type = r0_0.RT_103,
 }
 r4_0[90376] = {
-  DropType = r0_0.RT_100,
-  Id = r0_0.RT_107,
+  DropType = r0_0.RT_101,
+  Id = r0_0.RT_108,
   RewardViewId = 90376,
-  Type = r0_0.RT_102,
+  Type = r0_0.RT_103,
 }
 r4_0[90400] = {
   DropType = {
@@ -3055,313 +3071,313 @@ r4_0[90400] = {
     [5] = 10021,
   },
   RewardViewId = 90400,
-  Type = r0_0.RT_21,
+  Type = r0_0.RT_22,
 }
 r4_0[90401] = {
-  DropType = r0_0.RT_78,
+  DropType = r0_0.RT_79,
   Id = {
     [1] = 10009,
   },
-  Quantity = r0_0.RT_80,
+  Quantity = r0_0.RT_81,
   RewardViewId = 90401,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[90402] = {
-  DropType = r0_0.RT_78,
+  DropType = r0_0.RT_79,
   Id = {
     [1] = 10005,
   },
-  Quantity = r0_0.RT_80,
+  Quantity = r0_0.RT_81,
   RewardViewId = 90402,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[90403] = {
-  DropType = r0_0.RT_78,
+  DropType = r0_0.RT_79,
   Id = {
     [1] = 10013,
   },
-  Quantity = r0_0.RT_80,
+  Quantity = r0_0.RT_81,
   RewardViewId = 90403,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[90404] = {
-  DropType = r0_0.RT_78,
+  DropType = r0_0.RT_79,
   Id = {
     [1] = 10001,
   },
-  Quantity = r0_0.RT_80,
+  Quantity = r0_0.RT_81,
   RewardViewId = 90404,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[90405] = {
-  DropType = r0_0.RT_78,
+  DropType = r0_0.RT_79,
   Id = {
     [1] = 10021,
   },
-  Quantity = r0_0.RT_80,
+  Quantity = r0_0.RT_81,
   RewardViewId = 90405,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[90406] = {
-  DropType = r0_0.RT_78,
+  DropType = r0_0.RT_79,
   Id = {
     [1] = 10017,
   },
-  Quantity = r0_0.RT_80,
+  Quantity = r0_0.RT_81,
   RewardViewId = 90406,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[90407] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_108,
-  Quantity = r0_0.RT_109,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_109,
+  Quantity = r0_0.RT_110,
   RewardViewId = 90407,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90408] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_110,
-  Quantity = r0_0.RT_109,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_111,
+  Quantity = r0_0.RT_110,
   RewardViewId = 90408,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90409] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_111,
-  Quantity = r0_0.RT_109,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_112,
+  Quantity = r0_0.RT_110,
   RewardViewId = 90409,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90410] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_112,
-  Quantity = r0_0.RT_109,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_113,
+  Quantity = r0_0.RT_110,
   RewardViewId = 90410,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90411] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_113,
-  Quantity = r0_0.RT_109,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_114,
+  Quantity = r0_0.RT_110,
   RewardViewId = 90411,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90412] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_114,
-  Quantity = r0_0.RT_109,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_115,
+  Quantity = r0_0.RT_110,
   RewardViewId = 90412,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90413] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_108,
-  Quantity = r0_0.RT_115,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_109,
+  Quantity = r0_0.RT_116,
   RewardViewId = 90413,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90414] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_110,
-  Quantity = r0_0.RT_115,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_111,
+  Quantity = r0_0.RT_116,
   RewardViewId = 90414,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90415] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_111,
-  Quantity = r0_0.RT_115,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_112,
+  Quantity = r0_0.RT_116,
   RewardViewId = 90415,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90416] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_112,
-  Quantity = r0_0.RT_115,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_113,
+  Quantity = r0_0.RT_116,
   RewardViewId = 90416,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90417] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_113,
-  Quantity = r0_0.RT_115,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_114,
+  Quantity = r0_0.RT_116,
   RewardViewId = 90417,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90418] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_114,
-  Quantity = r0_0.RT_115,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_115,
+  Quantity = r0_0.RT_116,
   RewardViewId = 90418,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90419] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_108,
-  Quantity = r0_0.RT_117,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_109,
+  Quantity = r0_0.RT_118,
   RewardViewId = 90419,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90420] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_110,
-  Quantity = r0_0.RT_117,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_111,
+  Quantity = r0_0.RT_118,
   RewardViewId = 90420,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90421] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_111,
-  Quantity = r0_0.RT_117,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_112,
+  Quantity = r0_0.RT_118,
   RewardViewId = 90421,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90422] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_112,
-  Quantity = r0_0.RT_117,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_113,
+  Quantity = r0_0.RT_118,
   RewardViewId = 90422,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90423] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_113,
-  Quantity = r0_0.RT_117,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_114,
+  Quantity = r0_0.RT_118,
   RewardViewId = 90423,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90424] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_114,
-  Quantity = r0_0.RT_117,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_115,
+  Quantity = r0_0.RT_118,
   RewardViewId = 90424,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90425] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_118,
-  Quantity = r0_0.RT_119,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_119,
+  Quantity = r0_0.RT_120,
   RewardViewId = 90425,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90426] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_120,
-  Quantity = r0_0.RT_119,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_121,
+  Quantity = r0_0.RT_120,
   RewardViewId = 90426,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90427] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_121,
-  Quantity = r0_0.RT_119,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_122,
+  Quantity = r0_0.RT_120,
   RewardViewId = 90427,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90428] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_122,
-  Quantity = r0_0.RT_119,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_123,
+  Quantity = r0_0.RT_120,
   RewardViewId = 90428,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90429] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_123,
-  Quantity = r0_0.RT_119,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_124,
+  Quantity = r0_0.RT_120,
   RewardViewId = 90429,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90430] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_124,
-  Quantity = r0_0.RT_119,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_125,
+  Quantity = r0_0.RT_120,
   RewardViewId = 90430,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90431] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_118,
-  Quantity = r0_0.RT_125,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_119,
+  Quantity = r0_0.RT_126,
   RewardViewId = 90431,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90432] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_120,
-  Quantity = r0_0.RT_125,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_121,
+  Quantity = r0_0.RT_126,
   RewardViewId = 90432,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90433] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_121,
-  Quantity = r0_0.RT_125,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_122,
+  Quantity = r0_0.RT_126,
   RewardViewId = 90433,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90434] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_122,
-  Quantity = r0_0.RT_125,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_123,
+  Quantity = r0_0.RT_126,
   RewardViewId = 90434,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90435] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_123,
-  Quantity = r0_0.RT_125,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_124,
+  Quantity = r0_0.RT_126,
   RewardViewId = 90435,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90436] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_124,
-  Quantity = r0_0.RT_125,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_125,
+  Quantity = r0_0.RT_126,
   RewardViewId = 90436,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90437] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_118,
-  Quantity = r0_0.RT_126,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_119,
+  Quantity = r0_0.RT_127,
   RewardViewId = 90437,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90438] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_120,
-  Quantity = r0_0.RT_126,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_121,
+  Quantity = r0_0.RT_127,
   RewardViewId = 90438,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90439] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_121,
-  Quantity = r0_0.RT_126,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_122,
+  Quantity = r0_0.RT_127,
   RewardViewId = 90439,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90440] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_122,
-  Quantity = r0_0.RT_126,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_123,
+  Quantity = r0_0.RT_127,
   RewardViewId = 90440,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90441] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_123,
-  Quantity = r0_0.RT_126,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_124,
+  Quantity = r0_0.RT_127,
   RewardViewId = 90441,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90442] = {
-  DropType = r0_0.RT_83,
-  Id = r0_0.RT_124,
-  Quantity = r0_0.RT_126,
+  DropType = r0_0.RT_84,
+  Id = r0_0.RT_125,
+  Quantity = r0_0.RT_127,
   RewardViewId = 90442,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90501] = {
   DropType = {
@@ -3381,147 +3397,160 @@ r4_0[90501] = {
     [6] = 11016,
   },
   RewardViewId = 90501,
-  Type = r0_0.RT_28,
+  Type = r0_0.RT_29,
 }
 r4_0[90502] = {
-  DropType = r0_0.RT_127,
-  Id = r0_0.RT_128,
+  DropType = r0_0.RT_128,
+  Id = r0_0.RT_129,
   RewardViewId = 90502,
-  Type = r0_0.RT_10,
+  Type = r0_0.RT_11,
 }
 r4_0[90503] = {
-  DropType = r0_0.RT_127,
-  Id = r0_0.RT_128,
+  DropType = r0_0.RT_128,
+  Id = r0_0.RT_129,
   RewardViewId = 90503,
-  Type = r0_0.RT_10,
+  Type = r0_0.RT_11,
 }
 r4_0[90504] = {
-  DropType = r0_0.RT_127,
-  Id = r0_0.RT_128,
+  DropType = r0_0.RT_128,
+  Id = r0_0.RT_129,
   RewardViewId = 90504,
-  Type = r0_0.RT_10,
+  Type = r0_0.RT_11,
 }
 r4_0[90505] = {
-  DropType = r0_0.RT_129,
-  Id = r0_0.RT_130,
+  DropType = r0_0.RT_130,
+  Id = r0_0.RT_131,
   RewardViewId = 90505,
-  Type = r0_0.RT_131,
+  Type = r0_0.RT_132,
 }
 r4_0[90506] = {
-  DropType = r0_0.RT_129,
-  Id = r0_0.RT_130,
+  DropType = r0_0.RT_130,
+  Id = r0_0.RT_131,
   RewardViewId = 90506,
-  Type = r0_0.RT_131,
+  Type = r0_0.RT_132,
 }
 r4_0[90507] = {
-  DropType = r0_0.RT_129,
-  Id = r0_0.RT_130,
+  DropType = r0_0.RT_130,
+  Id = r0_0.RT_131,
   RewardViewId = 90507,
-  Type = r0_0.RT_131,
+  Type = r0_0.RT_132,
 }
 r4_0[90601] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_132,
-  Quantity = r0_0.RT_133,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_133,
+  Quantity = r0_0.RT_134,
   RewardViewId = 90601,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90602] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_132,
-  Quantity = r0_0.RT_134,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_133,
+  Quantity = r0_0.RT_135,
   RewardViewId = 90602,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90603] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_132,
-  Quantity = r0_0.RT_135,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_133,
+  Quantity = r0_0.RT_136,
   RewardViewId = 90603,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90604] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_132,
-  Quantity = r0_0.RT_136,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_133,
+  Quantity = r0_0.RT_137,
   RewardViewId = 90604,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90605] = {
-  DropType = r0_0.RT_83,
+  DropType = r0_0.RT_84,
   Id = {
     [1] = 2011,
     [2] = 2012,
     [3] = 2013,
   },
-  Quantity = r0_0.RT_137,
+  Quantity = r0_0.RT_138,
   RewardViewId = 90605,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90606] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_138,
-  Quantity = r0_0.RT_139,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_139,
+  Quantity = r0_0.RT_140,
   RewardViewId = 90606,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90607] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_138,
-  Quantity = r0_0.RT_140,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_139,
+  Quantity = r0_0.RT_141,
   RewardViewId = 90607,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90701] = {
-  DropType = r0_0.RT_141,
-  Id = r0_0.RT_142,
+  DropType = r0_0.RT_142,
+  Id = r0_0.RT_143,
   Quantity = {
-    [1] = r0_0.RT_22,
-    [2] = r0_0.RT_22,
-    [3] = r0_0.RT_22,
-    [4] = r0_0.RT_22,
-    [5] = r0_0.RT_22,
+    [1] = r0_0.RT_23,
+    [2] = r0_0.RT_23,
+    [3] = r0_0.RT_23,
+    [4] = r0_0.RT_23,
+    [5] = r0_0.RT_23,
   },
   RewardViewId = 90701,
-  Type = r0_0.RT_143,
+  Type = r0_0.RT_144,
 }
 r4_0[90702] = {
-  DropType = r0_0.RT_141,
-  Id = r0_0.RT_142,
+  DropType = r0_0.RT_142,
+  Id = r0_0.RT_143,
   Quantity = {
-    [1] = r0_0.RT_116,
-    [2] = r0_0.RT_116,
-    [3] = r0_0.RT_116,
-    [4] = r0_0.RT_116,
-    [5] = r0_0.RT_116,
+    [1] = r0_0.RT_117,
+    [2] = r0_0.RT_117,
+    [3] = r0_0.RT_117,
+    [4] = r0_0.RT_117,
+    [5] = r0_0.RT_117,
   },
   RewardViewId = 90702,
-  Type = r0_0.RT_143,
+  Type = r0_0.RT_144,
 }
 r4_0[90703] = {
-  DropType = r0_0.RT_141,
-  Id = r0_0.RT_142,
-  Quantity = r0_0.RT_144,
+  DropType = r0_0.RT_142,
+  Id = r0_0.RT_143,
+  Quantity = r0_0.RT_145,
   RewardViewId = 90703,
-  Type = r0_0.RT_143,
+  Type = r0_0.RT_144,
 }
 r4_0[90704] = {
-  DropType = r0_0.RT_141,
-  Id = r0_0.RT_142,
-  Quantity = r0_0.RT_144,
+  DropType = r0_0.RT_142,
+  Id = r0_0.RT_143,
+  Quantity = r0_0.RT_145,
   RewardViewId = 90704,
-  Type = r0_0.RT_143,
+  Type = r0_0.RT_144,
 }
 r4_0[90705] = {
-  DropType = r0_0.RT_145,
-  Id = r0_0.RT_146,
-  Quantity = r0_0.RT_144,
+  DropType = r0_0.RT_146,
+  Id = r0_0.RT_147,
+  Quantity = r0_0.RT_145,
   RewardViewId = 90705,
-  Type = r0_0.RT_147,
+  Type = r0_0.RT_148,
 }
 r4_0[90706] = {
-  DropType = r0_0.RT_145,
-  Id = r0_0.RT_146,
+  DropType = r0_0.RT_146,
+  Id = r0_0.RT_147,
+  Quantity = {
+    [1] = r0_0.RT_27,
+    [2] = r0_0.RT_27,
+    [3] = r0_0.RT_27,
+    [4] = r0_0.RT_27,
+    [5] = r0_0.RT_27,
+  },
+  RewardViewId = 90706,
+  Type = r0_0.RT_148,
+}
+r4_0[90707] = {
+  DropType = r0_0.RT_146,
+  Id = r0_0.RT_147,
   Quantity = {
     [1] = r0_0.RT_26,
     [2] = r0_0.RT_26,
@@ -3529,95 +3558,82 @@ r4_0[90706] = {
     [4] = r0_0.RT_26,
     [5] = r0_0.RT_26,
   },
-  RewardViewId = 90706,
-  Type = r0_0.RT_147,
-}
-r4_0[90707] = {
-  DropType = r0_0.RT_145,
-  Id = r0_0.RT_146,
-  Quantity = {
-    [1] = r0_0.RT_25,
-    [2] = r0_0.RT_25,
-    [3] = r0_0.RT_25,
-    [4] = r0_0.RT_25,
-    [5] = r0_0.RT_25,
-  },
   RewardViewId = 90707,
-  Type = r0_0.RT_147,
+  Type = r0_0.RT_148,
 }
 r4_0[90801] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_148,
-  Quantity = r0_0.RT_133,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_149,
+  Quantity = r0_0.RT_134,
   RewardViewId = 90801,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90802] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_148,
-  Quantity = r0_0.RT_134,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_149,
+  Quantity = r0_0.RT_135,
   RewardViewId = 90802,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90803] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_148,
-  Quantity = r0_0.RT_135,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_149,
+  Quantity = r0_0.RT_136,
   RewardViewId = 90803,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90804] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_148,
-  Quantity = r0_0.RT_136,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_149,
+  Quantity = r0_0.RT_137,
   RewardViewId = 90804,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90805] = {
-  DropType = r0_0.RT_83,
+  DropType = r0_0.RT_84,
   Id = {
     [1] = 2007,
     [2] = 2008,
     [3] = 2009,
   },
-  Quantity = r0_0.RT_137,
+  Quantity = r0_0.RT_138,
   RewardViewId = 90805,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[90806] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_149,
-  Quantity = r0_0.RT_139,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_150,
+  Quantity = r0_0.RT_140,
   RewardViewId = 90806,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[90807] = {
-  DropType = r0_0.RT_12,
-  Id = r0_0.RT_149,
-  Quantity = r0_0.RT_140,
+  DropType = r0_0.RT_13,
+  Id = r0_0.RT_150,
+  Quantity = r0_0.RT_141,
   RewardViewId = 90807,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r5_0 = 91001
 r6_0 = {
-  DropType = r0_0.RT_150,
-  Id = r0_0.RT_76,
+  DropType = r0_0.RT_151,
+  Id = r0_0.RT_77,
 }
 r6_0.Quantity = {
   [1] = r0_0.RT_4,
   [2] = {
     28000
   },
-  [3] = r0_0.RT_99,
-  [4] = r0_0.RT_26,
+  [3] = r0_0.RT_100,
+  [4] = r0_0.RT_27,
 }
 r6_0.RewardViewId = 91001
-r6_0.Type = r0_0.RT_77
+r6_0.Type = r0_0.RT_78
 r4_0[r5_0] = r6_0
 r5_0 = 91002
 r6_0 = {
-  DropType = r0_0.RT_150,
-  Id = r0_0.RT_76,
+  DropType = r0_0.RT_151,
+  Id = r0_0.RT_77,
 }
 r6_0.Quantity = {
   [1] = r0_0.RT_4,
@@ -3627,15 +3643,15 @@ r6_0.Quantity = {
   [3] = {
     720
   },
-  [4] = r0_0.RT_31,
+  [4] = r0_0.RT_32,
 }
 r6_0.RewardViewId = 91002
-r6_0.Type = r0_0.RT_77
+r6_0.Type = r0_0.RT_78
 r4_0[r5_0] = r6_0
 r5_0 = 91003
 r6_0 = {
-  DropType = r0_0.RT_150,
-  Id = r0_0.RT_76,
+  DropType = r0_0.RT_151,
+  Id = r0_0.RT_77,
 }
 r6_0.Quantity = {
   [1] = r0_0.RT_4,
@@ -3645,54 +3661,54 @@ r6_0.Quantity = {
   [3] = {
     960
   },
-  [4] = r0_0.RT_41,
+  [4] = r0_0.RT_42,
 }
 r6_0.RewardViewId = 91003
-r6_0.Type = r0_0.RT_77
+r6_0.Type = r0_0.RT_78
 r4_0[r5_0] = r6_0
 r5_0 = 91004
 r6_0 = {
-  DropType = r0_0.RT_150,
-  Id = r0_0.RT_76,
+  DropType = r0_0.RT_151,
+  Id = r0_0.RT_77,
 }
 r6_0.Quantity = {
-  [1] = r0_0.RT_17,
+  [1] = r0_0.RT_18,
   [2] = {
     70000
   },
   [3] = {
     1200
   },
-  [4] = r0_0.RT_61,
+  [4] = r0_0.RT_62,
 }
 r6_0.RewardViewId = 91004
-r6_0.Type = r0_0.RT_77
+r6_0.Type = r0_0.RT_78
 r4_0[r5_0] = r6_0
 r5_0 = 91005
 r6_0 = {
-  DropType = r0_0.RT_150,
-  Id = r0_0.RT_76,
+  DropType = r0_0.RT_151,
+  Id = r0_0.RT_77,
 }
 r6_0.Quantity = {
-  [1] = r0_0.RT_17,
+  [1] = r0_0.RT_18,
   [2] = {
     84000
   },
   [3] = {
     1440
   },
-  [4] = r0_0.RT_36,
+  [4] = r0_0.RT_37,
 }
 r6_0.RewardViewId = 91005
-r6_0.Type = r0_0.RT_77
+r6_0.Type = r0_0.RT_78
 r4_0[r5_0] = r6_0
 r5_0 = 91006
 r6_0 = {
-  DropType = r0_0.RT_150,
-  Id = r0_0.RT_76,
+  DropType = r0_0.RT_151,
+  Id = r0_0.RT_77,
 }
 r6_0.Quantity = {
-  [1] = r0_0.RT_23,
+  [1] = r0_0.RT_24,
   [2] = {
     98000
   },
@@ -3704,12 +3720,12 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 91006
-r6_0.Type = r0_0.RT_77
+r6_0.Type = r0_0.RT_78
 r4_0[r5_0] = r6_0
 r5_0 = 91007
 r6_0 = {
-  DropType = r0_0.RT_150,
-  Id = r0_0.RT_76,
+  DropType = r0_0.RT_151,
+  Id = r0_0.RT_77,
 }
 r6_0.Quantity = {
   [1] = r0_0.RT_3,
@@ -3719,193 +3735,193 @@ r6_0.Quantity = {
   [3] = {
     1920
   },
-  [4] = r0_0.RT_50,
+  [4] = r0_0.RT_51,
 }
 r6_0.RewardViewId = 91007
-r6_0.Type = r0_0.RT_77
+r6_0.Type = r0_0.RT_78
 r4_0[r5_0] = r6_0
 r4_0[91101] = {
-  DropType = r0_0.RT_151,
-  Id = r0_0.RT_152,
+  DropType = r0_0.RT_152,
+  Id = r0_0.RT_153,
   RewardViewId = 91101,
-  Type = r0_0.RT_153,
+  Type = r0_0.RT_154,
 }
 r4_0[91102] = {
-  DropType = r0_0.RT_151,
-  Id = r0_0.RT_152,
+  DropType = r0_0.RT_152,
+  Id = r0_0.RT_153,
   RewardViewId = 91102,
-  Type = r0_0.RT_153,
+  Type = r0_0.RT_154,
 }
 r4_0[91103] = {
-  DropType = r0_0.RT_151,
-  Id = r0_0.RT_152,
+  DropType = r0_0.RT_152,
+  Id = r0_0.RT_153,
   RewardViewId = 91103,
-  Type = r0_0.RT_153,
+  Type = r0_0.RT_154,
 }
 r4_0[91104] = {
-  DropType = r0_0.RT_151,
-  Id = r0_0.RT_152,
+  DropType = r0_0.RT_152,
+  Id = r0_0.RT_153,
   RewardViewId = 91104,
-  Type = r0_0.RT_153,
+  Type = r0_0.RT_154,
 }
 r4_0[91105] = {
-  DropType = r0_0.RT_151,
-  Id = r0_0.RT_152,
+  DropType = r0_0.RT_152,
+  Id = r0_0.RT_153,
   RewardViewId = 91105,
-  Type = r0_0.RT_153,
+  Type = r0_0.RT_154,
 }
 r4_0[91106] = {
-  DropType = r0_0.RT_151,
-  Id = r0_0.RT_152,
+  DropType = r0_0.RT_152,
+  Id = r0_0.RT_153,
   RewardViewId = 91106,
-  Type = r0_0.RT_153,
+  Type = r0_0.RT_154,
 }
 r4_0[91107] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_154,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_155,
   RewardViewId = 91107,
-  Type = r0_0.RT_106,
+  Type = r0_0.RT_107,
 }
 r4_0[91108] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_154,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_155,
   RewardViewId = 91108,
-  Type = r0_0.RT_106,
+  Type = r0_0.RT_107,
 }
 r4_0[91109] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_154,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_155,
   RewardViewId = 91109,
-  Type = r0_0.RT_106,
+  Type = r0_0.RT_107,
 }
 r4_0[91110] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_154,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_155,
   RewardViewId = 91110,
-  Type = r0_0.RT_106,
+  Type = r0_0.RT_107,
 }
 r4_0[91111] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_154,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_155,
   RewardViewId = 91111,
-  Type = r0_0.RT_106,
+  Type = r0_0.RT_107,
 }
 r4_0[91112] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_87,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_88,
   RewardViewId = 91112,
-  Type = r0_0.RT_88,
+  Type = r0_0.RT_89,
 }
 r4_0[91113] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_87,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_88,
   RewardViewId = 91113,
-  Type = r0_0.RT_88,
+  Type = r0_0.RT_89,
 }
 r4_0[91114] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_87,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_88,
   RewardViewId = 91114,
-  Type = r0_0.RT_88,
+  Type = r0_0.RT_89,
 }
 r4_0[91115] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_87,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_88,
   RewardViewId = 91115,
-  Type = r0_0.RT_88,
+  Type = r0_0.RT_89,
 }
 r4_0[91116] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_87,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_88,
   RewardViewId = 91116,
-  Type = r0_0.RT_88,
+  Type = r0_0.RT_89,
 }
 r4_0[91117] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_87,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_88,
   RewardViewId = 91117,
-  Type = r0_0.RT_88,
+  Type = r0_0.RT_89,
 }
 r4_0[91118] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_69,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_70,
   RewardViewId = 91118,
-  Type = r0_0.RT_70,
+  Type = r0_0.RT_71,
 }
 r4_0[91119] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_69,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_70,
   RewardViewId = 91119,
-  Type = r0_0.RT_70,
+  Type = r0_0.RT_71,
 }
 r4_0[91120] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_69,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_70,
   RewardViewId = 91120,
-  Type = r0_0.RT_70,
+  Type = r0_0.RT_71,
 }
 r4_0[91121] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_69,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_70,
   RewardViewId = 91121,
-  Type = r0_0.RT_70,
+  Type = r0_0.RT_71,
 }
 r4_0[91122] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_69,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_70,
   RewardViewId = 91122,
-  Type = r0_0.RT_70,
+  Type = r0_0.RT_71,
 }
 r4_0[91123] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_69,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_70,
   RewardViewId = 91123,
-  Type = r0_0.RT_70,
+  Type = r0_0.RT_71,
 }
 r4_0[91124] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_69,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_70,
   RewardViewId = 91124,
-  Type = r0_0.RT_70,
+  Type = r0_0.RT_71,
 }
 r4_0[91125] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_89,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_90,
   RewardViewId = 91125,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r4_0[91126] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_91,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_92,
   RewardViewId = 91126,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r4_0[91127] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_93,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_94,
   RewardViewId = 91127,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r4_0[91128] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_92,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_93,
   RewardViewId = 91128,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r4_0[91129] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_94,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_95,
   RewardViewId = 91129,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r4_0[91130] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_95,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_96,
   RewardViewId = 91130,
-  Type = r0_0.RT_90,
+  Type = r0_0.RT_91,
 }
 r4_0[91131] = {
-  DropType = r0_0.RT_68,
+  DropType = r0_0.RT_69,
   Id = {
     [1] = 41322,
     [2] = 41332,
@@ -3924,107 +3940,107 @@ r4_0[91131] = {
     [15] = 43006,
   },
   RewardViewId = 91131,
-  Type = r0_0.RT_96,
+  Type = r0_0.RT_97,
 }
 r4_0[91132] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_155,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_156,
   RewardViewId = 91132,
-  Type = r0_0.RT_96,
+  Type = r0_0.RT_97,
 }
 r4_0[91133] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_156,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_157,
   RewardViewId = 91133,
-  Type = r0_0.RT_96,
+  Type = r0_0.RT_97,
 }
 r4_0[91134] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_157,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_158,
   RewardViewId = 91134,
-  Type = r0_0.RT_96,
+  Type = r0_0.RT_97,
 }
 r4_0[91135] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_158,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_159,
   RewardViewId = 91135,
-  Type = r0_0.RT_96,
+  Type = r0_0.RT_97,
 }
 r4_0[91136] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_159,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_160,
   RewardViewId = 91136,
-  Type = r0_0.RT_96,
+  Type = r0_0.RT_97,
 }
 r4_0[91137] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_71,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_72,
   RewardViewId = 91137,
-  Type = r0_0.RT_72,
+  Type = r0_0.RT_73,
 }
 r4_0[91138] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_71,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_72,
   RewardViewId = 91138,
-  Type = r0_0.RT_72,
+  Type = r0_0.RT_73,
 }
 r4_0[91139] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_71,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_72,
   RewardViewId = 91139,
-  Type = r0_0.RT_72,
+  Type = r0_0.RT_73,
 }
 r4_0[91140] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_71,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_72,
   RewardViewId = 91140,
-  Type = r0_0.RT_72,
+  Type = r0_0.RT_73,
 }
 r4_0[91141] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_71,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_72,
   RewardViewId = 91141,
-  Type = r0_0.RT_72,
+  Type = r0_0.RT_73,
 }
 r4_0[91142] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_71,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_72,
   RewardViewId = 91142,
-  Type = r0_0.RT_72,
+  Type = r0_0.RT_73,
 }
 r4_0[91143] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_71,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_72,
   RewardViewId = 91143,
-  Type = r0_0.RT_72,
+  Type = r0_0.RT_73,
 }
 r4_0[91144] = {
-  Id = r0_0.RT_155,
+  Id = r0_0.RT_156,
   RewardViewId = 91144,
-  Type = r0_0.RT_96,
+  Type = r0_0.RT_97,
 }
 r4_0[91145] = {
-  Id = r0_0.RT_156,
+  Id = r0_0.RT_157,
   RewardViewId = 91145,
-  Type = r0_0.RT_96,
+  Type = r0_0.RT_97,
 }
 r4_0[91146] = {
-  Id = r0_0.RT_157,
+  Id = r0_0.RT_158,
   RewardViewId = 91146,
-  Type = r0_0.RT_96,
+  Type = r0_0.RT_97,
 }
 r4_0[91147] = {
-  Id = r0_0.RT_158,
+  Id = r0_0.RT_159,
   RewardViewId = 91147,
-  Type = r0_0.RT_96,
+  Type = r0_0.RT_97,
 }
 r4_0[91148] = {
-  Id = r0_0.RT_159,
+  Id = r0_0.RT_160,
   RewardViewId = 91148,
-  Type = r0_0.RT_96,
+  Type = r0_0.RT_97,
 }
 r4_0[91201] = {
-  DropType = r0_0.RT_160,
+  DropType = r0_0.RT_161,
   Id = {
     [1] = 41711,
     [2] = 41712,
@@ -4045,22 +4061,22 @@ r4_0[91201] = {
     [17] = 43006,
   },
   RewardViewId = 91201,
-  Type = r0_0.RT_161,
+  Type = r0_0.RT_162,
 }
 r4_0[91202] = {
-  DropType = r0_0.RT_160,
-  Id = r0_0.RT_162,
+  DropType = r0_0.RT_161,
+  Id = r0_0.RT_163,
   RewardViewId = 91202,
-  Type = r0_0.RT_161,
+  Type = r0_0.RT_162,
 }
 r4_0[91203] = {
-  DropType = r0_0.RT_160,
-  Id = r0_0.RT_162,
+  DropType = r0_0.RT_161,
+  Id = r0_0.RT_163,
   RewardViewId = 91203,
-  Type = r0_0.RT_161,
+  Type = r0_0.RT_162,
 }
 r4_0[91204] = {
-  DropType = r0_0.RT_160,
+  DropType = r0_0.RT_161,
   Id = {
     [1] = 41731,
     [2] = 41732,
@@ -4081,10 +4097,10 @@ r4_0[91204] = {
     [17] = 43006,
   },
   RewardViewId = 91204,
-  Type = r0_0.RT_161,
+  Type = r0_0.RT_162,
 }
 r4_0[91205] = {
-  DropType = r0_0.RT_160,
+  DropType = r0_0.RT_161,
   Id = {
     [1] = 41741,
     [2] = 41742,
@@ -4105,73 +4121,73 @@ r4_0[91205] = {
     [17] = 43006,
   },
   RewardViewId = 91205,
-  Type = r0_0.RT_161,
+  Type = r0_0.RT_162,
 }
 r4_0[91206] = {
-  DropType = r0_0.RT_160,
-  Id = r0_0.RT_163,
+  DropType = r0_0.RT_161,
+  Id = r0_0.RT_164,
   RewardViewId = 91206,
-  Type = r0_0.RT_161,
+  Type = r0_0.RT_162,
 }
 r4_0[91207] = {
-  DropType = r0_0.RT_160,
-  Id = r0_0.RT_163,
+  DropType = r0_0.RT_161,
+  Id = r0_0.RT_164,
   RewardViewId = 91207,
-  Type = r0_0.RT_161,
+  Type = r0_0.RT_162,
 }
 r4_0[91208] = {
-  DropType = r0_0.RT_160,
-  Id = r0_0.RT_164,
+  DropType = r0_0.RT_161,
+  Id = r0_0.RT_165,
   RewardViewId = 91208,
-  Type = r0_0.RT_161,
+  Type = r0_0.RT_162,
 }
 r4_0[91209] = {
-  DropType = r0_0.RT_160,
-  Id = r0_0.RT_164,
+  DropType = r0_0.RT_161,
+  Id = r0_0.RT_165,
   RewardViewId = 91209,
-  Type = r0_0.RT_161,
+  Type = r0_0.RT_162,
 }
 r4_0[92001] = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_52,
-  Quantity = r0_0.RT_40,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_53,
+  Quantity = r0_0.RT_41,
   RewardViewId = 92001,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[92002] = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_52,
-  Quantity = r0_0.RT_40,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_53,
+  Quantity = r0_0.RT_41,
   RewardViewId = 92002,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[92003] = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_52,
-  Quantity = r0_0.RT_40,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_53,
+  Quantity = r0_0.RT_41,
   RewardViewId = 92003,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[92004] = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_53,
-  Quantity = r0_0.RT_54,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_54,
+  Quantity = r0_0.RT_55,
   RewardViewId = 92004,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[92005] = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_53,
-  Quantity = r0_0.RT_55,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_54,
+  Quantity = r0_0.RT_56,
   RewardViewId = 92005,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[92006] = {
-  DropType = r0_0.RT_78,
-  Id = r0_0.RT_53,
-  Quantity = r0_0.RT_57,
+  DropType = r0_0.RT_79,
+  Id = r0_0.RT_54,
+  Quantity = r0_0.RT_58,
   RewardViewId = 92006,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[100001] = {
   Id = {
@@ -4247,7 +4263,7 @@ r4_0[100004] = {
   },
   Quantity = r0_0.RT_5,
   RewardViewId = 100004,
-  Type = r0_0.RT_10,
+  Type = r0_0.RT_11,
 }
 r4_0[100005] = {
   Id = {
@@ -4268,8 +4284,8 @@ r4_0[103012] = {
     [4] = 211,
   },
   Quantity = {
-    [1] = r0_0.RT_46,
-    [2] = r0_0.RT_50,
+    [1] = r0_0.RT_47,
+    [2] = r0_0.RT_51,
   },
   RewardViewId = 103012,
   Type = {
@@ -4286,7 +4302,7 @@ r4_0[131001] = {
     [3] = 12006,
   },
   RewardViewId = 131001,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[131002] = {
   Id = {
@@ -4295,7 +4311,7 @@ r4_0[131002] = {
     [3] = 12003,
   },
   RewardViewId = 131002,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[131003] = {
   Id = {
@@ -4304,7 +4320,7 @@ r4_0[131003] = {
     [3] = 13006,
   },
   RewardViewId = 131003,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[131004] = {
   Id = {
@@ -4313,7 +4329,7 @@ r4_0[131004] = {
     [3] = 13003,
   },
   RewardViewId = 131004,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[132001] = {
   Id = {
@@ -4322,7 +4338,7 @@ r4_0[132001] = {
     [3] = 23007,
   },
   RewardViewId = 132001,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[132002] = {
   Id = {
@@ -4331,7 +4347,7 @@ r4_0[132002] = {
     [3] = 23008,
   },
   RewardViewId = 132002,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[133001] = {
   Id = {
@@ -4340,7 +4356,7 @@ r4_0[133001] = {
     [3] = 33004,
   },
   RewardViewId = 133001,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[133002] = {
   Id = {
@@ -4349,7 +4365,7 @@ r4_0[133002] = {
     [3] = 33005,
   },
   RewardViewId = 133002,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[133003] = {
   Id = {
@@ -4358,7 +4374,7 @@ r4_0[133003] = {
     [3] = 33004,
   },
   RewardViewId = 133003,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[133004] = {
   Id = {
@@ -4367,57 +4383,57 @@ r4_0[133004] = {
     [3] = 33005,
   },
   RewardViewId = 133004,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[134001] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 31301,
     [2] = 32301,
     [3] = 33322,
   },
   RewardViewId = 134001,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[134002] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 31201,
     [2] = 32301,
     [3] = 33321,
   },
   RewardViewId = 134002,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[134003] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 31202,
     [2] = 33311,
     [3] = 33322,
   },
   RewardViewId = 134003,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[134004] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 31203,
     [2] = 32302,
     [3] = 33332,
   },
   RewardViewId = 134004,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[134005] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 31204,
     [2] = 33331,
     [3] = 33411,
   },
   RewardViewId = 134005,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[135001] = {
   Id = {
@@ -4426,7 +4442,7 @@ r4_0[135001] = {
     [3] = 43123,
   },
   RewardViewId = 135001,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[135002] = {
   Id = {
@@ -4435,7 +4451,7 @@ r4_0[135002] = {
     [3] = 43123,
   },
   RewardViewId = 135002,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[135003] = {
   Id = {
@@ -4444,7 +4460,7 @@ r4_0[135003] = {
     [3] = 43123,
   },
   RewardViewId = 135003,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[135004] = {
   Id = {
@@ -4453,300 +4469,300 @@ r4_0[135004] = {
     [3] = 43123,
   },
   RewardViewId = 135004,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[135501] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41213,
     [2] = 42401,
     [3] = 43401,
   },
   RewardViewId = 135501,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[135502] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41214,
     [2] = 42403,
     [3] = 43402,
   },
   RewardViewId = 135502,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[135503] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 43601,
     [2] = 42512,
     [3] = 43512,
   },
   RewardViewId = 135503,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[135504] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 43602,
     [2] = 42401,
     [3] = 43401,
   },
   RewardViewId = 135504,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[135505] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 43603,
     [2] = 42403,
     [3] = 43402,
   },
   RewardViewId = 135505,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[135506] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 43604,
     [2] = 42411,
     [3] = 43403,
   },
   RewardViewId = 135506,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[136001] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41311,
     [2] = 42411,
     [3] = 43403,
   },
   RewardViewId = 136001,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[136002] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41312,
     [2] = 42412,
     [3] = 43404,
   },
   RewardViewId = 136002,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[136003] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41313,
     [2] = 42413,
     [3] = 43405,
   },
   RewardViewId = 136003,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[136004] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41314,
     [2] = 42421,
     [3] = 42403,
   },
   RewardViewId = 136004,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[136005] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41315,
     [2] = 42504,
     [3] = 43504,
   },
   RewardViewId = 136005,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[136006] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41316,
     [2] = 42511,
     [3] = 43511,
   },
   RewardViewId = 136006,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[136007] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41755,
     [2] = 42411,
     [3] = 43403,
   },
   RewardViewId = 136007,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[136008] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41756,
     [2] = 42413,
     [3] = 43405,
   },
   RewardViewId = 136008,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[136501] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41911,
     [2] = 41802,
     [3] = 41803,
   },
   RewardViewId = 136501,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[136502] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41921,
     [2] = 41804,
     [3] = 41806,
   },
   RewardViewId = 136502,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[136503] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41922,
     [2] = 41811,
     [3] = 41807,
   },
   RewardViewId = 136503,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[136504] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41931,
     [2] = 41809,
     [3] = 42501,
   },
   RewardViewId = 136504,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[136505] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41941,
     [2] = 41805,
     [3] = 42502,
   },
   RewardViewId = 136505,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[136506] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41951,
     [2] = 41812,
     [3] = 42503,
   },
   RewardViewId = 136506,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[136507] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41952,
     [2] = 41808,
     [3] = 43501,
   },
   RewardViewId = 136507,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[136508] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41962,
     [2] = 41810,
     [3] = 43502,
   },
   RewardViewId = 136508,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[136509] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 41961,
     [2] = 41801,
     [3] = 43503,
   },
   RewardViewId = 136509,
-  Type = r0_0.RT_64,
+  Type = r0_0.RT_65,
 }
 r4_0[137001] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 151311,
     [2] = 151801,
     [3] = 151807,
   },
   RewardViewId = 137001,
-  Type = r0_0.RT_66,
+  Type = r0_0.RT_67,
 }
 r4_0[137002] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 151312,
     [2] = 151802,
     [3] = 151808,
   },
   RewardViewId = 137002,
-  Type = r0_0.RT_66,
+  Type = r0_0.RT_67,
 }
 r4_0[137003] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 151313,
     [2] = 151803,
     [3] = 151809,
   },
   RewardViewId = 137003,
-  Type = r0_0.RT_66,
+  Type = r0_0.RT_67,
 }
 r4_0[137004] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 151314,
     [2] = 151804,
     [3] = 151810,
   },
   RewardViewId = 137004,
-  Type = r0_0.RT_66,
+  Type = r0_0.RT_67,
 }
 r4_0[137005] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 151315,
     [2] = 151805,
     [3] = 151811,
   },
   RewardViewId = 137005,
-  Type = r0_0.RT_66,
+  Type = r0_0.RT_67,
 }
 r4_0[137006] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 151316,
     [2] = 151806,
     [3] = 151812,
   },
   RewardViewId = 137006,
-  Type = r0_0.RT_66,
+  Type = r0_0.RT_67,
 }
 r4_0[138001] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 151301,
     [2] = 151002,
@@ -4754,10 +4770,10 @@ r4_0[138001] = {
     [4] = 151007,
   },
   RewardViewId = 138001,
-  Type = r0_0.RT_67,
+  Type = r0_0.RT_68,
 }
 r4_0[138002] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 156151,
     [2] = 151002,
@@ -4765,10 +4781,10 @@ r4_0[138002] = {
     [4] = 151007,
   },
   RewardViewId = 138002,
-  Type = r0_0.RT_67,
+  Type = r0_0.RT_68,
 }
 r4_0[138003] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 156153,
     [2] = 151002,
@@ -4776,10 +4792,10 @@ r4_0[138003] = {
     [4] = 151007,
   },
   RewardViewId = 138003,
-  Type = r0_0.RT_67,
+  Type = r0_0.RT_68,
 }
 r4_0[138004] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 156152,
     [2] = 151002,
@@ -4787,10 +4803,10 @@ r4_0[138004] = {
     [4] = 151007,
   },
   RewardViewId = 138004,
-  Type = r0_0.RT_67,
+  Type = r0_0.RT_68,
 }
 r4_0[138005] = {
-  DropType = r0_0.RT_65,
+  DropType = r0_0.RT_66,
   Id = {
     [1] = 156154,
     [2] = 151002,
@@ -4798,57 +4814,57 @@ r4_0[138005] = {
     [4] = 151007,
   },
   RewardViewId = 138005,
-  Type = r0_0.RT_67,
+  Type = r0_0.RT_68,
 }
 r4_0[191124] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_69,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_70,
   RewardViewId = 191124,
-  Type = r0_0.RT_70,
+  Type = r0_0.RT_71,
 }
 r4_0[191125] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_69,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_70,
   RewardViewId = 191125,
-  Type = r0_0.RT_70,
+  Type = r0_0.RT_71,
 }
 r4_0[191144] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_71,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_72,
   RewardViewId = 191144,
-  Type = r0_0.RT_72,
+  Type = r0_0.RT_73,
 }
 r4_0[191145] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_71,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_72,
   RewardViewId = 191145,
-  Type = r0_0.RT_72,
+  Type = r0_0.RT_73,
 }
 r4_0[191146] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_71,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_72,
   RewardViewId = 191146,
-  Type = r0_0.RT_72,
+  Type = r0_0.RT_73,
 }
 r4_0[191147] = {
-  DropType = r0_0.RT_68,
-  Id = r0_0.RT_71,
+  DropType = r0_0.RT_69,
+  Id = r0_0.RT_72,
   RewardViewId = 191147,
-  Type = r0_0.RT_72,
+  Type = r0_0.RT_73,
 }
 r4_0[300303] = {
-  DropType = r0_0.RT_58,
-  Id = r0_0.RT_52,
-  Quantity = r0_0.RT_73,
+  DropType = r0_0.RT_59,
+  Id = r0_0.RT_53,
+  Quantity = r0_0.RT_74,
   RewardViewId = 300303,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[300304] = {
-  DropType = r0_0.RT_58,
-  Id = r0_0.RT_53,
-  Quantity = r0_0.RT_73,
+  DropType = r0_0.RT_59,
+  Id = r0_0.RT_54,
+  Quantity = r0_0.RT_74,
   RewardViewId = 300304,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r5_0 = 1004001
 r6_0 = {
@@ -4865,12 +4881,12 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 1004001
-r6_0.Type = r0_0.RT_11
+r6_0.Type = r0_0.RT_12
 r4_0[r5_0] = r6_0
 r4_0[1020011] = {
-  Id = r0_0.RT_33,
+  Id = r0_0.RT_34,
   RewardViewId = 1020011,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[1030011] = {
   Id = {
@@ -4881,7 +4897,7 @@ r4_0[1030011] = {
     [5] = 102,
   },
   RewardViewId = 1030011,
-  Type = r0_0.RT_21,
+  Type = r0_0.RT_22,
 }
 r4_0[1030021] = {
   Id = {
@@ -4894,9 +4910,9 @@ r4_0[1030021] = {
     [7] = 102,
     [8] = 101,
   },
-  Quantity = r0_0.RT_38,
+  Quantity = r0_0.RT_39,
   RewardViewId = 1030021,
-  Type = r0_0.RT_39,
+  Type = r0_0.RT_40,
 }
 r4_0[1030022] = {
   Id = {
@@ -4909,9 +4925,9 @@ r4_0[1030022] = {
     [7] = 102,
     [8] = 101,
   },
-  Quantity = r0_0.RT_38,
+  Quantity = r0_0.RT_39,
   RewardViewId = 1030022,
-  Type = r0_0.RT_39,
+  Type = r0_0.RT_40,
 }
 r4_0[1030023] = {
   Id = {
@@ -4924,9 +4940,9 @@ r4_0[1030023] = {
     [7] = 102,
     [8] = 101,
   },
-  Quantity = r0_0.RT_38,
+  Quantity = r0_0.RT_39,
   RewardViewId = 1030023,
-  Type = r0_0.RT_39,
+  Type = r0_0.RT_40,
 }
 r4_0[1030024] = {
   Id = {
@@ -4939,9 +4955,9 @@ r4_0[1030024] = {
     [7] = 102,
     [8] = 101,
   },
-  Quantity = r0_0.RT_38,
+  Quantity = r0_0.RT_39,
   RewardViewId = 1030024,
-  Type = r0_0.RT_39,
+  Type = r0_0.RT_40,
 }
 r4_0[1030051] = {
   Id = {
@@ -4952,27 +4968,27 @@ r4_0[1030051] = {
     [5] = 101,
   },
   Quantity = {
-    [1] = r0_0.RT_37,
+    [1] = r0_0.RT_38,
     [2] = r0_0.RT_2,
   },
   RewardViewId = 1030051,
-  Type = r0_0.RT_21,
+  Type = r0_0.RT_22,
 }
 r4_0[1030052] = {
   Id = {
     [1] = 10100,
   },
-  Quantity = r0_0.RT_40,
+  Quantity = r0_0.RT_41,
   RewardViewId = 1030052,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[1030061] = {
-  Id = r0_0.RT_33,
+  Id = r0_0.RT_34,
   Quantity = {
-    [1] = r0_0.RT_41,
+    [1] = r0_0.RT_42,
   },
   RewardViewId = 1030061,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[1030062] = {
   Id = {
@@ -4981,10 +4997,10 @@ r4_0[1030062] = {
     [3] = 102,
   },
   Quantity = {
-    [1] = r0_0.RT_42,
+    [1] = r0_0.RT_43,
   },
   RewardViewId = 1030062,
-  Type = r0_0.RT_43,
+  Type = r0_0.RT_44,
 }
 r4_0[1030071] = {
   Id = {
@@ -4997,21 +5013,21 @@ r4_0[1030071] = {
     [7] = 101,
   },
   Quantity = {
-    [1] = r0_0.RT_44,
+    [1] = r0_0.RT_45,
     [2] = r0_0.RT_2,
     [3] = r0_0.RT_2,
     [4] = r0_0.RT_2,
   },
   RewardViewId = 1030071,
-  Type = r0_0.RT_24,
+  Type = r0_0.RT_25,
 }
 r4_0[1030072] = {
-  Id = r0_0.RT_45,
+  Id = r0_0.RT_46,
   Quantity = {
-    [1] = r0_0.RT_46,
-    [2] = r0_0.RT_17,
-    [3] = r0_0.RT_17,
-    [4] = r0_0.RT_42,
+    [1] = r0_0.RT_47,
+    [2] = r0_0.RT_18,
+    [3] = r0_0.RT_18,
+    [4] = r0_0.RT_43,
   },
   RewardViewId = 1030072,
   Type = r0_0.RT_9,
@@ -5023,7 +5039,7 @@ r4_0[1030073] = {
     [3] = 2013,
     [4] = 102,
   },
-  Quantity = r0_0.RT_47,
+  Quantity = r0_0.RT_48,
   RewardViewId = 1030073,
   Type = r0_0.RT_9,
 }
@@ -5034,17 +5050,17 @@ r4_0[1030074] = {
     [3] = 2013,
     [4] = 102,
   },
-  Quantity = r0_0.RT_47,
+  Quantity = r0_0.RT_48,
   RewardViewId = 1030074,
   Type = r0_0.RT_9,
 }
 r4_0[1030075] = {
-  Id = r0_0.RT_45,
+  Id = r0_0.RT_46,
   Quantity = {
-    [1] = r0_0.RT_48,
-    [2] = r0_0.RT_17,
-    [3] = r0_0.RT_17,
-    [4] = r0_0.RT_42,
+    [1] = r0_0.RT_49,
+    [2] = r0_0.RT_18,
+    [3] = r0_0.RT_18,
+    [4] = r0_0.RT_43,
   },
   RewardViewId = 1030075,
   Type = r0_0.RT_9,
@@ -5056,13 +5072,13 @@ r4_0[1030076] = {
     [3] = 2013,
     [4] = 102,
   },
-  Quantity = r0_0.RT_47,
+  Quantity = r0_0.RT_48,
   RewardViewId = 1030076,
   Type = r0_0.RT_9,
 }
 r5_0 = 1030077
 r6_0 = {
-  Id = r0_0.RT_49,
+  Id = r0_0.RT_50,
 }
 r6_0.Quantity = {
   [1] = {
@@ -5092,7 +5108,7 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 1030078
-r6_0.Type = r0_0.RT_28
+r6_0.Type = r0_0.RT_29
 r4_0[r5_0] = r6_0
 r5_0 = 1030079
 r6_0 = {
@@ -5110,7 +5126,7 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 1030079
-r6_0.Type = r0_0.RT_21
+r6_0.Type = r0_0.RT_22
 r4_0[r5_0] = r6_0
 r5_0 = 1030080
 r6_0 = {
@@ -5124,15 +5140,15 @@ r6_0 = {
 }
 r6_0.Quantity = {
   [1] = r0_0.RT_2,
-  [2] = r0_0.RT_50,
+  [2] = r0_0.RT_51,
   [3] = {
     100000
   },
-  [4] = r0_0.RT_44,
-  [5] = r0_0.RT_50,
+  [4] = r0_0.RT_45,
+  [5] = r0_0.RT_51,
 }
 r6_0.RewardViewId = 1030080
-r6_0.Type = r0_0.RT_21
+r6_0.Type = r0_0.RT_22
 r4_0[r5_0] = r6_0
 r5_0 = 1030081
 r6_0 = {
@@ -5146,17 +5162,17 @@ r6_0 = {
 }
 r6_0.Quantity = {
   [1] = r0_0.RT_2,
-  [2] = r0_0.RT_46,
+  [2] = r0_0.RT_47,
   [3] = {
     150000
   },
   [4] = {
     800
   },
-  [5] = r0_0.RT_46,
+  [5] = r0_0.RT_47,
 }
 r6_0.RewardViewId = 1030081
-r6_0.Type = r0_0.RT_21
+r6_0.Type = r0_0.RT_22
 r4_0[r5_0] = r6_0
 r5_0 = 1030082
 r6_0 = {
@@ -5170,15 +5186,15 @@ r6_0 = {
 }
 r6_0.Quantity = {
   [1] = r0_0.RT_2,
-  [2] = r0_0.RT_51,
+  [2] = r0_0.RT_52,
   [3] = {
     200000
   },
-  [4] = r0_0.RT_30,
-  [5] = r0_0.RT_48,
+  [4] = r0_0.RT_31,
+  [5] = r0_0.RT_49,
 }
 r6_0.RewardViewId = 1030082
-r6_0.Type = r0_0.RT_21
+r6_0.Type = r0_0.RT_22
 r4_0[r5_0] = r6_0
 r4_0[1030083] = {
   Id = {
@@ -5191,47 +5207,47 @@ r4_0[1030083] = {
   Type = r0_0.RT_9,
 }
 r4_0[1030084] = {
-  Id = r0_0.RT_52,
-  Quantity = r0_0.RT_40,
+  Id = r0_0.RT_53,
+  Quantity = r0_0.RT_41,
   RewardViewId = 1030084,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[1030085] = {
-  Id = r0_0.RT_52,
-  Quantity = r0_0.RT_40,
+  Id = r0_0.RT_53,
+  Quantity = r0_0.RT_41,
   RewardViewId = 1030085,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[1030086] = {
-  Id = r0_0.RT_52,
-  Quantity = r0_0.RT_40,
+  Id = r0_0.RT_53,
+  Quantity = r0_0.RT_41,
   RewardViewId = 1030086,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[1030087] = {
-  Id = r0_0.RT_53,
-  Quantity = r0_0.RT_54,
+  Id = r0_0.RT_54,
+  Quantity = r0_0.RT_55,
   RewardViewId = 1030087,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[1030088] = {
-  Id = r0_0.RT_53,
-  Quantity = r0_0.RT_55,
+  Id = r0_0.RT_54,
+  Quantity = r0_0.RT_56,
   RewardViewId = 1030088,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[1030089] = {
-  Id = r0_0.RT_53,
-  Quantity = r0_0.RT_57,
+  Id = r0_0.RT_54,
+  Quantity = r0_0.RT_58,
   RewardViewId = 1030089,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[1030090] = {
-  DropType = r0_0.RT_58,
-  Id = r0_0.RT_52,
-  Quantity = r0_0.RT_40,
+  DropType = r0_0.RT_59,
+  Id = r0_0.RT_53,
+  Quantity = r0_0.RT_41,
   RewardViewId = 1030090,
-  Type = r0_0.RT_34,
+  Type = r0_0.RT_35,
 }
 r4_0[1030091] = {
   Id = {
@@ -5240,28 +5256,28 @@ r4_0[1030091] = {
   },
   Quantity = {
     [1] = r0_0.RT_2,
-    [2] = r0_0.RT_14,
+    [2] = r0_0.RT_15,
   },
   RewardViewId = 1030091,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[1030092] = {
   Id = {
     [1] = 4030001,
     [2] = 2013,
   },
-  Quantity = r0_0.RT_59,
+  Quantity = r0_0.RT_60,
   RewardViewId = 1030092,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[1030093] = {
   Id = {
     [1] = 4030001,
     [2] = 2009,
   },
-  Quantity = r0_0.RT_59,
+  Quantity = r0_0.RT_60,
   RewardViewId = 1030093,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[1030094] = {
   Id = {
@@ -5273,7 +5289,7 @@ r4_0[1030094] = {
     [2] = r0_0.RT_6,
   },
   RewardViewId = 1030094,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[1030095] = {
   Id = {
@@ -5282,10 +5298,10 @@ r4_0[1030095] = {
   },
   Quantity = {
     [1] = r0_0.RT_2,
-    [2] = r0_0.RT_26,
+    [2] = r0_0.RT_27,
   },
   RewardViewId = 1030095,
-  Type = r0_0.RT_11,
+  Type = r0_0.RT_12,
 }
 r4_0[1030096] = {
   Id = {
@@ -5295,13 +5311,13 @@ r4_0[1030096] = {
     [4] = 10078,
   },
   Quantity = {
-    [1] = r0_0.RT_26,
-    [2] = r0_0.RT_60,
-    [3] = r0_0.RT_61,
+    [1] = r0_0.RT_27,
+    [2] = r0_0.RT_61,
+    [3] = r0_0.RT_62,
     [4] = r0_0.RT_2,
   },
   RewardViewId = 1030096,
-  Type = r0_0.RT_62,
+  Type = r0_0.RT_63,
 }
 r4_0[1030097] = {
   Id = {
@@ -5311,13 +5327,13 @@ r4_0[1030097] = {
     [4] = 10079,
   },
   Quantity = {
-    [1] = r0_0.RT_26,
-    [2] = r0_0.RT_60,
-    [3] = r0_0.RT_30,
+    [1] = r0_0.RT_27,
+    [2] = r0_0.RT_61,
+    [3] = r0_0.RT_31,
     [4] = r0_0.RT_2,
   },
   RewardViewId = 1030097,
-  Type = r0_0.RT_62,
+  Type = r0_0.RT_63,
 }
 r4_0[1030098] = {
   Id = {
@@ -5326,9 +5342,9 @@ r4_0[1030098] = {
     [3] = 2010,
     [4] = 20067,
   },
-  Quantity = r0_0.RT_63,
+  Quantity = r0_0.RT_64,
   RewardViewId = 1030098,
-  Type = r0_0.RT_62,
+  Type = r0_0.RT_63,
 }
 r4_0[1030099] = {
   Id = {
@@ -5337,12 +5353,12 @@ r4_0[1030099] = {
     [3] = 2014,
     [4] = 20068,
   },
-  Quantity = r0_0.RT_63,
+  Quantity = r0_0.RT_64,
   RewardViewId = 1030099,
-  Type = r0_0.RT_62,
+  Type = r0_0.RT_63,
 }
 r4_0[1030100] = {
-  Id = r0_0.RT_49,
+  Id = r0_0.RT_50,
   Quantity = {
     [1] = r0_0.RT_6,
     [2] = r0_0.RT_2,
@@ -5353,70 +5369,112 @@ r4_0[1030100] = {
   Type = r0_0.RT_9,
 }
 r4_0[1101033] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10103,
     [3] = 2050,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1101033,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1101038] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10104,
     [3] = 2052,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1101038,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1101042] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10101,
     [3] = 1005,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1101042,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1111023] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10102,
     [3] = 2051,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1111023,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1111030] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10103,
     [3] = 1008,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1111030,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
 }
 r4_0[1111032] = {
-  DropType = r0_0.RT_16,
+  DropType = r0_0.RT_17,
   Id = {
     [1] = 101,
     [2] = 10103,
     [3] = 2047,
   },
-  Quantity = r0_0.RT_19,
+  Quantity = r0_0.RT_20,
   RewardViewId = 1111032,
-  Type = r0_0.RT_20,
+  Type = r0_0.RT_21,
+}
+r4_0[10000368] = {
+  Id = {
+    [1] = 100,
+    [2] = 125,
+    [3] = 1003,
+    [4] = 201,
+    [5] = 202,
+    [6] = 10100,
+    [7] = 30087,
+    [8] = 41034,
+    [9] = 102,
+    [10] = 208,
+    [11] = 2009,
+    [12] = 2013,
+    [13] = 20013,
+    [14] = 101,
+  },
+  Quantity = r0_0.RT_5,
+  RewardViewId = 10000368,
+  Type = r0_0.RT_10,
+}
+r4_0[10000468] = {
+  Id = {
+    [1] = 100,
+    [2] = 125,
+    [3] = 1003,
+    [4] = 201,
+    [5] = 202,
+    [6] = 10100,
+    [7] = 30088,
+    [8] = 41036,
+    [9] = 102,
+    [10] = 208,
+    [11] = 2009,
+    [12] = 2013,
+    [13] = 20013,
+    [14] = 101,
+  },
+  Quantity = r0_0.RT_5,
+  RewardViewId = 10000468,
+  Type = r0_0.RT_10,
 }
 r4_0[10200101] = {
   Id = {
@@ -5462,10 +5520,10 @@ r6_0.Quantity = {
     7000
   },
   [4] = r0_0.RT_4,
-  [5] = r0_0.RT_17,
+  [5] = r0_0.RT_18,
 }
 r6_0.RewardViewId = 10200102
-r6_0.Type = r0_0.RT_21
+r6_0.Type = r0_0.RT_22
 r4_0[r5_0] = r6_0
 r4_0[10200103] = {
   Id = {
@@ -5480,7 +5538,7 @@ r4_0[10200103] = {
     [2] = r0_0.RT_2,
     [3] = r0_0.RT_2,
     [4] = r0_0.RT_3,
-    [5] = r0_0.RT_17,
+    [5] = r0_0.RT_18,
   },
   RewardViewId = 10200103,
   Type = {
@@ -5504,18 +5562,18 @@ r6_0 = {
   },
 }
 r6_0.Quantity = {
-  [1] = r0_0.RT_22,
+  [1] = r0_0.RT_23,
   [2] = r0_0.RT_2,
   [3] = r0_0.RT_3,
   [4] = {
     8000
   },
-  [5] = r0_0.RT_23,
-  [6] = r0_0.RT_23,
+  [5] = r0_0.RT_24,
+  [6] = r0_0.RT_24,
   [7] = r0_0.RT_3,
 }
 r6_0.RewardViewId = 10200104
-r6_0.Type = r0_0.RT_24
+r6_0.Type = r0_0.RT_25
 r4_0[r5_0] = r6_0
 r5_0 = 10200105
 r6_0 = {
@@ -5530,18 +5588,18 @@ r6_0 = {
   },
 }
 r6_0.Quantity = {
-  [1] = r0_0.RT_25,
+  [1] = r0_0.RT_26,
   [2] = {
     500
   },
   [3] = r0_0.RT_2,
   [4] = r0_0.RT_3,
   [5] = r0_0.RT_3,
-  [6] = r0_0.RT_26,
-  [7] = r0_0.RT_14,
+  [6] = r0_0.RT_27,
+  [7] = r0_0.RT_15,
 }
 r6_0.RewardViewId = 10200105
-r6_0.Type = r0_0.RT_24
+r6_0.Type = r0_0.RT_25
 r4_0[r5_0] = r6_0
 r5_0 = 10200106
 r6_0 = {
@@ -5555,7 +5613,7 @@ r6_0 = {
   },
 }
 r6_0.Quantity = {
-  [1] = r0_0.RT_26,
+  [1] = r0_0.RT_27,
   [2] = r0_0.RT_2,
   [3] = {
     750
@@ -5564,10 +5622,10 @@ r6_0.Quantity = {
   [5] = {
     20000
   },
-  [6] = r0_0.RT_27,
+  [6] = r0_0.RT_28,
 }
 r6_0.RewardViewId = 10200106
-r6_0.Type = r0_0.RT_28
+r6_0.Type = r0_0.RT_29
 r4_0[r5_0] = r6_0
 r5_0 = 10200107
 r6_0 = {
@@ -5582,15 +5640,15 @@ r6_0 = {
   },
 }
 r6_0.Quantity = {
-  [1] = r0_0.RT_29,
-  [2] = r0_0.RT_30,
+  [1] = r0_0.RT_30,
+  [2] = r0_0.RT_31,
   [3] = r0_0.RT_2,
-  [4] = r0_0.RT_31,
+  [4] = r0_0.RT_32,
   [5] = r0_0.RT_2,
   [6] = {
     30000
   },
-  [7] = r0_0.RT_26,
+  [7] = r0_0.RT_27,
 }
 r6_0.RewardViewId = 10200107
 r6_0.Type = {
@@ -5615,9 +5673,9 @@ r6_0 = {
   },
 }
 r6_0.Quantity = {
-  [1] = r0_0.RT_31,
+  [1] = r0_0.RT_32,
   [2] = r0_0.RT_2,
-  [3] = r0_0.RT_32,
+  [3] = r0_0.RT_33,
   [4] = r0_0.RT_3,
   [5] = r0_0.RT_3,
   [6] = {
@@ -5625,7 +5683,7 @@ r6_0.Quantity = {
   },
 }
 r6_0.RewardViewId = 10200108
-r6_0.Type = r0_0.RT_28
+r6_0.Type = r0_0.RT_29
 r4_0[r5_0] = r6_0
 r5_0 = 10200109
 r6_0 = {
@@ -5640,17 +5698,17 @@ r6_0 = {
   },
 }
 r6_0.Quantity = {
-  [1] = r0_0.RT_29,
+  [1] = r0_0.RT_30,
   [2] = r0_0.RT_4,
-  [3] = r0_0.RT_26,
-  [4] = r0_0.RT_32,
-  [5] = r0_0.RT_26,
-  [6] = r0_0.RT_26,
+  [3] = r0_0.RT_27,
+  [4] = r0_0.RT_33,
+  [5] = r0_0.RT_27,
+  [6] = r0_0.RT_27,
   [7] = {
     50000
   },
 }
 r6_0.RewardViewId = 10200109
-r6_0.Type = r0_0.RT_24
+r6_0.Type = r0_0.RT_25
 r4_0[r5_0] = r6_0
 return r2_0(r3_0, r4_0)

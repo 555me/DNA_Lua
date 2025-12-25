@@ -42973,16 +42973,15 @@ r6_0 = {
 r7_0 = "TaskEffects"
 r8_0 = {}
 r8_0[1] = {
-  BaseAttr = "ATK_Ranged",
+  BaseAttr = "ATK_Char",
   DamageTag = {
     "Ray",
     "Prop42002Ray"
   },
   Function = "Damage",
-  Rate = 0.25,
+  Rate = 0.1,
 }
-r8_0[2] = r0_0.RT_453
-r8_0[3] = {
+r8_0[2] = {
   Function = "PlaySE",
   SEId = 2036,
 }

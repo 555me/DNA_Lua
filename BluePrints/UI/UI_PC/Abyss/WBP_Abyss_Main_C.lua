@@ -1,737 +1,751 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\UI_PC\Abyss\WBP_Abyss_Main_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local TimeUtils = require("Utils.TimeUtils")
-local EMCache = require("EMCache.EMCache")
-local WBP_Abyss_Main_C = Class("BluePrints.UI.BP_UIState_C")
-
-function WBP_Abyss_Main_C:Construct()
-  self.CurFocusedLevel = nil
-  self.NodeLevelContent = nil
-  self.LastLevelContent = nil
-  self.CanJump = false
-  self.AbyssMainInitFinished = false
-  self.Super.Construct(self)
+local r0_0 = require("Utils.TimeUtils")
+local r1_0 = require("EMCache.EMCache")
+local r2_0 = Class("BluePrints.UI.BP_UIState_C")
+function r2_0.Construct(r0_1)
+  -- line: [7, 14] id: 1
+  r0_1.CurFocusedLevel = nil
+  r0_1.NodeLevelContent = nil
+  r0_1.LastLevelContent = nil
+  r0_1.CanJump = false
+  r0_1.AbyssMainInitFinished = false
+  r0_1.Super.Construct(r0_1)
 end
-
-function WBP_Abyss_Main_C:Destruct()
-  self:DestructMgr()
-  self:DestructAbyssMain()
-  self.Super.Destruct(self)
+function r2_0.Destruct(r0_2)
+  -- line: [16, 20] id: 2
+  r0_2:DestructMgr()
+  r0_2:DestructAbyssMain()
+  r0_2.Super.Destruct(r0_2)
 end
-
-function WBP_Abyss_Main_C:OnLoaded(...)
-  self.Super.OnLoaded(self, ...)
-  local FirstSelectedAbyssId, DoNotInit, isFromActivity = ...
-  self.IsFromActivity = isFromActivity
-  self:InitMgr()
-  self:InitAbyssMain(FirstSelectedAbyssId, DoNotInit)
+function r2_0.OnLoaded(r0_3, ...)
+  -- line: [22, 28] id: 3
+  local r3_3 = nil	-- notice: implicit variable refs by block#[0]
+  local r2_3 = nil	-- notice: implicit variable refs by block#[0]
+  local r1_3 = nil	-- notice: implicit variable refs by block#[0]
+  r0_3.Super.OnLoaded(r0_3, ...)
+  ... = ... -- error: untaken top expr
+  r0_3.IsFromActivity = r3_3
+  r0_3:InitMgr()
+  r0_3:InitAbyssMain(r1_3, r2_3)
 end
-
-function WBP_Abyss_Main_C:InitAbyssMain(FirstSelectedAbyssId, DoNotInit)
-  if not DoNotInit then
-    self:InitInfo(FirstSelectedAbyssId)
+function r2_0.InitAbyssMain(r0_4, r1_4, r2_4)
+  -- line: [30, 36] id: 4
+  if not r2_4 then
+    r0_4:InitInfo(r1_4)
   end
-  self:OpenSubUI({Idx = "AbyssMain"}, DoNotInit)
-  self:ShowReviewPopUp()
+  r0_4:OpenSubUI({
+    Idx = "AbyssMain",
+  }, r2_4)
+  r0_4:ShowReviewPopUp()
 end
-
-function WBP_Abyss_Main_C:DestructAbyssMain()
-  if self.FirstTimer then
-    self:RemoveTimer(self.FirstTimer)
-    self.FirstTimer = nil
+function r2_0.DestructAbyssMain(r0_5)
+  -- line: [38, 50] id: 5
+  if r0_5.FirstTimer then
+    r0_5:RemoveTimer(r0_5.FirstTimer)
+    r0_5.FirstTimer = nil
   end
-  if self.ScrollTimer then
-    self:RemoveTimer(self.ScrollTimer)
-    self.ScrollTimer = nil
+  if r0_5.ScrollTimer then
+    r0_5:RemoveTimer(r0_5.ScrollTimer)
+    r0_5.ScrollTimer = nil
   end
-  self:ClearListenEvent()
-  self.List_Level:ClearListItems()
-  AudioManager(self):StopSound(self, "AbyssMainOpenSound")
+  r0_5:ClearListenEvent()
+  r0_5.List_Level:ClearListItems()
+  AudioManager(r0_5):StopSound(r0_5, "AbyssMainOpenSound")
 end
-
-function WBP_Abyss_Main_C:SwitchIn(DoNotInit, FirstSelectedAbyssId, PlayBack)
-  if not DoNotInit and not self.AbyssMainInitFinished then
-    self:InitInfo(FirstSelectedAbyssId)
+function r2_0.SwitchIn(r0_6, r1_6, r2_6, r3_6)
+  -- line: [52, 67] id: 6
+  if not r1_6 and not r0_6.AbyssMainInitFinished then
+    r0_6:InitInfo(r2_6)
   end
-  self:InitTable()
-  if self:IsAnyAnimationPlaying() then
-    self:StopAllAnimations()
+  r0_6:InitTable()
+  if r0_6:IsAnyAnimationPlaying() then
+    r0_6:StopAllAnimations()
   end
-  AudioManager(self):PlayUISound(self, "event:/ui/activity/open", "AbyssMainOpenSound", nil)
-  if PlayBack then
-    self:PlayAnimation(self.Back)
+  AudioManager(r0_6):PlayUISound(r0_6, "event:/ui/activity/open", "AbyssMainOpenSound", nil)
+  if r3_6 then
+    r0_6:PlayAnimation(r0_6.Back)
   else
-    self:PlayAnimation(self.In)
+    r0_6:PlayAnimation(r0_6.In)
   end
-  self.Main:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+  r0_6.Main:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
 end
-
-function WBP_Abyss_Main_C:SwitchOut()
-  self.Main:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
-  self.Tip_Fragment:Hide()
-  if not self.BindOutAnimation then
-    self:BindToAnimationFinished(self.Out, {
-      self,
+function r2_0.SwitchOut(r0_7)
+  -- line: [69, 82] id: 7
+  r0_7.Main:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
+  r0_7.Tip_Fragment:Hide()
+  if not r0_7.BindOutAnimation then
+    r0_7:BindToAnimationFinished(r0_7.Out, {
+      r0_7,
       function()
-        self.Main:SetVisibility(UIConst.VisibilityOp.Collapsed)
+        -- line: [73, 75] id: 8
+        r0_7.Main:SetVisibility(UIConst.VisibilityOp.Collapsed)
       end
     })
-    self.BindOutAnimation = true
+    r0_7.BindOutAnimation = true
   end
-  AudioManager(self):SetEventSoundParam(self, "AbyssMainOpenSound", {ToEnd = 1})
-  AudioManager(self):StopSound(self, "AbyssMainOpenSound")
-  self:PlayAnimation(self.Out)
+  AudioManager(r0_7):SetEventSoundParam(r0_7, "AbyssMainOpenSound", {
+    ToEnd = 1,
+  })
+  AudioManager(r0_7):StopSound(r0_7, "AbyssMainOpenSound")
+  r0_7:PlayAnimation(r0_7.Out)
 end
-
-function WBP_Abyss_Main_C:SetRewardParams()
-  self.Params = {}
-  local ConfigData = {
+function r2_0.SetRewardParams(r0_9)
+  -- line: [84, 212] id: 9
+  r0_9.Params = {}
+  local r1_9 = {
     Items = {},
     ShowIcon = true,
-    IconPath = "PaperSprite'/Game/UI/Texture/Static/Atlas/Abyss/T_Abyss_Star02.T_Abyss_Star02'",
+    IconPath = "PaperSprite\'/Game/UI/Texture/Static/Atlas/Abyss/T_Abyss_Star02.T_Abyss_Star02\'",
     Text_Total = "Abyss_RewardProgress_Difficulty",
-    ReceiveAllCallBack = self.GetAllRewards,
+    ReceiveAllCallBack = r0_9.GetAllRewards,
     ReceiveAllParam = {
-      SelectAbyssId = self.SelectAbyssId
+      SelectAbyssId = r0_9.SelectAbyssId,
     },
     SortType = 2,
     Rewards = {},
     NowNum = 0,
     NumMax = 0,
-    ReceiveButtonText = "UI_Achievement_GetAllReward"
+    ReceiveButtonText = "UI_Achievement_GetAllReward",
   }
-  local Avatar = GWorld:GetAvatar()
-  if Avatar then
-    local Abyss = Avatar.Abysses[self.SelectAbyssId]
-    if DataMgr.AbyssSeason[self.SelectAbyssId] then
-      ConfigData.NowNum = Abyss:GetAllPassRoomCount()
-      local RewardList = DataMgr.AbyssSeason[self.SelectAbyssId].AbyssRewardList or {}
-      local Pre
-      local Rewards = {}
-      local Item
-      for _, RewardId in ipairs(RewardList) do
-        local RewardItem = DataMgr.AbyssRewardList[RewardId]
-        if RewardItem then
-          if Pre and Pre.RewardAddOn then
-            local Level = Pre.Level
-            while Level < RewardItem.Level do
-              local NewItem = CommonUtils.DeepCopy(Item)
-              NewItem.SourceNum = Level
-              NewItem.ItemId = Level
-              NewItem.CanReceive = Abyss:CheckRewardCanGet(Level)
-              NewItem.RewardsGot = Abyss:CheckRewardIsGot(Level)
-              table.insert(ConfigData.Items, NewItem)
-              Level = Level + Pre.RewardAddOn
+  local r2_9 = GWorld:GetAvatar()
+  if r2_9 then
+    local r3_9 = r2_9.Abysses[r0_9.SelectAbyssId]
+    if DataMgr.AbyssSeason[r0_9.SelectAbyssId] then
+      r1_9.NowNum = r3_9:GetAllPassRoomCount()
+      local r4_9 = DataMgr.AbyssSeason[r0_9.SelectAbyssId].AbyssRewardList and {}
+      local r5_9 = nil
+      local r6_9 = {}
+      local r7_9 = nil
+      for r12_9, r13_9 in ipairs(r4_9) do
+        local r14_9 = DataMgr.AbyssRewardList[r13_9]
+        if r14_9 then
+          if r5_9 and r5_9.RewardAddOn then
+            local r15_9 = r5_9.Level
+            while r15_9 < r14_9.Level do
+              local r16_9 = CommonUtils.DeepCopy(r7_9)
+              r16_9.SourceNum = r15_9
+              r16_9.ItemId = r15_9
+              r16_9.CanReceive = r3_9:CheckRewardCanGet(r15_9)
+              r16_9.RewardsGot = r3_9:CheckRewardIsGot(r15_9)
+              table.insert(r1_9.Items, r16_9)
+              r15_9 = r15_9 + r5_9.RewardAddOn
             end
           end
-          Item = {
+          r7_9 = {
             Text = GText("UI_ModGuideBook_RewardView"),
-            ItemId = RewardId,
-            CanReceive = Abyss:CheckRewardCanGet(RewardItem.Level),
-            RewardsGot = Abyss:CheckRewardIsGot(RewardItem.Level),
+            ItemId = r13_9,
+            CanReceive = r3_9:CheckRewardCanGet(r14_9.Level),
+            RewardsGot = r3_9:CheckRewardIsGot(r14_9.Level),
             InProgress = false,
             Rewards = {},
             Nums = 1,
             NotreachText = "UI_GameEvent_ToBeFinished",
             Hint = "Abyss_RewardList_Content",
             ShowIcon = true,
-            IconPath = "PaperSprite'/Game/UI/Texture/Static/Atlas/Abyss/T_Abyss_Star02.T_Abyss_Star02'",
-            ReceiveCallBack = self.GetRewards,
+            IconPath = "PaperSprite\'/Game/UI/Texture/Static/Atlas/Abyss/T_Abyss_Star02.T_Abyss_Star02\'",
+            ReceiveCallBack = r0_9.GetRewards,
             LeftAligned = true,
-            SourceNum = RewardItem.Level,
+            SourceNum = r14_9.Level,
             ReceiveButtonText = "UI_Achievement_GetReward",
             ReceiveParm = {
-              SelectAbyssId = self.SelectAbyssId
+              SelectAbyssId = r0_9.SelectAbyssId,
             },
-            IsWalnutReward = RewardItem.WalnutReward
+            IsWalnutReward = r14_9.WalnutReward,
           }
-          Rewards = {}
-          local RewardItemId = RewardItem.Reward
-          local RewardInfo = DataMgr.Reward[RewardItemId]
-          if RewardInfo then
-            local Ids = RewardInfo.Id or {}
-            local RewardCount = RewardInfo.Count or {}
-            local TableName = RewardInfo.Type or {}
-            for i = 1, #Ids do
-              local ItemId = Ids[i]
-              local Count = RewardUtils:GetCount(RewardCount[i])
-              local Rarity = ItemUtils.GetItemRarity(ItemId, TableName[i])
-              local ItemType = TableName[i]
-              local RewardContent = {
-                ItemType = ItemType,
-                ItemId = ItemId,
-                Count = Count,
-                Rarity = Rarity
-              }
-              table.insert(Rewards, RewardContent)
+          r6_9 = {}
+          local r16_9 = DataMgr.Reward[r14_9.Reward]
+          if r16_9 then
+            local r17_9 = r16_9.Id and {}
+            local r18_9 = r16_9.Count and {}
+            local r19_9 = r16_9.Type and {}
+            for r23_9 = 1, #r17_9, 1 do
+              local r24_9 = r17_9[r23_9]
+              table.insert(r6_9, {
+                ItemType = r19_9[r23_9],
+                ItemId = r24_9,
+                Count = RewardUtils:GetCount(r18_9[r23_9]),
+                Rarity = ItemUtils.GetItemRarity(r24_9, r19_9[r23_9]),
+              })
             end
           end
-          Item.Rewards = Rewards
-          Pre = DataMgr.AbyssRewardList[RewardId]
-          if RewardItem.RewardAddOn == nil then
-            table.insert(ConfigData.Items, Item)
+          r7_9.Rewards = r6_9
+          r5_9 = DataMgr.AbyssRewardList[r13_9]
+          if r14_9.RewardAddOn == nil then
+            table.insert(r1_9.Items, r7_9)
           end
         end
       end
-      if Pre then
-        ConfigData.NumMax = Pre.Level
-        ConfigData.NumMax = tostring(ConfigData.NumMax)
+      -- close: r8_9
+      if r5_9 then
+        r1_9.NumMax = r5_9.Level
+        r1_9.NumMax = tostring(r1_9.NumMax)
       end
-      if Pre and Pre.RewardAddOn then
-        table.insert(ConfigData.Items, Item)
-        if ConfigData.NowNum > Pre.Level then
-          local Level = Pre.Level + Pre.RewardAddOn
-          local FinialLevel = ConfigData.NowNum + Pre.RewardAddOn * 5
-          while Level <= FinialLevel do
-            local NewItem = CommonUtils.DeepCopy(Item)
-            NewItem.SourceNum = Level
-            NewItem.ItemId = Level
-            NewItem.CanReceive = Abyss:CheckRewardCanGet(Level)
-            NewItem.RewardsGot = Abyss:CheckRewardIsGot(Level)
-            table.insert(ConfigData.Items, NewItem)
-            Level = Level + Pre.RewardAddOn
+      if r5_9 and r5_9.RewardAddOn then
+        table.insert(r1_9.Items, r7_9)
+        if r5_9.Level < r1_9.NowNum then
+          local r8_9 = r5_9.Level + r5_9.RewardAddOn
+          local r9_9 = r1_9.NowNum + r5_9.RewardAddOn * 5
+          while r8_9 <= r9_9 do
+            local r10_9 = CommonUtils.DeepCopy(r7_9)
+            r10_9.SourceNum = r8_9
+            r10_9.ItemId = r8_9
+            r10_9.CanReceive = r3_9:CheckRewardCanGet(r8_9)
+            r10_9.RewardsGot = r3_9:CheckRewardIsGot(r8_9)
+            table.insert(r1_9.Items, r10_9)
+            r8_9 = r8_9 + r5_9.RewardAddOn
           end
-          ConfigData.NumMax = tostring(Level - Pre.RewardAddOn)
+          r1_9.NumMax = tostring(r8_9 - r5_9.RewardAddOn)
         end
       end
-      self.Params.ConfigData = ConfigData
+      r0_9.Params.ConfigData = r1_9
     end
   end
-  local TitleText = DataMgr.AbyssSeason[self.SelectAbyssId].AbyssRewardListTitle
-  self.Params.Title = GText(TitleText)
-  local AbyssInfo = DataMgr.AbyssSeason[self.SelectAbyssId]
-  local AbyssSeasonId = AbyssInfo.AbyssSeasonId
-  if AbyssSeasonId then
-    local AbyssSeasonInfo = DataMgr.AbyssSeasonList[AbyssSeasonId]
-    local AbyssEndTime = AbyssSeasonInfo.AbyssEndTime
-    if AbyssEndTime then
-      local RemainTime = AbyssEndTime - TimeUtils.NowTime()
-      self.Params.CountDownParams = {Name = nil, RemainTime = RemainTime}
+  r0_9.Params.Title = GText(DataMgr.AbyssSeason[r0_9.SelectAbyssId].AbyssRewardListTitle)
+  local r5_9 = DataMgr.AbyssSeason[r0_9.SelectAbyssId].AbyssSeasonId
+  if r5_9 then
+    local r7_9 = DataMgr.AbyssSeasonList[r5_9].AbyssEndTime
+    if r7_9 then
+      r0_9.Params.TitleWidget = "DiaglogTitle_Time"
+      r0_9.Params.CountDownParams = {
+        Name = nil,
+        RemainTime = r7_9 - r0_0.NowTime(),
+      }
     end
   end
-  self:RefreshTipFragment(self.Params.ConfigData.Items)
+  r0_9:RefreshTipFragment(r0_9.Params.ConfigData.Items)
 end
-
-function WBP_Abyss_Main_C:RefreshTipFragment(RewardItems)
-  self.Tip_Fragment:Hide()
-  local Avatar = GWorld:GetAvatar()
-  if not Avatar then
-    return
+function r2_0.RefreshTipFragment(r0_10, r1_10)
+  -- line: [214, 241] id: 10
+  r0_10.Tip_Fragment:Hide()
+  local r2_10 = GWorld:GetAvatar()
+  if not r2_10 then
+    return 
   end
-  for _, Item in pairs(RewardItems) do
-    if Item.IsWalnutReward and Item.CanReceive then
-      local AbyssSeasonId = Avatar.CurrentAbyssSeasonId
-      if AbyssSeasonId and DataMgr.AbyssSeasonList[AbyssSeasonId] then
-        local WalnutId = DataMgr.AbyssSeason[self.SelectAbyssId].WalnutId
-        local IconPath
-        if WalnutId then
-          IconPath = DataMgr.Walnut[WalnutId].Icon
+  for r7_10, r8_10 in pairs(r1_10) do
+    if r8_10.IsWalnutReward and r8_10.CanReceive then
+      local r9_10 = r2_10.CurrentAbyssSeasonId
+      if r9_10 and DataMgr.AbyssSeasonList[r9_10] then
+        local r10_10 = DataMgr.AbyssSeason[r0_10.SelectAbyssId].WalnutId
+        local r11_10 = nil
+        if r10_10 then
+          r11_10 = DataMgr.Walnut[r10_10].Icon
         end
-        local CharId = DataMgr.AbyssSeasonList[AbyssSeasonId].CharId
-        local CharName = DataMgr.Char[CharId].CharName
-        local Params = {
-          Text = string.format(GText("Abyss_CharReward_Walnut"), GText(CharName)),
-          IconPath = IconPath
-        }
-        self.Tip_Fragment:Init(Params)
-        self.Tip_Fragment:PlayInAnim()
+        r0_10.Tip_Fragment:Init({
+          Text = string.format(GText("Abyss_CharReward_Walnut"), GText(DataMgr.Char[DataMgr.AbyssSeasonList[r9_10].CharId].CharName)),
+          IconPath = r11_10,
+        })
+        r0_10.Tip_Fragment:PlayInAnim()
       end
-      return
+      return 
     end
   end
+  -- close: r3_10
 end
-
-function WBP_Abyss_Main_C:OpenReward()
-  self:SetRewardParams()
-  UIManager(self):ShowCommonPopupUI(100158, self.Params, self)
+function r2_0.OpenReward(r0_11)
+  -- line: [243, 246] id: 11
+  r0_11:SetRewardParams()
+  UIManager(r0_11):ShowCommonPopupUI(100158, r0_11.Params, r0_11)
 end
-
-function WBP_Abyss_Main_C:InitInfo(FirstSelectedAbyssId)
-  self.AbyssMainInitFinished = true
-  self:PlayAnimation(self.Normal)
-  self.Btn_BacktoTop.OnClicked:Add(self, self.OnBackBtnClicked)
-  self.Btn_BacktoTop.OnHovered:Add(self, self.OnBackBtnHovered)
-  self.Btn_BacktoTop.OnUnhovered:Add(self, self.OnBackBtnUnhovered)
-  self.Btn_BacktoTop.OnPressed:Add(self, self.OnBackBtnPressed)
-  self.Btn_BacktoTop.OnReleased:Add(self, self.OnBackBtnReleased)
-  self.Store:BindEventOnClicked(self, self.OpenStore)
-  self.Entry.Btn_Click.OnClicked:Add(self, self.OpenEntry)
-  self.Mode_01:SetVisibility(UIConst.VisibilityOp.Collapsed)
-  self.Mode_02:SetVisibility(UIConst.VisibilityOp.Collapsed)
-  self.Mode_03:SetVisibility(UIConst.VisibilityOp.Collapsed)
-  self.Text_BacktoTop:SetText(GText("Abyss_Level_Back"))
-  self.Store:SetText(GText("Abyss_ExchangeStore"))
-  self.Title:SetInfo({
-    MainTitle = "Abyss_entry"
+function r2_0.InitInfo(r0_12, r1_12)
+  -- line: [248, 319] id: 12
+  r0_12.AbyssMainInitFinished = true
+  r0_12:PlayAnimation(r0_12.Normal)
+  r0_12.Btn_BacktoTop.OnClicked:Add(r0_12, r0_12.OnBackBtnClicked)
+  r0_12.Btn_BacktoTop.OnHovered:Add(r0_12, r0_12.OnBackBtnHovered)
+  r0_12.Btn_BacktoTop.OnUnhovered:Add(r0_12, r0_12.OnBackBtnUnhovered)
+  r0_12.Btn_BacktoTop.OnPressed:Add(r0_12, r0_12.OnBackBtnPressed)
+  r0_12.Btn_BacktoTop.OnReleased:Add(r0_12, r0_12.OnBackBtnReleased)
+  r0_12.Store:BindEventOnClicked(r0_12, r0_12.OpenStore)
+  r0_12.Entry.Btn_Click.OnClicked:Add(r0_12, r0_12.OpenEntry)
+  r0_12.Mode_01:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  r0_12.Mode_02:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  r0_12.Mode_03:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  r0_12.Text_BacktoTop:SetText(GText("Abyss_Level_Back"))
+  r0_12.Store:SetText(GText("Abyss_ExchangeStore"))
+  r0_12.Title:SetInfo({
+    MainTitle = "Abyss_entry",
   })
-  self.BacktoTop:SetVisibility(UIConst.VisibilityOp.Collapsed)
-  self.Panel_RefreshTime:SetVisibility(UIConst.VisibilityOp.Collapsed)
-  self.WBox_Mode:ClearChildren()
-  self.Index2AbyssId = {}
-  self.AbyssId2Index = {}
-  self.Index2LevelId = {}
-  self.LevelId2Index = {}
-  self.ChangeSpeed = 5
-  local AbyssIds = {}
-  local TitleInfo = {
-    MainTitle = "Abyss_entry"
+  r0_12.BacktoTop:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  r0_12.Panel_RefreshTime:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  r0_12.WBox_Mode:ClearChildren()
+  r0_12.Index2AbyssId = {}
+  r0_12.AbyssId2Index = {}
+  r0_12.Index2LevelId = {}
+  r0_12.LevelId2Index = {}
+  r0_12.ChangeSpeed = 5
+  local r2_12 = {}
+  local r3_12 = {
+    MainTitle = "Abyss_entry",
   }
-  local Avatar = GWorld:GetAvatar()
-  if Avatar then
-    local AbyssSeasonId = Avatar.CurrentAbyssSeasonId
-    if AbyssSeasonId and DataMgr.AbyssSeasonList[AbyssSeasonId] then
-      TitleInfo.SubTitle = DataMgr.AbyssSeasonList[AbyssSeasonId].AbyssSeasonName
+  local r4_12 = GWorld:GetAvatar()
+  local r5_12 = nil	-- notice: implicit variable refs by block#[19]
+  if r4_12 then
+    r5_12 = r4_12.CurrentAbyssSeasonId
+    if r5_12 and DataMgr.AbyssSeasonList[r5_12] then
+      r3_12.SubTitle = DataMgr.AbyssSeasonList[r5_12].AbyssSeasonName
     end
   end
-  self.Title:SetInfo(TitleInfo)
-  if Avatar and Avatar.Abysses then
-    local Abysses = DataMgr.AbyssSeason
-    for AbyssId, _ in pairs(Abysses) do
-      if Avatar.Abysses[AbyssId] and (not Avatar.Abysses[AbyssId].AbyssSeasonId or Avatar.Abysses[AbyssId].AbyssSeasonId == Avatar.CurrentAbyssSeasonId) then
-        table.insert(AbyssIds, AbyssId)
+  r0_12.Title:SetInfo(r3_12)
+  if r4_12 then
+    r5_12 = r4_12.Abysses
+    if r5_12 then
+      r5_12 = DataMgr.AbyssSeason
+      for r10_12, r11_12 in pairs(r5_12) do
+        if r4_12.Abysses[r10_12] and (not r4_12.Abysses[r10_12].AbyssSeasonId or r4_12.Abysses[r10_12].AbyssSeasonId == r4_12.CurrentAbyssSeasonId) then
+          table.insert(r2_12, r10_12)
+        end
       end
-    end
-    table.sort(AbyssIds, function(a, b)
-      return Abysses[a].Order < Abysses[b].Order
-    end)
-    for Index, AbyssId in ipairs(AbyssIds) do
-      self.Index2AbyssId[Index] = AbyssId
-      self.AbyssId2Index[AbyssId] = Index
-    end
-    for Index, AbyssId in ipairs(self.Index2AbyssId) do
-      local Obj = self:CreateWidgetNew("AbyssModeSelection")
-      Obj:BindEventOnClicked(self, self.OnClickedAbyssModeSelectionCell, Obj)
-      local IsLocked = Avatar.Abysses[AbyssId]:IsLocked()
-      Obj:Init(self, Index, AbyssId, IsLocked, FirstSelectedAbyssId)
-      self.WBox_Mode:AddChild(Obj)
+      -- close: r6_12
+      table.sort(r2_12, function(r0_13, r1_13)
+        -- line: [292, 294] id: 13
+        return r5_12[r0_13].Order < r5_12[r1_13].Order
+      end)
+      for r10_12, r11_12 in ipairs(r2_12) do
+        r0_12.Index2AbyssId[r10_12] = r11_12
+        r0_12.AbyssId2Index[r11_12] = r10_12
+      end
+      -- close: r6_12
+      for r10_12, r11_12 in ipairs(r0_12.Index2AbyssId) do
+        local r12_12 = r0_12:CreateWidgetNew("AbyssModeSelection")
+        r12_12:BindEventOnClicked(r0_12, r0_12.OnClickedAbyssModeSelectionCell, r12_12)
+        r12_12:Init(r0_12, r10_12, r11_12, r4_12.Abysses[r11_12]:IsLocked(), r1_12)
+        r0_12.WBox_Mode:AddChild(r12_12)
+      end
+      -- close: r6_12
+      -- close: r5_12
     end
   end
-  self.List_Level:SetNavigationRuleCustom(EUINavigation.Left, {
-    self,
-    self.OnUINavigation
+  r5_12 = r0_12.List_Level
+  r5_12:SetNavigationRuleCustom(EUINavigation.Left, {
+    r0_12,
+    r0_12.OnUINavigation
   })
-  self.List_Level.BP_OnEntryGenerated:Add(self, self.OnEntryGenerated)
-  self.List_Level.BP_OnEntryReleased:Add(self, self.OnEntryReleased)
-  local PlayerController = UE4.UGameplayStatics.GetPlayerController(self, 0)
-  self.GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(PlayerController)
-  if IsValid(self.GameInputModeSubsystem) then
-    self:RefreshOpInfoByInputDevice(self.GameInputModeSubsystem:GetCurrentInputType(), self.GameInputModeSubsystem:GetCurrentGamepadName())
+  r5_12 = r0_12.List_Level
+  r5_12 = r5_12.BP_OnEntryGenerated
+  r5_12:Add(r0_12, r0_12.OnEntryGenerated)
+  r5_12 = r0_12.List_Level
+  r5_12 = r5_12.BP_OnEntryReleased
+  r5_12:Add(r0_12, r0_12.OnEntryReleased)
+  r5_12 = UE4
+  r5_12 = r5_12.UGameplayStatics
+  r5_12 = r5_12.GetPlayerController
+  r5_12 = r5_12(r0_12, 0)
+  r0_12.GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(r5_12)
+  if IsValid(r0_12.GameInputModeSubsystem) then
+    r0_12:RefreshOpInfoByInputDevice(r0_12.GameInputModeSubsystem:GetCurrentInputType(), r0_12.GameInputModeSubsystem:GetCurrentGamepadName())
   end
-  self:InitListenEvent()
-  self:InitWidgetInfoInGamePad()
+  r0_12:InitListenEvent()
+  r0_12:InitWidgetInfoInGamePad()
 end
-
-function WBP_Abyss_Main_C:OnClickedAbyssModeSelectionCell(AbyssModeSelectionCell, DoNotPlaySound)
-  if AbyssModeSelectionCell.IsLocked then
-    UIManager(self):ShowUITip(UIConst.Tip_CommonToast, GText(DataMgr.AbyssSeason[AbyssModeSelectionCell.AbyssId].DifficultyLockToast))
-    return
+function r2_0.OnClickedAbyssModeSelectionCell(r0_14, r1_14, r2_14)
+  -- line: [321, 339] id: 14
+  if r1_14.IsLocked then
+    UIManager(r0_14):ShowUITip(UIConst.Tip_CommonToast, GText(DataMgr.AbyssSeason[r1_14.AbyssId].DifficultyLockToast))
+    return 
   end
-  if self.SelectCell then
-    self.SelectCell:UnSelected()
-    self:PlayModeAnimation(self.SelectCell.Index, true)
+  if r0_14.SelectCell then
+    r0_14.SelectCell:UnSelected()
+    r0_14:PlayModeAnimation(r0_14.SelectCell.Index, true)
   end
-  self.SelectCell = AbyssModeSelectionCell
-  self.SelectCell:Selected(DoNotPlaySound)
-  self.SelectIndex = AbyssModeSelectionCell.Index
-  self.SelectAbyssId = AbyssModeSelectionCell.AbyssId
-  self.BacktoTop:SetVisibility(UIConst.VisibilityOp.Collapsed)
-  self:RefreshAbyssLevelInfo(self.SelectAbyssId)
-  self:RefreshRewardBtnInfo(self.SelectAbyssId)
-  self:RefreshTimerInfo(self.SelectAbyssId)
-  self:PlayModeAnimation(self.SelectCell.Index, false)
+  r0_14.SelectCell = r1_14
+  r0_14.SelectCell:Selected(r2_14)
+  r0_14.SelectIndex = r1_14.Index
+  r0_14.SelectAbyssId = r1_14.AbyssId
+  r0_14.BacktoTop:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  r0_14:RefreshAbyssLevelInfo(r0_14.SelectAbyssId)
+  r0_14:RefreshRewardBtnInfo(r0_14.SelectAbyssId)
+  r0_14:RefreshTimerInfo(r0_14.SelectAbyssId)
+  r0_14:PlayModeAnimation(r0_14.SelectCell.Index, false)
 end
-
-function WBP_Abyss_Main_C:PlayModeAnimation(Index, IsReverse)
-  self:AddTimer(0.01, function()
-    self["Mode_0" .. Index]:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
-    if IsReverse then
-      self:PlayAnimation(self["Mode0" .. Index], 0, 1, 1, 1)
+function r2_0.PlayModeAnimation(r0_15, r1_15, r2_15)
+  -- line: [341, 356] id: 15
+  r0_15:AddTimer(0.01, function()
+    -- line: [342, 349] id: 16
+    r0_15["Mode_0" .. r1_15]:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
+    if r2_15 then
+      r0_15:PlayAnimation(r0_15["Mode0" .. r1_15], 0, 1, 1, 1)
     else
-      self:PlayAnimation(self["Mode0" .. Index], 0, 1, 0, 1)
+      r0_15:PlayAnimation(r0_15["Mode0" .. r1_15], 0, 1, 0, 1)
     end
   end, false)
 end
-
-function WBP_Abyss_Main_C:RefreshAbyssLevelInfo(AbyssId)
-  local Abysses = DataMgr.AbyssSeason
-  local AbyssLevel = DataMgr.AbyssLevel
-  local Abyss = Abysses[AbyssId]
-  local AbyssType = Abyss.AbyssType
-  self.GotStar = 0
-  self.SumStar = 0
-  self.Max = 1
-  self.Target = 1
-  self.AbyssLevelPlayInAnimation = true
-  self.IsEndless = false
-  if Abyss and Abyss.AbyssLevelId then
-    self.List_Level:ClearListItems()
-    self.CurFocusedLevel = nil
-    self.NodeLevelContent = nil
-    self.LastLevelContent = nil
-    self.List_Level:ScrollToTop()
-    local ClassPath = "/Game/UI/UI_PC/Common/Common_Item_subsize_PC_Content.Common_Item_subsize_PC_Content_C"
-    if 3 == AbyssType then
-      self.IsEndless = true
-      local Avatar = GWorld:GetAvatar()
-      if Avatar then
-        local JumpStep
-        if Abyss.InfiniteNode then
-          JumpStep = Abyss.InfiniteNode[1]
+function r2_0.RefreshAbyssLevelInfo(r0_17, r1_17)
+  -- line: [358, 533] id: 17
+  local r3_17 = DataMgr.AbyssLevel
+  local r4_17 = DataMgr.AbyssSeason[r1_17]
+  local r5_17 = r4_17.AbyssType
+  r0_17.GotStar = 0
+  r0_17.SumStar = 0
+  r0_17.Max = 1
+  r0_17.Target = 1
+  r0_17.AbyssLevelPlayInAnimation = true
+  r0_17.IsEndless = false
+  if r4_17 and r4_17.AbyssLevelId then
+    r0_17.List_Level:ClearListItems()
+    r0_17.CurFocusedLevel = nil
+    r0_17.NodeLevelContent = nil
+    r0_17.LastLevelContent = nil
+    r0_17.List_Level:ScrollToTop()
+    local r6_17 = "/Game/UI/UI_PC/Common/Common_Item_subsize_PC_Content.Common_Item_subsize_PC_Content_C"
+    if r5_17 == 3 then
+      r0_17.IsEndless = true
+      local r7_17 = GWorld:GetAvatar()
+      if r7_17 then
+        local r8_17 = nil
+        if r4_17.InfiniteNode then
+          r8_17 = r4_17.InfiniteNode[1]
         end
-        local MaxAbyssProgress = Avatar.Abysses[AbyssId].MaxAbyssProgress
-        local MaybeAllLevelNum = MaxAbyssProgress[1] + 1
-        local AllLevelNum = 1
-        for i = 1, MaybeAllLevelNum do
-          if i > 1 then
-            if Avatar.Abysses[AbyssId].AbyssLevelList[i - 1]:IsAbyssLevelPass() then
-              AllLevelNum = i
+        local r11_17 = 1
+        for r15_17 = 1, r7_17.Abysses[r1_17].MaxAbyssProgress[1] + 1, 1 do
+          if r15_17 > 1 then
+            if r7_17.Abysses[r1_17].AbyssLevelList[r15_17 + -1]:IsAbyssLevelPass() then
+              r11_17 = r15_17
             else
               break
             end
           else
-            AllLevelNum = i
+            r11_17 = r15_17
           end
         end
-        local LevelIndex = (AllLevelNum - 1) % #Abyss.AbyssLevelId + 1
-        local AbyssLevelId = Abyss.AbyssLevelId[LevelIndex]
-        local AbyssDungeon1 = AbyssLevel[AbyssLevelId].AbyssDungeon1
-        local AbyssDungeon2 = AbyssLevel[AbyssLevelId].AbyssDungeon2
-        local SumRoom = 0
-        if DataMgr.AbyssDungeon[AbyssDungeon1] and DataMgr.AbyssDungeon[AbyssDungeon1].RoomId then
-          SumRoom = SumRoom + #DataMgr.AbyssDungeon[AbyssDungeon1].RoomId
+        local r13_17 = r4_17.AbyssLevelId[(r11_17 + -1) % #r4_17.AbyssLevelId + 1]
+        local r14_17 = r3_17[r13_17].AbyssDungeon1
+        local r15_17 = r3_17[r13_17].AbyssDungeon2
+        local r16_17 = 0
+        if DataMgr.AbyssDungeon[r14_17] and DataMgr.AbyssDungeon[r14_17].RoomId then
+          r16_17 = r16_17 + #DataMgr.AbyssDungeon[r14_17].RoomId
         end
-        if DataMgr.AbyssDungeon[AbyssDungeon2] and DataMgr.AbyssDungeon[AbyssDungeon2].RoomId then
-          SumRoom = SumRoom + #DataMgr.AbyssDungeon[AbyssDungeon2].RoomId
+        if DataMgr.AbyssDungeon[r15_17] and DataMgr.AbyssDungeon[r15_17].RoomId then
+          r16_17 = r16_17 + #DataMgr.AbyssDungeon[r15_17].RoomId
         end
-        self.Max = AllLevelNum
-        self.MaxLevelNum = AllLevelNum
-        self.CanJump = false
-        if JumpStep then
-          self.JumpIndex = (math.floor((AllLevelNum - 1) / JumpStep) + 1) * JumpStep
-          if 0 ~= AllLevelNum % JumpStep and Avatar:CheckAbyssCanJump(AbyssId, self.JumpIndex) then
-            self.CanJump = true
+        r0_17.Max = r11_17
+        r0_17.MaxLevelNum = r11_17
+        r0_17.CanJump = false
+        if r8_17 then
+          r0_17.JumpIndex = (math.floor((r11_17 + -1) / r8_17) + 1) * r8_17
+          if r11_17 % r8_17 ~= 0 and r7_17:CheckAbyssCanJump(r1_17, r0_17.JumpIndex) then
+            r0_17.CanJump = true
           end
         end
-        for Index = 1, AllLevelNum do
-          local LevelChooseObj = NewObject(UE4.LoadClass(ClassPath))
-          local AbyssLevelId = Abyss.AbyssLevelId[(Index - 1) % #Abyss.AbyssLevelId + 1]
-          local SumLevelStar = self:GetSumLevelStar(AbyssLevelId)
-          local GotLevelStar = self:GetGotLevelStar(AbyssId, AbyssLevelId, Index)
-          LevelChooseObj.AbyssId = AbyssId
-          LevelChooseObj.AbyssLevelId = AbyssLevelId
-          LevelChooseObj.Index = Index
-          LevelChooseObj.IsEndless = true
-          LevelChooseObj.Root = self
-          LevelChooseObj.IsLocked = false
-          if not LevelChooseObj.IsLocked then
-            self.Target = Index
+        for r20_17 = 1, r11_17, 1 do
+          local r21_17 = NewObject(UE4.LoadClass(r6_17))
+          local r22_17 = r4_17.AbyssLevelId[(r20_17 + -1) % #r4_17.AbyssLevelId + 1]
+          local r23_17 = r0_17:GetSumLevelStar(r22_17)
+          local r24_17 = r0_17:GetGotLevelStar(r1_17, r22_17, r20_17)
+          r21_17.AbyssId = r1_17
+          r21_17.AbyssLevelId = r22_17
+          r21_17.Index = r20_17
+          r21_17.IsEndless = true
+          r21_17.Root = r0_17
+          r21_17.IsLocked = false
+          if not r21_17.IsLocked then
+            r0_17.Target = r20_17
           end
-          if Index == AllLevelNum then
-            self.LastLevelContent = LevelChooseObj
-            LevelChooseObj.IsLastLevel = true
-            if self.CanJump then
-              LevelChooseObj.IsLastNormalLevel = true
+          if r20_17 == r11_17 then
+            r0_17.LastLevelContent = r21_17
+            r21_17.IsLastLevel = true
+            if r0_17.CanJump then
+              r21_17.IsLastNormalLevel = true
             end
           end
-          LevelChooseObj.SumLevelStar = SumLevelStar
-          LevelChooseObj.GotLevelStar = GotLevelStar
-          self.SumStar = self.SumStar + SumLevelStar
-          self.GotStar = self.GotStar + GotLevelStar
-          self.List_Level:AddItem(LevelChooseObj)
+          r21_17.SumLevelStar = r23_17
+          r21_17.GotLevelStar = r24_17
+          r0_17.SumStar = r0_17.SumStar + r23_17
+          r0_17.GotStar = r0_17.GotStar + r24_17
+          r0_17.List_Level:AddItem(r21_17)
         end
-        if self.CanJump then
-          local PlayNodeLevelUnlockAnimation = true
-          if EMCache:Get("LastUnlockNodeLevel") == self.JumpIndex then
-            PlayNodeLevelUnlockAnimation = false
+        if r0_17.CanJump then
+          local r17_17 = true
+          if r1_0:Get("LastUnlockNodeLevel") == r0_17.JumpIndex then
+            r17_17 = false
           end
-          self.Max = self.Max + 2
-          self.MaxLevelNum = self.JumpIndex
-          local LevelChooseObj_JumpTip = NewObject(UE4.LoadClass(ClassPath))
-          LevelChooseObj_JumpTip.IsJumpTip = true
-          LevelChooseObj_JumpTip.AbyssId = AbyssId
-          LevelChooseObj_JumpTip.Root = self
-          self.List_Level:AddItem(LevelChooseObj_JumpTip)
-          local LevelChooseObj = NewObject(UE4.LoadClass(ClassPath))
-          self.NodeLevelContent = LevelChooseObj
-          local AbyssLevelId = Abyss.AbyssLevelId[(self.JumpIndex - 1) % #Abyss.AbyssLevelId + 1]
-          local SumLevelStar = self:GetSumLevelStar(AbyssLevelId)
-          local GotLevelStar = self:GetGotLevelStar(AbyssId, AbyssLevelId, self.JumpIndex)
-          LevelChooseObj.AbyssId = AbyssId
-          LevelChooseObj.AbyssLevelId = AbyssLevelId
-          LevelChooseObj.Index = self.JumpIndex
-          LevelChooseObj.NodeIndex = math.floor(self.JumpIndex / JumpStep)
-          LevelChooseObj.IsEndless = true
-          LevelChooseObj.Root = self
-          LevelChooseObj.IsLocked = false
-          if not LevelChooseObj.IsLocked then
-            self.Target = self.JumpIndex
+          r0_17.Max = r0_17.Max + 2
+          r0_17.MaxLevelNum = r0_17.JumpIndex
+          local r18_17 = NewObject(UE4.LoadClass(r6_17))
+          r18_17.IsJumpTip = true
+          r18_17.AbyssId = r1_17
+          r18_17.Root = r0_17
+          r0_17.List_Level:AddItem(r18_17)
+          local r19_17 = NewObject(UE4.LoadClass(r6_17))
+          r0_17.NodeLevelContent = r19_17
+          local r20_17 = r4_17.AbyssLevelId[(r0_17.JumpIndex + -1) % #r4_17.AbyssLevelId + 1]
+          local r21_17 = r0_17:GetSumLevelStar(r20_17)
+          local r22_17 = r0_17:GetGotLevelStar(r1_17, r20_17, r0_17.JumpIndex)
+          r19_17.AbyssId = r1_17
+          r19_17.AbyssLevelId = r20_17
+          r19_17.Index = r0_17.JumpIndex
+          r19_17.NodeIndex = math.floor(r0_17.JumpIndex / r8_17)
+          r19_17.IsEndless = true
+          r19_17.Root = r0_17
+          r19_17.IsLocked = false
+          if not r19_17.IsLocked then
+            r0_17.Target = r0_17.JumpIndex
           end
-          LevelChooseObj.IsNodeLevel = true
-          LevelChooseObj.PlayNodeLevelUnlockAnimation = PlayNodeLevelUnlockAnimation
-          LevelChooseObj.SumLevelStar = SumLevelStar
-          LevelChooseObj.GotLevelStar = GotLevelStar
-          self.List_Level:AddItem(LevelChooseObj)
+          r19_17.IsNodeLevel = true
+          r19_17.PlayNodeLevelUnlockAnimation = r17_17
+          r19_17.SumLevelStar = r21_17
+          r19_17.GotLevelStar = r22_17
+          r0_17.List_Level:AddItem(r19_17)
         end
       end
     else
-      self.IsEndless = false
-      self.Max = #Abyss.AbyssLevelId
-      self.MaxLevelNum = #Abyss.AbyssLevelId
-      for Index, AbyssLevelId in ipairs(Abyss.AbyssLevelId) do
-        local LevelChooseObj = NewObject(UE4.LoadClass(ClassPath))
-        local SumLevelStar = self:GetSumLevelStar(AbyssLevelId)
-        local GotLevelStar = self:GetGotLevelStar(AbyssId, AbyssLevelId, Index)
-        LevelChooseObj.AbyssId = AbyssId
-        LevelChooseObj.AbyssLevelId = AbyssLevelId
-        LevelChooseObj.Index = Index
-        LevelChooseObj.IsEndless = false
-        LevelChooseObj.Root = self
-        LevelChooseObj.IsLocked = not self:CheckAbyssLevelIsOpen(AbyssId, AbyssLevelId, Index)
-        if not LevelChooseObj.IsLocked then
-          self.Target = Index
+      r0_17.IsEndless = false
+      r0_17.Max = #r4_17.AbyssLevelId
+      r0_17.MaxLevelNum = #r4_17.AbyssLevelId
+      for r11_17, r12_17 in ipairs(r4_17.AbyssLevelId) do
+        local r13_17 = NewObject(UE4.LoadClass(r6_17))
+        local r14_17 = r0_17:GetSumLevelStar(r12_17)
+        local r15_17 = r0_17:GetGotLevelStar(r1_17, r12_17, r11_17)
+        r13_17.AbyssId = r1_17
+        r13_17.AbyssLevelId = r12_17
+        r13_17.Index = r11_17
+        r13_17.IsEndless = false
+        r13_17.Root = r0_17
+        r13_17.IsLocked = not r0_17:CheckAbyssLevelIsOpen(r1_17, r12_17, r11_17)
+        if not r13_17.IsLocked then
+          r0_17.Target = r11_17
         end
-        LevelChooseObj.SumLevelStar = SumLevelStar
-        LevelChooseObj.GotLevelStar = GotLevelStar
-        self.SumStar = self.SumStar + SumLevelStar
-        self.GotStar = self.GotStar + GotLevelStar
-        self.List_Level:AddItem(LevelChooseObj)
+        r13_17.SumLevelStar = r14_17
+        r13_17.GotLevelStar = r15_17
+        r0_17.SumStar = r0_17.SumStar + r14_17
+        r0_17.GotStar = r0_17.GotStar + r15_17
+        r0_17.List_Level:AddItem(r13_17)
       end
+      -- close: r7_17
     end
-    self:RemoveTimer(self.FirstTimer)
-    if self.IsEndless then
-      self.FirstTimer = nil
-      self.FirstTimer = self:AddTimer(0.001, function()
-        local MaxCount = UIUtils.GetListViewContentMaxCount(self.List_Level)
-        self.Mid = math.ceil(MaxCount / 2)
-        self.List_Level:ScrollToBottom()
-        self:AddTimer(0.001, function()
-          self.BottomOffset = self.List_Level:GetScrollOffset()
-          self.TargetOffset = self.BottomOffset
+    r0_17:RemoveTimer(r0_17.FirstTimer)
+    if r0_17.IsEndless then
+      r0_17.FirstTimer = nil
+      r0_17.FirstTimer = r0_17:AddTimer(0.001, function()
+        -- line: [512, 528] id: 18
+        r0_17.Mid = math.ceil(UIUtils.GetListViewContentMaxCount(r0_17.List_Level) / 2)
+        r0_17.List_Level:ScrollToBottom()
+        r0_17:AddTimer(0.001, function()
+          -- line: [516, 525] id: 19
+          r0_17.BottomOffset = r0_17.List_Level:GetScrollOffset()
+          r0_17.TargetOffset = r0_17.BottomOffset
         end)
-        self:RemoveTimer(self.FirstTimer)
-        self.FirstTimer = nil
+        r0_17:RemoveTimer(r0_17.FirstTimer)
+        r0_17.FirstTimer = nil
       end)
     else
-      self.List_Level:ScrollIndexIntoView(self.Target - 1)
+      r0_17.List_Level:ScrollIndexIntoView(r0_17.Target + -1)
     end
   end
 end
-
-function WBP_Abyss_Main_C:ScrollToOffest(CurrentOffest, TargetOffest, IsPlayInAnimation)
-  self.AbyssLevelPlayInAnimation = IsPlayInAnimation
-  self.LerpAlpha = 0
-  self.ScrollTimer = self:AddTimer(0.033, function(_, DeltaTime)
-    self.LerpAlpha = self.LerpAlpha + self.ChangeSpeed * DeltaTime
-    if self.LerpAlpha >= 1 then
-      self.LerpAlpha = 1
-      self.List_Level:SetScrollOffset(TargetOffest)
-      self.List_Level:SetVisibility(ESlateVisibility.Visible)
-      self.AbyssLevelPlayInAnimation = false
-      self:RemoveTimer(self.ScrollTimer)
-      self.ScrollTimer = nil
-      if self.CurFocusedLevel then
-        if self.NodeLevelContent then
-          self.List_Level:BP_NavigateToItem(self.NodeLevelContent)
-        elseif self.LastLevelContent then
-          self.List_Level:BP_NavigateToItem(self.LastLevelContent)
+function r2_0.ScrollToOffest(r0_20, r1_20, r2_20, r3_20)
+  -- line: [535, 562] id: 20
+  r0_20.AbyssLevelPlayInAnimation = r3_20
+  r0_20.LerpAlpha = 0
+  r0_20.ScrollTimer = r0_20:AddTimer(0.033, function(r0_21, r1_21)
+    -- line: [538, 561] id: 21
+    r0_20.LerpAlpha = r0_20.LerpAlpha + r0_20.ChangeSpeed * r1_21
+    if r0_20.LerpAlpha >= 1 then
+      r0_20.LerpAlpha = 1
+      r0_20.List_Level:SetScrollOffset(r2_20)
+      r0_20.List_Level:SetVisibility(ESlateVisibility.Visible)
+      r0_20.AbyssLevelPlayInAnimation = false
+      r0_20:RemoveTimer(r0_20.ScrollTimer)
+      r0_20.ScrollTimer = nil
+      if r0_20.CurFocusedLevel then
+        if r0_20.NodeLevelContent then
+          r0_20.List_Level:BP_NavigateToItem(r0_20.NodeLevelContent)
+        elseif r0_20.LastLevelContent then
+          r0_20.List_Level:BP_NavigateToItem(r0_20.LastLevelContent)
         end
       end
-      return
+      return 
     end
-    local Offset = UE4.UKismetMathLibrary.Lerp(CurrentOffest, TargetOffest, self.LerpAlpha)
-    self.List_Level:SetScrollOffset(Offset)
+    r0_20.List_Level:SetScrollOffset(UE4.UKismetMathLibrary.Lerp(r1_20, r2_20, r0_20.LerpAlpha))
   end, true, 0, "UpdateOffset", true, 0.033)
 end
-
-function WBP_Abyss_Main_C:OnBackBtnClicked()
-  self:StopAllBtnAnimations()
-  self:PlayAnimation(self.Click)
-  if not self.ScrollTimer then
-    local CurrentOffest = self.List_Level:GetScrollOffset()
-    self:ScrollToOffest(CurrentOffest, self.TargetOffset, false)
+function r2_0.OnBackBtnClicked(r0_22)
+  -- line: [564, 571] id: 22
+  r0_22:StopAllBtnAnimations()
+  r0_22:PlayAnimation(r0_22.Click)
+  if not r0_22.ScrollTimer then
+    r0_22:ScrollToOffest(r0_22.List_Level:GetScrollOffset(), r0_22.TargetOffset, false)
   end
 end
-
-function WBP_Abyss_Main_C:TryClickedBackBtn_GamePad()
-  if self.BacktoTop:GetVisibility() == UIConst.VisibilityOp.Collapsed then
+function r2_0.TryClickedBackBtn_GamePad(r0_23)
+  -- line: [573, 580] id: 23
+  if r0_23.BacktoTop:GetVisibility() == UIConst.VisibilityOp.Collapsed then
     return false
   else
-    self:OnBackBtnClicked()
+    r0_23:OnBackBtnClicked()
     return true
   end
 end
-
-function WBP_Abyss_Main_C:OnBackBtnHovered()
-  self.IsHovering = true
-  self:StopAllBtnAnimations()
-  self:PlayAnimation(self.Normal)
-  self:PlayAnimation(self.Hover)
+function r2_0.OnBackBtnHovered(r0_24)
+  -- line: [582, 587] id: 24
+  r0_24.IsHovering = true
+  r0_24:StopAllBtnAnimations()
+  r0_24:PlayAnimation(r0_24.Normal)
+  r0_24:PlayAnimation(r0_24.Hover)
 end
-
-function WBP_Abyss_Main_C:OnBackBtnUnhovered()
-  self.IsHovering = false
-  if not self.IsPressing then
-    self:StopAllBtnAnimations()
-    self:PlayAnimation(self.Unhover)
+function r2_0.OnBackBtnUnhovered(r0_25)
+  -- line: [589, 595] id: 25
+  r0_25.IsHovering = false
+  if not r0_25.IsPressing then
+    r0_25:StopAllBtnAnimations()
+    r0_25:PlayAnimation(r0_25.Unhover)
   end
 end
-
-function WBP_Abyss_Main_C:OnBackBtnPressed()
-  self.IsPressing = true
-  self:StopAllBtnAnimations()
-  self:PlayAnimation(self.Press)
+function r2_0.OnBackBtnPressed(r0_26)
+  -- line: [597, 601] id: 26
+  r0_26.IsPressing = true
+  r0_26:StopAllBtnAnimations()
+  r0_26:PlayAnimation(r0_26.Press)
 end
-
-function WBP_Abyss_Main_C:OnBackBtnReleased()
-  self.IsPressing = false
-  if not self.IsHovering then
-    self:StopAllBtnAnimations()
-    self:PlayAnimationReverse(self.Press)
+function r2_0.OnBackBtnReleased(r0_27)
+  -- line: [603, 612] id: 27
+  r0_27.IsPressing = false
+  if not r0_27.IsHovering then
+    r0_27:StopAllBtnAnimations()
+    r0_27:PlayAnimationReverse(r0_27.Press)
   else
-    self:StopAllBtnAnimations()
-    self:PlayAnimation(self.Normal)
+    r0_27:StopAllBtnAnimations()
+    r0_27:PlayAnimation(r0_27.Normal)
   end
 end
-
-function WBP_Abyss_Main_C:StopAllBtnAnimations()
-  self:StopAnimation(self.Normal)
-  self:StopAnimation(self.Press)
-  self:StopAnimation(self.Unhover)
-  self:StopAnimation(self.Hover)
-  self:StopAnimation(self.Click)
+function r2_0.StopAllBtnAnimations(r0_28)
+  -- line: [614, 620] id: 28
+  r0_28:StopAnimation(r0_28.Normal)
+  r0_28:StopAnimation(r0_28.Press)
+  r0_28:StopAnimation(r0_28.Unhover)
+  r0_28:StopAnimation(r0_28.Hover)
+  r0_28:StopAnimation(r0_28.Click)
 end
-
-function WBP_Abyss_Main_C:RefreshRewardBtnInfo(AbyssId)
-  self:SetRewardParams()
-  self.Reward:Init(self, self.OpenReward, AbyssId, self.Params.ConfigData.NowNum, self.Params.ConfigData.NumMax)
+function r2_0.RefreshRewardBtnInfo(r0_29, r1_29)
+  -- line: [622, 625] id: 29
+  r0_29:SetRewardParams()
+  r0_29.Reward:Init(r0_29, r0_29.OpenReward, r1_29, r0_29.Params.ConfigData.NowNum, r0_29.Params.ConfigData.NumMax)
 end
-
-function WBP_Abyss_Main_C:RefreshTimerInfo(AbyssId)
-  self:RemoveTimer("RefreshAbyssRewardInfoTimer")
-  local AbyssInfo = DataMgr.AbyssSeason[AbyssId]
-  local AbyssSeasonId = AbyssInfo.AbyssSeasonId
-  if AbyssSeasonId then
-    local AbyssSeasonInfo = DataMgr.AbyssSeasonList[AbyssSeasonId]
-    local AbyssEndTime = AbyssSeasonInfo.AbyssEndTime
-    if AbyssEndTime then
-      self.Panel_RefreshTime:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-      self:SetTimer(AbyssEndTime)
+function r2_0.RefreshTimerInfo(r0_30, r1_30)
+  -- line: [627, 649] id: 30
+  r0_30:RemoveTimer("RefreshAbyssRewardInfoTimer")
+  local r3_30 = DataMgr.AbyssSeason[r1_30].AbyssSeasonId
+  if r3_30 then
+    local r5_30 = DataMgr.AbyssSeasonList[r3_30].AbyssEndTime
+    if r5_30 then
+      r0_30.Panel_RefreshTime:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+      r0_30:SetTimer(r5_30)
     else
-      self.Panel_RefreshTime:SetVisibility(UIConst.VisibilityOp.Collapsed)
+      r0_30.Panel_RefreshTime:SetVisibility(UIConst.VisibilityOp.Collapsed)
     end
   else
-    self.Panel_RefreshTime:SetVisibility(UIConst.VisibilityOp.Collapsed)
+    r0_30.Panel_RefreshTime:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
 end
-
-function WBP_Abyss_Main_C:SetTimer(EndTime)
-  self:Refresh(EndTime)
-  self:AddTimer(1, self.Refresh, true, 0, "RefreshAbyssRewardInfoTimer", true, EndTime)
+function r2_0.SetTimer(r0_31, r1_31)
+  -- line: [651, 654] id: 31
+  r0_31:Refresh(r1_31)
+  r0_31:AddTimer(1, r0_31.Refresh, true, 0, "RefreshAbyssRewardInfoTimer", true, r1_31)
 end
-
-function WBP_Abyss_Main_C:Refresh(EndTime)
-  local NextRefreshTime = EndTime
-  local CurrentTime = TimeUtils.NowTime()
-  local RemainRefreshTime = NextRefreshTime - CurrentTime
-  if RemainRefreshTime < 0 then
-    RemainRefreshTime = 0
+function r2_0.Refresh(r0_32, r1_32)
+  -- line: [656, 685] id: 32
+  local r4_32 = r1_32 - r0_0.NowTime()
+  if r4_32 < 0 then
+    r4_32 = 0
   end
-  local RemainTimeStr = ""
-  local TimeCount = 0
-  if RemainRefreshTime > 86400 then
-    TimeCount = TimeCount + 1
-    RemainTimeStr = RemainTimeStr .. string.format(GText("UI_Time_Day_NotHighlight"), math.floor(RemainRefreshTime / 86400))
-    RemainRefreshTime = RemainRefreshTime % 86400
+  local r5_32 = ""
+  local r6_32 = 0
+  if r4_32 > 86400 then
+    r6_32 = r6_32 + 1
+    r5_32 = r5_32 .. string.format(GText("UI_Time_Day_NotHighlight"), math.floor(r4_32 / 86400))
+    r4_32 = r4_32 % 86400
   end
-  if RemainRefreshTime > 3600 or 1 == TimeCount then
-    TimeCount = TimeCount + 1
-    RemainTimeStr = RemainTimeStr .. string.format(GText("UI_Time_Hour_NotHighlight"), math.floor(RemainRefreshTime / 3600))
-    RemainRefreshTime = RemainRefreshTime % 3600
+  if 3600 < r4_32 or r6_32 == 1 then
+    r6_32 = r6_32 + 1
+    r5_32 = r5_32 .. string.format(GText("UI_Time_Hour_NotHighlight"), math.floor(r4_32 / 3600))
+    r4_32 = r4_32 % 3600
   end
-  if RemainRefreshTime > 60 and TimeCount < 2 or 1 == TimeCount then
-    TimeCount = TimeCount + 1
-    RemainTimeStr = RemainTimeStr .. string.format(GText("UI_Time_Minute_NotHighlight"), math.floor(RemainRefreshTime / 60))
-    RemainRefreshTime = RemainRefreshTime % 60
+  if r4_32 > 60 and r6_32 < 2 or r6_32 == 1 then
+    r6_32 = r6_32 + 1
+    r5_32 = r5_32 .. string.format(GText("UI_Time_Minute_NotHighlight"), math.floor(r4_32 / 60))
+    r4_32 = r4_32 % 60
   end
-  if RemainRefreshTime > 0 and TimeCount < 2 or 1 == TimeCount then
-    TimeCount = TimeCount + 1
-    RemainTimeStr = RemainTimeStr .. string.format(GText("UI_Time_Second_NotHighlight"), RemainRefreshTime)
+  if r4_32 > 0 and r6_32 < 2 or r6_32 == 1 then
+    r6_32 = r6_32 + 1
+    r5_32 = r5_32 .. string.format(GText("UI_Time_Second_NotHighlight"), r4_32)
   end
-  self.Text_RemainTime:SetText(RemainTimeStr)
+  r0_32.Text_RemainTime:SetText(r5_32)
 end
-
-function WBP_Abyss_Main_C:GetSumLevelStar(AbyssLevelId)
-  local AbyssLevelInfo = DataMgr.AbyssLevel[AbyssLevelId]
-  local SumStar = 0
-  if AbyssLevelInfo.DungeonReward1 then
-    SumStar = SumStar + AbyssLevelInfo.DungeonReward1
+function r2_0.GetSumLevelStar(r0_33, r1_33)
+  -- line: [687, 697] id: 33
+  local r2_33 = DataMgr.AbyssLevel[r1_33]
+  local r3_33 = 0
+  if r2_33.DungeonReward1 then
+    r3_33 = r3_33 + r2_33.DungeonReward1
   end
-  if AbyssLevelInfo.DungeonReward2 then
-    SumStar = SumStar + AbyssLevelInfo.DungeonReward2
+  if r2_33.DungeonReward2 then
+    r3_33 = r3_33 + r2_33.DungeonReward2
   end
-  return SumStar
+  return r3_33
 end
-
-function WBP_Abyss_Main_C:GetGotLevelStar(AbyssId, AbyssLevelId, LevelIndex)
-  local Avatar = GWorld:GetAvatar()
-  local GotStar = 0
-  if Avatar then
-    local Abyss = Avatar.Abysses[AbyssId]
-    if Abyss.AbyssLevelList[LevelIndex] then
-      GotStar = Abyss.AbyssLevelList[LevelIndex].MaxAbyssLevelProgress
+function r2_0.GetGotLevelStar(r0_34, r1_34, r2_34, r3_34)
+  -- line: [699, 714] id: 34
+  local r4_34 = GWorld:GetAvatar()
+  local r5_34 = 0
+  if r4_34 then
+    local r6_34 = r4_34.Abysses[r1_34]
+    if r6_34.AbyssLevelList[r3_34] then
+      r5_34 = r6_34.AbyssLevelList[r3_34].MaxAbyssLevelProgress
     end
   end
-  return GotStar
+  return r5_34
 end
-
-function WBP_Abyss_Main_C:GetOffsetByIndex(Index)
-  if Index <= self.Mid then
+function r2_0.GetOffsetByIndex(r0_35, r1_35)
+  -- line: [716, 726] id: 35
+  if r1_35 <= r0_35.Mid then
     return 0
-  elseif self.Max - Index <= self.Mid - 1 then
-    return self.BottomOffset
+  elseif r0_35.Max - r1_35 <= r0_35.Mid + -1 then
+    return r0_35.BottomOffset
   else
-    local k = self.BottomOffset / (self.Max - self.Mid + 1 - self.Mid)
-    local z = -k * self.Mid
-    return k * Index + z
+    local r2_35 = r0_35.BottomOffset / (r0_35.Max - r0_35.Mid + 1 - r0_35.Mid)
+    return r2_35 * r1_35 + -r2_35 * r0_35.Mid
   end
 end
-
-function WBP_Abyss_Main_C:OnClickedAbyssLevelCell(AbyssLevelCell)
-  if AbyssLevelCell.IsLocked then
-    UIManager(self):ShowUITip(UIConst.Tip_CommonToast, string.format(GText("Abyss_BuffLockToast"), AbyssLevelCell.Index - 1))
-    return
+function r2_0.OnClickedAbyssLevelCell(r0_36, r1_36)
+  -- line: [728, 734] id: 36
+  if r1_36.IsLocked then
+    UIManager(r0_36):ShowUITip(UIConst.Tip_CommonToast, string.format(GText("Abyss_BuffLockToast"), r1_36.Index + -1))
+    return 
   end
-  self:OpenSubUI({
-    Idx = "AbyssSelect"
-  }, false, self.SelectAbyssId, AbyssLevelCell.Index)
+  r0_36:OpenSubUI({
+    Idx = "AbyssSelect",
+  }, false, r0_36.SelectAbyssId, r1_36.Index)
 end
-
-function WBP_Abyss_Main_C:CheckAbyssLevelIsOpen(AbyssId, AbyssLevelId, AbyssLevelIndex)
-  local Avatar = GWorld:GetAvatar()
-  if Avatar then
-    local MaxAbyssProgress = Avatar.Abysses[AbyssId].MaxAbyssProgress
-    if AbyssLevelIndex <= MaxAbyssProgress[1] then
+function r2_0.CheckAbyssLevelIsOpen(r0_37, r1_37, r2_37, r3_37)
+  -- line: [736, 759] id: 37
+  local r4_37 = GWorld:GetAvatar()
+  if r4_37 then
+    local r5_37 = r4_37.Abysses[r1_37].MaxAbyssProgress
+    if r3_37 <= r5_37[1] then
       return true
-    elseif AbyssLevelIndex == MaxAbyssProgress[1] + 1 then
-      local AbyssLevel = DataMgr.AbyssLevel
-      local AbyssDungeon1 = AbyssLevel[AbyssLevelId].AbyssDungeon1
-      local AbyssDungeon2 = AbyssLevel[AbyssLevelId].AbyssDungeon2
-      local SumRoom = 0
-      if DataMgr.AbyssDungeon[AbyssDungeon1] and DataMgr.AbyssDungeon[AbyssDungeon1].RoomId then
-        SumRoom = SumRoom + #DataMgr.AbyssDungeon[AbyssDungeon1].RoomId
+    elseif r3_37 == r5_37[1] + 1 then
+      local r6_37 = DataMgr.AbyssLevel
+      local r7_37 = r6_37[r2_37].AbyssDungeon1
+      local r8_37 = r6_37[r2_37].AbyssDungeon2
+      local r9_37 = 0
+      if DataMgr.AbyssDungeon[r7_37] and DataMgr.AbyssDungeon[r7_37].RoomId then
+        r9_37 = r9_37 + #DataMgr.AbyssDungeon[r7_37].RoomId
       end
-      if DataMgr.AbyssDungeon[AbyssDungeon2] and DataMgr.AbyssDungeon[AbyssDungeon2].RoomId then
-        SumRoom = SumRoom + #DataMgr.AbyssDungeon[AbyssDungeon2].RoomId
+      if DataMgr.AbyssDungeon[r8_37] and DataMgr.AbyssDungeon[r8_37].RoomId then
+        r9_37 = r9_37 + #DataMgr.AbyssDungeon[r8_37].RoomId
       end
-      if MaxAbyssProgress[2] == SumRoom then
+      if r5_37[2] == r9_37 then
         return true
       end
     end
   end
   return false
 end
-
-function WBP_Abyss_Main_C:InitTable()
-  self.TabConfigData = {
+function r2_0.InitTable(r0_38)
+  -- line: [761, 771] id: 38
+  r0_38.TabConfigData = {
     TitleName = GText("Abyss_entry"),
     DynamicNode = {
       "Back",
@@ -739,531 +753,537 @@ function WBP_Abyss_Main_C:InitTable()
       "ResourceBar"
     },
     StyleName = "Text",
-    OwnerPanel = self.Root,
-    BackCallback = self.Root.OnClickBack,
+    OwnerPanel = r0_38.Root,
+    BackCallback = r0_38.Root.OnClickBack,
     BottomKeyInfo = {
       {
         KeyInfoList = {
           {
             Type = "Text",
             Text = "Esc",
-            ClickCallback = self.Root.OnClickBack,
-            Owner = self.Root
+            ClickCallback = r0_38.Root.OnClickBack,
+            Owner = r0_38.Root,
           }
         },
         GamePadInfoList = {
-          {Type = "Img", ImgShortPath = "B"}
+          {
+            Type = "Img",
+            ImgShortPath = "B",
+          }
         },
         Desc = GText("UI_BACK"),
-        bLongPress = false
+        bLongPress = false,
       }
     },
-    PopupInfoId = DataMgr.SystemUI.AbyssMain.PopupInfoId
+    PopupInfoId = DataMgr.SystemUI.AbyssMain.PopupInfoId,
   }
-  local ResoucesTab = DataMgr.SystemUI.AbyssMain.TabCoin
-  self.Root:InitOtherPageTab(self.TabConfigData, ResoucesTab, true)
+  r0_38.Root:InitOtherPageTab(r0_38.TabConfigData, DataMgr.SystemUI.AbyssMain.TabCoin, true)
 end
-
-function WBP_Abyss_Main_C:InitListenEvent()
-  if IsValid(self.GameInputModeSubsystem) then
-    self.GameInputModeSubsystem.OnInputMethodChanged:Add(self, self.RefreshOpInfoByInputDevice)
+function r2_0.InitListenEvent(r0_39)
+  -- line: [783, 787] id: 39
+  if IsValid(r0_39.GameInputModeSubsystem) then
+    r0_39.GameInputModeSubsystem.OnInputMethodChanged:Add(r0_39, r0_39.RefreshOpInfoByInputDevice)
   end
 end
-
-function WBP_Abyss_Main_C:ClearListenEvent()
-  if IsValid(self.GameInputModeSubsystem) then
-    self.GameInputModeSubsystem.OnInputMethodChanged:Remove(self, self.RefreshOpInfoByInputDevice)
+function r2_0.ClearListenEvent(r0_40)
+  -- line: [789, 793] id: 40
+  if IsValid(r0_40.GameInputModeSubsystem) then
+    r0_40.GameInputModeSubsystem.OnInputMethodChanged:Remove(r0_40, r0_40.RefreshOpInfoByInputDevice)
   end
 end
-
-function WBP_Abyss_Main_C:RefreshOpInfoByInputDevice(CurInputDevice, CurGamepadName)
-  if CurInputDevice == ECommonInputType.Touch then
-    return
+function r2_0.RefreshOpInfoByInputDevice(r0_41, r1_41, r2_41)
+  -- line: [795, 801] id: 41
+  if r1_41 == ECommonInputType.Touch then
+    return 
   end
-  local IsUseKeyAndMouse = CurInputDevice == ECommonInputType.MouseAndKeyboard
-  self:UpdateUIStyleInPlatform(IsUseKeyAndMouse)
+  r0_41:UpdateUIStyleInPlatform(r1_41 == ECommonInputType.MouseAndKeyboard)
 end
-
-function WBP_Abyss_Main_C:UpdateUIStyleInPlatform(IsUseKeyAndMouse)
-  if IsUseKeyAndMouse then
-    self:InitKeyboardView()
+function r2_0.UpdateUIStyleInPlatform(r0_42, r1_42)
+  -- line: [803, 809] id: 42
+  if r1_42 then
+    r0_42:InitKeyboardView()
   else
-    self:InitGamepadView()
+    r0_42:InitGamepadView()
   end
 end
-
-function WBP_Abyss_Main_C:InitGamepadView()
-  if self.Controller_Selection then
-    self.Controller_Selection:SetVisibility(UIConst.VisibilityOp.Collapsed)
+function r2_0.InitGamepadView(r0_43)
+  -- line: [811, 838] id: 43
+  if r0_43.Controller_Selection then
+    r0_43.Controller_Selection:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
-  if self.Controller_Reward then
-    self.Controller_Reward:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+  if r0_43.Controller_Reward then
+    r0_43.Controller_Reward:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
   end
-  if self.Controller_Entry then
-    self.Controller_Entry:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+  if r0_43.Controller_Entry then
+    r0_43.Controller_Entry:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
   end
-  if self.Controller_BacktoTop then
-    self.Controller_BacktoTop:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+  if r0_43.Controller_BacktoTop then
+    r0_43.Controller_BacktoTop:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
   end
-  if self.Controller_Store then
-    self.Controller_Store:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+  if r0_43.Controller_Store then
+    r0_43.Controller_Store:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
   end
-  self.Reward:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
-  self.Entry:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
-  if self:HasFocusedDescendants() or self:HasAnyUserFocus() then
-    if self.SelectCell then
-      self.SelectCell:SetFocus()
+  r0_43.Reward:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
+  r0_43.Entry:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
+  if r0_43:HasFocusedDescendants() or r0_43:HasAnyUserFocus() then
+    if r0_43.SelectCell then
+      r0_43.SelectCell:SetFocus()
     else
-      local Item = self.WBox_Mode:GetChildAt(0)
-      Item:SetFocus()
+      r0_43.WBox_Mode:GetChildAt(0):SetFocus()
     end
   end
 end
-
-function WBP_Abyss_Main_C:InitKeyboardView()
-  if self.Controller_Selection then
-    self.Controller_Selection:SetVisibility(UIConst.VisibilityOp.Collapsed)
+function r2_0.InitKeyboardView(r0_44)
+  -- line: [840, 858] id: 44
+  if r0_44.Controller_Selection then
+    r0_44.Controller_Selection:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
-  if self.Controller_Reward then
-    self.Controller_Reward:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  if r0_44.Controller_Reward then
+    r0_44.Controller_Reward:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
-  if self.Controller_Entry then
-    self.Controller_Entry:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  if r0_44.Controller_Entry then
+    r0_44.Controller_Entry:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
-  if self.Controller_BacktoTop then
-    self.Controller_BacktoTop:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  if r0_44.Controller_BacktoTop then
+    r0_44.Controller_BacktoTop:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
-  if self.Controller_Store then
-    self.Controller_Store:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  if r0_44.Controller_Store then
+    r0_44.Controller_Store:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
-  self.Reward:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-  self.Entry:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+  r0_44.Reward:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+  r0_44.Entry:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
 end
-
-function WBP_Abyss_Main_C:InitWidgetInfoInGamePad()
-  if self.Icon_Key_Reward then
-    self.Icon_Key_Reward:CreateCommonKey({
+function r2_0.InitWidgetInfoInGamePad(r0_45)
+  -- line: [860, 921] id: 45
+  if r0_45.Icon_Key_Reward then
+    r0_45.Icon_Key_Reward:CreateCommonKey({
       KeyInfoList = {
-        {Type = "Img", ImgShortPath = "Y"}
-      }
+        {
+          Type = "Img",
+          ImgShortPath = "Y",
+        }
+      },
     })
   end
-  if self.Icon_Key_Selection then
-    self.Icon_Key_Selection:CreateCommonKey({
+  if r0_45.Icon_Key_Selection then
+    r0_45.Icon_Key_Selection:CreateCommonKey({
       KeyInfoList = {
-        {Type = "Img", ImgShortPath = "LV"}
-      }
+        {
+          Type = "Img",
+          ImgShortPath = "LV",
+        }
+      },
     })
   end
-  if self.Icon_Key_BacktoTop then
-    self.Icon_Key_BacktoTop:CreateCommonKey({
+  if r0_45.Icon_Key_BacktoTop then
+    r0_45.Icon_Key_BacktoTop:CreateCommonKey({
       KeyInfoList = {
-        {Type = "Img", ImgShortPath = "LS"}
-      }
+        {
+          Type = "Img",
+          ImgShortPath = "LS",
+        }
+      },
     })
   end
-  if self.Icon_Key_Entry then
-    self.Icon_Key_Entry:CreateCommonKey({
+  if r0_45.Icon_Key_Entry then
+    r0_45.Icon_Key_Entry:CreateCommonKey({
       KeyInfoList = {
-        {Type = "Img", ImgShortPath = "View"}
-      }
+        {
+          Type = "Img",
+          ImgShortPath = "View",
+        }
+      },
     })
   end
-  if self.Controller_Store then
-    self.Controller_Store:CreateCommonKey({
+  if r0_45.Controller_Store then
+    r0_45.Controller_Store:CreateCommonKey({
       KeyInfoList = {
-        {Type = "Img", ImgShortPath = "X"}
-      }
+        {
+          Type = "Img",
+          ImgShortPath = "X",
+        }
+      },
     })
   end
-  if self.Icon_Key_Selection then
-    self.Icon_Key_Selection:CreateCommonKey({
+  if r0_45.Icon_Key_Selection then
+    r0_45.Icon_Key_Selection:CreateCommonKey({
       KeyInfoList = {
-        {Type = "Img", ImgShortPath = "Vertical"}
-      }
+        {
+          Type = "Img",
+          ImgShortPath = "Vertical",
+        }
+      },
     })
   end
 end
-
-function WBP_Abyss_Main_C:GetDesiredFocusTarget_AbyssMain()
-  if self.SelectCell then
-    return self.SelectCell
+function r2_0.GetDesiredFocusTarget_AbyssMain(r0_46)
+  -- line: [923, 930] id: 46
+  if r0_46.SelectCell then
+    return r0_46.SelectCell
   else
-    local Item = self.WBox_Mode:GetChildAt(0)
-    return Item
+    return r0_46.WBox_Mode:GetChildAt(0)
   end
 end
-
-function WBP_Abyss_Main_C:OpenStore()
-  UIManager(self):LoadUINew("ShopActivity", nil, nil, nil, "AbyssShop")
+function r2_0.OpenStore(r0_47)
+  -- line: [932, 934] id: 47
+  PageJumpUtils:JumpToShopPage(nil, nil, nil, "AbyssShop")
 end
-
-function WBP_Abyss_Main_C:InitMgr()
-  self.StackSubUI = {}
-  self.SubUI = {}
-  EventManager:AddEvent(EventID.OnCurrentAbyssSeasonIdChange, self, self.ShowSeasonEndPopup)
-  self:PlayInAnim()
+function r2_0.InitMgr(r0_48)
+  -- line: [938, 943] id: 48
+  r0_48.StackSubUI = {}
+  r0_48.SubUI = {}
+  EventManager:AddEvent(EventID.OnCurrentAbyssSeasonIdChange, r0_48, r0_48.ShowSeasonEndPopup)
+  r0_48:PlayInAnim()
 end
-
-function WBP_Abyss_Main_C:DestructMgr()
-  EventManager:RemoveEvent(EventID.OnCurrentAbyssSeasonIdChange, self)
+function r2_0.DestructMgr(r0_49)
+  -- line: [945, 947] id: 49
+  EventManager:RemoveEvent(EventID.OnCurrentAbyssSeasonIdChange, r0_49)
 end
-
-function WBP_Abyss_Main_C:ShowSeasonEndPopup()
-  local UIManager = UIManager(self)
-  local Params = {}
-  
-  function Params.RightCallbackFunction()
-    local ExceptUIName = {"BattleMain"}
-    UIManager:CloseAllUI_EX(ExceptUIName, "AbyssSeasonChange")
-    UIUtils.PlayBattleMainInAnim()
-  end
-  
-  UIManager:ShowCommonPopupUI(100225, Params)
+function r2_0.ShowSeasonEndPopup(r0_50)
+  -- line: [949, 958] id: 50
+  local r1_50 = UIManager(r0_50)
+  r1_50:ShowCommonPopupUI(100225, {
+    RightCallbackFunction = function()
+      -- line: [952, 956] id: 51
+      r1_50:CloseAllUI_EX({
+        "BattleMain"
+      }, "AbyssSeasonChange")
+      UIUtils.PlayBattleMainInAnim()
+    end,
+  })
 end
-
-function WBP_Abyss_Main_C:PlayInAnim()
-  self:AddTimer(0.01, function()
-    if self.Com_Tab.Play_WBP_Com_Tab_P_In then
-      self.Com_Tab:Play_WBP_Com_Tab_P_In()
-    elseif self.Com_Tab.Play_Com_Tab_M_In then
-      self.Com_Tab:Play_Com_Tab_M_In()
+function r2_0.PlayInAnim(r0_52)
+  -- line: [960, 968] id: 52
+  r0_52:AddTimer(0.01, function()
+    -- line: [961, 967] id: 53
+    if r0_52.Com_Tab.Play_WBP_Com_Tab_P_In then
+      r0_52.Com_Tab:Play_WBP_Com_Tab_P_In()
+    elseif r0_52.Com_Tab.Play_Com_Tab_M_In then
+      r0_52.Com_Tab:Play_Com_Tab_M_In()
     end
   end, false)
 end
-
-function WBP_Abyss_Main_C:OpenSubUI(WidgetInfo, ...)
-  local TabId
-  if WidgetInfo and WidgetInfo.Idx then
-    TabId = WidgetInfo.Idx
+function r2_0.OpenSubUI(r0_54, r1_54, ...)
+  -- line: [970, 1026] id: 54
+  local r2_54 = nil
+  if r1_54 and r1_54.Idx then
+    r2_54 = r1_54.Idx
   end
-  if self.CurTabId == TabId then
-    return self.CurSubUI
+  if r0_54.CurTabId == r2_54 then
+    return r0_54.CurSubUI
   end
-  if self.CurSubUI and self.CurSubUI.SwitchOut then
-    self.CurSubUI:SwitchOut(...)
+  if r0_54.CurSubUI and r0_54.CurSubUI.SwitchOut then
+    r0_54.CurSubUI:SwitchOut(...)
   end
-  if TabId then
-    if not self.SubUI[TabId] then
-      if "AbyssMain" ~= TabId then
-        local Widget = self:CreateWidgetNew(TabId)
-        if Widget then
-          self.Group_Root:AddChild(Widget)
-          Widget.Root = self
-          Widget.WidgetInfo = WidgetInfo
-          if self.CurSubUI then
-            Widget.PreWidgetInfo = self.CurSubUI.WidgetInfo
+  if r2_54 then
+    if not r0_54.SubUI[r2_54] then
+      if r2_54 ~= "AbyssMain" then
+        local r3_54 = r0_54:CreateWidgetNew(r2_54)
+        if r3_54 then
+          r0_54.Group_Root:AddChild(r3_54)
+          r3_54.Root = r0_54
+          r3_54.WidgetInfo = r1_54
+          if r0_54.CurSubUI then
+            r3_54.PreWidgetInfo = r0_54.CurSubUI.WidgetInfo
           end
-          local CanvasSlot = UE4.UWidgetLayoutLibrary.SlotAsCanvasSlot(Widget)
-          if CanvasSlot then
-            local Anchors = FAnchors()
-            Anchors.Minimum = FVector2D(0, 0)
-            Anchors.Maximum = FVector2D(1, 1)
-            CanvasSlot:SetOffsets(FMargin(0, 0, 0, 0))
-            CanvasSlot:SetAnchors(Anchors)
+          local r4_54 = UE4.UWidgetLayoutLibrary.SlotAsCanvasSlot(r3_54)
+          if r4_54 then
+            local r5_54 = FAnchors()
+            r5_54.Minimum = FVector2D(0, 0)
+            r5_54.Maximum = FVector2D(1, 1)
+            r4_54:SetOffsets(FMargin(0, 0, 0, 0))
+            r4_54:SetAnchors(r5_54)
           end
-          self.SubUI[TabId] = Widget
+          r0_54.SubUI[r2_54] = r3_54
         end
       else
-        local Widget = self
-        Widget.Root = self
-        Widget.WidgetInfo = WidgetInfo
-        self.SubUI[TabId] = Widget
+        local r3_54 = r0_54
+        r3_54.Root = r0_54
+        r3_54.WidgetInfo = r1_54
+        r0_54.SubUI[r2_54] = r3_54
       end
     end
-    self.CurTabId = TabId
-    self.CurSubUI = self.SubUI[TabId]
-    if self.CurSubUI and self.CurSubUI.SwitchIn then
-      self.CurSubUI:SwitchIn(...)
-      self.CurSubUI:SetFocus()
+    r0_54.CurTabId = r2_54
+    r0_54.CurSubUI = r0_54.SubUI[r2_54]
+    if r0_54.CurSubUI and r0_54.CurSubUI.SwitchIn then
+      r0_54.CurSubUI:SwitchIn(...)
+      r0_54.CurSubUI:SetFocus()
     end
   end
-  return self.CurSubUI
+  return r0_54.CurSubUI
 end
-
-function WBP_Abyss_Main_C:BP_GetDesiredFocusTarget()
-  if self.CurSubUI == self then
-    return self:GetDesiredFocusTarget_AbyssMain()
+function r2_0.BP_GetDesiredFocusTarget(r0_55)
+  -- line: [1028, 1034] id: 55
+  if r0_55.CurSubUI == r0_55 then
+    return r0_55:GetDesiredFocusTarget_AbyssMain()
   else
-    return self.CurSubUI
+    return r0_55.CurSubUI
   end
 end
-
-function WBP_Abyss_Main_C:OnPreviewKeyDown(MyGeometry, InKeyEvent)
-  local InKey = UE4.UKismetInputLibrary.GetKey(InKeyEvent)
-  local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-  local IsEventHandled = false
-  if UE4.UKismetInputLibrary.Key_IsGamepadKey(InKey) and "Gamepad_LeftThumbstick" == InKeyName then
-    IsEventHandled = self:TryClickedBackBtn_GamePad()
+function r2_0.OnPreviewKeyDown(r0_56, r1_56, r2_56)
+  -- line: [1036, 1050] id: 56
+  local r3_56 = UE4.UKismetInputLibrary.GetKey(r2_56)
+  local r4_56 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_56)
+  local r5_56 = false
+  if UE4.UKismetInputLibrary.Key_IsGamepadKey(r3_56) and r4_56 == "Gamepad_LeftThumbstick" then
+    r5_56 = r0_56:TryClickedBackBtn_GamePad()
   end
-  if IsEventHandled then
+  if r5_56 then
     return UE4.UWidgetBlueprintLibrary.Handled()
   else
     return UE4.UWidgetBlueprintLibrary.Unhandled()
   end
 end
-
-function WBP_Abyss_Main_C:OnKeyDown(MyGeometry, InKeyEvent)
-  local InKey = UE4.UKismetInputLibrary.GetKey(InKeyEvent)
-  local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-  local IsEventHandled = false
-  if UE4.UKismetInputLibrary.Key_IsGamepadKey(InKey) then
-    if "Gamepad_FaceButton_Top" == InKeyName then
-      IsEventHandled = true
-      self.Reward:OnBtnClicked()
-    elseif "Gamepad_FaceButton_Left" == InKeyName then
-      IsEventHandled = true
-      self.Store:OnBtnClicked()
-    elseif "Gamepad_Special_Left" == InKeyName then
-      IsEventHandled = true
-      self.Entry:OnBtnClicked()
-      self:OpenEntry()
-    elseif "Gamepad_FaceButton_Right" == InKeyName then
-      IsEventHandled = true
-      self:OnReturnKeyDown()
+function r2_0.OnKeyDown(r0_57, r1_57, r2_57)
+  -- line: [1052, 1085] id: 57
+  local r3_57 = UE4.UKismetInputLibrary.GetKey(r2_57)
+  local r4_57 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_57)
+  local r5_57 = false
+  if UE4.UKismetInputLibrary.Key_IsGamepadKey(r3_57) then
+    if r4_57 == "Gamepad_FaceButton_Top" then
+      r5_57 = true
+      r0_57.Reward:OnBtnClicked()
+    elseif r4_57 == "Gamepad_FaceButton_Left" then
+      r5_57 = true
+      r0_57.Store:OnBtnClicked()
+    elseif r4_57 == "Gamepad_Special_Left" then
+      r5_57 = true
+      r0_57.Entry:OnBtnClicked()
+      r0_57:OpenEntry()
+    elseif r4_57 == "Gamepad_FaceButton_Right" then
+      r5_57 = true
+      r0_57:OnReturnKeyDown()
     end
-    if not IsEventHandled then
-      IsEventHandled = self.Com_Tab:Handle_KeyEventOnGamePad(InKeyName)
+    if not r5_57 then
+      r5_57 = r0_57.Com_Tab:Handle_KeyEventOnGamePad(r4_57)
     end
-  elseif "Escape" == InKeyName then
-    IsEventHandled = true
-    self:OnReturnKeyDown()
+  elseif r4_57 == "Escape" then
+    r5_57 = true
+    r0_57:OnReturnKeyDown()
   end
-  if IsEventHandled then
+  if r5_57 then
     return UE4.UWidgetBlueprintLibrary.Handled()
   else
     return UE4.UWidgetBlueprintLibrary.UnHandled()
   end
 end
-
-function WBP_Abyss_Main_C:OnReturnKeyDown()
-  UIUtils.PlayCommonBtnSe(self)
-  self:OnClickBack()
+function r2_0.OnReturnKeyDown(r0_58)
+  -- line: [1087, 1090] id: 58
+  UIUtils.PlayCommonBtnSe(r0_58)
+  r0_58:OnClickBack()
 end
-
-function WBP_Abyss_Main_C:OnClickBack()
-  if self.Com_Tab:IsAnimationPlaying(self.Com_Tab.In) then
-    return
+function r2_0.OnClickBack(r0_59)
+  -- line: [1092, 1104] id: 59
+  if r0_59.Com_Tab:IsAnimationPlaying(r0_59.Com_Tab.In) then
+    return 
   end
-  if self.CurSubUI ~= self and self.CurSubUI.OnReturnKeyDown then
-    self.CurSubUI:OnReturnKeyDown()
+  if r0_59.CurSubUI ~= r0_59 and r0_59.CurSubUI.OnReturnKeyDown then
+    r0_59.CurSubUI:OnReturnKeyDown()
   else
-    self:ReturnPreWidget()
+    r0_59:ReturnPreWidget()
   end
 end
-
-function WBP_Abyss_Main_C:ReturnPreWidget()
-  if not self.CurSubUI or not self.CurSubUI.PreWidgetInfo then
-    self:PlayOutAnim()
-  elseif self.CurSubUI then
-    self:OpenSubUI(self.CurSubUI.PreWidgetInfo)
+function r2_0.ReturnPreWidget(r0_60)
+  -- line: [1106, 1113] id: 60
+  if not r0_60.CurSubUI or not r0_60.CurSubUI.PreWidgetInfo then
+    r0_60:PlayOutAnim()
+  elseif r0_60.CurSubUI then
+    r0_60:OpenSubUI(r0_60.CurSubUI.PreWidgetInfo)
   end
 end
-
-function WBP_Abyss_Main_C:PlayOutAnim()
-  self:UnbindAllFromAnimationFinished(self.Out)
-  if self:IsAnimationPlaying(self.Out) then
-    return
+function r2_0.PlayOutAnim(r0_61)
+  -- line: [1115, 1127] id: 61
+  r0_61:UnbindAllFromAnimationFinished(r0_61.Out)
+  if r0_61:IsAnimationPlaying(r0_61.Out) then
+    return 
   end
-  self:BindToAnimationFinished(self.Out, {
-    self,
-    self.Close
+  r0_61:BindToAnimationFinished(r0_61.Out, {
+    r0_61,
+    r0_61.Close
   })
-  self:PlayAnimationForward(self.Out)
-  self.Com_Tab:PlayAnimationForward(self.Com_Tab.Out)
-  if self.IsFromActivity then
+  r0_61:PlayAnimationForward(r0_61.Out)
+  r0_61.Com_Tab:PlayAnimationForward(r0_61.Com_Tab.Out)
+  if r0_61.IsFromActivity then
     EventManager:FireEvent(EventID.OnReturnToActivityEntry)
+    EventManager:FireEvent(EventID.OnActivityEntryShowVisible)
   end
 end
-
-function WBP_Abyss_Main_C:InitOtherPageTab(TabConfigData, ResoucesTab, DontPlayInAnim, Object, Callback)
-  if TabConfigData then
-    TabConfigData.OverridenTopResouces = ResoucesTab or DataMgr.SystemUI.AbyssMain.TabCoin
+function r2_0.InitOtherPageTab(r0_62, r1_62, r2_62, r3_62, r4_62, r5_62)
+  -- line: [1129, 1135] id: 62
+  if r1_62 then
+    r1_62.OverridenTopResouces = r2_62 and DataMgr.SystemUI.AbyssMain.TabCoin
   end
-  self.Com_Tab:Init(TabConfigData, DontPlayInAnim)
-  self.Com_Tab:BindEventOnTabSelected(Object, Callback)
+  r0_62.Com_Tab:Init(r1_62, r3_62)
+  r0_62.Com_Tab:BindEventOnTabSelected(r4_62, r5_62)
 end
-
-function WBP_Abyss_Main_C:Close()
-  if self.SubUI then
-    for _, Widget in pairs(self.SubUI) do
-      if Widget ~= self then
-        Widget:RemoveFromParent()
+function r2_0.Close(r0_63)
+  -- line: [1137, 1147] id: 63
+  if r0_63.SubUI then
+    for r5_63, r6_63 in pairs(r0_63.SubUI) do
+      if r6_63 ~= r0_63 then
+        r6_63:RemoveFromParent()
       end
     end
+    -- close: r1_63
   end
-  self.Super.Close(self)
+  r0_63.Super.Close(r0_63)
 end
-
-function WBP_Abyss_Main_C:GetRewards(Content)
-  local Avatar = GWorld:GetAvatar()
-  if Avatar then
-    local function CallBack(Ret, Reward)
-      local Abyss = Avatar.Abysses[Content.ConfigData.ReceiveParm.SelectAbyssId]
-      
-      Content.ConfigData.CanReceive = Abyss:CheckRewardCanGet(Content.ConfigData.SourceNum)
-      Content.ConfigData.RewardsGot = Abyss:CheckRewardIsGot(Content.ConfigData.SourceNum)
-      Content.SelfWidget:RefreshBtn(0 == Ret)
-      Content.Owner:RefreshButton(Abyss:CheckHaveRewardToGet())
-    end
-    
-    Avatar:GetAbyssReward(Content.ConfigData.ReceiveParm.SelectAbyssId, Content.ConfigData.SourceNum, CallBack)
+function r2_0.GetRewards(r0_64, r1_64)
+  -- line: [1151, 1164] id: 64
+  local r2_64 = GWorld:GetAvatar()
+  if r2_64 then
+    r2_64:GetAbyssReward(r1_64.ConfigData.ReceiveParm.SelectAbyssId, r1_64.ConfigData.SourceNum, function(r0_65, r1_65)
+      -- line: [1154, 1160] id: 65
+      r1_64.ConfigData.CanReceive = r2_65:CheckRewardCanGet(r1_64.ConfigData.SourceNum)
+      r1_64.ConfigData.RewardsGot = r2_64.Abysses[r1_64.ConfigData.ReceiveParm.SelectAbyssId]:CheckRewardIsGot(r1_64.ConfigData.SourceNum)
+      r1_64.SelfWidget:RefreshBtn(r0_65 == 0)
+      r1_64.Owner:RefreshButton(r2_65:CheckHaveRewardToGet())
+    end)
   end
 end
-
-function WBP_Abyss_Main_C:GetAllRewards(ReceiveAllParm)
-  local Avatar = GWorld:GetAvatar()
-  if Avatar then
-    local function CallBack(Ret, Reward)
-      local HaveReWardToGet = false
-      
-      for i = 0, ReceiveAllParm.SelfWidget.List_Item:GetNumItems() - 1 do
-        local Item = ReceiveAllParm.SelfWidget.List_Item:GetItemAt(i)
-        local Abyss = Avatar.Abysses[ReceiveAllParm.SelectAbyssId]
-        local CanReceive = Abyss:CheckRewardCanGet(Item.ConfigData.SourceNum)
-        local IsGot = Abyss:CheckRewardIsGot(Item.ConfigData.SourceNum)
-        if CanReceive then
-          HaveReWardToGet = true
+function r2_0.GetAllRewards(r0_66, r1_66)
+  -- line: [1166, 1189] id: 66
+  local r2_66 = GWorld:GetAvatar()
+  if r2_66 then
+    r2_66:GetAbyssAllReward(r1_66.SelectAbyssId, function(r0_67, r1_67)
+      -- line: [1169, 1186] id: 67
+      local r2_67 = false
+      for r6_67 = 0, r1_66.SelfWidget.List_Item:GetNumItems() + -1, 1 do
+        local r7_67 = r1_66.SelfWidget.List_Item:GetItemAt(r6_67)
+        local r8_67 = r2_66.Abysses[r1_66.SelectAbyssId]
+        local r9_67 = r8_67:CheckRewardCanGet(r7_67.ConfigData.SourceNum)
+        local r10_67 = r8_67:CheckRewardIsGot(r7_67.ConfigData.SourceNum)
+        if r9_67 then
+          r2_67 = true
         end
-        Item.ConfigData.CanReceive = CanReceive
-        Item.ConfigData.RewardsGot = IsGot
-        if Item.SelfWidget then
-          Item.SelfWidget:RefreshBtn(IsGot)
+        r7_67.ConfigData.CanReceive = r9_67
+        r7_67.ConfigData.RewardsGot = r10_67
+        if r7_67.SelfWidget then
+          r7_67.SelfWidget:RefreshBtn(r10_67)
         end
       end
-      ReceiveAllParm.SelfWidget:RefreshButton(HaveReWardToGet)
-    end
-    
-    Avatar:GetAbyssAllReward(ReceiveAllParm.SelectAbyssId, CallBack)
+      r1_66.SelfWidget:RefreshButton(r2_67)
+    end)
   end
 end
-
-function WBP_Abyss_Main_C:OpenEntry()
-  local ConfigData = {
+function r2_0.OpenEntry(r0_68)
+  -- line: [1191, 1197] id: 68
+  local r2_68 = UIManager(r0_68):LoadUINew("AbyssEntry", {
     Type = 3,
-    AbyssId = self.SelectAbyssId
-  }
-  local New = UIManager(self):LoadUINew("AbyssEntry", ConfigData)
+    AbyssId = r0_68.SelectAbyssId,
+  })
 end
-
-function WBP_Abyss_Main_C:ShowReviewPopUp()
-  local Avatar = GWorld:GetAvatar()
-  local AbyssSeasonId = Avatar.CurrentAbyssSeasonId
-  if not DataMgr.AbyssSeasonList[AbyssSeasonId] then
-    return
+function r2_0.ShowReviewPopUp(r0_69)
+  -- line: [1199, 1222] id: 69
+  local r1_69 = GWorld:GetAvatar()
+  local r2_69 = r1_69.CurrentAbyssSeasonId
+  if not DataMgr.AbyssSeasonList[r2_69] then
+    return 
   end
-  if EMCache:Get("LastViewAbyss") == AbyssSeasonId then
-    return
+  if r1_0:Get("LastViewAbyss") == r2_69 then
+    return 
   end
-  EMCache:Set("LastViewAbyss", AbyssSeasonId)
-  local LastSeasonId = DataMgr.AbyssSeasonList[AbyssSeasonId].LastSeason
-  if not LastSeasonId then
-    return
+  r1_0:Set("LastViewAbyss", r2_69)
+  local r3_69 = DataMgr.AbyssSeasonList[r2_69].LastSeason
+  if not r3_69 then
+    return 
   end
-  local AbyssId = Avatar:GetAbyssSeasonBestAbyssId(LastSeasonId)
-  if not AbyssId then
-    return
+  local r4_69 = r1_69:GetAbyssSeasonBestAbyssId(r3_69)
+  if not r4_69 then
+    return 
   end
-  local Params = {SeasonId = LastSeasonId, AbyssId = AbyssId}
-  UIManager(self):ShowCommonPopupUI(100191, Params, self)
+  UIManager(r0_69):ShowCommonPopupUI(100191, {
+    SeasonId = r3_69,
+    AbyssId = r4_69,
+  }, r0_69)
 end
-
-function WBP_Abyss_Main_C:TryChangeSelectedTab(NavigationDirection, Index)
-  if NavigationDirection == EUINavigation.Up then
-    return self:OnNavigationToIndex(Index, Index - 1)
-  elseif NavigationDirection == EUINavigation.Down then
-    return self:OnNavigationToIndex(Index, Index + 1)
+function r2_0.TryChangeSelectedTab(r0_70, r1_70, r2_70)
+  -- line: [1224, 1230] id: 70
+  if r1_70 == EUINavigation.Up then
+    return r0_70:OnNavigationToIndex(r2_70, r2_70 + -1)
+  elseif r1_70 == EUINavigation.Down then
+    return r0_70:OnNavigationToIndex(r2_70, r2_70 + 1)
   end
 end
-
-function WBP_Abyss_Main_C:OnNavigationToIndex(CurIndex, TargetIndex)
-  if TargetIndex <= 0 or TargetIndex > #self.Index2AbyssId then
-    return self.WBox_Mode:GetChildAt(CurIndex - 1)
+function r2_0.OnNavigationToIndex(r0_71, r1_71, r2_71)
+  -- line: [1232, 1239] id: 71
+  if r2_71 <= 0 or #r0_71.Index2AbyssId < r2_71 then
+    return r0_71.WBox_Mode:GetChildAt(r1_71 + -1)
   end
-  local Cell = self.WBox_Mode:GetChildAt(TargetIndex - 1)
-  Cell:OnCellClicked()
-  return Cell
+  local r3_71 = r0_71.WBox_Mode:GetChildAt(r2_71 + -1)
+  r3_71:OnCellClicked()
+  return r3_71
 end
-
-function WBP_Abyss_Main_C:FocusToFirstMission()
-  return self:NavigateToFirstDisplayedItem(self.List_Level)
+function r2_0.FocusToFirstMission(r0_72)
+  -- line: [1241, 1243] id: 72
+  return r0_72:NavigateToFirstDisplayedItem(r0_72.List_Level)
 end
-
-function WBP_Abyss_Main_C:NavigateToFirstDisplayedItem(List)
-  local ItemUIs = List:GetDisplayedEntryWidgets()
-  if ItemUIs:Length() > 0 then
-    local TargetWidget
-    for i = 1, ItemUIs:Length() do
-      local Widget = ItemUIs:GetRef(i)
-      local Index = Widget.Content.Index
-      if Index and not TargetWidget then
-        TargetWidget = Widget
+function r2_0.NavigateToFirstDisplayedItem(r0_73, r1_73)
+  -- line: [1245, 1267] id: 73
+  local r2_73 = r1_73:GetDisplayedEntryWidgets()
+  if r2_73:Length() > 0 then
+    local r3_73 = nil
+    for r7_73 = 1, r2_73:Length(), 1 do
+      local r8_73 = r2_73:GetRef(r7_73)
+      if r8_73.Content.Index and not r3_73 then
+        r3_73 = r8_73
       end
     end
-    if TargetWidget then
-      List:BP_NavigateToItem(TargetWidget.Content)
-      return TargetWidget
+    if r3_73 then
+      r1_73:BP_NavigateToItem(r3_73.Content)
+      return r3_73
     end
   end
-  return List
+  return r1_73
 end
-
-function WBP_Abyss_Main_C:OnUINavigation(NavigationDirection)
-  if NavigationDirection == EUINavigation.Left then
-    if self.CurFocusedLevel then
-      self.CurFocusedLevel:HideIcon()
+function r2_0.OnUINavigation(r0_74, r1_74)
+  -- line: [1269, 1277] id: 74
+  if r1_74 == EUINavigation.Left then
+    if r0_74.CurFocusedLevel then
+      r0_74.CurFocusedLevel:HideIcon()
     end
-    self.CurFocusedLevel = nil
-    return self.SelectCell
+    r0_74.CurFocusedLevel = nil
+    return r0_74.SelectCell
   end
 end
-
-function WBP_Abyss_Main_C:NavigateToNodeLevel(Entry)
-  local Index = self.List_Level:GetIndexForItem(Entry.Content)
-  local TargetIndex = Index + 2
-  local Item = self.List_Level:GetItemAt(TargetIndex)
-  self.List_Level:BP_NavigateToItem(Item)
-  return Item.Entry
+function r2_0.NavigateToNodeLevel(r0_75, r1_75)
+  -- line: [1279, 1285] id: 75
+  local r4_75 = r0_75.List_Level:GetItemAt(r0_75.List_Level:GetIndexForItem(r1_75.Content) + 2)
+  r0_75.List_Level:BP_NavigateToItem(r4_75)
+  return r4_75.Entry
 end
-
-function WBP_Abyss_Main_C:NavigateToLastNormalLevel(Entry)
-  local Index = self.List_Level:GetIndexForItem(Entry.Content)
-  local TargetIndex = Index - 2
-  local Item = self.List_Level:GetItemAt(TargetIndex)
-  self.List_Level:BP_NavigateToItem(Item)
-  return Item.Entry
+function r2_0.NavigateToLastNormalLevel(r0_76, r1_76)
+  -- line: [1287, 1293] id: 76
+  local r4_76 = r0_76.List_Level:GetItemAt(r0_76.List_Level:GetIndexForItem(r1_76.Content) + -2)
+  r0_76.List_Level:BP_NavigateToItem(r4_76)
+  return r4_76.Entry
 end
-
-function WBP_Abyss_Main_C:TryChangeCurFocusedMissionList(Item)
-  if self.CurFocusedLevel then
-    self.CurFocusedLevel:HideIcon()
+function r2_0.TryChangeCurFocusedMissionList(r0_77, r1_77)
+  -- line: [1295, 1301] id: 77
+  if r0_77.CurFocusedLevel then
+    r0_77.CurFocusedLevel:HideIcon()
   end
-  self.CurFocusedLevel = Item
-  self.CurFocusedLevel:ShowIcon()
+  r0_77.CurFocusedLevel = r1_77
+  r0_77.CurFocusedLevel:ShowIcon()
 end
-
-function WBP_Abyss_Main_C:OnEntryGenerated(Entry)
-  if self.IsEndless then
-    if self.CanJump then
-      if Entry.Content.IsNodeLevel then
-        self.BacktoTop:SetVisibility(UIConst.VisibilityOp.Collapsed)
-      end
-    elseif Entry.Content.IsLastLevel then
-      self.BacktoTop:SetVisibility(UIConst.VisibilityOp.Collapsed)
-    end
+function r2_0.OnEntryGenerated(r0_78, r1_78)
+  -- line: [1303, 1315] id: 78
+  if r0_78.IsEndless and r1_78.Content.IsLastLevel then
+    r0_78.BacktoTop:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
+  -- warn: not visited block [3]
+  -- block#3:
+  -- r0_78.BacktoTop:SetVisibility(_ENV.UIConst.VisibilityOp.Collapsed)
+  -- goto label_27
 end
-
-function WBP_Abyss_Main_C:OnEntryReleased(Entry)
-  if self.IsEndless then
-    if self.CanJump then
-      if Entry.Content.IsNodeLevel then
-        self.BacktoTop:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-      end
-    elseif Entry.Content.IsLastLevel then
-      self.BacktoTop:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-    end
+function r2_0.OnEntryReleased(r0_79, r1_79)
+  -- line: [1317, 1329] id: 79
+  if r0_79.IsEndless and r1_79.Content.IsLastLevel then
+    r0_79.BacktoTop:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
   end
+  -- warn: not visited block [3]
+  -- block#3:
+  -- r0_79.BacktoTop:SetVisibility(_ENV.UIConst.VisibilityOp.SelfHitTestInvisible)
+  -- goto label_27
 end
-
-return WBP_Abyss_Main_C
+return r2_0

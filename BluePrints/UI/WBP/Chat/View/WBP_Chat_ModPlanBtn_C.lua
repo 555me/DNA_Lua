@@ -1,123 +1,138 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\WBP\Chat\View\WBP_Chat_ModPlanBtn_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local ModModel = ModController:GetModel()
-local M = Class({
+local r0_0 = ModController:GetModel()
+local r1_0 = Class({
   "BluePrints.UI.BP_EMUserWidget_C"
 })
-
-function M:OnBtnClickInMod()
-  local ChatView = ChatController:GetView()
-  if ChatView.IsBeginToClose then
-    return
+function r1_0.OnBtnClickInMod(r0_1)
+  -- line: [17, 50] id: 1
+  local r1_1 = ChatController:GetView()
+  if r1_1.IsBeginToClose then
+    return 
   end
-  local Tag
-  if self.TargetType == "Weapon" then
-    local BattleConf = DataMgr.BattleWeapon[self.TargetId]
-    if BattleConf.WeaponTag then
-      if table.findValue(BattleConf.WeaponTag, "Melee") then
-        Tag = "Melee"
-      elseif table.findValue(BattleConf.WeaponTag, "Ranged") then
-        Tag = "Ranged"
+  local r2_1 = nil
+  if r0_1.TargetType == "Weapon" then
+    local r3_1 = DataMgr.BattleWeapon[r0_1.TargetId]
+    if r3_1.WeaponTag then
+      if table.findValue(r3_1.WeaponTag, "Melee") then
+        r2_1 = "Melee"
+      elseif table.findValue(r3_1.WeaponTag, "Ranged") then
+        r2_1 = "Ranged"
       end
     end
   else
-    Tag = self.TargetType
+    r2_1 = r0_1.TargetType
   end
-  local bBattle = ChatView.bBattle
-  ChatView:Close()
-  local UIMode
-  if self.bSelfMsg then
-    UIMode = ModCommon.MainUICase.Preview
+  local r3_1 = r1_1.bBattle
+  r1_1:Close()
+  local r4_1 = nil
+  if r0_1.bSelfMsg then
+    r4_1 = ModCommon.MainUICase.Preview
   else
-    UIMode = ModCommon.MainUICase.CopyMode
+    r4_1 = ModCommon.MainUICase.CopyMode
   end
-  ModModel:CreateDummyAvatarForCopyMode(self.ModSuitInfo)
-  ModController:OpenView(ModCommon.ArmoryMod, self.TargetType, Tag, {1}, nil, {
+  r0_0:CreateDummyAvatarForCopyMode(r0_1.ModSuitInfo)
+  ModController:OpenView(ModCommon.ArmoryMod, r0_1.TargetType, r2_1, {
+    1
+  }, nil, {
     Func = function()
-      ChatController:OpenView(nil, bBattle)
-    end
-  }, UIMode, nil)
-  AudioManager(self):PlayUISound(self, "event:/ui/common/click_mod_suit_preset", nil, nil)
+      -- line: [46, 48] id: 2
+      ChatController:OpenView(nil, r3_1)
+    end,
+  }, r4_1, nil)
+  AudioManager(r0_1):PlayUISound(r0_1, "event:/ui/common/click_mod_suit_preset", nil, nil)
 end
-
-function M:OnBtnClickInSkin()
-  local ChatView = ChatController:GetView()
-  if ChatView.IsBeginToClose then
-    return
+function r1_0.OnBtnClickInSkin(r0_3)
+  -- line: [51, 69] id: 3
+  local r1_3 = ChatController:GetView()
+  if r1_3.IsBeginToClose then
+    return 
   end
-  ChatView:Close()
-  UIManager(self):LoadUINew("ArmorySkin", {
-    Type = self.SkinType,
-    SkinId = self.SkinId,
+  if IsClient(r0_3) then
+    UIManager(r0_3):ShowUITip("CommonToastMain", GText("UI_COMMONPOP_TITLE_100059"))
+    return 
+  end
+  local r2_3 = r1_3.bBattle
+  r1_3:Close()
+  UIManager(r0_3):LoadUINew("ArmorySkin", {
+    Type = r0_3.SkinType,
+    SkinId = r0_3.SkinId,
     OpenPreviewDyeFromChat = true,
-    Colors = self.DyePlanInfo.Colors
+    Colors = r0_3.DyePlanInfo.Colors,
+    OnCloseCallback = function()
+      -- line: [65, 67] id: 4
+      ChatController:OpenView(nil, r2_3)
+    end,
   })
 end
-
-function M:Destruct()
-  self.Button_Area.OnClicked:Remove(self, self.OnBtnClickInMod)
-  self.Button_Area.OnClicked:Remove(self, self.OnBtnClickInSkin)
+function r1_0.Destruct(r0_5)
+  -- line: [70, 73] id: 5
 end
-
-function M:InitMod(ModSuitInfo, bSelfMsg)
-  self.ModSuitInfo = ModSuitInfo
-  local ModSuitName = ModSuitInfo.TargetInfo[6]
-  local TargetType = ModSuitInfo.TargetInfo[1]
-  local TargetId = ModSuitInfo.TargetInfo[2]
-  self.TargetType = TargetType
-  self.TargetId = TargetId
-  self.Text_Plan:SetText(GText(ModSuitName))
-  local Conf, Name = nil, "角色或武器被删除了!!!!"
-  if "Char" == TargetType then
-    Conf = DataMgr.Char[TargetId]
-    Name = Conf.CharName
-  elseif "Weapon" == TargetType then
-    Conf = DataMgr.Weapon[TargetId]
-    Name = Conf.WeaponName
-  elseif "UWeapon" == TargetType then
-    Conf = DataMgr.UWeapon[TargetId]
-    Name = Conf.WeaponName
+function r1_0.InitMod(r0_6, r1_6, r2_6)
+  -- line: [75, 110] id: 6
+  r0_6.DyePlanInfo = nil
+  r0_6.ModSuitInfo = r1_6
+  local r4_6 = r1_6.TargetInfo[1]
+  local r5_6 = r1_6.TargetInfo[2]
+  r0_6.TargetType = r4_6
+  r0_6.TargetId = r5_6
+  r0_6.Text_Plan:SetText(GText(r1_6.TargetInfo[6]))
+  local r6_6 = nil
+  local r7_6 = "角色或武器被删除了!!!!"
+  if r4_6 == "Char" then
+    r6_6 = DataMgr.Char[r5_6]
+    r7_6 = r6_6.CharName
+  elseif r4_6 == "Weapon" then
+    r6_6 = DataMgr.Weapon[r5_6]
+    r7_6 = r6_6.WeaponName
+  elseif r4_6 == "UWeapon" then
+    r6_6 = DataMgr.UWeapon[r5_6]
+    r7_6 = r6_6.WeaponName
   end
-  if Conf.Icon then
-    UResourceLibrary.LoadObjectAsync(self, Conf.Icon, {
-      self,
-      function(_, Icon)
-        local Mat = self.Img_Avatar:GetDynamicMaterial()
-        Mat:SetTextureParameterValue("IconMap", Icon)
+  if r6_6.Icon then
+    UResourceLibrary.LoadObjectAsync(r0_6, r6_6.Icon, {
+      r0_6,
+      function(r0_7, r1_7)
+        -- line: [96, 99] id: 7
+        r0_6.Img_Avatar:GetDynamicMaterial():SetTextureParameterValue("IconMap", r1_7)
       end
     })
   end
-  self.Text_Avatar:SetText(GText(Name))
-  self.bSelfMsg = bSelfMsg
-  self.Button_Area.OnClicked:Add(self, self.OnBtnClickInMod)
+  r0_6.Text_Avatar:SetText(GText(r7_6))
+  r0_6.bSelfMsg = r2_6
+  r0_6.Button_Area.OnClicked:Clear()
+  r0_6.Button_Area.OnClicked:Add(r0_6, r0_6.OnBtnClickInMod)
 end
-
-function M:InitDye(DyePlanInfo, bSelfMsg)
-  self.DyePlanInfo = DyePlanInfo
-  local DyePlanName = DyePlanInfo.PlanName
-  local SkinType = DyePlanInfo.SkinType
-  local SkinId = DyePlanInfo.SkinId
-  local SkinName = DyePlanInfo.TargetName
-  self.SkinType = SkinType
-  self.SkinId = SkinId
-  self.Text_Plan:SetText(GText(DyePlanName))
-  local Conf
-  if "Char" == SkinType then
-    Conf = DataMgr.Skin[SkinId]
-  elseif "Weapon" == SkinType then
-    Conf = DataMgr.WeaponSkin[SkinId] or DataMgr.Weapon[SkinId]
+function r1_0.InitDye(r0_8, r1_8, r2_8)
+  -- line: [112, 143] id: 8
+  r0_8.ModSuitInfo = nil
+  r0_8.DyePlanInfo = r1_8
+  local r4_8 = r1_8.SkinType
+  local r5_8 = r1_8.SkinId
+  local r6_8 = r1_8.TargetName
+  r0_8.SkinType = r4_8
+  r0_8.SkinId = r5_8
+  r0_8.Text_Plan:SetText(GText(r1_8.PlanName))
+  local r7_8 = nil
+  if r4_8 == "Char" then
+    r7_8 = DataMgr.Skin[r5_8]
+  elseif r4_8 == "Weapon" then
+    r7_8 = DataMgr.WeaponSkin[r5_8] and DataMgr.Weapon[r5_8]
   end
-  if Conf and Conf.Icon then
-    UResourceLibrary.LoadObjectAsync(self, Conf.Icon, {
-      self,
-      function(_, Icon)
-        local Mat = self.Img_Avatar:GetDynamicMaterial()
-        Mat:SetTextureParameterValue("IconMap", Icon)
+  if r7_8 and r7_8.Icon then
+    UResourceLibrary.LoadObjectAsync(r0_8, r7_8.Icon, {
+      r0_8,
+      function(r0_9, r1_9)
+        -- line: [129, 132] id: 9
+        r0_8.Img_Avatar:GetDynamicMaterial():SetTextureParameterValue("IconMap", r1_9)
       end
     })
   end
-  self.Text_Avatar:SetText(GText(SkinName))
-  self.bSelfMsg = bSelfMsg
-  self.Button_Area.OnClicked:Add(self, self.OnBtnClickInSkin)
+  r0_8.Text_Avatar:SetText(GText(r6_8))
+  r0_8.bSelfMsg = r2_8
+  r0_8.Button_Area.OnClicked:Clear()
+  r0_8.Button_Area.OnClicked:Add(r0_8, r0_8.OnBtnClickInSkin)
 end
-
-return M
+return r1_0

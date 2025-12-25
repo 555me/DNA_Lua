@@ -319,7 +319,7 @@ r3_0[100002] = {
     BPRewardTemplateID = 100002,
     BattlePassLevel = 2,
     Rank1Reward = 100005002,
-    Rank2Reward = 100006002,
+    Rank2Reward = 1000060021,
   },
   [3] = {
     BPRewardTemplateID = 100002,
@@ -337,7 +337,7 @@ r3_0[100002] = {
     BPRewardTemplateID = 100002,
     BattlePassLevel = 5,
     Rank1Reward = 100005005,
-    Rank2Reward = 100006005,
+    Rank2Reward = 1000060051,
   },
   [6] = {
     BPRewardTemplateID = 100002,
@@ -367,7 +367,7 @@ r3_0[100002] = {
     BPRewardTemplateID = 100002,
     BattlePassLevel = 10,
     Rank1Reward = 100005010,
-    Rank2Reward = 100006010,
+    Rank2Reward = 1000060101,
   },
   [11] = {
     BPRewardTemplateID = 100002,
@@ -427,7 +427,7 @@ r3_0[100002] = {
     BPRewardTemplateID = 100002,
     BattlePassLevel = 20,
     Rank1Reward = 100005020,
-    Rank2Reward = 100006020,
+    Rank2Reward = 1000060201,
   },
   [21] = {
     BPRewardTemplateID = 100002,
@@ -547,7 +547,7 @@ r3_0[100002] = {
     BPRewardTemplateID = 100002,
     BattlePassLevel = 40,
     Rank1Reward = 100005040,
-    Rank2Reward = 100006040,
+    Rank2Reward = 1000060401,
   },
   [41] = {
     BPRewardTemplateID = 100002,
@@ -921,7 +921,7 @@ r3_0[100003] = {
     BPRewardTemplateID = 100003,
     BattlePassLevel = 2,
     Rank1Reward = 100005002,
-    Rank2Reward = 100006002,
+    Rank2Reward = 1000060021,
   },
   [3] = {
     BPRewardTemplateID = 100003,
@@ -939,7 +939,7 @@ r3_0[100003] = {
     BPRewardTemplateID = 100003,
     BattlePassLevel = 5,
     Rank1Reward = 100005005,
-    Rank2Reward = 100006005,
+    Rank2Reward = 1000060051,
   },
   [6] = {
     BPRewardTemplateID = 100003,
@@ -969,7 +969,7 @@ r3_0[100003] = {
     BPRewardTemplateID = 100003,
     BattlePassLevel = 10,
     Rank1Reward = 100005010,
-    Rank2Reward = 100006010,
+    Rank2Reward = 1000060101,
   },
   [11] = {
     BPRewardTemplateID = 100003,
@@ -1029,7 +1029,7 @@ r3_0[100003] = {
     BPRewardTemplateID = 100003,
     BattlePassLevel = 20,
     Rank1Reward = 100005020,
-    Rank2Reward = 100006020,
+    Rank2Reward = 1000060201,
   },
   [21] = {
     BPRewardTemplateID = 100003,
@@ -1149,7 +1149,7 @@ r3_0[100003] = {
     BPRewardTemplateID = 100003,
     BattlePassLevel = 40,
     Rank1Reward = 100005040,
-    Rank2Reward = 100006040,
+    Rank2Reward = 1000060402,
   },
   [41] = {
     BPRewardTemplateID = 100003,

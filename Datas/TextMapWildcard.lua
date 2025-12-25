@@ -41,6 +41,14 @@ end)("TextMapWildcard", {
     TextMapId = "AnnouncementTimeFormatShort",
     WildcardClassification = "Story",
   },
+  Content_110111_3 = {
+    TextMapId = "Content_110111_3",
+    WildcardClassification = "Story",
+  },
+  Content_120101_12 = {
+    TextMapId = "Content_120101_12",
+    WildcardClassification = "Story",
+  },
   Content_120112_4 = {
     TextMapId = "Content_120112_4",
     WildcardClassification = "Story",
@@ -81,6 +89,10 @@ end)("TextMapWildcard", {
     TextMapId = "Content_120114_7",
     WildcardClassification = "Story",
   },
+  Content_200212_3 = {
+    TextMapId = "Content_200212_3",
+    WildcardClassification = "Story",
+  },
   Content_Nai02_01_01 = {
     TextMapId = "Content_Nai02_01_01",
     WildcardClassification = "Story",
@@ -117,6 +129,14 @@ end)("TextMapWildcard", {
     TextMapId = "EntryTitle_204001",
     WildcardClassification = "Story",
   },
+  Event_Des_102001 = {
+    TextMapId = "Event_Des_102001",
+    WildcardClassification = "Story",
+  },
+  Event_Des_103005 = {
+    TextMapId = "Event_Des_103005",
+    WildcardClassification = "Story",
+  },
   Explore_Fort_Lift_Play2_CountTime = {
     TextMapId = "Explore_Fort_Lift_Play2_CountTime",
     WildcardClassification = "Story",
@@ -133,12 +153,12 @@ end)("TextMapWildcard", {
     TextMapId = "HomePianoDes_1004005",
     WildcardClassification = "Story",
   },
-  MOD_Type_Name_Changeling01 = {
-    TextMapId = "MOD_Type_Name_Changeling01",
-    WildcardClassification = "Story",
-  },
   MOD_Type_Name_FeatheredSnake01 = {
     TextMapId = "MOD_Type_Name_FeatheredSnake01",
+    WildcardClassification = "Story",
+  },
+  Mail_Content_100002 = {
+    TextMapId = "Mail_Content_100002",
     WildcardClassification = "Story",
   },
   Mail_Content_10007 = {
@@ -165,12 +185,28 @@ end)("TextMapWildcard", {
     TextMapId = "Mail_Content_10060",
     WildcardClassification = "Story",
   },
+  Mail_Content_101001 = {
+    TextMapId = "Mail_Content_101001",
+    WildcardClassification = "Story",
+  },
+  Mail_Content_102001 = {
+    TextMapId = "Mail_Content_102001",
+    WildcardClassification = "Story",
+  },
   Mail_Title_10033 = {
     TextMapId = "Mail_Title_10033",
     WildcardClassification = "Story",
   },
+  MonsterRushEvent_Wuyou_DungeonDes03 = {
+    TextMapId = "MonsterRushEvent_Wuyou_DungeonDes03",
+    WildcardClassification = "Story",
+  },
   NpcBiography_Information_Feiyi_2 = {
     TextMapId = "NpcBiography_Information_Feiyi_2",
+    WildcardClassification = "Story",
+  },
+  NpcBiography_Information_Sanxiongdi = {
+    TextMapId = "NpcBiography_Information_Sanxiongdi",
     WildcardClassification = "Story",
   },
   NpcBiography_Information_XiAo_1 = {
@@ -181,8 +217,16 @@ end)("TextMapWildcard", {
     TextMapId = "NpcBiography_Information_XiAo_2",
     WildcardClassification = "Story",
   },
+  PROLOGUE_SELECTGUN_TIP_2 = {
+    TextMapId = "PROLOGUE_SELECTGUN_TIP_2",
+    WildcardClassification = "Story",
+  },
   Pet_Affix_Hold = {
     TextMapId = "Pet_Affix_Hold",
+    WildcardClassification = "Story",
+  },
+  PhantomTalk_1104_Chest = {
+    TextMapId = "PhantomTalk_1104_Chest",
     WildcardClassification = "Story",
   },
   PlayerLevel_FirstObtain_Char = {
@@ -197,8 +241,16 @@ end)("TextMapWildcard", {
     TextMapId = "PlayerLv_Now",
     WildcardClassification = "Story",
   },
+  QuestDesc_10020401 = {
+    TextMapId = "QuestDesc_10020401",
+    WildcardClassification = "Story",
+  },
   READ_TEXT_2000006 = {
     TextMapId = "READ_TEXT_2000006",
+    WildcardClassification = "Story",
+  },
+  READ_TEXT_2000010 = {
+    TextMapId = "READ_TEXT_2000010",
     WildcardClassification = "Story",
   },
   READ_TEXT_2000016 = {
@@ -225,6 +277,10 @@ end)("TextMapWildcard", {
     TextMapId = "READ_TEXT_JailInves02",
     WildcardClassification = "Story",
   },
+  RESOURCE_TEXT_1006 = {
+    TextMapId = "RESOURCE_TEXT_1006",
+    WildcardClassification = "Story",
+  },
   RESOURCE_TEXT_110 = {
     TextMapId = "RESOURCE_TEXT_110",
     WildcardClassification = "Story",
@@ -235,6 +291,10 @@ end)("TextMapWildcard", {
   },
   RLArchive_ID = {
     TextMapId = "RLArchive_ID",
+    WildcardClassification = "Story",
+  },
+  System_Des_Play = {
+    TextMapId = "System_Des_Play",
     WildcardClassification = "Story",
   },
   TOAST_PHANTOM_TIMES = {
@@ -557,6 +617,18 @@ end)("TextMapWildcard", {
     TextMapId = "Title_10077",
     WildcardClassification = "Story",
   },
+  UIGuide_SwitchMaster_PC = {
+    TextMapId = "UIGuide_SwitchMaster_PC",
+    WildcardClassification = "Story",
+  },
+  UIGuide_SwitchMaster_Phone = {
+    TextMapId = "UIGuide_SwitchMaster_Phone",
+    WildcardClassification = "Story",
+  },
+  UIGuide_content_203501 = {
+    TextMapId = "UIGuide_content_203501",
+    WildcardClassification = "Story",
+  },
   UI_AbyssRoom_Count = {
     TextMapId = "UI_AbyssRoom_Count",
     WildcardClassification = "Story",
@@ -609,6 +681,10 @@ end)("TextMapWildcard", {
     TextMapId = "UI_BattleRoom_Count",
     WildcardClassification = "Story",
   },
+  UI_CHAR_DATA_TEXT_11010105 = {
+    TextMapId = "UI_CHAR_DATA_TEXT_11010105",
+    WildcardClassification = "Story",
+  },
   UI_CHAR_DATA_TEXT_11010201 = {
     TextMapId = "UI_CHAR_DATA_TEXT_11010201",
     WildcardClassification = "Story",
@@ -649,6 +725,14 @@ end)("TextMapWildcard", {
     TextMapId = "UI_CHAR_DATA_TEXT_18010105",
     WildcardClassification = "Story",
   },
+  UI_CHAR_DATA_TEXT_18010301 = {
+    TextMapId = "UI_CHAR_DATA_TEXT_18010301",
+    WildcardClassification = "Story",
+  },
+  UI_CHAR_DATA_TEXT_33010102 = {
+    TextMapId = "UI_CHAR_DATA_TEXT_33010102",
+    WildcardClassification = "Story",
+  },
   UI_CHAR_DATA_TEXT_41010402 = {
     TextMapId = "UI_CHAR_DATA_TEXT_41010402",
     WildcardClassification = "Story",
@@ -663,6 +747,10 @@ end)("TextMapWildcard", {
   },
   UI_CHAR_DATA_TEXT_53010404 = {
     TextMapId = "UI_CHAR_DATA_TEXT_53010404",
+    WildcardClassification = "Story",
+  },
+  UI_CHAR_DATA_TEXT_53010405 = {
+    TextMapId = "UI_CHAR_DATA_TEXT_53010405",
     WildcardClassification = "Story",
   },
   UI_CHAR_NAME_101 = {
@@ -781,6 +869,10 @@ end)("TextMapWildcard", {
     TextMapId = "UI_HardBoss_ChancesRemain",
     WildcardClassification = "Story",
   },
+  UI_LOGO_DIALOGUE_10018201 = {
+    TextMapId = "UI_LOGO_DIALOGUE_10018201",
+    WildcardClassification = "Story",
+  },
   UI_LOGO_DIALOGUE_10018202 = {
     TextMapId = "UI_LOGO_DIALOGUE_10018202",
     WildcardClassification = "Story",
@@ -873,8 +965,20 @@ end)("TextMapWildcard", {
     TextMapId = "UI_SHOP_SHOPITEMLIMIT",
     WildcardClassification = "Story",
   },
+  UI_SHOWNPC_DESC_SCENE1 = {
+    TextMapId = "UI_SHOWNPC_DESC_SCENE1",
+    WildcardClassification = "Story",
+  },
+  UI_SHOWNPC_DESC_SCENE2 = {
+    TextMapId = "UI_SHOWNPC_DESC_SCENE2",
+    WildcardClassification = "Story",
+  },
   UI_SkillTree_Attr_Add = {
     TextMapId = "UI_SkillTree_Attr_Add",
+    WildcardClassification = "Story",
+  },
+  UI_Skin_Name_1601 = {
+    TextMapId = "UI_Skin_Name_1601",
     WildcardClassification = "Story",
   },
   UI_Squad_ListName = {
@@ -1161,6 +1265,18 @@ end)("TextMapWildcard", {
     TextMapId = "voice_ch_char_Aote_vo_companio_03_1",
     WildcardClassification = "Story",
   },
+  voice_ch_char_Aote_vo_topic_05_2 = {
+    TextMapId = "voice_ch_char_Aote_vo_topic_05_2",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Baonu_vo_birthday = {
+    TextMapId = "voice_ch_char_Baonu_vo_birthday",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Dafu_vo_birthday = {
+    TextMapId = "voice_ch_char_Dafu_vo_birthday",
+    WildcardClassification = "Story",
+  },
   voice_ch_char_Feina_vo_birthday = {
     TextMapId = "voice_ch_char_Feina_vo_birthday",
     WildcardClassification = "Story",
@@ -1181,6 +1297,18 @@ end)("TextMapWildcard", {
     TextMapId = "voice_ch_char_Feina_vo_welcome",
     WildcardClassification = "Story",
   },
+  voice_ch_char_Haier_vo_gain = {
+    TextMapId = "voice_ch_char_Haier_vo_gain",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Haier_vo_topic_04_2 = {
+    TextMapId = "voice_ch_char_Haier_vo_topic_04_2",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Haier_vo_welcome = {
+    TextMapId = "voice_ch_char_Haier_vo_welcome",
+    WildcardClassification = "Story",
+  },
   voice_ch_char_Heitao_vo_companio_01 = {
     TextMapId = "voice_ch_char_Heitao_vo_companio_01",
     WildcardClassification = "Story",
@@ -1189,8 +1317,48 @@ end)("TextMapWildcard", {
     TextMapId = "voice_ch_char_Heitao_vo_companio_04_1",
     WildcardClassification = "Story",
   },
+  voice_ch_char_Heitao_vo_fail = {
+    TextMapId = "voice_ch_char_Heitao_vo_fail",
+    WildcardClassification = "Story",
+  },
   voice_ch_char_Heitao_vo_idle = {
     TextMapId = "voice_ch_char_Heitao_vo_idle",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Heitao_vo_topic_02_2 = {
+    TextMapId = "voice_ch_char_Heitao_vo_topic_02_2",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Heitao_vo_topic_05_2 = {
+    TextMapId = "voice_ch_char_Heitao_vo_topic_05_2",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Kezhou_vo_birthday = {
+    TextMapId = "voice_ch_char_Kezhou_vo_birthday",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Kezhou_vo_topic_01_1 = {
+    TextMapId = "voice_ch_char_Kezhou_vo_topic_01_1",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Landi_vo_birthday = {
+    TextMapId = "voice_ch_char_Landi_vo_birthday",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Landi_vo_victory = {
+    TextMapId = "voice_ch_char_Landi_vo_victory",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Landi_vo_welcome = {
+    TextMapId = "voice_ch_char_Landi_vo_welcome",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Lise_vo_topic_05_3 = {
+    TextMapId = "voice_ch_char_Lise_vo_topic_05_3",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Maer_vo_gain_1 = {
+    TextMapId = "voice_ch_char_Maer_vo_gain_1",
     WildcardClassification = "Story",
   },
   voice_ch_char_Maer_vo_idle = {
@@ -1225,6 +1393,26 @@ end)("TextMapWildcard", {
     TextMapId = "voice_ch_char_NanzhuLight_vo_skill02_r01",
     WildcardClassification = "Story",
   },
+  voice_ch_char_Nifu_vo_birthday = {
+    TextMapId = "voice_ch_char_Nifu_vo_birthday",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Nifu_vo_topic_02_2 = {
+    TextMapId = "voice_ch_char_Nifu_vo_topic_02_2",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Nifu_vo_topic_02_3 = {
+    TextMapId = "voice_ch_char_Nifu_vo_topic_02_3",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Nifu_vo_topic_02_4 = {
+    TextMapId = "voice_ch_char_Nifu_vo_topic_02_4",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Nifu_vo_welcome = {
+    TextMapId = "voice_ch_char_Nifu_vo_welcome",
+    WildcardClassification = "Story",
+  },
   voice_ch_char_NvzhuLight_vo_appear = {
     TextMapId = "voice_ch_char_NvzhuLight_vo_appear",
     WildcardClassification = "Story",
@@ -1253,6 +1441,10 @@ end)("TextMapWildcard", {
     TextMapId = "voice_ch_char_NvzhuLight_vo_skill02_r01",
     WildcardClassification = "Story",
   },
+  voice_ch_char_Saiqi_vo_gain = {
+    TextMapId = "voice_ch_char_Saiqi_vo_gain",
+    WildcardClassification = "Story",
+  },
   voice_ch_char_Saiqi_vo_topic_04_2 = {
     TextMapId = "voice_ch_char_Saiqi_vo_topic_04_2",
     WildcardClassification = "Story",
@@ -1273,12 +1465,44 @@ end)("TextMapWildcard", {
     TextMapId = "voice_ch_char_Tuosi_vo_topic_04_3",
     WildcardClassification = "Story",
   },
+  voice_ch_char_Tuosi_vo_welcome = {
+    TextMapId = "voice_ch_char_Tuosi_vo_welcome",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Xibi_vo_welcome = {
+    TextMapId = "voice_ch_char_Xibi_vo_welcome",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Xier_vo_birthday = {
+    TextMapId = "voice_ch_char_Xier_vo_birthday",
+    WildcardClassification = "Story",
+  },
   voice_ch_char_Yeer_vo_birthday = {
     TextMapId = "voice_ch_char_Yeer_vo_birthday",
     WildcardClassification = "Story",
   },
   voice_ch_char_Zhangyu_vo_topic_01_1 = {
     TextMapId = "voice_ch_char_Zhangyu_vo_topic_01_1",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Zhangyu_vo_topic_01_3 = {
+    TextMapId = "voice_ch_char_Zhangyu_vo_topic_01_3",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Zhangyu_vo_topic_02_3 = {
+    TextMapId = "voice_ch_char_Zhangyu_vo_topic_02_3",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Zhiliu_vo_birthday = {
+    TextMapId = "voice_ch_char_Zhiliu_vo_birthday",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Zhiliu_vo_topic_04_3 = {
+    TextMapId = "voice_ch_char_Zhiliu_vo_topic_04_3",
+    WildcardClassification = "Story",
+  },
+  voice_ch_char_Zhiliu_vo_welcome = {
+    TextMapId = "voice_ch_char_Zhiliu_vo_welcome",
     WildcardClassification = "Story",
   },
 })

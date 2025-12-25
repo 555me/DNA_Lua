@@ -124,7 +124,7 @@ end)("Cutoff", {
     ItemId = 120220,
   },
   [17] = {
-    CutoffEndTime = 1770670800,
+    CutoffEndTime = 1770667200,
     CutoffId = 17,
     CutoffPrice = 780,
     CutoffShow = 60,
@@ -132,7 +132,7 @@ end)("Cutoff", {
     ItemId = 120109,
   },
   [18] = {
-    CutoffEndTime = 1770670800,
+    CutoffEndTime = 1770667200,
     CutoffId = 18,
     CutoffPrice = 980,
     CutoffShow = 76,
@@ -261,6 +261,7 @@ end)("Cutoff", {
     ItemId = 120117,
   },
   [36] = {
+    CutoffEndTime = 1770667200,
     CutoffId = 36,
     CutoffPrice = 60,
     CutoffShow = 8,
@@ -268,6 +269,7 @@ end)("Cutoff", {
     ItemId = 120123,
   },
   [37] = {
+    CutoffEndTime = 1770667200,
     CutoffId = 37,
     CutoffPrice = 300,
     CutoffShow = 44,
@@ -275,6 +277,7 @@ end)("Cutoff", {
     ItemId = 120124,
   },
   [38] = {
+    CutoffEndTime = 1770667200,
     CutoffId = 38,
     CutoffPrice = 300,
     CutoffShow = 44,
@@ -282,6 +285,7 @@ end)("Cutoff", {
     ItemId = 120125,
   },
   [39] = {
+    CutoffEndTime = 1770667200,
     CutoffId = 39,
     CutoffPrice = 300,
     CutoffShow = 44,
@@ -289,6 +293,7 @@ end)("Cutoff", {
     ItemId = 120126,
   },
   [40] = {
+    CutoffEndTime = 1770667200,
     CutoffId = 40,
     CutoffPrice = 300,
     CutoffShow = 44,
@@ -296,6 +301,7 @@ end)("Cutoff", {
     ItemId = 120127,
   },
   [41] = {
+    CutoffEndTime = 1770667200,
     CutoffId = 41,
     CutoffPrice = 300,
     CutoffShow = 44,
@@ -303,6 +309,7 @@ end)("Cutoff", {
     ItemId = 120128,
   },
   [42] = {
+    CutoffEndTime = 1770667200,
     CutoffId = 42,
     CutoffPrice = 300,
     CutoffShow = 44,
@@ -310,6 +317,7 @@ end)("Cutoff", {
     ItemId = 120129,
   },
   [43] = {
+    CutoffEndTime = 1770667200,
     CutoffId = 43,
     CutoffPrice = 300,
     CutoffShow = 44,
@@ -317,6 +325,7 @@ end)("Cutoff", {
     ItemId = 120130,
   },
   [44] = {
+    CutoffEndTime = 1770667200,
     CutoffId = 44,
     CutoffPrice = 180,
     CutoffShow = 26,
@@ -324,6 +333,7 @@ end)("Cutoff", {
     ItemId = 120131,
   },
   [45] = {
+    CutoffEndTime = 1770667200,
     CutoffId = 45,
     CutoffPrice = 300,
     CutoffShow = 44,
@@ -331,6 +341,7 @@ end)("Cutoff", {
     ItemId = 120132,
   },
   [46] = {
+    CutoffEndTime = 1770667200,
     CutoffId = 46,
     CutoffPrice = 300,
     CutoffShow = 44,
@@ -338,6 +349,7 @@ end)("Cutoff", {
     ItemId = 120133,
   },
   [47] = {
+    CutoffEndTime = 1770667200,
     CutoffId = 47,
     CutoffPrice = 300,
     CutoffShow = 44,
@@ -345,6 +357,7 @@ end)("Cutoff", {
     ItemId = 120134,
   },
   [48] = {
+    CutoffEndTime = 1770667200,
     CutoffId = 48,
     CutoffPrice = 300,
     CutoffShow = 44,
@@ -406,5 +419,13 @@ end)("Cutoff", {
     CutoffShow = 20,
     CutoffStartTime = 1672545600,
     ItemId = 10000503,
+  },
+  [120] = {
+    CutoffEndTime = 1770688800,
+    CutoffId = 120,
+    CutoffPrice = 1000,
+    CutoffShow = 40,
+    CutoffStartTime = 1768770000,
+    ItemId = 10000606,
   },
 })

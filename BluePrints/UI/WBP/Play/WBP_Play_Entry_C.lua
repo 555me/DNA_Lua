@@ -1,827 +1,891 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\WBP\Play\WBP_Play_Entry_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local ActivityUtils = require("Blueprints.UI.WBP.Activity.ActivityUtils")
-local WBP_Play_Entry_C = Class("BluePrints.UI.BP_UIState_C")
-
-function WBP_Play_Entry_C:Initialize(Initializer)
-  self.Super.Initialize(self)
-  self.CurSubUI = nil
-  self.CurTabId = nil
-  self.NpcId = 910003
-  self.IsNeedPlayNpcAnim = true
-  self.RecoveringCamera = false
-  self.AllTabInfo = {}
-  self.IndexToWidgetName = {}
-  self.WidgetNameToIndex = {}
-  self.SubUI = {}
-  self.DefaultSubUIName = "NewDeputeRoot"
-  self.AllExcelTabInfo = {
+local r0_0 = require("Blueprints.UI.WBP.Activity.ActivityUtils")
+local r1_0 = Class("BluePrints.UI.BP_UIState_C")
+function r1_0.Initialize(r0_1, r1_1)
+  -- line: [13, 82] id: 1
+  r0_1.Super.Initialize(r0_1)
+  r0_1.CurSubUI = nil
+  r0_1.CurTabId = nil
+  r0_1.NpcId = 910003
+  r0_1.IsNeedPlayNpcAnim = true
+  r0_1.RecoveringCamera = false
+  r0_1.AllTabInfo = {}
+  r0_1.IndexToWidgetName = {}
+  r0_1.WidgetNameToIndex = {}
+  r0_1.SubUI = {}
+  r0_1.DefaultSubUIName = "NewDeputeRoot"
+  r0_1.AllExcelTabInfo = {
     DataMgr.PlayTab
   }
-  self.DisplayTeamHeadUIWidgetName = {DungeonSelect = 1, NewDeputeRoot = 1}
-  self.IsKeyEventOnGamePad = true
-  local PlayerAvatar = GWorld:GetAvatar()
-  if not PlayerAvatar then
+  r0_1.DisplayTeamHeadUIWidgetName = {
+    DungeonSelect = 1,
+    NewDeputeRoot = 1,
+    HardBossMain = 1,
+  }
+  r0_1.IsKeyEventOnGamePad = true
+  local r2_1 = GWorld:GetAvatar()
+  if not r2_1 then
     return false
   end
-  if not ActivityUtils.CheckStarterQuestAllDone() then
-    self.DefaultSubUIName = "PlayTaskRoot"
-    return
+  if not r0_0.CheckStarterQuestAllDone() then
+    r0_1.DefaultSubUIName = "PlayTaskRoot"
+    return 
   end
-  local DailyInitLevel = PlayerAvatar.DailyInitLevel
-  local TargetLevel, maxLevel, prevLevel
-  for lv, _ in pairs(DataMgr.DailyGoalReward) do
-    if not maxLevel or lv > maxLevel then
-      maxLevel = lv
+  local r3_1 = r2_1.DailyInitLevel
+  local r4_1 = nil
+  local r5_1 = nil
+  local r6_1 = nil
+  for r11_1, r12_1 in pairs(DataMgr.DailyGoalReward) do
+    if not r5_1 or r5_1 < r11_1 then
+      r5_1 = r11_1
     end
-    if lv == DailyInitLevel then
-      TargetLevel = lv
+    if r11_1 == r3_1 then
+      r4_1 = r11_1
       break
-    elseif lv > DailyInitLevel then
-      TargetLevel = prevLevel
+    elseif r3_1 < r11_1 then
+      r4_1 = r6_1
       break
-    end
-    prevLevel = lv
-  end
-  TargetLevel = TargetLevel or maxLevel
-  local DailyGoalReward = DataMgr.DailyGoalReward[TargetLevel]
-  local IsGetAllDailyReward = true
-  for _, DailyData in pairs(DailyGoalReward) do
-    local State = PlayerAvatar.DailyTaskProgress[DailyData.RequiredActiveness]
-    if State ~= CommonConst.DailyTaskState.GetReward then
-      IsGetAllDailyReward = false
-      break
-    end
-  end
-  self.DefaultSubUIName = IsGetAllDailyReward and "NewDeputeRoot" or "PlayTaskRoot"
-end
-
-function WBP_Play_Entry_C:ReceiveEnterState(StackAction)
-  self.Super.ReceiveEnterState(self, StackAction)
-  if self.TeamHeadUI then
-    self.TeamHeadUI:OnFocusLost()
-  end
-  EventManager:FireEvent(EventID.EntryReceiveEnterState, StackAction)
-end
-
-function WBP_Play_Entry_C:ReceiveExitState(StackAction)
-  self.Super.ReceiveExitState(self, StackAction)
-  if 1 == StackAction then
-  end
-end
-
-function WBP_Play_Entry_C:RecoverCamera()
-  if not self.RecoveringCamera then
-    self.RecoveringCamera = true
-    if self.IsHome then
-      UIManager(self):SwitchFixedCamera(false, self.NpcId, "StyleOfPlay", self, "StyleOfPlay", {
-        bDestroyNpc = true,
-        IsHaveInOutAnim = self.IsNeedPlayNpcAnim
-      })
-      self:PlayNPCAnim(21000502)
-      self:DoRecoverCamera()
     else
-      if UIManager(self):StateCount() > 1 then
-        self.IsNeedPlayNpcAnim = false
-      else
-        self.IsNeedPlayNpcAnim = true
-      end
-      UIManager(self):SwitchUINpcCamera(false, "StyleOfPlay", self.NpcId, {
+      r6_1 = r11_1
+    end
+  end
+  -- close: r7_1
+  if not r4_1 then
+    r4_1 = r5_1
+  end
+  local r8_1 = true
+  local r9_1 = pairs
+  for r13_1, r14_1 in r9_1(DataMgr.DailyGoalReward[r4_1]) do
+    if r2_1.DailyTaskProgress[r14_1.RequiredActiveness] ~= CommonConst.DailyTaskState.GetReward then
+      r8_1 = false
+      break
+    end
+  end
+  -- close: r9_1
+  if r8_1 then
+    r9_1 = "NewDeputeRoot" and "PlayTaskRoot"
+  else
+    goto label_102	-- block#23 is visited secondly
+  end
+  r0_1.DefaultSubUIName = r9_1
+end
+function r1_0.ReceiveEnterState(r0_2, r1_2)
+  -- line: [84, 91] id: 2
+  r0_2.Super.ReceiveEnterState(r0_2, r1_2)
+  if r0_2.TeamHeadUI then
+    r0_2.TeamHeadUI:OnFocusLost()
+  end
+  EventManager:FireEvent(EventID.EntryReceiveEnterState, r1_2)
+end
+function r1_0.ReceiveExitState(r0_3, r1_3)
+  -- line: [93, 99] id: 3
+  r0_3.Super.ReceiveExitState(r0_3, r1_3)
+end
+function r1_0.RecoverCamera(r0_4)
+  -- line: [100, 119] id: 4
+  if not r0_4.RecoveringCamera then
+    r0_4.RecoveringCamera = true
+    if r0_4.IsHome then
+      UIManager(r0_4):SwitchFixedCamera(false, r0_4.NpcId, "StyleOfPlay", r0_4, "StyleOfPlay", {
         bDestroyNpc = true,
-        IsHaveInOutAnim = self.IsNeedPlayNpcAnim
+        IsHaveInOutAnim = r0_4.IsNeedPlayNpcAnim,
       })
-      self:DoRecoverCamera()
+      r0_4:PlayNPCAnim(21000502)
+      r0_4:DoRecoverCamera()
+    else
+      if UIManager(r0_4):StateCount() > 1 then
+        r0_4.IsNeedPlayNpcAnim = false
+      else
+        r0_4.IsNeedPlayNpcAnim = true
+      end
+      UIManager(r0_4):SwitchUINpcCamera(false, "StyleOfPlay", r0_4.NpcId, {
+        bDestroyNpc = true,
+        IsHaveInOutAnim = r0_4.IsNeedPlayNpcAnim,
+      })
+      r0_4:DoRecoverCamera()
     end
   end
 end
-
-function WBP_Play_Entry_C:OnLoaded(...)
-  self.Super.OnLoaded(self, ...)
-  if self.Rouge_Points then
-    self.Rouge_Points:SetVisibility(UE4.ESlateVisibility.Collapsed)
+function r1_0.OnLoaded(r0_5, ...)
+  -- line: [120, 201] id: 5
+  r0_5.Super.OnLoaded(r0_5, ...)
+  local r1_5 = r0_5.Rouge_Points
+  if r1_5 then
+    r0_5.Rouge_Points:SetVisibility(UE4.ESlateVisibility.Collapsed)
   end
-  self.OpenKey = CommonUtils:GetActionMappingKeyName("OpenPlay")
-  AudioManager(self):PlayUISound(self, "event:/ui/armory/open", "SystemOpenSound", nil)
-  self:PlayBaiAnim()
-  self:PlayInAnim()
-  self:OpenSubUI(self.DefaultSubUIName)
-  local IsCallShowFunction = (...)
-  if IsCallShowFunction then
-    self:Show()
+  r0_5.OpenKey = CommonUtils:GetActionMappingKeyName("OpenPlay")
+  AudioManager(r0_5):PlayUISound(r0_5, "event:/ui/armory/open", "SystemOpenSound", nil)
+  r0_5:PlayBaiAnim()
+  r0_5:PlayInAnim()
+  r0_5:OpenSubUI(r0_5.DefaultSubUIName)
+  ... = ... -- error: untaken top expr
+  if r1_5 then
+    r0_5:Show()
   end
-  local AttachWidget = self:GetAttachWidget()
-  if not self.TeamHeadUI then
-    self.TeamHeadUI = TeamController:OpenHeadUI(AttachWidget)
-    
-    function self.TeamHeadUI.OnTeamMainFocusChanged(bFocused)
-      local Visibility = bFocused and "Collapsed" or "SelfHitTestInvisible"
-      local KeyWidgets = {
-        self.ComTab.Key_Left,
-        self.ComTab.Key_Right,
-        self.ComTab.Com_KeyTips.Panel_Key,
-        self.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad,
-        self.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad.Key
+  local r2_5 = r0_5:GetAttachWidget()
+  if not r0_5.TeamHeadUI then
+    r0_5.TeamHeadUI = TeamController:OpenHeadUI(r2_5)
+    function r0_5.TeamHeadUI.OnTeamMainFocusChanged(r0_6)
+      -- line: [138, 192] id: 6
+      local r1_6 = nil	-- notice: implicit variable refs by block#[26]
+      if r0_6 then
+        r1_6 = "Collapsed"
+        if not r1_6 then
+          ::label_5::
+          r1_6 = "SelfHitTestInvisible"
+        end
+      else
+        goto label_5	-- block#2 is visited secondly
+      end
+      local r2_6 = {
+        r0_5.ComTab.Key_Left,
+        r0_5.ComTab.Key_Right,
+        r0_5.ComTab.Com_KeyTips.Panel_Key,
+        r0_5.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad,
+        r0_5.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad.Key
       }
-      if self.CurTabId == "NewDeputeRoot" then
-        local DeputeWidget = self.CurSubUI
-        if DeputeWidget.DeputeTab:IsVisible() then
-          table.insert(KeyWidgets, DeputeWidget.DeputeTab.Key_Left)
-          table.insert(KeyWidgets, DeputeWidget.DeputeTab.Key_Right)
+      if r0_5.CurTabId == "NewDeputeRoot" then
+        local r3_6 = r0_5.CurSubUI
+        if r3_6.DeputeTab:IsVisible() then
+          table.insert(r2_6, r3_6.DeputeTab.Key_Left)
+          table.insert(r2_6, r3_6.DeputeTab.Key_Right)
         end
-        table.insert(KeyWidgets, self.ComTab.Group_Chat:GetChildAt(0).WS_Key)
+        table.insert(r2_6, r0_5.ComTab.Group_Chat:GetChildAt(0).WS_Key)
       end
-      if self.CurTabId == "DungeonSelect" then
-        local DeputeWidget = self.CurSubUI
-        if DeputeWidget.Tab_Info:IsVisible() then
-          table.insert(KeyWidgets, DeputeWidget.Tab_Info.Key_Left)
-          table.insert(KeyWidgets, DeputeWidget.Tab_Info.Key_Right)
+      if r0_5.CurTabId == "DungeonSelect" then
+        local r3_6 = r0_5.CurSubUI
+        if r3_6.Tab_Info:IsVisible() then
+          table.insert(r2_6, r3_6.Tab_Info.Key_Left)
+          table.insert(r2_6, r3_6.Tab_Info.Key_Right)
         end
-        table.insert(KeyWidgets, DeputeWidget.Key_More_Gamepad)
-        if DeputeWidget.Com_CheckBox_LeftText:IsVisible() then
-          table.insert(KeyWidgets, DeputeWidget.Com_CheckBox_LeftText.Com_KeyImg)
+        table.insert(r2_6, r3_6.Key_More_Gamepad)
+        if r3_6.Com_CheckBox_LeftText:IsVisible() then
+          table.insert(r2_6, r3_6.Com_CheckBox_LeftText.Com_KeyImg)
         end
-        if DeputeWidget.Button_Multi:IsVisible() then
-          table.insert(KeyWidgets, DeputeWidget.Button_Multi.Key_GamePad)
+        if r3_6.Button_Multi:IsVisible() then
+          table.insert(r2_6, r3_6.Button_Multi.Key_GamePad)
         end
-        if DeputeWidget.Button_Solo:IsVisible() then
-          table.insert(KeyWidgets, DeputeWidget.Button_Solo.Key_GamePad)
+        if r3_6.Button_Solo:IsVisible() then
+          table.insert(r2_6, r3_6.Button_Solo.Key_GamePad)
         end
-        if DeputeWidget.List_Type:IsVisible() then
-          table.insert(KeyWidgets, DeputeWidget.Key_Qa_GamePad)
-          table.insert(KeyWidgets, DeputeWidget.Key_LT)
-          table.insert(KeyWidgets, DeputeWidget.Key_LR)
+        if r3_6.List_Type:IsVisible() then
+          table.insert(r2_6, r3_6.Key_Qa_GamePad)
+          table.insert(r2_6, r3_6.Key_LT)
+          table.insert(r2_6, r3_6.Key_LR)
         end
-        if DeputeWidget.DefaultList:IsVisible() then
-          table.insert(KeyWidgets, DeputeWidget.DefaultList.Preview.Panel_Controller)
+        if r3_6.DefaultList:IsVisible() then
+          table.insert(r2_6, r3_6.DefaultList.Preview.Panel_Controller)
         end
       end
-      for _, KeyWidget in ipairs(KeyWidgets) do
-        KeyWidget:SetVisibility(UIConst.VisibilityOp[Visibility])
+      if r0_5.CurTabId == "HardBossMain" then
+        local r3_6 = r0_5.CurSubUI
+        if r3_6.HB_Rewards:IsVisible() then
+          table.insert(r2_6, r3_6.Key_Rewards)
+        end
+        if r3_6.Btn_Enter:IsVisible() then
+          table.insert(r2_6, r3_6.Btn_Enter.Key_GamePad)
+        end
       end
+      for r7_6, r8_6 in ipairs(r2_6) do
+        r8_6:SetVisibility(UIConst.VisibilityOp[r1_6])
+      end
+      -- close: r3_6
     end
-    
-    if self.DisplayTeamHeadUIWidgetName[self.CurTabId] then
-      self.TeamHeadUI:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+    if r0_5.DisplayTeamHeadUIWidgetName[r0_5.CurTabId] then
+      r0_5.TeamHeadUI:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
     else
-      self.TeamHeadUI:SetVisibility(UIConst.VisibilityOp.Collapsed)
-      AttachWidget:SetVisibility(UIConst.VisibilityOp.Collapsed)
+      r0_5.TeamHeadUI:SetVisibility(UIConst.VisibilityOp.Collapsed)
+      r2_5:SetVisibility(UIConst.VisibilityOp.Collapsed)
     end
   end
 end
-
-function WBP_Play_Entry_C:OnHardBossMainReddotChange()
-  self:OnReddotChange("HardBossMain")
+function r1_0.OnHardBossMainReddotChange(r0_7)
+  -- line: [203, 205] id: 7
+  r0_7:OnReddotChange("HardBossMain")
 end
-
-function WBP_Play_Entry_C:OnPlayCommonReddotChange()
-  self:OnReddotChange("PlayCommon")
+function r1_0.OnPlayCommonReddotChange(r0_8)
+  -- line: [207, 209] id: 8
+  r0_8:OnReddotChange("PlayCommon")
 end
-
-function WBP_Play_Entry_C:OnPlayTaskRootReddotChange()
-  self:OnReddotChange("PlayTaskRoot")
+function r1_0.OnPlayTaskRootReddotChange(r0_9)
+  -- line: [210, 212] id: 9
+  r0_9:OnReddotChange("PlayTaskRoot")
 end
-
-function WBP_Play_Entry_C:OnReddotChange(SystemUIName)
-  local Index = self.WidgetNameToIndex[SystemUIName]
-  if Index then
-    local TreeNode = ReddotManager.GetTreeNode(SystemUIName)
-    local Reddot = false
-    if TreeNode and TreeNode.Count > 0 then
-      Reddot = true
+function r1_0.OnReddotChange(r0_10, r1_10)
+  -- line: [213, 231] id: 10
+  local r2_10 = r0_10.WidgetNameToIndex[r1_10]
+  if r2_10 then
+    local r3_10 = ReddotManager.GetTreeNode(r1_10)
+    local r4_10 = false
+    if r3_10 and r3_10.Count > 0 then
+      r4_10 = true
     end
-    local Item = self.ComTab.EMScrollBox_TabItem:GetChildAt(math.max(Index - 1, 0))
-    if Item and Item.Info.WidgetUIName == SystemUIName then
-      if Reddot then
-        Item.Reddot:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    local r5_10 = r0_10.ComTab.EMScrollBox_TabItem:GetChildAt(math.max(r2_10 + -1, 0))
+    if r5_10 and r5_10.Info.WidgetUIName == r1_10 then
+      if r4_10 then
+        r5_10.Reddot:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
       else
-        Item.Reddot:SetVisibility(UE4.ESlateVisibility.Collapsed)
+        r5_10.Reddot:SetVisibility(UE4.ESlateVisibility.Collapsed)
       end
     end
   end
 end
-
-function WBP_Play_Entry_C:PlayBaiAnim(StackAction)
-  local Avatar = GWorld:GetAvatar()
-  if not Avatar then
-    return
+function r1_0.PlayBaiAnim(r0_11, r1_11)
+  -- line: [233, 250] id: 11
+  local r2_11 = GWorld:GetAvatar()
+  if not r2_11 then
+    return 
   end
-  self:EnableTickWhenPaused(true)
-  self.IsHome = Avatar:CheckSubRegionType(nil, CommonConst.SubRegionType.Home)
-  if self.IsHome then
-    UIManager(self):SwitchFixedCamera(true, self.NpcId, "StyleOfPlay", self, "StyleOfPlay", {
+  r0_11:EnableTickWhenPaused(true)
+  r0_11.IsHome = r2_11:CheckSubRegionType(nil, CommonConst.SubRegionType.Home)
+  if r0_11.IsHome then
+    UIManager(r0_11):SwitchFixedCamera(true, r0_11.NpcId, "StyleOfPlay", r0_11, "StyleOfPlay", {
       bDestroyNpc = true,
-      IsHaveInOutAnim = self.IsNeedPlayNpcAnim
+      IsHaveInOutAnim = r0_11.IsNeedPlayNpcAnim,
     })
-    self:PlayNPCAnim(21000501)
+    r0_11:PlayNPCAnim(21000501)
   else
-    UIManager(self):SwitchUINpcCamera(true, "StyleOfPlay", self.NpcId, {
-      IsHaveInOutAnim = self.IsNeedPlayNpcAnim
+    UIManager(r0_11):SwitchUINpcCamera(true, "StyleOfPlay", r0_11.NpcId, {
+      IsHaveInOutAnim = r0_11.IsNeedPlayNpcAnim,
     })
   end
 end
-
-function WBP_Play_Entry_C:Construct()
-  WBP_Play_Entry_C.Super.Construct(self)
+function r1_0.Construct(r0_12)
+  -- line: [252, 254] id: 12
+  r1_0.Super.Construct(r0_12)
 end
-
-function WBP_Play_Entry_C:Destruct()
-  if self.CurTabId then
-    SystemGuideManager:HideUIEvent(self.CurTabId)
+function r1_0.Destruct(r0_13)
+  -- line: [256, 264] id: 13
+  if r0_13.CurTabId then
+    SystemGuideManager:HideUIEvent(r0_13.CurTabId)
   end
-  AudioManager(self):StopSound(self, "SystemOpenSound")
-  self:RecoverCamera()
-  self.Super.Destruct(self)
+  AudioManager(r0_13):StopSound(r0_13, "SystemOpenSound")
+  r0_13:RecoverCamera()
+  r0_13.Super.Destruct(r0_13)
 end
-
-function WBP_Play_Entry_C:PlayNPCAnim(NpcAnimId)
-  local PlayNPC = UE4.ANpcCharacter.GetNpc(self, self.NpcId)
-  if PlayNPC then
-    if PlayNPC.NPCNameWidgetComponent then
-      local NameWidget = PlayNPC.NPCNameWidgetComponent:GetWidget()
-      if NameWidget then
-        NameWidget:SetVisibility(UE4.ESlateVisibility.Collapsed)
+function r1_0.PlayNPCAnim(r0_14, r1_14)
+  -- line: [266, 287] id: 14
+  local r2_14 = UE4.ANpcCharacter.GetNpc(r0_14, r0_14.NpcId)
+  if r2_14 then
+    if r2_14.NPCNameWidgetComponent then
+      local r3_14 = r2_14.NPCNameWidgetComponent:GetWidget()
+      if r3_14 then
+        r3_14:SetVisibility(UE4.ESlateVisibility.Collapsed)
       end
     end
-    if PlayNPC.BubbleWidgetComponent then
-      local BubbleWidget = PlayNPC.BubbleWidgetComponent:GetWidget()
-      if BubbleWidget then
-        BubbleWidget:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    if r2_14.BubbleWidgetComponent then
+      local r3_14 = r2_14.BubbleWidgetComponent:GetWidget()
+      if r3_14 then
+        r3_14:SetVisibility(UE4.ESlateVisibility.Collapsed)
       end
     end
-    PlayNPC:PlayUITalkAction(NpcAnimId)
+    r2_14:PlayUITalkAction(r1_14)
   end
 end
-
-function WBP_Play_Entry_C:SwitchCamera(bPlayer)
-  local PlayerController = UGameplayStatics.GetPlayerController(self, 0)
-  if bPlayer then
-    if IsValid(self.CameraHandle) then
-      ULTweenBPLibrary.KillIfIsTweening(self, self.CameraHandle)
+function r1_0.SwitchCamera(r0_15, r1_15)
+  -- line: [289, 314] id: 15
+  local r2_15 = UGameplayStatics.GetPlayerController(r0_15, 0)
+  if r1_15 then
+    if IsValid(r0_15.CameraHandle) then
+      ULTweenBPLibrary.KillIfIsTweening(r0_15, r0_15.CameraHandle)
     end
-    local PlayerCharacter = UGameplayStatics.GetPlayerCharacter(self, 0)
-    if PlayerCharacter then
-      PlayerCharacter:SetActorHideTag("StyleOfPlay", false)
+    local r3_15 = UGameplayStatics.GetPlayerCharacter(r0_15, 0)
+    if r3_15 then
+      r3_15:SetActorHideTag("StyleOfPlay", false)
     end
   else
-    local ShopCamera = UGameplayStatics.GetActorOfClass(self, self.CameraClass)
-    if ShopCamera then
-      ShopCamera.Camera:K2_SetRelativeLocation(ShopCamera.DefaultLocation, false, nil, false)
-      PlayerController:SetViewTargetWithBlend(ShopCamera, 0, EViewTargetBlendFunction.VTBlend_Linear, 0, false)
-      self:MoveCamera(ShopCamera.Camera)
+    local r3_15 = UGameplayStatics.GetActorOfClass(r0_15, r0_15.CameraClass)
+    if r3_15 then
+      r3_15.Camera:K2_SetRelativeLocation(r3_15.DefaultLocation, false, nil, false)
+      r2_15:SetViewTargetWithBlend(r3_15, 0, EViewTargetBlendFunction.VTBlend_Linear, 0, false)
+      r0_15:MoveCamera(r3_15.Camera)
     end
-    local PlayerCharacter = UGameplayStatics.GetPlayerCharacter(self, 0)
-    if PlayerCharacter then
-      PlayerCharacter:SetActorHideTag("StyleOfPlay", true)
+    local r4_15 = UGameplayStatics.GetPlayerCharacter(r0_15, 0)
+    if r4_15 then
+      r4_15:SetActorHideTag("StyleOfPlay", true)
     end
   end
 end
-
-function WBP_Play_Entry_C:MoveCamera(Camera)
-  local StartPosition = Camera.RelativeLocation
-  local EndPosition = FVector(0)
-  self.CameraHandle = ULTweenBPLibrary.Vector3To(self, {
-    self,
-    function(_, Value)
-      Camera:K2_SetRelativeLocation(Value, false, nil, false)
+function r1_0.MoveCamera(r0_16, r1_16)
+  -- line: [317, 324] id: 16
+  r0_16.CameraHandle = ULTweenBPLibrary.Vector3To(r0_16, {
+    r0_16,
+    function(r0_17, r1_17)
+      -- line: [320, 322] id: 17
+      r1_16:K2_SetRelativeLocation(r1_17, false, nil, false)
     end
-  }, StartPosition, EndPosition, 0.5, 0, 17)
+  }, r1_16.RelativeLocation, FVector(0), 0.5, 0, 17)
 end
-
-function WBP_Play_Entry_C:EnableTickWhenPaused(Value)
-  local TweenActor = UE4.ALTweenActor.GetLTweenInstance(self:GetWorld())
-  if Value then
-    if TweenActor then
-      TweenActor:SetTickableWhenPaused(true)
+function r1_0.EnableTickWhenPaused(r0_18, r1_18)
+  -- line: [326, 339] id: 18
+  local r2_18 = UE4.ALTweenActor.GetLTweenInstance(r0_18:GetWorld())
+  if r1_18 then
+    if r2_18 then
+      r2_18:SetTickableWhenPaused(true)
     end
-    UE4.UGameplayStatics.GetPlayerController(self, 0).bShouldPerformFullTickWhenPaused = true
+    UE4.UGameplayStatics.GetPlayerController(r0_18, 0).bShouldPerformFullTickWhenPaused = true
   else
-    if TweenActor then
-      TweenActor:SetTickableWhenPaused(false)
+    if r2_18 then
+      r2_18:SetTickableWhenPaused(false)
     end
-    UE4.UGameplayStatics.GetPlayerController(self, 0).bShouldPerformFullTickWhenPaused = false
+    UE4.UGameplayStatics.GetPlayerController(r0_18, 0).bShouldPerformFullTickWhenPaused = false
   end
 end
-
-function WBP_Play_Entry_C:PlayInAnim()
-  if self:IsAnimationPlaying(self.In) then
-    return
+function r1_0.PlayInAnim(r0_19)
+  -- line: [341, 346] id: 19
+  if r0_19:IsAnimationPlaying(r0_19.In) then
+    return 
   end
-  self:PlayAnimationForward(self.In)
+  r0_19:PlayAnimationForward(r0_19.In)
 end
-
-function WBP_Play_Entry_C:OpenSubUI(WidgetUIName)
-  local IfInitTab = true
-  local IfUseSelectTab = false
-  if self.CurrentExcelTabInfo then
-    for _, TabInfo in pairs(self.CurrentExcelTabInfo) do
-      if TabInfo.WidgetUI == WidgetUIName then
-        IfInitTab = false
-        IfUseSelectTab = true
+function r1_0.OpenSubUI(r0_20, r1_20)
+  -- line: [348, 392] id: 20
+  local r2_20 = true
+  local r3_20 = false
+  if r0_20.CurrentExcelTabInfo then
+    for r8_20, r9_20 in pairs(r0_20.CurrentExcelTabInfo) do
+      if r9_20.WidgetUI == r1_20 then
+        r2_20 = false
+        r3_20 = true
       end
     end
+    -- close: r4_20
   end
-  if IfInitTab then
-    local Flag = false
-    for _, ExcelTabInfo in pairs(self.AllExcelTabInfo) do
-      if Flag then
+  if r2_20 then
+    local r4_20 = false
+    for r9_20, r10_20 in pairs(r0_20.AllExcelTabInfo) do
+      if not r4_20 then
+        for r15_20, r16_20 in pairs(r10_20) do
+          if r16_20.WidgetUI == r1_20 then
+            r0_20.CurrentExcelTabInfo = r10_20
+            r4_20 = true
+            break
+          end
+        end
+        -- close: r11_20
+      else
         break
       end
-      for _, TabInfo in pairs(ExcelTabInfo) do
-        if TabInfo.WidgetUI == WidgetUIName then
-          self.CurrentExcelTabInfo = ExcelTabInfo
-          Flag = true
-          break
-        end
-      end
     end
-    if not Flag then
-      self.CurrentExcelTabInfo = nil
-      self:RemoveReddotListener()
+    -- close: r5_20
+    if not r4_20 then
+      r0_20.CurrentExcelTabInfo = nil
+      r0_20:RemoveReddotListener()
     end
-    IfInitTab = Flag
+    r2_20 = r4_20
   end
-  if IfInitTab then
-    self:InitTabInfo()
-    self:AddReddotListener()
-    self:SelectTabByWidgetName(WidgetUIName)
-    return self:GetSubUIByWidgetName(WidgetUIName)
-  elseif IfUseSelectTab then
-    self:SelectTabByWidgetName(WidgetUIName)
-    return self:GetSubUIByWidgetName(WidgetUIName)
+  if r2_20 then
+    r0_20:InitTabInfo()
+    r0_20:AddReddotListener()
+    r0_20:SelectTabByWidgetName(r1_20)
+    return r0_20:GetSubUIByWidgetName(r1_20)
+  elseif r3_20 then
+    r0_20:SelectTabByWidgetName(r1_20)
+    return r0_20:GetSubUIByWidgetName(r1_20)
   else
-    return self:RealOpenSubUI({TabId = WidgetUIName})
+    return r0_20:RealOpenSubUI({
+      TabId = r1_20,
+    })
   end
 end
-
-function WBP_Play_Entry_C:InitTabInfo()
-  local PlayTab = CommonUtils.Copy(self.CurrentExcelTabInfo)
-  self.SortedTabInfo = {}
-  for _, TabInfo in pairs(PlayTab) do
-    table.insert(self.SortedTabInfo, TabInfo)
+function r1_0.InitTabInfo(r0_21)
+  -- line: [394, 416] id: 21
+  local r1_21 = CommonUtils.Copy(r0_21.CurrentExcelTabInfo)
+  r0_21.SortedTabInfo = {}
+  for r6_21, r7_21 in pairs(r1_21) do
+    table.insert(r0_21.SortedTabInfo, r7_21)
   end
-  for _, TabInfo in pairs(self.SortedTabInfo) do
-    TabInfo.IsLocked = true
-    if TabInfo.TabUnlockRuleId then
-      local UIUnlockRuleInfo = DataMgr.UIUnlockRule[TabInfo.TabUnlockRuleId]
-      local UIUnlockRuleId = UIUnlockRuleInfo.UIUnlockRuleId
-      local UIUnlockDesc = UIUnlockRuleInfo.UIUnlockDesc
-      TabInfo.LockReasonText = GText(UIUnlockDesc)
-      local Avatar = GWorld:GetAvatar()
-      if Avatar and UIUnlockRuleId then
-        TabInfo.IsLocked = not Avatar:CheckUIUnlocked(UIUnlockRuleId)
+  -- close: r2_21
+  for r6_21, r7_21 in pairs(r0_21.SortedTabInfo) do
+    r7_21.IsLocked = true
+    if r7_21.TabUnlockRuleId then
+      local r8_21 = DataMgr.UIUnlockRule[r7_21.TabUnlockRuleId]
+      local r9_21 = r8_21.UIUnlockRuleId
+      r7_21.LockReasonText = GText(r8_21.UIUnlockDesc)
+      local r11_21 = GWorld:GetAvatar()
+      if r11_21 and r9_21 then
+        r7_21.IsLocked = not r11_21:CheckUIUnlocked(r9_21)
       end
     else
-      TabInfo.IsLocked = false
+      r7_21.IsLocked = false
     end
   end
-  self:FinishInitTab()
+  -- close: r2_21
+  r0_21:FinishInitTab()
 end
-
-function WBP_Play_Entry_C:FinishInitTab()
-  self:SortTab()
-  self:InitSortedTab()
-  self:InitCommonTab()
+function r1_0.FinishInitTab(r0_22)
+  -- line: [418, 422] id: 22
+  r0_22:SortTab()
+  r0_22:InitSortedTab()
+  r0_22:InitCommonTab()
 end
-
-function WBP_Play_Entry_C:SortTab()
-  table.sort(self.SortedTabInfo, function(a, b)
-    if a.IsLocked then
-      if b.IsLocked then
-        return a.Sequence > b.Sequence
+function r1_0.SortTab(r0_23)
+  -- line: [424, 440] id: 23
+  table.sort(r0_23.SortedTabInfo, function(r0_24, r1_24)
+    -- line: [425, 439] id: 24
+    if r0_24.IsLocked then
+      if r1_24.IsLocked then
+        return r1_24.Sequence < r0_24.Sequence
       else
         return false
       end
-    elseif b.IsLocked then
+    elseif r1_24.IsLocked then
       return true
     else
-      return a.Sequence > b.Sequence
+      return r1_24.Sequence < r0_24.Sequence
     end
   end)
 end
-
-function WBP_Play_Entry_C:InitSortedTab()
-  self.AllTabInfo = {}
-  self.IndexToWidgetName = {}
-  self.WidgetNameToIndex = {}
-  for Index, TabInfo in pairs(self.SortedTabInfo) do
-    local NewTabInfo = {}
-    NewTabInfo.WidgetUIName = TabInfo.WidgetUI
-    NewTabInfo.Text = GText(TabInfo.TabName)
-    NewTabInfo.TabId = TabInfo.WidgetUI
-    NewTabInfo.SortId = -Index
-    NewTabInfo.Callback = "RealOpenSubUI"
-    NewTabInfo.ItemDefaultCapcity = 999
-    NewTabInfo.IsLocked = TabInfo.IsLocked
-    NewTabInfo.LockReasonText = TabInfo.LockReasonText
-    NewTabInfo.IconPath = TabInfo.Icon
-    table.insert(self.AllTabInfo, NewTabInfo)
-    self.IndexToWidgetName[Index] = TabInfo.WidgetUI
-    self.WidgetNameToIndex[TabInfo.WidgetUI] = Index
+function r1_0.InitSortedTab(r0_25)
+  -- line: [442, 461] id: 25
+  r0_25.AllTabInfo = {}
+  r0_25.IndexToWidgetName = {}
+  r0_25.WidgetNameToIndex = {}
+  for r5_25, r6_25 in pairs(r0_25.SortedTabInfo) do
+    table.insert(r0_25.AllTabInfo, {
+      WidgetUIName = r6_25.WidgetUI,
+      Text = GText(r6_25.TabName),
+      TabId = r6_25.WidgetUI,
+      SortId = -r5_25,
+      Callback = "RealOpenSubUI",
+      ItemDefaultCapcity = 999,
+      IsLocked = r6_25.IsLocked,
+      LockReasonText = r6_25.LockReasonText,
+      IconPath = r6_25.Icon,
+    })
+    r0_25.IndexToWidgetName[r5_25] = r6_25.WidgetUI
+    r0_25.WidgetNameToIndex[r6_25.WidgetUI] = r5_25
   end
+  -- close: r1_25
 end
-
-function WBP_Play_Entry_C:AddReddotListener()
-  if self.IndexToWidgetName then
-    for Index, WidgetName in ipairs(self.IndexToWidgetName) do
-      if DataMgr.ReddotNode[WidgetName] then
-        ReddotManager.AddListener(WidgetName, self, self["On" .. WidgetName .. "ReddotChange"])
+function r1_0.AddReddotListener(r0_26)
+  -- line: [463, 471] id: 26
+  if r0_26.IndexToWidgetName then
+    for r5_26, r6_26 in ipairs(r0_26.IndexToWidgetName) do
+      if DataMgr.ReddotNode[r6_26] then
+        ReddotManager.AddListener(r6_26, r0_26, r0_26["On" .. r6_26 .. "ReddotChange"])
       end
     end
+    -- close: r1_26
   end
 end
-
-function WBP_Play_Entry_C:RemoveReddotListener()
-  if self.IndexToWidgetName then
-    for Index, WidgetName in ipairs(self.IndexToWidgetName) do
-      if DataMgr.ReddotNode[WidgetName] then
-        ReddotManager.RemoveListener(WidgetName, self)
+function r1_0.RemoveReddotListener(r0_27)
+  -- line: [473, 481] id: 27
+  if r0_27.IndexToWidgetName then
+    for r5_27, r6_27 in ipairs(r0_27.IndexToWidgetName) do
+      if DataMgr.ReddotNode[r6_27] then
+        ReddotManager.RemoveListener(r6_27, r0_27)
       end
     end
+    -- close: r1_27
   end
 end
-
-function WBP_Play_Entry_C:InitCommonTab()
-  self.TabConfigData = {
+function r1_0.InitCommonTab(r0_28)
+  -- line: [483, 506] id: 28
+  r0_28.TabConfigData = {
     TitleName = GText("MAIN_UI_PLAY"),
     LeftKey = "Q",
     RightKey = "E",
-    Tabs = self.AllTabInfo,
+    Tabs = r0_28.AllTabInfo,
     DynamicNode = {
       "Back",
       "ResourceBar",
       "BottomKey"
     },
     StyleName = "TextImage",
-    OwnerPanel = self,
-    BackCallback = self.OnClickBack,
+    OwnerPanel = r0_28,
+    BackCallback = r0_28.OnClickBack,
     BottomKeyInfo = {
       {
         KeyInfoList = {
           {
             Type = "Text",
             Text = "Esc",
-            ClickCallback = self.OnClickBack,
-            Owner = self
+            ClickCallback = r0_28.OnClickBack,
+            Owner = r0_28,
           }
         },
         GamePadInfoList = {
-          {Type = "Img", ImgShortPath = "B"}
+          {
+            Type = "Img",
+            ImgShortPath = "B",
+          }
         },
         Desc = GText("UI_BACK"),
-        bLongPress = false
+        bLongPress = false,
       }
-    }
+    },
   }
-  self.ComTab:Init(self.TabConfigData, true)
-  self.ComTab:BindEventOnTabSelected(self, self.RealOpenSubUI)
+  r0_28.ComTab:Init(r0_28.TabConfigData, true)
+  r0_28.ComTab:BindEventOnTabSelected(r0_28, r0_28.RealOpenSubUI)
 end
-
-function WBP_Play_Entry_C:SelectTabByWidgetName(WidgetName)
-  self:SelectTabById(WidgetName)
+function r1_0.SelectTabByWidgetName(r0_29, r1_29)
+  -- line: [510, 512] id: 29
+  r0_29:SelectTabById(r1_29)
 end
-
-function WBP_Play_Entry_C:SelectTabById(TabId)
-  self.ComTab:SelectTabById(TabId)
+function r1_0.SelectTabById(r0_30, r1_30)
+  -- line: [514, 516] id: 30
+  r0_30.ComTab:SelectTabById(r1_30)
 end
-
-function WBP_Play_Entry_C:SelectTab(Index)
-  self.ComTab:SelectTab(Index)
+function r1_0.SelectTab(r0_31, r1_31)
+  -- line: [518, 520] id: 31
+  r0_31.ComTab:SelectTab(r1_31)
 end
-
-function WBP_Play_Entry_C:InitOtherPageTab(TabConfigData, ResoucesTab, DontPlayInAnim, Object, Callback)
-  if TabConfigData then
-    TabConfigData.OverridenTopResouces = ResoucesTab or DataMgr.SystemUI.StyleOfPlay.TabCoin
+function r1_0.InitOtherPageTab(r0_32, r1_32, r2_32, r3_32, r4_32, r5_32)
+  -- line: [522, 532] id: 32
+  if r1_32 then
+    r1_32.OverridenTopResouces = r2_32 and DataMgr.SystemUI.StyleOfPlay.TabCoin
   end
-  self.ComTab:Init(TabConfigData, DontPlayInAnim)
-  self.ComTab:BindEventOnTabSelected(Object, Callback)
+  r0_32.ComTab:Init(r1_32, r3_32)
+  r0_32.ComTab:BindEventOnTabSelected(r4_32, r5_32)
 end
-
-function WBP_Play_Entry_C:UpdateOtherPageTab(BottomKeyInfo)
+function r1_0.UpdateOtherPageTab(r0_33, r1_33)
+  -- line: [535, 539] id: 33
   if CommonUtils.GetDeviceTypeByPlatformName() ~= "Mobile" then
-    self.ComTab:UpdateBottomKeyInfo(BottomKeyInfo)
+    r0_33.ComTab:UpdateBottomKeyInfo(r1_33)
   end
 end
-
-function WBP_Play_Entry_C:GetSubUIByWidgetName(WidgetName)
-  if self.SubUI then
-    return self.SubUI[WidgetName]
+function r1_0.GetSubUIByWidgetName(r0_34, r1_34)
+  -- line: [550, 554] id: 34
+  if r0_34.SubUI then
+    return r0_34.SubUI[r1_34]
   end
 end
-
-function WBP_Play_Entry_C:RealOpenSubUI(WidgetInfo)
-  local TabId = WidgetInfo.TabId
-  if WidgetInfo.GetTabId then
-    TabId = WidgetInfo:GetTabId()
+function r1_0.RealOpenSubUI(r0_35, r1_35)
+  -- line: [556, 704] id: 35
+  local r2_35 = r1_35.TabId
+  if r1_35.GetTabId then
+    r2_35 = r1_35:GetTabId()
   end
-  local AttachWidget = self:GetAttachWidget()
-  if self.TeamHeadUI then
-    if self.DisplayTeamHeadUIWidgetName[TabId] then
-      self.TeamHeadUI:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+  local r3_35 = r0_35:GetAttachWidget()
+  if r0_35.TeamHeadUI then
+    if r0_35.DisplayTeamHeadUIWidgetName[r2_35] then
+      r0_35.TeamHeadUI:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
     else
-      self.TeamHeadUI:SetVisibility(UIConst.VisibilityOp.Collapsed)
-      AttachWidget:SetVisibility(UIConst.VisibilityOp.Collapsed)
+      r0_35.TeamHeadUI:SetVisibility(UIConst.VisibilityOp.Collapsed)
+      r3_35:SetVisibility(UIConst.VisibilityOp.Collapsed)
     end
   end
-  if "StarterQuest" == TabId or "DailyMain" == TabId then
-    local PlayTaskRoot = self:RealOpenSubUI({
-      TabId = "PlayTaskRoot"
-    })
-    PlayTaskRoot:OpenTaskUI(TabId)
-    return PlayTaskRoot
+  if r0_35.CurTabId == r2_35 then
+    return r0_35.CurSubUI
   end
-  if self.CurTabId == TabId then
-    return self.CurSubUI
-  end
-  if self.CurTabId ~= nil then
-    if self.CurSubUI:IsAnyAnimationPlaying() then
-      self.CurSubUI:StopAllAnimations()
+  if r0_35.CurTabId ~= nil then
+    if r0_35.CurSubUI:IsAnyAnimationPlaying() then
+      r0_35.CurSubUI:StopAllAnimations()
     end
-    if self.CurSubUI.WBP_Play_PanelBG and self.CurSubUI.WBP_Play_PanelBG:IsAnyAnimationPlaying() then
-      self.CurSubUI.WBP_Play_PanelBG:StopAllAnimations()
+    if r0_35.CurSubUI.WBP_Play_PanelBG and r0_35.CurSubUI.WBP_Play_PanelBG:IsAnyAnimationPlaying() then
+      r0_35.CurSubUI.WBP_Play_PanelBG:StopAllAnimations()
     end
-    self.CurSubUI:SetVisibility(UE4.ESlateVisibility.HitTestInvisible)
-    if self.CurSubUI.RetainerBox and self.CurSubUI.Panel_Level then
-      self.CurSubUI.Panel_Level:SetVisibility(UE4.ESlateVisibility.HitTestInvisible)
+    r0_35.CurSubUI:SetVisibility(UE4.ESlateVisibility.HitTestInvisible)
+    if r0_35.CurSubUI.RetainerBox and r0_35.CurSubUI.Panel_Level then
+      r0_35.CurSubUI.Panel_Level:SetVisibility(UE4.ESlateVisibility.HitTestInvisible)
     end
-    if self.CurSubUI.SecondaryPageName == TabId then
-      self.CurSubUI:PlayAnimationForward(self.CurSubUI.Next)
-    elseif self.CurSubUI.Out then
-      self.CurSubUI:PlayAnimationForward(self.CurSubUI.Out)
+    if r0_35.CurSubUI.SecondaryPageName == r2_35 then
+      r0_35.CurSubUI:PlayAnimationForward(r0_35.CurSubUI.Next)
+    elseif r0_35.CurSubUI.Out and r0_35.CurTabId ~= "DungeonSelect" then
+      r0_35.CurSubUI:PlayAnimationForward(r0_35.CurSubUI.Out)
     else
-      self.CurSubUI:SetVisibility(UE4.ESlateVisibility.Collapsed)
+      r0_35.CurSubUI:SetVisibility(UE4.ESlateVisibility.Collapsed)
     end
-    if self.CurSubUI.SwitchOut then
-      self.CurSubUI:SwitchOut()
+    if r0_35.CurSubUI.SwitchOut then
+      r0_35.CurSubUI:SwitchOut()
     end
-    SystemGuideManager:HideUIEvent(self.CurTabId)
+    SystemGuideManager:HideUIEvent(r0_35.CurTabId)
   end
-  local PreTabId = self.CurTabId
-  self.CurTabId = TabId
-  if nil == self.SubUI[self.CurTabId] then
-    local PlayerController = UE4.UGameplayStatics.GetPlayerController(GWorld.GameInstance, 0)
-    local Player = PlayerController:GetMyPawn()
-    local WidgetUIName = self.CurTabId
-    if Player.UIModePlatform == "Mobile" then
-      if DataMgr.WidgetUI[WidgetUIName .. "Mobile"] then
-        WidgetUIName = WidgetUIName .. "Mobile"
+  local r4_35 = r0_35.CurTabId
+  r0_35.CurTabId = r2_35
+  local r8_35 = nil	-- notice: implicit variable refs by block#[62]
+  if r0_35.SubUI[r0_35.CurTabId] == nil then
+    local r6_35 = UE4.UGameplayStatics.GetPlayerController(GWorld.GameInstance, 0):GetMyPawn()
+    local r7_35 = r0_35.CurTabId
+    r8_35 = r6_35.UIModePlatform
+    if r8_35 == "Mobile" then
+      r8_35 = DataMgr.WidgetUI[r7_35 .. "Mobile"]
+      if r8_35 then
+        r8_35 = r7_35 .. "Mobile"
+        r7_35 = r8_35
       end
-    elseif DataMgr.WidgetUI[WidgetUIName .. "PC"] then
-      WidgetUIName = WidgetUIName .. "PC"
+    else
+      r8_35 = DataMgr.WidgetUI[r7_35 .. "PC"]
+      if r8_35 then
+        r8_35 = r7_35 .. "PC"
+        r7_35 = r8_35
+      end
     end
-    local Widget = self:CreateWidgetNew(WidgetUIName)
-    if nil ~= Widget then
-      if self.CurTabId == "HardBossMain" then
-        self.Group_HardBoss:AddChild(Widget)
-        Widget.ParentPanel = self.Group_HardBoss
-      elseif self.CurTabId == "PlayCommon" then
-        self.Group_Permanent:AddChild(Widget)
-        Widget.ParentPanel = self.Group_Permanent
-        Widget.ParentPanel = self.Group_Play
-      elseif self.CurTabId == "NewDeputeRoot" then
-        Widget:PlayAnimation(self.In)
-        self.Group_Depute:AddChild(Widget)
-        Widget.ParentPanel = self.Group_Depute
-      elseif "PlayTaskRoot" == self.CurTabId then
-        self.Group_Task:AddChild(Widget)
-        Widget.ParentPanel = self.Group_Task
+    r8_35 = r0_35:CreateWidgetNew(r7_35)
+    if r8_35 ~= nil then
+      if r0_35.CurTabId == "HardBossMain" then
+        r0_35.Group_HardBoss:AddChild(r8_35)
+        r8_35.ParentPanel = r0_35.Group_HardBoss
+      elseif r0_35.CurTabId == "PlayCommon" then
+        r0_35.Group_Permanent:AddChild(r8_35)
+        r8_35.ParentPanel = r0_35.Group_Permanent
+        r8_35.ParentPanel = r0_35.Group_Play
+      elseif r0_35.CurTabId == "NewDeputeRoot" then
+        r8_35:PlayAnimation(r0_35.In)
+        r0_35.Group_Depute:AddChild(r8_35)
+        r8_35.ParentPanel = r0_35.Group_Depute
+      elseif r0_35.CurTabId == "PlayTaskRoot" then
+        r0_35.Group_Task:AddChild(r8_35)
+        r8_35.ParentPanel = r0_35.Group_Task
       else
-        self.Group_Root:AddChild(Widget)
-        Widget.ParentPanel = self.Group_Root
+        r0_35.Group_Root:AddChild(r8_35)
+        r8_35.ParentPanel = r0_35.Group_Root
       end
-      Widget.Root = self
-      Widget.WidgetInfo = WidgetInfo
-      local CanvasSlot = UE4.UWidgetLayoutLibrary.SlotAsCanvasSlot(Widget)
-      if CanvasSlot then
-        local Anchors = FAnchors()
-        Anchors.Minimum = FVector2D(0, 0)
-        Anchors.Maximum = FVector2D(1, 1)
-        CanvasSlot:SetOffsets(FMargin(0, 0, 0, 0))
-        CanvasSlot:SetAnchors(Anchors)
+      r8_35.Root = r0_35
+      r8_35.WidgetInfo = r1_35
+      local r9_35 = UE4.UWidgetLayoutLibrary.SlotAsCanvasSlot(r8_35)
+      if r9_35 then
+        local r10_35 = FAnchors()
+        r10_35.Minimum = FVector2D(0, 0)
+        r10_35.Maximum = FVector2D(1, 1)
+        r9_35:SetOffsets(FMargin(0, 0, 0, 0))
+        r9_35:SetAnchors(r10_35)
       end
-      self.SubUI[self.CurTabId] = Widget
-      if Widget.Out then
-        Widget:BindToAnimationFinished(Widget.Out, {
-          self,
+      r0_35.SubUI[r0_35.CurTabId] = r8_35
+      if r8_35.Out then
+        r8_35:BindToAnimationFinished(r8_35.Out, {
+          r0_35,
           function()
-            Widget:SetVisibility(UE4.ESlateVisibility.Collapsed)
+            -- line: [653, 655] id: 36
+            r8_35:SetVisibility(UE4.ESlateVisibility.Collapsed)
           end
         })
       end
-      if Widget.Next and "RougeMain" ~= WidgetUIName then
-        Widget:BindToAnimationFinished(Widget.Next, {
-          self,
+      if r8_35.Next and r7_35 ~= "RougeMain" then
+        r8_35:BindToAnimationFinished(r8_35.Next, {
+          r0_35,
           function()
-            Widget:SetVisibility(UE4.ESlateVisibility.Collapsed)
+            -- line: [659, 661] id: 37
+            r8_35:SetVisibility(UE4.ESlateVisibility.Collapsed)
           end
         })
       end
     end
+    -- close: r5_35
   end
-  self.CurSubUI = self.SubUI[self.CurTabId]
-  if self.CurSubUI:IsAnyAnimationPlaying() then
-    self.CurSubUI:StopAllAnimations()
+  r0_35.CurSubUI = r0_35.SubUI[r0_35.CurTabId]
+  if r0_35.CurSubUI:IsAnyAnimationPlaying() then
+    r0_35.CurSubUI:StopAllAnimations()
   end
-  self.CurSubUI:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-  if self.CurSubUI.RetainerBox and self.CurSubUI.Panel_Level then
-    self.CurSubUI.Panel_Level:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+  r0_35.CurSubUI:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+  if r0_35.CurSubUI.RetainerBox and r0_35.CurSubUI.Panel_Level then
+    r0_35.CurSubUI.Panel_Level:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
   end
-  if self.CurSubUI.SecondaryPageName == PreTabId then
-    self.CurSubUI:PlayAnimationForward(self.CurSubUI.Back)
-  elseif self.CurSubUI.In then
-    self.CurSubUI:PlayAnimationForward(self.CurSubUI.In)
+  if r0_35.CurSubUI.SecondaryPageName == r4_35 then
+    r0_35.CurSubUI:PlayAnimationForward(r0_35.CurSubUI.Back)
+  elseif r0_35.CurSubUI.In then
+    r0_35.CurSubUI:PlayAnimationForward(r0_35.CurSubUI.In)
   else
-    self.CurSubUI:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    r0_35.CurSubUI:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
   end
-  self.CurSubUI:SetFocus()
-  if self.CurSubUI.SwitchIn then
-    self.CurSubUI:SwitchIn()
+  r0_35.CurSubUI:SetFocus()
+  if r0_35.CurSubUI.SwitchIn then
+    r0_35.CurSubUI:SwitchIn()
   end
-  SystemGuideManager:ShowUIEvent(self.CurTabId)
-  self:AddTimer(0.01, function()
-    if self.CurSubUI:GetVisibility() == UE4.ESlateVisibility.Collapsed then
-      self.CurSubUI:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+  SystemGuideManager:ShowUIEvent(r0_35.CurTabId)
+  function r8_35()
+    -- line: [698, 702] id: 38
+    if r0_35.CurSubUI:GetVisibility() == UE4.ESlateVisibility.Collapsed then
+      r0_35.CurSubUI:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
     end
-  end, false)
-  return self.CurSubUI
-end
-
-function WBP_Play_Entry_C:OnKeyUp(MyGeometry, InKeyEvent)
-  local ParentHandled = WBP_Play_Entry_C.Super.OnKeyUp(self, MyGeometry, InKeyEvent)
-  local InKey = UE4.UKismetInputLibrary.GetKey(InKeyEvent)
-  local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-  if InKeyName == UIConst.GamePadKey.SpecialRight then
-    if self.TeamHeadUI then
-      self.TeamHeadUI:DoGamepadBtnRelease()
-      if not self.TeamHeadUI.bIsFocusable and not TeamController:IsTeamPopupBarOpenInGamepad() then
-        self.ComTab:Handle_KeyEventOnGamePad(InKeyName)
-        EventManager:FireEvent(EventID.NightBookSpecialRightUp)
-      end
-    end
-  elseif InKeyName == self.OpenKey then
-    self.IsCanCloseByHotKey = true
   end
-  return ParentHandled
+  r0_35:AddTimer(0.01, r8_35, false)
+  return r0_35.CurSubUI
 end
-
-function WBP_Play_Entry_C:OnKeyDown(MyGeometry, InKeyEvent)
-  if CommonUtils:IfExistSystemGuideUI(self) then
+function r1_0.OnKeyUp(r0_39, r1_39, r2_39)
+  -- line: [707, 725] id: 39
+  local r3_39 = r1_0.Super.OnKeyUp(r0_39, r1_39, r2_39)
+  local r5_39 = UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_39))
+  if r5_39 == UIConst.GamePadKey.SpecialRight and r0_39.TeamHeadUI and r0_39.TeamHeadUI.DoGamepadBtnRelease then
+    r0_39.TeamHeadUI:DoGamepadBtnRelease()
+    if not r0_39.TeamHeadUI.bIsFocusable and not TeamController:IsTeamPopupBarOpenInGamepad() then
+      r0_39.ComTab:Handle_KeyEventOnGamePad(r5_39)
+      EventManager:FireEvent(EventID.NightBookSpecialRightUp)
+    end
+  elseif r5_39 == r0_39.OpenKey then
+    r0_39.IsCanCloseByHotKey = true
+  end
+  return r3_39
+end
+function r1_0.OnKeyDown(r0_40, r1_40, r2_40)
+  -- line: [727, 795] id: 40
+  if CommonUtils:IfExistSystemGuideUI(r0_40) then
     return UE4.UWidgetBlueprintLibrary.Handled()
   end
-  if self.IsOpenSelectLevel then
-    return
+  if r0_40.IsOpenSelectLevel then
+    return 
   end
-  local IsEventHandled = false
-  if self.CurSubUI and self.CurSubUI.HandleKeyDown then
-    IsEventHandled = self.CurSubUI:HandleKeyDown(MyGeometry, InKeyEvent)
+  local r3_40 = false
+  if r0_40.CurSubUI and r0_40.CurSubUI.HandleKeyDown then
+    r3_40 = r0_40.CurSubUI:HandleKeyDown(r1_40, r2_40)
   end
-  if not IsEventHandled then
-    local InKey = UE4.UKismetInputLibrary.GetKey(InKeyEvent)
-    local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-    if UE4.UKismetInputLibrary.Key_IsGamepadKey(InKey) then
-      if InKeyName == UIConst.GamePadKey.SpecialRight then
-        if self.TeamHeadUI then
-          self.TeamHeadUI:DoGamepadBtnPress()
-          IsEventHandled = true
-        end
-      elseif InKeyName ~= UIConst.GamePadKey.SpecialRight and self.IsKeyEventOnGamePad then
-        IsEventHandled = self.ComTab:Handle_KeyEventOnGamePad(InKeyName)
+  if not r3_40 then
+    local r4_40 = UE4.UKismetInputLibrary.GetKey(r2_40)
+    local r5_40 = UE4.UFormulaFunctionLibrary.Key_GetFName(r4_40)
+    if UE4.UKismetInputLibrary.Key_IsGamepadKey(r4_40) then
+      if r5_40 == UIConst.GamePadKey.SpecialRight and r0_40.TeamHeadUI and r0_40.TeamHeadUI.DoGamepadBtnPress then
+        r0_40.TeamHeadUI:DoGamepadBtnPress()
+        r3_40 = true
+      elseif r5_40 ~= UIConst.GamePadKey.SpecialRight and r0_40.IsKeyEventOnGamePad then
+        r3_40 = r0_40.ComTab:Handle_KeyEventOnGamePad(r5_40)
       end
-      if InKeyName == UIConst.GamePadKey.FaceButtonRight and self.TeamHeadUI and self.TeamHeadUI.bIsFocusable then
-        local DeputeRoot = self.Group_Depute:GetChildAt(0)
-        if IsValid(DeputeRoot) and DeputeRoot:IsVisible() then
-          for _, Child in pairs(DeputeRoot.PanelRoot:GetAllChildren()) do
-            if Child:IsVisible() then
-              Child:SetFocus()
+      if r5_40 == UIConst.GamePadKey.FaceButtonRight and r0_40.TeamHeadUI and r0_40.TeamHeadUI.bIsFocusable then
+        local r6_40 = r0_40.Group_Depute:GetChildAt(0)
+        if IsValid(r6_40) and r6_40:IsVisible() then
+          for r11_40, r12_40 in pairs(r6_40.PanelRoot:GetAllChildren()) do
+            if r12_40:IsVisible() then
+              r12_40:SetFocus()
             end
           end
+          -- close: r7_40
         end
-        self.TeamHeadUI.bIsFocusable = false
-        IsEventHandled = true
+        local r7_40 = r0_40.Group_HardBoss:GetChildAt(0)
+        if IsValid(r7_40) and r7_40:IsVisible() then
+          r7_40.List_Boss:SetFocus()
+        end
+        r0_40.TeamHeadUI.bIsFocusable = false
+        r3_40 = true
       end
-    elseif "Escape" == InKeyName then
-      IsEventHandled = true
-      self:OnReturnKeyDown()
-    elseif "Q" == InKeyName then
-      IsEventHandled = true
-      self.ComTab:TabToLeft()
-    elseif "E" == InKeyName then
-      IsEventHandled = true
-      self.ComTab:TabToRight()
-    elseif InKeyName == self.OpenKey and self.IsCanCloseByHotKey then
-      IsEventHandled = true
-      self:OnReturnKeyDown()
-    elseif "SpaceBar" == InKeyName then
+    elseif r5_40 == "Escape" then
+      r3_40 = true
+      r0_40:OnReturnKeyDown()
+    elseif r5_40 == "Q" then
+      r3_40 = true
+      r0_40.ComTab:TabToLeft()
+    elseif r5_40 == "E" then
+      r3_40 = true
+      r0_40.ComTab:TabToRight()
+    elseif r5_40 == r0_40.OpenKey and r0_40.IsCanCloseByHotKey then
+      r3_40 = true
+      r0_40:OnReturnKeyDown()
+    elseif r5_40 == "SpaceBar" then
       EventManager:FireEvent(EventID.AllDailyTaskRewardKey)
     end
   end
-  if IsEventHandled then
+  if r3_40 then
     return UE4.UWidgetBlueprintLibrary.Handled()
   else
     return UE4.UWidgetBlueprintLibrary.UnHandled()
   end
 end
-
-function WBP_Play_Entry_C:OnPreviewKeyDown(MyGeometry, InKeyEvent)
-  local IsEventHandled = false
-  if self.CurSubUI and self.CurSubUI.HandlePreviewKeyDown then
-    IsEventHandled = self.CurSubUI:HandlePreviewKeyDown(MyGeometry, InKeyEvent)
+function r1_0.OnPreviewKeyDown(r0_41, r1_41, r2_41)
+  -- line: [797, 816] id: 41
+  local r3_41 = false
+  if r0_41.CurSubUI and r0_41.CurSubUI.HandlePreviewKeyDown then
+    r3_41 = r0_41.CurSubUI:HandlePreviewKeyDown(r1_41, r2_41)
   end
-  if not IsEventHandled then
-    local InKey = UE4.UKismetInputLibrary.GetKey(InKeyEvent)
-    local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-    if UE4.UKismetInputLibrary.Key_IsGamepadKey(InKey) then
-    else
+  if not r3_41 then
+    local r4_41 = UE4.UKismetInputLibrary.GetKey(r2_41)
+    local r5_41 = UE4.UFormulaFunctionLibrary.Key_GetFName(r4_41)
+    if UE4.UKismetInputLibrary.Key_IsGamepadKey(r4_41) then
     end
   end
-  if IsEventHandled then
+  if r3_41 then
     return UE4.UWidgetBlueprintLibrary.Handled()
   else
-    return WBP_Play_Entry_C.Super.OnPreviewKeyDown(self, MyGeometry, InKeyEvent)
+    return r1_0.Super.OnPreviewKeyDown(r0_41, r1_41, r2_41)
   end
 end
-
-function WBP_Play_Entry_C:OnReturnKeyDown()
-  UIUtils.PlayCommonBtnSe(self)
-  self:OnClickBack()
+function r1_0.OnReturnKeyDown(r0_42)
+  -- line: [818, 821] id: 42
+  UIUtils.PlayCommonBtnSe(r0_42)
+  r0_42:OnClickBack()
 end
-
-function WBP_Play_Entry_C:OnClickBack()
-  if self.TeamHeadUI.bIsFocusable then
-    return
+function r1_0.OnClickBack(r0_43)
+  -- line: [823, 829] id: 43
+  if r0_43.TeamHeadUI.bIsFocusable then
+    return 
   end
-  if self:IsAnimationPlaying(self.In) then
-    return
+  if r0_43:IsAnimationPlaying(r0_43.In) then
+    return 
   end
-  self:PlayOutAnim()
+  r0_43:PlayOutAnim()
 end
-
-function WBP_Play_Entry_C:GetAttachWidget()
-  local AttachWidget
-  if CommonUtils.GetDeviceTypeByPlatformName(self) == "Mobile" then
-    AttachWidget = self.ComTab.Panel_Team
+function r1_0.GetAttachWidget(r0_44)
+  -- line: [831, 840] id: 44
+  local r1_44 = nil
+  if CommonUtils.GetDeviceTypeByPlatformName(r0_44) == "Mobile" then
+    r1_44 = r0_44.ComTab.Panel_Team
   else
-    AttachWidget = self.ComTab.Group_Team
+    r1_44 = r0_44.ComTab.Group_Team
   end
-  AttachWidget:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-  return AttachWidget
+  r1_44:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+  return r1_44
 end
-
-function WBP_Play_Entry_C:PlayOutAnim()
-  if self:IsAnimationPlaying(self.Out) then
-    return
+function r1_0.PlayOutAnim(r0_45)
+  -- line: [842, 883] id: 45
+  if r0_45:IsAnimationPlaying(r0_45.Out) then
+    return 
   end
-  AudioManager(self):SetEventSoundParam(self, "SystemOpenSound", {ToEnd = 1})
-  self:BlockAllUIInput(true)
-  if self.CurSubUI.RetainerBox and self.CurSubUI.Panel_Level then
-    self.CurSubUI.Panel_Level:SetVisibility(UE4.ESlateVisibility.HitTestInvisible)
-  end
-  self:BindToAnimationFinished(self.Out, {
-    self,
-    self.Close
+  AudioManager(r0_45):SetEventSoundParam(r0_45, "SystemOpenSound", {
+    ToEnd = 1,
   })
-  if self.CurSubUI:IsAnyAnimationPlaying() then
-    self.CurSubUI:StopAllAnimations()
+  r0_45:BlockAllUIInput(true)
+  if r0_45.CurSubUI.RetainerBox and r0_45.CurSubUI.Panel_Level then
+    r0_45.CurSubUI.Panel_Level:SetVisibility(UE4.ESlateVisibility.HitTestInvisible)
   end
-  self.CurSubUI:PlayAnimationForward(self.CurSubUI.Out)
-  if self.IsAddInDeque then
-    self:PlayAnimationForward(self.Out, UIConst.AnimOutSpeedWithPageJump.NormalFastSpeed)
+  r0_45:BindToAnimationFinished(r0_45.Out, {
+    r0_45,
+    r0_45.Close
+  })
+  if r0_45.CurSubUI:IsAnyAnimationPlaying() then
+    r0_45.CurSubUI:StopAllAnimations()
+  end
+  r0_45.CurSubUI:PlayAnimationForward(r0_45.CurSubUI.Out)
+  if r0_45.IsAddInDeque then
+    r0_45:PlayAnimationForward(r0_45.Out, UIConst.AnimOutSpeedWithPageJump.NormalFastSpeed)
   else
-    self:PlayAnimationForward(self.Out)
+    r0_45:PlayAnimationForward(r0_45.Out)
   end
-  local AttachWidget = self:GetAttachWidget()
-  if TeamController:GetHeadUI(AttachWidget) and self.TeamHeadUI then
-    TeamController:GetHeadUI(AttachWidget):Close()
-    AttachWidget:SetVisibility(UIConst.VisibilityOp.Collapsed)
-    self.TeamHeadUI = nil
+  local r1_45 = r0_45:GetAttachWidget()
+  if TeamController:GetHeadUI(r1_45) and r0_45.TeamHeadUI then
+    TeamController:GetHeadUI(r1_45):Close()
+    r1_45:SetVisibility(UIConst.VisibilityOp.Collapsed)
+    r0_45.TeamHeadUI = nil
   end
-  self:RecoverCamera()
-  EventManager:FireEvent(EventID.OnReturnToActivityEntry)
-end
-
-function WBP_Play_Entry_C:ShowIntro()
-end
-
-function WBP_Play_Entry_C:SetFocus_Lua()
-  self.CurSubUI:SetFocus()
-end
-
-function WBP_Play_Entry_C:Close()
-  if self.SubUI then
-    for _, Widget in pairs(self.SubUI) do
-      Widget:RemoveFromParent()
+  r0_45:RecoverCamera()
+  local r3_45 = UIManager(r0_45):GetUnderState()
+  if r3_45 then
+    local r4_45 = r3_45:GetName()
+    DebugPrint("JLY 上一个栈的UI是:", r4_45)
+    if r4_45 == "ActivityMain" then
+      EventManager:FireEvent(EventID.OnReturnToActivityEntry)
+      EventManager:FireEvent(EventID.OnActivityEntryShowVisible)
     end
   end
-  self:RemoveReddotListener()
-  UIManager(self):HideNpcActor(false, "StyleOfPlay", self.NpcId)
-  UIManager(self):HideNpcById(self.NpcId, true, "StyleOfPlay")
-  self.Super.Close(self)
 end
-
-function WBP_Play_Entry_C:BP_GetDesiredFocusTarget()
-  if self.CurSubUI then
-    return self.CurSubUI
+function r1_0.ShowIntro(r0_46)
+  -- line: [885, 890] id: 46
+end
+function r1_0.SetFocus_Lua(r0_47)
+  -- line: [892, 894] id: 47
+  r0_47.CurSubUI:SetFocus()
+end
+function r1_0.Close(r0_48)
+  -- line: [896, 915] id: 48
+  if r0_48.SubUI then
+    for r5_48, r6_48 in pairs(r0_48.SubUI) do
+      r6_48:RemoveFromParent()
+    end
+    -- close: r1_48
+  end
+  r0_48:RemoveReddotListener()
+  UIManager(r0_48):HideNpcActor(false, "StyleOfPlay", r0_48.NpcId)
+  if UIManager(r0_48):StateCount() > 1 then
+    UIManager(r0_48):HideNpcById(r0_48.NpcId, true, "StyleOfPlay")
+  end
+  r0_48.Super.Close(r0_48)
+end
+function r1_0.BP_GetDesiredFocusTarget(r0_49)
+  -- line: [917, 923] id: 49
+  if r0_49.CurSubUI then
+    return r0_49.CurSubUI
   else
-    return self
+    return r0_49
   end
 end
-
-return WBP_Play_Entry_C
+return r1_0

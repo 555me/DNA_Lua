@@ -83,6 +83,7 @@ r4_0[9002] = {
   TabId = 2,
 }
 r4_0[9003] = {
+  BgBGM = "event:/bgm/1_1/0133_fushu_skin",
   BgMusic = "event:/ui/btc/gacha_pool_fushu_skin01",
   BubbleShowGoods = {
     140227,

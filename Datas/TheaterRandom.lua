@@ -15,12 +15,14 @@ local r0_0 = {
   RT_3 = {
     4031,
     4032,
-    4033
+    4033,
+    4039
   },
   RT_4 = {
     4041,
     4042,
-    4043
+    4043,
+    4049
   },
   RT_5 = {
     4051,
@@ -35,7 +37,8 @@ local r0_0 = {
   RT_7 = {
     4071,
     4072,
-    4073
+    4073,
+    4079
   },
   RT_8 = {
     4081,
@@ -84,7 +87,7 @@ local r0_0 = {
   },
 }
 local r2_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
-  -- line: [83, 83] id: 1
+  -- line: [86, 86] id: 1
   return r1_1
 end
 local r3_0 = "TheaterRandom"

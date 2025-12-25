@@ -442,22 +442,29 @@ r3_0.ArmoryReward = {
 }
 r3_0.BattleMainMenu = {
   Childs = {
-    "AnnouncementItems",
-    "ArmoryMainMenu",
-    "NormalMail",
-    "NewFriendRequest",
-    "NewGuideNote",
-    "ActivityHub",
     "EscPortrait",
-    "Map",
     "ExperienceMain",
+    "ArmoryMainMenu",
     "Shop",
-    "Quest",
-    "ModArchive",
     "Gacha",
+    "ForgeEntry",
     "AchieveMain",
+    "Play",
+    "Quest",
+    "NormalMail",
+    "AnnouncementItems",
+    "NewGuideNote",
+    "NewFriendRequest",
+    "BattlePassMain",
+    "ActivityHub",
+    "Map",
+    "Entertainment",
+    "WikiReward",
+    "WalnutBagItems",
+    "Archive",
+    "ModArchive",
     "Setting_Root",
-    "ForgeEntry"
+    "DayAndNight"
   },
   Name = "BattleMainMenu",
   NodeModuleName = "BattleMainMenu",
@@ -883,8 +890,8 @@ r3_0.RougeArchiveNew = {
   Childs = {
     "RougeArchiveTreasure",
     "RougeArchiveBlessing",
-    "RougeArchiveRoom",
-    "RougeArchiveStory"
+    "RougeArchiveStory",
+    "RougeArchiveEvent"
   },
   Name = "RougeArchiveNew",
 }

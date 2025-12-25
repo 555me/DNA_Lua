@@ -9787,7 +9787,7 @@ r6_0.AddAttrs = {
     AttrName = "DamageRate",
     DamageTag = "Skill",
     IndividualRateZone = 1,
-    Value = -0.5,
+    Value = -0.25,
   },
   [2] = r0_0.RT_240,
 }

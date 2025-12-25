@@ -3926,6 +3926,26 @@ r4_0[830014] = {
   TalkId = 830014,
   TalkTriggerId = 830014,
 }
+r4_0[830015] = {
+  StoryLinePath = "Explore/ExploreGroup.story",
+  TalkId = 830015,
+  TalkTriggerId = 830015,
+}
+r4_0[830016] = {
+  StoryLinePath = "Explore/ExploreGroup.story",
+  TalkId = 830016,
+  TalkTriggerId = 830016,
+}
+r4_0[830017] = {
+  StoryLinePath = "Explore/ExploreGroup.story",
+  TalkId = 830017,
+  TalkTriggerId = 830017,
+}
+r4_0[830018] = {
+  StoryLinePath = "Explore/ExploreGroup.story",
+  TalkId = 830018,
+  TalkTriggerId = 830018,
+}
 r4_0[900101] = {
   StoryLinePath = "TalkGossip/900101_Duanzao_Bubble.story",
   TalkId = 900101,
@@ -6476,6 +6496,10 @@ r4_0[80004257] = {
 r4_0[80004258] = {
   StoryLinePath = "Dungeon\\EventFeina\\EventFeina_Guide_12.story",
   TalkTriggerId = 80004258,
+}
+r4_0[80004259] = {
+  StoryLinePath = "Dungeon\\EventFeina\\EventFeina_Guide_03.story",
+  TalkTriggerId = 80004259,
 }
 r6_0 = {
   StoryLinePath = "Explore/Home_Cat.story",

@@ -286,6 +286,7 @@ r4_0[94] = {
     GuideId = 94,
     GuideNoteId = 119,
     GuideNoteTab = 3,
+    MechanismTag = "GravityBall",
     RewardId = 7000,
   },
 }
@@ -296,6 +297,7 @@ r4_0[95] = {
     GuideId = 95,
     GuideNoteId = 120,
     GuideNoteTab = 3,
+    MechanismTag = "MoInteractive",
     RewardId = 7000,
   },
 }

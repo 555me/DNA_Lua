@@ -229,6 +229,13 @@ end)("HeadSculpture", {
     Icon = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Head/Avatar/T_Head_Songlu01.T_Head_Songlu01\'",
     Name = "UI_PlayerHead_Name_20003",
   },
+  [20004] = {
+    Des = "UI_PlayerHead_Des_20004",
+    HeadId = 20004,
+    HeadPath = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Head/Avatar/T_Head_Baiheng01.T_Head_Baiheng01\'",
+    Icon = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Head/Avatar/T_Head_Baiheng01.T_Head_Baiheng01\'",
+    Name = "UI_PlayerHead_Name_20004",
+  },
   [30001] = {
     Des = "UI_PlayerHead_Des_Common",
     HeadId = 30001,
@@ -247,14 +254,14 @@ end)("HeadSculpture", {
     Des = "UI_PlayerHead_Des_Common",
     HeadId = 30003,
     HeadPath = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Head/Mail/T_Head_Other_0002.T_Head_Other_0002\'",
-    Icon = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Head/Mail/T_Head_Other_0002.T_Head_Other_0002\'",
+    Icon = "Texture2D\'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Icon_Head_0021.T_Icon_Head_0021\'",
     Name = "UI_PlayerHead_Name_30003",
   },
   [30004] = {
     Des = "UI_PlayerHead_Des_Common",
     HeadId = 30004,
     HeadPath = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Head/Mail/T_Head_Other_0003.T_Head_Other_0003\'",
-    Icon = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Head/Mail/T_Head_Other_0003.T_Head_Other_0003\'",
+    Icon = "Texture2D\'/Game/UI/Texture/Dynamic/Atlas/Prop/Item/T_Icon_Head_0020.T_Icon_Head_0020\'",
     Name = "UI_PlayerHead_Name_30004",
   },
   [30005] = {

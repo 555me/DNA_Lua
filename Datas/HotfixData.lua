@@ -7,6 +7,7 @@ return {
   client_version = {
     ["1"] = "0",
   },
+  force_update_version = "0",
   patch_version = {
     ["1"] = "0",
   },

@@ -1,4 +1,4 @@
--- filename: @E:/Pack/Branch/OBT10_Geili\Content/Script/BluePrints\Client\Entities\Account.lua
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\Client\Entities\Account.lua
 -- version: lua54
 -- line: [0, 0] id: 0
 local r2_0 = require("NetworkEngine.Common.Assemble")
@@ -26,7 +26,7 @@ function r5_0.OnBecomePlayer(r0_2)
   r0_2:EnterWorld()
 end
 function r5_0.SdkLogin(r0_3)
-  -- line: [29, 87] id: 3
+  -- line: [29, 97] id: 3
   r0_3.logger.debug("SdkLogin")
   local r1_3 = r3_0.GetUserInfo()
   if not r1_3 then
@@ -66,6 +66,15 @@ function r5_0.SdkLogin(r0_3)
     user_agent = r2_3:GetUserAgent(),
     device_key = r2_3:GetDeviceKey(),
     wegame_distribute_id = r2_3.WeGameDistributionID,
+    app_version = r2_3:GetBDCClientVersion(),
+    system_version = r2_3:GetBDCSystemVersion(),
+    manufacturer = r2_3:GetBDCManufacturer(),
+    bundle_id = r2_3:GetBDCBundleId(),
+    session_id = r2_3:GetBDCSessionId(),
+    device_model = r2_3:GetBDCDeviceModel(),
+    app_version_code = r2_3:GetBDCClientVersionCode(),
+    brand = r2_3:GetBDCBrand(),
+    cloud_app_msg = r2_3.CloudAppMsg,
     android_id = r2_3:GetAndroidID(),
     idfa = r2_3:GetIDFA(),
     idfv = r2_3:GetIDFV(),
@@ -84,19 +93,19 @@ function r5_0.SdkLogin(r0_3)
   r0_3:CallServerMethod("SdkLogin", r8_3, r7_3, r9_3)
 end
 function r5_0.NotifyBindDevice(r0_4)
-  -- line: [89, 107] id: 4
+  -- line: [99, 117] id: 4
   r0_4.logger.debug("NotifyBindDevice")
   local r1_4 = {
     CloseBtnCallbackFunction = function()
-      -- line: [93, 96] id: 5
+      -- line: [103, 106] id: 5
       r0_4:CallServerMethod("ConfirmBindDevice", false)
     end,
     LeftCallbackFunction = function()
-      -- line: [97, 100] id: 6
+      -- line: [107, 110] id: 6
       r0_4:CallServerMethod("ConfirmBindDevice", false)
     end,
     RightCallbackFunction = function()
-      -- line: [101, 103] id: 7
+      -- line: [111, 113] id: 7
       r0_4:CallServerMethod("ConfirmBindDevice", true)
     end,
   }
@@ -104,7 +113,7 @@ function r5_0.NotifyBindDevice(r0_4)
   r2_4:ShowCommonPopupUI(100071, r1_4, r2_4:GetUIObj("LoginMainPage"))
 end
 function r5_0.QuickLogin(r0_8, r1_8, r2_8)
-  -- line: [109, 153] id: 8
+  -- line: [119, 163] id: 8
   r0_8.logger.debug("QuickLogin")
   local r3_8 = HeroUSDKSubsystem()
   local r4_8 = GWorld.SdkChannel and 237
@@ -145,7 +154,7 @@ function r5_0.QuickLogin(r0_8, r1_8, r2_8)
   r0_8:CallServerMethod("QuickLogin", r10_8, r11_8, r13_8)
 end
 function r5_0.OnGetAllAvatars(r0_9, r1_9)
-  -- line: [155, 165] id: 9
+  -- line: [165, 175] id: 9
   r0_9.logger.debug("OnGetAllAvatars")
   GWorld.NetworkMgr:Disconnect()
   GWorld.GetAvatarInfos = {}
@@ -159,7 +168,7 @@ function r5_0.OnGetAllAvatars(r0_9, r1_9)
   EventManager:FireEvent(EventID.OnGetAllAvatars)
 end
 function r5_0.OnPatchForceUpdate(r0_10)
-  -- line: [167, 176] id: 10
+  -- line: [177, 186] id: 10
   local r1_10 = GWorld.GameInstance:GetGameUIManager():GetUIObj("LoginMainPage")
   if r1_10 then
     r1_10:ShowLoginUI(false)
@@ -170,7 +179,7 @@ function r5_0.OnPatchForceUpdate(r0_10)
   end
 end
 function r5_0.LoginResult(r0_11, r1_11, r2_11)
-  -- line: [178, 243] id: 11
+  -- line: [188, 254] id: 11
   r0_11.LoginQueuePopUI = nil
   if not r2_11 then
     r2_11 = {}
@@ -224,6 +233,7 @@ function r5_0.LoginResult(r0_11, r1_11, r2_11)
     elseif r1_11 == ErrorCode.RET_LOGIN_AUTH_FAILED then
       HeroUSDKSubsystem():HeroSDKLogout()
     elseif not r4_11 then
+      r2_11.ErrorCode = r1_11
       GWorld.NetworkMgr:DisconnectAndShowUI(r2_11)
     end
     HeroUSDKSubsystem():CloseLoadingReconnect()
@@ -236,7 +246,7 @@ function r5_0.LoginResult(r0_11, r1_11, r2_11)
   end
 end
 function r5_0.OnHotfixWhenLogin(r0_12, r1_12, r2_12)
-  -- line: [245, 252] id: 12
+  -- line: [256, 263] id: 12
   r0_12.logger.debug("OnHotfixWhenLogin", r1_12, r2_12)
   if r2_12 then
     require("HotFix").ExecHotFix(r2_12, r1_12)
@@ -244,7 +254,7 @@ function r5_0.OnHotfixWhenLogin(r0_12, r1_12, r2_12)
   end
 end
 function r5_0.OnNoticeLoginQueue(r0_13, r1_13, r2_13)
-  -- line: [254, 277] id: 13
+  -- line: [265, 288] id: 13
   r0_13.logger.debug(string.format("Account:OnNoticeLoginQueue QueueSite:%s QueueLength:%s", r1_13, r2_13))
   if r0_13.LoginQueuePopUI then
     return 
@@ -256,18 +266,64 @@ function r5_0.OnNoticeLoginQueue(r0_13, r1_13, r2_13)
   end
   r0_13.LoginQueuePopUI = r3_13:ShowCommonPopupUI(100265, {
     CloseBtnCallbackFunction = function()
-      -- line: [266, 268] id: 14
+      -- line: [277, 279] id: 14
       r0_13:CallServerMethod("QuitLoginQueue")
     end,
     LeftCallbackFunction = function()
-      -- line: [269, 271] id: 15
+      -- line: [280, 282] id: 15
       r0_13:CallServerMethod("QuitLoginQueue")
     end,
     RightCallbackFunction = function()
-      -- line: [272, 274] id: 16
+      -- line: [283, 285] id: 16
       r0_13:CallServerMethod("QuitLoginQueue")
     end,
   })
+end
+function r5_0.ShowCancelConfirmDialog(r0_17)
+  -- line: [291, 301] id: 17
+  UIManager(r0_17):ShowCommonPopupUI(100282, {
+    RightCallbackFunction = function()
+      -- line: [293, 296] id: 18
+      print(_G.LogTag, "Account LoginWithoutPubAccountInfo")
+      r0_17:LoginWithoutPubAccountInfo()
+    end,
+    LeftCallbackFunction = function()
+      -- line: [297, 299] id: 19
+      r0_17:ShowCopyAccountDialog()
+    end,
+  })
+end
+function r5_0.ShowCopyAccountDialog(r0_20)
+  -- line: [304, 314] id: 20
+  UIManager(r0_20):ShowCommonPopupUI(100272, {
+    RightCallbackFunction = function()
+      -- line: [306, 309] id: 21
+      print(_G.LogTag, "Account LoginWithPubAccountInfo")
+      r0_20:LoginWithPubAccountInfo()
+    end,
+    LeftCallbackFunction = function()
+      -- line: [310, 312] id: 22
+      r0_20:ShowCancelConfirmDialog()
+    end,
+  })
+end
+function r5_0.OnQueryPubAccountInfo(r0_23, r1_23, r2_23)
+  -- line: [317, 327] id: 23
+  r0_23.logger.debug("OnQueryPubAccountInfo", r1_23, r2_23)
+  if not (r4_0.GetGameCofingSettings("bExperience") and false) then
+    return 
+  end
+  r0_23:ShowCopyAccountDialog()
+end
+function r5_0.LoginWithPubAccountInfo(r0_24)
+  -- line: [330, 333] id: 24
+  r0_24.logger.debug("LoginWithPubAccountInfo")
+  r0_24:CallServerMethod("LoginWithPubAccountInfo")
+end
+function r5_0.LoginWithoutPubAccountInfo(r0_25)
+  -- line: [336, 339] id: 25
+  r0_25.logger.debug("LoginWithoutPubAccountInfo")
+  r0_25:CallServerMethod("LoginWithoutPubAccountInfo")
 end
 r2_0.AssembleComponents(r5_0)
 return r5_0

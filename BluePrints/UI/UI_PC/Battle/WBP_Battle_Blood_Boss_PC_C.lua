@@ -1,4 +1,4 @@
--- filename: @E:/Pack/Branch/OBT10_Geili\Content/Script/BluePrints\UI\UI_PC\Battle\WBP_Battle_Blood_Boss_PC_C.lua
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\UI_PC\Battle\WBP_Battle_Blood_Boss_PC_C.lua
 -- version: lua54
 -- line: [0, 0] id: 0
 require("UnLua")
@@ -42,26 +42,27 @@ function r3_0.InitBossUI(r0_3, r1_3, r2_3, r3_3)
   end
 end
 function r3_0.InitBossComponent(r0_5)
-  -- line: [49, 116] id: 5
+  -- line: [49, 123] id: 5
+  local r1_5 = DataMgr.Monster[r0_5.Owner.UnitId]
   if r0_5.Owner:IsBossMonster() then
-    if DataMgr.Monster[r0_5.Owner.UnitId].BossUIValues.PhaseValues ~= nil then
-      r0_5.PhaseValues = DataMgr.Monster[r0_5.Owner.UnitId].BossUIValues.PhaseValues
+    if r1_5.BossUIValues.PhaseValues ~= nil then
+      r0_5.PhaseValues = r1_5.BossUIValues.PhaseValues
     else
       r0_5.IsBossInPart = false
       r0_5.PhaseValues = {
         1
       }
     end
-    if DataMgr.Monster[r0_5.Owner.UnitId].BossUIValues.ShowES ~= nil then
-      r0_5.ShowES = DataMgr.Monster[r0_5.Owner.UnitId].BossUIValues.ShowES
+    if r1_5.BossUIValues.ShowES ~= nil then
+      r0_5.ShowES = r1_5.BossUIValues.ShowES
     end
     r0_5.ToughnessHit = DataMgr.BattleMonster[r0_5.Owner.Data.BattleRoleId].DeductToughnessHit and {}
     r0_5.Part_Count = #r0_5.PhaseValues
-    local r1_5 = 0
-    for r5_5 = 1, r0_5.Part_Count, 1 do
-      r1_5 = r1_5 + r0_5.PhaseValues[r5_5]
+    local r2_5 = 0
+    for r6_5 = 1, r0_5.Part_Count, 1 do
+      r2_5 = r2_5 + r0_5.PhaseValues[r6_5]
     end
-    if r0_5.Part_Count == 1 or r0_0.BOSS_BLOOD_PART_MAX < r0_5.Part_Count or 1.00000001 < r1_5 or r1_5 < 0.999999999999 then
+    if r0_5.Part_Count == 1 or r0_0.BOSS_BLOOD_PART_MAX < r0_5.Part_Count or 1.00000001 < r2_5 or r2_5 < 0.999999999999 then
       r0_5.IsBossInPart = false
     end
     r0_5.IsShowToughnessBar = true
@@ -80,9 +81,14 @@ function r3_0.InitBossComponent(r0_5)
   r0_5:InitBossParams()
   r0_5:InitBossConfig()
   r0_5:ResetBossPart()
+  r0_5:InitMultiHpBar(r1_5)
   r0_5.SizeBox_BossHP:ClearChildren()
   r0_5.Group_BuffRoot:ClearChildren()
   r0_5.HpBar = r2_0.LoadSubWidget(r0_5, r0_5.SizeBox_BossHP, "HPBar", true, r0_5.BloodBarLenght, r0_5.Hp / r0_5.MaxHp)
+  if r0_5.HpBar and r0_5.bMultiHpBar then
+    r0_5.HpBar:InitMultiHpBar(r0_5.MaxHpLayer)
+    r0_5:SetMultiHpBarColor()
+  end
   r0_5.WeaknessBar = r2_0.LoadSubWidget(r0_5, r0_5.Group_BuffRoot, "BuffBar", true)
   if r0_5.WeaknessBar then
     UE4.UWidgetLayoutLibrary.SlotAsCanvasSlot(r0_5.WeaknessBar):SetAutoSize(true)
@@ -92,13 +98,13 @@ function r3_0.InitBossComponent(r0_5)
   r0_5:InitBossEvent()
   if not r0_5.Owner:IsBossMonster() then
     r0_5:AddTimer(r0_5.BossTickTime, function()
-      -- line: [101, 104] id: 6
+      -- line: [108, 111] id: 6
       EMUIAnimationSubsystem:EMPlayAnimation(r0_5, r0_5.Bar_In)
     end)
   else
     r0_5:SetVisibility(UE4.ESlateVisibility.Collapsed)
     r0_5:AddTimer(0.1, function()
-      -- line: [107, 113] id: 7
+      -- line: [114, 120] id: 7
       if not r0_5.Owner.bHidden then
         r0_5:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
         r0_5:OutHideTag()
@@ -109,7 +115,7 @@ function r3_0.InitBossComponent(r0_5)
   r0_5:UpdateBossInvincibleState()
 end
 function r3_0.InitBossParams(r0_8)
-  -- line: [118, 150] id: 8
+  -- line: [125, 157] id: 8
   r0_8.MaxHp = r0_8.Owner:GetMaxBloodVolume()
   r0_8.Hp = r0_8.Owner:GetCurrentBloodVolume()
   r0_8.LastHp = r0_8.Hp
@@ -143,7 +149,7 @@ function r3_0.InitBossParams(r0_8)
   r0_8.InvincinbleTags = {}
 end
 function r3_0.ShowToughnessBar(r0_9, r1_9)
-  -- line: [152, 157] id: 9
+  -- line: [159, 164] id: 9
   if not r0_9.IsShowToughnessBar then
     return 
   end
@@ -161,7 +167,7 @@ function r3_0.ShowToughnessBar(r0_9, r1_9)
   r2_9:SetVisibility(r4_9)
 end
 function r3_0.InitBossConfig(r0_10)
-  -- line: [159, 199] id: 10
+  -- line: [166, 206] id: 10
   r0_10.Boss_Part:SetRenderOpacity(0)
   r0_10.Name_Boss_Part:SetText(GText(r0_10.Owner.Data.UnitName))
   local r2_10 = r0_10.Owner:GetAttr("Level")
@@ -193,7 +199,7 @@ function r3_0.InitBossConfig(r0_10)
   r0_10.HB_Buff_BP:ClearChildren()
 end
 function r3_0.SetBossBarPosition(r0_11)
-  -- line: [201, 219] id: 11
+  -- line: [208, 226] id: 11
   if r0_11.BossUIType and r0_11.BossUIType ~= EBossUIType.None then
     return 
   end
@@ -210,7 +216,7 @@ function r3_0.SetBossBarPosition(r0_11)
   end
 end
 function r3_0.ResetBossPart(r0_12)
-  -- line: [221, 247] id: 12
+  -- line: [228, 254] id: 12
   r0_12.ToughnessEffect = UE4.UWidgetLayoutLibrary.SlotAsCanvasSlot(r0_12.DeductToughness)
   r0_12.BloodBarLenght = UE4.UWidgetLayoutLibrary.SlotAsCanvasSlot(r0_12.SizeBoxBar):GetSize().X
   r0_12.BloodBarHeight = r0_12.SizeBox_BossHP.MinDesiredHeight
@@ -237,7 +243,7 @@ function r3_0.ResetBossPart(r0_12)
   end
 end
 function r3_0.ResetBossToughness(r0_13)
-  -- line: [249, 305] id: 13
+  -- line: [256, 312] id: 13
   EMUIAnimationSubsystem:EMPlayAnimation(r0_13, r0_13.Bar_In)
   if not r0_13.IsShowToughnessBar then
     r0_13.IsResetBossToughness = true
@@ -292,11 +298,11 @@ function r3_0.ResetBossToughness(r0_13)
   r0_13.IsResetBossToughness = true
 end
 function r3_0.InitBossWeakness(r0_14)
-  -- line: [307, 309] id: 14
+  -- line: [314, 316] id: 14
   r0_14:RefreshWeaknessIcons()
 end
 function r3_0.RefreshWeaknessIcons(r0_15)
-  -- line: [311, 329] id: 15
+  -- line: [318, 336] id: 15
   local r2_15 = r0_15.Owner.BuffManager.Buffs
   if r0_15.WeaknessBar then
     local r3_15 = TArray(0)
@@ -316,10 +322,11 @@ function r3_0.RefreshWeaknessIcons(r0_15)
   end
 end
 function r3_0.InitChargeBar(r0_16)
-  -- line: [332, 360] id: 16
+  -- line: [339, 370] id: 16
   if r0_16.BossUIType ~= UE4.EBossUIType.ChargeLeft and r0_16.BossUIType ~= UE4.EBossUIType.ChargeRight then
     return 
   end
+  r0_16:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
   r0_16.Bar_Energy:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
   r0_16.PanelTip:SetVisibility(UIConst.VisibilityOp.Collapsed)
   r0_16.PanelTipText:SetVisibility(UIConst.VisibilityOp.Collapsed)
@@ -328,11 +335,12 @@ function r3_0.InitChargeBar(r0_16)
   r0_16.IsWarning = false
   r0_16.TargetEnergy = 0
   r0_16.NowEnergy = 0
+  r0_16.EnergyText = 0
   r0_16.DeltaEnergy = 0
   r0_16.UpdateProgressHandle = nil
-  r0_16:UpdateEnergyBar(r0_16.Owner.Eid, r0_16.Owner.NowEnergy)
+  r0_16:UpdateEnergyBar(r0_16.Owner.Eid, r0_16.Owner.NowEnergy, true)
   r0_16:BindToAnimationFinished(r0_16.Energy_In, function()
-    -- line: [352, 358] id: 17
+    -- line: [362, 368] id: 17
     if r0_16.BossUIType == UE4.EBossUIType.ChargeLeft then
       r0_16:PlayAnimation(r0_16.Energy_ColorL)
     else
@@ -342,568 +350,652 @@ function r3_0.InitChargeBar(r0_16)
   r0_16:PlayAnimation(r0_16.Energy_In)
 end
 function r3_0.InitBossEvent(r0_18)
-  -- line: [362, 369] id: 18
+  -- line: [372, 383] id: 18
   r0_18:AddDispatcher(EventID.ShowBossBlood, r0_18, r0_18.RefreshBossInfoByAction)
   r0_18:AddDispatcher(EventID.StartTalk, r0_18, r0_18.HideBossBillboard)
   r0_18:AddDispatcher(EventID.EndTalk, r0_18, r0_18.ShowBossBillboard)
   r0_18:AddDispatcher(EventID.UpdateBossToughness, r0_18, r0_18.UpdateBossToughness)
   r0_18:AddDispatcher(EventID.RecoveryBossShield, r0_18, r0_18.RecoveryBossShield)
   r0_18:AddDispatcher(EventID.OnBloodEnergyChanged, r0_18, r0_18.UpdateEnergyBar)
+  r0_18:AddDispatcher(EventID.UpdateDamageRate, r0_18, r0_18.UpdateDamageRate)
+  if r0_18.bMultiHpBar then
+    r0_18:AddDispatcher(EventID.OnMultiHpBarLayerChange, r0_18, r0_18.OnMultiHpBarLayerChange)
+  end
 end
-function r3_0.UpdateToughnessEffect(r0_19)
-  -- line: [371, 382] id: 19
-  if not r0_19.IsShowToughnessBar then
+function r3_0.InitMultiHpBar(r0_19, r1_19)
+  -- line: [385, 404] id: 19
+  r0_19.bMultiHpBar = false
+  local r2_19 = nil
+  if r1_19 and r1_19.BattleRoleId then
+    r2_19 = DataMgr.BattleMonster[r1_19.BattleRoleId]
+  end
+  if not r2_19 or not r2_19.MultiHpBar or r2_19.MultiHpBar <= 1 then
+    r0_19.Text_BloodNum:SetVisibility(UE.ESlateVisibility.Collapsed)
+    r0_19.Group_BloodNum:SetVisibility(UE.ESlateVisibility.Collapsed)
     return 
   end
-  r0_19.ToughnessEffect:SetSize(FVector2D(r0_19.ToughnessLength * math.min(math.max((r0_19.LastTN - r0_19.NowTN) / r0_19.MaxTN, 0), 1), r0_19.ToughnessEffect:GetSize().Y))
-  r0_19.ToughnessEffect:SetPosition(FVector2D(r0_19.ToughnessLength * r0_19.BossTNPercent, r0_19.ToughnessEffect:GetPosition().Y))
-  EMUIAnimationSubsystem:EMPlayAnimation(r0_19, r0_19.Deduct_toughness)
+  r0_19.bMultiHpBar = true
+  r0_19.CurMultiColorArrayIndex = 0
+  r0_19.MaxHpLayer = r2_19.MultiHpBar
+  r0_19.CurHpLayer = r2_19.MultiHpBar
+  r0_19.Text_BloodNum:SetText(string.format("%d", r0_19.CurHpLayer))
+  r0_19.Text_BloodNum:SetVisibility(UE.ESlateVisibility.SelfHitTestInvisible)
+  r0_19.Group_BloodNum:SetVisibility(UE.ESlateVisibility.SelfHitTestInvisible)
+  r0_19.BloodBarLenght = r0_19.BloodBarLenght - r0_19.Group_BloodNum.WidthOverride
 end
-function r3_0.RefreshBossInfoByAction(r0_20, r1_20, r2_20)
-  -- line: [384, 414] id: 20
-  if r0_20.Owner == nil then
+function r3_0.OnMultiHpBarLayerChange(r0_20, r1_20, r2_20, r3_20)
+  -- line: [406, 431] id: 20
+  if r0_20.HpBar ~= r3_20 then
     return 
   end
-  r0_20.IsPlayHitAnimation = false
-  if r1_20 == "Attack" then
-    local r3_20 = UE4.UGameplayStatics.GetRealTimeSeconds(r0_20)
-    local r4_20 = r2_20.SkillId
-    if r4_20 then
-      r4_20 = DataMgr.Skill[r2_20.SkillId] and nil
+  r2_20 = math.abs(math.floor(r0_20.Hp / r0_20.MaxHp * r0_20.MaxHpLayer) - r0_20.CurHpLayer)
+  DebugPrint("WBP_Battle_Blood_Boss_PC_C:OnMultiHpBarLayerChange ChangeNum: ", r2_20)
+  if r1_20 then
+    r0_20.CurHpLayer = r0_20.CurHpLayer + r2_20
+    r0_20.CurMultiColorArrayIndex = r0_20.CurMultiColorArrayIndex - r2_20
+  else
+    r0_20.CurHpLayer = r0_20.CurHpLayer - r2_20
+    r0_20.CurMultiColorArrayIndex = r0_20.CurMultiColorArrayIndex + r2_20
+  end
+  local r5_20 = r0_20.MultiHpBarColorArray:Num()
+  if r0_20.CurMultiColorArrayIndex < 0 then
+    r0_20.CurMultiColorArrayIndex = r5_20 - math.abs(r0_20.CurMultiColorArrayIndex) % r5_20
+  elseif r5_20 <= r0_20.CurMultiColorArrayIndex then
+    r0_20.CurMultiColorArrayIndex = r0_20.CurMultiColorArrayIndex % r5_20
+  end
+  r0_20.Text_BloodNum:SetText(string.format("%d", r0_20.CurHpLayer))
+  r0_20:SetMultiHpBarColor()
+end
+function r3_0.SetMultiHpBarColor(r0_21)
+  -- line: [433, 444] id: 21
+  if not r0_21.HpBar then
+    return 
+  end
+  local r1_21 = r0_21.CurMultiColorArrayIndex + 1
+  local r2_21 = (r1_21 + 1) % (r0_21.MultiHpBarColorArray:Num() + 1)
+  if r2_21 <= 0 then
+    r2_21 = 1
+  end
+  local r3_21 = r0_21.HpBar
+  local r5_21 = r0_21.MultiHpBarColorArray[r1_21]
+  local r6_21 = r0_21.MultiDeductBarColorArray[r1_21]
+  local r7_21 = r0_21.CurHpLayer
+  if r7_21 > 1 then
+    r7_21 = r0_21.MultiHpBarColorArray[r2_21] and FLinearColor(1, 1, 1, 0.3)
+  else
+    goto label_32	-- block#6 is visited secondly
+  end
+  r3_21:OnChangeLayerSetColor(r5_21, r6_21, r7_21)
+end
+function r3_0.UpdateToughnessEffect(r0_22)
+  -- line: [446, 457] id: 22
+  if not r0_22.IsShowToughnessBar then
+    return 
+  end
+  r0_22.ToughnessEffect:SetSize(FVector2D(r0_22.ToughnessLength * math.min(math.max((r0_22.LastTN - r0_22.NowTN) / r0_22.MaxTN, 0), 1), r0_22.ToughnessEffect:GetSize().Y))
+  r0_22.ToughnessEffect:SetPosition(FVector2D(r0_22.ToughnessLength * r0_22.BossTNPercent, r0_22.ToughnessEffect:GetPosition().Y))
+  EMUIAnimationSubsystem:EMPlayAnimation(r0_22, r0_22.Deduct_toughness)
+end
+function r3_0.RefreshBossInfoByAction(r0_23, r1_23, r2_23)
+  -- line: [459, 489] id: 23
+  if r0_23.Owner == nil then
+    return 
+  end
+  r0_23.IsPlayHitAnimation = false
+  if r1_23 == "Attack" then
+    local r3_23 = UE4.UGameplayStatics.GetRealTimeSeconds(r0_23)
+    local r4_23 = r2_23.SkillId
+    if r4_23 then
+      r4_23 = DataMgr.Skill[r2_23.SkillId] and nil
     else
       goto label_21	-- block#5 is visited secondly
     end
-    if r4_20 and r4_20[1] then
-      local r5_20 = r4_20[1][0].SkillType
-      if r5_20 == "Attack" then
-        r0_20.LastAttackTime = r3_20
+    if r4_23 and r4_23[1] then
+      local r5_23 = r4_23[1][0].SkillType
+      if r5_23 == "Attack" then
+        r0_23.LastAttackTime = r3_23
       end
-      if r5_20 == "Attack" or r5_20 == "FallAttack" or r5_20 == "HeavyAttack" or r5_20 == "SlideAttack" then
-        r0_20.IsPlayHitAnimation = true
+      if r5_23 == "Attack" or r5_23 == "FallAttack" or r5_23 == "HeavyAttack" or r5_23 == "SlideAttack" then
+        r0_23.IsPlayHitAnimation = true
       end
     end
-    if r0_20.ComboAttackTime < r3_20 - r0_20.LastAttackTime then
-      r0_20.BossDelayTime = 0
+    if r0_23.ComboAttackTime < r3_23 - r0_23.LastAttackTime then
+      r0_23.BossDelayTime = 0
     else
-      r0_20.BossDelayTime = r1_0.BloodBarDelayTime
+      r0_23.BossDelayTime = r1_0.BloodBarDelayTime
     end
   end
-  r0_20:PlayWeaknessEffect(r2_20.DamageValues)
+  r0_23:PlayWeaknessEffect(r2_23.DamageValues)
 end
-function r3_0.PlayWeaknessEffect(r0_21, r1_21)
-  -- line: [416, 424] id: 21
-  if not r0_21.WeaknessBar then
+function r3_0.PlayWeaknessEffect(r0_24, r1_24)
+  -- line: [491, 499] id: 24
+  if not r0_24.WeaknessBar then
     return 
   end
-  for r6_21, r7_21 in pairs(r1_21 and {}) do
-    r0_21.WeaknessBar:PlayWeaknessEffect(r6_21)
+  for r6_24, r7_24 in pairs(r1_24 and {}) do
+    r0_24.WeaknessBar:PlayWeaknessEffect(r6_24)
   end
-  -- close: r2_21
+  -- close: r2_24
 end
-function r3_0.UpdateBossBlood(r0_22, r1_22, r2_22)
-  -- line: [426, 471] id: 22
-  r0_22.LastShield = r0_22.Shield
-  r0_22.LastHp = r0_22.Hp
-  r0_22.Shield = r0_22.Owner:GetAttr("ES") and 0
-  r0_22.BloodNowTime = UE4.UGameplayStatics.GetRealTimeSeconds(r0_22)
-  r0_22.Hp = r0_22.Owner:GetCurrentBloodVolume()
-  r0_22.StartReduceTime = r0_22.BloodNowTime
-  r2_22 = r0_22.LastShield - r0_22.Shield
-  if r1_22 == "Attack" then
-    local r3_22 = r0_22.Hp < r0_22.LastHp
-    local r4_22 = r0_22.Shield < r0_22.LastShield
-    r0_22.BossHpPercent = math.min(math.max(r0_22.Hp / r0_22.MaxHp, 0), 1)
-    if r0_22.MaxShield <= 0.00000001 then
-      r0_22.FixTime = r0_22.BossDelayTime
+function r3_0.UpdateBossBlood(r0_25, r1_25)
+  -- line: [501, 549] id: 25
+  r0_25.MaxHp = r0_25.Owner:GetMaxBloodVolume()
+  r0_25.LastShield = r0_25.Shield
+  r0_25.LastHp = r0_25.Hp
+  r0_25.Shield = r0_25.Owner:GetAttr("ES") and 0
+  r0_25.BloodNowTime = UE4.UGameplayStatics.GetRealTimeSeconds(r0_25)
+  r0_25.Hp = r0_25.Owner:GetCurrentBloodVolume()
+  r0_25.StartReduceTime = r0_25.BloodNowTime
+  local r2_25 = r0_25.LastShield - r0_25.Shield
+  if r1_25 == "Attack" then
+    local r3_25 = r0_25.Hp < r0_25.LastHp
+    local r4_25 = r0_25.Shield < r0_25.LastShield
+    r0_25.BossHpPercent = math.min(math.max(r0_25.Hp / r0_25.MaxHp, 0), 1)
+    if r0_25.MaxShield <= 0.00000001 then
+      r0_25.FixTime = r0_25.BossDelayTime
     else
-      r0_22.Shield = math.min(math.max(r0_22.MaxShield * r0_22.BossShieldPercent - r2_22, 0), r0_22.Shield)
-      r0_22.BossShieldPercent = math.min(math.max(r0_22.Shield / r0_22.MaxShield, 0), 1)
+      r0_25.Shield = math.min(math.max(r0_25.MaxShield * r0_25.BossShieldPercent - r2_25, 0), r0_25.Shield)
+      r0_25.BossShieldPercent = math.min(math.max(r0_25.Shield / r0_25.MaxShield, 0), 1)
     end
-    if r0_22.HpBar then
-      r0_22.HpBar:SetBarPercent(r0_22.BossHpPercent)
-      if r3_22 then
-        r0_22.HpBar:PlayDeduct(true)
+    if r0_25.HpBar then
+      r0_25.HpBar:SetBarPercent(r0_25.BossHpPercent)
+      if r3_25 then
+        r0_25.HpBar:PlayDeduct(false)
+      elseif r0_25.bMultiHpBar then
+        r0_25.HpBar:HealingCheckNeedChangeLayer()
       end
     end
-    if r0_22.MaxShield > 0 and r0_22.ShieldBar then
-      r0_22.ShieldBar:SetBarPercent(r0_22.BossShieldPercent)
-      if r4_22 then
-        r0_22.ShieldBar:PlayDeduct(true)
+    if r0_25.MaxShield > 0 and r0_25.ShieldBar then
+      r0_25.ShieldBar:SetBarPercent(r0_25.BossShieldPercent)
+      if r4_25 then
+        r0_25.ShieldBar:PlayDeduct(false)
       end
     end
-  elseif r1_22 == "Heal" then
-    r0_22.BossHpPercent = math.min(math.max(r0_22.Hp / r0_22.MaxHp, 0), 1)
-    r0_22.Blood_Boss:SetPercent(r0_22.BossHpPercent)
-    r0_22.HpBar:SetBarPercent(r0_22.BossHpPercent)
-    r0_22.LastHp = r0_22.Hp
+  elseif r1_25 == "Heal" then
+    r0_25.BossHpPercent = math.min(math.max(r0_25.Hp / r0_25.MaxHp, 0), 1)
+    r0_25.Blood_Boss:SetPercent(r0_25.BossHpPercent)
+    r0_25.HpBar:SetBarPercent(r0_25.BossHpPercent)
+    r0_25.LastHp = r0_25.Hp
   end
-  r0_22:Show()
-  if r0_22.Hp == 0 then
-    r0_22:SetPanelTipVisibility(UE4.ESlateVisibility.Collapsed)
-  end
-end
-function r3_0.UpdateTakeDownTipText(r0_23)
-  -- line: [473, 478] id: 23
-  r0_23.TakeDownTip:SetText(GText("UI_STAT_SUFFER") .. "×" .. CommonUtils.Round((r0_23.Owner:GetAttr(UEMNameRegisterLibrary.GetAttrNameAttributeType("DamagedRate", "NoTag_BossDown")) + 1) * 100) .. "%")
-end
-function r3_0.ShowPanelTip(r0_24)
-  -- line: [480, 492] id: 24
-  if not r0_24.CanShowPanelTip then
-    return 
-  end
-  r0_24:SetPanelTipVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-  EMUIAnimationSubsystem:EMPlayAnimation(r0_24, r0_24.TakeDown)
-  AudioManager(r0_24):PlayUISound(r0_24, "event:/ui/common/boss_shied_bar_loop", "BossShiedBarLoop", nil)
-  if r0_24.NowTN / r0_24.MaxTN < 0.7 then
-    r0_24:PlayAnimation(r0_24.Loop, 0, 0)
-    r0_24.IsPlayOut = true
-  end
-end
-function r3_0.UpdateBossToughness(r0_25, r1_25)
-  -- line: [494, 555] id: 25
-  if not IsValid(r0_25.Owner) or not r0_25.IsShowToughnessBar then
-    return 
-  end
-  if not r0_25.MaxTN then
-    r0_25.MaxTN = r0_25.Owner:GetAttr("MaxTN")
-  end
-  if not r0_25.NowTN then
-    r0_25.NowTN = r0_25.MaxTN
-  end
-  r0_25.NowTNTime = UE4.UGameplayStatics.GetRealTimeSeconds(r0_25)
-  r0_25.LastTN = r0_25.NowTN
-  r0_25.NowTN = r0_25.Owner:GetAttr("TN")
-  if r0_25.NowTN == r0_25.MaxTN then
+  r0_25:Show()
+  if r0_25.Hp == 0 then
     r0_25:SetPanelTipVisibility(UE4.ESlateVisibility.Collapsed)
-    r0_25.VX_percent:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    if r0_25.TNEqualZero then
-      r0_25.LastTN = r0_25.NowTN
-      EMUIAnimationSubsystem:EMPlayAnimation(r0_25, r0_25.Toughness_Finsh)
-      AudioManager(r0_25):PlayUISound(r0_25, "event:/ui/common/boss_shield_bar_loop_end", nil, nil)
-    end
-    r0_25.TNEqualZero = false
   end
-  r0_25.TNReduce = r0_25.LastTN - r0_25.NowTN
-  r0_25.LastTNPercent = r0_25.BossTNPercent
-  r0_25.HelpBossTNPercent = math.max(r0_25.HelpBossTNPercent, r0_25.LastTNPercent)
-  if r0_25.NowTN < 0.0000001 or r1_25 then
-    r0_25.TNEqualZero = true
-    r0_25.BossTNPercent = 0
-    r0_25:SetToughnessBarPercent(r0_25.BossTNPercent)
+end
+function r3_0.UpdateTakeDownTipText(r0_26)
+  -- line: [551, 556] id: 26
+  r0_26.TakeDownTip:SetText(GText("UI_STAT_SUFFER") .. "×" .. CommonUtils.Round((r0_26.Owner:GetAttr(UEMNameRegisterLibrary.GetAttrNameAttributeType("DamagedRate", "NoTag_BossDown")) + 1) * 100) .. "%")
+end
+function r3_0.UpdateDamageRate(r0_27, r1_27)
+  -- line: [558, 563] id: 27
+  if r0_27.Owner.Eid ~= r1_27 then
+    return 
+  end
+  r0_27:UpdateTakeDownTipText()
+end
+function r3_0.ShowPanelTip(r0_28)
+  -- line: [565, 577] id: 28
+  if not r0_28.CanShowPanelTip then
+    return 
+  end
+  r0_28:SetPanelTipVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+  EMUIAnimationSubsystem:EMPlayAnimation(r0_28, r0_28.TakeDown)
+  AudioManager(r0_28):PlayUISound(r0_28, "event:/ui/common/boss_shied_bar_loop", "BossShiedBarLoop", nil)
+  if r0_28.NowTN / r0_28.MaxTN < 0.7 then
+    r0_28:PlayAnimation(r0_28.Loop, 0, 0)
+    r0_28.IsPlayOut = true
+  end
+end
+function r3_0.UpdateBossToughness(r0_29, r1_29)
+  -- line: [579, 640] id: 29
+  if not IsValid(r0_29.Owner) or not r0_29.IsShowToughnessBar then
+    return 
+  end
+  if not r0_29.MaxTN then
+    r0_29.MaxTN = r0_29.Owner:GetAttr("MaxTN")
+  end
+  if not r0_29.NowTN then
+    r0_29.NowTN = r0_29.MaxTN
+  end
+  r0_29.NowTNTime = UE4.UGameplayStatics.GetRealTimeSeconds(r0_29)
+  r0_29.LastTN = r0_29.NowTN
+  r0_29.NowTN = r0_29.Owner:GetAttr("TN")
+  if r0_29.NowTN == r0_29.MaxTN then
+    r0_29:SetPanelTipVisibility(UE4.ESlateVisibility.Collapsed)
+    r0_29.VX_percent:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    if r0_29.TNEqualZero then
+      r0_29.LastTN = r0_29.NowTN
+      EMUIAnimationSubsystem:EMPlayAnimation(r0_29, r0_29.Toughness_Finsh)
+      AudioManager(r0_29):PlayUISound(r0_29, "event:/ui/common/boss_shield_bar_loop_end", nil, nil)
+    end
+    r0_29.TNEqualZero = false
+  end
+  r0_29.TNReduce = r0_29.LastTN - r0_29.NowTN
+  r0_29.LastTNPercent = r0_29.BossTNPercent
+  r0_29.HelpBossTNPercent = math.max(r0_29.HelpBossTNPercent, r0_29.LastTNPercent)
+  if r0_29.NowTN < 0.0000001 or r1_29 then
+    r0_29.TNEqualZero = true
+    r0_29.BossTNPercent = 0
+    r0_29:SetToughnessBarPercent(r0_29.BossTNPercent)
   else
-    if r0_25.TNReduce < 0 then
-      if r0_25.TNEqualZero then
-        r0_25.VX_percent:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    if r0_29.TNReduce < 0 then
+      if r0_29.TNEqualZero then
+        r0_29.VX_percent:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
       else
-        r0_25.VX_percent:SetVisibility(UE4.ESlateVisibility.Collapsed)
+        r0_29.VX_percent:SetVisibility(UE4.ESlateVisibility.Collapsed)
       end
-      r0_25:RecoverBossTN()
-    elseif 0.00001 < r0_25.TNReduce or r0_25.NowTN == r0_25.MaxTN then
-      r0_25.VX_percent:SetVisibility(UE4.ESlateVisibility.Collapsed)
-      if r0_25:IsExistTimer("RealRecoveryTN") then
-        r0_25:RemoveTimer("RealRecoveryTN")
+      r0_29:RecoverBossTN()
+    elseif 0.00001 < r0_29.TNReduce or r0_29.NowTN == r0_29.MaxTN then
+      r0_29.VX_percent:SetVisibility(UE4.ESlateVisibility.Collapsed)
+      if r0_29:IsExistTimer("RealRecoveryTN") then
+        r0_29:RemoveTimer("RealRecoveryTN")
       end
-      r0_25.BossTNPercent = math.min(math.max(r0_25.NowTN / r0_25.MaxTN, 0), 1)
-      r0_25:SetToughnessBarPercent(r0_25.BossTNPercent)
-      r0_25:CheckToughnessPartBroken()
-      r0_25:SetPanelTipVisibility(UE4.ESlateVisibility.Collapsed)
+      r0_29.BossTNPercent = math.min(math.max(r0_29.NowTN / r0_29.MaxTN, 0), 1)
+      r0_29:SetToughnessBarPercent(r0_29.BossTNPercent)
+      r0_29:CheckToughnessPartBroken()
+      r0_29:SetPanelTipVisibility(UE4.ESlateVisibility.Collapsed)
     end
-    if 0.7 <= r0_25.NowTN / r0_25.MaxTN and r0_25.IsPlayOut then
-      r0_25:StopAnimation(r0_25.Loop)
-      r0_25:PlayAnimation(r0_25.Loop_Out)
-      r0_25.IsPlayOut = false
+    if 0.7 <= r0_29.NowTN / r0_29.MaxTN and r0_29.IsPlayOut then
+      r0_29:StopAnimation(r0_29.Loop)
+      r0_29:PlayAnimation(r0_29.Loop_Out)
+      r0_29.IsPlayOut = false
     end
   end
-  if r0_25.TNReduce > 0 then
-    r0_25:ReduceBossTN()
+  if r0_29.TNReduce > 0 then
+    r0_29:ReduceBossTN()
   end
 end
-function r3_0.UpdateEnergyBar(r0_26, r1_26, r2_26)
-  -- line: [557, 581] id: 26
-  if r1_26 ~= r0_26.Owner.Eid then
+function r3_0.UpdateEnergyBar(r0_30, r1_30, r2_30, r3_30)
+  -- line: [642, 672] id: 30
+  if r1_30 ~= r0_30.Owner.Eid then
     return 
   end
-  r0_26.TargetEnergy = r2_26
-  r0_26.DeltaEnergy = (r0_26.TargetEnergy - r0_26.NowEnergy) / 10
-  local function r3_26()
-    -- line: [563, 577] id: 27
-    r0_26.NowEnergy = r0_26.NowEnergy + r0_26.DeltaEnergy
-    r0_26.NowEnergy = math.min(r0_26.NowEnergy, r0_26.TargetEnergy)
-    r0_26.TextBlock_Energy_Num:SetText(math.floor(r0_26.NowEnergy))
-    UUIFunctionLibrary.BP_SetSingleScalarParamToImageMat(r0_26.Bar_Energy_L, "Percent", r0_26.NowEnergy / 100)
-    UUIFunctionLibrary.BP_SetSingleScalarParamToImageMat(r0_26.Bar_Energy_R, "Percent", r0_26.NowEnergy / 100)
-    if not r0_26.IsWarning and r0_26.EnergyWarnPercent <= r0_26.NowEnergy then
-      r0_26.IsWarning = true
-      r0_26:PlayAnimation(r0_26.Energy_Warning)
+  r0_30.TargetEnergy = r2_30
+  r0_30.DeltaEnergy = (r0_30.TargetEnergy - r0_30.NowEnergy) / 10
+  local function r4_30()
+    -- line: [648, 668] id: 31
+    r0_30.NowEnergy = r0_30.NowEnergy + r0_30.DeltaEnergy
+    r0_30.NowEnergy = math.min(r0_30.NowEnergy, r0_30.TargetEnergy)
+    UUIFunctionLibrary.BP_SetSingleScalarParamToImageMat(r0_30.Bar_Energy_L, "Percent", r0_30.NowEnergy / 100)
+    UUIFunctionLibrary.BP_SetSingleScalarParamToImageMat(r0_30.Bar_Energy_R, "Percent", r0_30.NowEnergy / 100)
+    if not r0_30.IsWarning and r0_30.EnergyWarnPercent <= r0_30.NowEnergy then
+      r0_30.IsWarning = true
+      r0_30:PlayAnimation(r0_30.Energy_Warning)
     end
-    if r0_26.TargetEnergy <= r0_26.NowEnergy then
-      r0_26:RemoveTimer(r0_26.UpdateProgressHandle)
-      r0_26.UpdateProgressHandle = nil
+    local r0_31 = math.floor(r0_30.NowEnergy)
+    if r3_30 == true or r0_30.EnergyText < r0_31 then
+      r0_30.TextBlock_Energy_Num:SetText(r0_31)
+      EventManager:FireEvent(EventID.DoubleBossChargeTextUpdate, r0_30.IsWarning)
+      r0_30.EnergyText = r0_31
+    end
+    if r0_30.TargetEnergy <= r0_30.NowEnergy then
+      r0_30:RemoveTimer(r0_30.UpdateProgressHandle)
+      r0_30.UpdateProgressHandle = nil
     end
   end
-  if not r0_26.UpdateProgressHandle then
-    r0_26.UpdateProgressHandle = r0_26:AddTimer(0.1, r3_26, true, 0, "UpdateChargeProgress", true)
+  if not r0_30.UpdateProgressHandle then
+    r0_30.UpdateProgressHandle = r0_30:AddTimer(0.1, r4_30, true, 0, "UpdateChargeProgress", true)
   end
 end
-function r3_0.RecoverBossTN(r0_28)
-  -- line: [583, 625] id: 28
-  if not r0_28.IsShowToughnessBar then
+function r3_0.RecoverBossTN(r0_32)
+  -- line: [674, 716] id: 32
+  if not r0_32.IsShowToughnessBar then
     return 
   end
-  if r0_28:IsExistTimer("RealReduceBossTN") then
-    r0_28.DeductToughness:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    r0_28:RemoveTimer("RealReduceBossTN")
+  if r0_32:IsExistTimer("RealReduceBossTN") then
+    r0_32.DeductToughness:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r0_32:RemoveTimer("RealReduceBossTN")
   end
-  r0_28.ToughnessLength = r0_28.ToughnessLength and 605
-  r0_28.ToughnessWeakLength = r0_28.ToughnessWeakLength and 194
-  local r1_28 = r1_0.MonsterTNRecoverTickInterival
-  if r0_28.TNEqualZero then
-    r1_28 = r1_0.BossTNToZeroRecoverTickInterival
+  r0_32.ToughnessLength = r0_32.ToughnessLength and 605
+  r0_32.ToughnessWeakLength = r0_32.ToughnessWeakLength and 194
+  local r1_32 = r1_0.MonsterTNRecoverTickInterival
+  if r0_32.TNEqualZero then
+    r1_32 = r1_0.BossTNToZeroRecoverTickInterival
   end
-  local r2_28 = r1_28 / r1_0.BossTNRecoverTickFrequency
-  r0_28:AddTimer(r2_28, function()
-    -- line: [598, 623] id: 29
-    local r0_29 = UE4.UGameplayStatics.GetRealTimeSeconds(r0_28)
-    if r1_28 <= r0_29 - r0_28.NowTNTime then
-      r0_28:RemoveTimer("RealRecoveryTN")
-      r0_28.BossTNPercent = math.min(math.max(r0_28.NowTN / r0_28.MaxTN, 0), 1)
-      r0_28:SetToughnessBarPercent(r0_28.BossTNPercent)
+  local r2_32 = r1_32 / r1_0.BossTNRecoverTickFrequency
+  r0_32:AddTimer(r2_32, function()
+    -- line: [689, 714] id: 33
+    local r0_33 = UE4.UGameplayStatics.GetRealTimeSeconds(r0_32)
+    if r1_32 <= r0_33 - r0_32.NowTNTime then
+      r0_32:RemoveTimer("RealRecoveryTN")
+      r0_32.BossTNPercent = math.min(math.max(r0_32.NowTN / r0_32.MaxTN, 0), 1)
+      r0_32:SetToughnessBarPercent(r0_32.BossTNPercent)
     end
-    local r2_29 = math.min(math.floor(r0_28.NowTN + r0_28.TNReduce * (1 - (r0_29 - r0_28.NowTNTime) / r1_28)), r0_28.MaxTN)
-    r0_28.LastTNPercent = r0_28.BossTNPercent
-    r0_28.BossTNPercent = math.min(math.max(r2_29 / r0_28.MaxTN, 0), 1)
-    local r3_29 = UE4.UWidgetLayoutLibrary.SlotAsCanvasSlot(r0_28.VX_percent)
-    r3_29:SetPosition(FVector2D(r0_28.ToughnessLength * r0_28.BossTNPercent, r3_29:GetPosition().Y))
-    local r4_29 = 1 - r0_28.BossTNPercent
-    r0_28.VX_percent_L:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-    r0_28.VX_percent_R:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-    r0_28.VX_percent_L:SetRenderTranslation(FVector2D(-r0_28.ToughnessWeakLength * r4_29 + r0_28.ToughnessWeakLength / 2, 0))
-    r0_28.VX_percent_R:SetRenderTranslation(FVector2D(r0_28.ToughnessWeakLength * r4_29 + -r0_28.ToughnessWeakLength / 2, 0))
-    r0_28.HelpBossTNPercent = r0_28.BossTNPercent
-    r0_28:SetToughnessBarPercent(r0_28.BossTNPercent)
-    if r0_28.BossTNPercent > 0.999999 then
-      r0_28.VX_percent:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    local r2_33 = math.min(math.floor(r0_32.NowTN + r0_32.TNReduce * (1 - (r0_33 - r0_32.NowTNTime) / r1_32)), r0_32.MaxTN)
+    r0_32.LastTNPercent = r0_32.BossTNPercent
+    r0_32.BossTNPercent = math.min(math.max(r2_33 / r0_32.MaxTN, 0), 1)
+    local r3_33 = UE4.UWidgetLayoutLibrary.SlotAsCanvasSlot(r0_32.VX_percent)
+    r3_33:SetPosition(FVector2D(r0_32.ToughnessLength * r0_32.BossTNPercent, r3_33:GetPosition().Y))
+    local r4_33 = 1 - r0_32.BossTNPercent
+    r0_32.VX_percent_L:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    r0_32.VX_percent_R:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    r0_32.VX_percent_L:SetRenderTranslation(FVector2D(-r0_32.ToughnessWeakLength * r4_33 + r0_32.ToughnessWeakLength / 2, 0))
+    r0_32.VX_percent_R:SetRenderTranslation(FVector2D(r0_32.ToughnessWeakLength * r4_33 + -r0_32.ToughnessWeakLength / 2, 0))
+    r0_32.HelpBossTNPercent = r0_32.BossTNPercent
+    r0_32:SetToughnessBarPercent(r0_32.BossTNPercent)
+    if r0_32.BossTNPercent > 0.999999 then
+      r0_32.VX_percent:SetVisibility(UE4.ESlateVisibility.Collapsed)
     end
-  end, true, -r2_28, "RealRecoveryTN")
+  end, true, -r2_32, "RealRecoveryTN")
 end
-function r3_0.ReduceBossTN(r0_30)
-  -- line: [627, 675] id: 30
-  r0_30.Toughness_BarDeduct:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-  local r1_30 = r0_30.BossDelayTime
-  local r2_30 = 0.033
-  local r3_30 = r1_0.BloodBarAnimTime
-  local r4_30 = UE4.UGameplayStatics.GetTimeSeconds(r0_30)
-  local r5_30 = r0_30.TNDeductEffectHeight
-  local r6_30 = 1
-  local r7_30 = r0_30.LastTNPercent - r0_30.BossTNPercent
-  if r7_30 < 0.1 and 0.02 < r7_30 then
-    r5_30 = ((r7_30 - 0.02) / 0.08 * 0.5 + 0.5) * r5_30
-    r6_30 = (r7_30 - 0.02) / 0.08 * 0.5 + 0.5
-  elseif r7_30 < 0.02 then
-    r5_30 = r5_30 * 0.5
-    r6_30 = 0.5
+function r3_0.ReduceBossTN(r0_34)
+  -- line: [718, 766] id: 34
+  r0_34.Toughness_BarDeduct:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+  local r1_34 = r0_34.BossDelayTime
+  local r2_34 = 0.033
+  local r3_34 = r1_0.BloodBarAnimTime
+  local r4_34 = UE4.UGameplayStatics.GetTimeSeconds(r0_34)
+  local r5_34 = r0_34.TNDeductEffectHeight
+  local r6_34 = 1
+  local r7_34 = r0_34.LastTNPercent - r0_34.BossTNPercent
+  if r7_34 < 0.1 and 0.02 < r7_34 then
+    r5_34 = ((r7_34 - 0.02) / 0.08 * 0.5 + 0.5) * r5_34
+    r6_34 = (r7_34 - 0.02) / 0.08 * 0.5 + 0.5
+  elseif r7_34 < 0.02 then
+    r5_34 = r5_34 * 0.5
+    r6_34 = 0.5
   end
-  r6_30 = math.max(r6_30, 0.5)
-  r5_30 = math.min(r5_30, r0_30.TNDeductEffectHeight)
-  if r0_30:IsExistTimer("RealRecoveryTN") then
-    r0_30:RemoveTimer("RealRecoveryTN")
+  r6_34 = math.max(r6_34, 0.5)
+  r5_34 = math.min(r5_34, r0_34.TNDeductEffectHeight)
+  if r0_34:IsExistTimer("RealRecoveryTN") then
+    r0_34:RemoveTimer("RealRecoveryTN")
   end
-  if r0_30:IsExistTimer("RealReduceBossTN") then
-    r0_30:RemoveTimer("RealReduceBossTN")
-    r0_30.HelpBossTNPercent = r0_30.Toughness_BarDeduct.Percent
+  if r0_34:IsExistTimer("RealReduceBossTN") then
+    r0_34:RemoveTimer("RealReduceBossTN")
+    r0_34.HelpBossTNPercent = r0_34.Toughness_BarDeduct.Percent
   end
-  r2_0:SetDeductEffect(r5_30, r0_30.ToughnessLength, r0_30.DeductToughness, r0_30.HelpBossTNPercent, r0_30.BossTNPercent, r6_30, r0_30.DeductTNOriginalPositionX)
-  r0_30:AddTimer(r2_30, function()
-    -- line: [656, 673] id: 31
-    local r1_31 = math.max(UE4.UGameplayStatics.GetTimeSeconds(r0_30) - r4_30, r1_30)
-    if r3_30 + r1_30 < r1_31 then
-      r0_30.Toughness_BarDeduct:SetPercent(r0_30.BossTNPercent)
-      r0_30.HelpBossTNPercent = r0_30.BossTNPercent
-      r0_30.DeductToughness:SetVisibility(UE4.ESlateVisibility.Collapsed)
-      r0_30:RemoveTimer("RealReduceBossTN")
+  r2_0:SetDeductEffect(r5_34, r0_34.ToughnessLength, r0_34.DeductToughness, r0_34.HelpBossTNPercent, r0_34.BossTNPercent, r6_34, r0_34.DeductTNOriginalPositionX)
+  r0_34:AddTimer(r2_34, function()
+    -- line: [747, 764] id: 35
+    local r1_35 = math.max(UE4.UGameplayStatics.GetTimeSeconds(r0_34) - r4_34, r1_34)
+    if r3_34 + r1_34 < r1_35 then
+      r0_34.Toughness_BarDeduct:SetPercent(r0_34.BossTNPercent)
+      r0_34.HelpBossTNPercent = r0_34.BossTNPercent
+      r0_34.DeductToughness:SetVisibility(UE4.ESlateVisibility.Collapsed)
+      r0_34:RemoveTimer("RealReduceBossTN")
     else
-      local r3_31 = (r3_30 + r1_30 - r1_31) / r3_30
-      local r4_31 = r0_30.BossTNPercent + (r0_30.HelpBossTNPercent - r0_30.BossTNPercent) * r3_31
-      local r5_31 = r6_30 * r3_31
-      r0_30.Toughness_BarDeduct:SetPercent(r4_31)
-      r2_0:SetDeductEffect(r5_30, r0_30.ToughnessLength, r0_30.DeductToughness, r4_31, r0_30.BossTNPercent, r5_31, r0_30.DeductTNOriginalPositionX)
+      local r3_35 = (r3_34 + r1_34 - r1_35) / r3_34
+      local r4_35 = r0_34.BossTNPercent + (r0_34.HelpBossTNPercent - r0_34.BossTNPercent) * r3_35
+      local r5_35 = r6_34 * r3_35
+      r0_34.Toughness_BarDeduct:SetPercent(r4_35)
+      r2_0:SetDeductEffect(r5_34, r0_34.ToughnessLength, r0_34.DeductToughness, r4_35, r0_34.BossTNPercent, r5_35, r0_34.DeductTNOriginalPositionX)
     end
-  end, true, r1_30, "RealReduceBossTN")
+  end, true, r1_34, "RealReduceBossTN")
 end
-function r3_0.RecoveryBossShield(r0_32)
-  -- line: [677, 686] id: 32
-  if not r0_32.ShieldBar or r0_32.MaxShield <= 0 then
+function r3_0.RecoveryBossShield(r0_36)
+  -- line: [768, 777] id: 36
+  if not r0_36.ShieldBar or r0_36.MaxShield <= 0 then
     return 
   end
-  r0_32.LastShield = r0_32.Shield
-  r0_32.Shield = r0_32.Owner:GetAttr("ES")
-  r0_32.ShieldBar:SetBarPercent(math.clamp(r0_32.Shield / r0_32.MaxShield, 0, 1), false)
-  r0_32.ShieldBar:PlayRecoveryShield()
+  r0_36.LastShield = r0_36.Shield
+  r0_36.Shield = r0_36.Owner:GetAttr("ES")
+  r0_36.ShieldBar:SetBarPercent(math.clamp(r0_36.Shield / r0_36.MaxShield, 0, 1), false)
+  r0_36.ShieldBar:PlayRecoveryShield()
 end
-function r3_0.CheckToughnessPartBroken(r0_33)
-  -- line: [688, 702] id: 33
-  if not r0_33.IsShowToughnessBar then
+function r3_0.CheckToughnessPartBroken(r0_37)
+  -- line: [779, 793] id: 37
+  if not r0_37.IsShowToughnessBar then
     return 
   end
-  for r5_33, r6_33 in pairs(r0_33.ToughnessHit) do
-    local r7_33 = tonumber(r5_33) / 100
-    if r7_33 <= r0_33.LastTNPercent and r0_33.BossTNPercent < r7_33 then
-      local r8_33 = UE4.UWidgetLayoutLibrary.SlotAsCanvasSlot(r0_33.ToughnessPart)
-      r8_33:SetPosition(FVector2D(r0_33.ToughnessLength * r7_33 + r0_33.ToughnessPartOriginalPositionX, r8_33:GetPosition().Y))
-      EMUIAnimationSubsystem:EMPlayAnimation(r0_33, r0_33.Toughness_Broken)
-      AudioManager(r0_33):PlayUISound(r0_33, "event:/ui/common/boss_shield_bar_lose", nil, nil)
+  for r5_37, r6_37 in pairs(r0_37.ToughnessHit) do
+    local r7_37 = tonumber(r5_37) / 100
+    if r7_37 <= r0_37.LastTNPercent and r0_37.BossTNPercent < r7_37 then
+      local r8_37 = UE4.UWidgetLayoutLibrary.SlotAsCanvasSlot(r0_37.ToughnessPart)
+      r8_37:SetPosition(FVector2D(r0_37.ToughnessLength * r7_37 + r0_37.ToughnessPartOriginalPositionX, r8_37:GetPosition().Y))
+      EMUIAnimationSubsystem:EMPlayAnimation(r0_37, r0_37.Toughness_Broken)
+      AudioManager(r0_37):PlayUISound(r0_37, "event:/ui/common/boss_shield_bar_lose", nil, nil)
     end
   end
-  -- close: r1_33
+  -- close: r1_37
 end
-function r3_0.UpdateBossInvincibleState(r0_34, r1_34, r2_34)
-  -- line: [704, 747] id: 34
-  if r1_34 == nil then
-    r1_34 = r0_34.Owner.bIsInvincible and r0_34.Owner:IsInvincible()
+function r3_0.UpdateBossInvincibleState(r0_38, r1_38, r2_38)
+  -- line: [795, 838] id: 38
+  if r1_38 == nil then
+    r1_38 = r0_38.Owner.bIsInvincible and r0_38.Owner:IsInvincible()
   end
-  if r2_34 == nil then
-    r2_34 = "DefaultTag"
+  if r2_38 == nil then
+    r2_38 = "DefaultTag"
   end
-  if r1_34 then
-    r0_34.InvincinbleTags[r2_34] = true
+  if r1_38 then
+    r0_38.InvincinbleTags[r2_38] = true
   else
-    r0_34.InvincinbleTags[r2_34] = nil
+    r0_38.InvincinbleTags[r2_38] = nil
   end
-  r1_34 = not IsEmptyTable(r0_34.InvincinbleTags)
-  if r1_34 then
-    r0_34.VX_Boss_InvincibilLight:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-    r0_34.Toughness_Bar.WidgetStyle.FillImage.TintColor = r0_34.BossInvincibilityColor
-    r0_34.Toughness_Bar_Light.WidgetStyle.FillImage.TintColor = r0_34.BossInvincibilityColor
-    r0_34:AddTimer(r0_34.invincibility:GetEndTime(), function()
-      -- line: [726, 729] id: 35
-      EMUIAnimationSubsystem:EMPlayAnimation(r0_34, r0_34.invincibility)
+  r1_38 = not IsEmptyTable(r0_38.InvincinbleTags)
+  if r1_38 then
+    r0_38.VX_Boss_InvincibilLight:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    r0_38.Toughness_Bar.WidgetStyle.FillImage.TintColor = r0_38.BossInvincibilityColor
+    r0_38.Toughness_Bar_Light.WidgetStyle.FillImage.TintColor = r0_38.BossInvincibilityColor
+    r0_38:AddTimer(r0_38.invincibility:GetEndTime(), function()
+      -- line: [817, 820] id: 39
+      EMUIAnimationSubsystem:EMPlayAnimation(r0_38, r0_38.invincibility)
     end, true, 0, "PlayLoopAnimation")
   else
-    r0_34.VX_Boss_InvincibilLight:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    r0_34.Toughness_Bar.WidgetStyle.FillImage.TintColor = r0_34.BossNormalColor
-    r0_34.Toughness_Bar_Light.WidgetStyle.FillImage.TintColor = r0_34.BossNormalColor
-    if r0_34:IsExistTimer("PlayLoopAnimation") then
-      r0_34:RemoveTimer("PlayLoopAnimation")
-      r0_34:StopAnimation(r0_34.invincibility)
+    r0_38.VX_Boss_InvincibilLight:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r0_38.Toughness_Bar.WidgetStyle.FillImage.TintColor = r0_38.BossNormalColor
+    r0_38.Toughness_Bar_Light.WidgetStyle.FillImage.TintColor = r0_38.BossNormalColor
+    if r0_38:IsExistTimer("PlayLoopAnimation") then
+      r0_38:RemoveTimer("PlayLoopAnimation")
+      r0_38:StopAnimation(r0_38.invincibility)
     end
   end
-  if r0_34.HpBar then
-    r0_34.HpBar:PlayInvincibility(r1_34)
+  if r0_38.HpBar then
+    r0_38.HpBar:PlayInvincibility(r1_38)
   end
-  if r0_34.ShieldBar then
-    r0_34.ShieldBar:PlayInvincibility(r1_34)
+  if r0_38.ShieldBar then
+    r0_38.ShieldBar:PlayInvincibility(r1_38)
   end
 end
-function r3_0.HideBossBillboard(r0_36, r1_36)
-  -- line: [749, 752] id: 36
-  if r1_36 then
+function r3_0.HideBossBillboard(r0_40, r1_40)
+  -- line: [840, 843] id: 40
+  if not r1_40.bDisableGameInput then
     return 
   end
-  r0_36.Boss_Part:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  r0_40.Boss_Part:SetVisibility(UE4.ESlateVisibility.Collapsed)
 end
-function r3_0.ShowBossBillboard(r0_37, r1_37)
-  -- line: [754, 757] id: 37
-  if r1_37 then
+function r3_0.ShowBossBillboard(r0_41, r1_41)
+  -- line: [845, 848] id: 41
+  if not r1_41.bDisableGameInput then
     return 
   end
-  r0_37.Boss_Part:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+  r0_41.Boss_Part:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
 end
-function r3_0.CloseBossBlood(r0_38)
-  -- line: [759, 767] id: 38
-  r0_38:Close()
+function r3_0.CloseBossBlood(r0_42)
+  -- line: [850, 858] id: 42
+  r0_42:Close()
 end
-function r3_0.OutHideTag(r0_39)
-  -- line: [769, 771] id: 39
-  r0_39:AddTimer(r0_39.BossTickTime, r0_39.ResetBossToughness, false, 0, "ResetBossToughness")
+function r3_0.OutHideTag(r0_43)
+  -- line: [860, 862] id: 43
+  r0_43:AddTimer(r0_43.BossTickTime, r0_43.ResetBossToughness, false, 0, "ResetBossToughness")
 end
-function r3_0.SetProgressbarSegmentNum(r0_40, r1_40, r2_40)
-  -- line: [775, 784] id: 40
-  if not r1_40 then
+function r3_0.SetProgressbarSegmentNum(r0_44, r1_44, r2_44)
+  -- line: [866, 875] id: 44
+  if not r1_44 then
     return 
   end
-  if not r2_40 then
-    r2_40 = 1
+  if not r2_44 then
+    r2_44 = 1
   end
-  local r3_40 = UE4.UWidgetBlueprintLibrary.GetDynamicMaterial(r1_40.WidgetStyle.FillImage)
-  if r3_40 then
-    r3_40:SetScalarParameterValue("SegmentsNumber", r2_40)
+  local r3_44 = UE4.UWidgetBlueprintLibrary.GetDynamicMaterial(r1_44.WidgetStyle.FillImage)
+  if r3_44 then
+    r3_44:SetScalarParameterValue("SegmentsNumber", r2_44)
   end
 end
-function r3_0.SetImageSegmentNum(r0_41, r1_41, r2_41)
-  -- line: [786, 795] id: 41
-  if not r1_41 then
+function r3_0.SetImageSegmentNum(r0_45, r1_45, r2_45)
+  -- line: [877, 886] id: 45
+  if not r1_45 then
     return 
   end
-  if not r2_41 then
-    r2_41 = 1
+  if not r2_45 then
+    r2_45 = 1
   end
-  local r3_41 = r1_41:GetDynamicMaterial()
-  if r3_41 then
-    r3_41:SetScalarParameterValue("SegmentsNumber", r2_41)
-  end
-end
-function r3_0.SetToughnessBarPercent(r0_42, r1_42)
-  -- line: [797, 816] id: 42
-  if not r1_42 then
-    r1_42 = 0
-  end
-  r1_42 = math.clamp(r1_42, 0, 1)
-  r0_42.Toughness_Bar_Light:SetPercent(r1_42)
-  r0_42.Toughness_Bar:SetPercent(r1_42)
-  local r2_42 = 1 - r1_42
-  r0_42.Progress_CountDownLeft:SetPercent(r2_42)
-  r0_42.Progress_CountDownRight:SetPercent(r2_42)
-  if r2_42 > 0 and r2_42 <= 0.3 and not r0_42.IsPercent_Warning and r0_42.Owner:CharacterInTag("Defeated") then
-    r0_42:PlayAnimation(r0_42.Percent_Warning)
-    r0_42.IsPercent_Warning = true
-  elseif r2_42 == 0 and r0_42.IsPercent_Warning then
-    r0_42:PlayAnimationReverse(r0_42.Percent_Warning)
-    r0_42.IsPercent_Warning = false
-    r0_42:ShowToughnessBar(true)
-  end
-  if r2_42 == 0 then
-    AudioManager(r0_42):StopSound(r0_42, "BossShiedBarLoop")
+  local r3_45 = r1_45:GetDynamicMaterial()
+  if r3_45 then
+    r3_45:SetScalarParameterValue("SegmentsNumber", r2_45)
   end
 end
-function r3_0.StopBossShiedBarLoopSound(r0_43)
-  -- line: [818, 820] id: 43
-  AudioManager(r0_43):StopSound(r0_43, "BossShiedBarLoop")
+function r3_0.SetToughnessBarPercent(r0_46, r1_46)
+  -- line: [888, 907] id: 46
+  if not r1_46 then
+    r1_46 = 0
+  end
+  r1_46 = math.clamp(r1_46, 0, 1)
+  r0_46.Toughness_Bar_Light:SetPercent(r1_46)
+  r0_46.Toughness_Bar:SetPercent(r1_46)
+  local r2_46 = 1 - r1_46
+  r0_46.Progress_CountDownLeft:SetPercent(r2_46)
+  r0_46.Progress_CountDownRight:SetPercent(r2_46)
+  if r2_46 > 0 and r2_46 <= 0.3 and not r0_46.IsPercent_Warning and r0_46.Owner:CharacterInTag("Defeated") then
+    r0_46:PlayAnimation(r0_46.Percent_Warning)
+    r0_46.IsPercent_Warning = true
+  elseif r2_46 == 0 and r0_46.IsPercent_Warning then
+    r0_46:PlayAnimationReverse(r0_46.Percent_Warning)
+    r0_46.IsPercent_Warning = false
+    r0_46:ShowToughnessBar(true)
+  end
+  if r2_46 == 0 then
+    AudioManager(r0_46):StopSound(r0_46, "BossShiedBarLoop")
+  end
 end
-function r3_0.ShowOrHideToughnessBar(r0_44, r1_44)
-  -- line: [822, 829] id: 44
-  r0_44.CanShowBossTouughness = r1_44
-  if r1_44 then
-    r0_44.SizeBox_Toughness:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+function r3_0.StopBossShiedBarLoopSound(r0_47)
+  -- line: [909, 911] id: 47
+  AudioManager(r0_47):StopSound(r0_47, "BossShiedBarLoop")
+end
+function r3_0.ShowOrHideToughnessBar(r0_48, r1_48)
+  -- line: [913, 920] id: 48
+  r0_48.CanShowBossTouughness = r1_48
+  if r1_48 then
+    r0_48.SizeBox_Toughness:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
   else
-    r0_44.SizeBox_Toughness:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r0_48.SizeBox_Toughness:SetVisibility(UE4.ESlateVisibility.Collapsed)
   end
 end
-function r3_0.ShowOrHidePanelTip(r0_45, r1_45)
-  -- line: [831, 838] id: 45
-  r0_45.CanShowPanelTip = r1_45
-  if r1_45 then
-    r0_45:SetPanelTipVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+function r3_0.ShowOrHidePanelTip(r0_49, r1_49)
+  -- line: [922, 929] id: 49
+  r0_49.CanShowPanelTip = r1_49
+  if r1_49 then
+    r0_49:SetPanelTipVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
   else
-    r0_45:SetPanelTipVisibility(UE4.ESlateVisibility.Collapsed)
+    r0_49:SetPanelTipVisibility(UE4.ESlateVisibility.Collapsed)
   end
 end
-function r3_0.SetBossLockHpState(r0_46, r1_46, r2_46, r3_46)
-  -- line: [840, 852] id: 46
-  if not r2_46 then
-    r2_46 = 0
+function r3_0.SetBossLockHpState(r0_50, r1_50, r2_50, r3_50)
+  -- line: [931, 943] id: 50
+  if not r2_50 then
+    r2_50 = 0
   end
-  local r4_46 = nil	-- notice: implicit variable refs by block#[10, 11]
-  if r3_46 and r3_46 > 0 then
-    r4_46 = r3_46
-    if r4_46 then
+  local r4_50 = nil	-- notice: implicit variable refs by block#[10, 11]
+  if r3_50 and r3_50 > 0 then
+    r4_50 = r3_50
+    if r4_50 then
       ::label_9::
-      r4_46 = r2_46 / r0_46.MaxHp
+      r4_50 = r2_50 / r0_50.MaxHp
     end
   else
     goto label_9	-- block#5 is visited secondly
   end
-  local r5_46 = r0_46.Owner:GetAttr("Hp") / r0_46.MaxHp
-  if not r1_46 then
-    r0_46.HpBar:DirectSetBarPercent(r5_46)
-  end
-  r0_46.IsLockHp = r1_46
-  r0_46:UpdateBossInvincibleState(r1_46, "LockHp")
-  if r1_46 and r0_46.HpBar and r4_46 <= r5_46 then
-    r0_46.HpBar:DirectSetBarPercent(r4_46)
-  end
-end
-function r3_0.SetPanelTipVisibility(r0_47, r1_47)
-  -- line: [854, 875] id: 47
-  if r0_47.PanelTipVisibility == r1_47 then
-    return 
-  end
-  r0_47.PanelTipVisibility = r1_47
-  r0_47.PanelTip:SetVisibility(r1_47)
-  if r0_47.PanelTipText then
-    r0_47.PanelTipText:SetVisibility(r1_47)
-  end
-  if r1_47 == UE4.ESlateVisibility.Collapsed then
-    local r2_47 = r0_47.HB_Buff_BP.Slot.Padding
-    r2_47.Top = r0_47.Buff_BP_TopOffset_NoTips
-    r0_47.HB_Buff_BP.Slot:SetPadding(r2_47)
-    r0_47.TakeDownTip:SetText(GText("UI_BOSSBATTLE_TAKEDOWN"))
-  else
-    local r2_47 = r0_47.HB_Buff_BP.Slot.Padding
-    r2_47.Top = r0_47.Buff_BP_TopOffset_HaveTips
-    r0_47.HB_Buff_BP.Slot:SetPadding(r2_47)
-    r0_47.VX_percent_L:SetRenderTranslation(FVector2D(-r0_47.ToughnessWeakLength * 1 + r0_47.ToughnessWeakLength / 2, 0))
-    r0_47.VX_percent_R:SetRenderTranslation(FVector2D(r0_47.ToughnessWeakLength * 1 + -r0_47.ToughnessWeakLength / 2, 0))
-  end
-end
-function r3_0.UnLoadSelf(r0_48)
-  -- line: [877, 889] id: 48
-  local r1_48 = UE4.UGameplayStatics.GetGameInstance(r0_48)
-  local r2_48 = r1_48 and r1_48:GetGameUIManager()
-  if not r0_48.BossUIType or r0_48.BossUIType == EBossUIType.None then
-    r2_48:UnLoadUINew("BossBlood")
-  else
-    r0_48:SetVisibility(ESlateVisibility.Collapsed)
-    local r3_48 = r2_48:GetUIObj("DoubleBossBlood")
-    if r3_48 then
-      r3_48:OnBossDead()
-    end
-  end
-end
-function r3_0.SetEquipartition(r0_49, r1_49, r2_49, r3_49, r4_49, r5_49)
-  -- line: [891, 895] id: 49
-  if r0_49.HpBar then
-    r0_49.HpBar:SetEquipartition(r1_49, r2_49, r3_49, r4_49, r5_49, r0_49.Owner)
-  end
-end
-function r3_0.InterruptEquipartition(r0_50)
-  -- line: [897, 908] id: 50
-  local r1_50 = true
-  if r0_50.HpBar then
-    r1_50 = r0_50.HpBar:InterruptEquipartition(r0_50.Owner)
-  end
+  local r5_50 = r0_50.Owner:GetAttr("Hp") / r0_50.MaxHp
   if not r1_50 then
-    return 
+    r0_50.HpBar:DirectSetBarPercent(r5_50)
   end
-  local r3_50 = UE4.UGameplayStatics.GetGameInstance(r0_50):GetGameUIManager()
-  if r3_50 then
-    r3_50:ShowUITip(UIConst.Tip_CommonToast, GText("TODO"))
-  end
-end
-function r3_0.SetBossRecoverInfo(r0_51, r1_51, r2_51, r3_51)
-  -- line: [910, 918] id: 51
-  if r0_51.HpBar then
-    r0_51:UpdateBossInvincibleState(true, "BossRecover")
-    r0_51:AddTimer(r2_51 + r1_51, function()
-      -- line: [913, 915] id: 52
-      r0_51:UpdateBossInvincibleState(false, "BossRecover")
-    end, false, nil, "BossRecoverTimer")
-    r0_51.HpBar:SetBossRecoverInfo(r0_51.Owner, r1_51, r2_51, r3_51)
+  r0_50.IsLockHp = r1_50
+  r0_50:UpdateBossInvincibleState(r1_50, "LockHp")
+  if r1_50 and r0_50.HpBar and r4_50 <= r5_50 then
+    r0_50.HpBar:DirectSetBarPercent(r4_50)
   end
 end
-function r3_0.InterruptBossRecover(r0_53)
-  -- line: [920, 937] id: 53
-  local r1_53 = true
-  if r0_53.HpBar then
-    r1_53 = r0_53.HpBar:InterruptBossRecover(r0_53.Owner)
-  end
-  if r0_53:IsExistTimer("BossRecoverTimer") then
-    r0_53:RemoveTimer("BossRecoverTimer")
-    r0_53:UpdateBossInvincibleState(false, "BossRecover")
-  end
-  if not r1_53 then
+function r3_0.SetPanelTipVisibility(r0_51, r1_51)
+  -- line: [945, 966] id: 51
+  if r0_51.PanelTipVisibility == r1_51 then
     return 
   end
-  if r0_53.Owner and not r0_53.Owner:IsDead() then
-    local r3_53 = UE4.UGameplayStatics.GetGameInstance(r0_53):GetGameUIManager()
-    if r3_53 then
-      r3_53:ShowUITip(UIConst.Tip_CommonToast, GText("TODO"))
+  r0_51.PanelTipVisibility = r1_51
+  r0_51.PanelTip:SetVisibility(r1_51)
+  if r0_51.PanelTipText then
+    r0_51.PanelTipText:SetVisibility(r1_51)
+  end
+  if r1_51 == UE4.ESlateVisibility.Collapsed then
+    local r2_51 = r0_51.HB_Buff_BP.Slot.Padding
+    r2_51.Top = r0_51.Buff_BP_TopOffset_NoTips
+    r0_51.HB_Buff_BP.Slot:SetPadding(r2_51)
+    r0_51.TakeDownTip:SetText(GText("UI_BOSSBATTLE_TAKEDOWN"))
+  else
+    local r2_51 = r0_51.HB_Buff_BP.Slot.Padding
+    r2_51.Top = r0_51.Buff_BP_TopOffset_HaveTips
+    r0_51.HB_Buff_BP.Slot:SetPadding(r2_51)
+    r0_51.VX_percent_L:SetRenderTranslation(FVector2D(-r0_51.ToughnessWeakLength * 1 + r0_51.ToughnessWeakLength / 2, 0))
+    r0_51.VX_percent_R:SetRenderTranslation(FVector2D(r0_51.ToughnessWeakLength * 1 + -r0_51.ToughnessWeakLength / 2, 0))
+  end
+end
+function r3_0.UnLoadSelf(r0_52)
+  -- line: [968, 980] id: 52
+  local r1_52 = UE4.UGameplayStatics.GetGameInstance(r0_52)
+  local r2_52 = r1_52 and r1_52:GetGameUIManager()
+  if not r0_52.BossUIType or r0_52.BossUIType == EBossUIType.None then
+    r2_52:UnLoadUINew("BossBlood")
+  else
+    r0_52:SetVisibility(ESlateVisibility.Collapsed)
+    local r3_52 = r2_52:GetUIObj("DoubleBossBlood")
+    if r3_52 then
+      r3_52:OnBossDead()
     end
   end
 end
-function r3_0.UpdateEquipartitionInfo(r0_54, r1_54, r2_54)
-  -- line: [939, 943] id: 54
+function r3_0.SetEquipartition(r0_53, r1_53, r2_53, r3_53, r4_53, r5_53)
+  -- line: [982, 986] id: 53
+  if r0_53.HpBar then
+    r0_53.HpBar:SetEquipartition(r1_53, r2_53, r3_53, r4_53, r5_53, r0_53.Owner)
+  end
+end
+function r3_0.InterruptEquipartition(r0_54)
+  -- line: [988, 999] id: 54
+  local r1_54 = true
   if r0_54.HpBar then
-    r0_54.HpBar:UpdateEquipartitionInfo(r1_54, r2_54)
+    r1_54 = r0_54.HpBar:InterruptEquipartition(r0_54.Owner)
+  end
+  if not r1_54 then
+    return 
+  end
+  local r3_54 = UE4.UGameplayStatics.GetGameInstance(r0_54):GetGameUIManager()
+  if r3_54 then
+    r3_54:ShowUITip(UIConst.Tip_CommonToast, GText("TODO"))
+  end
+end
+function r3_0.SetBossRecoverInfo(r0_55, r1_55, r2_55, r3_55)
+  -- line: [1001, 1009] id: 55
+  if r0_55.HpBar then
+    r0_55:UpdateBossInvincibleState(true, "BossRecover")
+    r0_55:AddTimer(r2_55 + r1_55, function()
+      -- line: [1004, 1006] id: 56
+      r0_55:UpdateBossInvincibleState(false, "BossRecover")
+    end, false, nil, "BossRecoverTimer")
+    r0_55.HpBar:SetBossRecoverInfo(r0_55.Owner, r1_55, r2_55, r3_55)
+  end
+end
+function r3_0.InterruptBossRecover(r0_57)
+  -- line: [1011, 1028] id: 57
+  local r1_57 = true
+  if r0_57.HpBar then
+    r1_57 = r0_57.HpBar:InterruptBossRecover(r0_57.Owner)
+  end
+  if r0_57:IsExistTimer("BossRecoverTimer") then
+    r0_57:RemoveTimer("BossRecoverTimer")
+    r0_57:UpdateBossInvincibleState(false, "BossRecover")
+  end
+  if not r1_57 then
+    return 
+  end
+  if r0_57.Owner and not r0_57.Owner:IsDead() then
+    local r3_57 = UE4.UGameplayStatics.GetGameInstance(r0_57):GetGameUIManager()
+    if r3_57 then
+      r3_57:ShowUITip(UIConst.Tip_CommonToast, GText("TODO"))
+    end
+  end
+end
+function r3_0.UpdateEquipartitionInfo(r0_58, r1_58, r2_58)
+  -- line: [1030, 1034] id: 58
+  if r0_58.HpBar then
+    r0_58.HpBar:UpdateEquipartitionInfo(r1_58, r2_58)
   end
 end
 return r3_0

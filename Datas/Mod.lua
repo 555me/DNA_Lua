@@ -16596,6 +16596,7 @@ r4_0[104002] = {
   TypeName = "MOD_Type_Name_Fenrir01",
 }
 r4_0[104003] = {
+  AccessKey = r0_0.RT_6,
   ActivateInRouge = true,
   AddAttrs = r0_0.RT_43,
   ApplicationType = 104,

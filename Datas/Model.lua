@@ -1261,7 +1261,6 @@ r4_0[1102] = {
   WeaponScale = 1,
 }
 r4_0[1103] = {
-  AccessoryMeshPath = r0_0.RT_11,
   AnimInstancePath = "AnimBlueprint\'/Game/AssetDesign/Char/Player/Tuosi/ABP_Tuosi.ABP_Tuosi_C\'",
   AssistSockets = r0_0.RT_1,
   AudioPrefix = "Tuosi_",

@@ -65,9 +65,6 @@ end)("SpecialQuestMechanism2SpecialConfigId", {
   [1440071] = {
     [1] = 110,
   },
-  [1640042] = {
-    [1] = 1004,
-  },
   [1650072] = {
     [1] = 1009,
   },

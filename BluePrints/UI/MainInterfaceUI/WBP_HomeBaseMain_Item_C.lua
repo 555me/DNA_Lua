@@ -1,482 +1,532 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\MainInterfaceUI\WBP_HomeBaseMain_Item_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local EMCache = require("EMCache.EMCache")
-local TimeUtils = require("Utils.TimeUtils")
-local UIUtils = require("Utils.UIUtils")
-local ReasoningUtils = require("BluePrints.UI.WBP.DetectiveMinigame.ReasoningUtils")
-local WBP_HomeBaseMain_Item_C = Class({
+local r0_0 = require("EMCache.EMCache")
+local r1_0 = require("Utils.TimeUtils")
+local r2_0 = require("Utils.UIUtils")
+local r3_0 = require("BluePrints.UI.WBP.DetectiveMinigame.ReasoningUtils")
+local r4_0 = Class({
   "BluePrints.UI.BP_EMUserWidget_C",
   "BluePrints.Common.TimerMgr"
 })
-WBP_HomeBaseMain_Item_C._components = {
+r4_0._components = {
   "BluePrints.UI.UI_PC.Menu.Reddot.MainUIItem_ReddotTree_Component"
 }
-
-function WBP_HomeBaseMain_Item_C:Construct()
-  self.Btn_top.OnClicked:Add(self, self.OnBtnClick)
-  self.Btn_top.OnHovered:Add(self, self.OnBtnHovered)
-  self.Btn_top.OnUnhovered:Add(self, self.OnBtnUnhovered)
-  if not self.ConditionMap then
-    self.ConditionMap = {}
+function r4_0.Construct(r0_1)
+  -- line: [24, 32] id: 1
+  r0_1.Btn_top.OnClicked:Add(r0_1, r0_1.OnBtnClick)
+  r0_1.Btn_top.OnHovered:Add(r0_1, r0_1.OnBtnHovered)
+  r0_1.Btn_top.OnUnhovered:Add(r0_1, r0_1.OnBtnUnhovered)
+  if not r0_1.ConditionMap then
+    r0_1.ConditionMap = {}
   end
-  EventManager:AddEvent(EventID.ConditionComplete, self, self.OnConditionComplete)
+  EventManager:AddEvent(EventID.ConditionComplete, r0_1, r0_1.OnConditionComplete)
 end
-
-function WBP_HomeBaseMain_Item_C:OnConditionComplete(ConditionId)
-  if self.ConditionMap[ConditionId] then
-    self:UpdateGuidePoint()
-  end
-end
-
-function WBP_HomeBaseMain_Item_C:RefreshNewClueUI()
-  if not self.IsBtnTask then
-    return
-  end
-  local HasNewQuestionOrClue = ReasoningUtils:IsHasNewQuestionOrClue()
-  if 2 == HasNewQuestionOrClue then
-    self.NewClue = UIManager(self):CreateWidget("WidgetBlueprint'/Game/UI/WBP/Common/WBP_Com_HudBubble_L.WBP_Com_HudBubble_L'", true)
-    self.NewClue.Text_Bubble:SetText(GText("Minigame_Textmap_100319"))
-    self.NewClue.Text_Bubble:SetColorAndOpacity(self.NewClue.Color_Orange)
-    self.NewClue.Icon:SetVisibility(UIConst.VisibilityOp.Collapsed)
-    if self.NewClue then
-      self.Pos_Bubble_L:AddChild(self.NewClue)
-      self.NewClue:PlayAnimation(self.NewClue.In)
-    end
-  elseif self.NewClue then
-    self.Pos_Bubble_L:ClearChildren()
+function r4_0.OnConditionComplete(r0_2, r1_2)
+  -- line: [34, 39] id: 2
+  if r0_2.ConditionMap[r1_2] then
+    r0_2:UpdateGuidePoint()
   end
 end
-
-function WBP_HomeBaseMain_Item_C:OnListItemObjectSet(Content)
-  self.CurContent = Content
-  self.CurContent.SelfWidget = self
-  self:ReddotTreePlugOut()
-  self:LoadImage()
-  self:UpdateGuidePoint()
-  self:InitListenEvent()
-  if Content.bForbidReddot then
-    self:SetRedDot(false, false, nil)
+function r4_0.RefreshNewClueUI(r0_3)
+  -- line: [41, 65] id: 3
+  if not r0_3.IsBtnTask then
+    return 
   end
-end
-
-function WBP_HomeBaseMain_Item_C:UpdateGuidePoint()
-  local GuidePointArray = {}
-  local Avatar = GWorld:GetAvatar()
-  for _, GuidePointInfo in pairs(DataMgr.MainUIGuidePoint) do
-    if GuidePointInfo.EnterId == self.CurContent.BtnId then
-      table.insert(GuidePointArray, GuidePointInfo)
-    end
-  end
-  local CurrentPointShow = false
-  for _, GuidePointInfo in pairs(GuidePointArray) do
-    if GuidePointInfo then
-      local TempShow = false
-      if GuidePointInfo.ShowCondition then
-        TempShow = ConditionUtils.CheckCondition(Avatar, GuidePointInfo.ShowCondition)
-        self.ConditionMap[GuidePointInfo.ShowCondition] = true
-      end
-      if GuidePointInfo.HideCondition then
-        local NotShowCondition = ConditionUtils.CheckCondition(Avatar, GuidePointInfo.HideCondition)
-        if NotShowCondition then
-          TempShow = false
-        end
-        self.ConditionMap[GuidePointInfo.HideCondition] = true
-      end
-      CurrentPointShow = CurrentPointShow or TempShow
-    end
-  end
-  if CurrentPointShow then
-    self.Icon_GuidePoint:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-  else
-    self.Icon_GuidePoint:SetVisibility(UE4.ESlateVisibility.Collapsed)
-  end
-end
-
-function WBP_HomeBaseMain_Item_C:InitListenEvent()
-  local PlayerController = UE4.UGameplayStatics.GetPlayerController(self, 0)
-  self.GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(PlayerController)
-  if IsValid(self.GameInputModeSubsystem) then
-    self.GameInputModeSubsystem.OnInputMethodChanged:Add(self, self.RefreshOpInfoByInputDevice)
-    self:RefreshOpInfoByInputDevice(self.GameInputModeSubsystem:GetCurrentInputType(), self.GameInputModeSubsystem:GetCurrentGamepadName())
-  end
-end
-
-function WBP_HomeBaseMain_Item_C:ClearListenEvent()
-  if IsValid(self.GameInputModeSubsystem) then
-    self.GameInputModeSubsystem.OnInputMethodChanged:Remove(self, self.RefreshOpInfoByInputDevice)
-  end
-end
-
-function WBP_HomeBaseMain_Item_C:RefreshOpInfoByInputDevice(CurInputDevice, CurGamepadName)
-  if self.CurInputDeviceType == CurInputDevice then
-    return
-  end
-  self.CurInputDeviceType = CurInputDevice
-  local IsUseGamePad = CurInputDevice == ECommonInputType.Gamepad
-  self:InitWidgetInfoInGamePad(IsUseGamePad)
-end
-
-function WBP_HomeBaseMain_Item_C:InitWidgetInfoInGamePad(IsUseGamePad)
-  if self.Key_GamePad then
-    self.Key_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-  end
-  if not IsUseGamePad then
-    return
-  end
-  local BtnInfo = DataMgr.MainUI
-  local Id = self.CurContent.BtnId
-  local ActionName = BtnInfo[Id].ActionName
-  if "RougeOpenBag" == ActionName then
-    local GamePadInfo = DataMgr.GamepadMap
-    local GamepadLayout = EMCache:Get("GamepadLayout")
-    GamepadLayout = GamepadLayout or tonumber(DataMgr.Option.GamepadPreset.DefaultValue)
-    if GamePadInfo[ActionName] and GamePadInfo[ActionName].GamepadIcon then
-      local GamepadKeys = UIUtils.GetIconListByActionName(ActionName)
-      local ImgShortPath = GamepadKeys[1]
-      self.Key_GamePad:CreateCommonKey({
-        KeyInfoList = {
-          {Type = "Img", ImgShortPath = ImgShortPath}
-        }
-      })
-    end
-    self.Key_GamePad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-  end
-end
-
-function WBP_HomeBaseMain_Item_C:LoadImage(MainUIId)
-  self.Common_Item_Subsize_New_PC:SetVisibility(UE4.ESlateVisibility.Collapsed)
-  self.Reddot:SetVisibility(UE4.ESlateVisibility.Collapsed)
-  self.Reddot_Num:SetVisibility(UE4.ESlateVisibility.Collapsed)
-  local BtnInfo = DataMgr.MainUI
-  local Id = nil == MainUIId and self.CurContent.BtnId or MainUIId
-  local Icon = BtnInfo[Id].Icon
-  if not UIUtils.IsMenuWorld() and BtnInfo[Id].DungeonIcon then
-    Icon = BtnInfo[Id].DungeonIcon
-  end
-  if nil == Icon then
-    Icon = "/Game/UI/Texture/Dynamic/Atlas/Entrance/T_Entrance_Armory.T_Entrance_Armory"
-  end
-  local ImageResource = LoadObject(Icon)
-  local VSlot = UE4.UWidgetLayoutLibrary.SlotAsCanvasSlot(self.VerticalBox_0)
-  local Anchors = FAnchors()
-  if Id == CommonConst.ArmoryEnterId then
-    self:UpdateArmoryIcon()
-    VSlot:SetAlignment(FVector2D(1, 0))
-    Anchors.Minimum = FVector2D(1, 1)
-    Anchors.Maximum = FVector2D(1, 1)
-    VSlot:SetAnchors(Anchors)
-  else
-    VSlot:SetAlignment(FVector2D(0.5, 0))
-    Anchors.Minimum = FVector2D(0.5, 1)
-    Anchors.Maximum = FVector2D(0.5, 1)
-    VSlot:SetAnchors(Anchors)
-    if nil ~= ImageResource then
-      self:SetButtonStyle(ImageResource)
-    end
-  end
-  if Id == CommonConst.GachaEnterId then
-    self:RefreshTimeLimitResource()
-  end
-  local ActionName = BtnInfo[Id].ActionName
-  self.Name:SetVisibility(UE4.ESlateVisibility.Collapsed)
-  self.IsHaveKey = false
-  self.Switcher:SetActiveWidgetIndex(0)
-  local KeyText = CommonUtils:GetActionMappingKeyName(ActionName)
-  if ActionName and "" ~= KeyText then
-    self.IsHaveKey = true
-    self.Common_Key_Hud_PC:CreateCommonKey({
-      KeyInfoList = {
-        {Type = "Text", Text = KeyText}
-      }
+  if r3_0:IsHasNewQuestionOrClue() == 2 then
+    r0_3.NewClue = UIManager(r0_3):_CreateWidgetNew("CommonHudBubble")
+    r0_3.NewClue:Init({
+      IconPath = "",
+      Text = "Minigame_Textmap_100319",
+      ColorType = 3,
+      Arrow = 10,
     })
-    self.Common_Key_Hud_PC:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-    local IconList = UIUtils.GetIconListByActionName(ActionName)
-    self.HasGamePadTips = IconList and "Right" == IconList[1] and #IconList > 1
-    if self.HasGamePadTips and self.Common_Key_Hud_Gamepad then
-      self.Common_Key_Hud_Gamepad:CreateCommonKey({
+    r0_3.NewClue:PlayInAnimation()
+    if r0_3.NewClue then
+      r0_3.Pos_Bubble_L:AddChild(r0_3.NewClue)
+    end
+  elseif r0_3.NewClue then
+    r0_3.Pos_Bubble_L:ClearChildren()
+  end
+end
+function r4_0.RefreshNewTheaterUI(r0_4)
+  -- line: [67, 103] id: 4
+  local r1_4 = GWorld:GetAvatar()
+  if not r1_4 then
+    return 
+  end
+  local r2_4 = 8029
+  local r4_4 = r1_4.QuestChains[400111]
+  if not r4_4 then
+    DebugPrint("ayff 剧院tips配置了一个不存在的任务")
+    return 
+  end
+  if not ConditionUtils.CheckCondition(r1_4, r2_4) or not r4_4:IsFinish() then
+    return 
+  end
+  r0_4.NewTheaterBubble = UIManager(r0_4):_CreateWidgetNew("CommonHudBubble")
+  r0_4.Pos_Bubble_L:AddChild(r0_4.NewTheaterBubble)
+  r0_4.NewTheaterBubble:Init({
+    IconPath = "/Game/UI/Texture/Dynamic/Atlas/Interactive/T_Interactive_TheaterOnline.T_Interactive_TheaterOnline",
+    Text = "UI_Theater_Waiting",
+    ColorType = 0,
+    Arrow = 1,
+  })
+  r0_4.NewTheaterBubble:PlayInAnimation()
+  r0_4.NewTheaterBubble:SetIconColor(true)
+  r0_4:AddTimer(3, function()
+    -- line: [96, 101] id: 5
+    r0_4.NewTheaterBubble:PlayOutAnimation()
+    if r0_4:IsExistTimer("HideTheaterBubble") then
+      r0_4:RemoveTimer("HideTheaterBubble")
+    end
+  end, false, 0.1, "HideTheaterBubble", true)
+end
+function r4_0.OnListItemObjectSet(r0_6, r1_6)
+  -- line: [105, 115] id: 6
+  r0_6.CurContent = r1_6
+  r0_6.CurContent.SelfWidget = r0_6
+  r0_6:ReddotTreePlugOut()
+  r0_6:LoadImage()
+  r0_6:UpdateGuidePoint()
+  r0_6:InitListenEvent()
+  if r1_6.bForbidReddot then
+    r0_6:SetRedDot(false, false, nil)
+  end
+end
+function r4_0.UpdateGuidePoint(r0_7)
+  -- line: [118, 155] id: 7
+  local r1_7 = {}
+  local r2_7 = GWorld:GetAvatar()
+  for r7_7, r8_7 in pairs(DataMgr.MainUIGuidePoint) do
+    if r8_7.EnterId == r0_7.CurContent.BtnId then
+      table.insert(r1_7, r8_7)
+    end
+  end
+  -- close: r3_7
+  local r3_7 = false
+  for r8_7, r9_7 in pairs(r1_7) do
+    if r9_7 then
+      local r10_7 = false
+      if r9_7.ShowCondition then
+        r10_7 = ConditionUtils.CheckCondition(r2_7, r9_7.ShowCondition)
+        DebugPrint("@@@Updateguidepoint Home Base main EnterId,ShowCondition", r9_7.EnterId, r10_7)
+        r0_7.ConditionMap[r9_7.ShowCondition] = true
+      end
+      if r9_7.HideCondition then
+        local r11_7 = ConditionUtils.CheckCondition(r2_7, r9_7.HideCondition)
+        DebugPrint("@@@Updateguidepoint Home Base main EnterId,HideCondition", r9_7.EnterId, r11_7)
+        if r11_7 then
+          r10_7 = false
+        end
+        r0_7.ConditionMap[r9_7.HideCondition] = true
+      end
+      if not r3_7 then
+        DebugPrint("@@@Updateguidepoint Home Base main UpdateCurrentShow EnterId,CurrentPointShow", r3_7)
+        r3_7 = r10_7
+      end
+    end
+  end
+  -- close: r4_7
+  DebugPrint("@@@Updateguidepoint Home Base main Update Final Current Show,CurrentPointShow", r3_7)
+  if r3_7 then
+    r0_7.Icon_GuidePoint:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+  else
+    r0_7.Icon_GuidePoint:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  end
+end
+function r4_0.InitListenEvent(r0_8)
+  -- line: [158, 165] id: 8
+  r0_8.GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(UE4.UGameplayStatics.GetPlayerController(r0_8, 0))
+  if IsValid(r0_8.GameInputModeSubsystem) then
+    r0_8.GameInputModeSubsystem.OnInputMethodChanged:Add(r0_8, r0_8.RefreshOpInfoByInputDevice)
+    r0_8:RefreshOpInfoByInputDevice(r0_8.GameInputModeSubsystem:GetCurrentInputType(), r0_8.GameInputModeSubsystem:GetCurrentGamepadName())
+  end
+end
+function r4_0.ClearListenEvent(r0_9)
+  -- line: [167, 171] id: 9
+  if IsValid(r0_9.GameInputModeSubsystem) then
+    r0_9.GameInputModeSubsystem.OnInputMethodChanged:Remove(r0_9, r0_9.RefreshOpInfoByInputDevice)
+  end
+end
+function r4_0.RefreshOpInfoByInputDevice(r0_10, r1_10, r2_10)
+  -- line: [173, 183] id: 10
+  if r0_10.CurInputDeviceType == r1_10 then
+    return 
+  end
+  r0_10.CurInputDeviceType = r1_10
+  r0_10:InitWidgetInfoInGamePad(r1_10 == ECommonInputType.Gamepad)
+end
+function r4_0.InitWidgetInfoInGamePad(r0_11, r1_11)
+  -- line: [185, 218] id: 11
+  if r0_11.Key_GamePad then
+    r0_11.Key_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  end
+  if not r1_11 then
+    return 
+  end
+  local r4_11 = DataMgr.MainUI[r0_11.CurContent.BtnId].ActionName
+  if r4_11 == "RougeOpenBag" then
+    local r5_11 = DataMgr.GamepadMap
+    if not r0_0:Get("GamepadLayout") then
+      local r6_11 = tonumber(DataMgr.Option.GamepadPreset.DefaultValue)
+    end
+    if r5_11[r4_11] and r5_11[r4_11].GamepadIcon then
+      r0_11.Key_GamePad:CreateCommonKey({
         KeyInfoList = {
           {
             Type = "Img",
-            ImgShortPath = IconList[#IconList]
+            ImgShortPath = r2_0.GetIconListByActionName(r4_11)[1],
           }
+        },
+      })
+    end
+    r0_11.Key_GamePad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+  end
+end
+function r4_0.LoadImage(r0_12, r1_12)
+  -- line: [220, 299] id: 12
+  r0_12.Common_Item_Subsize_New_PC:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  r0_12.Reddot:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  r0_12.Reddot_Num:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  local r2_12 = DataMgr.MainUI
+  local r3_12 = nil	-- notice: implicit variable refs by block#[3, 4, 5, 8, 12, 14, 27]
+  if r1_12 == nil then
+    r3_12 = r0_12.CurContent.BtnId
+    if not r3_12 then
+      ::label_26::
+      r3_12 = r1_12
+    end
+  else
+    goto label_26	-- block#2 is visited secondly
+  end
+  local r4_12 = r2_12[r3_12].Icon
+  if not r2_0.IsMenuWorld() and r2_12[r3_12].DungeonIcon then
+    r4_12 = r2_12[r3_12].DungeonIcon
+  end
+  if r4_12 == nil then
+    r4_12 = "/Game/UI/Texture/Dynamic/Atlas/Entrance/T_Entrance_Armory.T_Entrance_Armory"
+  end
+  local r5_12 = LoadObject(r4_12)
+  local r6_12 = UE4.UWidgetLayoutLibrary.SlotAsCanvasSlot(r0_12.VerticalBox_0)
+  local r7_12 = FAnchors()
+  if r3_12 == CommonConst.ArmoryEnterId then
+    r0_12:UpdateArmoryIcon()
+    r6_12:SetAlignment(FVector2D(1, 0))
+    r7_12.Minimum = FVector2D(1, 1)
+    r7_12.Maximum = FVector2D(1, 1)
+    r6_12:SetAnchors(r7_12)
+  else
+    r6_12:SetAlignment(FVector2D(0.5, 0))
+    r7_12.Minimum = FVector2D(0.5, 1)
+    r7_12.Maximum = FVector2D(0.5, 1)
+    r6_12:SetAnchors(r7_12)
+    if r5_12 ~= nil then
+      r0_12:SetButtonStyle(r5_12)
+    end
+  end
+  if r3_12 == CommonConst.GachaEnterId then
+    r0_12:RefreshTimeLimitResource()
+  end
+  local r8_12 = r2_12[r3_12].ActionName
+  r0_12.Name:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  r0_12.IsHaveKey = false
+  r0_12.Switcher:SetActiveWidgetIndex(0)
+  local r9_12 = CommonUtils:GetActionMappingKeyName(r8_12)
+  if r8_12 and r9_12 ~= "" then
+    r0_12.IsHaveKey = true
+    r0_12.Common_Key_Hud_PC:CreateCommonKey({
+      KeyInfoList = {
+        {
+          Type = "Text",
+          Text = r9_12,
         }
+      },
+    })
+    r0_12.Common_Key_Hud_PC:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    local r10_12 = r2_0.GetIconListByActionName(r8_12)
+    local r11_12 = r10_12
+    if r11_12 then
+      r11_12 = r10_12[1]
+      if r11_12 == "Right" then
+        r11_12 = #r10_12 > 1
+      else
+        goto label_160	-- block#19 is visited secondly
+      end
+    end
+    r0_12.HasGamePadTips = r11_12
+    if r0_12.HasGamePadTips and r0_12.Common_Key_Hud_Gamepad then
+      r0_12.Common_Key_Hud_Gamepad:CreateCommonKey({
+        KeyInfoList = {
+          {
+            Type = "Img",
+            ImgShortPath = r10_12[#r10_12],
+          }
+        },
       })
     end
   else
-    self.Common_Key_Hud_PC:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r0_12.Common_Key_Hud_PC:SetVisibility(UE4.ESlateVisibility.Collapsed)
   end
-  local Platform = CommonUtils.GetDeviceTypeByPlatformName(self)
-  if "Mobile" == Platform then
-    self.Common_Key_Hud_PC:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  if CommonUtils.GetDeviceTypeByPlatformName(r0_12) == "Mobile" then
+    r0_12.Common_Key_Hud_PC:SetVisibility(UE4.ESlateVisibility.Collapsed)
   end
-  self.Name:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-  self.Name:SetText(GText(BtnInfo[Id].Name))
-  self.Switcher:SetVisibility(UE4.ESlateVisibility.Collapsed)
-  self:ReddotTreePlugIn(BtnInfo[Id])
+  r0_12.Name:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+  r0_12.Name:SetText(GText(r2_12[r3_12].Name))
+  r0_12.Switcher:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  r0_12:ReddotTreePlugIn(r2_12[r3_12])
 end
-
-function WBP_HomeBaseMain_Item_C:Destruct()
-  EventManager:RemoveEvent(EventID.ConditionComplete, self)
-  self:ReddotTreePlugOut()
-  local Avatar = GWorld:GetAvatar()
-  if Avatar then
-    for _, SystemInfo in ipairs(DataMgr.MainUI) do
-      if SystemInfo.UIUnlockRuleName then
-        local UIUnlockRule = DataMgr.UIUnlockRule
-        local UIUnlockRuleId = UIUnlockRule[SystemInfo.UIUnlockRuleName].UIUnlockRuleId
-        if self.UnlockRuleNames then
-          Avatar:UnBindOnUIFirstTimeUnlock(UIUnlockRuleId, self.UnlockRuleNames[SystemInfo.UIUnlockRuleName])
+function r4_0.Destruct(r0_13)
+  -- line: [302, 319] id: 13
+  EventManager:RemoveEvent(EventID.ConditionComplete, r0_13)
+  r0_13:ReddotTreePlugOut()
+  local r1_13 = GWorld:GetAvatar()
+  if r1_13 then
+    for r6_13, r7_13 in ipairs(DataMgr.MainUI) do
+      if r7_13.UIUnlockRuleName then
+        local r9_13 = DataMgr.UIUnlockRule[r7_13.UIUnlockRuleName].UIUnlockRuleId
+        if r0_13.UnlockRuleNames then
+          r1_13:UnBindOnUIFirstTimeUnlock(r9_13, r0_13.UnlockRuleNames[r7_13.UIUnlockRuleName])
         end
       end
     end
+    -- close: r2_13
   end
-  self:ClearListenEvent()
+  r0_13:ClearListenEvent()
 end
-
-function WBP_HomeBaseMain_Item_C:UpdateTaskBtnRedDot()
-  local function GetRet()
-    local NewQuestChainTable = EMCache:Get("NewQuestChainTable", true) or {}
-    
-    local NewQuestReddotSetCache = EMCache:Get("NewQuestReddotSet", true) or {}
-    if IsEmptyTable(NewQuestReddotSetCache) == false then
-      for _, IsNew in pairs(NewQuestReddotSetCache) do
-        if IsNew then
+function r4_0.UpdateTaskBtnRedDot(r0_14)
+  -- line: [321, 346] id: 14
+  local r2_14, r3_14 = (function()
+    -- line: [322, 342] id: 15
+    local r0_15 = r0_0:Get("NewQuestChainTable", true) and {}
+    local r1_15 = r0_0:Get("NewQuestReddotSet", true) and {}
+    if IsEmptyTable(r1_15) == false then
+      for r6_15, r7_15 in pairs(r1_15) do
+        if r7_15 then
           return true, true
         end
       end
+      -- close: r2_15
     end
-    if IsEmptyTable(NewQuestChainTable) then
+    if IsEmptyTable(r0_15) then
       return true, true
     else
-      for _, IsNew in pairs(NewQuestChainTable) do
-        if IsNew then
+      for r6_15, r7_15 in pairs(r0_15) do
+        if r7_15 then
           return true, true
         end
       end
+      -- close: r2_15
     end
     return false, false
-  end
-  
-  local IsNew, OtherReddot = GetRet()
-  self:SetRedDot(IsNew, OtherReddot, nil)
-  self:RefreshNewClueUI()
+  end)()
+  r0_14:SetRedDot(r2_14, r3_14, nil)
+  r0_14:RefreshNewClueUI()
 end
-
-function WBP_HomeBaseMain_Item_C:UpdateRedDot()
+function r4_0.UpdateRedDot(r0_16)
+  -- line: [348, 349] id: 16
 end
-
-function WBP_HomeBaseMain_Item_C:SetRedDot(IsNew, Upgradeable, OtherReddot, Count)
-  if not IsValid(self) then
-    return
+function r4_0.SetRedDot(r0_17, r1_17, r2_17, r3_17, r4_17)
+  -- line: [351, 379] id: 17
+  if not IsValid(r0_17) then
+    return 
   end
-  if type(Count) == "number" and Count <= 0 then
-    Count = "0"
+  if type(r4_17) == "number" and r4_17 <= 0 then
+    r4_17 = "0"
   end
-  self.Common_Item_Subsize_New_PC:SetVisibility(UIConst.VisibilityOp.Collapsed)
-  self.Reddot:SetVisibility(UIConst.VisibilityOp.Collapsed)
-  if self.bForceInvisible and (IsNew or Upgradeable or Count and "0" ~= Count) then
-    self.Reddot_Num:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  r0_17.Common_Item_Subsize_New_PC:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  r0_17.Reddot:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  if r0_17.bForceInvisible and (r1_17 or r2_17 or r4_17 and r4_17 ~= "0") then
+    r0_17.Reddot_Num:SetVisibility(UIConst.VisibilityOp.Collapsed)
     Traceback(ErrorTag, "Esc红点已经强制不可见了，走到这里肯定有问题的，最终容错已经做了,但还是埋个桩看看是哪里捣鬼")
-    return
+    return 
   end
-  if IsNew then
-    self.Common_Item_Subsize_New_PC:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-    return
+  if r1_17 then
+    r0_17.Common_Item_Subsize_New_PC:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+    return 
   end
-  if Upgradeable then
-    self.Reddot:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+  if r2_17 then
+    r0_17.Reddot:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
   end
-  if 3 == OtherReddot then
-    if "0" == Count then
-      self.Reddot_Num:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  if r3_17 == 3 then
+    if r4_17 == "0" then
+      r0_17.Reddot_Num:SetVisibility(UIConst.VisibilityOp.Collapsed)
     else
-      self.Reddot:SetVisibility(UIConst.VisibilityOp.Collapsed)
-      self.Reddot_Num:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-      self.Reddot_Num:SetNum(Count)
+      r0_17.Reddot:SetVisibility(UIConst.VisibilityOp.Collapsed)
+      r0_17.Reddot_Num:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+      r0_17.Reddot_Num:SetNum(r4_17)
     end
   else
-    self.Reddot_Num:SetVisibility(UIConst.VisibilityOp.Collapsed)
+    r0_17.Reddot_Num:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
 end
-
-function WBP_HomeBaseMain_Item_C:OnBtnClick()
-  if self.CurContent == nil then
-    return
+function r4_0.OnBtnClick(r0_18)
+  -- line: [381, 397] id: 18
+  if r0_18.CurContent == nil then
+    return 
   end
-  AudioManager(self):PlayUISound(self, "event:/ui/common/click_btn_system_entrance", nil, nil)
-  if self.CurContent == nil then
-    return
+  AudioManager(r0_18):PlayUISound(r0_18, "event:/ui/common/click_btn_system_entrance", nil, nil)
+  if r0_18.CurContent == nil then
+    return 
   end
-  local GameMode = UE4.UGameplayStatics.GetGameMode(self)
-  if GameMode and GameMode.EMGameState.GameModeType == "Trial" then
-    GameMode:TriggerDungeonComponentFun("ShowArmory")
+  local r1_18 = UE4.UGameplayStatics.GetGameMode(r0_18)
+  if r1_18 and r1_18.EMGameState.GameModeType == "Trial" then
+    r1_18:TriggerDungeonComponentFun("ShowArmory")
   else
-    UIUtils.OpenSystem(self.CurContent.BtnId)
-    CommonUtils:CloseGuideTouchIfExist(self)
+    r2_0.OpenSystem(r0_18.CurContent.BtnId)
+    CommonUtils:CloseGuideTouchIfExist(r0_18)
   end
 end
-
-function WBP_HomeBaseMain_Item_C:OnBtnHovered()
-  local Platform = CommonUtils.GetDeviceTypeByPlatformName(self)
-  if "Mobile" == Platform then
-    self.Switcher:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    return
+function r4_0.OnBtnHovered(r0_19)
+  -- line: [399, 413] id: 19
+  if CommonUtils.GetDeviceTypeByPlatformName(r0_19) == "Mobile" then
+    r0_19.Switcher:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    return 
   end
-  if self.IsBubblePlaying and self:IsExistTimer("HideBubble") then
-    self:RemoveTimer("HideBubble")
+  if r0_19.IsBubblePlaying and r0_19:IsExistTimer("HideBubble") then
+    r0_19:RemoveTimer("HideBubble")
   end
-  self.Switcher:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-  self:StopAnimation(self.HoverOut)
-  self:PlayAnimation(self.Hover)
+  r0_19.Switcher:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+  r0_19:StopAnimation(r0_19.HoverOut)
+  r0_19:PlayAnimation(r0_19.Hover)
 end
-
-function WBP_HomeBaseMain_Item_C:OnBtnUnhovered()
-  local Platform = CommonUtils.GetDeviceTypeByPlatformName(self)
-  self.Switcher:SetVisibility(UE4.ESlateVisibility.Collapsed)
-  if "Mobile" == Platform then
-    self.Switcher:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    return
+function r4_0.OnBtnUnhovered(r0_20)
+  -- line: [415, 427] id: 20
+  local r1_20 = CommonUtils.GetDeviceTypeByPlatformName(r0_20)
+  r0_20.Switcher:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  if r1_20 == "Mobile" then
+    r0_20.Switcher:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    return 
   end
-  self:StopAnimation(self.Hover)
-  self:PlayAnimation(self.HoverOut)
-  if self.IsBubblePlaying then
-    self:HideBubble(self.BubbleEndTime or 3)
+  r0_20:StopAnimation(r0_20.Hover)
+  r0_20:PlayAnimation(r0_20.HoverOut)
+  if r0_20.IsBubblePlaying then
+    r0_20:HideBubble(r0_20.BubbleEndTime and 3)
   end
 end
-
-function WBP_HomeBaseMain_Item_C:ShowSystemEntranceOnGamePadInput(IsShow)
-  if not self.HasGamePadTips or not self.Common_Key_Hud_Gamepad then
-    return
+function r4_0.ShowSystemEntranceOnGamePadInput(r0_21, r1_21)
+  -- line: [429, 448] id: 21
+  if not r0_21.HasGamePadTips or not r0_21.Common_Key_Hud_Gamepad then
+    return 
   end
-  local Platform = CommonUtils.GetDeviceTypeByPlatformName(self)
-  if "Mobile" == Platform then
-    self.Switcher:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    self.Switcher:SetActiveWidgetIndex(0)
-    return
+  if CommonUtils.GetDeviceTypeByPlatformName(r0_21) == "Mobile" then
+    r0_21.Switcher:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r0_21.Switcher:SetActiveWidgetIndex(0)
+    return 
   end
-  if IsShow then
-    self.Switcher:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-    self.Switcher:SetActiveWidgetIndex(1)
-    self.Common_Key_Hud_Gamepad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+  if r1_21 then
+    r0_21.Switcher:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    r0_21.Switcher:SetActiveWidgetIndex(1)
+    r0_21.Common_Key_Hud_Gamepad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
   else
-    self.Switcher:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    self.Switcher:SetActiveWidgetIndex(0)
-    self.Common_Key_Hud_Gamepad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r0_21.Switcher:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r0_21.Switcher:SetActiveWidgetIndex(0)
+    r0_21.Common_Key_Hud_Gamepad:SetVisibility(UE4.ESlateVisibility.Collapsed)
   end
 end
-
-function WBP_HomeBaseMain_Item_C:UpdateArmoryIcon()
-  local Avatar = GWorld:GetAvatar()
-  if not Avatar then
-    return
+function r4_0.UpdateArmoryIcon(r0_22)
+  -- line: [450, 469] id: 22
+  local r1_22 = GWorld:GetAvatar()
+  if not r1_22 then
+    return 
   end
-  local Char = Avatar.Chars[Avatar.CurrentChar]
-  local Player = UE4.UGameplayStatics.GetPlayerCharacter(self, 0)
-  local CharId = Char.CharId
-  local GameMode = UE4.UGameplayStatics.GetGameMode(self)
-  local GameState = UE4.UGameplayStatics.GetGameState(self)
-  if nil ~= GameMode and nil ~= GameState and GameState.GameModeType == "Trial" and Player then
-    local Char_OldBattleInfo = Player.PlayerState:GetOldBattleInfo("Char")
-    CharId = Char_OldBattleInfo.Id
+  local r3_22 = UE4.UGameplayStatics.GetPlayerCharacter(r0_22, 0)
+  local r4_22 = r1_22.Chars[r1_22.CurrentChar].CharId
+  local r5_22 = UE4.UGameplayStatics.GetGameMode(r0_22)
+  local r6_22 = UE4.UGameplayStatics.GetGameState(r0_22)
+  if r5_22 ~= nil and r6_22 ~= nil and r6_22.GameModeType == "Trial" and r3_22 then
+    r4_22 = r3_22.PlayerState:GetOldBattleInfo("Char").Id
   end
-  local CharIconPath = DataMgr.Char[CharId].EscIcon
-  local CharIcon = LoadObject(CharIconPath)
-  self:SetButtonStyle(CharIcon)
+  r0_22:SetButtonStyle(LoadObject(DataMgr.Char[r4_22].EscIcon))
 end
-
-function WBP_HomeBaseMain_Item_C:RefreshTimeLimitResource()
-  self.IsBubblePlaying = false
-  self.Pos_Bubble:ClearChildren()
-  local Avatar = GWorld:GetAvatar()
-  if not Avatar then
-    return
+function r4_0.RefreshTimeLimitResource(r0_23)
+  -- line: [472, 502] id: 23
+  r0_23.IsBubblePlaying = false
+  r0_23.Pos_Bubble:ClearChildren()
+  local r1_23 = GWorld:GetAvatar()
+  if not r1_23 then
+    return 
   end
-  local EndTime, Icon
-  for key, value in pairs(DataMgr.SkinGacha) do
-    for _, ResourceId in ipairs(value.GachaCostRes) do
-      local ResourceInfo = DataMgr.Resource[ResourceId]
-      local Count = Avatar:GetResourceNum(ResourceId)
-      local TimeLimitResourceInfo = ItemUtils.GetItemLimitedInfo(ResourceId)
-      if TimeLimitResourceInfo and TimeLimitResourceInfo.EndTime and Count > 0 then
-        EndTime = TimeLimitResourceInfo.EndTime
-        Icon = ResourceInfo.Icon
+  local r2_23 = nil
+  local r3_23 = nil
+  for r8_23, r9_23 in pairs(DataMgr.SkinGacha) do
+    for r14_23, r15_23 in ipairs(r9_23.GachaCostRes) do
+      local r16_23 = DataMgr.Resource[r15_23]
+      local r17_23 = r1_23:GetResourceNum(r15_23)
+      local r18_23 = ItemUtils.GetItemLimitedInfo(r15_23)
+      if r18_23 and r18_23.EndTime and r17_23 > 0 then
+        r2_23 = r18_23.EndTime
+        r3_23 = r16_23.Icon
         break
       end
     end
+    -- close: r10_23
   end
-  if not EndTime then
-    return
+  -- close: r4_23
+  if not r2_23 then
+    return 
   end
-  local NowTime = TimeUtils.NowTime()
-  local TimeDiff = EndTime - NowTime
-  local Cache = EMCache:Get("GachaBubble")
-  if Cache and true == Cache then
-    return
+  local r5_23 = r2_23 - r1_0.NowTime()
+  local r6_23 = r0_0:Get("GachaBubble")
+  if r6_23 and r6_23 == true then
+    return 
   end
-  if TimeDiff > 0 and TimeDiff < CommonConst.SECOND_IN_DAY then
-    self:ShowBubble(true, Icon)
-  elseif TimeDiff >= CommonConst.SECOND_IN_DAY and TimeDiff < CommonConst.SECOND_IN_WEEKDAY then
-    self:ShowBubble(false, Icon)
+  if r5_23 > 0 and r5_23 < CommonConst.SECOND_IN_DAY then
+    r0_23:ShowBubble(2, 1, r3_23)
+  elseif CommonConst.SECOND_IN_DAY <= r5_23 and r5_23 < CommonConst.SECOND_IN_WEEKDAY then
+    r0_23:ShowBubble(1, 1, r3_23)
   end
 end
-
-function WBP_HomeBaseMain_Item_C:ShowBubble(IsRed, Icon)
-  if not self.HudBubbleWidget then
-    self.HudBubbleWidget = UIManager(self):_CreateWidgetNew("CommonHudBubble")
+function r4_0.ShowBubble(r0_24, r1_24, r2_24, r3_24)
+  -- line: [504, 523] id: 24
+  if not r0_24.HudBubbleWidget then
+    r0_24.HudBubbleWidget = UIManager(r0_24):_CreateWidgetNew("CommonHudBubble")
   end
-  self.Pos_Bubble:AddChild(self.HudBubbleWidget)
-  local OverlaySlot = UE4.UWidgetLayoutLibrary.SlotAsOverlaySlot(self.HudBubbleWidget)
-  OverlaySlot:SetVerticalAlignment(EVerticalAlignment.VAlign_Center)
-  OverlaySlot:SetHorizontalAlignment(EHorizontalAlignment.HAlign_Center)
-  local ConfigData = {
-    IconPath = Icon,
-    Text = "UI_GachaTicket_Bubble"
-  }
-  if IsRed then
-    ConfigData.TextColor = 1
-  else
-    ConfigData.TextColor = 0
-  end
-  self.HudBubbleWidget:Init(ConfigData)
-  self.HudBubbleWidget:PlayInAnimation()
-  self.IsBubblePlaying = true
-  EMCache:Set("GachaBubble", true)
-  self:HideBubble(self.BubbleEndTime or 3)
+  r0_24.Pos_Bubble:AddChild(r0_24.HudBubbleWidget)
+  local r4_24 = UE4.UWidgetLayoutLibrary.SlotAsOverlaySlot(r0_24.HudBubbleWidget)
+  r4_24:SetVerticalAlignment(EVerticalAlignment.VAlign_Center)
+  r4_24:SetHorizontalAlignment(EHorizontalAlignment.HAlign_Center)
+  r0_24.HudBubbleWidget:Init({
+    IconPath = r3_24,
+    Text = "UI_GachaTicket_Bubble",
+    ColorType = r1_24,
+    Arrow = r2_24,
+  })
+  r0_24.HudBubbleWidget:PlayInAnimation()
+  r0_24.IsBubblePlaying = true
+  r0_0:Set("GachaBubble", true)
+  r0_24:HideBubble(r0_24.BubbleEndTime and 3)
 end
-
-function WBP_HomeBaseMain_Item_C:HideBubble(EndTime)
-  if self:IsExistTimer("HideBubble") then
-    self:RemoveTimer("HideBubble")
+function r4_0.HideBubble(r0_25, r1_25)
+  -- line: [525, 537] id: 25
+  if r0_25:IsExistTimer("HideBubble") then
+    r0_25:RemoveTimer("HideBubble")
   end
-  
-  local function HideBubble()
-    self.HudBubbleWidget:PlayOutAnimation()
-    self.IsBubblePlaying = false
-    if self:IsExistTimer("HideBubble") then
-      self:RemoveTimer("HideBubble")
+  r0_25:AddTimer(r1_25, function()
+    -- line: [529, 535] id: 26
+    r0_25.HudBubbleWidget:PlayOutAnimation()
+    r0_25.IsBubblePlaying = false
+    if r0_25:IsExistTimer("HideBubble") then
+      r0_25:RemoveTimer("HideBubble")
     end
-  end
-  
-  self:AddTimer(EndTime, HideBubble, false, 0.1, "HideBubble", true)
+  end, false, 0.1, "HideBubble", true)
 end
-
-function WBP_HomeBaseMain_Item_C:OnHomeBaseBtnPlayAnim(UIName, AnimationName)
-  if not UIName then
-    return
+function r4_0.OnHomeBaseBtnPlayAnim(r0_27, r1_27, r2_27)
+  -- line: [539, 548] id: 27
+  if not r1_27 then
+    return 
   end
-  if not self[AnimationName] then
-    return
+  if not r0_27[r2_27] then
+    return 
   end
-  if self.CurContent and self.CurContent.BtnId then
-    local BtnInfo = DataMgr.MainUI[self.CurContent.BtnId]
-    if BtnInfo.SystemUIName == UIName then
-      self:PlayAnimation(self[AnimationName])
-    end
+  if r0_27.CurContent and r0_27.CurContent.BtnId and DataMgr.MainUI[r0_27.CurContent.BtnId].SystemUIName == r1_27 then
+    r0_27:PlayAnimation(r0_27[r2_27])
   end
 end
-
-function WBP_HomeBaseMain_Item_C:OnHomeBaseeBtnShowNewClue(UIName)
-  self:RefreshNewClueUI()
+function r4_0.OnHomeBaseeBtnShowNewClue(r0_28, r1_28)
+  -- line: [550, 552] id: 28
+  r0_28:RefreshNewClueUI()
 end
-
-AssembleComponents(WBP_HomeBaseMain_Item_C)
-return WBP_HomeBaseMain_Item_C
+AssembleComponents(r4_0)
+return r4_0

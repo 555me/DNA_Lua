@@ -1289,7 +1289,7 @@ r4_0.ScreenFilter = {
   CacheText = "UI_OPTION_ScreenFilter",
   ControlType = "UnFold",
   DefaultValue = "3.0",
-  DefaultValueM = "3.0",
+  DefaultValueM = "1.0",
   EMCacheName = "ScreenFilter",
   Region = 1,
   RegionName = "UI_Option_Area_11",
@@ -1508,10 +1508,7 @@ r4_0.SystemLanguage = {
     "UI_Language_Text_EN",
     "UI_Language_Text_JP",
     "UI_Language_Text_KR",
-    "UI_Language_Text_TC",
-    "UI_Language_Text_DE",
-    "UI_Language_Text_FR",
-    "UI_Language_Text_ES"
+    "UI_Language_Text_TC"
   },
 }
 r4_0.SystemVoice = {

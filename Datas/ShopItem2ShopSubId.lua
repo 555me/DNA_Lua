@@ -2455,6 +2455,14 @@ r7_0[3016] = {
     ShopItemId = 10004101,
     SubTabId = 100041,
   },
+  [2] = {
+    ShopItemId = 10004126,
+    SubTabId = 100041,
+  },
+  [3] = {
+    ShopItemId = 10004125,
+    SubTabId = 100041,
+  },
 }
 r7_0[10100] = {
   [1] = {
@@ -2560,6 +2568,12 @@ r7_0[99] = {
 }
 r7_0[101] = {
   [1] = {
+    AccessOrder = 1,
+    ShopItemId = 150303,
+    SubTabId = 1500,
+  },
+  [2] = {
+    AccessOrder = 2,
     ShopItemId = 140136,
     SubTabId = 1402,
   },
@@ -2670,6 +2684,20 @@ r7_0[2013] = {
   [1] = {
     ShopItemId = 140138,
     SubTabId = 1402,
+  },
+}
+r7_0[3016] = {
+  [1] = {
+    AccessOrder = 1,
+    ShopItemId = 150302,
+    SubTabId = 1500,
+  },
+}
+r7_0[20013] = {
+  [1] = {
+    AccessOrder = 1,
+    ShopItemId = 150304,
+    SubTabId = 1500,
   },
 }
 r7_0[30101] = {
