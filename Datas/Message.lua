@@ -422,6 +422,13 @@ end)("Message", {
     UICompName = "Battle_Skill_Squat.Img_Slide",
     UIShape = "Circle",
   },
+  [200038] = {
+    MessageContentGamePad = "MESSAGE_SKILL3_GAMEPAD",
+    MessageContentPC = "MESSAGE_SKILL3_PC",
+    MessageContentPhone = "MESSAGE_SKILL3_PHONE",
+    MessageId = 200038,
+    MessageType = "Guide",
+  },
   [203001] = {
     MessageContentGamePad = "Message_Guide_Pet_01",
     MessageContentPC = "Message_Guide_Pet_01",

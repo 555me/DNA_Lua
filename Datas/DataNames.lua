@@ -649,7 +649,6 @@ return {
   "SystemNotice",
   "SystemUI",
   "SystemUIConfig",
-  "TagMonster",
   "TagType",
   "TalkAction",
   "TalkInterrupt",

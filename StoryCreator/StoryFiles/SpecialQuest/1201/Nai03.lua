@@ -468,12 +468,6 @@ local r3_0 = {
       endPort = "In",
     },
     {
-      startQuest = "176543733256461290259",
-      startPort = "Out",
-      endQuest = "176543733256461290254",
-      endPort = "In",
-    },
-    {
       startQuest = "176543733256461290248",
       startPort = "Out",
       endQuest = "176543733256461290261",
@@ -531,6 +525,24 @@ local r3_0 = {
       startQuest = "17562901517964930",
       startPort = "true",
       endQuest = "17657815633362556",
+      endPort = "In",
+    },
+    {
+      startQuest = "176543733256461290259",
+      startPort = "Out",
+      endQuest = "17659645683541285708",
+      endPort = "Input",
+    },
+    {
+      startQuest = "17659645683541285708",
+      startPort = "PC",
+      endQuest = "176543733256461290254",
+      endPort = "In",
+    },
+    {
+      startQuest = "17659645683541285708",
+      startPort = "Mobile",
+      endQuest = "17659645375891285304",
       endPort = "In",
     }
   },
@@ -1439,8 +1451,8 @@ r5_0 = {
   type = "TalkNode",
   name = "对话节点",
   pos = {
-    x = 6073.143213888905,
-    y = -1003.9908108834899,
+    x = 5779.203824479975,
+    y = -1014.5968713260802,
   },
 }
 r5_0.propsData = {
@@ -1530,12 +1542,12 @@ r5_0 = {
   type = "ShowGuideNode",
   name = "显示引导（支持执行操作后自动关闭/强制引导）",
   pos = {
-    x = 6332.905597071489,
-    y = -868.8452029326894,
+    x = 6301.087415743718,
+    y = -944.6027775226199,
   },
 }
 r5_0.propsData = {
-  MessageId = 200035,
+  MessageId = 200038,
   SkillNameList = {
     "Skill3"
   },
@@ -1586,8 +1598,8 @@ r4_0["176543733256461290256"] = {
   type = "UpdateTaskBarAndTaskMainNode",
   name = "更新任务目标节点",
   pos = {
-    x = 6076.0319190557275,
-    y = -691.1749631941385,
+    x = 5782.092529646798,
+    y = -701.7810236367288,
   },
   propsData = {
     NewDescription = "Description_Nai03_02_01",
@@ -1628,8 +1640,8 @@ r4_0["176543733256461290259"] = {
   type = "ShowGuideMainNode",
   name = "显示图文引导",
   pos = {
-    x = 6075.087487036818,
-    y = -866.4282135623347,
+    x = 5781.148097627888,
+    y = -877.034274004925,
   },
   propsData = {
     GuideId = 108,
@@ -1692,6 +1704,56 @@ r4_0["17657815633362556"] = {
   propsData = {
     BattlePetId = 0,
   },
+}
+r5_0 = {
+  key = "17659645375891285304",
+  type = "ShowGuideNode",
+  name = "显示引导（支持执行操作后自动关闭/强制引导）",
+  pos = {
+    x = 6292.7609328017215,
+    y = -799.6314502205977,
+  },
+}
+r5_0.propsData = {
+  MessageId = 200038,
+  SkillNameList = {
+    "Skill3"
+  },
+  LastTime = -1,
+  bIsForceTouch = false,
+  bIsTimeDilation = false,
+  HighLightUIPath = "BattleMain.Char_Skill.SupportSkill",
+  UICompName = "Button_Area",
+  UIShape = "Square",
+  IsForbidInAnim = false,
+  IsForbidOutAnim = false,
+  ForbidSuccessAnim = false,
+  IsNotForceRelease = false,
+  UICompSizeOffset = {
+    X = 0,
+    Y = 0,
+  },
+  UICompLocOffset = {
+    X = 0,
+    Y = 0,
+  },
+  MessageParentLoc = "HighLightUI",
+  MessageLoc = "Up",
+  MessageLocOffset = {
+    X = 0,
+    Y = 0,
+  },
+}
+r4_0["17659645375891285304"] = r5_0
+r4_0["17659645683541285708"] = {
+  key = "17659645683541285708",
+  type = "PlatformJudgmentNode",
+  name = "PC/手机平台判断",
+  pos = {
+    x = 6023.063968802861,
+    y = -893.9967193919673,
+  },
+  propsData = {},
 }
 r3_0.nodeData = r4_0
 r4_0 = {}
@@ -1771,12 +1833,12 @@ r4_0["176543737835561291520"] = {
   key = "176543737835561291520",
   name = "Input Commment...",
   position = {
-    x = 6008.93156843157,
-    y = -1092.290459540458,
+    x = 5714.99217902264,
+    y = -1102.8965199830482,
   },
   size = {
-    width = 530.7692307692305,
-    height = 526.1538461538462,
+    width = 839.8899634015326,
+    height = 558.8997951965594,
   },
 }
 r4_0["176543740170761291995"] = {
@@ -2399,12 +2461,6 @@ r3_0 = {
       endPort = "In",
     },
     {
-      startQuest = "1760426995628658726",
-      startPort = "Out",
-      endQuest = "17604287715923273921",
-      endPort = "In",
-    },
-    {
       startQuest = "1760426995628658728",
       startPort = "Out",
       endQuest = "1756298279497658761",
@@ -2492,6 +2548,24 @@ r3_0 = {
       startQuest = "1760426995628658726",
       startPort = "Out",
       endQuest = "17651785927758401",
+      endPort = "In",
+    },
+    {
+      startQuest = "1760426995628658726",
+      startPort = "Out",
+      endQuest = "17659647135192565977",
+      endPort = "Input",
+    },
+    {
+      startQuest = "17659647135192565977",
+      startPort = "PC",
+      endQuest = "17604287715923273921",
+      endPort = "In",
+    },
+    {
+      startQuest = "17659647135192565977",
+      startPort = "Mobile",
+      endQuest = "17659646855592565785",
       endPort = "In",
     }
   },
@@ -2903,12 +2977,12 @@ r6_0 = {
   type = "ShowGuideNode",
   name = "显示引导（支持执行操作后自动关闭/强制引导）",
   pos = {
-    x = 3191.348971693941,
-    y = 107.59206103494034,
+    x = 3186.220766699497,
+    y = 447.3356419168623,
   },
 }
 r6_0.propsData = {
-  MessageId = 200035,
+  MessageId = 200038,
   SkillNameList = {
     "Skill3"
   },
@@ -3083,6 +3157,57 @@ r6_0.propsData = {
   OverrideFailBlend = false,
 }
 r4_0["17651785927758401"] = r6_0
+r5_0 = "17659646855592565785"
+r6_0 = {
+  key = "17659646855592565785",
+  type = "ShowGuideNode",
+  name = "显示引导（支持执行操作后自动关闭/强制引导）",
+  pos = {
+    x = 3200.1738925867326,
+    y = 606.5205836459926,
+  },
+}
+r6_0.propsData = {
+  MessageId = 200038,
+  SkillNameList = {
+    "Skill3"
+  },
+  LastTime = -1,
+  bIsForceTouch = false,
+  bIsTimeDilation = false,
+  HighLightUIPath = "BattleMain.Char_Skill.SupportSkill",
+  UICompName = "Button_Area",
+  UIShape = "Square",
+  IsForbidInAnim = false,
+  IsForbidOutAnim = false,
+  ForbidSuccessAnim = false,
+  IsNotForceRelease = false,
+  UICompSizeOffset = {
+    X = 0,
+    Y = 0,
+  },
+  UICompLocOffset = {
+    X = 0,
+    Y = 0,
+  },
+  MessageParentLoc = "HighLightUI",
+  MessageLoc = "Up",
+  MessageLocOffset = {
+    X = 0,
+    Y = 0,
+  },
+}
+r4_0[r5_0] = r6_0
+r4_0["17659647135192565977"] = {
+  key = "17659647135192565977",
+  type = "PlatformJudgmentNode",
+  name = "PC/手机平台判断",
+  pos = {
+    x = 2891.1995442798147,
+    y = 464.2128989626785,
+  },
+  propsData = {},
+}
 r3_0.nodeData = r4_0
 r4_0 = {}
 r4_0["176459274871512557495"] = {
@@ -3105,8 +3230,8 @@ r4_0["176459288029612560745"] = {
     y = -261.0257479362743,
   },
   size = {
-    width = 1731.7024094326728,
-    height = 869.0027056277056,
+    width = 1718.555438635466,
+    height = 885.495052975331,
   },
 }
 r4_0["176459459124712572333"] = {
@@ -3280,12 +3405,6 @@ r3_0 = {
     {
       startQuest = "17604245689179802881",
       startPort = "Out",
-      endQuest = "17604267649913564",
-      endPort = "In",
-    },
-    {
-      startQuest = "17604245689179802881",
-      startPort = "Out",
       endQuest = "17604268115714451",
       endPort = "In",
     },
@@ -3365,6 +3484,24 @@ r3_0 = {
       startQuest = "17604245689179802881",
       startPort = "Out",
       endQuest = "17651785195057433",
+      endPort = "In",
+    },
+    {
+      startQuest = "17604245689179802881",
+      startPort = "Out",
+      endQuest = "17659647616063206189",
+      endPort = "Input",
+    },
+    {
+      startQuest = "17659647616063206189",
+      startPort = "PC",
+      endQuest = "17604267649913564",
+      endPort = "In",
+    },
+    {
+      startQuest = "17659647616063206189",
+      startPort = "Mobile",
+      endQuest = "17659647775633206591",
       endPort = "In",
     }
   },
@@ -3832,12 +3969,12 @@ r6_0 = {
   type = "ShowGuideNode",
   name = "显示引导（支持执行操作后自动关闭/强制引导）",
   pos = {
-    x = 3165.7799808886766,
-    y = 68.98005118587884,
+    x = 3272.676531675394,
+    y = 525.8765989032995,
   },
 }
 r6_0.propsData = {
-  MessageId = 200035,
+  MessageId = 200038,
   SkillNameList = {
     "Skill3"
   },
@@ -4016,6 +4153,57 @@ r6_0.propsData = {
   OverrideFailBlend = false,
 }
 r4_0["17651785195057433"] = r6_0
+r4_0["17659647616063206189"] = {
+  key = "17659647616063206189",
+  type = "PlatformJudgmentNode",
+  name = "PC/手机平台判断",
+  pos = {
+    x = 2962.068975934706,
+    y = 582.0000004384709,
+  },
+  propsData = {},
+}
+r5_0 = "17659647775633206591"
+r6_0 = {
+  key = "17659647775633206591",
+  type = "ShowGuideNode",
+  name = "显示引导（支持执行操作后自动关闭/强制引导）",
+  pos = {
+    x = 3275.2343944158742,
+    y = 678.3896353565442,
+  },
+}
+r6_0.propsData = {
+  MessageId = 200038,
+  SkillNameList = {
+    "Skill3"
+  },
+  LastTime = -1,
+  bIsForceTouch = false,
+  bIsTimeDilation = false,
+  HighLightUIPath = "BattleMain.Char_Skill.SupportSkill",
+  UICompName = "Button_Area",
+  UIShape = "Square",
+  IsForbidInAnim = false,
+  IsForbidOutAnim = false,
+  ForbidSuccessAnim = false,
+  IsNotForceRelease = false,
+  UICompSizeOffset = {
+    X = 0,
+    Y = 0,
+  },
+  UICompLocOffset = {
+    X = 0,
+    Y = 0,
+  },
+  MessageParentLoc = "HighLightUI",
+  MessageLoc = "Up",
+  MessageLocOffset = {
+    X = 0,
+    Y = 0,
+  },
+}
+r4_0[r5_0] = r6_0
 r3_0.nodeData = r4_0
 r4_0 = {}
 r4_0["1764597985768699010"] = {

@@ -7112,6 +7112,10 @@ r4_0[3010802] = {
   ModelId = 3010802,
   SkeletonMeshPath = "Asset/Char/Player/Common/Weapon/Swordwhip/Swordwhip_Miaomiao/Mesh/Swordwhip_Miaomiao_SM.Swordwhip_Miaomiao_SM",
 }
+r4_0[3010803] = {
+  ModelId = 3010803,
+  SkeletonMeshPath = "Asset/Char/Player/Common/Weapon/Swordwhip/Swordwhip_Shiru/Mesh/Swordwhip_Shiru_SM.Swordwhip_Shiru_SM",
+}
 r4_0[3010901] = {
   AdditionalFXID = {
     2030199

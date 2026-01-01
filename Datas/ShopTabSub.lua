@@ -211,7 +211,7 @@ r4_0[2001] = {
   TabType = "Complex",
 }
 r4_0[2002] = {
-  ConditionId = "TimeRewardShopTab",
+  ConditionId = "Rouge",
   MainTabId = 200,
   SubName = "UI_SHOP_MAINTAB_COMPLEX_2",
   SubTabId = 2002,

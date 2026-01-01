@@ -1,4 +1,4 @@
--- filename: @E:/Pack/Branch/OBT10_Geili\Content/Script/BluePrints\Managers\BP_UIManagerComponent_C.lua
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\Managers\BP_UIManagerComponent_C.lua
 -- version: lua54
 -- line: [0, 0] id: 0
 require("UnLua")
@@ -73,7 +73,7 @@ function r6_0.InitAllContainerData(r0_3)
   r0_3:PushCurrentModeStateTag(r7_0.NormalMode)
 end
 function r6_0.InitUIStates(r0_4)
-  -- line: [108, 135] id: 4
+  -- line: [108, 132] id: 4
   r0_4:_InitGameDPI()
   local r1_4 = GWorld.GameInstance:GetSceneManager()
   if not UE4.URuntimeCommonFunctionLibrary.IsPlayInEditor(GWorld.GameInstance) and not UUCloudGameInstanceSubsystem.IsCloudGame() and r1_4 then
@@ -89,10 +89,9 @@ function r6_0.InitUIStates(r0_4)
   end
   r0_4.Overridden.InitUIStates(r0_4)
   UE4.UMainBar.SetIsForbidenShowBloodUI(false)
-  r0_4:InitGlobalVersionDisplay()
 end
 function r6_0.PreloadUI(r0_5)
-  -- line: [138, 166] id: 5
+  -- line: [135, 163] id: 5
   local r1_5 = r5_0.GetDeviceTypeByPlatformName(r0_5) == "Mobile"
   for r6_5, r7_5 in pairs(DataMgr.SystemUI) do
     if r7_5.IsPreloadBP then
@@ -124,7 +123,7 @@ function r6_0.PreloadUI(r0_5)
   -- close: r2_5
 end
 function r6_0._InitGameDPI(r0_6)
-  -- line: [169, 183] id: 6
+  -- line: [166, 180] id: 6
   local r1_6 = DataMgr.Option.HUDSize
   if not r1_6 then
     return 
@@ -143,7 +142,7 @@ function r6_0._InitGameDPI(r0_6)
   UE.UUIFunctionLibrary.SetGameDPI(r2_6)
 end
 function r6_0.AddWidgetComponentToList(r0_7, r1_7, r2_7, r3_7)
-  -- line: [198, 216] id: 7
+  -- line: [195, 225] id: 7
   if not r0_7.WidgetComponentList[r1_7] then
     r0_7.WidgetComponentList[r1_7] = {}
   end
@@ -162,9 +161,23 @@ function r6_0.AddWidgetComponentToList(r0_7, r1_7, r2_7, r3_7)
       end
     end
   end
+  if r0_7.HideWidgetComponentTags then
+    local r4_7 = {
+      [r1_7] = {
+        [r2_7] = r3_7,
+      },
+    }
+    for r9_7, r10_7 in pairs(r0_7.HideWidgetComponentTags) do
+      for r15_7, r16_7 in pairs(r10_7) do
+        r0_7:PrivateHideAllComponentUI(r16_7, r9_7, r15_7, r4_7)
+      end
+      -- close: r11_7
+    end
+    -- close: r5_7
+  end
 end
 function r6_0.RemoveWidgetComponentToList(r0_8, r1_8, r2_8)
-  -- line: [219, 226] id: 8
+  -- line: [228, 235] id: 8
   if r0_8.WidgetComponentList[r1_8] ~= nil then
     r0_8.WidgetComponentList[r1_8][r2_8] = nil
     if IsEmptyTable(r0_8.WidgetComponentList[r1_8]) then
@@ -173,7 +186,7 @@ function r6_0.RemoveWidgetComponentToList(r0_8, r1_8, r2_8)
   end
 end
 function r6_0.CreateAndAttachToParentWidget(r0_9, r1_9, r2_9, r3_9, r4_9)
-  -- line: [229, 252] id: 9
+  -- line: [238, 261] id: 9
   local r5_9 = UIConst.AllUIConfig[r2_9] and {}
   local r6_9 = r0_9:GetUI(r2_9)
   if r6_9 ~= nil and not r5_9.allowmulti then
@@ -197,7 +210,7 @@ function r6_0.CreateAndAttachToParentWidget(r0_9, r1_9, r2_9, r3_9, r4_9)
   return r0_9.Overridden.CreateAndAttachToParentWidget(r0_9, r7_9, r2_9, r3_9, r4_9)
 end
 function r6_0._CreateWidgetNew(r0_10, r1_10)
-  -- line: [256, 273] id: 10
+  -- line: [265, 282] id: 10
   local r2_10 = DataMgr.WidgetUI[r1_10]
   assert(r2_10, "UI:" .. r1_10 .. "不在WidgetUI表中")
   local r3_10 = r5_0.GetDeviceTypeByPlatformName(r0_10)
@@ -214,7 +227,7 @@ function r6_0._CreateWidgetNew(r0_10, r1_10)
   return r6_10
 end
 function r6_0.CreateWidgetAsync(r0_11, r1_11, r2_11, r3_11, ...)
-  -- line: [280, 350] id: 11
+  -- line: [289, 361] id: 11
   if not r2_11 then
     if r1_11 then
       return r0_11:_CreateWidgetNew(r1_11)
@@ -258,10 +271,11 @@ function r6_0.CreateWidgetAsync(r0_11, r1_11, r2_11, r3_11, ...)
     end
   end
   function r7_11(r0_12, r1_12)
-    -- line: [314, 321] id: 12
+    -- line: [323, 332] id: 12
     local r2_12 = r0_11:_CreateWidgetByUMGClass(r0_12, r4_11.NeedShowInWindow, r4_11.ZOrder, nil, r4_11.IsAddToCachePool)
     if r2_12 == nil then
       DebugPrint(ErrorTag, "BP_UIManagerComponent_C: CreateWidget Error, BPClassPath is ", r5_11)
+      r0_11:ShowUIError(UIConst.ErrorCategory.BasicModule, string.format("::Error::  Widget创建失败，界面名称：%s", r1_11 and "None"))
     end
     if r1_12 then
       r1_12(r2_12)
@@ -275,7 +289,7 @@ function r6_0.CreateWidgetAsync(r0_11, r1_11, r2_11, r3_11, ...)
   r10_11 = r10_11(r0_11, r5_11, {
     r0_11,
     function(r0_13, r1_13)
-      -- line: [325, 337] id: 13
+      -- line: [336, 348] id: 13
       DebugPrint("CreateWidget 异步加载UMGCLass完成", r1_11)
       r8_11 = r1_13
       if type(r2_11) == "function" and r9_11 then
@@ -306,7 +320,7 @@ function r6_0.CreateWidgetAsync(r0_11, r1_11, r2_11, r3_11, ...)
   return r7_11(r8_11)
 end
 function r6_0.CreateWidget(r0_14, r1_14, r2_14, r3_14, r4_14, r5_14)
-  -- line: [357, 371] id: 14
+  -- line: [368, 382] id: 14
   local r6_14 = nil
   if type(r1_14) == "string" then
     r6_14 = LoadClass(r1_14)
@@ -321,7 +335,7 @@ function r6_0.CreateWidget(r0_14, r1_14, r2_14, r3_14, r4_14, r5_14)
   return r8_14
 end
 function r6_0._CreateWidgetByUMGClass(r0_15, r1_15, r2_15, r3_15, r4_15, r5_15)
-  -- line: [373, 391] id: 15
+  -- line: [384, 402] id: 15
   if r1_15 == nil then
     return 
   end
@@ -341,7 +355,7 @@ function r6_0._CreateWidgetByUMGClass(r0_15, r1_15, r2_15, r3_15, r4_15, r5_15)
   return r6_15
 end
 function r6_0.AddUIToStateTagsCluster(r0_16, r1_16, r2_16, r3_16)
-  -- line: [395, 406] id: 16
+  -- line: [406, 417] id: 16
   if r3_16 then
     if r0_16.AllUIStateTagsCluster[r1_16] == nil then
       r0_16.AllUIStateTagsCluster[r1_16] = {}
@@ -352,7 +366,7 @@ function r6_0.AddUIToStateTagsCluster(r0_16, r1_16, r2_16, r3_16)
   end
 end
 function r6_0.GenerateSpecialUIListBeforeUICreate(r0_17, r1_17, r2_17)
-  -- line: [408, 454] id: 17
+  -- line: [419, 465] id: 17
   local r3_17 = r8_0.ConditionMode
   local r4_17 = {}
   if r2_17 == UIConst.WidgetAllStateTag.Queue then
@@ -406,7 +420,7 @@ function r6_0.GenerateSpecialUIListBeforeUICreate(r0_17, r1_17, r2_17)
   return r3_17, r4_17
 end
 function r6_0.CheckUIMgrIsInSpecialState(r0_18)
-  -- line: [457, 470] id: 18
+  -- line: [468, 481] id: 18
   local r1_18 = UGameplayStatics.GetCurrentLevelName(r0_18)
   if r1_18 == "Login" or r1_18 == "Game_Start" then
     return r7_0.NormalMode
@@ -417,7 +431,7 @@ function r6_0.CheckUIMgrIsInSpecialState(r0_18)
   return r0_18:GetCurrentModeStateTag()
 end
 function r6_0.GetSubTagInNormalState(r0_19, r1_19)
-  -- line: [473, 514] id: 19
+  -- line: [484, 525] id: 19
   local r2_19 = nil
   local r3_19 = {}
   if r0_19:CheckUIMgrIsInSpecialState() == r7_0.GMMode then
@@ -451,7 +465,7 @@ function r6_0.GetSubTagInNormalState(r0_19, r1_19)
   return r2_19, r3_19
 end
 function r6_0.AddUIManagerCurrentModeTag(r0_20, r1_20)
-  -- line: [517, 530] id: 20
+  -- line: [528, 541] id: 20
   r0_20:PushCurrentModeStateTag(r1_20)
   if r1_20 == r7_0.SkillFeatureMode or r1_20 == r7_0.StoryMode then
     r0_20:RefreshAllUIVisibilityBySpecialTag(true, r1_20)
@@ -465,7 +479,7 @@ function r6_0.AddUIManagerCurrentModeTag(r0_20, r1_20)
   end
 end
 function r6_0.RemoveUIManagerCurrentModeTag(r0_21, r1_21)
-  -- line: [533, 551] id: 21
+  -- line: [544, 562] id: 21
   if r1_21 == nil then
     r1_21 = r0_21:GetCurrentModeStateTag()
   end
@@ -481,15 +495,15 @@ function r6_0.RemoveUIManagerCurrentModeTag(r0_21, r1_21)
   end
 end
 function r6_0.GetCurrentModeStateTag(r0_22)
-  -- line: [554, 556] id: 22
+  -- line: [565, 567] id: 22
   return r0_22.UIManagerModeTagsStack:Peek()
 end
 function r6_0.PushCurrentModeStateTag(r0_23, r1_23)
-  -- line: [559, 561] id: 23
+  -- line: [570, 572] id: 23
   r0_23.UIManagerModeTagsStack:Push(r1_23)
 end
 function r6_0.PopCurrentModeStateTag(r0_24, r1_24)
-  -- line: [564, 572] id: 24
+  -- line: [575, 583] id: 24
   local r2_24 = nil
   if r1_24 ~= nil then
     r2_24 = r0_24.UIManagerModeTagsStack:FindAndRemove(r1_24)
@@ -499,25 +513,30 @@ function r6_0.PopCurrentModeStateTag(r0_24, r1_24)
   return r2_24
 end
 function r6_0.PlaceJumpUIToTop(r0_25, r1_25, r2_25)
-  -- line: [576, 579] id: 25
+  -- line: [587, 590] id: 25
   r0_25:PlaceItemToQueueBack(r1_25)
   r0_25:PlaceUIStateToTop(r2_25)
 end
 function r6_0.PrintJumpPageDequeInfo(r0_26)
-  -- line: [581, 588] id: 26
+  -- line: [592, 604] id: 26
   for r5_26 = 1, r0_26.UIJumpToDeque:Size(), 1 do
     local r6_26 = r0_26.UIJumpToDeque:Get(r5_26)
-    DebugPrint("BP_UIManagerComponent_C: PrintJumpPageDequeInfo, The Info is: ", r6_26:GetName(), r6_26:GetCameraViewCurrentTarget():GetName())
+    if type(r6_26.GetCameraViewCurrentTarget) == "function" then
+      DebugPrint("BP_UIManagerComponent_C: PrintJumpPageDequeInfo, The Info is: ", r6_26:GetName(), r6_26:GetCameraViewCurrentTarget():GetName())
+    else
+      DebugPrint("BP_UIManagerComponent_C: PrintJumpPageDequeInfo, The Info is: ", r6_26:GetName(), "Has No CameraViewTarget")
+    end
   end
 end
 function r6_0.AddToJumpPageDeque(r0_27, r1_27)
-  -- line: [591, 613] id: 27
+  -- line: [607, 634] id: 27
   if not r1_27 then
     return 
   end
   if r0_27.UIJumpToDeque:Size() >= 3 then
     local r3_27 = r0_27.UIJumpToDeque:PopFront()
     if IsValid(r3_27) then
+      r3_27.IsNeedSearchInStack = true
       if type(r3_27.Close) == "function" then
         r3_27:Close()
       else
@@ -530,18 +549,18 @@ function r6_0.AddToJumpPageDeque(r0_27, r1_27)
   EventManager:FireEvent(EventID.OnJumpToPage, r0_27:GetLastJumpPage(), r1_27)
 end
 function r6_0.RemoveToJumpPageDeque(r0_28, r1_28)
-  -- line: [616, 622] id: 28
+  -- line: [637, 643] id: 28
   if r0_28.UIJumpToDeque:Back() == r1_28 then
     r0_28.UIJumpToDeque:PopBack()
     EventManager:FireEvent(EventID.OnJumpBackToPage, r1_28, r0_28:GetLastJumpPage())
   end
 end
 function r6_0.GetLastJumpPage(r0_29)
-  -- line: [625, 627] id: 29
+  -- line: [646, 648] id: 29
   return r0_29.UIJumpToDeque:Back()
 end
 function r6_0.PlaceItemToQueueBack(r0_30, r1_30)
-  -- line: [630, 646] id: 30
+  -- line: [651, 667] id: 30
   if r1_30 == nil then
     return 
   end
@@ -557,7 +576,7 @@ function r6_0.PlaceItemToQueueBack(r0_30, r1_30)
   end
 end
 function r6_0.CheckIsInJumpPageDeque(r0_31, r1_31)
-  -- line: [649, 660] id: 31
+  -- line: [670, 681] id: 31
   local r2_31 = r0_31.UIJumpToDeque:Size()
   local r3_31 = nil
   for r7_31 = 1, r2_31, 1 do
@@ -569,7 +588,7 @@ function r6_0.CheckIsInJumpPageDeque(r0_31, r1_31)
   return r3_31
 end
 function r6_0.CheckIsInLoadingDeque(r0_32, r1_32, r2_32)
-  -- line: [663, 678] id: 32
+  -- line: [684, 699] id: 32
   if #r1_32 == 1 and r1_32[1] == r2_32 then
     return true
   end
@@ -585,13 +604,13 @@ function r6_0.CheckIsInLoadingDeque(r0_32, r1_32, r2_32)
   return r4_32
 end
 function r6_0.LoadUINew(r0_33, r1_33, ...)
-  -- line: [685, 689] id: 33
+  -- line: [706, 710] id: 33
   local r2_33 = DataMgr.SystemUI[r1_33]
   assert(r2_33, "UI:" .. r1_33 .. "不在SystemUI表中")
   return r0_33:LoadUI(UIConst.LoadInConfig, r1_33, r2_33.ZOrder, ...)
 end
 function r6_0.LoadUIAsync(r0_34, r1_34, r2_34, ...)
-  -- line: [694, 701] id: 34
+  -- line: [715, 722] id: 34
   local r3_34 = DataMgr.SystemUI[r1_34]
   assert(r3_34, "UI:" .. r1_34 .. "不在SystemUI表中")
   local r4_34 = {
@@ -602,7 +621,7 @@ function r6_0.LoadUIAsync(r0_34, r1_34, r2_34, ...)
   return r0_34:LoadUI(UIConst.LoadInConfig, r1_34, r3_34.ZOrder, table.unpack(r4_34))
 end
 function r6_0.LoadUI(r0_35, r1_35, r2_35, r3_35, ...)
-  -- line: [709, 904] id: 35
+  -- line: [730, 929] id: 35
   if IsDedicatedServer(r0_35) then
     return 
   end
@@ -678,13 +697,14 @@ function r6_0.LoadUI(r0_35, r1_35, r2_35, r3_35, ...)
   end
   if r1_35 == nil then
     DebugPrint("The UI Whitch Named " .. r2_35 .. " BPClass is nil !!!!!!!")
+    r0_35:ShowUIError(UIConst.ErrorCategory.BasicModule, string.format("::Error::  系统界面创建失败，BPClassPath找不到，系统名称：%s", r2_35))
     return 
   end
   if r3_35 == nil then
     r3_35 = r6_35.zorder and UIConst.ZORDER_FOR_ZERO
   end
   local function r12_35(r0_36, r1_36)
-    -- line: [802, 849] id: 36
+    -- line: [825, 874] id: 36
     local r2_36 = nil
     if not r0_35.AsyncUnloadFlags[r2_35] and r0_36 then
       if r6_35.IsGlobalUI then
@@ -702,13 +722,14 @@ function r6_0.LoadUI(r0_35, r1_35, r2_35, r3_35, ...)
     end
     if not r0_36 then
       DebugPrint(ErrorTag, "BPClassPath is not valid")
+      r0_35:ShowUIError(UIConst.ErrorCategory.BasicModule, string.format("::Error::  系统界面异步创建传进来的Class对象是个空，系统名称：%s", r2_35))
     end
     if r0_35.AsyncLoadHandlers[r2_35] then
       r0_35.AsyncLoadHandlers[r2_35] = nil
     end
     if r0_35.AsyncGetUIContexts[r2_35] then
       r0_35:AddTimer(0.01, function()
-        -- line: [831, 843] id: 37
+        -- line: [856, 868] id: 37
         DebugPrint(LXYTag, "GetUIObjAsync异步回调处理")
         for r4_37, r5_37 in ipairs(r0_35.AsyncGetUIContexts[r2_35]) do
           if type(r5_37) == "function" then
@@ -741,7 +762,7 @@ function r6_0.LoadUI(r0_35, r1_35, r2_35, r3_35, ...)
         local r15_35 = UE.UResourceLibrary.LoadClassAsync(r0_35, r1_35, {
           r0_35,
           function(r0_38, r1_38)
-            -- line: [863, 879] id: 38
+            -- line: [888, 904] id: 38
             if not IsValid(r1_38) then
               DebugPrint(LXYTag, "回调内，异步加载UMGCLass失败", r2_35, r1_35)
               return 
@@ -782,7 +803,7 @@ function r6_0.LoadUI(r0_35, r1_35, r2_35, r3_35, ...)
   return r12_35(r13_35)
 end
 function r6_0.RevertRealStopGame(r0_39, r1_39)
-  -- line: [907, 919] id: 39
+  -- line: [932, 944] id: 39
   if r1_39 == nil then
     return false
   end
@@ -813,7 +834,7 @@ function r6_0.RevertRealStopGame(r0_39, r1_39)
   return r3_39
 end
 function r6_0.SetUIConfig(r0_40, r1_40, r2_40, r3_40)
-  -- line: [922, 974] id: 40
+  -- line: [947, 999] id: 40
   local r4_40 = UIConst.AllUIConfig[r2_40] and {}
   if not r1_40 then
     r1_40 = r4_40.resource
@@ -834,6 +855,7 @@ function r6_0.SetUIConfig(r0_40, r1_40, r2_40, r3_40)
     r4_40.System = r3_40.System
     r4_40.PauseAfterLoadingState = r3_40.PauseAfterLoadingState
     r4_40.IsHideInImmersionMode = r3_40.IsHideInImmersionMode
+    r4_40.IsGlobalUI = r3_40.IsGlobalUI
     if r3_40.ConfigName then
       local r5_40 = DataMgr.SystemUIConfig[r3_40.ConfigName]
       if r5_40 then
@@ -842,14 +864,14 @@ function r6_0.SetUIConfig(r0_40, r1_40, r2_40, r3_40)
         if r6_40 ~= nil then
           r6_40 = r5_40.AllowMulti and false
         else
-          goto label_65	-- block#10 is visited secondly
+          goto label_67	-- block#10 is visited secondly
         end
         r4_40.allowmulti = r6_40
         r6_40 = r5_40.HasChildBP
         if r6_40 ~= nil then
           r6_40 = r5_40.HasChildBP and false
         else
-          goto label_73	-- block#13 is visited secondly
+          goto label_75	-- block#13 is visited secondly
         end
         r4_40.haschildBP = r6_40
         r4_40.limitcount = r5_40.limitcount and UIConst.MAXEXISTNUM
@@ -860,7 +882,7 @@ function r6_0.SetUIConfig(r0_40, r1_40, r2_40, r3_40)
         if r6_40 ~= nil then
           r6_40 = r5_40.NeedUIMode and false
         else
-          goto label_93	-- block#18 is visited secondly
+          goto label_95	-- block#18 is visited secondly
         end
         r4_40.needuimode = r6_40
       end
@@ -880,7 +902,7 @@ function r6_0.SetUIConfig(r0_40, r1_40, r2_40, r3_40)
   return r4_40, r1_40
 end
 function r6_0.UpdateUIObjByConfig(r0_41, r1_41, r2_41, r3_41, r4_41, r5_41, r6_41, r7_41, r8_41)
-  -- line: [977, 1041] id: 41
+  -- line: [1002, 1067] id: 41
   if r2_41.popup == true then
     r1_41.IsUIPopUp = true
     r0_41:CloseResidentUI(r4_41)
@@ -932,7 +954,7 @@ function r6_0.UpdateUIObjByConfig(r0_41, r1_41, r2_41, r3_41, r4_41, r5_41, r6_4
   end
 end
 function r6_0.DealWithOtherWidgetsVisibilityByUIShow(r0_42, r1_42, r2_42, r3_42, r4_42, r5_42, r6_42)
-  -- line: [1044, 1082] id: 42
+  -- line: [1070, 1108] id: 42
   local r7_42 = false
   if r3_42.specialvisiblemode ~= "forceshow" then
     if r4_42 ~= r7_0.NormalMode then
@@ -975,7 +997,7 @@ function r6_0.DealWithOtherWidgetsVisibilityByUIShow(r0_42, r1_42, r2_42, r3_42,
   -- goto label_80
 end
 function r6_0.HandleUIWidgetsVisibilityByUIShow(r0_43, r1_43, r2_43, r3_43, r4_43)
-  -- line: [1085, 1167] id: 43
+  -- line: [1111, 1193] id: 43
   local r5_43 = "InUIConfigure"
   local r6_43 = false
   if r3_43 == r8_0.ExclusiveMode then
@@ -990,7 +1012,7 @@ function r6_0.HandleUIWidgetsVisibilityByUIShow(r0_43, r1_43, r2_43, r3_43, r4_4
     end
   elseif r3_43 == r8_0.ConditionMode then
     local function r7_43(r0_44, r1_44, r2_44, r3_44)
-      -- line: [1098, 1108] id: 44
+      -- line: [1124, 1134] id: 44
       r0_44:Hide(r2_44 .. r1_44)
       if r0_43.HideByStateTagUIList[r3_44] == nil then
         r0_43.HideByStateTagUIList[r3_44] = {}
@@ -1031,7 +1053,7 @@ function r6_0.HandleUIWidgetsVisibilityByUIShow(r0_43, r1_43, r2_43, r3_43, r4_4
           if r14_43 then
             if r15_43 == nil then
               r0_43:GetUIObjAsync(r12_43, function(r0_45)
-                -- line: [1131, 1136] id: 45
+                -- line: [1157, 1162] id: 45
                 if r0_45 then
                   DebugPrint("UIManagerComponent PrecedenceMode: The UI Which Named " .. r12_43 .. " Hide, The Reason is Effected by " .. r1_43)
                   r7_43(r0_45, r1_43, r5_43, r3_43)
@@ -1052,7 +1074,7 @@ function r6_0.HandleUIWidgetsVisibilityByUIShow(r0_43, r1_43, r2_43, r3_43, r4_4
         local r14_43 = r0_43:GetUIObj(r13_43)
         if r14_43 == nil then
           r0_43:GetUIObjAsync(r13_43, function(r0_46)
-            -- line: [1150, 1155] id: 46
+            -- line: [1176, 1181] id: 46
             if r0_46 then
               DebugPrint("UIManagerComponent MutualMode: The UI Which Named " .. r13_43 .. " Hide, The Reason is Effected by " .. r1_43)
               r7_43(r0_46, r1_43, r5_43, r3_43)
@@ -1076,7 +1098,7 @@ function r6_0.HandleUIWidgetsVisibilityByUIShow(r0_43, r1_43, r2_43, r3_43, r4_4
   return r6_43
 end
 function r6_0.SetIsHideInImmersionMode(r0_47, r1_47)
-  -- line: [1169, 1175] id: 47
+  -- line: [1195, 1201] id: 47
   local r2_47 = UE4.UGameplayStatics.GetPlayerCharacter(r0_47, 0)
   if r2_47 and r2_47.IsImmersionModel then
     r1_47:Hide("ImmersionMode")
@@ -1084,7 +1106,7 @@ function r6_0.SetIsHideInImmersionMode(r0_47, r1_47)
   end
 end
 function r6_0.LoadGuideIconAsync(r0_48, r1_48, r2_48, r3_48, r4_48, ...)
-  -- line: [1178, 1183] id: 48
+  -- line: [1204, 1209] id: 48
   local r5_48 = {
     ...
   }
@@ -1093,7 +1115,7 @@ function r6_0.LoadGuideIconAsync(r0_48, r1_48, r2_48, r3_48, r4_48, ...)
   return r0_48:LoadUI(r1_48, r2_48, r3_48, table.unpack(r5_48))
 end
 function r6_0.UpdateArgs(r0_49, r1_49, r2_49)
-  -- line: [1186, 1195] id: 49
+  -- line: [1212, 1221] id: 49
   if not r1_49 or not r1_49.UpdateArgs then
     return 
   end
@@ -1103,7 +1125,7 @@ function r6_0.UpdateArgs(r0_49, r1_49, r2_49)
   r1_49:UpdateArgs(r2_49)
 end
 function r6_0.GetBannedActionNameList(r0_50, r1_50)
-  -- line: [1199, 1223] id: 50
+  -- line: [1225, 1249] id: 50
   local r2_50 = DataMgr.UIKeyboardSet[r1_50]
   if not r2_50 then
     DebugPrint("Tianyi@ 找不到按键禁用组: " .. r1_50)
@@ -1129,7 +1151,7 @@ function r6_0.GetBannedActionNameList(r0_50, r1_50)
   end
 end
 function r6_0.CheckCombatcondition(r0_51, r1_51, r2_51)
-  -- line: [1226, 1243] id: 51
+  -- line: [1252, 1269] id: 51
   if r1_51 == nil then
     return true
   end
@@ -1151,7 +1173,7 @@ function r6_0.CheckCombatcondition(r0_51, r1_51, r2_51)
   return r4_51, r5_51
 end
 function r6_0.SetBannedActionCallback(r0_52, r1_52, r2_52, r3_52)
-  -- line: [1247, 1310] id: 52
+  -- line: [1273, 1336] id: 52
   if not r3_52 then
     r3_52 = "Common"
   end
@@ -1210,7 +1232,7 @@ function r6_0.SetBannedActionCallback(r0_52, r1_52, r2_52, r3_52)
   end
 end
 function r6_0.SetAllBattleEntityHidden(r0_53, r1_53, r2_53, r3_53)
-  -- line: [1313, 1334] id: 53
+  -- line: [1339, 1360] id: 53
   local r4_53 = Battle(r0_53):GetAllEntities()
   if r1_53 then
     for r9_53, r10_53 in pairs(r4_53) do
@@ -1233,11 +1255,11 @@ function r6_0.SetAllBattleEntityHidden(r0_53, r1_53, r2_53, r3_53)
   end
 end
 function r6_0.CheckIsActionBanned(r0_54, r1_54)
-  -- line: [1337, 1340] id: 54
+  -- line: [1363, 1366] id: 54
   return r0_54.BanActionCallbackMap and r0_54.BanActionCallbackMap[r1_54]
 end
 function r6_0.DealWithGroupUIVisibility(r0_55, r1_55, r2_55, r3_55, r4_55, r5_55)
-  -- line: [1343, 1398] id: 55
+  -- line: [1369, 1424] id: 55
   local r6_55 = false
   for r11_55, r12_55 in pairs(r1_55) do
     if type(r12_55) == "table" then
@@ -1301,7 +1323,7 @@ function r6_0.DealWithGroupUIVisibility(r0_55, r1_55, r2_55, r3_55, r4_55, r5_55
   return r6_55
 end
 function r6_0.OnUIObjLoadCompleted(r0_56, r1_56, r2_56)
-  -- line: [1460, 1499] id: 56
+  -- line: [1486, 1525] id: 56
   local r5_56 = r1_56
   local r6_56 = r2_56.IsHideBattleUnit == UIConst.EnumHideBattleUnitStyle.NormalShowAndHideAll
   r0_56:SetEntitiesVisibility(r5_56, r6_56, r2_56.IsHideBattleUnit == UIConst.EnumHideBattleUnitStyle.NormalShowAndHideAllExceptSelf, true)
@@ -1311,7 +1333,7 @@ function r6_0.OnUIObjLoadCompleted(r0_56, r1_56, r2_56)
   EventManager:FireEvent(EventID.LoadUI, r1_56)
 end
 function r6_0.UnLoadUINew(r0_57, r1_57)
-  -- line: [1501, 1510] id: 57
+  -- line: [1527, 1536] id: 57
   assert(DataMgr.SystemUI[r1_57], "UI:" .. r1_57 .. "不在SystemUI表中")
   if UIConst.AllUIConfig[r1_57] then
     UIConst.AllUIConfig[r1_57] = {
@@ -1321,7 +1343,7 @@ function r6_0.UnLoadUINew(r0_57, r1_57)
   return r0_57:UnLoadUI(r1_57, r1_57)
 end
 function r6_0.UnLoadUI(r0_58, r1_58, r2_58)
-  -- line: [1512, 1617] id: 58
+  -- line: [1538, 1645] id: 58
   if IsDedicatedServer(r0_58) then
     return 
   end
@@ -1382,7 +1404,7 @@ function r6_0.UnLoadUI(r0_58, r1_58, r2_58)
   EventManager:FireEvent(EventID.UnLoadUI, r2_58)
 end
 function r6_0.DealWithOtherWidgetsVisibilityByUIHide(r0_59, r1_59, r2_59, r3_59)
-  -- line: [1622, 1636] id: 59
+  -- line: [1650, 1664] id: 59
   if r3_59 == nil or r3_59 == UIConst.WidgetAllStateTag.Blocked then
     return 
   end
@@ -1397,7 +1419,7 @@ function r6_0.DealWithOtherWidgetsVisibilityByUIHide(r0_59, r1_59, r2_59, r3_59)
   end
 end
 function r6_0.HandleUIWidgetsVisibilityByUIHide(r0_60, r1_60, r2_60, r3_60)
-  -- line: [1639, 1689] id: 60
+  -- line: [1667, 1717] id: 60
   local r4_60 = nil
   local r5_60 = "InUIConfigure"
   if r3_60 == UIConst.WidgetAllStateTag.Exclusive then
@@ -1441,7 +1463,7 @@ function r6_0.HandleUIWidgetsVisibilityByUIHide(r0_60, r1_60, r2_60, r3_60)
   end
 end
 function r6_0.ReShowUIWithReason(r0_61, r1_61, r2_61)
-  -- line: [1692, 1705] id: 61
+  -- line: [1720, 1733] id: 61
   if r1_61 == nil or type(r1_61) ~= "table" then
     return 
   end
@@ -1457,7 +1479,7 @@ function r6_0.ReShowUIWithReason(r0_61, r1_61, r2_61)
   -- close: r3_61
 end
 function r6_0.GetUIObj(r0_62, r1_62, r2_62)
-  -- line: [1708, 1721] id: 62
+  -- line: [1736, 1749] id: 62
   if r2_62 then
     local r3_62 = r0_62:GetUIPathFromString(r1_62)
     local r4_62 = #r3_62
@@ -1472,7 +1494,7 @@ function r6_0.GetUIObj(r0_62, r1_62, r2_62)
   return r0_62:GetUI(r1_62)
 end
 function r6_0.GetUIObjAsync(r0_63, r1_63, r2_63)
-  -- line: [1726, 1743] id: 63
+  -- line: [1754, 1771] id: 63
   local r3_63 = r0_63:GetUIObj(r1_63)
   if not r3_63 and r0_63.AsyncLoadHandlers[r1_63] then
     DebugPrint(LXYTag, "开始异步GetUIObj...", r1_63)
@@ -1491,11 +1513,11 @@ function r6_0.GetUIObjAsync(r0_63, r1_63, r2_63)
   return r3_63
 end
 function r6_0.GetUIObjIsAsyncLoading(r0_64, r1_64)
-  -- line: [1746, 1748] id: 64
+  -- line: [1774, 1776] id: 64
   return r0_64.AsyncLoadHandlers[r1_64] ~= nil
 end
 function r6_0.GetUIPathFromString(r0_65, r1_65)
-  -- line: [1751, 1760] id: 65
+  -- line: [1779, 1788] id: 65
   if not r1_65 then
     return nil
   end
@@ -1507,11 +1529,11 @@ function r6_0.GetUIPathFromString(r0_65, r1_65)
   return r2_65
 end
 function r6_0.GetUIObjCountByBaseName(r0_66, r1_66)
-  -- line: [1763, 1765] id: 66
+  -- line: [1791, 1793] id: 66
   return r0_66.Overridden.GetUIObjCountByBaseName(r0_66, r1_66)
 end
 function r6_0.HideOrShowUIByBaseName(r0_67, r1_67, r2_67)
-  -- line: [1768, 1793] id: 67
+  -- line: [1796, 1821] id: 67
   if (UIConst.AllUIConfig[r1_67] and {}).allowmulti then
     for r8_67 = 1, r0_67.UniqueCount[r1_67] and 1, 1 do
       local r10_67 = r0_67:GetUI(r1_67 .. tostring(r8_67))
@@ -1535,19 +1557,22 @@ function r6_0.HideOrShowUIByBaseName(r0_67, r1_67, r2_67)
   end
 end
 function r6_0.GetTexture2DResource(r0_68, r1_68)
-  -- line: [1796, 1802] id: 68
+  -- line: [1824, 1830] id: 68
   if string.find(r1_68, "/Game/") == nil then
     r1_68 = "/Game/" .. r1_68
   end
   return LoadObject(r1_68)
 end
 function r6_0.GetLogMask(r0_69)
-  -- line: [1805, 1807] id: 69
+  -- line: [1833, 1835] id: 69
   return _G.LogTag
 end
 function r6_0.CloseResidentUI(r0_70, r1_70)
-  -- line: [1827, 1881] id: 70
+  -- line: [1855, 1914] id: 70
   if not IsEmptyTable(r0_70.PopUpUIWidgetRecord) then
+    if r1_70 ~= nil then
+      r0_70.PopUpUIWidgetRecord[r1_70] = 1
+    end
     return 
   end
   local r2_70 = UE4.UGameplayStatics.GetPlayerCharacter(r0_70, 0)
@@ -1573,6 +1598,7 @@ function r6_0.CloseResidentUI(r0_70, r1_70)
     if r10_70 == "BattleMain" then
       if not r11_70.IsPlayOutAnim then
         r11_70:Hide("UIPopUp")
+        r11_70:AddPlayInOutSystems(r1_70)
       end
     else
       r11_70:Hide("UIPopUp")
@@ -1591,8 +1617,11 @@ function r6_0.CloseResidentUI(r0_70, r1_70)
   end
 end
 function r6_0.OpenResidentUI(r0_71, r1_71)
-  -- line: [1884, 1937] id: 71
-  if not r0_71:CheckNeedExitPopUp(r1_71) then
+  -- line: [1917, 1971] id: 71
+  if r1_71 ~= nil then
+    r0_71.PopUpUIWidgetRecord[r1_71] = nil
+  end
+  if not IsEmptyTable(r0_71.PopUpUIWidgetRecord) then
     return 
   end
   local r2_71 = UE4.UGameplayStatics.GetPlayerCharacter(r0_71, 0)
@@ -1631,12 +1660,9 @@ function r6_0.OpenResidentUI(r0_71, r1_71)
     end
     -- close: r7_71
   end
-  if r1_71 ~= nil then
-    r0_71.PopUpUIWidgetRecord[r1_71] = nil
-  end
 end
 function r6_0.CheckNeedExitPopUp(r0_72, r1_72)
-  -- line: [1940, 1949] id: 72
+  -- line: [1974, 1983] id: 72
   local r2_72 = true
   for r7_72, r8_72 in pairs(r0_72.PopUpUIWidgetRecord) do
     if r7_72 ~= r1_72 and r8_72 == 1 then
@@ -1648,7 +1674,7 @@ function r6_0.CheckNeedExitPopUp(r0_72, r1_72)
   return r2_72
 end
 function r6_0.GetCurrnetAllUIBySystem(r0_73, r1_73)
-  -- line: [1952, 1971] id: 73
+  -- line: [1986, 2005] id: 73
   local r2_73 = r0_73.UIInstances:ToTable()
   local r3_73 = {}
   for r8_73, r9_73 in pairs(r2_73) do
@@ -1672,7 +1698,7 @@ function r6_0.GetCurrnetAllUIBySystem(r0_73, r1_73)
   return r3_73
 end
 function r6_0.GetUIManagerShowStateInViewport(r0_74)
-  -- line: [1973, 1982] id: 74
+  -- line: [2007, 2016] id: 74
   local r1_74 = r0_74:GetUIObj("BattleMain")
   if r1_74 then
     if r1_74:IsInViewport() and r1_74:IsVisible() then
@@ -1683,11 +1709,11 @@ function r6_0.GetUIManagerShowStateInViewport(r0_74)
   end
 end
 function r6_0.IsInHUDShowMode(r0_75)
-  -- line: [1985, 1987] id: 75
+  -- line: [2019, 2021] id: 75
   return r0_75:GetUIManagerShowStateInViewport() == UIConst.GameUIShowState.HUD
 end
 function r6_0.ShowCommonPopupUI_Old(r0_76, r1_76, r2_76, r3_76, r4_76, r5_76, r6_76)
-  -- line: [1991, 2003] id: 76
+  -- line: [2025, 2037] id: 76
   return r0_76:ShowCommonPopupUI(r1_76, {
     LeftCallbackFunction = r4_76,
     LeftCallbackObj = r2_76,
@@ -1700,7 +1726,7 @@ function r6_0.ShowCommonPopupUI_Old(r0_76, r1_76, r2_76, r3_76, r4_76, r5_76, r6
   })
 end
 function r6_0.ShowDisconnectUIConfirm(r0_77, r1_77, r2_77, r3_77)
-  -- line: [2005, 2029] id: 77
+  -- line: [2039, 2063] id: 77
   local r4_77 = "NetDisConnectedDialog"
   if UIConst.AllUIConfig[r4_77] == nil then
     UIConst.AllUIConfig[r4_77] = r0_77:SetUIConfig(UIConst.LoadInConfig, r4_77, DataMgr.SystemUI[r4_77])
@@ -1712,7 +1738,7 @@ function r6_0.ShowDisconnectUIConfirm(r0_77, r1_77, r2_77, r3_77)
       r3_77 = {}
     end
     function r3_77.OnCloseCallbackFunction()
-      -- line: [2017, 2019] id: 78
+      -- line: [2051, 2053] id: 78
       EventManager:FireEvent(EventID.OnToggleDisconnectUI, false)
     end
     EventManager:FireEvent(EventID.OnToggleDisconnectUI, true)
@@ -1725,7 +1751,7 @@ function r6_0.ShowDisconnectUIConfirm(r0_77, r1_77, r2_77, r3_77)
   return r5_77
 end
 function r6_0.ShowCommonPopupUI(r0_79, r1_79, r2_79, r3_79, r4_79)
-  -- line: [2032, 2055] id: 79
+  -- line: [2066, 2089] id: 79
   local r5_79 = UE4.UGameplayStatics.GetGameInstance(r0_79)
   if not r5_79:CheckCanShowPopup() then
     r5_79:RequestShowPopup(r1_79, r2_79, r3_79)
@@ -1746,7 +1772,7 @@ function r6_0.ShowCommonPopupUI(r0_79, r1_79, r2_79, r3_79, r4_79)
   end
 end
 function r6_0.ShowCommonPopupUI_Interrupt(r0_80, r1_80, r2_80, r3_80)
-  -- line: [2059, 2067] id: 80
+  -- line: [2093, 2101] id: 80
   local r4_80 = r0_80:GetUI("CommonDialog")
   if not r4_80 then
     DebugPrint("Tianyi@ ShowCommonPopupUI_Interrupt 只能在通用弹窗显示出来的时候调用!")
@@ -1755,7 +1781,7 @@ function r6_0.ShowCommonPopupUI_Interrupt(r0_80, r1_80, r2_80, r3_80)
   r4_80:ShowPopupInterrupt(r1_80, r2_80, r3_80)
 end
 function r6_0.PreviewCommonPopupStyle(r0_81, r1_81)
-  -- line: [2070, 2080] id: 81
+  -- line: [2104, 2114] id: 81
   if not DataMgr.CommonPopupUIStyle[r1_81] then
     DebugPrint("TianyI@ PopupStyle is nil")
     return 
@@ -1765,14 +1791,14 @@ function r6_0.PreviewCommonPopupStyle(r0_81, r1_81)
   r3_81:UpdateView(r1_81)
 end
 function r6_0.GetGameInputModeSubsystem(r0_82)
-  -- line: [2083, 2088] id: 82
+  -- line: [2117, 2122] id: 82
   if not r0_82.GameInputModeSubsystem then
     r0_82.GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(GWorld.GameInstance)
   end
   return r0_82.GameInputModeSubsystem
 end
 function r6_0.ShowError(r0_83, r1_83, r2_83, r3_83, ...)
-  -- line: [2095, 2109] id: 83
+  -- line: [2129, 2143] id: 83
   if r3_83 == nil then
     r3_83 = UIConst.Tip_CommonTop
   end
@@ -1788,7 +1814,7 @@ function r6_0.ShowError(r0_83, r1_83, r2_83, r3_83, ...)
   end
 end
 function r6_0.ShowUITip(r0_84, r1_84, r2_84, r3_84, r4_84, r5_84)
-  -- line: [2117, 2228] id: 84
+  -- line: [2151, 2259] id: 84
   if not r5_84 then
     r5_84 = {}
   end
@@ -1801,7 +1827,7 @@ function r6_0.ShowUITip(r0_84, r1_84, r2_84, r3_84, r4_84, r5_84)
     if r6_84 == "table" then
       r6_84 = r5_84.TaskStateStr
       UE4.UUIStateAsyncActionBase.ShowQuestBeginEndTip(r0_84, r2_84[1], r6_84[1], r3_84).OnGuideEnd:Add(r0_84, function()
-        -- line: [2127, 2127] id: 85
+        -- line: [2161, 2161] id: 85
         UE4.UUIStateAsyncActionBase.ShowQuestBeginEndTip(r0_84, r2_84[2], r6_84[2], r3_84)
       end)
       -- close: r6_84
@@ -1816,7 +1842,7 @@ function r6_0.ShowUITip(r0_84, r1_84, r2_84, r3_84, r4_84, r5_84)
       r6_84 = r6_84[r1_84]
       if r6_84 then
         UE4.UUIStateAsyncActionBase.ShowQuestBeginEndTip(r0_84, r6_84.Content, r6_84.Extra.TaskStateStr, r3_84).OnGuideEnd:Add(r0_84, function()
-          -- line: [2136, 2136] id: 86
+          -- line: [2170, 2170] id: 86
           UE4.UUIStateAsyncActionBase.ShowQuestBeginEndTip(r0_84, r2_84, r5_84.TaskStateStr, r3_84)
         end)
         r0_84.WaitToTriggerTipsInfo[r1_84] = nil
@@ -1844,14 +1870,11 @@ function r6_0.ShowUITip(r0_84, r1_84, r2_84, r3_84, r4_84, r5_84)
         if r6_84 == nil then
           r6_84 = r0_84:LoadUINew("CommonTopToastList", r2_84, r3_84)
         elseif r6_84:IsHide() then
-          local r7_84 = TalkSubsystem()
-          if not r7_84 or not r7_84:IsGameUIHidden() then
-            r6_84:ClearAllHideTags()
-            r6_84:Show()
-          end
+          r6_84:ClearAllHideTags()
+          r6_84:Show()
         end
         RunAsyncTask(r0_84, r2_84 .. tostring(r6_84:AddAndUpdateCurrentUITips()), function(r0_87)
-          -- line: [2163, 2175] id: 87
+          -- line: [2194, 2206] id: 87
           local r1_87 = r0_84:CreateWidgetAsync(DataMgr.WidgetUI.CommonToastItem.UIName, r0_87)
           if r1_87 ~= nil then
             r1_87:SetNeedPaintDeferred(r0_84.IsMenuAnchorOpen and not r0_84:IsInHUDShowMode())
@@ -1869,7 +1892,7 @@ function r6_0.ShowUITip(r0_84, r1_84, r2_84, r3_84, r4_84, r5_84)
         r6_84 = r6_84.Tip_CommonWarning
         if r1_84 == r6_84 then
           function r6_84()
-            -- line: [2178, 2193] id: 88
+            -- line: [2209, 2224] id: 88
             if IsValid(r0_84.WarningToastUI) and not r0_84.WarningToastUI.IsClose then
               r0_84.WarningToastUI:Close()
             end
@@ -1943,7 +1966,7 @@ function r6_0.ShowUITip(r0_84, r1_84, r2_84, r3_84, r4_84, r5_84)
   end
 end
 function r6_0._ProcessCommonToastQueue(r0_89, r1_89, r2_89, r3_89, r4_89, r5_89)
-  -- line: [2231, 2242] id: 89
+  -- line: [2262, 2273] id: 89
   local r6_89, r7_89 = table.unpack(r0_89[r1_89]:Back())
   local r8_89 = nil	-- notice: implicit variable refs by block#[3]
   if r5_89 then
@@ -1957,7 +1980,7 @@ function r6_0._ProcessCommonToastQueue(r0_89, r1_89, r2_89, r3_89, r4_89, r5_89)
   end
   r0_89:LoadUINew(r4_89, r6_89, r7_89, r8_89)
   r0_89:AddTimer(r7_89 + 0.1, function()
-    -- line: [2235, 2241] id: 90
+    -- line: [2266, 2272] id: 90
     local r0_90 = r0_89:GetUI(r4_89)
     if IsValid(r0_90) then
       r0_90:Close()
@@ -1966,7 +1989,7 @@ function r6_0._ProcessCommonToastQueue(r0_89, r1_89, r2_89, r3_89, r4_89, r5_89)
   end, false, 0, r0_89[r3_89], true)
 end
 function r6_0._DoPopNextToastQueue(r0_91, r1_91, r2_91, r3_91, r4_91, r5_91)
-  -- line: [2245, 2256] id: 91
+  -- line: [2276, 2287] id: 91
   local r6_91 = table.unpack(r0_91[r1_91]:Back())
   r0_91[r1_91]:PopBack()
   if r0_91[r2_91] ~= nil then
@@ -1979,7 +2002,7 @@ function r6_0._DoPopNextToastQueue(r0_91, r1_91, r2_91, r3_91, r4_91, r5_91)
   end
 end
 function r6_0._BreakInTopToastInQueue(r0_92, r1_92, r2_92, r3_92, r4_92, r5_92)
-  -- line: [2259, 2266] id: 92
+  -- line: [2290, 2297] id: 92
   local r6_92 = r0_92:GetUI(r4_92)
   if r6_92 then
     r6_92:Close()
@@ -1988,13 +2011,13 @@ function r6_0._BreakInTopToastInQueue(r0_92, r1_92, r2_92, r3_92, r4_92, r5_92)
   r0_92:_DoPopNextToastQueue(r1_92, r2_92, r3_92, r4_92, r5_92)
 end
 function r6_0.ShowUITip_BattleCommonTop(r0_93, r1_93, r2_93, r3_93, r4_93, r5_93)
-  -- line: [2269, 2281] id: 93
+  -- line: [2300, 2312] id: 93
   if r1_93 == UIConst.Tip_CommonTop then
     if not r0_93[("BattleCommonTopInCD_" .. r2_93)] then
       r0_93:ShowUITip(r1_93, GText(r2_93), r3_93, r4_93, r5_93)
       r0_93["BattleCommonTopInCD_" .. r2_93] = true
       r0_93:AddTimer(Const.BattleTip_CommonTop_CD, function()
-        -- line: [2274, 2276] id: 94
+        -- line: [2305, 2307] id: 94
         r0_93["BattleCommonTopInCD_" .. r2_93] = false
       end, false, 0, r2_93, true)
     end
@@ -2002,13 +2025,13 @@ function r6_0.ShowUITip_BattleCommonTop(r0_93, r1_93, r2_93, r3_93, r4_93, r5_93
   end
 end
 function r6_0.HideWarningUITip(r0_95, r1_95)
-  -- line: [2285, 2289] id: 95
+  -- line: [2316, 2320] id: 95
   if r0_95.WarningToastUI and r0_95.WarningToastUI.MessageId == r1_95 then
     r0_95.WarningToastUI:PlayOutAnim()
   end
 end
 function r6_0.ShowCommonBlackScreen(r0_96, r1_96)
-  -- line: [2294, 2315] id: 96
+  -- line: [2325, 2346] id: 96
   local r2_96 = r1_96.BlackScreenHandle
   if r2_96 == nil then
     r0_96.CommonBlackScreenAutoCounter = (r0_96.CommonBlackScreenAutoCounter and 0) + 1
@@ -2027,7 +2050,7 @@ function r6_0.ShowCommonBlackScreen(r0_96, r1_96)
   return r2_96
 end
 function r6_0.RegisterBlackScreenInstance(r0_97, r1_97, r2_97)
-  -- line: [2318, 2324] id: 97
+  -- line: [2349, 2355] id: 97
   if r0_97.CommonBlackScreenInstances == nil then
     r0_97.CommonBlackScreenInstances = {}
   end
@@ -2035,7 +2058,7 @@ function r6_0.RegisterBlackScreenInstance(r0_97, r1_97, r2_97)
   DebugPrint("Common_BlackScreen: RegisterBlackScreenInstance", r1_97)
 end
 function r6_0.HideCommonBlackScreen(r0_98, r1_98)
-  -- line: [2327, 2336] id: 98
+  -- line: [2358, 2367] id: 98
   assert(r1_98, "HideCommonBlackScreen必须输入BlackScreenHandle！")
   if r0_98.CommonBlackScreenInstances == nil then
     r0_98.CommonBlackScreenInstances = {}
@@ -2046,7 +2069,7 @@ function r6_0.HideCommonBlackScreen(r0_98, r1_98)
   end
 end
 function r6_0.OnCommonBlackScreenClosed(r0_99, r1_99)
-  -- line: [2339, 2345] id: 99
+  -- line: [2370, 2376] id: 99
   if r0_99.CommonBlackScreenInstances == nil then
     r0_99.CommonBlackScreenInstances = {}
   end
@@ -2054,7 +2077,7 @@ function r6_0.OnCommonBlackScreenClosed(r0_99, r1_99)
   DebugPrint("Common_BlackScreen: OnCommonBlackScreenClosed", r1_99)
 end
 function r6_0.IsCommonBlackScreenExist(r0_100, r1_100)
-  -- line: [2348, 2354] id: 100
+  -- line: [2379, 2385] id: 100
   assert(r1_100, "IsCommonBlackScreenExist必须输入BlackScreenHandle！")
   if r0_100.CommonBlackScreenInstances == nil then
     r0_100.CommonBlackScreenInstances = {}
@@ -2062,7 +2085,7 @@ function r6_0.IsCommonBlackScreenExist(r0_100, r1_100)
   return IsValid(r0_100.CommonBlackScreenInstances[r1_100])
 end
 function r6_0.CloseCommonBlackScreenWithoutCB(r0_101, r1_101)
-  -- line: [2357, 2368] id: 101
+  -- line: [2388, 2399] id: 101
   assert(r1_101, "CloseCommonBlackScreenWithoutCB必须输入BlackScreenHandle！")
   if r0_101.CommonBlackScreenInstances == nil then
     r0_101.CommonBlackScreenInstances = {}
@@ -2075,34 +2098,34 @@ function r6_0.CloseCommonBlackScreenWithoutCB(r0_101, r1_101)
   end
 end
 function r6_0.IsHaveMenuAnchorOpen(r0_102)
-  -- line: [2373, 2375] id: 102
+  -- line: [2404, 2406] id: 102
   return r0_102.IsMenuAnchorOpen
 end
 function r6_0.SetIsMenuAnchorOpen(r0_103, r1_103)
-  -- line: [2378, 2380] id: 103
+  -- line: [2409, 2411] id: 103
   r0_103.IsMenuAnchorOpen = r1_103
 end
 function r6_0.ShowLevelUpToast(r0_104, r1_104, r2_104, r3_104)
-  -- line: [2386, 2389] id: 104
+  -- line: [2417, 2420] id: 104
   r0_104:CacheLevelUpInfo(r1_104, r2_104, r3_104)
   local r4_104 = r0_104:LoadUIAsync("CharLevelUp", function()
-    -- line: [2388, 2388] id: 105
+    -- line: [2419, 2419] id: 105
   end, false)
 end
 function r6_0.ShowPlayerLevelUpToast(r0_106, r1_106)
-  -- line: [2391, 2397] id: 106
+  -- line: [2422, 2428] id: 106
   if r1_106 then
     r0_106:LoadUIAsync("CharLevelUp_System", function()
-      -- line: [2393, 2393] id: 107
+      -- line: [2424, 2424] id: 107
     end, true)
   else
     r0_106:LoadUIAsync("CharLevelUp", function()
-      -- line: [2395, 2395] id: 108
+      -- line: [2426, 2426] id: 108
     end, true)
   end
 end
 function r6_0.CacheLevelUpInfo(r0_109, r1_109, r2_109, r3_109)
-  -- line: [2400, 2411] id: 109
+  -- line: [2431, 2442] id: 109
   local r4_109 = UE4.UGameplayStatics.GetGameInstance(r0_109)
   if r4_109.LevelUpToastQueue == nil then
     r4_109.LevelUpToastQueue = {
@@ -2119,9 +2142,10 @@ function r6_0.CacheLevelUpInfo(r0_109, r1_109, r2_109, r3_109)
   }
 end
 function r6_0.TryShowPlayerLevelUpInfo(r0_110, r1_110)
-  -- line: [2414, 2455] id: 110
+  -- line: [2445, 2490] id: 110
   local r2_110 = GWorld:GetAvatar()
   local r3_110 = UE4.UGameplayStatics.GetGameInstance(r0_110)
+  local r4_110 = UE4.UGameplayStatics.GetGameState(r0_110)
   if not r2_110 then
     return 
   end
@@ -2132,20 +2156,23 @@ function r6_0.TryShowPlayerLevelUpInfo(r0_110, r1_110)
   if r2_110:IsInDungeon() and r1_110.ShowProgressBar then
     return 
   end
+  if r4_110 and (r4_110.GameModeType == "Temple" or r4_110.GameModeType == "Party") then
+    return 
+  end
   if not r0_110:IsInHUDShowMode() then
-    local r4_110 = DataMgr.SystemUI.CharLevelUp_System.Params.SupportUIName
-    if r4_110 then
-      for r9_110, r10_110 in ipairs(r4_110) do
-        if r0_110:GetUI(r10_110) then
+    local r5_110 = DataMgr.SystemUI.CharLevelUp_System.Params.SupportUIName
+    if r5_110 then
+      for r10_110, r11_110 in ipairs(r5_110) do
+        if r0_110:GetUI(r11_110) then
           r0_110:ShowPlayerLevelUpToast(true)
           return 
         end
       end
-      -- close: r5_110
+      -- close: r6_110
     end
     if not r0_110.WaitToShowPlayerLevelUpTimerHandle then
       r0_110.WaitToShowPlayerLevelUpTimerHandle = r0_110:AddTimer(1, function()
-        -- line: [2440, 2448] id: 111
+        -- line: [2475, 2483] id: 111
         if r0_110:IsInHUDShowMode() then
           r0_110:ShowPlayerLevelUpToast()
           if r0_110.WaitToShowPlayerLevelUpTimerHandle then
@@ -2160,7 +2187,7 @@ function r6_0.TryShowPlayerLevelUpInfo(r0_110, r1_110)
   r0_110:ShowPlayerLevelUpToast()
 end
 function r6_0.CreateOrGetArmoryPlayerActor(r0_112, r1_112, r2_112)
-  -- line: [2461, 2493] id: 112
+  -- line: [2496, 2528] id: 112
   local r3_112 = false
   if not r0_112.ArmoryPlayer or not r0_112.ArmoryPlayer:IsValid() then
     local r4_112 = UE4.UGameplayStatics.GetPlayerCharacter(r0_112, 0)
@@ -2194,14 +2221,14 @@ function r6_0.CreateOrGetArmoryPlayerActor(r0_112, r1_112, r2_112)
   return r0_112.ArmoryPlayer, r3_112
 end
 function r6_0.CreateShowWeapon(r0_113, r1_113, r2_113, r3_113)
-  -- line: [2496, 2519] id: 113
+  -- line: [2531, 2554] id: 113
   r0_113.ShowWeaponOwners = r0_113.ShowWeaponOwners and {}
   r0_113.ShowWeaponOwners[r1_113] = r2_113
   if r0_113.ShowWeapon then
     r0_113.ShowWeapon:SetActorHideTag("CreateShowWeapon", true)
   end
   UE4.UGameplayStatics.GetPlayerCharacter(r0_113, 0):SpawnShowWeaponAsync(r2_113.WeaponId, r2_113.Transform, r2_113.ReplaceAttrs, r2_113.SkillInfos, r2_113.AppearanceInfo, r2_113.WeaponInfo, function(r0_114)
-    -- line: [2505, 2518] id: 114
+    -- line: [2540, 2553] id: 114
     r0_113:ForceDestroyShowWeapon()
     r0_113.ShowWeapon = r0_114
     if not r0_113.ShowWeaponOwners[r1_113] then
@@ -2217,7 +2244,7 @@ function r6_0.CreateShowWeapon(r0_113, r1_113, r2_113, r3_113)
   end)
 end
 function r6_0.DestroyShowWeapon(r0_115, r1_115)
-  -- line: [2521, 2531] id: 115
+  -- line: [2556, 2566] id: 115
   r0_115.ShowWeaponOwners = r0_115.ShowWeaponOwners and {}
   if r1_115 then
     r0_115.ShowWeaponOwners[r1_115] = nil
@@ -2228,7 +2255,7 @@ function r6_0.DestroyShowWeapon(r0_115, r1_115)
   r0_115:ForceDestroyShowWeapon()
 end
 function r6_0.ForceDestroyShowWeapon(r0_116)
-  -- line: [2534, 2542] id: 116
+  -- line: [2569, 2577] id: 116
   if IsValid(r0_116.ShowWeapon) then
     if r0_116.ShowWeapon.ChildWeapon then
       r0_116.ShowWeapon.ChildWeapon:K2_DestroyActor()
@@ -2238,7 +2265,7 @@ function r6_0.ForceDestroyShowWeapon(r0_116)
   end
 end
 function r6_0.CreateAndGetUINpcActor(r0_117, r1_117)
-  -- line: [2547, 2634] id: 117
+  -- line: [2582, 2669] id: 117
   local r2_117 = r0_117.AllUINpcActor[r1_117]
   if r2_117 ~= nil and IsValid(r2_117) and r2_117.NpcId == r1_117 then
     if r2_117.IsInOutAnim then
@@ -2274,7 +2301,7 @@ function r6_0.CreateAndGetUINpcActor(r0_117, r1_117)
   r8_117.Rotation = r14_117:ToQuat()
   r2_117 = r0_117:GetWorld():SpawnActor(LoadClass(r3_117.BPPath), r8_117, UE4.ESpawnActorCollisionHandlingMethod.AdjustIfPossibleButAlwaysSpawn, r6_117, r6_117, nil)
   local function r15_117(r0_118)
-    -- line: [2585, 2598] id: 118
+    -- line: [2620, 2633] id: 118
     local r1_118 = r0_118.CapsuleComponent:GetUnscaledCapsuleRadius()
     local r2_118 = r0_118.CapsuleComponent:K2_GetComponentLocation()
     local r3_118 = r0_118.CapsuleComponent:K2_GetComponentLocation()
@@ -2316,17 +2343,17 @@ function r6_0.CreateAndGetUINpcActor(r0_117, r1_117)
   return r2_117
 end
 function r6_0.GetUINpcActor(r0_119, r1_119)
-  -- line: [2639, 2641] id: 119
+  -- line: [2674, 2676] id: 119
   return r0_119.AllUINpcActor[r1_119]
 end
 function r6_0.HideOrShowPlayerFX(r0_120, r1_120, r2_120, r3_120)
-  -- line: [2647, 2652] id: 120
+  -- line: [2682, 2687] id: 120
   if r1_120 and r1_120.Mesh then
     URuntimeCommonFunctionLibrary.SetSceneComponentHiddenInGame(r1_120.Mesh, r2_120, true, r3_120, TArray(USceneComponent))
   end
 end
 function r6_0.HideOrShowOtherUINpcActor(r0_121, r1_121, r2_121, r3_121)
-  -- line: [2658, 2672] id: 121
+  -- line: [2693, 2707] id: 121
   for r8_121, r9_121 in pairs(r0_121.AllUINpcActor) do
     if r8_121 ~= r3_121 then
       if r9_121.SetActorHideTag then
@@ -2343,7 +2370,7 @@ function r6_0.HideOrShowOtherUINpcActor(r0_121, r1_121, r2_121, r3_121)
   end
 end
 function r6_0.HideNpcActor(r0_122, r1_122, r2_122, r3_122)
-  -- line: [2678, 2688] id: 122
+  -- line: [2713, 2723] id: 122
   for r8_122, r9_122 in pairs(r0_122.AllUINpcActor) do
     if r8_122 ~= r3_122 then
       if r9_122.SetActorHideTag then
@@ -2356,7 +2383,7 @@ function r6_0.HideNpcActor(r0_122, r1_122, r2_122, r3_122)
   -- close: r4_122
 end
 function r6_0.HideNpcById(r0_123, r1_123, r2_123, r3_123)
-  -- line: [2694, 2706] id: 123
+  -- line: [2729, 2742] id: 123
   local r4_123 = r0_123.AllUINpcActor and r0_123.AllUINpcActor[r1_123]
   if not r4_123 then
     DebugPrint("HideNpcById  找不到npc")
@@ -2369,18 +2396,18 @@ function r6_0.HideNpcById(r0_123, r1_123, r2_123, r3_123)
   end
 end
 function r6_0.CreateUIActorCameraHelper(r0_124, r1_124)
-  -- line: [2711, 2717] id: 124
+  -- line: [2748, 2754] id: 124
   local r2_124 = r0_124:GetWorld():SpawnActor(LoadClass("/Game/BluePrints/Char/BP_PlayerCharacterArmoryHelper.BP_PlayerCharacterArmoryHelper_C"), r1_124:GetTransform(), UE4.ESpawnActorCollisionHandlingMethod.Default)
   r2_124:K2_AttachToActor(r1_124, "Root", UE4.EAttachmentRule.KeepWorld, UE4.EAttachmentRule.KeepWorld, UE4.EAttachmentRule.KeepWorld, true)
   r2_124:K2_AddActorLocalOffset(FVector(0, 0, 0), false, nil, false)
   return r2_124
 end
 function r6_0.GetUIActorCameraHelper(r0_125, r1_125)
-  -- line: [2722, 2724] id: 125
+  -- line: [2759, 2761] id: 125
   return r0_125.AllUIActorCameraHelper[r1_125]
 end
 function r6_0.PlayUINpcAnimation(r0_126, r1_126, r2_126, r3_126, r4_126)
-  -- line: [2731, 2843] id: 126
+  -- line: [2768, 2881] id: 126
   local r5_126 = r0_126:GetUINpcActor(r3_126)
   local r6_126 = DataMgr.SpawnNPC[r3_126]
   if r5_126 == nil or r6_126 == nil then
@@ -2392,29 +2419,30 @@ function r6_0.PlayUINpcAnimation(r0_126, r1_126, r2_126, r3_126, r4_126)
   if r1_126 then
     r9_126 = r4_126.OnInActionFinished
     if r5_126.IsNeedSetPos then
-      local r10_126 = r6_126.SpawnRadius
-      local r11_126 = r6_126.SpawnAngle
-      local r12_126 = Player:GetActorForwardVector()
-      r12_126:Normalize()
-      local r13_126 = Player:GetTransform()
-      local r14_126 = UE4.UKismetMathLibrary.RotateAngleAxis(r12_126, r11_126, Player:GetActorUpVector())
-      r13_126.Translation.X = r13_126.Translation.X + r10_126 * r14_126.X
-      r13_126.Translation.Y = r13_126.Translation.Y + r10_126 * r14_126.Y
-      local r18_126 = UE4.UKismetSystemLibrary.LineTraceSingle(r0_126, r13_126.Translation, r13_126.Translation + UE4.UKismetMathLibrary.RotateAngleAxis(r12_126, 180, Player:GetActorUpVector()) * r6_126.DetectionDiatance, ETraceTypeQuery.TraceExceptChar, false, nil, 0, FHitResult(), true)
-      local r19_126 = r13_126.Rotation:ToRotator()
-      if r18_126 then
-        r19_126.Roll = 0
-        r19_126.Yaw = r19_126.Yaw + -90
-        r19_126.Pitch = 0
+      local r10_126 = UE4.UGameplayStatics.GetPlayerCharacter(r0_126, 0)
+      local r11_126 = r6_126.SpawnRadius
+      local r12_126 = r6_126.SpawnAngle
+      local r13_126 = r10_126:GetActorForwardVector()
+      r13_126:Normalize()
+      local r14_126 = r10_126:GetTransform()
+      local r15_126 = UE4.UKismetMathLibrary.RotateAngleAxis(r13_126, r12_126, r10_126:GetActorUpVector())
+      r14_126.Translation.X = r14_126.Translation.X + r11_126 * r15_126.X
+      r14_126.Translation.Y = r14_126.Translation.Y + r11_126 * r15_126.Y
+      local r19_126 = UE4.UKismetSystemLibrary.LineTraceSingle(r0_126, r14_126.Translation, r14_126.Translation + UE4.UKismetMathLibrary.RotateAngleAxis(r13_126, 180, r10_126:GetActorUpVector()) * r6_126.DetectionDiatance, ETraceTypeQuery.TraceExceptChar, false, nil, 0, FHitResult(), true)
+      local r20_126 = r14_126.Rotation:ToRotator()
+      if r19_126 then
+        r20_126.Roll = 0
+        r20_126.Yaw = r20_126.Yaw + -90
+        r20_126.Pitch = 0
       else
-        r19_126.Roll = 0
-        r19_126.Yaw = r19_126.Yaw + 90
-        r19_126.Pitch = 0
+        r20_126.Roll = 0
+        r20_126.Yaw = r20_126.Yaw + 90
+        r20_126.Pitch = 0
       end
-      r13_126.Rotation = r19_126:ToQuat()
-      r5_126:K2_SetActorTransform(r13_126, false, nil, false)
-      local function r20_126(r0_127)
-        -- line: [2763, 2776] id: 127
+      r14_126.Rotation = r20_126:ToQuat()
+      r5_126:K2_SetActorTransform(r14_126, false, nil, false)
+      local function r21_126(r0_127)
+        -- line: [2801, 2814] id: 127
         local r1_127 = r0_127.CapsuleComponent:GetUnscaledCapsuleRadius()
         local r2_127 = r0_127.CapsuleComponent:K2_GetComponentLocation()
         local r3_127 = r0_127.CapsuleComponent:K2_GetComponentLocation()
@@ -2427,24 +2455,24 @@ function r6_0.PlayUINpcAnimation(r0_126, r1_126, r2_126, r3_126, r4_126)
           return nil
         end
       end
-      local r21_126 = r20_126(r5_126)
-      if r21_126 ~= nil then
-        r13_126.Translation.X = r21_126.X
-        r13_126.Translation.Y = r21_126.Y
-        r13_126.Translation.Z = r21_126.Z + r5_126.CapsuleComponent:GetUnscaledCapsuleHalfHeight()
-        r5_126:K2_SetActorTransform(r13_126, false, nil, false)
-        if r20_126(r5_126) ~= nil then
-          local r24_126 = UE.UNavigationFunctionLibrary.ProjectPointToNavigation(r13_126.Translation, r5_126)
-          r13_126.Translation.X = r24_126.X
-          r13_126.Translation.Y = r24_126.Y
-          r13_126.Translation.Z = r24_126.Z + r5_126.CapsuleComponent:GetUnscaledCapsuleHalfHeight()
-          r5_126:K2_SetActorTransform(r13_126, false, nil, false)
+      local r22_126 = r21_126(r5_126)
+      if r22_126 ~= nil then
+        r14_126.Translation.X = r22_126.X
+        r14_126.Translation.Y = r22_126.Y
+        r14_126.Translation.Z = r22_126.Z + r5_126.CapsuleComponent:GetUnscaledCapsuleHalfHeight()
+        r5_126:K2_SetActorTransform(r14_126, false, nil, false)
+        if r21_126(r5_126) ~= nil then
+          local r25_126 = UE.UNavigationFunctionLibrary.ProjectPointToNavigation(r14_126.Translation, r5_126)
+          r14_126.Translation.X = r25_126.X
+          r14_126.Translation.Y = r25_126.Y
+          r14_126.Translation.Z = r25_126.Z + r5_126.CapsuleComponent:GetUnscaledCapsuleHalfHeight()
+          r5_126:K2_SetActorTransform(r14_126, false, nil, false)
         end
       end
     end
     r0_126:HideOrShowOtherUINpcActor(true, r2_126, r3_126)
     local function r10_126()
-      -- line: [2797, 2802] id: 128
+      -- line: [2835, 2840] id: 128
       r5_126:SetCharacterTag("Interactive")
       if r9_126 then
         r9_126()
@@ -2468,7 +2496,7 @@ function r6_0.PlayUINpcAnimation(r0_126, r1_126, r2_126, r3_126, r4_126)
     r9_126 = r0_126.AllUIActorCameraHelper
     r9_126 = r9_126[r3_126]
     local function r10_126()
-      -- line: [2813, 2834] id: 129
+      -- line: [2851, 2872] id: 129
       if r7_126 and IsValid(r5_126) then
         r5_126:DestroyActorTemp()
         r0_126.AllUINpcActor[r3_126] = nil
@@ -2501,7 +2529,7 @@ function r6_0.PlayUINpcAnimation(r0_126, r1_126, r2_126, r3_126, r4_126)
   end
 end
 function r6_0.SwitchUINpcCamera(r0_130, r1_130, r2_130, r3_130, r4_130)
-  -- line: [2849, 2933] id: 130
+  -- line: [2887, 2973] id: 130
   local r5_130 = DataMgr.SpawnNPC[r3_130]
   local r6_130 = nil
   if r5_130 == nil then
@@ -2569,7 +2597,7 @@ function r6_0.SwitchUINpcCamera(r0_130, r1_130, r2_130, r3_130, r4_130)
     r0_130:PlayUINpcAnimation(false, r2_130, r3_130, r4_130)
     if r8_130 ~= nil then
       r11_130:RecorverCamera(r0_130, function()
-        -- line: [2924, 2929] id: 131
+        -- line: [2964, 2969] id: 131
         local r0_131 = r0_130:GetUIObj(r2_130)
         if r0_131 and r0_131.OnRecorverCameraEnd then
           r0_131:OnRecorverCameraEnd()
@@ -2580,7 +2608,7 @@ function r6_0.SwitchUINpcCamera(r0_130, r1_130, r2_130, r3_130, r4_130)
 end
 local r9_0 = {}
 function r6_0.SwitchFixedCamera(r0_132, r1_132, r2_132, r3_132, r4_132, r5_132, r6_132)
-  -- line: [2942, 3047] id: 132
+  -- line: [2982, 3087] id: 132
   if r2_132 == nil then
     ScreenPrint("SwitchFixedCamera:跳转镜头失败NpcId为空")
     DebugPrint("SwitchFixedCamera Failed NpcId is nil ")
@@ -2596,7 +2624,7 @@ function r6_0.SwitchFixedCamera(r0_132, r1_132, r2_132, r3_132, r4_132, r5_132, 
     return 
   end
   local function r11_132()
-    -- line: [2957, 2963] id: 133
+    -- line: [2997, 3003] id: 133
     if r5_132 then
       r0_132:SwitchUINpcCamera(r1_132, r5_132, r2_132, r6_132)
     else
@@ -2614,7 +2642,7 @@ function r6_0.SwitchFixedCamera(r0_132, r1_132, r2_132, r3_132, r4_132, r5_132, 
     return 
   end
   local function r14_132()
-    -- line: [2985, 3010] id: 134
+    -- line: [3025, 3050] id: 134
     if r9_0[r12_132] and IsValid(r9_0[r12_132].actor) then
       return r9_0[r12_132].actor
     end
@@ -2654,8 +2682,8 @@ function r6_0.SwitchFixedCamera(r0_132, r1_132, r2_132, r3_132, r4_132, r5_132, 
       ULTweenBPLibrary.KillIfIsTweening(r4_132, r4_132.CameraHandle)
     end
     local r16_132 = rawget(r4_132, "OriginalViewTarget")
-    if IsValid() then
-      r7_132:SetViewTargetWithBlend(r4_132.OriginalViewTarget, 0, UE4.EViewTargetBlendFunction.VTBlend_Linear, 0, false)
+    if IsValid(r16_132) then
+      r7_132:SetViewTargetWithBlend(r16_132, 0, UE4.EViewTargetBlendFunction.VTBlend_Linear, 0, false)
     else
       DebugPrint("SwitchFixedCamera:UIState的OriginalViewTarget为空  " .. (r5_132 and "UIName为空"))
       r4_132:GetOwningPlayer():SetViewTargetWithBlend(r8_132, 0, UE4.EViewTargetBlendFunction.VTBlend_Linear, 0, false)
@@ -2666,17 +2694,17 @@ function r6_0.SwitchFixedCamera(r0_132, r1_132, r2_132, r3_132, r4_132, r5_132, 
   end
 end
 function r6_0.MoveFixedCamera(r0_135, r1_135)
-  -- line: [3051, 3057] id: 135
+  -- line: [3091, 3097] id: 135
   r0_135.CameraHandle = ULTweenBPLibrary.Vector3To(r0_135, {
     r0_135,
     function(r0_136, r1_136)
-      -- line: [3054, 3056] id: 136
+      -- line: [3094, 3096] id: 136
       r1_135:K2_SetRelativeLocation(r1_136, false, nil, false)
     end
   }, r1_135.RelativeLocation, FVector(0), 0.5, 0, 17)
 end
 function r6_0.SetCameraParamWithConfigData(r0_137, r1_137, r2_137)
-  -- line: [3064, 3094] id: 137
+  -- line: [3104, 3136] id: 137
   local r3_137 = nil
   local r4_137 = nil
   local r5_137 = nil
@@ -2685,7 +2713,7 @@ function r6_0.SetCameraParamWithConfigData(r0_137, r1_137, r2_137)
     r3_137 = r2_137.CameraPositionStartM
     r4_137 = r2_137.CameraRotationStartM
     r5_137 = r2_137.CameraPositionM
-    r6_137 = r0_137:CalculatorCameraRotationbyResolution(r2_137, r2_137.CameraRotationM)
+    r6_137 = r0_137:CalculatorCameraRotationbyResolution(r2_137, r2_137.CameraRotationM, true)
   else
     r3_137 = r2_137.CameraPositionStart
     r4_137 = r2_137.CameraRotationStart
@@ -2698,53 +2726,67 @@ function r6_0.SetCameraParamWithConfigData(r0_137, r1_137, r2_137)
   if r2_137.CameraFov then
     r1_137:StartFOVAnim(r2_137.CameraFov, r2_137.CameraTime, 14)
   end
+  DebugPrint("小白镜头 相机位置" .. r5_137[1] .. "," .. r5_137[2] .. "," .. r5_137[3])
+  DebugPrint("小白镜头 相机旋转" .. r6_137[1] .. "," .. r6_137[2] .. "," .. r6_137[3])
   r1_137:TransformCamera(FVector(r5_137[1], r5_137[2], r5_137[3]), FRotator(r6_137[1], r6_137[2], r6_137[3]), r2_137.CameraTime, 17, r8_137, r9_137)
 end
-function r6_0.CalculatorCameraRotationbyResolution(r0_138, r1_138, r2_138)
-  -- line: [3098, 3132] id: 138
-  local r3_138 = r1_138.CameraRotation2
-  if r3_138 == nil then
+function r6_0.CalculatorCameraRotationbyResolution(r0_138, r1_138, r2_138, r3_138)
+  -- line: [3140, 3177] id: 138
+  local r4_138 = nil	-- notice: implicit variable refs by block#[3, 5, 6, 7, 8, 10, 28]
+  if r3_138 then
+    r4_138 = r1_138.CameraRotationDeltaM
+    if not r4_138 then
+      ::label_5::
+      r4_138 = r1_138.CameraRotationDelta
+    end
+  else
+    goto label_5	-- block#2 is visited secondly
+  end
+  if r4_138 == nil then
     return r2_138
   end
-  if type(r3_138) ~= "table" or not r3_138[1] or not r3_138[2] or not r3_138[3] then
+  if type(r4_138) ~= "table" or not r4_138[1] or not r4_138[2] or not r4_138[3] then
     ScreenPrint("SpawnNpc表中的CameraRotationDelta数据有误，没找到对应的3个坐标")
     return r2_138
   end
-  local r4_138 = {
-    r2_138[1] + r3_138[1],
-    r2_138[2] + r3_138[2],
-    r2_138[3] + r3_138[3]
+  local r5_138 = {
+    r2_138[1] + r4_138[1],
+    r2_138[2] + r4_138[2],
+    r2_138[3] + r4_138[3]
   }
-  local r5_138 = UWidgetLayoutLibrary.GetViewportSize(r0_138) / UWidgetLayoutLibrary.GetViewportScale(r0_138)
-  local r6_138 = r5_138.X
-  local r7_138 = r5_138.Y
-  local r8_138 = r6_138 / r7_138
-  local r9_138 = 2.5555555555555554
-  local r10_138 = 1.7777777777777777
-  local r12_138 = math.clamp((r8_138 - r10_138) / (r9_138 - r10_138), (1.3333333333333333 - r10_138) / (r9_138 - r10_138), 1)
-  local r15_138 = {}
-  local r16_138 = math.lerp
-  local r17_138 = r2_138[1] and 0
-  r16_138 = r16_138(r17_138, r4_138[1] and 0, r12_138) and 0
-  r17_138 = math.lerp
-  local r18_138 = r2_138[2] and 0
-  r17_138 = r17_138(r18_138, r4_138[2] and 0, r12_138) and 0
+  local r6_138 = UWidgetLayoutLibrary.GetViewportSize(r0_138) / UWidgetLayoutLibrary.GetViewportScale(r0_138)
+  local r7_138 = r6_138.X
+  local r8_138 = r6_138.Y
+  local r9_138 = r7_138 / r8_138
+  local r10_138 = 2.5555555555555554
+  local r11_138 = 1.7777777777777777
+  local r13_138 = math.clamp((r9_138 - r11_138) / (r10_138 - r11_138), (1.3333333333333333 - r11_138) / (r10_138 - r11_138), 1)
+  local r16_138 = {}
+  local r17_138 = math.lerp
+  local r18_138 = r2_138[1] and 0
+  r17_138 = r17_138(r18_138, r5_138[1] and 0, r13_138) and 0
   r18_138 = math.lerp
-  local r19_138 = r2_138[3] and 0
-  r18_138 = r18_138(r19_138, r4_138[3] and 0, r12_138) and 0
-  -- setlist for #15 failed
-  r16_138 = DebugPrint
-  r17_138 = "yklua CalculatorCameraRotationbyResolution Aspectratio:"
-  r18_138 = r8_138 and "nil"
-  r19_138 = " Alalpha:"
-  local r20_138 = r12_138 and "nil"
-  local r21_138 = "resolution X:"
-  local r22_138 = r6_138 and "nil"
-  r16_138(r17_138 .. r18_138 .. r19_138 .. r20_138 .. r21_138 .. r22_138 .. " Y:" .. (r7_138 and "nil"))
-  return r15_138
+  local r19_138 = r2_138[2] and 0
+  r18_138 = r18_138(r19_138, r5_138[2] and 0, r13_138) and 0
+  r19_138 = math.lerp
+  local r20_138 = r2_138[3] and 0
+  r19_138 = r19_138(r20_138, r5_138[3] and 0, r13_138) and 0
+  -- setlist for #16 failed
+  DebugPrint("小白镜头 相机旋转" .. r2_138[1] .. "," .. r2_138[2] .. "," .. r2_138[3])
+  DebugPrint("小白镜头 相机旋转偏移" .. r4_138[1] .. "," .. r4_138[2] .. "," .. r4_138[3])
+  DebugPrint("小白镜头 相机旋转最终" .. r16_138[1] .. "," .. r16_138[2] .. "," .. r16_138[3])
+  r17_138 = DebugPrint
+  r18_138 = "小白镜头 屏幕参数 Aspectratio:"
+  r19_138 = r9_138 and "nil"
+  r20_138 = " Alalpha:"
+  local r21_138 = r13_138 and "nil"
+  local r22_138 = "resolution X:"
+  local r23_138 = r7_138 and "nil"
+  r17_138(r18_138 .. r19_138 .. r20_138 .. r21_138 .. r22_138 .. r23_138 .. " Y:" .. (r8_138 and "nil"))
+  return r16_138
 end
 function r6_0.TweenToMoveCamera(r0_139, r1_139, r2_139)
-  -- line: [3137, 3149] id: 139
+  -- line: [3182, 3194] id: 139
   if not IsValid(r1_139) then
     return 
   end
@@ -2754,13 +2796,13 @@ function r6_0.TweenToMoveCamera(r0_139, r1_139, r2_139)
   r0_139.UINpcCameraHandle = ULTweenBPLibrary.Vector3To(r0_139, {
     r0_139,
     function(r0_140, r1_140)
-      -- line: [3145, 3147] id: 140
+      -- line: [3190, 3192] id: 140
       r1_139:K2_SetRelativeLocation(r1_140, false, nil, false)
     end
   }, r1_139.RelativeLocation, r2_139, 0.5, 0, 17)
 end
 function r6_0.SetTargetActorState(r0_141, r1_141, r2_141, r3_141, r4_141)
-  -- line: [3156, 3176] id: 141
+  -- line: [3201, 3221] id: 141
   if IsValid(r2_141) and not r4_141 then
     r5_0:SetActorTickableWhenPaused(r2_141, r1_141)
     if r2_141.MeleeWeapon then
@@ -2782,7 +2824,7 @@ function r6_0.SetTargetActorState(r0_141, r1_141, r2_141, r3_141, r4_141)
   end
 end
 function r6_0.RegisterBattleShortCutHudKey(r0_142, r1_142)
-  -- line: [3179, 3185] id: 142
+  -- line: [3224, 3230] id: 142
   DebugPrint("RegisterBattleShortCutHudKey:" .. tostring(r1_142))
   if r1_142 == nil then
     return 
@@ -2790,7 +2832,7 @@ function r6_0.RegisterBattleShortCutHudKey(r0_142, r1_142)
   r0_142.ShortCutHudKeys[r1_142] = true
 end
 function r6_0.UnRegisterBattleShortCutHudKey(r0_143, r1_143)
-  -- line: [3188, 3194] id: 143
+  -- line: [3233, 3239] id: 143
   DebugPrint("UnRegisterBattleShortCutHudKey:" .. tostring(r1_143))
   if r1_143 == nil then
     return 
@@ -2798,7 +2840,7 @@ function r6_0.UnRegisterBattleShortCutHudKey(r0_143, r1_143)
   r0_143.ShortCutHudKeys[r1_143] = nil
 end
 function r6_0.SetBattleShortCutHudKeysHidden(r0_144, r1_144)
-  -- line: [3197, 3211] id: 144
+  -- line: [3242, 3256] id: 144
   if r1_144 then
     for r6_144, r7_144 in pairs(r0_144.ShortCutHudKeys) do
       if IsValid(r6_144) then
@@ -2815,144 +2857,147 @@ function r6_0.SetBattleShortCutHudKeysHidden(r0_144, r1_144)
     -- close: r2_144
   end
 end
-function r6_0.HideAllComponentUI(r0_145, r1_145, r2_145, r3_145)
-  -- line: [3217, 3260] id: 145
-  if r3_145 == "Billboard" or r3_145 == nil then
-    DebugPrint("BP_UIManagerComponent_C:HideAllComponentUI SetIsForbidenShowBloodUI", r1_145, r2_145)
-    UE4.UMainBar.SetIsForbidenShowBloodUI(r1_145)
-  end
-  for r8_145, r9_145 in pairs(r0_145.WidgetComponentList) do
-    for r14_145, r15_145 in pairs(r9_145) do
-      if (not r3_145 or r3_145 == "" or r3_145 == r14_145) and IsValid(r15_145) then
-        local r16_145 = r15_145:GetWidget()
-        if r14_145 ~= "Billboard" or r1_145 or not r16_145 then
-          if type(r15_145.SetWidgetHiddenByTag) == "function" then
-            r15_145:SetWidgetHiddenByTag(r1_145, r2_145)
-          elseif r16_145 then
+function r6_0.PrivateHideAllComponentUI(r0_145, r1_145, r2_145, r3_145, r4_145)
+  -- line: [3258, 3292] id: 145
+  for r9_145, r10_145 in pairs(r4_145) do
+    for r15_145, r16_145 in pairs(r10_145) do
+      if (not r3_145 or r3_145 == "" or r3_145 == r15_145) and IsValid(r16_145) then
+        local r17_145 = r16_145:GetWidget()
+        if r15_145 ~= "Billboard" or r1_145 or not r17_145 then
+          if type(r16_145.SetWidgetHiddenByTag) == "function" then
+            r16_145:SetWidgetHiddenByTag(r1_145, r2_145)
+          elseif r17_145 then
             if r1_145 then
-              r16_145:Hide(r2_145)
+              r17_145:Hide(r2_145)
             else
-              r16_145:Show(r2_145)
+              r17_145:Show(r2_145)
             end
           end
         end
       end
     end
-    -- close: r10_145
+    -- close: r11_145
   end
-  -- close: r4_145
-  EventManager:FireEvent(EventID.OnHideAllComponentUI, r1_145, r2_145)
-  -- warn: not visited block [15]
-  -- block#15:
-  -- goto label_74
+  -- close: r5_145
+  -- warn: not visited block [12]
+  -- block#12:
+  -- goto label_60
 end
-function r6_0.PlayScreenEffectAnim(r0_146, r1_146, r2_146, r3_146)
-  -- line: [3266, 3290] id: 146
-  local r4_146 = r0_146:LoadUI(r1_146, r2_146, UIConst.ZORDER_SCREEN_EFFECT)
-  if r4_146 == nil then
+function r6_0.HideAllComponentUI(r0_146, r1_146, r2_146, r3_146)
+  -- line: [3298, 3321] id: 146
+  if r3_146 == "Billboard" or r3_146 == nil then
+    DebugPrint("BP_UIManagerComponent_C:HideAllComponentUI SetIsForbidenShowBloodUI", r1_146, r2_146)
+    UE4.UMainBar.SetIsForbidenShowBloodUI(r1_146)
+  end
+  r0_146:PrivateHideAllComponentUI(r1_146, r2_146, r3_146, r0_146.WidgetComponentList)
+  r0_146.HideWidgetComponentTags = r0_146.HideWidgetComponentTags and {}
+  if r3_146 == nil or r3_146 == "" then
+    r3_146 = ""
+  end
+  local r5_146 = r0_146.HideWidgetComponentTags[r2_146] and {}
+  r0_146.HideWidgetComponentTags[r2_146] = r5_146
+  if r1_146 then
+    r5_146[r3_146] = true
+  else
+    r5_146[r3_146] = nil
+  end
+  EventManager:FireEvent(EventID.OnHideAllComponentUI, r1_146, r2_146)
+end
+function r6_0.PlayScreenEffectAnim(r0_147, r1_147, r2_147, r3_147)
+  -- line: [3327, 3351] id: 147
+  local r4_147 = r0_147:LoadUI(r1_147, r2_147, UIConst.ZORDER_SCREEN_EFFECT)
+  if r4_147 == nil then
     return 
   end
-  r4_146:Show()
-  if #r3_146 > 1 then
-    if not r4_146:IsAnimationPlaying(r4_146[r3_146[1].AnimName]) and not r4_146:IsAnimationPlaying(r4_146[r3_146[2].AnimName]) then
-      r4_146:BindToAnimationFinished(r4_146[r3_146[1].AnimName], {
-        r4_146,
-        function(r0_147)
-          -- line: [3275, 3279] id: 147
-          if IsValid(r0_147) then
-            r0_147:PlayAnimation(r0_147[r3_146[2].AnimName], r3_146[2].StartTime, r3_146[2].LoopNums)
+  r4_147:Show()
+  if #r3_147 > 1 then
+    if not r4_147:IsAnimationPlaying(r4_147[r3_147[1].AnimName]) and not r4_147:IsAnimationPlaying(r4_147[r3_147[2].AnimName]) then
+      r4_147:BindToAnimationFinished(r4_147[r3_147[1].AnimName], {
+        r4_147,
+        function(r0_148)
+          -- line: [3336, 3340] id: 148
+          if IsValid(r0_148) then
+            r0_148:PlayAnimation(r0_148[r3_147[2].AnimName], r3_147[2].StartTime, r3_147[2].LoopNums)
           end
         end
       })
-      r4_146:PlayAnimation(r4_146[r3_146[1].AnimName], r3_146[1].StartTime, r3_146[1].LoopNums)
+      r4_147:PlayAnimation(r4_147[r3_147[1].AnimName], r3_147[1].StartTime, r3_147[1].LoopNums)
     end
   else
-    local r5_146 = r3_146[1]
-    if not r4_146:IsAnimationPlaying(r4_146[r5_146.AnimName]) then
-      r4_146:PlayAnimation(r4_146[r5_146.AnimName], r5_146.StartTime, r5_146.LoopNums)
+    local r5_147 = r3_147[1]
+    if not r4_147:IsAnimationPlaying(r4_147[r5_147.AnimName]) then
+      r4_147:PlayAnimation(r4_147[r5_147.AnimName], r5_147.StartTime, r5_147.LoopNums)
     end
   end
-  return r4_146
+  return r4_147
 end
-function r6_0.CheckNeedExitUIMode(r0_148, r1_148)
-  -- line: [3296, 3310] id: 148
-  local r3_148 = UE4.UGameplayStatics.GetGameInstance(r0_148):TryGetTalkContext()
-  if r3_148 and r3_148:HasHiddenGameUI() then
+function r6_0.CheckNeedExitUIMode(r0_149, r1_149)
+  -- line: [3357, 3371] id: 149
+  local r3_149 = UE4.UGameplayStatics.GetGameInstance(r0_149):TryGetTalkContext()
+  if r3_149 and r3_149:HasHiddenGameUI() then
     return false
   end
-  for r9_148, r10_148 in pairs(r0_148.UIInstances:ToTable()) do
-    if r10_148.IsInUIMode and r10_148 ~= r1_148 and (r10_148:GetParent() or r10_148:IsInViewport()) then
+  for r9_149, r10_149 in pairs(r0_149.UIInstances:ToTable()) do
+    if r10_149.IsInUIMode and r10_149 ~= r1_149 and (r10_149:GetParent() or r10_149:IsInViewport()) then
       return false
     end
   end
-  -- close: r5_148
+  -- close: r5_149
   return true
 end
-function r6_0.GetTopUIModeUI(r0_149, r1_149)
-  -- line: [3312, 3326] id: 149
-  local r2_149 = r0_149.UIInstances:ToTable()
-  local r3_149 = -10000
-  local r4_149 = nil
-  for r9_149, r10_149 in pairs(r2_149) do
-    if r10_149.IsInUIMode and r10_149 ~= r1_149 and (r10_149:GetParent() or r10_149:IsInViewport()) then
-      local r11_149 = r10_149:GetZOrder()
-      if r3_149 <= r11_149 then
-        r3_149 = r11_149
-        r4_149 = r10_149
+function r6_0.GetTopUIModeUI(r0_150, r1_150)
+  -- line: [3373, 3387] id: 150
+  local r2_150 = r0_150.UIInstances:ToTable()
+  local r3_150 = -10000
+  local r4_150 = nil
+  for r9_150, r10_150 in pairs(r2_150) do
+    if r10_150.IsInUIMode and r10_150 ~= r1_150 and (r10_150:GetParent() or r10_150:IsInViewport()) then
+      local r11_150 = r10_150:GetZOrder()
+      if r3_150 <= r11_150 then
+        r3_150 = r11_150
+        r4_150 = r10_150
       end
     end
   end
-  -- close: r5_149
-  return r4_149
+  -- close: r5_150
+  return r4_150
 end
-function r6_0.SetPauseWorldRenderingSwitch(r0_150, r1_150, r2_150)
-  -- line: [3328, 3341] id: 150
-  if r2_150 then
-    r0_150.AllNotRenderWorldUI[r1_150] = 1
-    if UE4.UGameplayStatics.GetEnableWorldRendering(r0_150) then
-      UE4.UGameplayStatics.SetEnableWorldRendering(r0_150, false)
+function r6_0.SetPauseWorldRenderingSwitch(r0_151, r1_151, r2_151)
+  -- line: [3389, 3402] id: 151
+  if r2_151 then
+    r0_151.AllNotRenderWorldUI[r1_151] = 1
+    if UE4.UGameplayStatics.GetEnableWorldRendering(r0_151) then
+      UE4.UGameplayStatics.SetEnableWorldRendering(r0_151, false)
     end
   else
-    r0_150.AllNotRenderWorldUI[r1_150] = nil
-    if IsEmptyTable(r0_150.AllNotRenderWorldUI) then
-      UE4.UGameplayStatics.SetEnableWorldRendering(r0_150, true)
+    r0_151.AllNotRenderWorldUI[r1_151] = nil
+    if IsEmptyTable(r0_151.AllNotRenderWorldUI) then
+      UE4.UGameplayStatics.SetEnableWorldRendering(r0_151, true)
     end
   end
 end
-function r6_0.ShowBossBattleOpenTitle(r0_151, r1_151)
-  -- line: [3343, 3350] id: 151
-  local r2_151 = r0_151:GetUIObj("HardBossBattleOpen")
-  if r2_151 then
-    r2_151:ShowHardBossTitle(r1_151)
+function r6_0.ShowBossBattleOpenTitle(r0_152, r1_152)
+  -- line: [3404, 3411] id: 152
+  local r2_152 = r0_152:GetUIObj("HardBossBattleOpen")
+  if r2_152 then
+    r2_152:ShowHardBossTitle(r1_152)
   else
     DebugPrint("找不到Boss战开战UI")
   end
 end
-function r6_0.RecordShowInStoryConfig(r0_152, r1_152, r2_152)
-  -- line: [3352, 3357] id: 152
-  r0_152.ShowInStoryUINames = r0_152.ShowInStoryUINames and {}
-  if r1_152.ShowInStory then
-    r0_152.ShowInStoryUINames[r2_152] = r2_152
+function r6_0.RecordShowInStoryConfig(r0_153, r1_153, r2_153)
+  -- line: [3413, 3418] id: 153
+  r0_153.ShowInStoryUINames = r0_153.ShowInStoryUINames and {}
+  if r1_153.ShowInStory then
+    r0_153.ShowInStoryUINames[r2_153] = r2_153
   end
 end
-function r6_0.GetShowInStoryUINames(r0_153)
-  -- line: [3359, 3361] id: 153
-  return r0_153.ShowInStoryUINames and {}
-end
-function r6_0.PlayBattleButtonPhoneVX(r0_154, r1_154, r2_154)
-  -- line: [3366, 3376] id: 154
-  local r3_154 = r0_154:GetUIObj("BattleMain")
-  if not r3_154 then
-    print(_G.LogTag, "UIManager get widget BattleMain failed")
-    return 
-  end
-  r3_154 = r3_154.Char_Skill
-  if r5_0.GetDeviceTypeByPlatformName(r0_154) == "Mobile" then
-    r3_154.Jump:PlayVX(r1_154, r2_154)
-  end
+function r6_0.GetShowInStoryUINames(r0_154)
+  -- line: [3420, 3422] id: 154
+  return r0_154.ShowInStoryUINames and {}
 end
 function r6_0.LoadBossSkillTipsUI(r0_155, r1_155)
-  -- line: [3378, 3393] id: 155
+  -- line: [3428, 3443] id: 155
   local r3_155 = string.lower(DataMgr.BossSkillToast[r1_155].TipsStyle and "Common")
   local r4_155 = nil
   if r3_155 == "common" then
@@ -2967,11 +3012,11 @@ function r6_0.LoadBossSkillTipsUI(r0_155, r1_155)
   return r0_155:LoadUINew(r4_155, r1_155)
 end
 function r6_0.GetArmoryUIObj(r0_156)
-  -- line: [3395, 3397] id: 156
+  -- line: [3445, 3447] id: 156
   return r0_156:GetUI("ArmoryDetail") and r0_156:GetUI("ArmoryMain")
 end
 function r6_0.ShowDispatchTip(r0_157, r1_157)
-  -- line: [3400, 3420] id: 157
+  -- line: [3450, 3470] id: 157
   local r2_157 = GWorld:GetAvatar()
   if not r2_157 then
     return 
@@ -2982,18 +3027,18 @@ function r6_0.ShowDispatchTip(r0_157, r1_157)
   end
   local r7_157 = DataMgr.DispatchUI[DataMgr.Dispatch[r1_157].DispatchUIId].DispatchName
   r0_157:AddTimer(1.8, function()
-    -- line: [3415, 3419] id: 158
+    -- line: [3465, 3469] id: 158
     UIManager(r0_157):ShowUITip(UIConst.Tip_CommonTop, string.format(GText("UI_Dispatch_Toast_Unlock"), "【" .. GText(r7_157) .. "】"))
     DebugPrint("lkkkShowDispatchTip ", r1_157)
   end, false, 0, nil, false)
 end
 function r6_0.LaunchAfterLoadingMgr(r0_159)
-  -- line: [3424, 3437] id: 159
+  -- line: [3474, 3487] id: 159
   DebugPrint(WarningTag, "UIManager.AfterLoadingMgr, 启动状态机")
   r0_159:DestroyAfterLoadingMgr()
   r0_159.AfterLoadingMgr = require("BluePrints.UI.Common.AfterLoadingMgr").New()
   EventManager:AddEvent(EventID.OnGuideEnd, r0_159.AfterLoadingMgr, function(r0_160, r1_160)
-    -- line: [3431, 3434] id: 160
+    -- line: [3481, 3484] id: 160
     r0_159.AfterLoadingMgr.bGuideEndPending = true
     r0_159:TryResumeAfterLoadingMgr({
       "TriggerGuide",
@@ -3004,7 +3049,7 @@ function r6_0.LaunchAfterLoadingMgr(r0_159)
   r0_159.AfterLoadingMgr:Continue()
 end
 function r6_0.DestroyAfterLoadingMgr(r0_161)
-  -- line: [3439, 3450] id: 161
+  -- line: [3489, 3500] id: 161
   if r0_161.AfterLoadingMgr and not r0_161.AfterLoadingMgr:IsEnd() then
     DebugPrint(WarningTag, "UIManager.AfterLoadingMgr, 强制清理掉上次没执行完的状态机")
   end
@@ -3014,7 +3059,7 @@ function r6_0.DestroyAfterLoadingMgr(r0_161)
   r0_161.AfterLoadingMgr = nil
 end
 function r6_0.TryPauseAfterLoadingMgr(r0_162, r1_162)
-  -- line: [3452, 3461] id: 162
+  -- line: [3502, 3511] id: 162
   if not r0_162.AfterLoadingMgr then
     return 
   end
@@ -3028,7 +3073,7 @@ function r6_0.TryPauseAfterLoadingMgr(r0_162, r1_162)
   -- close: r2_162
 end
 function r6_0.FallbackAfterLoadingMgr(r0_163)
-  -- line: [3463, 3468] id: 163
+  -- line: [3513, 3518] id: 163
   if not r0_163.AfterLoadingMgr then
     return 
   end
@@ -3039,14 +3084,14 @@ function r6_0.FallbackAfterLoadingMgr(r0_163)
   r0_163.AfterLoadingMgr:Fallback()
 end
 function r6_0.TryResumeAfterLoadingMgr(r0_164, r1_164)
-  -- line: [3470, 3484] id: 164
+  -- line: [3520, 3534] id: 164
   if not r0_164.AfterLoadingMgr then
     return 
   end
   for r6_164, r7_164 in ipairs(r1_164) do
     if r0_164.AfterLoadingMgr:IsCurrentState(r7_164) then
       r0_164:AddTimer(0.01, function()
-        -- line: [3474, 3480] id: 165
+        -- line: [3524, 3530] id: 165
         if r0_164.AfterLoadingMgr and not r0_164.AfterLoadingMgr:IsEnd() then
           DebugPrint(WarningTag, "UIManager.AfterLoadingMgr, UI关闭触发继续执行状态机")
           r0_164.AfterLoadingMgr:Continue()
@@ -3058,14 +3103,14 @@ function r6_0.TryResumeAfterLoadingMgr(r0_164, r1_164)
   -- close: r2_164
 end
 function r6_0.AddTimer(r0_166, r1_166, r2_166, r3_166, r4_166, r5_166, r6_166, ...)
-  -- line: [3488, 3491] id: 166
+  -- line: [3538, 3541] id: 166
   if r6_166 == nil then
     r6_166 = true
   end
   return r6_0.Super.AddTimer(r0_166, r1_166, r2_166, r3_166, r4_166, r5_166, r6_166, ...)
 end
 function r6_0.SetUIPauseGame(r0_167, r1_167, r2_167)
-  -- line: [3493, 3498] id: 167
+  -- line: [3543, 3548] id: 167
   if not r0_167.UIPauseGameMap then
     r0_167.UIPauseGameMap = {}
   end
@@ -3083,19 +3128,19 @@ function r6_0.SetUIPauseGame(r0_167, r1_167, r2_167)
   r3_167[r1_167] = r4_167
 end
 function r6_0.IsUIPauseGame(r0_168)
-  -- line: [3500, 3506] id: 168
+  -- line: [3550, 3556] id: 168
   if not r0_168.UIPauseGameMap then
     return false
   end
   return r5_0.TableLength(r0_168.UIPauseGameMap) > 0
 end
 function r6_0.NotifyClientShowDungeonToast(r0_169, r1_169)
-  -- line: [3512, 3515] id: 169
+  -- line: [3562, 3565] id: 169
   local r2_169 = UE4.UGameplayStatics.GetGameInstance(r0_169)
   UE4.UGameplayStatics.GetGameMode():NotifyClientShowDungeonToast("AvailablePet_Empty", 1, EToastType.Common, r1_169 and EToastColor.Yellow)
 end
 function r6_0.LoadTitleFrameWidget(r0_170, r1_170)
-  -- line: [3517, 3530] id: 170
+  -- line: [3567, 3580] id: 170
   local r2_170 = DataMgr.TitleFrame[r1_170]
   if not r2_170 then
     ScreenPrint("称号加载失败：TitleFrame 表内没有配置TitleFrameID=" .. r1_170 and "空")
@@ -3109,16 +3154,16 @@ function r6_0.LoadTitleFrameWidget(r0_170, r1_170)
   return r0_170:CreateWidget(r3_170, false)
 end
 function r6_0.GetCurrentWindowSize(r0_171)
-  -- line: [3531, 3533] id: 171
+  -- line: [3581, 3583] id: 171
   return GWorld.GameInstance:GetSceneManager():GetWindowSize()
 end
 function r6_0.AddFlow(r0_172, r1_172, r2_172)
-  -- line: [3535, 3538] id: 172
+  -- line: [3585, 3588] id: 172
   r0_172.FlowList[r1_172] = r2_172
   DebugPrint("WXT UIManagerComponent_C:AddFlow", r1_172)
 end
 function r6_0.TryOpenSystem(r0_173, r1_173)
-  -- line: [3543, 3553] id: 173
+  -- line: [3593, 3603] id: 173
   local r2_173 = UKismetSystemLibrary.GetFrameCount()
   if r0_173.SystemOpenFrameFlag ~= r2_173 and r0_173.SystemOpenFrameFlag ~= r2_173 + -1 then
     r0_173.SystemOpenFrameFlag = r2_173
@@ -3128,35 +3173,236 @@ function r6_0.TryOpenSystem(r0_173, r1_173)
   return false
 end
 function r6_0.InitGlobalVersionDisplay(r0_174)
-  -- line: [3555, 3566] id: 174
+  -- line: [3605, 3620] id: 174
   if UE.URuntimeCommonFunctionLibrary.IsDistribution() then
     return 
   end
-  local r2_174 = r0_174:CreateWidget("WidgetBlueprint\'/Game/UI/WBP/Battle/Widget/WBP_Battle_Version.WBP_Battle_Version\'", true, 999)
-  if r2_174 then
-    r0_174.GlobalVersionWidget = r2_174
-    r2_174:InitVersionDisplay()
+  local r1_174 = "WidgetBlueprint\'/Game/UI/WBP/Battle/Widget/WBP_Battle_Version.WBP_Battle_Version\'"
+  r0_174:LoadUIAsync("WBP_Battle_Version", function(r0_175)
+    -- line: [3610, 3617] id: 175
+    if r0_175 then
+      r0_174.GlobalVersionWidget = r0_175
+      UE4.UGameplayStatics.GetGameInstance(r0_174).GlobalVersionWidget = r0_175
+      r0_175:InitVersionDisplay()
+    end
+  end)
+end
+function r6_0.ShowGlobalVersion(r0_176)
+  -- line: [3622, 3627] id: 176
+  local r1_176 = UE4.UGameplayStatics.GetGameInstance(r0_176)
+  if r1_176.GlobalVersionWidget then
+    r1_176.GlobalVersionWidget:Show()
   end
 end
-function r6_0.ShowGlobalVersion(r0_175)
-  -- line: [3568, 3572] id: 175
-  if r0_175.GlobalVersionWidget then
-    r0_175.GlobalVersionWidget:Show()
+function r6_0.HideGlobalVersion(r0_177)
+  -- line: [3628, 3633] id: 177
+  local r1_177 = UE4.UGameplayStatics.GetGameInstance(r0_177)
+  if r1_177.GlobalVersionWidget then
+    r1_177.GlobalVersionWidget:Hide()
   end
 end
-function r6_0.HideGlobalVersion(r0_176)
-  -- line: [3573, 3577] id: 176
-  if r0_176.GlobalVersionWidget then
-    r0_176.GlobalVersionWidget:Hide()
+function r6_0.ShowUIError(r0_178, r1_178, r2_178, r3_178)
+  -- line: [3639, 3641] id: 178
+  r0_178:ShowUIErrorLua(r2_178, r1_178, r3_178)
+end
+function r6_0.ShowUIErrorLua(r0_179, r1_179, r2_179, r3_179)
+  -- line: [3643, 3710] id: 179
+  if r1_179 == nil then
+    DebugPrint(ErrorTag, "ShowUIErrorLua:参数Text为nil")
+    return 
+  end
+  if r2_179 == nil then
+    DebugPrint(ErrorTag, "ShowUIErrorLua:参数ErrorCategory为nil")
+    return 
+  end
+  local r4_179 = UE4.URuntimeCommonFunctionLibrary.IsDistribution()
+  local r5_179 = UE4.URuntimeCommonFunctionLibrary.EnableLogInShipping()
+  if r4_179 and not r5_179 then
+    return 
+  end
+  local r6_179 = "=========================================================\n"
+  local r7_179 = {
+    r6_179,
+    "报错文本:\n\t",
+    tostring(r1_179),
+    "\n"
+  }
+  if r3_179 == nil or r3_179 == true then
+    table.insert(r7_179, r6_179)
+    table.insert(r7_179, "Traceback:\n\t")
+    table.insert(r7_179, debug.traceback())
+    table.insert(r7_179, "\n")
+  end
+  table.insert(r7_179, r6_179)
+  r0_179:_FillUIErrorLog(r7_179)
+  table.insert(r7_179, r6_179)
+  local r8_179 = table.concat(r7_179)
+  if UE4.URuntimeCommonFunctionLibrary.IsPlayInEditor(r0_179) then
+    ScreenPrint("UI报错:\n" .. r8_179)
+  end
+  GWorld.ErrorDict = GWorld.ErrorDict and {}
+  if GWorld.ErrorDict[r1_179] then
+    return 
+  end
+  GWorld.ErrorDict[r1_179] = true
+  local r9_179 = {
+    first = "UI报错",
+    second = r2_179,
+    third = r1_179,
+  }
+  local r10_179 = {
+    title = "UI报错",
+    trace_content = r8_179,
+  }
+  local r11_179 = GWorld:GetAvatar()
+  if r11_179 then
+    local r13_179 = "设备名：" .. UE.UKismetSystemLibrary:GetPlatformUserName() .. "\n" .. r8_179
+    r11_179:SendTraceToQaWeb(r9_179, r10_179)
+    return 
+  end
+  local r12_179 = GWorld:GetDSEntity()
+  if r12_179 then
+    r12_179:SendTraceToQaWeb(r9_179, r10_179)
+    return 
   end
 end
-function r6_0.StartScriptDetectionCheck(r0_177)
-  -- line: [3580, 3590] id: 177
+function r6_0._FillUIErrorLog(r0_180, r1_180)
+  -- line: [3712, 3812] id: 180
+  if not r1_180 and type(r1_180) ~= "table" then
+    return 
+  end
+  local r2_180 = GWorld:GetAvatar()
+  table.insert(r1_180, "环境:")
+  if IsClient(r0_180) then
+    table.insert(r1_180, "联机客户端\n")
+  elseif IsDedicatedServer(r0_180) then
+    table.insert(r1_180, "联机服务端\n")
+  elseif r2_180 and r2_180:IsInHardBoss() then
+    table.insert(r1_180, "梦魇残声")
+    if r2_180.HardBossInfo then
+      table.insert(r1_180, ":编号[")
+      local r3_180 = r2_180.HardBossInfo.HardBossId
+      table.insert(r1_180, r3_180)
+      table.insert(r1_180, "]")
+      local r4_180 = nil
+      if DataMgr.HardBossMain[r3_180] then
+        local r5_180 = DataMgr.HardBossMain[r3_180].HardBossName
+        if DataMgr.TextMap[r5_180] then
+          r4_180 = GText(r5_180)
+        end
+      end
+      if r4_180 then
+        table.insert(r1_180, "[")
+        table.insert(r1_180, r4_180)
+        table.insert(r1_180, "]")
+      end
+      local r5_180 = r2_180.HardBossInfo.DifficultyId
+      local r6_180 = nil
+      if r5_180 and DataMgr.HardBossDifficulty[r5_180] then
+        r6_180 = DataMgr.HardBossDifficulty[r5_180].DifficultyLevel
+      end
+      table.insert(r1_180, ":难度等级[")
+      table.insert(r1_180, r6_180)
+      table.insert(r1_180, "]")
+    end
+    table.insert(r1_180, "\n")
+  else
+    table.insert(r1_180, "单机\n")
+  end
+  local r3_180 = UE4.UGameplayStatics.GetGameMode(r0_180)
+  if IsDedicatedServer(r0_180) then
+    for r9_180, r10_180 in pairs(r3_180:GetAllPlayer()) do
+      table.insert(r1_180, "[")
+      table.insert(r1_180, r9_180)
+      table.insert(r1_180, "]")
+      r0_180:_FillCharacterLog_UI(r1_180, r10_180)
+      table.insert(r1_180, "\n")
+    end
+    -- close: r5_180
+  else
+    local r4_180 = UE4.UGameplayStatics.GetPlayerCharacter(r0_180, 0)
+    local r5_180 = nil
+    if r4_180 then
+      r5_180 = r4_180.CurrentRoleId
+    end
+    r0_180:_FillCharacterLog_UI(r1_180, r4_180)
+    table.insert(r1_180, "\n")
+  end
+  local r4_180 = UE.UGameplayStatics.GetGameState(r0_180.Player)
+  if IsValid(r4_180) then
+    local r5_180 = r4_180.DungeonId
+    if r5_180 and r5_180 > 0 then
+      table.insert(r1_180, "副本ID:")
+      table.insert(r1_180, tostring(r5_180))
+      local r6_180 = DataMgr.Dungeon[r5_180]
+      if r6_180 then
+        local r7_180 = r6_180.DungeonName
+        if DataMgr.TextMap[r7_180] then
+          r7_180 = GText(r7_180)
+        end
+        table.insert(r1_180, "(")
+        table.insert(r1_180, tostring(r7_180))
+        table.insert(r1_180, ")")
+      end
+      table.insert(r1_180, "\n")
+    end
+  end
+  if IsValid(r3_180) and r3_180.IsInRegion and r3_180:IsInRegion() and r2_180 then
+    local r5_180 = r2_180:GetCurrentRegionId()
+    table.insert(r1_180, "子区域ID:")
+    table.insert(r1_180, tostring(r5_180))
+    local r6_180 = DataMgr.SubRegion[r5_180]
+    if r6_180 then
+      local r7_180 = r6_180.SubRegionName
+      if DataMgr.TextMap[r7_180] then
+        r7_180 = GText(r7_180)
+      end
+      table.insert(r1_180, "(")
+      table.insert(r1_180, tostring(r7_180))
+      table.insert(r1_180, ")")
+    end
+    table.insert(r1_180, "\n")
+  end
+end
+function r6_0._FillCharacterLog_UI(r0_181, r1_181, r2_181)
+  -- line: [3814, 3844] id: 181
+  if not r1_181 and type(r1_181) ~= "table" then
+    return 
+  end
+  if not r2_181 then
+    return 
+  end
+  local r3_181 = r2_181.CurrentRoleId
+  table.insert(r1_181, "使用角色ID:")
+  table.insert(r1_181, tostring(r3_181))
+  if DataMgr.BattleChar[r3_181] then
+    local r4_181 = GText(DataMgr.BattleChar[r3_181].CharName)
+    table.insert(r1_181, "(")
+    table.insert(r1_181, tostring(r4_181))
+    table.insert(r1_181, ")")
+  end
+  if r2_181:IsPlayer() then
+    local r4_181 = false
+    for r10_181, r11_181 in pairs(r2_181:GetPhantomTeammates()) do
+      if r11_181 ~= r2_181 then
+        if not r4_181 then
+          table.insert(r1_181, "\n正在使用的魅影信息:")
+          r4_181 = true
+        end
+        table.insert(r1_181, "\n\t")
+        r0_181:_FillCharacterLog_UI(r1_181, r11_181)
+      end
+    end
+    -- close: r6_181
+  end
+end
+function r6_0.StartScriptDetectionCheck(r0_182)
+  -- line: [3847, 3857] id: 182
   if Const.bOpenScriptDetectionCheck then
-    local r1_177 = GWorld.GameInstance:GetSceneManager()
-    if r1_177 and r1_177:GetIsEnableScriptDetectionCheck() then
-      r1_177:StartScriptDetectionCheck(Const.ScriptDetectionCheckType.OnMouse)
-      r1_177:StartScriptDetectionCheck(Const.ScriptDetectionCheckType.OnKeyboard)
+    local r1_182 = GWorld.GameInstance:GetSceneManager()
+    if r1_182 and r1_182:GetIsEnableScriptDetectionCheck() then
+      r1_182:StartScriptDetectionCheck(Const.ScriptDetectionCheckType.OnMouse)
+      r1_182:StartScriptDetectionCheck(Const.ScriptDetectionCheckType.OnKeyboard)
     end
   end
 end

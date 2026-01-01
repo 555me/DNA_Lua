@@ -158,7 +158,6 @@ r6_0.DefaultItem = {
   HeadSculpture = {
     [10026] = 1,
   },
-  Resource = r0_0.RT_1,
 }
 r6_0.Des = "UI_Skin_Des_1601"
 r6_0.Icon = "/Game/UI/Texture/Dynamic/Image/Head/Avatar/T_Head_Nvzhu"
@@ -594,7 +593,6 @@ r6_0.DefaultItem = {
   HeadSculpture = {
     [10025] = 1,
   },
-  Resource = r0_0.RT_1,
 }
 r6_0.Des = "UI_Skin_Des_1601"
 r6_0.Icon = "/Game/UI/Texture/Dynamic/Image/Head/Avatar/T_Head_Nanzhu"
@@ -602,7 +600,7 @@ r6_0.LongIcon = "/Game/UI/Texture/Dynamic/Image/Gacha/Avatar/T_Gacha_AvatarNanzh
 r6_0.NpcSkinModelId = 8102
 r6_0.Rarity = 5
 r6_0.ReleaseVersion = 100
-r6_0.SkinDescribe = "UI_Skin_Des_160101"
+r6_0.SkinDescribe = "UI_Skin_Des_1601"
 r6_0.SkinId = 160101
 r6_0.SkinModelId = 102
 r6_0.SkinName = "UI_Skin_Name_1601"

@@ -21,6 +21,7 @@ elseif r1_0 == "IOS" then
   r0_0.bPlayerPreloadSummon = Const.PlayerPreloadSummon_IOS
   r0_0.bSummonDeadCache = Const.SummonDeadCache_IOS
   r0_0.NPCDeadCache = Const.NPCDeadCache_IOS
+  r0_0.bEnableClassCache = false
 else
   r0_0.bPlayerPreloadSummon = Const.PlayerPreloadSummon_Windows
   r0_0.bSummonDeadCache = Const.SummonDeadCache_Windows
@@ -67,7 +68,6 @@ r0_0.bOpenPropertyEncryption = true
 r0_0.AntiCheat_MonsterGatherWhiteListChars = {
   1502
 }
-r0_0.OpenCheckHPLock = false
 r0_0.bOpenComputeDotBuff = false
 r0_0.DungeonCheckMonsterZLocDist = 40000
 r0_0.SyncNavModiferCullIsolatedTileNums = 1

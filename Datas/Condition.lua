@@ -2518,11 +2518,8 @@ r6_0 = {
   ConditionLogic = "AND",
 }
 r6_0.ConditionMap = {
-  Impression = {
-    {
-      510049,
-      1
-    }
+  Quest = {
+    20020906
   },
 }
 r6_0.Remark = "印象系统-露娜"

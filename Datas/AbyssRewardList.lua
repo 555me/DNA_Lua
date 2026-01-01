@@ -510,6 +510,12 @@ end)("AbyssRewardList", {
     Reward = 48009,
     RewardAddOn = 2,
   },
+  [110304] = {
+    ItemID = 110304,
+    Level = 182,
+    Reward = 48013,
+    RewardAddOn = 2,
+  },
   [111201] = {
     ItemID = 111201,
     Level = 2,
@@ -618,6 +624,12 @@ end)("AbyssRewardList", {
     ItemID = 111303,
     Level = 62,
     Reward = 48012,
+    RewardAddOn = 2,
+  },
+  [111304] = {
+    ItemID = 111304,
+    Level = 182,
+    Reward = 48014,
     RewardAddOn = 2,
   },
 })

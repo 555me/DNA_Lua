@@ -1,290 +1,297 @@
-local M = {}
-
-function M:Init()
-  self.SceneCoroutineMap = {}
-  self.SceneCoroutineArray = {}
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\WBP\Armory\ActorController\Armory_SceneActorComponent.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r0_0 = {
+  Init = function(r0_1)
+    -- line: [4, 7] id: 1
+    r0_1.SceneCoroutineMap = {}
+    r0_1.SceneCoroutineArray = {}
+  end,
+}
+local r1_0 = {}
+local function r2_0(r0_2)
+  -- line: [10, 13] id: 2
+  r1_0[r0_2] = r1_0[r0_2] and 0
+  r1_0[r0_2] = r1_0[r0_2] + 1
 end
-
-local PreviewSceneLoaded = {}
-
-local function IncreacePreviewSceneRefCount(PreviewLevelName)
-  PreviewSceneLoaded[PreviewLevelName] = PreviewSceneLoaded[PreviewLevelName] or 0
-  PreviewSceneLoaded[PreviewLevelName] = PreviewSceneLoaded[PreviewLevelName] + 1
-end
-
-local function DecreacePreviewSceneRefCount(PreviewLevelName)
-  if PreviewSceneLoaded[PreviewLevelName] then
-    PreviewSceneLoaded[PreviewLevelName] = PreviewSceneLoaded[PreviewLevelName] - 1
-    if PreviewSceneLoaded[PreviewLevelName] <= 0 then
-      PreviewSceneLoaded[PreviewLevelName] = nil
+local function r3_0(r0_3)
+  -- line: [14, 21] id: 3
+  if r1_0[r0_3] then
+    r1_0[r0_3] = r1_0[r0_3] + -1
+    if r1_0[r0_3] <= 0 then
+      r1_0[r0_3] = nil
     end
   end
 end
-
-local function IsPreviewSceneHasRef(PreviewLevelName)
-  return PreviewSceneLoaded[PreviewLevelName] and PreviewSceneLoaded[PreviewLevelName] > 0
+local function r4_0(r0_4)
+  -- line: [22, 24] id: 4
+  return r1_0[r0_4] and r1_0[r0_4] > 0
 end
-
-local function _RemoveSceneCoroutine(self, CoroutineName)
-  local Idx = self.SceneCoroutineMap[CoroutineName]
-  if Idx then
-    table.remove(self.SceneCoroutineArray, Idx)
+local function r5_0(r0_5, r1_5)
+  -- line: [26, 31] id: 5
+  local r2_5 = r0_5.SceneCoroutineMap[r1_5]
+  if r2_5 then
+    table.remove(r0_5.SceneCoroutineArray, r2_5)
   end
 end
-
-local function _AddSceneCoroutine(self, CoroutineName, Co)
-  _RemoveSceneCoroutine(self, CoroutineName)
-  table.insert(self.SceneCoroutineArray, Co)
-  self.SceneCoroutineMap[CoroutineName] = #self.SceneCoroutineArray
+local function r6_0(r0_6, r1_6, r2_6)
+  -- line: [33, 37] id: 6
+  r5_0(r0_6, r1_6)
+  table.insert(r0_6.SceneCoroutineArray, r2_6)
+  r0_6.SceneCoroutineMap[r1_6] = #r0_6.SceneCoroutineArray
 end
-
-local function _FindSceneCoroutine(self, CoroutineName)
-  local Idx = self.SceneCoroutineMap[CoroutineName]
-  if Idx then
-    return self.SceneCoroutineArray[Idx]
+local function r7_0(r0_7, r1_7)
+  -- line: [39, 44] id: 7
+  local r2_7 = r0_7.SceneCoroutineMap[r1_7]
+  if r2_7 then
+    return r0_7.SceneCoroutineArray[r2_7]
   end
 end
-
-local function _HadAnyPreviewScene()
-  return next(PreviewSceneLoaded) ~= nil
+local function r8_0()
+  -- line: [46, 48] id: 8
+  return next(r1_0) ~= nil
 end
-
-function M:GetPreviewSceneTrans()
-  return self.PreviewSceneTrans
+function r0_0.GetPreviewSceneTrans(r0_9)
+  -- line: [51, 53] id: 9
+  return r0_9.PreviewSceneTrans
 end
-
-function M:TryLoadPreviewScene()
-  if self.SmoothLoad then
+function r0_0.TryLoadPreviewScene(r0_10)
+  -- line: [55, 107] id: 10
+  if r0_10.SmoothLoad then
     coroutine.yield()
   end
-  if _HadAnyPreviewScene() then
-    self.EPreviewSceneType = self.EPreviewSceneType or CommonConst.EPreviewSceneType.PreviewCommon
+  if r8_0() then
+    r0_10.EPreviewSceneType = r0_10.EPreviewSceneType and CommonConst.EPreviewSceneType.PreviewCommon
   end
-  local Path = self.EPreviewSceneType and CommonConst.PreviewScenePaths[self.EPreviewSceneType]
-  if not Path then
-    return
+  local r1_10 = r0_10.EPreviewSceneType and CommonConst.PreviewScenePaths[r0_10.EPreviewSceneType]
+  if not r1_10 then
+    return 
   end
-  self.PreviewSceneLocation = self.PreviewSceneLocation or FVector(100000, 100000, 100000)
-  local PreviewLevelLocation = self.PreviewSceneLocation
-  local GameMode = UE4.UGameplayStatics.GetGameMode(self.ViewUI)
-  local WorldLoader = GameMode:GetLevelLoader()
-  local TargetTrans, bSuccess
-  if WorldLoader then
-    TargetTrans = FTransform()
-    TargetTrans.Translation = PreviewLevelLocation
-    TargetTrans.Rotation = FRotator(0, 0, 0):ToQuat()
-    local PreviewLevelName = "PreviewLevel" .. self.EPreviewSceneType
-    if not IsPreviewSceneHasRef(PreviewLevelName) then
-      self.IsPreviewSceneLoading = true
-      bSuccess = WorldLoader:LoadPreviewLevel(PreviewLevelName, Path, function()
-        self.IsPreviewSceneLoading = false
-        self:SetPreviewLevelSkyBoxColor(WorldLoader, PreviewLevelName)
-        self:OnPreviewSceneLoaded()
-      end, PreviewLevelLocation, FRotator(0, 0, 0))
-      if bSuccess then
-        self.PreviewLevelName = PreviewLevelName
-        IncreacePreviewSceneRefCount(PreviewLevelName)
-        self.bPreviewSceneLoaded = true
+  r0_10.PreviewSceneLocation = r0_10.PreviewSceneLocation and FVector(100000, 100000, 100000)
+  local r2_10 = r0_10.PreviewSceneLocation
+  local r4_10 = UE4.UGameplayStatics.GetGameMode(r0_10.ViewUI):GetLevelLoader()
+  local r5_10 = nil
+  local r6_10 = nil
+  local r7_10 = nil	-- notice: implicit variable refs by block#[18, 19]
+  if r4_10 then
+    r5_10 = FTransform()
+    r5_10.Translation = r2_10
+    r5_10.Rotation = FRotator(0, 0, 0):ToQuat()
+    r7_10 = "PreviewLevel" .. r0_10.EPreviewSceneType
+    if not r4_0(r7_10) then
+      r0_10.IsPreviewSceneLoading = true
+      r6_10 = r4_10:LoadPreviewLevel(r7_10, r1_10, function()
+        -- line: [80, 84] id: 11
+        r0_10.IsPreviewSceneLoading = false
+        r0_10:SetPreviewLevelSkyBoxColor(r4_10, r7_10)
+        r0_10:OnPreviewSceneLoaded()
+      end, r2_10, FRotator(0, 0, 0))
+      if r6_10 then
+        r0_10.PreviewLevelName = r7_10
+        r2_0(r7_10)
+        r0_10.bPreviewSceneLoaded = true
       end
     else
-      bSuccess = true
-      self.PreviewLevelName = PreviewLevelName
-      IncreacePreviewSceneRefCount(PreviewLevelName)
-      self.bPreviewSceneLoaded = true
-      self.ViewUI:AddTimer(0.01, function()
-        self:SetPreviewLevelSkyBoxColor(WorldLoader, PreviewLevelName)
-        self:OnPreviewSceneLoaded()
+      r6_10 = true
+      r0_10.PreviewLevelName = r7_10
+      r2_0(r7_10)
+      r0_10.bPreviewSceneLoaded = true
+      r0_10.ViewUI:AddTimer(0.01, function()
+        -- line: [95, 98] id: 12
+        r0_10:SetPreviewLevelSkyBoxColor(r4_10, r7_10)
+        r0_10:OnPreviewSceneLoaded()
       end)
     end
+    -- close: r7_10
   end
-  if self.SmoothLoad then
-    coroutine.yield()
+  r7_10 = r0_10.SmoothLoad
+  if r7_10 then
+    r7_10 = coroutine
+    r7_10 = r7_10.yield
+    r7_10()
   end
-  if bSuccess then
-    self.PreviewSceneTrans = TargetTrans
-  end
-end
-
-function M:SetPreviewLevelSkyBoxColor(WorldLoader, PreviewLevelName)
-  if self.SkyBoxColor and self.EPreviewSceneType == CommonConst.EPreviewSceneType.BattlePass then
-    local PreviewLevelStreaming = WorldLoader[PreviewLevelName]
-    if not PreviewLevelStreaming then
-      return
-    end
-    local PreviewLevel = PreviewLevelStreaming:GetLoadedLevel()
-    if not PreviewLevel then
-      return
-    end
-    local PreviewLevelScriptActor = PreviewLevel.LevelScriptActor
-    if not PreviewLevelScriptActor then
-      return
-    end
-    local UIShowBG = PreviewLevelScriptActor:GetUIShowBG()
-    local UIShowBGStaticMeshComponent = UIShowBG.StaticMeshComponent
-    local Index = 0
-    local Materials = UIShowBGStaticMeshComponent:GetMaterials()
-    local MaterialInstance = Materials:Get(Index + 1)
-    if not MaterialInstance:Cast(UMaterialInstanceDynamic:StaticClass()) then
-      MaterialInstance = UIShowBGStaticMeshComponent:CreateAndSetMaterialInstanceDynamic(Index)
-    end
-    MaterialInstance:SetVectorParameterValue("BaseColor2", self.SkyBoxColor.BaseColor2)
-    MaterialInstance:SetVectorParameterValue("StarColor", self.SkyBoxColor.StarColor)
-    MaterialInstance:SetScalarParameterValue("ColorCurve", self.SkyBoxColor.ColorCurve)
+  if r6_10 then
+    r0_10.PreviewSceneTrans = r5_10
   end
 end
-
-function M:UnloadPreviewScene()
-  if self.bPreviewSceneLoaded then
-    local PreviewLevelName = "PreviewLevel" .. self.EPreviewSceneType
-    self.bPreviewSceneLoaded = false
-    DecreacePreviewSceneRefCount(PreviewLevelName)
-    if not IsPreviewSceneHasRef(PreviewLevelName) then
-      local GameMode = UE4.UGameplayStatics.GetGameMode(self.ViewUI)
-      local WorldLoader = GameMode:GetLevelLoader()
-      if WorldLoader then
-        WorldLoader:UnloadPreviewLevel("PreviewLevel" .. self.EPreviewSceneType)
-        if IsValid(self.ArmoryHelper) then
-          self.ArmoryHelper:OnPreviewSceneUnloaded()
+function r0_0.SetPreviewLevelSkyBoxColor(r0_13, r1_13, r2_13)
+  -- line: [109, 135] id: 13
+  if r0_13.SkyBoxColor and r0_13.EPreviewSceneType == CommonConst.EPreviewSceneType.BattlePass then
+    local r3_13 = r1_13[r2_13]
+    if not r3_13 then
+      return 
+    end
+    local r4_13 = r3_13:GetLoadedLevel()
+    if not r4_13 then
+      return 
+    end
+    local r5_13 = r4_13.LevelScriptActor
+    if not r5_13 then
+      return 
+    end
+    local r7_13 = r5_13:GetUIShowBG().StaticMeshComponent
+    local r8_13 = 0
+    local r10_13 = r7_13:GetMaterials():Get(r8_13 + 1)
+    if not r10_13:Cast(UMaterialInstanceDynamic:StaticClass()) then
+      r10_13 = r7_13:CreateAndSetMaterialInstanceDynamic(r8_13)
+    end
+    r10_13:SetVectorParameterValue("BaseColor2", r0_13.SkyBoxColor.BaseColor2)
+    r10_13:SetVectorParameterValue("StarColor", r0_13.SkyBoxColor.StarColor)
+    r10_13:SetScalarParameterValue("ColorCurve", r0_13.SkyBoxColor.ColorCurve)
+  end
+end
+function r0_0.UnloadPreviewScene(r0_14)
+  -- line: [137, 153] id: 14
+  if r0_14.bPreviewSceneLoaded then
+    local r1_14 = "PreviewLevel" .. r0_14.EPreviewSceneType
+    r0_14.bPreviewSceneLoaded = false
+    r3_0(r1_14)
+    if not r4_0(r1_14) then
+      local r3_14 = UE4.UGameplayStatics.GetGameMode(r0_14.ViewUI):GetLevelLoader()
+      if r3_14 then
+        r3_14:UnloadPreviewLevel("PreviewLevel" .. r0_14.EPreviewSceneType)
+        if IsValid(r0_14.ArmoryHelper) then
+          r0_14.ArmoryHelper:OnPreviewSceneUnloaded()
         end
       end
     end
   end
 end
-
-function M:WaitForPreviewSceneLoadFinished()
-  if self.IsPreviewSceneLoading then
+function r0_0.WaitForPreviewSceneLoadFinished(r0_15)
+  -- line: [155, 164] id: 15
+  if r0_15.IsPreviewSceneLoading then
     if coroutine.isyieldable() then
       coroutine.yield()
     else
-      return
+      return 
     end
   end
   return true
 end
-
-function M:StartPreviewBGAnimation(PreviewBGPos, Time)
-  local function _StartPreviewBGAnimation(...)
-    local bSuccess = self:WaitForPreviewSceneLoadFinished()
-    
-    if not bSuccess then
-      return
+function r0_0.StartPreviewBGAnimation(r0_16, r1_16, r2_16)
+  -- line: [166, 181] id: 16
+  r0_16:DoSomethingWithScene("StartPreviewBGAnimation", function(...)
+    -- line: [167, 179] id: 17
+    if not r0_16:WaitForPreviewSceneLoadFinished() then
+      return 
     end
-    local TargetBGLoc
-    if PreviewBGPos then
-      TargetBGLoc = self.PreviewSceneLocation + FVector(PreviewBGPos[1], PreviewBGPos[2], PreviewBGPos[3])
+    local r1_17 = nil
+    if r1_16 then
+      r1_17 = FVector(r1_16[1], r1_16[2], r1_16[3])
     else
-      TargetBGLoc = self.PreviewSceneLocation
+      r1_17 = FVector(0, 0, 0)
     end
-    self.ArmoryHelper:StartPreviewBGAnimation(TargetBGLoc, Time)
-  end
-  
-  self:DoSomethingWithScene("StartPreviewBGAnimation", _StartPreviewBGAnimation)
+    r0_16.ArmoryHelper:StartPreviewBGAnimation(r1_17, r2_16)
+  end)
 end
-
-function M:DoSomethingWithScene(BehaviorName, Func, ...)
-  local Co = _FindSceneCoroutine(self, BehaviorName)
-  if Co then
-    local Status = coroutine.status(Co)
-    if "running" == Status or "suspended" == Status then
-      coroutine.close(Co)
-      _RemoveSceneCoroutine(self, BehaviorName)
+function r0_0.DoSomethingWithScene(r0_18, r1_18, r2_18, ...)
+  -- line: [183, 195] id: 18
+  local r3_18 = r7_0(r0_18, r1_18)
+  if r3_18 then
+    local r4_18 = coroutine.status(r3_18)
+    if r4_18 == "running" or r4_18 == "suspended" then
+      coroutine.close(r3_18)
+      r5_0(r0_18, r1_18)
     end
   end
-  Co = coroutine.create(Func)
-  _AddSceneCoroutine(self, BehaviorName, Co)
-  coroutine.resume(Co, ...)
+  r3_18 = coroutine.create(r2_18)
+  r6_0(r0_18, r1_18, r3_18)
+  coroutine.resume(r3_18, ...)
 end
-
-function M:DoDeferedSceneBehavior()
-  local SceneCoroutineArray = {}
-  for _, value in ipairs(self.SceneCoroutineArray) do
-    table.insert(SceneCoroutineArray, value)
+function r0_0.DoDeferedSceneBehavior(r0_19)
+  -- line: [197, 207] id: 19
+  local r1_19 = {}
+  for r6_19, r7_19 in ipairs(r0_19.SceneCoroutineArray) do
+    table.insert(r1_19, r7_19)
   end
-  self.SceneCoroutineArray = {}
-  self.SceneCoroutineMap = {}
-  for _, Co in ipairs(SceneCoroutineArray) do
-    coroutine.resume(Co)
+  -- close: r2_19
+  r0_19.SceneCoroutineArray = {}
+  r0_19.SceneCoroutineMap = {}
+  for r6_19, r7_19 in ipairs(r1_19) do
+    coroutine.resume(r7_19)
   end
+  -- close: r2_19
 end
-
-function M:IsSceneActorLoading()
-  return self.IsPreviewSceneLoading
+function r0_0.IsSceneActorLoading(r0_20)
+  -- line: [210, 212] id: 20
+  return r0_20.IsPreviewSceneLoading
 end
-
-function M:OnPreviewSceneLoaded()
-  self.IsPreviewSceneLoading = false
-  self:DoDeferedSceneBehavior()
-  self:UpdateLighting()
+function r0_0.OnPreviewSceneLoaded(r0_21)
+  -- line: [215, 219] id: 21
+  r0_21.IsPreviewSceneLoading = false
+  r0_21:DoDeferedSceneBehavior()
+  r0_21:UpdateLighting()
 end
-
-function M:UpdateLighting()
-  self.bNotifyHelperUpdateLighting = false
-  
-  local function _NotifyPreviewSceneUpdateLight(...)
-    local bSuccess = self:WaitForPreviewSceneLoadFinished()
-    if not bSuccess then
-      return
+function r0_0.UpdateLighting(r0_22)
+  -- line: [221, 245] id: 22
+  r0_22.bNotifyHelperUpdateLighting = false
+  r0_22:DoSomethingWithScene("NotifyPreviewSceneUpdateLight", function(...)
+    -- line: [223, 243] id: 23
+    if not r0_22:WaitForPreviewSceneLoadFinished() then
+      return 
     end
-    UKismetSystemLibrary.ExecuteConsoleCommand(self.ViewUI, "r.Shadow.ForceCacheUpdate 1", nil)
-    
-    local function _CallBP_WaitForWeaponLoading()
-      if self.IsArmoryWeaponLoading then
-        self:GetWeaponActor()
+    UKismetSystemLibrary.ExecuteConsoleCommand(r0_22.ViewUI, "r.Shadow.ForceCacheUpdate 1", nil)
+    r0_22:DoSomethingWithWeapon("CallBP_WaitForWeaponLoading", function()
+      -- line: [229, 234] id: 24
+      if r0_22.IsArmoryWeaponLoading then
+        r0_22:GetWeaponActor()
       end
-      self:TryNotifyHelperUpdateLighting()
-    end
-    
-    self:DoSomethingWithWeapon("CallBP_WaitForWeaponLoading", _CallBP_WaitForWeaponLoading)
-    
-    local function _CallBP_WaitForPlayerLoading()
-      if self.IsArmoryPlayerLoading then
-        self:GetPlayerActor()
+      r0_22:TryNotifyHelperUpdateLighting()
+    end)
+    r0_22:DoSomethingWithPlayer("CallBP_WaitForPlayerLoading", function()
+      -- line: [236, 241] id: 25
+      if r0_22.IsArmoryPlayerLoading then
+        r0_22:GetPlayerActor()
       end
-      self:TryNotifyHelperUpdateLighting()
-    end
-    
-    self:DoSomethingWithPlayer("CallBP_WaitForPlayerLoading", _CallBP_WaitForPlayerLoading)
-  end
-  
-  self:DoSomethingWithScene("NotifyPreviewSceneUpdateLight", _NotifyPreviewSceneUpdateLight)
+      r0_22:TryNotifyHelperUpdateLighting()
+    end)
+  end)
 end
-
-function M:TryNotifyHelperUpdateLighting()
-  if self.IsArmoryWeaponLoading or self.IsArmoryPlayerLoading then
-    return
+function r0_0.TryNotifyHelperUpdateLighting(r0_26)
+  -- line: [247, 261] id: 26
+  if r0_26.IsArmoryWeaponLoading or r0_26.IsArmoryPlayerLoading then
+    return 
   end
-  if self.bNotifyHelperUpdateLighting then
-    return
+  if r0_26.bNotifyHelperUpdateLighting then
+    return 
   end
-  if IsValid(self.ArmoryHelper) and self.ArmoryHelper:GetViewActor() then
-    self.bNotifyHelperUpdateLighting = true
-    self.ArmoryHelper:OnArmoryOpenOrClose(true)
-    if self.bPreviewSceneLoaded then
-      self.ArmoryHelper:OnPreviewSceneLoaded()
+  if IsValid(r0_26.ArmoryHelper) and r0_26.ArmoryHelper:GetViewActor() then
+    r0_26.bNotifyHelperUpdateLighting = true
+    r0_26.ArmoryHelper:OnArmoryOpenOrClose(true)
+    if r0_26.bPreviewSceneLoaded then
+      r0_26.ArmoryHelper:OnPreviewSceneLoaded()
     end
   end
 end
-
-function M:SwitchArmoryCamera(IsArmoryCamera)
-  if IsArmoryCamera then
-    self.ArmoryHelper:OnArmoryOpenOrClose(true)
+function r0_0.SwitchArmoryCamera(r0_27, r1_27)
+  -- line: [263, 267] id: 27
+  if r1_27 then
+    r0_27.ArmoryHelper:OnArmoryOpenOrClose(true)
   end
 end
-
-function M:Component_OnClosed()
-  self.ArmoryHelper:OnArmoryOpenOrClose(false)
+function r0_0.UpdatePreviewSceneLight(r0_28, r1_28)
+  -- line: [269, 277] id: 28
+  if r0_28.PreviewSceneLightSpecial == r1_28 then
+    return 
+  end
+  r0_28.PreviewSceneLightSpecial = r1_28
+  if r0_28.ArmoryHelper and r0_28.ArmoryHelper.SetPreviewLightingState then
+    r0_28.ArmoryHelper:SetPreviewLightingState(r1_28)
+  end
 end
-
-function M:Component_OnDestruct()
-  self:UnloadPreviewScene()
-  local Player = UE4.UGameplayStatics.GetPlayerCharacter(self.ViewUI, 0)
-  if Player then
-    Player.CharCameraComponent:SetComponentTickEnabled(true)
-    if self.EPreviewSceneType then
-      UKismetSystemLibrary.ExecuteConsoleCommand(Player, "r.Shadow.ForceCacheUpdate 1", nil)
-      URuntimeCommonFunctionLibrary.UpdateWorldLighting(Player)
+function r0_0.Component_OnClosed(r0_29)
+  -- line: [279, 281] id: 29
+  r0_29.ArmoryHelper:OnArmoryOpenOrClose(false)
+end
+function r0_0.Component_OnDestruct(r0_30)
+  -- line: [283, 293] id: 30
+  r0_30:UnloadPreviewScene()
+  local r1_30 = UE4.UGameplayStatics.GetPlayerCharacter(r0_30.ViewUI, 0)
+  if r1_30 then
+    r1_30.CharCameraComponent:SetComponentTickEnabled(true)
+    if r0_30.EPreviewSceneType then
+      UKismetSystemLibrary.ExecuteConsoleCommand(r1_30, "r.Shadow.ForceCacheUpdate 1", nil)
     end
   end
 end
-
-return M
+return r0_0

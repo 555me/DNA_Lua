@@ -53,12 +53,6 @@ local r0_0 = {
     14
   },
   RT_6 = {
-    1,
-    5,
-    9,
-    13
-  },
-  RT_7 = {
     7,
     8,
     11,
@@ -66,10 +60,10 @@ local r0_0 = {
     15,
     16
   },
-  RT_8 = {
+  RT_7 = {
     16
   },
-  RT_9 = {
+  RT_8 = {
     1,
     2,
     3,
@@ -83,19 +77,19 @@ local r0_0 = {
     14,
     15
   },
-  RT_10 = {
+  RT_9 = {
     15,
     16
   },
-  RT_11 = {
+  RT_10 = {
     13,
     14
   },
-  RT_12 = {
+  RT_11 = {
     1,
     5
   },
-  RT_13 = {
+  RT_12 = {
     3,
     4,
     7,
@@ -105,7 +99,7 @@ local r0_0 = {
     15,
     16
   },
-  RT_14 = {
+  RT_13 = {
     1,
     2,
     5,
@@ -113,11 +107,11 @@ local r0_0 = {
     9,
     13
   },
-  RT_15 = {
+  RT_14 = {
     3,
     4
   },
-  RT_16 = {
+  RT_15 = {
     1,
     2,
     5,
@@ -127,17 +121,17 @@ local r0_0 = {
     13,
     14
   },
-  RT_17 = {
+  RT_16 = {
     14,
     15
   },
 }
-r0_0.RT_18 = {
+r0_0.RT_17 = {
   Big = 1,
   FloorId = -1,
-  Small = r0_0.RT_17,
+  Small = r0_0.RT_16,
 }
-r0_0.RT_19 = {
+r0_0.RT_18 = {
   1,
   2,
   3,
@@ -155,25 +149,33 @@ r0_0.RT_19 = {
   15,
   16
 }
-r0_0.RT_20 = {
+r0_0.RT_19 = {
   13
 }
-r0_0.RT_21 = {
+r0_0.RT_20 = {
   4
 }
-r0_0.RT_22 = {
+r0_0.RT_21 = {
   11,
   12,
   15,
   16
 }
+r0_0.RT_22 = {
+  14
+}
 r0_0.RT_23 = {
+  Big = 1,
+  FloorId = 0,
+  Small = r0_0.RT_22,
+}
+r0_0.RT_24 = {
   1,
   2,
   5,
   6
 }
-r0_0.RT_24 = {
+r0_0.RT_25 = {
   3,
   4,
   7,
@@ -181,13 +183,13 @@ r0_0.RT_24 = {
   11,
   12
 }
-r0_0.RT_25 = {
+r0_0.RT_26 = {
   4,
   8,
   12,
   16
 }
-r0_0.RT_26 = {
+r0_0.RT_27 = {
   1,
   2,
   5,
@@ -195,19 +197,27 @@ r0_0.RT_26 = {
   9,
   10
 }
-r0_0.RT_27 = {
+r0_0.RT_28 = {
+  5,
+  6,
+  9,
+  10,
+  13,
+  14
+}
+r0_0.RT_29 = {
   8,
   12
 }
-r0_0.RT_28 = {
+r0_0.RT_30 = {
   1
 }
-r0_0.RT_29 = {
+r0_0.RT_31 = {
   5,
   9,
   13
 }
-r0_0.RT_30 = {
+r0_0.RT_32 = {
   1,
   2,
   5,
@@ -222,78 +232,49 @@ r0_0.RT_30 = {
   15,
   16
 }
-r0_0.RT_31 = {
+r0_0.RT_33 = {
   13,
   14,
   15,
   16
 }
-r0_0.RT_32 = {
+r0_0.RT_34 = {
   4,
   8
 }
-r0_0.RT_33 = {
+r0_0.RT_35 = {
   9,
   13,
   14
 }
-r0_0.RT_34 = {
+r0_0.RT_36 = {
   1,
   2
 }
-r0_0.RT_35 = {
+r0_0.RT_37 = {
   12,
   15,
   16
 }
-r0_0.RT_36 = {
+r0_0.RT_38 = {
   1,
   2,
   5
 }
-r0_0.RT_37 = {
-  12,
-  16
-}
-r0_0.RT_38 = {
-  Big = 1,
-  FloorId = 0,
-  Small = r0_0.RT_19,
-}
 r0_0.RT_39 = {
-  3,
-  4,
-  7,
-  8,
-  10,
-  11,
   12,
-  13,
-  14,
-  15,
   16
 }
 r0_0.RT_40 = {
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  9,
-  10,
-  11,
-  12
+  Big = 1,
+  FloorId = 0,
+  Small = r0_0.RT_18,
 }
 r0_0.RT_41 = {
   3,
   4,
-  6,
   7,
   8,
-  9,
   10,
   11,
   12,
@@ -303,6 +284,8 @@ r0_0.RT_41 = {
   16
 }
 r0_0.RT_42 = {
+  1,
+  2,
   3,
   4,
   5,
@@ -312,14 +295,11 @@ r0_0.RT_42 = {
   9,
   10,
   11,
-  12,
-  13,
-  14,
-  15,
-  16
+  12
 }
 r0_0.RT_43 = {
-  5,
+  3,
+  4,
   6,
   7,
   8,
@@ -333,11 +313,41 @@ r0_0.RT_43 = {
   16
 }
 r0_0.RT_44 = {
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16
+}
+r0_0.RT_45 = {
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16
+}
+r0_0.RT_46 = {
   4,
   8,
   12
 }
-r0_0.RT_45 = {
+r0_0.RT_47 = {
   1,
   2,
   3,
@@ -355,7 +365,7 @@ r0_0.RT_45 = {
   15
 }
 local r2_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
-  -- line: [354, 354] id: 1
+  -- line: [364, 364] id: 1
   return r1_1
 end
 local r3_0 = "TeleportPoint"
@@ -640,7 +650,12 @@ r4_0[1003] = {
     {
       Big = 4,
       FloorId = 0,
-      Small = r0_0.RT_6,
+      Small = {
+        1,
+        5,
+        9,
+        13
+      },
       SubRegionId = 100103,
     }
   },
@@ -665,7 +680,7 @@ r4_0[1010] = {
     {
       Big = 5,
       FloorId = 0,
-      Small = r0_0.RT_7,
+      Small = r0_0.RT_6,
     },
     {
       Big = 6,
@@ -700,7 +715,7 @@ r4_0[1011] = {
     {
       Big = 3,
       FloorId = 0,
-      Small = r0_0.RT_8,
+      Small = r0_0.RT_7,
     },
     {
       Big = 4,
@@ -727,7 +742,7 @@ r4_0[1011] = {
     {
       Big = 8,
       FloorId = 0,
-      Small = r0_0.RT_9,
+      Small = r0_0.RT_8,
     },
     {
       Big = 11,
@@ -761,12 +776,12 @@ r4_0[1012] = {
     {
       Big = 1,
       FloorId = 0,
-      Small = r0_0.RT_10,
+      Small = r0_0.RT_9,
     },
     {
       Big = 2,
       FloorId = 0,
-      Small = r0_0.RT_11,
+      Small = r0_0.RT_10,
     },
     {
       Big = 3,
@@ -799,7 +814,7 @@ r4_0[1012] = {
     {
       Big = 5,
       FloorId = 0,
-      Small = r0_0.RT_12,
+      Small = r0_0.RT_11,
     }
   },
   Id = 1012,
@@ -823,7 +838,7 @@ r4_0[1013] = {
     {
       Big = 4,
       FloorId = 0,
-      Small = r0_0.RT_10,
+      Small = r0_0.RT_9,
     },
     {
       Big = 5,
@@ -838,17 +853,17 @@ r4_0[1013] = {
     {
       Big = 8,
       FloorId = 0,
-      Small = r0_0.RT_13,
+      Small = r0_0.RT_12,
     },
     {
       Big = 9,
       FloorId = 0,
-      Small = r0_0.RT_14,
+      Small = r0_0.RT_13,
     },
     {
       Big = 11,
       FloorId = 0,
-      Small = r0_0.RT_15,
+      Small = r0_0.RT_14,
     }
   },
   Id = 1013,
@@ -888,7 +903,7 @@ r4_0[1014] = {
     {
       Big = 10,
       FloorId = 0,
-      Small = r0_0.RT_16,
+      Small = r0_0.RT_15,
     }
   },
   Id = 1014,
@@ -909,26 +924,26 @@ r4_0[1014] = {
 }
 r4_0[1015] = {
   Block = {
-    r0_0.RT_18,
+    r0_0.RT_17,
     {
-      Big = 2,
+      Big = 3,
+      FloorId = -1,
+      Small = r0_0.RT_18,
+    },
+    {
+      Big = 4,
       FloorId = -1,
       Small = r0_0.RT_19,
     },
     {
-      Big = 3,
+      Big = 8,
       FloorId = -1,
       Small = r0_0.RT_20,
     },
     {
-      Big = 7,
+      Big = 9,
       FloorId = -1,
-      Small = r0_0.RT_21,
-    },
-    {
-      Big = 8,
-      FloorId = -1,
-      Small = r0_0.RT_12,
+      Small = r0_0.RT_11,
     }
   },
   BuildingNameAndId = "Icelake_L-1",
@@ -951,7 +966,7 @@ r4_0[1015] = {
 r4_0[1016] = {
   Block = {
     {
-      Big = 3,
+      Big = 4,
       FloorId = -1,
       Small = {
         8,
@@ -960,7 +975,7 @@ r4_0[1016] = {
       },
     },
     {
-      Big = 4,
+      Big = 5,
       FloorId = -1,
       Small = {
         4,
@@ -979,7 +994,7 @@ r4_0[1016] = {
       },
     },
     {
-      Big = 5,
+      Big = 6,
       FloorId = -1,
       Small = {
         1,
@@ -996,7 +1011,7 @@ r4_0[1016] = {
       },
     },
     {
-      Big = 9,
+      Big = 10,
       FloorId = -1,
       Small = {
         1,
@@ -1011,7 +1026,7 @@ r4_0[1016] = {
       },
     },
     {
-      Big = 10,
+      Big = 11,
       FloorId = -1,
       Small = r0_0.RT_5,
     }
@@ -1036,7 +1051,7 @@ r4_0[1016] = {
 r4_0[1017] = {
   Block = {
     {
-      Big = 8,
+      Big = 9,
       FloorId = -1,
       Small = {
         4,
@@ -1059,7 +1074,7 @@ r4_0[1017] = {
       },
     },
     {
-      Big = 13,
+      Big = 14,
       FloorId = -1,
       Small = {
         2,
@@ -1075,9 +1090,9 @@ r4_0[1017] = {
       },
     },
     {
-      Big = 14,
+      Big = 15,
       FloorId = -1,
-      Small = r0_0.RT_12,
+      Small = r0_0.RT_11,
     }
   },
   BuildingNameAndId = "Icelake_L-1",
@@ -1100,12 +1115,12 @@ r4_0[1017] = {
 r4_0[1018] = {
   Block = {
     {
-      Big = 6,
+      Big = 7,
       FloorId = -1,
-      Small = r0_0.RT_22,
+      Small = r0_0.RT_21,
     },
     {
-      Big = 7,
+      Big = 8,
       FloorId = -1,
       Small = {
         1,
@@ -1126,12 +1141,12 @@ r4_0[1018] = {
       },
     },
     {
-      Big = 8,
+      Big = 9,
       FloorId = -1,
-      Small = r0_0.RT_20,
+      Small = r0_0.RT_19,
     },
     {
-      Big = 11,
+      Big = 12,
       FloorId = -1,
       Small = {
         3,
@@ -1141,7 +1156,7 @@ r4_0[1018] = {
       },
     },
     {
-      Big = 12,
+      Big = 13,
       FloorId = -1,
       Small = {
         1,
@@ -1154,9 +1169,9 @@ r4_0[1018] = {
       },
     },
     {
-      Big = 13,
+      Big = 14,
       FloorId = -1,
-      Small = r0_0.RT_12,
+      Small = r0_0.RT_11,
     }
   },
   BuildingNameAndId = "Icelake_L-1",
@@ -1178,13 +1193,7 @@ r4_0[1018] = {
 }
 r4_0[1020] = {
   Block = {
-    {
-      Big = 1,
-      FloorId = 0,
-      Small = {
-        14
-      },
-    },
+    r0_0.RT_23,
     {
       Big = 2,
       FloorId = 0,
@@ -1201,17 +1210,17 @@ r4_0[1020] = {
     {
       Big = 3,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 4,
       FloorId = 0,
-      Small = r0_0.RT_14,
+      Small = r0_0.RT_13,
     },
     {
-      Big = 6,
+      Big = 7,
       FloorId = 0,
-      Small = r0_0.RT_23,
+      Small = r0_0.RT_24,
     }
   },
   Id = 1020,
@@ -1236,37 +1245,37 @@ r4_0[1021] = {
     {
       Big = 4,
       FloorId = 0,
-      Small = r0_0.RT_24,
+      Small = r0_0.RT_25,
     },
     {
       Big = 5,
       FloorId = 0,
-      Small = r0_0.RT_23,
-    },
-    {
-      Big = 1,
-      FloorId = -1,
-      Small = r0_0.RT_25,
+      Small = r0_0.RT_24,
     },
     {
       Big = 2,
       FloorId = -1,
-      Small = r0_0.RT_16,
+      Small = r0_0.RT_26,
     },
     {
       Big = 3,
       FloorId = -1,
-      Small = r0_0.RT_13,
+      Small = r0_0.RT_15,
     },
     {
       Big = 4,
       FloorId = -1,
-      Small = r0_0.RT_26,
+      Small = r0_0.RT_12,
+    },
+    {
+      Big = 5,
+      FloorId = -1,
+      Small = r0_0.RT_27,
     },
     {
       Big = 1,
       FloorId = -2,
-      Small = r0_0.RT_8,
+      Small = r0_0.RT_7,
     },
     {
       Big = 2,
@@ -1276,7 +1285,7 @@ r4_0[1021] = {
     {
       Big = 3,
       FloorId = -2,
-      Small = r0_0.RT_13,
+      Small = r0_0.RT_12,
     },
     {
       Big = 4,
@@ -1314,12 +1323,14 @@ r4_0[1021] = {
 r4_0[1030] = {
   Block = {
     {
-      Big = 7,
+      Big = 8,
       FloorId = 0,
       Small = {
         1,
+        2,
         5,
         6,
+        7,
         8,
         9,
         10,
@@ -1332,24 +1343,15 @@ r4_0[1030] = {
       },
     },
     {
-      Big = 8,
-      FloorId = 0,
-      Small = {
-        5,
-        6,
-        9,
-        10
-      },
-    },
-    {
       Big = 9,
       FloorId = 0,
+      Small = r0_0.RT_28,
+    },
+    {
+      Big = 10,
+      FloorId = 0,
       Small = {
-        6,
-        9,
-        10,
-        13,
-        14
+        3
       },
     }
   },
@@ -1371,21 +1373,24 @@ r4_0[1030] = {
 }
 r4_0[1031] = {
   Block = {
+    r0_0.RT_23,
     {
-      Big = 2,
+      Big = 3,
       FloorId = 0,
       Small = {
         2,
         3,
         4,
+        7,
         8,
+        11,
         12
       },
     },
     {
-      Big = 3,
+      Big = 4,
       FloorId = 0,
-      Small = r0_0.RT_6,
+      Small = r0_0.RT_15,
     }
   },
   Id = 1031,
@@ -1408,34 +1413,24 @@ r4_0[1031] = {
 r4_0[1032] = {
   Block = {
     {
-      Big = 1,
-      FloorId = 0,
-      Small = r0_0.RT_27,
-    },
-    {
       Big = 2,
       FloorId = 0,
-      Small = {
-        5,
-        6,
-        7,
-        9,
-        10,
-        11,
-        13,
-        14,
-        15
-      },
+      Small = r0_0.RT_29,
     },
     {
-      Big = 5,
+      Big = 3,
       FloorId = 0,
-      Small = r0_0.RT_24,
+      Small = r0_0.RT_28,
     },
     {
       Big = 6,
       FloorId = 0,
-      Small = r0_0.RT_28,
+      Small = r0_0.RT_25,
+    },
+    {
+      Big = 7,
+      FloorId = 0,
+      Small = r0_0.RT_30,
     }
   },
   Id = 1032,
@@ -1457,27 +1452,17 @@ r4_0[1032] = {
 r4_0[1033] = {
   Block = {
     {
-      Big = 3,
-      FloorId = 0,
-      Small = {
-        3,
-        4,
-        7,
-        8,
-        11,
-        12,
-        14,
-        15,
-        16
-      },
-    },
-    {
       Big = 4,
       FloorId = 0,
-      Small = r0_0.RT_29,
+      Small = r0_0.RT_6,
     },
     {
-      Big = 6,
+      Big = 5,
+      FloorId = 0,
+      Small = r0_0.RT_31,
+    },
+    {
+      Big = 7,
       FloorId = 0,
       Small = {
         2,
@@ -1498,18 +1483,14 @@ r4_0[1033] = {
       },
     },
     {
-      Big = 7,
-      FloorId = 0,
-      Small = {
-        2,
-        3,
-        4
-      },
-    },
-    {
       Big = 8,
       FloorId = 0,
-      Small = r0_0.RT_28,
+      Small = r0_0.RT_14,
+    },
+    {
+      Big = 9,
+      FloorId = 0,
+      Small = r0_0.RT_30,
     }
   },
   Id = 1033,
@@ -1533,12 +1514,12 @@ r4_0[1040] = {
     {
       Big = 4,
       FloorId = 1,
-      Small = r0_0.RT_24,
+      Small = r0_0.RT_25,
     },
     {
       Big = 5,
       FloorId = 1,
-      Small = r0_0.RT_30,
+      Small = r0_0.RT_32,
     },
     {
       Big = 6,
@@ -1549,7 +1530,7 @@ r4_0[1040] = {
       },
     },
     {
-      Big = 7,
+      Big = 8,
       FloorId = 1,
       Small = {
         2,
@@ -1580,19 +1561,12 @@ r4_0[1041] = {
     {
       Big = 1,
       FloorId = 1,
-      Small = r0_0.RT_31,
+      Small = r0_0.RT_33,
     },
     {
       Big = 2,
       FloorId = 1,
-      Small = {
-        5,
-        6,
-        9,
-        10,
-        13,
-        14
-      },
+      Small = r0_0.RT_28,
     },
     {
       Big = 3,
@@ -1615,7 +1589,7 @@ r4_0[1041] = {
     {
       Big = 4,
       FloorId = 1,
-      Small = r0_0.RT_26,
+      Small = r0_0.RT_27,
     }
   },
   BuildingNameAndId = "Fort_L1",
@@ -1640,17 +1614,17 @@ r4_0[1042] = {
     {
       Big = 1,
       FloorId = 0,
-      Small = r0_0.RT_32,
+      Small = r0_0.RT_34,
     },
     {
       Big = 2,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 3,
       FloorId = 0,
-      Small = r0_0.RT_33,
+      Small = r0_0.RT_35,
     },
     {
       Big = 5,
@@ -1666,7 +1640,7 @@ r4_0[1042] = {
     {
       Big = 6,
       FloorId = 0,
-      Small = r0_0.RT_34,
+      Small = r0_0.RT_36,
     },
     {
       Big = 1,
@@ -1713,7 +1687,7 @@ r4_0[1043] = {
     {
       Big = 4,
       FloorId = 0,
-      Small = r0_0.RT_35,
+      Small = r0_0.RT_37,
     },
     {
       Big = 5,
@@ -1729,15 +1703,15 @@ r4_0[1043] = {
     {
       Big = 8,
       FloorId = 0,
-      Small = r0_0.RT_21,
+      Small = r0_0.RT_20,
     },
     {
       Big = 9,
       FloorId = 0,
-      Small = r0_0.RT_36,
+      Small = r0_0.RT_38,
     },
     {
-      Big = 3,
+      Big = 4,
       FloorId = -1,
       Small = {
         5,
@@ -1751,7 +1725,7 @@ r4_0[1043] = {
       },
     },
     {
-      Big = 4,
+      Big = 5,
       FloorId = -1,
       Small = {
         5,
@@ -1780,7 +1754,7 @@ r4_0[1044] = {
     {
       Big = 7,
       FloorId = 0,
-      Small = r0_0.RT_37,
+      Small = r0_0.RT_39,
     },
     {
       Big = 8,
@@ -1790,7 +1764,7 @@ r4_0[1044] = {
     {
       Big = 11,
       FloorId = 0,
-      Small = r0_0.RT_21,
+      Small = r0_0.RT_20,
     },
     {
       Big = 12,
@@ -1808,7 +1782,7 @@ r4_0[1044] = {
       },
     },
     {
-      Big = 8,
+      Big = 9,
       FloorId = 1,
       Small = {
         2,
@@ -1821,9 +1795,9 @@ r4_0[1044] = {
       },
     },
     {
-      Big = 9,
+      Big = 10,
       FloorId = 1,
-      Small = r0_0.RT_12,
+      Small = r0_0.RT_11,
     }
   },
   Id = 1044,
@@ -1852,7 +1826,7 @@ r4_0[1045] = {
     {
       Big = 10,
       FloorId = 0,
-      Small = r0_0.RT_20,
+      Small = r0_0.RT_19,
     },
     {
       Big = 13,
@@ -1897,9 +1871,9 @@ r4_0[1045] = {
       },
     },
     {
-      Big = 4,
+      Big = 5,
       FloorId = -1,
-      Small = r0_0.RT_27,
+      Small = r0_0.RT_29,
     }
   },
   Id = 1045,
@@ -1920,7 +1894,7 @@ r4_0[1045] = {
 }
 r4_0[1050] = {
   Block = {
-    r0_0.RT_38
+    r0_0.RT_40
   },
   Id = 1050,
   LevelName = "BH_Thea",
@@ -1943,12 +1917,12 @@ r4_0[1100] = {
     {
       Big = 94,
       FloorId = 0,
-      Small = r0_0.RT_7,
+      Small = r0_0.RT_6,
     },
     {
       Big = 95,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 96,
@@ -1980,27 +1954,27 @@ r4_0[1100] = {
     {
       Big = 108,
       FloorId = 0,
-      Small = r0_0.RT_39,
+      Small = r0_0.RT_41,
     },
     {
       Big = 109,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 110,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 111,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 112,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 118,
@@ -2021,32 +1995,32 @@ r4_0[1100] = {
     {
       Big = 119,
       FloorId = 0,
-      Small = r0_0.RT_40,
+      Small = r0_0.RT_42,
     },
     {
       Big = 120,
       FloorId = 0,
-      Small = r0_0.RT_40,
+      Small = r0_0.RT_42,
     },
     {
       Big = 121,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 122,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 127,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 128,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     }
   },
   Id = 1100,
@@ -2068,37 +2042,37 @@ r4_0[1101] = {
     {
       Big = 66,
       FloorId = 0,
-      Small = r0_0.RT_41,
+      Small = r0_0.RT_43,
     },
     {
       Big = 67,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 68,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 80,
       FloorId = 0,
-      Small = r0_0.RT_39,
+      Small = r0_0.RT_41,
     },
     {
       Big = 81,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 82,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 83,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 96,
@@ -2140,17 +2114,17 @@ r4_0[1102] = {
     {
       Big = 37,
       FloorId = 0,
-      Small = r0_0.RT_8,
+      Small = r0_0.RT_7,
     },
     {
       Big = 38,
       FloorId = 0,
-      Small = r0_0.RT_42,
+      Small = r0_0.RT_44,
     },
     {
       Big = 39,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 40,
@@ -2169,32 +2143,32 @@ r4_0[1102] = {
     {
       Big = 49,
       FloorId = 0,
-      Small = r0_0.RT_25,
+      Small = r0_0.RT_26,
     },
     {
       Big = 50,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 51,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 52,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 53,
       FloorId = 0,
-      Small = r0_0.RT_9,
+      Small = r0_0.RT_8,
     },
     {
       Big = 63,
       FloorId = 0,
-      Small = r0_0.RT_32,
+      Small = r0_0.RT_34,
     },
     {
       Big = 64,
@@ -2214,7 +2188,7 @@ r4_0[1102] = {
     {
       Big = 66,
       FloorId = 0,
-      Small = r0_0.RT_34,
+      Small = r0_0.RT_36,
     }
   },
   Id = 1102,
@@ -2235,7 +2209,7 @@ r4_0[1103] = {
     {
       Big = 63,
       FloorId = 0,
-      Small = r0_0.RT_22,
+      Small = r0_0.RT_21,
     },
     {
       Big = 64,
@@ -2245,7 +2219,7 @@ r4_0[1103] = {
     {
       Big = 65,
       FloorId = 0,
-      Small = r0_0.RT_43,
+      Small = r0_0.RT_45,
     },
     {
       Big = 66,
@@ -2306,11 +2280,11 @@ r4_0[1103] = {
 }
 r4_0[1104] = {
   Block = {
-    r0_0.RT_18,
+    r0_0.RT_17,
     {
       Big = 3,
       FloorId = -1,
-      Small = r0_0.RT_11,
+      Small = r0_0.RT_10,
     },
     {
       Big = 5,
@@ -2332,7 +2306,7 @@ r4_0[1104] = {
     {
       Big = 6,
       FloorId = -1,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 7,
@@ -2342,12 +2316,12 @@ r4_0[1104] = {
     {
       Big = 9,
       FloorId = -1,
-      Small = r0_0.RT_15,
+      Small = r0_0.RT_14,
     },
     {
       Big = 10,
       FloorId = -1,
-      Small = r0_0.RT_28,
+      Small = r0_0.RT_30,
     }
   },
   BuildingNameAndId = "Yanjindu_L-1",
@@ -2369,17 +2343,17 @@ r4_0[1105] = {
     {
       Big = 46,
       FloorId = 0,
-      Small = r0_0.RT_10,
+      Small = r0_0.RT_9,
     },
     {
       Big = 47,
       FloorId = 0,
-      Small = r0_0.RT_31,
+      Small = r0_0.RT_33,
     },
     {
       Big = 48,
       FloorId = 0,
-      Small = r0_0.RT_11,
+      Small = r0_0.RT_10,
     },
     {
       Big = 60,
@@ -2396,12 +2370,12 @@ r4_0[1105] = {
     {
       Big = 61,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 62,
       FloorId = 0,
-      Small = r0_0.RT_9,
+      Small = r0_0.RT_8,
     },
     {
       Big = 76,
@@ -2418,7 +2392,7 @@ r4_0[1105] = {
     {
       Big = 77,
       FloorId = 0,
-      Small = r0_0.RT_36,
+      Small = r0_0.RT_38,
     }
   },
   Id = 1105,
@@ -2439,7 +2413,7 @@ r4_0[1106] = {
     {
       Big = 19,
       FloorId = 0,
-      Small = r0_0.RT_31,
+      Small = r0_0.RT_33,
     },
     {
       Big = 29,
@@ -2456,43 +2430,43 @@ r4_0[1106] = {
     {
       Big = 30,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 31,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 32,
       FloorId = 0,
-      Small = r0_0.RT_43,
+      Small = r0_0.RT_45,
     },
     {
       Big = 33,
       FloorId = 0,
-      Small = r0_0.RT_29,
+      Small = r0_0.RT_31,
     },
     {
       Big = 42,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
-    r0_0.RT_38,
+    r0_0.RT_40,
     {
       Big = 43,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 44,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 45,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 46,
@@ -2510,27 +2484,27 @@ r4_0[1106] = {
     {
       Big = 55,
       FloorId = 0,
-      Small = r0_0.RT_25,
+      Small = r0_0.RT_26,
     },
     {
       Big = 56,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 57,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 58,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 59,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 60,
@@ -2551,67 +2525,67 @@ r4_0[1106] = {
     {
       Big = 70,
       FloorId = 0,
-      Small = r0_0.RT_25,
+      Small = r0_0.RT_26,
     },
     {
       Big = 71,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 72,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 73,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 74,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 75,
       FloorId = 0,
-      Small = r0_0.RT_9,
+      Small = r0_0.RT_8,
     },
     {
       Big = 86,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 87,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 88,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 89,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 90,
       FloorId = 0,
-      Small = r0_0.RT_9,
+      Small = r0_0.RT_8,
     },
     {
       Big = 101,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 102,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     }
   },
   Id = 1106,
@@ -2632,62 +2606,62 @@ r4_0[1107] = {
     {
       Big = 4,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 5,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 11,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 12,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 13,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 14,
       FloorId = 0,
-      Small = r0_0.RT_16,
+      Small = r0_0.RT_15,
     },
     {
       Big = 21,
       FloorId = 0,
-      Small = r0_0.RT_13,
+      Small = r0_0.RT_12,
     },
     {
       Big = 22,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 23,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 24,
       FloorId = 0,
-      Small = r0_0.RT_34,
+      Small = r0_0.RT_36,
     },
     {
       Big = 33,
       FloorId = 0,
-      Small = r0_0.RT_13,
+      Small = r0_0.RT_12,
     },
     {
       Big = 34,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 35,
@@ -2697,12 +2671,12 @@ r4_0[1107] = {
     {
       Big = 46,
       FloorId = 0,
-      Small = r0_0.RT_44,
+      Small = r0_0.RT_46,
     },
     {
       Big = 47,
       FloorId = 0,
-      Small = r0_0.RT_40,
+      Small = r0_0.RT_42,
     },
     {
       Big = 48,
@@ -2746,7 +2720,7 @@ r4_0[1109] = {
     {
       Big = 35,
       FloorId = 0,
-      Small = r0_0.RT_35,
+      Small = r0_0.RT_37,
     },
     {
       Big = 36,
@@ -2780,12 +2754,12 @@ r4_0[1109] = {
     {
       Big = 49,
       FloorId = 0,
-      Small = r0_0.RT_9,
+      Small = r0_0.RT_8,
     },
     {
       Big = 62,
       FloorId = 0,
-      Small = r0_0.RT_44,
+      Small = r0_0.RT_46,
     },
     {
       Big = 63,
@@ -2811,12 +2785,12 @@ r4_0[1110] = {
     {
       Big = 7,
       FloorId = 0,
-      Small = r0_0.RT_35,
+      Small = r0_0.RT_37,
     },
     {
       Big = 8,
       FloorId = 0,
-      Small = r0_0.RT_33,
+      Small = r0_0.RT_35,
     },
     {
       Big = 14,
@@ -2836,32 +2810,32 @@ r4_0[1110] = {
     {
       Big = 15,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 16,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 24,
       FloorId = 0,
-      Small = r0_0.RT_42,
+      Small = r0_0.RT_44,
     },
     {
       Big = 25,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 26,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 35,
       FloorId = 0,
-      Small = r0_0.RT_32,
+      Small = r0_0.RT_34,
     },
     {
       Big = 36,
@@ -2882,12 +2856,12 @@ r4_0[1110] = {
     {
       Big = 37,
       FloorId = 0,
-      Small = r0_0.RT_45,
+      Small = r0_0.RT_47,
     },
     {
       Big = 38,
       FloorId = 0,
-      Small = r0_0.RT_34,
+      Small = r0_0.RT_36,
     }
   },
   Id = 1110,
@@ -2908,17 +2882,17 @@ r4_0[1111] = {
     {
       Big = 62,
       FloorId = 0,
-      Small = r0_0.RT_8,
+      Small = r0_0.RT_7,
     },
     {
       Big = 63,
       FloorId = 0,
-      Small = r0_0.RT_11,
+      Small = r0_0.RT_10,
     },
     {
       Big = 75,
       FloorId = 0,
-      Small = r0_0.RT_37,
+      Small = r0_0.RT_39,
     },
     {
       Big = 76,
@@ -2928,37 +2902,37 @@ r4_0[1111] = {
     {
       Big = 77,
       FloorId = 0,
-      Small = r0_0.RT_41,
+      Small = r0_0.RT_43,
     },
     {
       Big = 78,
       FloorId = 0,
-      Small = r0_0.RT_30,
+      Small = r0_0.RT_32,
     },
     {
       Big = 90,
       FloorId = 0,
-      Small = r0_0.RT_21,
+      Small = r0_0.RT_20,
     },
     {
       Big = 91,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 92,
       FloorId = 0,
-      Small = r0_0.RT_45,
+      Small = r0_0.RT_47,
     },
     {
       Big = 93,
       FloorId = 0,
-      Small = r0_0.RT_12,
+      Small = r0_0.RT_11,
     },
     {
       Big = 106,
       FloorId = 0,
-      Small = r0_0.RT_34,
+      Small = r0_0.RT_36,
     }
   },
   Id = 1111,
@@ -2991,7 +2965,7 @@ r4_0[1112] = {
     {
       Big = 92,
       FloorId = 0,
-      Small = r0_0.RT_8,
+      Small = r0_0.RT_7,
     },
     {
       Big = 93,
@@ -3032,17 +3006,17 @@ r4_0[1112] = {
     {
       Big = 106,
       FloorId = 0,
-      Small = r0_0.RT_42,
+      Small = r0_0.RT_44,
     },
     {
       Big = 107,
       FloorId = 0,
-      Small = r0_0.RT_19,
+      Small = r0_0.RT_18,
     },
     {
       Big = 108,
       FloorId = 0,
-      Small = r0_0.RT_14,
+      Small = r0_0.RT_13,
     }
   },
   Id = 1112,

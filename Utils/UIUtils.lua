@@ -637,8 +637,8 @@ function r10_0.StopListViewFramingInAnimation(r0_22, r1_22)
 end
 function r10_0.UpdateListReddot(r0_23, r1_23, r2_23, r3_23, r4_23, r5_23)
   -- line: [706, 807] id: 23
-  -- notice: unreachable block#45
   -- notice: unreachable block#41
+  -- notice: unreachable block#45
   if not r0_23 then
     return 
   end
@@ -805,8 +805,8 @@ function r10_0.UpdateListReddot(r0_23, r1_23, r2_23, r3_23, r4_23, r5_23)
 end
 function r10_0.UpdateScrollBoxReddot(r0_29, r1_29, r2_29, r3_29, r4_29, r5_29)
   -- line: [818, 902] id: 29
-  -- notice: unreachable block#30
   -- notice: unreachable block#22
+  -- notice: unreachable block#30
   if not r0_29 then
     return 
   end
@@ -3052,7 +3052,7 @@ function r10_0.SetFocusSecretly(r0_150)
   end, nil, nil, nil, true, UE4.ETickingGroup.TG_EndPhysics)
 end
 function r10_0.GetRelativePositionInParent(r0_152, r1_152, r2_152)
-  -- line: [3049, 3092] id: 152
+  -- line: [3049, 3095] id: 152
   local r3_152 = r0_152:GetParent() and r0_152
   local r4_152 = r3_152:GetCachedGeometry()
   local r5_152 = UE4.USlateBlueprintLibrary.AbsoluteToLocal(r4_152, r1_152)
@@ -3061,65 +3061,92 @@ function r10_0.GetRelativePositionInParent(r0_152, r1_152, r2_152)
   if r7_152 then
     local r8_152 = FVector2D(r7_152:GetPosition().X, r7_152:GetPosition().Y)
     local r9_152 = nil
-    local r11_152 = UE4.USlateBlueprintLibrary.GetLocalSize(r0_152:GetCachedGeometry())
-    local r12_152 = r0_152.Slot:GetAnchors()
-    local r13_152 = r0_152.Slot:GetAlignment()
-    if r2_152 == nil then
-      r9_152 = FVector2D(r11_152.X * (r13_152.X - 0.5), r11_152.Y * (r13_152.Y - 0.5))
+    local r10_152 = r0_152:GetCachedGeometry()
+    local r11_152 = nil	-- notice: implicit variable refs by block#[8]
+    if r0_152 then
+      r11_152 = r0_152.RenderTransform.Scale.X
+      if not r11_152 then
+        ::label_39::
+        r11_152 = 1
+      end
     else
-      r9_152 = FVector2D(r11_152.X * (r13_152.X - r2_152.X / r11_152.X), r11_152.Y * (r13_152.Y - r2_152.Y / r11_152.Y))
+      goto label_39	-- block#5 is visited secondly
     end
-    return FVector2D(r8_152.X + r5_152.X - r6_152.X * math.max(r12_152.Maximum.X, r12_152.Minimum.X) + r9_152.X, r8_152.Y + r5_152.Y - r6_152.Y * math.max(r12_152.Maximum.Y, r12_152.Minimum.Y) + r9_152.Y)
+    local r12_152 = UE4.USlateBlueprintLibrary.GetLocalSize(r10_152)
+    local r13_152 = r0_152.Slot:GetAnchors()
+    local r14_152 = r0_152.Slot:GetAlignment()
+    if r2_152 == nil then
+      r2_152 = FVector2D(r12_152.X / 2, r12_152.Y / 2)
+    end
+    r9_152 = FVector2D(r12_152.X * (r14_152.X - r2_152.X / r12_152.X), r12_152.Y * (r14_152.Y - r2_152.Y / r12_152.Y))
+    return FVector2D(r8_152.X + r5_152.X - r6_152.X * math.max(r13_152.Maximum.X, r13_152.Minimum.X) + r9_152.X + r12_152.X * (1 - r11_152) * (r2_152.X / r12_152.X - 0.5), r8_152.Y + r5_152.Y - r6_152.Y * math.max(r13_152.Maximum.Y, r13_152.Minimum.Y) + r9_152.Y + r12_152.Y * (1 - r11_152) * (r2_152.Y / r12_152.Y - 0.5))
   end
   return r5_152
 end
+function r10_0.ConvertScreenToChildLocalPosition(r0_153, r1_153, r2_153, r3_153)
+  -- line: [3102, 3141] id: 153
+  local r5_153 = (r1_153:GetParent() and r1_153):GetCachedGeometry()
+  local r6_153 = UE4.USlateBlueprintLibrary.AbsoluteToLocal(r5_153, r2_153)
+  local r7_153 = UE4.USlateBlueprintLibrary.GetLocalSize(r5_153)
+  local r8_153 = r1_153.Slot
+  if r8_153 then
+    local r9_153 = FVector2D(r8_153:GetPosition().X, r8_153:GetPosition().Y)
+    local r10_153 = UIManager(r0_153):GetWorldPosition(r1_153)
+    local r11_153 = r1_153:GetCachedGeometry()
+    local r12_153 = UE4.USlateBlueprintLibrary.GetAbsoluteSize(r11_153)
+    local r13_153 = UE4.USlateBlueprintLibrary.GetLocalSize(r11_153)
+    local r15_153 = UE4.USlateBlueprintLibrary.AbsoluteToLocal(r5_153, FVector2D(r10_153.X + r12_153.X * r3_153.X / r13_153.X, r10_153.Y + r12_153.Y * r3_153.Y / r13_153.Y))
+    return FVector2D(r9_153.X + r6_153.X - r15_153.X, r9_153.Y + r6_153.Y - r15_153.Y)
+  end
+  return r6_153
+end
 function r10_0.RefreshFeinaRewardReddot()
-  -- line: [3094, 3144] id: 153
-  local r0_153 = GWorld:GetAvatar()
-  if not r0_153 then
+  -- line: [3143, 3193] id: 154
+  local r0_154 = GWorld:GetAvatar()
+  if not r0_154 then
     return 
   end
   if not ReddotManager.GetTreeNode("FeinaEventReward") then
     ReddotManager.AddNodeEx("FeinaEventReward")
   end
   ReddotManager.ClearLeafNodeCount("FeinaEventReward", true)
-  local r2_153 = ReddotManager.GetLeafNodeCacheDetail("FeinaEventReward")
-  for r7_153, r8_153 in pairs(DataMgr.FeinaEvent) do
-    local r9_153 = false
-    for r14_153, r15_153 in pairs(r8_153.DungeonId) do
-      local r16_153 = r0_153:GetFeinaRewardInfo(r15_153)
-      if r16_153 then
-        local r17_153 = false
-        for r22_153, r23_153 in pairs(r16_153) do
-          if r23_153 == 1 then
-            if not r2_153[r7_153] then
-              r2_153[r7_153] = {}
+  local r2_154 = ReddotManager.GetLeafNodeCacheDetail("FeinaEventReward")
+  for r7_154, r8_154 in pairs(DataMgr.FeinaEvent) do
+    local r9_154 = false
+    for r14_154, r15_154 in pairs(r8_154.DungeonId) do
+      local r16_154 = r0_154:GetFeinaRewardInfo(r15_154)
+      if r16_154 then
+        local r17_154 = false
+        for r22_154, r23_154 in pairs(r16_154) do
+          if r23_154 == 1 then
+            if not r2_154[r7_154] then
+              r2_154[r7_154] = {}
             end
-            if not r2_153[r7_153][r15_153] then
-              r2_153[r7_153][r15_153] = {}
+            if not r2_154[r7_154][r15_154] then
+              r2_154[r7_154][r15_154] = {}
             end
-            if not r2_153[r7_153][r15_153][r22_153] then
-              r2_153[r7_153][r15_153][r22_153] = 1
+            if not r2_154[r7_154][r15_154][r22_154] then
+              r2_154[r7_154][r15_154][r22_154] = 1
             end
             ReddotManager.IncreaseLeafNodeCount("FeinaEventReward")
-            r17_153 = true
-            r9_153 = true
-          elseif r23_153 == 2 and r2_153[r7_153] and r2_153[r7_153][r15_153] and r2_153[r7_153][r15_153][r22_153] then
-            r2_153[r7_153][r15_153][r22_153] = nil
+            r17_154 = true
+            r9_154 = true
+          elseif r23_154 == 2 and r2_154[r7_154] and r2_154[r7_154][r15_154] and r2_154[r7_154][r15_154][r22_154] then
+            r2_154[r7_154][r15_154][r22_154] = nil
           end
         end
-        -- close: r18_153
-        if not r17_153 and r2_153[r7_153] and r2_153[r7_153][r15_153] then
-          r2_153[r7_153][r15_153] = nil
+        -- close: r18_154
+        if not r17_154 and r2_154[r7_154] and r2_154[r7_154][r15_154] then
+          r2_154[r7_154][r15_154] = nil
         end
       end
     end
-    -- close: r10_153
-    if not r9_153 and r2_153[r7_153] then
-      r2_153[r7_153] = nil
+    -- close: r10_154
+    if not r9_154 and r2_154[r7_154] then
+      r2_154[r7_154] = nil
     end
   end
-  -- close: r3_153
+  -- close: r3_154
 end
 AssembleComponents(r10_0)
 return r10_0

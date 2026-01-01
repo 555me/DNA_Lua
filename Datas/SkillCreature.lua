@@ -2260,7 +2260,6 @@ r4_0[150342] = {
   Speed = 3000,
   Tags = r0_0.RT_14,
   TimeLife = 2,
-  Vars = r0_0.RT_21,
   WindInfo = r0_0.RT_31,
 }
 r4_0[150343] = {

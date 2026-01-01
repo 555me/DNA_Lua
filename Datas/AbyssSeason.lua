@@ -184,7 +184,8 @@ r3_0[1112] = {
   AbyssRewardList = {
     110301,
     110302,
-    110303
+    110303,
+    110304
   },
   AbyssRewardListTitle = "Abyss_InfiniteReward_Title",
   AbyssSeasonId = 1003,
@@ -247,7 +248,8 @@ r3_0[1114] = {
   AbyssRewardList = {
     111301,
     111302,
-    111303
+    111303,
+    111304
   },
   AbyssRewardListTitle = "Abyss_InfiniteReward_Title",
   AbyssSeasonId = 1004,

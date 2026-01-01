@@ -182,10 +182,12 @@ r3_0[3010301] = {
   LongIcon = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Bow_Huanri.T_Gacha_Bow_Huanri\'",
   Name = "UI_WeaponSkin_Name_3010301",
   Rarity = 5,
+  RegainItemId = 110,
+  RegainItemNum = 40,
   SkinID = 3010301,
   SkinPath = 3010301,
   Sound = "SOUND_ITEM_WEAPON",
-  UnlockOption = "UI_Accessory_Unlock_Shop",
+  UnlockOption = "UI_Accessory_Unlock_Gacha",
 }
 r3_0[3010302] = {
   ApplicationType = 206,
@@ -247,10 +249,12 @@ r3_0[3010402] = {
   LongIcon = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Polearm_Talang.T_Gacha_Polearm_Talang\'",
   Name = "UI_WeaponSkin_Name_3010402",
   Rarity = 5,
+  RegainItemId = 110,
+  RegainItemNum = 40,
   SkinID = 3010402,
   SkinPath = 3010402,
   Sound = "SOUND_ITEM_WEAPON",
-  UnlockOption = "UI_Accessory_Unlock_Shop",
+  UnlockOption = "UI_Accessory_Unlock_Gacha",
 }
 r3_0[3010403] = {
   ApplicationType = 102,
@@ -488,6 +492,23 @@ r3_0[3010802] = {
   Rarity = 5,
   SkinID = 3010802,
   SkinPath = 3010802,
+  Sound = "SOUND_ITEM_WEAPON",
+  UnlockOption = "UI_Accessory_Unlock_Shop",
+}
+r3_0[3010803] = {
+  ApplicationType = 105,
+  BigIcon = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Swordwhip_Shiru.T_Bust_Swordwhip_Shiru\'",
+  Dec = "UI_WeaponSkin_Des_3010106",
+  DisplayPath = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Bust/Weapon/T_Bust_Swordwhip_Shiru.T_Bust_Swordwhip_Shiru\'",
+  GoShopTypeId = {
+    120116
+  },
+  Icon = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Head/Weapon/T_Head_Swordwhip_Shiru.T_Head_Swordwhip_Shiru\'",
+  LongIcon = "Texture2D\'/Game/UI/Texture/Dynamic/Image/Gacha/Weapon/T_Gacha_Swordwhip_Shiru.T_Gacha_Swordwhip_Shiru\'",
+  Name = "UI_WeaponSkin_Name_3010803",
+  Rarity = 4,
+  SkinID = 3010803,
+  SkinPath = 3010803,
   Sound = "SOUND_ITEM_WEAPON",
   UnlockOption = "UI_Accessory_Unlock_Shop",
 }

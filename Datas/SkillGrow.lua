@@ -103826,7 +103826,7 @@ r7_0[1] = {
     Index = 1,
     Level = 1,
     Type = "SkillEffects",
-    Value = 0.16,
+    Value = 0.03,
   },
 }
 r7_0[2] = {
@@ -103835,7 +103835,7 @@ r7_0[2] = {
     Index = 1,
     Level = 2,
     Type = "SkillEffects",
-    Value = 0.21,
+    Value = 0.04,
   },
 }
 r7_0[3] = {
@@ -103844,7 +103844,7 @@ r7_0[3] = {
     Index = 1,
     Level = 3,
     Type = "SkillEffects",
-    Value = 0.26,
+    Value = 0.05,
   },
 }
 r7_0[4] = {
@@ -103853,7 +103853,7 @@ r7_0[4] = {
     Index = 1,
     Level = 4,
     Type = "SkillEffects",
-    Value = 0.31,
+    Value = 0.06,
   },
 }
 r7_0[5] = {
@@ -103862,7 +103862,7 @@ r7_0[5] = {
     Index = 1,
     Level = 5,
     Type = "SkillEffects",
-    Value = 0.36,
+    Value = 0.07,
   },
 }
 r7_0[6] = {
@@ -103871,7 +103871,7 @@ r7_0[6] = {
     Index = 1,
     Level = 6,
     Type = "SkillEffects",
-    Value = 0.41,
+    Value = 0.08,
   },
 }
 r7_0[7] = {
@@ -103880,7 +103880,7 @@ r7_0[7] = {
     Index = 1,
     Level = 7,
     Type = "SkillEffects",
-    Value = 0.46,
+    Value = 0.09,
   },
 }
 r7_0[8] = {
@@ -103889,7 +103889,7 @@ r7_0[8] = {
     Index = 1,
     Level = 8,
     Type = "SkillEffects",
-    Value = 0.51,
+    Value = 0.1,
   },
 }
 r7_0[9] = {
@@ -103898,7 +103898,7 @@ r7_0[9] = {
     Index = 1,
     Level = 9,
     Type = "SkillEffects",
-    Value = 0.56,
+    Value = 0.11,
   },
 }
 r7_0[10] = {
@@ -103907,7 +103907,7 @@ r7_0[10] = {
     Index = 1,
     Level = 10,
     Type = "SkillEffects",
-    Value = 0.61,
+    Value = 0.12,
   },
 }
 r7_0[11] = {
@@ -103916,7 +103916,7 @@ r7_0[11] = {
     Index = 1,
     Level = 11,
     Type = "SkillEffects",
-    Value = 0.66,
+    Value = 0.13,
   },
 }
 r7_0[12] = {
@@ -103925,7 +103925,7 @@ r7_0[12] = {
     Index = 1,
     Level = 12,
     Type = "SkillEffects",
-    Value = 0.71,
+    Value = 0.14,
   },
 }
 r7_0[13] = {
@@ -103934,7 +103934,7 @@ r7_0[13] = {
     Index = 1,
     Level = 13,
     Type = "SkillEffects",
-    Value = 0.76,
+    Value = 0.15,
   },
 }
 r7_0[14] = {
@@ -103943,7 +103943,7 @@ r7_0[14] = {
     Index = 1,
     Level = 14,
     Type = "SkillEffects",
-    Value = 0.81,
+    Value = 0.16,
   },
 }
 r7_0[15] = {
@@ -103952,7 +103952,7 @@ r7_0[15] = {
     Index = 1,
     Level = 15,
     Type = "SkillEffects",
-    Value = 0.86,
+    Value = 0.17,
   },
 }
 r7_0[16] = {
@@ -103961,7 +103961,7 @@ r7_0[16] = {
     Index = 1,
     Level = 16,
     Type = "SkillEffects",
-    Value = 0.91,
+    Value = 0.18,
   },
 }
 r7_0[17] = {
@@ -103970,7 +103970,7 @@ r7_0[17] = {
     Index = 1,
     Level = 17,
     Type = "SkillEffects",
-    Value = 0.96,
+    Value = 0.19,
   },
 }
 r7_0[18] = {
@@ -103979,7 +103979,7 @@ r7_0[18] = {
     Index = 1,
     Level = 18,
     Type = "SkillEffects",
-    Value = 1.01,
+    Value = 0.2,
   },
 }
 r7_0[19] = {
@@ -103988,7 +103988,7 @@ r7_0[19] = {
     Index = 1,
     Level = 19,
     Type = "SkillEffects",
-    Value = 1.06,
+    Value = 0.21,
   },
 }
 r7_0[20] = {
@@ -103997,7 +103997,7 @@ r7_0[20] = {
     Index = 1,
     Level = 20,
     Type = "SkillEffects",
-    Value = 1.11,
+    Value = 0.22,
   },
 }
 r5_0[150356] = r7_0
@@ -104008,7 +104008,7 @@ r7_0[1] = {
     Index = 1,
     Level = 1,
     Type = "SkillEffects",
-    Value = 0.16,
+    Value = 0.03,
   },
 }
 r7_0[2] = {
@@ -104017,7 +104017,7 @@ r7_0[2] = {
     Index = 1,
     Level = 2,
     Type = "SkillEffects",
-    Value = 0.21,
+    Value = 0.04,
   },
 }
 r7_0[3] = {
@@ -104026,7 +104026,7 @@ r7_0[3] = {
     Index = 1,
     Level = 3,
     Type = "SkillEffects",
-    Value = 0.26,
+    Value = 0.05,
   },
 }
 r7_0[4] = {
@@ -104035,7 +104035,7 @@ r7_0[4] = {
     Index = 1,
     Level = 4,
     Type = "SkillEffects",
-    Value = 0.31,
+    Value = 0.06,
   },
 }
 r7_0[5] = {
@@ -104044,7 +104044,7 @@ r7_0[5] = {
     Index = 1,
     Level = 5,
     Type = "SkillEffects",
-    Value = 0.36,
+    Value = 0.07,
   },
 }
 r7_0[6] = {
@@ -104053,7 +104053,7 @@ r7_0[6] = {
     Index = 1,
     Level = 6,
     Type = "SkillEffects",
-    Value = 0.41,
+    Value = 0.08,
   },
 }
 r7_0[7] = {
@@ -104062,7 +104062,7 @@ r7_0[7] = {
     Index = 1,
     Level = 7,
     Type = "SkillEffects",
-    Value = 0.46,
+    Value = 0.09,
   },
 }
 r7_0[8] = {
@@ -104071,7 +104071,7 @@ r7_0[8] = {
     Index = 1,
     Level = 8,
     Type = "SkillEffects",
-    Value = 0.51,
+    Value = 0.1,
   },
 }
 r7_0[9] = {
@@ -104080,7 +104080,7 @@ r7_0[9] = {
     Index = 1,
     Level = 9,
     Type = "SkillEffects",
-    Value = 0.56,
+    Value = 0.11,
   },
 }
 r7_0[10] = {
@@ -104089,7 +104089,7 @@ r7_0[10] = {
     Index = 1,
     Level = 10,
     Type = "SkillEffects",
-    Value = 0.61,
+    Value = 0.12,
   },
 }
 r7_0[11] = {
@@ -104098,7 +104098,7 @@ r7_0[11] = {
     Index = 1,
     Level = 11,
     Type = "SkillEffects",
-    Value = 0.66,
+    Value = 0.13,
   },
 }
 r7_0[12] = {
@@ -104107,7 +104107,7 @@ r7_0[12] = {
     Index = 1,
     Level = 12,
     Type = "SkillEffects",
-    Value = 0.71,
+    Value = 0.14,
   },
 }
 r7_0[13] = {
@@ -104116,7 +104116,7 @@ r7_0[13] = {
     Index = 1,
     Level = 13,
     Type = "SkillEffects",
-    Value = 0.76,
+    Value = 0.15,
   },
 }
 r7_0[14] = {
@@ -104125,7 +104125,7 @@ r7_0[14] = {
     Index = 1,
     Level = 14,
     Type = "SkillEffects",
-    Value = 0.81,
+    Value = 0.16,
   },
 }
 r7_0[15] = {
@@ -104134,7 +104134,7 @@ r7_0[15] = {
     Index = 1,
     Level = 15,
     Type = "SkillEffects",
-    Value = 0.86,
+    Value = 0.17,
   },
 }
 r7_0[16] = {
@@ -104143,7 +104143,7 @@ r7_0[16] = {
     Index = 1,
     Level = 16,
     Type = "SkillEffects",
-    Value = 0.91,
+    Value = 0.18,
   },
 }
 r7_0[17] = {
@@ -104152,7 +104152,7 @@ r7_0[17] = {
     Index = 1,
     Level = 17,
     Type = "SkillEffects",
-    Value = 0.96,
+    Value = 0.19,
   },
 }
 r7_0[18] = {
@@ -104161,7 +104161,7 @@ r7_0[18] = {
     Index = 1,
     Level = 18,
     Type = "SkillEffects",
-    Value = 1.01,
+    Value = 0.2,
   },
 }
 r7_0[19] = {
@@ -104170,7 +104170,7 @@ r7_0[19] = {
     Index = 1,
     Level = 19,
     Type = "SkillEffects",
-    Value = 1.06,
+    Value = 0.21,
   },
 }
 r7_0[20] = {
@@ -104179,7 +104179,7 @@ r7_0[20] = {
     Index = 1,
     Level = 20,
     Type = "SkillEffects",
-    Value = 1.11,
+    Value = 0.22,
   },
 }
 r5_0[150358] = r7_0
@@ -104190,7 +104190,7 @@ r7_0[1] = {
     Index = 1,
     Level = 1,
     Type = "SkillEffects",
-    Value = 0.16,
+    Value = 0.03,
   },
 }
 r7_0[2] = {
@@ -104199,7 +104199,7 @@ r7_0[2] = {
     Index = 1,
     Level = 2,
     Type = "SkillEffects",
-    Value = 0.21,
+    Value = 0.04,
   },
 }
 r7_0[3] = {
@@ -104208,7 +104208,7 @@ r7_0[3] = {
     Index = 1,
     Level = 3,
     Type = "SkillEffects",
-    Value = 0.26,
+    Value = 0.05,
   },
 }
 r7_0[4] = {
@@ -104217,7 +104217,7 @@ r7_0[4] = {
     Index = 1,
     Level = 4,
     Type = "SkillEffects",
-    Value = 0.31,
+    Value = 0.06,
   },
 }
 r7_0[5] = {
@@ -104226,7 +104226,7 @@ r7_0[5] = {
     Index = 1,
     Level = 5,
     Type = "SkillEffects",
-    Value = 0.36,
+    Value = 0.07,
   },
 }
 r7_0[6] = {
@@ -104235,7 +104235,7 @@ r7_0[6] = {
     Index = 1,
     Level = 6,
     Type = "SkillEffects",
-    Value = 0.41,
+    Value = 0.08,
   },
 }
 r7_0[7] = {
@@ -104244,7 +104244,7 @@ r7_0[7] = {
     Index = 1,
     Level = 7,
     Type = "SkillEffects",
-    Value = 0.46,
+    Value = 0.09,
   },
 }
 r7_0[8] = {
@@ -104253,7 +104253,7 @@ r7_0[8] = {
     Index = 1,
     Level = 8,
     Type = "SkillEffects",
-    Value = 0.51,
+    Value = 0.1,
   },
 }
 r7_0[9] = {
@@ -104262,7 +104262,7 @@ r7_0[9] = {
     Index = 1,
     Level = 9,
     Type = "SkillEffects",
-    Value = 0.56,
+    Value = 0.11,
   },
 }
 r7_0[10] = {
@@ -104271,7 +104271,7 @@ r7_0[10] = {
     Index = 1,
     Level = 10,
     Type = "SkillEffects",
-    Value = 0.61,
+    Value = 0.12,
   },
 }
 r7_0[11] = {
@@ -104280,7 +104280,7 @@ r7_0[11] = {
     Index = 1,
     Level = 11,
     Type = "SkillEffects",
-    Value = 0.66,
+    Value = 0.13,
   },
 }
 r7_0[12] = {
@@ -104289,7 +104289,7 @@ r7_0[12] = {
     Index = 1,
     Level = 12,
     Type = "SkillEffects",
-    Value = 0.71,
+    Value = 0.14,
   },
 }
 r7_0[13] = {
@@ -104298,7 +104298,7 @@ r7_0[13] = {
     Index = 1,
     Level = 13,
     Type = "SkillEffects",
-    Value = 0.76,
+    Value = 0.15,
   },
 }
 r7_0[14] = {
@@ -104307,7 +104307,7 @@ r7_0[14] = {
     Index = 1,
     Level = 14,
     Type = "SkillEffects",
-    Value = 0.81,
+    Value = 0.16,
   },
 }
 r7_0[15] = {
@@ -104316,7 +104316,7 @@ r7_0[15] = {
     Index = 1,
     Level = 15,
     Type = "SkillEffects",
-    Value = 0.86,
+    Value = 0.17,
   },
 }
 r7_0[16] = {
@@ -104325,7 +104325,7 @@ r7_0[16] = {
     Index = 1,
     Level = 16,
     Type = "SkillEffects",
-    Value = 0.91,
+    Value = 0.18,
   },
 }
 r7_0[17] = {
@@ -104334,7 +104334,7 @@ r7_0[17] = {
     Index = 1,
     Level = 17,
     Type = "SkillEffects",
-    Value = 0.96,
+    Value = 0.19,
   },
 }
 r7_0[18] = {
@@ -104343,7 +104343,7 @@ r7_0[18] = {
     Index = 1,
     Level = 18,
     Type = "SkillEffects",
-    Value = 1.01,
+    Value = 0.2,
   },
 }
 r7_0[19] = {
@@ -104352,7 +104352,7 @@ r7_0[19] = {
     Index = 1,
     Level = 19,
     Type = "SkillEffects",
-    Value = 1.06,
+    Value = 0.21,
   },
 }
 r7_0[20] = {
@@ -104361,7 +104361,7 @@ r7_0[20] = {
     Index = 1,
     Level = 20,
     Type = "SkillEffects",
-    Value = 1.11,
+    Value = 0.22,
   },
 }
 r5_0[150359] = r7_0
@@ -105282,7 +105282,7 @@ r7_0[1] = {
     Index = 1,
     Level = 1,
     Type = "SkillEffects",
-    Value = 0.16,
+    Value = 0.03,
   },
 }
 r7_0[2] = {
@@ -105291,7 +105291,7 @@ r7_0[2] = {
     Index = 1,
     Level = 2,
     Type = "SkillEffects",
-    Value = 0.21,
+    Value = 0.04,
   },
 }
 r7_0[3] = {
@@ -105300,7 +105300,7 @@ r7_0[3] = {
     Index = 1,
     Level = 3,
     Type = "SkillEffects",
-    Value = 0.26,
+    Value = 0.05,
   },
 }
 r7_0[4] = {
@@ -105309,7 +105309,7 @@ r7_0[4] = {
     Index = 1,
     Level = 4,
     Type = "SkillEffects",
-    Value = 0.31,
+    Value = 0.06,
   },
 }
 r7_0[5] = {
@@ -105318,7 +105318,7 @@ r7_0[5] = {
     Index = 1,
     Level = 5,
     Type = "SkillEffects",
-    Value = 0.36,
+    Value = 0.07,
   },
 }
 r7_0[6] = {
@@ -105327,7 +105327,7 @@ r7_0[6] = {
     Index = 1,
     Level = 6,
     Type = "SkillEffects",
-    Value = 0.41,
+    Value = 0.08,
   },
 }
 r7_0[7] = {
@@ -105336,7 +105336,7 @@ r7_0[7] = {
     Index = 1,
     Level = 7,
     Type = "SkillEffects",
-    Value = 0.46,
+    Value = 0.09,
   },
 }
 r7_0[8] = {
@@ -105345,7 +105345,7 @@ r7_0[8] = {
     Index = 1,
     Level = 8,
     Type = "SkillEffects",
-    Value = 0.51,
+    Value = 0.1,
   },
 }
 r7_0[9] = {
@@ -105354,7 +105354,7 @@ r7_0[9] = {
     Index = 1,
     Level = 9,
     Type = "SkillEffects",
-    Value = 0.56,
+    Value = 0.11,
   },
 }
 r7_0[10] = {
@@ -105363,7 +105363,7 @@ r7_0[10] = {
     Index = 1,
     Level = 10,
     Type = "SkillEffects",
-    Value = 0.61,
+    Value = 0.12,
   },
 }
 r7_0[11] = {
@@ -105372,7 +105372,7 @@ r7_0[11] = {
     Index = 1,
     Level = 11,
     Type = "SkillEffects",
-    Value = 0.66,
+    Value = 0.13,
   },
 }
 r7_0[12] = {
@@ -105381,7 +105381,7 @@ r7_0[12] = {
     Index = 1,
     Level = 12,
     Type = "SkillEffects",
-    Value = 0.71,
+    Value = 0.14,
   },
 }
 r7_0[13] = {
@@ -105390,7 +105390,7 @@ r7_0[13] = {
     Index = 1,
     Level = 13,
     Type = "SkillEffects",
-    Value = 0.76,
+    Value = 0.15,
   },
 }
 r7_0[14] = {
@@ -105399,7 +105399,7 @@ r7_0[14] = {
     Index = 1,
     Level = 14,
     Type = "SkillEffects",
-    Value = 0.81,
+    Value = 0.16,
   },
 }
 r7_0[15] = {
@@ -105408,7 +105408,7 @@ r7_0[15] = {
     Index = 1,
     Level = 15,
     Type = "SkillEffects",
-    Value = 0.86,
+    Value = 0.17,
   },
 }
 r7_0[16] = {
@@ -105417,7 +105417,7 @@ r7_0[16] = {
     Index = 1,
     Level = 16,
     Type = "SkillEffects",
-    Value = 0.91,
+    Value = 0.18,
   },
 }
 r7_0[17] = {
@@ -105426,7 +105426,7 @@ r7_0[17] = {
     Index = 1,
     Level = 17,
     Type = "SkillEffects",
-    Value = 0.96,
+    Value = 0.19,
   },
 }
 r7_0[18] = {
@@ -105435,7 +105435,7 @@ r7_0[18] = {
     Index = 1,
     Level = 18,
     Type = "SkillEffects",
-    Value = 1.01,
+    Value = 0.2,
   },
 }
 r7_0[19] = {
@@ -105444,7 +105444,7 @@ r7_0[19] = {
     Index = 1,
     Level = 19,
     Type = "SkillEffects",
-    Value = 1.06,
+    Value = 0.21,
   },
 }
 r7_0[20] = {
@@ -105453,7 +105453,7 @@ r7_0[20] = {
     Index = 1,
     Level = 20,
     Type = "SkillEffects",
-    Value = 1.11,
+    Value = 0.22,
   },
 }
 r5_0[150368] = r7_0
@@ -105464,7 +105464,7 @@ r7_0[1] = {
     Index = 1,
     Level = 1,
     Type = "SkillEffects",
-    Value = 0.16,
+    Value = 0.03,
   },
 }
 r7_0[2] = {
@@ -105473,7 +105473,7 @@ r7_0[2] = {
     Index = 1,
     Level = 2,
     Type = "SkillEffects",
-    Value = 0.21,
+    Value = 0.04,
   },
 }
 r7_0[3] = {
@@ -105482,7 +105482,7 @@ r7_0[3] = {
     Index = 1,
     Level = 3,
     Type = "SkillEffects",
-    Value = 0.26,
+    Value = 0.05,
   },
 }
 r7_0[4] = {
@@ -105491,7 +105491,7 @@ r7_0[4] = {
     Index = 1,
     Level = 4,
     Type = "SkillEffects",
-    Value = 0.31,
+    Value = 0.06,
   },
 }
 r7_0[5] = {
@@ -105500,7 +105500,7 @@ r7_0[5] = {
     Index = 1,
     Level = 5,
     Type = "SkillEffects",
-    Value = 0.36,
+    Value = 0.07,
   },
 }
 r7_0[6] = {
@@ -105509,7 +105509,7 @@ r7_0[6] = {
     Index = 1,
     Level = 6,
     Type = "SkillEffects",
-    Value = 0.41,
+    Value = 0.08,
   },
 }
 r7_0[7] = {
@@ -105518,7 +105518,7 @@ r7_0[7] = {
     Index = 1,
     Level = 7,
     Type = "SkillEffects",
-    Value = 0.46,
+    Value = 0.09,
   },
 }
 r7_0[8] = {
@@ -105527,7 +105527,7 @@ r7_0[8] = {
     Index = 1,
     Level = 8,
     Type = "SkillEffects",
-    Value = 0.51,
+    Value = 0.1,
   },
 }
 r7_0[9] = {
@@ -105536,7 +105536,7 @@ r7_0[9] = {
     Index = 1,
     Level = 9,
     Type = "SkillEffects",
-    Value = 0.56,
+    Value = 0.11,
   },
 }
 r7_0[10] = {
@@ -105545,7 +105545,7 @@ r7_0[10] = {
     Index = 1,
     Level = 10,
     Type = "SkillEffects",
-    Value = 0.61,
+    Value = 0.12,
   },
 }
 r7_0[11] = {
@@ -105554,7 +105554,7 @@ r7_0[11] = {
     Index = 1,
     Level = 11,
     Type = "SkillEffects",
-    Value = 0.66,
+    Value = 0.13,
   },
 }
 r7_0[12] = {
@@ -105563,7 +105563,7 @@ r7_0[12] = {
     Index = 1,
     Level = 12,
     Type = "SkillEffects",
-    Value = 0.71,
+    Value = 0.14,
   },
 }
 r7_0[13] = {
@@ -105572,7 +105572,7 @@ r7_0[13] = {
     Index = 1,
     Level = 13,
     Type = "SkillEffects",
-    Value = 0.76,
+    Value = 0.15,
   },
 }
 r7_0[14] = {
@@ -105581,7 +105581,7 @@ r7_0[14] = {
     Index = 1,
     Level = 14,
     Type = "SkillEffects",
-    Value = 0.81,
+    Value = 0.16,
   },
 }
 r7_0[15] = {
@@ -105590,7 +105590,7 @@ r7_0[15] = {
     Index = 1,
     Level = 15,
     Type = "SkillEffects",
-    Value = 0.86,
+    Value = 0.17,
   },
 }
 r7_0[16] = {
@@ -105599,7 +105599,7 @@ r7_0[16] = {
     Index = 1,
     Level = 16,
     Type = "SkillEffects",
-    Value = 0.91,
+    Value = 0.18,
   },
 }
 r7_0[17] = {
@@ -105608,7 +105608,7 @@ r7_0[17] = {
     Index = 1,
     Level = 17,
     Type = "SkillEffects",
-    Value = 0.96,
+    Value = 0.19,
   },
 }
 r7_0[18] = {
@@ -105617,7 +105617,7 @@ r7_0[18] = {
     Index = 1,
     Level = 18,
     Type = "SkillEffects",
-    Value = 1.01,
+    Value = 0.2,
   },
 }
 r7_0[19] = {
@@ -105626,7 +105626,7 @@ r7_0[19] = {
     Index = 1,
     Level = 19,
     Type = "SkillEffects",
-    Value = 1.06,
+    Value = 0.21,
   },
 }
 r7_0[20] = {
@@ -105635,7 +105635,7 @@ r7_0[20] = {
     Index = 1,
     Level = 20,
     Type = "SkillEffects",
-    Value = 1.11,
+    Value = 0.22,
   },
 }
 r5_0[150370] = r7_0
@@ -105646,7 +105646,7 @@ r7_0[1] = {
     Index = 1,
     Level = 1,
     Type = "SkillEffects",
-    Value = 0.16,
+    Value = 0.03,
   },
 }
 r7_0[2] = {
@@ -105655,7 +105655,7 @@ r7_0[2] = {
     Index = 1,
     Level = 2,
     Type = "SkillEffects",
-    Value = 0.21,
+    Value = 0.04,
   },
 }
 r7_0[3] = {
@@ -105664,7 +105664,7 @@ r7_0[3] = {
     Index = 1,
     Level = 3,
     Type = "SkillEffects",
-    Value = 0.26,
+    Value = 0.05,
   },
 }
 r7_0[4] = {
@@ -105673,7 +105673,7 @@ r7_0[4] = {
     Index = 1,
     Level = 4,
     Type = "SkillEffects",
-    Value = 0.31,
+    Value = 0.06,
   },
 }
 r7_0[5] = {
@@ -105682,7 +105682,7 @@ r7_0[5] = {
     Index = 1,
     Level = 5,
     Type = "SkillEffects",
-    Value = 0.36,
+    Value = 0.07,
   },
 }
 r7_0[6] = {
@@ -105691,7 +105691,7 @@ r7_0[6] = {
     Index = 1,
     Level = 6,
     Type = "SkillEffects",
-    Value = 0.41,
+    Value = 0.08,
   },
 }
 r7_0[7] = {
@@ -105700,7 +105700,7 @@ r7_0[7] = {
     Index = 1,
     Level = 7,
     Type = "SkillEffects",
-    Value = 0.46,
+    Value = 0.09,
   },
 }
 r7_0[8] = {
@@ -105709,7 +105709,7 @@ r7_0[8] = {
     Index = 1,
     Level = 8,
     Type = "SkillEffects",
-    Value = 0.51,
+    Value = 0.1,
   },
 }
 r7_0[9] = {
@@ -105718,7 +105718,7 @@ r7_0[9] = {
     Index = 1,
     Level = 9,
     Type = "SkillEffects",
-    Value = 0.56,
+    Value = 0.11,
   },
 }
 r7_0[10] = {
@@ -105727,7 +105727,7 @@ r7_0[10] = {
     Index = 1,
     Level = 10,
     Type = "SkillEffects",
-    Value = 0.61,
+    Value = 0.12,
   },
 }
 r7_0[11] = {
@@ -105736,7 +105736,7 @@ r7_0[11] = {
     Index = 1,
     Level = 11,
     Type = "SkillEffects",
-    Value = 0.66,
+    Value = 0.13,
   },
 }
 r7_0[12] = {
@@ -105745,7 +105745,7 @@ r7_0[12] = {
     Index = 1,
     Level = 12,
     Type = "SkillEffects",
-    Value = 0.71,
+    Value = 0.14,
   },
 }
 r7_0[13] = {
@@ -105754,7 +105754,7 @@ r7_0[13] = {
     Index = 1,
     Level = 13,
     Type = "SkillEffects",
-    Value = 0.76,
+    Value = 0.15,
   },
 }
 r7_0[14] = {
@@ -105763,7 +105763,7 @@ r7_0[14] = {
     Index = 1,
     Level = 14,
     Type = "SkillEffects",
-    Value = 0.81,
+    Value = 0.16,
   },
 }
 r7_0[15] = {
@@ -105772,7 +105772,7 @@ r7_0[15] = {
     Index = 1,
     Level = 15,
     Type = "SkillEffects",
-    Value = 0.86,
+    Value = 0.17,
   },
 }
 r7_0[16] = {
@@ -105781,7 +105781,7 @@ r7_0[16] = {
     Index = 1,
     Level = 16,
     Type = "SkillEffects",
-    Value = 0.91,
+    Value = 0.18,
   },
 }
 r7_0[17] = {
@@ -105790,7 +105790,7 @@ r7_0[17] = {
     Index = 1,
     Level = 17,
     Type = "SkillEffects",
-    Value = 0.96,
+    Value = 0.19,
   },
 }
 r7_0[18] = {
@@ -105799,7 +105799,7 @@ r7_0[18] = {
     Index = 1,
     Level = 18,
     Type = "SkillEffects",
-    Value = 1.01,
+    Value = 0.2,
   },
 }
 r7_0[19] = {
@@ -105808,7 +105808,7 @@ r7_0[19] = {
     Index = 1,
     Level = 19,
     Type = "SkillEffects",
-    Value = 1.06,
+    Value = 0.21,
   },
 }
 r7_0[20] = {
@@ -105817,7 +105817,7 @@ r7_0[20] = {
     Index = 1,
     Level = 20,
     Type = "SkillEffects",
-    Value = 1.11,
+    Value = 0.22,
   },
 }
 r5_0[150371] = r7_0
@@ -105828,7 +105828,7 @@ r7_0[1] = {
     Index = 1,
     Level = 1,
     Type = "SkillEffects",
-    Value = 0.16,
+    Value = 0.03,
   },
 }
 r7_0[2] = {
@@ -105837,7 +105837,7 @@ r7_0[2] = {
     Index = 1,
     Level = 2,
     Type = "SkillEffects",
-    Value = 0.21,
+    Value = 0.04,
   },
 }
 r7_0[3] = {
@@ -105846,7 +105846,7 @@ r7_0[3] = {
     Index = 1,
     Level = 3,
     Type = "SkillEffects",
-    Value = 0.26,
+    Value = 0.05,
   },
 }
 r7_0[4] = {
@@ -105855,7 +105855,7 @@ r7_0[4] = {
     Index = 1,
     Level = 4,
     Type = "SkillEffects",
-    Value = 0.31,
+    Value = 0.06,
   },
 }
 r7_0[5] = {
@@ -105864,7 +105864,7 @@ r7_0[5] = {
     Index = 1,
     Level = 5,
     Type = "SkillEffects",
-    Value = 0.36,
+    Value = 0.07,
   },
 }
 r7_0[6] = {
@@ -105873,7 +105873,7 @@ r7_0[6] = {
     Index = 1,
     Level = 6,
     Type = "SkillEffects",
-    Value = 0.41,
+    Value = 0.08,
   },
 }
 r7_0[7] = {
@@ -105882,7 +105882,7 @@ r7_0[7] = {
     Index = 1,
     Level = 7,
     Type = "SkillEffects",
-    Value = 0.46,
+    Value = 0.09,
   },
 }
 r7_0[8] = {
@@ -105891,7 +105891,7 @@ r7_0[8] = {
     Index = 1,
     Level = 8,
     Type = "SkillEffects",
-    Value = 0.51,
+    Value = 0.1,
   },
 }
 r7_0[9] = {
@@ -105900,7 +105900,7 @@ r7_0[9] = {
     Index = 1,
     Level = 9,
     Type = "SkillEffects",
-    Value = 0.56,
+    Value = 0.11,
   },
 }
 r7_0[10] = {
@@ -105909,7 +105909,7 @@ r7_0[10] = {
     Index = 1,
     Level = 10,
     Type = "SkillEffects",
-    Value = 0.61,
+    Value = 0.12,
   },
 }
 r7_0[11] = {
@@ -105918,7 +105918,7 @@ r7_0[11] = {
     Index = 1,
     Level = 11,
     Type = "SkillEffects",
-    Value = 0.66,
+    Value = 0.13,
   },
 }
 r7_0[12] = {
@@ -105927,7 +105927,7 @@ r7_0[12] = {
     Index = 1,
     Level = 12,
     Type = "SkillEffects",
-    Value = 0.71,
+    Value = 0.14,
   },
 }
 r7_0[13] = {
@@ -105936,7 +105936,7 @@ r7_0[13] = {
     Index = 1,
     Level = 13,
     Type = "SkillEffects",
-    Value = 0.76,
+    Value = 0.15,
   },
 }
 r7_0[14] = {
@@ -105945,7 +105945,7 @@ r7_0[14] = {
     Index = 1,
     Level = 14,
     Type = "SkillEffects",
-    Value = 0.81,
+    Value = 0.16,
   },
 }
 r7_0[15] = {
@@ -105954,7 +105954,7 @@ r7_0[15] = {
     Index = 1,
     Level = 15,
     Type = "SkillEffects",
-    Value = 0.86,
+    Value = 0.17,
   },
 }
 r7_0[16] = {
@@ -105963,7 +105963,7 @@ r7_0[16] = {
     Index = 1,
     Level = 16,
     Type = "SkillEffects",
-    Value = 0.91,
+    Value = 0.18,
   },
 }
 r7_0[17] = {
@@ -105972,7 +105972,7 @@ r7_0[17] = {
     Index = 1,
     Level = 17,
     Type = "SkillEffects",
-    Value = 0.96,
+    Value = 0.19,
   },
 }
 r7_0[18] = {
@@ -105981,7 +105981,7 @@ r7_0[18] = {
     Index = 1,
     Level = 18,
     Type = "SkillEffects",
-    Value = 1.01,
+    Value = 0.2,
   },
 }
 r7_0[19] = {
@@ -105990,7 +105990,7 @@ r7_0[19] = {
     Index = 1,
     Level = 19,
     Type = "SkillEffects",
-    Value = 1.06,
+    Value = 0.21,
   },
 }
 r7_0[20] = {
@@ -105999,7 +105999,7 @@ r7_0[20] = {
     Index = 1,
     Level = 20,
     Type = "SkillEffects",
-    Value = 1.11,
+    Value = 0.22,
   },
 }
 r5_0[150373] = r7_0
@@ -106738,7 +106738,7 @@ r7_0[1] = {
     Index = 1,
     Level = 1,
     Type = "SkillEffects",
-    Value = 0.16,
+    Value = 0.03,
   },
 }
 r7_0[2] = {
@@ -106747,7 +106747,7 @@ r7_0[2] = {
     Index = 1,
     Level = 2,
     Type = "SkillEffects",
-    Value = 0.21,
+    Value = 0.04,
   },
 }
 r7_0[3] = {
@@ -106756,7 +106756,7 @@ r7_0[3] = {
     Index = 1,
     Level = 3,
     Type = "SkillEffects",
-    Value = 0.26,
+    Value = 0.05,
   },
 }
 r7_0[4] = {
@@ -106765,7 +106765,7 @@ r7_0[4] = {
     Index = 1,
     Level = 4,
     Type = "SkillEffects",
-    Value = 0.31,
+    Value = 0.06,
   },
 }
 r7_0[5] = {
@@ -106774,7 +106774,7 @@ r7_0[5] = {
     Index = 1,
     Level = 5,
     Type = "SkillEffects",
-    Value = 0.36,
+    Value = 0.07,
   },
 }
 r7_0[6] = {
@@ -106783,7 +106783,7 @@ r7_0[6] = {
     Index = 1,
     Level = 6,
     Type = "SkillEffects",
-    Value = 0.41,
+    Value = 0.08,
   },
 }
 r7_0[7] = {
@@ -106792,7 +106792,7 @@ r7_0[7] = {
     Index = 1,
     Level = 7,
     Type = "SkillEffects",
-    Value = 0.46,
+    Value = 0.09,
   },
 }
 r7_0[8] = {
@@ -106801,7 +106801,7 @@ r7_0[8] = {
     Index = 1,
     Level = 8,
     Type = "SkillEffects",
-    Value = 0.51,
+    Value = 0.1,
   },
 }
 r7_0[9] = {
@@ -106810,7 +106810,7 @@ r7_0[9] = {
     Index = 1,
     Level = 9,
     Type = "SkillEffects",
-    Value = 0.56,
+    Value = 0.11,
   },
 }
 r7_0[10] = {
@@ -106819,7 +106819,7 @@ r7_0[10] = {
     Index = 1,
     Level = 10,
     Type = "SkillEffects",
-    Value = 0.61,
+    Value = 0.12,
   },
 }
 r7_0[11] = {
@@ -106828,7 +106828,7 @@ r7_0[11] = {
     Index = 1,
     Level = 11,
     Type = "SkillEffects",
-    Value = 0.66,
+    Value = 0.13,
   },
 }
 r7_0[12] = {
@@ -106837,7 +106837,7 @@ r7_0[12] = {
     Index = 1,
     Level = 12,
     Type = "SkillEffects",
-    Value = 0.71,
+    Value = 0.14,
   },
 }
 r7_0[13] = {
@@ -106846,7 +106846,7 @@ r7_0[13] = {
     Index = 1,
     Level = 13,
     Type = "SkillEffects",
-    Value = 0.76,
+    Value = 0.15,
   },
 }
 r7_0[14] = {
@@ -106855,7 +106855,7 @@ r7_0[14] = {
     Index = 1,
     Level = 14,
     Type = "SkillEffects",
-    Value = 0.81,
+    Value = 0.16,
   },
 }
 r7_0[15] = {
@@ -106864,7 +106864,7 @@ r7_0[15] = {
     Index = 1,
     Level = 15,
     Type = "SkillEffects",
-    Value = 0.86,
+    Value = 0.17,
   },
 }
 r7_0[16] = {
@@ -106873,7 +106873,7 @@ r7_0[16] = {
     Index = 1,
     Level = 16,
     Type = "SkillEffects",
-    Value = 0.91,
+    Value = 0.18,
   },
 }
 r7_0[17] = {
@@ -106882,7 +106882,7 @@ r7_0[17] = {
     Index = 1,
     Level = 17,
     Type = "SkillEffects",
-    Value = 0.96,
+    Value = 0.19,
   },
 }
 r7_0[18] = {
@@ -106891,7 +106891,7 @@ r7_0[18] = {
     Index = 1,
     Level = 18,
     Type = "SkillEffects",
-    Value = 1.01,
+    Value = 0.2,
   },
 }
 r7_0[19] = {
@@ -106900,7 +106900,7 @@ r7_0[19] = {
     Index = 1,
     Level = 19,
     Type = "SkillEffects",
-    Value = 1.06,
+    Value = 0.21,
   },
 }
 r7_0[20] = {
@@ -106909,7 +106909,7 @@ r7_0[20] = {
     Index = 1,
     Level = 20,
     Type = "SkillEffects",
-    Value = 1.11,
+    Value = 0.22,
   },
 }
 r5_0[150385] = r7_0
@@ -106920,7 +106920,7 @@ r7_0[1] = {
     Index = 1,
     Level = 1,
     Type = "SkillEffects",
-    Value = 0.16,
+    Value = 0.03,
   },
 }
 r7_0[2] = {
@@ -106929,7 +106929,7 @@ r7_0[2] = {
     Index = 1,
     Level = 2,
     Type = "SkillEffects",
-    Value = 0.21,
+    Value = 0.04,
   },
 }
 r7_0[3] = {
@@ -106938,7 +106938,7 @@ r7_0[3] = {
     Index = 1,
     Level = 3,
     Type = "SkillEffects",
-    Value = 0.26,
+    Value = 0.05,
   },
 }
 r7_0[4] = {
@@ -106947,7 +106947,7 @@ r7_0[4] = {
     Index = 1,
     Level = 4,
     Type = "SkillEffects",
-    Value = 0.31,
+    Value = 0.06,
   },
 }
 r7_0[5] = {
@@ -106956,7 +106956,7 @@ r7_0[5] = {
     Index = 1,
     Level = 5,
     Type = "SkillEffects",
-    Value = 0.36,
+    Value = 0.07,
   },
 }
 r7_0[6] = {
@@ -106965,7 +106965,7 @@ r7_0[6] = {
     Index = 1,
     Level = 6,
     Type = "SkillEffects",
-    Value = 0.41,
+    Value = 0.08,
   },
 }
 r7_0[7] = {
@@ -106974,7 +106974,7 @@ r7_0[7] = {
     Index = 1,
     Level = 7,
     Type = "SkillEffects",
-    Value = 0.46,
+    Value = 0.09,
   },
 }
 r7_0[8] = {
@@ -106983,7 +106983,7 @@ r7_0[8] = {
     Index = 1,
     Level = 8,
     Type = "SkillEffects",
-    Value = 0.51,
+    Value = 0.1,
   },
 }
 r7_0[9] = {
@@ -106992,7 +106992,7 @@ r7_0[9] = {
     Index = 1,
     Level = 9,
     Type = "SkillEffects",
-    Value = 0.56,
+    Value = 0.11,
   },
 }
 r7_0[10] = {
@@ -107001,7 +107001,7 @@ r7_0[10] = {
     Index = 1,
     Level = 10,
     Type = "SkillEffects",
-    Value = 0.61,
+    Value = 0.12,
   },
 }
 r7_0[11] = {
@@ -107010,7 +107010,7 @@ r7_0[11] = {
     Index = 1,
     Level = 11,
     Type = "SkillEffects",
-    Value = 0.66,
+    Value = 0.13,
   },
 }
 r7_0[12] = {
@@ -107019,7 +107019,7 @@ r7_0[12] = {
     Index = 1,
     Level = 12,
     Type = "SkillEffects",
-    Value = 0.71,
+    Value = 0.14,
   },
 }
 r7_0[13] = {
@@ -107028,7 +107028,7 @@ r7_0[13] = {
     Index = 1,
     Level = 13,
     Type = "SkillEffects",
-    Value = 0.76,
+    Value = 0.15,
   },
 }
 r7_0[14] = {
@@ -107037,7 +107037,7 @@ r7_0[14] = {
     Index = 1,
     Level = 14,
     Type = "SkillEffects",
-    Value = 0.81,
+    Value = 0.16,
   },
 }
 r7_0[15] = {
@@ -107046,7 +107046,7 @@ r7_0[15] = {
     Index = 1,
     Level = 15,
     Type = "SkillEffects",
-    Value = 0.86,
+    Value = 0.17,
   },
 }
 r7_0[16] = {
@@ -107055,7 +107055,7 @@ r7_0[16] = {
     Index = 1,
     Level = 16,
     Type = "SkillEffects",
-    Value = 0.91,
+    Value = 0.18,
   },
 }
 r7_0[17] = {
@@ -107064,7 +107064,7 @@ r7_0[17] = {
     Index = 1,
     Level = 17,
     Type = "SkillEffects",
-    Value = 0.96,
+    Value = 0.19,
   },
 }
 r7_0[18] = {
@@ -107073,7 +107073,7 @@ r7_0[18] = {
     Index = 1,
     Level = 18,
     Type = "SkillEffects",
-    Value = 1.01,
+    Value = 0.2,
   },
 }
 r7_0[19] = {
@@ -107082,7 +107082,7 @@ r7_0[19] = {
     Index = 1,
     Level = 19,
     Type = "SkillEffects",
-    Value = 1.06,
+    Value = 0.21,
   },
 }
 r7_0[20] = {
@@ -107091,7 +107091,7 @@ r7_0[20] = {
     Index = 1,
     Level = 20,
     Type = "SkillEffects",
-    Value = 1.11,
+    Value = 0.22,
   },
 }
 r5_0[150386] = r7_0
@@ -107102,7 +107102,7 @@ r7_0[1] = {
     Index = 1,
     Level = 1,
     Type = "SkillEffects",
-    Value = 0.16,
+    Value = 0.03,
   },
 }
 r7_0[2] = {
@@ -107111,7 +107111,7 @@ r7_0[2] = {
     Index = 1,
     Level = 2,
     Type = "SkillEffects",
-    Value = 0.21,
+    Value = 0.04,
   },
 }
 r7_0[3] = {
@@ -107120,7 +107120,7 @@ r7_0[3] = {
     Index = 1,
     Level = 3,
     Type = "SkillEffects",
-    Value = 0.26,
+    Value = 0.05,
   },
 }
 r7_0[4] = {
@@ -107129,7 +107129,7 @@ r7_0[4] = {
     Index = 1,
     Level = 4,
     Type = "SkillEffects",
-    Value = 0.31,
+    Value = 0.06,
   },
 }
 r7_0[5] = {
@@ -107138,7 +107138,7 @@ r7_0[5] = {
     Index = 1,
     Level = 5,
     Type = "SkillEffects",
-    Value = 0.36,
+    Value = 0.07,
   },
 }
 r7_0[6] = {
@@ -107147,7 +107147,7 @@ r7_0[6] = {
     Index = 1,
     Level = 6,
     Type = "SkillEffects",
-    Value = 0.41,
+    Value = 0.08,
   },
 }
 r7_0[7] = {
@@ -107156,7 +107156,7 @@ r7_0[7] = {
     Index = 1,
     Level = 7,
     Type = "SkillEffects",
-    Value = 0.46,
+    Value = 0.09,
   },
 }
 r7_0[8] = {
@@ -107165,7 +107165,7 @@ r7_0[8] = {
     Index = 1,
     Level = 8,
     Type = "SkillEffects",
-    Value = 0.51,
+    Value = 0.1,
   },
 }
 r7_0[9] = {
@@ -107174,7 +107174,7 @@ r7_0[9] = {
     Index = 1,
     Level = 9,
     Type = "SkillEffects",
-    Value = 0.56,
+    Value = 0.11,
   },
 }
 r7_0[10] = {
@@ -107183,7 +107183,7 @@ r7_0[10] = {
     Index = 1,
     Level = 10,
     Type = "SkillEffects",
-    Value = 0.61,
+    Value = 0.12,
   },
 }
 r7_0[11] = {
@@ -107192,7 +107192,7 @@ r7_0[11] = {
     Index = 1,
     Level = 11,
     Type = "SkillEffects",
-    Value = 0.66,
+    Value = 0.13,
   },
 }
 r7_0[12] = {
@@ -107201,7 +107201,7 @@ r7_0[12] = {
     Index = 1,
     Level = 12,
     Type = "SkillEffects",
-    Value = 0.71,
+    Value = 0.14,
   },
 }
 r7_0[13] = {
@@ -107210,7 +107210,7 @@ r7_0[13] = {
     Index = 1,
     Level = 13,
     Type = "SkillEffects",
-    Value = 0.76,
+    Value = 0.15,
   },
 }
 r7_0[14] = {
@@ -107219,7 +107219,7 @@ r7_0[14] = {
     Index = 1,
     Level = 14,
     Type = "SkillEffects",
-    Value = 0.81,
+    Value = 0.16,
   },
 }
 r7_0[15] = {
@@ -107228,7 +107228,7 @@ r7_0[15] = {
     Index = 1,
     Level = 15,
     Type = "SkillEffects",
-    Value = 0.86,
+    Value = 0.17,
   },
 }
 r7_0[16] = {
@@ -107237,7 +107237,7 @@ r7_0[16] = {
     Index = 1,
     Level = 16,
     Type = "SkillEffects",
-    Value = 0.91,
+    Value = 0.18,
   },
 }
 r7_0[17] = {
@@ -107246,7 +107246,7 @@ r7_0[17] = {
     Index = 1,
     Level = 17,
     Type = "SkillEffects",
-    Value = 0.96,
+    Value = 0.19,
   },
 }
 r7_0[18] = {
@@ -107255,7 +107255,7 @@ r7_0[18] = {
     Index = 1,
     Level = 18,
     Type = "SkillEffects",
-    Value = 1.01,
+    Value = 0.2,
   },
 }
 r7_0[19] = {
@@ -107264,7 +107264,7 @@ r7_0[19] = {
     Index = 1,
     Level = 19,
     Type = "SkillEffects",
-    Value = 1.06,
+    Value = 0.21,
   },
 }
 r7_0[20] = {
@@ -107273,7 +107273,7 @@ r7_0[20] = {
     Index = 1,
     Level = 20,
     Type = "SkillEffects",
-    Value = 1.11,
+    Value = 0.22,
   },
 }
 r5_0[150388] = r7_0
@@ -107284,7 +107284,7 @@ r7_0[1] = {
     Index = 1,
     Level = 1,
     Type = "SkillEffects",
-    Value = 0.16,
+    Value = 0.03,
   },
 }
 r7_0[2] = {
@@ -107293,7 +107293,7 @@ r7_0[2] = {
     Index = 1,
     Level = 2,
     Type = "SkillEffects",
-    Value = 0.21,
+    Value = 0.04,
   },
 }
 r7_0[3] = {
@@ -107302,7 +107302,7 @@ r7_0[3] = {
     Index = 1,
     Level = 3,
     Type = "SkillEffects",
-    Value = 0.26,
+    Value = 0.05,
   },
 }
 r7_0[4] = {
@@ -107311,7 +107311,7 @@ r7_0[4] = {
     Index = 1,
     Level = 4,
     Type = "SkillEffects",
-    Value = 0.31,
+    Value = 0.06,
   },
 }
 r7_0[5] = {
@@ -107320,7 +107320,7 @@ r7_0[5] = {
     Index = 1,
     Level = 5,
     Type = "SkillEffects",
-    Value = 0.36,
+    Value = 0.07,
   },
 }
 r7_0[6] = {
@@ -107329,7 +107329,7 @@ r7_0[6] = {
     Index = 1,
     Level = 6,
     Type = "SkillEffects",
-    Value = 0.41,
+    Value = 0.08,
   },
 }
 r7_0[7] = {
@@ -107338,7 +107338,7 @@ r7_0[7] = {
     Index = 1,
     Level = 7,
     Type = "SkillEffects",
-    Value = 0.46,
+    Value = 0.09,
   },
 }
 r7_0[8] = {
@@ -107347,7 +107347,7 @@ r7_0[8] = {
     Index = 1,
     Level = 8,
     Type = "SkillEffects",
-    Value = 0.51,
+    Value = 0.1,
   },
 }
 r7_0[9] = {
@@ -107356,7 +107356,7 @@ r7_0[9] = {
     Index = 1,
     Level = 9,
     Type = "SkillEffects",
-    Value = 0.56,
+    Value = 0.11,
   },
 }
 r7_0[10] = {
@@ -107365,7 +107365,7 @@ r7_0[10] = {
     Index = 1,
     Level = 10,
     Type = "SkillEffects",
-    Value = 0.61,
+    Value = 0.12,
   },
 }
 r7_0[11] = {
@@ -107374,7 +107374,7 @@ r7_0[11] = {
     Index = 1,
     Level = 11,
     Type = "SkillEffects",
-    Value = 0.66,
+    Value = 0.13,
   },
 }
 r7_0[12] = {
@@ -107383,7 +107383,7 @@ r7_0[12] = {
     Index = 1,
     Level = 12,
     Type = "SkillEffects",
-    Value = 0.71,
+    Value = 0.14,
   },
 }
 r7_0[13] = {
@@ -107392,7 +107392,7 @@ r7_0[13] = {
     Index = 1,
     Level = 13,
     Type = "SkillEffects",
-    Value = 0.76,
+    Value = 0.15,
   },
 }
 r7_0[14] = {
@@ -107401,7 +107401,7 @@ r7_0[14] = {
     Index = 1,
     Level = 14,
     Type = "SkillEffects",
-    Value = 0.81,
+    Value = 0.16,
   },
 }
 r7_0[15] = {
@@ -107410,7 +107410,7 @@ r7_0[15] = {
     Index = 1,
     Level = 15,
     Type = "SkillEffects",
-    Value = 0.86,
+    Value = 0.17,
   },
 }
 r7_0[16] = {
@@ -107419,7 +107419,7 @@ r7_0[16] = {
     Index = 1,
     Level = 16,
     Type = "SkillEffects",
-    Value = 0.91,
+    Value = 0.18,
   },
 }
 r7_0[17] = {
@@ -107428,7 +107428,7 @@ r7_0[17] = {
     Index = 1,
     Level = 17,
     Type = "SkillEffects",
-    Value = 0.96,
+    Value = 0.19,
   },
 }
 r7_0[18] = {
@@ -107437,7 +107437,7 @@ r7_0[18] = {
     Index = 1,
     Level = 18,
     Type = "SkillEffects",
-    Value = 1.01,
+    Value = 0.2,
   },
 }
 r7_0[19] = {
@@ -107446,7 +107446,7 @@ r7_0[19] = {
     Index = 1,
     Level = 19,
     Type = "SkillEffects",
-    Value = 1.06,
+    Value = 0.21,
   },
 }
 r7_0[20] = {
@@ -107455,7 +107455,7 @@ r7_0[20] = {
     Index = 1,
     Level = 20,
     Type = "SkillEffects",
-    Value = 1.11,
+    Value = 0.22,
   },
 }
 r5_0[150389] = r7_0
@@ -108194,7 +108194,7 @@ r7_0[1] = {
     Index = 1,
     Level = 1,
     Type = "SkillEffects",
-    Value = 0.16,
+    Value = 0.03,
   },
 }
 r7_0[2] = {
@@ -108203,7 +108203,7 @@ r7_0[2] = {
     Index = 1,
     Level = 2,
     Type = "SkillEffects",
-    Value = 0.21,
+    Value = 0.04,
   },
 }
 r7_0[3] = {
@@ -108212,7 +108212,7 @@ r7_0[3] = {
     Index = 1,
     Level = 3,
     Type = "SkillEffects",
-    Value = 0.26,
+    Value = 0.05,
   },
 }
 r7_0[4] = {
@@ -108221,7 +108221,7 @@ r7_0[4] = {
     Index = 1,
     Level = 4,
     Type = "SkillEffects",
-    Value = 0.31,
+    Value = 0.06,
   },
 }
 r7_0[5] = {
@@ -108230,7 +108230,7 @@ r7_0[5] = {
     Index = 1,
     Level = 5,
     Type = "SkillEffects",
-    Value = 0.36,
+    Value = 0.07,
   },
 }
 r7_0[6] = {
@@ -108239,7 +108239,7 @@ r7_0[6] = {
     Index = 1,
     Level = 6,
     Type = "SkillEffects",
-    Value = 0.41,
+    Value = 0.08,
   },
 }
 r7_0[7] = {
@@ -108248,7 +108248,7 @@ r7_0[7] = {
     Index = 1,
     Level = 7,
     Type = "SkillEffects",
-    Value = 0.46,
+    Value = 0.09,
   },
 }
 r7_0[8] = {
@@ -108257,7 +108257,7 @@ r7_0[8] = {
     Index = 1,
     Level = 8,
     Type = "SkillEffects",
-    Value = 0.51,
+    Value = 0.1,
   },
 }
 r7_0[9] = {
@@ -108266,7 +108266,7 @@ r7_0[9] = {
     Index = 1,
     Level = 9,
     Type = "SkillEffects",
-    Value = 0.56,
+    Value = 0.11,
   },
 }
 r7_0[10] = {
@@ -108275,7 +108275,7 @@ r7_0[10] = {
     Index = 1,
     Level = 10,
     Type = "SkillEffects",
-    Value = 0.61,
+    Value = 0.12,
   },
 }
 r7_0[11] = {
@@ -108284,7 +108284,7 @@ r7_0[11] = {
     Index = 1,
     Level = 11,
     Type = "SkillEffects",
-    Value = 0.66,
+    Value = 0.13,
   },
 }
 r7_0[12] = {
@@ -108293,7 +108293,7 @@ r7_0[12] = {
     Index = 1,
     Level = 12,
     Type = "SkillEffects",
-    Value = 0.71,
+    Value = 0.14,
   },
 }
 r7_0[13] = {
@@ -108302,7 +108302,7 @@ r7_0[13] = {
     Index = 1,
     Level = 13,
     Type = "SkillEffects",
-    Value = 0.76,
+    Value = 0.15,
   },
 }
 r7_0[14] = {
@@ -108311,7 +108311,7 @@ r7_0[14] = {
     Index = 1,
     Level = 14,
     Type = "SkillEffects",
-    Value = 0.81,
+    Value = 0.16,
   },
 }
 r7_0[15] = {
@@ -108320,7 +108320,7 @@ r7_0[15] = {
     Index = 1,
     Level = 15,
     Type = "SkillEffects",
-    Value = 0.86,
+    Value = 0.17,
   },
 }
 r7_0[16] = {
@@ -108329,7 +108329,7 @@ r7_0[16] = {
     Index = 1,
     Level = 16,
     Type = "SkillEffects",
-    Value = 0.91,
+    Value = 0.18,
   },
 }
 r7_0[17] = {
@@ -108338,7 +108338,7 @@ r7_0[17] = {
     Index = 1,
     Level = 17,
     Type = "SkillEffects",
-    Value = 0.96,
+    Value = 0.19,
   },
 }
 r7_0[18] = {
@@ -108347,7 +108347,7 @@ r7_0[18] = {
     Index = 1,
     Level = 18,
     Type = "SkillEffects",
-    Value = 1.01,
+    Value = 0.2,
   },
 }
 r7_0[19] = {
@@ -108356,7 +108356,7 @@ r7_0[19] = {
     Index = 1,
     Level = 19,
     Type = "SkillEffects",
-    Value = 1.06,
+    Value = 0.21,
   },
 }
 r7_0[20] = {
@@ -108365,7 +108365,7 @@ r7_0[20] = {
     Index = 1,
     Level = 20,
     Type = "SkillEffects",
-    Value = 1.11,
+    Value = 0.22,
   },
 }
 r5_0[150395] = r7_0
@@ -108376,7 +108376,7 @@ r7_0[1] = {
     Index = 1,
     Level = 1,
     Type = "SkillEffects",
-    Value = 0.16,
+    Value = 0.03,
   },
 }
 r7_0[2] = {
@@ -108385,7 +108385,7 @@ r7_0[2] = {
     Index = 1,
     Level = 2,
     Type = "SkillEffects",
-    Value = 0.21,
+    Value = 0.04,
   },
 }
 r7_0[3] = {
@@ -108394,7 +108394,7 @@ r7_0[3] = {
     Index = 1,
     Level = 3,
     Type = "SkillEffects",
-    Value = 0.26,
+    Value = 0.05,
   },
 }
 r7_0[4] = {
@@ -108403,7 +108403,7 @@ r7_0[4] = {
     Index = 1,
     Level = 4,
     Type = "SkillEffects",
-    Value = 0.31,
+    Value = 0.06,
   },
 }
 r7_0[5] = {
@@ -108412,7 +108412,7 @@ r7_0[5] = {
     Index = 1,
     Level = 5,
     Type = "SkillEffects",
-    Value = 0.36,
+    Value = 0.07,
   },
 }
 r7_0[6] = {
@@ -108421,7 +108421,7 @@ r7_0[6] = {
     Index = 1,
     Level = 6,
     Type = "SkillEffects",
-    Value = 0.41,
+    Value = 0.08,
   },
 }
 r7_0[7] = {
@@ -108430,7 +108430,7 @@ r7_0[7] = {
     Index = 1,
     Level = 7,
     Type = "SkillEffects",
-    Value = 0.46,
+    Value = 0.09,
   },
 }
 r7_0[8] = {
@@ -108439,7 +108439,7 @@ r7_0[8] = {
     Index = 1,
     Level = 8,
     Type = "SkillEffects",
-    Value = 0.51,
+    Value = 0.1,
   },
 }
 r7_0[9] = {
@@ -108448,7 +108448,7 @@ r7_0[9] = {
     Index = 1,
     Level = 9,
     Type = "SkillEffects",
-    Value = 0.56,
+    Value = 0.11,
   },
 }
 r7_0[10] = {
@@ -108457,7 +108457,7 @@ r7_0[10] = {
     Index = 1,
     Level = 10,
     Type = "SkillEffects",
-    Value = 0.61,
+    Value = 0.12,
   },
 }
 r7_0[11] = {
@@ -108466,7 +108466,7 @@ r7_0[11] = {
     Index = 1,
     Level = 11,
     Type = "SkillEffects",
-    Value = 0.66,
+    Value = 0.13,
   },
 }
 r7_0[12] = {
@@ -108475,7 +108475,7 @@ r7_0[12] = {
     Index = 1,
     Level = 12,
     Type = "SkillEffects",
-    Value = 0.71,
+    Value = 0.14,
   },
 }
 r7_0[13] = {
@@ -108484,7 +108484,7 @@ r7_0[13] = {
     Index = 1,
     Level = 13,
     Type = "SkillEffects",
-    Value = 0.76,
+    Value = 0.15,
   },
 }
 r7_0[14] = {
@@ -108493,7 +108493,7 @@ r7_0[14] = {
     Index = 1,
     Level = 14,
     Type = "SkillEffects",
-    Value = 0.81,
+    Value = 0.16,
   },
 }
 r7_0[15] = {
@@ -108502,7 +108502,7 @@ r7_0[15] = {
     Index = 1,
     Level = 15,
     Type = "SkillEffects",
-    Value = 0.86,
+    Value = 0.17,
   },
 }
 r7_0[16] = {
@@ -108511,7 +108511,7 @@ r7_0[16] = {
     Index = 1,
     Level = 16,
     Type = "SkillEffects",
-    Value = 0.91,
+    Value = 0.18,
   },
 }
 r7_0[17] = {
@@ -108520,7 +108520,7 @@ r7_0[17] = {
     Index = 1,
     Level = 17,
     Type = "SkillEffects",
-    Value = 0.96,
+    Value = 0.19,
   },
 }
 r7_0[18] = {
@@ -108529,7 +108529,7 @@ r7_0[18] = {
     Index = 1,
     Level = 18,
     Type = "SkillEffects",
-    Value = 1.01,
+    Value = 0.2,
   },
 }
 r7_0[19] = {
@@ -108538,7 +108538,7 @@ r7_0[19] = {
     Index = 1,
     Level = 19,
     Type = "SkillEffects",
-    Value = 1.06,
+    Value = 0.21,
   },
 }
 r7_0[20] = {
@@ -108547,7 +108547,7 @@ r7_0[20] = {
     Index = 1,
     Level = 20,
     Type = "SkillEffects",
-    Value = 1.11,
+    Value = 0.22,
   },
 }
 r5_0[150396] = r7_0
@@ -108558,7 +108558,7 @@ r7_0[1] = {
     Index = 1,
     Level = 1,
     Type = "SkillEffects",
-    Value = 0.16,
+    Value = 0.03,
   },
 }
 r7_0[2] = {
@@ -108567,7 +108567,7 @@ r7_0[2] = {
     Index = 1,
     Level = 2,
     Type = "SkillEffects",
-    Value = 0.21,
+    Value = 0.04,
   },
 }
 r7_0[3] = {
@@ -108576,7 +108576,7 @@ r7_0[3] = {
     Index = 1,
     Level = 3,
     Type = "SkillEffects",
-    Value = 0.26,
+    Value = 0.05,
   },
 }
 r7_0[4] = {
@@ -108585,7 +108585,7 @@ r7_0[4] = {
     Index = 1,
     Level = 4,
     Type = "SkillEffects",
-    Value = 0.31,
+    Value = 0.06,
   },
 }
 r7_0[5] = {
@@ -108594,7 +108594,7 @@ r7_0[5] = {
     Index = 1,
     Level = 5,
     Type = "SkillEffects",
-    Value = 0.36,
+    Value = 0.07,
   },
 }
 r7_0[6] = {
@@ -108603,7 +108603,7 @@ r7_0[6] = {
     Index = 1,
     Level = 6,
     Type = "SkillEffects",
-    Value = 0.41,
+    Value = 0.08,
   },
 }
 r7_0[7] = {
@@ -108612,7 +108612,7 @@ r7_0[7] = {
     Index = 1,
     Level = 7,
     Type = "SkillEffects",
-    Value = 0.46,
+    Value = 0.09,
   },
 }
 r7_0[8] = {
@@ -108621,7 +108621,7 @@ r7_0[8] = {
     Index = 1,
     Level = 8,
     Type = "SkillEffects",
-    Value = 0.51,
+    Value = 0.1,
   },
 }
 r7_0[9] = {
@@ -108630,7 +108630,7 @@ r7_0[9] = {
     Index = 1,
     Level = 9,
     Type = "SkillEffects",
-    Value = 0.56,
+    Value = 0.11,
   },
 }
 r7_0[10] = {
@@ -108639,7 +108639,7 @@ r7_0[10] = {
     Index = 1,
     Level = 10,
     Type = "SkillEffects",
-    Value = 0.61,
+    Value = 0.12,
   },
 }
 r7_0[11] = {
@@ -108648,7 +108648,7 @@ r7_0[11] = {
     Index = 1,
     Level = 11,
     Type = "SkillEffects",
-    Value = 0.66,
+    Value = 0.13,
   },
 }
 r7_0[12] = {
@@ -108657,7 +108657,7 @@ r7_0[12] = {
     Index = 1,
     Level = 12,
     Type = "SkillEffects",
-    Value = 0.71,
+    Value = 0.14,
   },
 }
 r7_0[13] = {
@@ -108666,7 +108666,7 @@ r7_0[13] = {
     Index = 1,
     Level = 13,
     Type = "SkillEffects",
-    Value = 0.76,
+    Value = 0.15,
   },
 }
 r7_0[14] = {
@@ -108675,7 +108675,7 @@ r7_0[14] = {
     Index = 1,
     Level = 14,
     Type = "SkillEffects",
-    Value = 0.81,
+    Value = 0.16,
   },
 }
 r7_0[15] = {
@@ -108684,7 +108684,7 @@ r7_0[15] = {
     Index = 1,
     Level = 15,
     Type = "SkillEffects",
-    Value = 0.86,
+    Value = 0.17,
   },
 }
 r7_0[16] = {
@@ -108693,7 +108693,7 @@ r7_0[16] = {
     Index = 1,
     Level = 16,
     Type = "SkillEffects",
-    Value = 0.91,
+    Value = 0.18,
   },
 }
 r7_0[17] = {
@@ -108702,7 +108702,7 @@ r7_0[17] = {
     Index = 1,
     Level = 17,
     Type = "SkillEffects",
-    Value = 0.96,
+    Value = 0.19,
   },
 }
 r7_0[18] = {
@@ -108711,7 +108711,7 @@ r7_0[18] = {
     Index = 1,
     Level = 18,
     Type = "SkillEffects",
-    Value = 1.01,
+    Value = 0.2,
   },
 }
 r7_0[19] = {
@@ -108720,7 +108720,7 @@ r7_0[19] = {
     Index = 1,
     Level = 19,
     Type = "SkillEffects",
-    Value = 1.06,
+    Value = 0.21,
   },
 }
 r7_0[20] = {
@@ -108729,7 +108729,7 @@ r7_0[20] = {
     Index = 1,
     Level = 20,
     Type = "SkillEffects",
-    Value = 1.11,
+    Value = 0.22,
   },
 }
 r5_0[150398] = r7_0
@@ -108740,7 +108740,7 @@ r7_0[1] = {
     Index = 1,
     Level = 1,
     Type = "SkillEffects",
-    Value = 0.16,
+    Value = 0.03,
   },
 }
 r7_0[2] = {
@@ -108749,7 +108749,7 @@ r7_0[2] = {
     Index = 1,
     Level = 2,
     Type = "SkillEffects",
-    Value = 0.21,
+    Value = 0.04,
   },
 }
 r7_0[3] = {
@@ -108758,7 +108758,7 @@ r7_0[3] = {
     Index = 1,
     Level = 3,
     Type = "SkillEffects",
-    Value = 0.26,
+    Value = 0.05,
   },
 }
 r7_0[4] = {
@@ -108767,7 +108767,7 @@ r7_0[4] = {
     Index = 1,
     Level = 4,
     Type = "SkillEffects",
-    Value = 0.31,
+    Value = 0.06,
   },
 }
 r7_0[5] = {
@@ -108776,7 +108776,7 @@ r7_0[5] = {
     Index = 1,
     Level = 5,
     Type = "SkillEffects",
-    Value = 0.36,
+    Value = 0.07,
   },
 }
 r7_0[6] = {
@@ -108785,7 +108785,7 @@ r7_0[6] = {
     Index = 1,
     Level = 6,
     Type = "SkillEffects",
-    Value = 0.41,
+    Value = 0.08,
   },
 }
 r7_0[7] = {
@@ -108794,7 +108794,7 @@ r7_0[7] = {
     Index = 1,
     Level = 7,
     Type = "SkillEffects",
-    Value = 0.46,
+    Value = 0.09,
   },
 }
 r7_0[8] = {
@@ -108803,7 +108803,7 @@ r7_0[8] = {
     Index = 1,
     Level = 8,
     Type = "SkillEffects",
-    Value = 0.51,
+    Value = 0.1,
   },
 }
 r7_0[9] = {
@@ -108812,7 +108812,7 @@ r7_0[9] = {
     Index = 1,
     Level = 9,
     Type = "SkillEffects",
-    Value = 0.56,
+    Value = 0.11,
   },
 }
 r7_0[10] = {
@@ -108821,7 +108821,7 @@ r7_0[10] = {
     Index = 1,
     Level = 10,
     Type = "SkillEffects",
-    Value = 0.61,
+    Value = 0.12,
   },
 }
 r7_0[11] = {
@@ -108830,7 +108830,7 @@ r7_0[11] = {
     Index = 1,
     Level = 11,
     Type = "SkillEffects",
-    Value = 0.66,
+    Value = 0.13,
   },
 }
 r7_0[12] = {
@@ -108839,7 +108839,7 @@ r7_0[12] = {
     Index = 1,
     Level = 12,
     Type = "SkillEffects",
-    Value = 0.71,
+    Value = 0.14,
   },
 }
 r7_0[13] = {
@@ -108848,7 +108848,7 @@ r7_0[13] = {
     Index = 1,
     Level = 13,
     Type = "SkillEffects",
-    Value = 0.76,
+    Value = 0.15,
   },
 }
 r7_0[14] = {
@@ -108857,7 +108857,7 @@ r7_0[14] = {
     Index = 1,
     Level = 14,
     Type = "SkillEffects",
-    Value = 0.81,
+    Value = 0.16,
   },
 }
 r7_0[15] = {
@@ -108866,7 +108866,7 @@ r7_0[15] = {
     Index = 1,
     Level = 15,
     Type = "SkillEffects",
-    Value = 0.86,
+    Value = 0.17,
   },
 }
 r7_0[16] = {
@@ -108875,7 +108875,7 @@ r7_0[16] = {
     Index = 1,
     Level = 16,
     Type = "SkillEffects",
-    Value = 0.91,
+    Value = 0.18,
   },
 }
 r7_0[17] = {
@@ -108884,7 +108884,7 @@ r7_0[17] = {
     Index = 1,
     Level = 17,
     Type = "SkillEffects",
-    Value = 0.96,
+    Value = 0.19,
   },
 }
 r7_0[18] = {
@@ -108893,7 +108893,7 @@ r7_0[18] = {
     Index = 1,
     Level = 18,
     Type = "SkillEffects",
-    Value = 1.01,
+    Value = 0.2,
   },
 }
 r7_0[19] = {
@@ -108902,7 +108902,7 @@ r7_0[19] = {
     Index = 1,
     Level = 19,
     Type = "SkillEffects",
-    Value = 1.06,
+    Value = 0.21,
   },
 }
 r7_0[20] = {
@@ -108911,7 +108911,7 @@ r7_0[20] = {
     Index = 1,
     Level = 20,
     Type = "SkillEffects",
-    Value = 1.11,
+    Value = 0.22,
   },
 }
 r5_0[150399] = r7_0

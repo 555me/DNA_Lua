@@ -949,7 +949,7 @@ function r6_0.TriggerMechanism(r0_78, r1_78, r2_78, r3_78, r4_78)
         end
       else
         local r14_78 = DataMgr.MechanismState[r0_78.EMGameState.MechanismStateIdMap:Find(r1_78)]
-        if r14_78 then
+        if r14_78 and r14_78.StateEvent then
           for r19_78, r20_78 in pairs(r14_78.StateEvent) do
             if r20_78.NextStateId == r2_78 and r20_78.TypeNextState.Type == "Manual" then
               r7_78 = true
@@ -968,7 +968,7 @@ function r6_0.TriggerMechanism(r0_78, r1_78, r2_78, r3_78, r4_78)
         r10_78 = DataMgr.Mechanism[r5_78.UnitId].FirstStateId
       end
       local r11_78 = DataMgr.MechanismState[r10_78]
-      if r11_78 then
+      if r11_78 and r11_78.StateEvent then
         for r16_78, r17_78 in pairs(r11_78.StateEvent) do
           if r17_78.NextStateId == r2_78 and r17_78.TypeNextState.Type == "Manual" then
             r7_78 = true

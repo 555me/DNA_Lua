@@ -6751,6 +6751,23 @@ r4_0[41035] = {
   Type = "InfiniteBattleItem",
   UseBPFunction = "Gesture",
 }
+r4_0[41036] = {
+  AccessKey = r0_0.RT_4,
+  CombatConditionID = r0_0.RT_56,
+  CombatConditionToast = r0_0.RT_57,
+  DetailDes = "RESOURCE_DESC_41036",
+  FunctionDes = "RESOURCE_FUNCTION_ACTION",
+  Icon = "/Game/UI/Texture/Dynamic/Atlas/Action/T_Resource_Gesture_Youya.T_Resource_Gesture_Youya",
+  PlayAnim = "Gesture_Tree_02",
+  Rarity = 4,
+  ResourceId = 41036,
+  ResourceName = "RESOURCE_NAME_41036",
+  ResourceSType = "GestureItem",
+  ResourceValue = -1,
+  Sound = "SOUND_ITEM_NORMAL",
+  Type = "InfiniteBattleItem",
+  UseBPFunction = "Gesture",
+}
 r4_0[42001] = {
   CombatConditionID = r0_0.RT_60,
   CombatConditionToast = r0_0.RT_61,

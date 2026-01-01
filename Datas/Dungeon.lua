@@ -1588,7 +1588,7 @@ r0_0.RT_219 = {
   6016001,
   6015001,
   10005001,
-  10003001
+  6004001
 }
 r0_0.RT_220 = {
   6012001,
@@ -6246,7 +6246,7 @@ r4_0[30601] = {
   RespawnRule = "CommonSolo",
   SettlementOffset = r0_0.RT_7,
   Squad = true,
-  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalMiniPro01",
+  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalPro01",
   bHideBatttleMap = true,
 }
 r4_0[30602] = {
@@ -6278,7 +6278,7 @@ r4_0[30602] = {
   RespawnRule = "CommonSolo",
   SettlementOffset = r0_0.RT_7,
   Squad = true,
-  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalMiniPro01",
+  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalPro01",
   bHideBatttleMap = true,
 }
 r4_0[30603] = {
@@ -6310,7 +6310,7 @@ r4_0[30603] = {
   RespawnRule = "CommonSolo",
   SettlementOffset = r0_0.RT_7,
   Squad = true,
-  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalMiniPro01",
+  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalPro01",
   bHideBatttleMap = true,
 }
 r4_0[30604] = {
@@ -6342,7 +6342,7 @@ r4_0[30604] = {
   RespawnRule = "CommonSolo",
   SettlementOffset = r0_0.RT_7,
   Squad = true,
-  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalMiniPro02",
+  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalPro02",
   bHideBatttleMap = true,
 }
 r4_0[30605] = {
@@ -6374,7 +6374,7 @@ r4_0[30605] = {
   RespawnRule = "CommonSolo",
   SettlementOffset = r0_0.RT_7,
   Squad = true,
-  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalMiniPro02",
+  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalPro02",
   bHideBatttleMap = true,
 }
 r4_0[30606] = {
@@ -6406,7 +6406,7 @@ r4_0[30606] = {
   RespawnRule = "CommonSolo",
   SettlementOffset = r0_0.RT_7,
   Squad = true,
-  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalMiniPro02",
+  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalPro02",
   bHideBatttleMap = true,
 }
 r4_0[30801] = {
@@ -17385,7 +17385,7 @@ r4_0[90604] = {
   SettlementOffset = r0_0.RT_7,
   Squad = true,
   TicketId = r0_0.RT_155,
-  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalMiniPro01",
+  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalPro01",
 }
 r4_0[90605] = {
   CameraParam = r0_0.RT_2,
@@ -20364,7 +20364,7 @@ r4_0[91144] = {
   SettlementOffset = r0_0.RT_7,
   Squad = true,
   TicketId = r0_0.RT_155,
-  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalMiniPro01",
+  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalPro01",
   bDisableMatch = true,
 }
 r4_0[91145] = {
@@ -20408,7 +20408,7 @@ r4_0[91145] = {
   SettlementOffset = r0_0.RT_7,
   Squad = true,
   TicketId = r0_0.RT_155,
-  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalMiniPro02",
+  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalPro02",
   bDisableMatch = true,
 }
 r4_0[91146] = {
@@ -21957,7 +21957,7 @@ r4_0[91181] = {
   SettlementOffset = r0_0.RT_7,
   Squad = true,
   TicketId = r0_0.RT_155,
-  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalMiniPro01",
+  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalPro01",
   bDisableMatch = true,
 }
 r4_0[91182] = {
@@ -22000,7 +22000,7 @@ r4_0[91182] = {
   SettlementOffset = r0_0.RT_7,
   Squad = true,
   TicketId = r0_0.RT_155,
-  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalMiniPro02",
+  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_SurvivalPro02",
   bDisableMatch = true,
 }
 r4_0[91183] = {
@@ -22130,6 +22130,7 @@ r4_0[91185] = {
   SettlementOffset = r0_0.RT_7,
   Squad = true,
   TicketId = r0_0.RT_155,
+  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_Externpro01",
   bDisableMatch = true,
 }
 r4_0[91186] = {
@@ -22173,6 +22174,7 @@ r4_0[91186] = {
   SettlementOffset = r0_0.RT_7,
   Squad = true,
   TicketId = r0_0.RT_155,
+  WCDungeonDesignMapFile = "/Game/Maps/Levels/Huaxu/Huaxu_Yanjindu_Main/Design_Data/Huaxu_Yanjindu_DungeonDesign_Externpro01",
   bDisableMatch = true,
 }
 r4_0[91251] = {

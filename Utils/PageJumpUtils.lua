@@ -1147,7 +1147,7 @@ local r3_0 = {
     end
   end,
   JumpToRougeMain = function(r0_56, r1_56)
-    -- line: [1234, 1264] id: 56
+    -- line: [1234, 1265] id: 56
     local r3_56 = GWorld.GameInstance:GetGameUIManager()
     r0_56:CloseFrontDialog()
     if not r1_56 then
@@ -1155,15 +1155,16 @@ local r3_0 = {
     end
     local r4_56 = r3_56:GetUIObj("StyleOfPlay")
     if not r4_56 then
-      r4_56 = r3_56:LoadUINew("StyleOfPlay")
+      r4_56 = r3_56:LoadUINew("StyleOfPlay", "RougeMain")
       if r1_56 == "NormalJump" then
         r3_56:AddToJumpPageDeque(r4_56)
       end
     else
       r3_56:PlaceJumpUIToTop(r4_56, "StyleOfPlay")
+      r4_56:OpenSubUI("RougeMain")
     end
     r4_56.IsOpenSelectLevel = false
-    local r5_56 = r4_56:OpenSubUI("RougeMain")
+    local r5_56 = r4_56:GetCurSubUI()
     if r5_56 then
       if r5_56.InDifficultySelect then
         r5_56:BackToRougeMain()
@@ -1174,7 +1175,7 @@ local r3_0 = {
     end
   end,
   JumpToAbyssLevelInfoPage = function(r0_57, r1_57, r2_57, r3_57)
-    -- line: [1266, 1272] id: 57
+    -- line: [1267, 1273] id: 57
     local r5_57 = GWorld.GameInstance:GetGameUIManager()
     local r6_57 = r5_57:LoadUINew("AbyssMain", r1_57, true)
     r5_57:AddToJumpPageDeque(r6_57)
@@ -1183,24 +1184,24 @@ local r3_0 = {
     }, false, r1_57, r2_57, r3_57)
   end,
   JumpToTryOut = function(r0_58, r1_58, r2_58, r3_58)
-    -- line: [1274, 1285] id: 58
+    -- line: [1275, 1286] id: 58
     local r5_58 = GWorld.GameInstance:GetGameUIManager()
     local r6_58 = USubsystemBlueprintLibrary.GetWorldSubsystem(GWorld.GameInstance, UGameFlowManager)
     local r7_58 = r6_58:CreateFlow("OpenSystemUI")
     r7_58.OnBegin:Add(r7_58, function()
-      -- line: [1279, 1283] id: 59
+      -- line: [1280, 1284] id: 59
       r5_58:AddToJumpPageDeque(r5_58:LoadUINew("ActivityMain", nil, r1_58, r2_58, r3_58))
       r5_58:AddFlow("ActivityMain", r7_58)
     end)
     r6_58:AddFlow(r7_58)
   end,
   JumpToPaotai = function(r0_60, r1_60, r2_60)
-    -- line: [1287, 1303] id: 60
+    -- line: [1288, 1304] id: 60
     local r4_60 = GWorld.GameInstance:GetGameUIManager()
     local r5_60 = USubsystemBlueprintLibrary.GetWorldSubsystem(GWorld.GameInstance, UGameFlowManager)
     local r6_60 = r5_60:CreateFlow("OpenSystemUI")
     r6_60.OnBegin:Add(r6_60, function()
-      -- line: [1292, 1301] id: 61
+      -- line: [1293, 1302] id: 61
       r4_60:AddToJumpPageDeque(r4_60:LoadUINew("ActivityMain", nil, r1_60))
       local r2_61 = DataMgr.EventPortal[DataMgr.PaotaiEventConstant.PaotaiGameEventId.ConstantValue]
       if r2_61.JumpUIId then
@@ -1211,12 +1212,12 @@ local r3_0 = {
     r5_60:AddFlow(r6_60)
   end,
   JumpToFeinaEvent = function(r0_62, r1_62)
-    -- line: [1305, 1321] id: 62
+    -- line: [1306, 1322] id: 62
     local r3_62 = GWorld.GameInstance:GetGameUIManager()
     local r4_62 = USubsystemBlueprintLibrary.GetWorldSubsystem(GWorld.GameInstance, UGameFlowManager)
     local r5_62 = r4_62:CreateFlow("OpenSystemUI")
     r5_62.OnBegin:Add(r5_62, function()
-      -- line: [1310, 1319] id: 63
+      -- line: [1311, 1320] id: 63
       r3_62:AddToJumpPageDeque(r3_62:LoadUINew("ActivityMain", nil, r1_62))
       local r2_63 = DataMgr.EventPortal[DataMgr.EventConstant.FeinaEventId.ConstantValue]
       if r2_63.JumpUIId then
@@ -1227,12 +1228,12 @@ local r3_0 = {
     r4_62:AddFlow(r5_62)
   end,
   JumpToTempleSolo = function(r0_64, r1_64)
-    -- line: [1323, 1339] id: 64
+    -- line: [1324, 1340] id: 64
     local r3_64 = GWorld.GameInstance:GetGameUIManager()
     local r4_64 = USubsystemBlueprintLibrary.GetWorldSubsystem(GWorld.GameInstance, UGameFlowManager)
     local r5_64 = r4_64:CreateFlow("OpenSystemUI")
     r5_64.OnBegin:Add(r5_64, function()
-      -- line: [1328, 1337] id: 65
+      -- line: [1329, 1338] id: 65
       r3_64:AddToJumpPageDeque(r3_64:LoadUINew("ActivityMain", nil, r1_64))
       local r2_65 = DataMgr.EventPortal[108001]
       if r2_65.JumpUIId then
@@ -1243,7 +1244,7 @@ local r3_0 = {
     r4_64:AddFlow(r5_64)
   end,
   JumpToEventPage = function(r0_66, r1_66)
-    -- line: [1341, 1364] id: 66
+    -- line: [1342, 1365] id: 66
     local r2_66 = tonumber(r1_66)
     local r4_66 = GWorld.GameInstance:GetGameUIManager()
     if not r2_0.IsTabIdValid(r2_66) then
@@ -1253,7 +1254,7 @@ local r3_0 = {
     local r5_66 = USubsystemBlueprintLibrary.GetWorldSubsystem(GWorld.GameInstance, UGameFlowManager)
     local r6_66 = r5_66:CreateFlow("OpenSystemUI")
     r6_66.OnBegin:Add(r6_66, function()
-      -- line: [1352, 1362] id: 67
+      -- line: [1353, 1363] id: 67
       local r0_67 = r4_66:GetUIObj("ActivityMain")
       if not r0_67 then
         r0_67 = r4_66:LoadUINew("ActivityMain", nil, r2_66)
@@ -1266,7 +1267,7 @@ local r3_0 = {
     r5_66:AddFlow(r6_66)
   end,
   JumpToShopPage = function(r0_68, r1_68, r2_68, r3_68, r4_68, r5_68, r6_68)
-    -- line: [1371, 1392] id: 68
+    -- line: [1372, 1398] id: 68
     assert(DataMgr.Shop[r4_68], "未找到对应类型的商店，", r4_68)
     local r7_68 = DataMgr.Shop[r4_68].ShopUIName
     if not r7_68 then
@@ -1280,13 +1281,17 @@ local r3_0 = {
     if not r10_68 then
       r10_68 = r9_68:LoadUINew(r7_68, r1_68, r2_68, r3_68, r4_68, r5_68, r6_68)
       r9_68:AddToJumpPageDeque(r10_68)
+      if r10_68 and r10_68.In and r10_68:IsAnimationPlaying(r10_68.In) then
+        r10_68:SetAnimationCurrentTime(r10_68.In, r10_68.In:GetEndTime() - 0.01)
+        r10_68:PlayAnimation(r10_68.In)
+      end
     else
       r9_68:PlaceJumpUIToTop(r10_68, r7_68)
       r10_68:InitShop(r1_68, r2_68, r3_68, r4_68, r5_68, r6_68)
     end
   end,
   JumpToImprShop = function(r0_69, r1_69, r2_69, r3_69)
-    -- line: [1398, 1411] id: 69
+    -- line: [1404, 1417] id: 69
     r1_69 = tonumber(r1_69)
     r2_69 = tonumber(r2_69)
     local r4_69 = UIManager(GWorld.GameInstance)
@@ -1300,7 +1305,7 @@ local r3_0 = {
     end
   end,
   JumpToWalnutBagPage = function(r0_70, r1_70, r2_70)
-    -- line: [1414, 1429] id: 70
+    -- line: [1420, 1435] id: 70
     local r4_70 = GWorld.GameInstance:GetGameUIManager()
     local r5_70 = r4_70:GetUIObj("WalnutBagMain")
     if r1_70 == nil then
@@ -1315,7 +1320,7 @@ local r3_0 = {
     end
   end,
   JumpToForgePageDraftId = function(r0_71, r1_71)
-    -- line: [1432, 1453] id: 71
+    -- line: [1438, 1459] id: 71
     local r3_71 = GWorld.GameInstance:GetGameUIManager()
     local r5_71 = GWorld:GetAvatar().Drafts
     if not r5_71 or not r5_71[r1_71] then
@@ -1335,14 +1340,14 @@ local r3_0 = {
     end
   end,
   JumpToAnglingMap = function(r0_72, r1_72)
-    -- line: [1456, 1466] id: 72
+    -- line: [1462, 1472] id: 72
     local r3_72 = GWorld.GameInstance:GetGameUIManager()
     if not r3_72:GetUIObj("AnglingMap") then
       r3_72:AddToJumpPageDeque(r3_72:LoadUINew("AnglingMap", r1_72))
     end
   end,
   JumpToImprShopPage = function(r0_73, r1_73)
-    -- line: [1469, 1483] id: 73
+    -- line: [1475, 1489] id: 73
     local r3_73 = GWorld.GameInstance:GetGameUIManager()
     r0_73:CloseFrontDialog()
     local r4_73 = r1_73
@@ -1356,16 +1361,16 @@ local r3_0 = {
     r3_73:AddToJumpPageDeque(r3_73:LoadUINew("ImpressionShop", r5_73, nil, nil, true))
   end,
   JumpToTargetPointWithConfirm = function(r0_74, r1_74, r2_74, r3_74)
-    -- line: [1486, 1508] id: 74
+    -- line: [1492, 1514] id: 74
     local function r4_74()
-      -- line: [1487, 1488] id: 75
+      -- line: [1493, 1494] id: 75
     end
     GWorld.GameInstance:GetGameUIManager():ShowCommonPopupUI(math.tointeger(r3_74), {
       LeftCallbackObj = r0_74,
       LeftCallbackFunction = r4_74,
       RightCallbackObj = r0_74,
       RightCallbackFunction = function()
-        -- line: [1490, 1495] id: 76
+        -- line: [1496, 1501] id: 76
         local r0_76 = UE4.UGameplayStatics.GetGameMode(GWorld.GameInstance)
         if IsValid(r0_76) then
           r0_76:HandleLevelDeliver(UE4.EModeType.ModeRegion, math.tointeger(r1_74), math.tointeger(r2_74), false)
@@ -1377,7 +1382,7 @@ local r3_0 = {
   end,
 }
 local function r4_0(r0_77)
-  -- line: [1510, 1532] id: 77
+  -- line: [1516, 1538] id: 77
   local r1_77 = DataMgr.SystemUI[r0_77]
   if r1_77 and r1_77.System then
     local r2_77 = DataMgr.UIUnlockRule[r1_77.System]
@@ -1400,7 +1405,7 @@ local function r4_0(r0_77)
   return true
 end
 function r3_0.JumpToTargetPageByJumpId(r0_78, r1_78, ...)
-  -- line: [1534, 1596] id: 78
+  -- line: [1540, 1602] id: 78
   local r2_78 = false
   local r3_78 = DataMgr.InterfaceJump[r1_78]
   if not r3_78 then
@@ -1454,7 +1459,7 @@ function r3_0.JumpToTargetPageByJumpId(r0_78, r1_78, ...)
   return r2_78
 end
 function r3_0.JumpToTargetPage(r0_79, r1_79, ...)
-  -- line: [1599, 1615] id: 79
+  -- line: [1605, 1621] id: 79
   if not r1_79 then
     DebugPrint("JumpToTargetPage Error, TargetUIName is nil")
     return 
@@ -1469,7 +1474,7 @@ function r3_0.JumpToTargetPage(r0_79, r1_79, ...)
   end
 end
 function r3_0.JumpToGachaPage(r0_80, r1_80)
-  -- line: [1619, 1669] id: 80
+  -- line: [1625, 1675] id: 80
   local r3_80 = GWorld.GameInstance:GetGameUIManager()
   local r4_80 = r3_80:GetUIObj("GachaMain")
   local r5_80 = GWorld:GetAvatar()
@@ -1518,7 +1523,7 @@ function r3_0.JumpToGachaPage(r0_80, r1_80)
   end
 end
 function r3_0.JumpToArmory(r0_81, r1_81)
-  -- line: [1672, 1694] id: 81
+  -- line: [1678, 1700] id: 81
   local r2_81 = "ArmoryMain"
   if not r4_0(r2_81) then
     return 
@@ -1526,7 +1531,7 @@ function r3_0.JumpToArmory(r0_81, r1_81)
   local r3_81 = USubsystemBlueprintLibrary.GetWorldSubsystem(GWorld.GameInstance, UGameFlowManager)
   local r4_81 = r3_81:CreateFlow("OpenSystemUI")
   r4_81.OnBegin:Add(r4_81, function()
-    -- line: [1680, 1692] id: 82
+    -- line: [1686, 1698] id: 82
     local r0_82 = GWorld.GameInstance:GetGameUIManager()
     local r1_82 = r0_82:GetUIObj(r2_81)
     if not r1_82 then
@@ -1541,7 +1546,7 @@ function r3_0.JumpToArmory(r0_81, r1_81)
   r3_81:AddFlow(r4_81)
 end
 function r3_0.JumpToAbyssMain(r0_83, ...)
-  -- line: [1696, 1704] id: 83
+  -- line: [1702, 1710] id: 83
   local r1_83 = "AbyssMain"
   if not r4_0(r1_83) then
     return 
@@ -1550,7 +1555,7 @@ function r3_0.JumpToAbyssMain(r0_83, ...)
   r0_83:JumpToTargetPage(r1_83, ...)
 end
 function r3_0.JumpToAbyssMainFromActivity(r0_84)
-  -- line: [1706, 1708] id: 84
+  -- line: [1712, 1714] id: 84
   r0_84:JumpToAbyssMain(false, false, true)
 end
 return r3_0

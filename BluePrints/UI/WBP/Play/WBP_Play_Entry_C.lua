@@ -110,7 +110,7 @@ function r1_0.RecoverCamera(r0_4)
   end
 end
 function r1_0.OnLoaded(r0_5, ...)
-  -- line: [120, 201] id: 5
+  -- line: [120, 202] id: 5
   r0_5.Super.OnLoaded(r0_5, ...)
   local r1_5 = r0_5.Rouge_Points
   if r1_5 then
@@ -120,16 +120,17 @@ function r1_0.OnLoaded(r0_5, ...)
   AudioManager(r0_5):PlayUISound(r0_5, "event:/ui/armory/open", "SystemOpenSound", nil)
   r0_5:PlayBaiAnim()
   r0_5:PlayInAnim()
-  r0_5:OpenSubUI(r0_5.DefaultSubUIName)
   ... = ... -- error: untaken top expr
   if r1_5 then
-    r0_5:Show()
+    r0_5:OpenSubUI(r1_5)
+  elseif r0_5.DefaultSubUIName then
+    r0_5:OpenSubUI(r0_5.DefaultSubUIName)
   end
   local r2_5 = r0_5:GetAttachWidget()
   if not r0_5.TeamHeadUI then
     r0_5.TeamHeadUI = TeamController:OpenHeadUI(r2_5)
     function r0_5.TeamHeadUI.OnTeamMainFocusChanged(r0_6)
-      -- line: [138, 192] id: 6
+      -- line: [139, 193] id: 6
       local r1_6 = nil	-- notice: implicit variable refs by block#[26]
       if r0_6 then
         r1_6 = "Collapsed"
@@ -203,19 +204,19 @@ function r1_0.OnLoaded(r0_5, ...)
   end
 end
 function r1_0.OnHardBossMainReddotChange(r0_7)
-  -- line: [203, 205] id: 7
+  -- line: [204, 206] id: 7
   r0_7:OnReddotChange("HardBossMain")
 end
 function r1_0.OnPlayCommonReddotChange(r0_8)
-  -- line: [207, 209] id: 8
+  -- line: [208, 210] id: 8
   r0_8:OnReddotChange("PlayCommon")
 end
 function r1_0.OnPlayTaskRootReddotChange(r0_9)
-  -- line: [210, 212] id: 9
+  -- line: [211, 213] id: 9
   r0_9:OnReddotChange("PlayTaskRoot")
 end
 function r1_0.OnReddotChange(r0_10, r1_10)
-  -- line: [213, 231] id: 10
+  -- line: [214, 232] id: 10
   local r2_10 = r0_10.WidgetNameToIndex[r1_10]
   if r2_10 then
     local r3_10 = ReddotManager.GetTreeNode(r1_10)
@@ -234,7 +235,7 @@ function r1_0.OnReddotChange(r0_10, r1_10)
   end
 end
 function r1_0.PlayBaiAnim(r0_11, r1_11)
-  -- line: [233, 250] id: 11
+  -- line: [234, 251] id: 11
   local r2_11 = GWorld:GetAvatar()
   if not r2_11 then
     return 
@@ -254,11 +255,11 @@ function r1_0.PlayBaiAnim(r0_11, r1_11)
   end
 end
 function r1_0.Construct(r0_12)
-  -- line: [252, 254] id: 12
+  -- line: [253, 255] id: 12
   r1_0.Super.Construct(r0_12)
 end
 function r1_0.Destruct(r0_13)
-  -- line: [256, 264] id: 13
+  -- line: [257, 265] id: 13
   if r0_13.CurTabId then
     SystemGuideManager:HideUIEvent(r0_13.CurTabId)
   end
@@ -267,7 +268,7 @@ function r1_0.Destruct(r0_13)
   r0_13.Super.Destruct(r0_13)
 end
 function r1_0.PlayNPCAnim(r0_14, r1_14)
-  -- line: [266, 287] id: 14
+  -- line: [267, 288] id: 14
   local r2_14 = UE4.ANpcCharacter.GetNpc(r0_14, r0_14.NpcId)
   if r2_14 then
     if r2_14.NPCNameWidgetComponent then
@@ -286,7 +287,7 @@ function r1_0.PlayNPCAnim(r0_14, r1_14)
   end
 end
 function r1_0.SwitchCamera(r0_15, r1_15)
-  -- line: [289, 314] id: 15
+  -- line: [290, 315] id: 15
   local r2_15 = UGameplayStatics.GetPlayerController(r0_15, 0)
   if r1_15 then
     if IsValid(r0_15.CameraHandle) then
@@ -310,17 +311,17 @@ function r1_0.SwitchCamera(r0_15, r1_15)
   end
 end
 function r1_0.MoveCamera(r0_16, r1_16)
-  -- line: [317, 324] id: 16
+  -- line: [318, 325] id: 16
   r0_16.CameraHandle = ULTweenBPLibrary.Vector3To(r0_16, {
     r0_16,
     function(r0_17, r1_17)
-      -- line: [320, 322] id: 17
+      -- line: [321, 323] id: 17
       r1_16:K2_SetRelativeLocation(r1_17, false, nil, false)
     end
   }, r1_16.RelativeLocation, FVector(0), 0.5, 0, 17)
 end
 function r1_0.EnableTickWhenPaused(r0_18, r1_18)
-  -- line: [326, 339] id: 18
+  -- line: [327, 340] id: 18
   local r2_18 = UE4.ALTweenActor.GetLTweenInstance(r0_18:GetWorld())
   if r1_18 then
     if r2_18 then
@@ -335,14 +336,14 @@ function r1_0.EnableTickWhenPaused(r0_18, r1_18)
   end
 end
 function r1_0.PlayInAnim(r0_19)
-  -- line: [341, 346] id: 19
+  -- line: [342, 347] id: 19
   if r0_19:IsAnimationPlaying(r0_19.In) then
     return 
   end
   r0_19:PlayAnimationForward(r0_19.In)
 end
 function r1_0.OpenSubUI(r0_20, r1_20)
-  -- line: [348, 392] id: 20
+  -- line: [349, 393] id: 20
   local r2_20 = true
   local r3_20 = false
   if r0_20.CurrentExcelTabInfo then
@@ -392,7 +393,7 @@ function r1_0.OpenSubUI(r0_20, r1_20)
   end
 end
 function r1_0.InitTabInfo(r0_21)
-  -- line: [394, 416] id: 21
+  -- line: [395, 417] id: 21
   local r1_21 = CommonUtils.Copy(r0_21.CurrentExcelTabInfo)
   r0_21.SortedTabInfo = {}
   for r6_21, r7_21 in pairs(r1_21) do
@@ -417,15 +418,15 @@ function r1_0.InitTabInfo(r0_21)
   r0_21:FinishInitTab()
 end
 function r1_0.FinishInitTab(r0_22)
-  -- line: [418, 422] id: 22
+  -- line: [419, 423] id: 22
   r0_22:SortTab()
   r0_22:InitSortedTab()
   r0_22:InitCommonTab()
 end
 function r1_0.SortTab(r0_23)
-  -- line: [424, 440] id: 23
+  -- line: [425, 441] id: 23
   table.sort(r0_23.SortedTabInfo, function(r0_24, r1_24)
-    -- line: [425, 439] id: 24
+    -- line: [426, 440] id: 24
     if r0_24.IsLocked then
       if r1_24.IsLocked then
         return r1_24.Sequence < r0_24.Sequence
@@ -440,7 +441,7 @@ function r1_0.SortTab(r0_23)
   end)
 end
 function r1_0.InitSortedTab(r0_25)
-  -- line: [442, 461] id: 25
+  -- line: [443, 462] id: 25
   r0_25.AllTabInfo = {}
   r0_25.IndexToWidgetName = {}
   r0_25.WidgetNameToIndex = {}
@@ -462,7 +463,7 @@ function r1_0.InitSortedTab(r0_25)
   -- close: r1_25
 end
 function r1_0.AddReddotListener(r0_26)
-  -- line: [463, 471] id: 26
+  -- line: [464, 472] id: 26
   if r0_26.IndexToWidgetName then
     for r5_26, r6_26 in ipairs(r0_26.IndexToWidgetName) do
       if DataMgr.ReddotNode[r6_26] then
@@ -473,7 +474,7 @@ function r1_0.AddReddotListener(r0_26)
   end
 end
 function r1_0.RemoveReddotListener(r0_27)
-  -- line: [473, 481] id: 27
+  -- line: [474, 482] id: 27
   if r0_27.IndexToWidgetName then
     for r5_27, r6_27 in ipairs(r0_27.IndexToWidgetName) do
       if DataMgr.ReddotNode[r6_27] then
@@ -484,7 +485,7 @@ function r1_0.RemoveReddotListener(r0_27)
   end
 end
 function r1_0.InitCommonTab(r0_28)
-  -- line: [483, 506] id: 28
+  -- line: [484, 507] id: 28
   r0_28.TabConfigData = {
     TitleName = GText("MAIN_UI_PLAY"),
     LeftKey = "Q",
@@ -523,19 +524,19 @@ function r1_0.InitCommonTab(r0_28)
   r0_28.ComTab:BindEventOnTabSelected(r0_28, r0_28.RealOpenSubUI)
 end
 function r1_0.SelectTabByWidgetName(r0_29, r1_29)
-  -- line: [510, 512] id: 29
+  -- line: [511, 513] id: 29
   r0_29:SelectTabById(r1_29)
 end
 function r1_0.SelectTabById(r0_30, r1_30)
-  -- line: [514, 516] id: 30
+  -- line: [515, 517] id: 30
   r0_30.ComTab:SelectTabById(r1_30)
 end
 function r1_0.SelectTab(r0_31, r1_31)
-  -- line: [518, 520] id: 31
+  -- line: [519, 521] id: 31
   r0_31.ComTab:SelectTab(r1_31)
 end
 function r1_0.InitOtherPageTab(r0_32, r1_32, r2_32, r3_32, r4_32, r5_32)
-  -- line: [522, 532] id: 32
+  -- line: [523, 533] id: 32
   if r1_32 then
     r1_32.OverridenTopResouces = r2_32 and DataMgr.SystemUI.StyleOfPlay.TabCoin
   end
@@ -543,19 +544,19 @@ function r1_0.InitOtherPageTab(r0_32, r1_32, r2_32, r3_32, r4_32, r5_32)
   r0_32.ComTab:BindEventOnTabSelected(r4_32, r5_32)
 end
 function r1_0.UpdateOtherPageTab(r0_33, r1_33)
-  -- line: [535, 539] id: 33
+  -- line: [536, 540] id: 33
   if CommonUtils.GetDeviceTypeByPlatformName() ~= "Mobile" then
     r0_33.ComTab:UpdateBottomKeyInfo(r1_33)
   end
 end
 function r1_0.GetSubUIByWidgetName(r0_34, r1_34)
-  -- line: [550, 554] id: 34
+  -- line: [551, 555] id: 34
   if r0_34.SubUI then
     return r0_34.SubUI[r1_34]
   end
 end
 function r1_0.RealOpenSubUI(r0_35, r1_35)
-  -- line: [556, 704] id: 35
+  -- line: [557, 705] id: 35
   local r2_35 = r1_35.TabId
   if r1_35.GetTabId then
     r2_35 = r1_35:GetTabId()
@@ -650,7 +651,7 @@ function r1_0.RealOpenSubUI(r0_35, r1_35)
         r8_35:BindToAnimationFinished(r8_35.Out, {
           r0_35,
           function()
-            -- line: [653, 655] id: 36
+            -- line: [654, 656] id: 36
             r8_35:SetVisibility(UE4.ESlateVisibility.Collapsed)
           end
         })
@@ -659,7 +660,7 @@ function r1_0.RealOpenSubUI(r0_35, r1_35)
         r8_35:BindToAnimationFinished(r8_35.Next, {
           r0_35,
           function()
-            -- line: [659, 661] id: 37
+            -- line: [660, 662] id: 37
             r8_35:SetVisibility(UE4.ESlateVisibility.Collapsed)
           end
         })
@@ -688,7 +689,7 @@ function r1_0.RealOpenSubUI(r0_35, r1_35)
   end
   SystemGuideManager:ShowUIEvent(r0_35.CurTabId)
   function r8_35()
-    -- line: [698, 702] id: 38
+    -- line: [699, 703] id: 38
     if r0_35.CurSubUI:GetVisibility() == UE4.ESlateVisibility.Collapsed then
       r0_35.CurSubUI:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
     end
@@ -697,7 +698,7 @@ function r1_0.RealOpenSubUI(r0_35, r1_35)
   return r0_35.CurSubUI
 end
 function r1_0.OnKeyUp(r0_39, r1_39, r2_39)
-  -- line: [707, 725] id: 39
+  -- line: [708, 726] id: 39
   local r3_39 = r1_0.Super.OnKeyUp(r0_39, r1_39, r2_39)
   local r5_39 = UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_39))
   if r5_39 == UIConst.GamePadKey.SpecialRight and r0_39.TeamHeadUI and r0_39.TeamHeadUI.DoGamepadBtnRelease then
@@ -712,7 +713,7 @@ function r1_0.OnKeyUp(r0_39, r1_39, r2_39)
   return r3_39
 end
 function r1_0.OnKeyDown(r0_40, r1_40, r2_40)
-  -- line: [727, 795] id: 40
+  -- line: [728, 796] id: 40
   if CommonUtils:IfExistSystemGuideUI(r0_40) then
     return UE4.UWidgetBlueprintLibrary.Handled()
   end
@@ -773,7 +774,7 @@ function r1_0.OnKeyDown(r0_40, r1_40, r2_40)
   end
 end
 function r1_0.OnPreviewKeyDown(r0_41, r1_41, r2_41)
-  -- line: [797, 816] id: 41
+  -- line: [798, 817] id: 41
   local r3_41 = false
   if r0_41.CurSubUI and r0_41.CurSubUI.HandlePreviewKeyDown then
     r3_41 = r0_41.CurSubUI:HandlePreviewKeyDown(r1_41, r2_41)
@@ -791,12 +792,12 @@ function r1_0.OnPreviewKeyDown(r0_41, r1_41, r2_41)
   end
 end
 function r1_0.OnReturnKeyDown(r0_42)
-  -- line: [818, 821] id: 42
+  -- line: [819, 822] id: 42
   UIUtils.PlayCommonBtnSe(r0_42)
   r0_42:OnClickBack()
 end
 function r1_0.OnClickBack(r0_43)
-  -- line: [823, 829] id: 43
+  -- line: [824, 830] id: 43
   if r0_43.TeamHeadUI.bIsFocusable then
     return 
   end
@@ -806,7 +807,7 @@ function r1_0.OnClickBack(r0_43)
   r0_43:PlayOutAnim()
 end
 function r1_0.GetAttachWidget(r0_44)
-  -- line: [831, 840] id: 44
+  -- line: [832, 841] id: 44
   local r1_44 = nil
   if CommonUtils.GetDeviceTypeByPlatformName(r0_44) == "Mobile" then
     r1_44 = r0_44.ComTab.Panel_Team
@@ -817,7 +818,7 @@ function r1_0.GetAttachWidget(r0_44)
   return r1_44
 end
 function r1_0.PlayOutAnim(r0_45)
-  -- line: [842, 883] id: 45
+  -- line: [843, 886] id: 45
   if r0_45:IsAnimationPlaying(r0_45.Out) then
     return 
   end
@@ -825,17 +826,19 @@ function r1_0.PlayOutAnim(r0_45)
     ToEnd = 1,
   })
   r0_45:BlockAllUIInput(true)
-  if r0_45.CurSubUI.RetainerBox and r0_45.CurSubUI.Panel_Level then
-    r0_45.CurSubUI.Panel_Level:SetVisibility(UE4.ESlateVisibility.HitTestInvisible)
-  end
   r0_45:BindToAnimationFinished(r0_45.Out, {
     r0_45,
     r0_45.Close
   })
-  if r0_45.CurSubUI:IsAnyAnimationPlaying() then
-    r0_45.CurSubUI:StopAllAnimations()
+  if r0_45.CurSubUI then
+    if r0_45.CurSubUI.RetainerBox and r0_45.CurSubUI.Panel_Level then
+      r0_45.CurSubUI.Panel_Level:SetVisibility(UE4.ESlateVisibility.HitTestInvisible)
+    end
+    if r0_45.CurSubUI:IsAnyAnimationPlaying() then
+      r0_45.CurSubUI:StopAllAnimations()
+    end
+    r0_45.CurSubUI:PlayAnimationForward(r0_45.CurSubUI.Out)
   end
-  r0_45.CurSubUI:PlayAnimationForward(r0_45.CurSubUI.Out)
   if r0_45.IsAddInDeque then
     r0_45:PlayAnimationForward(r0_45.Out, UIConst.AnimOutSpeedWithPageJump.NormalFastSpeed)
   else
@@ -859,14 +862,14 @@ function r1_0.PlayOutAnim(r0_45)
   end
 end
 function r1_0.ShowIntro(r0_46)
-  -- line: [885, 890] id: 46
+  -- line: [888, 893] id: 46
 end
 function r1_0.SetFocus_Lua(r0_47)
-  -- line: [892, 894] id: 47
+  -- line: [895, 897] id: 47
   r0_47.CurSubUI:SetFocus()
 end
 function r1_0.Close(r0_48)
-  -- line: [896, 915] id: 48
+  -- line: [899, 918] id: 48
   if r0_48.SubUI then
     for r5_48, r6_48 in pairs(r0_48.SubUI) do
       r6_48:RemoveFromParent()
@@ -881,11 +884,15 @@ function r1_0.Close(r0_48)
   r0_48.Super.Close(r0_48)
 end
 function r1_0.BP_GetDesiredFocusTarget(r0_49)
-  -- line: [917, 923] id: 49
+  -- line: [920, 926] id: 49
   if r0_49.CurSubUI then
     return r0_49.CurSubUI
   else
     return r0_49
   end
+end
+function r1_0.GetCurSubUI(r0_50)
+  -- line: [928, 930] id: 50
+  return r0_50.CurSubUI
 end
 return r1_0

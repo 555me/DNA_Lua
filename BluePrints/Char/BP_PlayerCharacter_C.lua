@@ -33,7 +33,7 @@ function r11_0.Initialize(r0_1, r1_1)
   r0_1:PlayerCharacterInitialize()
 end
 function r11_0.ReceiveBeginPlay(r0_2)
-  -- line: [38, 83] id: 2
+  -- line: [38, 82] id: 2
   r0_2:BeforeBeginPlay()
   r0_2.Super.ReceiveBeginPlay(r0_2)
   r0_2:AfterBeginPlay()
@@ -85,7 +85,6 @@ function r11_0.ReceiveBeginPlay(r0_2)
   r0_2:SetUpAllTimer()
   r0_2:SetGamepadFromCache()
   r0_2:SetMobileRotationFromCache()
-  r0_2:InitLockHpCache()
   r0_2:BindControllerChangedDelegate()
   local r1_2 = r0_2:GetController()
   if r1_2 then
@@ -93,1177 +92,1169 @@ function r11_0.ReceiveBeginPlay(r0_2)
     r1_2:ShowFlags("VisualizeBouncedSkyVisibilityLightmap", false)
   end
 end
-function r11_0.InitLockHpCache(r0_3)
-  -- line: [85, 93] id: 3
-  if r0_3.BuffManager then
-    r0_3.CachedLockHPRate = r0_3.BuffManager.LockHpRate
-    r0_3.CachedLockHPValue = r0_3.BuffManager.LockHpValue
-  else
-    r0_3.CachedLockHPRate = 0
-    r0_3.CachedLockHPValue = 0
-  end
+function r11_0.GetDropDistance(r0_3)
+  -- line: [84, 86] id: 3
+  r0_3:CalcAttr("DropDistance")
 end
-function r11_0.GetDropDistance(r0_4)
-  -- line: [95, 97] id: 4
-  r0_4:CalcAttr("DropDistance")
+function r11_0.BindControllerChangedDelegate(r0_4)
+  -- line: [88, 91] id: 4
+  UE4.UGameplayStatics.GetGameInstance(r0_4).OnPawnControllerChangedDelegates:Add(r0_4, r0_4.OnPlayerControllerChanged)
 end
-function r11_0.BindControllerChangedDelegate(r0_5)
-  -- line: [99, 102] id: 5
-  UE4.UGameplayStatics.GetGameInstance(r0_5).OnPawnControllerChangedDelegates:Add(r0_5, r0_5.OnPlayerControllerChanged)
-end
-function r11_0.OnPlayerControllerChanged(r0_6, r1_6, r2_6)
-  -- line: [104, 112] id: 6
-  if r1_6 == r0_6 and r2_6 and r2_6:IsPlayerController() then
-    if r0_6.DisableInputTags:Length() > 0 then
-      r0_6:DisableInput(r0_6:GetController())
+function r11_0.OnPlayerControllerChanged(r0_5, r1_5, r2_5)
+  -- line: [93, 101] id: 5
+  if r1_5 == r0_5 and r2_5 and r2_5:IsPlayerController() then
+    if r0_5.DisableInputTags:Length() > 0 then
+      r0_5:DisableInput(r0_5:GetController())
     else
-      r0_6:EnableInput(r0_6:GetController())
+      r0_5:EnableInput(r0_5:GetController())
     end
   end
 end
-function r11_0.SetGamepadFromCache(r0_7)
-  -- line: [122, 137] id: 7
-  if not r0_7:IsMainPlayer() then
+function r11_0.SetGamepadFromCache(r0_6)
+  -- line: [111, 126] id: 6
+  if not r0_6:IsMainPlayer() then
     return 
   end
-  local r1_7 = r1_0:Get("GamepadLayout")
-  DebugPrint("@zyh 获取到的GamepadLayout", r1_7)
-  if not r1_7 then
-    local r2_7 = tonumber(DataMgr.Option.GamepadPreset.DefaultValue)
-    r1_0:Set("GamepadLayout", r2_7)
-    r0_7:InitGamepadSet(r2_7)
-    r0_7:InitReplaceGamepadSet(r2_7)
+  local r1_6 = r1_0:Get("GamepadLayout")
+  DebugPrint("@zyh 获取到的GamepadLayout", r1_6)
+  if not r1_6 then
+    local r2_6 = tonumber(DataMgr.Option.GamepadPreset.DefaultValue)
+    r1_0:Set("GamepadLayout", r2_6)
+    r0_6:InitGamepadSet(r2_6)
+    r0_6:InitReplaceGamepadSet(r2_6)
   else
-    r0_7:InitGamepadSet(r1_7)
-    r0_7:InitReplaceGamepadSet(r1_7)
+    r0_6:InitGamepadSet(r1_6)
+    r0_6:InitReplaceGamepadSet(r1_6)
   end
 end
-function r11_0.SwitchGamepadSet(r0_8, r1_8)
-  -- line: [139, 143] id: 8
-  r0_8:InitGamepadSet(r1_8)
-  r0_8:InitReplaceGamepadSet(r1_8)
+function r11_0.SwitchGamepadSet(r0_7, r1_7)
+  -- line: [128, 132] id: 7
+  r0_7:InitGamepadSet(r1_7)
+  r0_7:InitReplaceGamepadSet(r1_7)
   EventManager:FireEvent(EventID.OnSwitchGamepadSet)
 end
-function r11_0.SetMobileRotationFromCache(r0_9)
-  -- line: [145, 159] id: 9
-  if not r0_9:IsMainPlayer() then
+function r11_0.SetMobileRotationFromCache(r0_8)
+  -- line: [134, 148] id: 8
+  if not r0_8:IsMainPlayer() then
     return 
   end
-  local r1_9 = r1_0:Get("EnableMobileRotation")
-  DebugPrint("@zyh 获取到的EnableMobileRotation", r1_9)
-  if r1_9 == nil then
-    local r3_9 = nil	-- notice: implicit variable refs by block#[6]
+  local r1_8 = r1_0:Get("EnableMobileRotation")
+  DebugPrint("@zyh 获取到的EnableMobileRotation", r1_8)
+  if r1_8 == nil then
+    local r3_8 = nil	-- notice: implicit variable refs by block#[6]
     if DataMgr.Option.EnableMobileRotation.DefaultValueM == "True" then
-      r3_9 = true
-      if not r3_9 then
+      r3_8 = true
+      if not r3_8 then
         ::label_24::
-        r3_9 = false
+        r3_8 = false
       end
     else
       goto label_24	-- block#5 is visited secondly
     end
-    r1_0:Set("EnableMobileRotation", r3_9)
-    r0_9.EnableMobileRotation = r3_9
+    r1_0:Set("EnableMobileRotation", r3_8)
+    r0_8.EnableMobileRotation = r3_8
   else
-    r0_9.EnableMobileRotation = r1_9
+    r0_8.EnableMobileRotation = r1_8
   end
 end
-function r11_0.SwitchEnableMobileRotation(r0_10, r1_10)
-  -- line: [161, 164] id: 10
-  r0_10.EnableMobileRotation = r1_10
-  r1_0:Set("EnableMobileRotation", r1_10)
+function r11_0.SwitchEnableMobileRotation(r0_9, r1_9)
+  -- line: [150, 153] id: 9
+  r0_9.EnableMobileRotation = r1_9
+  r1_0:Set("EnableMobileRotation", r1_9)
 end
-function r11_0.UpdateOpenHelperAim(r0_11, r1_11)
-  -- line: [166, 170] id: 11
-  r0_11.IsOpenHelperAim = r1_11
+function r11_0.UpdateOpenHelperAim(r0_10, r1_10)
+  -- line: [155, 159] id: 10
+  r0_10.IsOpenHelperAim = r1_10
+  r0_10.CurShootingLocation = r0_0.ZeroVector
+  r1_0:Set("IsOpenHelperAim", r1_10)
+end
+function r11_0.UpdateOpenLockAim(r0_11, r1_11)
+  -- line: [161, 165] id: 11
+  r0_11.IsOpenLockAim = r1_11
   r0_11.CurShootingLocation = r0_0.ZeroVector
-  r1_0:Set("IsOpenHelperAim", r1_11)
+  r1_0:Set("IsOpenLockAim", r1_11)
 end
-function r11_0.UpdateOpenLockAim(r0_12, r1_12)
-  -- line: [172, 176] id: 12
-  r0_12.IsOpenLockAim = r1_12
-  r0_12.CurShootingLocation = r0_0.ZeroVector
-  r1_0:Set("IsOpenLockAim", r1_12)
-end
-function r11_0.InitGameSkillFaceTo(r0_13)
-  -- line: [179, 198] id: 13
-  local r1_13 = "SkillFaceTo"
-  local r2_13 = r1_0:Get(r1_13)
-  local r3_13 = nil
-  if r2_13 == nil then
-    local r4_13 = DataMgr.Option[r1_13]
-    if r2_0.GetDeviceTypeByPlatformName(r0_13) == "Mobile" and r4_13.DefaultValueM then
-      r3_13 = r4_13.DefaultValueM
+function r11_0.InitGameSkillFaceTo(r0_12)
+  -- line: [168, 187] id: 12
+  local r1_12 = "SkillFaceTo"
+  local r2_12 = r1_0:Get(r1_12)
+  local r3_12 = nil
+  if r2_12 == nil then
+    local r4_12 = DataMgr.Option[r1_12]
+    if r2_0.GetDeviceTypeByPlatformName(r0_12) == "Mobile" and r4_12.DefaultValueM then
+      r3_12 = r4_12.DefaultValueM
     else
-      r3_13 = r4_13.DefaultValue
+      r3_12 = r4_12.DefaultValue
     end
-    r2_13 = r3_13 == "True"
-    r1_0:Set(r1_13, r2_13)
+    r2_12 = r3_12 == "True"
+    r1_0:Set(r1_12, r2_12)
   end
-  r0_13:SetLockOrientpreference(r2_13)
+  r0_12:SetLockOrientpreference(r2_12)
 end
-function r11_0.SetUpAllTimer(r0_14)
-  -- line: [200, 210] id: 14
-  if r0_14:IsMainPlayer() then
-    r0_14:AddTimer(1, r0_14.UpdatePlayerBloodEffectInfo, true, 0, "UpdatePlayerBloodEffectInfo")
-    local r1_14 = GWorld:GetAvatar()
-    if r1_14 and r1_14:IsInBigWorld() then
-      r0_14:AddTimer(0.5, r0_14.CalcCurrentPlayerRegionId, true)
+function r11_0.SetUpAllTimer(r0_13)
+  -- line: [189, 199] id: 13
+  if r0_13:IsMainPlayer() then
+    r0_13:AddTimer(1, r0_13.UpdatePlayerBloodEffectInfo, true, 0, "UpdatePlayerBloodEffectInfo")
+    local r1_13 = GWorld:GetAvatar()
+    if r1_13 and r1_13:IsInBigWorld() then
+      r0_13:AddTimer(0.5, r0_13.CalcCurrentPlayerRegionId, true)
     end
-    r0_14:AddTimer(60, r0_14.CheckHPRate, true, math.random(1, 60), "CheckLockHpRate")
-    r0_14:AddTimer(60, r0_14.CheckExtraRangeModify, true, math.random(1, 60), "CheckExtraRangeModify")
+    r0_13:AddTimer(60, r0_13.CheckHPRate, true, math.random(1, 60), "CheckLockHpRate")
+    r0_13:AddTimer(60, r0_13.CheckExtraRangeModify, true, math.random(1, 60), "CheckExtraRangeModify")
   end
 end
-function r11_0.CheckHPRate(r0_15)
-  -- line: [212, 239] id: 15
+function r11_0.CheckHPRate(r0_14)
+  -- line: [201, 226] id: 14
+  local r1_14 = GWorld:GetAvatar()
+  if not r0_14.BuffManager or not r1_14 then
+    return 
+  end
+  if r0_14.BuffManager.LockHpRate ~= 0 or r0_14.BuffManager.LockHpValue ~= 0 then
+    local r2_14 = false
+    local r3_14 = "当前Buff列表："
+    for r8_14, r9_14 in pairs(r0_14.BuffManager.Buffs) do
+      local r10_14 = DataMgr.Buff[r9_14.BuffId]
+      r3_14 = r3_14 .. tostring(r9_14.BuffId) .. "\n"
+      if r10_14 and r10_14.LockHp then
+        r2_14 = true
+      end
+    end
+    -- close: r4_14
+    local r4_14 = ""
+    if r0_14.BuffManager.LockHpRate ~= 0 then
+      r4_14 = string.format("反外挂检测，非法修改发了LockHPRate,当前LockHPRate=%s\n", tostring(r0_14.BuffManager.LockHpRate))
+    else
+      r4_14 = string.format("反外挂检测，非法修改发了LockHpValue,当前LockHpValue=%s\n", tostring(r0_14.BuffManager.LockHpValue))
+    end
+    if not r2_14 then
+      UE4.URuntimeCommonFunctionLibrary.SendCheatMsgToServer(r0_14:GetWorld(), ECheatType.HoneyJar, r4_14 .. r3_14)
+    end
+  end
+end
+function r11_0.CheckExtraRangeModify(r0_15)
+  -- line: [228, 246] id: 15
   local r1_15 = GWorld:GetAvatar()
-  if not r0_15.BuffManager or not r1_15 then
+  if not r0_15.Skills or not r1_15 then
     return 
   end
-  local r2_15 = UE4.URuntimeCommonFunctionLibrary.IsDistribution()
-  if r0_15.CachedLockHPRate ~= r0_15.BuffManager.LockHpRate or r0_15.CachedLockHPValue ~= r0_15.BuffManager.LockHpValue then
-    r0_15.CachedLockHPRate = r0_15.BuffManager.LockHpRate
-    r0_15.CachedLockHPValue = r0_15.BuffManager.LockHpValue
-    if r0_15.CachedLockHPRate ~= 0 or r0_15.CachedLockHPValue ~= 0 then
-      local r3_15 = false
-      for r8_15, r9_15 in pairs(r0_15.BuffManager.Buffs) do
-        local r10_15 = DataMgr.Buff[r9_15.BuffId]
-        if r10_15 and r10_15.LockHp then
-          r3_15 = true
-          break
-        end
-      end
-      -- close: r4_15
-      if not r3_15 and (r2_15 or r10_0.OpenCheckHPLock) then
-        UE4.URuntimeCommonFunctionLibrary.SendCheatMsgToServer(r0_15:GetWorld(), ECheatType.HoneyJar, "反外挂检测，非法修改了LockHpRate或LockHpValue")
-      end
+  local r2_15 = false
+  local r3_15 = "当前Skill列表：\n"
+  for r8_15, r9_15 in pairs(r0_15.Skills) do
+    if r9_15.ExtraRangeModify ~= 1 then
+      r2_15 = true
+      r3_15 = r3_15 .. tostring(string.format("SkillId: %d, ExtraRangeModify: %f \n", r9_15.SkillId, r9_15.ExtraRangeModify))
     end
   end
-end
-function r11_0.CheckExtraRangeModify(r0_16)
-  -- line: [241, 259] id: 16
-  local r1_16 = GWorld:GetAvatar()
-  if not r0_16.Skills or not r1_16 then
-    return 
-  end
-  local r2_16 = false
-  local r3_16 = "当前Skill列表：\n"
-  for r8_16, r9_16 in pairs(r0_16.Skills) do
-    if r9_16.ExtraRangeModify ~= 1 then
-      r2_16 = true
-      r3_16 = r3_16 .. tostring(string.format("SkillId: %d, ExtraRangeModify: %f \n", r9_16.SkillId, r9_16.ExtraRangeModify))
-    end
-  end
-  -- close: r4_16
-  if r2_16 then
-    UE4.URuntimeCommonFunctionLibrary.SendCheatMsgToServer(r0_16:GetWorld(), ECheatType.HoneyJar, "反外挂检测，非法修改了技能的ExtraRangeModify \n" .. r3_16)
+  -- close: r4_15
+  if r2_15 then
+    UE4.URuntimeCommonFunctionLibrary.SendCheatMsgToServer(r0_15:GetWorld(), ECheatType.HoneyJar, "反外挂检测，非法修改了技能的ExtraRangeModify \n" .. r3_15)
   end
 end
-function r11_0.ShowCursor_Press(r0_17)
-  -- line: [261, 268] id: 17
+function r11_0.ShowCursor_Press(r0_16)
+  -- line: [248, 255] id: 16
   DebugPrint("ShowCursor_Press", UE4.UKismetSystemLibrary.GetFrameCount())
+  local r1_16 = UGameInputModeSubsystem.GetGameInputModeSubsystem(r0_16)
+  if not IsValid(r1_16) then
+    return 
+  end
+  r1_16:HandleShowCursorPressOrRelease(true)
+end
+function r11_0.ShowCursor_Release(r0_17)
+  -- line: [257, 264] id: 17
+  DebugPrint("ShowCursor_Release", UE4.UKismetSystemLibrary.GetFrameCount())
   local r1_17 = UGameInputModeSubsystem.GetGameInputModeSubsystem(r0_17)
   if not IsValid(r1_17) then
     return 
   end
-  r1_17:HandleShowCursorPressOrRelease(true)
+  r1_17:HandleShowCursorPressOrRelease(false)
 end
-function r11_0.ShowCursor_Release(r0_18)
-  -- line: [270, 277] id: 18
-  DebugPrint("ShowCursor_Release", UE4.UKismetSystemLibrary.GetFrameCount())
-  local r1_18 = UGameInputModeSubsystem.GetGameInputModeSubsystem(r0_18)
-  if not IsValid(r1_18) then
-    return 
-  end
-  r1_18:HandleShowCursorPressOrRelease(false)
+function r11_0.ShowCursorLock(r0_18, r1_18)
+  -- line: [266, 268] id: 18
+  r0_18.bShowCursorLock = r1_18
 end
-function r11_0.ShowCursorLock(r0_19, r1_19)
-  -- line: [279, 281] id: 19
-  r0_19.bShowCursorLock = r1_19
-end
-function r11_0.ShowMonsterInfo(r0_20)
-  -- line: [283, 294] id: 20
-  local r2_20 = UE4.UGameplayStatics.GetGameInstance(r0_20):GetGameUIManager()
-  r0_20.bShowMonsterInfo = not r0_20.bShowMonsterInfo
-  if r0_20.bShowMonsterInfo then
-    r2_20:LoadUI(UIConst.MONSTERINFOPANEL, "MonsterInfo", UIConst.ZORDER_FOR_DESKTOP_TEMP)
+function r11_0.ShowMonsterInfo(r0_19)
+  -- line: [270, 281] id: 19
+  local r2_19 = UE4.UGameplayStatics.GetGameInstance(r0_19):GetGameUIManager()
+  r0_19.bShowMonsterInfo = not r0_19.bShowMonsterInfo
+  if r0_19.bShowMonsterInfo then
+    r2_19:LoadUI(UIConst.MONSTERINFOPANEL, "MonsterInfo", UIConst.ZORDER_FOR_DESKTOP_TEMP)
   else
-    r2_20:UnLoadUI("MonsterInfo")
+    r2_19:UnLoadUI("MonsterInfo")
   end
-  r0_20:RemoveInputCache("ShowMonsterInfo")
+  r0_19:RemoveInputCache("ShowMonsterInfo")
 end
-function r11_0.OpenMap(r0_21)
-  -- line: [296, 315] id: 21
+function r11_0.OpenMap(r0_20)
+  -- line: [283, 302] id: 20
   if TeamController:IsTeamPopupBarOpenInGamepad() then
     return 
   end
-  if not UIManager(r0_21):TryOpenSystem("Map") then
+  if not UIManager(r0_20):TryOpenSystem("Map") then
     return 
   end
-  local r2_21 = UE4.UGameplayStatics.GetGameInstance(r0_21):GetGameUIManager()
-  if not r2_21 then
+  local r2_20 = UE4.UGameplayStatics.GetGameInstance(r0_20):GetGameUIManager()
+  if not r2_20 then
     return 
   end
-  local r3_21 = nil
-  local r4_21 = r2_21:GetUI("BattleMain") and r2_21:GetUI("HomeBaseMain")
-  if r4_21 then
-    r3_21 = r4_21.Battle_Map and r4_21.Battle_Map_PC
+  local r3_20 = nil
+  local r4_20 = r2_20:GetUI("BattleMain") and r2_20:GetUI("HomeBaseMain")
+  if r4_20 then
+    r3_20 = r4_20.Battle_Map and r4_20.Battle_Map_PC
   end
-  if r3_21 then
-    r3_21:OnKeyboardClick()
+  if r3_20 then
+    r3_20:OnKeyboardClick()
   end
 end
-function r11_0.StartOpenMap(r0_22)
-  -- line: [316, 330] id: 22
+function r11_0.StartOpenMap(r0_21)
+  -- line: [303, 317] id: 21
   if UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad then
-    local r1_22 = GWorld:GetAvatar()
-    if r1_22 and r1_22:CheckUIUnlocked("Chat") then
-      local r2_22 = UIManager(r0_22):GetUIObj("BattleMain")
-      if r2_22 and r2_22.Key_ChatEntry then
-        r0_22.Key_ChatEntry = r2_22.Key_ChatEntry
-        r0_22.Key_ChatEntry:AddExecuteLogic(r0_22, r0_22.ChatUpdate)
-        r0_22.Key_ChatEntry:OnButtonPressed(nil, true, 0, 0.5)
+    local r1_21 = GWorld:GetAvatar()
+    if r1_21 and r1_21:CheckUIUnlocked("Chat") then
+      local r2_21 = UIManager(r0_21):GetUIObj("BattleMain")
+      if r2_21 and r2_21.Key_ChatEntry then
+        r0_21.Key_ChatEntry = r2_21.Key_ChatEntry
+        r0_21.Key_ChatEntry:AddExecuteLogic(r0_21, r0_21.ChatUpdate)
+        r0_21.Key_ChatEntry:OnButtonPressed(nil, true, 0, 0.5)
         return 
       end
     end
   end
-  r0_22:OpenMap()
+  r0_21:OpenMap()
 end
-function r11_0.ClearChatEntryKey(r0_23)
-  -- line: [331, 335] id: 23
-  r0_23.Key_ChatEntry:RemoveExecuteLogic()
-  r0_23.Key_ChatEntry:OnButtonReleased()
-  r0_23.Key_ChatEntry = nil
+function r11_0.ClearChatEntryKey(r0_22)
+  -- line: [318, 322] id: 22
+  r0_22.Key_ChatEntry:RemoveExecuteLogic()
+  r0_22.Key_ChatEntry:OnButtonReleased()
+  r0_22.Key_ChatEntry = nil
 end
-function r11_0.StopOpenMap(r0_24)
-  -- line: [336, 341] id: 24
-  if r0_24.Key_ChatEntry then
-    r0_24:ClearChatEntryKey()
-    r0_24:OpenMap()
+function r11_0.StopOpenMap(r0_23)
+  -- line: [323, 328] id: 23
+  if r0_23.Key_ChatEntry then
+    r0_23:ClearChatEntryKey()
+    r0_23:OpenMap()
   end
 end
-function r11_0.ChatUpdate(r0_25)
-  -- line: [342, 345] id: 25
-  r0_25:ClearChatEntryKey()
-  r8_0:OpenView(r0_25, true)
+function r11_0.ChatUpdate(r0_24)
+  -- line: [329, 332] id: 24
+  r0_24:ClearChatEntryKey()
+  r8_0:OpenView(r0_24, true)
 end
-function r11_0.OpenBattleWheel(r0_26)
-  -- line: [346, 396] id: 26
+function r11_0.OpenBattleWheel(r0_25)
+  -- line: [333, 383] id: 25
   DebugPrint("gmy@OpenBattleWheel")
-  local r1_26 = GWorld:GetAvatar()
-  if r1_26 == nil then
+  local r1_25 = GWorld:GetAvatar()
+  if r1_25 == nil then
     return 
   end
-  local r2_26 = DataMgr.UIUnlockRule
-  local r3_26 = r2_26.BattleWheel.UIUnlockRuleId
-  local r4_26 = UE4.UGameplayStatics.GetGameInstance(r0_26)
-  local r5_26 = UE4.UGameplayStatics.GetPlayerController(r4_26, 0)
-  if r5_26.bEnableBattleWheel then
-    local r6_26 = r1_26:CheckUIUnlocked(r3_26)
-    DebugPrint("gmy@BattleMenu Unlocked", r6_26)
-    if r6_26 then
-      local r7_26 = r4_26:GetGameUIManager()
-      local r8_26 = r7_26:GetUIObj("InBattleWheelMenu")
-      if r8_26 then
-        r7_26:UnLoadUI("InBattleWheelMenu")
-        r8_26 = nil
+  local r2_25 = DataMgr.UIUnlockRule
+  local r3_25 = r2_25.BattleWheel.UIUnlockRuleId
+  local r4_25 = UE4.UGameplayStatics.GetGameInstance(r0_25)
+  local r5_25 = UE4.UGameplayStatics.GetPlayerController(r4_25, 0)
+  if r5_25.bEnableBattleWheel then
+    local r6_25 = r1_25:CheckUIUnlocked(r3_25)
+    DebugPrint("gmy@BattleMenu Unlocked", r6_25)
+    if r6_25 then
+      local r7_25 = r4_25:GetGameUIManager()
+      local r8_25 = r7_25:GetUIObj("InBattleWheelMenu")
+      if r8_25 then
+        r7_25:UnLoadUI("InBattleWheelMenu")
+        r8_25 = nil
       end
-      if r8_26 == nil then
-        r8_26 = r7_26:LoadUINew("InBattleWheelMenu", r5_26.QuestBattleWheelID and nil)
+      if r8_25 == nil then
+        r8_25 = r7_25:LoadUINew("InBattleWheelMenu", r5_25.QuestBattleWheelID and nil)
       end
-      DebugPrint(LXYTag, "BattleWheel", r8_26)
-      AudioManager(r0_26):PlayUISound(r8_26, "event:/ui/common/combat_bag_show", "BattleMenuShow", nil)
-      r0_26:FlushInputKeyExceptMove()
-      r0_26:AddForbidTag("BattleWheelForbid")
-      r5_26:AddDisableRotationInputTag("SetRotation_Lerp")
+      DebugPrint(LXYTag, "BattleWheel", r8_25)
+      AudioManager(r0_25):PlayUISound(r8_25, "event:/ui/common/combat_bag_show", "BattleMenuShow", nil)
+      r0_25:FlushInputKeyExceptMove()
+      r0_25:AddForbidTag("BattleWheelForbid")
+      r5_25:AddDisableRotationInputTag("SetRotation_Lerp")
     else
-      UIManager(r0_26):ShowUITip_BattleCommonTop(UIConst.Tip_CommonTop, r2_26.BattleWheel.UIUnlockDesc)
+      UIManager(r0_25):ShowUITip_BattleCommonTop(UIConst.Tip_CommonTop, r2_25.BattleWheel.UIUnlockDesc)
     end
   else
     DebugPrint("gmy@BP_PlayerCharacter_C:OpenBattleWheel DisableBattleWheel")
     if WorldTravelSubsystem():GetCurrentDungeonType() == CommonConst.DungeonType.Abyss then
-      UIManager(r0_26):ShowUITip_BattleCommonTop(UIConst.Tip_CommonTop, GText("UI_Disabled_Des_BattleWheel"))
+      UIManager(r0_25):ShowUITip_BattleCommonTop(UIConst.Tip_CommonTop, GText("UI_Disabled_Des_BattleWheel"))
     else
-      UIManager(r0_26):ShowUITip_BattleCommonTop(UIConst.Tip_CommonTop, GText("UI_BATTLEWHEEL_FORBIDDEN"))
+      UIManager(r0_25):ShowUITip_BattleCommonTop(UIConst.Tip_CommonTop, GText("UI_BATTLEWHEEL_FORBIDDEN"))
     end
   end
 end
-function r11_0.CloseBattleWheel(r0_27, r1_27)
-  -- line: [398, 423] id: 27
-  local r2_27 = UE4.UGameplayStatics.GetGameInstance(r0_27)
-  local r4_27 = r2_27:GetGameUIManager():GetUIObj("InBattleWheelMenu")
-  local r5_27 = UE4.UGameplayStatics.GetPlayerController(r2_27, 0)
-  if r4_27 ~= nil then
-    local r6_27 = UGameInputModeSubsystem.GetGameInputModeSubsystem(r0_27)
-    if r6_27 then
-      if r6_27:GetCurrentInputType() == ECommonInputType.Gamepad then
-        r4_27:CloseMenu()
+function r11_0.CloseBattleWheel(r0_26, r1_26)
+  -- line: [385, 410] id: 26
+  local r2_26 = UE4.UGameplayStatics.GetGameInstance(r0_26)
+  local r4_26 = r2_26:GetGameUIManager():GetUIObj("InBattleWheelMenu")
+  local r5_26 = UE4.UGameplayStatics.GetPlayerController(r2_26, 0)
+  if r4_26 ~= nil then
+    local r6_26 = UGameInputModeSubsystem.GetGameInputModeSubsystem(r0_26)
+    if r6_26 then
+      if r6_26:GetCurrentInputType() == ECommonInputType.Gamepad then
+        r4_26:CloseMenu()
       else
-        r4_27:SelectAndCloseMenu()
+        r4_26:SelectAndCloseMenu()
       end
     end
   end
-  r0_27:MinusForbidTag("BattleWheelForbid")
-  r5_27:RemoveDisableRotationInputTag("SetRotation_Lerp")
+  r0_26:MinusForbidTag("BattleWheelForbid")
+  r5_26:RemoveDisableRotationInputTag("SetRotation_Lerp")
 end
-function r11_0.RefreshBattleWheelEnableState(r0_28)
-  -- line: [425, 434] id: 28
-  local r1_28 = r0_28:GetController()
-  if not r1_28.bEnableBattleWheel then
-    r0_28:CloseBattleWheel(true)
+function r11_0.RefreshBattleWheelEnableState(r0_27)
+  -- line: [412, 421] id: 27
+  local r1_27 = r0_27:GetController()
+  if not r1_27.bEnableBattleWheel then
+    r0_27:CloseBattleWheel(true)
   end
-  DebugPrint("gmy@BP_PlayerCharacter_C:RefreshBattleWheelEnableState", r1_28.bEnableBattleWheel)
-  EventManager:FireEvent(EventID.OnRefreshBattleWheelEnableState, r1_28.bEnableBattleWheel, r1_28.bShowBattleWheel)
+  DebugPrint("gmy@BP_PlayerCharacter_C:RefreshBattleWheelEnableState", r1_27.bEnableBattleWheel)
+  EventManager:FireEvent(EventID.OnRefreshBattleWheelEnableState, r1_27.bEnableBattleWheel, r1_27.bShowBattleWheel)
 end
-function r11_0.SetQuestBattleWheelID(r0_29, r1_29)
-  -- line: [436, 443] id: 29
-  r0_29.QuestBattleWheelID = r1_29
-  local r3_29 = UE4.UGameplayStatics.GetPlayerController(GWorld.GameInstance, 0)
-  if r3_29 then
-    r3_29.QuestBattleWheelID = r0_29.QuestBattleWheelID
+function r11_0.SetQuestBattleWheelID(r0_28, r1_28)
+  -- line: [423, 430] id: 28
+  r0_28.QuestBattleWheelID = r1_28
+  local r3_28 = UE4.UGameplayStatics.GetPlayerController(GWorld.GameInstance, 0)
+  if r3_28 then
+    r3_28.QuestBattleWheelID = r0_28.QuestBattleWheelID
   end
 end
-function r11_0.EnableBattleWheel(r0_30)
-  -- line: [445, 452] id: 30
+function r11_0.EnableBattleWheel(r0_29)
+  -- line: [432, 439] id: 29
+  local r2_29 = UE4.UGameplayStatics.GetPlayerController(GWorld.GameInstance, 0)
+  if r2_29 then
+    r2_29.bEnableBattleWheel = true
+    r0_29:RefreshBattleWheelEnableState()
+  end
+end
+function r11_0.DisableBattleWheel(r0_30)
+  -- line: [441, 448] id: 30
   local r2_30 = UE4.UGameplayStatics.GetPlayerController(GWorld.GameInstance, 0)
   if r2_30 then
-    r2_30.bEnableBattleWheel = true
+    r2_30.bEnableBattleWheel = false
     r0_30:RefreshBattleWheelEnableState()
   end
 end
-function r11_0.DisableBattleWheel(r0_31)
-  -- line: [454, 461] id: 31
-  local r2_31 = UE4.UGameplayStatics.GetPlayerController(GWorld.GameInstance, 0)
-  if r2_31 then
-    r2_31.bEnableBattleWheel = false
+function r11_0.ShowBattleWheel(r0_31)
+  -- line: [450, 456] id: 31
+  local r1_31 = r0_31:GetController()
+  if r1_31 then
+    r1_31.bShowBattleWheel = true
     r0_31:RefreshBattleWheelEnableState()
   end
 end
-function r11_0.ShowBattleWheel(r0_32)
-  -- line: [463, 469] id: 32
+function r11_0.HideBattleWheel(r0_32)
+  -- line: [458, 464] id: 32
   local r1_32 = r0_32:GetController()
   if r1_32 then
-    r1_32.bShowBattleWheel = true
+    r1_32.bShowBattleWheel = false
     r0_32:RefreshBattleWheelEnableState()
   end
 end
-function r11_0.HideBattleWheel(r0_33)
-  -- line: [471, 477] id: 33
-  local r1_33 = r0_33:GetController()
-  if r1_33 then
-    r1_33.bShowBattleWheel = false
-    r0_33:RefreshBattleWheelEnableState()
+function r11_0.CalcCurrentPlayerRegionId(r0_33)
+  -- line: [471, 483] id: 33
+  local r1_33 = GWorld:GetAvatar()
+  local r2_33 = r0_33:GetRegionId()
+  if not r2_33 or not r1_33 or not r1_33:CheckCurrentSubRegion() then
+    return 
+  end
+  if r1_33.SyncReason ~= CommonConst.SyncReason.Normal then
+    return 
+  end
+  if not r1_33:CheckCurrentSubRegion(r2_33) then
+    return 
+  end
+  if r1_33.CurrentRegionId ~= r2_33 and r2_33 ~= -1 then
+    if r1_33:GetSubRegionId2RegionId() ~= r1_33:GetSubRegionId2RegionId(r2_33) then
+      return 
+    end
+    if r0_33:GetRegionId(r0_33:GetLastSafeLocation()) ~= r2_33 then
+      return 
+    end
+    r1_33:SkipRegion(r2_33)
   end
 end
-function r11_0.CalcCurrentPlayerRegionId(r0_34)
-  -- line: [484, 496] id: 34
+function r11_0.OnEnteredNewSubRegion(r0_34)
+  -- line: [485, 517] id: 34
   local r1_34 = GWorld:GetAvatar()
-  local r2_34 = r0_34:GetRegionId()
-  if not r2_34 or not r1_34 or not r1_34:CheckCurrentSubRegion() then
-    return 
+  DebugPrint("OnEnteredNewSubRegion", r1_34.CurrentRegionId)
+  if r0_34.CanChangeToMaster == nil then
+    r0_34.CanChangeToMaster = r0_34:CheckCanChangeToMaster(false)
   end
-  if r1_34.SyncReason ~= CommonConst.SyncReason.Normal then
-    return 
+  local r2_34 = r0_34.CanChangeToMaster
+  local r3_34 = r0_34:CheckCanChangeToMaster(false, true)
+  if r0_34.CurrentMasterBan and not r3_34 then
+    r0_34:SwitchMasterOrHeroUIPerform()
+    r0_34:ChangeBackToHero()
   end
-  if not r1_34:CheckCurrentSubRegion(r2_34) then
-    return 
-  end
-  if r1_34.CurrentRegionId ~= r2_34 and r2_34 ~= -1 then
-    if r1_34:GetSubRegionId2RegionId() ~= r1_34:GetSubRegionId2RegionId(r2_34) then
-      return 
-    end
-    if r0_34:GetRegionId(r0_34:GetLastSafeLocation()) ~= r2_34 then
-      return 
-    end
-    r1_34:SkipRegion(r2_34)
-  end
+  AudioManager(r0_34):CheckLevelSoundAndRegionId(r1_34.CurrentRegionId)
 end
-function r11_0.OnEnteredNewSubRegion(r0_35)
-  -- line: [498, 530] id: 35
-  local r1_35 = GWorld:GetAvatar()
-  DebugPrint("OnEnteredNewSubRegion", r1_35.CurrentRegionId)
-  if r0_35.CanChangeToMaster == nil then
-    r0_35.CanChangeToMaster = r0_35:CheckCanChangeToMaster(false)
+function r11_0.GetRegionId(r0_35, r1_35)
+  -- line: [519, 530] id: 35
+  if not r1_35 then
+    r1_35 = r0_35.CurrentLocation
   end
-  local r2_35 = r0_35.CanChangeToMaster
-  local r3_35 = r0_35:CheckCanChangeToMaster(false, true)
-  if r0_35.CurrentMasterBan and not r3_35 then
-    r0_35:SwitchMasterOrHeroUIPerform()
-    r0_35:ChangeBackToHero()
-  end
-  AudioManager(r0_35):CheckLevelSoundAndRegionId(r1_35.CurrentRegionId)
-end
-function r11_0.GetRegionId(r0_36, r1_36)
-  -- line: [532, 543] id: 36
-  if not r1_36 then
-    r1_36 = r0_36.CurrentLocation
-  end
-  local r2_36 = UE4.UGameplayStatics.GetGameMode(r0_36)
-  local r3_36 = -1
-  if not r2_36 then
+  local r2_35 = UE4.UGameplayStatics.GetGameMode(r0_35)
+  local r3_35 = -1
+  if not r2_35 then
     return 
   end
-  local r4_36 = r2_36:GetLevelLoader()
-  if r4_36 and GWorld:GetWorldRegionState() and r4_36.IsWorldLoader then
-    r3_36 = r4_36:GetRegionIdByLocation(r1_36)
+  local r4_35 = r2_35:GetLevelLoader()
+  if r4_35 and GWorld:GetWorldRegionState() and r4_35.IsWorldLoader then
+    r3_35 = r4_35:GetRegionIdByLocation(r1_35)
   end
-  return r3_36
+  return r3_35
 end
-function r11_0.StartLookAt(r0_37, r1_37, r2_37)
-  -- line: [549, 557] id: 37
-  if not r0_37:CheckLookPriority(r1_37) then
+function r11_0.StartLookAt(r0_36, r1_36, r2_36)
+  -- line: [536, 544] id: 36
+  if not r0_36:CheckLookPriority(r1_36) then
     return 
   end
-  r0_37:StopLookAt()
-  r0_37.CurrentLookType = r1_37
-  r0_37.CurrentLookInfo = r2_37
-  r0_37.LookAtTag:SetTagState(r1_37, true)
+  r0_36:StopLookAt()
+  r0_36.CurrentLookType = r1_36
+  r0_36.CurrentLookInfo = r2_36
+  r0_36.LookAtTag:SetTagState(r1_36, true)
 end
-function r11_0.CheckLookPriority(r0_38, r1_38)
-  -- line: [559, 561] id: 38
+function r11_0.CheckLookPriority(r0_37, r1_37)
+  -- line: [546, 548] id: 37
   return true
 end
-function r11_0.StopLookAt(r0_39, r1_39)
-  -- line: [563, 571] id: 39
-  if not r1_39 then
-    r0_39.LookAtTag:SetTagState(r0_39.CurrentLookType, false)
+function r11_0.StopLookAt(r0_38, r1_38)
+  -- line: [550, 558] id: 38
+  if not r1_38 then
+    r0_38.LookAtTag:SetTagState(r0_38.CurrentLookType, false)
     return 
   end
-  if r1_39 == r0_39.CurrentLookType then
-    r0_39.LookAtTag:SetTagState(r0_39.CurrentLookType, false)
+  if r1_38 == r0_38.CurrentLookType then
+    r0_38.LookAtTag:SetTagState(r0_38.CurrentLookType, false)
   end
 end
-function r11_0.CheckCanLookAt(r0_40, r1_40)
-  -- line: [573, 586] id: 40
-  if r1_40 then
-    r0_40:StopLookAt()
+function r11_0.CheckCanLookAt(r0_39, r1_39)
+  -- line: [560, 573] id: 39
+  if r1_39 then
+    r0_39:StopLookAt()
     return 
   end
-  local r2_40 = DataMgr.PlayerStateLimit[r0_40.AutoSyncProp.CharacterTag]
-  if r2_40 and r2_40.NeackRotation then
-    r0_40:StartLookAt("Camera", {
+  local r2_39 = DataMgr.PlayerStateLimit[r0_39.AutoSyncProp.CharacterTag]
+  if r2_39 and r2_39.NeackRotation then
+    r0_39:StartLookAt("Camera", {
       TurnHeadParam = {
         bLookUseCamera = true,
         bIsLookAt = true,
       },
     })
   else
-    r0_40:StopLookAt("Camera")
+    r0_39:StopLookAt("Camera")
   end
 end
-function r11_0.OnSetLookAtTag(r0_41, r1_41)
-  -- line: [588, 598] id: 41
+function r11_0.OnSetLookAtTag(r0_40, r1_40)
+  -- line: [575, 585] id: 40
+  if not r0_40.PlayerAnimInstance then
+    return 
+  end
+  if not r1_40 then
+    r0_40.PlayerAnimInstance:StopLookAt()
+    return 
+  end
+  r0_40:SetLookAtParam()
+end
+function r11_0.SetLookAtParam(r0_41)
+  -- line: [587, 611] id: 41
   if not r0_41.PlayerAnimInstance then
     return 
   end
-  if not r1_41 then
-    r0_41.PlayerAnimInstance:StopLookAt()
+  if not r0_41.CurrentLookInfo then
     return 
   end
-  r0_41:SetLookAtParam()
-end
-function r11_0.SetLookAtParam(r0_42)
-  -- line: [600, 624] id: 42
-  if not r0_42.PlayerAnimInstance then
-    return 
-  end
-  if not r0_42.CurrentLookInfo then
-    return 
-  end
-  for r5_42, r6_42 in pairs(r0_42.CurrentLookInfo.TurnHeadParam) do
-    if r0_42.PlayerAnimInstance[r5_42] ~= nil then
-      r0_42.PlayerAnimInstance[r5_42] = r6_42
+  for r5_41, r6_41 in pairs(r0_41.CurrentLookInfo.TurnHeadParam) do
+    if r0_41.PlayerAnimInstance[r5_41] ~= nil then
+      r0_41.PlayerAnimInstance[r5_41] = r6_41
     end
   end
-  -- close: r1_42
-  local r1_42 = r0_42.CurrentLookInfo.Target
-  local r2_42 = r0_42.CurrentLookInfo.SocketName
-  if r0_42.CurrentLookType == "Actor" then
-    r0_42.PlayerAnimInstance:SetLookAtActor(r1_42, r2_42)
-  elseif r0_42.CurrentLookType ~= "Camera" then
-    r0_42.PlayerAnimInstance:SetLookAtActor(r1_42, r2_42)
+  -- close: r1_41
+  local r1_41 = r0_41.CurrentLookInfo.Target
+  local r2_41 = r0_41.CurrentLookInfo.SocketName
+  if r0_41.CurrentLookType == "Actor" then
+    r0_41.PlayerAnimInstance:SetLookAtActor(r1_41, r2_41)
+  elseif r0_41.CurrentLookType ~= "Camera" then
+    r0_41.PlayerAnimInstance:SetLookAtActor(r1_41, r2_41)
   end
 end
-function r11_0.OnSkillFeatureBegin(r0_43)
-  -- line: [663, 665] id: 43
-  r0_43:StopFire(false, true)
+function r11_0.OnSkillFeatureBegin(r0_42)
+  -- line: [650, 652] id: 42
+  r0_42:StopFire(false, true)
 end
-function r11_0.CancelSkill(r0_44, r1_44, r2_44)
-  -- line: [668, 674] id: 44
-  if not r0_44:IsSkillFinished() then
-    r0_44:StopSkill(UE.ESkillStopReason.ForceCancel)
-    r0_44:StopFire(r2_44, false)
-    r0_44.PlayerAnimInstance:StopSkillAnimation()
+function r11_0.CancelSkill(r0_43, r1_43, r2_43)
+  -- line: [655, 661] id: 43
+  if not r0_43:IsSkillFinished() then
+    r0_43:StopSkill(UE.ESkillStopReason.ForceCancel)
+    r0_43:StopFire(r2_43, false)
+    r0_43.PlayerAnimInstance:StopSkillAnimation()
   end
 end
-function r11_0.InitSceneStartUI(r0_45)
-  -- line: [677, 712] id: 45
-  local r1_45 = UE4.UGameplayStatics.GetGameInstance(r0_45)
-  local r2_45 = r1_45:GetGameUIManager()
-  if not IsValid(r2_45) then
+function r11_0.InitSceneStartUI(r0_44)
+  -- line: [664, 699] id: 44
+  local r1_44 = UE4.UGameplayStatics.GetGameInstance(r0_44)
+  local r2_44 = r1_44:GetGameUIManager()
+  if not IsValid(r2_44) then
     return 
   end
-  r0_45.UIModePlatform = r2_0.GetDeviceTypeByPlatformName(r0_45)
-  r0_45.PlatformName = UGameplayStatics.GetPlatformName()
-  local r3_45 = r2_45:LoadUI(UIConst.SCENESTARTUI, "SceneStartUI", UIConst.ZORDER_FOR_DESKTOP)
-  if r3_45 ~= nil then
-    r3_45:InitMainPage()
+  r0_44.UIModePlatform = r2_0.GetDeviceTypeByPlatformName(r0_44)
+  r0_44.PlatformName = UGameplayStatics.GetPlatformName()
+  local r3_44 = r2_44:LoadUI(UIConst.SCENESTARTUI, "SceneStartUI", UIConst.ZORDER_FOR_DESKTOP)
+  if r3_44 ~= nil then
+    r3_44:InitMainPage()
   end
-  if not r0_45:IsDead() then
-    local r4_45 = r2_45:GetUI("BattleMain")
-    if r4_45 then
-      r4_45:HidePlayerDeadUI()
+  if not r0_44:IsDead() then
+    local r4_44 = r2_44:GetUI("BattleMain")
+    if r4_44 then
+      r4_44:HidePlayerDeadUI()
     end
-    r2_45:HideAllUI_EX(TSet(FName), false, "RegionResurgence")
+    r2_44:HideAllUI_EX(TSet(FName), false, "RegionResurgence")
   end
-  r0_45:UpdatePlayerTaskInfo()
-  if not r1_45:GetLoadingUI() then
-    r0_45:RefreshCharUIByPlatform()
-  end
-end
-function r11_0.RefreshCharUIByPlatform(r0_46)
-  -- line: [714, 729] id: 46
-  local r1_46 = UIManager(r0_46)
-  r0_46.SkillUINames = r0_46.SkillUINames and {}
-  for r6_46, r7_46 in pairs(r0_46.SkillUINames) do
-    DebugPrint("gmy@BP_PlayerCharacter_C:RefreshCharUIByPlatform ", r6_46)
-    r1_46:UnLoadUI(r6_46)
-    r0_46.SkillUINames[r6_46] = nil
-  end
-  -- close: r2_46
-  DebugPrint("gmy@BP_PlayerCharacter_C BP_PlayerCharacter_C:RefreshCharUIByPlatform1", r0_46.CurrentRoleId)
-  local r2_46 = DataMgr.BattleChar[r0_46.CurrentRoleId]
-  if r2_46 and r2_46.CharUIId then
-    r0_46:TryOpenSkillUI(r2_46.CharUIId, false)
+  r0_44:UpdatePlayerTaskInfo()
+  if not r1_44:GetLoadingUI() then
+    r0_44:RefreshCharUIByPlatform()
   end
 end
-function r11_0.CheckDraftCanProduce(r0_47)
-  -- line: [731, 747] id: 47
-  local r1_47 = GWorld:GetAvatar()
-  if not r1_47 then
+function r11_0.RefreshCharUIByPlatform(r0_45)
+  -- line: [701, 716] id: 45
+  local r1_45 = UIManager(r0_45)
+  r0_45.SkillUINames = r0_45.SkillUINames and {}
+  for r6_45, r7_45 in pairs(r0_45.SkillUINames) do
+    DebugPrint("gmy@BP_PlayerCharacter_C:RefreshCharUIByPlatform ", r6_45)
+    r1_45:UnLoadUI(r6_45)
+    r0_45.SkillUINames[r6_45] = nil
+  end
+  -- close: r2_45
+  DebugPrint("gmy@BP_PlayerCharacter_C BP_PlayerCharacter_C:RefreshCharUIByPlatform1", r0_45.CurrentRoleId)
+  local r2_45 = DataMgr.BattleChar[r0_45.CurrentRoleId]
+  if r2_45 and r2_45.CharUIId then
+    r0_45:TryOpenSkillUI(r2_45.CharUIId, false)
+  end
+end
+function r11_0.CheckDraftCanProduce(r0_46)
+  -- line: [718, 734] id: 46
+  local r1_46 = GWorld:GetAvatar()
+  if not r1_46 then
     return 
   end
-  if r1_47:CheckSubRegionType(r1_47:GetCurrentRegionId(), CommonConst.SubRegionType.Home) and r1_47:IsInBigWorld() and #r6_0:GetCanProduceDraftIds() > 0 then
-    r0_47:AddTimer(1, function()
-      -- line: [739, 744] id: 48
+  if r1_46:CheckSubRegionType(r1_46:GetCurrentRegionId(), CommonConst.SubRegionType.Home) and r1_46:IsInBigWorld() and #r6_0:GetCanProduceDraftIds() > 0 then
+    r0_46:AddTimer(1, function()
+      -- line: [726, 731] id: 47
       UE4.UTalkFunctionLibrary.PlayDirectTalkByTalkTriggerId(GWorld.GameInstance, 3001)
     end)
   end
 end
-function r11_0.UpdatePlayerBloodEffectInfo(r0_49)
-  -- line: [749, 807] id: 49
-  if not r0_49.InitSuccess then
+function r11_0.UpdatePlayerBloodEffectInfo(r0_48)
+  -- line: [736, 794] id: 48
+  if not r0_48.InitSuccess then
     return 
   end
-  local r3_49 = r0_49:GetCurrentBloodVolume() / r0_49:GetMaxBloodVolume()
-  local r4_49 = r0_49:GetAttr("ES")
-  local r5_49 = DataMgr.SystemUI[UIConst.BattleNearDeathPCName]
-  if r5_49 then
-    local r6_49 = r5_49.Params.FirstLevelFactor
-    local r7_49 = r5_49.Params.SecondLevelFactor
-    local r8_49 = r5_49.Params.ShowUIBloodStrength
-    local r9_49 = r5_49.Params.SecondLevelBloodStrength
-    if r6_49 == nil or r7_49 == nil or r8_49 == nil or r9_49 == nil then
+  local r3_48 = r0_48:GetCurrentBloodVolume() / r0_48:GetMaxBloodVolume()
+  local r4_48 = r0_48:GetAttr("ES")
+  local r5_48 = DataMgr.SystemUI[UIConst.BattleNearDeathPCName]
+  if r5_48 then
+    local r6_48 = r5_48.Params.FirstLevelFactor
+    local r7_48 = r5_48.Params.SecondLevelFactor
+    local r8_48 = r5_48.Params.ShowUIBloodStrength
+    local r9_48 = r5_48.Params.SecondLevelBloodStrength
+    if r6_48 == nil or r7_48 == nil or r8_48 == nil or r9_48 == nil then
       return 
     end
-    local r10_49 = r0_49.IsNearDeath
-    local r11_49 = 0.0001
-    if r11_49 < r3_49 and r3_49 < r8_49 then
-      r11_49 = r4_49 <= 0
+    local r10_48 = r0_48.IsNearDeath
+    local r11_48 = 0.0001
+    if r11_48 < r3_48 and r3_48 < r8_48 then
+      r11_48 = r4_48 <= 0
     else
       goto label_45	-- block#11 is visited secondly
     end
-    r0_49.IsNearDeath = r11_49
-    r11_49 = UIManager(r0_49):GetUIObj(UIConst.BattleNearDeathPCName)
-    local r12_49 = nil
-    if not r10_49 and r0_49.IsNearDeath then
-      r12_49 = "In"
+    r0_48.IsNearDeath = r11_48
+    r11_48 = UIManager(r0_48):GetUIObj(UIConst.BattleNearDeathPCName)
+    local r12_48 = nil
+    if not r10_48 and r0_48.IsNearDeath then
+      r12_48 = "In"
     end
-    if r10_49 and r0_49.IsNearDeath then
-      r12_49 = "Loop"
+    if r10_48 and r0_48.IsNearDeath then
+      r12_48 = "Loop"
     end
-    if r10_49 and not r0_49.IsNearDeath then
-      r12_49 = "Out"
+    if r10_48 and not r0_48.IsNearDeath then
+      r12_48 = "Out"
     end
-    if r0_49.IsNearDeath then
-      if r11_49 == nil then
-        r11_49 = UIManager(r0_49):LoadUINew(UIConst.BattleNearDeathPCName)
+    if r0_48.IsNearDeath then
+      if r11_48 == nil then
+        r11_48 = UIManager(r0_48):LoadUINew(UIConst.BattleNearDeathPCName)
       end
-      if r11_49 ~= nil then
-        local r13_49 = nil
-        local r14_49 = nil	-- notice: implicit variable refs by block#[33]
-        if r9_49 < r3_49 then
-          r14_49 = r6_49
-          if r14_49 then
+      if r11_48 ~= nil then
+        local r13_48 = nil
+        local r14_48 = nil	-- notice: implicit variable refs by block#[33]
+        if r9_48 < r3_48 then
+          r14_48 = r6_48
+          if r14_48 then
             ::label_94::
-            r14_49 = r7_49
+            r14_48 = r7_48
           end
         else
           goto label_94	-- block#28 is visited secondly
         end
         if r2_0.GetDeviceTypeByPlatformName() == "PC" then
-          r13_49 = r11_49.Bg_1:GetDynamicMaterial()
+          r13_48 = r11_48.Bg_1:GetDynamicMaterial()
         else
-          r13_49 = r11_49.glassglow:GetDynamicMaterial()
+          r13_48 = r11_48.glassglow:GetDynamicMaterial()
         end
-        if r13_49 ~= nil then
-          r13_49:SetScalarParameterValue("Flash", r14_49)
+        if r13_48 ~= nil then
+          r13_48:SetScalarParameterValue("Flash", r14_48)
         end
       end
-    elseif r11_49 ~= nil and r10_49 then
-      r11_49:BindToAnimationFinished(r11_49.Out, function()
-        -- line: [799, 802] id: 50
-        r11_49:UnbindAllFromAnimationFinished(r11_49.Out)
-        UIManager(r0_49):UnLoadUI(UIConst.BattleNearDeathPCName)
+    elseif r11_48 ~= nil and r10_48 then
+      r11_48:BindToAnimationFinished(r11_48.Out, function()
+        -- line: [786, 789] id: 49
+        r11_48:UnbindAllFromAnimationFinished(r11_48.Out)
+        UIManager(r0_48):UnLoadUI(UIConst.BattleNearDeathPCName)
       end)
-      EMUIAnimationSubsystem:EMPlayAnimation(r11_49, r11_49.Out)
+      EMUIAnimationSubsystem:EMPlayAnimation(r11_48, r11_48.Out)
     end
-    -- close: r6_49
+    -- close: r6_48
   end
 end
-function r11_0.UpdateUIMode(r0_51, r1_51)
-  -- line: [809, 816] id: 51
-  r0_51.UIModePlatform = r1_51
-  local r2_51 = UIManager(r0_51):GetUIObj("SceneStartUI")
-  if r2_51 ~= nil then
-    r2_51:OnCloseOtherUI()
-    r2_51:InitMainPage()
+function r11_0.UpdateUIMode(r0_50, r1_50)
+  -- line: [796, 803] id: 50
+  r0_50.UIModePlatform = r1_50
+  local r2_50 = UIManager(r0_50):GetUIObj("SceneStartUI")
+  if r2_50 ~= nil then
+    r2_50:OnCloseOtherUI()
+    r2_50:InitMainPage()
   end
 end
-function r11_0.Landed(r0_52)
-  -- line: [818, 826] id: 52
-  if not r0_52:PlayerLanded() then
+function r11_0.Landed(r0_51)
+  -- line: [805, 813] id: 51
+  if not r0_51:PlayerLanded() then
     return 
   end
-  if r0_52:CharacterInTag("Shooting") and r0_52:CheckCanEnterTag("LandHeavy") and r0_52.PlayerAnimInstance.FallingSpeed < r0_0.LandHeavySpeed then
-    r0_52:StopFire(true, false)
-    r0_52:StopSkill(UE.ESkillStopReason.ActionCancel)
+  if r0_51:CharacterInTag("Shooting") and r0_51:CheckCanEnterTag("LandHeavy") and r0_51.PlayerAnimInstance.FallingSpeed < r0_0.LandHeavySpeed then
+    r0_51:StopFire(true, false)
+    r0_51:StopSkill(UE.ESkillStopReason.ActionCancel)
   end
 end
-function r11_0.Impending(r0_53)
-  -- line: [828, 833] id: 53
-  if not r0_53:PlayerImpending() then
+function r11_0.Impending(r0_52)
+  -- line: [815, 820] id: 52
+  if not r0_52:PlayerImpending() then
     return 
   end
-  r0_53.Overridden.Impending(r0_53)
+  r0_52.Overridden.Impending(r0_52)
 end
-function r11_0.StartSlide(r0_54)
-  -- line: [835, 841] id: 54
+function r11_0.StartSlide(r0_53)
+  -- line: [822, 828] id: 53
   print(_G.LogTag, "StartSlideStartSlideStartSlide")
-  r0_54:DoSlide()
-  if r0_54.NeedSlideEvent then
+  r0_53:DoSlide()
+  if r0_53.NeedSlideEvent then
     EventManager:FireEvent(EventID.OnSlidePressed)
   end
 end
-function r11_0.PressDodge(r0_55)
-  -- line: [843, 846] id: 55
-  r0_55.bSprintPressed = true
-  r0_55:StartDodge()
+function r11_0.PressDodge(r0_54)
+  -- line: [830, 833] id: 54
+  r0_54.bSprintPressed = true
+  r0_54:StartDodge()
 end
-function r11_0.StartDodge(r0_56)
-  -- line: [848, 853] id: 56
-  r0_56:DoDodge()
-  if r0_56.NeedAvoidEvent then
+function r11_0.StartDodge(r0_55)
+  -- line: [835, 840] id: 55
+  r0_55:DoDodge()
+  if r0_55.NeedAvoidEvent then
     EventManager:FireEvent(EventID.OnAvoidPressed)
   end
 end
-function r11_0.ApplyHitFlyDown(r0_57)
-  -- line: [860, 864] id: 57
-  r0_57:ResetCapSize()
-  r0_57:RealStopSlide(true)
-  r0_57.Super.ApplyHitFlyDown(r0_57)
+function r11_0.ApplyHitFlyDown(r0_56)
+  -- line: [847, 851] id: 56
+  r0_56:ResetCapSize()
+  r0_56:RealStopSlide(true)
+  r0_56.Super.ApplyHitFlyDown(r0_56)
 end
-function r11_0.ShowPlayerDeadUI(r0_58)
-  -- line: [887, 894] id: 58
-  local r1_58 = r0_58:GetCurRecoveryUIName()
-  if r1_58 then
-    local r2_58 = UIManager(r0_58):LoadUINew(r1_58)
-    r2_58:OnMainCharacterInitReady()
-    r2_58:InitResurgenceUI(r0_58.Eid)
+function r11_0.ShowPlayerDeadUI(r0_57)
+  -- line: [874, 881] id: 57
+  local r1_57 = r0_57:GetCurRecoveryUIName()
+  if r1_57 then
+    local r2_57 = UIManager(r0_57):LoadUINew(r1_57)
+    r2_57:OnMainCharacterInitReady()
+    r2_57:InitResurgenceUI(r0_57.Eid)
   end
 end
-function r11_0.IsDeadDuringQuest(r0_59)
-  -- line: [896, 899] id: 59
-  local r1_59 = GWorld.StoryMgr:GetCurrentStoryNode()
-  return r1_59 and r1_59.bDeadTriggerQuestFail
+function r11_0.IsDeadDuringQuest(r0_58)
+  -- line: [883, 886] id: 58
+  local r1_58 = GWorld.StoryMgr:GetCurrentStoryNode()
+  return r1_58 and r1_58.bDeadTriggerQuestFail
 end
-function r11_0.HandleDeadDuringQuest(r0_60)
-  -- line: [901, 913] id: 60
-  local r2_60 = GWorld.StoryMgr:GetResurgencePointInfo()
-  local r3_60 = 1.8
-  if r2_60 then
-    r0_60:AddTimer(r3_60, function()
-      -- line: [906, 908] id: 61
-      r0_60:RequestDeadAsyncTravel(r2_60)
+function r11_0.HandleDeadDuringQuest(r0_59)
+  -- line: [888, 900] id: 59
+  local r2_59 = GWorld.StoryMgr:GetResurgencePointInfo()
+  local r3_59 = 1.8
+  if r2_59 then
+    r0_59:AddTimer(r3_59, function()
+      -- line: [893, 895] id: 60
+      r0_59:RequestDeadAsyncTravel(r2_59)
     end)
   else
     DebugPrint("Tianyi@ 找不到复活点，走区域复活逻辑")
-    r0_60:TryEnterDying()
+    r0_59:TryEnterDying()
   end
 end
-function r11_0.RealOnDead_Lua(r0_62, r1_62, r2_62, r3_62)
-  -- line: [915, 953] id: 62
-  local r4_62 = UE4.UGameplayStatics.GetGameMode(r0_62)
-  if r4_62 ~= nil then
-    r4_62:NotifyGameModePlayerDead(r0_62)
+function r11_0.RealOnDead_Lua(r0_61, r1_61, r2_61, r3_61)
+  -- line: [902, 940] id: 61
+  local r4_61 = UE4.UGameplayStatics.GetGameMode(r0_61)
+  if r4_61 ~= nil then
+    r4_61:NotifyGameModePlayerDead(r0_61)
   end
   DebugPrint("Tianyi@ Player Die!!!!!!!!!!")
-  r0_62:SetHoldCrouch(false)
-  r0_62:StopFire(false, false)
-  r0_62:ZeroComboCount(UE4.EClearComboReason.Dead)
-  local r5_62 = UE4.UGameplayStatics.GetGameState(r0_62)
-  if r4_62 and (r5_62.GameModeType == "Training" or r5_62.GameModeType == "Trial") then
-    local r6_62 = 0
-    local r7_62 = r5_62:GetTargetPoint("Training")
-    if r7_62 then
-      Battle(r0_62):TeleportRecovery(r0_62.Eid, r7_62:K2_GetActorLocation(), r7_62:K2_GetActorRotation(), r6_62)
+  r0_61:SetHoldCrouch(false)
+  r0_61:StopFire(false, false)
+  r0_61:ZeroComboCount(UE4.EClearComboReason.Dead)
+  local r5_61 = UE4.UGameplayStatics.GetGameState(r0_61)
+  if r4_61 and (r5_61.GameModeType == "Training" or r5_61.GameModeType == "Trial") then
+    local r6_61 = 0
+    local r7_61 = r5_61:GetTargetPoint("Training")
+    if r7_61 then
+      Battle(r0_61):TeleportRecovery(r0_61.Eid, r7_61:K2_GetActorLocation(), r7_61:K2_GetActorRotation(), r6_61)
     else
       DebugPrint("Tianyi@ 找不到训练场复活点")
-      Battle(r0_62):TeleportRecovery(r0_62.Eid, FVector(2148.795166, -4042.718262, 2133), FRotator(0, 0, 0), r6_62)
+      Battle(r0_61):TeleportRecovery(r0_61.Eid, FVector(2148.795166, -4042.718262, 2133), FRotator(0, 0, 0), r6_61)
     end
-  elseif r0_62:IsDeadDuringQuest() then
+  elseif r0_61:IsDeadDuringQuest() then
     DebugPrint("Tianyi@ 玩家在任务中死亡")
-    r0_62:HandleDeadDuringQuest()
+    r0_61:HandleDeadDuringQuest()
   else
-    r0_62:TryEnterDying()
+    r0_61:TryEnterDying()
   end
-  local r6_62 = GWorld:GetAvatar()
-  if r0_62:IsMainPlayer() and r6_62 and r6_62:IsInRougeLike() then
-    r6_62:SavePlayerSlice({
+  local r6_61 = GWorld:GetAvatar()
+  if r0_61:IsMainPlayer() and r6_61 and r6_61:IsInRougeLike() then
+    r6_61:SavePlayerSlice({
       Type = r0_0.RougeSliceInfoType.RecoverCount,
       Value = {
-        RecoveryCount = r0_62:GetRecoveryCount() + 1,
+        RecoveryCount = r0_61:GetRecoveryCount() + 1,
       },
     })
   end
 end
-function r11_0.OnTriggerFallTrigger(r0_63, r1_63, r2_63)
-  -- line: [955, 960] id: 63
-  if r1_63 and r2_63 then
-    r1_63:OnTriggerFallTrigger(r2_63, r0_63, UE4.URuntimeCommonFunctionLibrary.GetPlayerControllerIndex(r0_63, r0_63:GetController()))
+function r11_0.OnTriggerFallTrigger(r0_62, r1_62, r2_62)
+  -- line: [942, 947] id: 62
+  if r1_62 and r2_62 then
+    r1_62:OnTriggerFallTrigger(r2_62, r0_62, UE4.URuntimeCommonFunctionLibrary.GetPlayerControllerIndex(r0_62, r0_62:GetController()))
   end
 end
-function r11_0.HandleRemoveModPassives(r0_64)
-  -- line: [961, 965] id: 64
-  r0_64:ClearWeaponModPassive()
-  r0_64:RemovePassiveEffectByRole(r0_64:GetController():GetRoleId())
+function r11_0.HandleRemoveModPassives(r0_63)
+  -- line: [948, 952] id: 63
+  r0_63:ClearWeaponModPassive()
+  r0_63:RemovePassiveEffectByRole(r0_63:GetController():GetRoleId())
 end
-function r11_0.TriggerFallingCallable(r0_65, r1_65, r2_65, r3_65, r4_65, r5_65, r6_65)
-  -- line: [967, 1064] id: 65
-  DebugPrint("OtherActor is Falling Dead. TriggeredByPlayer. ActorName:", r0_65:GetName(), ", UnitId:", r0_65.UnitId, ", Eid:", r0_65.Eid, ", CreatorId:", r0_65.CreatorId, ", CreatorType:", r0_65.CreatorType, ", BornPos:", r0_65.BornPos, "MaxDis", r3_65, "DefaultEnable", r4_65, "DefaultTransform", r2_65)
-  if r0_65.FromOtherWorld then
-    DebugPrint("OtherActor is player, but from other world  ActorName:", r0_65:GetName())
+function r11_0.TriggerFallingCallable(r0_64, r1_64, r2_64, r3_64, r4_64, r5_64, r6_64)
+  -- line: [954, 1051] id: 64
+  DebugPrint("OtherActor is Falling Dead. TriggeredByPlayer. ActorName:", r0_64:GetName(), ", UnitId:", r0_64.UnitId, ", Eid:", r0_64.Eid, ", CreatorId:", r0_64.CreatorId, ", CreatorType:", r0_64.CreatorType, ", BornPos:", r0_64.BornPos, "MaxDis", r3_64, "DefaultEnable", r4_64, "DefaultTransform", r2_64)
+  if r0_64.FromOtherWorld then
+    DebugPrint("OtherActor is player, but from other world  ActorName:", r0_64:GetName())
     return 
   end
-  if not r0_65:IsMainPlayer() then
-    DebugPrint("OtherActor is player, but not main player  ActorName:", r0_65:GetName())
+  if not IsDedicatedServer(r0_64) and not r0_64:IsMainPlayer() then
+    DebugPrint("OtherActor is player, but not main player  ActorName:", r0_64:GetName())
     return 
   end
-  if not r0_65.InitSuccess then
-    DebugPrint("OtherActor is player, but not InitSuccess  ActorName:", r0_65:GetName())
+  if not r0_64.InitSuccess then
+    DebugPrint("OtherActor is player, but not InitSuccess  ActorName:", r0_64:GetName())
     return 
   end
-  r1_65:TriggerDungeonComponentFun("OnPlayerTriggerFallTrigger")
-  r0_65:OnTriggerFallTrigger(r1_65, r5_65)
-  local r7_65 = r1_65:TryGetSafeLocation(r0_65, r3_65)
-  local r8_65 = nil
-  if r0_65:CharacterInTag("Interactive") then
-    r0_65:LeaveInteractiveTag("Interactive")
+  r1_64:TriggerDungeonComponentFun("OnPlayerTriggerFallTrigger")
+  r0_64:OnTriggerFallTrigger(r1_64, r5_64)
+  local r7_64 = r1_64:TryGetSafeLocation(r0_64, r3_64)
+  local r8_64 = nil
+  if r0_64:CharacterInTag("Interactive") then
+    r0_64:LeaveInteractiveTag("Interactive")
   end
-  if r0_65.EnterRegion then
-    r0_65:StopAllCurrentMove()
+  if r0_64.EnterRegion then
+    r0_64:StopAllCurrentMove()
   end
-  if r4_65 ~= true then
-    local r9_65 = r1_65.EMGameState.GameModeType
-    if r9_65 == "Temple" then
-      local r10_65, r11_65 = r1_65.EMGameState:BackToTempleArchivePoint()
-      if r10_65 then
-        r7_65 = r10_65 + FVector(0, 0, r0_65.CapsuleComponent:GetScaledCapsuleHalfHeight())
-        r8_65 = r11_65
+  if r4_64 ~= true then
+    local r9_64 = r1_64.EMGameState.GameModeType
+    if r9_64 == "Temple" then
+      local r10_64, r11_64 = r1_64.EMGameState:BackToTempleArchivePoint()
+      if r10_64 then
+        r7_64 = r10_64 + FVector(0, 0, r0_64.CapsuleComponent:GetScaledCapsuleHalfHeight())
+        r8_64 = r11_64
       else
         DebugPrint("ERROR:BackToTempleArchivePoint ArchivePointLocation is nil")
       end
-    elseif r9_65 == "Party" then
-      local r10_65, r11_65 = r1_65.EMGameState:BackToPartyArchivePoint(r0_65)
-      if r10_65 then
-        r7_65 = r10_65 + FVector(0, 0, r0_65.CapsuleComponent:GetScaledCapsuleHalfHeight())
-        r8_65 = r11_65
-        r1_65:OnPartyPlayerTriggerFallTrigger(r0_65.Eid)
+    elseif r9_64 == "Party" then
+      local r10_64, r11_64 = r1_64.EMGameState:BackToPartyArchivePoint(r0_64)
+      if r10_64 then
+        r7_64 = r10_64 + FVector(0, 0, r0_64.CapsuleComponent:GetScaledCapsuleHalfHeight())
+        r8_64 = r11_64
+        r1_64:OnPartyPlayerTriggerFallTrigger(r0_64.Eid)
       else
         DebugPrint("ERROR:BackToPartyArchivePoint ArchivePointLocation is nil")
       end
     end
   end
-  if not r4_65 and r7_65 ~= FVector(0, 0, 0) then
-    r0_65:K2_SetActorLocation(r7_65, false, nil, false)
-    if r8_65 ~= nil then
-      r0_65:K2_SetActorRotation(r8_65, false)
+  if not r4_64 and r7_64 ~= FVector(0, 0, 0) then
+    r0_64:K2_SetActorLocation(r7_64, false, nil, false)
+    if r8_64 ~= nil then
+      r0_64:K2_SetActorRotation(r8_64, false)
     end
   else
-    r0_65:K2_SetActorLocation(r2_65.Translation, false, nil, false)
-    r0_65:K2_SetActorRotation(r2_65.Rotation:ToRotator(), false)
+    r0_64:K2_SetActorLocation(r2_64.Translation, false, nil, false)
+    r0_64:K2_SetActorRotation(r2_64.Rotation:ToRotator(), false)
   end
-  r0_65:GetMovementComponent():ForceClientUpdate()
-  local r11_65 = {}
-  r0_65:EnableCheckOverlapPush(r11_65)
-  if r0_65.OnTriggerFallingCallable then
-    r0_65:OnTriggerFallingCallable()
+  r0_64:GetMovementComponent():ForceClientUpdate()
+  local r11_64 = {}
+  r0_64:EnableCheckOverlapPush(r11_64)
+  if r0_64.OnTriggerFallingCallable then
+    r0_64:OnTriggerFallingCallable()
   end
-  if IsDedicatedServer(r0_65) then
-    local r9_65 = r0_65.RPCComponent
-    if r8_65 then
-      r11_65 = r8_65 and r2_65.Rotation:ToRotator()
+  if IsDedicatedServer(r0_64) then
+    local r9_64 = r0_64.RPCComponent
+    if r8_64 then
+      r11_64 = r8_64 and r2_64.Rotation:ToRotator()
     else
-      goto label_183	-- block#29 is visited secondly
+      goto label_188	-- block#30 is visited secondly
     end
-    r9_65:OnPlayerFallTriggerClient(r11_65)
+    r9_64:OnPlayerFallTriggerClient(r11_64)
   else
-    r0_65:ShowBlackScreenFade_StandAlone(r6_65)
+    r0_64:ShowBlackScreenFade_StandAlone(r6_64)
   end
-  if r0_65.EnterRegion then
-    r0_65:ForceReSyncLocation()
+  if r0_64.EnterRegion then
+    r0_64:ForceReSyncLocation()
   end
-  r0_65:GetController():SetControlRotation(r0_65:K2_GetActorRotation())
-  r0_65:Landed()
+  r0_64:GetController():SetControlRotation(r0_64:K2_GetActorRotation())
+  r0_64:Landed()
 end
-function r11_0.TriggerWaterFallingCallable(r0_66, r1_66, r2_66, r3_66, r4_66)
-  -- line: [1066, 1068] id: 66
-  r0_66:TriggerFallingCallable(r1_66, r2_66, r3_66, r4_66)
+function r11_0.TriggerWaterFallingCallable(r0_65, r1_65, r2_65, r3_65, r4_65)
+  -- line: [1053, 1055] id: 65
+  r0_65:TriggerFallingCallable(r1_65, r2_65, r3_65, r4_65)
 end
-function r11_0.ShowBlackScreenFade_StandAlone(r0_67, r1_67, r2_67)
-  -- line: [1071, 1082] id: 67
-  if r1_67 == "White" then
-    UIManager(r0_67):ShowCommonBlackScreen({
+function r11_0.ShowBlackScreenFade_StandAlone(r0_66, r1_66, r2_66)
+  -- line: [1058, 1069] id: 66
+  if r1_66 == "White" then
+    UIManager(r0_66):ShowCommonBlackScreen({
       BlackScreenHandle = "BlackScreenFade",
       ScreenColor = "White",
       OutAnimationPlayTime = 1,
       IsPlayOutWhenLoaded = true,
     })
   else
-    r0_67:NewBlackScreenFade(r2_67)
+    r0_66:NewBlackScreenFade(r2_66)
   end
 end
-function r11_0.TryToUpdateScreenEffect(r0_68, r1_68, r2_68)
-  -- line: [1159, 1205] id: 68
-  local r3_68 = r0_68:GetAttr("ES")
-  if r2_68 > 0 then
-    local r4_68 = r0_68:GetAttr("MaxES")
-    if r4_68 ~= 0 and DataMgr.SystemUI[UIConst.BattleBrokenShieldPCName].Params.ShieldUIResetRate and DataMgr.SystemUI[UIConst.BattleBrokenShieldPCName].Params.ShieldUIResetRate < (r3_68 + r2_68) / r4_68 then
-      r0_68.PlayBrokenShiledAnim = true
+function r11_0.TryToUpdateScreenEffect(r0_67, r1_67, r2_67)
+  -- line: [1146, 1192] id: 67
+  local r3_67 = r0_67:GetAttr("ES")
+  if r2_67 > 0 then
+    local r4_67 = r0_67:GetAttr("MaxES")
+    if r4_67 ~= 0 and DataMgr.SystemUI[UIConst.BattleBrokenShieldPCName].Params.ShieldUIResetRate and DataMgr.SystemUI[UIConst.BattleBrokenShieldPCName].Params.ShieldUIResetRate < (r3_67 + r2_67) / r4_67 then
+      r0_67.PlayBrokenShiledAnim = true
     end
-    if r3_68 <= 0 and r0_68:IsMainPlayer() and r0_68.PlayBrokenShiledAnim then
-      r0_68.PlayBrokenShiledAnim = false
-      local r5_68 = DataMgr.SystemUI[UIConst.BattleBrokenShieldPCName]
-      if r5_68 then
-        local r6_68 = r5_68.Params.AnimName
-        if r6_68 ~= nil then
-          local r7_68 = UIManager(r0_68):PlayScreenEffectAnim(UIConst.LoadInConfig, UIConst.BattleBrokenShieldPCName, {
+    if r3_67 <= 0 and r0_67:IsMainPlayer() and r0_67.PlayBrokenShiledAnim then
+      r0_67.PlayBrokenShiledAnim = false
+      local r5_67 = DataMgr.SystemUI[UIConst.BattleBrokenShieldPCName]
+      if r5_67 then
+        local r6_67 = r5_67.Params.AnimName
+        if r6_67 ~= nil then
+          local r7_67 = UIManager(r0_67):PlayScreenEffectAnim(UIConst.LoadInConfig, UIConst.BattleBrokenShieldPCName, {
             {
-              AnimName = r6_68,
+              AnimName = r6_67,
               StartTime = 0,
               LoopNums = 1,
             }
           })
-          local r8_68 = r3_0.NowTime()
-          AudioManager(r0_68):PlayUISound(r7_68, "event:/ui/common/char_sheild_break", nil, nil)
-          if r0_68.PreHitSoundTime == nil or r8_68 - r0_68.PreHitSoundTime >= 30 then
-            r0_68.PreHitSoundTime = r8_68
-            local r9_68 = FPlayFMODSoundStruct()
-            r9_68.FMODEventPath, r9_68.SelectKey = AudioManager(r0_68):ContactPlayerStringPath(r0_68, "vo_be_hit_heavy")
-            r9_68.EventKey = "vo_be_hit_heavy"
-            r9_68.bStopWhenAttachedToDestoryed = true
-            r9_68.bPlayAs2D = true
-            local r10_68 = AudioManager(r0_68):PlayFMODSound_Sync(UE4.UAudioManager.SetObjectToFPlayFMODSoundStruct(r9_68, r0_68))
+          local r8_67 = r3_0.NowTime()
+          AudioManager(r0_67):PlayUISound(r7_67, "event:/ui/common/char_sheild_break", nil, nil)
+          if r0_67.PreHitSoundTime == nil or r8_67 - r0_67.PreHitSoundTime >= 30 then
+            r0_67.PreHitSoundTime = r8_67
+            local r9_67 = FPlayFMODSoundStruct()
+            r9_67.FMODEventPath, r9_67.SelectKey = AudioManager(r0_67):ContactPlayerStringPath(r0_67, "vo_be_hit_heavy")
+            r9_67.EventKey = "vo_be_hit_heavy"
+            r9_67.bStopWhenAttachedToDestoryed = true
+            r9_67.bPlayAs2D = true
+            local r10_67 = AudioManager(r0_67):PlayFMODSound_Sync(UE4.UAudioManager.SetObjectToFPlayFMODSoundStruct(r9_67, r0_67))
           end
         end
       end
     end
   end
 end
-function r11_0.SkillEnd(r0_69, r1_69, r2_69)
-  -- line: [1207, 1217] id: 69
-  if not r2_69 or r2_69 == 0 then
+function r11_0.SkillEnd(r0_68, r1_68, r2_68)
+  -- line: [1194, 1204] id: 68
+  if not r2_68 or r2_68 == 0 then
     return 
   end
-  if not r0_69:GetSkill(r2_69) then
+  if not r0_68:GetSkill(r2_68) then
     return 
   end
-  r0_69.Super.SkillEnd(r1_69, r2_69)
-  r0_69:SetRotationRate("OnGround")
+  r0_68.Super.SkillEnd(r1_68, r2_68)
+  r0_68:SetRotationRate("OnGround")
 end
-function r11_0.ResetWeaponHandDelay(r0_70)
-  -- line: [1219, 1225] id: 70
-  if not r0_70.KeepWeaponOnHand then
+function r11_0.ResetWeaponHandDelay(r0_69)
+  -- line: [1206, 1212] id: 69
+  if not r0_69.KeepWeaponOnHand then
     return 
   end
-  r0_70.KeepWeaponOnHand = false
-  r0_70:RemoveTimer("KeepWeaponDelay")
+  r0_69.KeepWeaponOnHand = false
+  r0_69:RemoveTimer("KeepWeaponDelay")
 end
-function r11_0.InitPlayerUseSkillTimes_Internal(r0_71)
-  -- line: [1291, 1303] id: 71
+function r11_0.InitPlayerUseSkillTimes_Internal(r0_70)
+  -- line: [1278, 1290] id: 70
   if not GWorld:GetAvatar() then
     return 
   end
-  for r6_71, r7_71 in pairs(r1_0:Get("bNeedCountPlayerSkillUsedTimesList", true) and {}) do
-    r0_71.NeedCountPlayerSkillUsedTimesList:Add(r6_71, r7_71)
+  for r6_70, r7_70 in pairs(r1_0:Get("bNeedCountPlayerSkillUsedTimesList", true) and {}) do
+    r0_70.NeedCountPlayerSkillUsedTimesList:Add(r6_70, r7_70)
   end
-  -- close: r2_71
-  for r7_71, r8_71 in pairs(r1_0:Get("CountPlayerSkillUsedTimesList", true) and {}) do
-    r0_71.CountPlayerSkillUsedTimesList:Add(r7_71, r8_71)
+  -- close: r2_70
+  for r7_70, r8_70 in pairs(r1_0:Get("CountPlayerSkillUsedTimesList", true) and {}) do
+    r0_70.CountPlayerSkillUsedTimesList:Add(r7_70, r8_70)
   end
-  -- close: r3_71
+  -- close: r3_70
 end
-function r11_0.GetPlayerUseSkillTimesFromCache(r0_72, r1_72)
-  -- line: [1305, 1311] id: 72
+function r11_0.GetPlayerUseSkillTimesFromCache(r0_71, r1_71)
+  -- line: [1292, 1298] id: 71
   if not GWorld:GetAvatar() then
     return 
   end
-  return (r1_0:Get("CountPlayerSkillUsedTimesList", true) and {})[r1_72] and 0
+  return (r1_0:Get("CountPlayerSkillUsedTimesList", true) and {})[r1_71] and 0
 end
-function r11_0.SavePlayerSkillUsedTimes(r0_73)
-  -- line: [1340, 1346] id: 73
+function r11_0.SavePlayerSkillUsedTimes(r0_72)
+  -- line: [1327, 1333] id: 72
   if GWorld:GetAvatar() then
-    r1_0:Set("bNeedCountPlayerSkillUsedTimesList", r0_73.NeedCountPlayerSkillUsedTimesList:ToTable(), true)
-    r1_0:Set("CountPlayerSkillUsedTimesList", r0_73.CountPlayerSkillUsedTimesList:ToTable(), true)
+    r1_0:Set("bNeedCountPlayerSkillUsedTimesList", r0_72.NeedCountPlayerSkillUsedTimesList:ToTable(), true)
+    r1_0:Set("CountPlayerSkillUsedTimesList", r0_72.CountPlayerSkillUsedTimesList:ToTable(), true)
   end
 end
-function r11_0.PressFire(r0_74)
-  -- line: [1367, 1397] id: 74
-  if not r0_74:CharacterInTag("LandHeavy") and not r0_74:CheckCanSkillTypeCancel(UE.ESkillType.Shooting) and r0_74:CheckForbidInput() then
+function r11_0.PressFire(r0_73)
+  -- line: [1354, 1384] id: 73
+  if not r0_73:CharacterInTag("LandHeavy") and not r0_73:CheckCanSkillTypeCancel(UE.ESkillType.Shooting) and r0_73:CheckForbidInput() then
     return 
   end
-  if r0_74:CheckSkillOccupiedByProp(ESkillName.HeavyShooting) then
-    r0_74.PropHoldShootTimer = r0_74:AddTimer(0.2, function()
-      -- line: [1372, 1375] id: 75
-      r0_74.PropEffectComponent.CurrentPropEffect:OnHoldShoot()
-      r0_74.PropHoldShootTimer = nil
+  if r0_73:CheckSkillOccupiedByProp(ESkillName.HeavyShooting) then
+    r0_73.PropHoldShootTimer = r0_73:AddTimer(0.2, function()
+      -- line: [1359, 1362] id: 74
+      r0_73.PropEffectComponent.CurrentPropEffect:OnHoldShoot()
+      r0_73.PropHoldShootTimer = nil
     end, false, 0, "PropHoldShoot")
   end
-  if r0_74:CheckSkillOccupiedByProp(ESkillName.Fire) then
-    r0_74.PropEffectComponent.CurrentPropEffect:OnShootPressed()
+  if r0_73:CheckSkillOccupiedByProp(ESkillName.Fire) then
+    r0_73.PropEffectComponent.CurrentPropEffect:OnShootPressed()
     return 
   end
-  r0_74.bPressedFire = true
-  if r0_74:CharacterHasAnyTag("OverHeat") or r0_74:CharacterHasAnyTag("NoBullet") then
-    r0_74:TryFireOverLoad()
-    r0_74:RemoveInputCache("Fire")
+  r0_73.bPressedFire = true
+  if r0_73:CharacterHasAnyTag("OverHeat") or r0_73:CharacterHasAnyTag("NoBullet") then
+    r0_73:TryFireOverLoad()
+    r0_73:RemoveInputCache("Fire")
     return 
   end
-  local r1_74 = r0_74:GetSkillByType(UE.ESkillType.HeavyShooting)
-  if r1_74 and r1_74 ~= 0 and not r0_74.PropHoldShootTimer then
-    r0_74:RemoveInputCache("Fire")
-    r0_74.HoldShootingTimer = r0_74:AddTimer(0.2, r0_74.HoldShooting)
+  local r1_73 = r0_73:GetSkillByType(UE.ESkillType.HeavyShooting)
+  if r1_73 and r1_73 ~= 0 and not r0_73.PropHoldShootTimer then
+    r0_73:RemoveInputCache("Fire")
+    r0_73.HoldShootingTimer = r0_73:AddTimer(0.2, r0_73.HoldShooting)
     return 
   end
-  r0_74:StartFire("Fire")
-  if r0_74.NeedFireEvent then
+  r0_73:StartFire("Fire")
+  if r0_73.NeedFireEvent then
     EventManager:FireEvent(EventID.OnFirePressed)
   end
 end
-function r11_0.StartFire(r0_76, r1_76)
-  -- line: [1399, 1436] id: 76
+function r11_0.StartFire(r0_75, r1_75)
+  -- line: [1386, 1423] id: 75
   -- notice: unreachable block#6
-  if r0_76:CheckSkillOccupiedByProp(ESkillName.Fire) then
+  if r0_75:CheckSkillOccupiedByProp(ESkillName.Fire) then
     return false
   end
-  if r0_76:CheckSkillIsBan(ESkillName.Fire) then
-    if not r0_76.CurrentMasterBan then
-      local r2_76 = UIManager(r0_76):ShowUITip_BattleCommonTop(UIConst.Tip_CommonTop, GText("UI_RANGED_FORBIDDEN"))
+  if r0_75:CheckSkillIsBan(ESkillName.Fire) then
+    if not r0_75.CurrentMasterBan then
+      local r2_75 = UIManager(r0_75):ShowUITip_BattleCommonTop(UIConst.Tip_CommonTop, GText("UI_RANGED_FORBIDDEN"))
     else
-      local r2_76 = false
+      local r2_75 = false
     end
     return false
   end
-  if r0_76:CheckSkillInActive(ESkillName.Fire) then
+  if r0_75:CheckSkillInActive(ESkillName.Fire) then
     return false
   end
-  if not r0_76:CheckCanShoot(false) then
+  if not r0_75:CheckCanShoot(false) then
     return 
   end
-  print(_G.LogTag, "StartFireStartFireStartFire", r1_76)
-  if r0_76.PlayerAnimInstance then
-    r0_76.PlayerAnimInstance.bPressedFire = true
+  print(_G.LogTag, "StartFireStartFireStartFire", r1_75)
+  if r0_75.PlayerAnimInstance then
+    r0_75.PlayerAnimInstance.bPressedFire = true
   end
-  local r2_76 = nil
-  if r1_76 == "Fire" then
-    r2_76 = r0_76:GetSkillByType(UE.ESkillType.Shooting)
+  local r2_75 = nil
+  if r1_75 == "Fire" then
+    r2_75 = r0_75:GetSkillByType(UE.ESkillType.Shooting)
   else
-    r2_76 = r0_76:GetSkillByType(UE.ESkillType.HeavyShooting)
+    r2_75 = r0_75:GetSkillByType(UE.ESkillType.HeavyShooting)
   end
-  print(_G.LogTag, "StartFireStartFireStartFireStartFire", r2_76)
-  local r4_76 = nil	-- notice: implicit variable refs by block#[22]
-  if not r0_76:UseSkill(r2_76, 0) then
-    r4_76 = false
-    return r4_76
+  print(_G.LogTag, "StartFireStartFireStartFireStartFire", r2_75)
+  local r4_75 = nil	-- notice: implicit variable refs by block#[22]
+  if not r0_75:UseSkill(r2_75, 0) then
+    r4_75 = false
+    return r4_75
   end
-  r0_76.AllowEnterShoot = false
-  if r1_76 ~= "Fire" then
-    r4_76 = "HeavyShooting"
-    if not r4_76 then
+  r0_75.AllowEnterShoot = false
+  if r1_75 ~= "Fire" then
+    r4_75 = "HeavyShooting"
+    if not r4_75 then
       ::label_93::
-      r4_76 = "Fire"
+      r4_75 = "Fire"
     end
   else
     goto label_93	-- block#21 is visited secondly
   end
-  r0_76:RemoveInputCache(r4_76)
+  r0_75:RemoveInputCache(r4_75)
   return true
 end
-function r11_0.HoldShooting(r0_77)
-  -- line: [1438, 1446] id: 77
-  r0_77.bHoldingShooting = true
-  if r0_77:CharacterInTag("Slide") then
+function r11_0.HoldShooting(r0_76)
+  -- line: [1425, 1433] id: 76
+  r0_76.bHoldingShooting = true
+  if r0_76:CharacterInTag("Slide") then
     return 
   end
-  r0_77:SetInputCache("HeavyShooting")
-  r0_77:StartFire("HeavyShooting")
+  r0_76:SetInputCache("HeavyShooting")
+  r0_76:StartFire("HeavyShooting")
+  r0_76.HoldShootingTimer = nil
+end
+function r11_0.RemoveHoldShootingTimer(r0_77)
+  -- line: [1508, 1511] id: 77
+  r0_77:RemoveTimer(r0_77.HoldShootingTimer)
   r0_77.HoldShootingTimer = nil
 end
-function r11_0.RemoveHoldShootingTimer(r0_78)
-  -- line: [1521, 1524] id: 78
-  r0_78:RemoveTimer(r0_78.HoldShootingTimer)
-  r0_78.HoldShootingTimer = nil
-end
-function r11_0.ReleaseFire(r0_79)
-  -- line: [1526, 1543] id: 79
-  if r0_79:CheckSkillOccupiedByProp(ESkillName.HeavyShooting) and r0_79.PropHoldShootTimer then
-    r0_79:RemoveTimer("PropHoldShoot")
-    r0_79.PropHoldShootTimer = nil
+function r11_0.ReleaseFire(r0_78)
+  -- line: [1513, 1530] id: 78
+  if r0_78:CheckSkillOccupiedByProp(ESkillName.HeavyShooting) and r0_78.PropHoldShootTimer then
+    r0_78:RemoveTimer("PropHoldShoot")
+    r0_78.PropHoldShootTimer = nil
   end
-  if r0_79:CheckSkillOccupiedByProp(ESkillName.Fire) then
-    r0_79.PropEffectComponent.CurrentPropEffect:OnShootReleased()
+  if r0_78:CheckSkillOccupiedByProp(ESkillName.Fire) then
+    r0_78.PropEffectComponent.CurrentPropEffect:OnShootReleased()
     return 
   end
-  if not r0_79.bHoldingShooting and r0_79.HoldShootingTimer then
-    r0_79:SetInputCache("Fire")
-    r0_79:StartFire("Fire")
+  if not r0_78.bHoldingShooting and r0_78.HoldShootingTimer then
+    r0_78:SetInputCache("Fire")
+    r0_78:StartFire("Fire")
   end
-  r0_79:StopFire(false, true)
+  r0_78:StopFire(false, true)
 end
-function r11_0.StopFire(r0_80, r1_80, r2_80)
-  -- line: [1545, 1573] id: 80
-  if r0_80.NeedFireReleaseEvent then
+function r11_0.StopFire(r0_79, r1_79, r2_79)
+  -- line: [1532, 1560] id: 79
+  if r0_79.NeedFireReleaseEvent then
     EventManager:FireEvent(EventID.OnFireRelease)
   end
-  if r1_80 and not r0_80.bPressedFire then
+  if r1_79 and not r0_79.bPressedFire then
     return 
   end
-  if not r1_80 then
-    r0_80.bPressedFire = false
-    r0_80.bHoldingShooting = false
+  if not r1_79 then
+    r0_79.bPressedFire = false
+    r0_79.bHoldingShooting = false
   end
-  r0_80:RemoveHoldShootingTimer()
-  if r0_80.PlayerAnimInstance then
-    r0_80.PlayerAnimInstance.bPressedFire = false
+  r0_79:RemoveHoldShootingTimer()
+  if r0_79.PlayerAnimInstance then
+    r0_79.PlayerAnimInstance.bPressedFire = false
   end
-  if r2_80 then
+  if r2_79 then
     return 
   end
-  r0_80.ResetedWhenShoot = false
-  if r0_80.PlayerAnimInstance then
-    if r1_80 then
-      r0_80.PlayerAnimInstance.StartShoot = false
-      r0_80:DisableReloadWithoutShoot()
-      r0_80:ShouldEnableHandIk()
+  r0_79.ResetedWhenShoot = false
+  if r0_79.PlayerAnimInstance then
+    if r1_79 then
+      r0_79.PlayerAnimInstance.StartShoot = false
+      r0_79:DisableReloadWithoutShoot()
+      r0_79:ShouldEnableHandIk()
     end
-    r0_80.PlayerAnimInstance.StopShoot = false
-    r0_80.PlayerAnimInstance.EnableAim = UE4.UKismetMathLibrary.Clamp(r0_80.PlayerAnimInstance.EnableAim + -1, 0, 1)
+    r0_79.PlayerAnimInstance.StopShoot = false
+    r0_79.PlayerAnimInstance.EnableAim = UE4.UKismetMathLibrary.Clamp(r0_79.PlayerAnimInstance.EnableAim + -1, 0, 1)
   end
 end
-function r11_0.AnimIdleStart(r0_81)
-  -- line: [1600, 1605] id: 81
-  if r0_81:CheckShouldEnterNormalIdle() then
-    r0_81.PlayerAnimInstance:AnimNotify_IdleStartNew()
+function r11_0.AnimIdleStart(r0_80)
+  -- line: [1587, 1592] id: 80
+  if r0_80:CheckShouldEnterNormalIdle() then
+    r0_80.PlayerAnimInstance:AnimNotify_IdleStartNew()
   end
+  r0_80:TryEnterTalk()
+end
+function r11_0.EnterCrouchTag(r0_81)
+  -- line: [1594, 1597] id: 81
   r0_81:TryEnterTalk()
 end
-function r11_0.EnterCrouchTag(r0_82)
-  -- line: [1607, 1610] id: 82
-  r0_82:TryEnterTalk()
-end
-function r11_0.CheckShouldEnterNormalIdle(r0_83)
-  -- line: [1612, 1627] id: 83
-  if not r0_83.PlayerAnimInstance then
+function r11_0.CheckShouldEnterNormalIdle(r0_82)
+  -- line: [1599, 1614] id: 82
+  if not r0_82.PlayerAnimInstance then
     return false
   end
-  if not r0_83.BuffManager then
+  if not r0_82.BuffManager then
     return true
   end
-  local r1_83 = r0_83.BuffManager.CurrentIdleTag
-  if r1_83 and r1_83 ~= "0" then
+  local r1_82 = r0_82.BuffManager.CurrentIdleTag
+  if r1_82 and r1_82 ~= "0" then
     return false
   end
   return true
 end
-function r11_0.EnterSkillTag(r0_84)
-  -- line: [1639, 1647] id: 84
-  r0_84.PreSkillId = r0_84.CurrentSkillId
-  if r0_84:IsAnimCrouch() and r0_84.CurrentSkillId == r0_84:GetSkillByType(UE.ESkillType.SlideAttack) then
+function r11_0.EnterSkillTag(r0_83)
+  -- line: [1626, 1634] id: 83
+  r0_83.PreSkillId = r0_83.CurrentSkillId
+  if r0_83:IsAnimCrouch() and r0_83.CurrentSkillId == r0_83:GetSkillByType(UE.ESkillType.SlideAttack) then
     return 
   end
-  r0_84:ResetCapSize()
+  r0_83:ResetCapSize()
 end
-function r11_0.LeaveSkillTag(r0_85)
-  -- line: [1649, 1651] id: 85
-  r0_85:EnsureCondemnMonsterRecoverIdle()
+function r11_0.LeaveSkillTag(r0_84)
+  -- line: [1636, 1638] id: 84
+  r0_84:EnsureCondemnMonsterRecoverIdle()
 end
-function r11_0.EnsureCondemnMonsterRecoverIdle(r0_86)
-  -- line: [1653, 1668] id: 86
-  if not IsAuthority(r0_86) or not r0_86.PreSkillId then
+function r11_0.EnsureCondemnMonsterRecoverIdle(r0_85)
+  -- line: [1640, 1655] id: 85
+  if not IsAuthority(r0_85) or not r0_85.PreSkillId then
     return 
   end
-  local r1_86 = r0_86:GetSkill(r0_86.PreSkillId)
-  if not r1_86 then
+  local r1_85 = r0_85:GetSkill(r0_85.PreSkillId)
+  if not r1_85 then
     return 
   end
-  local r2_86 = r1_86:GetSkillType()
-  if r2_86 and r2_86 == ESkillType.Condemn and r0_86.CondemnMonsterEid then
-    local r3_86 = Battle(r0_86):GetEntity(r0_86.CondemnMonsterEid)
-    if r3_86 and r3_86:IsCantLeaveDefeated() then
-      r3_86:DefeatedRecoverToIdle(true)
+  local r2_85 = r1_85:GetSkillType()
+  if r2_85 and r2_85 == ESkillType.Condemn and r0_85.CondemnMonsterEid then
+    local r3_85 = Battle(r0_85):GetEntity(r0_85.CondemnMonsterEid)
+    if r3_85 and r3_85:IsCantLeaveDefeated() then
+      r3_85:DefeatedRecoverToIdle(true)
     end
   end
 end
-function r11_0.EnterBulletJumpTag(r0_87)
-  -- line: [1670, 1686] id: 87
-  Battle(r0_87):TriggerBattleEvent(BattleEventName.EnterBulletJump, r0_87)
+function r11_0.EnterBulletJumpTag(r0_86)
+  -- line: [1657, 1673] id: 86
+  Battle(r0_86):TriggerBattleEvent(BattleEventName.EnterBulletJump, r0_86)
 end
-function r11_0.LeaveBulletJumpTag(r0_88, r1_88)
-  -- line: [1688, 1691] id: 88
-  Battle(r0_88):TriggerBattleEvent(BattleEventName.QuitBulletJump, r0_88)
-  r0_88:SetPushEnemyInfo("BulletJump", false)
+function r11_0.LeaveBulletJumpTag(r0_87, r1_87)
+  -- line: [1675, 1678] id: 87
+  Battle(r0_87):TriggerBattleEvent(BattleEventName.QuitBulletJump, r0_87)
+  r0_87:SetPushEnemyInfo("BulletJump", false)
 end
-function r11_0.CheckKeepBoneHit(r0_89)
-  -- line: [1711, 1720] id: 89
-  local r1_89 = r0_89.PlayerAnimInstance:GetCurrentStateNameByStateMachineName("Movement")
-  if r1_89 ~= "Idle" and r1_89 ~= "Run" then
-    r0_89.PlayerAnimInstance.InBoneHit = false
-    if r0_89.LuaTimerHandles.BoneHit ~= nil then
-      r0_89:RemoveTimer(r0_89.LuaTimerHandles.BoneHit)
-      r0_89.LuaTimerHandles.BoneHit = nil
+function r11_0.CheckKeepBoneHit(r0_88)
+  -- line: [1698, 1707] id: 88
+  local r1_88 = r0_88.PlayerAnimInstance:GetCurrentStateNameByStateMachineName("Movement")
+  if r1_88 ~= "Idle" and r1_88 ~= "Run" then
+    r0_88.PlayerAnimInstance.InBoneHit = false
+    if r0_88.LuaTimerHandles.BoneHit ~= nil then
+      r0_88:RemoveTimer(r0_88.LuaTimerHandles.BoneHit)
+      r0_88.LuaTimerHandles.BoneHit = nil
     end
   end
 end
-function r11_0.ForbidRenderMainCamera(r0_90)
-  -- line: [1722, 1728] id: 90
-  r0_90.CharCameraComponent:SetOrthoNearClipPlane(100000)
-  r0_90.CharCameraComponent:SetOrthoFarClipPlane(100001)
-  r0_90.CharCameraComponent:SetOrthoWidth(1)
-  r0_90.CharCameraComponent:SetProjectionMode(1)
+function r11_0.ForbidRenderMainCamera(r0_89)
+  -- line: [1709, 1715] id: 89
+  r0_89.CharCameraComponent:SetOrthoNearClipPlane(100000)
+  r0_89.CharCameraComponent:SetOrthoFarClipPlane(100001)
+  r0_89.CharCameraComponent:SetOrthoWidth(1)
+  r0_89.CharCameraComponent:SetProjectionMode(1)
 end
-function r11_0.AllowRenderMainCamera(r0_91)
-  -- line: [1730, 1732] id: 91
-  r0_91.CharCameraComponent:SetProjectionMode(0)
+function r11_0.AllowRenderMainCamera(r0_90)
+  -- line: [1717, 1719] id: 90
+  r0_90.CharCameraComponent:SetProjectionMode(0)
 end
-function r11_0.CheckNeedFootprint(r0_92)
-  -- line: [1829, 1849] id: 92
-  if r2_0.GetDeviceTypeByPlatformName(r0_92) == "Mobile" then
+function r11_0.CheckNeedFootprint(r0_91)
+  -- line: [1816, 1836] id: 91
+  if r2_0.GetDeviceTypeByPlatformName(r0_91) == "Mobile" then
     return false
   end
-  if IsStandAlone(r0_92) or r9_0.IsAutonomousProxy(r0_92) then
-    local r1_92 = GWorld:GetAvatar()
-    if r1_92 then
-      if r1_92:CheckCurrentSubRegion() == true then
+  if IsStandAlone(r0_91) or r9_0.IsAutonomousProxy(r0_91) then
+    local r1_91 = GWorld:GetAvatar()
+    if r1_91 then
+      if r1_91:CheckCurrentSubRegion() == true then
         print("need foot print")
         return true
       end
@@ -1275,1376 +1266,1376 @@ function r11_0.CheckNeedFootprint(r0_92)
   print("not need foot print")
   return false
 end
-function r11_0.IsOpenNormalAim(r0_93)
-  -- line: [1851, 1860] id: 93
-  if not IsValid(r0_93.RangedWeapon) then
+function r11_0.IsOpenNormalAim(r0_92)
+  -- line: [1838, 1847] id: 92
+  if not IsValid(r0_92.RangedWeapon) then
     return false
   end
-  local r1_93 = r0_93:GetWeaponAimLockStyle()
-  if r1_93 and r1_93 == "FieldAim" then
+  local r1_92 = r0_92:GetWeaponAimLockStyle()
+  if r1_92 and r1_92 == "FieldAim" then
     return true
   end
-  local r2_93 = r0_93.ChooseTargetFilter
-  if r2_93 ~= nil then
-    r2_93 = r0_93.LockTargetFilter ~= nil
+  local r2_92 = r0_92.ChooseTargetFilter
+  if r2_92 ~= nil then
+    r2_92 = r0_92.LockTargetFilter ~= nil
   else
     goto label_21	-- block#7 is visited secondly
   end
-  return r2_93
+  return r2_92
 end
-function r11_0.HoldToRecovery(r0_94)
-  -- line: [1868, 1870] id: 94
-  Battle(r0_94):Recovery(r0_94.Eid)
+function r11_0.HoldToRecovery(r0_93)
+  -- line: [1855, 1857] id: 93
+  Battle(r0_93):Recovery(r0_93.Eid)
 end
-function r11_0.CommonRecoveryImpl(r0_95)
-  -- line: [1872, 1879] id: 95
-  r0_95.Super.CommonRecoveryImpl(r0_95)
+function r11_0.CommonRecoveryImpl(r0_94)
+  -- line: [1859, 1866] id: 94
+  r0_94.Super.CommonRecoveryImpl(r0_94)
+  if IsClient(r0_94) or IsStandAlone(r0_94) then
+    r0_94:ResetForbidTag("Battle")
+    r0_94:RefreshClientSkillLogicComponents()
+    r0_94:OnRecoverDissolve()
+  end
+end
+function r11_0.Recovery(r0_95, ...)
+  -- line: [1868, 1876] id: 95
+  r11_0.Super.Recovery(r0_95, ...)
+  if r0_95:IsInRideMove() then
+    r0_95:DisableBattleMount(true)
+  end
   if IsClient(r0_95) or IsStandAlone(r0_95) then
-    r0_95:ResetForbidTag("Battle")
-    r0_95:RefreshClientSkillLogicComponents()
-    r0_95:OnRecoverDissolve()
+    r0_95:UseSkill(r0_0.PlayerRecoverySkill, 0)
   end
 end
-function r11_0.Recovery(r0_96, ...)
-  -- line: [1881, 1889] id: 96
-  r11_0.Super.Recovery(r0_96, ...)
-  if r0_96:IsInRideMove() then
-    r0_96:DisableBattleMount(true)
-  end
-  if IsClient(r0_96) or IsStandAlone(r0_96) then
-    r0_96:UseSkill(r0_0.PlayerRecoverySkill, 0)
-  end
-end
-function r11_0.OnRealEnterDying(r0_97)
-  -- line: [1891, 1901] id: 97
-  r0_97.Super.OnRealEnterDying(r0_97)
-  if not IsDedicatedServer(r0_97) and r0_97:IsMainPlayer() then
-    r0_97:ShowPlayerDeadUI()
-    r0_97:TryHideAllSkillUI()
-    if r0_97.TeammateUI then
-      r0_97.TeammateUI:OnDead()
+function r11_0.OnRealEnterDying(r0_96)
+  -- line: [1878, 1888] id: 96
+  r0_96.Super.OnRealEnterDying(r0_96)
+  if not IsDedicatedServer(r0_96) and r0_96:IsMainPlayer() then
+    r0_96:ShowPlayerDeadUI()
+    r0_96:TryHideAllSkillUI()
+    if r0_96.TeammateUI then
+      r0_96.TeammateUI:OnDead()
     end
   end
 end
-function r11_0.OnRealDie(r0_98)
-  -- line: [1904, 1911] id: 98
-  DebugPrint("Tianyi@ Player real die, Eid = " .. r0_98.Eid)
-  if IsAuthority(r0_98) then
-    UE4.UGameplayStatics.GetGameMode(r0_98):DungeonFinish_OnPlayerRealDead({
-      r0_98:GetController().AvatarEidStr
+function r11_0.OnRealDie(r0_97)
+  -- line: [1891, 1898] id: 97
+  DebugPrint("Tianyi@ Player real die, Eid = " .. r0_97.Eid)
+  if IsAuthority(r0_97) then
+    UE4.UGameplayStatics.GetGameMode(r0_97):DungeonFinish_OnPlayerRealDead({
+      r0_97:GetController().AvatarEidStr
     })
   end
 end
-function r11_0.OnLanded(r0_99)
-  -- line: [1914, 1928] id: 99
-  if r0_99:IsExistTimer("PlayDeadMontage") then
-    r0_99:RemoveTimer("PlayDeadMontage")
-    r0_99:PlayHitMontage("Die")
+function r11_0.OnLanded(r0_98)
+  -- line: [1901, 1915] id: 98
+  if r0_98:IsExistTimer("PlayDeadMontage") then
+    r0_98:RemoveTimer("PlayDeadMontage")
+    r0_98:PlayHitMontage("Die")
   end
-  if not r0_99:CharacterInTag("Shooting") and r0_99.PlayerAnimInstance and r0_99.PlayerAnimInstance.StartShoot then
-    r0_99.PlayerAnimInstance.StartShoot = false
-    r0_99.PlayerAnimInstance.FullBody = true
-    r0_99:ShouldEnableHandIk()
+  if not r0_98:CharacterInTag("Shooting") and r0_98.PlayerAnimInstance and r0_98.PlayerAnimInstance.StartShoot then
+    r0_98.PlayerAnimInstance.StartShoot = false
+    r0_98.PlayerAnimInstance.FullBody = true
+    r0_98:ShouldEnableHandIk()
   end
-  if r0_99:CharacterInTag("GrabHit") then
-    r0_99:OnGrabHitLanded()
+  if r0_98:CharacterInTag("GrabHit") then
+    r0_98:OnGrabHitLanded()
   end
 end
-function r11_0.EnterDeadTag(r0_100)
-  -- line: [1930, 1938] id: 100
-  r0_100:AddForbidTag("Battle")
-  r0_100:TrackDeadInfo()
+function r11_0.EnterDeadTag(r0_99)
+  -- line: [1917, 1925] id: 99
+  r0_99:AddForbidTag("Battle")
+  r0_99:TrackDeadInfo()
+  local r1_99 = r0_99:GetBattlePet()
+  if not r1_99 then
+    return 
+  end
+  r1_99:HideBattlePet("Dead", true)
+end
+function r11_0.LeaveDeadTag(r0_100)
+  -- line: [1927, 1933] id: 100
   local r1_100 = r0_100:GetBattlePet()
   if not r1_100 then
     return 
   end
-  r1_100:HideBattlePet("Dead", true)
+  r1_100:HideBattlePet("Dead", false)
 end
-function r11_0.LeaveDeadTag(r0_101)
-  -- line: [1940, 1946] id: 101
-  local r1_101 = r0_101:GetBattlePet()
-  if not r1_101 then
-    return 
-  end
-  r1_101:HideBattlePet("Dead", false)
+function r11_0.EnterRecoveryTag(r0_101)
+  -- line: [1935, 1937] id: 101
+  r0_101:TrackRecoverInfo()
 end
-function r11_0.EnterRecoveryTag(r0_102)
-  -- line: [1948, 1950] id: 102
-  r0_102:TrackRecoverInfo()
-end
-function r11_0.GetLogMask(r0_103)
-  -- line: [1952, 1954] id: 103
+function r11_0.GetLogMask(r0_102)
+  -- line: [1939, 1941] id: 102
   return _G.LogTag
 end
+function r11_0.SetLogMask(r0_103, r1_103)
+  -- line: [1943, 1946] id: 103
+  print("LogInfo", r1_103)
+  _G.LogTag = r1_103
+end
 function r11_0.SetLogMask(r0_104, r1_104)
-  -- line: [1956, 1959] id: 104
+  -- line: [1948, 1951] id: 104
   print("LogInfo", r1_104)
   _G.LogTag = r1_104
 end
-function r11_0.SetLogMask(r0_105, r1_105)
-  -- line: [1961, 1964] id: 105
-  print("LogInfo", r1_105)
-  _G.LogTag = r1_105
-end
-function r11_0.GetLogMask(r0_106)
-  -- line: [1966, 1968] id: 106
+function r11_0.GetLogMask(r0_105)
+  -- line: [1953, 1955] id: 105
   return _G.LogTag
 end
-function r11_0.ReceiveSound(r0_107, r1_107, r2_107)
-  -- line: [1978, 1980] id: 107
-  r0_107.Overridden.ReceiveSound(r0_107, r1_107, r2_107)
+function r11_0.ReceiveSound(r0_106, r1_106, r2_106)
+  -- line: [1965, 1967] id: 106
+  r0_106.Overridden.ReceiveSound(r0_106, r1_106, r2_106)
 end
-function r11_0.GetCharSpringArmWorldResultLoc(r0_108)
-  -- line: [1986, 1988] id: 108
-  return r0_108.CharSpringArmComponent.bWorldResultLoc
+function r11_0.GetCharSpringArmWorldResultLoc(r0_107)
+  -- line: [1973, 1975] id: 107
+  return r0_107.CharSpringArmComponent.bWorldResultLoc
 end
-function r11_0.GetNickName(r0_109)
-  -- line: [2006, 2015] id: 109
-  local r1_109 = GWorld:GetAvatar()
-  if not r1_109 then
+function r11_0.GetNickName(r0_108)
+  -- line: [1993, 2002] id: 108
+  local r1_108 = GWorld:GetAvatar()
+  if not r1_108 then
     return "夜航主角名"
   end
   if GWorld:IsStandAlone() then
-    return r1_109.Nickname
+    return r1_108.Nickname
   end
-  return r0_109.PlayerState.PlayerName
+  return r0_108.PlayerState.PlayerName
 end
-function r11_0.CheckSkillInActive(r0_110, r1_110)
-  -- line: [2017, 2023] id: 110
-  local r2_110 = r0_110:GetController()
-  if not r2_110 or not r2_110.CheckSkillInActive then
+function r11_0.CheckSkillInActive(r0_109, r1_109)
+  -- line: [2004, 2010] id: 109
+  local r2_109 = r0_109:GetController()
+  if not r2_109 or not r2_109.CheckSkillInActive then
     return false
   end
-  return r2_110:CheckSkillInActive(r1_110)
+  return r2_109:CheckSkillInActive(r1_109)
 end
-function r11_0.PickupFunctionDispatcher(r0_111, r1_111, r2_111, r3_111, r4_111, r5_111, r6_111)
-  -- line: [2034, 2066] id: 111
-  local r7_111 = Battle(r0_111)
-  local r8_111 = r7_111:GetEntity(r4_111)
-  local r9_111 = DataMgr.Drop[r1_111]
-  if r9_111 then
-    r7_111:TriggerBattleEvent(BattleEventName.OnGetDrop, r0_111, r1_111)
-    if r9_111.UseEffectType then
-      local r10_111 = "PickupTo" .. r9_111.UseEffectType
-      if IsDedicatedServer(r0_111) then
-        if rawget(r0_0.SavePickupType, r9_111.UseEffectType) and not GWorld.bDebugServer then
-          local r11_111 = GWorld:GetDSEntity()
-          if r11_111 then
-            r11_111:PickUpToSave(r10_111, r2_111, r9_111, r1_111, r3_111, r4_111, r6_111)
+function r11_0.PickupFunctionDispatcher(r0_110, r1_110, r2_110, r3_110, r4_110, r5_110, r6_110)
+  -- line: [2021, 2053] id: 110
+  local r7_110 = Battle(r0_110)
+  local r8_110 = r7_110:GetEntity(r4_110)
+  local r9_110 = DataMgr.Drop[r1_110]
+  if r9_110 then
+    r7_110:TriggerBattleEvent(BattleEventName.OnGetDrop, r0_110, r1_110)
+    if r9_110.UseEffectType then
+      local r10_110 = "PickupTo" .. r9_110.UseEffectType
+      if IsDedicatedServer(r0_110) then
+        if rawget(r0_0.SavePickupType, r9_110.UseEffectType) and not GWorld.bDebugServer then
+          local r11_110 = GWorld:GetDSEntity()
+          if r11_110 then
+            r11_110:PickUpToSave(r10_110, r2_110, r9_110, r1_110, r3_110, r4_110, r6_110)
           end
-        elseif ItemUtils:IsServerCreate(r9_111.DropId) and r9_111.IsPickShare then
-          UE4.UGameplayStatics.GetGameMode(r0_111):PickUpForAllPlayers(r10_111, r2_111, r9_111.UseParam, r1_111, r3_111, r5_111, r6_111)
+        elseif ItemUtils:IsServerCreate(r9_110.DropId) and r9_110.IsPickShare then
+          UE4.UGameplayStatics.GetGameMode(r0_110):PickUpForAllPlayers(r10_110, r2_110, r9_110.UseParam, r1_110, r3_110, r5_110, r6_110)
         else
-          r8_111[r10_111](r8_111, r2_111, r9_111.UseParam, r1_111, r3_111, r5_111, r6_111)
+          r8_110[r10_110](r8_110, r2_110, r9_110.UseParam, r1_110, r3_110, r5_110, r6_110)
         end
       else
-        r8_111[r10_111](r8_111, r2_111, r9_111.UseParam, r1_111, r3_111, r5_111, r6_111)
+        r8_110[r10_110](r8_110, r2_110, r9_110.UseParam, r1_110, r3_110, r5_110, r6_110)
       end
     end
   end
 end
-function r11_0.SetDefaultWeapon(r0_112)
-  -- line: [2069, 2092] id: 112
-  if not IsAuthority(r0_112) then
+function r11_0.SetDefaultWeapon(r0_111)
+  -- line: [2056, 2079] id: 111
+  if not IsAuthority(r0_111) then
     return 
   end
-  local r1_112 = GWorld:GetAvatar()
-  local r2_112 = nil
-  for r7_112, r8_112 in pairs(r0_112.Weapons) do
-    for r13_112, r14_112 in pairs(DataMgr.BattleWeapon[r7_112].WeaponTag) do
-      if r14_112 == "Ultra" then
-        r2_112 = r7_112
+  local r1_111 = GWorld:GetAvatar()
+  local r2_111 = nil
+  for r7_111, r8_111 in pairs(r0_111.Weapons) do
+    for r13_111, r14_111 in pairs(DataMgr.BattleWeapon[r7_111].WeaponTag) do
+      if r14_111 == "Ultra" then
+        r2_111 = r7_111
       end
     end
-    -- close: r9_112
+    -- close: r9_111
+  end
+  -- close: r3_111
+  r0_111:ClearWeapon()
+  r0_111:AddWeapon(r1_111.Weapons[r1_111.MeleeWeapon].WeaponId):UnBindWeaponFromHand()
+  local r4_111 = r0_111:AddWeapon(r1_111.Weapons[r1_111.RangedWeapon].WeaponId)
+  r4_111:ShouldHideWeapon(true, true)
+  r4_111:UnBindWeaponFromHand()
+  if r2_111 then
+    r0_111:AddWeapon(r2_111)
+  end
+  r0_111:ChangeUsingWeaponByType("Melee")
+end
+function r11_0.HideMonsterCapsule(r0_112, r1_112)
+  -- line: [2081, 2089] id: 112
+  for r7_112, r8_112 in pairs(Battle(r0_112):GetAllEntities()) do
+    if r8_112 and r8_112.IsMonster and r8_112:IsMonster() then
+      r8_112.CapsuleComponent:SetHiddenInGame(r1_112, false)
+    end
   end
   -- close: r3_112
-  r0_112:ClearWeapon()
-  r0_112:AddWeapon(r1_112.Weapons[r1_112.MeleeWeapon].WeaponId):UnBindWeaponFromHand()
-  local r4_112 = r0_112:AddWeapon(r1_112.Weapons[r1_112.RangedWeapon].WeaponId)
-  r4_112:ShouldHideWeapon(true, true)
-  r4_112:UnBindWeaponFromHand()
-  if r2_112 then
-    r0_112:AddWeapon(r2_112)
-  end
-  r0_112:ChangeUsingWeaponByType("Melee")
 end
-function r11_0.HideMonsterCapsule(r0_113, r1_113)
-  -- line: [2094, 2102] id: 113
-  for r7_113, r8_113 in pairs(Battle(r0_113):GetAllEntities()) do
-    if r8_113 and r8_113.IsMonster and r8_113:IsMonster() then
-      r8_113.CapsuleComponent:SetHiddenInGame(r1_113, false)
-    end
-  end
-  -- close: r3_113
-end
-function r11_0.ServerInteractiveMechanism(r0_114, r1_114, r2_114, r3_114, r4_114, r5_114, r6_114)
-  -- line: [2119, 2150] id: 114
-  print(_G.LogTag, "lxz ServerInteractiveMechanism", r1_114, r2_114)
-  local r7_114 = Battle(r0_114):GetEntity(r1_114)
-  if r5_114 then
-    if r7_114.CheckMontageInteractive then
-      r0_114:SetMechanismEid(r1_114, r7_114:CheckMontageInteractive())
+function r11_0.ServerInteractiveMechanism(r0_113, r1_113, r2_113, r3_113, r4_113, r5_113, r6_113)
+  -- line: [2106, 2137] id: 113
+  print(_G.LogTag, "lxz ServerInteractiveMechanism", r1_113, r2_113)
+  local r7_113 = Battle(r0_113):GetEntity(r1_113)
+  if r5_113 then
+    if r7_113.CheckMontageInteractive then
+      r0_113:SetMechanismEid(r1_113, r7_113:CheckMontageInteractive())
     else
-      r0_114:SetMechanismEid(r1_114, false)
+      r0_113:SetMechanismEid(r1_113, false)
     end
   end
-  local r8_114 = nil
-  if r7_114.CombatStateChangeComponent then
-    if r6_114 ~= -1 then
-      r7_114.RegionOnlineInteractiveMessage:Add(r0_114.Eid, r6_114)
+  local r8_113 = nil
+  if r7_113.CombatStateChangeComponent then
+    if r6_113 ~= -1 then
+      r7_113.RegionOnlineInteractiveMessage:Add(r0_113.Eid, r6_113)
     end
-    print(_G.LogTag, "lxz ServerInteractiveMechanism222", r2_114, r3_114)
-    r7_114:ChangeState("Interactive", r2_114, r3_114)
+    print(_G.LogTag, "lxz ServerInteractiveMechanism222", r2_113, r3_113)
+    r7_113:ChangeState("Interactive", r2_113, r3_113)
   else
-    if r7_114:CharacterInTag("Defeated") then
-      r7_114:Penalize(r2_114)
+    if r7_113:CharacterInTag("Defeated") then
+      r7_113:Penalize(r2_113)
     else
-      r7_114:OpenMechanism(r2_114)
+      r7_113:OpenMechanism(r2_113)
     end
-    if r7_114.InteractiveComponent then
-      r8_114 = r7_114.InteractiveComponent.InteractiveTag
+    if r7_113.InteractiveComponent then
+      r8_113 = r7_113.InteractiveComponent.InteractiveTag
     else
-      r8_114 = r7_114.InteractiveTag
+      r8_113 = r7_113.InteractiveTag
     end
-    r0_114:SetCharacterTag(r8_114)
+    r0_113:SetCharacterTag(r8_113)
   end
 end
-function r11_0.ServerDeInteractiveMechanism(r0_115, r1_115, r2_115, r3_115, r4_115, r5_115, r6_115, r7_115)
-  -- line: [2152, 2174] id: 115
-  print(_G.LogTag, "lxz ServerDeInteractiveMechanism", r2_115)
-  local r8_115 = Battle(r0_115):GetEntity(r1_115)
-  if not r8_115 or not r8_115.OpenMechanism then
+function r11_0.ServerDeInteractiveMechanism(r0_114, r1_114, r2_114, r3_114, r4_114, r5_114, r6_114, r7_114)
+  -- line: [2139, 2161] id: 114
+  print(_G.LogTag, "lxz ServerDeInteractiveMechanism", r2_114)
+  local r8_114 = Battle(r0_114):GetEntity(r1_114)
+  if not r8_114 or not r8_114.OpenMechanism then
     return 
   end
-  if r6_115 then
-    if r8_115.CheckMontageInteractive then
-      r0_115:SetMechanismEid(0, r8_115:CheckMontageInteractive())
+  if r6_114 then
+    if r8_114.CheckMontageInteractive then
+      r0_114:SetMechanismEid(0, r8_114:CheckMontageInteractive())
     else
-      r0_115:SetMechanismEid(0, false)
+      r0_114:SetMechanismEid(0, false)
     end
   end
-  if r4_115 == nil or r4_115 ~= r0_0.ForceEndInteractive then
-    print(_G.LogTag, "lxz ServerDeInteractiveMechanism2222", r2_115)
-    r8_115:CloseMechanism(r2_115, r3_115)
+  if r4_114 == nil or r4_114 ~= r0_0.ForceEndInteractive then
+    print(_G.LogTag, "lxz ServerDeInteractiveMechanism2222", r2_114)
+    r8_114:CloseMechanism(r2_114, r3_114)
   else
-    r8_115:ForceCloseMechanism(r2_115, r3_115)
+    r8_114:ForceCloseMechanism(r2_114, r3_114)
   end
-  if r7_115 ~= -1 then
-    r8_115.RegionOnlineInteractiveMessage:Remove(r0_115.Eid)
+  if r7_114 ~= -1 then
+    r8_114.RegionOnlineInteractiveMessage:Remove(r0_114.Eid)
   end
 end
-function r11_0.LeaveInteractiveTag(r0_116, r1_116)
-  -- line: [2175, 2185] id: 116
-  if r1_116 ~= "Idle" and r0_116.MechanismEid ~= 0 then
-    local r2_116 = Battle(r0_116):GetEntity(r0_116.MechanismEid)
-    if r2_116 then
-      local r3_116 = r2_116:GetComponentByClass(UChestInteractiveComponent:StaticClass())
-      if r3_116 then
-        r3_116:ForceEndInteractive(r0_116, true, r0_0.ForceEndInteractive)
+function r11_0.LeaveInteractiveTag(r0_115, r1_115)
+  -- line: [2162, 2172] id: 115
+  if r1_115 ~= "Idle" and r0_115.MechanismEid ~= 0 then
+    local r2_115 = Battle(r0_115):GetEntity(r0_115.MechanismEid)
+    if r2_115 then
+      local r3_115 = r2_115:GetComponentByClass(UChestInteractiveComponent:StaticClass())
+      if r3_115 then
+        r3_115:ForceEndInteractive(r0_115, true, r0_0.ForceEndInteractive)
       end
     end
   end
 end
-function r11_0.LeaveSeatingTag(r0_117, r1_117)
-  -- line: [2187, 2190] id: 117
-  r0_117:LeaveInteractiveTag(r1_117)
-  r0_117.CapsuleComponent:SetCollisionResponseToChannel(ECollisionChannel.ECC_WorldStatic, ECollisionResponse.ECR_Block)
+function r11_0.LeaveSeatingTag(r0_116, r1_116)
+  -- line: [2174, 2177] id: 116
+  r0_116:LeaveInteractiveTag(r1_116)
+  r0_116.CapsuleComponent:SetCollisionResponseToChannel(ECollisionChannel.ECC_WorldStatic, ECollisionResponse.ECR_Block)
 end
-function r11_0.ReceiveEndPlay(r0_118, r1_118)
-  -- line: [2192, 2210] id: 118
-  if r0_118.ArmoryHelper then
-    r0_118.ArmoryHelper:K2_DestroyActor()
+function r11_0.ReceiveEndPlay(r0_117, r1_117)
+  -- line: [2179, 2197] id: 117
+  if r0_117.ArmoryHelper then
+    r0_117.ArmoryHelper:K2_DestroyActor()
   end
-  r0_118:TryCloseAllSkillUI()
-  r0_118:RefreshTeamMemberInfo("ReceiveEndPlay")
-  EventManager:RemoveEvent(EventID.OnStartSkillFeature, r0_118)
-  EventManager:RemoveEvent(EventID.SetDefaultWeapon, r0_118)
-  EventManager:RemoveEvent(EventID.OnMainCharacterInitReady, r0_118)
-  EventManager:RemoveEvent(EventID.OnCharacterInitSuitRecover, r0_118)
-  EventManager:RemoveEvent(EventID.CloseLoading, r0_118)
-  EventManager:RemoveEvent(EventID.OnLevelDeliverBlackCurtainEnd, r0_118)
-  EventManager:RemoveEvent(EventID.OnRepBulletNum, r0_118)
-  EventManager:RemoveEvent(EventID.OnChangeNickName, r0_118)
-  EventManager:RemoveEvent(EventID.OnChangeTitle, r0_118)
-  r0_118:UnBindControllerChangedDelegate()
+  r0_117:TryCloseAllSkillUI()
+  r0_117:RefreshTeamMemberInfo("ReceiveEndPlay")
+  EventManager:RemoveEvent(EventID.OnStartSkillFeature, r0_117)
+  EventManager:RemoveEvent(EventID.SetDefaultWeapon, r0_117)
+  EventManager:RemoveEvent(EventID.OnMainCharacterInitReady, r0_117)
+  EventManager:RemoveEvent(EventID.OnCharacterInitSuitRecover, r0_117)
+  EventManager:RemoveEvent(EventID.CloseLoading, r0_117)
+  EventManager:RemoveEvent(EventID.OnLevelDeliverBlackCurtainEnd, r0_117)
+  EventManager:RemoveEvent(EventID.OnRepBulletNum, r0_117)
+  EventManager:RemoveEvent(EventID.OnChangeNickName, r0_117)
+  EventManager:RemoveEvent(EventID.OnChangeTitle, r0_117)
+  r0_117:UnBindControllerChangedDelegate()
 end
-function r11_0.UnBindControllerChangedDelegate(r0_119)
-  -- line: [2212, 2215] id: 119
-  UE4.UGameplayStatics.GetGameInstance(r0_119).OnPawnControllerChangedDelegates:Remove(r0_119, r0_119.OnPlayerControllerChanged)
+function r11_0.UnBindControllerChangedDelegate(r0_118)
+  -- line: [2199, 2202] id: 118
+  UE4.UGameplayStatics.GetGameInstance(r0_118).OnPawnControllerChangedDelegates:Remove(r0_118, r0_118.OnPlayerControllerChanged)
 end
-function r11_0.GetLastSafeLocation(r0_120)
-  -- line: [2248, 2250] id: 120
-  return r0_120.LastSafeLocation
+function r11_0.GetLastSafeLocation(r0_119)
+  -- line: [2235, 2237] id: 119
+  return r0_119.LastSafeLocation
 end
-function r11_0.SetBrushStaticMeshScalarParameter(r0_121, r1_121)
-  -- line: [2253, 2285] id: 121
-  if r0_121.IsGetBrushStaticMesh == nil then
-    r0_121.BrushStaticMesh = {}
-    r0_121.IsGetBrushStaticMesh = false
+function r11_0.SetBrushStaticMeshScalarParameter(r0_120, r1_120)
+  -- line: [2240, 2272] id: 120
+  if r0_120.IsGetBrushStaticMesh == nil then
+    r0_120.BrushStaticMesh = {}
+    r0_120.IsGetBrushStaticMesh = false
   end
-  if r0_121.IsGetBrushStaticMesh == false then
-    local r2_121 = r0_0.BrushStaticMesh
-    local r3_121 = TArray(AActor)
-    UE4.UGameplayStatics.GetAllActorsOfClass(r0_121, AStaticMeshActor, r3_121)
-    for r9_121, r10_121 in pairs(r3_121:ToTable()) do
-      if r10_121.StaticMeshComponent ~= nil and r10_121.StaticMeshComponent.StaticMesh ~= nil then
-        for r14_121 = 1, #r2_121, 1 do
-          if r10_121.StaticMeshComponent.StaticMesh:GetName() == r2_121[r14_121] then
-            table.insert(r0_121.BrushStaticMesh, r10_121.StaticMeshComponent)
+  if r0_120.IsGetBrushStaticMesh == false then
+    local r2_120 = r0_0.BrushStaticMesh
+    local r3_120 = TArray(AActor)
+    UE4.UGameplayStatics.GetAllActorsOfClass(r0_120, AStaticMeshActor, r3_120)
+    for r9_120, r10_120 in pairs(r3_120:ToTable()) do
+      if r10_120.StaticMeshComponent ~= nil and r10_120.StaticMeshComponent.StaticMesh ~= nil then
+        for r14_120 = 1, #r2_120, 1 do
+          if r10_120.StaticMeshComponent.StaticMesh:GetName() == r2_120[r14_120] then
+            table.insert(r0_120.BrushStaticMesh, r10_120.StaticMeshComponent)
           end
         end
       end
     end
-    -- close: r5_121
-    r0_121.IsGetBrushStaticMesh = true
+    -- close: r5_120
+    r0_120.IsGetBrushStaticMesh = true
   end
-  for r6_121, r7_121 in pairs(r0_121.BrushStaticMesh) do
-    local r8_121 = r7_121:CreateDynamicMaterialInstance(0)
-    if IsValid(r8_121) then
-      r8_121:SetScalarParameterValue("InteractiveScan", r1_121)
+  for r6_120, r7_120 in pairs(r0_120.BrushStaticMesh) do
+    local r8_120 = r7_120:CreateDynamicMaterialInstance(0)
+    if IsValid(r8_120) then
+      r8_120:SetScalarParameterValue("InteractiveScan", r1_120)
     end
-    local r9_121 = r7_121:CreateDynamicMaterialInstance(1)
-    if IsValid(r9_121) then
-      r9_121:SetScalarParameterValue("InteractiveScan", r1_121)
+    local r9_120 = r7_120:CreateDynamicMaterialInstance(1)
+    if IsValid(r9_120) then
+      r9_120:SetScalarParameterValue("InteractiveScan", r1_120)
     end
   end
-  -- close: r2_121
+  -- close: r2_120
 end
-function r11_0.AddDisableInputTag(r0_122, r1_122)
-  -- line: [2287, 2292] id: 122
-  r0_122.DisableInputTags:AddUnique(r1_122)
-  if r0_122.DisableInputTags:Length() > 0 and r0_122:GetController() and r0_122:GetController():IsPlayerController() then
-    r0_122:DisableInput(r0_122:GetController())
+function r11_0.AddDisableInputTag(r0_121, r1_121)
+  -- line: [2274, 2279] id: 121
+  r0_121.DisableInputTags:AddUnique(r1_121)
+  if r0_121.DisableInputTags:Length() > 0 and r0_121:GetController() and r0_121:GetController():IsPlayerController() then
+    r0_121:DisableInput(r0_121:GetController())
   end
 end
-function r11_0.RemoveDisableInputTag(r0_123, r1_123)
-  -- line: [2294, 2301] id: 123
-  if r0_123.DisableInputTags:Find(r1_123) then
-    r0_123.DisableInputTags:RemoveItem(r1_123)
+function r11_0.RemoveDisableInputTag(r0_122, r1_122)
+  -- line: [2281, 2288] id: 122
+  if r0_122.DisableInputTags:Find(r1_122) then
+    r0_122.DisableInputTags:RemoveItem(r1_122)
   end
-  if r0_123.DisableInputTags:Length() <= 0 and r0_123:GetController() and r0_123:GetController():IsPlayerController() then
-    r0_123:EnableInput(r0_123:GetController())
+  if r0_122.DisableInputTags:Length() <= 0 and r0_122:GetController() and r0_122:GetController():IsPlayerController() then
+    r0_122:EnableInput(r0_122:GetController())
   end
 end
-function r11_0.RemoveAllDisableInputTag(r0_124)
-  -- line: [2303, 2306] id: 124
-  r0_124.DisableInputTags:Clear()
-  r0_124:EnableInput(r0_124:GetController())
+function r11_0.RemoveAllDisableInputTag(r0_123)
+  -- line: [2290, 2293] id: 123
+  r0_123.DisableInputTags:Clear()
+  r0_123:EnableInput(r0_123:GetController())
 end
-function r11_0.EnableInput(r0_125, r1_125)
-  -- line: [2308, 2313] id: 125
-  if r0_125.DisableInputTags:Length() > 0 then
+function r11_0.EnableInput(r0_124, r1_124)
+  -- line: [2295, 2300] id: 124
+  if r0_124.DisableInputTags:Length() > 0 then
     return 
   end
-  r0_125.Overridden.EnableInput(r0_125, r1_125)
+  r0_124.Overridden.EnableInput(r0_124, r1_124)
 end
-function r11_0.SwitchBattleShortcutKeysHidden(r0_126)
-  -- line: [2379, 2384] id: 126
-  local r2_126 = not r1_0:Get("BattleShortcutHudKeysHidden", true)
-  r1_0:Set("BattleShortcutHudKeysHidden", r2_126, true)
-  UIManager(r0_126):SetBattleShortCutHudKeysHidden(r2_126)
+function r11_0.SwitchBattleShortcutKeysHidden(r0_125)
+  -- line: [2366, 2371] id: 125
+  local r2_125 = not r1_0:Get("BattleShortcutHudKeysHidden", true)
+  r1_0:Set("BattleShortcutHudKeysHidden", r2_125, true)
+  UIManager(r0_125):SetBattleShortCutHudKeysHidden(r2_125)
 end
-function r11_0.GetSafeRegionLocation(r0_127, r1_127)
-  -- line: [2386, 2403] id: 127
-  local r2_127 = {}
-  local r3_127 = GWorld:GetAvatar()
-  local r4_127 = r1_127 and r0_127:GetRecentSafeLocation()
-  local r5_127 = r0_127:CheckLocationValid(r4_127)
-  local r6_127 = r0_127:GetRegionId(r4_127)
-  if r4_127 ~= r0_0.ZeroVector and r6_127 ~= -1 and r5_127 then
-    r2_127.RegionId = r6_127
-    r2_127.Location = r4_127
-    r2_127.Rotation = r0_127:K2_GetActorRotation()
+function r11_0.GetSafeRegionLocation(r0_126, r1_126)
+  -- line: [2373, 2390] id: 126
+  local r2_126 = {}
+  local r3_126 = GWorld:GetAvatar()
+  local r4_126 = r1_126 and r0_126:GetRecentSafeLocation()
+  local r5_126 = r0_126:CheckLocationValid(r4_126)
+  local r6_126 = r0_126:GetRegionId(r4_126)
+  if r4_126 ~= r0_0.ZeroVector and r6_126 ~= -1 and r5_126 then
+    r2_126.RegionId = r6_126
+    r2_126.Location = r4_126
+    r2_126.Rotation = r0_126:K2_GetActorRotation()
   else
-    r2_127.RegionId = r3_127:GetLastRegionId()
-    r2_127.Location = r3_127.LastRegionData:GetLocation()
-    r2_127.Rotation = r3_127.LastRegionData:GetRotation()
+    r2_126.RegionId = r3_126:GetLastRegionId()
+    r2_126.Location = r3_126.LastRegionData:GetLocation()
+    r2_126.Rotation = r3_126.LastRegionData:GetRotation()
   end
-  return r2_127
+  return r2_126
 end
-function r11_0.ImmersionModel(r0_128)
-  -- line: [2405, 2431] id: 128
-  r0_128.Overridden.ImmersionModel(r0_128)
+function r11_0.ImmersionModel(r0_127)
+  -- line: [2392, 2418] id: 127
+  r0_127.Overridden.ImmersionModel(r0_127)
   r4_0.EnableShowBillboard = false
-  local r1_128 = UIManager(r0_128)
-  r1_128:HideAllComponentUI(r0_128.IsImmersionModel, r0_0.ImmersionModelHideTag)
-  local r2_128 = USubsystemBlueprintLibrary.GetWorldSubsystem(r0_128, UNpcHeadUISubsystem)
-  if r0_128.IsImmersionModel then
+  local r1_127 = UIManager(r0_127)
+  r1_127:HideAllComponentUI(r0_127.IsImmersionModel, r0_0.ImmersionModelHideTag)
+  local r2_127 = USubsystemBlueprintLibrary.GetWorldSubsystem(r0_127, UNpcHeadUISubsystem)
+  if r0_127.IsImmersionModel then
     require("EMLuaConst").IsHideJumpWord = true
-    r1_128:AddUIToStateTagsCluster(1, "ImmersionModel", true)
-    EventManager:AddEvent(EventID.OnAddWidgetComponent, r0_128, r0_128.OnAddWidgetComponent)
-    if r2_128 then
-      r2_128:HideAllNpcHeadUI(true, "ImmersionModel")
+    r1_127:AddUIToStateTagsCluster(1, "ImmersionModel", true)
+    EventManager:AddEvent(EventID.OnAddWidgetComponent, r0_127, r0_127.OnAddWidgetComponent)
+    if r2_127 then
+      r2_127:HideAllNpcHeadUI(true, "ImmersionModel")
     end
     MissionIndicatorManager:TriggerAllIndicatorVisible(false)
   else
     require("EMLuaConst").IsHideJumpWord = false
-    r1_128:AddUIToStateTagsCluster(1, "ImmersionModel")
-    EventManager:RemoveEvent(EventID.OnAddWidgetComponent, r0_128)
-    if r2_128 then
-      r2_128:HideAllNpcHeadUI(false, "ImmersionModel")
+    r1_127:AddUIToStateTagsCluster(1, "ImmersionModel")
+    EventManager:RemoveEvent(EventID.OnAddWidgetComponent, r0_127)
+    if r2_127 then
+      r2_127:HideAllNpcHeadUI(false, "ImmersionModel")
     end
     MissionIndicatorManager:TriggerAllIndicatorVisible(true)
   end
 end
-function r11_0.OnAddWidgetComponent(r0_129, r1_129)
-  -- line: [2433, 2441] id: 129
-  local r2_129 = r1_129.WidgetComponent
-  if r2_129 then
-    local r3_129 = r2_129:GetWidget()
-    if r3_129 then
-      r3_129:Hide(r0_0.ImmersionModelHideTag)
+function r11_0.OnAddWidgetComponent(r0_128, r1_128)
+  -- line: [2420, 2428] id: 128
+  local r2_128 = r1_128.WidgetComponent
+  if r2_128 then
+    local r3_128 = r2_128:GetWidget()
+    if r3_128 then
+      r3_128:Hide(r0_0.ImmersionModelHideTag)
     end
   end
 end
-function r11_0.UpdateBulletNumUI(r0_130)
-  -- line: [2443, 2472] id: 130
-  r0_130:AddDelayFrameFunc(function()
-    -- line: [2445, 2471] id: 131
-    if r0_130.TakeAimIndicator then
-      r0_130.TakeAimIndicator:UpdateAmmoBarProgress(true)
+function r11_0.UpdateBulletNumUI(r0_129)
+  -- line: [2430, 2459] id: 129
+  r0_129:AddDelayFrameFunc(function()
+    -- line: [2432, 2458] id: 130
+    if r0_129.TakeAimIndicator then
+      r0_129.TakeAimIndicator:UpdateAmmoBarProgress(true)
     end
-    local r0_131 = UIManager(r0_130)
-    if r0_131 then
-      if r0_130.UIModePlatform == "PC" then
-        local r1_131 = r0_131:GetUIObj("BattleMain")
-        if r1_131 ~= nil and r1_131.Char_Skill ~= nil and r1_131.Char_Skill.OnChargeWeaponBullet then
-          r1_131.Char_Skill:OnChargeWeaponBullet()
+    local r0_130 = UIManager(r0_129)
+    if r0_130 then
+      if r0_129.UIModePlatform == "PC" then
+        local r1_130 = r0_130:GetUIObj("BattleMain")
+        if r1_130 ~= nil and r1_130.Char_Skill ~= nil and r1_130.Char_Skill.OnChargeWeaponBullet then
+          r1_130.Char_Skill:OnChargeWeaponBullet()
         end
-      elseif r0_130.UIModePlatform == "Mobile" then
-        local r1_131 = r0_131:GetUIObj("BattleMain")
-        if r1_131 ~= nil and r1_131.Char_Skill ~= nil then
-          if r1_131.Char_Skill.Bullet.UpdatePlayerWeaponInfo then
-            r1_131.Char_Skill.Bullet:UpdatePlayerWeaponInfo()
+      elseif r0_129.UIModePlatform == "Mobile" then
+        local r1_130 = r0_130:GetUIObj("BattleMain")
+        if r1_130 ~= nil and r1_130.Char_Skill ~= nil then
+          if r1_130.Char_Skill.Bullet.UpdatePlayerWeaponInfo then
+            r1_130.Char_Skill.Bullet:UpdatePlayerWeaponInfo()
           end
-          if r1_131.Char_Skill.AtkRanged.UpdateRangeWeaponButton then
-            r1_131.Char_Skill.AtkRanged:UpdateRangeWeaponButton()
+          if r1_130.Char_Skill.AtkRanged.UpdateRangeWeaponButton then
+            r1_130.Char_Skill.AtkRanged:UpdateRangeWeaponButton()
           end
         end
       end
     end
-  end, 2, "UpdateBulletNumFunc")
+  end)
 end
-function r11_0.UpdateSkillUIInfo(r0_132, r1_132)
-  -- line: [2474, 2507] id: 132
-  if IsDedicatedServer(r0_132) then
+function r11_0.UpdateSkillUIInfo(r0_131, r1_131)
+  -- line: [2461, 2494] id: 131
+  if IsDedicatedServer(r0_131) then
     return 
   end
-  if r0_132.UIModePlatform == "PC" then
-    local r2_132 = UIManager(r0_132):GetUIObj("BattleMain")
-    if r2_132 ~= nil and r2_132.Char_Skill ~= nil then
-      for r7_132, r8_132 in pairs(r1_132) do
-        local r9_132 = r0_132:GetSkill(r8_132)
-        if r9_132 then
-          local r10_132 = r9_132.Data
-          r2_132.Char_Skill:RefreshRoleTargetSkill(r10_132.SkillType, r9_132)
-          DebugPrint("@zyh123", r8_132, r10_132.SkillType)
+  if r0_131.UIModePlatform == "PC" then
+    local r2_131 = UIManager(r0_131):GetUIObj("BattleMain")
+    if r2_131 ~= nil and r2_131.Char_Skill ~= nil then
+      for r7_131, r8_131 in pairs(r1_131) do
+        local r9_131 = r0_131:GetSkill(r8_131)
+        if r9_131 then
+          local r10_131 = r9_131.Data
+          r2_131.Char_Skill:RefreshRoleTargetSkill(r10_131.SkillType, r9_131)
+          DebugPrint("@zyh123", r8_131, r10_131.SkillType)
         end
       end
-      -- close: r3_132
+      -- close: r3_131
     end
-  elseif r0_132.UIModePlatform == "Mobile" then
-    local r2_132 = UIManager(r0_132):GetUIObj("BattleMain")
-    if r2_132 ~= nil and r2_132.Char_Skill ~= nil then
-      for r7_132, r8_132 in pairs(r1_132) do
-        local r9_132 = r0_132:GetSkill(r8_132)
-        if r9_132 then
-          r2_132.Char_Skill:RefreshRoleTargetSkill(r9_132.Data.SkillType, r9_132)
+  elseif r0_131.UIModePlatform == "Mobile" then
+    local r2_131 = UIManager(r0_131):GetUIObj("BattleMain")
+    if r2_131 ~= nil and r2_131.Char_Skill ~= nil then
+      for r7_131, r8_131 in pairs(r1_131) do
+        local r9_131 = r0_131:GetSkill(r8_131)
+        if r9_131 then
+          r2_131.Char_Skill:RefreshRoleTargetSkill(r9_131.Data.SkillType, r9_131)
         end
       end
-      -- close: r3_132
+      -- close: r3_131
     end
   end
 end
-function r11_0.SetESCMenuForbiddenState(r0_133, r1_133)
-  -- line: [2510, 2512] id: 133
-  r0_133.IsESCForbidden = r1_133 and false
+function r11_0.SetESCMenuForbiddenState(r0_132, r1_132)
+  -- line: [2497, 2499] id: 132
+  r0_132.IsESCForbidden = r1_132 and false
 end
-function r11_0.GetESCMenuForbiddenState(r0_134)
-  -- line: [2514, 2519] id: 134
-  if r0_134.IsESCForbidden == nil then
+function r11_0.GetESCMenuForbiddenState(r0_133)
+  -- line: [2501, 2506] id: 133
+  if r0_133.IsESCForbidden == nil then
     return false
   end
-  return r0_134.IsESCForbidden
+  return r0_133.IsESCForbidden
 end
-function r11_0.SetMaxMovingSpeed(r0_135, r1_135)
-  -- line: [2521, 2526] id: 135
-  r1_135 = math.max(0, r1_135)
-  r0_135.PlayerSlideAtttirbute.NormalWalkSpeed = DataMgr.PlayerRotationRates.NormalWalkSpeed.ParamentValue[1] * r1_135
-  r0_135.PlayerSlideAtttirbute.CrouchWalkSpeed = DataMgr.PlayerRotationRates.CrouchWalkSpeed.ParamentValue[1] * r1_135
-  r0_135:SetWalkSpeed()
+function r11_0.SetMaxMovingSpeed(r0_134, r1_134)
+  -- line: [2508, 2513] id: 134
+  r1_134 = math.max(0, r1_134)
+  r0_134.PlayerSlideAtttirbute.NormalWalkSpeed = DataMgr.PlayerRotationRates.NormalWalkSpeed.ParamentValue[1] * r1_134
+  r0_134.PlayerSlideAtttirbute.CrouchWalkSpeed = DataMgr.PlayerRotationRates.CrouchWalkSpeed.ParamentValue[1] * r1_134
+  r0_134:SetWalkSpeed()
 end
-function r11_0.SetMaxMovingSpeedByInfo(r0_136, r1_136)
-  -- line: [2528, 2531] id: 136
-  r0_136.PlayerSlideAtttirbute.NormalWalkSpeed = r1_136.NormalWalk
-  r0_136.PlayerSlideAtttirbute.CrouchWalkSpeed = r1_136.CrouchWalk
+function r11_0.SetMaxMovingSpeedByInfo(r0_135, r1_135)
+  -- line: [2515, 2518] id: 135
+  r0_135.PlayerSlideAtttirbute.NormalWalkSpeed = r1_135.NormalWalk
+  r0_135.PlayerSlideAtttirbute.CrouchWalkSpeed = r1_135.CrouchWalk
 end
-function r11_0.TryOpenSkillUI(r0_137, r1_137, r2_137)
-  -- line: [2533, 2583] id: 137
-  DebugPrint("TryOpenSkillUI: ", r1_137, r2_137)
-  if not r0_137:IsMainPlayer() then
+function r11_0.TryOpenSkillUI(r0_136, r1_136, r2_136)
+  -- line: [2520, 2570] id: 136
+  DebugPrint("TryOpenSkillUI: ", r1_136, r2_136)
+  if not r0_136:IsMainPlayer() then
     return 
   end
-  r1_137 = r0_137:GetReplacedCharUIId(r1_137)
-  local r3_137 = r0_137:GetAttr("GradeLevel") and 0
-  local r4_137 = DataMgr.BattleCharUI[r1_137][r3_137]
-  if r2_137 or not r4_137.TriggerBuffId then
-    local r5_137 = UE4.UGameplayStatics.GetGameInstance(r0_137)
-    if IsValid(r5_137:GetSceneManager()) then
-      local function r7_137()
-        -- line: [2549, 2562] id: 138
-        local r0_138 = r5_137:GetGameUIManager()
-        if r0_138:GetUIObj(r4_137.UIName) then
-          r0_138:UnLoadUI(r4_137.UIName)
+  r1_136 = r0_136:GetReplacedCharUIId(r1_136)
+  local r3_136 = r0_136:GetAttr("GradeLevel") and 0
+  local r4_136 = DataMgr.BattleCharUI[r1_136][r3_136]
+  if r2_136 or not r4_136.TriggerBuffId then
+    local r5_136 = UE4.UGameplayStatics.GetGameInstance(r0_136)
+    if IsValid(r5_136:GetSceneManager()) then
+      local function r7_136()
+        -- line: [2536, 2549] id: 137
+        local r0_137 = r5_136:GetGameUIManager()
+        if r0_137:GetUIObj(r4_136.UIName) then
+          r0_137:UnLoadUI(r4_136.UIName)
         end
-        r0_137.SkillUINames = r0_137.SkillUINames and {}
-        r0_137.SkillUINames[r4_137.UIName] = true
-        local r1_138 = r0_138:LoadUINew(r4_137.UIName, r0_137, r4_137.Params)
-        if r1_138 and r1_138.InitBattleCharUI then
-          r1_138:InitBattleCharUI(r1_137, r3_137)
+        r0_136.SkillUINames = r0_136.SkillUINames and {}
+        r0_136.SkillUINames[r4_136.UIName] = true
+        local r1_137 = r0_137:LoadUINew(r4_136.UIName, r0_136, r4_136.Params)
+        if r1_137 and r1_137.InitBattleCharUI then
+          r1_137:InitBattleCharUI(r1_136, r3_136)
         end
       end
-      if r2_137 and r4_137.TriggerBuffDelay then
-        r0_137:AddTimer_Combat(r4_137.TriggerBuffDelay, function()
-          -- line: [2566, 2577] id: 139
-          local r0_139 = r0_137.BuffManager and r0_137.BuffManager.Buffs
-          if r0_139 then
-            for r5_139, r6_139 in pairs(r0_139) do
-              if r6_139.BuffId == r4_137.TriggerBuffId then
-                r7_137()
+      if r2_136 and r4_136.TriggerBuffDelay then
+        r0_136:AddTimer_Combat(r4_136.TriggerBuffDelay, function()
+          -- line: [2553, 2564] id: 138
+          local r0_138 = r0_136.BuffManager and r0_136.BuffManager.Buffs
+          if r0_138 then
+            for r5_138, r6_138 in pairs(r0_138) do
+              if r6_138.BuffId == r4_136.TriggerBuffId then
+                r7_136()
                 break
               end
             end
-            -- close: r1_139
+            -- close: r1_138
           end
         end, false, 0, nil, true)
       else
-        r7_137()
+        r7_136()
       end
-      -- close: r7_137
+      -- close: r7_136
     end
-    -- close: r5_137
+    -- close: r5_136
   end
 end
-function r11_0.TryCloseSkillUI(r0_140, r1_140)
-  -- line: [2585, 2609] id: 140
-  DebugPrint("TryCloseSkillUI: ", r1_140)
-  if not r0_140:IsMainPlayer() then
+function r11_0.TryCloseSkillUI(r0_139, r1_139)
+  -- line: [2572, 2596] id: 139
+  DebugPrint("TryCloseSkillUI: ", r1_139)
+  if not r0_139:IsMainPlayer() then
     return 
   end
-  r1_140 = r0_140:GetReplacedCharUIId(r1_140)
-  local r3_140 = DataMgr.BattleCharUI[r1_140][r0_140:GetAttr("GradeLevel") and 0]
-  if r3_140 then
-    local r6_140 = UE4.UGameplayStatics.GetGameInstance(r0_140):GetGameUIManager():GetUIObj(r3_140.UIName)
-    if r6_140 then
-      r6_140:RemoveSelf()
+  r1_139 = r0_139:GetReplacedCharUIId(r1_139)
+  local r3_139 = DataMgr.BattleCharUI[r1_139][r0_139:GetAttr("GradeLevel") and 0]
+  if r3_139 then
+    local r6_139 = UE4.UGameplayStatics.GetGameInstance(r0_139):GetGameUIManager():GetUIObj(r3_139.UIName)
+    if r6_139 then
+      r6_139:RemoveSelf()
     end
-    if r0_140.SkillUINames and r0_140.SkillUINames[r3_140.UIName] then
-      r0_140.SkillUINames[r3_140.UIName] = nil
+    if r0_139.SkillUINames and r0_139.SkillUINames[r3_139.UIName] then
+      r0_139.SkillUINames[r3_139.UIName] = nil
     end
   end
 end
-function r11_0.GetReplacedCharUIId(r0_141, r1_141)
-  -- line: [2611, 2626] id: 141
-  if r0_141.CurrentSkinId then
-    local r2_141 = DataMgr.Skin[r0_141.CurrentSkinId]
-    if r2_141 then
-      local r3_141 = r2_141.BattleCharUIMap
-      if r3_141 and r3_141[r1_141] then
-        DebugPrint("gmy@BP_PlayerCharacter_C BP_PlayerCharacter_C:TryOpenSkillUI Skill Replaced", r1_141, r3_141[r1_141])
-        r1_141 = r3_141[r1_141]
+function r11_0.GetReplacedCharUIId(r0_140, r1_140)
+  -- line: [2598, 2613] id: 140
+  if r0_140.CurrentSkinId then
+    local r2_140 = DataMgr.Skin[r0_140.CurrentSkinId]
+    if r2_140 then
+      local r3_140 = r2_140.BattleCharUIMap
+      if r3_140 and r3_140[r1_140] then
+        DebugPrint("gmy@BP_PlayerCharacter_C BP_PlayerCharacter_C:TryOpenSkillUI Skill Replaced", r1_140, r3_140[r1_140])
+        r1_140 = r3_140[r1_140]
       end
     end
   end
-  return r1_141
+  return r1_140
 end
-function r11_0.TryHideAllSkillUI(r0_142)
-  -- line: [2628, 2648] id: 142
-  if not r0_142:IsMainPlayer() then
+function r11_0.TryHideAllSkillUI(r0_141)
+  -- line: [2615, 2635] id: 141
+  if not r0_141:IsMainPlayer() then
     return 
   end
-  local r1_142 = r0_142:GetAttr("GradeLevel") and 0
-  local r2_142 = DataMgr.BattleChar[r0_142.CurrentRoleId]
-  if r2_142.CharUIId then
-    local r4_142 = UE4.UGameplayStatics.GetGameInstance(r0_142):GetGameUIManager()
-    local r5_142 = DataMgr.BattleCharUI[r2_142.CharUIId][r1_142]
-    if r5_142 then
-      local r6_142 = r4_142:GetUIObj(r5_142.UIName)
+  local r1_141 = r0_141:GetAttr("GradeLevel") and 0
+  local r2_141 = DataMgr.BattleChar[r0_141.CurrentRoleId]
+  if r2_141.CharUIId then
+    local r4_141 = UE4.UGameplayStatics.GetGameInstance(r0_141):GetGameUIManager()
+    local r5_141 = DataMgr.BattleCharUI[r2_141.CharUIId][r1_141]
+    if r5_141 then
+      local r6_141 = r4_141:GetUIObj(r5_141.UIName)
+      if r6_141 then
+        r6_141:Hide()
+      end
+    end
+  end
+end
+function r11_0.TryCloseAllSkillUI(r0_142)
+  -- line: [2637, 2646] id: 142
+  if r0_142.SkillUINames then
+    for r5_142, r6_142 in pairs(r0_142.SkillUINames) do
       if r6_142 then
-        r6_142:Hide()
+        UIManager(r0_142):UnLoadUINew(r5_142)
       end
     end
+    -- close: r1_142
   end
+  r0_142.SkillUINames = {}
 end
-function r11_0.TryCloseAllSkillUI(r0_143)
-  -- line: [2650, 2659] id: 143
-  if r0_143.SkillUINames then
-    for r5_143, r6_143 in pairs(r0_143.SkillUINames) do
-      if r6_143 then
-        UIManager(r0_143):UnLoadUINew(r5_143)
-      end
-    end
-    -- close: r1_143
-  end
-  r0_143.SkillUINames = {}
-end
-function r11_0.TryShowAllSkillUI(r0_144)
-  -- line: [2661, 2678] id: 144
-  if not r0_144:IsMainPlayer() then
+function r11_0.TryShowAllSkillUI(r0_143)
+  -- line: [2648, 2665] id: 143
+  if not r0_143:IsMainPlayer() then
     return 
   end
-  local r1_144 = r0_144:GetAttr("GradeLevel")
-  local r2_144 = DataMgr.BattleChar[r0_144.CurrentRoleId]
-  if r2_144.CharUIId then
-    local r6_144 = UE4.UGameplayStatics.GetGameInstance(r0_144):GetGameUIManager():GetUIObj(DataMgr.BattleCharUI[r2_144.CharUIId][r1_144].UIName)
-    if r6_144 then
-      r6_144:Show()
+  local r1_143 = r0_143:GetAttr("GradeLevel")
+  local r2_143 = DataMgr.BattleChar[r0_143.CurrentRoleId]
+  if r2_143.CharUIId then
+    local r6_143 = UE4.UGameplayStatics.GetGameInstance(r0_143):GetGameUIManager():GetUIObj(DataMgr.BattleCharUI[r2_143.CharUIId][r1_143].UIName)
+    if r6_143 then
+      r6_143:Show()
     end
   end
 end
-function r11_0.LeaveRecoveryTag(r0_145, r1_145)
-  -- line: [2680, 2682] id: 145
-  r0_145:TryShowAllSkillUI()
+function r11_0.LeaveRecoveryTag(r0_144, r1_144)
+  -- line: [2667, 2669] id: 144
+  r0_144:TryShowAllSkillUI()
 end
-function r11_0.TryEnterTalk(r0_146)
-  -- line: [2684, 2691] id: 146
-  if r0_146.EnterTalkDelegates then
-    for r5_146, r6_146 in pairs(r0_146.EnterTalkDelegates) do
-      r6_146()
+function r11_0.TryEnterTalk(r0_145)
+  -- line: [2671, 2678] id: 145
+  if r0_145.EnterTalkDelegates then
+    for r5_145, r6_145 in pairs(r0_145.EnterTalkDelegates) do
+      r6_145()
     end
-    -- close: r1_146
-    r0_146.EnterTalkDelegates = nil
+    -- close: r1_145
+    r0_145.EnterTalkDelegates = nil
   end
 end
-function r11_0.SetEndPointInfo(r0_147, r1_147, r2_147, r3_147)
-  -- line: [2693, 2697] id: 147
-  r0_147.EndPointSeqEnable = r1_147
-  r0_147.EndPointLocation = r2_147
-  r0_147.EndPointRotation = r3_147
+function r11_0.SetEndPointInfo(r0_146, r1_146, r2_146, r3_146)
+  -- line: [2680, 2684] id: 146
+  r0_146.EndPointSeqEnable = r1_146
+  r0_146.EndPointLocation = r2_146
+  r0_146.EndPointRotation = r3_146
 end
-function r11_0.GetEndPointInfo(r0_148)
-  -- line: [2699, 2701] id: 148
-  return r0_148.EndPointSeqEnable, r0_148.EndPointLocation, r0_148.EndPointRotation
+function r11_0.GetEndPointInfo(r0_147)
+  -- line: [2686, 2688] id: 147
+  return r0_147.EndPointSeqEnable, r0_147.EndPointLocation, r0_147.EndPointRotation
 end
-function r11_0.OnDungeonSettlement(r0_149, r1_149, r2_149, r3_149)
-  -- line: [2703, 2761] id: 149
-  local r4_149 = true
-  if r1_149 then
-    local r5_149 = GWorld.GameInstance.ScenePlayers[r2_149].CurrentWeaponType and "Armory"
-    if r3_149 and r3_149.UseDefaultMontage then
-      r5_149 = "Armory"
+function r11_0.OnDungeonSettlement(r0_148, r1_148, r2_148, r3_148)
+  -- line: [2690, 2748] id: 148
+  local r4_148 = true
+  if r1_148 then
+    local r5_148 = GWorld.GameInstance.ScenePlayers[r2_148].CurrentWeaponType and "Armory"
+    if r3_148 and r3_148.UseDefaultMontage then
+      r5_148 = "Armory"
     end
-    local r6_149 = GWorld.GameInstance.ScenePlayers[r2_149].CurrentWeaponMeleeOrRanged
-    DebugPrint("BP_PlayerCharacter_C:OnDungeonSettlement WeaponType: ", r5_149, "WeaponMeleeOrRanged: ", r6_149)
-    local r7_149 = "LevelFinish_" .. r5_149 .. "_Montage"
-    r4_149 = r0_149:CheckLevelFinishMontagePath(r7_149)
-    if not r4_149 then
-      r7_149 = "LevelFinish_Armory_Montage"
+    local r6_148 = GWorld.GameInstance.ScenePlayers[r2_148].CurrentWeaponMeleeOrRanged
+    DebugPrint("BP_PlayerCharacter_C:OnDungeonSettlement WeaponType: ", r5_148, "WeaponMeleeOrRanged: ", r6_148)
+    local r7_148 = "LevelFinish_" .. r5_148 .. "_Montage"
+    r4_148 = r0_148:CheckLevelFinishMontagePath(r7_148)
+    if not r4_148 then
+      r7_148 = "LevelFinish_Armory_Montage"
     end
-    local r8_149 = r0_149:GetBattleCharBodyType()
-    local r9_149 = FVector(0, 0, 0)
-    if r3_149 and r3_149.CameraParam then
-      r9_149.X = r3_149.CameraParam[r8_149][1]
-      r9_149.Y = r3_149.CameraParam[r8_149][2]
-      r9_149.Z = r3_149.CameraParam[r8_149][3]
+    local r8_148 = r0_148:GetBattleCharBodyType()
+    local r9_148 = FVector(0, 0, 0)
+    if r3_148 and r3_148.CameraParam then
+      r9_148.X = r3_148.CameraParam[r8_148][1]
+      r9_148.Y = r3_148.CameraParam[r8_148][2]
+      r9_148.Z = r3_148.CameraParam[r8_148][3]
     end
-    DebugPrint("BP_PlayerCharacter_C:OnDungeonSettlement BattleCharTag", r8_149, "CameraParam", r9_149)
-    r0_149:K2_SetActorLocation(UE4.UKismetMathLibrary.TransformLocation(r0_149:GetTransform(), r9_149), false, nil, true)
-    r0_149:PlayDungeonSettlementSimpleSkillFeature(false, false, false, false, true, true, r9_149, r0_0.SettlementCameraRotation)
-    r0_149:K2_SetActorLocation(UE4.UKismetMathLibrary.TransformLocation(r0_149:GetTransform(), -r9_149), false, nil, true)
-    r0_149:PlayActionMontage("Interactive/LevelFinish", r7_149, {})
-    r0_149:SetEndPointOffset(r2_149, r3_149)
-    DebugPrint("BP_PlayerCharacter_C:OnDungeonSettlement PlayActionMontage: ", r7_149)
-    if r6_149 then
-      r0_149:ChangeUsingWeaponByType(r6_149)
+    DebugPrint("BP_PlayerCharacter_C:OnDungeonSettlement BattleCharTag", r8_148, "CameraParam", r9_148)
+    r0_148:K2_SetActorLocation(UE4.UKismetMathLibrary.TransformLocation(r0_148:GetTransform(), r9_148), false, nil, true)
+    r0_148:PlayDungeonSettlementSimpleSkillFeature(false, false, false, false, true, true, r9_148, r0_0.SettlementCameraRotation)
+    r0_148:K2_SetActorLocation(UE4.UKismetMathLibrary.TransformLocation(r0_148:GetTransform(), -r9_148), false, nil, true)
+    r0_148:PlayActionMontage("Interactive/LevelFinish", r7_148, {})
+    r0_148:SetEndPointOffset(r2_148, r3_148)
+    DebugPrint("BP_PlayerCharacter_C:OnDungeonSettlement PlayActionMontage: ", r7_148)
+    if r6_148 then
+      r0_148:ChangeUsingWeaponByType(r6_148)
     end
   else
-    local r5_149 = "LevelFinish_Fail_Montage"
-    local r6_149 = r0_149:GetController()
-    local r7_149 = r6_149:GetControlRotation()
-    r6_149:SetControlRotation(FRotator(r7_149.Pitch, r0_149:K2_EMGetActorRotation().Yaw + 180, r7_149.Roll))
-    r0_149:PlayActionMontage("Interactive/LevelFinish", r5_149, {})
-    r0_149:ResetOnSetEndPoint()
+    local r5_148 = "LevelFinish_Fail_Montage"
+    local r6_148 = r0_148:GetController()
+    local r7_148 = r6_148:GetControlRotation()
+    r6_148:SetControlRotation(FRotator(r7_148.Pitch, r0_148:K2_EMGetActorRotation().Yaw + 180, r7_148.Roll))
+    r0_148:PlayActionMontage("Interactive/LevelFinish", r5_148, {})
+    r0_148:ResetOnSetEndPoint()
   end
-  r0_149:SetCharacterTag("LevelFinish")
-  if r1_149 and GWorld.GameInstance.ScenePlayers[r2_149].CurrentWeaponType and r4_149 then
-    r0_149.KeepWeaponOnHand = true
-    if r0_149.WeaponPos ~= 2 then
-      r0_149:BindWeaponToHand()
+  r0_148:SetCharacterTag("LevelFinish")
+  if r1_148 and GWorld.GameInstance.ScenePlayers[r2_148].CurrentWeaponType and r4_148 then
+    r0_148.KeepWeaponOnHand = true
+    if r0_148.WeaponPos ~= 2 then
+      r0_148:BindWeaponToHand()
     end
   end
-  r0_149:OnRecoverDissolve()
-  local r5_149 = UIManager(r0_149):GetUI(r0_149:GetCurRecoveryUIName())
-  if r5_149 then
-    r5_149:ShowBattleMainUI()
+  r0_148:OnRecoverDissolve()
+  local r5_148 = UIManager(r0_148):GetUI(r0_148:GetCurRecoveryUIName())
+  if r5_148 then
+    r5_148:ShowBattleMainUI()
   end
 end
-function r11_0.PlayDungeonSettlementFailDeadMontage(r0_150)
-  -- line: [2763, 2776] id: 150
-  local r1_150, r2_150 = r0_150:GetHitMontageFolderAndPrefix()
-  if r1_150 ~= nil then
-    local r3_150 = r1_150 .. "Combat/Hit/" .. r2_150 .. "Die" .. r0_0.MontageSuffix .. "." .. r2_150 .. "Die" .. r0_0.MontageSuffix
-    local r4_150 = LoadObject(r3_150)
-    if not r4_150 then
-      DebugPrint("Error: Load Montage Failed!!!", r3_150)
+function r11_0.PlayDungeonSettlementFailDeadMontage(r0_149)
+  -- line: [2750, 2763] id: 149
+  local r1_149, r2_149 = r0_149:GetHitMontageFolderAndPrefix()
+  if r1_149 ~= nil then
+    local r3_149 = r1_149 .. "Combat/Hit/" .. r2_149 .. "Die" .. r0_0.MontageSuffix .. "." .. r2_149 .. "Die" .. r0_0.MontageSuffix
+    local r4_149 = LoadObject(r3_149)
+    if not r4_149 then
+      DebugPrint("Error: Load Montage Failed!!!", r3_149)
       return 
     end
-    r0_150.Mesh:SetHiddenInGame(true)
-    r0_150.PartsMesh:SetHiddenInGame(true)
-    r0_150.PlayerAnimInstance:Montage_Play(r4_150, 1, UE4.EMontagePlayReturnType.Duration, 3, true)
+    r0_149.Mesh:SetHiddenInGame(true)
+    r0_149.PartsMesh:SetHiddenInGame(true)
+    r0_149.PlayerAnimInstance:Montage_Play(r4_149, 1, UE4.EMontagePlayReturnType.Duration, 3, true)
   end
 end
-function r11_0.CheckLevelFinishMontagePath(r0_151, r1_151)
-  -- line: [2778, 2793] id: 151
-  local r2_151 = UBlueprintPathsLibrary.ProjectContentDir()
-  local r5_151 = DataMgr.Model[r0_151:GetCharModelComponent():GetCurrentModelId()].MontageFolder and ""
-  local r6_151 = r4_151.MontagePrefix and ""
-  if not r6_151 then
+function r11_0.CheckLevelFinishMontagePath(r0_150, r1_150)
+  -- line: [2765, 2780] id: 150
+  local r2_150 = UBlueprintPathsLibrary.ProjectContentDir()
+  local r5_150 = DataMgr.Model[r0_150:GetCharModelComponent():GetCurrentModelId()].MontageFolder and ""
+  local r6_150 = r4_150.MontagePrefix and ""
+  if not r6_150 then
     return false
   end
-  local r7_151 = string.gsub(r5_151, "/Game/", r2_151) .. "Interactive/LevelFinish/" .. r6_151 .. r1_151 .. ".uasset"
-  DebugPrint("CheckLevelFinishMontagePath MontPath:", r7_151)
-  if UBlueprintPathsLibrary.FileExists(r7_151) then
+  local r7_150 = string.gsub(r5_150, "/Game/", r2_150) .. "Interactive/LevelFinish/" .. r6_150 .. r1_150 .. ".uasset"
+  DebugPrint("CheckLevelFinishMontagePath MontPath:", r7_150)
+  if UBlueprintPathsLibrary.FileExists(r7_150) then
     return true
   end
   DebugPrint("CheckLevelFinishMontagePath: File not Exists")
   return false
 end
-function r11_0.OnDungeonSettlementByIndex(r0_152, r1_152, r2_152, r3_152, r4_152)
-  -- line: [2795, 2820] id: 152
-  local r5_152 = r2_152 and "Armory"
-  if r4_152 and r4_152.UseDefaultMontage then
-    r5_152 = "Armory"
+function r11_0.OnDungeonSettlementByIndex(r0_151, r1_151, r2_151, r3_151, r4_151)
+  -- line: [2782, 2807] id: 151
+  local r5_151 = r2_151 and "Armory"
+  if r4_151 and r4_151.UseDefaultMontage then
+    r5_151 = "Armory"
   end
-  local r6_152 = r3_152
-  local r7_152 = "LevelFinish_" .. r5_152 .. "_Montage"
-  local r8_152 = r0_152:CheckLevelFinishMontagePath(r7_152)
-  if not r8_152 then
-    r7_152 = "LevelFinish_Armory_Montage"
+  local r6_151 = r3_151
+  local r7_151 = "LevelFinish_" .. r5_151 .. "_Montage"
+  local r8_151 = r0_151:CheckLevelFinishMontagePath(r7_151)
+  if not r8_151 then
+    r7_151 = "LevelFinish_Armory_Montage"
   end
-  r0_152:PlayActionMontage("Interactive/LevelFinish", r7_152, {})
-  r0_152:SetEndPointOffset(r1_152, r4_152)
-  DebugPrint("BP_PlayerCharacter_C:OnDungeonSettlementByIndex PlayActionMontage: ", r7_152)
-  if r6_152 then
-    r0_152:ChangeUsingWeaponByType(r6_152)
+  r0_151:PlayActionMontage("Interactive/LevelFinish", r7_151, {})
+  r0_151:SetEndPointOffset(r1_151, r4_151)
+  DebugPrint("BP_PlayerCharacter_C:OnDungeonSettlementByIndex PlayActionMontage: ", r7_151)
+  if r6_151 then
+    r0_151:ChangeUsingWeaponByType(r6_151)
   end
-  r0_152:SetCharacterTag("LevelFinish")
-  if r2_152 and r8_152 then
-    r0_152.KeepWeaponOnHand = true
-    if r0_152.WeaponPos ~= 2 then
-      r0_152:BindWeaponToHand()
+  r0_151:SetCharacterTag("LevelFinish")
+  if r2_151 and r8_151 then
+    r0_151.KeepWeaponOnHand = true
+    if r0_151.WeaponPos ~= 2 then
+      r0_151:BindWeaponToHand()
     end
   end
 end
-function r11_0.SetMainPlayerDungeonSettlementTransform(r0_153, r1_153, r2_153, r3_153)
-  -- line: [2822, 2849] id: 153
-  if r1_153 then
-    r0_153:ResetIdle()
-    local r6_153 = FHitResult()
-    UE4.UKismetSystemLibrary.LineTraceSingle(r0_153, r2_153 + FVector(0, 0, r0_153.CapsuleComponent:GetUnscaledCapsuleHalfHeight()), r2_153 + FVector(0, 0, -500), ETraceTypeQuery.TraceScene, false, nil, EDrawDebugTrace.None, r6_153, true)
-    r0_153:K2_SetActorLocationAndRotation(FVector(r2_153.X, r2_153.Y, r6_153.ImpactPoint.Z + r0_153.CapsuleComponent:GetUnscaledCapsuleHalfHeight()), r3_153, false, nil, true)
+function r11_0.SetMainPlayerDungeonSettlementTransform(r0_152, r1_152, r2_152, r3_152)
+  -- line: [2809, 2836] id: 152
+  if r1_152 then
+    r0_152:ResetIdle()
+    local r6_152 = FHitResult()
+    UE4.UKismetSystemLibrary.LineTraceSingle(r0_152, r2_152 + FVector(0, 0, r0_152.CapsuleComponent:GetUnscaledCapsuleHalfHeight()), r2_152 + FVector(0, 0, -500), ETraceTypeQuery.TraceScene, false, nil, EDrawDebugTrace.None, r6_152, true)
+    r0_152:K2_SetActorLocationAndRotation(FVector(r2_152.X, r2_152.Y, r6_152.ImpactPoint.Z + r0_152.CapsuleComponent:GetUnscaledCapsuleHalfHeight()), r3_152, false, nil, true)
   else
-    local r4_153 = UE4.UGameplayStatics.GetGameState(r0_153)
+    local r4_152 = UE4.UGameplayStatics.GetGameState(r0_152)
     if not GWorld:GetAvatar() then
       return 
     end
-    r0_153:ResetIdle()
-    local r7_153 = FHitResult()
-    UE4.UKismetSystemLibrary.LineTraceSingle(r0_153, r2_153, r2_153 + FVector(0, 0, -500), ETraceTypeQuery.TraceScene, false, nil, EDrawDebugTrace.None, r7_153, true)
-    r0_153:K2_SetActorLocation(FVector(r2_153.X, r2_153.Y, r7_153.ImpactPoint.Z + r0_153.CapsuleComponent:GetUnscaledCapsuleHalfHeight()), false, nil, true)
-    r0_153:K2_SetActorRotation(r3_153, false)
+    r0_152:ResetIdle()
+    local r7_152 = FHitResult()
+    UE4.UKismetSystemLibrary.LineTraceSingle(r0_152, r2_152, r2_152 + FVector(0, 0, -500), ETraceTypeQuery.TraceScene, false, nil, EDrawDebugTrace.None, r7_152, true)
+    r0_152:K2_SetActorLocation(FVector(r2_152.X, r2_152.Y, r7_152.ImpactPoint.Z + r0_152.CapsuleComponent:GetUnscaledCapsuleHalfHeight()), false, nil, true)
+    r0_152:K2_SetActorRotation(r3_152, false)
   end
 end
-function r11_0.SetOtherPlayerDungeonSettlementTransform(r0_154)
-  -- line: [2851, 2861] id: 154
-  r0_154:ResetIdle()
-  local r1_154 = r0_154:K2_GetActorLocation()
-  local r4_154 = FHitResult()
-  UE4.UKismetSystemLibrary.LineTraceSingle(r0_154, r1_154 + FVector(0, 0, r0_154.CapsuleComponent:GetUnscaledCapsuleHalfHeight()), r1_154 + FVector(0, 0, -500), ETraceTypeQuery.TraceScene, false, nil, EDrawDebugTrace.None, r4_154, true)
-  r0_154:K2_SetActorLocation(FVector(r1_154.X, r1_154.Y, r4_154.ImpactPoint.Z + r0_154.CapsuleComponent:GetUnscaledCapsuleHalfHeight()), false, nil, true)
+function r11_0.SetOtherPlayerDungeonSettlementTransform(r0_153)
+  -- line: [2838, 2848] id: 153
+  r0_153:ResetIdle()
+  local r1_153 = r0_153:K2_GetActorLocation()
+  local r4_153 = FHitResult()
+  UE4.UKismetSystemLibrary.LineTraceSingle(r0_153, r1_153 + FVector(0, 0, r0_153.CapsuleComponent:GetUnscaledCapsuleHalfHeight()), r1_153 + FVector(0, 0, -500), ETraceTypeQuery.TraceScene, false, nil, EDrawDebugTrace.None, r4_153, true)
+  r0_153:K2_SetActorLocation(FVector(r1_153.X, r1_153.Y, r4_153.ImpactPoint.Z + r0_153.CapsuleComponent:GetUnscaledCapsuleHalfHeight()), false, nil, true)
 end
-function r11_0.SetEndPointOffset(r0_155, r1_155, r2_155)
-  -- line: [2863, 2872] id: 155
-  local r3_155 = FVector(0, 0, 0)
-  if r2_155 and r2_155.SettlementOffset then
-    r3_155.X = r2_155.SettlementOffset[r1_155][1]
-    r3_155.Y = r2_155.SettlementOffset[r1_155][2]
-    r3_155.Z = r2_155.SettlementOffset[r1_155][3]
+function r11_0.SetEndPointOffset(r0_154, r1_154, r2_154)
+  -- line: [2850, 2859] id: 154
+  local r3_154 = FVector(0, 0, 0)
+  if r2_154 and r2_154.SettlementOffset then
+    r3_154.X = r2_154.SettlementOffset[r1_154][1]
+    r3_154.Y = r2_154.SettlementOffset[r1_154][2]
+    r3_154.Z = r2_154.SettlementOffset[r1_154][3]
   end
-  r0_155:K2_SetActorLocation(UE4.UKismetMathLibrary.TransformLocation(r0_155:GetTransform(), r3_155), false, nil, true)
+  r0_154:K2_SetActorLocation(UE4.UKismetMathLibrary.TransformLocation(r0_154:GetTransform(), r3_154), false, nil, true)
 end
-function r11_0.ResetOnSetEndPoint(r0_156)
-  -- line: [2874, 2878] id: 156
-  r0_156.CharacterMovement.Velocity = FVector(0, 0, 0)
-  r0_156:AddGravityModifier(UE4.EGravityModifierTag.AnimNotify, 0)
-  r0_156:SetActorEnableCollision(false)
+function r11_0.ResetOnSetEndPoint(r0_155)
+  -- line: [2861, 2865] id: 155
+  r0_155.CharacterMovement.Velocity = FVector(0, 0, 0)
+  r0_155:AddGravityModifier(UE4.EGravityModifierTag.AnimNotify, 0)
+  r0_155:SetActorEnableCollision(false)
 end
-function r11_0.CheckCanRecovery(r0_157)
-  -- line: [2977, 2985] id: 157
-  if IsClient(r0_157) then
-    local r1_157 = r0_157:GetRecoveryCount()
-    local r2_157 = r0_157:GetRecoveryMaxCount()
-    local r3_157 = nil	-- notice: implicit variable refs by block#[5]
-    if r2_157 >= 0 then
-      r3_157 = r1_157 < r2_157
+function r11_0.CheckCanRecovery(r0_156)
+  -- line: [2964, 2972] id: 156
+  if IsClient(r0_156) then
+    local r1_156 = r0_156:GetRecoveryCount()
+    local r2_156 = r0_156:GetRecoveryMaxCount()
+    local r3_156 = nil	-- notice: implicit variable refs by block#[5]
+    if r2_156 >= 0 then
+      r3_156 = r1_156 < r2_156
     else
       goto label_14	-- block#4 is visited secondly
     end
-    return r3_157
+    return r3_156
   else
-    return r0_157.Super.CheckCanRecovery(r0_157)
+    return r0_156.Super.CheckCanRecovery(r0_156)
   end
 end
-function r11_0.SetIsJumpPadLaunched(r0_158, r1_158)
-  -- line: [3081, 3083] id: 158
-  r0_158.PlayerAnimInstance.IsJumpPadLaunched = r1_158
+function r11_0.SetIsJumpPadLaunched(r0_157, r1_157)
+  -- line: [3068, 3070] id: 157
+  r0_157.PlayerAnimInstance.IsJumpPadLaunched = r1_157
 end
-function r11_0.SetIsJumpPadLaunching(r0_159, r1_159)
-  -- line: [3085, 3087] id: 159
-  r0_159.PlayerAnimInstance.IsJumpPadLaunching = r1_159
+function r11_0.SetIsJumpPadLaunching(r0_158, r1_158)
+  -- line: [3072, 3074] id: 158
+  r0_158.PlayerAnimInstance.IsJumpPadLaunching = r1_158
 end
-function r11_0.GetBattleExtraInfo(r0_160)
-  -- line: [3089, 3169] id: 160
-  local r1_160 = {}
-  local r2_160 = r0_160:GetAttr("Hp")
-  local r3_160 = r0_160:GetAttr("Sp")
-  local r4_160 = {
-    RecoveryCount = r0_160:GetRecoveryCount(),
+function r11_0.GetBattleExtraInfo(r0_159)
+  -- line: [3076, 3156] id: 159
+  local r1_159 = {}
+  local r2_159 = r0_159:GetAttr("Hp")
+  local r3_159 = r0_159:GetAttr("Sp")
+  local r4_159 = {
+    RecoveryCount = r0_159:GetRecoveryCount(),
     IsRealDead = false,
   }
-  if r0_160:IsDead() then
-    r2_160 = r0_160:GetAttr("MaxHp")
-    r3_160 = r0_160:GetAttr("MaxSp")
-    r4_160.RecoveryCount = math.min(r4_160.RecoveryCount + 1, r0_160:GetRecoveryMaxCount())
+  if r0_159:IsDead() then
+    r2_159 = r0_159:GetAttr("MaxHp")
+    r3_159 = r0_159:GetAttr("MaxSp")
+    r4_159.RecoveryCount = math.min(r4_159.RecoveryCount + 1, r0_159:GetRecoveryMaxCount())
   end
-  r1_160.RoleInfo = {
-    Level = r0_160:GetAttr("Level"),
-    Exp = r0_160:GetAttr("Exp"),
-    PlayerHp = r2_160,
-    PlayerSp = r3_160,
-    DeathInfo = r4_160,
+  r1_159.RoleInfo = {
+    Level = r0_159:GetAttr("Level"),
+    Exp = r0_159:GetAttr("Exp"),
+    PlayerHp = r2_159,
+    PlayerSp = r3_159,
+    DeathInfo = r4_159,
   }
-  if r0_160.MeleeWeapon then
-    r1_160.MeleeWeapon = {
-      Level = r0_160.MeleeWeapon:GetAttr("Level"),
-      Exp = r0_160.MeleeWeapon:GetAttr("Exp"),
+  if r0_159.MeleeWeapon then
+    r1_159.MeleeWeapon = {
+      Level = r0_159.MeleeWeapon:GetAttr("Level"),
+      Exp = r0_159.MeleeWeapon:GetAttr("Exp"),
     }
   end
-  if r0_160.RangedWeapon then
-    local r5_160 = {
-      Level = r0_160.RangedWeapon:GetAttr("Level"),
-      Exp = r0_160.RangedWeapon:GetAttr("Exp"),
-      BulletNum = r0_160.RangedWeapon:GetAttr("BulletNum") and 0,
-      MagazineBulletNum = r0_160.RangedWeapon:GetAttr("MagazineBulletNum") and 0,
+  if r0_159.RangedWeapon then
+    local r5_159 = {
+      Level = r0_159.RangedWeapon:GetAttr("Level"),
+      Exp = r0_159.RangedWeapon:GetAttr("Exp"),
+      BulletNum = r0_159.RangedWeapon:GetAttr("BulletNum") and 0,
+      MagazineBulletNum = r0_159.RangedWeapon:GetAttr("MagazineBulletNum") and 0,
     }
-    r1_160.RangedWeapon = r5_160
+    r1_159.RangedWeapon = r5_159
   end
-  if r0_160.UltraWeapons then
-    r1_160.UltraWeapons = {}
-    for r9_160, r10_160 in pairs(r0_160.UltraWeapons) do
-      table.insert(r1_160.UltraWeapons, {
-        Level = r10_160:GetAttr("Level"),
-        Exp = r10_160:GetAttr("Exp"),
+  if r0_159.UltraWeapons then
+    r1_159.UltraWeapons = {}
+    for r9_159, r10_159 in pairs(r0_159.UltraWeapons) do
+      table.insert(r1_159.UltraWeapons, {
+        Level = r10_159:GetAttr("Level"),
+        Exp = r10_159:GetAttr("Exp"),
       })
     end
-    -- close: r5_160
+    -- close: r5_159
   end
-  for r10_160, r11_160 in pairs(r0_160:GetPhantomTeammates(false, true)) do
-    local r12_160 = r11_160:GetAttr("Hp")
-    local r13_160 = r11_160:GetAttr("Sp")
-    local r14_160 = {
-      RecoveryCount = r11_160:GetRecoveryCount(),
+  for r10_159, r11_159 in pairs(r0_159:GetPhantomTeammates(false, true)) do
+    local r12_159 = r11_159:GetAttr("Hp")
+    local r13_159 = r11_159:GetAttr("Sp")
+    local r14_159 = {
+      RecoveryCount = r11_159:GetRecoveryCount(),
       IsRealDead = false,
     }
-    if r11_160:IsDead() then
-      if r11_160:IsRealDead() then
-        r14_160.IsRealDead = true
+    if r11_159:IsDead() then
+      if r11_159:IsRealDead() then
+        r14_159.IsRealDead = true
       else
-        r14_160.RecoveryCount = math.min(r14_160.RecoveryCount + 1, r11_160:GetRecoveryMaxCount())
+        r14_159.RecoveryCount = math.min(r14_159.RecoveryCount + 1, r11_159:GetRecoveryMaxCount())
       end
     end
-    r1_160["PhantomInfo" .. r10_160] = {}
-    r1_160["PhantomInfo" .. r10_160].RoleInfo = {
-      Level = r0_160:GetAttr("Level"),
-      PlayerHp = r12_160,
-      PlayerSp = r13_160,
-      DeathInfo = r14_160,
+    r1_159["PhantomInfo" .. r10_159] = {}
+    r1_159["PhantomInfo" .. r10_159].RoleInfo = {
+      Level = r0_159:GetAttr("Level"),
+      PlayerHp = r12_159,
+      PlayerSp = r13_159,
+      DeathInfo = r14_159,
     }
-    local r15_160 = r11_160:GetPhantomWeapon()
-    if r15_160:HasTag(CommonConst.WeaponType.RangedWeapon) then
-      local r16_160 = r1_160["PhantomInfo" .. r10_160]
-      local r17_160 = {
-        BulletNum = r15_160:GetAttr("BulletNum") and 0,
-        MagazineBulletNum = r15_160:GetAttr("MagazineBulletNum") and 0,
+    local r15_159 = r11_159:GetPhantomWeapon()
+    if r15_159:HasTag(CommonConst.WeaponType.RangedWeapon) then
+      local r16_159 = r1_159["PhantomInfo" .. r10_159]
+      local r17_159 = {
+        BulletNum = r15_159:GetAttr("BulletNum") and 0,
+        MagazineBulletNum = r15_159:GetAttr("MagazineBulletNum") and 0,
       }
-      r16_160.RangedWeapon = r17_160
+      r16_159.RangedWeapon = r17_159
+    end
+  end
+  -- close: r6_159
+  return r1_159
+end
+function r11_0.GetCurPhantomInfo(r0_160)
+  -- line: [3158, 3235] id: 160
+  local r1_160 = GWorld:GetAvatar()
+  if not r1_160 then
+    return 
+  end
+  local r2_160 = {}
+  local r3_160 = r0_160:GetPhantomTeammates()
+  local r4_160 = {}
+  local r5_160 = {}
+  for r10_160, r11_160 in pairs(r3_160) do
+    if r11_160:IsPhantom() and (r11_160.IsSpawnByResource or r11_160.IsSpawnBySquad) then
+      local r12_160 = r11_160.MeleeWeapon
+      local r13_160 = r11_160.RangedWeapon
+      local r14_160 = nil
+      if r12_160 then
+        r14_160 = r12_160.WeaponId
+      elseif r13_160 then
+        r14_160 = r13_160.WeaponId
+      end
+      if r14_160 then
+        r5_160[r14_160] = r11_160.CurrentRoleId
+      end
+      r4_160[r11_160.CurrentRoleId] = r11_160
     end
   end
   -- close: r6_160
-  return r1_160
-end
-function r11_0.GetCurPhantomInfo(r0_161)
-  -- line: [3171, 3248] id: 161
-  local r1_161 = GWorld:GetAvatar()
-  if not r1_161 then
-    return 
-  end
-  local r2_161 = {}
-  local r3_161 = r0_161:GetPhantomTeammates()
-  local r4_161 = {}
-  local r5_161 = {}
-  for r10_161, r11_161 in pairs(r3_161) do
-    if r11_161:IsPhantom() and (r11_161.IsSpawnByResource or r11_161.IsSpawnBySquad) then
-      local r12_161 = r11_161.MeleeWeapon
-      local r13_161 = r11_161.RangedWeapon
-      local r14_161 = nil
-      if r12_161 then
-        r14_161 = r12_161.WeaponId
-      elseif r13_161 then
-        r14_161 = r13_161.WeaponId
-      end
-      if r14_161 then
-        r5_161[r14_161] = r11_161.CurrentRoleId
-      end
-      r4_161[r11_161.CurrentRoleId] = r11_161
-    end
-  end
-  -- close: r6_161
-  for r10_161, r11_161 in pairs(r1_161.Chars) do
-    if r4_161[r11_161.CharId] then
-      local r12_161 = {}
-      for r18_161, r19_161 in pairs(r11_161:GetModSuit()) do
-        if r19_161.ModEid and r1_161.Mods[r19_161.ModEid] then
-          local r20_161 = r1_161.Mods[r19_161.ModEid]
-          table.insert(r12_161, {
-            ModId = r20_161.ModId,
-            Level = r20_161.Level,
+  for r10_160, r11_160 in pairs(r1_160.Chars) do
+    if r4_160[r11_160.CharId] then
+      local r12_160 = {}
+      for r18_160, r19_160 in pairs(r11_160:GetModSuit()) do
+        if r19_160.ModEid and r1_160.Mods[r19_160.ModEid] then
+          local r20_160 = r1_160.Mods[r19_160.ModEid]
+          table.insert(r12_160, {
+            ModId = r20_160.ModId,
+            Level = r20_160.Level,
           })
         end
       end
-      -- close: r14_161
-      r2_161[r11_161.CharId] = {}
-      r2_161[r11_161.CharId].Character = {
-        CharId = r11_161.CharId,
-        Level = r11_161.Level,
-        ModSuit = r12_161,
+      -- close: r14_160
+      r2_160[r11_160.CharId] = {}
+      r2_160[r11_160.CharId].Character = {
+        CharId = r11_160.CharId,
+        Level = r11_160.Level,
+        ModSuit = r12_160,
       }
     end
   end
-  -- close: r6_161
-  for r10_161, r11_161 in pairs(r1_161.Weapons) do
-    local r12_161 = r5_161[r11_161.WeaponId]
-    if r12_161 and r2_161[r12_161] then
-      local r13_161 = {}
-      for r19_161, r20_161 in pairs(r11_161:GetModSuit()) do
-        if r20_161.ModEid and r1_161.Mods[r20_161.ModEid] then
-          local r21_161 = r1_161.Mods[r20_161.ModEid]
-          table.insert(r13_161, {
-            ModId = r21_161.ModId,
-            Level = r21_161.Level,
+  -- close: r6_160
+  for r10_160, r11_160 in pairs(r1_160.Weapons) do
+    local r12_160 = r5_160[r11_160.WeaponId]
+    if r12_160 and r2_160[r12_160] then
+      local r13_160 = {}
+      for r19_160, r20_160 in pairs(r11_160:GetModSuit()) do
+        if r20_160.ModEid and r1_160.Mods[r20_160.ModEid] then
+          local r21_160 = r1_160.Mods[r20_160.ModEid]
+          table.insert(r13_160, {
+            ModId = r21_160.ModId,
+            Level = r21_160.Level,
           })
         end
       end
-      -- close: r15_161
-      r2_161[r12_161].Weapon = {
-        WeaponId = r11_161.WeaponId,
-        Level = r11_161.Level,
-        ModSuit = r13_161,
+      -- close: r15_160
+      r2_160[r12_160].Weapon = {
+        WeaponId = r11_160.WeaponId,
+        Level = r11_160.Level,
+        ModSuit = r13_160,
       }
     end
   end
-  -- close: r6_161
-  return r2_161
+  -- close: r6_160
+  return r2_160
 end
-function r11_0.RefreshTeamMemberInfo(r0_162, r1_162)
-  -- line: [3250, 3282] id: 162
-  if IsDedicatedServer(r0_162) then
+function r11_0.RefreshTeamMemberInfo(r0_161, r1_161)
+  -- line: [3237, 3269] id: 161
+  if IsDedicatedServer(r0_161) then
     return 
   end
-  if not GWorld:GetAvatar() or GWorld:IsStandAlone() or GameState(r0_162).PlayerArray:Num() <= 1 then
+  if not GWorld:GetAvatar() or GWorld:IsStandAlone() or GameState(r0_161).PlayerArray:Num() <= 1 then
     return 
   end
-  if not r0_162.PlayerState then
+  if not r0_161.PlayerState then
     return 
   end
-  local r3_162 = GWorld:GetMainPlayer()
-  if r3_162 and r3_162.Eid == r0_162.PlayerState.Eid then
+  local r3_161 = GWorld:GetMainPlayer()
+  if r3_161 and r3_161.Eid == r0_161.PlayerState.Eid then
     return 
   end
-  if TeamController:GetModel():IsTeammateByAvatarEid(r0_162.PlayerState.AvatarEidStr) then
-    r0_162.PlayerState.OnReceiveActorStateChangeDelegate:Broadcast(r0_162.PlayerState.Eid, r7_0.OverReach, true, r1_162 == "ReceiveBeginPlay")
+  if TeamController:GetModel():IsTeammateByAvatarEid(r0_161.PlayerState.AvatarEidStr) then
+    r0_161.PlayerState.OnReceiveActorStateChangeDelegate:Broadcast(r0_161.PlayerState.Eid, r7_0.OverReach, true, r1_161 == "ReceiveBeginPlay")
   end
 end
-function r11_0.PreEnterStory(r0_163, r1_163)
-  -- line: [3286, 3291] id: 163
-  r0_163:CleanInputWhenEnterTalk()
-  r0_163:ReleaseFire()
-  r0_163.bInStory = true
-  r0_163:SetStealth(true, "Story")
+function r11_0.PreEnterStory(r0_162, r1_162)
+  -- line: [3273, 3278] id: 162
+  r0_162:CleanInputWhenEnterTalk()
+  r0_162:ReleaseFire()
+  r0_162.bInStory = true
+  r0_162:SetStealth(true, "Story")
 end
-function r11_0.PreExitStory(r0_164, r1_164)
-  -- line: [3293, 3296] id: 164
-  r0_164.bInStory = false
-  r0_164:SetStealth(false, "Story")
+function r11_0.PreExitStory(r0_163, r1_163)
+  -- line: [3280, 3283] id: 163
+  r0_163.bInStory = false
+  r0_163:SetStealth(false, "Story")
 end
-function r11_0._CheckCanChangeToMaster(r0_165, r1_165, r2_165)
-  -- line: [3299, 3362] id: 165
-  if not IsStandAlone(r0_165) then
-    if r1_165 then
+function r11_0._CheckCanChangeToMaster(r0_164, r1_164, r2_164)
+  -- line: [3286, 3349] id: 164
+  if not IsStandAlone(r0_164) then
+    if r1_164 then
       GWorld.logger.error("联机情况下，不能切换女主")
     end
     return false
   end
-  if r0_165:CheckSkillIsBan(ESkillName.SwitchMasterOrHero) then
-    if r1_165 then
+  if r0_164:CheckSkillIsBan(ESkillName.SwitchMasterOrHero) then
+    if r1_164 then
       GWorld.logger.error("禁用切换女主和切回去英雄技能")
     end
     return false
   end
-  if r0_165:CheckSkillInActive(ESkillName.SwitchMasterOrHero) then
-    if r1_165 then
+  if r0_164:CheckSkillInActive(ESkillName.SwitchMasterOrHero) then
+    if r1_164 then
       GWorld.logger.error("切换女主和切回去英雄技能未激活")
     end
     return false
   end
-  local r3_165 = UE4.UGameplayStatics.GetGameInstance(r0_165)
-  local r4_165 = GWorld.GameInstance:GetCurrentDungeonId()
-  if r4_165 and r4_165 > 0 then
-    if r1_165 then
+  local r3_164 = UE4.UGameplayStatics.GetGameInstance(r0_164)
+  local r4_164 = GWorld.GameInstance:GetCurrentDungeonId()
+  if r4_164 and r4_164 > 0 then
+    if r1_164 then
       GWorld.logger.error("副本内，不能切换女主")
     end
     return false
   end
-  local r5_165 = GWorld:GetAvatar()
-  if not r5_165 then
-    if r1_165 then
+  local r5_164 = GWorld:GetAvatar()
+  if not r5_164 then
+    if r1_164 then
       GWorld.logger.error("没有连接服务器，不能切换女主")
     end
     return false
   end
-  local r6_165 = r5_165:GetCurrentRegionId()
-  if not r6_165 or r6_165 == 0 then
-    if r1_165 then
+  local r6_164 = r5_164:GetCurrentRegionId()
+  if not r6_164 or r6_164 == 0 then
+    if r1_164 then
       GWorld.logger.error("不在区域中或者区域编号出错，不能切换女主")
     end
     return false
   end
-  if not DataMgr.SubRegion[r6_165] then
-    if r1_165 then
+  if not DataMgr.SubRegion[r6_164] then
+    if r1_164 then
       GWorld.logger.error("不在区域中或者区域编号出错，不能切换女主")
     end
     return false
   end
   return true
 end
-function r11_0.CheckCanChangeToMaster(r0_166, r1_166, r2_166)
-  -- line: [3364, 3393] id: 166
-  r0_166.CanChangeToMaster = r0_166:_CheckCanChangeToMaster(r1_166, true)
-  if not r2_166 and (not r0_166:CanEnterInteractive() or not r0_166:CharacterInTag("Idle")) then
-    if r1_166 then
+function r11_0.CheckCanChangeToMaster(r0_165, r1_165, r2_165)
+  -- line: [3351, 3380] id: 165
+  r0_165.CanChangeToMaster = r0_165:_CheckCanChangeToMaster(r1_165, true)
+  if not r2_165 and (not r0_165:CanEnterInteractive() or not r0_165:CharacterInTag("Idle")) then
+    if r1_165 then
       GWorld.logger.error("当前状态不允许切换女主")
     end
-    r0_166.CanChangeToMaster = false
-    return r0_166.CanChangeToMaster
+    r0_165.CanChangeToMaster = false
+    return r0_165.CanChangeToMaster
   end
-  local r3_166 = UE4.UGameplayStatics.GetGameMode(r0_166)
-  if not IsValid(r3_166) then
-    r0_166.CanChangeToMaster = false
-    if r1_166 then
+  local r3_165 = UE4.UGameplayStatics.GetGameMode(r0_165)
+  if not IsValid(r3_165) then
+    r0_165.CanChangeToMaster = false
+    if r1_165 then
       GWorld.logger.error("当前游戏模式无效, 不能切换女主")
     end
-  elseif r3_166:IsInDungeon() and r0_166:IsDungeonInBattle() then
-    r0_166.CanChangeToMaster = false
-  elseif r0_166:IsRegionInBattle() then
-    r0_166.CanChangeToMaster = false
+  elseif r3_165:IsInDungeon() and r0_165:IsDungeonInBattle() then
+    r0_165.CanChangeToMaster = false
+  elseif r0_165:IsRegionInBattle() then
+    r0_165.CanChangeToMaster = false
   end
-  return r0_166.CanChangeToMaster
+  return r0_165.CanChangeToMaster
 end
-function r11_0.CheckCanChangeBackToHero(r0_167, r1_167)
-  -- line: [3395, 3397] id: 167
-  return r0_167:_CheckCanChangeToMaster(r1_167, false)
+function r11_0.CheckCanChangeBackToHero(r0_166, r1_166)
+  -- line: [3382, 3384] id: 166
+  return r0_166:_CheckCanChangeToMaster(r1_166, false)
 end
-function r11_0.SwitchMasterOrHeroUIPerform(r0_168)
-  -- line: [3399, 3407] id: 168
+function r11_0.SwitchMasterOrHeroUIPerform(r0_167)
+  -- line: [3386, 3394] id: 167
+  if not IsValid(r0_167.BattleMainUI) then
+    r0_167.BattleMainUI = UIManager(r0_167):GetUIObj("BattleMain")
+  end
+  if r0_167.BattleMainUI == nil or r0_167.BattleMainUI.Char_Skill == nil then
+    return 
+  end
+  r0_167.BattleMainUI.Char_Skill:OnSwitchMasterOrHero()
+end
+function r11_0.ChangeToMasterUIPerform(r0_168)
+  -- line: [3396, 3407] id: 168
+  EventManager:FireEvent(EventID.ShowOrHideMainPlayerBloodUI, false, "ChangeRoleToMaster")
   if not IsValid(r0_168.BattleMainUI) then
     r0_168.BattleMainUI = UIManager(r0_168):GetUIObj("BattleMain")
   end
   if r0_168.BattleMainUI == nil or r0_168.BattleMainUI.Char_Skill == nil then
     return 
   end
-  r0_168.BattleMainUI.Char_Skill:OnSwitchMasterOrHero()
+  r0_168.BattleMainUI.Char_Skill:OnChangeToMaster()
 end
-function r11_0.ChangeToMasterUIPerform(r0_169)
+function r11_0.ChangeBackToHeroUIPerform(r0_169)
   -- line: [3409, 3420] id: 169
-  EventManager:FireEvent(EventID.ShowOrHideMainPlayerBloodUI, false, "ChangeRoleToMaster")
+  EventManager:FireEvent(EventID.ShowOrHideMainPlayerBloodUI, true, "ChangeRoleToMaster")
   if not IsValid(r0_169.BattleMainUI) then
     r0_169.BattleMainUI = UIManager(r0_169):GetUIObj("BattleMain")
   end
   if r0_169.BattleMainUI == nil or r0_169.BattleMainUI.Char_Skill == nil then
     return 
   end
-  r0_169.BattleMainUI.Char_Skill:OnChangeToMaster()
+  r0_169.BattleMainUI.Char_Skill:OnChangeBackToHero()
 end
-function r11_0.ChangeBackToHeroUIPerform(r0_170)
-  -- line: [3422, 3433] id: 170
-  EventManager:FireEvent(EventID.ShowOrHideMainPlayerBloodUI, true, "ChangeRoleToMaster")
-  if not IsValid(r0_170.BattleMainUI) then
-    r0_170.BattleMainUI = UIManager(r0_170):GetUIObj("BattleMain")
-  end
-  if r0_170.BattleMainUI == nil or r0_170.BattleMainUI.Char_Skill == nil then
+function r11_0.SwitchMasterOrHero(r0_170)
+  -- line: [3422, 3439] id: 170
+  r0_170:SwitchMasterOrHeroUIPerform()
+  if r0_170.IsSwitchFuncInCD then
     return 
   end
-  r0_170.BattleMainUI.Char_Skill:OnChangeBackToHero()
-end
-function r11_0.SwitchMasterOrHero(r0_171)
-  -- line: [3435, 3452] id: 171
-  r0_171:SwitchMasterOrHeroUIPerform()
-  if r0_171.IsSwitchFuncInCD then
-    return 
-  end
-  if r0_171.CurrentMasterBan then
-    r0_171:ChangeBackToHero()
+  if r0_170.CurrentMasterBan then
+    r0_170:ChangeBackToHero()
   else
-    r0_171:ChangeToMaster(true)
+    r0_170:ChangeToMaster(true)
   end
-  r0_171.IsSwitchFuncInCD = true
-  r0_171:AddTimer_Combat(1, function()
-    -- line: [3449, 3451] id: 172
-    r0_171.IsSwitchFuncInCD = false
+  r0_170.IsSwitchFuncInCD = true
+  r0_170:AddTimer_Combat(1, function()
+    -- line: [3436, 3438] id: 171
+    r0_170.IsSwitchFuncInCD = false
   end, false, 0, "SwitchFuncCDTimer")
 end
-function r11_0.ChangeToMaster(r0_173, r1_173, r2_173)
-  -- line: [3454, 3535] id: 173
-  if not r0_173:CheckCanChangeToMaster(r1_173, r2_173) then
+function r11_0.ChangeToMaster(r0_172, r1_172, r2_172)
+  -- line: [3441, 3522] id: 172
+  if not r0_172:CheckCanChangeToMaster(r1_172, r2_172) then
     return 
   end
-  if r0_173.CurrentMasterBan then
+  if r0_172.CurrentMasterBan then
     GWorld.logger.error("当前已经是主角状态，不能执行切主角操作")
     return 
   end
-  local r3_173 = 111
-  local r4_173 = GWorld:GetAvatar()
-  local r5_173 = r4_173:GetCurrentRegionId()
-  print(_G.LogTag, "CheckCanChangeToMaster", r5_173)
-  if not r5_173 or DataMgr.SubRegion[r5_173] == nil then
+  local r3_172 = 111
+  local r4_172 = GWorld:GetAvatar()
+  local r5_172 = r4_172:GetCurrentRegionId()
+  print(_G.LogTag, "CheckCanChangeToMaster", r5_172)
+  if not r5_172 or DataMgr.SubRegion[r5_172] == nil then
     GWorld.logger.error("当前不在区域中，不能切换主角")
     return 
   end
-  local r6_173 = DataMgr.SubRegion[r5_173].SwitchPlayer
-  if not r6_173 then
+  local r6_172 = DataMgr.SubRegion[r5_172].SwitchPlayer
+  if not r6_172 then
     GWorld.logger.error("当前区域没有可切换角色，不能切换主角")
     return 
   end
-  local r7_173 = 1
-  if not r4_173 then
+  local r7_172 = 1
+  if not r4_172 then
     GWorld.logger.error("没有正常登录，不能切换主角")
     return 
   end
-  local r8_173 = {
+  local r8_172 = {
     RoleInfo = {
-      PlayerHp = r0_173:GetAttr("Hp"),
-      PlayerSp = r0_173:GetAttr("Sp"),
-      PlayerES = r0_173:GetAttr("ES"),
+      PlayerHp = r0_172:GetAttr("Hp"),
+      PlayerSp = r0_172:GetAttr("Sp"),
+      PlayerES = r0_172:GetAttr("ES"),
     },
   }
-  local r9_173 = {}
-  local r10_173 = r0_173.RangedWeapon
-  if r10_173 then
-    r10_173 = r0_173.RangedWeapon:GetAttr("BulletNum") and 0
+  local r9_172 = {}
+  local r10_172 = r0_172.RangedWeapon
+  if r10_172 then
+    r10_172 = r0_172.RangedWeapon:GetAttr("BulletNum") and 0
   else
     goto label_90	-- block#13 is visited secondly
   end
-  r9_173.BulletNum = r10_173
-  r10_173 = r0_173.RangedWeapon
-  if r10_173 then
-    r10_173 = r0_173.RangedWeapon:GetAttr("MagazineBulletNum") and 0
+  r9_172.BulletNum = r10_172
+  r10_172 = r0_172.RangedWeapon
+  if r10_172 then
+    r10_172 = r0_172.RangedWeapon:GetAttr("MagazineBulletNum") and 0
   else
     goto label_101	-- block#16 is visited secondly
   end
-  r9_173.MagazineBulletNum = r10_173
-  r8_173.RangedWeapon = r9_173
-  r0_173.HeroTempInfo = r8_173
-  r4_173.HeroTempInfo = r0_173.HeroTempInfo
-  if r6_173 == "Player" then
-    r7_173 = r4_173.Sex
+  r9_172.MagazineBulletNum = r10_172
+  r8_172.RangedWeapon = r9_172
+  r0_172.HeroTempInfo = r8_172
+  r4_172.HeroTempInfo = r0_172.HeroTempInfo
+  if r6_172 == "Player" then
+    r7_172 = r4_172.Sex
   else
-    r7_173 = r4_173.WeitaSex
+    r7_172 = r4_172.WeitaSex
   end
-  print(_G.LogTag, "ChangeToMaster", r3_173, r7_173, r6_173)
-  r8_173 = DataMgr.Player2RoleId[r6_173]
-  if not r8_173 then
+  print(_G.LogTag, "ChangeToMaster", r3_172, r7_172, r6_172)
+  r8_172 = DataMgr.Player2RoleId[r6_172]
+  if not r8_172 then
     GWorld.logger.error("没有找到对应的主角信息，请检查导表")
     return 
   end
-  r9_173 = r8_173[r7_173]
-  if not r9_173 then
+  r9_172 = r8_172[r7_172]
+  if not r9_172 then
     GWorld.logger.error("对应性别没有角色，请检查导表")
     return 
   end
-  r0_173:ChangeRole(r9_173, nil)
-  r0_173:RealChangeUsingWeapon(nil)
-  r0_173:ClearAllSuitItem()
-  r0_173:BanSkills()
-  r0_173.CurrentMasterBan = true
-  if r4_173 then
-    r4_173.CurrentMasterBan = true
+  r0_172:ChangeRole(r9_172, nil)
+  r0_172:RealChangeUsingWeapon(nil)
+  r0_172:ClearAllSuitItem()
+  r0_172:BanSkills()
+  r0_172.CurrentMasterBan = true
+  if r4_172 then
+    r4_172.CurrentMasterBan = true
   end
-  r0_173:CombindTwoKeyToOneCommand("Skill3", "SwitchMaster")
-  r0_173:ChangeToMasterUIPerform()
-  r0_173:DisableBattleWheel()
-  r10_173 = r0_173:GetBattlePet()
-  if r10_173 then
-    r10_173:HideBattlePet("Master", true)
+  r0_172:CombindTwoKeyToOneCommand("Skill3", "SwitchMaster")
+  r0_172:ChangeToMasterUIPerform()
+  r0_172:DisableBattleWheel()
+  r10_172 = r0_172:GetBattlePet()
+  if r10_172 then
+    r10_172:HideBattlePet("Master", true)
   end
 end
-function r11_0.ChangeBackToHero(r0_174)
-  -- line: [3537, 3558] id: 174
-  if not r0_174:CheckCanChangeBackToHero(true) then
+function r11_0.ChangeBackToHero(r0_173)
+  -- line: [3524, 3545] id: 173
+  if not r0_173:CheckCanChangeBackToHero(true) then
     return 
   end
-  if not IsValid(UE4.UGameplayStatics.GetGameMode(r0_174)) then
+  if not IsValid(UE4.UGameplayStatics.GetGameMode(r0_173)) then
     return 
   end
-  if not r0_174.CurrentMasterBan then
+  if not r0_173.CurrentMasterBan then
     GWorld.logger.error("当前不是女主状态，不能从女主切回军械库角色")
     return 
   end
-  r0_174:RecoverBanSkills()
-  r0_174.NotChangeRoleTips = true
-  r0_174:RecoverHeroInfo()
-  r0_174:ChangeRole()
-  r0_174.NotChangeRoleTips = false
-  r0_174:WithChangeBackToHero()
+  r0_173:RecoverBanSkills()
+  r0_173.NotChangeRoleTips = true
+  r0_173:RecoverHeroInfo()
+  r0_173:ChangeRole()
+  r0_173.NotChangeRoleTips = false
+  r0_173:WithChangeBackToHero()
 end
-function r11_0.WithChangeBackToHero(r0_175)
-  -- line: [3560, 3571] id: 175
-  r0_175:SeparateTwoKeyToOneCommand("Skill3", "SwitchMaster")
-  r0_175:ChangeBackToHeroUIPerform()
-  r0_175:EnableBattleWheel()
-  local r1_175 = r0_175:GetBattlePet()
-  if r1_175 then
-    r1_175:HideBattlePet("Master", false)
+function r11_0.WithChangeBackToHero(r0_174)
+  -- line: [3547, 3558] id: 174
+  r0_174:SeparateTwoKeyToOneCommand("Skill3", "SwitchMaster")
+  r0_174:ChangeBackToHeroUIPerform()
+  r0_174:EnableBattleWheel()
+  local r1_174 = r0_174:GetBattlePet()
+  if r1_174 then
+    r1_174:HideBattlePet("Master", false)
   end
 end
-function r11_0.RecoverHeroInfo(r0_176)
-  -- line: [3573, 3585] id: 176
-  local r1_176 = GWorld:GetAvatar()
-  local r2_176 = r0_176.HeroTempInfo and r1_176.HeroTempInfo
-  if r2_176 ~= nil then
-    local r3_176 = GWorld:GetAvatar()
-    r0_176:GetController():SetAvatarInfo(r2_0.ObjId2Str(r3_176.Eid), AvatarUtils:UpdateBattleInfo(AvatarUtils:GetDefaultBattleInfo(r3_176), r2_176))
-    r0_176.HeroTempInfo = nil
-    r3_176.HeroTempInfo = nil
+function r11_0.RecoverHeroInfo(r0_175)
+  -- line: [3560, 3572] id: 175
+  local r1_175 = GWorld:GetAvatar()
+  local r2_175 = r0_175.HeroTempInfo and r1_175.HeroTempInfo
+  if r2_175 ~= nil then
+    local r3_175 = GWorld:GetAvatar()
+    r0_175:GetController():SetAvatarInfo(r2_0.ObjId2Str(r3_175.Eid), AvatarUtils:UpdateBattleInfo(AvatarUtils:GetDefaultBattleInfo(r3_175), r2_175))
+    r0_175.HeroTempInfo = nil
+    r3_175.HeroTempInfo = nil
   end
 end
-function r11_0.RecoverBanSkills(r0_177)
-  -- line: [3587, 3597] id: 177
-  print(_G.LogTag, "RecoverBanSkills", r0_177.CurrentRoleId)
-  if r0_177.CurrentMasterBan then
-    r0_177:UnBanSkills()
-    r0_177.CurrentMasterBan = false
-    local r1_177 = GWorld:GetAvatar()
-    if r1_177 then
-      r1_177.CurrentMasterBan = false
+function r11_0.RecoverBanSkills(r0_176)
+  -- line: [3574, 3584] id: 176
+  print(_G.LogTag, "RecoverBanSkills", r0_176.CurrentRoleId)
+  if r0_176.CurrentMasterBan then
+    r0_176:UnBanSkills()
+    r0_176.CurrentMasterBan = false
+    local r1_176 = GWorld:GetAvatar()
+    if r1_176 then
+      r1_176.CurrentMasterBan = false
     end
   end
 end
-function r11_0.OnBattleStateChanged(r0_178, r1_178)
-  -- line: [3599, 3610] id: 178
-  if not r1_178 then
+function r11_0.OnBattleStateChanged(r0_177, r1_177)
+  -- line: [3586, 3597] id: 177
+  if not r1_177 then
     return 
   end
-  if not r0_178.CurrentMasterBan then
+  if not r0_177.CurrentMasterBan then
     return 
   end
-  print(_G.LogTag, "OnBattleStateChanged", r1_178)
-  r0_178:ChangeBackToHero()
+  print(_G.LogTag, "OnBattleStateChanged", r1_177)
+  r0_177:ChangeBackToHero()
 end
-function r11_0.BanSkills(r0_179)
-  -- line: [3611, 3622] id: 179
-  local r1_179 = TArray(0)
-  for r6_179, r7_179 in pairs(r0_0.AllSKillNames) do
-    if not r0_179:CheckSkillInActive(r7_179) then
-      r1_179:Add(r7_179)
+function r11_0.BanSkills(r0_178)
+  -- line: [3598, 3609] id: 178
+  local r1_178 = TArray(0)
+  for r6_178, r7_178 in pairs(r0_0.AllSKillNames) do
+    if not r0_178:CheckSkillInActive(r7_178) then
+      r1_178:Add(r7_178)
     end
   end
-  -- close: r2_179
-  local r2_179 = r0_179:GetController()
-  if r2_179 then
-    r2_179:BanSkills(r1_179, "MasterBan")
+  -- close: r2_178
+  local r2_178 = r0_178:GetController()
+  if r2_178 then
+    r2_178:BanSkills(r1_178, "MasterBan")
   end
 end
-function r11_0.UnBanSkills(r0_180)
-  -- line: [3624, 3629] id: 180
-  local r1_180 = r0_180:GetController()
-  if r1_180 then
-    r1_180:UnBanSkills("MasterUnBan")
+function r11_0.UnBanSkills(r0_179)
+  -- line: [3611, 3616] id: 179
+  local r1_179 = r0_179:GetController()
+  if r1_179 then
+    r1_179:UnBanSkills("MasterUnBan")
   end
 end
-function r11_0.RegionBanSkills(r0_181)
-  -- line: [3630, 3642] id: 181
-  local r1_181 = TArray(0)
-  for r6_181, r7_181 in pairs(r0_0.AllSKillNames) do
-    if not r0_181:CheckSkillInActive(r7_181) then
-      r1_181:Add(r7_181)
+function r11_0.RegionBanSkills(r0_180)
+  -- line: [3617, 3629] id: 180
+  local r1_180 = TArray(0)
+  for r6_180, r7_180 in pairs(r0_0.AllSKillNames) do
+    if not r0_180:CheckSkillInActive(r7_180) then
+      r1_180:Add(r7_180)
     end
   end
-  -- close: r2_181
-  local r2_181 = r0_181:GetController()
-  if r2_181 then
-    r2_181:BanSkills(r1_181, "RegionBan")
+  -- close: r2_180
+  local r2_180 = r0_180:GetController()
+  if r2_180 then
+    r2_180:BanSkills(r1_180, "RegionBan")
   end
 end
-function r11_0.RegionUnBanSkills(r0_182)
-  -- line: [3644, 3649] id: 182
-  local r1_182 = r0_182:GetController()
-  if r1_182 then
-    r1_182:UnBanSkills("RegionUnBan")
+function r11_0.RegionUnBanSkills(r0_181)
+  -- line: [3631, 3636] id: 181
+  local r1_181 = r0_181:GetController()
+  if r1_181 then
+    r1_181:UnBanSkills("RegionUnBan")
   end
 end
-function r11_0.MoveAlongSplineBanSkills(r0_183)
-  -- line: [3651, 3663] id: 183
-  local r1_183 = TArray(0)
-  for r6_183, r7_183 in pairs(r0_0.AllSKillNames) do
-    if not r0_183:CheckSkillInActive(r7_183) then
-      r1_183:Add(r7_183)
+function r11_0.MoveAlongSplineBanSkills(r0_182)
+  -- line: [3638, 3650] id: 182
+  local r1_182 = TArray(0)
+  for r6_182, r7_182 in pairs(r0_0.AllSKillNames) do
+    if not r0_182:CheckSkillInActive(r7_182) then
+      r1_182:Add(r7_182)
     end
   end
-  -- close: r2_183
-  r1_183:Add(ESkillName.SwitchMasterOrHero)
-  local r2_183 = r0_183:GetController()
-  if r2_183 then
-    r2_183:BanSkills(r1_183, "MoveAlongSpline")
+  -- close: r2_182
+  r1_182:Add(ESkillName.SwitchMasterOrHero)
+  local r2_182 = r0_182:GetController()
+  if r2_182 then
+    r2_182:BanSkills(r1_182, "MoveAlongSpline")
   end
 end
-function r11_0.MoveAlongSplineUnBanSkills(r0_184)
-  -- line: [3665, 3670] id: 184
-  local r1_184 = r0_184:GetController()
-  if r1_184 then
-    r1_184:UnBanSkills("MoveAlongSpline")
+function r11_0.MoveAlongSplineUnBanSkills(r0_183)
+  -- line: [3652, 3657] id: 183
+  local r1_183 = r0_183:GetController()
+  if r1_183 then
+    r1_183:UnBanSkills("MoveAlongSpline")
   end
 end
-function r11_0.ForbidActionWhileMoveAlongSpline(r0_185, r1_185)
-  -- line: [3672, 3687] id: 185
-  local r2_185 = TArray(0)
-  r2_185:Add(ESkillName.Jump)
-  r2_185:Add(ESkillName.Slide)
-  r2_185:Add(ESkillName.BulletJump)
-  r2_185:Add(ESkillName.Avoid)
-  r2_185:Add(ESkillName.Crouch)
-  local r3_185 = r0_185:GetController()
-  if r3_185 then
-    if r1_185 then
-      r3_185:InActiveSkills(r2_185, "MoveAlongSpline")
+function r11_0.ForbidActionWhileMoveAlongSpline(r0_184, r1_184)
+  -- line: [3659, 3674] id: 184
+  local r2_184 = TArray(0)
+  r2_184:Add(ESkillName.Jump)
+  r2_184:Add(ESkillName.Slide)
+  r2_184:Add(ESkillName.BulletJump)
+  r2_184:Add(ESkillName.Avoid)
+  r2_184:Add(ESkillName.Crouch)
+  local r3_184 = r0_184:GetController()
+  if r3_184 then
+    if r1_184 then
+      r3_184:InActiveSkills(r2_184, "MoveAlongSpline")
     else
-      r3_185:ActiveSkills(r2_185, "MoveAlongSpline")
+      r3_184:ActiveSkills(r2_184, "MoveAlongSpline")
     end
   end
 end
-function r11_0.ForbidSkillsInHooking(r0_186, r1_186)
-  -- line: [3689, 3713] id: 186
-  local r2_186 = {
+function r11_0.ForbidSkillsInHooking(r0_185, r1_185)
+  -- line: [3676, 3700] id: 185
+  local r2_185 = {
     ESkillName.Fire,
     ESkillName.ChargeBullet,
     ESkillName.Attack,
@@ -2655,584 +2646,584 @@ function r11_0.ForbidSkillsInHooking(r0_186, r1_186)
     ESkillName.Skill3,
     ESkillName.Slide
   }
-  local r3_186 = TArray(0)
-  for r8_186, r9_186 in pairs(r2_186) do
-    r3_186:Add(r9_186)
+  local r3_185 = TArray(0)
+  for r8_185, r9_185 in pairs(r2_185) do
+    r3_185:Add(r9_185)
   end
-  -- close: r4_186
-  local r4_186 = r0_186:GetController()
-  if r4_186 then
-    if r1_186 then
-      r4_186:InActiveSkillsInHooking(r3_186)
+  -- close: r4_185
+  local r4_185 = r0_185:GetController()
+  if r4_185 then
+    if r1_185 then
+      r4_185:InActiveSkillsInHooking(r3_185)
     else
-      r4_186:ActiveSkillsEndHooking(r3_186)
+      r4_185:ActiveSkillsEndHooking(r3_185)
     end
   end
 end
-function r11_0.ForbidActiveSkills(r0_187, r1_187)
-  -- line: [3715, 3722] id: 187
-  r0_187:ForbidSkills(r1_187, {
+function r11_0.ForbidActiveSkills(r0_186, r1_186)
+  -- line: [3702, 3709] id: 186
+  r0_186:ForbidSkills(r1_186, {
     ESkillName.Skill1,
     ESkillName.Skill2,
     ESkillName.Skill3
   })
 end
-function r11_0.ForbidAllSkills(r0_188, r1_188)
-  -- line: [3724, 3732] id: 188
-  r0_188:ForbidSkills(r1_188, {
+function r11_0.ForbidAllSkills(r0_187, r1_187)
+  -- line: [3711, 3719] id: 187
+  r0_187:ForbidSkills(r1_187, {
     ESkillName.Skill1,
     ESkillName.Skill2,
     ESkillName.Skill3,
     ESkillName.Passive
   })
 end
-function r11_0.ForbidMeleeSkills(r0_189, r1_189)
-  -- line: [3734, 3742] id: 189
-  r0_189:ForbidSkills(r1_189, {
+function r11_0.ForbidMeleeSkills(r0_188, r1_188)
+  -- line: [3721, 3729] id: 188
+  r0_188:ForbidSkills(r1_188, {
     ESkillName.Attack,
     ESkillName.FallAttack,
     ESkillName.HeavyAttack,
     ESkillName.SlideAttack
   })
 end
-function r11_0.ForbidRangedSkills(r0_190, r1_190)
-  -- line: [3744, 3751] id: 190
-  r0_190:ForbidSkills(r1_190, {
+function r11_0.ForbidRangedSkills(r0_189, r1_189)
+  -- line: [3731, 3738] id: 189
+  r0_189:ForbidSkills(r1_189, {
     ESkillName.Fire,
     ESkillName.ChargeBullet,
     ESkillName.HeavyShooting
   })
 end
-function r11_0.ForbidSkills(r0_191, r1_191, r2_191)
-  -- line: [3753, 3766] id: 191
-  local r3_191 = TArray(0)
-  for r8_191, r9_191 in pairs(r2_191) do
-    r3_191:Add(r9_191)
+function r11_0.ForbidSkills(r0_190, r1_190, r2_190)
+  -- line: [3740, 3753] id: 190
+  local r3_190 = TArray(0)
+  for r8_190, r9_190 in pairs(r2_190) do
+    r3_190:Add(r9_190)
   end
-  -- close: r4_191
-  local r4_191 = r0_191:GetController()
-  if r4_191 then
-    if r1_191 then
-      r4_191:InActiveSkills(r3_191, "Ban")
+  -- close: r4_190
+  local r4_190 = r0_190:GetController()
+  if r4_190 then
+    if r1_190 then
+      r4_190:InActiveSkills(r3_190, "Ban")
     else
-      r4_191:ActiveSkills(r3_191, "UnBan")
+      r4_190:ActiveSkills(r3_190, "UnBan")
     end
   end
 end
-function r11_0.AfterLoading(r0_192, r1_192)
-  -- line: [3768, 3840] id: 192
-  if r0_192.AfterLoadingDone then
+function r11_0.AfterLoading(r0_191, r1_191)
+  -- line: [3755, 3827] id: 191
+  if r0_191.AfterLoadingDone then
     return 
   end
   if r1_0:Get("ImmersionModel") then
-    r0_192:ImmersionModel()
+    r0_191:ImmersionModel()
   end
-  r0_192:RefreshCharUIByPlatform()
-  local r3_192 = GWorld:GetAvatar()
-  if r3_192 and r3_192:CheckSubRegionType(nil, CommonConst.SubRegionType.Home) then
-    r0_192:CheckDraftCanProduce()
+  r0_191:RefreshCharUIByPlatform()
+  local r3_191 = GWorld:GetAvatar()
+  if r3_191 and r3_191:CheckSubRegionType(nil, CommonConst.SubRegionType.Home) then
+    r0_191:CheckDraftCanProduce()
   end
-  r0_192:SetActorHideTag("DeliveryMontage", false)
-  local r4_192 = UE4.UGameplayStatics.GetGameInstance(r0_192)
-  if r4_192 and r1_192 and r1_192 == r0_192.Eid and r4_192.ShouldPlayDeliveryEndMontage then
-    local r8_192 = {
+  r0_191:SetActorHideTag("DeliveryMontage", false)
+  local r4_191 = UE4.UGameplayStatics.GetGameInstance(r0_191)
+  if r4_191 and r1_191 and r1_191 == r0_191.Eid and r4_191.ShouldPlayDeliveryEndMontage then
+    local r8_191 = {
       OnNotifyBegin = function()
-        -- line: [3793, 3797] id: 193
+        -- line: [3780, 3784] id: 192
         DebugPrint("zwk OnDeliveryAfterLoadingMontageNotifyBegin")
-        r0_192:RemoveDisableInputTag("DeliverMontage")
+        r0_191:RemoveDisableInputTag("DeliverMontage")
       end,
       OnInterrupted = function()
-        -- line: [3798, 3802] id: 194
-        DebugPrint("zwk OnDeliveryAfterLoadingInterrupted", r4_192.ShouldPlayDeliveryEndMontage)
-        r0_192:RemoveDisableInputTag("DeliverMontage")
-        r4_192.ShouldPlayDeliveryEndMontage = false
+        -- line: [3785, 3789] id: 193
+        DebugPrint("zwk OnDeliveryAfterLoadingInterrupted", r4_191.ShouldPlayDeliveryEndMontage)
+        r0_191:RemoveDisableInputTag("DeliverMontage")
+        r4_191.ShouldPlayDeliveryEndMontage = false
       end,
       OnCompleted = function()
-        -- line: [3803, 3806] id: 195
-        DebugPrint("zwk OnDeliveryAfterLoadingMontageCompleted", r4_192.ShouldPlayDeliveryEndMontage)
-        r4_192.ShouldPlayDeliveryEndMontage = false
+        -- line: [3790, 3793] id: 194
+        DebugPrint("zwk OnDeliveryAfterLoadingMontageCompleted", r4_191.ShouldPlayDeliveryEndMontage)
+        r4_191.ShouldPlayDeliveryEndMontage = false
       end,
     }
     DebugPrint("zwk OnDeliveryAfterLoadingMontageBegin")
-    if r3_192 and r3_192.IsInRegionOnline and r3_192.CurrentOnlineType then
-      r0_192:ForceReSyncLocation()
-      r3_192:SwitchOnlineState(r3_192.CurrentOnlineType, CommonConst.OnlineState.Normal)
+    if r3_191 and r3_191.IsInRegionOnline and r3_191.CurrentOnlineType then
+      r0_191:ForceReSyncLocation()
+      r3_191:SwitchOnlineState(r3_191.CurrentOnlineType, CommonConst.OnlineState.Normal)
     end
-    r0_192:ResetIdle()
-    r0_192:AddDisableInputTag("DeliverMontage")
-    r0_192:PlayTeleportAction(r8_192, false, true, false)
-    r0_192.Mesh:GetAnimInstance():Montage_JumpToSection("End")
-    r0_192:AddTimer(2, function()
-      -- line: [3824, 3831] id: 196
-      if r0_192.DisableInputTags:Find("DeliverMontage") then
+    r0_191:ResetIdle()
+    r0_191:AddDisableInputTag("DeliverMontage")
+    r0_191:PlayTeleportAction(r8_191, false, true, false)
+    r0_191.Mesh:GetAnimInstance():Montage_JumpToSection("End")
+    r0_191:AddTimer(2, function()
+      -- line: [3811, 3818] id: 195
+      if r0_191.DisableInputTags:Find("DeliverMontage") then
         DebugPrint("zwk RemoveDeliverTag")
       end
-      r0_192:RemoveDisableInputTag("DeliverMontage")
-      r0_192:SetActorHideTag("DeliveryMontage", false)
+      r0_191:RemoveDisableInputTag("DeliverMontage")
+      r0_191:SetActorHideTag("DeliveryMontage", false)
     end, false, 0)
   end
-  r0_192.AfterLoadingDone = true
-  r0_192:AddTimer(1, function()
-    -- line: [3837, 3839] id: 197
-    r0_192.AfterLoadingDone = false
+  r0_191.AfterLoadingDone = true
+  r0_191:AddTimer(1, function()
+    -- line: [3824, 3826] id: 196
+    r0_191.AfterLoadingDone = false
   end)
 end
-function r11_0.GetIsInDelivery(r0_198)
-  -- line: [3842, 3849] id: 198
-  local r1_198 = UE4.UGameplayStatics.GetGameInstance(r0_198)
-  local r2_198 = r1_198:GetLoadingUI()
-  local r3_198 = r2_198 and r2_198.bIsInLoading
-  local r4_198 = UIManager(r0_198):GetUIObj("BlackScreenXiaobai")
-  return r3_198 and r4_198 and r1_198.ShouldPlayDeliveryEndMontage
+function r11_0.GetIsInDelivery(r0_197)
+  -- line: [3829, 3836] id: 197
+  local r1_197 = UE4.UGameplayStatics.GetGameInstance(r0_197)
+  local r2_197 = r1_197:GetLoadingUI()
+  local r3_197 = r2_197 and r2_197.bIsInLoading
+  local r4_197 = UIManager(r0_197):GetUIObj("BlackScreenXiaobai")
+  return r3_197 and r4_197 and r1_197.ShouldPlayDeliveryEndMontage
 end
-function r11_0.LoadHitDirection(r0_199, r1_199, r2_199)
-  -- line: [3879, 3887] id: 199
-  r1_199.CurHitDirectionNum = r1_199.CurHitDirectionNum + 1
-  RunAsyncTask(r0_199, "CreateHitDirectionHandler" .. r1_199.CurHitDirectionNum, function(r0_200)
-    -- line: [3881, 3886] id: 200
-    r1_199:AddToQueue(UE4.UGameplayStatics.GetGameInstance(r0_199):GetGameUIManager():LoadUIAsync("BattleHitDirection", r0_200, r2_199, r0_199))
+function r11_0.LoadHitDirection(r0_198, r1_198, r2_198)
+  -- line: [3866, 3874] id: 198
+  r1_198.CurHitDirectionNum = r1_198.CurHitDirectionNum + 1
+  RunAsyncTask(r0_198, "CreateHitDirectionHandler" .. r1_198.CurHitDirectionNum, function(r0_199)
+    -- line: [3868, 3873] id: 199
+    r1_198:AddToQueue(UE4.UGameplayStatics.GetGameInstance(r0_198):GetGameUIManager():LoadUIAsync("BattleHitDirection", r0_199, r2_198, r0_198))
   end)
 end
-function r11_0.DungeonOtherPlayerLeave(r0_201)
-  -- line: [3889, 3899] id: 201
-  if not r0_201:IsMainPlayer() and IsClient(r0_201) then
-    EventManager:FireEvent(EventID.OnDungeonOtherPlayerLeave, r0_201)
-    if UIManager(r0_201):GetUIObj("TeamToast") then
-      UIManager(r0_201):UnLoadUINew("TeamToast")
+function r11_0.DungeonOtherPlayerLeave(r0_200)
+  -- line: [3876, 3886] id: 200
+  if not r0_200:IsMainPlayer() and IsClient(r0_200) then
+    EventManager:FireEvent(EventID.OnDungeonOtherPlayerLeave, r0_200)
+    if UIManager(r0_200):GetUIObj("TeamToast") then
+      UIManager(r0_200):UnLoadUINew("TeamToast")
     end
-    UIManager(r0_201):LoadUINew("TeamToast", r0_201.PlayerState, false)
+    UIManager(r0_200):LoadUINew("TeamToast", r0_200.PlayerState, false)
   end
 end
-function r11_0.SetCollisionProfileOverlapAll(r0_202, r1_202)
-  -- line: [3901, 3923] id: 202
-  DebugPrint("BP_PlayerCharacter_C:SetCollisionProfileOverlapAll", r1_202, r0_202.CachedPlayerCollisionProfile)
-  if r0_202.CachedPlayerCollisionProfile ~= nil == r1_202 then
+function r11_0.SetCollisionProfileOverlapAll(r0_201, r1_201)
+  -- line: [3888, 3910] id: 201
+  DebugPrint("BP_PlayerCharacter_C:SetCollisionProfileOverlapAll", r1_201, r0_201.CachedPlayerCollisionProfile)
+  if r0_201.CachedPlayerCollisionProfile ~= nil == r1_201 then
   end
-  if r1_202 then
-    r0_202.CachedPlayerCollisionProfile = r0_202.CapsuleComponent:GetCollisionProfileName()
-    r0_202.CapsuleComponent:SetCollisionResponseToAllChannels(UE4.ECollisionResponse.ECR_Overlap)
-    if r0_202.SkillBlockCapsule then
-      r0_202.SkillBlockCapsuleCachedCollision = r0_202.SkillBlockCapsule:GetCollisionEnabled()
-      r0_202.SkillBlockCapsule:SetCollisionEnabled(ECollisionEnabled.NoCollision)
+  if r1_201 then
+    r0_201.CachedPlayerCollisionProfile = r0_201.CapsuleComponent:GetCollisionProfileName()
+    r0_201.CapsuleComponent:SetCollisionResponseToAllChannels(UE4.ECollisionResponse.ECR_Overlap)
+    if r0_201.SkillBlockCapsule then
+      r0_201.SkillBlockCapsuleCachedCollision = r0_201.SkillBlockCapsule:GetCollisionEnabled()
+      r0_201.SkillBlockCapsule:SetCollisionEnabled(ECollisionEnabled.NoCollision)
     end
   else
-    r0_202.CapsuleComponent:SetCollisionProfileName("Pawn", false)
-    r0_202.CachedPlayerCollisionProfile = nil
-    if r0_202.SkillBlockCapsule then
-      r0_202.SkillBlockCapsule:SetCollisionEnabled(r0_202.SkillBlockCapsuleCachedCollision)
+    r0_201.CapsuleComponent:SetCollisionProfileName("Pawn", false)
+    r0_201.CachedPlayerCollisionProfile = nil
+    if r0_201.SkillBlockCapsule then
+      r0_201.SkillBlockCapsule:SetCollisionEnabled(r0_201.SkillBlockCapsuleCachedCollision)
     end
   end
 end
-function r11_0.NeedArmoryHelper(r0_203)
-  -- line: [3925, 3927] id: 203
+function r11_0.NeedArmoryHelper(r0_202)
+  -- line: [3912, 3914] id: 202
   return GWorld:GetAvatar() ~= nil
 end
-function r11_0.RequestDeadAsyncTravel(r0_204, r1_204)
-  -- line: [3928, 4064] id: 204
-  r0_204:DisablePlayerInputInDeliver(true)
-  local r2_204 = GWorld.GameInstance
-  local r3_204 = r2_204:GetTalkContext()
-  local r4_204 = UIManager(r2_204)
-  local r5_204 = UE4.UGameplayStatics.GetGameState(r0_204)
-  local r6_204 = r0_204:GetController()
-  local r7_204 = false
-  local r8_204 = false
-  local r9_204 = r1_204.Transform
-  local function r10_204()
-    -- line: [3940, 3961] id: 205
-    r4_204:HideCommonBlackScreen("DeadAsyncTravel")
-    local r0_205 = r4_204:GetUIObj("MainTaskIndicator")
-    if IsValid(r0_205) then
-      r0_205:SetVisibility(UE4.ESlateVisibility.Visible)
+function r11_0.RequestDeadAsyncTravel(r0_203, r1_203)
+  -- line: [3915, 4051] id: 203
+  r0_203:DisablePlayerInputInDeliver(true)
+  local r2_203 = GWorld.GameInstance
+  local r3_203 = r2_203:GetTalkContext()
+  local r4_203 = UIManager(r2_203)
+  local r5_203 = UE4.UGameplayStatics.GetGameState(r0_203)
+  local r6_203 = r0_203:GetController()
+  local r7_203 = false
+  local r8_203 = false
+  local r9_203 = r1_203.Transform
+  local function r10_203()
+    -- line: [3927, 3948] id: 204
+    r4_203:HideCommonBlackScreen("DeadAsyncTravel")
+    local r0_204 = r4_203:GetUIObj("MainTaskIndicator")
+    if IsValid(r0_204) then
+      r0_204:SetVisibility(UE4.ESlateVisibility.Visible)
     end
-    local r1_205 = r2_204:GetSceneManager()
-    local r2_205 = UE4.UGameplayStatics.GetGameMode(r0_204)
-    local r3_205 = r2_205:GetLevelLoader()
-    r1_205:ShowOrHideAllSceneGuideIcon(true)
-    r0_204:EnableInput(r6_204)
-    if IsValid(r3_205) then
-      r3_205:RemoveArtLevelLoadedCompleteCallback(r2_205:GetLevelLoader():GetLevelIdByLocation(r9_204.Translation))
+    local r1_204 = r2_203:GetSceneManager()
+    local r2_204 = UE4.UGameplayStatics.GetGameMode(r0_203)
+    local r3_204 = r2_204:GetLevelLoader()
+    r1_204:ShowOrHideAllSceneGuideIcon(true)
+    r0_203:EnableInput(r6_203)
+    if IsValid(r3_204) then
+      r3_204:RemoveArtLevelLoadedCompleteCallback(r2_204:GetLevelLoader():GetLevelIdByLocation(r9_203.Translation))
     end
-    r0_204:DisablePlayerInputInDeliver(false)
-    local r4_205 = GWorld.StoryMgr
-    if r4_205 then
-      r4_205:FailCurrentQuestWhenDead()
+    r0_203:DisablePlayerInputInDeliver(false)
+    local r4_204 = GWorld.StoryMgr
+    if r4_204 then
+      r4_204:FailCurrentQuestWhenDead()
     end
   end
-  local r14_204 = {
+  local r14_203 = {
     BlackScreenHandle = "DeadAsyncTravel",
-    BlackScreenText = GText(r1_204.FailBlackScreenText),
-    InAnimationObj = r0_204,
-    InAnimationPlayTime = r1_204.FadeInTime and nil,
+    BlackScreenText = GText(r1_203.FailBlackScreenText),
+    InAnimationObj = r0_203,
+    InAnimationPlayTime = r1_203.FadeInTime and nil,
     InAnimationCallback = function()
-      -- line: [3963, 4052] id: 206
-      local r0_206 = GWorld.GameInstance
-      local r1_206 = r0_206:GetGameUIManager()
-      r0_206:GetSceneManager():ShowOrHideAllSceneGuideIcon(false)
-      local r3_206 = r1_206:GetUIObj("MainTaskIndicator")
-      if IsValid(r3_206) then
-        r3_206:SetVisibility(UE4.ESlateVisibility.Collapsed)
+      -- line: [3950, 4039] id: 205
+      local r0_205 = GWorld.GameInstance
+      local r1_205 = r0_205:GetGameUIManager()
+      r0_205:GetSceneManager():ShowOrHideAllSceneGuideIcon(false)
+      local r3_205 = r1_205:GetUIObj("MainTaskIndicator")
+      if IsValid(r3_205) then
+        r3_205:SetVisibility(UE4.ESlateVisibility.Collapsed)
       end
-      r0_204:DisableInput()
-      r0_204:QuickRecovery()
-      local r4_206 = UE4.UGameplayStatics.GetGameMode(r0_204)
-      local function r5_206()
-        -- line: [3976, 3982] id: 207
-        r4_206:SetActorLocationAndRotationByTransform(0, r9_204, true)
-        r0_204:SetSafeLocation()
-        if r8_204 then
-          r0_204:GetController():SetControlRotation(r0_204:K2_GetActorRotation())
+      r0_203:DisableInput()
+      r0_203:QuickRecovery()
+      local r4_205 = UE4.UGameplayStatics.GetGameMode(r0_203)
+      local function r5_205()
+        -- line: [3963, 3969] id: 206
+        r4_205:SetActorLocationAndRotationByTransform(0, r9_203, true)
+        r0_203:SetSafeLocation()
+        if r8_203 then
+          r0_203:GetController():SetControlRotation(r0_203:K2_GetActorRotation())
         end
       end
-      local r6_206 = r4_206:GetLevelLoader()
-      r0_204.DurationEnd = false
-      r0_204.TravelFinish = false
-      local function r7_206()
-        -- line: [3988, 3994] id: 208
-        if r0_204.DurationEnd and r0_204.TravelFinish then
-          r0_204.DurationEnd = nil
-          r0_204.TravelFinish = nil
-          r10_204()
+      local r6_205 = r4_205:GetLevelLoader()
+      r0_203.DurationEnd = false
+      r0_203.TravelFinish = false
+      local function r7_205()
+        -- line: [3975, 3981] id: 207
+        if r0_203.DurationEnd and r0_203.TravelFinish then
+          r0_203.DurationEnd = nil
+          r0_203.TravelFinish = nil
+          r10_203()
         end
       end
-      local function r8_206()
-        -- line: [3995, 3998] id: 209
-        r0_204.TravelFinish = true
-        r7_206()
+      local function r8_205()
+        -- line: [3982, 3985] id: 208
+        r0_203.TravelFinish = true
+        r7_205()
       end
-      r4_206:AddTimer(r1_204.ContinueTime, function()
-        -- line: [3999, 4002] id: 210
-        r0_204.DurationEnd = true
-        r7_206()
+      r4_205:AddTimer(r1_203.ContinueTime, function()
+        -- line: [3986, 3989] id: 209
+        r0_203.DurationEnd = true
+        r7_205()
       end, false, 0, "CommonBlackScreenContinueTimer", true)
-      if IsValid(r6_206) then
-        local r10_206 = r4_206:GetLevelLoader():GetLevelIdByLocation(r9_204.Translation)
-        local r11_206 = r4_206:GetLevelLoader():GetLevelIdByLocation(r0_204:K2_GetActorLocation())
-        local r12_206 = r4_206:GetWCSubSystem()
-        if r12_206 then
-          if r7_204 then
-            r12_206:RequestAsyncTravel(r3_204.Player, r9_204, {
-              r3_204,
-              r8_206
-            }, r8_204)
-          elseif r12_206:IsBigObjectLevelLoadedByLocation(r9_204.Translation) then
-            r5_206()
-            r8_206()
+      if IsValid(r6_205) then
+        local r10_205 = r4_205:GetLevelLoader():GetLevelIdByLocation(r9_203.Translation)
+        local r11_205 = r4_205:GetLevelLoader():GetLevelIdByLocation(r0_203:K2_GetActorLocation())
+        local r12_205 = r4_205:GetWCSubSystem()
+        if r12_205 then
+          if r7_203 then
+            r12_205:RequestAsyncTravel(r3_203.Player, r9_203, {
+              r3_203,
+              r8_205
+            }, r8_203)
+          elseif r12_205:IsBigObjectLevelLoadedByLocation(r9_203.Translation) then
+            r5_205()
+            r8_205()
           else
-            r12_206:RequestAsyncTravel(r3_204.Player, r9_204, {
-              r3_204,
-              r8_206
-            }, r8_204)
+            r12_205:RequestAsyncTravel(r3_203.Player, r9_203, {
+              r3_203,
+              r8_205
+            }, r8_203)
           end
           return 
         end
-        if r6_206:GetLevelLoaded(r10_206) then
-          r5_206()
-          r8_206()
+        if r6_205:GetLevelLoaded(r10_205) then
+          r5_205()
+          r8_205()
           return 
         end
-        if r10_206 ~= r11_206 then
-          r6_206:BindArtLevelLoadedCompleteCallback(r10_206, function()
-            -- line: [4039, 4042] id: 211
-            r5_206()
-            r8_206()
+        if r10_205 ~= r11_205 then
+          r6_205:BindArtLevelLoadedCompleteCallback(r10_205, function()
+            -- line: [4026, 4029] id: 210
+            r5_205()
+            r8_205()
           end)
-          r6_206:LoadArtLevel(r10_206)
+          r6_205:LoadArtLevel(r10_205)
         else
-          r5_206()
-          r8_206()
+          r5_205()
+          r8_205()
         end
       else
-        r5_206()
-        r8_206()
+        r5_205()
+        r8_205()
       end
     end,
-    OutAnimationObj = r0_204,
+    OutAnimationObj = r0_203,
     OutAnimationCallback = nil,
-    OutAnimationPlayTime = r1_204.FadeOutTime and nil,
+    OutAnimationPlayTime = r1_203.FadeOutTime and nil,
   }
-  r4_204:ShowCommonBlackScreen(r14_204)
+  r4_203:ShowCommonBlackScreen(r14_203)
 end
-function r11_0.TeleportToCloestTeleportPoint(r0_212, r1_212, r2_212)
-  -- line: [4066, 4139] id: 212
-  local r3_212 = UE4.UGameplayStatics.GetGameMode(r0_212)
-  if not r3_212 then
+function r11_0.TeleportToCloestTeleportPoint(r0_211, r1_211, r2_211)
+  -- line: [4053, 4126] id: 211
+  local r3_211 = UE4.UGameplayStatics.GetGameMode(r0_211)
+  if not r3_211 then
     return false
   end
-  if not r3_212:IsInRegion() then
+  if not r3_211:IsInRegion() then
     return 
   end
-  local r4_212 = r3_212:GetWCSubSystem()
-  if not r4_212 then
+  local r4_211 = r3_211:GetWCSubSystem()
+  if not r4_211 then
     return 
   end
-  local r5_212 = r3_212:GetRegionDataMgrSubSystem()
-  if not r5_212 then
+  local r5_211 = r3_211:GetRegionDataMgrSubSystem()
+  if not r5_211 then
     return 
   end
-  local r6_212 = UE4.UGameplayStatics.GetGameState(r0_212)
-  local r7_212 = r0_212:K2_GetActorLocation()
-  if r2_212 then
-    r7_212 = r2_212
+  local r6_211 = UE4.UGameplayStatics.GetGameState(r0_211)
+  local r7_211 = r0_211:K2_GetActorLocation()
+  if r2_211 then
+    r7_211 = r2_211
   end
-  local r8_212 = 2100000000
-  local r9_212 = nil
-  for r14_212, r15_212 in pairs(r6_212.StaticCreatorMap) do
-    if r15_212.UnitId == CommonConst.DeliveryAnchorMechanismUnitId and r15_212.UnitType == "Mechanism" then
-      local r16_212 = r5_212:GetLuaDataIndex(r15_212.CreatedWorldRegionEid)
-      if r16_212 >= 0 and r5_212.DataPool.RegionData[r16_212] and r5_212.DataPool.RegionData[r16_212].State and r5_212.DataPool.RegionData[r16_212].State.OpenState then
-        local r18_212 = r7_212:DistSquared(r15_212:K2_GetActorLocation())
-        if r18_212 < r8_212 then
-          r8_212 = r18_212
-          r9_212 = r15_212
+  local r8_211 = 2100000000
+  local r9_211 = nil
+  for r14_211, r15_211 in pairs(r6_211.StaticCreatorMap) do
+    if r15_211.UnitId == CommonConst.DeliveryAnchorMechanismUnitId and r15_211.UnitType == "Mechanism" then
+      local r16_211 = r5_211:GetLuaDataIndex(r15_211.CreatedWorldRegionEid)
+      if r16_211 >= 0 and r5_211.DataPool.RegionData[r16_211] and r5_211.DataPool.RegionData[r16_211].State and r5_211.DataPool.RegionData[r16_211].State.OpenState then
+        local r18_211 = r7_211:DistSquared(r15_211:K2_GetActorLocation())
+        if r18_211 < r8_211 then
+          r8_211 = r18_211
+          r9_211 = r15_211
         end
       end
     end
   end
-  -- close: r10_212
-  if not r9_212 then
-    for r14_212, r15_212 in pairs(r5_212.CurRegionDeliverNew:ToTable()) do
-      if r5_212:CheckDeliverMechanismIsDefault(r15_212) then
-        r9_212 = r6_212.StaticCreatorMap:FindRef(r15_212)
+  -- close: r10_211
+  if not r9_211 then
+    for r14_211, r15_211 in pairs(r5_211.CurRegionDeliverNew:ToTable()) do
+      if r5_211:CheckDeliverMechanismIsDefault(r15_211) then
+        r9_211 = r6_211.StaticCreatorMap:FindRef(r15_211)
         break
       end
     end
-    -- close: r10_212
+    -- close: r10_211
   end
-  local r10_212 = 1
-  if r9_212 then
-    for r15_212, r16_212 in pairs(DataMgr.TeleportPoint) do
-      if r16_212.StaticId == r9_212.StaticCreatorId then
-        r10_212 = r16_212.TeleportPointPos
+  local r10_211 = 1
+  if r9_211 then
+    for r15_211, r16_211 in pairs(DataMgr.TeleportPoint) do
+      if r16_211.StaticId == r9_211.StaticCreatorId then
+        r10_211 = r16_211.TeleportPointPos
       end
     end
-    -- close: r11_212
+    -- close: r11_211
   end
-  local r11_212 = r3_212:GetWCSubSystem()
-  local r13_212 = nil	-- notice: implicit variable refs by block#[38]
-  if r9_212 then
-    r13_212 = r9_212:K2_GetActorLocation()
-    if not r13_212 then
+  local r11_211 = r3_211:GetWCSubSystem()
+  local r13_211 = nil	-- notice: implicit variable refs by block#[38]
+  if r9_211 then
+    r13_211 = r9_211:K2_GetActorLocation()
+    if not r13_211 then
       ::label_131::
-      r13_212 = r0_212.CurrentLocation
+      r13_211 = r0_211.CurrentLocation
     end
   else
     goto label_131	-- block#37 is visited secondly
   end
-  r13_212 = r3_212:GetLevelLoader():GetStartPointByManager(r11_212:GetParentLevelIdByLocation(r13_212), r10_212)
-  r4_212:RequestAsyncTravel(r0_212, r13_212:GetTransform(), {
-    r0_212,
+  r13_211 = r3_211:GetLevelLoader():GetStartPointByManager(r11_211:GetParentLevelIdByLocation(r13_211), r10_211)
+  r4_211:RequestAsyncTravel(r0_211, r13_211:GetTransform(), {
+    r0_211,
     function()
-      -- line: [4133, 4136] id: 213
-      if r1_212 then
-        r1_212()
+      -- line: [4120, 4123] id: 212
+      if r1_211 then
+        r1_211()
       end
     end
   })
   return true
 end
-function r11_0.InpActEvt_GlobalSlow_K2Node_InputActionEvent_1(r0_214, r1_214)
-  -- line: [4141, 4145] id: 214
+function r11_0.InpActEvt_GlobalSlow_K2Node_InputActionEvent_1(r0_213, r1_213)
+  -- line: [4128, 4132] id: 213
   if TeamController and TeamController:GetTeamPopupBarOpen() then
     return 
   end
   DebugPrint(LXYTag, "BP_PlayerCharacter_C:InpActEvt_GlobalSlow_K2Node_InputActionEvent_1")
-  r0_214.Overridden.InpActEvt_GlobalSlow_K2Node_InputActionEvent_1(r0_214, r1_214)
+  r0_213.Overridden.InpActEvt_GlobalSlow_K2Node_InputActionEvent_1(r0_213, r1_213)
 end
-function r11_0.CallClientPrint_Lua(r0_215, r1_215)
-  -- line: [4147, 4149] id: 215
-  print(LogTag, "服务器的输出为:" .. tostring(r1_215))
+function r11_0.CallClientPrint_Lua(r0_214, r1_214)
+  -- line: [4134, 4136] id: 214
+  print(LogTag, "服务器的输出为:" .. tostring(r1_214))
 end
-function r11_0.SetEnableFallAtkDir(r0_216)
-  -- line: [4151, 4167] id: 216
-  local r1_216 = r1_0:Get("EnableFallAtkDir")
-  if r1_216 == nil then
-    local r2_216 = DataMgr.Option.FallAttackDirection
-    local r3_216 = r2_216.DefaultValue
-    if r2_0.GetDeviceTypeByPlatformName(r0_216) == "Mobile" and r2_216.DefaultValueM then
-      r3_216 = r2_216.DefaultValueM
+function r11_0.SetEnableFallAtkDir(r0_215)
+  -- line: [4138, 4154] id: 215
+  local r1_215 = r1_0:Get("EnableFallAtkDir")
+  if r1_215 == nil then
+    local r2_215 = DataMgr.Option.FallAttackDirection
+    local r3_215 = r2_215.DefaultValue
+    if r2_0.GetDeviceTypeByPlatformName(r0_215) == "Mobile" and r2_215.DefaultValueM then
+      r3_215 = r2_215.DefaultValueM
     end
-    r1_216 = true
-    if r3_216 == "False" then
-      r1_216 = false
+    r1_215 = true
+    if r3_215 == "False" then
+      r1_215 = false
     end
   end
-  r0_216:UpdateEnableFallAtkDir(r1_216)
+  r0_215:UpdateEnableFallAtkDir(r1_215)
 end
-function r11_0.UpdateEnableFallAtkDir(r0_217, r1_217)
-  -- line: [4169, 4172] id: 217
-  r0_217.Overridden.UpdateEnableFallAtkDir(r0_217, r1_217)
-  r1_0:Set("EnableFallAtkDir", r1_217)
+function r11_0.UpdateEnableFallAtkDir(r0_216, r1_216)
+  -- line: [4156, 4159] id: 216
+  r0_216.Overridden.UpdateEnableFallAtkDir(r0_216, r1_216)
+  r1_0:Set("EnableFallAtkDir", r1_216)
 end
-function r11_0.GetCurrentCharUI(r0_218)
-  -- line: [4174, 4179] id: 218
-  local r1_218 = DataMgr.BattleChar[r0_218.CurrentRoleId]
-  if r1_218.CharUIId then
-    return r0_218:GetCharUIObj(r1_218.CharUIId)
+function r11_0.GetCurrentCharUI(r0_217)
+  -- line: [4161, 4166] id: 217
+  local r1_217 = DataMgr.BattleChar[r0_217.CurrentRoleId]
+  if r1_217.CharUIId then
+    return r0_217:GetCharUIObj(r1_217.CharUIId)
   end
 end
-function r11_0.GetCharUIObj(r0_219, r1_219)
-  -- line: [4181, 4189] id: 219
-  local r2_219 = GWorld.GameInstance:GetGameUIManager()
-  if not IsValid(r2_219) then
+function r11_0.GetCharUIObj(r0_218, r1_218)
+  -- line: [4168, 4176] id: 218
+  local r2_218 = GWorld.GameInstance:GetGameUIManager()
+  if not IsValid(r2_218) then
     return nil
   end
-  return r2_219:GetUIObj(DataMgr.BattleCharUI[r1_219][r0_219:GetAttr("GradeLevel") and 0].UIName)
+  return r2_218:GetUIObj(DataMgr.BattleCharUI[r1_218][r0_218:GetAttr("GradeLevel") and 0].UIName)
 end
-function r11_0.K2_OnEndViewTarget(r0_220, r1_220)
-  -- line: [4191, 4193] id: 220
+function r11_0.K2_OnEndViewTarget(r0_219, r1_219)
+  -- line: [4178, 4180] id: 219
   EventManager:FireEvent(EventID.OnEndViewTarget)
 end
-function r11_0.K2_OnBecomeViewTarget(r0_221, r1_221)
-  -- line: [4194, 4198] id: 221
-  rawset(r0_221, "Controller", r1_221)
-  rawset(r1_221, "PlayerCameraManager", r1_221.PlayerCameraManager)
+function r11_0.K2_OnBecomeViewTarget(r0_220, r1_220)
+  -- line: [4181, 4185] id: 220
+  rawset(r0_220, "Controller", r1_220)
+  rawset(r1_220, "PlayerCameraManager", r1_220.PlayerCameraManager)
   EventManager:FireEvent(EventID.OnBecomeViewTarget)
 end
-function r11_0.SetRegionOnlineState(r0_222)
-  -- line: [4200, 4216] id: 222
-  local r1_222 = r1_0:Get("AutoJoin")
-  if r1_222 == nil then
-    local r2_222 = DataMgr.Option.AutoJoin
-    local r3_222 = r2_222.DefaultValue
-    if r2_0.GetDeviceTypeByPlatformName(r0_222) == "Mobile" and r2_222.DefaultValueM then
-      r3_222 = r2_222.DefaultValueM
+function r11_0.SetRegionOnlineState(r0_221)
+  -- line: [4187, 4203] id: 221
+  local r1_221 = r1_0:Get("AutoJoin")
+  if r1_221 == nil then
+    local r2_221 = DataMgr.Option.AutoJoin
+    local r3_221 = r2_221.DefaultValue
+    if r2_0.GetDeviceTypeByPlatformName(r0_221) == "Mobile" and r2_221.DefaultValueM then
+      r3_221 = r2_221.DefaultValueM
     end
-    r1_222 = true
-    if r3_222 == "False" then
-      r1_222 = false
+    r1_221 = true
+    if r3_221 == "False" then
+      r1_221 = false
     end
   end
-  r0_222:UpdateRegionOnlineState(r1_222)
+  r0_221:UpdateRegionOnlineState(r1_221)
 end
-function r11_0.UpdateRegionOnlineState(r0_223, r1_223)
-  -- line: [4217, 4220] id: 223
-  r0_223.bOpenRegionOnline = r1_223
-  r1_0:Set("AutoJoin", r1_223)
+function r11_0.UpdateRegionOnlineState(r0_222, r1_222)
+  -- line: [4204, 4207] id: 222
+  r0_222.bOpenRegionOnline = r1_222
+  r1_0:Set("AutoJoin", r1_222)
 end
-function r11_0.GetPlayerGender(r0_224, r1_224)
-  -- line: [4221, 4228] id: 224
-  local r2_224 = GWorld:GetAvatar()
-  if r2_224 then
-    return r2_224.Sex
+function r11_0.GetPlayerGender(r0_223, r1_223)
+  -- line: [4208, 4215] id: 223
+  local r2_223 = GWorld:GetAvatar()
+  if r2_223 then
+    return r2_223.Sex
   else
     return 0
   end
 end
-function r11_0.GetTeamMemberEidArray(r0_225)
-  -- line: [4230, 4247] id: 225
-  local r1_225 = UE4.UGameplayStatics.GetGameInstance(r0_225)
-  if not TeamController or not TeamController:GetModel() or not r1_225 then
+function r11_0.GetTeamMemberEidArray(r0_224)
+  -- line: [4217, 4234] id: 224
+  local r1_224 = UE4.UGameplayStatics.GetGameInstance(r0_224)
+  if not TeamController or not TeamController:GetModel() or not r1_224 then
     return {}
   end
-  local r2_225 = r1_225:GetSceneManager()
-  if not r2_225 or not r2_225.RegionOnlineCharacterInfo then
+  local r2_224 = r1_224:GetSceneManager()
+  if not r2_224 or not r2_224.RegionOnlineCharacterInfo then
     return {}
   end
-  local r3_225 = TeamController:GetModel():GetTeam() and {}
-  local r4_225 = {}
-  for r9_225, r10_225 in pairs(r3_225.Members and {}) do
-    if r10_225 then
-      table.insert(r4_225, r2_225.RegionOnlineCharacterInfo[r10_225.Uid])
+  local r3_224 = TeamController:GetModel():GetTeam() and {}
+  local r4_224 = {}
+  for r9_224, r10_224 in pairs(r3_224.Members and {}) do
+    if r10_224 then
+      table.insert(r4_224, r2_224.RegionOnlineCharacterInfo[r10_224.Uid])
     end
   end
-  -- close: r5_225
-  return r4_225
+  -- close: r5_224
+  return r4_224
 end
-function r11_0.EnterRegionOnlineRegisterTeamEvent(r0_226, r1_226)
-  -- line: [4249, 4282] id: 226
+function r11_0.EnterRegionOnlineRegisterTeamEvent(r0_225, r1_225)
+  -- line: [4236, 4269] id: 225
   if not TeamController or not TeamController:GetModel() then
     return 
   end
-  local r2_226 = UE4.URegionSyncSubsystem.GetInstance(r0_226)
-  if r1_226 then
-    TeamController:RegisterEvent(r0_226, function(r0_227, r1_227, ...)
-      -- line: [4255, 4278] id: 227
-      DebugPrint("EnterRegionOnlineRegisterTeamEvent  " .. r1_227)
-      local r2_227 = TeamCommon.EventId.TeamOnAddPlayer
-      local r3_227 = nil	-- notice: implicit variable refs by block#[15]
-      if r1_227 == r2_227 then
+  local r2_225 = UE4.URegionSyncSubsystem.GetInstance(r0_225)
+  if r1_225 then
+    TeamController:RegisterEvent(r0_225, function(r0_226, r1_226, ...)
+      -- line: [4242, 4265] id: 226
+      DebugPrint("EnterRegionOnlineRegisterTeamEvent  " .. r1_226)
+      local r2_226 = TeamCommon.EventId.TeamOnAddPlayer
+      local r3_226 = nil	-- notice: implicit variable refs by block#[15]
+      if r1_226 == r2_226 then
         ... = ... -- error: untaken top expr
-        r3_227 = r2_226
-        if r3_227 and r2_227 then
-          r3_227 = r2_227.Eid
-          if r3_227 then
-            r2_226:SetOnlinePlayerTeamMember(r2_0.ObjId2Str(r2_227.Eid), true)
+        r3_226 = r2_225
+        if r3_226 and r2_226 then
+          r3_226 = r2_226.Eid
+          if r3_226 then
+            r2_225:SetOnlinePlayerTeamMember(r2_0.ObjId2Str(r2_226.Eid), true)
           end
         end
       else
-        r2_227 = TeamCommon.EventId.TeamOnDelPlayer
-        if r1_227 == r2_227 then
+        r2_226 = TeamCommon.EventId.TeamOnDelPlayer
+        if r1_226 == r2_226 then
           ... = ... -- error: untaken top expr
-          r3_227 = r2_226
-          if r3_227 and r2_227 then
-            r3_227 = r2_227.Eid
-            if r3_227 then
-              r2_226:SetOnlinePlayerTeamMember(r2_0.ObjId2Str(r2_227.Eid), true)
+          r3_226 = r2_225
+          if r3_226 and r2_226 then
+            r3_226 = r2_226.Eid
+            if r3_226 then
+              r2_225:SetOnlinePlayerTeamMember(r2_0.ObjId2Str(r2_226.Eid), true)
             end
           end
-        elseif r1_227 == TeamCommon.EventId.TeamOnInit or r1_227 == TeamCommon.EventId.TeamLeave then
-          r2_227 = r1_227 == TeamCommon.EventId.TeamOnInit
+        elseif r1_226 == TeamCommon.EventId.TeamOnInit or r1_226 == TeamCommon.EventId.TeamLeave then
+          r2_226 = r1_226 == TeamCommon.EventId.TeamOnInit
           ... = ... -- error: untaken top expr
-          local r4_227 = r3_227 and TeamController:GetModel():GetTeam()
-          if not r4_227 or not r4_227.Members then
+          local r4_226 = r3_226 and TeamController:GetModel():GetTeam()
+          if not r4_226 or not r4_226.Members then
             return 
           end
-          for r9_227, r10_227 in pairs(r4_227.Members) do
-            if r2_226 then
-              r2_226:SetOnlinePlayerTeamMember(r2_0.ObjId2Str(r10_227.Eid), r2_227)
+          for r9_226, r10_226 in pairs(r4_226.Members) do
+            if r2_225 then
+              r2_225:SetOnlinePlayerTeamMember(r2_0.ObjId2Str(r10_226.Eid), r2_226)
             end
           end
-          -- close: r5_227
+          -- close: r5_226
         end
       end
     end)
   else
-    TeamController:UnRegisterEvent(r0_226)
+    TeamController:UnRegisterEvent(r0_225)
   end
 end
-function r11_0.OnChangeNickName(r0_228, r1_228)
-  -- line: [4284, 4287] id: 228
-  r0_228:EnableHeadWidget("Name", false)
-  r0_228:EnableHeadWidget("Name", true, r1_228)
+function r11_0.OnChangeNickName(r0_227, r1_227)
+  -- line: [4271, 4274] id: 227
+  r0_227:EnableHeadWidget("Name", false)
+  r0_227:EnableHeadWidget("Name", true, r1_227)
 end
-function r11_0.OnChangeTitle(r0_229, r1_229, r2_229, r3_229)
-  -- line: [4289, 4291] id: 229
-  r0_229:RefreshTitle(r1_229, r2_229, r3_229)
+function r11_0.OnChangeTitle(r0_228, r1_228, r2_228, r3_228)
+  -- line: [4276, 4278] id: 228
+  r0_228:RefreshTitle(r1_228, r2_228, r3_228)
 end
-function r11_0.EnableNameWidget(r0_230)
-  -- line: [4293, 4313] id: 230
-  EventManager:AddEvent(EventID.OnChangeNickName, r0_230, r0_230.OnChangeNickName)
-  EventManager:AddEvent(EventID.OnChangeTitle, r0_230, r0_230.OnChangeTitle)
-  local r1_230 = r0_230.HeadWidgetComponent == nil
-  r0_230:InitHeadWidgetComponent()
-  if r1_230 then
-    r0_230:EnableHeadWidget("Name", false)
-    r0_230:EnableHeadWidget("Title", false)
+function r11_0.EnableNameWidget(r0_229)
+  -- line: [4280, 4300] id: 229
+  EventManager:AddEvent(EventID.OnChangeNickName, r0_229, r0_229.OnChangeNickName)
+  EventManager:AddEvent(EventID.OnChangeTitle, r0_229, r0_229.OnChangeTitle)
+  local r1_229 = r0_229.HeadWidgetComponent == nil
+  r0_229:InitHeadWidgetComponent()
+  if r1_229 then
+    r0_229:EnableHeadWidget("Name", false)
+    r0_229:EnableHeadWidget("Title", false)
   end
-  local r2_230 = GWorld:GetAvatar()
-  if r2_230 then
-    r0_230:OnChangeNickName(r2_230.Nickname)
-    r0_230:OnChangeTitle(r2_230.TitleBefore, r2_230.TitleAfter, r2_230.TitleFrame)
+  local r2_229 = GWorld:GetAvatar()
+  if r2_229 then
+    r0_229:OnChangeNickName(r2_229.Nickname)
+    r0_229:OnChangeTitle(r2_229.TitleBefore, r2_229.TitleAfter, r2_229.TitleFrame)
   end
-  if r0_230.HeadWidgetComponent then
-    local r3_230 = r0_230.HeadWidgetComponent:GetWidget()
-    if r3_230 then
-      r3_230:SetUIVisibilityTag("MainPlayerDisableNameWidget", false)
+  if r0_229.HeadWidgetComponent then
+    local r3_229 = r0_229.HeadWidgetComponent:GetWidget()
+    if r3_229 then
+      r3_229:SetUIVisibilityTag("MainPlayerDisableNameWidget", false)
     end
   end
 end
-function r11_0.DisableNameWidget(r0_231)
-  -- line: [4315, 4327] id: 231
-  if not r0_231.HeadWidgetComponent then
+function r11_0.DisableNameWidget(r0_230)
+  -- line: [4302, 4314] id: 230
+  if not r0_230.HeadWidgetComponent then
     return 
   end
-  EventManager:RemoveEvent(EventID.OnChangeNickName, r0_231)
-  EventManager:RemoveEvent(EventID.OnChangeTitle, r0_231)
-  if r0_231.HeadWidgetComponent then
-    local r1_231 = r0_231.HeadWidgetComponent:GetWidget()
-    if r1_231 then
-      r1_231:SetUIVisibilityTag("MainPlayerDisableNameWidget", true)
+  EventManager:RemoveEvent(EventID.OnChangeNickName, r0_230)
+  EventManager:RemoveEvent(EventID.OnChangeTitle, r0_230)
+  if r0_230.HeadWidgetComponent then
+    local r1_230 = r0_230.HeadWidgetComponent:GetWidget()
+    if r1_230 then
+      r1_230:SetUIVisibilityTag("MainPlayerDisableNameWidget", true)
     end
   end
 end

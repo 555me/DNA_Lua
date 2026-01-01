@@ -2457,7 +2457,7 @@ r6_0 = {
 r7_0 = {}
 r7_0[12010101] = {
   IsMultiQuest = false,
-  SubRegionId = 104108,
+  SubRegionId = 0,
   nextQuestId = 12010102,
   nextQuestIds = {
     Success = 12010102,
@@ -2993,7 +2993,7 @@ r7_0[12010416] = {
   SuccQuestDeliver = {
     DeliverType = 1,
     Id = 104401,
-    IsWhite = false,
+    IsWhite = true,
     StartIndex = 1,
   },
   nextQuestId = 12010417,

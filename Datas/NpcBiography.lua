@@ -207,7 +207,7 @@ end)("NpcBiography", {
   },
   [102001] = {
     ConditionId = 1033,
-    DispConditionId = 200213,
+    DispConditionId = 1033,
     NpcAge = "29",
     NpcBiographyId = 102001,
     NpcInformation = "NpcBiography_Information_Luna",

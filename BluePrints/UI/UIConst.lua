@@ -1,4 +1,4 @@
--- filename: @E:/Pack/Branch/OBT10_Geili\Content/Script/BluePrints\UI\UIConst.lua
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\UIConst.lua
 -- version: lua54
 -- line: [0, 0] id: 0
 local r0_0 = {
@@ -83,7 +83,6 @@ local r0_0 = {
   DUNGEONCHARACTERINTRO = "/Game/UI/UI_PC/Training_Ground/Training_Ground_PC.Training_Ground_PC",
   DUNGEONCOMRIGHTKEYTEXTDESCDATA = "/Game/UI/WBP/Common/Key/Com_RightKeyTextDesc_Data_PC.Com_RightKeyTextDesc_Data_PC_C",
   DUNGEONTRAININGMONSTERITEMDATA = "/Game/UI/WBP/Battle/Widget/Trainning/WBP_Battle_Training_Item_Data.WBP_Battle_Training_Item_Data_C",
-  DUNGEONTOASTFLOAT = "/Game/UI/UI_PC/Battle/Defense/Battle_Defense_Toast_PC.Battle_Defense_Toast_PC_C",
   DUNGEONTASKPANEL = "/Game/UI/UI_PC/MainInterfaceUI/WorldTaskEntryItem.WorldTaskEntryItem_C",
   DUNGEONSABOTAGEFLOAT = "/Game/UI/UI_PC/Battle/Destroy/Battle_TaskDestroy_Page_PC.Battle_TaskDestroy_Page_PC_C",
   DUNGEONSABOTAGECHALLENGE = "/Game/UI/WBP/Dungeon/Sabotage/WBP_Dungeon_DestroyTaskBar.WBP_Dungeon_DestroyTaskBar_C",
@@ -719,6 +718,7 @@ r0_0.AnimOutSpeedWithPageJump = {
   LittleFastSpeed = 3,
   NormalFastSpeed = 5,
   MoreFastSpeed = 10,
+  MaxSpeed = 200,
 }
 r0_0.DungeonIndicatorShowWidgets = {
   "BattleFort"
@@ -735,7 +735,7 @@ r0_0.OptimizeSwitch = {
     UI_ADD_IN_CACHE = false,
   },
   Mobile = {
-    UI_WRAPPING_WITH_INVALIDBOX = false,
+    UI_WRAPPING_WITH_INVALIDBOX = true,
     UI_WRAPPING_WITH_RETAINERBOX = true,
     UI_ADD_IN_CACHE = false,
   },
@@ -784,6 +784,7 @@ r0_0.IndicatorCategoryIconTable = {
   ["/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_SurvivalPro_Heal.T_Gp_SurvivalPro_Heal"] = "Mechanism",
   ["/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_SurvivalPro_Resource.T_Gp_SurvivalPro_Resource"] = "Mechanism",
   ["/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Chest.T_Gp_Chest"] = "Mechanism",
+  ["/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_EastScan.T_Gp_EastScan"] = "Mechanism",
 }
 r0_0.IndicatorAnimTable = {
   ["/Game/UI/WBP/GuidePoint/WBP_GuidePoint_BlastRobot.WBP_GuidePoint_BlastRobot"] = "Blast",
@@ -815,6 +816,7 @@ r0_0.IndicatorAnimIconTable = {
   ["/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_SurvivalPro_Resource.T_Gp_SurvivalPro_Resource"] = "Guide_Icon_Survival",
   ["/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Chest.T_Gp_Chest"] = "WorldExploration",
   ["/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Trans01.T_Gp_Trans01"] = "WorldExploration",
+  ["/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_EastScan.T_Gp_EastScan"] = "Mechanism",
 }
 r0_0.DungeonTaskPath = {
   MainMission = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_MainMission.T_Gp_MainMission",
@@ -822,6 +824,17 @@ r0_0.DungeonTaskPath = {
   Boss = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Boss.T_Gp_Boss",
   Evacuation = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_Evacuation.T_Gp_Evacuation",
   SpecialEnemy = "/Game/UI/Texture/Dynamic/Atlas/GuidePoint/T_Gp_SpecialEnemy.T_Gp_SpecialEnemy",
+}
+r0_0.FXAccessoryTypes = {
+  FX_Dead = true,
+  FX_Teleport = true,
+  FX_Footprint = true,
+  FX_PlungingATK = true,
+  FX_HelixLeap = true,
+}
+r0_0.HidePlayerAccessoryTypes = {
+  FX_Dead = true,
+  FX_Footprint = true,
 }
 r0_0.AccessoryTypeTextMap = {
   Head = "UI_SkinPreview_Accessory_Head",
@@ -832,7 +845,58 @@ r0_0.AccessoryTypeTextMap = {
   FX_Teleport = "UI_SkinPreview_Accessory_FX_Teleport",
   FX_Footprint = "UI_SkinPreview_Accessory_FX_Footprint",
   FX_Body = "UI_SkinPreview_Accessory_FX_Body",
+  FX_PlungingATK = "UI_SkinPreview_Accessory_FX_PlungingATK",
+  FX_HelixLeap = "UI_SkinPreview_Accessory_FX_HelixLeap",
   WeaponAccessory = "UI_SkinPreview_Accessory_Weapon",
+}
+r0_0.ErrorCategory = {
+  HUD = "主界面",
+  Abyss = "大秘境",
+  Achievement = "成就系统",
+  Artivity = "活动",
+  Anglin = "钓鱼",
+  Announcement = "公告",
+  Archive = "图鉴",
+  Armory = "军械库",
+  Bag = "背包",
+  BattlePass = "战令",
+  Camera = "相机系统",
+  Char = "角色",
+  Chat = "聊天",
+  Clock = "时间调整系统",
+  Dispatch = "派遣",
+  Dungeon = "委托",
+  Entertainment = "邀约",
+  Forging = "锻造系统",
+  Friend = "好友系统",
+  Gacha = "抽卡",
+  GuideBook = "教学手册",
+  Invite = "入驻",
+  Mail = "邮箱",
+  Map = "地图",
+  Mod = "魔之楔",
+  Polarity = "极化系统",
+  Quest = "任务系统",
+  Rouge = "肉鸽系统",
+  Shop = "商城",
+  Skill = "技能",
+  Temple = "神庙",
+  Wiki = "百科",
+  BasicModule = "基础模块",
+  Others = "未知分类",
+}
+r0_0.ShopBannerType = {
+  Common = 0,
+  MonthCard = 1,
+  DailyPack = 2,
+}
+r0_0.ButtonState = {
+  None = 0,
+  Press = 1,
+  Hovered = 2,
+  Unhovered = 3,
+  Release = 4,
+  Click = 5,
 }
 r0_0.MouseButton = {
   LeftMouseButton = true,

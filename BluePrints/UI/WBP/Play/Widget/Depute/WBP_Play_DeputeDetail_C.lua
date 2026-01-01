@@ -617,7 +617,7 @@ function r6_0.InitListCellInfo(r0_22, r1_22)
   else
     r0_22.DefaultList:SetVisibility(ESlateVisibility.Collapsed)
   end
-  local r11_22 = nil	-- notice: implicit variable refs by block#[50, 61, 64, 72, 75]
+  local r11_22 = nil	-- notice: implicit variable refs by block#[50, 61, 64, 72]
   local r12_22 = nil	-- notice: implicit variable refs by block#[53]
   if r2_22[r1_22] then
     r0_22.List_Type:SetVisibility(ESlateVisibility.Visible)
@@ -688,6 +688,7 @@ function r6_0.InitListCellInfo(r0_22, r1_22)
     r0_22.Group_TimeTips:SetVisibility(ESlateVisibility.Collapsed)
     return 
   end
+  r0_22.Text_ModUpNum:SetVisibility(UE4.ESlateVisibility.Collapsed)
   local r8_22, r9_22 = r0_22:CheckDungeonType(r0_22.CurSelectedDungeonId)
   r0_22.Group_TimeTips:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
   r0_22.Bg_Consume:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
@@ -696,11 +697,11 @@ function r6_0.InitListCellInfo(r0_22, r1_22)
   if r11_22 then
     r12_22 = "UI_Event_ModDrop_ChallengeRemain"
     if not r12_22 then
-      ::label_328::
+      ::label_334::
       r12_22 = "UI_Event_ModDrop_DropRemain"
     end
   else
-    goto label_328	-- block#52 is visited secondly
+    goto label_334	-- block#52 is visited secondly
   end
   r0_22.Text_TimeTipsTitle:SetText(GText(r12_22))
   local r13_22 = DataMgr.ModDropConstant and {}
@@ -708,23 +709,23 @@ function r6_0.InitListCellInfo(r0_22, r1_22)
   if r14_22 then
     r14_22 = r13_22.DailyFreeTicketAmount.ConstantValue and 0
   else
-    goto label_348	-- block#57 is visited secondly
+    goto label_354	-- block#57 is visited secondly
   end
   local r15_22 = r13_22.DailyModDungeonAmount
   if r15_22 then
     r15_22 = r13_22.DailyModDungeonAmount.ConstantValue and 0
   else
-    goto label_356	-- block#60 is visited secondly
+    goto label_362	-- block#60 is visited secondly
   end
   local r16_22 = nil	-- notice: implicit variable refs by block#[69, 70, 71]
   if r11_22 then
     r16_22 = r14_22
     if r16_22 then
-      ::label_361::
+      ::label_367::
       r16_22 = r15_22
     end
   else
-    goto label_361	-- block#63 is visited secondly
+    goto label_367	-- block#63 is visited secondly
   end
   local r17_22 = nil	-- notice: implicit variable refs by block#[69]
   if r11_22 then
@@ -732,7 +733,7 @@ function r6_0.InitListCellInfo(r0_22, r1_22)
     if not r17_22 then
       r17_22 = 0
       if not r17_22 then
-        ::label_370::
+        ::label_376::
         r17_22 = r10_22.DropTimes
         if not r17_22 then
           r17_22 = 0
@@ -740,40 +741,40 @@ function r6_0.InitListCellInfo(r0_22, r1_22)
       end
     end
   else
-    goto label_370	-- block#67 is visited secondly
+    goto label_376	-- block#67 is visited secondly
   end
   local r18_22 = math.max(0, math.floor(r16_22 - r17_22))
   local r19_22 = nil	-- notice: implicit variable refs by block#[72]
   if r18_22 <= 0 then
     r19_22 = "<Warning>0</>/" .. r16_22
     if not r19_22 then
-      ::label_390::
+      ::label_396::
       r19_22 = r18_22 .. "/" .. r16_22
     end
   else
-    goto label_390	-- block#71 is visited secondly
+    goto label_396	-- block#71 is visited secondly
   end
   r0_22.Text_Times:SetText(r19_22)
-  local r20_22 = r0_22.Text_ModUpNum
-  local r22_22 = nil	-- notice: implicit variable refs by block#[75]
-  if r11_22 then
-    r22_22 = UE4.ESlateVisibility.Collapsed
-    if not r22_22 then
-      ::label_407::
-      r22_22 = UE4.ESlateVisibility.SelfHitTestInvisible
-    end
-  else
-    goto label_407	-- block#74 is visited secondly
-  end
-  r20_22:SetVisibility(r22_22)
   if not r11_22 then
-    r20_22 = r13_22.EventBonus
+    local r20_22 = r13_22.EventBonus
     if r20_22 then
       r20_22 = r13_22.EventBonus.ConstantValue and 0
     else
-      goto label_420	-- block#78 is visited secondly
+      goto label_413	-- block#75 is visited secondly
     end
     r0_22.Text_ModUpNum:SetText("+" .. math.floor(r20_22 / 100) .. "%")
+    local r22_22 = r0_22.Text_ModUpNum
+    local r24_22 = nil	-- notice: implicit variable refs by block#[79]
+    if r18_22 <= 0 then
+      r24_22 = UE4.ESlateVisibility.Collapsed
+      if not r24_22 then
+        ::label_435::
+        r24_22 = UE4.ESlateVisibility.SelfHitTestInvisible
+      end
+    else
+      goto label_435	-- block#78 is visited secondly
+    end
+    r22_22:SetVisibility(r24_22)
   end
 end
 function r6_0.RefreshLevelCellContent(r0_25, r1_25)
@@ -2190,8 +2191,8 @@ function r6_0.OnCurrentSquadChange(r0_94, r1_94, r2_94)
   end
 end
 function r6_0.RefreshBtnState(r0_95, r1_95)
-  -- line: [2496, 2676] id: 95
-  -- notice: unreachable block#70
+  -- line: [2496, 2674] id: 95
+  -- notice: unreachable block#60
   DebugPrint("gmy@WBP_Play_DeputeDetail_C M:RefreshBtnState", r1_95)
   if not r0_95.CurSelectedDungeonId then
     return 
@@ -2213,8 +2214,6 @@ function r6_0.RefreshBtnState(r0_95, r1_95)
     goto label_41	-- block#12 is visited secondly
   end
   local r8_95 = false
-  local r19_95 = nil	-- notice: implicit variable refs by block#[49]
-  local r20_95 = nil	-- notice: implicit variable refs by block#[49]
   if r2_95.CdnHideData and r2_95.CdnHideData.dungeon then
     for r13_95, r14_95 in pairs(r2_95.CdnHideData.dungeon) do
       for r19_95, r20_95 in pairs(r14_95.gameCtrlDungeon and {}) do
@@ -2244,53 +2243,23 @@ function r6_0.RefreshBtnState(r0_95, r1_95)
   r0_95.ContinuousCombat = r12_95
   local r13_95 = r0_95:IsDoubleMod()
   local r14_95 = true
-  if r13_95 then
+  if r13_95 and r12_95 then
     local r15_95 = r0_95:GetDoubleModDropData() and {}
     local r16_95 = DataMgr.ModDropConstant and {}
     local r17_95 = r16_95.DailyFreeTicketAmount
     if r17_95 then
       r17_95 = r16_95.DailyFreeTicketAmount.ConstantValue and 0
     else
-      goto label_118	-- block#37 is visited secondly
+      goto label_120	-- block#38 is visited secondly
     end
-    local r18_95 = r16_95.DailyModDungeonAmount
-    if r18_95 then
-      r18_95 = r16_95.DailyModDungeonAmount.ConstantValue and 0
-    else
-      goto label_126	-- block#40 is visited secondly
-    end
-    if r12_95 then
-      r19_95 = r17_95
-      if r19_95 then
-        ::label_131::
-        r19_95 = r18_95
-      end
-    else
-      goto label_131	-- block#43 is visited secondly
-    end
-    if r12_95 then
-      r20_95 = r15_95.EliteRushTimes
-      if not r20_95 then
-        r20_95 = 0
-        if not r20_95 then
-          ::label_140::
-          r20_95 = r15_95.DropTimes
-          if not r20_95 then
-            r20_95 = 0
-          end
-        end
-      end
-    else
-      goto label_140	-- block#47 is visited secondly
-    end
-    r14_95 = math.floor(r19_95 - r20_95) > 0
+    r14_95 = math.floor(r17_95 - r15_95.EliteRushTimes) > 0
   end
   local r15_95 = table.concat
   local r16_95 = {}
   local r17_95 = tostring(r0_95.CurSelectedDungeonId)
   local r18_95 = tostring(r9_95)
-  r19_95 = tostring(r4_95)
-  r20_95 = tostring(r7_95)
+  local r19_95 = tostring(r4_95)
+  local r20_95 = tostring(r7_95)
   local r21_95 = tostring(r0_95.DeputeType)
   local r22_95 = tostring(r6_95)
   local r23_95 = tostring(r13_95 and false)
@@ -2315,10 +2284,10 @@ function r6_0.RefreshBtnState(r0_95, r1_95)
     r0_95.Button_Multi:UnBindEventOnClickedByObj(r0_95)
     r0_95.Button_Solo:UnBindEventOnClickedByObj(r0_95)
     r0_95.Button_Multi:BindForbidStateExecuteEvent(r0_95, function()
-      -- line: [2589, 2589] id: 96
+      -- line: [2587, 2587] id: 96
     end)
     r0_95.Button_Solo:BindForbidStateExecuteEvent(r0_95, function()
-      -- line: [2590, 2590] id: 97
+      -- line: [2588, 2588] id: 97
     end)
   else
     if not r7_95 then
@@ -2328,7 +2297,7 @@ function r6_0.RefreshBtnState(r0_95, r1_95)
       if r4_95 then
         r18_95 = ESlateVisibility.Visible and ESlateVisibility.Collapsed
       else
-        goto label_264	-- block#65 is visited secondly
+        goto label_243	-- block#55 is visited secondly
       end
       r16_95:SetVisibility(r18_95)
     end
@@ -2350,7 +2319,7 @@ function r6_0.RefreshBtnState(r0_95, r1_95)
     r0_95.Button_Multi:BindForbidStateExecuteEvent(r0_95, r0_95.OnForbiddenRightBtnClicked)
     r0_95.Button_DoubleMod:BindForbidStateExecuteEvent(r0_95, r0_95.OnForbiddenDoubleModBtnClicked)
     r0_95.Button_Solo:BindForbidStateExecuteEvent(r0_95, function()
-      -- line: [2620, 2624] id: 98
+      -- line: [2618, 2622] id: 98
       if not r7_95 and r10_95 then
         UIManager(r0_95):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Team_CanNotEnterDungeon"))
       end
@@ -2379,7 +2348,7 @@ function r6_0.RefreshBtnState(r0_95, r1_95)
       if not r14_95 then
         r18_95 = r0_95.ContinuousCombat and false
       else
-        goto label_404	-- block#83 is visited secondly
+        goto label_383	-- block#73 is visited secondly
       end
       r16_95:ForbidBtn(r18_95)
     else
@@ -2395,31 +2364,31 @@ function r6_0.RefreshBtnState(r0_95, r1_95)
       r0_95.Button_Solo:UnBindEventOnClickedByObj(r0_95)
       r0_95.Button_DoubleMod:UnBindEventOnClickedByObj(r0_95)
       r0_95.Button_Multi:BindForbidStateExecuteEvent(r0_95, function()
-        -- line: [2665, 2667] id: 99
+        -- line: [2663, 2665] id: 99
         UIManager(r0_95):ShowUITip("CommonToastMain", GText("UI_Event_ModDrop_Exhausted"))
       end)
       r0_95.Button_Solo:BindForbidStateExecuteEvent(r0_95, function()
-        -- line: [2668, 2670] id: 100
+        -- line: [2666, 2668] id: 100
         UIManager(r0_95):ShowUITip("CommonToastMain", GText("UI_Event_ModDrop_Exhausted"))
       end)
       r0_95.Button_DoubleMod:BindForbidStateExecuteEvent(r0_95, function()
-        -- line: [2671, 2673] id: 101
+        -- line: [2669, 2671] id: 101
         UIManager(r0_95):ShowUITip("CommonToastMain", GText("UI_Event_ModDrop_Exhausted"))
       end)
     end
   end
 end
 function r6_0.IsMatching(r0_102)
-  -- line: [2678, 2680] id: 102
+  -- line: [2676, 2678] id: 102
   return TeamController:GetModel():IsMatching()
 end
 function r6_0.OpenTicketDialog(r0_103)
-  -- line: [2682, 2692] id: 103
+  -- line: [2680, 2690] id: 103
   local r1_103 = UIManager(r0_103):ShowCommonPopupUI(100123, {
     DungeonId = r0_103.CurSelectedDungeonId,
     RightCallbackObj = r0_103,
     RightCallbackFunction = function(r0_104, r1_104)
-      -- line: [2686, 2688] id: 104
+      -- line: [2684, 2686] id: 104
       r0_103:EnterTicketDungeon(r1_104.Content_1.TicketId)
     end,
     ForbiddenRightCallbackObj = r0_103,
@@ -2427,11 +2396,11 @@ function r6_0.OpenTicketDialog(r0_103)
   }, r0_103)
 end
 function r6_0.PlayTabSound(r0_105)
-  -- line: [2694, 2696] id: 105
+  -- line: [2692, 2694] id: 105
   AudioManager(r0_105):PlayUISound(r0_105, "event:/ui/common/click_level_03", nil, nil)
 end
 function r6_0.TryEnterDungeon(r0_106, r1_106, r2_106, r3_106, r4_106, r5_106)
-  -- line: [2698, 2711] id: 106
+  -- line: [2696, 2709] id: 106
   if r0_106:DoCheckCanEnterDungeon(r1_106, r2_106) then
     r0_106:BlockAllUIInput(true)
     DebugPrint("gmy@M:TryEnterDungeon ", r1_106, r2_106, r3_106, r4_106, r5_106)
@@ -2446,7 +2415,7 @@ function r6_0.TryEnterDungeon(r0_106, r1_106, r2_106, r3_106, r4_106, r5_106)
   end
 end
 function r6_0.HandleEnterDungeonRetCode(r0_107, ...)
-  -- line: [2713, 2728] id: 107
+  -- line: [2711, 2726] id: 107
   DebugPrint("gmy@M.EnterDungeonCallback RetCode", r0_107)
   local r1_107 = ErrorCode.RET_SUCCESS
   if r0_107 == r1_107 then
@@ -2464,7 +2433,7 @@ function r6_0.HandleEnterDungeonRetCode(r0_107, ...)
   end
 end
 function r6_0.DoCheckCanEnterDungeon(r0_108, r1_108, r2_108)
-  -- line: [2730, 2737] id: 108
+  -- line: [2728, 2735] id: 108
   if not TeamController:DoCheckCanEnterDungeon(r2_108) then
     DebugPrint("gmy@M:DoCheckCanEnterDungeon bTeammateNotReady")
     return false
@@ -2472,19 +2441,19 @@ function r6_0.DoCheckCanEnterDungeon(r0_108, r1_108, r2_108)
   return true
 end
 function r6_0.TeamMatchTimingStart(r0_109, r1_109)
-  -- line: [2739, 2743] id: 109
+  -- line: [2737, 2741] id: 109
   TeamController:GetModel().bPressedSolo = true
   TeamController:GetModel().bPressedMulti = true
   r0_109:RefreshBtnState(r1_109)
 end
 function r6_0.TeamMatchTimingEnd(r0_110, r1_110)
-  -- line: [2745, 2749] id: 110
+  -- line: [2743, 2747] id: 110
   TeamController:GetModel().bPressedSolo = false
   TeamController:GetModel().bPressedMulti = false
   r0_110:RefreshBtnState(r1_110)
 end
 function r6_0.DisableEscOnDungeonLoading(r0_111)
-  -- line: [2752, 2754] id: 111
+  -- line: [2750, 2752] id: 111
   r0_111.DisableEsc = true
 end
 AssembleComponents(r6_0)

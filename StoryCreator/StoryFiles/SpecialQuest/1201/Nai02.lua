@@ -80,7 +80,7 @@ r2_0 = {
   type = "StoryNode",
   name = "遇见无由生",
   pos = {
-    x = 1120.7965879207234,
+    x = 1119.2965879207234,
     y = 313.0912858244359,
   },
 }
@@ -773,7 +773,7 @@ r4_0["173625744314919029691"] = {
     GuideUIEnable = true,
     StaticCreatorId = 2000193,
     GuideType = "P",
-    GuidePointName = "TargetPoint_WindBell01",
+    GuidePointName = "TargetPoint_WindBell03",
   },
 }
 r4_0["173625745853719030035"] = {
@@ -3442,12 +3442,6 @@ r3_0 = {
       endPort = "In",
     },
     {
-      startQuest = "176373213412646380922",
-      startPort = "Out",
-      endQuest = "176373213412746380935",
-      endPort = "In",
-    },
-    {
       startQuest = "176373213412646380934",
       startPort = "Out",
       endQuest = "176373213412646380932",
@@ -3811,6 +3805,30 @@ r3_0 = {
       startQuest = "1735982228551941519",
       startPort = "Out",
       endQuest = "176535647312250708255",
+      endPort = "In",
+    },
+    {
+      startQuest = "176373213412646380922",
+      startPort = "Out",
+      endQuest = "176588355295312602",
+      endPort = "Input",
+    },
+    {
+      startQuest = "176588355295312602",
+      startPort = "PC",
+      endQuest = "176373213412746380935",
+      endPort = "In",
+    },
+    {
+      startQuest = "176588355295312602",
+      startPort = "Mobile",
+      endQuest = "176588359770712833",
+      endPort = "In",
+    },
+    {
+      startQuest = "176588359770712833",
+      startPort = "Out",
+      endQuest = "1764574119003708674",
       endPort = "In",
     }
   },
@@ -4275,7 +4293,7 @@ r4_0["17548098522443613766"] = {
   name = "HighlightButton显示/隐藏信息",
   pos = {
     x = 4509.372929246703,
-    y = -633.0093872561524,
+    y = -634.1204983358668,
   },
   propsData = {
     ShowEnable = false,
@@ -4287,7 +4305,7 @@ r4_0["17548098820763614649"] = {
   type = "HighlightButtonNode",
   name = "HighlightButton显示/隐藏信息",
   pos = {
-    x = 4006.0410326949786,
+    x = 4004.929921615264,
     y = -422.91369760098013,
   },
   propsData = {
@@ -5469,6 +5487,57 @@ r4_0["17657852592181295842"] = {
     WaitTime = 20,
   },
 }
+r4_0["176588355295312602"] = {
+  key = "176588355295312602",
+  type = "PlatformJudgmentNode",
+  name = "PC/手机平台判断",
+  pos = {
+    x = 3631.5798393839077,
+    y = 570.6858647012542,
+  },
+  propsData = {},
+}
+r5_0 = "176588359770712833"
+r6_0 = {
+  key = "176588359770712833",
+  type = "ShowGuideNode",
+  name = "提示 - 二技能引导",
+  pos = {
+    x = 3981.5798312095562,
+    y = 662.1144317442213,
+  },
+}
+r6_0.propsData = {
+  MessageId = 200009,
+  SkillNameList = {
+    "Skill2"
+  },
+  LastTime = -1,
+  bIsForceTouch = false,
+  bIsTimeDilation = false,
+  HighLightUIPath = "BattleMain.Char_Skill.Skill.CharSkill_2",
+  UICompName = "Button_Area",
+  UIShape = "Square",
+  IsForbidInAnim = false,
+  IsForbidOutAnim = false,
+  ForbidSuccessAnim = true,
+  IsNotForceRelease = false,
+  UICompSizeOffset = {
+    X = 180,
+    Y = 15,
+  },
+  UICompLocOffset = {
+    X = 0,
+    Y = 0,
+  },
+  MessageParentLoc = "HighLightUI",
+  MessageLoc = "Up",
+  MessageLocOffset = {
+    X = 0,
+    Y = 0,
+  },
+}
+r4_0[r5_0] = r6_0
 r3_0.nodeData = r4_0
 r4_0 = {}
 r4_0["17548136033879004614"] = {

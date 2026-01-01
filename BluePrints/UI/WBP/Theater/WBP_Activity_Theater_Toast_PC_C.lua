@@ -5,8 +5,9 @@ require("UnLua")
 local r0_0 = Class({
   "BluePrints.UI.BP_UIState_C"
 })
+local r1_0 = require("BluePrints.Story.Talk.View.TalkUtils")
 function r0_0.Initialize(r0_1, r1_1)
-  -- line: [21, 32] id: 1
+  -- line: [22, 33] id: 1
   r0_1.RewardList = {}
   r0_1.LevelList = {}
   r0_1.LevelId2Index = {}
@@ -19,7 +20,7 @@ function r0_0.Initialize(r0_1, r1_1)
   r0_1.CurrentRoundState = false
 end
 function r0_0.Construct(r0_2)
-  -- line: [34, 49] id: 2
+  -- line: [35, 50] id: 2
   r0_2:PlayTalk(DataMgr.TheaterConstant.StartGameTalkConfigId.ConstantValue, r0_2:FindTargetNpc())
   r0_2:InitItemInfo()
   r0_2:InitListenEvent()
@@ -31,13 +32,13 @@ function r0_0.Construct(r0_2)
   AudioManager(r0_2):PlayUISound(r0_2, "event:/ui/common/toast_positive", nil, nil)
 end
 function r0_0.InitListenEvent(r0_3)
-  -- line: [51, 55] id: 3
+  -- line: [52, 56] id: 3
   r0_3:AddDispatcher(EventID.OnTheaterPerformGameEnd, r0_3, r0_3.TheaterPerformGameEnd)
   r0_3:AddDispatcher(EventID.OnTheaterLevelStart, r0_3, r0_3.OnLevelStart)
   r0_3:AddDispatcher(EventID.OnTheaterPerform, r0_3, r0_3.TheaterPerform)
 end
 function r0_0.InitItemInfo(r0_4)
-  -- line: [57, 85] id: 4
+  -- line: [58, 86] id: 4
   r0_4.LevelList = {
     {
       LevelId = "1001",
@@ -98,11 +99,11 @@ function r0_0.InitItemInfo(r0_4)
   -- close: r1_4
 end
 function r0_0.OnLoaded(r0_5, ...)
-  -- line: [87, 89] id: 5
+  -- line: [88, 90] id: 5
   r0_5.Super.OnLoaded(r0_5, ...)
 end
 function r0_0.UpdatePerformList(r0_6, r1_6)
-  -- line: [91, 98] id: 6
+  -- line: [92, 99] id: 6
   if not r1_6 then
     return 
   end
@@ -112,7 +113,7 @@ function r0_0.UpdatePerformList(r0_6, r1_6)
   -- close: r2_6
 end
 function r0_0.TheaterPerform(r0_7, r1_7)
-  -- line: [100, 117] id: 7
+  -- line: [101, 118] id: 7
   DebugPrint("ayff test Perform :", r1_7)
   if r0_7.CurrentRoundState == true then
     return 
@@ -122,7 +123,7 @@ function r0_0.TheaterPerform(r0_7, r1_7)
     return 
   end
   local function r3_7(r0_8, r1_8)
-    -- line: [109, 112] id: 8
+    -- line: [110, 113] id: 8
     DebugPrint("ayff test 剧院回调：", ErrorCode:Name(r0_8), r1_8)
     r0_7:TheaterPerformCallback(r0_8, r1_8)
   end
@@ -132,7 +133,7 @@ function r0_0.TheaterPerform(r0_7, r1_7)
   end
 end
 function r0_0.TheaterPerformCallback(r0_9, r1_9, r2_9)
-  -- line: [119, 135] id: 9
+  -- line: [120, 136] id: 9
   DebugPrint("ayff 剧院活动表演结果:", ErrorCode:Name(r1_9), r2_9)
   local r3_9 = DataMgr.ErrorCode[r1_9]
   if r3_9 then
@@ -143,7 +144,7 @@ function r0_0.TheaterPerformCallback(r0_9, r1_9, r2_9)
   DebugPrint("ayff 剧院活动表演结果提示内容:", r3_9)
   if r1_9 == ErrorCode.RET_SUCCESS then
     r0_9:AddTimer(DataMgr.TheaterConstant.TheaterPerformResultDelay.ConstantValue and 0, function()
-      -- line: [125, 128] id: 10
+      -- line: [126, 129] id: 10
       r0_9:PlayAnimation(r0_9.Tips_Success)
       AudioManager(r0_9):PlayUISound(r0_9, "event:/ui/activity/theater_online_skill_match", nil, nil)
     end, false, 0, "TheaterPerformResultDelay")
@@ -154,7 +155,7 @@ function r0_0.TheaterPerformCallback(r0_9, r1_9, r2_9)
   end
 end
 function r0_0.OnAnimationFinished(r0_11, r1_11)
-  -- line: [137, 145] id: 11
+  -- line: [138, 146] id: 11
   if r1_11 == r0_11.Open_In then
     r0_11:PlayAnimation(r0_11.Open_Out)
     r0_11:OnActivityStart()
@@ -162,7 +163,7 @@ function r0_0.OnAnimationFinished(r0_11, r1_11)
   end
 end
 function r0_0.OnActivityStart(r0_12)
-  -- line: [147, 155] id: 12
+  -- line: [148, 156] id: 12
   r0_12.Panel_Title:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
   r0_12:PlayAnimation(r0_12.Title_In)
   r0_12.ActivityStartTime = TimeUtils.NowTime()
@@ -170,23 +171,16 @@ function r0_0.OnActivityStart(r0_12)
   r0_12:StartStageTimer()
 end
 function r0_0.OnLevelStart(r0_13, r1_13)
-  -- line: [157, 204] id: 13
+  -- line: [158, 209] id: 13
   local r2_13 = r0_13.LevelId2Index[r1_13]
-  local r3_13 = UE4.URuntimeCommonFunctionLibrary.GetEntryWidgetFromItem(r0_13.ListView_Title, r2_13 + -1)
-  r0_13.CurrentSelectedEntry = r3_13
+  local r4_13 = r0_13.ListView_Title:GetItemAt(r2_13 + -1).SelfWidget
+  r0_13.CurrentSelectedEntry = r4_13
   r0_13.CurrentRoundState = false
   r0_13.Text_Level:SetText(string.format(GText("TheaterOnline_Game_Round"), r2_13))
-  local r5_13 = r0_13.LevelList[r2_13].PerformId
-  local r6_13 = nil
-  if DataMgr.Pet[r5_13] then
-    r6_13 = string.format(GText("TheaterOnline_Game_Match"), GText(DataMgr.Pet[r5_13].Name))
-  else
-    r6_13 = string.format(GText("TheaterOnline_Game_Motion"), GText(DataMgr.Resource[r5_13].ResourceName))
-  end
-  r0_13.Text_Message:SetText(r6_13)
-  if r3_13 then
-    r3_13:OnLevelStart()
-    r3_13:PlayAnimation(r3_13.Normal)
+  r0_13.Text_Message:SetText(r1_0:DialogueIdToContent(DataMgr.TheaterRandom[r0_13.LevelList[r2_13].PerformId].TalkConfigId))
+  if r4_13 then
+    r4_13:OnLevelStart()
+    r4_13:PlayAnimation(r4_13.Normal)
   end
   r0_13:PlayAnimation(r0_13.Tips_In)
   r0_13:UpdateProgress(r2_13)
@@ -201,16 +195,16 @@ function r0_0.OnLevelStart(r0_13, r1_13)
     r0_13:RemoveTimer(r0_13.RestProgressTimer)
     r0_13.RestProgressTimer = nil
   end
-  local r7_13 = r0_13.LevelList[r2_13].PerformId
-  local r8_13 = UE4.UGameplayStatics.GetGameState(GWorld.GameInstance)
+  local r10_13 = r0_13.LevelList[r2_13].PerformId
+  local r11_13 = UE4.UGameplayStatics.GetGameState(GWorld.GameInstance)
   EventManager:FireEvent(EventID.OnTheaterNPCPerform)
-  local r9_13 = r0_13:FindTargetNpc()
-  if r9_13 then
-    r0_13:PerformAction(r7_13, r9_13)
+  local r12_13 = r0_13:FindTargetNpc()
+  if r12_13 then
+    r0_13:PerformAction(r10_13, r12_13)
   end
 end
 function r0_0.FindTargetNpc(r0_14)
-  -- line: [206, 234] id: 14
+  -- line: [211, 239] id: 14
   local r1_14 = TimeUtils.NowTime()
   local r2_14 = nil
   for r7_14, r8_14 in pairs(DataMgr.TheaterNpc) do
@@ -232,7 +226,7 @@ function r0_0.FindTargetNpc(r0_14)
   return r4_14
 end
 function r0_0.PerformAction(r0_15, r1_15, r2_15)
-  -- line: [236, 289] id: 15
+  -- line: [241, 294] id: 15
   local r3_15 = GWorld:GetAvatar()
   local r4_15 = DataMgr.TheaterRandom[r1_15]
   local r6_15 = GWorld.GameInstance
@@ -268,12 +262,12 @@ function r0_0.PerformAction(r0_15, r1_15, r2_15)
   end
 end
 function r0_0.ClearPerformAction(r0_16)
-  -- line: [291, 336] id: 16
+  -- line: [296, 341] id: 16
   if r0_16.BubbleTalkKey then
     local r1_16 = TalkSubsystem()
     if r1_16 then
       r1_16:ForceInterruptTalkTaskData(function(r0_17)
-        -- line: [295, 297] id: 17
+        -- line: [300, 302] id: 17
         return r0_17.FilePath == r0_16.BubbleTalkKey
       end)
     end
@@ -314,18 +308,18 @@ function r0_0.ClearPerformAction(r0_16)
   end
 end
 function r0_0.StartStageTimer(r0_18)
-  -- line: [338, 348] id: 18
+  -- line: [343, 353] id: 18
   if r0_18.StageCheckTimer then
     r0_18:RemoveTimer(r0_18.StageCheckTimer)
   end
   r0_18.StageCheckTimer = r0_18:AddTimer(1, function()
-    -- line: [343, 345] id: 19
+    -- line: [348, 350] id: 19
     r0_18:CheckCurrentStage()
   end, true, 0, "StageCheck", true)
   r0_18:CheckCurrentStage()
 end
 function r0_0.CheckCurrentStage(r0_20)
-  -- line: [350, 378] id: 20
+  -- line: [355, 383] id: 20
   if not r0_20.ActivityStartTime then
     return 
   end
@@ -334,7 +328,7 @@ function r0_0.CheckCurrentStage(r0_20)
     return 
   end
   local r2_20 = r1_20.CurrentRegionId
-  if not UE4.UGameplayStatics.GetGameState(GWorld.GameInstance):IsInRegion() or r2_20 ~= 101901 then
+  if not UE4.UGameplayStatics.GetGameState(GWorld.GameInstance):IsInRegion() or r2_20 ~= 101901 or r1_20:IsInHardBoss() then
     DebugPrint("ayff 离开剧院区域，关闭剧院活动UI regionid:", r2_20)
     r0_20:Close()
   end
@@ -346,7 +340,7 @@ function r0_0.CheckCurrentStage(r0_20)
   end
 end
 function r0_0.GetCurrentStageByTime(r0_21, r1_21)
-  -- line: [380, 393] id: 21
+  -- line: [385, 398] id: 21
   for r5_21 = 1, 12, 1 do
     local r6_21 = r0_21.StepInfo[r5_21].Time
     local r7_21 = r0_21.StepInfo[r5_21 + 1]
@@ -363,13 +357,13 @@ function r0_0.GetCurrentStageByTime(r0_21, r1_21)
   return 12
 end
 function r0_0.ExecuteStage(r0_22, r1_22, r2_22)
-  -- line: [395, 423] id: 22
+  -- line: [400, 428] id: 22
   DebugPrint("ayff 执行阶段:", r1_22, "经过时间:", r2_22)
   local r3_22 = nil	-- notice: implicit variable refs by block#[7, 12, 16]
   if r1_22 == 1 then
     r3_22 = r0_22.LevelList[1].LevelId
     r0_22:AddTimer(0.1, function()
-      -- line: [401, 403] id: 23
+      -- line: [406, 408] id: 23
       r0_22:OnOpeningStart(r3_22)
     end)
     -- close: r3_22
@@ -395,60 +389,62 @@ function r0_0.ExecuteStage(r0_22, r1_22, r2_22)
   end
 end
 function r0_0.OnOpeningStart(r0_24, r1_24)
-  -- line: [425, 436] id: 24
-  local r3_24 = UE4.URuntimeCommonFunctionLibrary.GetEntryWidgetFromItem(r0_24.ListView_Title, r0_24.LevelId2Index[r1_24] + -1)
-  if r3_24 then
-    r3_24:PlayAnimation(r3_24.Normal_Loop)
+  -- line: [430, 443] id: 24
+  local r4_24 = r0_24.ListView_Title:GetItemAt(r0_24.LevelId2Index[r1_24] + -1).SelfWidget
+  if r4_24 then
+    r4_24:PlayAnimation(r4_24.Normal_Loop)
     r0_24.PlayLoopSoundTimer = r0_24:AddTimer(1, function()
-      -- line: [432, 434] id: 25
+      -- line: [439, 441] id: 25
       AudioManager(r0_24):PlayUISound(r0_24, "event:/ui/activity/theater_online_waiting", nil, nil)
     end, true)
   end
 end
 function r0_0.OnRestStart(r0_26, r1_26)
-  -- line: [438, 456] id: 26
-  local r3_26 = UE4.URuntimeCommonFunctionLibrary.GetEntryWidgetFromItem(r0_26.ListView_Title, r0_26.LevelId2Index[r1_26] + -1)
-  if r3_26 then
-    r3_26:PlayAnimation(r3_26.Normal_Loop)
+  -- line: [445, 465] id: 26
+  local r4_26 = r0_26.ListView_Title:GetItemAt(r0_26.LevelId2Index[r1_26] + -1).SelfWidget
+  if r4_26 then
+    r4_26:PlayAnimation(r4_26.Normal_Loop)
   end
   r0_26.PlayLoopSoundTimer = r0_26:AddTimer(1, function()
-    -- line: [446, 448] id: 27
+    -- line: [455, 457] id: 27
     AudioManager(r0_26):PlayUISound(r0_26, "event:/ui/activity/theater_online_waiting", nil, nil)
   end, true)
   r0_26.Panel_Toast_Tips:SetVisibility(UE4.ESlateVisibility.Collapsed)
   r0_26.RestProgressTimer = r0_26:AddTimer(0.1, function()
-    -- line: [451, 454] id: 28
+    -- line: [460, 463] id: 28
     r0_26.ProgressBar_Title:SetPercent(r0_26.ProgressBar_Title.Percent + 0.0025)
   end, true)
   r0_26.CurLevelIndex = 0
 end
 function r0_0.OnEndingStart(r0_29)
-  -- line: [458, 459] id: 29
+  -- line: [467, 468] id: 29
 end
 function r0_0.OnStandbyStart(r0_30)
-  -- line: [461, 462] id: 30
+  -- line: [470, 471] id: 30
 end
 function r0_0.TheaterPerformGameEnd(r0_31)
-  -- line: [464, 470] id: 31
+  -- line: [473, 482] id: 31
   DebugPrint("ayff 剧院活动结束 start close ui")
   UIManager(r0_31):ShowUITip("CommonToastMain", GText("TheaterOnline_Game_Finish"), 3)
+  UE4.UGameplayStatics.GetGameState(GWorld.GameInstance):ShowSynthesisSuccessEffect(0)
   r0_31:PlayTalk(DataMgr.TheaterConstant.EndGameTalkConfigId.ConstantValue, r0_31:FindTargetNpc())
   r0_31:Close()
 end
 function r0_0.UpdateProgress(r0_32, r1_32)
-  -- line: [472, 475] id: 32
+  -- line: [484, 487] id: 32
   r0_32.ProgressBar_Title:SetPercent((r1_32 + -1) * 0.25)
 end
 function r0_0.Close(r0_33)
-  -- line: [477, 483] id: 33
+  -- line: [489, 496] id: 33
   if r0_33.ParentWidget then
     r0_33.ParentWidget.Pos_Rouge_CountDown:ClearChildren()
     r0_33.ParentWidget.Pos_Rouge_CountDown:SetVisibility(UE4.ESlateVisibility.Collapsed)
   end
+  r0_33.IsInit = true
   r0_33.Super.Close(r0_33)
 end
 function r0_0.Destruct(r0_34)
-  -- line: [485, 495] id: 34
+  -- line: [498, 508] id: 34
   if r0_34.StageCheckTimer then
     r0_34:RemoveTimer(r0_34.StageCheckTimer)
     r0_34.StageCheckTimer = nil
@@ -459,7 +455,7 @@ function r0_0.Destruct(r0_34)
   end
 end
 function r0_0.PlayTalk(r0_35, r1_35, r2_35)
-  -- line: [497, 505] id: 35
+  -- line: [510, 518] id: 35
   if not r2_35 then
     return 
   end

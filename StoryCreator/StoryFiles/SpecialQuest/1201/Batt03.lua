@@ -1394,6 +1394,12 @@ r3_0 = {
       startPort = "Out",
       endQuest = "17658824063481987",
       endPort = "In",
+    },
+    {
+      startQuest = "17501517483393111779",
+      startPort = "QuestStart",
+      endQuest = "1765960367960971101",
+      endPort = "In",
     }
   },
 }
@@ -1447,8 +1453,8 @@ r4_0["17501517483393111784"] = {
   type = "WaitingSpecialQuestFailNode",
   name = "等待特殊任务失败",
   pos = {
-    x = 3855.4398972136373,
-    y = 577.5208732921715,
+    x = 3839.4398972136373,
+    y = 579.5208732921715,
   },
   propsData = {},
 }
@@ -1534,8 +1540,8 @@ r6_0 = {
   type = "ChangeStaticCreatorNode",
   name = "生成/销毁节点",
   pos = {
-    x = 3840.6334033613443,
-    y = 66.7373949579832,
+    x = 3834.6334033613443,
+    y = 64.7373949579832,
   },
 }
 r6_0.propsData = {
@@ -1592,6 +1598,20 @@ r4_0["17658834376431282673"] = {
     IsShow = false,
     GuideType = "P",
     GuideName = "QuestPoint_LeaveBatt03",
+  },
+}
+r4_0["1765960367960971101"] = {
+  key = "1765960367960971101",
+  type = "SendMessageNode",
+  name = "发送消息",
+  pos = {
+    x = 3836,
+    y = 248,
+  },
+  propsData = {
+    MessageType = "GameMode",
+    MessageContent = "AfterBossTreasure",
+    UnitId = -1,
   },
 }
 r3_0.nodeData = r4_0

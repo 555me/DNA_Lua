@@ -1975,7 +1975,7 @@ r5_0.BloodUIParmas = {
   UIStyleNodeName = "Rescue_Elite_Monster",
 }
 r5_0.Camp = "Monster"
-r5_0.CombatVersionOpen = 999
+r5_0.CombatVersionOpen = 10
 r5_0.CommonAlertEnable = 1
 r5_0.DeadEffectId = 3
 r5_0.DisableTicklod = true
