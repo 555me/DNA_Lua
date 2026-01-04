@@ -862,19 +862,21 @@ function r2_0.CheckSpecialHide(r0_45, r1_45)
   return false
 end
 function r2_0.CheckOptionSpecialHide(r0_46, r1_46, r2_46)
-  -- line: [704, 766] id: 46
+  -- line: [704, 768] id: 46
   local r3_46 = GWorld:GetAvatar()
   if r3_46 and r3_46.CdnHideData then
     local r4_46 = r3_46.CdnHideData.option
     if r4_46 then
       for r9_46, r10_46 in pairs(r4_46) do
-        for r15_46, r16_46 in pairs(r10_46.gameCtrlOption) do
-          if r16_46 == r1_46 then
-            r2_46 = r10_46.config
-            return r2_46
+        if r10_46.gameCtrlOption and type(r10_46.gameCtrlOption) == "table" then
+          for r15_46, r16_46 in pairs(r10_46.gameCtrlOption) do
+            if r16_46 == r1_46 then
+              r2_46 = r10_46.config
+              return r2_46
+            end
           end
+          -- close: r11_46
         end
-        -- close: r11_46
       end
       -- close: r5_46
     end
@@ -924,14 +926,14 @@ function r2_0.CheckOptionSpecialHide(r0_46, r1_46, r2_46)
   return false
 end
 function r2_0.CheckIsUCloudHide(r0_47, r1_47)
-  -- line: [768, 774] id: 47
+  -- line: [770, 776] id: 47
   if DataMgr.Option[r1_47].UCloudHide then
     return true
   end
   return false
 end
 function r2_0.CheckIsExamineDistribution(r0_48, r1_48)
-  -- line: [776, 796] id: 48
+  -- line: [778, 798] id: 48
   if ({
     CustomerService = true,
     ExchangeCode = true,
@@ -952,7 +954,7 @@ function r2_0.CheckIsExamineDistribution(r0_48, r1_48)
   return false
 end
 function r2_0.CheckIsInLogin(r0_49, r1_49)
-  -- line: [798, 810] id: 49
+  -- line: [800, 812] id: 49
   local r2_49 = DataMgr.Option[r1_49]
   if r2_49.GameHide == nil or r2_49.GameHide == CommonConst.SpecialHideNoWhere then
     return false
@@ -966,22 +968,22 @@ function r2_0.CheckIsInLogin(r0_49, r1_49)
   return false
 end
 function r2_0.ReceiveEnterState(r0_50, r1_50)
-  -- line: [812, 817] id: 50
+  -- line: [814, 819] id: 50
   r0_50.Super.ReceiveEnterState(r0_50, r1_50)
   if r1_50 == UE4.EStackAction.Push then
     r0_50:SetFocus()
   end
 end
 function r2_0.ScrollToOffset(r0_51, r1_51)
-  -- line: [819, 821] id: 51
+  -- line: [821, 823] id: 51
   r0_51.ScrollBox_Option:SetScrollOffset(r1_51)
 end
 function r2_0.GetScrollOffset(r0_52)
-  -- line: [823, 825] id: 52
+  -- line: [825, 827] id: 52
   return r0_52.ScrollBox_Option:GetScrollOffset()
 end
 function r2_0.OnTabSelected(r0_53, r1_53, r2_53)
-  -- line: [827, 939] id: 53
+  -- line: [829, 941] id: 53
   r0_53.WBP_Set_UnfoldList:SetVisibility(UE4.ESlateVisibility.Collapsed)
   r0_53.NewTabId = r1_53.Idx
   if r0_53.HasBeenChanged then
@@ -989,7 +991,7 @@ function r2_0.OnTabSelected(r0_53, r1_53, r2_53)
       UIManager(r0_53):ShowCommonPopupUI(100190, {
         LeftCallbackObj = r0_53,
         LeftCallbackFunction = function()
-          -- line: [836, 839] id: 54
+          -- line: [838, 841] id: 54
           r0_53.OptionUnfold_Prefrence:RestoreOldGamepadPresetInLocal()
           r0_53:OnCancelClickOtherSet()
         end,
@@ -1084,12 +1086,12 @@ function r2_0.OnTabSelected(r0_53, r1_53, r2_53)
     end
   end
   r0_53:AddTimer(0.1, function()
-    -- line: [936, 938] id: 55
+    -- line: [938, 940] id: 55
     r0_53:FocusToOptionFirstWidget()
   end)
 end
 function r2_0.UpdateEmptyGridCount(r0_56)
-  -- line: [942, 982] id: 56
+  -- line: [944, 984] id: 56
   if not IsValid(r0_56.EmptySettingUI) then
     return 
   end
@@ -1098,7 +1100,7 @@ function r2_0.UpdateEmptyGridCount(r0_56)
     r0_56:RemoveTimer("GetEmptyGridCount")
   end
   r0_56:AddTimer(0.033, function()
-    -- line: [950, 979] id: 57
+    -- line: [952, 981] id: 57
     local r0_57 = 0
     for r5_57, r6_57 in pairs(r0_56.SettingUIs[r0_56.CurrentTab]) do
       r0_57 = r0_57 + r6_57:GetCurrentStateGrideCount()
@@ -1129,7 +1131,7 @@ function r2_0.UpdateEmptyGridCount(r0_56)
   end, false, 0, "GetEmptyGridCount", true)
 end
 function r2_0.OnPreviewMouseButtonDown(r0_58, r1_58, r2_58)
-  -- line: [984, 999] id: 58
+  -- line: [986, 1001] id: 58
   if UE4.UKismetInputLibrary.PointerEvent_IsMouseButtonDown(r2_58, UE4.EKeys.LeftMouseButton) then
     local r3_58 = UE4.UKismetInputLibrary.PointerEvent_GetScreenSpacePosition(r2_58)
     local r4_58 = r0_58.WBP_Set_UnfoldList:GetCachedGeometry()
@@ -1144,7 +1146,7 @@ function r2_0.OnPreviewMouseButtonDown(r0_58, r1_58, r2_58)
   return UE4.UWidgetBlueprintLibrary.Unhandled()
 end
 function r2_0.OnKeyDown(r0_59, r1_59, r2_59)
-  -- line: [1001, 1045] id: 59
+  -- line: [1003, 1047] id: 59
   local r4_59 = UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_59))
   local r5_59 = false
   if UE4.UKismetStringLibrary.StartsWith(r4_59, "GamePad") then
@@ -1184,7 +1186,7 @@ function r2_0.OnKeyDown(r0_59, r1_59, r2_59)
   end
 end
 function r2_0.RefreshGamepadOperationSystemBottomContent(r0_60, r1_60)
-  -- line: [1047, 1053] id: 60
+  -- line: [1049, 1055] id: 60
   if r1_60 == UIConst.GamePadKey.DPadLeft and r0_60.CurrentTab == 1 and r0_60.MultiPlateIndex == 2 then
     r0_60:ShowFightGamepadBottomContent()
   elseif r1_60 == UIConst.GamePadKey.DPadRight and r0_60.CurrentTab == 1 and r0_60.MultiPlateIndex == 2 then
@@ -1192,7 +1194,7 @@ function r2_0.RefreshGamepadOperationSystemBottomContent(r0_60, r1_60)
   end
 end
 function r2_0.OnGamePadDown(r0_61, r1_61)
-  -- line: [1055, 1088] id: 61
+  -- line: [1057, 1090] id: 61
   local r2_61 = false
   if r1_61 == Const.GamepadFaceButtonRight and r0_61.IsUnfoldListOpen and r0_61.OnUnfoldListClosed then
     r0_61.OnUnfoldListClosed()
@@ -1222,7 +1224,7 @@ function r2_0.OnGamePadDown(r0_61, r1_61)
   return r2_61
 end
 function r2_0.OnPreviewKeyDown(r0_62, r1_62, r2_62)
-  -- line: [1090, 1099] id: 62
+  -- line: [1092, 1101] id: 62
   local r4_62 = UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_62))
   if r4_62 == UIConst.GamePadKey.DPadLeft and r0_62.CurrentTab == 1 and r0_62.MultiPlateIndex == 2 then
     r0_62:ShowFightGamepadBottomContent()
@@ -1232,7 +1234,7 @@ function r2_0.OnPreviewKeyDown(r0_62, r1_62, r2_62)
   return UE4.UWidgetBlueprintLibrary.UnHandled()
 end
 function r2_0.AddHoverContent(r0_63, r1_63)
-  -- line: [1101, 1109] id: 63
+  -- line: [1103, 1111] id: 63
   r0_63.HoverContentList[r1_63] = true
   for r6_63, r7_63 in pairs(r0_63.HoverContentList) do
     if r6_63 ~= r1_63 and r7_63 and r6_63.OnBtnAreaUnHover then
@@ -1243,25 +1245,25 @@ function r2_0.AddHoverContent(r0_63, r1_63)
   -- close: r2_63
 end
 function r2_0.RemoveHoverContent(r0_64, r1_64)
-  -- line: [1111, 1115] id: 64
+  -- line: [1113, 1117] id: 64
   if r0_64.HoverContentList[r1_64] then
     r0_64.HoverContentList[r1_64] = nil
   end
 end
 function r2_0.OnPressESC(r0_65)
-  -- line: [1117, 1151] id: 65
+  -- line: [1119, 1153] id: 65
   if r0_65.HasBeenChanged then
     if r0_65.HasBeenChanged == "GamepadPresetSave" then
       UIManager(r0_65):ShowCommonPopupUI(100190, {
         LeftCallbackObj = r0_65,
         LeftCallbackFunction = function()
-          -- line: [1124, 1127] id: 66
+          -- line: [1126, 1129] id: 66
           r0_65.OptionUnfold_Prefrence:RestoreOldGamepadPresetInLocal()
           r0_65:OnESCClickCancel()
         end,
         RightCallbackObj = r0_65,
         RightCallbackFunction = function()
-          -- line: [1129, 1132] id: 67
+          -- line: [1131, 1134] id: 67
           r0_65:SaveAllSetting(true)
           r0_65:CloseSelf()
         end,
@@ -1285,7 +1287,7 @@ function r2_0.OnPressESC(r0_65)
   end
 end
 function r2_0.OnPressY(r0_68)
-  -- line: [1153, 1160] id: 68
+  -- line: [1155, 1162] id: 68
   if r0_68.HasBeenChanged then
     UIUtils.PlayCommonBtnSe(r0_68)
     r0_68:SaveAllSetting()
@@ -1294,7 +1296,7 @@ function r2_0.OnPressY(r0_68)
   end
 end
 function r2_0.OnPressR(r0_69)
-  -- line: [1162, 1168] id: 69
+  -- line: [1164, 1170] id: 69
   UIUtils.PlayCommonBtnSe(r0_69)
   UIManager(r0_69):ShowCommonPopupUI(100011, {
     RightCallbackObj = r0_69,
@@ -1302,52 +1304,52 @@ function r2_0.OnPressR(r0_69)
   }, r0_69)
 end
 function r2_0.CommonTabToLast(r0_70)
-  -- line: [1170, 1172] id: 70
+  -- line: [1172, 1174] id: 70
   r0_70.Tab_Set:SelectTab(r0_70.CurrentTab)
 end
 function r2_0.CommonTabToNext(r0_71)
-  -- line: [1174, 1176] id: 71
+  -- line: [1176, 1178] id: 71
   r0_71.Tab_Set:SelectTab(r0_71.NewTabId)
 end
 function r2_0.OnConfirmPressESC(r0_72)
-  -- line: [1178, 1182] id: 72
+  -- line: [1180, 1184] id: 72
   r0_72:SaveAllSetting(true)
   r0_72.AutoClose = true
 end
 function r2_0.OnESCClickCancel(r0_73)
-  -- line: [1184, 1187] id: 73
+  -- line: [1186, 1189] id: 73
   r0_73:RestoreOldValueSet()
   r0_73:CloseSelf()
 end
 function r2_0.OnConfirmPressR(r0_74)
-  -- line: [1189, 1191] id: 74
+  -- line: [1191, 1193] id: 74
   r0_74:RestoreAllDefaultSet()
 end
 function r2_0.OnConfirmClickOtherSet(r0_75)
-  -- line: [1193, 1196] id: 75
+  -- line: [1195, 1198] id: 75
   r0_75:SaveAllSetting()
   r0_75:CommonTabToNext()
 end
 function r2_0.OnCancelClickOtherSet(r0_76)
-  -- line: [1198, 1203] id: 76
+  -- line: [1200, 1205] id: 76
   r0_76:RestoreOldValueSet()
   r0_76:InitSettingParameter()
   r0_76:UpdateKeyboardBottonKey()
   r0_76:CommonTabToNext()
 end
 function r2_0.OnClickBlankArea(r0_77)
-  -- line: [1205, 1207] id: 77
+  -- line: [1207, 1209] id: 77
   r0_77:CommonTabToLast()
 end
 function r2_0.ClearSettingListUnfoldState(r0_78)
-  -- line: [1209, 1213] id: 78
+  -- line: [1211, 1215] id: 78
   for r5_78, r6_78 in pairs(r0_78.SettingUIs[r0_78.CurrentTab]) do
     r6_78:ClearSettingOptionUnfoldState()
   end
   -- close: r1_78
 end
 function r2_0.SaveAllSetting(r0_79)
-  -- line: [1215, 1227] id: 79
+  -- line: [1217, 1229] id: 79
   r0_79.HasBeenChanged = false
   r0_79:UpdateKeyboardBottonKey()
   if r0_79.CurrentTab == 1 and r0_79.MultiPlateIndex == 2 then
@@ -1362,7 +1364,7 @@ function r2_0.SaveAllSetting(r0_79)
   end
 end
 function r2_0.RestoreAllDefaultSet(r0_80)
-  -- line: [1229, 1248] id: 80
+  -- line: [1231, 1250] id: 80
   r0_80.HasBeenChanged = false
   r0_80:UpdateKeyboardBottonKey()
   if r0_80.CurrentTab == 1 and r0_80.MultiPlateIndex == 2 then
@@ -1384,7 +1386,7 @@ function r2_0.RestoreAllDefaultSet(r0_80)
   end
 end
 function r2_0.RestoreOldValueSet(r0_81)
-  -- line: [1250, 1256] id: 81
+  -- line: [1252, 1258] id: 81
   for r5_81, r6_81 in pairs(r0_81.SettingUIs[r0_81.CurrentTab]) do
     if r6_81 and r6_81.RestoreOldValueSet then
       r6_81:RestoreOldValueSet()
@@ -1393,7 +1395,7 @@ function r2_0.RestoreOldValueSet(r0_81)
   -- close: r1_81
 end
 function r2_0.OnClickAllLeftMouseButton(r0_82)
-  -- line: [1258, 1264] id: 82
+  -- line: [1260, 1266] id: 82
   for r5_82, r6_82 in pairs(r0_82.SettingUIs[r0_82.CurrentTab]) do
     if r6_82 and r6_82.OnClickLeftMouseButton then
       r6_82:OnClickLeftMouseButton()
@@ -1402,7 +1404,7 @@ function r2_0.OnClickAllLeftMouseButton(r0_82)
   -- close: r1_82
 end
 function r2_0.UpdateUnfoldListPosition(r0_83, r1_83, r2_83)
-  -- line: [1266, 1274] id: 83
+  -- line: [1268, 1276] id: 83
   local r3_83 = UE4.UWidgetLayoutLibrary.SlotAsCanvasSlot(r0_83.WBP_Set_UnfoldList)
   if r2_83 then
     r3_83:SetAlignment(FVector2D(0.5, 1))
@@ -1412,11 +1414,11 @@ function r2_0.UpdateUnfoldListPosition(r0_83, r1_83, r2_83)
   r3_83:SetPosition(r1_83)
 end
 function r2_0.BindUnfoldListClosedCallback(r0_84, r1_84)
-  -- line: [1276, 1278] id: 84
+  -- line: [1278, 1280] id: 84
   r0_84.OnUnfoldListClosed = r1_84
 end
 function r2_0.ChangeUnfoldListSelection(r0_85, r1_85)
-  -- line: [1280, 1290] id: 85
+  -- line: [1282, 1292] id: 85
   for r7_85, r8_85 in pairs(r0_85.WBP_Set_UnfoldList.SubOption_List:GetListItems()) do
     r8_85.SelectedOptionId = r1_85
   end
@@ -1427,7 +1429,7 @@ function r2_0.ChangeUnfoldListSelection(r0_85, r1_85)
   -- close: r4_85
 end
 function r2_0.FocusToSelectedUnfoldListOption(r0_86)
-  -- line: [1292, 1307] id: 86
+  -- line: [1294, 1309] id: 86
   local r1_86 = r0_86.WBP_Set_UnfoldList.SubOption_List:GetListItems()
   for r6_86 = 0, r0_86.WBP_Set_UnfoldList.SubOption_List:GetNumItems() + -1, 1 do
     local r7_86 = r1_86:GetRef(r6_86 + 1)
@@ -1448,7 +1450,7 @@ function r2_0.FocusToSelectedUnfoldListOption(r0_86)
   })
 end
 function r2_0.SetSettingUnfoldListPC(r0_87, r1_87)
-  -- line: [1309, 1341] id: 87
+  -- line: [1311, 1343] id: 87
   if r1_87 then
     r0_87.WBP_Set_UnfoldList:StopAllAnimations()
     r0_87.WBP_Set_UnfoldList:PlayAnimation(r0_87.WBP_Set_UnfoldList.In)
@@ -1460,7 +1462,7 @@ function r2_0.SetSettingUnfoldListPC(r0_87, r1_87)
     r0_87.ScrollBox_Option:SetConsumeMouseWheel(EConsumeMouseWheel.Never)
     if UIUtils.IsGamepadInput() then
       r0_87:AddTimer(0.1, function()
-        -- line: [1321, 1323] id: 88
+        -- line: [1323, 1325] id: 88
         r0_87:FocusToSelectedUnfoldListOption()
       end)
     end
@@ -1472,7 +1474,7 @@ function r2_0.SetSettingUnfoldListPC(r0_87, r1_87)
       r0_87.WBP_Set_UnfoldList:PlayAnimation(r0_87.WBP_Set_UnfoldList.Out)
       r0_87.ScrollBox_Option:SetConsumeMouseWheel(EConsumeMouseWheel.WhenScrollingPossible)
       r0_87:AddTimer(r0_87.WBP_Set_UnfoldList.Out:GetEndTime(), function()
-        -- line: [1333, 1335] id: 89
+        -- line: [1335, 1337] id: 89
         r0_87.WBP_Set_UnfoldList:SetVisibility(UE4.ESlateVisibility.Collapsed)
       end, false, 0, "SetList", true)
     end
@@ -1480,7 +1482,7 @@ function r2_0.SetSettingUnfoldListPC(r0_87, r1_87)
   end
 end
 function r2_0.PlayInAnim(r0_90)
-  -- line: [1343, 1350] id: 90
+  -- line: [1345, 1352] id: 90
   if r0_90.IsInLoginMainPage then
     r0_90:PlayAnimation(r0_90.logIn)
   else
@@ -1489,7 +1491,7 @@ function r2_0.PlayInAnim(r0_90)
   AudioManager(r0_90):PlayUISound(r0_90, "event:/ui/armory/open", "OpenShopSetting", nil)
 end
 function r2_0.CloseSelf(r0_91)
-  -- line: [1352, 1361] id: 91
+  -- line: [1354, 1363] id: 91
   if r0_91.OptionUnfold_Prefrence and r0_91.OptionUnfold_Prefrence.IsListOpen then
     r0_91.OptionUnfold_Prefrence:OnClickSubOptionList()
   end
@@ -1505,7 +1507,7 @@ function r2_0.CloseSelf(r0_91)
   })
 end
 function r2_0.Close(r0_92)
-  -- line: [1363, 1390] id: 92
+  -- line: [1365, 1392] id: 92
   r0_92:UnbindAllFromAnimationFinished(r0_92.Out)
   for r5_92, r6_92 in pairs(r0_92.SettingUIs) do
     for r11_92, r12_92 in pairs(r6_92) do
@@ -1538,7 +1540,7 @@ function r2_0.Close(r0_92)
   r0_92.Super.Close(r0_92)
 end
 function r2_0.CloseSelfAndEsc(r0_93)
-  -- line: [1392, 1395] id: 93
+  -- line: [1394, 1397] id: 93
   r0_93.CloseEsc = true
   r0_93:Close()
 end
