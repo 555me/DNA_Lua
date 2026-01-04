@@ -580,10 +580,10 @@ r1_0["7051010"] = {
     UnitId = 70131,
     RarelyId = 7051010,
   },
-  ["2070109"] = {
-    CreatorId = 2070109,
+  ["2070111"] = {
+    CreatorId = 2070111,
     UnitType = "Mechanism",
-    UnitId = 70200,
+    UnitId = 70118,
     RarelyId = 7051010,
   },
   ["2070113"] = {
@@ -592,28 +592,10 @@ r1_0["7051010"] = {
     UnitId = 0,
     RarelyId = 7051010,
   },
-  ["2070157"] = {
-    CreatorId = 2070157,
+  ["2070109"] = {
+    CreatorId = 2070109,
     UnitType = "Mechanism",
-    UnitId = 70131,
-    RarelyId = 7051010,
-  },
-  ["2070158"] = {
-    CreatorId = 2070158,
-    UnitType = "Mechanism",
-    UnitId = 70131,
-    RarelyId = 7051010,
-  },
-  ["2070159"] = {
-    CreatorId = 2070159,
-    UnitType = "Mechanism",
-    UnitId = 70131,
-    RarelyId = 7051010,
-  },
-  ["2070160"] = {
-    CreatorId = 2070160,
-    UnitType = "Mechanism",
-    UnitId = 70131,
+    UnitId = 70200,
     RarelyId = 7051010,
   },
   ["2070149"] = {
@@ -662,12 +644,6 @@ r1_0["7051010"] = {
     CreatorId = 2070156,
     UnitType = "Mechanism",
     UnitId = 70131,
-    RarelyId = 7051010,
-  },
-  ["2070111"] = {
-    CreatorId = 2070111,
-    UnitType = "Mechanism",
-    UnitId = 70118,
     RarelyId = 7051010,
   },
 }

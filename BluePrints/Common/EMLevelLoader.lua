@@ -585,61 +585,82 @@ function r0_0.SetLevelVisible(r0_42, r1_42)
   end
 end
 function r0_0.GetDungeonPreloadData(r0_43, r1_43)
-  -- line: [643, 687] id: 43
+  -- line: [643, 711] id: 43
   local r2_43 = FDungeonPreloadData()
+  local r3_43 = {
+    [90108] = true,
+    [90604] = true,
+    [90804] = true,
+    [91009] = true,
+    [91124] = true,
+    [91125] = true,
+    [91144] = true,
+    [91145] = true,
+    [91146] = true,
+    [91147] = true,
+    [91185] = true,
+    [91186] = true,
+    [91181] = true,
+    [91182] = true,
+    [91183] = true,
+    [91184] = true,
+  }
+  if IsDedicatedServer(r0_43) and r3_43[r1_43] == true then
+    return r2_43
+  end
   if r2_0[r1_43] == nil then
     return r2_43
   end
-  local r3_43 = r2_0[r1_43]
-  r2_43.OnlineCoefficient = r3_43.OnlineCoefficient
-  for r8_43, r9_43 in pairs(r3_43.MonsterSpawn) do
-    r2_43.MonsterSpawn:Add(r8_43, r9_43)
+  local r4_43 = r2_0[r1_43]
+  r2_43.OnlineCoefficient = r4_43.OnlineCoefficient
+  for r9_43, r10_43 in pairs(r4_43.MonsterSpawn) do
+    r2_43.MonsterSpawn:Add(r9_43, r10_43)
   end
-  -- close: r4_43
-  local r4_43 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_43)
-  local r5_43 = false
-  local r7_43 = r5_0
-  for r10_43, r11_43 in pairs(r7_43) do
-    if r11_43 == r4_43.GameModeType then
-      r5_43 = true
+  -- close: r5_43
+  local r5_43 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_43)
+  local r6_43 = false
+  local r8_43 = r5_0
+  for r11_43, r12_43 in pairs(r8_43) do
+    if r12_43 == r5_43.GameModeType then
+      r6_43 = true
       break
     end
   end
-  -- close: r6_43
-  if r5_43 then
-    local r6_43 = r4_43.GameModeType
-    if r6_43 then
-      r7_43 = r4_43.GameModeType
-      r6_43 = DataMgr[r7_43] and nil
+  -- close: r7_43
+  if r6_43 then
+    local r7_43 = r5_43.GameModeType
+    if r7_43 then
+      r8_43 = r5_43.GameModeType
+      r7_43 = DataMgr[r8_43] and nil
     else
-      goto label_51	-- block#12 is visited secondly
-    end
-    if r6_43 then
-      r7_43 = r6_43[r1_43] and nil
-    else
-      goto label_57	-- block#15 is visited secondly
+      goto label_94	-- block#15 is visited secondly
     end
     if r7_43 then
-      local r8_43 = r7_43["Treasure" .. "MonsterId"]
-      if r8_43 then
-        r2_43.FixedMonsterSpawn:Add(r8_43, 1)
-      end
-      local r9_43 = r7_43["Butcher" .. "MonsterId"]
+      r8_43 = r7_43[r1_43] and nil
+    else
+      goto label_100	-- block#18 is visited secondly
+    end
+    if r8_43 then
+      local r9_43 = r8_43["Treasure" .. "MonsterId"]
       if r9_43 then
         r2_43.FixedMonsterSpawn:Add(r9_43, 1)
       end
+      local r10_43 = r8_43["Butcher" .. "MonsterId"]
+      if r10_43 then
+        r2_43.FixedMonsterSpawn:Add(r10_43, 1)
+      end
     end
   end
-  if r3_43.FixedMonster then
-    for r10_43, r11_43 in pairs(r3_43.FixedMonster) do
-      r2_43.FixedMonsterSpawn:Add(r10_43, r11_43)
+  if r4_43.FixedMonster then
+    for r11_43, r12_43 in pairs(r4_43.FixedMonster) do
+      r2_43.FixedMonsterSpawn:Add(r11_43, r12_43)
     end
-    -- close: r6_43
+    -- close: r7_43
   end
   return r2_43
 end
 function r0_0.GetStoryRegionPreloadData(r0_44, r1_44)
-  -- line: [689, 718] id: 44
+  -- line: [713, 742] id: 44
   local r2_44 = FDungeonPreloadData()
   if UE4.UUIFunctionLibrary.GetDevicePlatformName(r0_44) == "IOS" then
     return r2_44
@@ -667,7 +688,7 @@ function r0_0.GetStoryRegionPreloadData(r0_44, r1_44)
   return r2_44
 end
 function r0_0.GetRegionPreloadData(r0_45, r1_45)
-  -- line: [720, 742] id: 45
+  -- line: [744, 766] id: 45
   local r2_45 = FDungeonPreloadData()
   if UE4.UUIFunctionLibrary.GetDevicePlatformName(r0_45) == "IOS" then
     return r2_45
@@ -686,7 +707,7 @@ function r0_0.GetRegionPreloadData(r0_45, r1_45)
   return r2_45
 end
 function r0_0.GetAbyssPreloadData(r0_46, r1_46)
-  -- line: [744, 756] id: 46
+  -- line: [768, 780] id: 46
   local r2_46 = FDungeonPreloadData()
   if r4_0[r1_46] == nil then
     return r2_46

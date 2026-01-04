@@ -5,9 +5,9 @@ return {
   index = 0,
   script = "-- 请在此处编写HotFix代码,请组长编写\n\n\n",
   client_version = {
-    ["1"] = "0",
+    ForceUpdateCheck = "1",
   },
-  force_update_version = "0",
+  force_update_version = "1",
   patch_version = {
     ["1"] = "0",
   },
