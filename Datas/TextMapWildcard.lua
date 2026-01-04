@@ -125,6 +125,10 @@ end)("TextMapWildcard", {
     TextMapId = "Description_120114_2",
     WildcardClassification = "Story",
   },
+  Description_Nai01_02_06 = {
+    TextMapId = "Description_Nai01_02_06",
+    WildcardClassification = "Story",
+  },
   EntryTitle_204001 = {
     TextMapId = "EntryTitle_204001",
     WildcardClassification = "Story",

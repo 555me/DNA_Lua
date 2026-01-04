@@ -113,465 +113,520 @@ function r4_0.TryStartOutAirWallCheck(r0_5, r1_5)
     end
   end
 end
-function r4_0.CallFromCPPDelegete(r0_7, r1_7)
-  -- line: [133, 135] id: 7
-  DebugPrint("BP_MonsterCharacter_C:CallFromCPPDelegete", r1_7)
-end
-function r4_0.OnTagChange(r0_8, r1_8, r2_8, r3_8)
-  -- line: [137, 148] id: 8
-  if r3_8 ~= "HitFly" then
+function r4_0.TryCheckBornPosTimer(r0_7)
+  -- line: [133, 165] id: 7
+  -- notice: unreachable block#11
+  local r1_7 = UE4.UGameplayStatics.GetGameMode(r0_7)
+  if not r1_7 then
     return 
   end
-  local r4_8 = r0_8.Mesh
-  if r4_8 and r4_8.SkeletalMesh:GetPhysicsAsset() then
-    for r10_8, r11_8 in pairs(r4_8.SkeletalMesh:GetPhysicsAsset().SkeletalBodySetups) do
-      if r11_8 and r11_8.PhysicsType == EPhysicsType.PhysType_Default and r11_8.CollisionReponse ~= EBodyCollisionResponse.BodyCollision_Enabled then
-        r11_8.CollisionReponse = EBodyCollisionResponse.BodyCollision_Enabled
+  if not r1_7:GetLevelLoader():CheckIsRougeLike() then
+    return 
+  end
+  local r3_7 = r0_7.bInPool
+  if not r3_7 then
+    r3_7 = r0_7.IsDead and r0_7:IsDead() and r0_7.InitSuccess and r0_7.IsRealMonster and r0_7:IsRealMonster()
+  else
+    r3_7 = false
+  end
+  if r3_7 then
+    DebugPrint(r0_7:GetName() .. " @gulinan Start CheckBornPos Timer")
+    r0_7.CheckBornPosHandle = r0_7:AddTimer(1, function()
+      -- line: [143, 163] id: 8
+      if r0_7.bInPool or r0_7.IsDead and r0_7:IsDead() or not r0_7.InitSuccess then
+        if r0_7.CheckBornPosHandle ~= nil then
+          DebugPrint(r0_7:GetName() .. " @gulinan End CheckBornPosHandle Timer")
+          r0_7:RemoveTimer(r0_7.CheckBornPosHandle)
+          r0_7.CheckBornPosHandle = nil
+        else
+          DebugPrint(r0_7:GetName() .. " @gulinan CheckBornPos is nil but timer still tick")
+          r0_7:RemoveTimer("CheckBornPos")
+        end
+      end
+      local r0_8 = UE4.UGameplayStatics.GetPlayerPawn(r0_7, 0)
+      local r1_8 = r0_7:K2_GetActorLocation()
+      local r2_8 = r0_7.BornPos - r1_8
+      local r3_8 = nil	-- notice: implicit variable refs by block#[13, 14]
+      if r0_8 then
+        r3_8 = r0_8:K2_GetActorLocation() - r1_8
+        if not r3_8 then
+          ::label_61::
+          r3_8 = nil
+        end
+      else
+        goto label_61	-- block#9 is visited secondly
+      end
+      if 20000 < r2_8:Size2D() and math.abs(r1_8.X) < 100 and math.abs(r1_8.Y) < 100 and (r3_8 == nil or 20000 < r3_8:Size2D()) then
+        DebugPrint(r0_7:GetName() .. " @gulinan CheckBornPos Teleport To BornPos")
+        r0_7:K2_SetActorLocation(r0_7.BornPos, false, nil, false)
+      end
+    end, true, 0, "CheckBornPos", false)
+  end
+end
+function r4_0.CallFromCPPDelegete(r0_9, r1_9)
+  -- line: [167, 169] id: 9
+  DebugPrint("BP_MonsterCharacter_C:CallFromCPPDelegete", r1_9)
+end
+function r4_0.OnTagChange(r0_10, r1_10, r2_10, r3_10)
+  -- line: [171, 182] id: 10
+  if r3_10 ~= "HitFly" then
+    return 
+  end
+  local r4_10 = r0_10.Mesh
+  if r4_10 and r4_10.SkeletalMesh:GetPhysicsAsset() then
+    for r10_10, r11_10 in pairs(r4_10.SkeletalMesh:GetPhysicsAsset().SkeletalBodySetups) do
+      if r11_10 and r11_10.PhysicsType == EPhysicsType.PhysType_Default and r11_10.CollisionReponse ~= EBodyCollisionResponse.BodyCollision_Enabled then
+        r11_10.CollisionReponse = EBodyCollisionResponse.BodyCollision_Enabled
       end
     end
-    -- close: r6_8
+    -- close: r6_10
   end
 end
-function r4_0.SetReplaceAttrsLua(r0_9, r1_9)
-  -- line: [163, 168] id: 9
-  local r2_9 = r1_9:GetLuaTable("ReplaceAttrs")
-  if r2_9 then
-    r0_9:SetReplaceAttrs(r2_9)
+function r4_0.SetReplaceAttrsLua(r0_11, r1_11)
+  -- line: [197, 202] id: 11
+  local r2_11 = r1_11:GetLuaTable("ReplaceAttrs")
+  if r2_11 then
+    r0_11:SetReplaceAttrs(r2_11)
   end
 end
-function r4_0.TryResumeRootMotionFromPush(r0_10)
-  -- line: [170, 174] id: 10
-  if not r0_10.bBePushed and r0_10:GetRootMotionTagState(ESourceTags.ApplyPush) then
-    r0_10:EnableRootMotion(ESourceTags.ApplyPush)
+function r4_0.TryResumeRootMotionFromPush(r0_12)
+  -- line: [204, 208] id: 12
+  if not r0_12.bBePushed and r0_12:GetRootMotionTagState(ESourceTags.ApplyPush) then
+    r0_12:EnableRootMotion(ESourceTags.ApplyPush)
   end
 end
-function r4_0.TickMonsterBattleComponent(r0_11, r1_11)
-  -- line: [176, 184] id: 11
-  r0_11:TickComponent(r1_11)
+function r4_0.TickMonsterBattleComponent(r0_13, r1_13)
+  -- line: [210, 218] id: 13
+  r0_13:TickComponent(r1_13)
 end
-function r4_0.CheckMonsterCanReachTest(r0_12)
-  -- line: [186, 194] id: 12
-  local r2_12 = r0_12:CheckMonsterCanReach(UE4.UGameplayStatics.GetPlayerCharacter(r0_12, 0))
-  if not r2_12 then
+function r4_0.CheckMonsterCanReachTest(r0_14)
+  -- line: [220, 228] id: 14
+  local r2_14 = r0_14:CheckMonsterCanReach(UE4.UGameplayStatics.GetPlayerCharacter(r0_14, 0))
+  if not r2_14 then
     return 
   end
-  r0_12:K2_SetActorLocation(r2_12, false, nil, false)
-  print("selfCheckMonsterCanReachTest", r2_12)
+  r0_14:K2_SetActorLocation(r2_14, false, nil, false)
+  print("selfCheckMonsterCanReachTest", r2_14)
 end
-function r4_0.GetBlueprintPath(r0_13)
-  -- line: [196, 198] id: 13
-  return r0_13.Data.UnitBPPath
+function r4_0.GetBlueprintPath(r0_15)
+  -- line: [230, 232] id: 15
+  return r0_15.Data.UnitBPPath
 end
-function r4_0.PlayOutBattleMontage(r0_14, r1_14)
-  -- line: [200, 220] id: 14
-  local r3_14 = DataMgr.Model[r0_14.ModelId].BehaviorMontageGroupId
-  if not r3_14 or not DataMgr.BehaviorRuleId[r3_14] then
+function r4_0.PlayOutBattleMontage(r0_16, r1_16)
+  -- line: [234, 254] id: 16
+  local r3_16 = DataMgr.Model[r0_16.ModelId].BehaviorMontageGroupId
+  if not r3_16 or not DataMgr.BehaviorRuleId[r3_16] then
     return 0
   end
-  local r4_14 = DataMgr.BehaviorRuleId[r3_14].OutBattleList
-  if not r4_14 then
+  local r4_16 = DataMgr.BehaviorRuleId[r3_16].OutBattleList
+  if not r4_16 then
     return 0
   end
-  r0_14.LastOutBattleMontageIndex = r4_14[r1_14]
-  if not r0_14.LastOutBattleMontageIndex then
+  r0_16.LastOutBattleMontageIndex = r4_16[r1_16]
+  if not r0_16.LastOutBattleMontageIndex then
     return 0
   end
-  if not DataMgr.BehaviorMontage[r0_14.LastOutBattleMontageIndex] then
+  if not DataMgr.BehaviorMontage[r0_16.LastOutBattleMontageIndex] then
     return 0
   end
-  r0_14:Montage_RepPlay(DataMgr.BehaviorMontage[r0_14.LastOutBattleMontageIndex].MontagePath)
-  return r0_14.EMAnimInstance.NowMontageDuration
+  r0_16:Montage_RepPlay(DataMgr.BehaviorMontage[r0_16.LastOutBattleMontageIndex].MontagePath)
+  return r0_16.EMAnimInstance.NowMontageDuration
 end
-function r4_0.OnEMActorDestroy_Lua(r0_15, r1_15)
-  -- line: [288, 307] id: 15
-  r0_15:CommonOnEMActorDestroy(r1_15)
+function r4_0.OnEMActorDestroy_Lua(r0_17, r1_17)
+  -- line: [322, 341] id: 17
+  r0_17:CommonOnEMActorDestroy(r1_17)
 end
-function r4_0.GetKillSourceType(r0_16, r1_16)
-  -- line: [376, 388] id: 16
-  local r2_16 = Battle(r0_16):GetEntity(r1_16)
-  local r3_16 = nil
-  if r2_16 then
-    local r4_16 = r2_16:GetRootSource()
-    if r4_16 and r4_16.IsPlayer and r4_16:IsPlayer() then
-      r3_16 = r1_0.ActorType.Player
-    elseif r4_16 and r4_16.IsCombatItemBase and r4_16:IsCombatItemBase() then
-      r3_16 = r1_0.ActorType.CombatItemBase
+function r4_0.GetKillSourceType(r0_18, r1_18)
+  -- line: [410, 422] id: 18
+  local r2_18 = Battle(r0_18):GetEntity(r1_18)
+  local r3_18 = nil
+  if r2_18 then
+    local r4_18 = r2_18:GetRootSource()
+    if r4_18 and r4_18.IsPlayer and r4_18:IsPlayer() then
+      r3_18 = r1_0.ActorType.Player
+    elseif r4_18 and r4_18.IsCombatItemBase and r4_18:IsCombatItemBase() then
+      r3_18 = r1_0.ActorType.CombatItemBase
     end
   end
-  return r3_16
+  return r3_18
 end
-function r4_0.IsAllowedExp(r0_17)
-  -- line: [507, 524] id: 17
-  local r1_17 = GWorld:GetAvatar()
-  if not r1_17 then
+function r4_0.IsAllowedExp(r0_19)
+  -- line: [541, 558] id: 19
+  local r1_19 = GWorld:GetAvatar()
+  if not r1_19 then
     return false
   end
-  if not r1_17:IsInDungeon() then
+  if not r1_19:IsInDungeon() then
     return true
   end
-  local r2_17 = UE4.UGameplayStatics.GetGameState(r0_17)
-  local r3_17 = DataMgr.Dungeon[r2_17.DungeonId]
-  if not r3_17 then
-    if DataMgr.HardBossDifficulty[r2_17.DungeonId] then
+  local r2_19 = UE4.UGameplayStatics.GetGameState(r0_19)
+  local r3_19 = DataMgr.Dungeon[r2_19.DungeonId]
+  if not r3_19 then
+    if DataMgr.HardBossDifficulty[r2_19.DungeonId] then
       return true
     end
     return false
   end
-  return not r3_17.OnlyCombatReward
+  return not r3_19.OnlyCombatReward
 end
-function r4_0.Recovery(r0_18, ...)
-  -- line: [526, 529] id: 18
-  r4_0.Super.Recovery(r0_18, ...)
-  r0_18:SetCharacterTagIdle()
+function r4_0.Recovery(r0_20, ...)
+  -- line: [560, 563] id: 20
+  r4_0.Super.Recovery(r0_20, ...)
+  r0_20:SetCharacterTagIdle()
 end
-function r4_0.OnDeadAnimationEnd(r0_19)
-  -- line: [531, 544] id: 19
-  r0_19.Mesh:SetCollisionProfileName("Ragdoll")
-  if not r0_19.IsSpawnedByMovieCaptureSequence then
-    r0_19.Mesh:SetAllBodiesBelowSimulatePhysics("root", true, false)
+function r4_0.OnDeadAnimationEnd(r0_21)
+  -- line: [565, 578] id: 21
+  r0_21.Mesh:SetCollisionProfileName("Ragdoll")
+  if not r0_21.IsSpawnedByMovieCaptureSequence then
+    r0_21.Mesh:SetAllBodiesBelowSimulatePhysics("root", true, false)
   end
-  r0_19.Mesh:SetAllBodiesPhysicsBlendWeight(1)
-  r0_19:BeginRagdollState("Ragdoll", "pelvis", -1, true, 1, 0, ERagdollStateType.RagdollStateDead)
-  if r0_19.DuringDyingHitFly then
-    r0_19.DuringDyingHitFly = nil
-  end
-end
-function r4_0.SetActionModeForBlackBoard(r0_20, r1_20)
-  -- line: [546, 550] id: 20
-  if r0_20:GetOwnBlackBoardComponent() then
-    r0_20:GetOwnBlackBoardComponent():SetValueAsEnum("ActionMode", r1_20)
+  r0_21.Mesh:SetAllBodiesPhysicsBlendWeight(1)
+  r0_21:BeginRagdollState("Ragdoll", "pelvis", -1, true, 1, 0, ERagdollStateType.RagdollStateDead)
+  if r0_21.DuringDyingHitFly then
+    r0_21.DuringDyingHitFly = nil
   end
 end
-function r4_0.MonsterCommonLeaveTag(r0_21)
-  -- line: [552, 559] id: 21
-  if not DataMgr.MonsterStateLimit[r0_21.AutoSyncProp.CharacterTag] then
+function r4_0.SetActionModeForBlackBoard(r0_22, r1_22)
+  -- line: [580, 584] id: 22
+  if r0_22:GetOwnBlackBoardComponent() then
+    r0_22:GetOwnBlackBoardComponent():SetValueAsEnum("ActionMode", r1_22)
+  end
+end
+function r4_0.MonsterCommonLeaveTag(r0_23)
+  -- line: [586, 593] id: 23
+  if not DataMgr.MonsterStateLimit[r0_23.AutoSyncProp.CharacterTag] then
     return 
   end
-  if DataMgr.MonsterStateLimit[r0_21.AutoSyncProp.CharacterTag].ForbidAI == 1 then
-    r0_21:ClearStopBTFlag(r0_21.AutoSyncProp.CharacterTag)
+  if DataMgr.MonsterStateLimit[r0_23.AutoSyncProp.CharacterTag].ForbidAI == 1 then
+    r0_23:ClearStopBTFlag(r0_23.AutoSyncProp.CharacterTag)
   end
 end
-function r4_0.TriggerFallingCallable(r0_22, r1_22)
-  -- line: [561, 599] id: 22
-  DebugPrint("OtherActor is Falling Dead. ActorName: ", r0_22:GetName(), ", UnitId: ", r0_22.UnitId, ", Eid: ", r0_22.Eid, ", CreatorId: ", r0_22.CreatorId, " CreatorType: ", r0_22.CreatorType, ", BornPos: ", r0_22.BornPos)
-  if r0_22.IsSummonMonster and r0_22:IsSummonMonster() then
-    local r2_22 = r0_22:GetDirectSource()
-    if not r2_22 then
+function r4_0.TriggerFallingCallable(r0_24, r1_24)
+  -- line: [595, 633] id: 24
+  DebugPrint("OtherActor is Falling Dead. ActorName: ", r0_24:GetName(), ", UnitId: ", r0_24.UnitId, ", Eid: ", r0_24.Eid, ", CreatorId: ", r0_24.CreatorId, " CreatorType: ", r0_24.CreatorType, ", BornPos: ", r0_24.BornPos)
+  if r0_24.IsSummonMonster and r0_24:IsSummonMonster() then
+    local r2_24 = r0_24:GetDirectSource()
+    if not r2_24 then
       return 
     end
-    if r0_22:GetAttachParentActor() then
+    if r0_24:GetAttachParentActor() then
       return 
     end
-    UNavigationFunctionLibrary.ActorToActorTeleport(r0_22, r2_22)
-    r0_22:EnableCheckOverlapPush({})
-    if r0_22.OnTriggerFallingCallable then
-      r0_22:OnTriggerFallingCallable()
+    UNavigationFunctionLibrary.ActorToActorTeleport(r0_24, r2_24)
+    r0_24:EnableCheckOverlapPush({})
+    if r0_24.OnTriggerFallingCallable then
+      r0_24:OnTriggerFallingCallable()
     end
-    r0_22:Landed()
-  elseif r0_22.IsCaptureMonster and r0_22:IsCaptureMonster() then
-    local r2_22 = nil
-    local r3_22 = 9999999
-    for r8_22, r9_22 in pairs(r1_22:GetAllPlayer()) do
-      if IsValid(r9_22) then
-        local r10_22 = r9_22:GetDistanceTo(r0_22)
-        if r10_22 < r3_22 then
-          r3_22 = r10_22
-          r2_22 = r9_22
+    r0_24:Landed()
+  elseif r0_24.IsCaptureMonster and r0_24:IsCaptureMonster() then
+    local r2_24 = nil
+    local r3_24 = 9999999
+    for r8_24, r9_24 in pairs(r1_24:GetAllPlayer()) do
+      if IsValid(r9_24) then
+        local r10_24 = r9_24:GetDistanceTo(r0_24)
+        if r10_24 < r3_24 then
+          r3_24 = r10_24
+          r2_24 = r9_24
         end
       end
     end
-    -- close: r4_22
-    if IsValid(r2_22) then
-      UNavigationFunctionLibrary.ActorToActorTeleport(r0_22, r2_22)
+    -- close: r4_24
+    if IsValid(r2_24) then
+      UNavigationFunctionLibrary.ActorToActorTeleport(r0_24, r2_24)
     end
-  elseif r0_22.IsAIControlled and r0_22:IsAIControlled() and not r0_22:IsNPC() then
-    r0_22:SetIsFallTrigger()
-    Battle(r1_22):BattleOnDead(r0_22.Eid, r0_22.Eid, 0, EDeathReason.TriggerFalling)
+  elseif r0_24.IsAIControlled and r0_24:IsAIControlled() and not r0_24:IsNPC() then
+    r0_24:SetIsFallTrigger()
+    Battle(r1_24):BattleOnDead(r0_24.Eid, r0_24.Eid, 0, EDeathReason.TriggerFalling)
   end
 end
-function r4_0.TriggerWaterFallingCallable(r0_23, r1_23)
-  -- line: [601, 621] id: 23
-  if r0_23.IsCaptureMonster and r0_23:IsCaptureMonster() then
-    local r2_23 = nil
-    local r3_23 = 9999999
-    for r8_23, r9_23 in pairs(r1_23:GetAllPlayer()) do
-      if IsValid(r9_23) then
-        local r10_23 = r9_23:GetDistanceTo(r0_23)
-        if r10_23 < r3_23 then
-          r3_23 = r10_23
-          r2_23 = r9_23
+function r4_0.TriggerWaterFallingCallable(r0_25, r1_25)
+  -- line: [635, 655] id: 25
+  if r0_25.IsCaptureMonster and r0_25:IsCaptureMonster() then
+    local r2_25 = nil
+    local r3_25 = 9999999
+    for r8_25, r9_25 in pairs(r1_25:GetAllPlayer()) do
+      if IsValid(r9_25) then
+        local r10_25 = r9_25:GetDistanceTo(r0_25)
+        if r10_25 < r3_25 then
+          r3_25 = r10_25
+          r2_25 = r9_25
         end
       end
     end
-    -- close: r4_23
-    if IsValid(r2_23) then
-      UNavigationFunctionLibrary.ActorToActorTeleport(r0_23, r2_23)
+    -- close: r4_25
+    if IsValid(r2_25) then
+      UNavigationFunctionLibrary.ActorToActorTeleport(r0_25, r2_25)
     end
-  elseif r0_23.IsMonster and r0_23:IsMonster() then
-    r0_23:SetIsFallTrigger()
-    Battle(r0_23):BattleOnDead(r0_23.Eid, r0_23.Eid, 0, EDeathReason.TriggerFalling)
+  elseif r0_25.IsMonster and r0_25:IsMonster() then
+    r0_25:SetIsFallTrigger()
+    Battle(r0_25):BattleOnDead(r0_25.Eid, r0_25.Eid, 0, EDeathReason.TriggerFalling)
   end
 end
-function r4_0.CheckMonsterCanReach(r0_24, r1_24, r2_24)
-  -- line: [655, 682] id: 24
-  if UE4.UNavigationFunctionLibrary.CheckTwoPosHasPath(r0_24:K2_GetActorLocation(), r1_24:K2_GetActorLocation(), r0_24) == Const.PathTypeHasPath then
+function r4_0.CheckMonsterCanReach(r0_26, r1_26, r2_26)
+  -- line: [689, 716] id: 26
+  if UE4.UNavigationFunctionLibrary.CheckTwoPosHasPath(r0_26:K2_GetActorLocation(), r1_26:K2_GetActorLocation(), r0_26) == Const.PathTypeHasPath then
     return nil
   end
-  local r4_24 = r0_24:K2_GetActorLocation()
-  local r5_24 = r1_24:K2_GetActorLocation()
-  local r6_24 = 36
-  local r7_24 = r0_24.CapsuleComponent:GetUnscaledCapsuleRadius() * 10
-  local r8_24 = r0_24:GetActorForwardVector()
-  for r12_24 = 0, 9, 1 do
-    local r13_24 = UE4.UKismetMathLibrary.DegCos(r6_24 * r12_24)
-    local r14_24 = UE4.UKismetMathLibrary.DegSin(r6_24 * r12_24)
-    local r15_24 = FVector((r8_24.X * r13_24 + r8_24.Y * r14_24), (r8_24.Y * r13_24 - r8_24.X * r14_24), 0) * r7_24 + r4_24
-    if UE4.UNavigationFunctionLibrary.CheckTwoPosHasPath(r15_24, r5_24, r0_24) == Const.PathTypeHasPath then
-      return r15_24
+  local r4_26 = r0_26:K2_GetActorLocation()
+  local r5_26 = r1_26:K2_GetActorLocation()
+  local r6_26 = 36
+  local r7_26 = r0_26.CapsuleComponent:GetUnscaledCapsuleRadius() * 10
+  local r8_26 = r0_26:GetActorForwardVector()
+  for r12_26 = 0, 9, 1 do
+    local r13_26 = UE4.UKismetMathLibrary.DegCos(r6_26 * r12_26)
+    local r14_26 = UE4.UKismetMathLibrary.DegSin(r6_26 * r12_26)
+    local r15_26 = FVector((r8_26.X * r13_26 + r8_26.Y * r14_26), (r8_26.Y * r13_26 - r8_26.X * r14_26), 0) * r7_26 + r4_26
+    if UE4.UNavigationFunctionLibrary.CheckTwoPosHasPath(r15_26, r5_26, r0_26) == Const.PathTypeHasPath then
+      return r15_26
     end
   end
-  if r2_24 then
+  if r2_26 then
     return nil
   end
-  return r1_24:K2_GetActorLocation()
+  return r1_26:K2_GetActorLocation()
 end
-function r4_0.SetIsFallTrigger(r0_25)
-  -- line: [684, 686] id: 25
-  r0_25.IsFallTrigger = true
+function r4_0.SetIsFallTrigger(r0_27)
+  -- line: [718, 720] id: 27
+  r0_27.IsFallTrigger = true
 end
-function r4_0.LeaveHitFlyTag(r0_26)
-  -- line: [688, 689] id: 26
+function r4_0.LeaveHitFlyTag(r0_28)
+  -- line: [722, 723] id: 28
 end
-function r4_0.GetMonsterToTargetPitch(r0_27)
-  -- line: [700, 710] id: 27
-  local r1_27 = r0_27.BBTarget
-  if not r1_27 then
+function r4_0.GetMonsterToTargetPitch(r0_29)
+  -- line: [734, 744] id: 29
+  local r1_29 = r0_29.BBTarget
+  if not r1_29 then
     return 0
   end
-  return (r1_27:K2_GetActorLocation() - r0_27:K2_GetActorLocation()):ToRotator().Pitch
+  return (r1_29:K2_GetActorLocation() - r0_29:K2_GetActorLocation()):ToRotator().Pitch
 end
-function r4_0.TreasureMonsterInRougLikeOnDead(r0_28)
-  -- line: [764, 769] id: 28
-  local r1_28 = UE4.UGameplayStatics.GetGameMode(r0_28)
-  if r1_28 then
-    r1_28:SpeciaMonsterOnDead(r0_28.UnitId)
+function r4_0.TreasureMonsterInRougLikeOnDead(r0_30)
+  -- line: [798, 803] id: 30
+  local r1_30 = UE4.UGameplayStatics.GetGameMode(r0_30)
+  if r1_30 then
+    r1_30:SpeciaMonsterOnDead(r0_30.UnitId)
   end
 end
-function r4_0.AddHatredTargetByWaitRecover(r0_29, r1_29)
-  -- line: [853, 866] id: 29
-  local r2_29 = Battle(r0_29):GetEntity(r1_29)
-  if not r2_29:IsPlayer() and not r2_29:IsAIControlled() then
+function r4_0.AddHatredTargetByWaitRecover(r0_31, r1_31)
+  -- line: [887, 900] id: 31
+  local r2_31 = Battle(r0_31):GetEntity(r1_31)
+  if not r2_31:IsPlayer() and not r2_31:IsAIControlled() then
     return 
   end
-  if not r2_29:IsDead() then
+  if not r2_31:IsDead() then
     return 
   end
-  local r3_29 = r0_29:GetPresetHatredValue(r2_29, "ReasonWaitRecover")
-  if r0_29.TargetHatred:Find(r1_29) then
-    r0_29:RemoveHatredTarget(r1_29)
-    r0_29:AddHatredTarget(r1_29, r3_29, r3_29)
+  local r3_31 = r0_31:GetPresetHatredValue(r2_31, "ReasonWaitRecover")
+  if r0_31.TargetHatred:Find(r1_31) then
+    r0_31:RemoveHatredTarget(r1_31)
+    r0_31:AddHatredTarget(r1_31, r3_31, r3_31)
   end
 end
-function r4_0.ListenRecoverHatredEvent(r0_30)
-  -- line: [868, 870] id: 30
-  EventManager:AddEvent(EventID.CharDie, r0_30, r0_30.AddHatredTargetByWaitRecover)
+function r4_0.ListenRecoverHatredEvent(r0_32)
+  -- line: [902, 904] id: 32
+  EventManager:AddEvent(EventID.CharDie, r0_32, r0_32.AddHatredTargetByWaitRecover)
 end
-function r4_0.RemoveRecoverHatredEvent(r0_31)
-  -- line: [872, 874] id: 31
-  EventManager:RemoveEvent(EventID.CharDie, r0_31)
+function r4_0.RemoveRecoverHatredEvent(r0_33)
+  -- line: [906, 908] id: 33
+  EventManager:RemoveEvent(EventID.CharDie, r0_33)
 end
-function r4_0.GetSplingAnim(r0_32)
-  -- line: [876, 881] id: 32
-  if not r0_32.IsCoverMontage then
+function r4_0.GetSplingAnim(r0_34)
+  -- line: [910, 915] id: 34
+  if not r0_34.IsCoverMontage then
     return 
   end
-  local r1_32 = r0_32.CoverPointInfo.IsCrouch
+  local r1_34 = r0_34.CoverPointInfo.IsCrouch
 end
-function r4_0.GetCoverMontageAnimAsset(r0_33, r1_33)
-  -- line: [884, 894] id: 33
-  local r2_33 = DataMgr.Model[r0_33.ModelId]
-  local r3_33, r4_33 = r0_33:GetHitMontageFolderAndPrefix()
-  if not r3_33 then
+function r4_0.GetCoverMontageAnimAsset(r0_35, r1_35)
+  -- line: [918, 928] id: 35
+  local r2_35 = DataMgr.Model[r0_35.ModelId]
+  local r3_35, r4_35 = r0_35:GetHitMontageFolderAndPrefix()
+  if not r3_35 then
     return nil, nil
   end
-  local r5_33 = r4_33 .. r1_33
-  return nil, r3_33 .. "Locomotion/" .. r5_33 .. Const.MontageSuffix .. "." .. r5_33 .. Const.MontageSuffix
+  local r5_35 = r4_35 .. r1_35
+  return nil, r3_35 .. "Locomotion/" .. r5_35 .. Const.MontageSuffix .. "." .. r5_35 .. Const.MontageSuffix
 end
-function r4_0.IsLimitMontage(r0_34)
-  -- line: [896, 899] id: 34
-  return DataMgr.MonsterStateLimit[r0_34.AutoSyncProp.CharacterTag].SourceTag == Const.StunTag
+function r4_0.IsLimitMontage(r0_36)
+  -- line: [930, 933] id: 36
+  return DataMgr.MonsterStateLimit[r0_36.AutoSyncProp.CharacterTag].SourceTag == Const.StunTag
 end
-function r4_0.PlayLimitMontage(r0_35, r1_35)
-  -- line: [901, 909] id: 35
-  if r0_35:IsLimitMontage() == false then
+function r4_0.PlayLimitMontage(r0_37, r1_37)
+  -- line: [935, 943] id: 37
+  if r0_37:IsLimitMontage() == false then
     return 
   end
-  local r2_35 = r0_35:GetLimitMontagePath(r1_35)
-  if r2_35 == nil then
+  local r2_37 = r0_37:GetLimitMontagePath(r1_37)
+  if r2_37 == nil then
     return 
   end
-  r0_35:PlayMontageByPath(r2_35, nil, false)
+  r0_37:PlayMontageByPath(r2_37, nil, false)
 end
-function r4_0.StopLimitMontage(r0_36, r1_36)
-  -- line: [911, 922] id: 36
-  if r0_36:IsLimitMontage() == false then
+function r4_0.StopLimitMontage(r0_38, r1_38)
+  -- line: [945, 956] id: 38
+  if r0_38:IsLimitMontage() == false then
     return 
   end
-  local r2_36 = r0_36:GetLimitMontagePath(r1_36)
-  if r2_36 == nil then
+  local r2_38 = r0_38:GetLimitMontagePath(r1_38)
+  if r2_38 == nil then
     return 
   end
-  local r3_36 = LoadObject(r2_36)
-  if not r3_36 then
+  local r3_38 = LoadObject(r2_38)
+  if not r3_38 then
     return 
   end
-  r0_36.EMAnimInstance:Montage_Stop(Const.MontageBlendOutTime, r3_36)
+  r0_38.EMAnimInstance:Montage_Stop(Const.MontageBlendOutTime, r3_38)
 end
-function r4_0.GetLimitMontagePath(r0_37, r1_37)
-  -- line: [924, 933] id: 37
-  local r2_37, r3_37 = r0_37:GetHitMontageFolderAndPrefix()
-  if r2_37 ~= nil then
-    return r2_37 .. "Combat/Hit/" .. r3_37 .. r1_37 .. "_Montage"
+function r4_0.GetLimitMontagePath(r0_39, r1_39)
+  -- line: [958, 967] id: 39
+  local r2_39, r3_39 = r0_39:GetHitMontageFolderAndPrefix()
+  if r2_39 ~= nil then
+    return r2_39 .. "Combat/Hit/" .. r3_39 .. r1_39 .. "_Montage"
   else
     return nil
   end
 end
-function r4_0.GetSkillIdBySkillType(r0_38, r1_38)
-  -- line: [935, 937] id: 38
-  return r1_38
+function r4_0.GetSkillIdBySkillType(r0_40, r1_40)
+  -- line: [969, 971] id: 40
+  return r1_40
 end
-function r4_0.GetCurrentAnimationBlueprint(r0_39, r1_39)
-  -- line: [939, 944] id: 39
-  if r0_39.Data and r0_39.Data.AnimCoverPath then
-    return r0_39.Data.AnimCoverPath
+function r4_0.GetCurrentAnimationBlueprint(r0_41, r1_41)
+  -- line: [973, 978] id: 41
+  if r0_41.Data and r0_41.Data.AnimCoverPath then
+    return r0_41.Data.AnimCoverPath
   end
-  return r4_0.Super.GetCurrentAnimationBlueprint(r0_39, r1_39)
+  return r4_0.Super.GetCurrentAnimationBlueprint(r0_41, r1_41)
 end
-function r4_0.IsContainCollapsedGraphTag(r0_40, r1_40)
-  -- line: [984, 990] id: 40
-  if r1_40 == "None" then
+function r4_0.IsContainCollapsedGraphTag(r0_42, r1_42)
+  -- line: [1018, 1024] id: 42
+  if r1_42 == "None" then
     return false
   end
-  if r0_40:HasAnyTags_Table(r0_40, {
-    r1_40
+  if r0_42:HasAnyTags_Table(r0_42, {
+    r1_42
   }, false) then
     return true
   end
   return false
 end
-function r4_0.BlockTickLod(r0_41, r1_41, r2_41, r3_41)
-  -- line: [992, 1008] id: 41
-  if r0_41.Data and r0_41.Data.DisableTicklod then
+function r4_0.BlockTickLod(r0_43, r1_43, r2_43, r3_43)
+  -- line: [1026, 1042] id: 43
+  if r0_43.Data and r0_43.Data.DisableTicklod then
     return 
   end
-  if r3_41 | ETickObjectFlag.FLAG_CHARMOVEMENTCOMPONENT then
+  if r3_43 | ETickObjectFlag.FLAG_CHARMOVEMENTCOMPONENT then
     GWorld.logger.errorlog("@wuzhijun：BlockTickLod.处理移动组件用 BlockTickLod_MoveComp")
     return 
   end
-  local r4_41 = USubsystemBlueprintLibrary.GetWorldSubsystem(r0_41, UEMSignificanceMgrSubsystem)
-  if not r4_41 then
+  local r4_43 = USubsystemBlueprintLibrary.GetWorldSubsystem(r0_43, UEMSignificanceMgrSubsystem)
+  if not r4_43 then
     return 
   end
-  r4_41:BlockTickLod(ESignificanceTag.Monster, r1_41, r0_41, r2_41, r3_41)
+  r4_43:BlockTickLod(ESignificanceTag.Monster, r1_43, r0_43, r2_43, r3_43)
 end
-function r4_0.BlockTickLod_BT(r0_42, r1_42, r2_42)
-  -- line: [1010, 1020] id: 42
-  if r0_42.Data and r0_42.Data.DisableTicklod then
+function r4_0.BlockTickLod_BT(r0_44, r1_44, r2_44)
+  -- line: [1044, 1054] id: 44
+  if r0_44.Data and r0_44.Data.DisableTicklod then
     return 
   end
-  local r3_42 = USubsystemBlueprintLibrary.GetWorldSubsystem(r0_42, UEMSignificanceMgrSubsystem)
-  if not r3_42 then
+  local r3_44 = USubsystemBlueprintLibrary.GetWorldSubsystem(r0_44, UEMSignificanceMgrSubsystem)
+  if not r3_44 then
     return 
   end
-  r3_42:BlockTickLod(ESignificanceTag.MonsterBT, r1_42, r0_42:GetController(), r2_42, ETickObjectFlag.FLAG_ACTOR | ETickObjectFlag.FLAG_BTCOMPONENT)
+  r3_44:BlockTickLod(ESignificanceTag.MonsterBT, r1_44, r0_44:GetController(), r2_44, ETickObjectFlag.FLAG_ACTOR | ETickObjectFlag.FLAG_BTCOMPONENT)
 end
-function r4_0.CheckOverlapPushForChangeCollision(r0_43, r1_43, r2_43)
-  -- line: [1022, 1030] id: 43
-  return r0_43:EnableCheckOverlapPush({
-    r0_43,
+function r4_0.CheckOverlapPushForChangeCollision(r0_45, r1_45, r2_45)
+  -- line: [1056, 1064] id: 45
+  return r0_45:EnableCheckOverlapPush({
+    r0_45,
     function()
-      -- line: [1023, 1027] id: 44
-      if r0_43.CapsuleComponent then
-        r0_43.CapsuleComponent:SetCollisionResponseToChannel(r1_43, r2_43)
+      -- line: [1057, 1061] id: 46
+      if r0_45.CapsuleComponent then
+        r0_45.CapsuleComponent:SetCollisionResponseToChannel(r1_45, r2_45)
       end
     end
   })
 end
-function r4_0.IsNeedHideInTalk(r0_45)
-  -- line: [1032, 1038] id: 45
-  if IsStandAlone(r0_45) then
+function r4_0.IsNeedHideInTalk(r0_47)
+  -- line: [1066, 1072] id: 47
+  if IsStandAlone(r0_47) then
     return GWorld.GameInstance:GetTalkContext():HasDisableMonsterSpawn()
   else
     return false
   end
 end
-function r4_0.OnTalkEnableMonsterSpawn(r0_46)
-  -- line: [1040, 1043] id: 46
-  r0_46:SetWaitInitTag(false, Const.CharWaitInitTag.HideInTalk)
-  EventManager:RemoveEvent(EventID.TalkEnableMonsterSpawn, r0_46)
+function r4_0.OnTalkEnableMonsterSpawn(r0_48)
+  -- line: [1074, 1077] id: 48
+  r0_48:SetWaitInitTag(false, Const.CharWaitInitTag.HideInTalk)
+  EventManager:RemoveEvent(EventID.TalkEnableMonsterSpawn, r0_48)
 end
-function r4_0.ReceiveEndPlay(r0_47, r1_47)
-  -- line: [1045, 1070] id: 47
-  EventManager:RemoveEvent(EventID.TalkEnableMonsterSpawn, r0_47)
-  EventManager:RemoveEvent(EventID.CharDie, r0_47)
-  GWorld.GameInstance.GlobalLockOnTargets:Remove(r0_47.Eid)
-  if r0_47.BossBloodUI then
-    r0_47.BossBloodUI:UnLoadSelf()
-    r0_47.BossBloodUI = nil
+function r4_0.ReceiveEndPlay(r0_49, r1_49)
+  -- line: [1079, 1110] id: 49
+  EventManager:RemoveEvent(EventID.TalkEnableMonsterSpawn, r0_49)
+  EventManager:RemoveEvent(EventID.CharDie, r0_49)
+  GWorld.GameInstance.GlobalLockOnTargets:Remove(r0_49.Eid)
+  if r0_49.BossBloodUI then
+    r0_49.BossBloodUI:UnLoadSelf()
+    r0_49.BossBloodUI = nil
   end
-  r0_47.IsDestroied = true
-  if r0_47.CheckOutAirDoorHandle ~= nil then
-    DebugPrint(r0_47:GetName() .. " @gulinan Clear AirDoorBoxOutCheck Timer On Destroy")
-    r0_47.RemoveTimer(r0_47.CheckOutAirDoorHandle)
-    r0_47.CheckOutAirDoorHandle = nil
+  r0_49.IsDestroied = true
+  if r0_49.CheckOutAirDoorHandle ~= nil then
+    DebugPrint(r0_49:GetName() .. " @gulinan Clear AirDoorBoxOutCheck Timer On Destroy")
+    r0_49.RemoveTimer(r0_49.CheckOutAirDoorHandle)
+    r0_49.CheckOutAirDoorHandle = nil
   end
-  if r0_47.CheckServerBasedMovementTimer ~= nil then
-    DebugPrint(r0_47:GetName() .. " @gulinan Clear CheckServerBasedMovementTimer Timer On Destroy")
-    r0_47:RemoveTimer(r0_47.CheckServerBasedMovementTimer)
-    r0_47.CheckServerBasedMovementTimer = nil
+  if r0_49.CheckServerBasedMovementTimer ~= nil then
+    DebugPrint(r0_49:GetName() .. " @gulinan Clear CheckServerBasedMovementTimer Timer On Destroy")
+    r0_49:RemoveTimer(r0_49.CheckServerBasedMovementTimer)
+    r0_49.CheckServerBasedMovementTimer = nil
+  end
+  if r0_49.CheckBornPosHandle ~= nil then
+    DebugPrint(r0_49:GetName() .. " @gulinan Clear CheckBornPosTimer Timer On Destroy")
+    r0_49:RemoveTimer(r0_49.CheckBornPosHandle)
+    r0_49.CheckBornPosHandle = nil
   end
 end
-function r4_0.UpdateCdAndUseSkill(r0_48, r1_48)
-  -- line: [1072, 1076] id: 48
-  r0_48:GetSkill(r1_48):ResetSkillCd()
-  return r0_48:UseSkill(r1_48, 0)
+function r4_0.UpdateCdAndUseSkill(r0_50, r1_50)
+  -- line: [1112, 1116] id: 50
+  r0_50:GetSkill(r1_50):ResetSkillCd()
+  return r0_50:UseSkill(r1_50, 0)
 end
-function r4_0.ReuseSkill(r0_49, r1_49)
-  -- line: [1078, 1091] id: 49
-  local r2_49 = r0_49:GetSeqSkill(r1_49)
-  if r2_49 == 0 then
+function r4_0.ReuseSkill(r0_51, r1_51)
+  -- line: [1118, 1131] id: 51
+  local r2_51 = r0_51:GetSeqSkill(r1_51)
+  if r2_51 == 0 then
     return false
   end
-  local r3_49 = r0_49:GetSkill(r2_49)
-  if not r3_49 then
+  local r3_51 = r0_51:GetSkill(r2_51)
+  if not r3_51 then
     return false
   end
-  if r3_49.SkillType == "Passive" then
+  if r3_51.SkillType == "Passive" then
     return false
   end
-  r0_49:AddTimer(0.05, r0_49.UpdateCdAndUseSkill, true, 0, "ReuseSkillTimer", nil, r2_49)
+  r0_51:AddTimer(0.05, r0_51.UpdateCdAndUseSkill, true, 0, "ReuseSkillTimer", nil, r2_51)
 end
-function r4_0.CallSuperFunction(r0_50, r1_50, ...)
-  -- line: [1093, 1095] id: 50
-  r4_0.Super[r1_50](r0_50, ...)
+function r4_0.CallSuperFunction(r0_52, r1_52, ...)
+  -- line: [1133, 1135] id: 52
+  r4_0.Super[r1_52](r0_52, ...)
 end
-function r4_0.OnTimeDilationChanged(r0_51, r1_51, r2_51)
-  -- line: [1111, 1116] id: 51
-  local r3_51 = UE4.UGameplayStatics.GetPlayerCharacter(r0_51, 0)
-  if r3_51 then
-    r3_51:TimeDilationPostProcess(r1_51, r2_51)
+function r4_0.OnTimeDilationChanged(r0_53, r1_53, r2_53)
+  -- line: [1151, 1156] id: 53
+  local r3_53 = UE4.UGameplayStatics.GetPlayerCharacter(r0_53, 0)
+  if r3_53 then
+    r3_53:TimeDilationPostProcess(r1_53, r2_53)
   end
 end
-function r4_0.SetTreasureMonsterTarget(r0_52, r1_52)
-  -- line: [1118, 1120] id: 52
-  r0_52:GetOwnBlackBoardComponent():SetValueAsVector("ExtractionLoc", r1_52)
+function r4_0.SetTreasureMonsterTarget(r0_54, r1_54)
+  -- line: [1158, 1160] id: 54
+  r0_54:GetOwnBlackBoardComponent():SetValueAsVector("ExtractionLoc", r1_54)
 end
-function r4_0.GetManualItemId(r0_53)
-  -- line: [1140, 1142] id: 53
+function r4_0.GetManualItemId(r0_55)
+  -- line: [1180, 1182] id: 55
   return -1
 end
-function r4_0.CommonOnEMActorDestroy(r0_54, r1_54)
-  -- line: [1149, 1162] id: 54
+function r4_0.CommonOnEMActorDestroy(r0_56, r1_56)
+  -- line: [1189, 1202] id: 56
 end
 AssembleComponents(r4_0)
 if r4_0.TickComponent then

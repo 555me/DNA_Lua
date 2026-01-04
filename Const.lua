@@ -1274,4 +1274,5 @@ r0_0.ScriptDetectionCheckType = {
   OnMouse = "OnMouse",
   OnKeyboard = "OnKeyboard",
 }
+r0_0.EnableRougeLikeBornCheck = true
 return r0_0

@@ -32,7 +32,7 @@ function r1_0.NewMonInitComponent_SyncServerBornInfo(r0_5, r1_5)
   r1_5.ServerBornInfo = r1_5.BornInfo:ToEffectStruct()
 end
 function r1_0.NewMonInitComponent_CallBPReceiveBeginPlay(r0_6, r1_6)
-  -- line: [45, 80] id: 6
+  -- line: [45, 84] id: 6
   r1_6.Overridden.ReceiveBeginPlay(r1_6)
   if not IsAuthority(r1_6) and r1_6.bIsFromCache then
     for r6_6, r7_6 in pairs(r1_6.Weapons) do
@@ -49,6 +49,9 @@ function r1_0.NewMonInitComponent_CallBPReceiveBeginPlay(r0_6, r1_6)
   if r1_6.TryStartServerBasedMovementTimer and IsClient(r1_6) and CommonUtils.GetDeviceTypeByPlatformName(r0_6) == CommonConst.CLIENT_DEVICE_TYPE.PC then
     r1_6:TryStartServerBasedMovementTimer()
   end
+  if r1_6.TryCheckBornPosTimer and IsAuthority(r1_6) and Const.EnableRougeLikeBornCheck then
+    r1_6:TryCheckBornPosTimer()
+  end
   local r2_6 = DataMgr.Monster[r1_6.UnitId]
   if r2_6 == nil then
     return 
@@ -63,28 +66,28 @@ function r1_0.NewMonInitComponent_CallBPReceiveBeginPlay(r0_6, r1_6)
   end
 end
 function r1_0.NewMonInitComponent_TriggerDungeonComponentFun(r0_7, r1_7, r2_7)
-  -- line: [82, 84] id: 7
+  -- line: [86, 88] id: 7
   return r1_7:TriggerDungeonComponentFun(r2_7)
 end
 function r1_0.NewMonInitComponent_AddGMBuff(r0_8, r1_8, r2_8, r3_8)
-  -- line: [87, 91] id: 8
+  -- line: [91, 95] id: 8
   for r8_8, r9_8 in pairs(r2_8.GMMonsterBuff) do
     Battle(r1_8):AddBuffToTarget(r1_8, r1_8, r9_8, -1, r3_8, nil)
   end
   -- close: r4_8
 end
 function r1_0.NewMonInitComponent_CacheBornInfo(r0_9, r1_9)
-  -- line: [95, 99] id: 9
+  -- line: [99, 103] id: 9
   if not r1_9.BornInfo then
     r1_9.BornInfo = r0_0.Result()
   end
 end
 function r1_0.NewMonInitComponent_GetAirWallStaticId(r0_10, r1_10)
-  -- line: [101, 104] id: 10
+  -- line: [105, 108] id: 10
   return UE4.UGameplayStatics.GetGameMode(r1_10).BossBattleInfo.AirWallStaticId
 end
 function r1_0.NewMonInitComponent_AddRoleSkillByContext(r0_11, r1_11, r2_11)
-  -- line: [106, 121] id: 11
+  -- line: [110, 125] id: 11
   local r3_11 = r2_11:GetLuaTable("SkillInfos")
   local r4_11 = TArray(FSkillInitInfo)
   if r3_11 and next(r3_11) then
@@ -100,17 +103,17 @@ function r1_0.NewMonInitComponent_AddRoleSkillByContext(r0_11, r1_11, r2_11)
   r1_11:AddRoleSkill(r1_11.CurrentRoleId, r4_11)
 end
 function r1_0.NewMonInitComponent_TryPlayBirthMontage_Lua(r0_12, r1_12, r2_12)
-  -- line: [124, 131] id: 12
+  -- line: [128, 135] id: 12
   local r3_12 = r1_12:PlayMontageByPath(r2_12)
   r1_12:AddDelayFrameFunc(function()
-    -- line: [126, 129] id: 13
+    -- line: [130, 133] id: 13
     r1_12:SetMeshVisibilityBasedAnimTickOption(EVisibilityBasedAnimTickOption.AlwaysTickPose)
     r1_12:SetActorHideTag("Birth", false)
   end, 5)
   return r3_12
 end
 function r1_0.NewMonInitComponent_InitBossBillBoard(r0_14, r1_14, r2_14, r3_14)
-  -- line: [133, 155] id: 14
+  -- line: [137, 159] id: 14
   local r5_14 = UE4.UGameplayStatics.GetGameInstance(r1_14):GetGameUIManager()
   if r3_14 == EBossUIType.None then
     if r5_14:GetUIObj("BossBlood") then
@@ -133,13 +136,13 @@ function r1_0.NewMonInitComponent_InitBossBillBoard(r0_14, r1_14, r2_14, r3_14)
   r1_14.BillboardComponent.Owner = r1_14
 end
 function r1_0.NewMonInitComponent_OnCharacterReady_SpecialTakeRecord(r0_15, r1_15)
-  -- line: [158, 163] id: 15
+  -- line: [162, 167] id: 15
   r1_15:AddInteractiveTrigger()
   r1_15:SetInteractiveTriggerDistance(r1_15:GetAttr("DropDistance"))
   r1_15:GetController():ForbidWeapon()
 end
 function r1_0.NewMonInitComponent_EnterPoolSetDataInfo(r0_16, r1_16)
-  -- line: [168, 176] id: 16
+  -- line: [172, 180] id: 16
   r1_16.Data = DataMgr.Monster[r1_16.UnitId]
   r1_16.BattleCharInfo = nil
   local r2_16 = r1_16.CurrentRoleId
