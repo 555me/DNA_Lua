@@ -83,13 +83,6 @@ r4_0[1801] = r6_0
 r6_0 = {}
 r7_0 = {}
 r7_0[1] = {
-  VoiceId = 10037,
-  VoiceRes = r0_0.RT_1,
-  VoiceText = {
-    [1] = "voice_ch_char_Shuimu01_vo_gain",
-  },
-}
-r7_0[2] = {
   VoiceId = 10041,
   VoiceRes = r0_0.RT_1,
   VoiceText = {
@@ -112,13 +105,6 @@ r4_0[2301] = r6_0
 r6_0 = {}
 r7_0 = {}
 r7_0[1] = {
-  VoiceId = 10259,
-  VoiceRes = r0_0.RT_1,
-  VoiceText = {
-    [1] = "voice_ch_char_Baiheng01_vo_gain",
-  },
-}
-r7_0[2] = {
   VoiceId = 10263,
   VoiceRes = r0_0.RT_2,
   VoiceText = {
@@ -270,13 +256,6 @@ r4_0[4301] = r6_0
 r6_0 = {}
 r7_0 = {}
 r7_0[1] = {
-  VoiceId = 10298,
-  VoiceRes = r0_0.RT_1,
-  VoiceText = {
-    [1] = "voice_ch_char_Songlu01_vo_gain",
-  },
-}
-r7_0[2] = {
   VoiceId = 10302,
   VoiceRes = r0_0.RT_1,
   VoiceText = {
@@ -299,13 +278,6 @@ r4_0[5102] = r6_0
 r6_0 = {}
 r7_0 = {}
 r7_0[1] = {
-  VoiceId = 10216,
-  VoiceRes = r0_0.RT_1,
-  VoiceText = {
-    [1] = "voice_ch_char_Saiqi01_vo_gain",
-  },
-}
-r7_0[2] = {
   VoiceId = 10220,
   VoiceRes = r0_0.RT_1,
   VoiceText = {

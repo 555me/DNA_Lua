@@ -1,126 +1,139 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\UI_PC\RougeLike\RougeAchive\WBP_Rouge_ArchiveEvent_Item_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local M = Class({
+local r0_0 = require("BluePrints.UI.UI_PC.RougeLike.RougeAchive.RougeConst")
+local r1_0 = Class({
   "BluePrints.UI.BP_EMUserWidget_C"
 })
-
-function M:Construct()
-  self.Btn_Click.OnClicked:Add(self, self.OnCellClicked)
-  self.Btn_Click.OnHovered:Add(self, self.OnCellHovered)
-  self.Btn_Click.OnUnhovered:Add(self, self.OnCellUnhovered)
-  self:SetNavRule()
+function r1_0.Construct(r0_1)
+  -- line: [17, 22] id: 1
+  r0_1.Btn_Click.OnClicked:Add(r0_1, r0_1.OnCellClicked)
+  r0_1.Btn_Click.OnHovered:Add(r0_1, r0_1.OnCellHovered)
+  r0_1.Btn_Click.OnUnhovered:Add(r0_1, r0_1.OnCellUnhovered)
+  r0_1:SetNavRule()
 end
-
-function M:SetNavRule()
-  self:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
-  self:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
-  self.Btn_Click:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
-  self.Btn_Click:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
+function r1_0.SetNavRule(r0_2)
+  -- line: [24, 29] id: 2
+  r0_2:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
+  r0_2:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
+  r0_2.Btn_Click:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
+  r0_2.Btn_Click:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
 end
-
-function M:OnListItemObjectSet(Content)
-  self:SetNavRule()
-  if self.IsNew == nil then
-    self.IsNew = Content.IsNew
+function r1_0.OnListItemObjectSet(r0_3, r1_3)
+  -- line: [31, 49] id: 3
+  r0_3:SetNavRule()
+  r0_3.IsNew = false
+  r0_3.IsUnlocked = r1_3.IsUnlocked
+  r0_3.Index = r1_3.Index
+  r0_3.Data = r1_3.Data
+  r0_3.UnlockNum = r1_3.UnlockNum
+  r0_3.TotalNum = r1_3.TotalNum
+  r0_3.SubItems = r1_3.SubItems
+  r0_3.Parent = r1_3.Parent
+  for r6_3, r7_3 in ipairs(r0_3.SubItems) do
+    if r0_3.Parent.DataModel:CheckArchiveItemIsNew(r0_0.ArchiveType.Event, r7_3.ArchiveId) then
+      r0_3.IsNew = true
+    end
   end
-  self.IsUnlocked = Content.IsUnlocked
-  self.Index = Content.Index
-  self.Data = Content.Data
-  self.UnlockNum = Content.UnlockNum
-  self.TotalNum = Content.TotalNum
-  self.SubItems = Content.SubItems
-  self.Parent = Content.Parent
-  self.IsSelected = self.Parent.CurSelectIndex == self.Index
-  self.Btn_Click:SetChecked(self.IsSelected)
-  self:InitEventItem()
+  -- close: r2_3
+  r0_3.IsSelected = r0_3.Parent.CurSelectIndex == r0_3.Index
+  r0_3.Btn_Click:SetChecked(r0_3.IsSelected)
+  r0_3:InitEventItem()
 end
-
-function M:InitEventItem()
-  local EventBg = self.Data.Data.SeriesMainIcon
-  if EventBg then
-    UE.UResourceLibrary.LoadObjectAsync(self, EventBg, {
-      self,
-      M.OnEventBGIconLoadFinish
+function r1_0.InitEventItem(r0_4)
+  -- line: [51, 88] id: 4
+  local r1_4 = r0_4.Data.Data.SeriesMainIcon
+  if r1_4 then
+    UE.UResourceLibrary.LoadObjectAsync(r0_4, r1_4, {
+      r0_4,
+      r1_0.OnEventBGIconLoadFinish
     })
   end
-  local EventName = self.Data.Data.SeriesName
-  local FormattedNum = string.format("%03d", self.Index + 1)
-  local IndexString = string.format(GText("RLArchive_ID"), FormattedNum)
-  self.Text_EventIndex:SetText(self.UnlockNum .. "/" .. self.TotalNum)
-  self.Text_TitleNum:SetText(IndexString)
-  if self.IsNew then
-    self.New:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  local r2_4 = r0_4.Data.Data.SeriesName
+  local r4_4 = string.format(GText("RLArchive_ID"), string.format("%03d", r0_4.Index + 1))
+  r0_4.Text_EventIndex:SetText(r0_4.UnlockNum .. "/" .. r0_4.TotalNum)
+  r0_4.Text_TitleNum:SetText(r4_4)
+  if r0_4.IsNew then
+    r0_4.New:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
   else
-    self.New:SetVisibility(ESlateVisibility.Collapsed)
+    r0_4.New:SetVisibility(ESlateVisibility.Collapsed)
   end
-  if self.IsUnlocked then
-    self.Text_Title:SetText(GText(EventName))
-    self.Image_Lock:SetVisibility(ESlateVisibility.Collapsed)
+  if r0_4.IsUnlocked then
+    r0_4.Text_Title:SetText(GText(r2_4))
+    r0_4.Image_Lock:SetVisibility(ESlateVisibility.Collapsed)
   else
-    self.Text_Title:SetText(GText("RLArchive_UnlockEntry"))
-    self.Image_Lock:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    r0_4.Text_Title:SetText(GText("RLArchive_UnlockEntry"))
+    r0_4.Image_Lock:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
   end
-  if self.IsSelected then
-    self:PlayAnimation(self.Select)
+  if r0_4.IsSelected then
+    r0_4:PlayAnimation(r0_4.Select)
   else
-    self:PlayAnimation(self.Normal_S)
+    r0_4:PlayAnimation(r0_4.Normal_S)
   end
-  if self.IsUnlocked then
-    if self.TotalNum == self.UnlockNum then
-      self:PlayAnimation(self.Finish)
+  if r0_4.IsUnlocked then
+    if r0_4.TotalNum == r0_4.UnlockNum then
+      r0_4:PlayAnimation(r0_4.Finish)
     else
-      self:PlayAnimation(self.Normal)
+      r0_4:PlayAnimation(r0_4.Normal)
     end
   else
-    self:PlayAnimation(self.Forbidden)
+    r0_4:PlayAnimation(r0_4.Forbidden)
   end
 end
-
-function M:OnCellClicked()
-  self.Parent:ChooseItem(self.Index, self)
-  self:PlayAnimation(self.Select)
-  AudioManager(self):PlayUISound(self, "event:/ui/roguelike/choose_point_btn_affix_click", nil, nil)
+function r1_0.OnCellClicked(r0_5)
+  -- line: [90, 94] id: 5
+  r0_5.Parent:ChooseItem(r0_5.Index, r0_5)
+  r0_5:PlayAnimation(r0_5.Select)
+  AudioManager(r0_5):PlayUISound(r0_5, "event:/ui/roguelike/choose_point_btn_affix_click", nil, nil)
 end
-
-function M:OnCellHovered()
-  if not self.IsSelected then
-    self:PlayAnimation(self.Hover)
-    AudioManager(self):PlayUISound(self, "event:/ui/roguelike/choose_point_hover", nil, nil)
+function r1_0.OnCellHovered(r0_6)
+  -- line: [96, 101] id: 6
+  if not r0_6.IsSelected then
+    r0_6:PlayAnimation(r0_6.Hover)
+    AudioManager(r0_6):PlayUISound(r0_6, "event:/ui/roguelike/choose_point_hover", nil, nil)
   end
 end
-
-function M:OnCellUnhovered()
-  if not self.IsSelected then
-    self:StopAnimation(self.Hover)
-    self:PlayAnimation(self.UnHover)
+function r1_0.OnCellUnhovered(r0_7)
+  -- line: [103, 108] id: 7
+  if not r0_7.IsSelected then
+    r0_7:StopAnimation(r0_7.Hover)
+    r0_7:PlayAnimation(r0_7.UnHover)
   end
 end
-
-function M:BP_OnItemSelectionChanged(IsSelected)
-  self.IsSelected = IsSelected
-  if IsSelected then
-    self:PlayAnimation(self.Select)
-    if self.IsNew then
-      self.IsNew = false
-      self.New:SetVisibility(ESlateVisibility.Collapsed)
+function r1_0.BP_OnItemSelectionChanged(r0_8, r1_8)
+  -- line: [110, 133] id: 8
+  r0_8.IsSelected = r1_8
+  if r1_8 then
+    r0_8:PlayAnimation(r0_8.Select)
+    for r6_8, r7_8 in ipairs(r0_8.SubItems) do
+      if r7_8.IsUnlocked and r7_8.IsNew then
+        r0_8.Parent.DataModel:MarkArchiveItemSeened(r0_0.ArchiveType.Event, r7_8.ArchiveId)
+      end
     end
+    -- close: r2_8
+    if r0_8.IsNew then
+      r0_8.IsNew = false
+      r0_8.New:SetVisibility(ESlateVisibility.Collapsed)
+    end
+    r0_8.Parent.DataModel:UpdateArchiveReddot(r0_0.ArchiveType.Event)
     if UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad then
-      self.Btn_Click:SetFocus()
-    elseif self.Parent.CurSelectIndex ~= self.Index then
-      self.Parent:SelectItem(self.Index)
+      r0_8.Btn_Click:SetFocus()
+    elseif r0_8.Parent.CurSelectIndex ~= r0_8.Index then
+      r0_8.Parent:SelectItem(r0_8.Index)
     end
   else
-    self:PlayAnimation(self.Unselect)
-    self.Btn_Click:SetChecked(false)
+    r0_8:PlayAnimation(r0_8.Unselect)
+    r0_8.Btn_Click:SetChecked(false)
   end
 end
-
-function M:OnEventBGIconLoadFinish(Object)
-  if IsValid(self) and Object then
-    local EventItemMat = self.EventItem.Img_Icon:GetDynamicMaterial()
-    local EventIconColorMat = self.EventItem.Img_Icon_Color:GetDynamicMaterial()
-    EventItemMat:SetTextureParameterValue("IconMap", Object)
-    EventIconColorMat:SetTextureParameterValue("DissolveTex", Object)
+function r1_0.OnEventBGIconLoadFinish(r0_9, r1_9)
+  -- line: [135, 142] id: 9
+  if IsValid(r0_9) and r1_9 then
+    local r2_9 = r0_9.EventItem.Img_Icon:GetDynamicMaterial()
+    local r3_9 = r0_9.EventItem.Img_Icon_Color:GetDynamicMaterial()
+    r2_9:SetTextureParameterValue("IconMap", r1_9)
+    r3_9:SetTextureParameterValue("DissolveTex", r1_9)
   end
 end
-
-return M
+return r1_0

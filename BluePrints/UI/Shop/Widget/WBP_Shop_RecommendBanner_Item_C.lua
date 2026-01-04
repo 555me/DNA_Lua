@@ -228,12 +228,12 @@ function r0_0.OnBtnReleased(r0_21)
     AudioManager(r0_21):PlayUISound(r0_21, "event:/ui/activity/large_btn_click", nil, nil)
   end
 end
-function r0_0.OnTouchStarted(r0_22, r1_22, r2_22)
+function r0_0.OnScrollBoxMouseButtonDown(r0_22, r1_22, r2_22)
   -- line: [269, 274] id: 22
   r0_22.PressX = UE4.USlateBlueprintLibrary.AbsoluteToLocal(r1_22, UE4.UKismetInputLibrary.PointerEvent_GetScreenSpacePosition(r2_22)).X
   return UE4.UWidgetBlueprintLibrary.Unhandled()
 end
-function r0_0.OnTouchEnded(r0_23, r1_23, r2_23)
+function r0_0.OnScrollBoxMouseButtonUp(r0_23, r1_23, r2_23)
   -- line: [277, 293] id: 23
   if r0_23:IsAnimationPlaying(r0_23.Change_LToR) or r0_23:IsAnimationPlaying(r0_23.Change_RToL) then
     return UE4.UWidgetBlueprintLibrary.Unhandled()
@@ -250,55 +250,59 @@ function r0_0.OnTouchEnded(r0_23, r1_23, r2_23)
   end
   return UE4.UWidgetBlueprintLibrary.Unhandled()
 end
-function r0_0.OnFocusReceived(r0_24, r1_24, r2_24)
-  -- line: [296, 316] id: 24
+function r0_0.OnTouchMoved(r0_24, r1_24, r2_24)
+  -- line: [295, 297] id: 24
+  return r0_24:OnScrollBoxMouseButtonUp(r1_24, r2_24)
+end
+function r0_0.OnFocusReceived(r0_25, r1_25, r2_25)
+  -- line: [299, 319] id: 25
   if not UIUtils.IsGamepadInput() then
-    r0_24:OnItemClick(false)
+    r0_25:OnItemClick(false)
     return UIUtils.Handle
   end
-  if r0_24.bSelected then
+  if r0_25.bSelected then
     return UIUtils.Handle
   end
-  r0_24:OnItemClick()
-  local r3_24 = UIManager(r0_24):GetUIObj("ShopMain")
-  if r0_24.ScrollboxIndex == 0 then
-    r0_24:AddDelayFrameFunc(function()
-      -- line: [307, 311] id: 25
-      DebugPrint("lgc@OnFocusReceived", r3_24.ScrollBox_Recommend:GetScrollOffset())
-      if not r0_24 or not r3_24 or not r3_24.ScrollBox_Recommend then
+  r0_25:OnItemClick()
+  local r3_25 = UIManager(r0_25):GetUIObj("ShopMain")
+  if r0_25.ScrollboxIndex == 0 then
+    r0_25:AddDelayFrameFunc(function()
+      -- line: [310, 314] id: 26
+      DebugPrint("lgc@OnFocusReceived", r3_25.ScrollBox_Recommend:GetScrollOffset())
+      if not r0_25 or not r3_25 or not r3_25.ScrollBox_Recommend then
         return 
       end
-      r3_24.ScrollBox_Recommend:SetScrollOffset(0)
+      r3_25.ScrollBox_Recommend:SetScrollOffset(0)
     end, 5, "DelaySetScrollOffset")
-  elseif r3_24 and r3_24.ScrollBox_Recommend then
-    r3_24.ScrollBox_Recommend:ScrollWidgetIntoView(r0_24, true, UE4.EDescendantScrollDestination.IntoView)
+  elseif r3_25 and r3_25.ScrollBox_Recommend then
+    r3_25.ScrollBox_Recommend:ScrollWidgetIntoView(r0_25, true, UE4.EDescendantScrollDestination.IntoView)
   end
   return UIUtils.Handle
 end
-function r0_0.OnUpdateUIStyleByInputTypeChange(r0_26, r1_26, r2_26)
-  -- line: [319, 330] id: 26
-  if r1_26 == ECommonInputType.Touch then
+function r0_0.OnUpdateUIStyleByInputTypeChange(r0_27, r1_27, r2_27)
+  -- line: [322, 333] id: 27
+  if r1_27 == ECommonInputType.Touch then
     return 
   end
-  if r1_26 == ECommonInputType.Gamepad then
-    r0_26:InitGamepadView()
+  if r1_27 == ECommonInputType.Gamepad then
+    r0_27:InitGamepadView()
   else
-    r0_26:InitKeyboardView()
+    r0_27:InitKeyboardView()
   end
 end
-function r0_0.OnRepeatKeyDown(r0_27, r1_27, r2_27)
-  -- line: [332, 349] id: 27
-  local r3_27 = UE4.UKismetInputLibrary.GetKey(r2_27)
-  local r4_27 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_27)
-  local r5_27 = false
-  local r6_27 = UIManager(r0_27):GetUIObj("ShopMain")
-  if r6_27 and r6_27.TabType == "Banner" and r6_27.SelectBannerId and r6_27.BannerIdMap and type(r6_27.BannerIdMap) == "table" then
-    local r7_27 = r6_27.BannerIdMap[r6_27.SelectBannerId]
-    if r7_27 and r7_27.HandleRepeatKeyDown and not r5_27 then
-      r5_27 = r7_27:HandleRepeatKeyDown(r3_27, r4_27)
+function r0_0.OnRepeatKeyDown(r0_28, r1_28, r2_28)
+  -- line: [335, 352] id: 28
+  local r3_28 = UE4.UKismetInputLibrary.GetKey(r2_28)
+  local r4_28 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_28)
+  local r5_28 = false
+  local r6_28 = UIManager(r0_28):GetUIObj("ShopMain")
+  if r6_28 and r6_28.TabType == "Banner" and r6_28.SelectBannerId and r6_28.BannerIdMap and type(r6_28.BannerIdMap) == "table" then
+    local r7_28 = r6_28.BannerIdMap[r6_28.SelectBannerId]
+    if r7_28 and r7_28.HandleRepeatKeyDown and not r5_28 then
+      r5_28 = r7_28:HandleRepeatKeyDown(r3_28, r4_28)
     end
   end
-  if r5_27 then
+  if r5_28 then
     return UE4.UWidgetBlueprintLibrary.Handled()
   end
   return UE4.UWidgetBlueprintLibrary.Unhandled()

@@ -108,7 +108,8 @@ function r1_0.LoadCloseArmoryCameraInfo(r0_7)
   return r1_7, r2_7, r3_7, r4_7
 end
 function r1_0.OnHelperBecomeViewTarget(r0_8, r1_8)
-  -- line: [112, 138] id: 8
+  -- line: [112, 139] id: 8
+  r0_8.IsControled = true
   if r0_8.OnFirstBecomeViewTarget then
     r0_8.OnFirstBecomeViewTarget()
     r0_8.OnFirstBecomeViewTarget = nil
@@ -135,7 +136,7 @@ function r1_0.OnHelperBecomeViewTarget(r0_8, r1_8)
   r0_8:UpdateLighting()
 end
 function r1_0.RecoverToPlayerActor(r0_9)
-  -- line: [140, 176] id: 9
+  -- line: [141, 177] id: 9
   local r1_9 = r0_9.LastCharModelInfo
   r0_9.LastCharModelInfo = nil
   if not r1_9 then
@@ -170,7 +171,7 @@ function r1_0.RecoverToPlayerActor(r0_9)
   r0_9:SetArmoryMontageTag(r0_9.ArmoryPlayer, r0_9.CurMontageTag, r0_9.LastShowOrHideWeapon)
 end
 function r1_0.RecoverToSingleWeapon(r0_10)
-  -- line: [178, 185] id: 10
+  -- line: [179, 186] id: 10
   if r0_10.CurrentWeaponInfo then
     r0_10:ChangeWeaponModel(r0_10.CurrentWeaponInfo, nil, true, true)
     if r0_10.LastWeaponAppearanceInfo then
@@ -179,7 +180,8 @@ function r1_0.RecoverToSingleWeapon(r0_10)
   end
 end
 function r1_0.OnHelperEndViewTarget(r0_11, r1_11)
-  -- line: [187, 206] id: 11
+  -- line: [188, 208] id: 11
+  r0_11.IsControled = false
   r0_11.LastCharModelInfo = r0_11.CurrentCharInfo
   r0_11.LastCharAppearanceInfo = r0_11.CurrentAppearanceInfo
   r0_11.LastWeaponAppearanceInfo = r0_11.CurrentWeaponAppearanceInfo
@@ -201,7 +203,7 @@ function r1_0.OnHelperEndViewTarget(r0_11, r1_11)
   end
 end
 function r1_0.OnOpened(r0_12, r1_12)
-  -- line: [209, 269] id: 12
+  -- line: [211, 271] id: 12
   local r3_12 = UE4.UGameplayStatics.GetGameInstance(r0_12.ViewUI):GetGameUIManager()
   if not IsValid(r0_12.ArmoryHelper) then
     r0_12.ArmoryHelper = r3_12:CreateUIActorCameraHelper(UE4.UGameplayStatics.GetPlayerCharacter(r0_12.ViewUI, 0))
@@ -234,7 +236,7 @@ function r1_0.OnOpened(r0_12, r1_12)
   r0_12:HideRealPlayer(true)
   r0_12.OpenDuration = r1_12
   function r0_12.OnFirstBecomeViewTarget()
-    -- line: [257, 259] id: 13
+    -- line: [259, 261] id: 13
     r0_12:InitActors()
   end
   if r0_12.ArmoryHelper then
@@ -247,7 +249,7 @@ function r1_0.OnOpened(r0_12, r1_12)
   GWorld.GameInstance:SetDynamicResolution(r0_12.UIName, true)
 end
 function r1_0.InitActors(r0_14)
-  -- line: [271, 281] id: 14
+  -- line: [273, 283] id: 14
   if r0_14.CurrentCharInfo then
     r0_14:GetPlayerActor(true)
   elseif r0_14.CurrentWeaponInfo then
@@ -259,7 +261,7 @@ function r1_0.InitActors(r0_14)
   r0_14:SwitchArmoryCamera(true, r0_14.OpenDuration)
 end
 function r1_0.HideRealPlayer(r0_15, r1_15)
-  -- line: [283, 297] id: 15
+  -- line: [285, 299] id: 15
   local r2_15 = UE4.UGameplayStatics.GetPlayerCharacter(r0_15.ViewUI, 0)
   if not r2_15 then
     return 
@@ -275,7 +277,7 @@ function r1_0.HideRealPlayer(r0_15, r1_15)
   end
 end
 function r1_0.CalcArmoryCameraTag(r0_16, r1_16, r2_16, r3_16, r4_16)
-  -- line: [299, 359] id: 16
+  -- line: [301, 361] id: 16
   local r5_16 = ""
   local r6_16 = ""
   local r7_16 = ""
@@ -345,7 +347,7 @@ function r1_0.CalcArmoryCameraTag(r0_16, r1_16, r2_16, r3_16, r4_16)
   return r5_16, r6_16, r7_16, r8_16
 end
 function r1_0.CalcArmoryMontageTag(r0_17, r1_17, r2_17, r3_17)
-  -- line: [361, 398] id: 17
+  -- line: [363, 400] id: 17
   local r4_17 = nil
   local r5_17 = nil
   if r1_17 == CommonConst.ArmoryType.Char then
@@ -384,7 +386,7 @@ function r1_0.CalcArmoryMontageTag(r0_17, r1_17, r2_17, r3_17)
   return r5_17, r4_17
 end
 function r1_0.SetMontageAndCamera(r0_18, r1_18, r2_18, r3_18, r4_18)
-  -- line: [401, 428] id: 18
+  -- line: [403, 430] id: 18
   if not IsValid(r0_18.ViewUI) then
     return 
   end
@@ -401,8 +403,8 @@ function r1_0.SetMontageAndCamera(r0_18, r1_18, r2_18, r3_18, r4_18)
     r0_18:HidePlayerActor(r0_18.UIName, true)
     r0_18.LastMontageTag, r0_18.bShowOrHideWeapon = r0_18:CalcArmoryMontageTag(r0_18.LastMontageAndCameraType, r0_18.LastMontageAndCameraTag, r0_18.LastMontageAndCameraBehavior)
     r0_18:PlayDisappearFX(r5_18.FXComponent, function()
-      -- line: [417, 424] id: 19
-      if r0_18.bClosed or r0_18.bDestructed then
+      -- line: [419, 426] id: 19
+      if r0_18.bClosed or r0_18.bDestructed or not r0_18.IsControled then
         return 
       end
       r0_18:PlayAppearFX(r5_18.FXComponent)
@@ -414,7 +416,7 @@ function r1_0.SetMontageAndCamera(r0_18, r1_18, r2_18, r3_18, r4_18)
   end
 end
 function r1_0.PlayDisappearFX(r0_20, r1_20, r2_20)
-  -- line: [430, 462] id: 20
+  -- line: [432, 464] id: 20
   local r3_20 = r0_20.DelayFrame
   r0_20.DelayFrame = nil
   local r4_20 = r0_20.DisappearFXPlaying
@@ -441,7 +443,7 @@ function r1_0.PlayDisappearFX(r0_20, r1_20, r2_20)
     return 
   end
   r0_20.LTweenHandle_PlayDisappearFX = UE4.ULTweenBPLibrary.DelayFrameCall(r0_20.ViewUI, r3_20 and 0, function()
-    -- line: [449, 457] id: 21
+    -- line: [451, 459] id: 21
     r0_20.LTweenHandle_PlayDisappearFX = nil
     r0_20.DisappearFXPlaying = false
     r0_20.bWatingForDelayFrame = false
@@ -456,7 +458,7 @@ function r1_0.PlayDisappearFX(r0_20, r1_20, r2_20)
   end
 end
 function r1_0.PlayAppearFX(r0_22, r1_22)
-  -- line: [464, 475] id: 22
+  -- line: [466, 477] id: 22
   if r1_22 and not r0_22.bNoDisappearFX then
     AudioManager(r0_22.ViewUI):PlayUISound(r0_22.ViewUI, "event:/ui/common/role_appear", nil, nil)
     local r2_22 = {
@@ -476,7 +478,7 @@ function r1_0.PlayAppearFX(r0_22, r1_22)
   end
 end
 function r1_0.RealPlayMontageAndCamera(r0_23, r1_23, r2_23, r3_23, r4_23)
-  -- line: [477, 490] id: 23
+  -- line: [479, 492] id: 23
   if r2_23 == nil then
     r2_23, r3_23 = r0_23:CalcArmoryMontageTag(r0_23.LastMontageAndCameraType, r0_23.LastMontageAndCameraTag, r0_23.LastMontageAndCameraBehavior)
   end
@@ -493,7 +495,7 @@ function r1_0.RealPlayMontageAndCamera(r0_23, r1_23, r2_23, r3_23, r4_23)
   end
 end
 function r1_0.ResetActorRotation(r0_24)
-  -- line: [493, 499] id: 24
+  -- line: [495, 501] id: 24
   r0_24.ArmoryHelper:ResetRotation()
   local r1_24 = r0_24:GetPetActor()
   if r1_24 and r1_24.SkeletalMesh then
@@ -501,7 +503,7 @@ function r1_0.ResetActorRotation(r0_24)
   end
 end
 function r1_0.BindEvent(r0_25, r1_25, r2_25)
-  -- line: [501, 506] id: 25
+  -- line: [503, 508] id: 25
   if not r2_25 then
     r2_25 = {}
   end
@@ -510,7 +512,7 @@ function r1_0.BindEvent(r0_25, r1_25, r2_25)
   r0_25.OnCharModelChanged = r2_25.OnCharModelChanged
 end
 function r1_0.SetArmoryMontageTag(r0_26, r1_26, r2_26, r3_26)
-  -- line: [509, 563] id: 26
+  -- line: [511, 565] id: 26
   r0_26.bShowOrHideWeapon = r3_26
   if not r2_26 then
     r2_26 = "None"
@@ -567,7 +569,7 @@ function r1_0.SetArmoryMontageTag(r0_26, r1_26, r2_26, r3_26)
   end
 end
 function r1_0.SetAccessoriesTickableWhenPaused(r0_27, r1_27)
-  -- line: [565, 571] id: 27
+  -- line: [567, 573] id: 27
   if r1_27 then
     for r6_27, r7_27 in pairs(r1_27) do
       CommonUtils:SetActorTickableWhenPaused(r7_27, true)
@@ -576,11 +578,11 @@ function r1_0.SetAccessoriesTickableWhenPaused(r0_27, r1_27)
   end
 end
 function r1_0.SetExCameraOffset(r0_28, r1_28)
-  -- line: [574, 576] id: 28
+  -- line: [576, 578] id: 28
   r0_28.ExCameraOffset = r1_28
 end
 function r1_0.SetArmoryCameraTag(r0_29, r1_29, r2_29, r3_29, r4_29)
-  -- line: [583, 713] id: 29
+  -- line: [585, 715] id: 29
   DebugPrint("gmy@Armory_ActorController M:SetArmoryCameraTag", r1_29, r2_29, r3_29, r4_29)
   local r5_29 = {}
   local r6_29 = r1_29 and ""
@@ -740,11 +742,11 @@ function r1_0.SetArmoryCameraTag(r0_29, r1_29, r2_29, r3_29, r4_29)
   end
 end
 function r1_0.FixedCameraTransTimeOnce(r0_30, r1_30)
-  -- line: [716, 718] id: 30
+  -- line: [718, 720] id: 30
   r0_30._FixedCameraTransTimeOnce = r1_30
 end
 function r1_0.UpdateCameraPPSetting(r0_31, r1_31)
-  -- line: [721, 738] id: 31
+  -- line: [723, 740] id: 31
   if not r0_31.ViewUI then
     return 
   end
@@ -752,7 +754,7 @@ function r1_0.UpdateCameraPPSetting(r0_31, r1_31)
     r1_31 = {}
   end
   r0_31.ViewUI:AddTimer(0.1, function()
-    -- line: [726, 737] id: 32
+    -- line: [728, 739] id: 32
     r0_31.ArmoryHelper:ClearPPSetting()
     if r1_31.IsAccessoryPPSetting then
       r0_31.ArmoryHelper:OnOpenAccessory()
@@ -780,14 +782,14 @@ local r5_0 = {
   [r4_0.MountsMain.UIName] = DataMgr.MountCameraData,
 }
 function r1_0.GetCameraData(r0_33)
-  -- line: [756, 761] id: 33
+  -- line: [758, 763] id: 33
   if r5_0[r0_33.UIName] then
     return r5_0[r0_33.UIName]
   end
   return DataMgr.ArmoryCameraData
 end
 function r1_0.OnDragging(r0_34, r1_34)
-  -- line: [764, 773] id: 34
+  -- line: [766, 775] id: 34
   local r2_34 = r0_34:GetPetActor()
   if r2_34 and r2_34.SkeletalMesh then
     if not r1_34 then
@@ -801,21 +803,21 @@ function r1_0.OnDragging(r0_34, r1_34)
   end
 end
 function r1_0.OnScrolling(r0_35, r1_35)
-  -- line: [776, 778] id: 35
+  -- line: [778, 780] id: 35
   r0_35.ArmoryHelper:OnScrolling(r1_35)
 end
 function r1_0.OnRecorverCameraEnd(r0_36)
-  -- line: [781, 786] id: 36
+  -- line: [783, 788] id: 36
   r0_36:BeforeDestruct()
   if r0_36.Event_OnRecorverCameraEnd then
     r0_36.Event_OnRecorverCameraEnd.Func(r0_36.Event_OnRecorverCameraEnd.Obj)
   end
 end
 function r1_0.BeforeDestruct(r0_37)
-  -- line: [788, 789] id: 37
+  -- line: [790, 791] id: 37
 end
 function r1_0.OnClosed(r0_38)
-  -- line: [792, 799] id: 38
+  -- line: [794, 801] id: 38
   if r0_38.bClosed then
     return 
   end
@@ -824,16 +826,16 @@ function r1_0.OnClosed(r0_38)
   r0_38:OnClosed_Implementation()
 end
 function r1_0.OnClosed_Implementation(r0_39)
-  -- line: [801, 814] id: 39
+  -- line: [803, 816] id: 39
   try({
     exec = function()
-      -- line: [803, 807] id: 40
+      -- line: [805, 809] id: 40
       r0_39:ChangeRealPlayerInfo()
       r0_39:HideRealPlayer(false)
       r0_39:Component_OnClosed()
     end,
     catch = function(r0_41)
-      -- line: [808, 812] id: 41
+      -- line: [810, 814] id: 41
       local r1_41 = debug.traceback()
       if not r0_41 then
         r0_41 = ""
@@ -843,10 +845,10 @@ function r1_0.OnClosed_Implementation(r0_39)
   })
 end
 function r1_0.Component_OnClosed(r0_42)
-  -- line: [816, 817] id: 42
+  -- line: [818, 819] id: 42
 end
 function r1_0.RecoverCamera(r0_43)
-  -- line: [819, 828] id: 43
+  -- line: [821, 830] id: 43
   if not r0_43.bNeedEndCamera then
     r0_43:SwitchArmoryCamera(false, 0)
   else
@@ -857,7 +859,7 @@ function r1_0.RecoverCamera(r0_43)
   end
 end
 function r1_0.OnDestruct(r0_44)
-  -- line: [831, 855] id: 44
+  -- line: [833, 857] id: 44
   if r0_44.bDestructed then
     return 
   end
@@ -883,36 +885,36 @@ function r1_0.OnDestruct(r0_44)
   r0_44.ViewUI = nil
 end
 function r1_0.Component_OnDestruct(r0_45)
-  -- line: [857, 858] id: 45
+  -- line: [859, 860] id: 45
 end
 function r1_0.ViewTarget(r0_46)
-  -- line: [860, 866] id: 46
+  -- line: [862, 868] id: 46
   if not IsValid(r0_46.ArmoryHelper) then
     return 
   end
   UE4.UGameplayStatics.GetPlayerController(r0_46.ArmoryHelper, 0):SetViewTargetWithBlend(r0_46.ArmoryHelper, 0, UE4.EViewTargetBlendFunction.VTBlend_Linear, 0, false)
 end
 function r1_0.GetViewTarget(r0_47)
-  -- line: [868, 870] id: 47
+  -- line: [870, 872] id: 47
   return r0_47.ArmoryHelper
 end
 function r1_0.SetAvatar(r0_48, r1_48)
-  -- line: [872, 874] id: 48
+  -- line: [874, 876] id: 48
   r0_48.Avatar = r1_48
 end
 function r1_0.GetAvatar(r0_49)
-  -- line: [876, 878] id: 49
+  -- line: [878, 880] id: 49
   return r0_49.Avatar
 end
 function r1_0.DestoryCreature(r0_50, r1_50)
-  -- line: [880, 885] id: 50
+  -- line: [882, 887] id: 50
   if r0_50.Creatures[r1_50] then
     r0_50.Creatures[r1_50]:DestroyEffectCreature()
     r0_50.Creatures[r1_50] = nil
   end
 end
 function r1_0.Init(r0_51, r1_51)
-  -- line: [887, 938] id: 51
+  -- line: [889, 940] id: 51
   if not r1_51 then
     r1_51 = {}
   end
@@ -951,9 +953,9 @@ function r1_0.Init(r0_51, r1_51)
     r0_51.CurrentCharInfo = r5_51
   end
   EventManager:AddEvent(EventID.OnWindowResized, r0_51, function(r0_52)
-    -- line: [919, 926] id: 52
+    -- line: [921, 928] id: 52
     r0_52.ViewUI:AddTimer(0.3, function()
-      -- line: [921, 925] id: 53
+      -- line: [923, 927] id: 53
       if r0_52.LastCameraTags then
         r0_52:SetArmoryCameraTag(table.unpack(r0_52.LastCameraTags))
       end
@@ -968,7 +970,7 @@ function r1_0.Init(r0_51, r1_51)
   print(_G.LogtTag, "Player:RemoveSyncUsingWeapon()")
 end
 function r1_0.New(r0_54, r1_54)
-  -- line: [941, 948] id: 54
+  -- line: [943, 950] id: 54
   r2_0 = r2_0 + 1
   local r2_54 = {}
   r0_54.__index = r0_54

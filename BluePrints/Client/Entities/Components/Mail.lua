@@ -121,38 +121,45 @@ function r0_0.MarkMailReaded(r0_12, r1_12)
   r0_12:CallServer("MarkMailReaded", r2_12, r1_12)
 end
 function r0_0.MarkMailStar(r0_14, r1_14)
-  -- line: [119, 129] id: 14
-  local function r2_14(r0_15, r1_15)
-    -- line: [120, 126] id: 15
+  -- line: [119, 130] id: 14
+  local r2_14 = r0_14.MailInbox[r1_14]
+  if r2_14 then
+    r0_14._PendingDelMails[r1_14] = {
+      RewardGot = r2_14.RewardGot,
+      MailReaded = r2_14.MailReaded,
+    }
+  end
+  local function r3_14(r0_15, r1_15)
+    -- line: [124, 127] id: 15
     EventManager:FireEvent(EventID.OnMarkMailStar, r0_15, r1_14, r1_15)
     r0_14.logger.info("MarkMailStar Callback", ErrorCode:Name(r0_15), r1_15)
-    if r0_15 == ErrorCode.RET_SUCCESS then
-      r0_14:_SubNormalMailReddotCount(r0_14.StarMails[r1_14] and r0_14.MailInbox[r1_14])
-    end
   end
   r0_14.logger.info("MarkMailStar Start UniqueID:", r1_14)
-  r0_14:CallServer("MarkMailStar", r2_14, r1_14)
+  r0_14:CallServer("MarkMailStar", r3_14, r1_14)
 end
 function r0_0.DeleteReadedMails(r0_16)
-  -- line: [131, 142] id: 16
+  -- line: [132, 143] id: 16
   local function r1_16(r0_17)
-    -- line: [132, 136] id: 17
+    -- line: [133, 137] id: 17
     r0_16.logger.info("DeleteReadedMails Callback", ErrorCode:Name(r0_17))
     EventManager:FireEvent(EventID.OnDeleteMail)
     r0_16:EchoMail()
   end
   for r6_16, r7_16 in pairs(r0_16.MailInbox) do
-    r0_16._PendingDelMails[r6_16] = r7_16
+    r0_16._PendingDelMails[r6_16] = {
+      RewardGot = r7_16.RewardGot,
+      MailReaded = r7_16.MailReaded,
+    }
   end
   -- close: r2_16
   r0_16.logger.info("DeleteReadedMails Start")
   r0_16:CallServer("DeleteReadedMails", r1_16)
 end
 function r0_0.CancelMailStar(r0_18, r1_18)
-  -- line: [144, 152] id: 18
+  -- line: [145, 153] id: 18
   r0_18._DeletedStarMail = r0_18.StarMails[r1_18]
   local function r2_18(r0_19)
-    -- line: [146, 149] id: 19
+    -- line: [147, 150] id: 19
     EventManager:FireEvent(EventID.OnCancelMailStar, r0_19, r1_18)
     r0_18.logger.info("CancelMailStar Callback", ErrorCode:Name(r0_19))
   end
@@ -160,10 +167,16 @@ function r0_0.CancelMailStar(r0_18, r1_18)
   r0_18:CallServer("CancelMailStar", r2_18, r1_18)
 end
 function r0_0.DeleteMail(r0_20, r1_20)
-  -- line: [154, 163] id: 20
-  r0_20._PendingDelMails[r1_20] = r0_20.MailInbox[r1_20] and r0_20.StarMails[r1_20]
+  -- line: [155, 166] id: 20
+  local r2_20 = r0_20.MailInbox[r1_20] and r0_20.StarMails[r1_20]
+  if r0_20.MailInbox[r1_20] then
+    r0_20._PendingDelMails[r1_20] = {
+      RewardGot = r2_20.RewardGot,
+      MailReaded = r2_20.MailReaded,
+    }
+  end
   local function r3_20(r0_21)
-    -- line: [157, 160] id: 21
+    -- line: [160, 163] id: 21
     r0_20.logger.info("DeleteMail Callback", ErrorCode:Name(r0_21))
     EventManager:FireEvent(EventID.OnDeleteMail)
   end
@@ -171,9 +184,9 @@ function r0_0.DeleteMail(r0_20, r1_20)
   r0_20:CallServer("DeleteMail", r3_20, r1_20)
 end
 function r0_0.GetAllMailReward(r0_22)
-  -- line: [165, 175] id: 22
+  -- line: [168, 178] id: 22
   local function r1_22(r0_23, r1_23)
-    -- line: [166, 172] id: 23
+    -- line: [169, 175] id: 23
     EventManager:FireEvent(EventID.OnGetAllMailReward, r0_23, r1_23)
     r0_22.logger.info("GetAllMailReward Callback", ErrorCode:Name(r0_23))
     if r0_23 == ErrorCode.RET_SUCCESS then

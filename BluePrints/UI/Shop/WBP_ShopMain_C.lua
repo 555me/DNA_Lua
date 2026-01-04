@@ -120,7 +120,7 @@ function r2_0.ReceiveExitState(r0_5, r1_5)
   r0_5:HideAllPreviewActor()
 end
 function r2_0.Construct(r0_6)
-  -- line: [142, 187] id: 6
+  -- line: [142, 201] id: 6
   r2_0.Super.Construct(r0_6)
   r0_6.List_Item.OnCreateEmptyContent:Bind(r0_6, function(r0_7)
     -- line: [144, 148] id: 7
@@ -151,6 +151,20 @@ function r2_0.Construct(r0_6)
     r0_6.Common_Tab.WBP_Com_Tab_ResourceBar:SetLastFocusWidget(r0_6.List_Item)
   end
   r0_6.ScrollBox_Recommend.OnUserScrolled:Add(r0_6, r0_6.OnUserScrolled)
+  r0_6.ScrollBox_Recommend.OnMouseButtonDown:Add(r0_6, function(r0_9, r1_9, r2_9)
+    -- line: [174, 180] id: 9
+    local r3_9 = r0_9.Shop_RecommendBanner:GetCachedGeometry()
+    if UE4.USlateBlueprintLibrary.IsUnderLocation(r3_9, UE4.UKismetInputLibrary.PointerEvent_GetScreenSpacePosition(r2_9)) then
+      r0_9.Shop_RecommendBanner:OnScrollBoxMouseButtonDown(r3_9, r2_9)
+    end
+  end)
+  r0_6.ScrollBox_Recommend.OnMouseButtonUp:Add(r0_6, function(r0_10, r1_10, r2_10)
+    -- line: [181, 187] id: 10
+    local r3_10 = r0_10.Shop_RecommendBanner:GetCachedGeometry()
+    if UE4.USlateBlueprintLibrary.IsUnderLocation(r3_10, UE4.UKismetInputLibrary.PointerEvent_GetScreenSpacePosition(r2_10)) then
+      r0_10.Shop_RecommendBanner:OnScrollBoxMouseButtonUp(r3_10, r2_10)
+    end
+  end)
   r0_6:AddDispatcher(EventID.OnRechargeFinished, r0_6, r0_6.OnRechargeFinished)
   r0_6:AddDispatcher(EventID.RefreshShop, r0_6, r0_6.RefreshShop)
   if r0_6.Btn_Shop_Visible and r0_6.Btn_Shop_Visible.Btn_Click then
@@ -163,26 +177,26 @@ function r2_0.Construct(r0_6)
     r0_6.Btn_Shop_Refresh:SetVisibility(ESlateVisibility.Collapsed)
   end
 end
-function r2_0.RefreshShop(r0_9)
-  -- line: [189, 197] id: 9
-  if not r0_9.bNeedRefreshShop then
-    r0_9.bNeedRefreshShop = true
-    r0_9:AddTimer(1, function()
-      -- line: [192, 195] id: 10
-      r0_9:RefreshSubTabData(r0_9.CurSubTabMap)
-      r0_9.bNeedRefreshShop = false
+function r2_0.RefreshShop(r0_11)
+  -- line: [203, 211] id: 11
+  if not r0_11.bNeedRefreshShop then
+    r0_11.bNeedRefreshShop = true
+    r0_11:AddTimer(1, function()
+      -- line: [206, 209] id: 12
+      r0_11:RefreshSubTabData(r0_11.CurSubTabMap)
+      r0_11.bNeedRefreshShop = false
     end, false, 0, "RefreshShop", true)
   end
 end
-function r2_0.InitShopTabInfo(r0_11, r1_11, r2_11)
-  -- line: [206, 257] id: 11
+function r2_0.InitShopTabInfo(r0_13, r1_13, r2_13)
+  -- line: [220, 271] id: 13
   if not GWorld:GetAvatar() then
     return 
   end
-  local r4_11 = DataMgr.Shop[r0_11.ShopType]
-  assert(r4_11, "获取商店类型信息失败:" .. r0_11.ShopType)
-  r0_11:LoadShopTabInfo(r4_11)
-  r0_11.Common_Tab:Init({
+  local r4_13 = DataMgr.Shop[r0_13.ShopType]
+  assert(r4_13, "获取商店类型信息失败:" .. r0_13.ShopType)
+  r0_13:LoadShopTabInfo(r4_13)
+  r0_13.Common_Tab:Init({
     DynamicNode = {
       "Back",
       "ResourceBar",
@@ -194,7 +208,7 @@ function r2_0.InitShopTabInfo(r0_11, r1_11, r2_11)
           {
             Type = "Img",
             ImgShortPath = "A",
-            Owner = r0_11,
+            Owner = r0_13,
           }
         },
         Desc = GText("UI_Tips_Ensure"),
@@ -204,816 +218,816 @@ function r2_0.InitShopTabInfo(r0_11, r1_11, r2_11)
           {
             Type = "Text",
             Text = "Esc",
-            ClickCallback = r0_11.CloseSelf,
-            Owner = r0_11,
+            ClickCallback = r0_13.CloseSelf,
+            Owner = r0_13,
           }
         },
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "B",
-            ClickCallback = r0_11.CloseSelf,
-            Owner = r0_11,
+            ClickCallback = r0_13.CloseSelf,
+            Owner = r0_13,
           }
         },
         Desc = GText("UI_BACK"),
       }
     },
     StyleName = "Text",
-    TitleName = GText(r4_11.ShopName),
-    OverridenTopResouces = r0_11.OverridenTopResouces,
-    OnResourceBarAddedToFocusPath = r0_11.OnResourceBarAddedToFocusPath,
-    OnResourceBarRemovedFromFocusPath = r0_11.OnResourceBarRemovedFromFocusPath,
-    OwnerPanel = r0_11,
-    BackCallback = r0_11.CloseSelf,
+    TitleName = GText(r4_13.ShopName),
+    OverridenTopResouces = r0_13.OverridenTopResouces,
+    OnResourceBarAddedToFocusPath = r0_13.OnResourceBarAddedToFocusPath,
+    OnResourceBarRemovedFromFocusPath = r0_13.OnResourceBarRemovedFromFocusPath,
+    OwnerPanel = r0_13,
+    BackCallback = r0_13.CloseSelf,
   })
-  r0_11.ShopTab:Init({
+  r0_13.ShopTab:Init({
     LeftKey = "Q",
     RightKey = "E",
-    Tabs = r0_11.MainTabList,
+    Tabs = r0_13.MainTabList,
     ChildWidgetBPPath = "WidgetBlueprint\'/Game/UI/WBP/Common/Tab/PC/WBP_Com_TabItem01_P.WBP_Com_TabItem01_P\'",
   })
-  if not r1_11 then
-    r0_11.ShopTab:SelectTab(1)
+  if not r1_13 then
+    r0_13.ShopTab:SelectTab(1)
   else
-    r0_11.ShopTab:SelectTab(r0_11.MainTabs[r1_11])
-    if r0_11.Common_Toggle_TabGroup_PC then
-      r0_11.Common_Toggle_TabGroup_PC:SelectTab(r0_11.SubTabMapIdx[r2_11])
+    r0_13.ShopTab:SelectTab(r0_13.MainTabs[r1_13])
+    if r0_13.Common_Toggle_TabGroup_PC then
+      r0_13.Common_Toggle_TabGroup_PC:SelectTab(r0_13.SubTabMapIdx[r2_13])
     end
   end
-  if #r0_11.MainTabList <= 1 then
-    r0_11.Group_Tab:SetVisibility(ESlateVisibility.Collapsed)
+  if #r0_13.MainTabList <= 1 then
+    r0_13.Group_Tab:SetVisibility(ESlateVisibility.Collapsed)
   else
-    r0_11.Group_Tab:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    r0_13.Group_Tab:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
   end
-  r0_11:AddLSFocusTarget(nil, {
-    r0_11.Common_SortList_PC
+  r0_13:AddLSFocusTarget(nil, {
+    r0_13.Common_SortList_PC
   })
-  r0_11:AddLSFocusTarget(r0_11.CheckBox_Own.Com_KeyImg, r0_11.CheckBox_Own, "X", true)
-  r0_11:AddTabReddotListen()
+  r0_13:AddLSFocusTarget(r0_13.CheckBox_Own.Com_KeyImg, r0_13.CheckBox_Own, "X", true)
+  r0_13:AddTabReddotListen()
 end
-function r2_0.AddTabReddotListen(r0_12)
-  -- line: [259, 295] id: 12
-  for r5_12, r6_12 in pairs(DataMgr.Shop[r0_12.ShopType].MainTabId) do
-    local r7_12 = DataMgr.ShopItem2ShopTab[r6_12]
-    if r7_12 then
-      for r12_12, r13_12 in pairs(r7_12) do
-        local r14_12 = DataMgr.ShopTabSub[r12_12].ReddotNode
-        if r14_12 then
-          ReddotManager.AddListenerEx(r14_12, r0_12, function(r0_13, r1_13, r2_13, r3_13)
-            -- line: [266, 276] id: 13
-            if r1_13 > 0 then
-              if r2_13 == EReddotType.Normal then
-                r0_13.Common_Toggle_TabGroup_PC:ShowTabRedDotByTabId(r12_12, false, true, false)
-              elseif r2_13 == EReddotType.New then
-                r0_13.Common_Toggle_TabGroup_PC:ShowTabRedDotByTabId(r12_12, true, false, false)
+function r2_0.AddTabReddotListen(r0_14)
+  -- line: [273, 309] id: 14
+  for r5_14, r6_14 in pairs(DataMgr.Shop[r0_14.ShopType].MainTabId) do
+    local r7_14 = DataMgr.ShopItem2ShopTab[r6_14]
+    if r7_14 then
+      for r12_14, r13_14 in pairs(r7_14) do
+        local r14_14 = DataMgr.ShopTabSub[r12_14].ReddotNode
+        if r14_14 then
+          ReddotManager.AddListenerEx(r14_14, r0_14, function(r0_15, r1_15, r2_15, r3_15)
+            -- line: [280, 290] id: 15
+            if r1_15 > 0 then
+              if r2_15 == EReddotType.Normal then
+                r0_15.Common_Toggle_TabGroup_PC:ShowTabRedDotByTabId(r12_14, false, true, false)
+              elseif r2_15 == EReddotType.New then
+                r0_15.Common_Toggle_TabGroup_PC:ShowTabRedDotByTabId(r12_14, true, false, false)
               end
             else
-              r0_13.Common_Toggle_TabGroup_PC:ShowTabRedDotByTabId(r12_12, false, false, false)
+              r0_15.Common_Toggle_TabGroup_PC:ShowTabRedDotByTabId(r12_14, false, false, false)
             end
           end)
         end
-        -- close: r12_12
+        -- close: r12_14
       end
-      -- close: r8_12
-      local r8_12 = DataMgr.ShopTabMain[r6_12].ReddotNode
-      if r8_12 then
-        local function r12_12(r0_14, r1_14, r2_14, r3_14)
-          -- line: [281, 291] id: 14
-          if r1_14 > 0 then
-            if r2_14 == EReddotType.Normal then
-              r0_14.ShopTab:ShowTabRedDotByTabId(r6_12, false, true, false)
-            elseif r2_14 == EReddotType.New then
-              r0_14.ShopTab:ShowTabRedDotByTabId(r6_12, true, false, false)
+      -- close: r8_14
+      local r8_14 = DataMgr.ShopTabMain[r6_14].ReddotNode
+      if r8_14 then
+        local function r12_14(r0_16, r1_16, r2_16, r3_16)
+          -- line: [295, 305] id: 16
+          if r1_16 > 0 then
+            if r2_16 == EReddotType.Normal then
+              r0_16.ShopTab:ShowTabRedDotByTabId(r6_14, false, true, false)
+            elseif r2_16 == EReddotType.New then
+              r0_16.ShopTab:ShowTabRedDotByTabId(r6_14, true, false, false)
             end
           else
-            r0_14.ShopTab:ShowTabRedDotByTabId(r6_12, false, false, false)
+            r0_16.ShopTab:ShowTabRedDotByTabId(r6_14, false, false, false)
           end
         end
-        ReddotManager.AddListenerEx(r8_12, r0_12, r12_12)
+        ReddotManager.AddListenerEx(r8_14, r0_14, r12_14)
       end
     end
-    -- close: r5_12
+    -- close: r5_14
   end
-  -- close: r1_12
+  -- close: r1_14
 end
-function r2_0._ShowSubTabReddot(r0_15, r1_15)
-  -- line: [297, 313] id: 15
-  for r6_15, r7_15 in ipairs(r1_15) do
-    local r8_15 = r7_15.TabId
-    local r10_15 = ReddotManager.GetTreeNode(DataMgr.ShopTabSub[r8_15].ReddotNode)
-    if r10_15 and r10_15.Count > 0 then
-      local r11_15 = r10_15.ReddotType
-      if r11_15 == EReddotType.Normal then
-        r0_15.Common_Toggle_TabGroup_PC:ShowTabRedDotByTabId(r8_15, false, true, false)
-      elseif r11_15 == EReddotType.New then
-        r0_15.Common_Toggle_TabGroup_PC:ShowTabRedDotByTabId(r8_15, true, false, false)
+function r2_0._ShowSubTabReddot(r0_17, r1_17)
+  -- line: [311, 327] id: 17
+  for r6_17, r7_17 in ipairs(r1_17) do
+    local r8_17 = r7_17.TabId
+    local r10_17 = ReddotManager.GetTreeNode(DataMgr.ShopTabSub[r8_17].ReddotNode)
+    if r10_17 and r10_17.Count > 0 then
+      local r11_17 = r10_17.ReddotType
+      if r11_17 == EReddotType.Normal then
+        r0_17.Common_Toggle_TabGroup_PC:ShowTabRedDotByTabId(r8_17, false, true, false)
+      elseif r11_17 == EReddotType.New then
+        r0_17.Common_Toggle_TabGroup_PC:ShowTabRedDotByTabId(r8_17, true, false, false)
       end
     else
-      r0_15.Common_Toggle_TabGroup_PC:ShowTabRedDotByTabId(r8_15, false, false, false)
+      r0_17.Common_Toggle_TabGroup_PC:ShowTabRedDotByTabId(r8_17, false, false, false)
     end
   end
-  -- close: r2_15
+  -- close: r2_17
 end
-function r2_0.RemoveTabReddotListen(r0_16)
-  -- line: [315, 331] id: 16
-  for r5_16, r6_16 in pairs(DataMgr.Shop[r0_16.ShopType].MainTabId) do
-    local r7_16 = DataMgr.ShopItem2ShopTab[r6_16]
-    if r7_16 then
-      for r12_16, r13_16 in pairs(r7_16) do
-        local r14_16 = DataMgr.ShopTabSub[r12_16].ReddotNode
-        if r14_16 then
-          ReddotManager.RemoveListener(r14_16, r0_16)
+function r2_0.RemoveTabReddotListen(r0_18)
+  -- line: [329, 345] id: 18
+  for r5_18, r6_18 in pairs(DataMgr.Shop[r0_18.ShopType].MainTabId) do
+    local r7_18 = DataMgr.ShopItem2ShopTab[r6_18]
+    if r7_18 then
+      for r12_18, r13_18 in pairs(r7_18) do
+        local r14_18 = DataMgr.ShopTabSub[r12_18].ReddotNode
+        if r14_18 then
+          ReddotManager.RemoveListener(r14_18, r0_18)
         end
       end
-      -- close: r8_16
-      local r8_16 = DataMgr.ShopTabMain[r6_16].ReddotNode
-      if r8_16 then
-        ReddotManager.RemoveListener(r8_16, r0_16)
+      -- close: r8_18
+      local r8_18 = DataMgr.ShopTabMain[r6_18].ReddotNode
+      if r8_18 then
+        ReddotManager.RemoveListener(r8_18, r0_18)
       end
     end
   end
-  -- close: r1_16
+  -- close: r1_18
 end
-function r2_0.OnMainTabChanged(r0_17, r1_17)
-  -- line: [335, 365] id: 17
+function r2_0.OnMainTabChanged(r0_19, r1_19)
+  -- line: [349, 379] id: 19
   if not GWorld:GetAvatar() then
     return 
   end
-  local r3_17 = r0_17.MainTabMap[r1_17.Idx]
-  if not r3_17 then
+  local r3_19 = r0_19.MainTabMap[r1_19.Idx]
+  if not r3_19 then
     return 
   end
-  r0_17:LoadMainTabInfo(r3_17)
-  if r0_17.Common_Toggle_TabGroup_PC then
-    r0_17.Common_Toggle_TabGroup_PC:Init({
+  r0_19:LoadMainTabInfo(r3_19)
+  if r0_19.Common_Toggle_TabGroup_PC then
+    r0_19.Common_Toggle_TabGroup_PC:Init({
       LeftKey = "A",
       RightKey = "D",
-      Tabs = r0_17.SubTabList,
+      Tabs = r0_19.SubTabList,
       ChildWidgetName = "TabSubTextItem",
     })
-    r0_17.Common_Toggle_TabGroup_PC:BindEventOnTabSelected(r0_17, r0_17.OnSubTabChanged)
-    if #r0_17.SubTabList <= 1 then
-      r0_17.bShowSubTab = true
-      r0_17.Tab:SetVisibility(ESlateVisibility.Collapsed)
+    r0_19.Common_Toggle_TabGroup_PC:BindEventOnTabSelected(r0_19, r0_19.OnSubTabChanged)
+    if #r0_19.SubTabList <= 1 then
+      r0_19.bShowSubTab = true
+      r0_19.Tab:SetVisibility(ESlateVisibility.Collapsed)
     else
-      r0_17.bShowSubTab = false
-      r0_17.Tab:SetVisibility(ESlateVisibility.Visible)
+      r0_19.bShowSubTab = false
+      r0_19.Tab:SetVisibility(ESlateVisibility.Visible)
     end
-    r0_17.Common_Toggle_TabGroup_PC:SelectTab(1)
+    r0_19.Common_Toggle_TabGroup_PC:SelectTab(1)
   end
-  r0_17:_ShowSubTabReddot(r0_17.SubTabList)
+  r0_19:_ShowSubTabReddot(r0_19.SubTabList)
 end
-function r2_0.OnSubTabChanged(r0_18, r1_18)
-  -- line: [368, 375] id: 18
-  local r2_18 = r0_18.SubTabMap[r1_18.Idx]
-  if not r2_18 then
+function r2_0.OnSubTabChanged(r0_20, r1_20)
+  -- line: [382, 389] id: 20
+  local r2_20 = r0_20.SubTabMap[r1_20.Idx]
+  if not r2_20 then
     return 
   end
-  r0_18:ClearSubTabReddot()
-  r0_18:RefreshSubTabData(r2_18)
+  r0_20:ClearSubTabReddot()
+  r0_20:RefreshSubTabData(r2_20)
 end
-function r2_0.ClearSubTabReddot(r0_19)
-  -- line: [377, 383] id: 19
-  if not r0_19.CurSubTabMap then
+function r2_0.ClearSubTabReddot(r0_21)
+  -- line: [391, 397] id: 21
+  if not r0_21.CurSubTabMap then
     return 
   end
-  local r1_19 = r0_19.CurSubTabMap.ReddotNode
-  if r1_19 then
-    ReddotManager.ClearLeafNodeCount(r1_19, false, {
+  local r1_21 = r0_21.CurSubTabMap.ReddotNode
+  if r1_21 then
+    ReddotManager.ClearLeafNodeCount(r1_21, false, {
       bAll = 1,
     })
   end
 end
-function r2_0.RefreshSubTabData(r0_20, r1_20)
-  -- line: [385, 487] id: 20
-  r0_20.bShoulFocusToLastFocusedWidget = true
-  r0_20.Shop_RecommendBanner:ClearAllTimer()
-  r0_20.TabType = r1_20.TabType
-  r0_20.IsBannerPage = false
-  r0_20.IsJumpShopPage = false
-  r0_20.ShowSwitchBanner = false
-  r0_20:LoadSubTabInfo(r1_20)
-  r0_20:SetIsDealWithVirtualAccept(false)
-  r0_20.Group_Recharge:SetVisibility(ESlateVisibility.Collapsed)
-  r0_20.Group_PayGift:SetVisibility(ESlateVisibility.Collapsed)
-  r0_20.Group_Empty:SetVisibility(ESlateVisibility.Collapsed)
-  r0_20.VB_Jump:SetVisibility(ESlateVisibility.Collapsed)
-  r0_20.Group_Recommend:SetVisibility(ESlateVisibility.Collapsed)
-  r0_20.Group_Item:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-  r0_20.Group_Bottom:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-  r0_20.Group_BG:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-  r0_20.CheckBox_Own:ForbidBtn(false)
-  r0_20:SetAllowedToShowHideUI(false)
-  r0_20.Group_RecommendAnchor:SetVisibility(ESlateVisibility.Collapsed)
-  if r0_20.Common_Tab and r0_20.Common_Tab.WBP_Com_Tab_ResourceBar then
-    r0_20.Common_Tab.WBP_Com_Tab_ResourceBar:SetLastFocusWidget(r0_20.List_Item)
+function r2_0.RefreshSubTabData(r0_22, r1_22)
+  -- line: [399, 501] id: 22
+  r0_22.bShoulFocusToLastFocusedWidget = true
+  r0_22.Shop_RecommendBanner:ClearAllTimer()
+  r0_22.TabType = r1_22.TabType
+  r0_22.IsBannerPage = false
+  r0_22.IsJumpShopPage = false
+  r0_22.ShowSwitchBanner = false
+  r0_22:LoadSubTabInfo(r1_22)
+  r0_22:SetIsDealWithVirtualAccept(false)
+  r0_22.Group_Recharge:SetVisibility(ESlateVisibility.Collapsed)
+  r0_22.Group_PayGift:SetVisibility(ESlateVisibility.Collapsed)
+  r0_22.Group_Empty:SetVisibility(ESlateVisibility.Collapsed)
+  r0_22.VB_Jump:SetVisibility(ESlateVisibility.Collapsed)
+  r0_22.Group_Recommend:SetVisibility(ESlateVisibility.Collapsed)
+  r0_22.Group_Item:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  r0_22.Group_Bottom:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  r0_22.Group_BG:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  r0_22.CheckBox_Own:ForbidBtn(false)
+  r0_22:SetAllowedToShowHideUI(false)
+  r0_22.Group_RecommendAnchor:SetVisibility(ESlateVisibility.Collapsed)
+  if r0_22.Common_Tab and r0_22.Common_Tab.WBP_Com_Tab_ResourceBar then
+    r0_22.Common_Tab.WBP_Com_Tab_ResourceBar:SetLastFocusWidget(r0_22.List_Item)
   end
-  if r1_20.TabType == "Banner" then
-    r0_20:PlayAnimationReverse(r0_20.Change)
+  if r1_22.TabType == "Banner" then
+    r0_22:PlayAnimationReverse(r0_22.Change)
   else
-    r0_20:PlayAnimation(r0_20.Change)
+    r0_22:PlayAnimation(r0_22.Change)
   end
-  if r0_20.ShopType == "Shop" and r1_20.TabType ~= "Banner" then
-    r0_20:StopVideoBG()
-    r0_20:SetAllowedToShowHideUI(false)
-    r0_20:SetShowModel(false)
-    r0_20:SetHasVideo(false)
-    r0_20:DestroyPreviewActor()
-    if r0_20.Common_Tab and r0_20.Common_Tab.WBP_Com_Tab_ResourceBar then
-      r0_20.Common_Tab.WBP_Com_Tab_ResourceBar:SetGetReplyOnBack(nil)
+  if r0_22.ShopType == "Shop" and r1_22.TabType ~= "Banner" then
+    r0_22:StopVideoBG()
+    r0_22:SetAllowedToShowHideUI(false)
+    r0_22:SetShowModel(false)
+    r0_22:SetHasVideo(false)
+    r0_22:DestroyPreviewActor()
+    if r0_22.Common_Tab and r0_22.Common_Tab.WBP_Com_Tab_ResourceBar then
+      r0_22.Common_Tab.WBP_Com_Tab_ResourceBar:SetGetReplyOnBack(nil)
     end
   end
-  if r1_20.TabType == "Pay" then
-    r0_20.CheckBox_Own:ForbidBtn(true)
-    r0_20.Group_Bottom:SetVisibility(ESlateVisibility.Collapsed)
-    r0_20:InitRechargePage(r1_20)
+  if r1_22.TabType == "Pay" then
+    r0_22.CheckBox_Own:ForbidBtn(true)
+    r0_22.Group_Bottom:SetVisibility(ESlateVisibility.Collapsed)
+    r0_22:InitRechargePage(r1_22)
     return 
   end
-  if r1_20.TabType == "Card" then
-    r0_20.Group_Bottom:SetVisibility(ESlateVisibility.Collapsed)
-    r0_20:InitMonthCardPage(r1_20)
+  if r1_22.TabType == "Card" then
+    r0_22.Group_Bottom:SetVisibility(ESlateVisibility.Collapsed)
+    r0_22:InitMonthCardPage(r1_22)
     return 
   end
-  if r1_20.TabType == "Banner" then
-    r0_20.CheckBox_Own:ForbidBtn(true)
-    r0_20.Group_Bottom:SetVisibility(ESlateVisibility.Collapsed)
-    r0_20.Group_Item:SetVisibility(ESlateVisibility.Collapsed)
-    if r0_20.BannerIdMap then
-      for r6_20, r7_20 in pairs(r0_20.BannerIdMap) do
-        r7_20:SetVisibility(ESlateVisibility.Collapsed)
+  if r1_22.TabType == "Banner" then
+    r0_22.CheckBox_Own:ForbidBtn(true)
+    r0_22.Group_Bottom:SetVisibility(ESlateVisibility.Collapsed)
+    r0_22.Group_Item:SetVisibility(ESlateVisibility.Collapsed)
+    if r0_22.BannerIdMap then
+      for r6_22, r7_22 in pairs(r0_22.BannerIdMap) do
+        r7_22:SetVisibility(ESlateVisibility.Collapsed)
       end
-      -- close: r2_20
+      -- close: r2_22
     end
-    if r0_20.Common_Tab and r0_20.Common_Tab.WBP_Com_Tab_ResourceBar then
-      r0_20.Common_Tab.WBP_Com_Tab_ResourceBar:SetGetReplyOnBack(function()
-        -- line: [460, 463] id: 21
-        r0_20:GamePadFocusToSelectBannerItem()
+    if r0_22.Common_Tab and r0_22.Common_Tab.WBP_Com_Tab_ResourceBar then
+      r0_22.Common_Tab.WBP_Com_Tab_ResourceBar:SetGetReplyOnBack(function()
+        -- line: [474, 477] id: 23
+        r0_22:GamePadFocusToSelectBannerItem()
         return UIUtils.Handled
       end)
     end
-    r0_20:AddTimer(0.05, function()
-      -- line: [465, 467] id: 22
-      r0_20:GamePadFocusToSelectBannerItem()
+    r0_22:AddTimer(0.05, function()
+      -- line: [479, 481] id: 24
+      r0_22:GamePadFocusToSelectBannerItem()
     end)
-    r0_20.IsBannerPage = true
-    r0_20:SetIsDealWithVirtualAccept(true)
-    r0_20:InitBannerPage()
-    r0_20.bShoulFocusToLastFocusedWidget = false
+    r0_22.IsBannerPage = true
+    r0_22:SetIsDealWithVirtualAccept(true)
+    r0_22:InitBannerPage()
+    r0_22.bShoulFocusToLastFocusedWidget = false
     return 
   end
-  if r1_20.TabType == "Complex" then
-    r0_20.CheckBox_Own:ForbidBtn(true)
-    r0_20.Group_Bottom:SetVisibility(ESlateVisibility.Collapsed)
-    r0_20.IsJumpShopPage = true
-    r0_20:InitJumpShopPage()
+  if r1_22.TabType == "Complex" then
+    r0_22.CheckBox_Own:ForbidBtn(true)
+    r0_22.Group_Bottom:SetVisibility(ESlateVisibility.Collapsed)
+    r0_22.IsJumpShopPage = true
+    r0_22:InitJumpShopPage()
     return 
   end
-  r0_20.Group_Bottom:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-  r0_20.VB_ItemList:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-  r0_20:UpdateShopDetail(r0_20.CurSubTabMap)
+  r0_22.Group_Bottom:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  r0_22.VB_ItemList:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  r0_22:UpdateShopDetail(r0_22.CurSubTabMap)
 end
-function r2_0.BP_GetDesiredFocusTarget(r0_23)
-  -- line: [489, 493] id: 23
-  if r0_23.TabType == "Banner" then
-    return r0_23:GetSelectBannerItem()
+function r2_0.BP_GetDesiredFocusTarget(r0_25)
+  -- line: [503, 507] id: 25
+  if r0_25.TabType == "Banner" then
+    return r0_25:GetSelectBannerItem()
   end
 end
-function r2_0.CommonInitPage(r0_24, r1_24, r2_24)
-  -- line: [495, 517] id: 24
-  r0_24.VB_ItemList:SetVisibility(ESlateVisibility.Collapsed)
-  r0_24.Group_Bottom:SetVisibility(ESlateVisibility.Collapsed)
-  r1_24:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-  local r3_24 = r1_24:GetChildAt(0)
-  if not r3_24 then
-    r3_24 = UIManager(r0_24):_CreateWidgetNew(r2_24)
-    r1_24:AddChildToOverlay(r3_24)
+function r2_0.CommonInitPage(r0_26, r1_26, r2_26)
+  -- line: [509, 531] id: 26
+  r0_26.VB_ItemList:SetVisibility(ESlateVisibility.Collapsed)
+  r0_26.Group_Bottom:SetVisibility(ESlateVisibility.Collapsed)
+  r1_26:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  local r3_26 = r1_26:GetChildAt(0)
+  if not r3_26 then
+    r3_26 = UIManager(r0_26):_CreateWidgetNew(r2_26)
+    r1_26:AddChildToOverlay(r3_26)
   end
-  if r3_24.Image_NotabSign then
-    if r0_24.bShowSubTab then
-      r3_24.Image_NotabSign:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  if r3_26.Image_NotabSign then
+    if r0_26.bShowSubTab then
+      r3_26.Image_NotabSign:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
     else
-      r3_24.Image_NotabSign:SetVisibility(ESlateVisibility.Collapsed)
+      r3_26.Image_NotabSign:SetVisibility(ESlateVisibility.Collapsed)
     end
   end
-  r3_24:PlayAnimation(r3_24.In)
-  local r4_24 = UE4.UWidgetLayoutLibrary.SlotAsOverlaySlot(r3_24)
-  r4_24:SetHorizontalAlignment(EHorizontalAlignment.HAlign_Fill)
-  r4_24:SetVerticalAlignment(EVerticalAlignment.VAlign_Fill)
-  return r3_24
+  r3_26:PlayAnimation(r3_26.In)
+  local r4_26 = UE4.UWidgetLayoutLibrary.SlotAsOverlaySlot(r3_26)
+  r4_26:SetHorizontalAlignment(EHorizontalAlignment.HAlign_Fill)
+  r4_26:SetVerticalAlignment(EVerticalAlignment.VAlign_Fill)
+  return r3_26
 end
-function r2_0.InitPayGiftPage(r0_25, r1_25)
-  -- line: [520, 536] id: 25
-  local r2_25 = r0_25:CommonInitPage(r0_25.Group_PayGift, "PayGiftPage")
-  if r0_25.Common_Tab and r0_25.Common_Tab.WBP_Com_Tab_ResourceBar then
-    r0_25.Common_Tab.WBP_Com_Tab_ResourceBar:SetLastFocusWidget(r2_25)
+function r2_0.InitPayGiftPage(r0_27, r1_27)
+  -- line: [534, 550] id: 27
+  local r2_27 = r0_27:CommonInitPage(r0_27.Group_PayGift, "PayGiftPage")
+  if r0_27.Common_Tab and r0_27.Common_Tab.WBP_Com_Tab_ResourceBar then
+    r0_27.Common_Tab.WBP_Com_Tab_ResourceBar:SetLastFocusWidget(r2_27)
   end
-  local r3_25 = UIManager(r0_25):GetGameInputModeSubsystem(r0_25)
-  if #r1_25 == 0 then
-    r3_25:SetNavigateWidgetVisibility(false)
-    r0_25.Group_PayGift:SetVisibility(ESlateVisibility.Collapsed)
-    r0_25.Group_Empty:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-    r0_25.Group_Bottom:SetVisibility(ESlateVisibility.Collapsed)
+  local r3_27 = UIManager(r0_27):GetGameInputModeSubsystem(r0_27)
+  if #r1_27 == 0 then
+    r3_27:SetNavigateWidgetVisibility(false)
+    r0_27.Group_PayGift:SetVisibility(ESlateVisibility.Collapsed)
+    r0_27.Group_Empty:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    r0_27.Group_Bottom:SetVisibility(ESlateVisibility.Collapsed)
   else
-    r0_25.Group_Bottom:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-    r0_25.Group_Empty:SetVisibility(ESlateVisibility.Collapsed)
+    r0_27.Group_Bottom:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    r0_27.Group_Empty:SetVisibility(ESlateVisibility.Collapsed)
   end
-  r2_25:InitPayGiftInfo(r1_25)
+  r2_27:InitPayGiftInfo(r1_27)
 end
-function r2_0.InitRechargePage(r0_26, r1_26)
-  -- line: [540, 568] id: 26
-  local r2_26 = r0_26:CommonInitPage(r0_26.Group_Recharge, "ShopRechargePage")
-  if r0_26.Common_Tab and r0_26.Common_Tab.WBP_Com_Tab_ResourceBar then
-    r0_26.Common_Tab.WBP_Com_Tab_ResourceBar:SetLastFocusWidget(r2_26)
+function r2_0.InitRechargePage(r0_28, r1_28)
+  -- line: [554, 582] id: 28
+  local r2_28 = r0_28:CommonInitPage(r0_28.Group_Recharge, "ShopRechargePage")
+  if r0_28.Common_Tab and r0_28.Common_Tab.WBP_Com_Tab_ResourceBar then
+    r0_28.Common_Tab.WBP_Com_Tab_ResourceBar:SetLastFocusWidget(r2_28)
   end
-  local r3_26 = {}
-  for r8_26, r9_26 in pairs(DataMgr.ShopItem) do
-    if r9_26.SubTabId == r1_26.SubTabId then
-      table.insert(r3_26, r9_26)
+  local r3_28 = {}
+  for r8_28, r9_28 in pairs(DataMgr.ShopItem) do
+    if r9_28.SubTabId == r1_28.SubTabId then
+      table.insert(r3_28, r9_28)
     end
   end
-  -- close: r4_26
-  table.sort(r3_26, function(r0_27, r1_27)
-    -- line: [551, 553] id: 27
-    return r0_27.ItemId < r1_27.ItemId
+  -- close: r4_28
+  table.sort(r3_28, function(r0_29, r1_29)
+    -- line: [565, 567] id: 29
+    return r0_29.ItemId < r1_29.ItemId
   end)
-  local r4_26 = UIManager(r0_26):GetGameInputModeSubsystem(r0_26)
-  if #r3_26 == 0 then
-    r4_26:SetNavigateWidgetVisibility(false)
-    r0_26.Group_Recharge:SetVisibility(ESlateVisibility.Collapsed)
-    r0_26.Group_Empty:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  local r4_28 = UIManager(r0_28):GetGameInputModeSubsystem(r0_28)
+  if #r3_28 == 0 then
+    r4_28:SetNavigateWidgetVisibility(false)
+    r0_28.Group_Recharge:SetVisibility(ESlateVisibility.Collapsed)
+    r0_28.Group_Empty:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
   else
-    r0_26.Group_Empty:SetVisibility(ESlateVisibility.Collapsed)
+    r0_28.Group_Empty:SetVisibility(ESlateVisibility.Collapsed)
   end
-  r2_26:InitRechargeInfo(r3_26)
-  if not CommonUtils:IfExistSystemGuideUI(r0_26) or r0_26:HasAnyFocus() or r0_26:HasFocusedDescendants() then
-    r0_26:AddTimer(0.3, function()
-      -- line: [564, 566] id: 28
-      r2_26:SetFocus()
+  r2_28:InitRechargeInfo(r3_28)
+  if not CommonUtils:IfExistSystemGuideUI(r0_28) or r0_28:HasAnyFocus() or r0_28:HasFocusedDescendants() then
+    r0_28:AddTimer(0.3, function()
+      -- line: [578, 580] id: 30
+      r2_28:SetFocus()
     end)
   end
 end
-function r2_0.OnUserScrolled(r0_29)
-  -- line: [570, 572] id: 29
-  UIUtils.UpdateScrollBoxArrow(r0_29.ScrollBox_Recommend, r0_29.Group_ListTop, r0_29.Group_ListBottom, 100)
+function r2_0.OnUserScrolled(r0_31)
+  -- line: [584, 586] id: 31
+  UIUtils.UpdateScrollBoxArrow(r0_31.ScrollBox_Recommend, r0_31.Group_ListTop, r0_31.Group_ListBottom, 100)
 end
-function r2_0.InitBannerPage(r0_30, r1_30)
-  -- line: [577, 702] id: 30
-  if r0_30.BannerIdMap then
-    local r2_30 = r0_30.BannerIdMap[r0_30.SelectBannerId]
+function r2_0.InitBannerPage(r0_32, r1_32)
+  -- line: [591, 716] id: 32
+  if r0_32.BannerIdMap then
+    local r2_32 = r0_32.BannerIdMap[r0_32.SelectBannerId]
   end
-  r0_30.BannerIdMap = {}
-  r0_30.SwitchBannerList = ShopUtils:GetBannerInfo(true)
-  local r3_30, r4_30 = ShopUtils:GetBannerInfo()
-  if r1_30 then
-    r0_30.SelectBannerId = r1_30
-  elseif not r4_30[r0_30.SelectBannerId] then
-    r0_30.SelectBannerId = nil
+  r0_32.BannerIdMap = {}
+  r0_32.SwitchBannerList = ShopUtils:GetBannerInfo(true)
+  local r3_32, r4_32 = ShopUtils:GetBannerInfo()
+  if r1_32 then
+    r0_32.SelectBannerId = r1_32
+  elseif not r4_32[r0_32.SelectBannerId] then
+    r0_32.SelectBannerId = nil
   end
-  local r5_30 = r0_30.ScrollBox_Recommend:GetAllChildren():ToTable()
-  if r5_30 and next(r5_30) then
-    for r10_30, r11_30 in ipairs(r5_30) do
-      if r11_30 and r11_30.ScrollboxIndex and r11_30.ScrollboxIndex >= 1 then
-        r11_30:RemoveFromParent()
+  local r5_32 = r0_32.ScrollBox_Recommend:GetAllChildren():ToTable()
+  if r5_32 and next(r5_32) then
+    for r10_32, r11_32 in ipairs(r5_32) do
+      if r11_32 and r11_32.ScrollboxIndex and r11_32.ScrollboxIndex >= 1 then
+        r11_32:RemoveFromParent()
       end
     end
-    -- close: r6_30
+    -- close: r6_32
   end
-  if not r0_30.SelectBannerId then
-    if next(r0_30.SwitchBannerList) then
-      r0_30.SelectBannerId = r0_30.SwitchBannerList[1].Id
+  if not r0_32.SelectBannerId then
+    if next(r0_32.SwitchBannerList) then
+      r0_32.SelectBannerId = r0_32.SwitchBannerList[1].Id
     else
-      assert(r3_30[1], "有效Banner数量不足一个")
-      r0_30.SelectBannerId = r3_30[1].Id
+      assert(r3_32[1], "有效Banner数量不足一个")
+      r0_32.SelectBannerId = r3_32[1].Id
     end
   end
-  local r6_30 = nil
-  if CommonUtils.GetDeviceTypeByPlatformName(r0_30) == "Mobile" then
-    r6_30 = CommonConst.ShopBannerMobilePath
+  local r6_32 = nil
+  if CommonUtils.GetDeviceTypeByPlatformName(r0_32) == "Mobile" then
+    r6_32 = CommonConst.ShopBannerMobilePath
   else
-    r6_30 = CommonConst.ShopBannerPCPath
+    r6_32 = CommonConst.ShopBannerPCPath
   end
-  local r7_30 = false
-  if r0_30.SwitchBannerList and next(r0_30.SwitchBannerList) then
-    r0_30.Shop_RecommendBanner:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-    r0_30.Shop_RecommendBanner:InitItemInfo()
-    r0_30.Shop_RecommendBanner:BindBtnEvent(r0_30, r0_30.OnSwitchBannerChanged)
-    r0_30.Shop_RecommendBanner:BindBtnClickEvent(r0_30, r0_30.OnSwitchBannerItemClick)
-    local r9_30 = UIManager(r0_30):CreateWidget(r6_30 .. "WBP_Shop_Recommend_Common")
-    if r9_30 then
-      for r14_30, r15_30 in ipairs(r0_30.SwitchBannerList) do
-        if r15_30.Id == r0_30.SelectBannerId then
-          r7_30 = true
+  local r7_32 = false
+  if r0_32.SwitchBannerList and next(r0_32.SwitchBannerList) then
+    r0_32.Shop_RecommendBanner:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    r0_32.Shop_RecommendBanner:InitItemInfo()
+    r0_32.Shop_RecommendBanner:BindBtnEvent(r0_32, r0_32.OnSwitchBannerChanged)
+    r0_32.Shop_RecommendBanner:BindBtnClickEvent(r0_32, r0_32.OnSwitchBannerItemClick)
+    local r9_32 = UIManager(r0_32):CreateWidget(r6_32 .. "WBP_Shop_Recommend_Common")
+    if r9_32 then
+      for r14_32, r15_32 in ipairs(r0_32.SwitchBannerList) do
+        if r15_32.Id == r0_32.SelectBannerId then
+          r7_32 = true
         end
-        r0_30.BannerIdMap[r15_30.Id] = r9_30
+        r0_32.BannerIdMap[r15_32.Id] = r9_32
       end
-      -- close: r10_30
-      r9_30:SetVisibility(ESlateVisibility.Collapsed)
-      r0_30.Group_RecommendAnchor:AddChild(r9_30)
-      local r10_30 = UE4.UWidgetLayoutLibrary.SlotAsOverlaySlot(r9_30)
-      r10_30:SetHorizontalAlignment(EHorizontalAlignment.HAlign_Fill)
-      r10_30:SetVerticalAlignment(EVerticalAlignment.VAlign_Fill)
+      -- close: r10_32
+      r9_32:SetVisibility(ESlateVisibility.Collapsed)
+      r0_32.Group_RecommendAnchor:AddChild(r9_32)
+      local r10_32 = UE4.UWidgetLayoutLibrary.SlotAsOverlaySlot(r9_32)
+      r10_32:SetHorizontalAlignment(EHorizontalAlignment.HAlign_Fill)
+      r10_32:SetVerticalAlignment(EVerticalAlignment.VAlign_Fill)
     end
-    r0_30.Shop_RecommendBanner.ScrollboxIndex = 0
+    r0_32.Shop_RecommendBanner.ScrollboxIndex = 0
   else
-    r0_30.Shop_RecommendBanner:SetVisibility(ESlateVisibility.Collapsed)
+    r0_32.Shop_RecommendBanner:SetVisibility(ESlateVisibility.Collapsed)
   end
-  r0_30.BannerList = ShopUtils:GetBannerInfo()
-  r0_30.VB_ItemList:SetVisibility(ESlateVisibility.Collapsed)
-  r0_30.Group_Recommend:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-  r0_30.Group_RecommendAnchor:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-  r0_30.BannerBpMap = {}
-  for r12_30, r13_30 in ipairs(r3_30) do
-    local r14_30 = NewObject(UIUtils.GetCommonItemContentClass())
-    r14_30.BannerId = r13_30.Id
-    r14_30.ClickEvent = {
-      Obj = r0_30,
-      Callback = r0_30.OnBannerItemClick,
+  r0_32.BannerList = ShopUtils:GetBannerInfo()
+  r0_32.VB_ItemList:SetVisibility(ESlateVisibility.Collapsed)
+  r0_32.Group_Recommend:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  r0_32.Group_RecommendAnchor:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  r0_32.BannerBpMap = {}
+  for r12_32, r13_32 in ipairs(r3_32) do
+    local r14_32 = NewObject(UIUtils.GetCommonItemContentClass())
+    r14_32.BannerId = r13_32.Id
+    r14_32.ClickEvent = {
+      Obj = r0_32,
+      Callback = r0_32.OnBannerItemClick,
     }
-    r14_30.VirtualClickCallback = r0_30.HandleVirtualClickInGamePad
-    r14_30.OnKeyDownCallBack = r0_30.HandleOnKeyDownCallBack
-    r14_30.SetListItemCallBack = r0_30.HandleSetListItemCallBack
-    r14_30.Parent = r0_30
-    r14_30.ScrollboxIndex = r12_30
-    if r12_30 == 1 then
-      r14_30.UpToSwitchWidget = r0_30.Shop_RecommendBanner
+    r14_32.VirtualClickCallback = r0_32.HandleVirtualClickInGamePad
+    r14_32.OnKeyDownCallBack = r0_32.HandleOnKeyDownCallBack
+    r14_32.SetListItemCallBack = r0_32.HandleSetListItemCallBack
+    r14_32.Parent = r0_32
+    r14_32.ScrollboxIndex = r12_32
+    if r12_32 == 1 then
+      r14_32.UpToSwitchWidget = r0_32.Shop_RecommendBanner
     end
-    if r0_30.SelectBannerId == r13_30.Id then
-      r14_30.bSelected = true
+    if r0_32.SelectBannerId == r13_32.Id then
+      r14_32.bSelected = true
     else
-      r14_30.bSelected = false
+      r14_32.bSelected = false
     end
-    if r0_30.SelectBannerId == r13_30.Id and not r0_30.BannerIdMap[r13_30.Id] then
-      local r16_30 = UIManager(r0_30):CreateWidget(r6_30 .. r13_30.Bp)
-      if r16_30 then
-        r0_30.BannerIdMap[r13_30.Id] = r16_30
-        r0_30.BannerIdMap[r13_30.Id]:SetVisibility(ESlateVisibility.Collapsed)
-        r0_30.Group_RecommendAnchor:AddChild(r0_30.BannerIdMap[r13_30.Id])
-        local r17_30 = UE4.UWidgetLayoutLibrary.SlotAsOverlaySlot(r0_30.BannerIdMap[r13_30.Id])
-        r17_30:SetHorizontalAlignment(EHorizontalAlignment.HAlign_Fill)
-        r17_30:SetVerticalAlignment(EVerticalAlignment.VAlign_Fill)
+    if r0_32.SelectBannerId == r13_32.Id and not r0_32.BannerIdMap[r13_32.Id] then
+      local r16_32 = UIManager(r0_32):CreateWidget(r6_32 .. r13_32.Bp)
+      if r16_32 then
+        r0_32.BannerIdMap[r13_32.Id] = r16_32
+        r0_32.BannerIdMap[r13_32.Id]:SetVisibility(ESlateVisibility.Collapsed)
+        r0_32.Group_RecommendAnchor:AddChild(r0_32.BannerIdMap[r13_32.Id])
+        local r17_32 = UE4.UWidgetLayoutLibrary.SlotAsOverlaySlot(r0_32.BannerIdMap[r13_32.Id])
+        r17_32:SetHorizontalAlignment(EHorizontalAlignment.HAlign_Fill)
+        r17_32:SetVerticalAlignment(EVerticalAlignment.VAlign_Fill)
       end
     end
-    local r15_30 = UIManager(r0_30):CreateWidget("WidgetBlueprint\'/Game/UI/WBP/Shop/Widget/Recommend/WBP_Shop_Recommend_ListItem.WBP_Shop_Recommend_ListItem\'")
-    r15_30:OnListItemObjectSet(r14_30)
-    r0_30.ScrollBox_Recommend:AddChild(r15_30)
+    local r15_32 = UIManager(r0_32):CreateWidget("WidgetBlueprint\'/Game/UI/WBP/Shop/Widget/Recommend/WBP_Shop_Recommend_ListItem.WBP_Shop_Recommend_ListItem\'")
+    r15_32:OnListItemObjectSet(r14_32)
+    r0_32.ScrollBox_Recommend:AddChild(r15_32)
   end
-  -- close: r8_30
-  r0_30.BannerBpMap[DataMgr.ShopBannerTab[r0_30.SelectBannerId].Bp] = r0_30.BannerIdMap[r0_30.SelectBannerId]
-  if r7_30 and not CommonUtils:IfExistSystemGuideUI(r0_30) then
-    r0_30.Shop_RecommendBanner:SetFocus()
-  elseif not CommonUtils:IfExistSystemGuideUI(r0_30) then
+  -- close: r8_32
+  r0_32.BannerBpMap[DataMgr.ShopBannerTab[r0_32.SelectBannerId].Bp] = r0_32.BannerIdMap[r0_32.SelectBannerId]
+  if r7_32 and not CommonUtils:IfExistSystemGuideUI(r0_32) then
+    r0_32.Shop_RecommendBanner:SetFocus()
+  elseif not CommonUtils:IfExistSystemGuideUI(r0_32) then
   end
-  r0_30:AddTimer(0.5, function()
-    -- line: [699, 701] id: 31
-    r0_30:OnUserScrolled()
+  r0_32:AddTimer(0.5, function()
+    -- line: [713, 715] id: 33
+    r0_32:OnUserScrolled()
   end)
 end
-function r2_0.HandleVirtualClickInGamePad(r0_32, r1_32)
-  -- line: [704, 715] id: 32
-  local r2_32 = UIManager(r0_32):GetGameInputModeSubsystem(r0_32)
-  local r3_32 = nil	-- notice: implicit variable refs by block#[3, 4]
-  if r2_32 then
-    r3_32 = r2_32:GetCurrentInputType()
-    if not r3_32 then
+function r2_0.HandleVirtualClickInGamePad(r0_34, r1_34)
+  -- line: [718, 729] id: 34
+  local r2_34 = UIManager(r0_34):GetGameInputModeSubsystem(r0_34)
+  local r3_34 = nil	-- notice: implicit variable refs by block#[3, 4]
+  if r2_34 then
+    r3_34 = r2_34:GetCurrentInputType()
+    if not r3_34 then
       ::label_12::
-      r3_32 = nil
+      r3_34 = nil
     end
   else
     goto label_12	-- block#2 is visited secondly
   end
-  if r3_32 and r3_32 ~= ECommonInputType.Gamepad then
+  if r3_34 and r3_34 ~= ECommonInputType.Gamepad then
     return 
   end
-  if not r1_32 then
-    return 
-  end
-  local r4_32 = r0_32.BannerIdMap[r1_32]
-  if r4_32 and r4_32.OnGamePadDown then
-    r4_32:OnGamePadDown(UIConst.GamePadKey.FaceButtonBottom)
-  end
-end
-function r2_0.HandleOnKeyDownCallBack(r0_33, r1_33, r2_33, r3_33)
-  -- line: [717, 724] id: 33
-  if not r1_33 then
-    return 
-  end
-  local r4_33 = r0_33.BannerIdMap[r1_33]
-  if r4_33 and r4_33.OnKeyDown then
-    return r4_33:OnKeyDown(r2_33, r3_33)
-  end
-  return UIUtils.UnHandled
-end
-function r2_0.HandleSetListItemCallBack(r0_34, r1_34, r2_34)
-  -- line: [727, 733] id: 34
   if not r1_34 then
     return 
   end
-  local r3_34 = r0_34.BannerIdMap[r1_34]
-  if r3_34 and r3_34.SetListItem then
-    r3_34:SetListItem(r2_34)
+  local r4_34 = r0_34.BannerIdMap[r1_34]
+  if r4_34 and r4_34.OnGamePadDown then
+    r4_34:OnGamePadDown(UIConst.GamePadKey.FaceButtonBottom)
   end
 end
-function r2_0.ChangeBanner(r0_35, r1_35, r2_35, r3_35)
-  -- line: [736, 787] id: 35
-  if r0_35.LastSelectBannerId and r0_35.LastSelectBannerId ~= r1_35 and r0_35.BannerIdMap[r0_35.LastSelectBannerId] then
-    if r2_35 then
-      r0_35.BannerIdMap[r0_35.LastSelectBannerId]:PlayAnimationSwitch(r3_35)
-    elseif r0_35.BannerIdMap[r0_35.LastSelectBannerId].PlayAnimationOut then
-      r0_35.BannerIdMap[r0_35.LastSelectBannerId]:PlayAnimationOut()
-    else
-      r0_35.BannerIdMap[r0_35.LastSelectBannerId]:SetVisibility(ESlateVisibility.Collapsed)
-    end
-    if r0_35.BannerIdMap[r0_35.LastSelectBannerId].bHasVideo then
-      r0_35:StopVideoBG()
-    end
-    r0_35:SetAllowedToShowHideUI(false)
-    r0_35:SetShowModel(false)
-    r0_35:SetHasVideo(false)
-  end
-  if r0_35.LastWidgetContent and r0_35.LastWidgetContent.SelfWidget then
-    r0_35.LastWidgetContent.SelfWidget:UnSelect()
-  end
-  local r4_35 = DataMgr.ShopBannerTab[r1_35]
-  if r4_35 and r4_35.Bp and r4_35.Bp ~= "WBP_Shop_Recommend_Common" then
-    r0_35:SetCameraToDefault()
-    r0_35:StopActorSound()
-    r0_35.Group_BG:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-  end
-  r0_35:SetReplayGestureVisible(false)
-  if r0_35.BannerIdMap[r1_35] and r0_35.BannerIdMap[r1_35].InitBannerPage then
-    r0_35.BannerIdMap[r1_35]:InitBannerPage(r1_35, r0_35)
-  end
-  r0_35.BannerIdMap[r1_35]:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-  if not r2_35 and r0_35.BannerIdMap[r1_35].PlayAnimationIn then
-    r0_35.BannerIdMap[r1_35]:PlayAnimationIn()
-  end
-  r0_35.SelectBannerId = r1_35
-  r0_35.LastSelectBannerId = r1_35
-  r0_35:UpdateSwitchBannerGamePadKey()
-end
-function r2_0.UpdateSwitchBannerGamePadKey(r0_36)
-  -- line: [789, 797] id: 36
-  if r0_36.ShowSwitchBanner and UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad then
-    r0_36.Shop_RecommendBanner.Key_Left:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-    r0_36.Shop_RecommendBanner.Key_Right:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-  else
-    r0_36.Shop_RecommendBanner.Key_Left:SetVisibility(ESlateVisibility.Collapsed)
-    r0_36.Shop_RecommendBanner.Key_Right:SetVisibility(ESlateVisibility.Collapsed)
-  end
-end
-function r2_0.OnSwitchBannerItemClick(r0_37, r1_37, r2_37, r3_37)
-  -- line: [799, 802] id: 37
-  r0_37.ShowSwitchBanner = true
-  r0_37:OnSwitchBannerChanged(r1_37, r2_37, r3_37)
-end
-function r2_0.OnSwitchBannerChanged(r0_38, r1_38, r2_38, r3_38)
-  -- line: [808, 815] id: 38
-  if not r0_38.ShowSwitchBanner then
+function r2_0.HandleOnKeyDownCallBack(r0_35, r1_35, r2_35, r3_35)
+  -- line: [731, 738] id: 35
+  if not r1_35 then
     return 
   end
-  r0_38.Shop_RecommendBanner:StopBannerTimer()
-  r0_38:ChangeBanner(r1_38, r2_38, r3_38)
-  r0_38.LastWidgetContent = nil
+  local r4_35 = r0_35.BannerIdMap[r1_35]
+  if r4_35 and r4_35.OnKeyDown then
+    return r4_35:OnKeyDown(r2_35, r3_35)
+  end
+  return UIUtils.UnHandled
 end
-function r2_0.OnBannerItemClick(r0_39, r1_39, r2_39, r3_39)
-  -- line: [817, 846] id: 39
-  r0_39.Shop_RecommendBanner:StartBannerTimer()
-  r0_39.Shop_RecommendBanner:UnSelect()
-  r0_39.ShowSwitchBanner = false
-  local r4_39 = DataMgr.ShopBannerTab[r1_39]
-  local r5_39 = nil
-  if CommonUtils.GetDeviceTypeByPlatformName(r0_39) == "Mobile" then
-    r5_39 = CommonConst.ShopBannerMobilePath
+function r2_0.HandleSetListItemCallBack(r0_36, r1_36, r2_36)
+  -- line: [741, 747] id: 36
+  if not r1_36 then
+    return 
+  end
+  local r3_36 = r0_36.BannerIdMap[r1_36]
+  if r3_36 and r3_36.SetListItem then
+    r3_36:SetListItem(r2_36)
+  end
+end
+function r2_0.ChangeBanner(r0_37, r1_37, r2_37, r3_37)
+  -- line: [750, 801] id: 37
+  if r0_37.LastSelectBannerId and r0_37.LastSelectBannerId ~= r1_37 and r0_37.BannerIdMap[r0_37.LastSelectBannerId] then
+    if r2_37 then
+      r0_37.BannerIdMap[r0_37.LastSelectBannerId]:PlayAnimationSwitch(r3_37)
+    elseif r0_37.BannerIdMap[r0_37.LastSelectBannerId].PlayAnimationOut then
+      r0_37.BannerIdMap[r0_37.LastSelectBannerId]:PlayAnimationOut()
+    else
+      r0_37.BannerIdMap[r0_37.LastSelectBannerId]:SetVisibility(ESlateVisibility.Collapsed)
+    end
+    if r0_37.BannerIdMap[r0_37.LastSelectBannerId].bHasVideo then
+      r0_37:StopVideoBG()
+    end
+    r0_37:SetAllowedToShowHideUI(false)
+    r0_37:SetShowModel(false)
+    r0_37:SetHasVideo(false)
+  end
+  if r0_37.LastWidgetContent and r0_37.LastWidgetContent.SelfWidget then
+    r0_37.LastWidgetContent.SelfWidget:UnSelect()
+  end
+  local r4_37 = DataMgr.ShopBannerTab[r1_37]
+  if r4_37 and r4_37.Bp and r4_37.Bp ~= "WBP_Shop_Recommend_Common" then
+    r0_37:SetCameraToDefault()
+    r0_37:StopActorSound()
+    r0_37.Group_BG:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  end
+  r0_37:SetReplayGestureVisible(false)
+  if r0_37.BannerIdMap[r1_37] and r0_37.BannerIdMap[r1_37].InitBannerPage then
+    r0_37.BannerIdMap[r1_37]:InitBannerPage(r1_37, r0_37)
+  end
+  r0_37.BannerIdMap[r1_37]:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  if not r2_37 and r0_37.BannerIdMap[r1_37].PlayAnimationIn then
+    r0_37.BannerIdMap[r1_37]:PlayAnimationIn()
+  end
+  r0_37.SelectBannerId = r1_37
+  r0_37.LastSelectBannerId = r1_37
+  r0_37:UpdateSwitchBannerGamePadKey()
+end
+function r2_0.UpdateSwitchBannerGamePadKey(r0_38)
+  -- line: [803, 811] id: 38
+  if r0_38.ShowSwitchBanner and UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad then
+    r0_38.Shop_RecommendBanner.Key_Left:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    r0_38.Shop_RecommendBanner.Key_Right:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
   else
-    r5_39 = CommonConst.ShopBannerPCPath
-  end
-  if not r0_39.BannerIdMap[r1_39] then
-    r0_39.BannerIdMap[r1_39] = UIManager(r0_39):CreateWidget(r5_39 .. r4_39.Bp)
-    r0_39.Group_RecommendAnchor:AddChild(r0_39.BannerIdMap[r1_39])
-    local r8_39 = UE4.UWidgetLayoutLibrary.SlotAsOverlaySlot(r0_39.BannerIdMap[r1_39])
-    r8_39:SetHorizontalAlignment(EHorizontalAlignment.HAlign_Fill)
-    r8_39:SetVerticalAlignment(EVerticalAlignment.VAlign_Fill)
-  end
-  if r3_39 then
-    AudioManager(r0_39):PlayUISound(r0_39, "event:/ui/activity/large_btn_click", nil, nil)
-  end
-  r0_39.BannerBpMap[DataMgr.ShopBannerTab[r1_39].Bp] = r0_39.BannerIdMap[r1_39]
-  r0_39:ChangeBanner(r1_39)
-  r0_39.LastWidgetContent = r2_39
-  r0_39:UpdateCommonTabInfo()
-end
-function r2_0.OnBannerExpire(r0_40)
-  -- line: [848, 852] id: 40
-  if r0_40.IsBannerPage then
-    r0_40.ShopTab:SelectTab(r0_40.ShopTab.CurrentTab)
+    r0_38.Shop_RecommendBanner.Key_Left:SetVisibility(ESlateVisibility.Collapsed)
+    r0_38.Shop_RecommendBanner.Key_Right:SetVisibility(ESlateVisibility.Collapsed)
   end
 end
-function r2_0.InitMonthCardPage(r0_41, r1_41)
-  -- line: [857, 878] id: 41
-  r0_41.VB_ItemList:SetVisibility(ESlateVisibility.Collapsed)
-  r0_41.Group_MonthCard:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-  local r2_41 = r0_41.Group_MonthCard:GetChildrenCount()
-  local r3_41 = nil
-  if r2_41 > 0 then
-    r3_41 = r0_41.Group_MonthCard:GetChildAt(0)
+function r2_0.OnSwitchBannerItemClick(r0_39, r1_39, r2_39, r3_39)
+  -- line: [813, 816] id: 39
+  r0_39.ShowSwitchBanner = true
+  r0_39:OnSwitchBannerChanged(r1_39, r2_39, r3_39)
+end
+function r2_0.OnSwitchBannerChanged(r0_40, r1_40, r2_40, r3_40)
+  -- line: [822, 829] id: 40
+  if not r0_40.ShowSwitchBanner then
+    return 
   end
-  if not IsValid(r3_41) then
-    r0_41.Group_MonthCard:ClearChildren()
-    r3_41 = UIManager(r0_41):_CreateWidgetNew("MonthCardPage")
-    r0_41.Group_MonthCard:AddChild(r3_41)
+  r0_40.Shop_RecommendBanner:StopBannerTimer()
+  r0_40:ChangeBanner(r1_40, r2_40, r3_40)
+  r0_40.LastWidgetContent = nil
+end
+function r2_0.OnBannerItemClick(r0_41, r1_41, r2_41, r3_41)
+  -- line: [831, 860] id: 41
+  r0_41.Shop_RecommendBanner:StartBannerTimer()
+  r0_41.Shop_RecommendBanner:UnSelect()
+  r0_41.ShowSwitchBanner = false
+  local r4_41 = DataMgr.ShopBannerTab[r1_41]
+  local r5_41 = nil
+  if CommonUtils.GetDeviceTypeByPlatformName(r0_41) == "Mobile" then
+    r5_41 = CommonConst.ShopBannerMobilePath
+  else
+    r5_41 = CommonConst.ShopBannerPCPath
   end
-  r3_41:InitBannerPage()
-  local r4_41 = UE4.UWidgetLayoutLibrary.SlotAsOverlaySlot(r3_41)
-  r4_41:SetHorizontalAlignment(EHorizontalAlignment.HAlign_Fill)
-  r4_41:SetVerticalAlignment(EVerticalAlignment.VAlign_Fill)
-  if not CommonUtils:IfExistSystemGuideUI(r0_41) then
-    r3_41:SetFocus()
+  if not r0_41.BannerIdMap[r1_41] then
+    r0_41.BannerIdMap[r1_41] = UIManager(r0_41):CreateWidget(r5_41 .. r4_41.Bp)
+    r0_41.Group_RecommendAnchor:AddChild(r0_41.BannerIdMap[r1_41])
+    local r8_41 = UE4.UWidgetLayoutLibrary.SlotAsOverlaySlot(r0_41.BannerIdMap[r1_41])
+    r8_41:SetHorizontalAlignment(EHorizontalAlignment.HAlign_Fill)
+    r8_41:SetVerticalAlignment(EVerticalAlignment.VAlign_Fill)
+  end
+  if r3_41 then
+    AudioManager(r0_41):PlayUISound(r0_41, "event:/ui/activity/large_btn_click", nil, nil)
+  end
+  r0_41.BannerBpMap[DataMgr.ShopBannerTab[r1_41].Bp] = r0_41.BannerIdMap[r1_41]
+  r0_41:ChangeBanner(r1_41)
+  r0_41.LastWidgetContent = r2_41
+  r0_41:UpdateCommonTabInfo()
+end
+function r2_0.OnBannerExpire(r0_42)
+  -- line: [862, 866] id: 42
+  if r0_42.IsBannerPage then
+    r0_42.ShopTab:SelectTab(r0_42.ShopTab.CurrentTab)
   end
 end
-function r2_0.InitJumpShopPage(r0_42)
-  -- line: [881, 917] id: 42
-  if r0_42.Common_Tab and r0_42.Common_Tab.WBP_Com_Tab_ResourceBar then
-    r0_42.Common_Tab.WBP_Com_Tab_ResourceBar:SetLastFocusWidget(r0_42.List_Jump)
+function r2_0.InitMonthCardPage(r0_43, r1_43)
+  -- line: [871, 892] id: 43
+  r0_43.VB_ItemList:SetVisibility(ESlateVisibility.Collapsed)
+  r0_43.Group_MonthCard:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  local r2_43 = r0_43.Group_MonthCard:GetChildrenCount()
+  local r3_43 = nil
+  if r2_43 > 0 then
+    r3_43 = r0_43.Group_MonthCard:GetChildAt(0)
   end
-  r0_42.VB_ItemList:SetVisibility(ESlateVisibility.Collapsed)
-  r0_42.VB_Jump:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-  local r1_42 = ShopUtils:GetComplexInfo(r0_42.CurSubTabMap.SubTabId)
-  r0_42.List_Jump:ScrollIndexIntoView(0)
-  r0_42.List_Jump:ClearListItems()
-  for r6_42, r7_42 in ipairs(r1_42) do
-    if ConditionUtils.CheckCondition(GWorld:GetAvatar(), DataMgr.InterfaceJump[r7_42.InterfaceJumpId].PortalUnlockCondition) then
-      local r10_42 = UIManager(r0_42):_CreateWidgetNew("JumpShopItem")
-      r10_42.JumpShopData = r7_42
-      r0_42.List_Jump:AddItem(r10_42)
+  if not IsValid(r3_43) then
+    r0_43.Group_MonthCard:ClearChildren()
+    r3_43 = UIManager(r0_43):_CreateWidgetNew("MonthCardPage")
+    r0_43.Group_MonthCard:AddChild(r3_43)
+  end
+  r3_43:InitBannerPage()
+  local r4_43 = UE4.UWidgetLayoutLibrary.SlotAsOverlaySlot(r3_43)
+  r4_43:SetHorizontalAlignment(EHorizontalAlignment.HAlign_Fill)
+  r4_43:SetVerticalAlignment(EVerticalAlignment.VAlign_Fill)
+  if not CommonUtils:IfExistSystemGuideUI(r0_43) then
+    r3_43:SetFocus()
+  end
+end
+function r2_0.InitJumpShopPage(r0_44)
+  -- line: [895, 931] id: 44
+  if r0_44.Common_Tab and r0_44.Common_Tab.WBP_Com_Tab_ResourceBar then
+    r0_44.Common_Tab.WBP_Com_Tab_ResourceBar:SetLastFocusWidget(r0_44.List_Jump)
+  end
+  r0_44.VB_ItemList:SetVisibility(ESlateVisibility.Collapsed)
+  r0_44.VB_Jump:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  local r1_44 = ShopUtils:GetComplexInfo(r0_44.CurSubTabMap.SubTabId)
+  r0_44.List_Jump:ScrollIndexIntoView(0)
+  r0_44.List_Jump:ClearListItems()
+  for r6_44, r7_44 in ipairs(r1_44) do
+    if ConditionUtils.CheckCondition(GWorld:GetAvatar(), DataMgr.InterfaceJump[r7_44.InterfaceJumpId].PortalUnlockCondition) then
+      local r10_44 = UIManager(r0_44):_CreateWidgetNew("JumpShopItem")
+      r10_44.JumpShopData = r7_44
+      r0_44.List_Jump:AddItem(r10_44)
     end
   end
-  -- close: r2_42
-  if r0_42.List_Jump:GetNumItems() > 0 then
-    r0_42.List_Jump:RequestFillEmptyContent()
-    r0_42.List_Jump:RequestPlayEntriesAnim()
-    r0_42.List_Jump:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
-    r0_42.List_Jump:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
-    r0_42:AddTimer(0.01, function()
-      -- line: [911, 915] id: 43
-      if not CommonUtils:IfExistSystemGuideUI(r0_42) then
-        r0_42.List_Jump:SetFocus()
+  -- close: r2_44
+  if r0_44.List_Jump:GetNumItems() > 0 then
+    r0_44.List_Jump:RequestFillEmptyContent()
+    r0_44.List_Jump:RequestPlayEntriesAnim()
+    r0_44.List_Jump:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
+    r0_44.List_Jump:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
+    r0_44:AddTimer(0.01, function()
+      -- line: [925, 929] id: 45
+      if not CommonUtils:IfExistSystemGuideUI(r0_44) then
+        r0_44.List_Jump:SetFocus()
       end
     end)
   end
 end
-function r2_0.Close(r0_44)
-  -- line: [919, 932] id: 44
-  if r0_44.VideoPlayer then
-    r0_44:StopVideoTop()
-    r0_44:StopVideoBG()
+function r2_0.Close(r0_46)
+  -- line: [933, 946] id: 46
+  if r0_46.VideoPlayer then
+    r0_46:StopVideoTop()
+    r0_46:StopVideoBG()
   end
-  r0_44.GameInputModeSubsystem:SetNavigateWidgetOpacity(1)
-  if r0_44.CloseCallBack then
-    r0_44.CloseCallBack(r0_44.ClsoeCallBackObj)
+  r0_46.GameInputModeSubsystem:SetNavigateWidgetOpacity(1)
+  if r0_46.CloseCallBack then
+    r0_46.CloseCallBack(r0_46.ClsoeCallBackObj)
   end
-  r0_44:ClearSubTabReddot()
-  r0_44:RemoveTabReddotListen()
-  r0_44.Super.Close(r0_44)
+  r0_46:ClearSubTabReddot()
+  r0_46:RemoveTabReddotListen()
+  r0_46.Super.Close(r0_46)
 end
-function r2_0.OnAnimationFinished(r0_45, r1_45)
-  -- line: [934, 947] id: 45
-  if r1_45 == r0_45.Out then
-    r0_45:BlockAllUIInput(true)
-    r0_45:Close()
-  elseif r1_45 == r0_45.In then
-    r0_45:BlockAllUIInput(false)
-    if r0_45.SelectShopItemId then
-      r0_45:AddTimer(0.1, function()
-        -- line: [941, 944] id: 46
-        r0_45:ShowItemDetail()
-        r0_45.SelectShopItemId = nil
+function r2_0.OnAnimationFinished(r0_47, r1_47)
+  -- line: [948, 961] id: 47
+  if r1_47 == r0_47.Out then
+    r0_47:BlockAllUIInput(true)
+    r0_47:Close()
+  elseif r1_47 == r0_47.In then
+    r0_47:BlockAllUIInput(false)
+    if r0_47.SelectShopItemId then
+      r0_47:AddTimer(0.1, function()
+        -- line: [955, 958] id: 48
+        r0_47:ShowItemDetail()
+        r0_47.SelectShopItemId = nil
       end, false, 0, "OpenShopItemDialog", true)
     end
   end
 end
-function r2_0.Destruct(r0_47)
-  -- line: [949, 967] id: 47
-  local r1_47 = UGameplayStatics.GetPlayerCharacter(r0_47, 0)
-  if r1_47 then
-    r1_47:SetCanInteractiveTrigger(true)
+function r2_0.Destruct(r0_49)
+  -- line: [963, 981] id: 49
+  local r1_49 = UGameplayStatics.GetPlayerCharacter(r0_49, 0)
+  if r1_49 then
+    r1_49:SetCanInteractiveTrigger(true)
   end
-  AudioManager(r0_47):StopSystemUIBGM(r0_47.ShopType)
-  r0_47:HorizontalListViewResize_TearDown()
-  r0_47.Group_RecommendAnchor:ClearChildren()
-  r0_47:CleanTimer()
-  r0_47.List_Item.OnCreateEmptyContent:Unbind()
-  r0_47.List_Jump.OnCreateEmptyContent:Unbind()
-  if r0_47.Btn_Shop_Visible and r0_47.Btn_Shop_Visible.Btn_Click then
-    r0_47.Btn_Shop_Visible.Btn_Click.OnClicked:Remove(r0_47, r0_47.HideUIExceptVideoAutoCallBack)
+  AudioManager(r0_49):StopSystemUIBGM(r0_49.ShopType)
+  r0_49:HorizontalListViewResize_TearDown()
+  r0_49.Group_RecommendAnchor:ClearChildren()
+  r0_49:CleanTimer()
+  r0_49.List_Item.OnCreateEmptyContent:Unbind()
+  r0_49.List_Jump.OnCreateEmptyContent:Unbind()
+  if r0_49.Btn_Shop_Visible and r0_49.Btn_Shop_Visible.Btn_Click then
+    r0_49.Btn_Shop_Visible.Btn_Click.OnClicked:Remove(r0_49, r0_49.HideUIExceptVideoAutoCallBack)
   end
   if GWorld.GameInstance then
     GWorld.GameInstance:SetHighFrequencyMemoryCheckGCEnabled(false, "ShopMain")
   end
-  r0_47.Super.Destruct(r0_47)
+  r0_49.Super.Destruct(r0_49)
 end
-function r2_0.OnGamePadSelect(r0_48, r1_48, r2_48)
-  -- line: [970, 976] id: 48
+function r2_0.OnGamePadSelect(r0_50, r1_50, r2_50)
+  -- line: [984, 990] id: 50
   if nil and not nil then
     goto label_7	-- block#1 is visited secondly
   end
 end
-function r2_0.OnPreviewKeyDown(r0_49, r1_49, r2_49)
-  -- line: [978, 1050] id: 49
-  local r3_49 = UE4.UKismetInputLibrary.GetKey(r2_49)
-  local r4_49 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_49)
-  if UKismetInputLibrary.InputEvent_IsRepeat(UWidgetBlueprintLibrary.GetInputEventFromKeyEvent(r2_49)) then
+function r2_0.OnPreviewKeyDown(r0_51, r1_51, r2_51)
+  -- line: [992, 1064] id: 51
+  local r3_51 = UE4.UKismetInputLibrary.GetKey(r2_51)
+  local r4_51 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_51)
+  if UKismetInputLibrary.InputEvent_IsRepeat(UWidgetBlueprintLibrary.GetInputEventFromKeyEvent(r2_51)) then
     return UWidgetBlueprintLibrary.UnHandled()
   end
-  if r0_49:IsAllowedToShowHideUI() then
-    if r4_49 == "U" or r4_49 == Const.GamepadFaceButtonLeft then
-      r0_49:HideUIExceptVideoAutoCallBack()
+  if r0_51:IsAllowedToShowHideUI() then
+    if r4_51 == "U" or r4_51 == Const.GamepadFaceButtonLeft then
+      r0_51:HideUIExceptVideoAutoCallBack()
       return UWidgetBlueprintLibrary.Handled()
     end
-    if r0_49.bHideUIExceptVideo then
-      r0_49:HideUIExceptVideo(false)
+    if r0_51.bHideUIExceptVideo then
+      r0_51:HideUIExceptVideo(false)
       return UWidgetBlueprintLibrary.Handled()
     end
   end
-  local r7_49 = false
-  if r0_49.ShowSwitchBanner and not r0_49.FocusOnResourceBar then
-    if r4_49 == UIConst.GamePadKey.DPadRight then
-      r0_49.Shop_RecommendBanner:SwitchBannerItem(nil, true)
-    elseif r4_49 == UIConst.GamePadKey.DPadLeft then
-      r0_49.Shop_RecommendBanner:SwitchBannerItem(nil, false)
+  local r7_51 = false
+  if r0_51.ShowSwitchBanner and not r0_51.FocusOnResourceBar then
+    if r4_51 == UIConst.GamePadKey.DPadRight then
+      r0_51.Shop_RecommendBanner:SwitchBannerItem(nil, true)
+    elseif r4_51 == UIConst.GamePadKey.DPadLeft then
+      r0_51.Shop_RecommendBanner:SwitchBannerItem(nil, false)
     end
   end
-  if r4_49 == "Gamepad_FaceButton_Bottom" and r0_49.IsBannerPage and r0_49.BannerMap and r0_49.BannerMap[r0_49.CurrentPageIndex] then
-    r0_49.BannerMap[r0_49.CurrentPageIndex]:OnGoToInterface()
-    r7_49 = true
+  if r4_51 == "Gamepad_FaceButton_Bottom" and r0_51.IsBannerPage and r0_51.BannerMap and r0_51.BannerMap[r0_51.CurrentPageIndex] then
+    r0_51.BannerMap[r0_51.CurrentPageIndex]:OnGoToInterface()
+    r7_51 = true
   end
-  if r4_49 == "SpaceBar" and r0_49.IsBannerPage and not r0_49.bPlayVideoTop then
-    local r9_49 = r0_49.BannerBpMap[DataMgr.ShopBannerTab[r0_49.SelectBannerId].Bp]
-    if r9_49 and r9_49.OnGoToInterface then
-      r9_49:OnGoToInterface()
-      r7_49 = true
+  if r4_51 == "SpaceBar" and r0_51.IsBannerPage and not r0_51.bPlayVideoTop then
+    local r9_51 = r0_51.BannerBpMap[DataMgr.ShopBannerTab[r0_51.SelectBannerId].Bp]
+    if r9_51 and r9_51.OnGoToInterface then
+      r9_51:OnGoToInterface()
+      r7_51 = true
     end
   end
-  if r0_49.TabType == "Banner" and r0_49.SelectBannerId and r0_49.BannerIdMap and type(r0_49.BannerIdMap) == "table" then
-    local r8_49 = r0_49.BannerIdMap[r0_49.SelectBannerId]
-    if r8_49 and r8_49.HandlePreviewKeyDown and not r7_49 then
-      r7_49 = r8_49:HandlePreviewKeyDown(r3_49, r4_49)
+  if r0_51.TabType == "Banner" and r0_51.SelectBannerId and r0_51.BannerIdMap and type(r0_51.BannerIdMap) == "table" then
+    local r8_51 = r0_51.BannerIdMap[r0_51.SelectBannerId]
+    if r8_51 and r8_51.HandlePreviewKeyDown and not r7_51 then
+      r7_51 = r8_51:HandlePreviewKeyDown(r3_51, r4_51)
     end
   end
-  if r7_49 then
+  if r7_51 then
     return UE4.UWidgetBlueprintLibrary.Handled()
   end
   return UE4.UWidgetBlueprintLibrary.Unhandled()
 end
-function r2_0.OnGamePadDown(r0_50, r1_50)
-  -- line: [1052, 1070] id: 50
-  local r2_50 = false
-  if r1_50 == "Gamepad_LeftTrigger" or r1_50 == "Gamepad_RightTrigger" then
-    if not r0_50.IsBannerPage and r0_50.Common_Toggle_TabGroup_PC then
-      r2_50 = r0_50.Common_Toggle_TabGroup_PC:Handle_KeyEventOnGamePad(r1_50)
+function r2_0.OnGamePadDown(r0_52, r1_52)
+  -- line: [1066, 1084] id: 52
+  local r2_52 = false
+  if r1_52 == "Gamepad_LeftTrigger" or r1_52 == "Gamepad_RightTrigger" then
+    if not r0_52.IsBannerPage and r0_52.Common_Toggle_TabGroup_PC then
+      r2_52 = r0_52.Common_Toggle_TabGroup_PC:Handle_KeyEventOnGamePad(r1_52)
     end
-  elseif r1_50 == "Gamepad_FaceButton_Right" then
-    if not UIManager(r0_50):GetUIObj("CommonDialog") then
-      r0_50:CloseSelf()
+  elseif r1_52 == "Gamepad_FaceButton_Right" then
+    if not UIManager(r0_52):GetUIObj("CommonDialog") then
+      r0_52:CloseSelf()
     end
-    r2_50 = true
-  elseif r1_50 == "Gamepad_RightShoulder" or r1_50 == "Gamepad_LeftShoulder" then
-    r2_50 = r0_50.ShopTab:Handle_KeyEventOnGamePad(r1_50)
+    r2_52 = true
+  elseif r1_52 == "Gamepad_RightShoulder" or r1_52 == "Gamepad_LeftShoulder" then
+    r2_52 = r0_52.ShopTab:Handle_KeyEventOnGamePad(r1_52)
   else
-    r2_50 = r0_50.Common_Tab:Handle_KeyEventOnGamePad(r1_50)
+    r2_52 = r0_52.Common_Tab:Handle_KeyEventOnGamePad(r1_52)
   end
-  return r2_50
+  return r2_52
 end
-function r2_0.OnUpdateUIStyleByInputTypeChange(r0_51, r1_51, r2_51)
-  -- line: [1072, 1106] id: 51
-  if r1_51 == ECommonInputType.Touch then
+function r2_0.OnUpdateUIStyleByInputTypeChange(r0_53, r1_53, r2_53)
+  -- line: [1086, 1120] id: 53
+  if r1_53 == ECommonInputType.Touch then
     return 
   end
-  if r1_51 == ECommonInputType.Gamepad then
-    r0_51:InitGamepadView()
+  if r1_53 == ECommonInputType.Gamepad then
+    r0_53:InitGamepadView()
   else
-    r0_51:InitKeyboardView()
+    r0_53:InitKeyboardView()
   end
-  r0_51:UpdateSwitchBannerGamePadKey()
-  if r0_51.BannerIdMap then
-    for r7_51, r8_51 in pairs(r0_51.BannerIdMap) do
-      if r8_51 and r8_51.RefreshOpInfoByInputDevice then
-        r8_51:RefreshOpInfoByInputDevice(r1_51, r2_51)
+  r0_53:UpdateSwitchBannerGamePadKey()
+  if r0_53.BannerIdMap then
+    for r7_53, r8_53 in pairs(r0_53.BannerIdMap) do
+      if r8_53 and r8_53.RefreshOpInfoByInputDevice then
+        r8_53:RefreshOpInfoByInputDevice(r1_53, r2_53)
       end
     end
-    -- close: r3_51
+    -- close: r3_53
   end
-  if r0_51.IsJumpShopPage and r0_51.List_Jump and r1_51 == ECommonInputType.Gamepad and (r0_51:HasAnyFocus() or r0_51:HasFocusedDescendants()) and not CommonUtils:IfExistSystemGuideUI(r0_51) then
-    r0_51.List_Jump:SetFocus()
-  elseif r0_51.IsBannerPage and r1_51 == ECommonInputType.Gamepad and (r0_51:HasAnyFocus() or r0_51:HasFocusedDescendants()) and not CommonUtils:IfExistSystemGuideUI(r0_51) then
-    r0_51.ScrollBox_Recommend:SetFocus()
+  if r0_53.IsJumpShopPage and r0_53.List_Jump and r1_53 == ECommonInputType.Gamepad and (r0_53:HasAnyFocus() or r0_53:HasFocusedDescendants()) and not CommonUtils:IfExistSystemGuideUI(r0_53) then
+    r0_53.List_Jump:SetFocus()
+  elseif r0_53.IsBannerPage and r1_53 == ECommonInputType.Gamepad and (r0_53:HasAnyFocus() or r0_53:HasFocusedDescendants()) and not CommonUtils:IfExistSystemGuideUI(r0_53) then
+    r0_53.ScrollBox_Recommend:SetFocus()
   end
-  r0_51:UpdateVideoKeyInfo(r1_51, r2_51)
+  r0_53:UpdateVideoKeyInfo(r1_53, r2_53)
 end
-function r2_0.InitGamepadView(r0_52)
-  -- line: [1108, 1118] id: 52
-  r0_52.CheckBox_Own.Com_KeyImg:SetVisibility(ESlateVisibility.Visible)
-  r0_52.CheckBox_Own.Com_KeyImg:CreateCommonKey({
+function r2_0.InitGamepadView(r0_54)
+  -- line: [1122, 1132] id: 54
+  r0_54.CheckBox_Own.Com_KeyImg:SetVisibility(ESlateVisibility.Visible)
+  r0_54.CheckBox_Own.Com_KeyImg:CreateCommonKey({
     KeyInfoList = {
       {
         Type = "Img",
@@ -1022,38 +1036,38 @@ function r2_0.InitGamepadView(r0_52)
     },
   })
 end
-function r2_0.InitKeyboardView(r0_53)
-  -- line: [1120, 1122] id: 53
-  r0_53.CheckBox_Own.Com_KeyImg:SetVisibility(ESlateVisibility.Collapsed)
+function r2_0.InitKeyboardView(r0_55)
+  -- line: [1134, 1136] id: 55
+  r0_55.CheckBox_Own.Com_KeyImg:SetVisibility(ESlateVisibility.Collapsed)
 end
-function r2_0.OnSpaceBarDown(r0_54)
-  -- line: [1124, 1131] id: 54
-  if r0_54.IsBannerPage and r0_54.BannerIdMap and r0_54.SelectBannerId then
-    local r1_54 = r0_54.BannerIdMap[r0_54.SelectBannerId]
-    if r1_54.OnPCKeyDown then
-      r1_54:OnPCKeyDown("SpaceBar")
+function r2_0.OnSpaceBarDown(r0_56)
+  -- line: [1138, 1145] id: 56
+  if r0_56.IsBannerPage and r0_56.BannerIdMap and r0_56.SelectBannerId then
+    local r1_56 = r0_56.BannerIdMap[r0_56.SelectBannerId]
+    if r1_56.OnPCKeyDown then
+      r1_56:OnPCKeyDown("SpaceBar")
     end
   end
 end
-function r2_0.UpdateCommonTabInfo(r0_55, r1_55)
-  -- line: [1133, 1220] id: 55
-  if not r0_55.SelectBannerId or not r0_55.Common_Tab or not r0_55.Common_Tab.UpdateBottomKeyInfo then
+function r2_0.UpdateCommonTabInfo(r0_57, r1_57)
+  -- line: [1147, 1234] id: 57
+  if not r0_57.SelectBannerId or not r0_57.Common_Tab or not r0_57.Common_Tab.UpdateBottomKeyInfo then
     return 
   end
-  if r1_55 and next(r1_55) then
-    r0_55.Common_Tab:UpdateBottomKeyInfo(r1_55)
+  if r1_57 and next(r1_57) then
+    r0_57.Common_Tab:UpdateBottomKeyInfo(r1_57)
     return 
   end
-  local r2_55 = {}
-  local r3_55 = DataMgr.ShopBannerTab[r0_55.SelectBannerId]
-  if r3_55 and r3_55.Bp and r3_55.Bp == "WBP_Shop_Recommend_WeaponSkin" then
-    r2_55 = {
+  local r2_57 = {}
+  local r3_57 = DataMgr.ShopBannerTab[r0_57.SelectBannerId]
+  if r3_57 and r3_57.Bp and r3_57.Bp == "WBP_Shop_Recommend_WeaponSkin" then
+    r2_57 = {
       {
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "X",
-            Owner = r0_55,
+            Owner = r0_57,
           }
         },
         Desc = GText("UI_CTL_SkinPreview"),
@@ -1064,8 +1078,8 @@ function r2_0.UpdateCommonTabInfo(r0_55, r1_55)
           {
             Type = "Text",
             Text = "SpaceBar",
-            ClickCallback = r0_55.OnSpaceBarDown,
-            Owner = r0_55,
+            ClickCallback = r0_57.OnSpaceBarDown,
+            Owner = r0_57,
           }
         },
         Desc = GText("UI_SHOP_PURCHASE"),
@@ -1076,29 +1090,29 @@ function r2_0.UpdateCommonTabInfo(r0_55, r1_55)
           {
             Type = "Text",
             Text = "Esc",
-            ClickCallback = r0_55.CloseSelf,
-            Owner = r0_55,
+            ClickCallback = r0_57.CloseSelf,
+            Owner = r0_57,
           }
         },
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "B",
-            ClickCallback = r0_55.CloseSelf,
-            Owner = r0_55,
+            ClickCallback = r0_57.CloseSelf,
+            Owner = r0_57,
           }
         },
         Desc = GText("UI_BACK"),
       }
     }
-  elseif r3_55 and r3_55.Bp and r3_55.Bp == "WBP_Shop_Recommend_Gift4_1" then
-    r2_55 = {
+  elseif r3_57 and r3_57.Bp and r3_57.Bp == "WBP_Shop_Recommend_Gift4_1" then
+    r2_57 = {
       {
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "X",
-            Owner = r0_55,
+            Owner = r0_57,
           }
         },
         Desc = GText("UI_CTL_SkinPreview"),
@@ -1109,8 +1123,8 @@ function r2_0.UpdateCommonTabInfo(r0_55, r1_55)
           {
             Type = "Text",
             Text = "SpaceBar",
-            Owner = r0_55.BannerBpMap[r3_55.Bp],
-            ClickCallback = r0_55.BannerBpMap[r3_55.Bp].OnGoToInterface,
+            Owner = r0_57.BannerBpMap[r3_57.Bp],
+            ClickCallback = r0_57.BannerBpMap[r3_57.Bp].OnGoToInterface,
           }
         },
         Desc = GText("UI_SHOP_PURCHASE"),
@@ -1121,36 +1135,36 @@ function r2_0.UpdateCommonTabInfo(r0_55, r1_55)
           {
             Type = "Text",
             Text = "Esc",
-            ClickCallback = r0_55.CloseSelf,
-            Owner = r0_55,
+            ClickCallback = r0_57.CloseSelf,
+            Owner = r0_57,
           }
         },
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "B",
-            Owner = r0_55,
+            Owner = r0_57,
           }
         },
         Desc = GText("UI_BACK"),
       }
     }
-  elseif r3_55 and r3_55.Bp and r3_55.Bp == "WBP_Shop_Recommend_AvatarSkin" then
-    r2_55 = {
+  elseif r3_57 and r3_57.Bp and r3_57.Bp == "WBP_Shop_Recommend_AvatarSkin" then
+    r2_57 = {
       {
         KeyInfoList = {
           {
             Type = "Text",
             Text = "Tab",
-            Owner = r0_55,
-            ClickCallback = r0_55.HideUIExceptVideoAutoCallBack,
+            Owner = r0_57,
+            ClickCallback = r0_57.HideUIExceptVideoAutoCallBack,
           }
         },
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "LS",
-            Owner = r0_55,
+            Owner = r0_57,
           }
         },
         Desc = GText("UI_Dye_HideUI"),
@@ -1161,8 +1175,8 @@ function r2_0.UpdateCommonTabInfo(r0_55, r1_55)
           {
             Type = "Text",
             Text = "SpaceBar",
-            Owner = r0_55,
-            ClickCallback = r0_55.OnSpaceBarDown,
+            Owner = r0_57,
+            ClickCallback = r0_57.OnSpaceBarDown,
           }
         },
         Desc = GText("UI_Banner_SkinGacha_Goto"),
@@ -1173,7 +1187,7 @@ function r2_0.UpdateCommonTabInfo(r0_55, r1_55)
           {
             Type = "Img",
             ImgShortPath = "X",
-            Owner = r0_55,
+            Owner = r0_57,
           }
         },
         Desc = GText("UI_CTL_SkinPreview"),
@@ -1184,30 +1198,30 @@ function r2_0.UpdateCommonTabInfo(r0_55, r1_55)
           {
             Type = "Text",
             Text = "Escape",
-            ClickCallback = r0_55.CloseSelf,
-            Owner = r0_55,
+            ClickCallback = r0_57.CloseSelf,
+            Owner = r0_57,
           }
         },
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "B",
-            Owner = r0_55,
+            Owner = r0_57,
           }
         },
         Desc = GText("UI_BACK"),
         bLongPress = false,
       }
     }
-  elseif r3_55 and r3_55.Bp and r3_55.Bp == "WBP_Shop_Banner_MonthCard" then
-    r2_55 = {
+  elseif r3_57 and r3_57.Bp and r3_57.Bp == "WBP_Shop_Banner_MonthCard" then
+    r2_57 = {
       {
         KeyInfoList = {
           {
             Type = "Text",
             Text = "SpaceBar",
-            Owner = r0_55,
-            ClickCallback = r0_55.OnSpaceBarDown,
+            Owner = r0_57,
+            ClickCallback = r0_57.OnSpaceBarDown,
           }
         },
         Desc = GText("UI_SHOP_PURCHASE"),
@@ -1218,29 +1232,29 @@ function r2_0.UpdateCommonTabInfo(r0_55, r1_55)
           {
             Type = "Text",
             Text = "Escape",
-            ClickCallback = r0_55.CloseSelf,
-            Owner = r0_55,
+            ClickCallback = r0_57.CloseSelf,
+            Owner = r0_57,
           }
         },
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "B",
-            Owner = r0_55,
+            Owner = r0_57,
           }
         },
         Desc = GText("UI_BACK"),
         bLongPress = false,
       }
     }
-  elseif not r3_55 or not r3_55.Bp or r3_55.Bp ~= "WBP_Shop_Recommend_PageGift" then
-    r2_55 = {
+  elseif not r3_57 or not r3_57.Bp or r3_57.Bp ~= "WBP_Shop_Recommend_PageGift" then
+    r2_57 = {
       {
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "A",
-            Owner = r0_55,
+            Owner = r0_57,
           }
         },
         Desc = GText("UI_Tips_Ensure"),
@@ -1250,38 +1264,38 @@ function r2_0.UpdateCommonTabInfo(r0_55, r1_55)
           {
             Type = "Text",
             Text = "Esc",
-            ClickCallback = r0_55.CloseSelf,
-            Owner = r0_55,
+            ClickCallback = r0_57.CloseSelf,
+            Owner = r0_57,
           }
         },
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "B",
-            ClickCallback = r0_55.CloseSelf,
-            Owner = r0_55,
+            ClickCallback = r0_57.CloseSelf,
+            Owner = r0_57,
           }
         },
         Desc = GText("UI_BACK"),
       }
     }
   end
-  r0_55.Common_Tab:UpdateBottomKeyInfo(r2_55)
+  r0_57.Common_Tab:UpdateBottomKeyInfo(r2_57)
 end
-function r2_0.UpdateCommonTabInfoByReward(r0_56)
-  -- line: [1222, 1246] id: 56
-  if not r0_56.SelectBannerId then
+function r2_0.UpdateCommonTabInfoByReward(r0_58)
+  -- line: [1236, 1260] id: 58
+  if not r0_58.SelectBannerId then
     return 
   end
-  local r1_56 = DataMgr.ShopBannerTab[r0_56.SelectBannerId]
-  if r1_56 and r1_56.Bp and r1_56.Bp == "WBP_Shop_Recommend_Gift4_1" then
-    r0_56.Common_Tab:UpdateBottomKeyInfo({
+  local r1_58 = DataMgr.ShopBannerTab[r0_58.SelectBannerId]
+  if r1_58 and r1_58.Bp and r1_58.Bp == "WBP_Shop_Recommend_Gift4_1" then
+    r0_58.Common_Tab:UpdateBottomKeyInfo({
       {
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "A",
-            Owner = r0_56,
+            Owner = r0_58,
           }
         },
         Desc = GText("UI_Controller_Check"),
@@ -1292,29 +1306,29 @@ function r2_0.UpdateCommonTabInfoByReward(r0_56)
           {
             Type = "Text",
             Text = "Esc",
-            ClickCallback = r0_56.CloseSelf,
-            Owner = r0_56,
+            ClickCallback = r0_58.CloseSelf,
+            Owner = r0_58,
           }
         },
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "B",
-            ClickCallback = r0_56.CloseSelf,
-            Owner = r0_56,
+            ClickCallback = r0_58.CloseSelf,
+            Owner = r0_58,
           }
         },
         Desc = GText("UI_BACK"),
       }
     })
-  elseif r1_56 and r1_56.Bp and r1_56.Bp == "WBP_Shop_Recommend_PageGift" then
-    r0_56.Common_Tab:UpdateBottomKeyInfo({
+  elseif r1_58 and r1_58.Bp and r1_58.Bp == "WBP_Shop_Recommend_PageGift" then
+    r0_58.Common_Tab:UpdateBottomKeyInfo({
       {
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "A",
-            Owner = r0_56,
+            Owner = r0_58,
           }
         },
         Desc = GText("UI_Controller_CheckDetails"),
@@ -1325,16 +1339,16 @@ function r2_0.UpdateCommonTabInfoByReward(r0_56)
           {
             Type = "Text",
             Text = "Esc",
-            ClickCallback = r0_56.CloseSelf,
-            Owner = r0_56,
+            ClickCallback = r0_58.CloseSelf,
+            Owner = r0_58,
           }
         },
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "B",
-            ClickCallback = r0_56.CloseSelf,
-            Owner = r0_56,
+            ClickCallback = r0_58.CloseSelf,
+            Owner = r0_58,
           }
         },
         Desc = GText("UI_BACK"),
@@ -1342,456 +1356,456 @@ function r2_0.UpdateCommonTabInfoByReward(r0_56)
     })
   end
 end
-function r2_0.SetHasVideo(r0_57, r1_57)
-  -- line: [1249, 1251] id: 57
-  r0_57.bHasVideo = r1_57
+function r2_0.SetHasVideo(r0_59, r1_59)
+  -- line: [1263, 1265] id: 59
+  r0_59.bHasVideo = r1_59
 end
-function r2_0.IsHasVideo(r0_58)
-  -- line: [1254, 1256] id: 58
-  return r0_58.bHasVideo
+function r2_0.IsHasVideo(r0_60)
+  -- line: [1268, 1270] id: 60
+  return r0_60.bHasVideo
 end
-function r2_0.SetAllowedToShowHideUI(r0_59, r1_59)
-  -- line: [1259, 1270] id: 59
-  r0_59.bAllowedToShowHideUI = r1_59
-  if r0_59.Btn_Shop_Visible then
-    if r1_59 then
-      r0_59.Btn_Shop_Visible:SetVisibility(ESlateVisibility.Visible)
+function r2_0.SetAllowedToShowHideUI(r0_61, r1_61)
+  -- line: [1273, 1284] id: 61
+  r0_61.bAllowedToShowHideUI = r1_61
+  if r0_61.Btn_Shop_Visible then
+    if r1_61 then
+      r0_61.Btn_Shop_Visible:SetVisibility(ESlateVisibility.Visible)
     else
-      r0_59.Btn_Shop_Visible:SetVisibility(ESlateVisibility.Collapsed)
+      r0_61.Btn_Shop_Visible:SetVisibility(ESlateVisibility.Collapsed)
     end
   end
 end
-function r2_0.SetShowModel(r0_60, r1_60)
-  -- line: [1272, 1274] id: 60
-  r0_60.bShowModel = r1_60
+function r2_0.SetShowModel(r0_62, r1_62)
+  -- line: [1286, 1288] id: 62
+  r0_62.bShowModel = r1_62
 end
-function r2_0.IsShowModel(r0_61)
-  -- line: [1276, 1278] id: 61
-  return r0_61.bShowModel
+function r2_0.IsShowModel(r0_63)
+  -- line: [1290, 1292] id: 63
+  return r0_63.bShowModel
 end
-function r2_0.SetReplayGestureVisible(r0_62, r1_62)
-  -- line: [1280, 1289] id: 62
-  if r0_62.Btn_Shop_Refresh then
-    if r1_62 then
-      r0_62.Btn_Shop_Refresh:SetVisibility(ESlateVisibility.Visible)
+function r2_0.SetReplayGestureVisible(r0_64, r1_64)
+  -- line: [1294, 1303] id: 64
+  if r0_64.Btn_Shop_Refresh then
+    if r1_64 then
+      r0_64.Btn_Shop_Refresh:SetVisibility(ESlateVisibility.Visible)
     else
-      r0_62.Btn_Shop_Refresh:SetVisibility(ESlateVisibility.Collapsed)
+      r0_64.Btn_Shop_Refresh:SetVisibility(ESlateVisibility.Collapsed)
     end
   end
 end
-function r2_0.IsAllowedToShowHideUI(r0_63)
-  -- line: [1292, 1294] id: 63
-  return r0_63.bAllowedToShowHideUI
+function r2_0.IsAllowedToShowHideUI(r0_65)
+  -- line: [1306, 1308] id: 65
+  return r0_65.bAllowedToShowHideUI
 end
-function r2_0.OnKeyDown(r0_64, r1_64, r2_64)
-  -- line: [1296, 1319] id: 64
-  local r3_64 = UE4.UKismetInputLibrary.GetKey(r2_64)
-  local r4_64 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_64)
-  if r0_64.bPlayVideoTop and (r4_64 == "Escape" or r4_64 == Const.GamepadFaceButtonRight) then
+function r2_0.OnKeyDown(r0_66, r1_66, r2_66)
+  -- line: [1310, 1333] id: 66
+  local r3_66 = UE4.UKismetInputLibrary.GetKey(r2_66)
+  local r4_66 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_66)
+  if r0_66.bPlayVideoTop and (r4_66 == "Escape" or r4_66 == Const.GamepadFaceButtonRight) then
     return UWidgetBlueprintLibrary.Handled()
   end
-  if r0_64.TabType == "Banner" and r0_64.SelectBannerId and r0_64.BannerIdMap and type(r0_64.BannerIdMap) == "table" then
-    local r5_64 = r0_64.BannerIdMap[r0_64.SelectBannerId]
-    if r5_64 and r5_64.HandleKeyDown and r5_64:HandleKeyDown(r3_64, r4_64) then
+  if r0_66.TabType == "Banner" and r0_66.SelectBannerId and r0_66.BannerIdMap and type(r0_66.BannerIdMap) == "table" then
+    local r5_66 = r0_66.BannerIdMap[r0_66.SelectBannerId]
+    if r5_66 and r5_66.HandleKeyDown and r5_66:HandleKeyDown(r3_66, r4_66) then
       return UWidgetBlueprintLibrary.Handled()
     end
   end
-  return r2_0.Super.OnKeyDown(r0_64, r1_64, r2_64)
+  return r2_0.Super.OnKeyDown(r0_66, r1_66, r2_66)
 end
-function r2_0.OnKeyUp(r0_65, r1_65, r2_65)
-  -- line: [1321, 1332] id: 65
-  local r4_65 = UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_65))
-  if r0_65.Key_Video and r0_65.bPlayVideoTop and (r4_65 == "SpaceBar" or r4_65 == Const.GamepadFaceButtonDown) then
-    r0_65.Key_Video.Panel_Key:GetChildAt(0):OnButtonReleased()
+function r2_0.OnKeyUp(r0_67, r1_67, r2_67)
+  -- line: [1335, 1346] id: 67
+  local r4_67 = UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_67))
+  if r0_67.Key_Video and r0_67.bPlayVideoTop and (r4_67 == "SpaceBar" or r4_67 == Const.GamepadFaceButtonDown) then
+    r0_67.Key_Video.Panel_Key:GetChildAt(0):OnButtonReleased()
     return UWidgetBlueprintLibrary.Handled()
   end
-  return r2_0.Super.OnKeyUp(r0_65, r1_65, r2_65)
+  return r2_0.Super.OnKeyUp(r0_67, r1_67, r2_67)
 end
-function r2_0.On_Image_Click_MouseButtonDown(r0_66, r1_66, r2_66)
-  -- line: [1336, 1338] id: 66
-  return r0_66:OnPointerDown(r1_66, r2_66)
+function r2_0.On_Image_Click_MouseButtonDown(r0_68, r1_68, r2_68)
+  -- line: [1350, 1352] id: 68
+  return r0_68:OnPointerDown(r1_68, r2_68)
 end
-function r2_0.OnMouseWheel(r0_67, r1_67, r2_67)
-  -- line: [1340, 1342] id: 67
-  return r0_67:OnMouseWheelScroll(r1_67, r2_67)
+function r2_0.OnMouseWheel(r0_69, r1_69, r2_69)
+  -- line: [1354, 1356] id: 69
+  return r0_69:OnMouseWheelScroll(r1_69, r2_69)
 end
-function r2_0.OnMouseButtonUp(r0_68, r1_68, r2_68)
-  -- line: [1344, 1346] id: 68
-  return r0_68:OnPointerUp(r1_68, r2_68)
+function r2_0.OnMouseButtonUp(r0_70, r1_70, r2_70)
+  -- line: [1358, 1360] id: 70
+  return r0_70:OnPointerUp(r1_70, r2_70)
 end
-function r2_0.OnMouseMove(r0_69, r1_69, r2_69)
-  -- line: [1349, 1377] id: 69
-  if r0_69.bPlayVideoTop and r0_69:IsAllowedToShowHideUI() and r0_69.bHideUIExceptVideo then
+function r2_0.OnMouseMove(r0_71, r1_71, r2_71)
+  -- line: [1363, 1391] id: 71
+  if r0_71.bPlayVideoTop and r0_71:IsAllowedToShowHideUI() and r0_71.bHideUIExceptVideo then
     DebugPrint("WBP_ShopMain_C:OnMouseMove")
-    local r3_69 = 10
-    local r4_69 = r0_69.LastMousePos
-    if not r4_69 then
-      r4_69 = {}
-      r4_69.X = nil
-      r4_69.Y = nil
+    local r3_71 = 10
+    local r4_71 = r0_71.LastMousePos
+    if not r4_71 then
+      r4_71 = {}
+      r4_71.X = nil
+      r4_71.Y = nil
     end
-    r0_69.LastMousePos = r4_69
-    r4_69 = UWidgetLayoutLibrary.GetMousePositionOnViewport(r0_69)
-    local r5_69 = r0_69.LastMousePos
-    local r6_69 = false
-    if r5_69.X and r5_69.Y then
-      local r7_69 = r4_69.X - r5_69.X
-      local r8_69 = r4_69.Y - r5_69.Y
-      local r9_69 = math.sqrt(r7_69 * r7_69 + r8_69 * r8_69)
-      if r3_69 <= r9_69 then
-        DebugPrint(string.format("WBP_ShopMain_C:OnMouseMove, Dist: %f, ShouldHandle = true", r9_69))
-        r6_69 = true
+    r0_71.LastMousePos = r4_71
+    r4_71 = UWidgetLayoutLibrary.GetMousePositionOnViewport(r0_71)
+    local r5_71 = r0_71.LastMousePos
+    local r6_71 = false
+    if r5_71.X and r5_71.Y then
+      local r7_71 = r4_71.X - r5_71.X
+      local r8_71 = r4_71.Y - r5_71.Y
+      local r9_71 = math.sqrt(r7_71 * r7_71 + r8_71 * r8_71)
+      if r3_71 <= r9_71 then
+        DebugPrint(string.format("WBP_ShopMain_C:OnMouseMove, Dist: %f, ShouldHandle = true", r9_71))
+        r6_71 = true
       end
     end
-    r0_69.LastMousePos.X = r4_69.X
-    r0_69.LastMousePos.Y = r4_69.Y
-    if r6_69 then
-      r0_69:HideUIExceptVideo(false)
+    r0_71.LastMousePos.X = r4_71.X
+    r0_71.LastMousePos.Y = r4_71.Y
+    if r6_71 then
+      r0_71:HideUIExceptVideo(false)
       return UWidgetBlueprintLibrary.Handled()
     end
   else
-    return r0_69:OnPointerMove(r1_69, r2_69)
+    return r0_71:OnPointerMove(r1_71, r2_71)
   end
 end
-function r2_0.OnTouchStarted(r0_70, r1_70, r2_70)
-  -- line: [1379, 1381] id: 70
-  return r0_70:OnSinglePointerDown(r1_70, r2_70)
+function r2_0.OnTouchStarted(r0_72, r1_72, r2_72)
+  -- line: [1393, 1395] id: 72
+  return r0_72:OnSinglePointerDown(r1_72, r2_72)
 end
-function r2_0.OnTouchEnded(r0_71, r1_71, r2_71)
-  -- line: [1383, 1385] id: 71
-  return r0_71:OnPointerUp(r1_71, r2_71)
+function r2_0.OnTouchEnded(r0_73, r1_73, r2_73)
+  -- line: [1397, 1399] id: 73
+  return r0_73:OnPointerUp(r1_73, r2_73)
 end
-function r2_0.OnTouchMoved(r0_72, r1_72, r2_72)
-  -- line: [1387, 1389] id: 72
-  return r0_72:OnPointerMove(r1_72, r2_72)
+function r2_0.OnTouchMoved(r0_74, r1_74, r2_74)
+  -- line: [1401, 1403] id: 74
+  return r0_74:OnPointerMove(r1_74, r2_74)
 end
-function r2_0.OnCameraScrollBackwardKeyDown(r0_73)
-  -- line: [1391, 1393] id: 73
-  r0_73:ScrollCamera(1)
+function r2_0.OnCameraScrollBackwardKeyDown(r0_75)
+  -- line: [1405, 1407] id: 75
+  r0_75:ScrollCamera(1)
 end
-function r2_0.OnCameraScrollForwardKeyDown(r0_74)
-  -- line: [1395, 1397] id: 74
-  r0_74:ScrollCamera(-1)
+function r2_0.OnCameraScrollForwardKeyDown(r0_76)
+  -- line: [1409, 1411] id: 76
+  r0_76:ScrollCamera(-1)
 end
-function r2_0.OnAnalogValueChanged(r0_75, r1_75, r2_75)
-  -- line: [1399, 1410] id: 75
-  if UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_75)) == "Gamepad_RightX" then
-    if r0_75.ActorController then
-      r0_75.ActorController:OnDragging({
-        X = UKismetInputLibrary.GetAnalogValue(r2_75) * 10,
+function r2_0.OnAnalogValueChanged(r0_77, r1_77, r2_77)
+  -- line: [1413, 1424] id: 77
+  if UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_77)) == "Gamepad_RightX" then
+    if r0_77.ActorController then
+      r0_77.ActorController:OnDragging({
+        X = UKismetInputLibrary.GetAnalogValue(r2_77) * 10,
       })
     end
     return UIUtils.Handled
   end
   return UIUtils.Unhandled
 end
-function r2_0.OnMouseCaptureLost(r0_76)
-  -- line: [1412, 1414] id: 76
-  r0_76:OnPointerCaptureLost()
+function r2_0.OnMouseCaptureLost(r0_78)
+  -- line: [1426, 1428] id: 78
+  r0_78:OnPointerCaptureLost()
 end
-function r2_0.OnBackgroundClicked(r0_77)
-  -- line: [1416, 1420] id: 77
-  if r0_77.bSelfHidden then
-    r0_77:OnHideUIKeyDown()
+function r2_0.OnBackgroundClicked(r0_79)
+  -- line: [1430, 1434] id: 79
+  if r0_79.bSelfHidden then
+    r0_79:OnHideUIKeyDown()
   end
 end
-function r2_0.InitVideoPlayer(r0_78, r1_78, r2_78, r3_78)
-  -- line: [1425, 1436] id: 78
-  r0_78._OriginVisibilityMap = r0_78._OriginVisibilityMap and {}
-  r0_78.bPlayVideoTop = false
-  r0_78.VideoPlayer:SetUrlByMediaSource(LoadObject(r1_78))
-  r0_78.DisplayType = r2_78
-  r0_78.DisplayId = r3_78
+function r2_0.InitVideoPlayer(r0_80, r1_80, r2_80, r3_80)
+  -- line: [1439, 1450] id: 80
+  r0_80._OriginVisibilityMap = r0_80._OriginVisibilityMap and {}
+  r0_80.bPlayVideoTop = false
+  r0_80.VideoPlayer:SetUrlByMediaSource(LoadObject(r1_80))
+  r0_80.DisplayType = r2_80
+  r0_80.DisplayId = r3_80
 end
-function r2_0.UpdateVideoKeyInfo(r0_79, r1_79, r2_79)
-  -- line: [1438, 1468] id: 79
-  if IsValid(r0_79.GameInputModeSubsystem) then
-    if not r1_79 then
-      r1_79 = r0_79.GameInputModeSubsystem:GetCurrentInputType()
+function r2_0.UpdateVideoKeyInfo(r0_81, r1_81, r2_81)
+  -- line: [1452, 1482] id: 81
+  if IsValid(r0_81.GameInputModeSubsystem) then
+    if not r1_81 then
+      r1_81 = r0_81.GameInputModeSubsystem:GetCurrentInputType()
     end
-    if not r2_79 then
-      r2_79 = r0_79.GameInputModeSubsystem:GetCurrentGamepadName()
+    if not r2_81 then
+      r2_81 = r0_81.GameInputModeSubsystem:GetCurrentGamepadName()
     end
   end
-  if not r0_79.Key_Video then
+  if not r0_81.Key_Video then
     return 
   end
 end
-function r2_0.SetSkipButton(r0_80)
-  -- line: [1471, 1487] id: 80
-  r0_80.VideoPlayer.Button_Skip:SetVisibility(UIConst.VisibilityOp.Collapsed)
-  if CommonUtils.GetDeviceTypeByPlatformName(r0_80) == "Mobile" and r0_80.Button_Skip then
-    r0_80.Button_Skip.Button_Area.OnClicked:Add(r0_80, r0_80.StopVideoTop)
-    r0_80.Button_Skip.Text_Function:SetText(GText("UI_TALK_SKIP_MOIILE"))
-  elseif CommonUtils.GetDeviceTypeByPlatformName(r0_80) == "PC" and r0_80.Key_Video then
-    r0_80:UpdateVideoKeyInfo()
+function r2_0.SetSkipButton(r0_82)
+  -- line: [1485, 1501] id: 82
+  r0_82.VideoPlayer.Button_Skip:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  if CommonUtils.GetDeviceTypeByPlatformName(r0_82) == "Mobile" and r0_82.Button_Skip then
+    r0_82.Button_Skip.Button_Area.OnClicked:Add(r0_82, r0_82.StopVideoTop)
+    r0_82.Button_Skip.Text_Function:SetText(GText("UI_TALK_SKIP_MOIILE"))
+  elseif CommonUtils.GetDeviceTypeByPlatformName(r0_82) == "PC" and r0_82.Key_Video then
+    r0_82:UpdateVideoKeyInfo()
   end
 end
-function r2_0.ShowSkipButton(r0_81, r1_81)
-  -- line: [1490, 1504] id: 81
-  local r2_81 = nil	-- notice: implicit variable refs by block#[5, 8]
-  if r1_81 then
-    r2_81 = UIConst.VisibilityOp.Visible
-    if not r2_81 then
+function r2_0.ShowSkipButton(r0_83, r1_83)
+  -- line: [1504, 1518] id: 83
+  local r2_83 = nil	-- notice: implicit variable refs by block#[5, 8]
+  if r1_83 then
+    r2_83 = UIConst.VisibilityOp.Visible
+    if not r2_83 then
       ::label_7::
-      r2_81 = UIConst.VisibilityOp.Collapsed
+      r2_83 = UIConst.VisibilityOp.Collapsed
     end
   else
     goto label_7	-- block#2 is visited secondly
   end
-  if CommonUtils.GetDeviceTypeByPlatformName(r0_81) == "Mobile" and r0_81.Button_Skip then
-    r0_81.Button_Skip:SetVisibility(r2_81)
-  elseif CommonUtils.GetDeviceTypeByPlatformName(r0_81) == "PC" and r0_81.Key_Video then
-    r0_81.Key_Video:SetVisibility(r2_81)
+  if CommonUtils.GetDeviceTypeByPlatformName(r0_83) == "Mobile" and r0_83.Button_Skip then
+    r0_83.Button_Skip:SetVisibility(r2_83)
+  elseif CommonUtils.GetDeviceTypeByPlatformName(r0_83) == "PC" and r0_83.Key_Video then
+    r0_83.Key_Video:SetVisibility(r2_83)
   end
 end
-function r2_0.HideUIExceptVideoAutoCallBack(r0_82)
-  -- line: [1507, 1511] id: 82
-  if r0_82:IsAllowedToShowHideUI() then
-    r0_82:HideUIExceptVideo(not r0_82.bHideUIExceptVideo, false)
+function r2_0.HideUIExceptVideoAutoCallBack(r0_84)
+  -- line: [1521, 1525] id: 84
+  if r0_84:IsAllowedToShowHideUI() then
+    r0_84:HideUIExceptVideo(not r0_84.bHideUIExceptVideo, false)
   end
 end
-function r2_0.HideUIExceptVideo(r0_83, r1_83, r2_83)
-  -- line: [1515, 1588] id: 83
+function r2_0.HideUIExceptVideo(r0_85, r1_85, r2_85)
+  -- line: [1529, 1602] id: 85
   DebugPrint("WBP_ShopMain_C HideUIExceptVideo")
-  if not r1_83 and r0_83.bPlayVideoTop then
-    r0_83:StopVideoTop()
+  if not r1_85 and r0_85.bPlayVideoTop then
+    r0_85:StopVideoTop()
   end
-  if not r2_83 and (r0_83:IsAnimationPlaying(r0_83.In_Info) or r0_83:IsAnimationPlaying(r0_83.Out_Info)) then
+  if not r2_85 and (r0_85:IsAnimationPlaying(r0_85.In_Info) or r0_85:IsAnimationPlaying(r0_85.Out_Info)) then
     return false
   end
-  if r1_83 == r0_83.bHideUIExceptVideo then
+  if r1_85 == r0_85.bHideUIExceptVideo then
     return true
   end
-  r0_83.bHideUIExceptVideo = r1_83
-  if r2_83 or r0_83.bHasHideUIManually then
-    r0_83.bHasHideUIManually = r1_83
-    for r7_83 = 0, r0_83.Root:GetChildrenCount() + -1, 1 do
-      local r8_83 = r0_83.Root:GetChildAt(r7_83)
-      if r8_83 ~= r0_83.Group_Video then
-        if r1_83 then
-          if r0_83._OriginVisibilityMap[r8_83] == nil then
-            r0_83._OriginVisibilityMap[r8_83] = r8_83:GetVisibility()
+  r0_85.bHideUIExceptVideo = r1_85
+  if r2_85 or r0_85.bHasHideUIManually then
+    r0_85.bHasHideUIManually = r1_85
+    for r7_85 = 0, r0_85.Root:GetChildrenCount() + -1, 1 do
+      local r8_85 = r0_85.Root:GetChildAt(r7_85)
+      if r8_85 ~= r0_85.Group_Video then
+        if r1_85 then
+          if r0_85._OriginVisibilityMap[r8_85] == nil then
+            r0_85._OriginVisibilityMap[r8_85] = r8_85:GetVisibility()
           end
-          r8_83:SetVisibility(ESlateVisibility.Hidden)
-        elseif r0_83._OriginVisibilityMap[r8_83] ~= nil then
-          r8_83:SetVisibility(r0_83._OriginVisibilityMap[r8_83])
+          r8_85:SetVisibility(ESlateVisibility.Hidden)
+        elseif r0_85._OriginVisibilityMap[r8_85] ~= nil then
+          r8_85:SetVisibility(r0_85._OriginVisibilityMap[r8_85])
         end
       end
     end
   end
-  if not r2_83 then
-    if r1_83 then
-      r0_83:PlayAnimation(r0_83.Out_Info)
-      r0_83:SetFocus()
+  if not r2_85 then
+    if r1_85 then
+      r0_85:PlayAnimation(r0_85.Out_Info)
+      r0_85:SetFocus()
     else
-      r0_83:PlayAnimation(r0_83.In_Info)
-      if not CommonUtils:IfExistSystemGuideUI(r0_83) and r0_83:HasAnyFocus() and r0_83.CurSubTabMap.TabType == "Banner" then
-        r0_83:AddTimer(0.05, function()
-          -- line: [1561, 1563] id: 84
-          r0_83:GamePadFocusToSelectBannerItem()
+      r0_85:PlayAnimation(r0_85.In_Info)
+      if not CommonUtils:IfExistSystemGuideUI(r0_85) and r0_85:HasAnyFocus() and r0_85.CurSubTabMap.TabType == "Banner" then
+        r0_85:AddTimer(0.05, function()
+          -- line: [1575, 1577] id: 86
+          r0_85:GamePadFocusToSelectBannerItem()
         end)
       end
     end
   end
-  if r1_83 then
-    r0_83.GameInputModeSubsystem:SetNavigateWidgetOpacity(0)
+  if r1_85 then
+    r0_85.GameInputModeSubsystem:SetNavigateWidgetOpacity(0)
   else
-    r0_83.GameInputModeSubsystem:SetNavigateWidgetOpacity(1)
+    r0_85.GameInputModeSubsystem:SetNavigateWidgetOpacity(1)
   end
-  local r3_83 = UWidgetLayoutLibrary.GetMousePositionOnViewport(r0_83)
-  r0_83.LastMousePos = {
-    X = r3_83.X,
-    Y = r3_83.Y,
+  local r3_85 = UWidgetLayoutLibrary.GetMousePositionOnViewport(r0_85)
+  r0_85.LastMousePos = {
+    X = r3_85.X,
+    Y = r3_85.Y,
   }
-  if r0_83.Shop_RecommendBanner then
-    if r1_83 or r0_83.ShowSwitchBanner then
-      r0_83.Shop_RecommendBanner:StopBannerTimer()
+  if r0_85.Shop_RecommendBanner then
+    if r1_85 or r0_85.ShowSwitchBanner then
+      r0_85.Shop_RecommendBanner:StopBannerTimer()
     else
-      r0_83.Shop_RecommendBanner:StartBannerTimer()
+      r0_85.Shop_RecommendBanner:StartBannerTimer()
     end
   end
   return true
 end
-function r2_0.HideCursor(r0_85)
-  -- line: [1590, 1599] id: 85
+function r2_0.HideCursor(r0_87)
+  -- line: [1604, 1613] id: 87
   if CommonUtils.GetDeviceTypeByPlatformName(GWorld.GameInstance) == "PC" then
     UGameInputModeSubsystem.GetGameInputModeSubsystem(GWorld.GameInstance):SetMouseCursorVisable(false)
   end
 end
-function r2_0.ShowCursor(r0_86)
-  -- line: [1601, 1610] id: 86
+function r2_0.ShowCursor(r0_88)
+  -- line: [1615, 1624] id: 88
   if CommonUtils.GetDeviceTypeByPlatformName(GWorld.GameInstance) == "PC" then
     UGameInputModeSubsystem.GetGameInputModeSubsystem(GWorld.GameInstance):SetMouseCursorVisable(true)
   end
 end
-function r2_0.PlayVideoTop(r0_87)
-  -- line: [1613, 1646] id: 87
+function r2_0.PlayVideoTop(r0_89)
+  -- line: [1627, 1660] id: 89
   DebugPrint("WBP_ShopMain_C PlayVideoTop")
-  if CommonUtils:IfExistSystemGuideUI(r0_87) then
-    r0_87:PlayVideoBG()
+  if CommonUtils:IfExistSystemGuideUI(r0_89) then
+    r0_89:PlayVideoBG()
     return 
   end
-  if r0_87.bPlayVideoTop then
+  if r0_89.bPlayVideoTop then
     return 
   end
-  r0_87:UpdateVideoKeyInfo()
-  r0_87.bPlayVideoTop = true
-  r0_87:HideUIExceptVideo(true, true)
-  r0_87.Group_Video:SetVisibility(UIConst.VisibilityOp.Visible)
-  r0_87.Group_Video:SetFocus()
-  r0_87.VideoPlayer.MediaPlayer.OnEndReached:Add(r0_87, r0_87.OnPlayVideoTopEnd)
-  r0_87:HideCursor()
-  r0_87.VideoPlayer:SetLooping(true)
-  r0_87.VideoPlayer:Play()
-  r0_87:StopOtherSound()
-  r0_87:PlayVideoSound()
+  r0_89:UpdateVideoKeyInfo()
+  r0_89.bPlayVideoTop = true
+  r0_89:HideUIExceptVideo(true, true)
+  r0_89.Group_Video:SetVisibility(UIConst.VisibilityOp.Visible)
+  r0_89.Group_Video:SetFocus()
+  r0_89.VideoPlayer.MediaPlayer.OnEndReached:Add(r0_89, r0_89.OnPlayVideoTopEnd)
+  r0_89:HideCursor()
+  r0_89.VideoPlayer:SetLooping(true)
+  r0_89.VideoPlayer:Play()
+  r0_89:StopOtherSound()
+  r0_89:PlayVideoSound()
 end
-function r2_0.StopOtherSound(r0_88)
-  -- line: [1649, 1651] id: 88
-  AudioManager(r0_88):PlayUISound(r0_88, "event:/ui/common/gacha_amb", "GachaAmb", nil)
+function r2_0.StopOtherSound(r0_90)
+  -- line: [1663, 1665] id: 90
+  AudioManager(r0_90):PlayUISound(r0_90, "event:/ui/common/gacha_amb", "GachaAmb", nil)
 end
-function r2_0.ResumeOtherSound(r0_89)
-  -- line: [1654, 1656] id: 89
-  AudioManager(r0_89):SetEventSoundParam(r0_89, "GachaAmb", {
+function r2_0.ResumeOtherSound(r0_91)
+  -- line: [1668, 1670] id: 91
+  AudioManager(r0_91):SetEventSoundParam(r0_91, "GachaAmb", {
     ToEnd = 1,
   })
 end
-function r2_0.PlayVideoSound(r0_90)
-  -- line: [1658, 1693] id: 90
-  if not r0_90.DisplayType or not r0_90.DisplayId then
+function r2_0.PlayVideoSound(r0_92)
+  -- line: [1672, 1707] id: 92
+  if not r0_92.DisplayType or not r0_92.DisplayId then
     DebugPrint("没有配置DisplayType或DisplayId，无法找到视频需要的声音")
     return 
   end
-  local r1_90 = nil
-  if r0_90.DisplayType == CommonConst.DataType.Skin then
-    local r2_90 = DataMgr.Skin[r0_90.DisplayId]
-    if not r2_90 then
+  local r1_92 = nil
+  if r0_92.DisplayType == CommonConst.DataType.Skin then
+    local r2_92 = DataMgr.Skin[r0_92.DisplayId]
+    if not r2_92 then
       DebugPrint("DisplayId对应的Skin配置不存在")
       return 
     end
-    r1_90 = r2_90.GetSoundPath
-  elseif r0_90.DisplayType == CommonConst.DataType.Resource then
-    local r2_90 = DataMgr.Resource[r0_90.DisplayId]
-    if not r2_90 then
+    r1_92 = r2_92.GetSoundPath
+  elseif r0_92.DisplayType == CommonConst.DataType.Resource then
+    local r2_92 = DataMgr.Resource[r0_92.DisplayId]
+    if not r2_92 then
       DebugPrint("DisplayId对应的Resource配置不存在")
       return 
     end
-    r1_90 = r2_90.GetSoundPath
-  elseif r0_90.DisplayType == CommonConst.DataType.Char then
-    local r3_90 = DataMgr.Char[r0_90.DisplayId].GUIPathVariable
-    if not r3_90 then
+    r1_92 = r2_92.GetSoundPath
+  elseif r0_92.DisplayType == CommonConst.DataType.Char then
+    local r3_92 = DataMgr.Char[r0_92.DisplayId].GUIPathVariable
+    if not r3_92 then
       DebugPrint("DisplayId对应的Char配置不存在GUIPathVariable")
       return 
     end
-    r1_90 = "event:/ui/char/gacha_show_" .. r3_90
+    r1_92 = "event:/ui/char/gacha_show_" .. r3_92
   end
-  if not r1_90 then
+  if not r1_92 then
     DebugPrint("DisplayType不是Skin、Resource、Char其中之一，无法找到声音")
     return 
   end
-  AudioManager(r0_90):PlayUISound(r0_90, r1_90, "VideoSound", nil)
+  AudioManager(r0_92):PlayUISound(r0_92, r1_92, "VideoSound", nil)
 end
-function r2_0.StopVideoSound(r0_91)
-  -- line: [1695, 1697] id: 91
-  AudioManager(r0_91):StopSound(r0_91, "VideoSound")
+function r2_0.StopVideoSound(r0_93)
+  -- line: [1709, 1711] id: 93
+  AudioManager(r0_93):StopSound(r0_93, "VideoSound")
 end
-function r2_0.OnPlayVideoTopEnd(r0_92)
-  -- line: [1700, 1702] id: 92
-  r0_92:StopVideoTop()
+function r2_0.OnPlayVideoTopEnd(r0_94)
+  -- line: [1714, 1716] id: 94
+  r0_94:StopVideoTop()
 end
-function r2_0.StopVideoTop(r0_93)
-  -- line: [1705, 1732] id: 93
+function r2_0.StopVideoTop(r0_95)
+  -- line: [1719, 1746] id: 95
   DebugPrint("WBP_ShopMain_C StopVideoTop")
-  if not r0_93.bPlayVideoTop then
+  if not r0_95.bPlayVideoTop then
     return 
   end
-  r0_93.bPlayVideoTop = false
-  r0_93:HideUIExceptVideo(false, false)
-  r0_93.VideoPlayer.MediaPlayer.OnEndReached:Remove(r0_93, r0_93.OnPlayVideoTopEnd)
-  r0_93:ShowCursor()
-  r0_93:ResumeOtherSound()
-  r0_93:StopVideoSound()
-  r0_93.bPlayVideoBG = true
-  r0_93:AddTimer(0.05, function()
-    -- line: [1729, 1731] id: 94
-    r0_93:GamePadFocusToSelectBannerItem()
+  r0_95.bPlayVideoTop = false
+  r0_95:HideUIExceptVideo(false, false)
+  r0_95.VideoPlayer.MediaPlayer.OnEndReached:Remove(r0_95, r0_95.OnPlayVideoTopEnd)
+  r0_95:ShowCursor()
+  r0_95:ResumeOtherSound()
+  r0_95:StopVideoSound()
+  r0_95.bPlayVideoBG = true
+  r0_95:AddTimer(0.05, function()
+    -- line: [1743, 1745] id: 96
+    r0_95:GamePadFocusToSelectBannerItem()
   end)
 end
-function r2_0.PlayVideoBG(r0_95)
-  -- line: [1735, 1751] id: 95
+function r2_0.PlayVideoBG(r0_97)
+  -- line: [1749, 1765] id: 97
   DebugPrint("WBP_ShopMain_C PlayVideoBG")
-  if r0_95.bPlayVideoBG then
+  if r0_97.bPlayVideoBG then
     return 
   end
-  r0_95.bPlayVideoBG = true
-  r0_95.Group_Video:SetVisibility(UIConst.VisibilityOp.Visible)
-  r0_95.Group_BG:SetVisibility(UIConst.VisibilityOp.Collapsed)
-  r0_95.VideoPlayer:SetLooping(true)
-  r0_95.VideoPlayer:Play()
+  r0_97.bPlayVideoBG = true
+  r0_97.Group_Video:SetVisibility(UIConst.VisibilityOp.Visible)
+  r0_97.Group_BG:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  r0_97.VideoPlayer:SetLooping(true)
+  r0_97.VideoPlayer:Play()
 end
-function r2_0.StopVideoBG(r0_96)
-  -- line: [1753, 1767] id: 96
+function r2_0.StopVideoBG(r0_98)
+  -- line: [1767, 1781] id: 98
   DebugPrint("WBP_ShopMain_C StopVideoBG")
-  if not r0_96.bPlayVideoBG then
+  if not r0_98.bPlayVideoBG then
     return 
   end
-  r0_96.bPlayVideoBG = false
-  r0_96.Group_Video:SetVisibility(UIConst.VisibilityOp.Collapsed)
-  r0_96.Group_BG:SetVisibility(UIConst.VisibilityOp.Visible)
-  r0_96.VideoPlayer:Stop()
+  r0_98.bPlayVideoBG = false
+  r0_98.Group_Video:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  r0_98.Group_BG:SetVisibility(UIConst.VisibilityOp.Visible)
+  r0_98.VideoPlayer:Stop()
 end
-function r2_0.GamePadFocusToSelectBannerItem(r0_97)
-  -- line: [1769, 1775] id: 97
-  local r1_97 = r0_97:GetSelectBannerItem()
-  if not r1_97 or CommonUtils:IfExistSystemGuideUI(r0_97) then
+function r2_0.GamePadFocusToSelectBannerItem(r0_99)
+  -- line: [1783, 1789] id: 99
+  local r1_99 = r0_99:GetSelectBannerItem()
+  if not r1_99 or CommonUtils:IfExistSystemGuideUI(r0_99) then
     return 
   end
-  r1_97:SetFocus()
+  r1_99:SetFocus()
 end
-function r2_0.GetSelectBannerItem(r0_98)
-  -- line: [1777, 1790] id: 98
-  if not r0_98.SelectBannerId or r0_98.ShowSwitchBanner then
-    return r0_98.Shop_RecommendBanner
+function r2_0.GetSelectBannerItem(r0_100)
+  -- line: [1791, 1804] id: 100
+  if not r0_100.SelectBannerId or r0_100.ShowSwitchBanner then
+    return r0_100.Shop_RecommendBanner
   end
-  local r1_98 = r0_98.ScrollBox_Recommend:GetAllChildren():ToTable()
-  if r1_98 and next(r1_98) then
-    for r6_98, r7_98 in pairs(r1_98) do
-      if r7_98.BannerId and r7_98.BannerId == r0_98.SelectBannerId then
-        return r7_98
+  local r1_100 = r0_100.ScrollBox_Recommend:GetAllChildren():ToTable()
+  if r1_100 and next(r1_100) then
+    for r6_100, r7_100 in pairs(r1_100) do
+      if r7_100.BannerId and r7_100.BannerId == r0_100.SelectBannerId then
+        return r7_100
       end
     end
-    -- close: r2_98
+    -- close: r2_100
   end
   return nil
 end
-function r2_0.OnRepeatKeyDown(r0_99, r1_99, r2_99)
-  -- line: [1792, 1808] id: 99
-  local r3_99 = UE4.UKismetInputLibrary.GetKey(r2_99)
-  local r4_99 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_99)
-  local r5_99 = false
-  if r0_99.TabType == "Banner" and r0_99.SelectBannerId and r0_99.BannerIdMap and type(r0_99.BannerIdMap) == "table" then
-    local r6_99 = r0_99.BannerIdMap[r0_99.SelectBannerId]
-    if r6_99 and r6_99.HandleRepeatKeyDown and not r5_99 then
-      r5_99 = r6_99:HandleRepeatKeyDown(r3_99, r4_99)
+function r2_0.OnRepeatKeyDown(r0_101, r1_101, r2_101)
+  -- line: [1806, 1822] id: 101
+  local r3_101 = UE4.UKismetInputLibrary.GetKey(r2_101)
+  local r4_101 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_101)
+  local r5_101 = false
+  if r0_101.TabType == "Banner" and r0_101.SelectBannerId and r0_101.BannerIdMap and type(r0_101.BannerIdMap) == "table" then
+    local r6_101 = r0_101.BannerIdMap[r0_101.SelectBannerId]
+    if r6_101 and r6_101.HandleRepeatKeyDown and not r5_101 then
+      r5_101 = r6_101:HandleRepeatKeyDown(r3_101, r4_101)
     end
   end
-  if r5_99 then
+  if r5_101 then
     return UE4.UWidgetBlueprintLibrary.Handled()
   end
   return UE4.UWidgetBlueprintLibrary.Unhandled()
 end
-function r2_0.OnResourceBarAddedToFocusPath(r0_100)
-  -- line: [1810, 1812] id: 100
-  r0_100.FocusOnResourceBar = true
+function r2_0.OnResourceBarAddedToFocusPath(r0_102)
+  -- line: [1824, 1826] id: 102
+  r0_102.FocusOnResourceBar = true
 end
-function r2_0.OnResourceBarRemovedFromFocusPath(r0_101)
-  -- line: [1814, 1822] id: 101
-  r0_101.FocusOnResourceBar = false
-  if r0_101.SelectBannerId and r0_101.BannerIdMap and type(r0_101.BannerIdMap) == "table" then
-    local r1_101 = r0_101.BannerIdMap[r0_101.SelectBannerId]
-    if r1_101 and r1_101.OnResourceBarRemovedFromFocusPath then
-      r1_101:OnResourceBarRemovedFromFocusPath()
+function r2_0.OnResourceBarRemovedFromFocusPath(r0_103)
+  -- line: [1828, 1836] id: 103
+  r0_103.FocusOnResourceBar = false
+  if r0_103.SelectBannerId and r0_103.BannerIdMap and type(r0_103.BannerIdMap) == "table" then
+    local r1_103 = r0_103.BannerIdMap[r0_103.SelectBannerId]
+    if r1_103 and r1_103.OnResourceBarRemovedFromFocusPath then
+      r1_103:OnResourceBarRemovedFromFocusPath()
     end
   end
 end

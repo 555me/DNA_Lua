@@ -782,9 +782,9 @@ function r0_0.ToggleSquadPresetVisible(r0_43, r1_43)
   end
 end
 function r0_0.EnsurePlatformDefaultListLoaded(r0_44)
-  -- line: [917, 999] id: 44
+  -- line: [917, 1000] id: 44
   local r1_44 = CommonUtils.GetDeviceTypeByPlatformName(r0_44) == "Mobile"
-  local r2_44 = nil	-- notice: implicit variable refs by block#[21, 22, 23]
+  local r2_44 = nil	-- notice: implicit variable refs by block#[19, 20, 21]
   if r1_44 then
     r2_44 = r0_44.Group_Mob
     if not r2_44 then
@@ -814,22 +814,27 @@ function r0_0.EnsurePlatformDefaultListLoaded(r0_44)
   else
     goto label_25	-- block#11 is visited secondly
   end
+  local r6_44 = nil	-- notice: implicit variable refs by block#[38]
   if r0_44[r4_44] and IsValid(r0_44[r4_44]) then
     r0_44.DefaultList = r0_44[r4_44]
   else
     local r5_44 = LoadClass(r3_44)
     if not r5_44 then
       DebugPrint("EnsurePlatformDefaultListLoaded: LoadClass failed", r3_44)
-      return nil
+      r6_44 = nil
+      return r6_44
     end
-    local r6_44 = NewObject(r5_44, r0_44)
+    r6_44 = NewObject(r5_44, r0_44)
     r0_44[r4_44] = r6_44
     if r6_44.IsLeft ~= nil then
       r6_44.IsLeft = true
     end
-    if r6_44.NeedLeft then
-      r6_44.NeedLeft = true
-    end
+    r0_44:AddTimer(0.3, function()
+      -- line: [941, 945] id: 45
+      if IsValid(r6_44) and r6_44.Preview and r6_44.Preview.Btn_Qa_Summon then
+        r6_44.Preview.Btn_Qa_Summon.Tips_MenuAnchor:SetPlacement(EMenuPlacement.MenuPlacement_ComboBox)
+      end
+    end)
     if r2_44 and r2_44.AddChild then
       r2_44:ClearChildren()
       r2_44:AddChild(r6_44)
@@ -842,6 +847,7 @@ function r0_0.EnsurePlatformDefaultListLoaded(r0_44)
       r7_44:SetHorizontalAlignment(EHorizontalAlignment.HAlign_Fill)
       r7_44:SetVerticalAlignment(EVerticalAlignment.VAlign_Fill)
     end
+    -- close: r5_44
   end
   if r1_44 then
     if r0_44.Group_PC then
@@ -858,22 +864,24 @@ function r0_0.EnsurePlatformDefaultListLoaded(r0_44)
       r0_44.Group_PC:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
     end
     if nil and not nil then
-      goto label_133	-- block#37 is visited secondly
+      goto label_134	-- block#36 is visited secondly
     end
   end
   local r5_44 = r0_44.DefaultList
   if r5_44 then
     r5_44 = r0_44.DefaultList.OnMenuOpenChangedCallBack
-    function r0_44.DefaultList.OnMenuOpenChangedCallBack(r0_45, r1_45)
-      -- line: [985, 992] id: 45
+    r6_44 = r0_44.DefaultList
+    function r6_44.OnMenuOpenChangedCallBack(r0_46, r1_46)
+      -- line: [986, 993] id: 46
       if r0_44.UpdateSquadPresetBottomKey then
         r0_44:UpdateSquadPresetBottomKey()
       end
       if type(r5_44) == "function" then
-        r5_44(r0_45, r1_45)
+        r5_44(r0_46, r1_46)
       end
     end
-    if r0_44.UpdateSquadPresetBottomKey then
+    r6_44 = r0_44.UpdateSquadPresetBottomKey
+    if r6_44 then
       r0_44:UpdateSquadPresetBottomKey()
     end
     -- close: r5_44
@@ -881,215 +889,215 @@ function r0_0.EnsurePlatformDefaultListLoaded(r0_44)
   r5_44 = r0_44.DefaultList
   return r5_44
 end
-function r0_0.InitOrRefreshSquadPreset(r0_46, r1_46)
-  -- line: [1003, 1069] id: 46
-  local r2_46 = DataMgr.Dungeon[r1_46]
-  if not r2_46 then
+function r0_0.InitOrRefreshSquadPreset(r0_47, r1_47)
+  -- line: [1004, 1070] id: 47
+  local r2_47 = DataMgr.Dungeon[r1_47]
+  if not r2_47 then
     return 
   end
-  local r3_46 = r2_46.Squad
-  if r3_46 then
-    r3_46 = true and false
+  local r3_47 = r2_47.Squad
+  if r3_47 then
+    r3_47 = true and false
   else
     goto label_12	-- block#4 is visited secondly
   end
-  r0_46:ToggleSquadPresetVisible(r3_46)
-  if not r3_46 then
+  r0_47:ToggleSquadPresetVisible(r3_47)
+  if not r3_47 then
     return 
   end
-  local r4_46 = r0_46:EnsurePlatformDefaultListLoaded()
-  if not r4_46 then
+  local r4_47 = r0_47:EnsurePlatformDefaultListLoaded()
+  if not r4_47 then
     DebugPrint("InitOrRefreshSquadPreset: DefaultList is nil")
     return 
   end
-  local r5_46 = false
-  local r6_46 = r2_46.DungeonType and r2_46.Type
-  if r6_46 == "Rouge" then
-    r5_46 = true
+  local r5_47 = false
+  local r6_47 = r2_47.DungeonType and r2_47.Type
+  if r6_47 == "Rouge" then
+    r5_47 = true
   end
-  local r7_46 = GWorld:GetAvatar()
-  local r8_46 = 0
-  if r7_46 and r7_46.DungeonSquad and r6_46 and r7_46.DungeonSquad[r6_46] then
-    r8_46 = r7_46.DungeonSquad[r6_46]
+  local r7_47 = GWorld:GetAvatar()
+  local r8_47 = 0
+  if r7_47 and r7_47.DungeonSquad and r6_47 and r7_47.DungeonSquad[r6_47] then
+    r8_47 = r7_47.DungeonSquad[r6_47]
   end
-  r0_46.SquadId = r8_46
-  if r4_46.Init then
-    r4_46:Init(r0_46, r5_46, r8_46, r1_46)
+  r0_47.SquadId = r8_47
+  if r4_47.Init then
+    r4_47:Init(r0_47, r5_47, r8_47, r1_47)
   end
-  local r9_46 = UIUtils.UtilsGetCurrentInputType()
-  if r9_46 == ECommonInputType.MouseAndKeyboard and r0_46.DefaultList.ApplyPcUiLayout then
-    r0_46.DefaultList:ApplyPcUiLayout()
-  elseif r9_46 == ECommonInputType.Gamepad and r0_46.DefaultList.InitWidgetInfoInGamePad then
-    r0_46.DefaultList:InitWidgetInfoInGamePad()
+  local r9_47 = UIUtils.UtilsGetCurrentInputType()
+  if r9_47 == ECommonInputType.MouseAndKeyboard and r0_47.DefaultList.ApplyPcUiLayout then
+    r0_47.DefaultList:ApplyPcUiLayout()
+  elseif r9_47 == ECommonInputType.Gamepad and r0_47.DefaultList.InitWidgetInfoInGamePad then
+    r0_47.DefaultList:InitWidgetInfoInGamePad()
   end
-  if r4_46 then
-    local r10_46 = r4_46.OnMenuOpenChangedCallBack
-    function r4_46.OnMenuOpenChangedCallBack(r0_47, r1_47)
-      -- line: [1049, 1060] id: 47
-      r0_46:UpdateSquadPresetKeyTips(r1_47)
-      if r0_46.UpdateSquadPresetBottomKey then
-        r0_46:UpdateSquadPresetBottomKey()
+  if r4_47 then
+    local r10_47 = r4_47.OnMenuOpenChangedCallBack
+    function r4_47.OnMenuOpenChangedCallBack(r0_48, r1_48)
+      -- line: [1050, 1061] id: 48
+      r0_47:UpdateSquadPresetKeyTips(r1_48)
+      if r0_47.UpdateSquadPresetBottomKey then
+        r0_47:UpdateSquadPresetBottomKey()
       end
-      if type(r10_46) == "function" then
-        r10_46(r0_47, r1_47)
+      if type(r10_47) == "function" then
+        r10_47(r0_48, r1_48)
       end
     end
-    local r11_46 = r4_46.IsMenuAnchorOpen
-    if r11_46 then
-      r11_46 = r4_46:IsMenuAnchorOpen() and false
+    local r11_47 = r4_47.IsMenuAnchorOpen
+    if r11_47 then
+      r11_47 = r4_47:IsMenuAnchorOpen() and false
     else
       goto label_100	-- block#29 is visited secondly
     end
-    r0_46:UpdateSquadPresetKeyTips(r11_46)
-    if r0_46.UpdateSquadPresetBottomKey then
-      r0_46:UpdateSquadPresetBottomKey()
+    r0_47:UpdateSquadPresetKeyTips(r11_47)
+    if r0_47.UpdateSquadPresetBottomKey then
+      r0_47:UpdateSquadPresetBottomKey()
     end
-    -- close: r10_46
+    -- close: r10_47
   end
 end
-function r0_0.RefreshMonsterInfoList(r0_48, r1_48)
-  -- line: [1071, 1112] id: 48
-  local r2_48 = r1_0:GetMonsterPreviewData(r1_48)
-  if not r2_48 or not r2_48.List or #r2_48.List == 0 then
-    r0_48.ListView_Monster:SetVisibility(UE4.ESlateVisibility.Collapsed)
+function r0_0.RefreshMonsterInfoList(r0_49, r1_49)
+  -- line: [1072, 1113] id: 49
+  local r2_49 = r1_0:GetMonsterPreviewData(r1_49)
+  if not r2_49 or not r2_49.List or #r2_49.List == 0 then
+    r0_49.ListView_Monster:SetVisibility(UE4.ESlateVisibility.Collapsed)
     return 
   end
-  r0_48.MonsterWeaknessIcon = r2_48.WeaknessIcon and {}
-  r0_48.ListView_Monster:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-  if r0_48.ListView_Monster.ClearListItems then
-    r0_48.ListView_Monster:ClearListItems()
+  r0_49.MonsterWeaknessIcon = r2_49.WeaknessIcon and {}
+  r0_49.ListView_Monster:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+  if r0_49.ListView_Monster.ClearListItems then
+    r0_49.ListView_Monster:ClearListItems()
   end
-  r0_48.MonsterIdToItem = {}
-  r0_48.DisplayMonsters = r2_48.List
-  r0_48.NowSelectingIndex = 1
-  local r3_48 = LoadClass("/Game/UI/WBP/Play/Widget/Depute/MonsterInfo_Tab_Item_Content.MonsterInfo_Tab_Item_Content")
-  local r4_48 = UE4.UGameplayStatics.GetGameState(r0_48)
-  for r9_48, r10_48 in ipairs(r2_48.List) do
-    if DataMgr.Monster[r10_48] and r4_48.IsUnitRelease(r10_48) then
-      local r12_48 = NewObject(r3_48)
-      r12_48.ParentWidget = r0_48
-      r12_48.MonsterId = r10_48
-      r12_48.DisableSelect = true
-      r12_48.SoundEvent = "event:/ui/common/click_mid"
-      r12_48.WeaknessIcon = r0_48.MonsterWeaknessIcon[r10_48]
-      r12_48.NeedFocusable = true
-      r12_48.List = r0_48.ListView_Monster
-      r12_48.OnAddedToFocusPathEvent = {
-        Obj = r12_48,
-        Callback = function(r0_49)
-          -- line: [1105, 1107] id: 49
-          r0_48:OnItemFocus(r0_49)
+  r0_49.MonsterIdToItem = {}
+  r0_49.DisplayMonsters = r2_49.List
+  r0_49.NowSelectingIndex = 1
+  local r3_49 = LoadClass("/Game/UI/WBP/Play/Widget/Depute/MonsterInfo_Tab_Item_Content.MonsterInfo_Tab_Item_Content")
+  local r4_49 = UE4.UGameplayStatics.GetGameState(r0_49)
+  for r9_49, r10_49 in ipairs(r2_49.List) do
+    if DataMgr.Monster[r10_49] and r4_49.IsUnitRelease(r10_49) then
+      local r12_49 = NewObject(r3_49)
+      r12_49.ParentWidget = r0_49
+      r12_49.MonsterId = r10_49
+      r12_49.DisableSelect = true
+      r12_49.SoundEvent = "event:/ui/common/click_mid"
+      r12_49.WeaknessIcon = r0_49.MonsterWeaknessIcon[r10_49]
+      r12_49.NeedFocusable = true
+      r12_49.List = r0_49.ListView_Monster
+      r12_49.OnAddedToFocusPathEvent = {
+        Obj = r12_49,
+        Callback = function(r0_50)
+          -- line: [1106, 1108] id: 50
+          r0_49:OnItemFocus(r0_50)
         end,
       }
-      r0_48.ListView_Monster:AddItem(r12_48)
+      r0_49.ListView_Monster:AddItem(r12_49)
     end
   end
-  -- close: r5_48
+  -- close: r5_49
 end
-function r0_0.SelectMonsterInfoItem(r0_50, r1_50)
-  -- line: [1115, 1117] id: 50
-  UIManager(r0_50):LoadUINew("MonsterDetailInfo", r0_50.CurSelectedDungeonId, r0_50, r1_50)
+function r0_0.SelectMonsterInfoItem(r0_51, r1_51)
+  -- line: [1116, 1118] id: 51
+  UIManager(r0_51):LoadUINew("MonsterDetailInfo", r0_51.CurSelectedDungeonId, r0_51, r1_51)
 end
-function r0_0.RefreshRewardsListByDungeon(r0_51, r1_51)
-  -- line: [1119, 1153] id: 51
-  if not r0_51.ListView_Rewards then
+function r0_0.RefreshRewardsListByDungeon(r0_52, r1_52)
+  -- line: [1120, 1154] id: 52
+  if not r0_52.ListView_Rewards then
     return 
   end
-  r0_51.ListView_Rewards:ClearListItems()
-  local r2_51 = r1_0:GetRewardPreviewData(r1_51)
-  if not r2_51 or #r2_51 == 0 then
-    r0_51.Group_Title_Rewards:SetVisibility(UIConst.VisibilityOp.Collapsed)
-    r0_51.ListView_Rewards:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  r0_52.ListView_Rewards:ClearListItems()
+  local r2_52 = r1_0:GetRewardPreviewData(r1_52)
+  if not r2_52 or #r2_52 == 0 then
+    r0_52.Group_Title_Rewards:SetVisibility(UIConst.VisibilityOp.Collapsed)
+    r0_52.ListView_Rewards:SetVisibility(UE4.ESlateVisibility.Collapsed)
     return 
   end
-  r0_51.Group_Title_Rewards:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-  r0_51.ListView_Rewards:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-  for r6_51 = 1, #r2_51, 1 do
-    local r7_51 = r2_51[r6_51]
-    local r8_51 = NewObject(UIUtils.GetCommonItemContentClass())
-    r8_51.UIName = "AreaCoopLevelChoose"
-    r8_51.IsShowDetails = true
-    r8_51.Id = r7_51.Id
-    r8_51.Icon = r7_51.Icon
-    r8_51.Rarity = r7_51.Rarity
-    r8_51.ItemType = r7_51.Type
-    r8_51.NeedFocusable = true
-    r8_51.List = r0_51.ListView_Rewards
-    r8_51.OnAddedToFocusPathEvent = {
-      Obj = r8_51,
-      Callback = function(r0_52)
-        -- line: [1146, 1148] id: 52
-        r0_51:OnItemFocus(r0_52)
+  r0_52.Group_Title_Rewards:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+  r0_52.ListView_Rewards:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+  for r6_52 = 1, #r2_52, 1 do
+    local r7_52 = r2_52[r6_52]
+    local r8_52 = NewObject(UIUtils.GetCommonItemContentClass())
+    r8_52.UIName = "AreaCoopLevelChoose"
+    r8_52.IsShowDetails = true
+    r8_52.Id = r7_52.Id
+    r8_52.Icon = r7_52.Icon
+    r8_52.Rarity = r7_52.Rarity
+    r8_52.ItemType = r7_52.Type
+    r8_52.NeedFocusable = true
+    r8_52.List = r0_52.ListView_Rewards
+    r8_52.OnAddedToFocusPathEvent = {
+      Obj = r8_52,
+      Callback = function(r0_53)
+        -- line: [1147, 1149] id: 53
+        r0_52:OnItemFocus(r0_53)
       end,
     }
-    r0_51.ListView_Rewards:AddItem(r8_51)
+    r0_52.ListView_Rewards:AddItem(r8_52)
   end
 end
-function r0_0.SetTabItemSelection(r0_53, r1_53)
-  -- line: [1157, 1162] id: 53
-  if r0_53.SelectingItem and r0_53.SelectingItem ~= r1_53 and r0_53.SelectingItem.CancelTabSelect then
-    r0_53.SelectingItem:CancelTabSelect()
+function r0_0.SetTabItemSelection(r0_54, r1_54)
+  -- line: [1158, 1163] id: 54
+  if r0_54.SelectingItem and r0_54.SelectingItem ~= r1_54 and r0_54.SelectingItem.CancelTabSelect then
+    r0_54.SelectingItem:CancelTabSelect()
   end
-  r0_53.SelectingItem = r1_53
+  r0_54.SelectingItem = r1_54
 end
-function r0_0.OnClickChallengeForbid(r0_54)
-  -- line: [1165, 1174] id: 54
-  local r1_54 = r0_54:GetCurDungeonId()
-  if not r1_54 then
+function r0_0.OnClickChallengeForbid(r0_55)
+  -- line: [1166, 1175] id: 55
+  local r1_55 = r0_55:GetCurDungeonId()
+  if not r1_55 then
     return 
   end
-  local r2_54 = GWorld:GetAvatar()
-  if r2_54 and DataMgr.Dungeon[r1_54] and ConditionUtils and ConditionUtils.CheckCondition then
-    ConditionUtils.CheckCondition(r2_54, DataMgr.Dungeon[r1_54].Condition, true)
+  local r2_55 = GWorld:GetAvatar()
+  if r2_55 and DataMgr.Dungeon[r1_55] and ConditionUtils and ConditionUtils.CheckCondition then
+    ConditionUtils.CheckCondition(r2_55, DataMgr.Dungeon[r1_55].Condition, true)
   else
-    UIManager(r0_54):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Tosat_Level_Locked"))
+    UIManager(r0_55):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Tosat_Level_Locked"))
   end
 end
-function r0_0.OnCurrentSquadChange(r0_55, r1_55, r2_55, r3_55)
-  -- line: [1177, 1184] id: 55
-  local r4_55 = r1_55 and 0
-  r0_55.SquadId = r4_55
-  if r2_55 then
-    r4_55 = true and false
+function r0_0.OnCurrentSquadChange(r0_56, r1_56, r2_56, r3_56)
+  -- line: [1178, 1185] id: 56
+  local r4_56 = r1_56 and 0
+  r0_56.SquadId = r4_56
+  if r2_56 then
+    r4_56 = true and false
   else
     goto label_9	-- block#4 is visited secondly
   end
-  r0_55.IsComMissing = r4_55
-  if r0_55.IsComMissing and r0_55.DefaultList and r0_55.DefaultList:GetVisibility() == UE4.ESlateVisibility.SelfHitTestInvisible then
-    UIManager(r0_55):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Squad_Miss_Challenge"))
+  r0_56.IsComMissing = r4_56
+  if r0_56.IsComMissing and r0_56.DefaultList and r0_56.DefaultList:GetVisibility() == UE4.ESlateVisibility.SelfHitTestInvisible then
+    UIManager(r0_56):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Squad_Miss_Challenge"))
   end
 end
-function r0_0.ScrollItemIntoView(r0_56, r1_56)
-  -- line: [1186, 1189] id: 56
+function r0_0.ScrollItemIntoView(r0_57, r1_57)
+  -- line: [1187, 1190] id: 57
   DebugPrint("ScrollItemIntoView")
-  r0_56.ScrollBox_Desc:ScrollWidgetIntoView(r1_56)
+  r0_57.ScrollBox_Desc:ScrollWidgetIntoView(r1_57)
 end
-function r0_0.RefreshOpInfoByInputDevice(r0_57, r1_57, r2_57)
-  -- line: [1191, 1191] id: 57
+function r0_0.RefreshOpInfoByInputDevice(r0_58, r1_58, r2_58)
+  -- line: [1192, 1192] id: 58
 end
-function r0_0.OnInputDeviceChanged(r0_58, r1_58, r2_58)
-  -- line: [1193, 1193] id: 58
+function r0_0.OnInputDeviceChanged(r0_59, r1_59, r2_59)
+  -- line: [1194, 1194] id: 59
 end
-function r0_0.InitWidgetInfoInGamePad(r0_59)
-  -- line: [1196, 1196] id: 59
+function r0_0.InitWidgetInfoInGamePad(r0_60)
+  -- line: [1197, 1197] id: 60
 end
-function r0_0.SetKeyWidgetGamePadVisibility(r0_60, r1_60, r2_60)
-  -- line: [1200, 1200] id: 60
+function r0_0.SetKeyWidgetGamePadVisibility(r0_61, r1_61, r2_61)
+  -- line: [1201, 1201] id: 61
 end
-function r0_0.InitGamepadView(r0_61)
-  -- line: [1202, 1202] id: 61
+function r0_0.InitGamepadView(r0_62)
+  -- line: [1203, 1203] id: 62
 end
-function r0_0.InitKeyboardView(r0_62)
-  -- line: [1204, 1204] id: 62
+function r0_0.InitKeyboardView(r0_63)
+  -- line: [1205, 1205] id: 63
 end
-function r0_0.UpdateUIStyleInPlatform(r0_63, r1_63)
-  -- line: [1238, 1238] id: 63
+function r0_0.UpdateUIStyleInPlatform(r0_64, r1_64)
+  -- line: [1239, 1239] id: 64
 end
-function r0_0.UpdateSquadPresetKeyTips(r0_64, r1_64)
-  -- line: [1240, 1240] id: 64
+function r0_0.UpdateSquadPresetKeyTips(r0_65, r1_65)
+  -- line: [1241, 1241] id: 65
 end
-function r0_0.SetDungeonExitInfo(r0_65)
-  -- line: [1243, 1247] id: 65
+function r0_0.SetDungeonExitInfo(r0_66)
+  -- line: [1244, 1248] id: 66
   GWorld.GameInstance:SetExitDungeonData({
     IsFromRegionMechanism = true,
   })
