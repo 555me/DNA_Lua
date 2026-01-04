@@ -3590,24 +3590,29 @@ r0_0.RT_709 = {
   [3] = r0_0.RT_1,
 }
 r0_0.RT_710 = {
+  [1] = r0_0.RT_15,
+  [2] = r0_0.RT_1,
+  [3] = r0_0.RT_1,
+}
+r0_0.RT_711 = {
   [1] = 211,
   [2] = 10006,
 }
-r0_0.RT_711 = {
+r0_0.RT_712 = {
   [1] = "Resource",
   [2] = "Title",
   [3] = "TitleFrame",
 }
-r0_0.RT_712 = {
+r0_0.RT_713 = {
   [1] = 206,
 }
-r0_0.RT_713 = {
+r0_0.RT_714 = {
   [1] = 2011,
 }
-r0_0.RT_714 = {
+r0_0.RT_715 = {
   [1] = "Pet",
 }
-r0_0.RT_715 = {
+r0_0.RT_716 = {
   [1] = r0_0.RT_198,
   [2] = r0_0.RT_1,
   [3] = r0_0.RT_59,
@@ -3617,7 +3622,7 @@ r0_0.RT_715 = {
   [7] = r0_0.RT_10,
   [8] = r0_0.RT_1,
 }
-r0_0.RT_716 = {
+r0_0.RT_717 = {
   [1] = "Resource",
   [2] = "CharAccessory",
   [3] = "Resource",
@@ -3627,37 +3632,37 @@ r0_0.RT_716 = {
   [7] = "Resource",
   [8] = "CharAccessory",
 }
-r0_0.RT_717 = {
+r0_0.RT_718 = {
   [1] = "HeadSculpture",
 }
-r0_0.RT_718 = {
+r0_0.RT_719 = {
   [1] = 10003,
 }
-r0_0.RT_719 = {
+r0_0.RT_720 = {
   [1] = 10004,
 }
-r0_0.RT_720 = {
+r0_0.RT_721 = {
   [1] = 10006,
 }
-r0_0.RT_721 = {
+r0_0.RT_722 = {
   [1] = 10007,
 }
-r0_0.RT_722 = {
+r0_0.RT_723 = {
   [1] = 10008,
 }
-r0_0.RT_723 = {
+r0_0.RT_724 = {
   [1] = 10009,
 }
-r0_0.RT_724 = {
+r0_0.RT_725 = {
   [1] = 10010,
 }
-r0_0.RT_725 = {
+r0_0.RT_726 = {
   [1] = 10011,
 }
-r0_0.RT_726 = {
+r0_0.RT_727 = {
   [1] = "HeadFrame",
 }
-r0_0.RT_727 = {
+r0_0.RT_728 = {
   [1] = 230,
   [2] = 231,
   [3] = 232,
@@ -3667,14 +3672,14 @@ r0_0.RT_727 = {
   [7] = 236,
   [8] = 237,
 }
-r0_0.RT_728 = {
+r0_0.RT_729 = {
   [1] = "Skin",
 }
-r0_0.RT_729 = {
+r0_0.RT_730 = {
   [1] = "WeaponAccessory",
 }
 local r2_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
-  -- line: [3673, 3673] id: 1
+  -- line: [3678, 3678] id: 1
   return r1_1
 end
 local r3_0 = "Reward"
@@ -4302,7 +4307,7 @@ r4_0[82] = {
 }
 r4_0[83] = {
   Count = r0_0.RT_276,
-  Id = r0_0.RT_727,
+  Id = r0_0.RT_728,
   IsFixedByBonus = true,
   Mode = "Level",
   Param = r0_0.RT_689,
@@ -4311,7 +4316,7 @@ r4_0[83] = {
 }
 r4_0[84] = {
   Count = r0_0.RT_276,
-  Id = r0_0.RT_727,
+  Id = r0_0.RT_728,
   IsFixedByBonus = true,
   Mode = "Level",
   Param = r0_0.RT_689,
@@ -7363,14 +7368,15 @@ r4_0[7422] = {
   Type = r0_0.RT_706,
 }
 r4_0[7423] = {
-  Count = r0_0.RT_708,
+  Count = r0_0.RT_710,
   Id = {
     [1] = 101,
     [2] = 10005,
+    [3] = 20039,
   },
   Mode = "Fixed",
   RewardId = 7423,
-  Type = r0_0.RT_706,
+  Type = r0_0.RT_707,
 }
 r4_0[7424] = {
   Count = r0_0.RT_68,
@@ -7725,7 +7731,7 @@ r4_0[7458] = {
 }
 r4_0[7459] = {
   Count = r0_0.RT_68,
-  Id = r0_0.RT_710,
+  Id = r0_0.RT_711,
   Mode = "Fixed",
   RewardId = 7459,
   Type = r0_0.RT_706,
@@ -7871,11 +7877,7 @@ r4_0[7473] = {
   Type = r0_0.RT_706,
 }
 r4_0[7474] = {
-  Count = {
-    [1] = r0_0.RT_15,
-    [2] = r0_0.RT_1,
-    [3] = r0_0.RT_1,
-  },
+  Count = r0_0.RT_710,
   Id = {
     [1] = 101,
     [2] = 10035,
@@ -7883,7 +7885,7 @@ r4_0[7474] = {
   },
   Mode = "Fixed",
   RewardId = 7474,
-  Type = r0_0.RT_711,
+  Type = r0_0.RT_712,
 }
 r4_0[7475] = {
   Count = r0_0.RT_709,
@@ -7894,7 +7896,7 @@ r4_0[7475] = {
   },
   Mode = "Fixed",
   RewardId = 7475,
-  Type = r0_0.RT_711,
+  Type = r0_0.RT_712,
 }
 r4_0[7476] = {
   Count = r0_0.RT_68,
@@ -7980,7 +7982,7 @@ r4_0[7482] = {
 }
 r4_0[7483] = {
   Count = r0_0.RT_6,
-  Id = r0_0.RT_710,
+  Id = r0_0.RT_711,
   Mode = "Fixed",
   RewardId = 7483,
   Type = {
@@ -8028,7 +8030,7 @@ r4_0[7504] = {
 }
 r4_0[7505] = {
   Count = r0_0.RT_32,
-  Id = r0_0.RT_712,
+  Id = r0_0.RT_713,
   Mode = "Fixed",
   RewardId = 7505,
   Type = r0_0.RT_20,
@@ -8042,7 +8044,7 @@ r4_0[7506] = {
 }
 r4_0[7507] = {
   Count = r0_0.RT_32,
-  Id = r0_0.RT_712,
+  Id = r0_0.RT_713,
   Mode = "Fixed",
   RewardId = 7507,
   Type = r0_0.RT_20,
@@ -8084,7 +8086,7 @@ r4_0[7512] = {
 }
 r4_0[7513] = {
   Count = r0_0.RT_32,
-  Id = r0_0.RT_712,
+  Id = r0_0.RT_713,
   Mode = "Fixed",
   RewardId = 7513,
   Type = r0_0.RT_20,
@@ -8105,7 +8107,7 @@ r4_0[7515] = {
 }
 r4_0[7516] = {
   Count = r0_0.RT_32,
-  Id = r0_0.RT_712,
+  Id = r0_0.RT_713,
   Mode = "Fixed",
   RewardId = 7516,
   Type = r0_0.RT_20,
@@ -8133,7 +8135,7 @@ r4_0[7519] = {
 }
 r4_0[7520] = {
   Count = r0_0.RT_32,
-  Id = r0_0.RT_712,
+  Id = r0_0.RT_713,
   Mode = "Fixed",
   RewardId = 7520,
   Type = r0_0.RT_20,
@@ -8154,7 +8156,7 @@ r4_0[7522] = {
 }
 r4_0[7523] = {
   Count = r0_0.RT_32,
-  Id = r0_0.RT_712,
+  Id = r0_0.RT_713,
   Mode = "Fixed",
   RewardId = 7523,
   Type = r0_0.RT_20,
@@ -8182,7 +8184,7 @@ r4_0[7526] = {
 }
 r4_0[7527] = {
   Count = r0_0.RT_25,
-  Id = r0_0.RT_712,
+  Id = r0_0.RT_713,
   Mode = "Fixed",
   RewardId = 7527,
   Type = r0_0.RT_20,
@@ -8388,7 +8390,7 @@ r4_0[7918] = {
 }
 r4_0[7919] = {
   Count = r0_0.RT_45,
-  Id = r0_0.RT_713,
+  Id = r0_0.RT_714,
   Mode = "Fixed",
   RewardId = 7919,
   Type = r0_0.RT_20,
@@ -8409,7 +8411,7 @@ r4_0[7921] = {
 }
 r4_0[7922] = {
   Count = r0_0.RT_45,
-  Id = r0_0.RT_713,
+  Id = r0_0.RT_714,
   Mode = "Fixed",
   RewardId = 7922,
   Type = r0_0.RT_20,
@@ -22929,7 +22931,7 @@ r4_0[70002] = {
 }
 r4_0[79001] = {
   Count = r0_0.RT_45,
-  Id = r0_0.RT_713,
+  Id = r0_0.RT_714,
   Mode = "Fixed",
   RewardId = 79001,
   Type = r0_0.RT_20,
@@ -22969,7 +22971,7 @@ r4_0[79006] = {
   },
   Mode = "Fixed",
   RewardId = 79006,
-  Type = r0_0.RT_714,
+  Type = r0_0.RT_715,
 }
 r4_0[79007] = {
   Count = r0_0.RT_21,
@@ -22978,7 +22980,7 @@ r4_0[79007] = {
   },
   Mode = "Fixed",
   RewardId = 79007,
-  Type = r0_0.RT_714,
+  Type = r0_0.RT_715,
 }
 r4_0[79008] = {
   Count = r0_0.RT_21,
@@ -22987,7 +22989,7 @@ r4_0[79008] = {
   },
   Mode = "Fixed",
   RewardId = 79008,
-  Type = r0_0.RT_714,
+  Type = r0_0.RT_715,
 }
 r4_0[79009] = {
   Count = r0_0.RT_21,
@@ -22996,7 +22998,7 @@ r4_0[79009] = {
   },
   Mode = "Fixed",
   RewardId = 79009,
-  Type = r0_0.RT_714,
+  Type = r0_0.RT_715,
 }
 r4_0[79010] = {
   Count = r0_0.RT_21,
@@ -23005,7 +23007,7 @@ r4_0[79010] = {
   },
   Mode = "Fixed",
   RewardId = 79010,
-  Type = r0_0.RT_714,
+  Type = r0_0.RT_715,
 }
 r4_0[79011] = {
   Count = r0_0.RT_21,
@@ -23014,7 +23016,7 @@ r4_0[79011] = {
   },
   Mode = "Fixed",
   RewardId = 79011,
-  Type = r0_0.RT_714,
+  Type = r0_0.RT_715,
 }
 r4_0[79012] = {
   Count = r0_0.RT_21,
@@ -23023,7 +23025,7 @@ r4_0[79012] = {
   },
   Mode = "Fixed",
   RewardId = 79012,
-  Type = r0_0.RT_714,
+  Type = r0_0.RT_715,
 }
 r4_0[79013] = {
   Count = r0_0.RT_21,
@@ -23032,7 +23034,7 @@ r4_0[79013] = {
   },
   Mode = "Fixed",
   RewardId = 79013,
-  Type = r0_0.RT_714,
+  Type = r0_0.RT_715,
 }
 r4_0[79014] = {
   Count = r0_0.RT_21,
@@ -23041,7 +23043,7 @@ r4_0[79014] = {
   },
   Mode = "Fixed",
   RewardId = 79014,
-  Type = r0_0.RT_714,
+  Type = r0_0.RT_715,
 }
 r4_0[79015] = {
   Count = r0_0.RT_21,
@@ -23050,7 +23052,7 @@ r4_0[79015] = {
   },
   Mode = "Fixed",
   RewardId = 79015,
-  Type = r0_0.RT_714,
+  Type = r0_0.RT_715,
 }
 r4_0[79016] = {
   Count = r0_0.RT_21,
@@ -23059,7 +23061,7 @@ r4_0[79016] = {
   },
   Mode = "Fixed",
   RewardId = 79016,
-  Type = r0_0.RT_714,
+  Type = r0_0.RT_715,
 }
 r4_0[79017] = {
   Count = r0_0.RT_21,
@@ -23068,7 +23070,7 @@ r4_0[79017] = {
   },
   Mode = "Fixed",
   RewardId = 79017,
-  Type = r0_0.RT_714,
+  Type = r0_0.RT_715,
 }
 r4_0[79018] = {
   Count = r0_0.RT_21,
@@ -23077,7 +23079,7 @@ r4_0[79018] = {
   },
   Mode = "Fixed",
   RewardId = 79018,
-  Type = r0_0.RT_714,
+  Type = r0_0.RT_715,
 }
 r4_0[79019] = {
   Count = r0_0.RT_21,
@@ -23086,7 +23088,7 @@ r4_0[79019] = {
   },
   Mode = "Fixed",
   RewardId = 79019,
-  Type = r0_0.RT_714,
+  Type = r0_0.RT_715,
 }
 r4_0[79020] = {
   Count = r0_0.RT_21,
@@ -23095,7 +23097,7 @@ r4_0[79020] = {
   },
   Mode = "Fixed",
   RewardId = 79020,
-  Type = r0_0.RT_714,
+  Type = r0_0.RT_715,
 }
 r4_0[79021] = {
   Count = {
@@ -23129,7 +23131,7 @@ r4_0[79021] = {
   },
 }
 r4_0[79022] = {
-  Count = r0_0.RT_715,
+  Count = r0_0.RT_716,
   Id = {
     [1] = 1001,
     [2] = 10014,
@@ -23142,10 +23144,10 @@ r4_0[79022] = {
   },
   Mode = "Fixed",
   RewardId = 79022,
-  Type = r0_0.RT_716,
+  Type = r0_0.RT_717,
 }
 r4_0[79023] = {
-  Count = r0_0.RT_715,
+  Count = r0_0.RT_716,
   Id = {
     [1] = 1001,
     [2] = 10014,
@@ -23158,10 +23160,10 @@ r4_0[79023] = {
   },
   Mode = "Fixed",
   RewardId = 79023,
-  Type = r0_0.RT_716,
+  Type = r0_0.RT_717,
 }
 r4_0[79024] = {
-  Count = r0_0.RT_715,
+  Count = r0_0.RT_716,
   Id = {
     [1] = 1001,
     [2] = 10014,
@@ -23174,10 +23176,10 @@ r4_0[79024] = {
   },
   Mode = "Fixed",
   RewardId = 79024,
-  Type = r0_0.RT_716,
+  Type = r0_0.RT_717,
 }
 r4_0[79025] = {
-  Count = r0_0.RT_715,
+  Count = r0_0.RT_716,
   Id = {
     [1] = 1001,
     [2] = 10014,
@@ -23190,10 +23192,10 @@ r4_0[79025] = {
   },
   Mode = "Fixed",
   RewardId = 79025,
-  Type = r0_0.RT_716,
+  Type = r0_0.RT_717,
 }
 r4_0[79026] = {
-  Count = r0_0.RT_715,
+  Count = r0_0.RT_716,
   Id = {
     [1] = 1001,
     [2] = 10014,
@@ -23206,10 +23208,10 @@ r4_0[79026] = {
   },
   Mode = "Fixed",
   RewardId = 79026,
-  Type = r0_0.RT_716,
+  Type = r0_0.RT_717,
 }
 r4_0[79027] = {
-  Count = r0_0.RT_715,
+  Count = r0_0.RT_716,
   Id = {
     [1] = 1001,
     [2] = 10014,
@@ -23222,105 +23224,105 @@ r4_0[79027] = {
   },
   Mode = "Fixed",
   RewardId = 79027,
-  Type = r0_0.RT_716,
+  Type = r0_0.RT_717,
 }
 r4_0[81001] = {
   Count = r0_0.RT_21,
   Id = r0_0.RT_345,
   Mode = "Fixed",
   RewardId = 81001,
-  Type = r0_0.RT_717,
+  Type = r0_0.RT_718,
 }
 r4_0[81002] = {
   Count = r0_0.RT_21,
   Id = r0_0.RT_346,
   Mode = "Fixed",
   RewardId = 81002,
-  Type = r0_0.RT_717,
+  Type = r0_0.RT_718,
 }
 r4_0[81003] = {
   Count = r0_0.RT_21,
-  Id = r0_0.RT_718,
+  Id = r0_0.RT_719,
   Mode = "Fixed",
   RewardId = 81003,
-  Type = r0_0.RT_717,
+  Type = r0_0.RT_718,
 }
 r4_0[81004] = {
   Count = r0_0.RT_21,
-  Id = r0_0.RT_719,
+  Id = r0_0.RT_720,
   Mode = "Fixed",
   RewardId = 81004,
-  Type = r0_0.RT_717,
+  Type = r0_0.RT_718,
 }
 r4_0[81006] = {
   Count = r0_0.RT_21,
-  Id = r0_0.RT_720,
+  Id = r0_0.RT_721,
   Mode = "Fixed",
   RewardId = 81006,
-  Type = r0_0.RT_717,
+  Type = r0_0.RT_718,
 }
 r4_0[81007] = {
   Count = r0_0.RT_21,
-  Id = r0_0.RT_721,
+  Id = r0_0.RT_722,
   Mode = "Fixed",
   RewardId = 81007,
-  Type = r0_0.RT_717,
+  Type = r0_0.RT_718,
 }
 r4_0[81008] = {
   Count = r0_0.RT_21,
-  Id = r0_0.RT_722,
+  Id = r0_0.RT_723,
   Mode = "Fixed",
   RewardId = 81008,
-  Type = r0_0.RT_717,
+  Type = r0_0.RT_718,
 }
 r4_0[81009] = {
   Count = r0_0.RT_21,
-  Id = r0_0.RT_723,
+  Id = r0_0.RT_724,
   Mode = "Fixed",
   RewardId = 81009,
-  Type = r0_0.RT_717,
+  Type = r0_0.RT_718,
 }
 r4_0[81010] = {
   Count = r0_0.RT_21,
-  Id = r0_0.RT_724,
+  Id = r0_0.RT_725,
   Mode = "Fixed",
   RewardId = 81010,
-  Type = r0_0.RT_717,
+  Type = r0_0.RT_718,
 }
 r4_0[81011] = {
   Count = r0_0.RT_21,
-  Id = r0_0.RT_725,
+  Id = r0_0.RT_726,
   Mode = "Fixed",
   RewardId = 81011,
-  Type = r0_0.RT_717,
+  Type = r0_0.RT_718,
 }
 r4_0[82001] = {
   Count = r0_0.RT_21,
   Id = r0_0.RT_345,
   Mode = "Fixed",
   RewardId = 82001,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82002] = {
   Count = r0_0.RT_21,
   Id = r0_0.RT_346,
   Mode = "Fixed",
   RewardId = 82002,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82003] = {
   Count = r0_0.RT_21,
-  Id = r0_0.RT_718,
+  Id = r0_0.RT_719,
   Mode = "Fixed",
   RewardId = 82003,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82004] = {
   Count = r0_0.RT_21,
-  Id = r0_0.RT_719,
+  Id = r0_0.RT_720,
   Mode = "Fixed",
   RewardId = 82004,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82005] = {
   Count = r0_0.RT_21,
@@ -23329,49 +23331,49 @@ r4_0[82005] = {
   },
   Mode = "Fixed",
   RewardId = 82005,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82006] = {
   Count = r0_0.RT_21,
-  Id = r0_0.RT_720,
+  Id = r0_0.RT_721,
   Mode = "Fixed",
   RewardId = 82006,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82007] = {
   Count = r0_0.RT_21,
-  Id = r0_0.RT_721,
+  Id = r0_0.RT_722,
   Mode = "Fixed",
   RewardId = 82007,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82008] = {
   Count = r0_0.RT_21,
-  Id = r0_0.RT_722,
+  Id = r0_0.RT_723,
   Mode = "Fixed",
   RewardId = 82008,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82009] = {
   Count = r0_0.RT_21,
-  Id = r0_0.RT_723,
+  Id = r0_0.RT_724,
   Mode = "Fixed",
   RewardId = 82009,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82010] = {
   Count = r0_0.RT_21,
-  Id = r0_0.RT_724,
+  Id = r0_0.RT_725,
   Mode = "Fixed",
   RewardId = 82010,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82011] = {
   Count = r0_0.RT_21,
-  Id = r0_0.RT_725,
+  Id = r0_0.RT_726,
   Mode = "Fixed",
   RewardId = 82011,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82012] = {
   Count = r0_0.RT_21,
@@ -23380,7 +23382,7 @@ r4_0[82012] = {
   },
   Mode = "Fixed",
   RewardId = 82012,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82013] = {
   Count = r0_0.RT_21,
@@ -23389,7 +23391,7 @@ r4_0[82013] = {
   },
   Mode = "Fixed",
   RewardId = 82013,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82014] = {
   Count = r0_0.RT_21,
@@ -23398,7 +23400,7 @@ r4_0[82014] = {
   },
   Mode = "Fixed",
   RewardId = 82014,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82015] = {
   Count = r0_0.RT_21,
@@ -23407,7 +23409,7 @@ r4_0[82015] = {
   },
   Mode = "Fixed",
   RewardId = 82015,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82016] = {
   Count = r0_0.RT_21,
@@ -23416,7 +23418,7 @@ r4_0[82016] = {
   },
   Mode = "Fixed",
   RewardId = 82016,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82017] = {
   Count = r0_0.RT_21,
@@ -23425,7 +23427,7 @@ r4_0[82017] = {
   },
   Mode = "Fixed",
   RewardId = 82017,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82018] = {
   Count = r0_0.RT_21,
@@ -23434,7 +23436,7 @@ r4_0[82018] = {
   },
   Mode = "Fixed",
   RewardId = 82018,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[82019] = {
   Count = r0_0.RT_21,
@@ -23443,7 +23445,7 @@ r4_0[82019] = {
   },
   Mode = "Fixed",
   RewardId = 82019,
-  Type = r0_0.RT_726,
+  Type = r0_0.RT_727,
 }
 r4_0[91001] = {
   Count = r0_0.RT_21,
@@ -23452,7 +23454,7 @@ r4_0[91001] = {
   },
   Mode = "Fixed",
   RewardId = 91001,
-  Type = r0_0.RT_728,
+  Type = r0_0.RT_729,
 }
 r4_0[91002] = {
   Count = r0_0.RT_21,
@@ -23461,7 +23463,7 @@ r4_0[91002] = {
   },
   Mode = "Fixed",
   RewardId = 91002,
-  Type = r0_0.RT_728,
+  Type = r0_0.RT_729,
 }
 r4_0[91003] = {
   Count = r0_0.RT_21,
@@ -23470,7 +23472,7 @@ r4_0[91003] = {
   },
   Mode = "Fixed",
   RewardId = 91003,
-  Type = r0_0.RT_728,
+  Type = r0_0.RT_729,
 }
 r4_0[92001] = {
   Count = r0_0.RT_21,
@@ -23505,14 +23507,14 @@ r4_0[93001] = {
   Id = r0_0.RT_345,
   Mode = "Fixed",
   RewardId = 93001,
-  Type = r0_0.RT_729,
+  Type = r0_0.RT_730,
 }
 r4_0[93002] = {
   Count = r0_0.RT_21,
   Id = r0_0.RT_346,
   Mode = "Fixed",
   RewardId = 93002,
-  Type = r0_0.RT_729,
+  Type = r0_0.RT_730,
 }
 r4_0[100001] = {
   Count = r0_0.RT_16,

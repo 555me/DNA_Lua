@@ -35,7 +35,7 @@ r3_0[1041] = {
     1049,
     1057
   },
-  RegionPointId = 2612,
+  RegionPointId = 2826,
   UIName = "DimensionGraph_East",
 }
 return r1_0(r2_0, r3_0)

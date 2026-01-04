@@ -3122,15 +3122,26 @@ function r4_0.OpenTicketDialog(r0_137, r1_137)
   }, r0_137)
 end
 function r4_0.BP_GetDesiredFocusTarget(r0_141)
-  -- line: [3328, 3334] id: 141
+  -- line: [3328, 3352] id: 141
   DebugPrint("ljl@ BP_GetDesiredFocusTarget")
-  if r0_141.CurInputDeviceType == ECommonInputType.Gamepad then
-    r0_141:SetFocusInGamePad()
+  if r0_141:IsAnimationPlaying(r0_141.Defeat_In) or r0_141:IsAnimationPlaying(r0_141.Victory_In) then
+    return r0_141
   end
-  return r0_141
+  if r0_141.IsTemple then
+    return r0_141.WidgetRewards.List_Reward
+  end
+  if #r0_141.SpRewardsArray == 0 then
+    if #r0_141.RewardsArray ~= 0 then
+      return r0_141.TileView_Prop
+    else
+      return r0_141
+    end
+  else
+    return r0_141.TileView_Reward
+  end
 end
 function r4_0.InitHandleKeyInfo(r0_142)
-  -- line: [3336, 3389] id: 142
+  -- line: [3354, 3407] id: 142
   if ModController:IsMobile() then
     return 
   end
@@ -3156,7 +3167,7 @@ function r4_0.InitHandleKeyInfo(r0_142)
         Type = "Text",
         Text = "R",
         ClickCallback = function()
-          -- line: [3362, 3364] id: 143
+          -- line: [3380, 3382] id: 143
           r0_142:OnBtnContinueClicked()
         end,
         Owner = r0_142,
@@ -3185,7 +3196,7 @@ function r4_0.InitHandleKeyInfo(r0_142)
   r0_142.WBox_Key:AddChild(r3_142)
 end
 function r4_0.OnBtnContinueClicked(r0_144)
-  -- line: [3391, 3396] id: 144
+  -- line: [3409, 3414] id: 144
   if r0_144.Btn_Continue:IsBtnForbidden() then
     r0_144.Btn_Continue.CurrentClickIsForbid = true
   end

@@ -2,8 +2,8 @@
 -- version: lua54
 -- line: [0, 0] id: 0
 return {
-  index = 1,
-  script = "-- 请在此处编写HotFix代码,请组长编写\n\tDataMgr.ShopItem[140118].Price = 100\n\tDataMgr.ShopItem[140133].Price = 100\n\tDataMgr.ShopItem[140134].Price = 100\n\tDataMgr.ShopItem[140135].Price = 100\n",
+  index = 2,
+  script = "-- 请在此处编写HotFix代码,请组长编写\n\tDataMgr.ShopItem[140118].Price = 100\n\tDataMgr.ShopItem[140133].Price = 100\n\tDataMgr.ShopItem[140134].Price = 100\n\tDataMgr.ShopItem[140135].Price = 100\n\n\tUE4.URuntimeCommonFunctionLibrary.EnableGlobalAnimCache(GWorld and GWorld.GameInstance, false)\n",
   client_version = {
     ForceUpdateCheck = "1",
   },
