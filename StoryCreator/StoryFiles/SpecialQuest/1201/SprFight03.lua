@@ -178,6 +178,12 @@ local r3_0 = {
       startPort = "QuestStart",
       endQuest = "17649332319901912270",
       endPort = "In",
+    },
+    {
+      startQuest = "17632944219613284366",
+      startPort = "QuestStart",
+      endQuest = "17659769233961282451",
+      endPort = "In",
     }
   },
 }
@@ -420,6 +426,30 @@ r4_0["17649332319901912270"] = {
     UnitId = -1,
   },
 }
+r5_0 = {
+  key = "17659769233961282451",
+  type = "PlayOrStopBGMNode",
+  name = "BGM节点音效",
+  pos = {
+    x = 1212,
+    y = -314.8235294117647,
+  },
+}
+r5_0.propsData = {
+  SoundStateType = 0,
+  SoundPriority = 0,
+  SoundType = 1,
+  SoundPath = "event:/ambience/common/pad_noise_rain_plain_heavy",
+  ParamKey = "",
+  ParamValue = 0,
+  RelatedRegionId = {},
+  ClientRelatedRegionId = {
+    104110,
+    104107
+  },
+  bStoreToServer = false,
+}
+r4_0["17659769233961282451"] = r5_0
 r3_0.nodeData = r4_0
 r3_0.commentData = {}
 r2_0.questNodeData = r3_0

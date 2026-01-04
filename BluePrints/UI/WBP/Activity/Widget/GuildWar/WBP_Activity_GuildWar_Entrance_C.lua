@@ -195,276 +195,271 @@ function r4_0.OnRankBtnClicked(r0_14)
     end
   end)
 end
-function r4_0.OnShopClose(r0_17)
-  -- line: [242, 245] id: 17
-  r0_17:RefreshShopCoinQuantity()
-  r3_0.RefreshShopReddot()
-end
-function r4_0.GoToShopClick(r0_18)
-  -- line: [248, 254] id: 18
-  local r1_18 = DataMgr.EventPortal[r0_18.EventId]
-  if not r1_18.EventShop then
+function r4_0.GoToShopClick(r0_17)
+  -- line: [242, 248] id: 17
+  local r1_17 = DataMgr.EventPortal[r0_17.EventId]
+  if not r1_17.EventShop then
     return 
   end
-  PageJumpUtils:JumpToTargetPageByJumpId(r1_18.EventShop, r0_18.OnShopClose, r0_18)
+  PageJumpUtils:JumpToTargetPageByJumpId(r1_17.EventShop)
 end
-function r4_0.OnQuestDialogClose(r0_19)
-  -- line: [257, 259] id: 19
+function r4_0.OnQuestDialogClose(r0_18)
+  -- line: [251, 253] id: 18
   r3_0.RefreshQuestReddot()
 end
-function r4_0.OnQuestBtnClicked(r0_20)
-  -- line: [262, 274] id: 20
+function r4_0.OnQuestBtnClicked(r0_19)
+  -- line: [256, 268] id: 19
   r3_0.RefreshQuestReddot(true)
-  if GWorld:GetAvatar().CommonQuestActivity[r0_20.EventId] then
-    local r2_20 = r0_20:MakeRaidRewardData(r0_20.EventId)
-    r2_20.Title = GText("RaidDungeon_Rank_Task")
-    r2_20.CloseBtnCallbackFunction = r0_20.OnQuestDialogClose
-    UIManager(GWorld.GameInstance):ShowCommonPopupUI(100173, r2_20, GWorld.GameInstance)
+  if GWorld:GetAvatar().CommonQuestActivity[r0_19.EventId] then
+    local r2_19 = r0_19:MakeRaidRewardData(r0_19.EventId)
+    r2_19.Title = GText("RaidDungeon_Rank_Task")
+    r2_19.CloseBtnCallbackFunction = r0_19.OnQuestDialogClose
+    UIManager(GWorld.GameInstance):ShowCommonPopupUI(100173, r2_19, GWorld.GameInstance)
   else
-    UIManager(r0_20):ShowUITip(UIConst.Tip_CommonToast, GText("无法获取任务数据"))
+    UIManager(r0_19):ShowUITip(UIConst.Tip_CommonToast, GText("无法获取任务数据"))
   end
 end
-function r4_0.MakeRaidRewardData(r0_21, r1_21)
-  -- line: [277, 376] id: 21
-  local r2_21 = GWorld:GetAvatar()
-  local r3_21 = {
+function r4_0.MakeRaidRewardData(r0_20, r1_20)
+  -- line: [271, 370] id: 20
+  local r2_20 = GWorld:GetAvatar()
+  local r3_20 = {
     ConfigData = {},
   }
-  r3_21.ConfigData.TabInfo = {}
-  r3_21.ConfigData.Items = {}
-  r3_21.ConfigData.HasTab = true
-  r3_21.ConfigData.Datas = {}
-  local r4_21 = {}
-  for r9_21, r10_21 in pairs(DataMgr.CommonQuestPhase) do
-    if r10_21.EventId == r1_21 then
-      table.insert(r4_21, r10_21)
+  r3_20.ConfigData.TabInfo = {}
+  r3_20.ConfigData.Items = {}
+  r3_20.ConfigData.HasTab = true
+  r3_20.ConfigData.Datas = {}
+  local r4_20 = {}
+  for r9_20, r10_20 in pairs(DataMgr.CommonQuestPhase) do
+    if r10_20.EventId == r1_20 then
+      table.insert(r4_20, r10_20)
     end
   end
-  -- close: r5_21
-  table.sort(r4_21, function(r0_22, r1_22)
-    -- line: [291, 293] id: 22
-    return r0_22.Index < r1_22.Index
+  -- close: r5_20
+  table.sort(r4_20, function(r0_21, r1_21)
+    -- line: [285, 287] id: 21
+    return r0_21.Index < r1_21.Index
   end)
-  for r9_21, r10_21 in pairs(r4_21) do
-    local r11_21 = r10_21.QuestPhaseId
-    local r12_21 = 1
-    if r10_21.EventId == r1_21 then
-      local r13_21 = {
-        Index = r12_21,
+  for r9_20, r10_20 in pairs(r4_20) do
+    local r11_20 = r10_20.QuestPhaseId
+    local r12_20 = 1
+    if r10_20.EventId == r1_20 then
+      local r13_20 = {
+        Index = r12_20,
       }
-      r12_21 = r12_21 + 1
-      r13_21.Type = r11_21
-      r13_21.Title = r10_21.QuestPhaseName
-      r13_21.ReddotName = "RaidReward"
-      r13_21.IconPath = r10_21.SplineBP
-      r13_21.IsShowIcon = true
-      table.insert(r3_21.ConfigData.TabInfo, r13_21)
-      local r14_21 = {
+      r12_20 = r12_20 + 1
+      r13_20.Type = r11_20
+      r13_20.Title = r10_20.QuestPhaseName
+      r13_20.ReddotName = "RaidReward"
+      r13_20.IconPath = r10_20.SplineBP
+      r13_20.IsShowIcon = true
+      table.insert(r3_20.ConfigData.TabInfo, r13_20)
+      local r14_20 = {
         ShowIcon = false,
       }
-      r14_21.NowNum, r14_21.NumMax = r0_0:GetQuestPhaseInfo(r1_21, r11_21)
-      r14_21.ReceiveAllCallBack = r0_21.GetAllRaidRewards
-      r14_21.ReceiveAllParam = {}
-      r14_21.ReceiveAllParam.EventId = r1_21
-      r14_21.ReceiveAllParam.QuestPhaseId = r11_21
-      r14_21.Type = r11_21
-      r14_21.Text_Total = string.format(GText("Abyss_RewardList_Title"))
-      r14_21.ReceiveButtonText = GText("UI_Archive_CollectionClaimAll")
-      local r15_21 = r2_21.CommonQuestActivity[r1_21]
-      if not r15_21 then
-        DebugPrint("Avatar.CommonQuestActivity is nil, EvantId: ", r1_21)
+      r14_20.NowNum, r14_20.NumMax = r0_0:GetQuestPhaseInfo(r1_20, r11_20)
+      r14_20.ReceiveAllCallBack = r0_20.GetAllRaidRewards
+      r14_20.ReceiveAllParam = {}
+      r14_20.ReceiveAllParam.EventId = r1_20
+      r14_20.ReceiveAllParam.QuestPhaseId = r11_20
+      r14_20.Type = r11_20
+      r14_20.Text_Total = string.format(GText("Abyss_RewardList_Title"))
+      r14_20.ReceiveButtonText = GText("UI_Archive_CollectionClaimAll")
+      local r15_20 = r2_20.CommonQuestActivity[r1_20]
+      if not r15_20 then
+        DebugPrint("Avatar.CommonQuestActivity is nil, EvantId: ", r1_20)
         return 
       end
-      local r16_21 = {}
-      for r21_21, r22_21 in pairs(DataMgr.CommonQuestDetail) do
-        if r22_21.QuestPhaseId == r11_21 then
-          local r23_21 = {
-            ItemId = r21_21,
+      local r16_20 = {}
+      for r21_20, r22_20 in pairs(DataMgr.CommonQuestDetail) do
+        if r22_20.QuestPhaseId == r11_20 then
+          local r23_20 = {
+            ItemId = r21_20,
           }
-          local r24_21 = r15_21[r21_21].Progress
-          if r15_21[r21_21].Target <= r24_21 then
-            r24_21 = r15_21[r21_21].RewardsGot == false
+          local r24_20 = r15_20[r21_20].Progress
+          if r15_20[r21_20].Target <= r24_20 then
+            r24_20 = r15_20[r21_20].RewardsGot == false
           else
             goto label_135	-- block#12 is visited secondly
           end
-          r23_21.CanReceive = r24_21
-          r23_21.Type = r11_21
-          r23_21.RewardsGot = r15_21[r21_21].RewardsGot
-          r23_21.NotreachText = GText("UI_Archive_CollectionInProgress")
-          r23_21.Hint = GText(r22_21.StarterQuestDes)
-          r23_21.ReddotName = "RaidReward"
-          r23_21.ReceiveButtonText = GText("UI_Archive_CollectionClaim")
-          r23_21.Num = r22_21.Target
-          r23_21.ReceiveCallBack = r0_21.GetRaidReward
-          r23_21.ReceiveParm = {}
-          r23_21.ReceiveParm.QuestId = r21_21
-          r23_21.ReceiveParm.EventId = r1_21
-          r24_21 = {}
-          for r29_21, r30_21 in ipairs(r22_21.QuestReward) do
-            local r31_21 = DataMgr.Reward[r30_21]
-            if r31_21 then
-              local r32_21 = r31_21.Id and {}
-              local r33_21 = r31_21.Count and {}
-              local r34_21 = r31_21.Type and {}
-              for r38_21 = 1, #r32_21, 1 do
-                local r39_21 = r32_21[r38_21]
-                table.insert(r24_21, {
-                  ItemType = r34_21[r38_21],
-                  ItemId = r39_21,
-                  Count = RewardUtils:GetCount(r33_21[r38_21]),
-                  Rarity = ItemUtils.GetItemRarity(r39_21, r34_21[r38_21]),
+          r23_20.CanReceive = r24_20
+          r23_20.Type = r11_20
+          r23_20.RewardsGot = r15_20[r21_20].RewardsGot
+          r23_20.NotreachText = GText("UI_Archive_CollectionInProgress")
+          r23_20.Hint = GText(r22_20.StarterQuestDes)
+          r23_20.ReddotName = "RaidReward"
+          r23_20.ReceiveButtonText = GText("UI_Archive_CollectionClaim")
+          r23_20.Num = r22_20.Target
+          r23_20.ReceiveCallBack = r0_20.GetRaidReward
+          r23_20.ReceiveParm = {}
+          r23_20.ReceiveParm.QuestId = r21_20
+          r23_20.ReceiveParm.EventId = r1_20
+          r24_20 = {}
+          for r29_20, r30_20 in ipairs(r22_20.QuestReward) do
+            local r31_20 = DataMgr.Reward[r30_20]
+            if r31_20 then
+              local r32_20 = r31_20.Id and {}
+              local r33_20 = r31_20.Count and {}
+              local r34_20 = r31_20.Type and {}
+              for r38_20 = 1, #r32_20, 1 do
+                local r39_20 = r32_20[r38_20]
+                table.insert(r24_20, {
+                  ItemType = r34_20[r38_20],
+                  ItemId = r39_20,
+                  Count = RewardUtils:GetCount(r33_20[r38_20]),
+                  Rarity = ItemUtils.GetItemRarity(r39_20, r34_20[r38_20]),
                 })
               end
             end
           end
-          -- close: r25_21
-          r23_21.Rewards = r24_21
-          table.insert(r16_21, r23_21)
+          -- close: r25_20
+          r23_20.Rewards = r24_20
+          table.insert(r16_20, r23_20)
         end
       end
-      -- close: r17_21
-      table.sort(r16_21, function(r0_23, r1_23)
-        -- line: [366, 368] id: 23
-        return r0_23.Num < r1_23.Num
+      -- close: r17_20
+      table.sort(r16_20, function(r0_22, r1_22)
+        -- line: [360, 362] id: 22
+        return r0_22.Num < r1_22.Num
       end)
-      r14_21.Items = r16_21
-      r3_21.ConfigData.Datas[r11_21] = r14_21
+      r14_20.Items = r16_20
+      r3_20.ConfigData.Datas[r11_20] = r14_20
     end
   end
-  -- close: r5_21
-  r3_21.ConfigData.Type = r3_21.ConfigData.TabInfo[1].Type
-  r3_21.ConfigData.ReddotName = "RaidReward"
-  return r3_21
+  -- close: r5_20
+  r3_20.ConfigData.Type = r3_20.ConfigData.TabInfo[1].Type
+  r3_20.ConfigData.ReddotName = "RaidReward"
+  return r3_20
 end
-function r4_0.GetAllRaidRewards(r0_24, r1_24)
-  -- line: [378, 410] id: 24
-  local r2_24 = GWorld:GetAvatar()
-  if r2_24 then
-    r2_24:CommonQuestActivityGetPhaseReward(function(r0_25, r1_25)
-      -- line: [381, 407] id: 25
+function r4_0.GetAllRaidRewards(r0_23, r1_23)
+  -- line: [372, 404] id: 23
+  local r2_23 = GWorld:GetAvatar()
+  if r2_23 then
+    r2_23:CommonQuestActivityGetPhaseReward(function(r0_24, r1_24)
+      -- line: [375, 401] id: 24
       DebugPrint("@@@Raid GetAllRewards CallBack")
-      local r2_25 = false
-      local r3_25 = r2_24.CommonQuestActivity[r1_24.EventId]
-      for r7_25 = 0, r1_24.SelfWidget.List_Item:GetNumItems() + -1, 1 do
-        local r8_25 = r1_24.SelfWidget.List_Item:GetItemAt(r7_25)
-        if r8_25 then
-          local r9_25 = r3_25[r8_25.ConfigData.ReceiveParm.QuestId].Progress
-          if r3_25[r8_25.ConfigData.ReceiveParm.QuestId].Target <= r9_25 then
-            r9_25 = r3_25[r8_25.ConfigData.ReceiveParm.QuestId].RewardsGot == false
+      local r2_24 = false
+      local r3_24 = r2_23.CommonQuestActivity[r1_23.EventId]
+      for r7_24 = 0, r1_23.SelfWidget.List_Item:GetNumItems() + -1, 1 do
+        local r8_24 = r1_23.SelfWidget.List_Item:GetItemAt(r7_24)
+        if r8_24 then
+          local r9_24 = r3_24[r8_24.ConfigData.ReceiveParm.QuestId].Progress
+          if r3_24[r8_24.ConfigData.ReceiveParm.QuestId].Target <= r9_24 then
+            r9_24 = r3_24[r8_24.ConfigData.ReceiveParm.QuestId].RewardsGot == false
           else
             goto label_42	-- block#4 is visited secondly
           end
-          local r10_25 = r3_25[r8_25.ConfigData.ReceiveParm.QuestId].RewardsGot
-          if r9_25 and not r10_25 then
-            r2_25 = true
+          local r10_24 = r3_24[r8_24.ConfigData.ReceiveParm.QuestId].RewardsGot
+          if r9_24 and not r10_24 then
+            r2_24 = true
           end
-          DebugPrint("@@@Raid GetAllRewards ,Type,ItemId,CanReceive,IsGot", r8_25.ConfigData.Type, r8_25.ConfigData.ItemId, r9_25, r10_25)
-          r8_25.ConfigData.CanReceive = r9_25
-          r8_25.ConfigData.RewardsGot = r10_25
-          if r8_25.SelfWidget then
-            r8_25.SelfWidget:RefreshBtn(r10_25)
+          DebugPrint("@@@Raid GetAllRewards ,Type,ItemId,CanReceive,IsGot", r8_24.ConfigData.Type, r8_24.ConfigData.ItemId, r9_24, r10_24)
+          r8_24.ConfigData.CanReceive = r9_24
+          r8_24.ConfigData.RewardsGot = r10_24
+          if r8_24.SelfWidget then
+            r8_24.SelfWidget:RefreshBtn(r10_24)
           end
         end
       end
-      UIUtils.ShowGetItemPageAndOpenBagIfNeeded(nil, nil, nil, r1_25, false, function()
-        -- line: [401, 403] id: 26
-        r1_24.SelfWidget:SetFocus()
-      end, r1_24.SelfWidget)
-      r1_24.SelfWidget:RefreshButton(r2_25)
-      DebugPrint("@@@hRaid GetAllRewards HaveReWardToGet", r2_25)
-      r1_24.SelfWidget:RefreshReddotInfo()
-    end, r1_24.EventId, r1_24.QuestPhaseId)
+      UIUtils.ShowGetItemPageAndOpenBagIfNeeded(nil, nil, nil, r1_24, false, function()
+        -- line: [395, 397] id: 25
+        r1_23.SelfWidget:SetFocus()
+      end, r1_23.SelfWidget)
+      r1_23.SelfWidget:RefreshButton(r2_24)
+      DebugPrint("@@@hRaid GetAllRewards HaveReWardToGet", r2_24)
+      r1_23.SelfWidget:RefreshReddotInfo()
+    end, r1_23.EventId, r1_23.QuestPhaseId)
   end
 end
-function r4_0.GetRaidReward(r0_27, r1_27)
-  -- line: [412, 447] id: 27
-  local r2_27 = GWorld:GetAvatar()
-  if r2_27 then
-    r2_27:CommonQuestActivityGetReward(function(r0_28, r1_28)
-      -- line: [415, 444] id: 28
-      if not ErrorCode:Check(r0_28) then
+function r4_0.GetRaidReward(r0_26, r1_26)
+  -- line: [406, 441] id: 26
+  local r2_26 = GWorld:GetAvatar()
+  if r2_26 then
+    r2_26:CommonQuestActivityGetReward(function(r0_27, r1_27)
+      -- line: [409, 438] id: 27
+      if not ErrorCode:Check(r0_27) then
         return 
       end
       DebugPrint("@@@Raid GetReward CallBack")
-      local r2_28 = false
-      local r3_28 = r2_27.CommonQuestActivity[r1_27.ConfigData.ReceiveParm.EventId]
-      for r7_28 = 0, r1_27.Owner.List_Item:GetNumItems() + -1, 1 do
-        local r8_28 = r1_27.Owner.List_Item:GetItemAt(r7_28)
-        if r8_28 then
-          local r9_28 = r3_28[r8_28.ConfigData.ReceiveParm.QuestId].Progress
-          if r3_28[r8_28.ConfigData.ReceiveParm.QuestId].Target <= r9_28 then
-            r9_28 = r3_28[r8_28.ConfigData.ReceiveParm.QuestId].RewardsGot == false
+      local r2_27 = false
+      local r3_27 = r2_26.CommonQuestActivity[r1_26.ConfigData.ReceiveParm.EventId]
+      for r7_27 = 0, r1_26.Owner.List_Item:GetNumItems() + -1, 1 do
+        local r8_27 = r1_26.Owner.List_Item:GetItemAt(r7_27)
+        if r8_27 then
+          local r9_27 = r3_27[r8_27.ConfigData.ReceiveParm.QuestId].Progress
+          if r3_27[r8_27.ConfigData.ReceiveParm.QuestId].Target <= r9_27 then
+            r9_27 = r3_27[r8_27.ConfigData.ReceiveParm.QuestId].RewardsGot == false
           else
             goto label_51	-- block#6 is visited secondly
           end
-          local r10_28 = r3_28[r8_28.ConfigData.ReceiveParm.QuestId].RewardsGot
-          if r9_28 and not r10_28 then
-            r2_28 = true
+          local r10_27 = r3_27[r8_27.ConfigData.ReceiveParm.QuestId].RewardsGot
+          if r9_27 and not r10_27 then
+            r2_27 = true
           end
-          DebugPrint("@@@Raid GetReward ,Type,ItemId,CanReceive,IsGot", r8_28.ConfigData.Type, r8_28.ConfigData.ItemId, r9_28, r10_28)
-          r8_28.ConfigData.CanReceive = r9_28
-          r8_28.ConfigData.RewardsGot = r10_28
-          if r8_28.SelfWidget then
-            r8_28.SelfWidget:RefreshBtn(r10_28)
+          DebugPrint("@@@Raid GetReward ,Type,ItemId,CanReceive,IsGot", r8_27.ConfigData.Type, r8_27.ConfigData.ItemId, r9_27, r10_27)
+          r8_27.ConfigData.CanReceive = r9_27
+          r8_27.ConfigData.RewardsGot = r10_27
+          if r8_27.SelfWidget then
+            r8_27.SelfWidget:RefreshBtn(r10_27)
           end
         end
       end
-      r1_27.SelfWidget:RefreshReddotInfo()
-      r1_27.Owner:RefreshButton(r2_28)
-      DebugPrint("@@@Raid GetReward HaveReWardToGet", r2_28)
-      UIUtils.ShowGetItemPageAndOpenBagIfNeeded(nil, nil, nil, r1_28, false, function()
-        -- line: [441, 443] id: 29
-        r1_27.SelfWidget:SetFocus()
-      end, r1_27.SelfWidget)
-    end, r1_27.ConfigData.ReceiveParm.EventId, r1_27.ConfigData.ReceiveParm.QuestId)
+      r1_26.SelfWidget:RefreshReddotInfo()
+      r1_26.Owner:RefreshButton(r2_27)
+      DebugPrint("@@@Raid GetReward HaveReWardToGet", r2_27)
+      UIUtils.ShowGetItemPageAndOpenBagIfNeeded(nil, nil, nil, r1_27, false, function()
+        -- line: [435, 437] id: 28
+        r1_26.SelfWidget:SetFocus()
+      end, r1_26.SelfWidget)
+    end, r1_26.ConfigData.ReceiveParm.EventId, r1_26.ConfigData.ReceiveParm.QuestId)
   end
 end
-function r4_0.AddInputMethodChangedListen(r0_30)
+function r4_0.AddInputMethodChangedListen(r0_29)
+  -- line: [444, 448] id: 29
+  if IsValid(r0_29.GameInputModeSubsystem) then
+    r0_29.GameInputModeSubsystem.OnInputMethodChanged:Add(r0_29, r0_29.RefreshOpInfoByInputDevice)
+  end
+end
+function r4_0.RemoveInputMethodChangedListen(r0_30)
   -- line: [450, 454] id: 30
   if IsValid(r0_30.GameInputModeSubsystem) then
-    r0_30.GameInputModeSubsystem.OnInputMethodChanged:Add(r0_30, r0_30.RefreshOpInfoByInputDevice)
+    r0_30.GameInputModeSubsystem.OnInputMethodChanged:Remove(r0_30, r0_30.RefreshOpInfoByInputDevice)
   end
 end
-function r4_0.RemoveInputMethodChangedListen(r0_31)
-  -- line: [456, 460] id: 31
-  if IsValid(r0_31.GameInputModeSubsystem) then
-    r0_31.GameInputModeSubsystem.OnInputMethodChanged:Remove(r0_31, r0_31.RefreshOpInfoByInputDevice)
+function r4_0.RefreshOpInfoByInputDevice(r0_31, r1_31, r2_31)
+  -- line: [456, 463] id: 31
+  if r1_31 == ECommonInputType.MouseAndKeyboard then
+    r0_31:SetGamepadView(false)
+  elseif r1_31 == ECommonInputType.Gamepad then
+    r0_31:SetGamepadView(true)
   end
 end
-function r4_0.RefreshOpInfoByInputDevice(r0_32, r1_32, r2_32)
-  -- line: [462, 469] id: 32
-  if r1_32 == ECommonInputType.MouseAndKeyboard then
-    r0_32:SetGamepadView(false)
-  elseif r1_32 == ECommonInputType.Gamepad then
-    r0_32:SetGamepadView(true)
-  end
-end
-function r4_0.SetGamepadView(r0_33, r1_33)
-  -- line: [471, 476] id: 33
-  local r2_33 = nil	-- notice: implicit variable refs by block#[3]
-  if r1_33 then
-    r2_33 = "SelfHitTestInvisible"
-    if not r2_33 then
+function r4_0.SetGamepadView(r0_32, r1_32)
+  -- line: [465, 470] id: 32
+  local r2_32 = nil	-- notice: implicit variable refs by block#[3]
+  if r1_32 then
+    r2_32 = "SelfHitTestInvisible"
+    if not r2_32 then
       ::label_5::
-      r2_33 = "Collapsed"
+      r2_32 = "Collapsed"
     end
   else
     goto label_5	-- block#2 is visited secondly
   end
-  r0_33.Entrance_Ranking:SetGamepadVisibility(r2_33)
-  r0_33.Entrance_Shop:SetGamepadVisibility(r2_33)
-  r0_33.Entrance_Quest:SetGamepadVisibility(r2_33)
+  r0_32.Entrance_Ranking:SetGamepadVisibility(r2_32)
+  r0_32.Entrance_Shop:SetGamepadVisibility(r2_32)
+  r0_32.Entrance_Quest:SetGamepadVisibility(r2_32)
 end
-function r4_0.HandleKeyDownOnGamePad(r0_34, r1_34)
-  -- line: [478, 491] id: 34
-  local r2_34 = false
-  if r1_34 == UIConst.GamePadKey.RightThumb and not r3_0.IsPreRaidTime() then
-    r2_34 = true
-    r0_34:OnRankBtnClicked()
-  elseif r1_34 == UIConst.GamePadKey.FaceButtonTop then
-    r2_34 = true
-    r0_34:OnQuestBtnClicked()
+function r4_0.HandleKeyDownOnGamePad(r0_33, r1_33)
+  -- line: [472, 485] id: 33
+  local r2_33 = false
+  if r1_33 == UIConst.GamePadKey.RightThumb and not r3_0.IsPreRaidTime() then
+    r2_33 = true
+    r0_33:OnRankBtnClicked()
+  elseif r1_33 == UIConst.GamePadKey.FaceButtonTop then
+    r2_33 = true
+    r0_33:OnQuestBtnClicked()
   end
-  return r2_34
+  return r2_33
 end
 return r4_0

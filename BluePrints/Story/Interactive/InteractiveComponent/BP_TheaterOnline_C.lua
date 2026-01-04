@@ -21,7 +21,7 @@ function r0_0.IsCanInteractive(r0_3, r1_3)
   end
   r2_3:TheaterPerformStateGet(function(r0_4, r1_4)
     -- line: [20, 26] id: 4
-    if r1_4.IsJoin == false then
+    if r1_4 and r1_4.IsJoin == false then
       r0_3.bIsAccept = false
     else
       r0_3.bIsAccept = true

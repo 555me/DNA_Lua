@@ -1,260 +1,249 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\WBP\Activity\WBP_Activity_FeinaEvent_Reward_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local NumberModel = require("BluePrints.UI.UI_PC.Archive.WBP_Archive_Number_Model")
-local WBP_Activity_FeinaEvent_Reward_C = Class("BluePrints.UI.BP_UIState_C")
-
-function WBP_Activity_FeinaEvent_Reward_C:Construct()
-  self.Super.Construct(self)
-  self:Init()
+local r0_0 = require("BluePrints.UI.UI_PC.Archive.WBP_Archive_Number_Model")
+local r1_0 = Class("BluePrints.UI.BP_UIState_C")
+function r1_0.Construct(r0_1)
+  -- line: [16, 24] id: 1
+  r0_1.Super.Construct(r0_1)
+  r0_1:Init()
   if not ReddotManager.GetTreeNode("FeinaEventReward") then
     ReddotManager.AddNode("FeinaEventReward")
   end
-  ReddotManager.AddListener("FeinaEventReward", self, self.RefreshBtnGetAll)
-  self.Btn_GetAll:SetVisibility(ESlateVisibility.Collapsed)
+  ReddotManager.AddListener("FeinaEventReward", r0_1, r0_1.RefreshBtnGetAll)
+  r0_1.Btn_GetAll:SetVisibility(ESlateVisibility.Collapsed)
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:UpdateFeinaEventRewardReddot()
-  local Avatar = GWorld:GetAvatar()
-  if not Avatar then
-    return
-  end
-  for Id, Info in pairs(DataMgr.FeinaEvent) do
-    for _, DungeonId in pairs(Info.DungeonId) do
-      local RewardsGot = Avatar:GetFeinaRewardInfo(DungeonId)
-      if RewardsGot then
-        for RewardIndex, State in pairs(RewardsGot) do
-          if 1 == State then
-            local Node = ReddotManager.GetTreeNode("FeinaEventReward")
-            if not Node then
-              ReddotManager.AddNode("FeinaEventReward")
-            end
-            local CacheDetail = ReddotManager.GetLeafNodeCacheDetail("FeinaEventReward")
-            if not CacheDetail[Id] then
-              CacheDetail[Id] = {}
-            end
-            if not CacheDetail[Id][DungeonId] then
-              CacheDetail[Id][DungeonId] = {}
-            end
-            if not CacheDetail[Id][DungeonId][RewardIndex] then
-              CacheDetail[Id][DungeonId][RewardIndex] = 1
-              ReddotManager.IncreaseLeafNodeCount("FeinaEventReward")
-            end
-          end
-        end
-      end
-    end
-  end
+function r1_0.UpdateFeinaEventRewardReddot(r0_2)
+  -- line: [26, 28] id: 2
+  UIUtils.RefreshFeinaRewardReddot()
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:Destruct()
-  self.Super.Destruct(self)
-  ReddotManager.RemoveListener("FeinaEventReward", self)
-  self:ClearListenEvent()
-  self.List_Tab:ClearListItems()
-  self.List_Item:ClearListItems()
+function r1_0.Destruct(r0_3)
+  -- line: [33, 39] id: 3
+  r0_3.Super.Destruct(r0_3)
+  ReddotManager.RemoveListener("FeinaEventReward", r0_3)
+  r0_3:ClearListenEvent()
+  r0_3.List_Tab:ClearListItems()
+  r0_3.List_Item:ClearListItems()
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:OnLoaded(...)
-  self.Super.OnLoaded(self, ...)
-  self.Type, self.DataModel = ...
-  self.SelectIndex = nil
-  if self.Type then
-    self.SelectIndex = self.Type2Index[self.Type]
+function r1_0.OnLoaded(r0_4, ...)
+  -- line: [41, 67] id: 4
+  local r2_4 = nil	-- notice: implicit variable refs by block#[0]
+  local r1_4 = nil	-- notice: implicit variable refs by block#[0]
+  r0_4.Super.OnLoaded(r0_4, ...)
+  ... = ... -- error: untaken top expr
+  r0_4.DataModel = r2_4
+  r0_4.Type = r1_4
+  r0_4.SelectIndex = nil
+  r1_4 = r0_4.Type
+  if r1_4 then
+    r2_4 = r0_4.Type
+    r1_4 = r0_4.Type2Index[r2_4]
+    r0_4.SelectIndex = r1_4
   end
-  if not self.SelectIndex then
-    self.SelectIndex = 1
+  r1_4 = r0_4.SelectIndex
+  if not r1_4 then
+    r0_4.SelectIndex = 1
   end
-  self.List_Item:SetControlScrollbarInside(true)
-  self.List_Tab:ScrollIndexIntoView(self.SelectIndex - 1)
-  self:AddTimer(0.01, function()
-    self.List_Tab:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-    local Item = self.List_Tab:GetItemAt(self.SelectIndex - 1)
-    self.Btn_GetAll:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-    if Item then
-      Item.Entry:OnCellClicked()
-      self.GameInputModeSubsystem:SetTargetUIFocusWidget(Item.Entry)
+  r0_4.List_Item:SetControlScrollbarInside(true)
+  r0_4.List_Tab:ScrollIndexIntoView(r0_4.SelectIndex + -1)
+  r0_4:AddTimer(0.01, function()
+    -- line: [53, 61] id: 5
+    r0_4.List_Tab:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    local r0_5 = r0_4.List_Tab:GetItemAt(r0_4.SelectIndex + -1)
+    r0_4.Btn_GetAll:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    if r0_5 then
+      r0_5.Entry:OnCellClicked()
+      r0_4.GameInputModeSubsystem:SetTargetUIFocusWidget(r0_5.Entry)
     end
   end, false, 0, "SelectRewardTab", true)
-  self:UpdateFeinaEventRewardReddot()
-  self:PlayAnimation(self.In)
-  if CommonUtils.GetDeviceTypeByPlatformName(self) == "Mobile" then
-    self.Key_Tip:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  r0_4:UpdateFeinaEventRewardReddot()
+  r0_4:PlayAnimation(r0_4.In)
+  r1_4 = CommonUtils.GetDeviceTypeByPlatformName(r0_4)
+  if r1_4 == "Mobile" then
+    r0_4.Key_Tip:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:Init()
-  self:InitNormalInfo()
-  self:InitListTabInfo()
-  self:InitBtnInfo()
-  local PlayerController = UE4.UGameplayStatics.GetPlayerController(self, 0)
-  self.GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(PlayerController)
-  if IsValid(self.GameInputModeSubsystem) then
-    self:RefreshOpInfoByInputDevice(self.GameInputModeSubsystem:GetCurrentInputType(), self.GameInputModeSubsystem:GetCurrentGamepadName())
+function r1_0.Init(r0_6)
+  -- line: [69, 81] id: 6
+  r0_6:InitNormalInfo()
+  r0_6:InitListTabInfo()
+  r0_6:InitBtnInfo()
+  r0_6.GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(UE4.UGameplayStatics.GetPlayerController(r0_6, 0))
+  if IsValid(r0_6.GameInputModeSubsystem) then
+    r0_6:RefreshOpInfoByInputDevice(r0_6.GameInputModeSubsystem:GetCurrentInputType(), r0_6.GameInputModeSubsystem:GetCurrentGamepadName())
   end
-  self:InitListenEvent()
-  self:InitWidgetInfoInGamePad()
+  r0_6:InitListenEvent()
+  r0_6:InitWidgetInfoInGamePad()
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:InitNormalInfo()
-  self.Btn_GetAll:SetText(GText("UI_Archive_CollectionClaimAll"))
+function r1_0.InitNormalInfo(r0_7)
+  -- line: [83, 85] id: 7
+  r0_7.Btn_GetAll:SetText(GText("UI_Archive_CollectionClaimAll"))
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:InitBtnInfo()
-  self.Btn_GetAll:BindEventOnClicked(self, self.GetAllRewards)
-  self.Btn_Close:Init("Close", self, self.OnClickClose)
-  self.Btn_Close.AudioEventPath = "event:/ui/common/click_btn_return"
+function r1_0.InitBtnInfo(r0_8)
+  -- line: [87, 91] id: 8
+  r0_8.Btn_GetAll:BindEventOnClicked(r0_8, r0_8.GetAllRewards)
+  r0_8.Btn_Close:Init("Close", r0_8, r0_8.OnClickClose)
+  r0_8.Btn_Close.AudioEventPath = "event:/ui/common/click_btn_return"
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:InitListTabInfo()
-  self.List_Tab.BP_OnItemSelectionChanged:Add(self, self.OnSelectItemChanged)
-  self.List_Tab:SetNavigationRuleCustom(EUINavigation.Right, {
-    self,
-    self.OnUINavigation
+function r1_0.InitListTabInfo(r0_9)
+  -- line: [93, 118] id: 9
+  r0_9.List_Tab.BP_OnItemSelectionChanged:Add(r0_9, r0_9.OnSelectItemChanged)
+  r0_9.List_Tab:SetNavigationRuleCustom(EUINavigation.Right, {
+    r0_9,
+    r0_9.OnUINavigation
   })
-  self.List_Tab:SetVisibility(ESlateVisibility.HitTestInvisible)
-  self.List_Item:SetNavigationRuleCustom(EUINavigation.Left, {
-    self,
-    self.OnUINavigation
+  r0_9.List_Tab:SetVisibility(ESlateVisibility.HitTestInvisible)
+  r0_9.List_Item:SetNavigationRuleCustom(EUINavigation.Left, {
+    r0_9,
+    r0_9.OnUINavigation
   })
-  self.List_Item:SetControlScrollbarInside(true)
-  self.Type2Index = {}
-  local ClassPath = "/Game/UI/UI_PC/Common/Common_Item_subsize_PC_Content.Common_Item_subsize_PC_Content_C"
-  self.List_Tab:ClearListItems()
-  for Index, EventInfo in ipairs(DataMgr.FeinaEvent) do
-    local Obj = NewObject(UE4.LoadClass(ClassPath))
-    Obj.Root = self
-    Obj.TabIndex = Index
-    Obj.Type = Index
-    self.List_Tab:AddItem(Obj)
-    self.Type2Index[Obj.Type] = Index
+  r0_9.List_Item:SetControlScrollbarInside(true)
+  r0_9.Type2Index = {}
+  local r1_9 = "/Game/UI/UI_PC/Common/Common_Item_subsize_PC_Content.Common_Item_subsize_PC_Content_C"
+  r0_9.List_Tab:ClearListItems()
+  for r6_9, r7_9 in ipairs(DataMgr.FeinaEvent) do
+    local r8_9 = NewObject(UE4.LoadClass(r1_9))
+    r8_9.Root = r0_9
+    r8_9.TabIndex = r6_9
+    r8_9.Type = r6_9
+    r0_9.List_Tab:AddItem(r8_9)
+    r0_9.Type2Index[r8_9.Type] = r6_9
   end
+  -- close: r2_9
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:RefreshListRewardInfo(Item)
-  if self.SelectedContent then
-    self.SelectedContent.Entry:UnSelected()
+function r1_0.RefreshListRewardInfo(r0_10, r1_10)
+  -- line: [120, 146] id: 10
+  if r0_10.SelectedContent then
+    r0_10.SelectedContent.Entry:UnSelected()
   end
-  self.Type = Item.Content.Type
-  self.SelectedContent = Item.Content
-  self.SelectedContent.Entry:Selected()
-  self:RealRefreshListRewardInfo(self.SelectedContent.Type)
-  local InputType = self.GameInputModeSubsystem:GetCurrentInputType()
-  if InputType == ECommonInputType.MouseAndKeyboard then
-    self.List_Item:SetFocus()
+  r0_10.Type = r1_10.Content.Type
+  r0_10.SelectedContent = r1_10.Content
+  r0_10.SelectedContent.Entry:Selected()
+  r0_10:RealRefreshListRewardInfo(r0_10.SelectedContent.Type)
+  if r0_10.GameInputModeSubsystem:GetCurrentInputType() == ECommonInputType.MouseAndKeyboard then
+    r0_10.List_Item:SetFocus()
   end
-  self:RemoveTimer(self.FramingKey)
-  self.FramingKey = self:AddTimer(0.01, function()
-    self.List_Item:SetScrollOffset(0)
-    UIUtils.PlayListViewFramingInAnimation(self, self.List_Item, {AnimName = "In"})
-    local AllItemCount = self.List_Item:GetNumItems()
-    for i = 0, AllItemCount - 1 do
-      local TargetItem = self.List_Item:GetItemAt(i)
-      if TargetItem and TargetItem.Entry then
-        UIUtils.PlayListViewFramingInAnimation(self, TargetItem.Entry.List_Item, {AnimName = "In"})
+  r0_10:RemoveTimer(r0_10.FramingKey)
+  r0_10.FramingKey = r0_10:AddTimer(0.01, function()
+    -- line: [133, 145] id: 11
+    r0_10.List_Item:SetScrollOffset(0)
+    UIUtils.PlayListViewFramingInAnimation(r0_10, r0_10.List_Item, {
+      AnimName = "In",
+    })
+    for r4_11 = 0, r0_10.List_Item:GetNumItems() + -1, 1 do
+      local r5_11 = r0_10.List_Item:GetItemAt(r4_11)
+      if r5_11 and r5_11.Entry then
+        UIUtils.PlayListViewFramingInAnimation(r0_10, r5_11.Entry.List_Item, {
+          AnimName = "In",
+        })
       end
     end
   end, false, 0, nil, true)
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:RealRefreshListRewardInfo(Type)
-  self:AddListReward(Type)
-  self:RefreshBtnGetAll()
+function r1_0.RealRefreshListRewardInfo(r0_12, r1_12)
+  -- line: [148, 153] id: 12
+  r0_12:AddListReward(r1_12)
+  r0_12:RefreshBtnGetAll()
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:AddListReward(Type)
-  local EventInfo = DataMgr.FeinaEvent[Type]
-  local ClassPath = "/Game/UI/UI_PC/Common/Common_Item_subsize_PC_Content.Common_Item_subsize_PC_Content_C"
-  self.List_Item:ClearListItems()
-  for Index, DungeonId in pairs(EventInfo.DungeonId) do
-    local Obj = NewObject(UE4.LoadClass(ClassPath))
-    Obj.Root = self
-    Obj.Index = Index
-    Obj.DungeonId = DungeonId
-    Obj.Title = DataMgr.FeinaEventDungeon[DungeonId].DungeonName
-    self.List_Item:AddItem(Obj)
+function r1_0.AddListReward(r0_13, r1_13)
+  -- line: [155, 167] id: 13
+  local r2_13 = DataMgr.FeinaEvent[r1_13]
+  local r3_13 = "/Game/UI/UI_PC/Common/Common_Item_subsize_PC_Content.Common_Item_subsize_PC_Content_C"
+  r0_13.List_Item:ClearListItems()
+  for r8_13, r9_13 in pairs(r2_13.DungeonId) do
+    local r10_13 = NewObject(UE4.LoadClass(r3_13))
+    r10_13.Root = r0_13
+    r10_13.Index = r8_13
+    r10_13.DungeonId = r9_13
+    r10_13.Title = DataMgr.FeinaEventDungeon[r9_13].DungeonName
+    r0_13.List_Item:AddItem(r10_13)
+  end
+  -- close: r4_13
+end
+function r1_0.TryGetAllRewards(r0_14)
+  -- line: [180, 184] id: 14
+  if r0_14.Btn_GetAll:GetVisibility() ~= UIConst.VisibilityOp.Collapsed then
+    r0_14:GetAllRewards()
   end
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:TryGetAllRewards()
-  if self.Btn_GetAll:GetVisibility() ~= UIConst.VisibilityOp.Collapsed then
-    self:GetAllRewards()
-  end
-end
-
-function WBP_Activity_FeinaEvent_Reward_C:GetAllRewards()
-  local Avatar = GWorld:GetAvatar()
-  if Avatar then
-    local function Callback(Errorcode, Rewards)
-      self:RefreshItemState()
-      
-      self:RefreshReddotInfo()
-      UIUtils.ShowGetItemPageAndOpenBagIfNeeded(nil, nil, nil, Rewards, false, function()
-        self:SetFocus()
-      end, self)
+function r1_0.GetAllRewards(r0_15)
+  -- line: [186, 199] id: 15
+  local r1_15 = GWorld:GetAvatar()
+  if r1_15 then
+    r1_15:GetAllFeiNaProgressRewerd(r0_15.Type2Index[r0_15.SelectedContent.Type], function(r0_16, r1_16)
+      -- line: [189, 196] id: 16
+      r0_15:RefreshItemState()
+      r0_15:RefreshReddotInfo()
+      UIUtils.ShowGetItemPageAndOpenBagIfNeeded(nil, nil, nil, r1_16, false, function()
+        -- line: [192, 194] id: 17
+        r0_15:SetFocus()
+      end, r0_15)
       EventManager:FireEvent(EventID.OnGetFeiNaReward)
-    end
-    
-    Avatar:GetAllFeiNaProgressRewerd(self.Type2Index[self.SelectedContent.Type], Callback)
+    end)
   end
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:RefreshItemState()
-  local TargetListItems = self.List_Item:GetDisplayedEntryWidgets()
-  for i = 1, TargetListItems:Length() do
-    local TargetListItem = TargetListItems:GetRef(i)
-    if TargetListItem then
-      local Items = TargetListItem.List_Item:GetDisplayedEntryWidgets()
-      for j = 1, Items:Length() do
-        local Item = Items:GetRef(j)
-        Item:RefreshState()
-        Item:RefreshRewardsList()
+function r1_0.RefreshItemState(r0_18)
+  -- line: [201, 214] id: 18
+  local r1_18 = r0_18.List_Item:GetDisplayedEntryWidgets()
+  for r5_18 = 1, r1_18:Length(), 1 do
+    local r6_18 = r1_18:GetRef(r5_18)
+    if r6_18 then
+      local r7_18 = r6_18.List_Item:GetDisplayedEntryWidgets()
+      for r11_18 = 1, r7_18:Length(), 1 do
+        local r12_18 = r7_18:GetRef(r11_18)
+        r12_18:RefreshState()
+        r12_18:RefreshRewardsList()
       end
     end
   end
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:RefreshReddotInfo()
+function r1_0.RefreshReddotInfo(r0_19)
+  -- line: [216, 230] id: 19
   DebugPrint("Ljh Try RefreshReddotInfo")
-  local CacheDetail = ReddotManager.GetLeafNodeCacheDetail("FeinaEventReward")
-  if CacheDetail[self.SelectedContent.Type] then
-    local Num = 0
-    for _, DungeonData in pairs(CacheDetail[self.SelectedContent.Type]) do
-      for _, _ in pairs(DungeonData) do
-        Num = Num + 1
+  local r1_19 = ReddotManager.GetLeafNodeCacheDetail("FeinaEventReward")
+  if r1_19[r0_19.SelectedContent.Type] then
+    local r2_19 = 0
+    for r7_19, r8_19 in pairs(r1_19[r0_19.SelectedContent.Type]) do
+      for r13_19, r14_19 in pairs(r8_19) do
+        r2_19 = r2_19 + 1
       end
+      -- close: r9_19
     end
-    CacheDetail[self.SelectedContent.Type] = nil
-    ReddotManager.DecreaseLeafNodeCount("FeinaEventReward", Num)
-    DebugPrint("Ljh CacheDetail" .. tostring(self.SelectedContent.Type) .. "Cleared,ClearedNums:" .. tostring(Num))
+    -- close: r3_19
+    r1_19[r0_19.SelectedContent.Type] = nil
+    ReddotManager.DecreaseLeafNodeCount("FeinaEventReward", r2_19)
+    DebugPrint("Ljh CacheDetail" .. tostring(r0_19.SelectedContent.Type) .. "Cleared,ClearedNums:" .. tostring(r2_19))
   end
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:RefreshBtnGetAll()
+function r1_0.RefreshBtnGetAll(r0_20)
+  -- line: [232, 270] id: 20
   DebugPrint("Ljh Try RefreshBtnGetAll")
-  if not self.SelectedContent then
-    self.Btn_GetAll:SetVisibility(ESlateVisibility.Collapsed)
-    return
+  if not r0_20.SelectedContent then
+    r0_20.Btn_GetAll:SetVisibility(ESlateVisibility.Collapsed)
+    return 
   end
-  local CacheDetail = ReddotManager.GetLeafNodeCacheDetail("FeinaEventReward")
-  if CacheDetail and CacheDetail[self.SelectedContent.Type] then
-    DebugPrint("Ljh CacheDetail Not Empty,Type:" .. tostring(self.SelectedContent.Type))
-    local CurInputDevice = self.GameInputModeSubsystem:GetCurrentInputType()
-    if CurInputDevice ~= ECommonInputType.Touch and CurInputDevice ~= ECommonInputType.MouseAndKeyboard then
-      self.Btn_GetAll:SetVisibility(ESlateVisibility.HitTestInvisible)
+  local r1_20 = ReddotManager.GetLeafNodeCacheDetail("FeinaEventReward")
+  if r1_20 and r1_20[r0_20.SelectedContent.Type] then
+    DebugPrint("Ljh CacheDetail Not Empty,Type:" .. tostring(r0_20.SelectedContent.Type))
+    local r2_20 = r0_20.GameInputModeSubsystem:GetCurrentInputType()
+    if r2_20 ~= ECommonInputType.Touch and r2_20 ~= ECommonInputType.MouseAndKeyboard then
+      r0_20.Btn_GetAll:SetVisibility(ESlateVisibility.HitTestInvisible)
     else
-      self.Btn_GetAll:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-      if CommonUtils.GetDeviceTypeByPlatformName(self) ~= "Mobile" and self.GameInputModeSubsystem:GetCurrentInputType() ~= ECommonInputType.Gamepad then
-        self.Key_Tip:UpdateKeyInfo({
+      r0_20.Btn_GetAll:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+      if CommonUtils.GetDeviceTypeByPlatformName(r0_20) ~= "Mobile" and r0_20.GameInputModeSubsystem:GetCurrentInputType() ~= ECommonInputType.Gamepad then
+        r0_20.Key_Tip:UpdateKeyInfo({
           {
             KeyInfoList = {
               {
                 Type = "Text",
                 Text = "Space",
                 bEnableEvent = true,
-                ClickCallback = self.TryGetAllRewards,
-                Owner = self
+                ClickCallback = r0_20.TryGetAllRewards,
+                Owner = r0_20,
               }
             },
-            Desc = GText("UI_Archive_CollectionClaimAll")
+            Desc = GText("UI_Archive_CollectionClaimAll"),
           },
           {
             KeyInfoList = {
@@ -262,332 +251,341 @@ function WBP_Activity_FeinaEvent_Reward_C:RefreshBtnGetAll()
                 Type = "Text",
                 Text = "Esc",
                 bEnableEvent = true,
-                ClickCallback = self.OnClickClose,
-                Owner = self
+                ClickCallback = r0_20.OnClickClose,
+                Owner = r0_20,
               }
             },
-            Desc = GText("UI_Tips_Close")
+            Desc = GText("UI_Tips_Close"),
           }
         })
       end
     end
   else
-    if CommonUtils.GetDeviceTypeByPlatformName(self) ~= "Mobile" and self.GameInputModeSubsystem:GetCurrentInputType() ~= ECommonInputType.Gamepad then
-      self.Key_Tip:UpdateKeyInfo({
+    if CommonUtils.GetDeviceTypeByPlatformName(r0_20) ~= "Mobile" and r0_20.GameInputModeSubsystem:GetCurrentInputType() ~= ECommonInputType.Gamepad then
+      r0_20.Key_Tip:UpdateKeyInfo({
         {
           KeyInfoList = {
             {
               Type = "Text",
               Text = "Esc",
               bEnableEvent = true,
-              ClickCallback = self.OnClickClose,
-              Owner = self
+              ClickCallback = r0_20.OnClickClose,
+              Owner = r0_20,
             }
           },
-          Desc = GText("UI_Tips_Close")
+          Desc = GText("UI_Tips_Close"),
         }
       })
     end
-    self.Btn_GetAll:SetVisibility(ESlateVisibility.Collapsed)
+    r0_20.Btn_GetAll:SetVisibility(ESlateVisibility.Collapsed)
   end
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:OnKeyDown(MyGeometry, InKeyEvent)
-  local InKey = UE4.UKismetInputLibrary.GetKey(InKeyEvent)
-  local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-  local IsEventHandled = false
-  if UE4.UKismetInputLibrary.Key_IsGamepadKey(InKey) then
-    if "Gamepad_FaceButton_Top" == InKeyName then
-      IsEventHandled = true
-      self:TryGetAllRewards()
-    elseif "Gamepad_FaceButton_Right" == InKeyName then
-      IsEventHandled = true
-      self:OnReturnKeyDown()
+function r1_0.OnKeyDown(r0_21, r1_21, r2_21)
+  -- line: [272, 302] id: 21
+  local r3_21 = UE4.UKismetInputLibrary.GetKey(r2_21)
+  local r4_21 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_21)
+  local r5_21 = false
+  if UE4.UKismetInputLibrary.Key_IsGamepadKey(r3_21) then
+    if r4_21 == "Gamepad_FaceButton_Top" then
+      r5_21 = true
+      r0_21:TryGetAllRewards()
+    elseif r4_21 == "Gamepad_FaceButton_Right" then
+      r5_21 = true
+      r0_21:OnReturnKeyDown()
     end
-  elseif "Escape" == InKeyName then
-    IsEventHandled = true
-    self:OnReturnKeyDown()
-  elseif "SpaceBar" == InKeyName then
-    IsEventHandled = true
-    self:TryGetAllRewards()
+  elseif r4_21 == "Escape" then
+    r5_21 = true
+    r0_21:OnReturnKeyDown()
+  elseif r4_21 == "SpaceBar" then
+    r5_21 = true
+    r0_21:TryGetAllRewards()
   end
-  if IsEventHandled then
+  if r5_21 then
     return UE4.UWidgetBlueprintLibrary.Handled()
   else
     return UE4.UWidgetBlueprintLibrary.UnHandled()
   end
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:OnPreviewKeyDown(MyGeometry, InKeyEvent)
-  local InKey = UE4.UKismetInputLibrary.GetKey(InKeyEvent)
-  local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-  local IsEventHandled = false
-  if UE4.UKismetInputLibrary.Key_IsGamepadKey(InKey) then
-  elseif "Escape" == InKeyName then
-    IsEventHandled = true
-    self:OnReturnKeyDown()
-  elseif "SpaceBar" == InKeyName then
-    IsEventHandled = true
-    self:TryGetAllRewards()
+function r1_0.OnPreviewKeyDown(r0_22, r1_22, r2_22)
+  -- line: [305, 324] id: 22
+  local r3_22 = UE4.UKismetInputLibrary.GetKey(r2_22)
+  local r4_22 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_22)
+  local r5_22 = false
+  if not UE4.UKismetInputLibrary.Key_IsGamepadKey(r3_22) then
+    if r4_22 == "Escape" then
+      r5_22 = true
+      r0_22:OnReturnKeyDown()
+    elseif r4_22 == "SpaceBar" then
+      r5_22 = true
+      r0_22:TryGetAllRewards()
+    end
   end
-  if IsEventHandled then
+  if r5_22 then
     return UE4.UWidgetBlueprintLibrary.Handled()
   else
     return UE4.UWidgetBlueprintLibrary.UnHandled()
   end
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:OnReturnKeyDown()
-  self:OnClickClose()
+function r1_0.OnReturnKeyDown(r0_23)
+  -- line: [326, 329] id: 23
+  r0_23:OnClickClose()
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:OnClickClose()
-  self:Close()
+function r1_0.OnClickClose(r0_24)
+  -- line: [331, 334] id: 24
+  r0_24:Close()
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:InitListenEvent()
-  if IsValid(self.GameInputModeSubsystem) then
-    self.GameInputModeSubsystem.OnInputMethodChanged:Add(self, self.RefreshOpInfoByInputDevice)
+function r1_0.InitListenEvent(r0_25)
+  -- line: [336, 340] id: 25
+  if IsValid(r0_25.GameInputModeSubsystem) then
+    r0_25.GameInputModeSubsystem.OnInputMethodChanged:Add(r0_25, r0_25.RefreshOpInfoByInputDevice)
   end
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:ClearListenEvent()
-  if IsValid(self.GameInputModeSubsystem) then
-    self.GameInputModeSubsystem.OnInputMethodChanged:Remove(self, self.RefreshOpInfoByInputDevice)
+function r1_0.ClearListenEvent(r0_26)
+  -- line: [342, 346] id: 26
+  if IsValid(r0_26.GameInputModeSubsystem) then
+    r0_26.GameInputModeSubsystem.OnInputMethodChanged:Remove(r0_26, r0_26.RefreshOpInfoByInputDevice)
   end
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:RefreshOpInfoByInputDevice(CurInputDevice, CurGamepadName)
-  if CurInputDevice == ECommonInputType.Touch then
-    return
+function r1_0.RefreshOpInfoByInputDevice(r0_27, r1_27, r2_27)
+  -- line: [348, 354] id: 27
+  if r1_27 == ECommonInputType.Touch then
+    return 
   end
-  local IsUseKeyAndMouse = CurInputDevice == ECommonInputType.MouseAndKeyboard
-  self:UpdateUIStyleInPlatform(IsUseKeyAndMouse)
+  r0_27:UpdateUIStyleInPlatform(r1_27 == ECommonInputType.MouseAndKeyboard)
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:UpdateUIStyleInPlatform(IsUseKeyAndMouse)
-  if IsUseKeyAndMouse then
-    self:InitKeyboardView()
+function r1_0.UpdateUIStyleInPlatform(r0_28, r1_28)
+  -- line: [356, 362] id: 28
+  if r1_28 then
+    r0_28:InitKeyboardView()
   else
-    self:InitGamepadView()
+    r0_28:InitGamepadView()
   end
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:InitGamepadView()
-  if self.Btn_GetAll:GetVisibility() == UE4.ESlateVisibility.SelfHitTestInvisible then
-    self.Btn_GetAll:SetVisibility(UE4.ESlateVisibility.HitTestInvisible)
+function r1_0.InitGamepadView(r0_29)
+  -- line: [364, 404] id: 29
+  if r0_29.Btn_GetAll:GetVisibility() == UE4.ESlateVisibility.SelfHitTestInvisible then
+    r0_29.Btn_GetAll:SetVisibility(UE4.ESlateVisibility.HitTestInvisible)
   end
-  self.Btn_Close:SetVisibility(UE4.ESlateVisibility.HitTestInvisible)
-  if CommonUtils.GetDeviceTypeByPlatformName(self) ~= "Mobile" then
-    self.Key_Tip:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-    self.Key_Tip:UpdateKeyInfo({
+  r0_29.Btn_Close:SetVisibility(UE4.ESlateVisibility.HitTestInvisible)
+  if CommonUtils.GetDeviceTypeByPlatformName(r0_29) ~= "Mobile" then
+    r0_29.Key_Tip:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+    r0_29.Key_Tip:UpdateKeyInfo({
       {
         KeyInfoList = {
-          {Type = "Img", ImgShortPath = "B"}
+          {
+            Type = "Img",
+            ImgShortPath = "B",
+          }
         },
-        Desc = GText("UI_Tips_Close")
+        Desc = GText("UI_Tips_Close"),
       }
     })
   end
-  local ItemViews = self.List_Item:GetDisplayedEntryWidgets()
-  for _, ItemView in pairs(ItemViews) do
-    ItemView:InitGamepadView()
+  for r6_29, r7_29 in pairs(r0_29.List_Item:GetDisplayedEntryWidgets()) do
+    r7_29:InitGamepadView()
   end
-  self.IsInSelectState = false
-  self.Btn_GetAll:SetGamePadIconVisible(true)
-  if self.SelectedContent and UIUtils.HasAnyFocus(self) then
-    self.List_Tab:BP_NavigateToItem(self.SelectedContent)
+  -- close: r2_29
+  r0_29.IsInSelectState = false
+  r0_29.Btn_GetAll:SetGamePadIconVisible(true)
+  if r0_29.SelectedContent and UIUtils.HasAnyFocus(r0_29) then
+    r0_29.List_Tab:BP_NavigateToItem(r0_29.SelectedContent)
   end
-  self:AddTimer(0.01, function()
-    if self.Type then
-      self.SelectIndex = self.Type2Index[self.Type]
+  r0_29:AddTimer(0.01, function()
+    -- line: [391, 403] id: 30
+    if r0_29.Type then
+      r0_29.SelectIndex = r0_29.Type2Index[r0_29.Type]
     end
-    if not self.SelectIndex then
-      self.SelectIndex = 1
+    if not r0_29.SelectIndex then
+      r0_29.SelectIndex = 1
     end
-    local Item = self.List_Tab:GetItemAt(self.SelectIndex)
-    if Item and Item.Entry then
-      Item.Entry:SetFocus()
+    local r0_30 = r0_29.List_Tab:GetItemAt(r0_29.SelectIndex)
+    if r0_30 and r0_30.Entry then
+      r0_30.Entry:SetFocus()
     end
-    self.List_Tab:SetSelectedIndex(self.SelectIndex)
+    r0_29.List_Tab:SetSelectedIndex(r0_29.SelectIndex)
   end, false, 0, nil, true)
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:InitKeyboardView()
-  if self.Btn_GetAll:GetVisibility() == UE4.ESlateVisibility.HitTestInvisible then
-    self.Btn_GetAll:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+function r1_0.InitKeyboardView(r0_31)
+  -- line: [406, 425] id: 31
+  if r0_31.Btn_GetAll:GetVisibility() == UE4.ESlateVisibility.HitTestInvisible then
+    r0_31.Btn_GetAll:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
   end
-  self.Btn_Close:SetVisibility(UE4.ESlateVisibility.Visible)
-  if CommonUtils.GetDeviceTypeByPlatformName(self) ~= "Mobile" then
-    self.Key_Tip:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-    self.Key_Tip:UpdateKeyInfo({
+  r0_31.Btn_Close:SetVisibility(UE4.ESlateVisibility.Visible)
+  if CommonUtils.GetDeviceTypeByPlatformName(r0_31) ~= "Mobile" then
+    r0_31.Key_Tip:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+    r0_31.Key_Tip:UpdateKeyInfo({
       {
         KeyInfoList = {
           {
             Type = "Text",
             Text = "Esc",
             bEnableEvent = true,
-            ClickCallback = self.OnClickClose,
-            Owner = self
+            ClickCallback = r0_31.OnClickClose,
+            Owner = r0_31,
           }
         },
-        Desc = GText("UI_Tips_Close")
+        Desc = GText("UI_Tips_Close"),
       }
     })
   end
-  local ItemViews = self.List_Item:GetDisplayedEntryWidgets()
-  for _, ItemView in pairs(ItemViews) do
-    ItemView:InitKeyboardView()
+  for r6_31, r7_31 in pairs(r0_31.List_Item:GetDisplayedEntryWidgets()) do
+    r7_31:InitKeyboardView()
+  end
+  -- close: r2_31
+end
+function r1_0.InitWidgetInfoInGamePad(r0_32)
+  -- line: [427, 448] id: 32
+  r0_32.Btn_GetAll:SetDefaultGamePadImg("Y")
+end
+function r1_0.OnSelectItemChanged(r0_33, r1_33)
+  -- line: [450, 457] id: 33
+  if not r1_33 then
+    return 
+  end
+  if r0_33.GameInputModeSubsystem:GetCurrentInputType() == ECommonInputType.Gamepad then
+    r0_33:ClickListItemWhenSelectItemChanged(r1_33)
   end
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:InitWidgetInfoInGamePad()
-  self.Btn_GetAll:SetDefaultGamePadImg("Y")
-end
-
-function WBP_Activity_FeinaEvent_Reward_C:OnSelectItemChanged(SelectItem)
-  if not SelectItem then
-    return
-  end
-  if self.GameInputModeSubsystem:GetCurrentInputType() == ECommonInputType.Gamepad then
-    self:ClickListItemWhenSelectItemChanged(SelectItem)
+function r1_0.ClickListItemWhenSelectItemChanged(r0_34, r1_34)
+  -- line: [459, 463] id: 34
+  if r1_34 and r1_34.Entry then
+    r1_34.Entry:OnCellClicked()
   end
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:ClickListItemWhenSelectItemChanged(Content)
-  if Content and Content.Entry then
-    Content.Entry:OnCellClicked()
-  end
-end
-
-function WBP_Activity_FeinaEvent_Reward_C:OnUINavigation(NavigationDirection)
-  if NavigationDirection == EUINavigation.Left then
-    self:NavigateToLeftTab()
-    return self.SelectedContent.Entry
-  elseif NavigationDirection == EUINavigation.Right then
-    self.List_Item:SetSelectedIndex(0)
-    if CommonUtils.GetDeviceTypeByPlatformName(self) ~= "Mobile" then
-      self.Key_Tip:UpdateKeyInfo({
+function r1_0.OnUINavigation(r0_35, r1_35)
+  -- line: [465, 481] id: 35
+  if r1_35 == EUINavigation.Left then
+    r0_35:NavigateToLeftTab()
+    return r0_35.SelectedContent.Entry
+  elseif r1_35 == EUINavigation.Right then
+    r0_35.List_Item:SetSelectedIndex(0)
+    if CommonUtils.GetDeviceTypeByPlatformName(r0_35) ~= "Mobile" then
+      r0_35.Key_Tip:UpdateKeyInfo({
         {
           KeyInfoList = {
-            {Type = "Img", ImgShortPath = "B"}
+            {
+              Type = "Img",
+              ImgShortPath = "B",
+            }
           },
-          Desc = GText("UI_Tips_Close")
+          Desc = GText("UI_Tips_Close"),
         }
       })
     end
-    return self:NavigateToFirstDisplayedItem(self.List_Item)
+    return r0_35:NavigateToFirstDisplayedItem(r0_35.List_Item)
   end
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:NavigateToLeftTab(NeedFocus)
-  if self.CurFocusedRewardItem then
-    self.CurFocusedRewardItem:StopHover()
-    self.CurFocusedRewardItem = nil
+function r1_0.NavigateToLeftTab(r0_36, r1_36)
+  -- line: [483, 499] id: 36
+  if r0_36.CurFocusedRewardItem then
+    r0_36.CurFocusedRewardItem:StopHover()
+    r0_36.CurFocusedRewardItem = nil
   end
-  if CommonUtils.GetDeviceTypeByPlatformName(self) ~= "Mobile" then
-    self.Key_Tip:UpdateKeyInfo({
+  if CommonUtils.GetDeviceTypeByPlatformName(r0_36) ~= "Mobile" then
+    r0_36.Key_Tip:UpdateKeyInfo({
       {
         KeyInfoList = {
-          {Type = "Img", ImgShortPath = "B"}
+          {
+            Type = "Img",
+            ImgShortPath = "B",
+          }
         },
-        Desc = GText("UI_Tips_Close")
+        Desc = GText("UI_Tips_Close"),
       }
     })
   end
-  if NeedFocus then
-    self.SelectedContent.Entry:SetFocus()
+  if r1_36 then
+    r0_36.SelectedContent.Entry:SetFocus()
   end
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:TryChangeCurFocusedRewardItem(RewardItem)
-  if self.CurFocusedRewardItem then
-    self.CurFocusedRewardItem:StopHover()
+function r1_0.TryChangeCurFocusedRewardItem(r0_37, r1_37)
+  -- line: [501, 507] id: 37
+  if r0_37.CurFocusedRewardItem then
+    r0_37.CurFocusedRewardItem:StopHover()
   end
-  self.CurFocusedRewardItem = RewardItem
-  self.CurFocusedRewardItem:BeginHover()
+  r0_37.CurFocusedRewardItem = r1_37
+  r0_37.CurFocusedRewardItem:BeginHover()
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:NavigateToFirstDisplayedItem(List)
-  local ItemUIs = List:GetDisplayedEntryWidgets()
-  if ItemUIs:Length() > 0 then
-    local TargetWidget
-    for i = 1, ItemUIs:Length() do
-      local Widget = ItemUIs:GetRef(i)
-      local Index = Widget.Content.Index
-      if Index and (not TargetWidget or Index < TargetWidget.Content.Index) then
-        TargetWidget = Widget
+function r1_0.NavigateToFirstDisplayedItem(r0_38, r1_38)
+  -- line: [509, 528] id: 38
+  local r2_38 = r1_38:GetDisplayedEntryWidgets()
+  if r2_38:Length() > 0 then
+    local r3_38 = nil
+    for r7_38 = 1, r2_38:Length(), 1 do
+      local r8_38 = r2_38:GetRef(r7_38)
+      local r9_38 = r8_38.Content.Index
+      if r9_38 and (not r3_38 or r9_38 < r3_38.Content.Index) then
+        r3_38 = r8_38
       end
     end
-    if TargetWidget then
-      List:BP_NavigateToItem(TargetWidget.Content)
-      return TargetWidget:NavigateToFirstDisplayedItem()
+    if r3_38 then
+      r1_38:BP_NavigateToItem(r3_38.Content)
+      return r3_38:NavigateToFirstDisplayedItem()
     end
   end
-  return List
+  return r1_38
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:NavigateToNextDisplayedItem()
-  local Item = self.List_Item:BP_GetSelectedItem()
-  local NextIdx = self.List_Item:GetIndexForItem(Item) + 1
-  local NextItem = self.List_Item:GetItemAt(NextIdx)
-  if NextItem then
-    self.List_Item:SetSelectedIndex(NextIdx)
-    self.List_Item:ScrollIndexIntoView(NextIdx)
+function r1_0.NavigateToNextDisplayedItem(r0_39)
+  -- line: [530, 547] id: 39
+  local r2_39 = r0_39.List_Item:GetIndexForItem(r0_39.List_Item:BP_GetSelectedItem()) + 1
+  local r3_39 = r0_39.List_Item:GetItemAt(r2_39)
+  if r3_39 then
+    r0_39.List_Item:SetSelectedIndex(r2_39)
+    r0_39.List_Item:ScrollIndexIntoView(r2_39)
   end
-  self:AddTimer(0.01, function()
-    if NextItem then
-      return NextItem.Entry:NavigateToFirstDisplayedItem()
-    end
-  end, false, 0, nil, true)
-end
-
-function WBP_Activity_FeinaEvent_Reward_C:NavigateToPreviousDisplayedItem()
-  local Item = self.List_Item:BP_GetSelectedItem()
-  local NextIdx = self.List_Item:GetIndexForItem(Item) - 1
-  local NextItem = self.List_Item:GetItemAt(NextIdx)
-  if NextItem then
-    self.List_Item:SetSelectedIndex(NextIdx)
-    self.List_Item:ScrollIndexIntoView(NextIdx)
-  end
-  self:AddTimer(0.01, function()
-    if NextItem then
-      return NextItem.Entry:NavigateToFirstDisplayedItem()
+  r0_39:AddTimer(0.01, function()
+    -- line: [538, 542] id: 40
+    if r3_39 then
+      return r3_39.Entry:NavigateToFirstDisplayedItem()
     end
   end, false, 0, nil, true)
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:OnMenuOpenChanged(bIsOpen)
+function r1_0.NavigateToPreviousDisplayedItem(r0_41)
+  -- line: [549, 566] id: 41
+  local r2_41 = r0_41.List_Item:GetIndexForItem(r0_41.List_Item:BP_GetSelectedItem()) + -1
+  local r3_41 = r0_41.List_Item:GetItemAt(r2_41)
+  if r3_41 then
+    r0_41.List_Item:SetSelectedIndex(r2_41)
+    r0_41.List_Item:ScrollIndexIntoView(r2_41)
+  end
+  r0_41:AddTimer(0.01, function()
+    -- line: [557, 561] id: 42
+    if r3_41 then
+      return r3_41.Entry:NavigateToFirstDisplayedItem()
+    end
+  end, false, 0, nil, true)
+end
+function r1_0.OnMenuOpenChanged(r0_43, r1_43)
+  -- line: [568, 577] id: 43
   if UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad then
-    if bIsOpen then
-      self:UpdateUIStyle(false)
+    if r1_43 then
+      r0_43:UpdateUIStyle(false)
     else
-      self:UpdateUIStyle(true)
+      r0_43:UpdateUIStyle(true)
     end
   end
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:UpdateUIStyle(IsVisible)
-  if IsVisible then
-    self.CantGetAll = false
-    if CommonUtils.GetDeviceTypeByPlatformName(self) ~= "Mobile" then
-      self.Key_Tip:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+function r1_0.UpdateUIStyle(r0_44, r1_44)
+  -- line: [579, 607] id: 44
+  if r1_44 then
+    r0_44.CantGetAll = false
+    if CommonUtils.GetDeviceTypeByPlatformName(r0_44) ~= "Mobile" then
+      r0_44.Key_Tip:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
     end
   else
-    self.CantGetAll = true
-    if CommonUtils.GetDeviceTypeByPlatformName(self) ~= "Mobile" then
-      self.Key_Tip:SetVisibility(UIConst.VisibilityOp.Collapsed)
+    r0_44.CantGetAll = true
+    if CommonUtils.GetDeviceTypeByPlatformName(r0_44) ~= "Mobile" then
+      r0_44.Key_Tip:SetVisibility(UIConst.VisibilityOp.Collapsed)
     end
   end
 end
-
-function WBP_Activity_FeinaEvent_Reward_C:BP_GetDesiredFocusTarget()
-  if self.SelectedContent then
-    self.List_Tab:BP_NavigateToItem(self.SelectedContent)
-    return self.SelectedContent.Entry
+function r1_0.BP_GetDesiredFocusTarget(r0_45)
+  -- line: [609, 616] id: 45
+  if r0_45.SelectedContent then
+    r0_45.List_Tab:BP_NavigateToItem(r0_45.SelectedContent)
+    return r0_45.SelectedContent.Entry
   else
-    return self.List_Tab
+    return r0_45.List_Tab
   end
 end
-
-return WBP_Activity_FeinaEvent_Reward_C
+return r1_0

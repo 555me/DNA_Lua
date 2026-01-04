@@ -10,22 +10,23 @@ r1_0._components = {
   "BluePrints.UI.WBP.Play.Widget.GuildWar.GuildWarView"
 }
 function r1_0.Construct(r0_1)
-  -- line: [15, 22] id: 1
+  -- line: [15, 23] id: 1
   r1_0.Super.Construct(r0_1)
   r0_1.IsSelect = false
   r0_1.Text_LvName:SetText(GText("UI_LEVEL_NAME"))
   r0_1.New_Tag:SetVisibility(ESlateVisibility.Collapsed)
   r0_1.Btn_Click.OnClicked:Add(r0_1, r0_1.OnSubCellClicked)
   r0_1.Mobile = CommonUtils.GetDeviceTypeByPlatformName(r0_1) == "Mobile"
+  r0_1.Text_Unlock:SetText(GText("UI_RaidDungeon_Unlock_Time"))
 end
 function r1_0.Destruct(r0_2)
-  -- line: [24, 28] id: 2
+  -- line: [25, 29] id: 2
   if r0_2:IsExistTimer(r0_2.UpdateGuildWarTimer) then
     r0_2:RemoveTimer(r0_2.UpdateGuildWarTimer)
   end
 end
 function r1_0.BindEventOnClicked(r0_3, r1_3, r2_3, ...)
-  -- line: [31, 38] id: 3
+  -- line: [32, 39] id: 3
   if not r1_3 or not r2_3 then
     return 
   end
@@ -36,14 +37,14 @@ function r1_0.BindEventOnClicked(r0_3, r1_3, r2_3, ...)
   }
 end
 function r1_0.OnFocusReceived(r0_4, r1_4, r2_4)
-  -- line: [41, 46] id: 4
+  -- line: [42, 47] id: 4
   if UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad then
     r0_4:OnSubCellClicked()
   end
   return UE4.UWidgetBlueprintLibrary.Unhandled()
 end
 function r1_0.InitDungeonInfo(r0_5, r1_5, r2_5, r3_5, r4_5)
-  -- line: [49, 95] id: 5
+  -- line: [50, 96] id: 5
   r0_5.DungeonId = r1_5
   r0_5.Parent = r4_5
   local r5_5 = DataMgr.Dungeon[r1_5]
@@ -60,7 +61,7 @@ function r1_0.InitDungeonInfo(r0_5, r1_5, r2_5, r3_5, r4_5)
       r0_5:RemoveTimer(r0_5.UpdateGuildWarTimer)
     end
     r0_5.UpdateGuildWarTimer = r0_5:AddTimer(3, function()
-      -- line: [70, 74] id: 6
+      -- line: [71, 75] id: 6
       r0_5:RefreshBtnState()
       r0_5:ShowTips(false)
       r0_5:RemoveTimer(r0_5.UpdateGuildWarTimer)
@@ -80,7 +81,7 @@ function r1_0.InitDungeonInfo(r0_5, r1_5, r2_5, r3_5, r4_5)
   end
 end
 function r1_0.OnSubCellClicked(r0_7)
-  -- line: [98, 111] id: 7
+  -- line: [99, 112] id: 7
   if r0_7.IsSelect then
     return 
   end
@@ -97,29 +98,29 @@ function r1_0.OnSubCellClicked(r0_7)
   end
 end
 function r1_0.IsShowBottom(r0_8)
-  -- line: [114, 120] id: 8
+  -- line: [115, 121] id: 8
 end
 function r1_0.SetDifficultyLevel(r0_9)
-  -- line: [123, 125] id: 9
+  -- line: [124, 126] id: 9
 end
 function r1_0.SetTimeShow(r0_10)
-  -- line: [127, 132] id: 10
+  -- line: [128, 133] id: 10
   r0_10:UpdateTimeCountDown()
   r0_10:AddTimer(1, r0_10.UpdateTimeCountDown, false, 3, "GuildWar_LevelItem_UpdateTimeContent")
   r0_10:ShowTips(true)
   r0_10:AddTimer(3, function()
-    -- line: [131, 131] id: 11
+    -- line: [132, 132] id: 11
     r0_10:ShowTips(false)
   end, false, 0, "GuildWar_LevelItemTips_UpdateTimeContent")
 end
 function r1_0.UpdateTimeCountDown(r0_12)
-  -- line: [134, 140] id: 12
+  -- line: [135, 141] id: 12
   local r3_12, r4_12 = UIUtils.GetLeftTimeStrStyle2(DataMgr.RaidDungeon[r0_12.DungeonId].UnlockDate)
   r0_12.Time:SetTimeText("", r3_12)
   r0_12:RefreshBtnState()
 end
 function r1_0.ShowTips(r0_13, r1_13)
-  -- line: [142, 144] id: 13
+  -- line: [143, 145] id: 13
   local r2_13 = r0_13.Panel_Tip
   local r4_13 = nil	-- notice: implicit variable refs by block#[3]
   if r1_13 then
@@ -134,11 +135,11 @@ function r1_0.ShowTips(r0_13, r1_13)
   r2_13:SetVisibility(r4_13)
 end
 function r1_0.IsMatching(r0_14)
-  -- line: [146, 149] id: 14
+  -- line: [147, 150] id: 14
   return UIManager(r0_14):GetUIObj("DungeonMatchTimingBar") and true
 end
 function r1_0.RefreshBtnState(r0_15)
-  -- line: [151, 162] id: 15
+  -- line: [152, 163] id: 15
   if r0_15:CheckDungeonCondition(r0_15.DungeonId) then
     if not r0_15.IsSelect then
       r0_15:PlayAnimation(r0_15.Normal)
@@ -148,7 +149,7 @@ function r1_0.RefreshBtnState(r0_15)
   end
 end
 function r1_0.OnMouseEnter(r0_16, r1_16, r2_16)
-  -- line: [164, 174] id: 16
+  -- line: [165, 175] id: 16
   r0_16.IsEnter = true
   if r0_16.Mobile or r0_16.IsSelect or r0_16:IsPlayingAnimation(r0_16.Click) then
     return 
@@ -157,7 +158,7 @@ function r1_0.OnMouseEnter(r0_16, r1_16, r2_16)
   r0_16:PlayAnimation(r0_16.Hover)
 end
 function r1_0.OnMouseLeave(r0_17, r1_17, r2_17)
-  -- line: [176, 183] id: 17
+  -- line: [177, 184] id: 17
   r0_17.IsEnter = false
   if r0_17.Mobile or r0_17.IsSelect then
     return 

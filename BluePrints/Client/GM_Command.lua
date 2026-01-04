@@ -4255,18 +4255,17 @@ function r0_0.CompleteSingleCondition(r0_382, r1_382)
   -- close: r6_382
 end
 function r0_0.CompleteSystemCondition(r0_383)
-  -- line: [4998, 5003] id: 383
-  require("BluePrints.UI.GMInterface.GMFunctionLibrary").ExecConsoleCommand(r0_383:GetGameInstance(), "sgm sysu")
+  -- line: [4998, 5006] id: 383
+  local r1_383 = require("BluePrints.UI.GMInterface.GMFunctionLibrary")
+  r1_383.ExecConsoleCommand(r0_383:GetGameInstance(), "sgm sysu")
   r0_383:SuccessAllSystemGuide()
-  r0_383:CompleteCondition({
-    8002,
-    4220,
-    4170,
-    2001
-  })
+  r1_383.ExecConsoleCommand(r0_383:GetGameInstance(), "sgm CompleteCondition " .. tostring(8002))
+  r1_383.ExecConsoleCommand(r0_383:GetGameInstance(), "sgm CompleteCondition " .. tostring(4220))
+  r1_383.ExecConsoleCommand(r0_383:GetGameInstance(), "sgm CompleteCondition " .. tostring(4170))
+  r1_383.ExecConsoleCommand(r0_383:GetGameInstance(), "sgm CompleteCondition " .. tostring(2001))
 end
 function r0_0.MockAllSystemCondition(r0_384, r1_384)
-  -- line: [5006, 5026] id: 384
+  -- line: [5009, 5029] id: 384
   local r2_384 = GWorld:GetAvatar()
   if r2_384 then
     r2_384.bCrackUnlockAllSystems = true
@@ -4285,7 +4284,7 @@ function r0_0.MockAllSystemCondition(r0_384, r1_384)
   end
 end
 function r0_0.MockSystemCondition(r0_385, r1_385)
-  -- line: [5029, 5040] id: 385
+  -- line: [5032, 5043] id: 385
   local r2_385 = GWorld:GetAvatar()
   if r2_385 then
     r2_385.CrackedUnlockSystems[r1_385] = true
@@ -4296,9 +4295,9 @@ function r0_0.MockSystemCondition(r0_385, r1_385)
   end
 end
 function r0_0.ShowSystemUnlock(r0_386, r1_386)
-  -- line: [5042, 5052] id: 386
+  -- line: [5045, 5055] id: 386
   GWorld:GetAvatar():OnSystemFirstTimeUnlock_Internal(r1_386, function()
-    -- line: [5044, 5051] id: 387
+    -- line: [5047, 5054] id: 387
     UIManager(GWorld.GameInstance):UnLoadUINew("SystemUnlockGuide")
     local r0_387 = UIManager(GWorld.GameInstance):GetUIObj("BattleMain")
     if r0_387 ~= nil and r0_387.Pos_SubSystemUnlock ~= nil then
@@ -4308,7 +4307,7 @@ function r0_0.ShowSystemUnlock(r0_386, r1_386)
   end)
 end
 function r0_0.FakeUIUnlockConditionComplete(r0_388, ...)
-  -- line: [5055, 5064] id: 388
+  -- line: [5058, 5067] id: 388
   local r1_388 = {
     ...
   }
@@ -4321,7 +4320,7 @@ function r0_0.FakeUIUnlockConditionComplete(r0_388, ...)
   end
 end
 function r0_0.UnLockAllDungeonSelectLevels(r0_389)
-  -- line: [5067, 5083] id: 389
+  -- line: [5070, 5086] id: 389
   local r2_389 = {}
   local r3_389 = GWorld:GetAvatar()
   for r8_389, r9_389 in pairs(DataMgr.SelectDungeon) do
@@ -4339,7 +4338,7 @@ function r0_0.UnLockAllDungeonSelectLevels(r0_389)
   r0_389:CompleteCondition(r2_389)
 end
 function r0_0.UnLockAllDungeonLevels(r0_390)
-  -- line: [5086, 5102] id: 390
+  -- line: [5089, 5105] id: 390
   local r2_390 = {}
   local r3_390 = GWorld:GetAvatar()
   for r8_390, r9_390 in pairs(DataMgr.Dungeon) do
@@ -4357,7 +4356,7 @@ function r0_0.UnLockAllDungeonLevels(r0_390)
   r0_390:CompleteCondition(r2_390)
 end
 function r0_0.PlaySequence(r0_391, r1_391)
-  -- line: [5104, 5113] id: 391
+  -- line: [5107, 5116] id: 391
   local r2_391 = LoadObject(r1_391)
   if not r2_391 then
     DebugPrint("error GM播放sequence传入路径错误", r1_391)
@@ -4367,7 +4366,7 @@ function r0_0.PlaySequence(r0_391, r1_391)
   r4_391:Play()
 end
 function r0_0.FSMDebug(r0_392, r1_392)
-  -- line: [5115, 5131] id: 392
+  -- line: [5118, 5134] id: 392
   if r1_392 ~= nil and tonumber(r1_392) == nil then
     UE4.UCharacterFSM.EnableTagDebug(r1_392)
     return 
@@ -4383,11 +4382,11 @@ function r0_0.FSMDebug(r0_392, r1_392)
   end
 end
 function r0_0.CompleteImpressionSystem(r0_393, r1_393, r2_393)
-  -- line: [5133, 5159] id: 393
+  -- line: [5136, 5162] id: 393
   r1_393 = tonumber(r1_393)
   local r3_393 = ""
   local function r4_393()
-    -- line: [5136, 5140] id: 394
+    -- line: [5139, 5143] id: 394
     DebugPrint("GM_Command:CompleteImpressionSystem@", r3_393)
     GWorld.GameInstance:GetGameUIManager():ShowUITip(UIConst.Tip_CommonToast, r3_393, 3)
   end
@@ -4410,7 +4409,7 @@ function r0_0.CompleteImpressionSystem(r0_393, r1_393, r2_393)
   r5_393:SetTalkTriggerComplete_New(r1_393)
 end
 function r0_0.SystemGuideSwitch(r0_395, r1_395)
-  -- line: [5162, 5175] id: 395
+  -- line: [5165, 5178] id: 395
   if r1_395 == "Open" then
     SystemGuideManager.Invalid = false
     DebugPrint("系统引导打开")
@@ -4423,12 +4422,12 @@ function r0_0.SystemGuideSwitch(r0_395, r1_395)
   end
 end
 function r0_0.SuccessAllSystemGuide(r0_396)
-  -- line: [5177, 5182] id: 396
+  -- line: [5180, 5185] id: 396
   DebugPrint("GM_Command:SuccessAllSystemGuide:Success all SystemGuide")
   SystemGuideManager:GMEnforceFinishAllSysGuide()
 end
 function r0_0.SwitchCullModifier(r0_397, r1_397)
-  -- line: [5184, 5192] id: 397
+  -- line: [5187, 5195] id: 397
   if r1_397 == "true" then
     DebugPrint("UE4.AEMRecastNavMesh.SwitchCullModifier(true)")
     UE4.AEMRecastNavMesh.SwitchCullModifier(true)
@@ -4438,7 +4437,7 @@ function r0_0.SwitchCullModifier(r0_397, r1_397)
   end
 end
 function r0_0.I18Time(r0_398, r1_398, r2_398)
-  -- line: [5194, 5207] id: 398
+  -- line: [5197, 5210] id: 398
   r2_398 = string.lower(r2_398)
   if r2_398 == "cn" then
     DebugPrint("Current I18Time: " .. GDate(r1_398, nil, CommonConst.SystemLanguages.CN))
@@ -4453,7 +4452,7 @@ function r0_0.I18Time(r0_398, r1_398, r2_398)
   end
 end
 function r0_0.PrintGuideBook(r0_399)
-  -- line: [5209, 5217] id: 399
+  -- line: [5212, 5220] id: 399
   local r1_399 = GWorld:GetAvatar()
   if r1_399 and r1_399.GuideBook then
     for r6_399, r7_399 in pairs(r1_399.GuideBook) do
@@ -4469,18 +4468,18 @@ function r0_0.PrintGuideBook(r0_399)
   end
 end
 function r0_0.GuideBookGetReward(r0_400, r1_400)
-  -- line: [5219, 5224] id: 400
+  -- line: [5222, 5227] id: 400
   local r2_400 = GWorld:GetAvatar()
   if r2_400 then
     r2_400:GuideBookGetReward(tonumber(r1_400))
   end
 end
 function r0_0.TestWarningToast(r0_401, r1_401, r2_401)
-  -- line: [5226, 5230] id: 401
+  -- line: [5229, 5233] id: 401
   r0_401:GetGameInstance():GetGameUIManager():ShowUITip(UIConst.Tip_CommonWarning, r1_401, tonumber(r2_401))
 end
 function r0_0.PlayLightHit(r0_402, r1_402, r2_402)
-  -- line: [5232, 5251] id: 402
+  -- line: [5235, 5254] id: 402
   for r8_402, r9_402 in pairs(UE4.UGameplayStatics.GetGameState(r0_402.Player).MonsterMap) do
     if r9_402:GetCamp() == ECampName.Monster then
       local r10_402 = UE4.FHitParams()
@@ -4500,7 +4499,7 @@ function r0_0.PlayLightHit(r0_402, r1_402, r2_402)
   end
 end
 function r0_0.PlayLightHitRanged(r0_403, r1_403, r2_403)
-  -- line: [5253, 5272] id: 403
+  -- line: [5256, 5275] id: 403
   for r8_403, r9_403 in pairs(UE4.UGameplayStatics.GetGameState(r0_403.Player).MonsterMap) do
     if r9_403:GetCamp() == ECampName.Monster then
       local r10_403 = UE4.FHitParams()
@@ -4520,7 +4519,7 @@ function r0_0.PlayLightHitRanged(r0_403, r1_403, r2_403)
   end
 end
 function r0_0.PlayHeavyHit(r0_404, r1_404, r2_404)
-  -- line: [5274, 5293] id: 404
+  -- line: [5277, 5296] id: 404
   for r8_404, r9_404 in pairs(UE4.UGameplayStatics.GetGameState(r0_404.Player).MonsterMap) do
     if r9_404:GetCamp() == ECampName.Monster then
       local r10_404 = UE4.FHitParams()
@@ -4540,7 +4539,7 @@ function r0_0.PlayHeavyHit(r0_404, r1_404, r2_404)
   end
 end
 function r0_0.PlayHitFly(r0_405, r1_405, r2_405)
-  -- line: [5295, 5312] id: 405
+  -- line: [5298, 5315] id: 405
   for r8_405, r9_405 in pairs(UE4.UGameplayStatics.GetGameState(r0_405.Player).MonsterMap) do
     local r10_405 = UE4.FHitParams()
     r10_405.CauseHitName = r2_405 and "HitFly_XY500Z1000"
@@ -4558,7 +4557,7 @@ function r0_0.PlayHitFly(r0_405, r1_405, r2_405)
   end
 end
 function r0_0.PlayHitFly_Force(r0_406, r1_406)
-  -- line: [5314, 5325] id: 406
+  -- line: [5317, 5328] id: 406
   for r7_406, r8_406 in pairs(UE4.UGameplayStatics.GetGameState(r0_406.Player).MonsterMap) do
     if r8_406:GetCamp() == ECampName.Monster then
       local r9_406 = UE4.FHitParams()
@@ -4571,7 +4570,7 @@ function r0_0.PlayHitFly_Force(r0_406, r1_406)
   -- close: r3_406
 end
 function r0_0.EnterRougeLike(r0_407, r1_407, r2_407, r3_407)
-  -- line: [5327, 5334] id: 407
+  -- line: [5330, 5337] id: 407
   print(_G.LogTag, "EnterRougeLike", r1_407, r2_407, r3_407)
   if not r1_407 then
     r1_407 = ""
@@ -4585,14 +4584,14 @@ function r0_0.EnterRougeLike(r0_407, r1_407, r2_407, r3_407)
   require("BluePrints.UI.GMInterface.GMFunctionLibrary").ExecConsoleCommand(r0_407:GetGameInstance(), "sgm EnterRougeLike " .. r1_407 .. " " .. r2_407 .. " " .. r3_407)
 end
 function r0_0.UpgradeAward(r0_408, r1_408, r2_408)
-  -- line: [5336, 5341] id: 408
+  -- line: [5339, 5344] id: 408
   local r3_408 = GWorld:GetAvatar()
   if r3_408 then
     r3_408:UpgradeAward(r1_408, r2_408)
   end
 end
 function r0_0.StartAutoTest(r0_409)
-  -- line: [5343, 5360] id: 409
+  -- line: [5346, 5363] id: 409
   local r2_409 = UE4.UGameplayStatics.GetGameMode(r0_409.Player)
   local r3_409 = r0_409.Player:K2_GetActorLocation()
   local r5_409 = UE4.UGameplayStatics.GetPlayerController(r0_409.Player, 0):GetAvatarInfo()
@@ -4607,21 +4606,21 @@ function r0_0.StartAutoTest(r0_409)
   r2_409.EMGameState.EventMgr:CreateUnitNew(r6_409, false)
 end
 function r0_0.AutoBattleTestServer(r0_410, r1_410)
-  -- line: [5362, 5367] id: 410
+  -- line: [5365, 5370] id: 410
   local r2_410 = GWorld:GetAvatar()
   if r2_410 then
     r2_410:CallServerMethod("GMTestAutoBattle", r1_410)
   end
 end
 function r0_0.AutoBattleTestClient(r0_411, r1_411)
-  -- line: [5369, 5374] id: 411
+  -- line: [5372, 5377] id: 411
   local r2_411 = GWorld:GetAvatar()
   if r2_411 then
     r2_411:CallServerMethod("GMTestAutoBattle", r1_411, true)
   end
 end
 function r0_0.StopAutoBattleTest(r0_412, r1_412)
-  -- line: [5376, 5385] id: 412
+  -- line: [5379, 5388] id: 412
   local r2_412 = false
   if r1_412 then
     r2_412 = true
@@ -4632,7 +4631,7 @@ function r0_0.StopAutoBattleTest(r0_412, r1_412)
   end
 end
 function r0_0.StartVote(r0_413)
-  -- line: [5387, 5397] id: 413
+  -- line: [5390, 5400] id: 413
   if IsStandAlone(r0_413:GetGameInstance()) then
     UE4.UGameplayStatics.GetGameMode(r0_413.Player):TriggerActiveGameModeState(5)
   else
@@ -4640,7 +4639,7 @@ function r0_0.StartVote(r0_413)
   end
 end
 function r0_0.SpawnPet(r0_414)
-  -- line: [5399, 5406] id: 414
+  -- line: [5402, 5409] id: 414
   if IsStandAlone(r0_414:GetGameInstance()) then
     UE4.UGameplayStatics.GetGameMode(r0_414.Player):TriggerSpawnPet()
   else
@@ -4648,7 +4647,7 @@ function r0_0.SpawnPet(r0_414)
   end
 end
 function r0_0.PostCustomEvent(r0_415, r1_415)
-  -- line: [5408, 5418] id: 415
+  -- line: [5411, 5421] id: 415
   DebugPrint("GM PostCustomEvent", r1_415)
   if IsStandAlone(r0_415:GetGameInstance()) then
     UE4.UGameplayStatics.GetGameMode(r0_415.Player):PostCustomEvent(r1_415)
@@ -4657,11 +4656,11 @@ function r0_0.PostCustomEvent(r0_415, r1_415)
   end
 end
 function r0_0.SetFeinaStar(r0_416, r1_416)
-  -- line: [5420, 5425] id: 416
+  -- line: [5423, 5428] id: 416
   UE4.UGameplayStatics.GetGameMode(r0_416.Player):TriggerDungeonComponentFun("SetStar", tonumber(r1_416))
 end
 function r0_0.EnterAbyss(r0_417, r1_417, r2_417)
-  -- line: [5427, 5440] id: 417
+  -- line: [5430, 5443] id: 417
   local r3_417 = tonumber(r1_417)
   local r4_417 = DataMgr.AbyssDungeon[r3_417].DungeonId
   local r5_417 = tonumber(r2_417)
@@ -4673,9 +4672,9 @@ function r0_0.EnterAbyss(r0_417, r1_417, r2_417)
   r0_417:EnterDungeon(r4_417)
 end
 function r0_0.EnterAbyssNew(r0_418, r1_418, r2_418, r3_418)
-  -- line: [5442, 5457] id: 418
+  -- line: [5445, 5460] id: 418
   local function r4_418(r0_419)
-    -- line: [5446, 5452] id: 419
+    -- line: [5449, 5455] id: 419
     if not ErrorCode:Check(r0_419) then
       return 
     end
@@ -4687,7 +4686,7 @@ function r0_0.EnterAbyssNew(r0_418, r1_418, r2_418, r3_418)
   end
 end
 function r0_0.PrintAllDailyTask(r0_420)
-  -- line: [5459, 5467] id: 420
+  -- line: [5462, 5470] id: 420
   local r1_420 = GWorld:GetAvatar()
   if not r1_420 then
     return 
@@ -4695,7 +4694,7 @@ function r0_0.PrintAllDailyTask(r0_420)
   r1_420:UpdateStoryVariable("PhotoTalk110105", 1)
 end
 function r0_0.AbyssPassRoom(r0_421)
-  -- line: [5469, 5488] id: 421
+  -- line: [5472, 5491] id: 421
   local r1_421 = UE4.UGameplayStatics.GetGameMode(r0_421.Player)
   for r6_421, r7_421 in pairs(r1_421.MonsterSpawnMap) do
     r7_421:ClearMonsterSpawnInfo()
@@ -4715,16 +4714,16 @@ function r0_0.AbyssPassRoom(r0_421)
   -- close: r2_421
 end
 function r0_0.ReduceBuffLayer(r0_422, r1_422, r2_422)
-  -- line: [5490, 5494] id: 422
+  -- line: [5493, 5497] id: 422
   local r4_422 = UE4.UGameplayStatics.GetPlayerCharacter(r0_422:GetGameInstance(), 0)
   r4_422:ReduceBuffLayer(r4_422, tonumber(r1_422), tonumber(r2_422))
 end
 function r0_0.ChangeBuffLastTime(r0_423, r1_423, r2_423, r3_423)
-  -- line: [5496, 5500] id: 423
+  -- line: [5499, 5503] id: 423
   UE4.UGameplayStatics.GetPlayerCharacter(r0_423:GetGameInstance(), 0):ChangeBuffLastTime(tonumber(r1_423), 0, tonumber(r2_423), r3_423)
 end
 function r0_0.TestTrackingQuest(r0_424, r1_424)
-  -- line: [5502, 5508] id: 424
+  -- line: [5505, 5511] id: 424
   local r2_424 = tonumber(r1_424)
   local r3_424 = GWorld:GetAvatar()
   if r3_424 and r2_424 then
@@ -4732,7 +4731,7 @@ function r0_0.TestTrackingQuest(r0_424, r1_424)
   end
 end
 function r0_0.SetBGMOpenDebug(r0_425, r1_425)
-  -- line: [5510, 5516] id: 425
+  -- line: [5513, 5519] id: 425
   if r1_425 == "true" then
     AudioManager(r0_425.Player):SetBGMDebugValue(true)
   elseif r1_425 == "false" then
@@ -4740,23 +4739,23 @@ function r0_0.SetBGMOpenDebug(r0_425, r1_425)
   end
 end
 function r0_0.PrintBGMInfo(r0_426)
-  -- line: [5518, 5520] id: 426
+  -- line: [5521, 5523] id: 426
   AudioManager(r0_426.Player):PrintBGMInfo()
 end
 function r0_0.GetAllBusVolume(r0_427)
-  -- line: [5522, 5524] id: 427
+  -- line: [5525, 5527] id: 427
   AudioManager(r0_427.Player):GetAllBusVolume()
 end
 function r0_0.GetAllBusPauseState(r0_428)
-  -- line: [5526, 5528] id: 428
+  -- line: [5529, 5531] id: 428
   AudioManager(r0_428.Player):GetAllBusPauseState()
 end
 function r0_0.ReloadAllBank(r0_429)
-  -- line: [5530, 5532] id: 429
+  -- line: [5533, 5535] id: 429
   UE4.UFMODBlueprintStatics.ReloadAllBank()
 end
 function r0_0.TriggerLoadedEvent(r0_430)
-  -- line: [5534, 5543] id: 430
+  -- line: [5537, 5546] id: 430
   DebugPrint("TriggerLoadedEvent")
   local r1_430 = UE4.UGameplayStatics.GetGameMode(r0_430:GetGameInstance())
   if r1_430 then
@@ -4765,7 +4764,7 @@ function r0_0.TriggerLoadedEvent(r0_430)
   end
 end
 function r0_0.SetDrawDebugEnabled(r0_431, r1_431)
-  -- line: [5545, 5552] id: 431
+  -- line: [5548, 5555] id: 431
   if r1_431 == "true" then
     AudioManager(r0_431.Player).DrawDebug = true
   elseif r1_431 == "false" then
@@ -4773,7 +4772,7 @@ function r0_0.SetDrawDebugEnabled(r0_431, r1_431)
   end
 end
 function r0_0.SetSoundPointCompDebugEnabled(r0_432, r1_432)
-  -- line: [5554, 5563] id: 432
+  -- line: [5557, 5566] id: 432
   if not r0_432.Player.SoundPointManagerComp then
     return 
   end
@@ -4784,7 +4783,7 @@ function r0_0.SetSoundPointCompDebugEnabled(r0_432, r1_432)
   end
 end
 function r0_0.SetSoundSplineDrawDebug(r0_433, r1_433)
-  -- line: [5565, 5576] id: 433
+  -- line: [5568, 5579] id: 433
   local r2_433 = nil
   if r1_433 == "true" then
     r2_433 = true
@@ -4797,7 +4796,7 @@ function r0_0.SetSoundSplineDrawDebug(r0_433, r1_433)
   -- close: r4_433
 end
 function r0_0.SetReverLogicOpenbDebug(r0_434, r1_434)
-  -- line: [5578, 5586] id: 434
+  -- line: [5581, 5589] id: 434
   if r1_434 == "true" then
     AudioManager(r0_434.Player).ReverbLogicDebug = true
   elseif r1_434 == "false" then
@@ -4805,20 +4804,20 @@ function r0_0.SetReverLogicOpenbDebug(r0_434, r1_434)
   end
 end
 function r0_0.PrintHeadPhonePlugIn(r0_435)
-  -- line: [5588, 5590] id: 435
+  -- line: [5591, 5593] id: 435
   AudioManager(r0_435.Player):DebugPrintHeadPhonePlugInParam()
 end
 function r0_0.SetAudioManagerTestRegionId(r0_436, r1_436)
-  -- line: [5592, 5594] id: 436
+  -- line: [5595, 5597] id: 436
   AudioManager(r0_436.Player).TestRegionId = tonumber(r1_436)
 end
 function r0_0.SimulateBGMEnterNewRegion(r0_437, r1_437)
-  -- line: [5596, 5599] id: 437
+  -- line: [5599, 5602] id: 437
   AudioManager(r0_437.Player).TestRegionId = tonumber(r1_437)
   AudioManager(r0_437.Player):CheckLevelSoundAndRegionId(tonumber(r1_437))
 end
 function r0_0.SetLineSoundDebug(r0_438, r1_438)
-  -- line: [5601, 5607] id: 438
+  -- line: [5604, 5610] id: 438
   if r1_438 == "true" then
     AudioManager(r0_438.Player).LineSound_DrawDebug = true
   elseif r1_438 == "false" then
@@ -4826,7 +4825,7 @@ function r0_0.SetLineSoundDebug(r0_438, r1_438)
   end
 end
 function r0_0.SectorSoundDebug(r0_439, r1_439)
-  -- line: [5609, 5615] id: 439
+  -- line: [5612, 5618] id: 439
   if r1_439 == "true" then
     AudioManager(r0_439.Player).SectorSound_DrawDebug = true
   elseif r1_439 == "false" then
@@ -4834,7 +4833,7 @@ function r0_0.SectorSoundDebug(r0_439, r1_439)
   end
 end
 function r0_0.CircularSoundDebug(r0_440, r1_440)
-  -- line: [5617, 5623] id: 440
+  -- line: [5620, 5626] id: 440
   if r1_440 == "true" then
     AudioManager(r0_440.Player).Circular_DrawDebug = true
   elseif r1_440 == "false" then
@@ -4842,19 +4841,19 @@ function r0_0.CircularSoundDebug(r0_440, r1_440)
   end
 end
 function r0_0.PrintEventsMap(r0_441)
-  -- line: [5625, 5627] id: 441
+  -- line: [5628, 5630] id: 441
   AudioManager(r0_441.Player):PrintEventsMap()
 end
 function r0_0.PrintAUAForbidTag(r0_442)
-  -- line: [5629, 5631] id: 442
+  -- line: [5632, 5634] id: 442
   AudioManager(r0_442.Player):PrintAuANotifyForbidTag()
 end
 function r0_0.PrintCurAuActionCount(r0_443)
-  -- line: [5633, 5635] id: 443
+  -- line: [5636, 5638] id: 443
   AudioManager(r0_443.Player):PrintCurAuActionCount()
 end
 function r0_0.RogueShopTest(r0_444)
-  -- line: [5638, 5654] id: 444
+  -- line: [5641, 5657] id: 444
   local r1_444 = r0_444:GetGameInstance():GetGameUIManager()
   if not GWorld:GetAvatar() then
     return 
@@ -4871,18 +4870,18 @@ function r0_0.RogueShopTest(r0_444)
   r1_444:LoadUINew("RougeShop", r5_444)
 end
 function r0_0.RougeDetailsTest(r0_445)
-  -- line: [5656, 5659] id: 445
+  -- line: [5659, 5662] id: 445
   r0_445:GetGameInstance():GetGameUIManager():LoadUINew("RougeBag")
 end
 function r0_0.ShowRougeManual(r0_446)
-  -- line: [5661, 5666] id: 446
+  -- line: [5664, 5669] id: 446
   local r1_446 = GWorld:GetAvatar()
   if r1_446 then
     PrintTable(r1_446.RougeLike.Manual, 5)
   end
 end
 function r0_0.DisableBattleWheel(r0_447)
-  -- line: [5668, 5675] id: 447
+  -- line: [5671, 5678] id: 447
   local r1_447 = UE4.UGameplayStatics.GetPlayerController(r0_447:GetGameInstance(), 0)
   DebugPrint("gmy@GM_Command:DisableBattleWheel", r1_447.bEnableBattleWheel)
   r1_447.bEnableBattleWheel = false
@@ -4891,7 +4890,7 @@ function r0_0.DisableBattleWheel(r0_447)
   end
 end
 function r0_0.EnableBattleWheel(r0_448)
-  -- line: [5677, 5684] id: 448
+  -- line: [5680, 5687] id: 448
   local r1_448 = UE4.UGameplayStatics.GetPlayerController(r0_448:GetGameInstance(), 0)
   DebugPrint("gmy@GM_Command:EnableBattleWheel", r1_448.bEnableBattleWheel)
   r1_448.bEnableBattleWheel = true
@@ -4900,7 +4899,7 @@ function r0_0.EnableBattleWheel(r0_448)
   end
 end
 function r0_0.FillBattleWheel(r0_449)
-  -- line: [5686, 5692] id: 449
+  -- line: [5689, 5695] id: 449
   local r1_449 = GWorld:GetAvatar()
   for r7_449, r8_449 in ipairs({
     40001,
@@ -4929,44 +4928,44 @@ function r0_0.FillBattleWheel(r0_449)
   -- close: r3_449
 end
 function r0_0.PrintBattleWheel(r0_450)
-  -- line: [5694, 5701] id: 450
+  -- line: [5697, 5704] id: 450
   local r2_450 = GWorld:GetAvatar().Wheels
   for r6_450 = 1, 24, 1 do
     DebugPrint("gmy@GM_Command GM_Command:PrintBattleWheel", r6_450, r2_450[1][r6_450].ResourceId)
   end
 end
 function r0_0.AddPet(r0_451, r1_451)
-  -- line: [5703, 5705] id: 451
+  -- line: [5706, 5708] id: 451
   r0_451:ServerBattleCommand("AddPet", r1_451)
 end
 function r0_0.AddPetAffix(r0_452, r1_452)
-  -- line: [5707, 5709] id: 452
+  -- line: [5710, 5712] id: 452
   r0_452:ServerBattleCommand("AddPetAffix", r1_452)
 end
 function r0_0.RemovePet(r0_453)
-  -- line: [5711, 5713] id: 453
+  -- line: [5714, 5716] id: 453
   r0_453:ServerBattleCommand("RemovePet")
 end
 function r0_0.RemovePetAffix(r0_454, r1_454)
-  -- line: [5715, 5717] id: 454
+  -- line: [5718, 5720] id: 454
   r0_454:ServerBattleCommand("RemovePetAffix", r1_454)
 end
 function r0_0.PrintTeammates(r0_455)
-  -- line: [5719, 5724] id: 455
+  -- line: [5722, 5727] id: 455
   for r6_455, r7_455 in pairs(r0_455.Player:GetAllTeammates()) do
     DebugPrint("gmy@GM_Command:PrintTeammates", r6_455, r7_455:GetName())
   end
   -- close: r2_455
 end
 function r0_0.PrintPlayers(r0_456)
-  -- line: [5726, 5733] id: 456
+  -- line: [5729, 5736] id: 456
   for r7_456, r8_456 in pairs(UE4.UGameplayStatics.GetGameState(r0_456.Player):GetAllPlayer()) do
     DebugPrint("gmy@GM_Command:PrintPlayers", r7_456, r8_456:GetName())
   end
   -- close: r3_456
 end
 function r0_0.ShowCountdownToast(r0_457, r1_457, r2_457)
-  -- line: [5735, 5744] id: 457
+  -- line: [5738, 5747] id: 457
   r1_457 = tonumber(r1_457)
   r2_457 = tonumber(r2_457)
   local r4_457 = r0_457:GetGameInstance():GetGameUIManager()
@@ -4975,7 +4974,7 @@ function r0_0.ShowCountdownToast(r0_457, r1_457, r2_457)
   end
 end
 function r0_0.AddCountdownTime(r0_458, r1_458)
-  -- line: [5746, 5754] id: 458
+  -- line: [5749, 5757] id: 458
   r1_458 = tonumber(r1_458)
   local r3_458 = r0_458:GetGameInstance():GetGameUIManager()
   if r3_458 then
@@ -4983,13 +4982,13 @@ function r0_0.AddCountdownTime(r0_458, r1_458)
   end
 end
 function r0_0.ForceUseSkill(r0_459, r1_459, r2_459)
-  -- line: [5756, 5763] id: 459
+  -- line: [5759, 5766] id: 459
   if DrawDebugTest then
     r0_459.Player:ServerUseSkillTest(tonumber(r1_459), tonumber(r2_459))
   end
 end
 function r0_0.UnlockMonsterGallery(r0_460)
-  -- line: [5765, 5773] id: 460
+  -- line: [5768, 5776] id: 460
   local r1_460 = GWorld:GetAvatar()
   for r6_460, r7_460 in pairs(DataMgr.GalleryRule) do
     if not r7_460.DisableTrainingGround then
@@ -4999,7 +4998,7 @@ function r0_0.UnlockMonsterGallery(r0_460)
   -- close: r2_460
 end
 function r0_0.ShowHudReward(r0_461, r1_461, r2_461, r3_461)
-  -- line: [5775, 5840] id: 461
+  -- line: [5778, 5843] id: 461
   local r4_461 = {}
   r2_461 = tonumber(r2_461)
   if r1_461 == "Quest" then
@@ -5051,22 +5050,22 @@ function r0_0.ShowHudReward(r0_461, r1_461, r2_461, r3_461)
     })
   end
   table.sort(r4_461, function(r0_462, r1_462)
-    -- line: [5835, 5837] id: 462
+    -- line: [5838, 5840] id: 462
     return r1_462.Rarity < r0_462.Rarity
   end)
   UIUtils.ShowHudReward("测试", r4_461)
 end
 function r0_0.FXPriorityTest(r0_463)
-  -- line: [5842, 5867] id: 463
+  -- line: [5845, 5870] id: 463
   local r2_463 = "/Game/Asset/Effect/Niagara/Weapon/Sword/NS_Huipo_RunAttack01_dg_Pro.NS_Huipo_RunAttack01_dg_Pro"
   local r3_463 = "/Game/Asset/Effect/Niagara/Weapon/Sword/NS_Huipo_RunAttack01_dg_Pro.NS_Huipo_RunAttack01_dg_Pro"
   r0_463.Player.FXComponent:PlayFX(LoadObject("/Game/Asset/Effect/Niagara/Weapon/Sword/NS_Huipo_RunAttack01_dg_Pro.NS_Huipo_RunAttack01_dg_Pro"), r0_463.Player.Mesh, nil, r0_463.Player:K2_GetActorLocation(), FRotator(0, 0, 0), true, false, false, false, EAttachLocation.KeepWorldPosition, EFXPriorityType.Lowest)
   r0_463.Player:AddTimer(0.1, function()
-    -- line: [5852, 5855] id: 464
+    -- line: [5855, 5858] id: 464
     r0_463.Player.FXComponent:PlayFX(LoadObject(r2_463), r0_463.Player.Mesh, nil, r0_463.Player:K2_GetActorLocation() + FVector(0, 300, 0), FRotator(0, 0, 0), true, false, false, false, EAttachLocation.KeepWorldPosition, EFXPriorityType.Dead)
   end, false, 0, "FXTest1", false)
   r0_463.Player:AddTimer(0.2, function()
-    -- line: [5857, 5860] id: 465
+    -- line: [5860, 5863] id: 465
     r0_463.Player.FXComponent:PlayFX(LoadObject(r3_463), r0_463.Player.Mesh, nil, r0_463.Player:K2_GetActorLocation() + FVector(0, 500, 0), FRotator(0, 0, 0), true, false, false, false, EAttachLocation.KeepWorldPosition, EFXPriorityType.Born)
   end, false, 0, "FXTest2", false)
 end
@@ -5090,7 +5089,7 @@ local r2_0 = {
 }
 local r3_0 = {}
 function r0_0.FXPriorityTest_Char(r0_466, r1_466)
-  -- line: [5890, 5929] id: 466
+  -- line: [5893, 5932] id: 466
   local r2_466 = UE4.USubsystemBlueprintLibrary.GetGameInstanceSubsystem(r0_466.Player, UFXPreloadGameInstanceSubsystem)
   local r3_466 = r0_466.Player:K2_GetActorLocation()
   local r4_466 = FVector(100, 0, 0)
@@ -5098,7 +5097,7 @@ function r0_0.FXPriorityTest_Char(r0_466, r1_466)
   local r6_466 = FVector(0, 100, 0)
   local r7_466 = 0
   local function r8_466(r0_467)
-    -- line: [5898, 5919] id: 467
+    -- line: [5901, 5922] id: 467
     if not r0_467 then
       return 
     end
@@ -5120,7 +5119,7 @@ function r0_0.FXPriorityTest_Char(r0_466, r1_466)
   end
 end
 function r0_0.ClearFXTest(r0_468)
-  -- line: [5931, 5939] id: 468
+  -- line: [5934, 5942] id: 468
   for r5_468, r6_468 in pairs(r3_0) do
     if IsValid(r6_468) then
       UE4.UCharacterFunctionLibrary.DeactivateNiagaraImmediately(r6_468)
@@ -5131,7 +5130,7 @@ function r0_0.ClearFXTest(r0_468)
   r0_468:ManualGC()
 end
 function r0_0.PrintAllFXPath(r0_469)
-  -- line: [5941, 5948] id: 469
+  -- line: [5944, 5951] id: 469
   local r3_469, r4_469 = UE4.USubsystemBlueprintLibrary.GetGameInstanceSubsystem(r0_469.Player, UE4.URolePreloadGameInstanceSubsystem).GetFolderAssetPaths("Asset/Effect/Niagara/")
   for r9_469, r10_469 in ipairs(r4_469:ToTable()) do
     print(_G.LogTag, r10_469)
@@ -5139,16 +5138,16 @@ function r0_0.PrintAllFXPath(r0_469)
   -- close: r5_469
 end
 function r0_0.LevelFXTest(r0_470, r1_470)
-  -- line: [5950, 5958] id: 470
+  -- line: [5953, 5961] id: 470
   r0_470.Player.FXComponent:SpawnFXAtLocation_Level(r1_470, "Test", true, r0_470.Player:K2_GetActorLocation())
   r0_470.Player.FXComponent:SpawnFXAtLocation_Level(r1_470, "Test", true, r0_470.Player:K2_GetActorLocation())
   local function r2_470(r0_471)
-    -- line: [5953, 5955] id: 471
+    -- line: [5956, 5958] id: 471
     print(_G.LogTag, "------------", r0_471)
   end
 end
 function r0_0.FXPriorityTest_One(r0_472, r1_472, r2_472)
-  -- line: [5960, 5979] id: 472
+  -- line: [5963, 5982] id: 472
   if not r1_472 then
     return 
   end
@@ -5168,11 +5167,11 @@ function r0_0.FXPriorityTest_One(r0_472, r1_472, r2_472)
   end
 end
 function r0_0.CharacterTag(r0_473)
-  -- line: [5981, 5983] id: 473
+  -- line: [5984, 5986] id: 473
   DebugPrint("Tianyi@ CurrentTag: " .. r0_473.Player:GetCharacterTag())
 end
 function r0_0.CalcAttrOpt(r0_474, r1_474)
-  -- line: [5985, 5994] id: 474
+  -- line: [5988, 5997] id: 474
   local r2_474 = tonumber(r1_474)
   if not r2_474 then
     return 
@@ -5185,7 +5184,7 @@ function r0_0.CalcAttrOpt(r0_474, r1_474)
   end
 end
 function r0_0.IsQuestChainLock(r0_475, r1_475)
-  -- line: [5996, 6006] id: 475
+  -- line: [5999, 6009] id: 475
   local r2_475 = GWorld:GetAvatar()
   if not r2_475 then
     return 
@@ -5197,7 +5196,7 @@ function r0_0.IsQuestChainLock(r0_475, r1_475)
   end
 end
 function r0_0.IsQuestChainUnlock(r0_476, r1_476)
-  -- line: [6008, 6018] id: 476
+  -- line: [6011, 6021] id: 476
   local r2_476 = GWorld:GetAvatar()
   if not r2_476 then
     return 
@@ -5209,11 +5208,11 @@ function r0_0.IsQuestChainUnlock(r0_476, r1_476)
   end
 end
 function r0_0.MonsterSpawnPointDistributeLogicTest(r0_477)
-  -- line: [6020, 6022] id: 477
+  -- line: [6023, 6025] id: 477
   AMonsterSpawn.GMTestDistributedMonsterLogic(r0_477.Player)
 end
 function r0_0.UMGAnimationsTime(r0_478, r1_478)
-  -- line: [6024, 6042] id: 478
+  -- line: [6027, 6045] id: 478
   local r2_478 = r0_478:GetGameInstance()
   local r3_478 = r2_478:GetGameUIManager()
   UWidgetLayoutLibrary.RemoveAllWidgets(r2_478)
@@ -5228,7 +5227,7 @@ function r0_0.UMGAnimationsTime(r0_478, r1_478)
   -- close: r6_478
 end
 function r0_0.EMPlayWidgetAnimation(r0_479, r1_479, r2_479)
-  -- line: [6044, 6066] id: 479
+  -- line: [6047, 6069] id: 479
   local r3_479 = r0_479:GetGameInstance()
   local r4_479 = r3_479:GetGameUIManager()
   UWidgetLayoutLibrary.RemoveAllWidgets(r3_479)
@@ -5245,7 +5244,7 @@ function r0_0.EMPlayWidgetAnimation(r0_479, r1_479, r2_479)
   EMUIAnimationSubsystem:EMPlayAnimation(r5_479, r7_479)
 end
 function r0_0.HideAllUI(r0_480, r1_480)
-  -- line: [6068, 6078] id: 480
+  -- line: [6071, 6081] id: 480
   local r2_480 = true
   if r1_480 == "0" then
     r2_480 = false
@@ -5255,7 +5254,7 @@ function r0_0.HideAllUI(r0_480, r1_480)
   r3_480:GetGameUIManager():HideAllUI(r2_480, "DefaultTag", true)
 end
 function r0_0.PlayUMGAnimation(r0_481, r1_481, r2_481, r3_481, r4_481)
-  -- line: [6080, 6137] id: 481
+  -- line: [6083, 6140] id: 481
   local r5_481 = r0_481:GetGameInstance()
   local r6_481 = r5_481:GetGameUIManager()
   UWidgetLayoutLibrary.RemoveAllWidgets(r5_481)
@@ -5276,13 +5275,13 @@ function r0_0.PlayUMGAnimation(r0_481, r1_481, r2_481, r3_481, r4_481)
     if r3_481 == nil then
       r13_481 = nil
       r13_481 = coroutine.create(function()
-        -- line: [6103, 6114] id: 482
+        -- line: [6106, 6117] id: 482
         for r3_482 = 1, r2_481, 1 do
           for r8_482, r9_482 in pairs(r12_481) do
             DebugPrint("Play Current Animation ", r8_482)
             local r10_482, r11_482 = UWidgetAnimationPlayCallbackProxy.CreatePlayAnimationProxyObject(nil, r11_481, r9_482, 0, 1, 0)
             r11_482.Finished:Add(r0_481, function()
-              -- line: [6108, 6110] id: 483
+              -- line: [6111, 6113] id: 483
               coroutine.resume(r13_481)
             end)
             coroutine.yield()
@@ -5300,12 +5299,12 @@ function r0_0.PlayUMGAnimation(r0_481, r1_481, r2_481, r3_481, r4_481)
       end
       local r14_481 = nil
       r14_481 = coroutine.create(function()
-        -- line: [6123, 6132] id: 484
+        -- line: [6126, 6135] id: 484
         for r3_484 = 1, r2_481, 1 do
           DebugPrint("Play Animation ", r3_481, " Times: ", r3_484)
           local r4_484, r5_484 = UWidgetAnimationPlayCallbackProxy.CreatePlayAnimationProxyObject(nil, r11_481, r13_481, 0, 1, 0)
           r5_484.Finished:Add(r0_481, function()
-            -- line: [6127, 6129] id: 485
+            -- line: [6130, 6132] id: 485
             coroutine.resume(r14_481)
           end)
           coroutine.yield()
@@ -5318,11 +5317,11 @@ function r0_0.PlayUMGAnimation(r0_481, r1_481, r2_481, r3_481, r4_481)
   end
 end
 function r0_0.obj(r0_486)
-  -- line: [6139, 6141] id: 486
+  -- line: [6142, 6144] id: 486
   URuntimeCommonFunctionLibrary.LogMaximumUObject()
 end
 function r0_0.SwitchSurvivalValueChange(r0_487)
-  -- line: [6143, 6161] id: 487
+  -- line: [6146, 6164] id: 487
   local r3_487 = nil	-- notice: implicit variable refs by block#[6]
   if IsStandAlone(r0_487:GetGameInstance()) then
     local r2_487 = UE4.UGameplayStatics.GetPlayerCharacter(r0_487:GetGameInstance(), 0)
@@ -5335,7 +5334,7 @@ function r0_0.SwitchSurvivalValueChange(r0_487)
       r2_487.AddSurvivalValueTimer = nil
     end
     r2_487.AddSurvivalValueTimer = r2_487:AddTimer(1, function()
-      -- line: [6155, 6157] id: 488
+      -- line: [6158, 6160] id: 488
       r3_487:SetSurvivalValue(r3_487.SurvivalValue + 100)
     end, true)
     -- close: r1_487
@@ -5345,7 +5344,7 @@ function r0_0.SwitchSurvivalValueChange(r0_487)
   end
 end
 function r0_0.CreateMonstersBatches(r0_489, r1_489, r2_489, r3_489)
-  -- line: [6163, 6171] id: 489
+  -- line: [6166, 6174] id: 489
   local r4_489 = {}
   for r9_489 in string.gmatch(r1_489, "([^,]+)") do
     table.insert(r4_489, r9_489)
@@ -5357,7 +5356,7 @@ function r0_0.CreateMonstersBatches(r0_489, r1_489, r2_489, r3_489)
   -- close: r5_489
 end
 function r0_0.CutToughnessValue(r0_490, r1_490)
-  -- line: [6173, 6182] id: 490
+  -- line: [6176, 6185] id: 490
   if r1_490 then
     r1_490 = tonumber(r1_490) and 1000000
   else
@@ -5370,7 +5369,7 @@ function r0_0.CutToughnessValue(r0_490, r1_490)
   end
 end
 function r0_0.PrintCurrentTaskGuideInfo(r0_491)
-  -- line: [6184, 6236] id: 491
+  -- line: [6187, 6239] id: 491
   DebugPrint("PrintCurrentTaskGuideInfo start===")
   local r1_491 = UIManager(r0_491:GetGameInstance())
   local r2_491 = UE4.UGameplayStatics.GetPlayerCharacter(r0_491:GetGameInstance(), 0)
@@ -5418,7 +5417,7 @@ function r0_0.PrintCurrentTaskGuideInfo(r0_491)
   DebugPrint("PrintCurrentTaskGuideInfo end===")
 end
 function r0_0.SetTaskGuidePointDebugMode(r0_492, r1_492)
-  -- line: [6238, 6250] id: 492
+  -- line: [6241, 6253] id: 492
   local r2_492 = UIManager(GWorld.GameInstance)
   local r3_492 = MissionIndicatorManager:GetAllIndicatorUIObjs()
   if not IsEmptyTable(r3_492) then
@@ -5433,7 +5432,7 @@ function r0_0.SetTaskGuidePointDebugMode(r0_492, r1_492)
   end
 end
 function r0_0.PrintAllAssetPath(r0_493, r1_493, r2_493)
-  -- line: [6252, 6283] id: 493
+  -- line: [6255, 6286] id: 493
   local r3_493 = tonumber(r1_493)
   local r4_493 = tonumber(r2_493)
   local r5_493 = 0
@@ -5466,18 +5465,18 @@ function r0_0.PrintAllAssetPath(r0_493, r1_493, r2_493)
   DebugPrint("End!!! Find MeshNum = ", r5_493, " MontageNum = ", r6_493, " Weapon = ", r7_493)
 end
 function r0_0.PrintAllPreloadCacheInfo(r0_494)
-  -- line: [6286, 6289] id: 494
+  -- line: [6289, 6292] id: 494
   UCharPreloadEMComponent.PrintAllCacheDebugInfo()
   URolePreloadGameInstanceSubsystem.PrintAllDebugInfo()
 end
 function r0_0.PrintDynamicEventInfo(r0_495, r1_495)
-  -- line: [6290, 6295] id: 495
+  -- line: [6293, 6298] id: 495
   local r3_495 = require("BluePrints.Common.ClientEvent.ClientEventUtils").GetDynEventInfo(r1_495)
   URuntimeCommonFunctionLibrary.AddOnScreenDebugMessage(-1, 5, FColor(255, 255, 255), r3_495, false, FVector2D(1, 1))
   DebugPrint(r3_495)
 end
 function r0_0.UseMobileUnitBudget(r0_496, r1_496)
-  -- line: [6297, 6306] id: 496
+  -- line: [6300, 6309] id: 496
   local r2_496 = USubsystemBlueprintLibrary.GetGameInstanceSubsystem(r0_496.Player, UUnitBudgetAllocatorSubsystem)
   if r2_496 then
     if tonumber(r1_496) == 0 then
@@ -5488,20 +5487,20 @@ function r0_0.UseMobileUnitBudget(r0_496, r1_496)
   end
 end
 function r0_0.DebugTickUnitBudget(r0_497)
-  -- line: [6308, 6313] id: 497
+  -- line: [6311, 6316] id: 497
   local r1_497 = USubsystemBlueprintLibrary.GetGameInstanceSubsystem(r0_497.Player, UUnitBudgetAllocatorSubsystem)
   if r1_497 then
     r1_497:Debug_TickUnitBudget()
   end
 end
 function r0_0.OpenMonsterDebug(r0_498)
-  -- line: [6315, 6320] id: 498
+  -- line: [6318, 6323] id: 498
   local r1_498 = UIManager(GWorld.GameInstance):GetUIObj("BattleMain")
   r1_498.TakeAimIndicator.bOpenMonsterDebug = not r1_498.TakeAimIndicator.bOpenMonsterDebug
   require("BluePrints.UI.GMInterface.GMFunctionLibrary").ExecConsoleCommand(r0_498:GetGameInstance(), "EnableGDT")
 end
 function r0_0.CrashTest(r0_499, r1_499)
-  -- line: [6324, 6328] id: 499
+  -- line: [6327, 6331] id: 499
   if not r1_499 then
     r1_499 = "IllegalAccess"
   end
@@ -5509,20 +5508,20 @@ function r0_0.CrashTest(r0_499, r1_499)
   URuntimeCommonFunctionLibrary.CrashTest(r1_499)
 end
 function r0_0.EnableSkillPrediction(r0_500)
-  -- line: [6330, 6335] id: 500
+  -- line: [6333, 6338] id: 500
   r0_0.bEnableSkillPrediction = not Battle(r0_500.Player).bEnableSkillPrediction
   Battle(r0_500.Player).bEnableSkillPrediction = r0_0.bEnableSkillPrediction
   r0_500:ServerBattleCommand("EnableSkillPrediction", r0_0.bEnableSkillPrediction)
 end
 function r0_0.ForceSimPredictionFailed(r0_501)
-  -- line: [6337, 6344] id: 501
+  -- line: [6340, 6347] id: 501
   r0_0.bSimPredictionFailed = not Battle(r0_501.Player).bSimPredictionFailed
   Battle(r0_501.Player).bSimPredictionFailed = r0_0.bSimPredictionFailed
   DebugPrint("gmy@GM_Command GM_Command:ForceSimPredictionFailed", r0_0.bSimPredictionFailed)
   r0_501:ServerBattleCommand("ForceSimPredictionFailed", r0_0.bSimPredictionFailed)
 end
 function r0_0.PrintPredictionDebugInfo(r0_502, r1_502)
-  -- line: [6346, 6358] id: 502
+  -- line: [6349, 6361] id: 502
   if r0_502.Player then
     if r1_502 then
       local r3_502 = Battle(r0_502.Player):GetEntity(tonumber(r1_502))
@@ -5535,14 +5534,14 @@ function r0_0.PrintPredictionDebugInfo(r0_502, r1_502)
   end
 end
 function r0_0.SetGamepad(r0_503, r1_503)
-  -- line: [6360, 6366] id: 503
+  -- line: [6363, 6369] id: 503
   local r3_503 = UE4.UGameplayStatics.GetPlayerCharacter(r0_503:GetGameInstance(), 0)
   if r3_503 then
     r3_503:SwitchGamepadSet(tonumber(r1_503))
   end
 end
 function r0_0.PrintBattleHistory(r0_504, r1_504, ...)
-  -- line: [6368, 6388] id: 504
+  -- line: [6371, 6391] id: 504
   if r1_504 then
     r1_504 = tonumber(r1_504) and 0
   else
@@ -5564,7 +5563,7 @@ function r0_0.PrintBattleHistory(r0_504, r1_504, ...)
   Battle(r0_504.Player):BP_PrintBattleHistory(r3_504)
 end
 function r0_0.ShowGetItemsTip(r0_505, r1_505, r2_505)
-  -- line: [6390, 6412] id: 505
+  -- line: [6393, 6415] id: 505
   local r3_505 = {
     InfoDataList = {},
   }
@@ -5586,7 +5585,7 @@ function r0_0.ShowGetItemsTip(r0_505, r1_505, r2_505)
   UIManager(r0_505):LoadUINew(UIConst.GetItemsTip, r3_505)
 end
 function r0_0.TestTriggerAbyssOnEnd(r0_506)
-  -- line: [6414, 6523] id: 506
+  -- line: [6417, 6526] id: 506
   r0_506.AbyssLogicServerInfo = {}
   r0_506.AbyssLogicServerInfo.AbyssLevelId = 3
   r0_506.AbyssLogicServerInfo.AbyssId = 1012
@@ -5696,7 +5695,7 @@ function r0_0.TestTriggerAbyssOnEnd(r0_506)
   end
 end
 function r0_0.ShowUpgradeTip(r0_507, r1_507, r2_507)
-  -- line: [6525, 6531] id: 507
+  -- line: [6528, 6534] id: 507
   UIManager(r0_507):LoadUINew(UIConst.UpgradeTip, {
     ItemId = 105,
     OldLevel = 1,
@@ -5704,7 +5703,7 @@ function r0_0.ShowUpgradeTip(r0_507, r1_507, r2_507)
   })
 end
 function r0_0.ForceStartDynQuest(r0_508, r1_508)
-  -- line: [6533, 6601] id: 508
+  -- line: [6536, 6604] id: 508
   if r1_508 then
     local r2_508 = DataMgr.DynQuest[tonumber(r1_508)]
     local r3_508 = r2_508.RegionId
@@ -5732,7 +5731,7 @@ function r0_0.ForceStartDynQuest(r0_508, r1_508)
         return 
       end
       local function r9_508(...)
-        -- line: [6561, 6587] id: 509
+        -- line: [6564, 6590] id: 509
         require("BluePrints.Common.ClientEvent.ClientEventUtils"):StartDynamicEvent(tonumber(r1_508))
         local r1_509 = UE4.UGameplayStatics.GetGameState(GWorld.GameInstance)
         if not r1_509 then
@@ -5751,7 +5750,7 @@ function r0_0.ForceStartDynQuest(r0_508, r1_508)
           r5_509:RequestAsyncTravel(r4_509, r6_509, {
             r4_509,
             function()
-              -- line: [6581, 6584] id: 510
+              -- line: [6584, 6587] id: 510
             end
           })
         end
@@ -5767,14 +5766,14 @@ function r0_0.ForceStartDynQuest(r0_508, r1_508)
   end
 end
 function r0_0.CompleteAllDispatchCondion(r0_511)
-  -- line: [6603, 6607] id: 511
+  -- line: [6606, 6610] id: 511
   for r5_511, r6_511 in pairs(DataMgr.Dispatch) do
     r0_511:CompleteSingleCondition(r6_511.DispatchCondition)
   end
   -- close: r1_511
 end
 function r0_0.TractedMonsterToPlayer(r0_512, r1_512, r2_512)
-  -- line: [6609, 6618] id: 512
+  -- line: [6612, 6621] id: 512
   local r3_512 = tonumber(r1_512) and 2000
   local r4_512 = tonumber(r2_512) and 500000
   local r5_512 = UE.UGameplayStatics.GetGameMode(r0_512.Player)
@@ -5786,7 +5785,7 @@ function r0_0.TractedMonsterToPlayer(r0_512, r1_512, r2_512)
   URuntimeCommonFunctionLibrary.TractionActorsToCenter(ESourceTags.Skill, r0_512.Player:K2_GetActorLocation(), r3_512, r4_512, r6_512, r0_512.Player)
 end
 function r0_0.TestTractedPlayer(r0_513, r1_513, r2_513)
-  -- line: [6620, 6627] id: 513
+  -- line: [6623, 6630] id: 513
   local r3_513 = tonumber(r1_513) and 200
   local r4_513 = tonumber(r2_513) and 500000
   local r5_513 = TArray(0)
@@ -5794,7 +5793,7 @@ function r0_0.TestTractedPlayer(r0_513, r1_513, r2_513)
   URuntimeCommonFunctionLibrary.TractionActorsToCenter(ESourceTags.Skill, r0_513.Player:K2_GetActorLocation(), r3_513, r4_513, r5_513, r0_513.Player)
 end
 function r0_0.SkipAngling(r0_514, r1_514)
-  -- line: [6629, 6635] id: 514
+  -- line: [6632, 6638] id: 514
   if not _G.bSkipAngling and r1_514 then
     _G.bSkipAngling = true
   elseif _G.bSkipAngling and not r1_514 then
@@ -5802,25 +5801,25 @@ function r0_0.SkipAngling(r0_514, r1_514)
   end
 end
 function r0_0.ShowRegionmapPane(r0_515, r1_515)
-  -- line: [6637, 6639] id: 515
+  -- line: [6640, 6642] id: 515
   _G.ShowRegionmapPane = r1_515 == "1"
 end
 function r0_0.SSRPlaySequence(r0_516, r1_516, r2_516)
-  -- line: [6641, 6646] id: 516
+  -- line: [6644, 6649] id: 516
   local r3_516 = UE.UGameplayStatics.GetGameMode(r0_516.Player)
   if r3_516.LevelSequenceStateRecorder then
     r3_516.LevelSequenceStateRecorder:PlaySequence(tonumber(r1_516), tonumber(r2_516))
   end
 end
 function r0_0.SSRPlaySequence(r0_517, r1_517, r2_517)
-  -- line: [6648, 6653] id: 517
+  -- line: [6651, 6656] id: 517
   local r3_517 = UE.UGameplayStatics.GetGameMode(r0_517.Player)
   if r3_517.LevelSequenceStateRecorder then
     r3_517.LevelSequenceStateRecorder:PlaySequence(tonumber(r1_517), tonumber(r2_517))
   end
 end
 function r0_0.StartFlow(r0_518, r1_518, r2_518)
-  -- line: [6655, 6666] id: 518
+  -- line: [6658, 6669] id: 518
   if not r1_518 then
     r1_518 = r0_518.Player
   end
@@ -5835,7 +5834,7 @@ function r0_0.StartFlow(r0_518, r1_518, r2_518)
   end
 end
 function r0_0.StopFlow(r0_519, r1_519, r2_519)
-  -- line: [6668, 6679] id: 519
+  -- line: [6671, 6682] id: 519
   if not r1_519 then
     r1_519 = r0_519.Player
   end
@@ -5850,11 +5849,11 @@ function r0_0.StopFlow(r0_519, r1_519, r2_519)
   end
 end
 function r0_0.NewDeputeTest(r0_520)
-  -- line: [6682, 6684] id: 520
+  -- line: [6685, 6687] id: 520
   Const.IsOpenNewDepute = true
 end
 function r0_0.PrintCharModVolume(r0_521)
-  -- line: [6686, 6694] id: 521
+  -- line: [6689, 6697] id: 521
   local r1_521 = GWorld:GetAvatar()
   if not r1_521 then
     return 
@@ -5865,7 +5864,7 @@ function r0_0.PrintCharModVolume(r0_521)
   -- close: r2_521
 end
 function r0_0.DetectiveMinigame(r0_522, r1_522, r2_522)
-  -- line: [6697, 6716] id: 522
+  -- line: [6700, 6719] id: 522
   if r1_522 == "UnlockQuestion" then
     local r3_522 = GWorld:GetAvatar()
     if r3_522 then
@@ -5880,13 +5879,13 @@ function r0_0.DetectiveMinigame(r0_522, r1_522, r2_522)
     r0_522:GetGameInstance():GetGameUIManager():LoadUINew("DetectiveMinigame")
   elseif r1_522 == "OpenDetailUI" then
     UIManager(r0_522):LoadUINew("DetectiveReasoningAni", function()
-      -- line: [6712, 6714] id: 523
+      -- line: [6715, 6717] id: 523
       UIManager(r0_522):LoadUINew("DetectiveReasoningDetail", r2_522)
     end)
   end
 end
 function r0_0.CommonActivitySettlement(r0_524)
-  -- line: [6719, 6765] id: 524
+  -- line: [6722, 6768] id: 524
   GWorld.GameInstance:GetGameUIManager():LoadUINew("ActivitySettlement", {
     LevelScore = 500,
     IsWin = true,
@@ -5928,35 +5927,35 @@ function r0_0.CommonActivitySettlement(r0_524)
       1018
     },
     ExitCallback = function()
-      -- line: [6753, 6756] id: 525
+      -- line: [6756, 6759] id: 525
       GWorld.GameInstance:GetGameUIManager():ShowUITip("CommonToastMain", GText("Minigame_Textmap_100305"))
     end,
   })
 end
 function r0_0.EnterTiaoPinGame(r0_526)
-  -- line: [6767, 6769] id: 526
+  -- line: [6770, 6772] id: 526
   UIManager(GWorld.GameInstance):LoadUINew("TiaoPin")
 end
 function r0_0.PinAttr(r0_527, r1_527, r2_527)
-  -- line: [6771, 6778] id: 527
+  -- line: [6774, 6781] id: 527
   UIManager(r0_527.Player):LoadUI(UIConst.ATTRDEBUGPANEL, "AttrDebugPanel", UIConst.ZORDER_ABOVE_ALL):AddAttrWatcher(r1_527, r2_527)
 end
 function r0_0.OpenWalnutRewardDialog(r0_528, r1_528)
-  -- line: [6780, 6784] id: 528
+  -- line: [6783, 6787] id: 528
   if not UIManager(r0_528):GetUIObj("WalnutRewardDialog") then
     r0_528.DetailWidget = UIManager(r0_528):LoadUINew("WalnutRewardDialog", tonumber(r1_528))
   end
 end
 function r0_0.VerifyArrayTest(r0_529)
-  -- line: [6786, 6789] id: 529
+  -- line: [6789, 6792] id: 529
   GWorld.GameInstance:GmChangeVerifyArray()
 end
 function r0_0.FloatVerifyArrayTest(r0_530)
-  -- line: [6791, 6794] id: 530
+  -- line: [6794, 6797] id: 530
   GWorld.GameInstance:GmChangeFloatVerifyArray()
 end
 function r0_0.CreateSquad(r0_531, r1_531)
-  -- line: [6796, 6803] id: 531
+  -- line: [6799, 6806] id: 531
   local r2_531 = GWorld:GetAvatar()
   if not r2_531 then
     return 
@@ -5964,7 +5963,7 @@ function r0_0.CreateSquad(r0_531, r1_531)
   r2_531:CallServerMethod("GMCreateSquad", r1_531)
 end
 function r0_0.QuitGame(r0_532, r1_532)
-  -- line: [6805, 6811] id: 532
+  -- line: [6808, 6814] id: 532
   if r1_532 then
     GWorld.GameInstance.ForceQuitGame()
   else
@@ -5972,7 +5971,7 @@ function r0_0.QuitGame(r0_532, r1_532)
   end
 end
 function r0_0.SyncTest(r0_533)
-  -- line: [6813, 6870] id: 533
+  -- line: [6816, 6873] id: 533
   for r6_533, r7_533 in pairs({
     "/Game/AssetDesign/Char/Monster/Jt_Pizhuo/BP_Mon_Jt_Pizhuo.BP_Mon_Jt_Pizhuo",
     "AnimBlueprint\'/Game/AssetDesign/Char/Monster/Jt_Pizhuo/ABP_Mon_Jt_Pizhuo.ABP_Mon_Jt_Pizhuo_C\'",
@@ -6027,7 +6026,7 @@ function r0_0.SyncTest(r0_533)
   LoadObject("NiagaraSystem\'/Game/Asset/Effect/Niagara/Monster/A_Common/NS_Common_Part_Smash.NS_Common_Part_Smash\'")
 end
 function r0_0.ShowLookAtDebug(r0_534, r1_534, r2_534)
-  -- line: [6872, 6892] id: 534
+  -- line: [6875, 6895] id: 534
   local r3_534 = tonumber(r2_534)
   local r4_534 = tonumber(r1_534)
   local r5_534 = UE4.UGameplayStatics.GetGameState(GWorld.GameInstance)
@@ -6044,7 +6043,7 @@ function r0_0.ShowLookAtDebug(r0_534, r1_534, r2_534)
   end
 end
 function r0_0.StartLookAt(r0_535, r1_535, r2_535, r3_535)
-  -- line: [6894, 6920] id: 535
+  -- line: [6897, 6923] id: 535
   local r4_535 = tonumber(r3_535)
   local r5_535 = tonumber(r1_535)
   local r6_535 = tonumber(r2_535)
@@ -6066,7 +6065,7 @@ function r0_0.StartLookAt(r0_535, r1_535, r2_535, r3_535)
   end
 end
 function r0_0.NPCMoveTo(r0_536, r1_536, r2_536, r3_536)
-  -- line: [6922, 6936] id: 536
+  -- line: [6925, 6939] id: 536
   local r4_536 = tonumber(r1_536)
   local r5_536 = tonumber(r2_536)
   local r6_536 = tonumber(r3_536)
@@ -6079,7 +6078,7 @@ function r0_0.NPCMoveTo(r0_536, r1_536, r2_536, r3_536)
   end
 end
 function r0_0.LookAtBySlerp(r0_537, r1_537, r2_537, r3_537, r4_537)
-  -- line: [6938, 6970] id: 537
+  -- line: [6941, 6973] id: 537
   local r5_537 = tonumber(r3_537)
   local r6_537 = tonumber(r1_537)
   local r7_537 = tonumber(r2_537)
@@ -6107,7 +6106,7 @@ function r0_0.LookAtBySlerp(r0_537, r1_537, r2_537, r3_537, r4_537)
   end
 end
 function r0_0.ControlAllMonsterBTTickEnable(r0_538, r1_538)
-  -- line: [6972, 6978] id: 538
+  -- line: [6975, 6981] id: 538
   local r2_538 = UE4.UGameplayStatics.GetGameState(r0_538.Player)
   if r1_538 == false then
     r1_538 = false
@@ -6118,15 +6117,15 @@ function r0_0.ControlAllMonsterBTTickEnable(r0_538, r1_538)
   -- close: r3_538
 end
 function r0_0.LJHTEST(r0_539)
-  -- line: [6980, 6983] id: 539
+  -- line: [6983, 6986] id: 539
   UIUtils.OpenRaidReward()
 end
 function r0_0.TestGraphTask(r0_540)
-  -- line: [6985, 6987] id: 540
+  -- line: [6988, 6990] id: 540
   UE4.UBattleFunctionLibrary.TestTaskGraphTask(r0_540.Player)
 end
 function r0_0.LHQTEST(r0_541, r1_541, r2_541)
-  -- line: [6989, 7010] id: 541
+  -- line: [6992, 7013] id: 541
   local r3_541 = tonumber(r1_541)
   local r4_541 = tonumber(r2_541)
   local r5_541 = UE4.UGameplayStatics.GetGameState(GWorld.GameInstance)
@@ -6144,7 +6143,7 @@ function r0_0.LHQTEST(r0_541, r1_541, r2_541)
   end
 end
 function r0_0.NPCRotate90(r0_542, r1_542, r2_542)
-  -- line: [7012, 7021] id: 542
+  -- line: [7015, 7024] id: 542
   local r3_542 = tonumber(r2_542)
   local r4_542 = tonumber(r1_542)
   local r5_542 = UE4.UGameplayStatics.GetGameState(GWorld.GameInstance)
@@ -6155,7 +6154,7 @@ function r0_0.NPCRotate90(r0_542, r1_542, r2_542)
   end
 end
 function r0_0.NPCRotate(r0_543, r1_543, r2_543)
-  -- line: [7023, 7032] id: 543
+  -- line: [7026, 7035] id: 543
   local r3_543 = tonumber(r2_543)
   local r4_543 = tonumber(r1_543)
   local r5_543 = UE4.UGameplayStatics.GetGameState(GWorld.GameInstance)
@@ -6166,7 +6165,7 @@ function r0_0.NPCRotate(r0_543, r1_543, r2_543)
   end
 end
 function r0_0.NPCTalkAgree(r0_544, r1_544, r2_544)
-  -- line: [7034, 7047] id: 544
+  -- line: [7037, 7050] id: 544
   local r3_544 = tonumber(r1_544)
   local r4_544 = tonumber(r2_544)
   local r5_544 = UE4.UGameplayStatics.GetGameState(GWorld.GameInstance)
@@ -6180,7 +6179,7 @@ function r0_0.NPCTalkAgree(r0_544, r1_544, r2_544)
   end
 end
 function r0_0.NPCTalk03(r0_545, r1_545)
-  -- line: [7049, 7058] id: 545
+  -- line: [7052, 7061] id: 545
   local r2_545 = tonumber(r1_545)
   local r3_545 = UE4.UGameplayStatics.GetGameState(GWorld.GameInstance)
   if r3_545 then
@@ -6188,7 +6187,7 @@ function r0_0.NPCTalk03(r0_545, r1_545)
   end
 end
 function r0_0.NPCAgree(r0_546, r1_546, r2_546)
-  -- line: [7060, 7074] id: 546
+  -- line: [7063, 7077] id: 546
   local r3_546 = tonumber(r1_546)
   local r4_546 = tonumber(r2_546)
   local r5_546 = UE4.UGameplayStatics.GetGameState(GWorld.GameInstance)
@@ -6203,10 +6202,10 @@ function r0_0.NPCAgree(r0_546, r1_546, r2_546)
   end
 end
 function r0_0.GM_SkipMonthCardPay(r0_547)
-  -- line: [7077, 7086] id: 547
+  -- line: [7080, 7089] id: 547
   DebugPrint("GM_SkipMonthCardPay")
   require("BluePrints.UI.WBP.Perk.MonthCard.MonthCardController").TryPurchaseMonthCard = function()
-    -- line: [7080, 7085] id: 548
+    -- line: [7083, 7088] id: 548
     local r0_548 = GWorld:GetAvatar()
     if r0_548 then
       r0_548:BuyMonthlyCard()
@@ -6214,7 +6213,7 @@ function r0_0.GM_SkipMonthCardPay(r0_547)
   end
 end
 function r0_0.DungeonDoubleCost(r0_549, r1_549)
-  -- line: [7088, 7094] id: 549
+  -- line: [7091, 7097] id: 549
   local r2_549 = nil	-- notice: implicit variable refs by block#[4]
   if r1_549 then
     r2_549 = true
@@ -6231,7 +6230,7 @@ function r0_0.DungeonDoubleCost(r0_549, r1_549)
   end
 end
 function r0_0.GetWorldRegionEidByCreatorId(r0_550, r1_550)
-  -- line: [7096, 7112] id: 550
+  -- line: [7099, 7115] id: 550
   local r3_550 = UE4.UGameplayStatics.GetGameMode(r0_550.Player):GetRegionDataMgrSubSystem().DataPool.RegionData
   if not r3_550 then
     return 
@@ -6251,7 +6250,7 @@ function r0_0.GetWorldRegionEidByCreatorId(r0_550, r1_550)
   DebugPrint(r1_550 .. "的Eid为 " .. r4_550)
 end
 function r0_0.GetWorldRegionEidByManualItemId(r0_551, r1_551)
-  -- line: [7114, 7130] id: 551
+  -- line: [7117, 7133] id: 551
   local r3_551 = UE4.UGameplayStatics.GetGameMode(r0_551.Player):GetRegionDataMgrSubSystem().DataPool.RegionData
   if not r3_551 then
     return 
@@ -6271,7 +6270,7 @@ function r0_0.GetWorldRegionEidByManualItemId(r0_551, r1_551)
   DebugPrint(r1_551 .. "的Eid为 " .. r4_551)
 end
 function r0_0.GetWorldRegionEidByRandomRuleId(r0_552, r1_552)
-  -- line: [7132, 7150] id: 552
+  -- line: [7135, 7153] id: 552
   local r3_552 = UE4.UGameplayStatics.GetGameMode(r0_552.Player):GetRegionDataMgrSubSystem().DataPool.RegionData
   if not r3_552 then
     return 
@@ -6293,7 +6292,7 @@ function r0_0.GetWorldRegionEidByRandomRuleId(r0_552, r1_552)
   -- close: r5_552
 end
 function r0_0.EnablePropEffect(r0_553, r1_553, r2_553)
-  -- line: [7153, 7170] id: 553
+  -- line: [7156, 7173] id: 553
   local r3_553 = tonumber(r1_553)
   local r4_553 = tonumber(r2_553)
   if not r4_553 or not r3_553 then
@@ -6310,7 +6309,7 @@ function r0_0.EnablePropEffect(r0_553, r1_553, r2_553)
   end
 end
 function r0_0.ShowSequenceTime(r0_554, r1_554)
-  -- line: [7172, 7178] id: 554
+  -- line: [7175, 7181] id: 554
   if r1_554 == "true" then
     ULevelSequenceCommonFunctionLibrary.CreateRunTimeSequenceTimeWidget(r0_554.Player, r0_554.Player)
   else
@@ -6318,11 +6317,11 @@ function r0_0.ShowSequenceTime(r0_554, r1_554)
   end
 end
 function r0_0.UWAUpLoad(r0_555)
-  -- line: [7180, 7185] id: 555
+  -- line: [7183, 7188] id: 555
   UE4.UUWABlueprintFunctionLibrary.UpLLoad("17357126837", "yingxiongwudi123", 11211)
 end
 function r0_0.GenerateStripMesh(r0_556, r1_556, r2_556, r3_556, r4_556)
-  -- line: [7187, 7221] id: 556
+  -- line: [7190, 7224] id: 556
   local r7_556 = UE4.UGameplayStatics.GetPlayerCharacter(r0_556:GetGameInstance(), 0):K2_GetActorLocation()
   local r8_556 = UE4.UClass.Load("/Game/BluePrints/Test/TestProceduralMesh.TestProceduralMesh")
   if not r8_556 then
@@ -6339,7 +6338,7 @@ function r0_0.GenerateStripMesh(r0_556, r1_556, r2_556, r3_556, r4_556)
   end
 end
 function r0_0.PrintLevelbound(r0_557, r1_557)
-  -- line: [7223, 7264] id: 557
+  -- line: [7226, 7267] id: 557
   if r1_557 == nil then
     r1_557 = "Prologue_Clouds_Art"
   end
@@ -6365,7 +6364,7 @@ if UE and UE.URuntimeCommonFunctionLibrary.IsDistribution() then
     local r11_0 = "function"
     if r10_0 == r11_0 then
       function r10_0()
-        -- line: [7270, 7270] id: 558
+        -- line: [7273, 7273] id: 558
       end
       r0_0[r8_0] = r10_0
     end
@@ -6373,14 +6372,14 @@ if UE and UE.URuntimeCommonFunctionLibrary.IsDistribution() then
   -- close: r4_0
 end
 function r0_0.PrintCustomNPCCacheInfo(r0_559)
-  -- line: [7275, 7280] id: 559
+  -- line: [7278, 7283] id: 559
   local r1_559 = UE4.USubsystemBlueprintLibrary.GetWorldSubsystem(r0_559.Player, UE4.UNPCCreateSubSystem)
   if r1_559 then
     r1_559:CustomNPCCacheDebug()
   end
 end
 function r0_0.MechanismStateDebug(r0_560, r1_560)
-  -- line: [7282, 7292] id: 560
+  -- line: [7285, 7295] id: 560
   local r2_560 = UE4.UGameplayStatics.GetGameState(r0_560.Player)
   if r2_560 then
     r1_560 = tonumber(r1_560)
@@ -6392,7 +6391,7 @@ function r0_0.MechanismStateDebug(r0_560, r1_560)
   end
 end
 function r0_0.ShowBattleError(r0_561, r1_561)
-  -- line: [7294, 7330] id: 561
+  -- line: [7297, 7333] id: 561
   local r2_561 = GWorld.Battle
   if not r2_561 then
     ScreenPrint("Error:找不到GWorld.Battle")
@@ -6415,7 +6414,7 @@ function r0_0.ShowBattleError(r0_561, r1_561)
   end
 end
 function r0_0.ShowUIError(r0_562, r1_562, r2_562)
-  -- line: [7332, 7338] id: 562
+  -- line: [7335, 7341] id: 562
   local r3_562 = GWorld.GameInstance:GetGameUIManager()
   if not r3_562 then
     ScreenPrint("Error:找不到UIManager")
@@ -6423,7 +6422,7 @@ function r0_0.ShowUIError(r0_562, r1_562, r2_562)
   r3_562:ShowUIError(r1_562, r2_562)
 end
 function r0_0.ShowPersonalInfoPage(r0_563, r1_563)
-  -- line: [7342, 7349] id: 563
+  -- line: [7345, 7352] id: 563
   if r1_563 then
     GWorld:GetAvatar():CheckOtherPlayerPersonallInfo(GWorld:GetAvatar().Uid, true)
   else
@@ -6431,7 +6430,7 @@ function r0_0.ShowPersonalInfoPage(r0_563, r1_563)
   end
 end
 function r0_0.UseResourceBattle(r0_564, r1_564)
-  -- line: [7351, 7361] id: 564
+  -- line: [7354, 7364] id: 564
   r1_564 = tonumber(r1_564)
   if r0_564.ResourceUseHelper == nil then
     r0_564.ResourceUseHelper = require("Utils.ResourceUseHelper")
@@ -6441,10 +6440,10 @@ function r0_0.UseResourceBattle(r0_564, r1_564)
   end
 end
 function r0_0.EnableRegionPlayerOnlyShowHeadUI(r0_565, r1_565, r2_565)
-  -- line: [7363, 7372] id: 565
+  -- line: [7366, 7375] id: 565
 end
 function r0_0.NPCSubSystemOnline(r0_566, r1_566)
-  -- line: [7374, 7381] id: 566
+  -- line: [7377, 7384] id: 566
   local r2_566 = UE4.USubsystemBlueprintLibrary.GetWorldSubsystem(r0_566.Player, UE4.UNPCCreateSubSystem)
   if r1_566 then
     r2_566:SetIsOnlineState(true)
@@ -6453,11 +6452,11 @@ function r0_0.NPCSubSystemOnline(r0_566, r1_566)
   end
 end
 function r0_0.NPCSubSystemChangeOnlineRegionId(r0_567, r1_567)
-  -- line: [7383, 7386] id: 567
+  -- line: [7386, 7389] id: 567
   UE4.USubsystemBlueprintLibrary.GetWorldSubsystem(r0_567.Player, UE4.UNPCCreateSubSystem):TestChangeRegionOnlineId(tonumber(r1_567))
 end
 function r0_0.ReadyForRegonOnline(r0_568)
-  -- line: [7388, 7418] id: 568
+  -- line: [7391, 7421] id: 568
   r0_568:CompleteSystemCondition()
   r0_568:CompleteCondition({
     100103,
@@ -6489,7 +6488,7 @@ function r0_0.ReadyForRegonOnline(r0_568)
   r0_568:SkipRegion(1, 999701, 1)
 end
 function r0_0.RandomChar(r0_569)
-  -- line: [7420, 7575] id: 569
+  -- line: [7423, 7578] id: 569
   local r1_569 = GWorld:GetAvatar()
   r1_569:ChangeBattleWheel(1, 2, 41017)
   r1_569:ChangeBattleWheel(1, 1, 41014)
@@ -6499,7 +6498,7 @@ function r0_0.RandomChar(r0_569)
   r1_569:ChangeBattleWheel(1, 7, 41003)
   r1_569:ChangeBattleWheel(1, 8, 41013)
   local function r2_569(r0_570, r1_570)
-    -- line: [7430, 7450] id: 570
+    -- line: [7433, 7453] id: 570
     local r2_570 = {}
     for r7_570 in pairs(r0_570) do
       if r1_570 then
@@ -6517,7 +6516,7 @@ function r0_0.RandomChar(r0_569)
     return r2_570[math.random(1, #r2_570)]
   end
   local function r3_569(r0_571, r1_571)
-    -- line: [7452, 7472] id: 571
+    -- line: [7455, 7475] id: 571
     local r2_571 = {}
     for r7_571, r8_571 in pairs(r0_571) do
       if r1_571 then
@@ -6542,26 +6541,26 @@ function r0_0.RandomChar(r0_569)
   end
   -- close: r6_569
   local r6_569 = r3_569(r5_569, function(r0_572)
-    -- line: [7480, 7483] id: 572
+    -- line: [7483, 7486] id: 572
     return r1_569.Weapons[r0_572]:IsMelee()
   end)
   r1_569:SwitchWeapon(CommonConst.WeaponType.MeleeWeapon, r6_569)
   local r7_569 = r3_569(r5_569, function(r0_573)
-    -- line: [7487, 7489] id: 573
+    -- line: [7490, 7492] id: 573
     return r1_569.Weapons[r0_573]:IsRanged()
   end)
   r1_569:SwitchWeapon(CommonConst.WeaponType.RangedWeapon, r7_569)
   r1_569:EquipPet(r2_569(r1_569.Pets))
   local r9_569 = r1_569.Chars[r4_569].CharId
   (function(...)
-    -- line: [7497, 7565] id: 574
+    -- line: [7500, 7568] id: 574
     local r1_574 = r2_569(r1_569.CommonChars[r9_569].OwnedSkins)
     if r1_574 then
       r1_569:ChangeCharAppearanceSkin(r4_569, 1, r1_574)
     end
     for r6_574, r7_574 in pairs(CommonConst.CharAccessoryTypes) do
       local r8_574 = r3_569(r1_569.CharAccessorys, function(r0_575)
-        -- line: [7505, 7507] id: 575
+        -- line: [7508, 7510] id: 575
         return DataMgr.CharAccessory[r0_575].AccessoryType == r6_574
       end)
       if r8_574 then
@@ -6580,7 +6579,7 @@ function r0_0.RandomChar(r0_569)
     end
     local r2_574 = r1_569.Weapons[r6_569]
     local r3_574 = r2_569(r1_569.OwnedWeaponSkins, function(r0_576)
-      -- line: [7522, 7525] id: 576
+      -- line: [7525, 7528] id: 576
       return DataMgr.WeaponSkin[r0_576].ApplicationType == r2_574.SkinApplicationType
     end) and r2_574.WeaponId
     local r6_574 = r6_569
@@ -6599,7 +6598,7 @@ function r0_0.RandomChar(r0_569)
     r6_574 = r1_569.Weapons
     r6_574 = r6_574[r7_569]
     local r7_574 = r2_569(r1_569.OwnedWeaponSkins, function(r0_577)
-      -- line: [7545, 7548] id: 577
+      -- line: [7548, 7551] id: 577
       return DataMgr.WeaponSkin[r0_577].ApplicationType == r6_574.SkinApplicationType
     end) and r6_574.WeaponId
     r1_569:ChangeWeaponAppearanceSkin(r7_569, r7_574)
@@ -6615,36 +6614,35 @@ function r0_0.RandomChar(r0_569)
   end)()
   local r11_569 = UE4.UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
   r11_569:AddTimer(1, function()
-    -- line: [7569, 7574] id: 578
+    -- line: [7572, 7577] id: 578
     r11_569:ChangeRole(r9_569, AvatarUtils:GetDefaultBattleInfo(r1_569))
   end)
 end
 function r0_0.ShowGlobalVersion(r0_579)
-  -- line: [7577, 7579] id: 579
+  -- line: [7580, 7582] id: 579
   UIManager(r0_579):ShowGlobalVersion()
 end
 function r0_0.HideGlobalVersion(r0_580)
-  -- line: [7581, 7583] id: 580
+  -- line: [7584, 7586] id: 580
   UIManager(r0_580):HideGlobalVersion()
 end
 function r0_0.CompleteSystemConditionWithoutGuide(r0_581)
-  -- line: [7586, 7608] id: 581
+  -- line: [7589, 7614] id: 581
   local r1_581 = GWorld:GetAvatar()
   if not r1_581 then
     return 
   end
   r1_581.bGMHideUnlockPopup = true
-  require("BluePrints.UI.GMInterface.GMFunctionLibrary").ExecConsoleCommand(r0_581:GetGameInstance(), "sgm sysu")
+  local r2_581 = require("BluePrints.UI.GMInterface.GMFunctionLibrary")
+  r2_581.ExecConsoleCommand(r0_581:GetGameInstance(), "sgm sysu")
   r0_581:SuccessAllSystemGuide()
-  r0_581:CompleteCondition({
-    8002,
-    4220,
-    4170,
-    2001
-  })
+  r2_581.ExecConsoleCommand(r0_581:GetGameInstance(), "sgm CompleteCondition " .. tostring(8002))
+  r2_581.ExecConsoleCommand(r0_581:GetGameInstance(), "sgm CompleteCondition " .. tostring(4220))
+  r2_581.ExecConsoleCommand(r0_581:GetGameInstance(), "sgm CompleteCondition " .. tostring(4170))
+  r2_581.ExecConsoleCommand(r0_581:GetGameInstance(), "sgm CompleteCondition " .. tostring(2001))
 end
 function r0_0.OpenOnlineActionView(r0_582, r1_582)
-  -- line: [7611, 7624] id: 582
+  -- line: [7617, 7630] id: 582
   if not r1_582 then
     r1_582 = 1
   else
@@ -6659,15 +6657,15 @@ function r0_0.OpenOnlineActionView(r0_582, r1_582)
   r2_582:GetModel():CreatFakeInvitationInfo()
 end
 function r0_0.OpenMultiChallenge(r0_583, r1_583)
-  -- line: [7626, 7628] id: 583
+  -- line: [7632, 7634] id: 583
   UIUtils.OpenMultiplayerChallengeLevelChoose(r1_583)
 end
 function r0_0.SwitchMobileHUDLayout(r0_584, r1_584)
-  -- line: [7630, 7633] id: 584
+  -- line: [7636, 7639] id: 584
   EventManager:FireEvent(EventID.OnSwitchMobileHUDLayout, tonumber(r1_584))
 end
 function r0_0.ChangeDSMonsterFramingNodeConfig(r0_585, r1_585, r2_585, r3_585, r4_585, r5_585)
-  -- line: [7635, 7644] id: 585
+  -- line: [7641, 7650] id: 585
   if not r1_585 or not r2_585 or not r3_585 or not r4_585 or not r5_585 then
     return 
   end
@@ -6678,7 +6676,7 @@ function r0_0.ChangeDSMonsterFramingNodeConfig(r0_585, r1_585, r2_585, r3_585, r
   r0_585:ServerBattleCommand("ChangeDSMonsterFramingNodeConfig", r1_585, r2_585, r3_585, r4_585, r5_585)
 end
 function r0_0.HideEntertainmentUI(r0_586, r1_586)
-  -- line: [7646, 7679] id: 586
+  -- line: [7652, 7685] id: 586
   local r2_586 = require("BluePrints.UI.GMInterface.GMVariable")
   if r1_586 ~= 0 then
     r1_586 = r1_586 ~= "0"
@@ -6701,7 +6699,7 @@ function r0_0.HideEntertainmentUI(r0_586, r1_586)
   end
   if r1_586 then
     EventManager:AddEvent(EventID.LoadUI, r2_586.HideEntertainmentUIObj, function(r0_587, r1_587)
-      -- line: [7668, 7675] id: 587
+      -- line: [7674, 7681] id: 587
       r4_586 = r3_586:GetUIObj("Entertainment")
       if r4_586 and r2_586.HideEntertainmentUI then
         r4_586:SetRenderOpacity(0)
@@ -6712,7 +6710,7 @@ function r0_0.HideEntertainmentUI(r0_586, r1_586)
   end
 end
 function r0_0.HideStoryUI(r0_588, r1_588)
-  -- line: [7681, 7730] id: 588
+  -- line: [7687, 7736] id: 588
   if r1_588 ~= 0 then
     r1_588 = r1_588 ~= "0"
   else
@@ -6743,7 +6741,7 @@ function r0_0.HideStoryUI(r0_588, r1_588)
   end
   if r1_588 then
     EventManager:AddEvent(EventID.LoadUI, r2_588.HideStoryUIObj, function(r0_589, r1_589)
-      -- line: [7710, 7726] id: 589
+      -- line: [7716, 7732] id: 589
       r3_588 = TalkSubsystem()
       local r2_589 = r3_588:GetAllTasks()
       if r2_588.HideStoryUI then
@@ -6767,7 +6765,7 @@ function r0_0.HideStoryUI(r0_588, r1_588)
   end
 end
 function r0_0.GetAllOptPackages(r0_590, r1_590)
-  -- line: [7732, 7744] id: 590
+  -- line: [7738, 7750] id: 590
   local r2_590 = require("BluePrints.UI.GMInterface.GMFunctionLibrary")
   local r3_590 = DataMgr.Resource
   if not r1_590 then
@@ -6782,7 +6780,7 @@ function r0_0.GetAllOptPackages(r0_590, r1_590)
   -- close: r4_590
 end
 function r0_0.ActorSnapShot(r0_591, r1_591, r2_591)
-  -- line: [7746, 7805] id: 591
+  -- line: [7752, 7811] id: 591
   r1_591 = tonumber(r1_591) and 0
   r2_591 = tonumber(r2_591) and 10000
   local r3_591 = UE4.UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
@@ -6833,7 +6831,7 @@ function r0_0.ActorSnapShot(r0_591, r1_591, r2_591)
   -- close: r12_591
 end
 function r0_0.TeleportPlayer(r0_592, r1_592, r2_592, r3_592)
-  -- line: [7808, 7816] id: 592
+  -- line: [7814, 7822] id: 592
   r1_592 = tonumber(r1_592)
   r2_592 = tonumber(r2_592)
   r3_592 = tonumber(r3_592)

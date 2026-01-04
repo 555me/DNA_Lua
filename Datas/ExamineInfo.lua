@@ -95,7 +95,7 @@ end)("ExamineInfo", {
     ExamineKey = "2.0",
     HostNum = 5001,
     IP = "121.199.19.146",
-    JumpURL = "https://dna.yingxiong.com",
+    JumpURL = "https://cdn-dna.yingxiong.com/dna/Android_dna.apk",
     MirrorChannelID = 0,
     Port = 8000,
   },

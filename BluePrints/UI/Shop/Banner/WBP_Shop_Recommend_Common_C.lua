@@ -742,7 +742,7 @@ function r1_0.SetButtonPaySoldOut(r0_34)
   r0_34:SafeSetVisibility(r0_34.MainBtn.WS_Detail, UE4.ESlateVisibility.Collapsed)
 end
 function r1_0.SetButtonPayAvailable(r0_35)
-  -- line: [688, 768] id: 35
+  -- line: [688, 767] id: 35
   -- notice: unreachable block#24
   if r0_35.MainBtn.Text_BtnBuy then
     r0_35:SafeSetVisibility(r0_35.MainBtn.Text_BtnBuy, UE4.ESlateVisibility.SelfHitTestInvisible)
@@ -755,10 +755,7 @@ function r1_0.SetButtonPayAvailable(r0_35)
   end
   if r0_35.MainBtn.Group_BuyNum and r0_35.MainBtn.Text_BuyNum and r0_35.PurchaseLimit > 0 then
     r0_35:SafeSetVisibility(r0_35.MainBtn.Group_BuyNum, UE4.ESlateVisibility.SelfHitTestInvisible)
-    r0_35.MainBtn.Text_BuyNum:SetText(table.concat({
-      GText("UI_Banner_Remain_Buy"),
-      tostring(r0_35.PurchaseLimit)
-    }, ": "))
+    r0_35.MainBtn.Text_BuyNum:SetText(GText("UI_Banner_Remain_Buy") .. tostring(r0_35.PurchaseLimit))
   else
     r0_35:SafeSetVisibility(r0_35.MainBtn.Group_BuyNum, UE4.ESlateVisibility.Collapsed)
   end
@@ -785,14 +782,14 @@ function r1_0.SetButtonPayAvailable(r0_35)
     if r1_35 then
       r1_35 = not DataMgr.ShopItem2PayGoods[r0_35.ShopItemData.ItemId]
       if r1_35 then
-        ::label_185::
+        ::label_178::
         r1_35 = false
       else
         r1_35 = true
       end
     end
   else
-    goto label_185	-- block#23 is visited secondly
+    goto label_178	-- block#23 is visited secondly
   end
   if r0_35.PriceType == 99 and r0_35.MainBtn.WS_Detail and r1_35 then
     r0_35.MainBtn.WS_Detail:SetActiveWidgetIndex(0)
@@ -815,7 +812,7 @@ function r1_0.SetButtonPayAvailable(r0_35)
   if r4_35 then
     r4_35 = TimeUtils.NowTime() and 0
   else
-    goto label_257	-- block#36 is visited secondly
+    goto label_250	-- block#36 is visited secondly
   end
   local r5_35 = false
   if r3_35 and r3_35.CutoffStartTime and r3_35.CutoffStartTime <= r4_35 and (not r3_35.CutoffEndTime or r3_35.CutoffEndTime and r4_35 <= r3_35.CutoffEndTime) then
@@ -830,7 +827,7 @@ function r1_0.SetButtonPayAvailable(r0_35)
   end
 end
 function r1_0.OnBtnPayClick(r0_36)
-  -- line: [770, 848] id: 36
+  -- line: [769, 847] id: 36
   if AudioManager then
     AudioManager(r0_36):PlayUISound(r0_36, "event:/ui/common/gacha_btn_click_normal", nil, nil)
   end
@@ -842,7 +839,7 @@ function r1_0.OnBtnPayClick(r0_36)
     __index = r0_36.ShopItemData,
   })
   local function r2_36(r0_37, r1_37, r2_37)
-    -- line: [782, 817] id: 37
+    -- line: [781, 816] id: 37
     local r3_37 = GWorld:GetAvatar()
     if not r3_37 or not r1_36 then
       return 
@@ -859,14 +856,14 @@ function r1_0.OnBtnPayClick(r0_36)
       UIManager(r0_36):ShowCommonPopupUI(100263, {
         LeftCallbackObj = r0_36,
         LeftCallbackFunction = function()
-          -- line: [803, 805] id: 40
+          -- line: [802, 804] id: 40
           r0_36.Parent.Shop_RecommendBanner:StartBannerTimer()
         end,
         RightCallbackObj = r0_36,
         RightCallbackFunction = function()
-          -- line: [795, 799] id: 38
+          -- line: [794, 798] id: 38
           r0_36:AddTimer(0.3, function()
-            -- line: [796, 798] id: 39
+            -- line: [795, 797] id: 39
             PageJumpUtils:JumpToShopPage(CommonConst.GachaJumpToShopMainTabId, nil, nil, "Shop")
           end, false, 0, "JumpToShopPage", true)
         end,
@@ -874,7 +871,7 @@ function r1_0.OnBtnPayClick(r0_36)
       return 
     end
     r3_37:PurchaseShopItem(r2_37.Params.ShopItemData.ItemId, r4_37, false, function(r0_41)
-      -- line: [812, 816] id: 41
+      -- line: [811, 815] id: 41
       if r0_36 and r0_36.Parent and r0_36.Parent.Shop_RecommendBanner then
         r0_36.Parent.Shop_RecommendBanner:StartBannerTimer()
       end
@@ -885,12 +882,12 @@ function r1_0.OnBtnPayClick(r0_36)
     r0_36.Parent.Shop_RecommendBanner:StopBannerTimer()
     if r1_36.Bg == 1 and UIManager then
       UIManager(r0_36):LoadUINew("PayGiftPopup_Yellow", r1_36, r0_36, function()
-        -- line: [822, 824] id: 42
+        -- line: [821, 823] id: 42
         r0_36.Parent.Shop_RecommendBanner:StartBannerTimer()
       end)
     elseif r1_36.Bg == 2 and UIManager then
       UIManager(r0_36):LoadUINew("PayGiftPopup_Purple", r1_36, r0_36, function()
-        -- line: [826, 828] id: 43
+        -- line: [825, 827] id: 43
         r0_36.Parent.Shop_RecommendBanner:StartBannerTimer()
       end)
     else
@@ -908,7 +905,7 @@ function r1_0.OnBtnPayClick(r0_36)
         RightCallbackFunction = r2_36,
         LeftCallbackObj = r0_36,
         LeftCallbackFunction = function(r0_44, r1_44, r2_44)
-          -- line: [840, 843] id: 44
+          -- line: [839, 842] id: 44
           r2_44:OnClose()
           r0_44.Parent.Shop_RecommendBanner:StartBannerTimer()
         end,
@@ -918,7 +915,7 @@ function r1_0.OnBtnPayClick(r0_36)
   end
 end
 function r1_0.InitButtonGetInfo(r0_45)
-  -- line: [850, 873] id: 45
+  -- line: [849, 872] id: 45
   if not r0_45.MainBtn then
     return 
   end
@@ -939,7 +936,7 @@ function r1_0.InitButtonGetInfo(r0_45)
   end
 end
 function r1_0.OnBtnGetClick(r0_46)
-  -- line: [875, 885] id: 46
+  -- line: [874, 884] id: 46
   AudioManager(r0_46):PlayUISound(r0_46, "event:/ui/common/click_btn_large_crystal", nil, nil)
   local r1_46 = r0_46.BannerData
   if r1_46 and r1_46.InterfaceJumpId then
@@ -951,7 +948,7 @@ function r1_0.OnBtnGetClick(r0_46)
   end
 end
 function r1_0.InitModelInfo(r0_47)
-  -- line: [892, 919] id: 47
+  -- line: [891, 918] id: 47
   local r1_47 = r0_47.BannerData.DisplayType
   if not r1_47 or r0_47.BannerData.DisplayId == nil and r0_47.BannerData.SkinSeries == nil then
     if r0_47.Parent then
@@ -978,7 +975,7 @@ function r1_0.InitModelInfo(r0_47)
   r0_47.TabIdx = 1
 end
 function r1_0.OnOpenModelPreview(r0_48)
-  -- line: [921, 944] id: 48
+  -- line: [920, 943] id: 48
   if r0_48.BannerData.PreviewType == nil then
     return 
   end
@@ -1003,7 +1000,7 @@ function r1_0.OnOpenModelPreview(r0_48)
   end
 end
 function r1_0.InitVideoInfo(r0_49)
-  -- line: [952, 964] id: 49
+  -- line: [951, 963] id: 49
   r0_49.Parent:SetHasVideo(r0_49.bHasVideo)
   if not r0_49.bHasVideo then
     return 
@@ -1014,7 +1011,7 @@ function r1_0.InitVideoInfo(r0_49)
   end
 end
 function r1_0.RefreshOpInfoByInputDevice(r0_50, r1_50, r2_50)
-  -- line: [969, 975] id: 50
+  -- line: [968, 974] id: 50
   if r1_50 == ECommonInputType.Gamepad then
     r0_50:RefreshOpInfoByGamepad()
   else
@@ -1022,7 +1019,7 @@ function r1_0.RefreshOpInfoByInputDevice(r0_50, r1_50, r2_50)
   end
 end
 function r1_0.RefreshOpInfoByGamepad(r0_51)
-  -- line: [977, 1008] id: 51
+  -- line: [976, 1007] id: 51
   if r0_51.Btn_Shop_Recommend_Video and r0_51.Btn_Shop_Recommend_Video.WS_Icon then
     r0_51.Btn_Shop_Recommend_Video.WS_Icon:SetActiveWidget(r0_51.Btn_Shop_Recommend_Video.Key_Icon)
     r0_51.Btn_Shop_Recommend_Video.Key_Icon:CreateCommonKey({
@@ -1053,7 +1050,7 @@ function r1_0.RefreshOpInfoByGamepad(r0_51)
   end
 end
 function r1_0.RefreshOpInfoByPC(r0_52)
-  -- line: [1010, 1027] id: 52
+  -- line: [1009, 1026] id: 52
   if r0_52.Btn_Shop_Recommend_Video and r0_52.Btn_Shop_Recommend_Video.WS_Icon then
     r0_52.Btn_Shop_Recommend_Video.WS_Icon:SetActiveWidget(r0_52.Btn_Shop_Recommend_Video.Image_BtnIcon)
   end
@@ -1072,7 +1069,7 @@ function r1_0.RefreshOpInfoByPC(r0_52)
   end
 end
 function r1_0.UpdateCommonTabInfo(r0_53)
-  -- line: [1030, 1086] id: 53
+  -- line: [1029, 1085] id: 53
   local r1_53 = {}
   if r0_53.BannerData.DisplayType and r0_53.BannerData.DisplayType == "Resource" and r0_53.BannerData.DisplayId and not r0_53.bHasVideo then
     table.insert(r1_53, {
@@ -1101,7 +1098,7 @@ function r1_0.UpdateCommonTabInfo(r0_53)
         Type = "Text",
         Text = "U",
         ClickCallback = function()
-          -- line: [1041, 1045] id: 54
+          -- line: [1040, 1044] id: 54
           if r0_53.Parent and r0_53.Parent.HideUIExceptVideoAutoCallBack and r0_53.Parent:IsAllowedToShowHideUI() then
             r0_53.Parent:HideUIExceptVideoAutoCallBack()
           end
@@ -1114,7 +1111,7 @@ function r1_0.UpdateCommonTabInfo(r0_53)
         Type = "Img",
         ImgShortPath = "X",
         ClickCallback = function()
-          -- line: [1046, 1050] id: 55
+          -- line: [1045, 1049] id: 55
           if r0_53.Parent and r0_53.Parent.HideUIExceptVideoAutoCallBack and r0_53.Parent:IsAllowedToShowHideUI() then
             r0_53.Parent:HideUIExceptVideoAutoCallBack()
           end
@@ -1131,7 +1128,7 @@ function r1_0.UpdateCommonTabInfo(r0_53)
           Type = "Img",
           ImgShortPath = "View",
           ClickCallback = function()
-            -- line: [1054, 1056] id: 56
+            -- line: [1053, 1055] id: 56
             r0_53:OnBtnPreviewClick()
           end,
           Owner = r0_53,
@@ -1211,7 +1208,7 @@ function r1_0.UpdateCommonTabInfo(r0_53)
   end
 end
 function r1_0.HandlePreviewKeyDown(r0_57, r1_57, r2_57)
-  -- line: [1088, 1097] id: 57
+  -- line: [1087, 1096] id: 57
   print("lgc@WBP_Shop_Recommend_Common HandlePreviewKeyDown", r2_57)
   if (r2_57 == "SpaceBar" or r2_57 == Const.GamepadFaceButtonDown) and r0_57.MainBtnClickFunc then
     r0_57.MainBtnClickFunc(r0_57)
@@ -1220,7 +1217,7 @@ function r1_0.HandlePreviewKeyDown(r0_57, r1_57, r2_57)
   return false
 end
 function r1_0.HandleKeyDown(r0_58, r1_58, r2_58)
-  -- line: [1099, 1131] id: 58
+  -- line: [1098, 1130] id: 58
   -- notice: unreachable block#30
   print("lgc@WBP_Shop_Recommend_Common HandleKeyDown", r2_58)
   if (r2_58 == "R" or r2_58 == Const.GamepadFaceButtonUp) and r0_58.BannerData.DisplayId and r0_58.BannerData.DisplayType and r0_58.BannerData.DisplayType == "Resource" then
@@ -1254,7 +1251,7 @@ function r1_0.HandleKeyDown(r0_58, r1_58, r2_58)
   return false
 end
 function r1_0.HandleRepeatKeyDown(r0_59, r1_59, r2_59)
-  -- line: [1133, 1147] id: 59
+  -- line: [1132, 1146] id: 59
   local r3_59 = false
   if r2_59 == UIConst.GamePadKey.LeftTriggerThreshold and r0_59.Parent and r0_59.Parent.OnCameraScrollBackwardKeyDown then
     r0_59.Parent:OnCameraScrollBackwardKeyDown()

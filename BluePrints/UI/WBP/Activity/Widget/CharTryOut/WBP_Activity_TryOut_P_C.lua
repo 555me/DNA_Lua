@@ -141,7 +141,7 @@ function r3_0.OnUpdateSubUIViewStyle(r0_10, r1_10, r2_10)
   end
 end
 function r3_0.UpdatePage(r0_11, r1_11)
-  -- line: [157, 171] id: 11
+  -- line: [157, 177] id: 11
   if false then
     r0_11:BindAllClickFunction(r0_11.ViewInfoBtnClick, r0_11.GoToGachaClick, r0_11.GoToTargetPageClick)
   end
@@ -151,31 +151,35 @@ function r3_0.UpdatePage(r0_11, r1_11)
   end
   r0_11:UpdateSubPage()
   r0_11:RefreshPageDynamicView(r3_11.CharTrial[r0_11.CurActivityId])
+  if (r1_11 == "ActivityTab" or r1_11 == "BackToPageWithJump") and r0_11.FocusWidgetWidget == r0_11.Item_1 then
+    r0_11.FocusWidgetName = nil
+    r0_11:EnterStuffViewMode()
+  end
 end
 function r3_0.GetPageConfigData(r0_12)
-  -- line: [173, 175] id: 12
+  -- line: [179, 181] id: 12
   return DataMgr.CharTrialEvent[r0_12.CurActivityId]
 end
 function r3_0.RefreshItemStyleByAction(r0_13, r1_13, r2_13)
-  -- line: [177, 183] id: 13
+  -- line: [183, 189] id: 13
   local r3_13 = GWorld:GetAvatar()
   if r1_13 == "TryOutGetReward" then
     r0_13:RefreshItemStyleView(r3_13.CharTrial[r2_13])
   end
 end
 function r3_0.CleanSelf(r0_14, r1_14)
-  -- line: [185, 190] id: 14
+  -- line: [191, 196] id: 14
   r0_14:RemoveTimer("RefreshLeftTime")
   if r1_14 then
     r0_14:RemoveFromParent()
   end
 end
 function r3_0.GetCurFocusWidgetInfo(r0_15)
-  -- line: [192, 194] id: 15
+  -- line: [198, 200] id: 15
   return r0_15.FocusWidgetName, r0_15.FocusWidgetWidget
 end
 function r3_0.EnterStuffViewMode(r0_16)
-  -- line: [196, 210] id: 16
+  -- line: [202, 216] id: 16
   if r0_16.FocusWidgetName == "CheckRewardDetailView" then
     return r0_16:LeaveStuffViewMode()
   end
@@ -190,7 +194,7 @@ function r3_0.EnterStuffViewMode(r0_16)
   return true
 end
 function r3_0.LeaveStuffViewMode(r0_17)
-  -- line: [212, 226] id: 17
+  -- line: [218, 232] id: 17
   if r0_17.FocusWidgetName == nil then
     return false
   end
@@ -205,7 +209,7 @@ function r3_0.LeaveStuffViewMode(r0_17)
   return true
 end
 function r3_0.SelectOtherCharItem(r0_18, r1_18)
-  -- line: [228, 239] id: 18
+  -- line: [234, 245] id: 18
   local r2_18 = nil
   if r1_18 then
     r2_18 = math.min(r1_0.MaxTryOutItemCount, r0_18.CurSelectIndex + 1)
@@ -218,7 +222,7 @@ function r3_0.SelectOtherCharItem(r0_18, r1_18)
   end
 end
 function r3_0.ViewInfoBtnClick(r0_19)
-  -- line: [242, 252] id: 19
+  -- line: [248, 258] id: 19
   local r1_19 = DataMgr.EventMain[r0_19.CurActivityId]
   if not r1_19.EventRule then
     DebugPrint("ViewInfoBtn Click, EventRule is nil, EventId is", r0_19.CurActivityId)
@@ -229,10 +233,10 @@ function r3_0.ViewInfoBtnClick(r0_19)
   }, r0_19)
 end
 function r3_0.GoToTargetPageClick(r0_20)
-  -- line: [254, 283] id: 20
+  -- line: [260, 289] id: 20
   UIManager(r0_20):ShowCommonPopupUI(100214, {
     RightCallbackFunction = function(r0_21, r1_21, r2_21)
-      -- line: [257, 278] id: 21
+      -- line: [263, 284] id: 21
       GWorld:GetAvatar():EnterCharTrialByEvent(nil, DataMgr.CharTrial[DataMgr.CharTrialEvent[r0_20.CurActivityId].CharTrialId].TrialDungeonId, r0_20.CurActivityId)
       local r7_21 = UIManager(r0_20):GetUIObj("ActivityMain")
       local r8_21 = 1
@@ -250,7 +254,7 @@ function r3_0.GoToTargetPageClick(r0_20)
   }, r0_20)
 end
 function r3_0.GoToGachaClick(r0_22)
-  -- line: [285, 301] id: 22
+  -- line: [291, 307] id: 22
   if r0_22.ParentWidget and type(r0_22.ParentWidget.CheckIsInCloseSelfState) == "function" and r0_22.ParentWidget:CheckIsInCloseSelfState() then
     DebugPrint("ActivityTryOut=GoToGachaClick, ParentWidget is in close self state, So return")
     return 
@@ -266,7 +270,7 @@ function r3_0.GoToGachaClick(r0_22)
   end
 end
 function r3_0.OnStuffDetailOpenChanged(r0_23, r1_23, r2_23)
-  -- line: [303, 312] id: 23
+  -- line: [309, 318] id: 23
   if not r0_23.ParentWidget then
     return 
   end
@@ -277,7 +281,7 @@ function r3_0.OnStuffDetailOpenChanged(r0_23, r1_23, r2_23)
   end
 end
 function r3_0.TryToGetReward(r0_24)
-  -- line: [314, 318] id: 24
+  -- line: [320, 324] id: 24
   local r1_24 = GWorld:GetAvatar()
   if r1_24 == nil then
     return 
@@ -285,7 +289,7 @@ function r3_0.TryToGetReward(r0_24)
   r1_24:GetCharTrialReward(r0_0.OnGetTryOutActivityRewardBack, r0_24.CurActivityId)
 end
 function r3_0.TryToViewCharDetail(r0_25)
-  -- line: [320, 331] id: 25
+  -- line: [326, 337] id: 25
   if r0_25.IsInStuffViewMode then
     return 
   end
@@ -300,7 +304,7 @@ function r3_0.TryToViewCharDetail(r0_25)
   })
 end
 function r3_0.TryToSelectChar(r0_26, r1_26, r2_26, r3_26)
-  -- line: [333, 349] id: 26
+  -- line: [339, 355] id: 26
   if r0_26.CurActivityId == r1_26 then
     return 
   end
@@ -316,7 +320,7 @@ function r3_0.TryToSelectChar(r0_26, r1_26, r2_26, r3_26)
   end
 end
 function r3_0.HandleKeyDownInPage(r0_27, r1_27, r2_27)
-  -- line: [351, 361] id: 27
+  -- line: [357, 367] id: 27
   local r3_27 = false
   local r4_27 = UE4.UKismetInputLibrary.GetKey(r2_27)
   local r5_27 = UE4.UFormulaFunctionLibrary.Key_GetFName(r4_27)
@@ -328,11 +332,11 @@ function r3_0.HandleKeyDownInPage(r0_27, r1_27, r2_27)
   return r3_27
 end
 function r3_0.OnGamePadButtonDown(r0_28, r1_28)
-  -- line: [363, 366] id: 28
+  -- line: [369, 372] id: 28
   return r0_28:Handle_KeyDownOnGamePad(r1_28)
 end
 function r3_0.Handle_KeyDownOnGamePad(r0_29, r1_29)
-  -- line: [368, 415] id: 29
+  -- line: [374, 421] id: 29
   local r2_29 = false
   if r1_29 == UIConst.GamePadKey.FaceButtonLeft then
     r2_29 = true

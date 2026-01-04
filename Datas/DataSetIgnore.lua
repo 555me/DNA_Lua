@@ -41,6 +41,9 @@ end)("DataSetIgnore", {
   NiagaraTriggerComponent = {
     ID = "NiagaraTriggerComponent",
   },
+  NotifyCurCtrlRotation = {
+    ID = "NotifyCurCtrlRotation",
+  },
   NotifyMonMoveSpeed = {
     ID = "NotifyMonMoveSpeed",
   },

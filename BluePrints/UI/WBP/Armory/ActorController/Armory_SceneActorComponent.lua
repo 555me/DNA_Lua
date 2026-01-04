@@ -67,7 +67,7 @@ function r0_0.TryLoadPreviewScene(r0_10)
   if not r1_10 then
     return 
   end
-  r0_10.PreviewSceneLocation = r0_10.PreviewSceneLocation and FVector(100000, 100000, 100000)
+  r0_10.PreviewSceneLocation = r0_10.PreviewSceneLocation and FVector(1000000, 1000000, 1000000)
   local r2_10 = r0_10.PreviewSceneLocation
   local r4_10 = UE4.UGameplayStatics.GetGameMode(r0_10.ViewUI):GetLevelLoader()
   local r5_10 = nil
@@ -269,9 +269,9 @@ function r0_0.SwitchArmoryCamera(r0_27, r1_27)
     r0_27.ArmoryHelper:OnArmoryOpenOrClose(true)
   end
 end
-function r0_0.UpdatePreviewSceneLight(r0_28, r1_28)
+function r0_0.UpdatePreviewSceneLight(r0_28, r1_28, r2_28)
   -- line: [269, 277] id: 28
-  if r0_28.PreviewSceneLightSpecial == r1_28 then
+  if r0_28.PreviewSceneLightSpecial == r1_28 and not r2_28 then
     return 
   end
   r0_28.PreviewSceneLightSpecial = r1_28

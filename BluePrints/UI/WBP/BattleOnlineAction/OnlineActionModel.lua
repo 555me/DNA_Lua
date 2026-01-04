@@ -281,29 +281,35 @@ function r1_0.FindPlayerAround(r0_18)
   -- close: r5_18
   DebugPrint("FindPlayerAround: Found " .. tostring(#r0_18.NearbyPlayerInfos) .. " nearby players")
 end
-function r1_0.CheckNearbyInfoVaild(r0_19, r1_19)
-  -- line: [398, 426] id: 19
-  local r2_19 = r1_19.Eid
-  local r3_19 = r0_19._Avatar:GetBornedChar(r2_19)
-  if not r3_19 then
-    ScreenPrint("CheckNearbyInfoVaild: 玩家" .. CommonUtils.ObjId2Str(r2_19) .. "不存在")
+function r1_0.CheckNearbyInfoVaild(r0_19, r1_19, r2_19)
+  -- line: [398, 440] id: 19
+  local r3_19 = r1_19.Eid
+  local r4_19 = r0_19._Avatar:GetBornedChar(r3_19)
+  if not r4_19 then
+    ScreenPrint("CheckNearbyInfoVaild: 玩家" .. CommonUtils.ObjId2Str(r3_19) .. "不存在")
     return -1
   end
-  local r4_19 = UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
-  if not r4_19 then
+  local r5_19 = UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
+  if not r5_19 then
     DebugPrint("CheckNearbyInfoVaild: MainPlayer is nil")
     return -1
   end
-  if r0_0.NearbtPlayDistance <= UE4.UKismetMathLibrary.Vector_Distance(r4_19:K2_GetActorLocation(), r3_19:K2_GetActorLocation()) then
+  if r0_0.NearbtPlayDistance <= UE4.UKismetMathLibrary.Vector_Distance(r5_19:K2_GetActorLocation(), r4_19:K2_GetActorLocation()) then
     return -1
   end
-  if r3_19:CharacterInTag("Seating") then
+  if r4_19:CharacterInTag("Seating") then
     return -2
+  end
+  if r0_19.ActionUniqueId and r2_19 ~= nil then
+    local r10_19 = r0_19:GetMechanism()
+    if r10_19 and not r0_19:IsSeatValid(r10_19, math.max(0, ((r2_19 and 1) + -1))) then
+      return -3
+    end
   end
   return true
 end
 function r1_0.AddInvitationInfo(r0_20, r1_20, r2_20, r3_20)
-  -- line: [428, 453] id: 20
+  -- line: [442, 467] id: 20
   r0_20._Avatar = GWorld:GetAvatar()
   local r4_20 = r0_20._Avatar.RegionAvatars[r1_20]
   if not r4_20 then
@@ -337,7 +343,7 @@ function r1_0.AddInvitationInfo(r0_20, r1_20, r2_20, r3_20)
   return r6_20
 end
 function r1_0.AddApplyInfo(r0_21, r1_21, r2_21, r3_21)
-  -- line: [455, 483] id: 21
+  -- line: [469, 497] id: 21
   r0_21._Avatar = GWorld:GetAvatar()
   local r4_21 = r0_21._Avatar.RegionAvatars[r1_21]
   if not r4_21 then
@@ -372,7 +378,7 @@ function r1_0.AddApplyInfo(r0_21, r1_21, r2_21, r3_21)
   return r6_21
 end
 function r1_0.NotifyTick(r0_22, r1_22)
-  -- line: [485, 527] id: 22
+  -- line: [499, 541] id: 22
   local r2_22 = r0_22:GetController()
   local r3_22 = false
   if not r0_22.UGameplayStatics then
@@ -413,11 +419,11 @@ function r1_0.NotifyTick(r0_22, r1_22)
   end
 end
 function r1_0.ClearAllApply(r0_23)
-  -- line: [530, 532] id: 23
+  -- line: [544, 546] id: 23
   r0_23.ApplyInfos = {}
 end
 function r1_0.CheckbHasAnyNewInfo(r0_24)
-  -- line: [534, 547] id: 24
+  -- line: [548, 561] id: 24
   for r5_24, r6_24 in pairs(r0_24.InvitationInfos) do
     if r6_24.bNew then
       return true
@@ -433,7 +439,7 @@ function r1_0.CheckbHasAnyNewInfo(r0_24)
   return false
 end
 function r1_0.GetPlayerName(r0_25, r1_25)
-  -- line: [549, 558] id: 25
+  -- line: [563, 572] id: 25
   local r2_25 = r0_25._Avatar.RegionAvatars[r1_25]
   if r2_25 then
     return r2_25.AvatarInfo.Nickname
@@ -443,7 +449,10 @@ function r1_0.GetPlayerName(r0_25, r1_25)
   return ""
 end
 function r1_0.GetPlayerActor(r0_26, r1_26)
-  -- line: [561, 571] id: 26
+  -- line: [575, 588] id: 26
+  if r1_26 == r0_26._Avatar.Eid then
+    return UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
+  end
   if not r0_26._Avatar.RegionAvatars[r1_26] then
     return false
   end
@@ -454,7 +463,7 @@ function r1_0.GetPlayerActor(r0_26, r1_26)
   return r3_26
 end
 function r1_0.GetPlayerName(r0_27, r1_27)
-  -- line: [685, 691] id: 27
+  -- line: [702, 708] id: 27
   local r2_27 = r0_27._Avatar.RegionAvatars[r1_27]
   if r2_27 then
     return r2_27.AvatarInfo.Nickname
@@ -462,11 +471,11 @@ function r1_0.GetPlayerName(r0_27, r1_27)
   return ""
 end
 function r1_0.IsInRegionOnline(r0_28)
-  -- line: [693, 695] id: 28
+  -- line: [710, 712] id: 28
   return r0_28._Avatar and r0_28._Avatar.IsInRegionOnline
 end
 function r1_0.GetController(r0_29)
-  -- line: [697, 704] id: 29
+  -- line: [714, 721] id: 29
   if r0_29.Controller then
     return r0_29.Controller
   else
@@ -475,7 +484,7 @@ function r1_0.GetController(r0_29)
   return r0_29.Controller
 end
 function r1_0.Destory(r0_30)
-  -- line: [706, 715] id: 30
+  -- line: [723, 732] id: 30
   DebugPrint("OnlineActionModel Destory")
   r0_30.NearbyPlayerInfos = nil
   r0_30.ApplyInfos = nil
@@ -486,7 +495,7 @@ function r1_0.Destory(r0_30)
   r1_0.Super.Destory(r0_30)
 end
 function r1_0.SortByRemainTime(r0_31, r1_31, r2_31)
-  -- line: [717, 753] id: 31
+  -- line: [734, 770] id: 31
   local r3_31 = nil
   if r1_31 == 1 then
     r3_31 = r0_31.ApplyInfos
@@ -500,7 +509,7 @@ function r1_0.SortByRemainTime(r0_31, r1_31, r2_31)
   end
   local r4_31 = r2_31 ~= false
   table.sort(r3_31, function(r0_32, r1_32)
-    -- line: [729, 752] id: 32
+    -- line: [746, 769] id: 32
     local r2_32 = nil	-- notice: implicit variable refs by block#[6, 8, 12]
     if r0_32 then
       r2_32 = r0_32.RemainTime
@@ -562,7 +571,7 @@ function r1_0.SortByRemainTime(r0_31, r1_31, r2_31)
   end)
 end
 function r1_0.GetMechanism(r0_33)
-  -- line: [755, 763] id: 33
+  -- line: [772, 780] id: 33
   local r2_33 = UE4.UGameplayStatics.GetGameState(GWorld.GameInstance).RegionOnlineMechanismMap:Find(r0_33.ActionUniqueId)
   if not r2_33 then
     DebugPrint("寻找机关失败，机关不存在  " .. r0_33.ActionUniqueId)
@@ -571,7 +580,7 @@ function r1_0.GetMechanism(r0_33)
   return r2_33
 end
 function r1_0.GetSeatVaildInfo(r0_34)
-  -- line: [765, 773] id: 34
+  -- line: [782, 790] id: 34
   local r1_34 = r0_34:GetMechanism()
   if not r1_34 then
     return false
@@ -581,7 +590,7 @@ function r1_0.GetSeatVaildInfo(r0_34)
   return r2_34
 end
 function r1_0.IfHaveSeatValid(r0_35)
-  -- line: [775, 786] id: 35
+  -- line: [792, 803] id: 35
   local r1_35 = r0_35:GetSeatVaildInfo()
   if not r1_35 then
     return false
@@ -595,7 +604,7 @@ function r1_0.IfHaveSeatValid(r0_35)
   return false
 end
 function r1_0.GetMechanismByUniqueId(r0_36, r1_36)
-  -- line: [789, 794] id: 36
+  -- line: [806, 811] id: 36
   if not r1_36 then
     return false
   end
@@ -606,7 +615,7 @@ function r1_0.GetMechanismByUniqueId(r0_36, r1_36)
   return r2_36.RegionOnlineMechanismMap:Find(r1_36)
 end
 function r1_0.IsSeatValid(r0_37, r1_37, r2_37)
-  -- line: [796, 800] id: 37
+  -- line: [813, 817] id: 37
   if not r1_37 then
     return false
   end
@@ -616,7 +625,7 @@ function r1_0.IsSeatValid(r0_37, r1_37, r2_37)
   return r1_37:CheckInteractiveIdValid(r2_37)
 end
 function r1_0.CheckJoinValid(r0_38, r1_38, r2_38, r3_38)
-  -- line: [804, 842] id: 38
+  -- line: [821, 859] id: 38
   local r4_38 = r0_38:GetPlayerActor(r1_38)
   if not r4_38 then
     return -1

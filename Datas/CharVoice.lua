@@ -304,31 +304,31 @@ local r0_0 = {
     "VoiceDes_Skin_skill02_r01"
   },
   RT_92 = {
-    "vo_gain_1"
+    "VoiceDes002",
+    "VoiceDes031"
   },
   RT_93 = {
-    "VoiceDes001",
-    "VoiceDes066",
-    "VoiceDes031"
+    "vo_gain_1"
   },
   RT_94 = {
     "VoiceDes001",
     "VoiceDes066",
-    "VoiceDes032"
+    "VoiceDes031"
   },
   RT_95 = {
     "VoiceDes001",
-    "VoiceDes109",
-    "VoiceDes031"
+    "VoiceDes066",
+    "VoiceDes032"
   },
   RT_96 = {
     "VoiceDes001",
     "VoiceDes109",
-    "VoiceDes032"
+    "VoiceDes031"
   },
   RT_97 = {
-    "VoiceDes002",
-    "VoiceDes031"
+    "VoiceDes001",
+    "VoiceDes109",
+    "VoiceDes032"
   },
   RT_98 = {
     "VoiceDes002",
@@ -837,30 +837,30 @@ r6_0[10036] = {
 r4_0[r5_0] = r6_0
 r5_0 = 1103
 r6_0 = {}
-r6_0[10656] = {
+r6_0[10659] = {
   CharId = 1103,
   GachaVoicePart = 1,
   UnitId = 81103,
   VoiceDes = r0_0.RT_1,
-  VoiceId = 10656,
+  VoiceId = 10659,
   VoiceRes = r0_0.RT_2,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_gain"
   },
   VoiceType = 1,
 }
-r6_0[10657] = {
+r6_0[10660] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceDes = r0_0.RT_3,
-  VoiceId = 10657,
+  VoiceId = 10660,
   VoiceRes = r0_0.RT_4,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_welcome"
   },
   VoiceType = 1,
 }
-r6_0[10658] = {
+r6_0[10661] = {
   CharId = 1103,
   Dialogue = 902000011,
   LockedDes = "VoiceLocked_Dialogue",
@@ -871,14 +871,14 @@ r6_0[10658] = {
     "VoiceDes124",
     "VoiceDes031"
   },
-  VoiceId = 10658,
+  VoiceId = 10661,
   VoiceRes = r0_0.RT_5,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_01_1"
   },
   VoiceType = 1,
 }
-r6_0[10659] = {
+r6_0[10662] = {
   CharId = 1103,
   Dialogue = 90200102,
   LockedDes = "VoiceLocked_Dialogue",
@@ -889,14 +889,14 @@ r6_0[10659] = {
     "VoiceDes124",
     "VoiceDes032"
   },
-  VoiceId = 10659,
+  VoiceId = 10662,
   VoiceRes = r0_0.RT_6,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_01_2"
   },
   VoiceType = 1,
 }
-r6_0[10660] = {
+r6_0[10663] = {
   CharId = 1103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81103,
@@ -906,14 +906,14 @@ r6_0[10660] = {
     "VoiceDes124",
     "VoiceDes033"
   },
-  VoiceId = 10660,
+  VoiceId = 10663,
   VoiceRes = r0_0.RT_57,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_01_3"
   },
   VoiceType = 1,
 }
-r6_0[10661] = {
+r6_0[10664] = {
   CharId = 1103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81103,
@@ -923,14 +923,14 @@ r6_0[10661] = {
     "VoiceDes124",
     "VoiceDes034"
   },
-  VoiceId = 10661,
+  VoiceId = 10664,
   VoiceRes = r0_0.RT_58,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_01_4"
   },
   VoiceType = 1,
 }
-r6_0[10662] = {
+r6_0[10665] = {
   CharId = 1103,
   Dialogue = 90200106,
   LockedDes = "VoiceLocked_Dialogue",
@@ -941,14 +941,14 @@ r6_0[10662] = {
     "VoiceDes124",
     "VoiceDes035"
   },
-  VoiceId = 10662,
+  VoiceId = 10665,
   VoiceRes = r0_0.RT_59,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_01_5"
   },
   VoiceType = 1,
 }
-r6_0[10663] = {
+r6_0[10666] = {
   CharId = 1103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81103,
@@ -958,14 +958,14 @@ r6_0[10663] = {
     "VoiceDes124",
     "VoiceDes036"
   },
-  VoiceId = 10663,
+  VoiceId = 10666,
   VoiceRes = r0_0.RT_60,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_01_6"
   },
   VoiceType = 1,
 }
-r6_0[10664] = {
+r6_0[10667] = {
   CharId = 1103,
   Dialogue = 902000012,
   LockedDes = "VoiceLocked_Dialogue",
@@ -976,14 +976,14 @@ r6_0[10664] = {
     "VoiceDes125",
     "VoiceDes031"
   },
-  VoiceId = 10664,
+  VoiceId = 10667,
   VoiceRes = r0_0.RT_8,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_02_1"
   },
   VoiceType = 1,
 }
-r6_0[10665] = {
+r6_0[10668] = {
   CharId = 1103,
   Dialogue = 90200202,
   LockedDes = "VoiceLocked_Dialogue",
@@ -994,14 +994,14 @@ r6_0[10665] = {
     "VoiceDes125",
     "VoiceDes032"
   },
-  VoiceId = 10665,
+  VoiceId = 10668,
   VoiceRes = r0_0.RT_10,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_02_2"
   },
   VoiceType = 1,
 }
-r6_0[10666] = {
+r6_0[10669] = {
   CharId = 1103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81103,
@@ -1011,14 +1011,14 @@ r6_0[10666] = {
     "VoiceDes125",
     "VoiceDes033"
   },
-  VoiceId = 10666,
+  VoiceId = 10669,
   VoiceRes = r0_0.RT_61,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_02_3"
   },
   VoiceType = 1,
 }
-r6_0[10667] = {
+r6_0[10670] = {
   CharId = 1103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81103,
@@ -1028,54 +1028,54 @@ r6_0[10667] = {
     "VoiceDes125",
     "VoiceDes034"
   },
-  VoiceId = 10667,
+  VoiceId = 10670,
   VoiceRes = r0_0.RT_62,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_02_4"
   },
   VoiceType = 1,
 }
-r6_0[10668] = {
+r6_0[10671] = {
   CharId = 1103,
   Dialogue = 902000013,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81103,
   UnlockDialogue = 90200301,
   VoiceDes = r0_0.RT_63,
-  VoiceId = 10668,
+  VoiceId = 10671,
   VoiceRes = r0_0.RT_11,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_03_1"
   },
   VoiceType = 1,
 }
-r6_0[10669] = {
+r6_0[10672] = {
   CharId = 1103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81103,
   UnlockDialogue = 90200303,
   VoiceDes = r0_0.RT_64,
-  VoiceId = 10669,
+  VoiceId = 10672,
   VoiceRes = r0_0.RT_65,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_03_3"
   },
   VoiceType = 1,
 }
-r6_0[10670] = {
+r6_0[10673] = {
   CharId = 1103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81103,
   UnlockDialogue = 90200304,
   VoiceDes = r0_0.RT_66,
-  VoiceId = 10670,
+  VoiceId = 10673,
   VoiceRes = r0_0.RT_67,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_03_4"
   },
   VoiceType = 1,
 }
-r6_0[10671] = {
+r6_0[10674] = {
   CharId = 1103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81103,
@@ -1085,14 +1085,14 @@ r6_0[10671] = {
     "VoiceDes103",
     "VoiceDes034"
   },
-  VoiceId = 10671,
+  VoiceId = 10674,
   VoiceRes = r0_0.RT_68,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_03_5"
   },
   VoiceType = 1,
 }
-r6_0[10672] = {
+r6_0[10675] = {
   CharId = 1103,
   Dialogue = 90200306,
   LockedDes = "VoiceLocked_Dialogue",
@@ -1103,7 +1103,7 @@ r6_0[10672] = {
     "VoiceDes103",
     "VoiceDes035"
   },
-  VoiceId = 10672,
+  VoiceId = 10675,
   VoiceRes = {
     "vo_topic_03_6"
   },
@@ -1112,7 +1112,7 @@ r6_0[10672] = {
   },
   VoiceType = 1,
 }
-r6_0[10673] = {
+r6_0[10676] = {
   CharId = 1103,
   Dialogue = 902000014,
   LockedDes = "VoiceLocked_Dialogue",
@@ -1123,14 +1123,14 @@ r6_0[10673] = {
     "VoiceDes126",
     "VoiceDes031"
   },
-  VoiceId = 10673,
+  VoiceId = 10676,
   VoiceRes = r0_0.RT_13,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_04_1"
   },
   VoiceType = 1,
 }
-r6_0[10674] = {
+r6_0[10677] = {
   CharId = 1103,
   Dialogue = 90200402,
   LockedDes = "VoiceLocked_Dialogue",
@@ -1141,14 +1141,14 @@ r6_0[10674] = {
     "VoiceDes126",
     "VoiceDes032"
   },
-  VoiceId = 10674,
+  VoiceId = 10677,
   VoiceRes = r0_0.RT_14,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_04_2"
   },
   VoiceType = 1,
 }
-r6_0[10675] = {
+r6_0[10678] = {
   CharId = 1103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81103,
@@ -1158,14 +1158,14 @@ r6_0[10675] = {
     "VoiceDes126",
     "VoiceDes033"
   },
-  VoiceId = 10675,
+  VoiceId = 10678,
   VoiceRes = r0_0.RT_15,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_04_3"
   },
   VoiceType = 1,
 }
-r6_0[10676] = {
+r6_0[10679] = {
   CharId = 1103,
   Dialogue = 902000015,
   LockedDes = "VoiceLocked_Dialogue",
@@ -1176,14 +1176,14 @@ r6_0[10676] = {
     "VoiceDes127",
     "VoiceDes031"
   },
-  VoiceId = 10676,
+  VoiceId = 10679,
   VoiceRes = r0_0.RT_16,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_05_1"
   },
   VoiceType = 1,
 }
-r6_0[10677] = {
+r6_0[10680] = {
   CharId = 1103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81103,
@@ -1193,14 +1193,14 @@ r6_0[10677] = {
     "VoiceDes127",
     "VoiceDes032"
   },
-  VoiceId = 10677,
+  VoiceId = 10680,
   VoiceRes = r0_0.RT_17,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_05_2"
   },
   VoiceType = 1,
 }
-r6_0[10678] = {
+r6_0[10681] = {
   CharId = 1103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81103,
@@ -1210,14 +1210,14 @@ r6_0[10678] = {
     "VoiceDes127",
     "VoiceDes033"
   },
-  VoiceId = 10678,
+  VoiceId = 10681,
   VoiceRes = r0_0.RT_69,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_05_3"
   },
   VoiceType = 1,
 }
-r6_0[10679] = {
+r6_0[10682] = {
   CharId = 1103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81103,
@@ -1227,14 +1227,14 @@ r6_0[10679] = {
     "VoiceDes127",
     "VoiceDes034"
   },
-  VoiceId = 10679,
+  VoiceId = 10682,
   VoiceRes = r0_0.RT_70,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_topic_05_4"
   },
   VoiceType = 1,
 }
-r6_0[10680] = {
+r6_0[10683] = {
   CharId = 1103,
   Dialogue = 90200505,
   LockedDes = "VoiceLocked_Dialogue",
@@ -1245,7 +1245,7 @@ r6_0[10680] = {
     "VoiceDes127",
     "VoiceDes035"
   },
-  VoiceId = 10680,
+  VoiceId = 10683,
   VoiceRes = {
     "vo_topic_05_5"
   },
@@ -1254,7 +1254,7 @@ r6_0[10680] = {
   },
   VoiceType = 1,
 }
-r6_0[10681] = {
+r6_0[10684] = {
   CharId = 1103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81103,
@@ -1264,7 +1264,7 @@ r6_0[10681] = {
     "VoiceDes127",
     "VoiceDes036"
   },
-  VoiceId = 10681,
+  VoiceId = 10684,
   VoiceRes = {
     "vo_topic_05_6"
   },
@@ -1273,7 +1273,7 @@ r6_0[10681] = {
   },
   VoiceType = 1,
 }
-r6_0[10682] = {
+r6_0[10685] = {
   CharId = 1103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81103,
@@ -1283,7 +1283,7 @@ r6_0[10682] = {
     "VoiceDes127",
     "VoiceDes037"
   },
-  VoiceId = 10682,
+  VoiceId = 10685,
   VoiceRes = {
     "vo_topic_05_7"
   },
@@ -1292,40 +1292,14 @@ r6_0[10682] = {
   },
   VoiceType = 1,
 }
-r6_0[10683] = {
+r6_0[10686] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceDes = r0_0.RT_19,
-  VoiceId = 10683,
+  VoiceId = 10686,
   VoiceRes = r0_0.RT_20,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_idle"
-  },
-  VoiceType = 1,
-}
-r6_0[10684] = {
-  CharId = 1103,
-  LockedDes = "VoiceLocked_Dialogue",
-  UnitId = 81103,
-  UnlockDialogue = 90200601,
-  VoiceDes = r0_0.RT_21,
-  VoiceId = 10684,
-  VoiceRes = r0_0.RT_71,
-  VoiceText = {
-    "voice_ch_char_Tuosi_vo_companio_01"
-  },
-  VoiceType = 1,
-}
-r6_0[10685] = {
-  CharId = 1103,
-  LockedDes = "VoiceLocked_Dialogue",
-  UnitId = 81103,
-  UnlockDialogue = 90200701,
-  VoiceDes = r0_0.RT_24,
-  VoiceId = 10685,
-  VoiceRes = r0_0.RT_72,
-  VoiceText = {
-    "voice_ch_char_Tuosi_vo_companio_02"
   },
   VoiceType = 1,
 }
@@ -1333,128 +1307,118 @@ r6_0[10687] = {
   CharId = 1103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81103,
+  UnlockDialogue = 90200601,
+  VoiceDes = r0_0.RT_21,
+  VoiceId = 10687,
+  VoiceRes = r0_0.RT_71,
+  VoiceText = {
+    "voice_ch_char_Tuosi_vo_companio_01"
+  },
+  VoiceType = 1,
+}
+r6_0[10688] = {
+  CharId = 1103,
+  LockedDes = "VoiceLocked_Dialogue",
+  UnitId = 81103,
+  UnlockDialogue = 90200701,
+  VoiceDes = r0_0.RT_24,
+  VoiceId = 10688,
+  VoiceRes = r0_0.RT_72,
+  VoiceText = {
+    "voice_ch_char_Tuosi_vo_companio_02"
+  },
+  VoiceType = 1,
+}
+r6_0[10690] = {
+  CharId = 1103,
+  LockedDes = "VoiceLocked_Dialogue",
+  UnitId = 81103,
   UnlockDialogue = 90200901,
   VoiceDes = r0_0.RT_73,
-  VoiceId = 10687,
+  VoiceId = 10690,
   VoiceRes = r0_0.RT_74,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_companio_04"
   },
   VoiceType = 1,
 }
-r6_0[10689] = {
+r6_0[10692] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceDes = r0_0.RT_29,
-  VoiceId = 10689,
+  VoiceId = 10692,
   VoiceRes = r0_0.RT_30,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_appear"
   },
   VoiceType = 2,
 }
-r6_0[10690] = {
+r6_0[10693] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceDes = r0_0.RT_31,
-  VoiceId = 10690,
+  VoiceId = 10693,
   VoiceRes = r0_0.RT_32,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_lvup"
   },
   VoiceType = 2,
 }
-r6_0[10691] = {
+r6_0[10694] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceDes = r0_0.RT_33,
-  VoiceId = 10691,
+  VoiceId = 10694,
   VoiceRes = r0_0.RT_34,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_battlestart"
   },
   VoiceType = 2,
 }
-r6_0[10692] = {
+r6_0[10695] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceDes = r0_0.RT_35,
-  VoiceId = 10692,
+  VoiceId = 10695,
   VoiceRes = r0_0.RT_36,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_battleidle"
   },
   VoiceType = 2,
 }
-r6_0[10693] = {
+r6_0[10696] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceDes = r0_0.RT_75,
-  VoiceId = 10693,
+  VoiceId = 10696,
   VoiceRes = r0_0.RT_76,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_be_hit_heavy_r01"
   },
   VoiceType = 2,
 }
-r6_0[10694] = {
+r6_0[10697] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceDes = r0_0.RT_77,
-  VoiceId = 10694,
+  VoiceId = 10697,
   VoiceRes = r0_0.RT_78,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_be_hit_heavy_r02"
   },
   VoiceType = 2,
 }
-r6_0[10695] = {
+r6_0[10698] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceChar = "Tuosi02",
   VoiceDes = {
     "VoiceDes137"
   },
-  VoiceId = 10695,
+  VoiceId = 10698,
   VoiceRes = r0_0.RT_76,
   VoiceText = {
     "voice_ch_char_Tuosi02_vo_be_hit_heavy_r01"
-  },
-  VoiceType = 2,
-}
-r6_0[10696] = {
-  CharId = 1103,
-  UnitId = 81103,
-  VoiceChar = "Tuosi02",
-  VoiceDes = {
-    "VoiceDes138"
-  },
-  VoiceId = 10696,
-  VoiceRes = r0_0.RT_78,
-  VoiceText = {
-    "voice_ch_char_Tuosi02_vo_be_hit_heavy_r02"
-  },
-  VoiceType = 2,
-}
-r6_0[10697] = {
-  CharId = 1103,
-  UnitId = 81103,
-  VoiceDes = r0_0.RT_37,
-  VoiceId = 10697,
-  VoiceRes = r0_0.RT_38,
-  VoiceText = {
-    "voice_ch_char_Tuosi_vo_skill01_r01"
-  },
-  VoiceType = 2,
-}
-r6_0[10698] = {
-  CharId = 1103,
-  UnitId = 81103,
-  VoiceDes = r0_0.RT_39,
-  VoiceId = 10698,
-  VoiceRes = r0_0.RT_40,
-  VoiceText = {
-    "voice_ch_char_Tuosi_vo_skill01_r02"
   },
   VoiceType = 2,
 }
@@ -1463,9 +1427,45 @@ r6_0[10699] = {
   UnitId = 81103,
   VoiceChar = "Tuosi02",
   VoiceDes = {
-    "VoiceDes139"
+    "VoiceDes138"
   },
   VoiceId = 10699,
+  VoiceRes = r0_0.RT_78,
+  VoiceText = {
+    "voice_ch_char_Tuosi02_vo_be_hit_heavy_r02"
+  },
+  VoiceType = 2,
+}
+r6_0[10700] = {
+  CharId = 1103,
+  UnitId = 81103,
+  VoiceDes = r0_0.RT_37,
+  VoiceId = 10700,
+  VoiceRes = r0_0.RT_38,
+  VoiceText = {
+    "voice_ch_char_Tuosi_vo_skill01_r01"
+  },
+  VoiceType = 2,
+}
+r6_0[10701] = {
+  CharId = 1103,
+  UnitId = 81103,
+  VoiceDes = r0_0.RT_39,
+  VoiceId = 10701,
+  VoiceRes = r0_0.RT_40,
+  VoiceText = {
+    "voice_ch_char_Tuosi_vo_skill01_r02"
+  },
+  VoiceType = 2,
+}
+r6_0[10702] = {
+  CharId = 1103,
+  UnitId = 81103,
+  VoiceChar = "Tuosi02",
+  VoiceDes = {
+    "VoiceDes139"
+  },
+  VoiceId = 10702,
   VoiceRes = {
     "vo_shoot_r01"
   },
@@ -1474,28 +1474,28 @@ r6_0[10699] = {
   },
   VoiceType = 2,
 }
-r6_0[10700] = {
+r6_0[10703] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceChar = "Tuosi02",
   VoiceDes = {
     "VoiceDes140"
   },
-  VoiceId = 10700,
+  VoiceId = 10703,
   VoiceRes = r0_0.RT_38,
   VoiceText = {
     "voice_ch_char_Tuosi02_skill01_r01"
   },
   VoiceType = 2,
 }
-r6_0[10701] = {
+r6_0[10704] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceChar = "Tuosi02",
   VoiceDes = {
     "VoiceDes141"
   },
-  VoiceId = 10701,
+  VoiceId = 10704,
   VoiceRes = {
     "vo_attack_r01"
   },
@@ -1504,99 +1504,99 @@ r6_0[10701] = {
   },
   VoiceType = 2,
 }
-r6_0[10702] = {
+r6_0[10705] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceDes = r0_0.RT_41,
-  VoiceId = 10702,
+  VoiceId = 10705,
   VoiceRes = r0_0.RT_42,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_skill02_r01"
   },
   VoiceType = 2,
 }
-r6_0[10703] = {
+r6_0[10706] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceDes = r0_0.RT_43,
-  VoiceId = 10703,
+  VoiceId = 10706,
   VoiceRes = r0_0.RT_44,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_skill02_r02"
   },
   VoiceType = 2,
 }
-r6_0[10704] = {
+r6_0[10707] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceDes = r0_0.RT_45,
-  VoiceId = 10704,
+  VoiceId = 10707,
   VoiceRes = r0_0.RT_46,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_skill02_r03"
   },
   VoiceType = 2,
 }
-r6_0[10705] = {
+r6_0[10708] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceDes = r0_0.RT_47,
-  VoiceId = 10705,
+  VoiceId = 10708,
   VoiceRes = r0_0.RT_48,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_die_r01"
   },
   VoiceType = 2,
 }
-r6_0[10706] = {
+r6_0[10709] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceDes = r0_0.RT_49,
-  VoiceId = 10706,
+  VoiceId = 10709,
   VoiceRes = r0_0.RT_50,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_die_r02"
   },
   VoiceType = 2,
 }
-r6_0[10707] = {
+r6_0[10710] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceDes = r0_0.RT_51,
-  VoiceId = 10707,
+  VoiceId = 10710,
   VoiceRes = r0_0.RT_52,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_revive"
   },
   VoiceType = 2,
 }
-r6_0[10708] = {
+r6_0[10711] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceDes = r0_0.RT_53,
-  VoiceId = 10708,
+  VoiceId = 10711,
   VoiceRes = r0_0.RT_54,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_victory"
   },
   VoiceType = 2,
 }
-r6_0[10709] = {
+r6_0[10712] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceDes = r0_0.RT_55,
-  VoiceId = 10709,
+  VoiceId = 10712,
   VoiceRes = r0_0.RT_56,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_fail"
   },
   VoiceType = 2,
 }
-r6_0[10710] = {
+r6_0[10713] = {
   CharId = 1103,
   UnitId = 81103,
   VoiceDes = r0_0.RT_27,
-  VoiceId = 10710,
+  VoiceId = 10713,
   VoiceRes = r0_0.RT_28,
   VoiceText = {
     "voice_ch_char_Tuosi_vo_birthday"
@@ -1606,30 +1606,30 @@ r6_0[10710] = {
 r4_0[r5_0] = r6_0
 r5_0 = 1501
 r6_0 = {}
-r6_0[10877] = {
+r6_0[10880] = {
   CharId = 1501,
   GachaVoicePart = 1,
   UnitId = 81501,
   VoiceDes = r0_0.RT_1,
-  VoiceId = 10877,
+  VoiceId = 10880,
   VoiceRes = r0_0.RT_2,
   VoiceText = {
     "voice_ch_char_Baonu_vo_gain"
   },
   VoiceType = 1,
 }
-r6_0[10878] = {
+r6_0[10881] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_3,
-  VoiceId = 10878,
+  VoiceId = 10881,
   VoiceRes = r0_0.RT_4,
   VoiceText = {
     "voice_ch_char_Baonu_vo_welcome"
   },
   VoiceType = 1,
 }
-r6_0[10879] = {
+r6_0[10882] = {
   CharId = 1501,
   Dialogue = 90250100,
   LockedDes = "VoiceLocked_Dialogue",
@@ -1640,14 +1640,14 @@ r6_0[10879] = {
     "VoiceDes151",
     "VoiceDes031"
   },
-  VoiceId = 10879,
+  VoiceId = 10882,
   VoiceRes = r0_0.RT_5,
   VoiceText = {
     "voice_ch_char_Baonu_vo_topic_01_1"
   },
   VoiceType = 1,
 }
-r6_0[10880] = {
+r6_0[10883] = {
   CharId = 1501,
   Dialogue = 90250102,
   LockedDes = "VoiceLocked_Dialogue",
@@ -1658,14 +1658,14 @@ r6_0[10880] = {
     "VoiceDes151",
     "VoiceDes032"
   },
-  VoiceId = 10880,
+  VoiceId = 10883,
   VoiceRes = r0_0.RT_6,
   VoiceText = {
     "voice_ch_char_Baonu_vo_topic_01_2"
   },
   VoiceType = 1,
 }
-r6_0[10881] = {
+r6_0[10884] = {
   CharId = 1501,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81501,
@@ -1675,14 +1675,14 @@ r6_0[10881] = {
     "VoiceDes151",
     "VoiceDes033"
   },
-  VoiceId = 10881,
+  VoiceId = 10884,
   VoiceRes = r0_0.RT_57,
   VoiceText = {
     "voice_ch_char_Baonu_vo_topic_01_3"
   },
   VoiceType = 1,
 }
-r6_0[10882] = {
+r6_0[10885] = {
   CharId = 1501,
   Dialogue = 90250105,
   LockedDes = "VoiceLocked_Dialogue",
@@ -1693,14 +1693,14 @@ r6_0[10882] = {
     "VoiceDes151",
     "VoiceDes034"
   },
-  VoiceId = 10882,
+  VoiceId = 10885,
   VoiceRes = r0_0.RT_58,
   VoiceText = {
     "voice_ch_char_Baonu_vo_topic_01_4"
   },
   VoiceType = 1,
 }
-r6_0[10883] = {
+r6_0[10886] = {
   CharId = 1501,
   Dialogue = 90250200,
   LockedDes = "VoiceLocked_Dialogue",
@@ -1711,14 +1711,14 @@ r6_0[10883] = {
     "VoiceDes152",
     "VoiceDes031"
   },
-  VoiceId = 10883,
+  VoiceId = 10886,
   VoiceRes = r0_0.RT_8,
   VoiceText = {
     "voice_ch_char_Baonu_vo_topic_02_1"
   },
   VoiceType = 1,
 }
-r6_0[10884] = {
+r6_0[10887] = {
   CharId = 1501,
   Dialogue = 90250202,
   LockedDes = "VoiceLocked_Dialogue",
@@ -1729,14 +1729,14 @@ r6_0[10884] = {
     "VoiceDes152",
     "VoiceDes032"
   },
-  VoiceId = 10884,
+  VoiceId = 10887,
   VoiceRes = r0_0.RT_10,
   VoiceText = {
     "voice_ch_char_Baonu_vo_topic_02_2"
   },
   VoiceType = 1,
 }
-r6_0[10885] = {
+r6_0[10888] = {
   CharId = 1501,
   Dialogue = 90250300,
   LockedDes = "VoiceLocked_Dialogue",
@@ -1747,14 +1747,14 @@ r6_0[10885] = {
     "VoiceDes153",
     "VoiceDes031"
   },
-  VoiceId = 10885,
+  VoiceId = 10888,
   VoiceRes = r0_0.RT_11,
   VoiceText = {
     "voice_ch_char_Baonu_vo_topic_03_1"
   },
   VoiceType = 1,
 }
-r6_0[10886] = {
+r6_0[10889] = {
   CharId = 1501,
   Dialogue = 90250302,
   LockedDes = "VoiceLocked_Dialogue",
@@ -1765,14 +1765,14 @@ r6_0[10886] = {
     "VoiceDes153",
     "VoiceDes032"
   },
-  VoiceId = 10886,
+  VoiceId = 10889,
   VoiceRes = r0_0.RT_12,
   VoiceText = {
     "voice_ch_char_Baonu_vo_topic_03_2"
   },
   VoiceType = 1,
 }
-r6_0[10887] = {
+r6_0[10890] = {
   CharId = 1501,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81501,
@@ -1782,14 +1782,14 @@ r6_0[10887] = {
     "VoiceDes153",
     "VoiceDes033"
   },
-  VoiceId = 10887,
+  VoiceId = 10890,
   VoiceRes = r0_0.RT_65,
   VoiceText = {
     "voice_ch_char_Baonu_vo_topic_03_3"
   },
   VoiceType = 1,
 }
-r6_0[10888] = {
+r6_0[10891] = {
   CharId = 1501,
   Dialogue = 90250305,
   LockedDes = "VoiceLocked_Dialogue",
@@ -1800,14 +1800,14 @@ r6_0[10888] = {
     "VoiceDes153",
     "VoiceDes034"
   },
-  VoiceId = 10888,
+  VoiceId = 10891,
   VoiceRes = r0_0.RT_67,
   VoiceText = {
     "voice_ch_char_Baonu_vo_topic_03_4"
   },
   VoiceType = 1,
 }
-r6_0[10889] = {
+r6_0[10892] = {
   CharId = 1501,
   Dialogue = 90250400,
   LockedDes = "VoiceLocked_Dialogue",
@@ -1818,14 +1818,14 @@ r6_0[10889] = {
     "VoiceDes154",
     "VoiceDes031"
   },
-  VoiceId = 10889,
+  VoiceId = 10892,
   VoiceRes = r0_0.RT_13,
   VoiceText = {
     "voice_ch_char_Baonu_vo_topic_04_1"
   },
   VoiceType = 1,
 }
-r6_0[10890] = {
+r6_0[10893] = {
   CharId = 1501,
   Dialogue = 90250402,
   LockedDes = "VoiceLocked_Dialogue",
@@ -1836,220 +1836,220 @@ r6_0[10890] = {
     "VoiceDes154",
     "VoiceDes032"
   },
-  VoiceId = 10890,
+  VoiceId = 10893,
   VoiceRes = r0_0.RT_14,
   VoiceText = {
     "voice_ch_char_Baonu_vo_topic_04_2"
   },
   VoiceType = 1,
 }
-r6_0[10891] = {
+r6_0[10894] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_19,
-  VoiceId = 10891,
+  VoiceId = 10894,
   VoiceRes = r0_0.RT_20,
   VoiceText = {
     "voice_ch_char_Baonu_vo_idle"
   },
   VoiceType = 1,
 }
-r6_0[10893] = {
+r6_0[10896] = {
   CharId = 1501,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81501,
   UnlockDialogue = 90250601,
   VoiceDes = r0_0.RT_24,
-  VoiceId = 10893,
+  VoiceId = 10896,
   VoiceRes = r0_0.RT_72,
   VoiceText = {
     "voice_ch_char_Baonu_vo_companio_02"
   },
   VoiceType = 1,
 }
-r6_0[10894] = {
+r6_0[10897] = {
   CharId = 1501,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81501,
   UnlockDialogue = 90250701,
   VoiceDes = r0_0.RT_26,
-  VoiceId = 10894,
+  VoiceId = 10897,
   VoiceRes = r0_0.RT_25,
   VoiceText = {
     "voice_ch_char_Baonu_vo_companio_03"
   },
   VoiceType = 1,
 }
-r6_0[10896] = {
+r6_0[10899] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_29,
-  VoiceId = 10896,
+  VoiceId = 10899,
   VoiceRes = r0_0.RT_30,
   VoiceText = {
     "voice_ch_char_Baonu_vo_appear"
   },
   VoiceType = 2,
 }
-r6_0[10897] = {
+r6_0[10900] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_31,
-  VoiceId = 10897,
+  VoiceId = 10900,
   VoiceRes = r0_0.RT_32,
   VoiceText = {
     "voice_ch_char_Baonu_vo_lvup"
   },
   VoiceType = 2,
 }
-r6_0[10898] = {
+r6_0[10901] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_33,
-  VoiceId = 10898,
+  VoiceId = 10901,
   VoiceRes = r0_0.RT_34,
   VoiceText = {
     "voice_ch_char_Baonu_vo_battlestart"
   },
   VoiceType = 2,
 }
-r6_0[10899] = {
+r6_0[10902] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_35,
-  VoiceId = 10899,
+  VoiceId = 10902,
   VoiceRes = r0_0.RT_36,
   VoiceText = {
     "voice_ch_char_Baonu_vo_battleidle"
   },
   VoiceType = 2,
 }
-r6_0[10900] = {
+r6_0[10903] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_75,
-  VoiceId = 10900,
+  VoiceId = 10903,
   VoiceRes = r0_0.RT_76,
   VoiceText = {
     "voice_ch_char_Baonu_vo_be_hit_heavy_r01"
   },
   VoiceType = 2,
 }
-r6_0[10901] = {
+r6_0[10904] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_77,
-  VoiceId = 10901,
+  VoiceId = 10904,
   VoiceRes = r0_0.RT_78,
   VoiceText = {
     "voice_ch_char_Baonu_vo_be_hit_heavy_r02"
   },
   VoiceType = 2,
 }
-r6_0[10902] = {
+r6_0[10905] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_37,
-  VoiceId = 10902,
+  VoiceId = 10905,
   VoiceRes = r0_0.RT_38,
   VoiceText = {
     "voice_ch_char_Baonu_vo_skill01_r01"
   },
   VoiceType = 2,
 }
-r6_0[10903] = {
+r6_0[10906] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_39,
-  VoiceId = 10903,
+  VoiceId = 10906,
   VoiceRes = r0_0.RT_40,
   VoiceText = {
     "voice_ch_char_Baonu_vo_skill01_r02"
   },
   VoiceType = 2,
 }
-r6_0[10904] = {
+r6_0[10907] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_41,
-  VoiceId = 10904,
+  VoiceId = 10907,
   VoiceRes = r0_0.RT_42,
   VoiceText = {
     "voice_ch_char_Baonu_vo_skill02_r01"
   },
   VoiceType = 2,
 }
-r6_0[10905] = {
+r6_0[10908] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_43,
-  VoiceId = 10905,
+  VoiceId = 10908,
   VoiceRes = r0_0.RT_44,
   VoiceText = {
     "voice_ch_char_Baonu_vo_skill02_r02"
   },
   VoiceType = 2,
 }
-r6_0[10906] = {
+r6_0[10909] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_45,
-  VoiceId = 10906,
+  VoiceId = 10909,
   VoiceRes = r0_0.RT_46,
   VoiceText = {
     "voice_ch_char_Baonu_vo_skill02_r03"
   },
   VoiceType = 2,
 }
-r6_0[10907] = {
+r6_0[10910] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_47,
-  VoiceId = 10907,
+  VoiceId = 10910,
   VoiceRes = r0_0.RT_48,
   VoiceText = {
     "voice_ch_char_Baonu_vo_die_r01"
   },
   VoiceType = 2,
 }
-r6_0[10908] = {
+r6_0[10911] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_49,
-  VoiceId = 10908,
+  VoiceId = 10911,
   VoiceRes = r0_0.RT_50,
   VoiceText = {
     "voice_ch_char_Baonu_vo_die_r02"
   },
   VoiceType = 2,
 }
-r6_0[10909] = {
+r6_0[10912] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_51,
-  VoiceId = 10909,
+  VoiceId = 10912,
   VoiceRes = r0_0.RT_52,
   VoiceText = {
     "voice_ch_char_Baonu_vo_revive"
   },
   VoiceType = 2,
 }
-r6_0[10910] = {
+r6_0[10913] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_53,
-  VoiceId = 10910,
+  VoiceId = 10913,
   VoiceRes = r0_0.RT_54,
   VoiceText = {
     "voice_ch_char_Baonu_vo_victory"
   },
   VoiceType = 2,
 }
-r6_0[10911] = {
+r6_0[10914] = {
   CharId = 1501,
   UnitId = 81501,
   VoiceDes = r0_0.RT_55,
-  VoiceId = 10911,
+  VoiceId = 10914,
   VoiceRes = r0_0.RT_56,
   VoiceText = {
     "voice_ch_char_Baonu_vo_fail"
@@ -2059,30 +2059,30 @@ r6_0[10911] = {
 r4_0[r5_0] = r6_0
 r5_0 = 1502
 r6_0 = {}
-r6_0[10562] = {
+r6_0[10565] = {
   CharId = 1502,
   GachaVoicePart = 1,
   UnitId = 81502,
   VoiceDes = r0_0.RT_1,
-  VoiceId = 10562,
+  VoiceId = 10565,
   VoiceRes = r0_0.RT_2,
   VoiceText = {
     "voice_ch_char_Nifu_vo_gain"
   },
   VoiceType = 1,
 }
-r6_0[10563] = {
+r6_0[10566] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_3,
-  VoiceId = 10563,
+  VoiceId = 10566,
   VoiceRes = r0_0.RT_4,
   VoiceText = {
     "voice_ch_char_Nifu_vo_welcome"
   },
   VoiceType = 1,
 }
-r6_0[10564] = {
+r6_0[10567] = {
   CharId = 1502,
   Dialogue = 902200011,
   LockedDes = "VoiceLocked_Dialogue",
@@ -2093,14 +2093,14 @@ r6_0[10564] = {
     "VoiceDes116",
     "VoiceDes031"
   },
-  VoiceId = 10564,
+  VoiceId = 10567,
   VoiceRes = r0_0.RT_5,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_01_1"
   },
   VoiceType = 1,
 }
-r6_0[10565] = {
+r6_0[10568] = {
   CharId = 1502,
   Dialogue = 90220102,
   LockedDes = "VoiceLocked_Dialogue",
@@ -2111,14 +2111,14 @@ r6_0[10565] = {
     "VoiceDes116",
     "VoiceDes032"
   },
-  VoiceId = 10565,
+  VoiceId = 10568,
   VoiceRes = r0_0.RT_6,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_01_2"
   },
   VoiceType = 1,
 }
-r6_0[10566] = {
+r6_0[10569] = {
   CharId = 1502,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81502,
@@ -2128,14 +2128,14 @@ r6_0[10566] = {
     "VoiceDes116",
     "VoiceDes033"
   },
-  VoiceId = 10566,
+  VoiceId = 10569,
   VoiceRes = r0_0.RT_57,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_01_3"
   },
   VoiceType = 1,
 }
-r6_0[10567] = {
+r6_0[10570] = {
   CharId = 1502,
   Dialogue = 90220105,
   LockedDes = "VoiceLocked_Dialogue",
@@ -2146,14 +2146,14 @@ r6_0[10567] = {
     "VoiceDes116",
     "VoiceDes034"
   },
-  VoiceId = 10567,
+  VoiceId = 10570,
   VoiceRes = r0_0.RT_58,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_01_4"
   },
   VoiceType = 1,
 }
-r6_0[10568] = {
+r6_0[10571] = {
   CharId = 1502,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81502,
@@ -2163,14 +2163,14 @@ r6_0[10568] = {
     "VoiceDes116",
     "VoiceDes035"
   },
-  VoiceId = 10568,
+  VoiceId = 10571,
   VoiceRes = r0_0.RT_59,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_01_5"
   },
   VoiceType = 1,
 }
-r6_0[10569] = {
+r6_0[10572] = {
   CharId = 1502,
   Dialogue = 902200012,
   LockedDes = "VoiceLocked_Dialogue",
@@ -2181,14 +2181,14 @@ r6_0[10569] = {
     "VoiceDes117",
     "VoiceDes031"
   },
-  VoiceId = 10569,
+  VoiceId = 10572,
   VoiceRes = r0_0.RT_8,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_02_1"
   },
   VoiceType = 1,
 }
-r6_0[10570] = {
+r6_0[10573] = {
   CharId = 1502,
   Dialogue = 90220202,
   LockedDes = "VoiceLocked_Dialogue",
@@ -2199,14 +2199,14 @@ r6_0[10570] = {
     "VoiceDes117",
     "VoiceDes032"
   },
-  VoiceId = 10570,
+  VoiceId = 10573,
   VoiceRes = r0_0.RT_10,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_02_2"
   },
   VoiceType = 1,
 }
-r6_0[10571] = {
+r6_0[10574] = {
   CharId = 1502,
   Dialogue = 90220204,
   LockedDes = "VoiceLocked_Dialogue",
@@ -2217,14 +2217,14 @@ r6_0[10571] = {
     "VoiceDes117",
     "VoiceDes033"
   },
-  VoiceId = 10571,
+  VoiceId = 10574,
   VoiceRes = r0_0.RT_61,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_02_3"
   },
   VoiceType = 1,
 }
-r6_0[10572] = {
+r6_0[10575] = {
   CharId = 1502,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81502,
@@ -2234,68 +2234,68 @@ r6_0[10572] = {
     "VoiceDes117",
     "VoiceDes034"
   },
-  VoiceId = 10572,
+  VoiceId = 10575,
   VoiceRes = r0_0.RT_62,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_02_4"
   },
   VoiceType = 1,
 }
-r6_0[10573] = {
+r6_0[10576] = {
   CharId = 1502,
   Dialogue = 902200013,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81502,
   UnlockDialogue = 90220301,
   VoiceDes = r0_0.RT_79,
-  VoiceId = 10573,
+  VoiceId = 10576,
   VoiceRes = r0_0.RT_11,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_03_1"
   },
   VoiceType = 1,
 }
-r6_0[10574] = {
+r6_0[10577] = {
   CharId = 1502,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81502,
   UnlockDialogue = 90220302,
   VoiceDes = r0_0.RT_80,
-  VoiceId = 10574,
+  VoiceId = 10577,
   VoiceRes = r0_0.RT_12,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_03_2"
   },
   VoiceType = 1,
 }
-r6_0[10575] = {
+r6_0[10578] = {
   CharId = 1502,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81502,
   UnlockDialogue = 90220303,
   VoiceDes = r0_0.RT_81,
-  VoiceId = 10575,
+  VoiceId = 10578,
   VoiceRes = r0_0.RT_65,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_03_3"
   },
   VoiceType = 1,
 }
-r6_0[10576] = {
+r6_0[10579] = {
   CharId = 1502,
   Dialogue = 90220304,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81502,
   UnlockDialogue = 90220305,
   VoiceDes = r0_0.RT_82,
-  VoiceId = 10576,
+  VoiceId = 10579,
   VoiceRes = r0_0.RT_67,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_03_4"
   },
   VoiceType = 1,
 }
-r6_0[10577] = {
+r6_0[10580] = {
   CharId = 1502,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81502,
@@ -2305,14 +2305,14 @@ r6_0[10577] = {
     "VoiceDes071",
     "VoiceDes035"
   },
-  VoiceId = 10577,
+  VoiceId = 10580,
   VoiceRes = r0_0.RT_68,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_03_5"
   },
   VoiceType = 1,
 }
-r6_0[10578] = {
+r6_0[10581] = {
   CharId = 1502,
   Dialogue = 902200014,
   LockedDes = "VoiceLocked_Dialogue",
@@ -2323,14 +2323,14 @@ r6_0[10578] = {
     "VoiceDes118",
     "VoiceDes031"
   },
-  VoiceId = 10578,
+  VoiceId = 10581,
   VoiceRes = r0_0.RT_13,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_04_1"
   },
   VoiceType = 1,
 }
-r6_0[10579] = {
+r6_0[10582] = {
   CharId = 1502,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81502,
@@ -2340,14 +2340,14 @@ r6_0[10579] = {
     "VoiceDes118",
     "VoiceDes032"
   },
-  VoiceId = 10579,
+  VoiceId = 10582,
   VoiceRes = r0_0.RT_14,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_04_2"
   },
   VoiceType = 1,
 }
-r6_0[10580] = {
+r6_0[10583] = {
   CharId = 1502,
   Dialogue = 90220403,
   LockedDes = "VoiceLocked_Dialogue",
@@ -2358,14 +2358,14 @@ r6_0[10580] = {
     "VoiceDes118",
     "VoiceDes033"
   },
-  VoiceId = 10580,
+  VoiceId = 10583,
   VoiceRes = r0_0.RT_15,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_04_3"
   },
   VoiceType = 1,
 }
-r6_0[10581] = {
+r6_0[10584] = {
   CharId = 1502,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81502,
@@ -2375,14 +2375,14 @@ r6_0[10581] = {
     "VoiceDes118",
     "VoiceDes034"
   },
-  VoiceId = 10581,
+  VoiceId = 10584,
   VoiceRes = r0_0.RT_83,
   VoiceText = {
     "voice_ch_char_Nifu_vo_topic_04_4"
   },
   VoiceType = 1,
 }
-r6_0[10582] = {
+r6_0[10585] = {
   CharId = 1502,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81502,
@@ -2392,7 +2392,7 @@ r6_0[10582] = {
     "VoiceDes118",
     "VoiceDes035"
   },
-  VoiceId = 10582,
+  VoiceId = 10585,
   VoiceRes = {
     "vo_topic_04_5"
   },
@@ -2401,7 +2401,7 @@ r6_0[10582] = {
   },
   VoiceType = 1,
 }
-r6_0[10583] = {
+r6_0[10586] = {
   CharId = 1502,
   Dialogue = 90220407,
   LockedDes = "VoiceLocked_Dialogue",
@@ -2412,7 +2412,7 @@ r6_0[10583] = {
     "VoiceDes118",
     "VoiceDes036"
   },
-  VoiceId = 10583,
+  VoiceId = 10586,
   VoiceRes = {
     "vo_topic_04_6"
   },
@@ -2421,7 +2421,7 @@ r6_0[10583] = {
   },
   VoiceType = 1,
 }
-r6_0[10584] = {
+r6_0[10587] = {
   CharId = 1502,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81502,
@@ -2431,7 +2431,7 @@ r6_0[10584] = {
     "VoiceDes118",
     "VoiceDes037"
   },
-  VoiceId = 10584,
+  VoiceId = 10587,
   VoiceRes = {
     "vo_topic_04_7"
   },
@@ -2440,7 +2440,7 @@ r6_0[10584] = {
   },
   VoiceType = 1,
 }
-r6_0[10585] = {
+r6_0[10588] = {
   CharId = 1502,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81502,
@@ -2450,7 +2450,7 @@ r6_0[10585] = {
     "VoiceDes118",
     "VoiceDes038"
   },
-  VoiceId = 10585,
+  VoiceId = 10588,
   VoiceRes = {
     "vo_topic_04_8"
   },
@@ -2459,7 +2459,7 @@ r6_0[10585] = {
   },
   VoiceType = 1,
 }
-r6_0[10586] = {
+r6_0[10589] = {
   CharId = 1502,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81502,
@@ -2469,7 +2469,7 @@ r6_0[10586] = {
     "VoiceDes118",
     "VoiceDes039"
   },
-  VoiceId = 10586,
+  VoiceId = 10589,
   VoiceRes = {
     "vo_topic_04_9"
   },
@@ -2478,7 +2478,7 @@ r6_0[10586] = {
   },
   VoiceType = 1,
 }
-r6_0[10587] = {
+r6_0[10590] = {
   CharId = 1502,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81502,
@@ -2488,7 +2488,7 @@ r6_0[10587] = {
     "VoiceDes118",
     "VoiceDes040"
   },
-  VoiceId = 10587,
+  VoiceId = 10590,
   VoiceRes = {
     "vo_topic_04_10"
   },
@@ -2497,7 +2497,7 @@ r6_0[10587] = {
   },
   VoiceType = 1,
 }
-r6_0[10588] = {
+r6_0[10591] = {
   CharId = 1502,
   Dialogue = 90220413,
   LockedDes = "VoiceLocked_Dialogue",
@@ -2508,7 +2508,7 @@ r6_0[10588] = {
     "VoiceDes118",
     "VoiceDes136"
   },
-  VoiceId = 10588,
+  VoiceId = 10591,
   VoiceRes = {
     "vo_topic_04_11"
   },
@@ -2517,224 +2517,224 @@ r6_0[10588] = {
   },
   VoiceType = 1,
 }
-r6_0[10589] = {
+r6_0[10592] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_19,
-  VoiceId = 10589,
+  VoiceId = 10592,
   VoiceRes = r0_0.RT_20,
   VoiceText = {
     "voice_ch_char_Nifu_vo_idle"
   },
   VoiceType = 1,
 }
-r6_0[10590] = {
+r6_0[10593] = {
   CharId = 1502,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81502,
   UnlockDialogue = 90220501,
   VoiceDes = r0_0.RT_21,
-  VoiceId = 10590,
+  VoiceId = 10593,
   VoiceRes = r0_0.RT_71,
   VoiceText = {
     "voice_ch_char_Nifu_vo_companio_01"
   },
   VoiceType = 1,
 }
-r6_0[10591] = {
+r6_0[10594] = {
   CharId = 1502,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81502,
   UnlockDialogue = 90220601,
   VoiceDes = r0_0.RT_24,
-  VoiceId = 10591,
+  VoiceId = 10594,
   VoiceRes = r0_0.RT_72,
   VoiceText = {
     "voice_ch_char_Nifu_vo_companio_02"
   },
   VoiceType = 1,
 }
-r6_0[10594] = {
+r6_0[10597] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_29,
-  VoiceId = 10594,
+  VoiceId = 10597,
   VoiceRes = r0_0.RT_30,
   VoiceText = {
     "voice_ch_char_Nifu_vo_appear"
   },
   VoiceType = 2,
 }
-r6_0[10595] = {
+r6_0[10598] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_31,
-  VoiceId = 10595,
+  VoiceId = 10598,
   VoiceRes = r0_0.RT_32,
   VoiceText = {
     "voice_ch_char_Nifu_vo_lvup"
   },
   VoiceType = 2,
 }
-r6_0[10596] = {
+r6_0[10599] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_33,
-  VoiceId = 10596,
+  VoiceId = 10599,
   VoiceRes = r0_0.RT_34,
   VoiceText = {
     "voice_ch_char_Nifu_vo_battlestart"
   },
   VoiceType = 2,
 }
-r6_0[10597] = {
+r6_0[10600] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_35,
-  VoiceId = 10597,
+  VoiceId = 10600,
   VoiceRes = r0_0.RT_36,
   VoiceText = {
     "voice_ch_char_Nifu_vo_battleidle"
   },
   VoiceType = 2,
 }
-r6_0[10598] = {
+r6_0[10601] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_75,
-  VoiceId = 10598,
+  VoiceId = 10601,
   VoiceRes = r0_0.RT_76,
   VoiceText = {
     "voice_ch_char_Nifu_vo_be_hit_heavy_r01"
   },
   VoiceType = 2,
 }
-r6_0[10599] = {
+r6_0[10602] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_77,
-  VoiceId = 10599,
+  VoiceId = 10602,
   VoiceRes = r0_0.RT_78,
   VoiceText = {
     "voice_ch_char_Nifu_vo_be_hit_heavy_r02"
   },
   VoiceType = 2,
 }
-r6_0[10600] = {
+r6_0[10603] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_37,
-  VoiceId = 10600,
+  VoiceId = 10603,
   VoiceRes = r0_0.RT_38,
   VoiceText = {
     "voice_ch_char_Nifu_vo_skill01_r01"
   },
   VoiceType = 2,
 }
-r6_0[10601] = {
+r6_0[10604] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_39,
-  VoiceId = 10601,
+  VoiceId = 10604,
   VoiceRes = r0_0.RT_40,
   VoiceText = {
     "voice_ch_char_Nifu_vo_skill01_r02"
   },
   VoiceType = 2,
 }
-r6_0[10602] = {
+r6_0[10605] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_41,
-  VoiceId = 10602,
+  VoiceId = 10605,
   VoiceRes = r0_0.RT_42,
   VoiceText = {
     "voice_ch_char_Nifu_vo_skill02_r01"
   },
   VoiceType = 2,
 }
-r6_0[10603] = {
+r6_0[10606] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_43,
-  VoiceId = 10603,
+  VoiceId = 10606,
   VoiceRes = r0_0.RT_44,
   VoiceText = {
     "voice_ch_char_Nifu_vo_skill02_r02"
   },
   VoiceType = 2,
 }
-r6_0[10604] = {
+r6_0[10607] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_45,
-  VoiceId = 10604,
+  VoiceId = 10607,
   VoiceRes = r0_0.RT_46,
   VoiceText = {
     "voice_ch_char_Nifu_vo_skill02_r03"
   },
   VoiceType = 2,
 }
-r6_0[10605] = {
+r6_0[10608] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_47,
-  VoiceId = 10605,
+  VoiceId = 10608,
   VoiceRes = r0_0.RT_48,
   VoiceText = {
     "voice_ch_char_Nifu_vo_die_r01"
   },
   VoiceType = 2,
 }
-r6_0[10606] = {
+r6_0[10609] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_49,
-  VoiceId = 10606,
+  VoiceId = 10609,
   VoiceRes = r0_0.RT_50,
   VoiceText = {
     "voice_ch_char_Nifu_vo_die_r02"
   },
   VoiceType = 2,
 }
-r6_0[10607] = {
+r6_0[10610] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_51,
-  VoiceId = 10607,
+  VoiceId = 10610,
   VoiceRes = r0_0.RT_52,
   VoiceText = {
     "voice_ch_char_Nifu_vo_revive"
   },
   VoiceType = 2,
 }
-r6_0[10608] = {
+r6_0[10611] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_53,
-  VoiceId = 10608,
+  VoiceId = 10611,
   VoiceRes = r0_0.RT_54,
   VoiceText = {
     "voice_ch_char_Nifu_vo_victory"
   },
   VoiceType = 2,
 }
-r6_0[10609] = {
+r6_0[10612] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_55,
-  VoiceId = 10609,
+  VoiceId = 10612,
   VoiceRes = r0_0.RT_56,
   VoiceText = {
     "voice_ch_char_Nifu_vo_fail"
   },
   VoiceType = 2,
 }
-r6_0[10610] = {
+r6_0[10613] = {
   CharId = 1502,
   UnitId = 81502,
   VoiceDes = r0_0.RT_27,
-  VoiceId = 10610,
+  VoiceId = 10613,
   VoiceRes = r0_0.RT_28,
   VoiceText = {
     "voice_ch_char_Nifu_vo_birthday"
@@ -2744,30 +2744,30 @@ r6_0[10610] = {
 r4_0[r5_0] = r6_0
 r5_0 = 1503
 r6_0 = {}
-r6_0[10760] = {
+r6_0[10763] = {
   CharId = 1503,
   GachaVoicePart = 1,
   UnitId = 81503,
   VoiceDes = r0_0.RT_1,
-  VoiceId = 10760,
+  VoiceId = 10763,
   VoiceRes = r0_0.RT_2,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_gain"
   },
   VoiceType = 1,
 }
-r6_0[10761] = {
+r6_0[10764] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_3,
-  VoiceId = 10761,
+  VoiceId = 10764,
   VoiceRes = r0_0.RT_4,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_welcome"
   },
   VoiceType = 1,
 }
-r6_0[10762] = {
+r6_0[10765] = {
   CharId = 1503,
   Dialogue = 902400011,
   LockedDes = "VoiceLocked_Dialogue",
@@ -2778,14 +2778,14 @@ r6_0[10762] = {
     "VoiceDes133",
     "VoiceDes031"
   },
-  VoiceId = 10762,
+  VoiceId = 10765,
   VoiceRes = r0_0.RT_5,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_topic_01_1"
   },
   VoiceType = 1,
 }
-r6_0[10763] = {
+r6_0[10766] = {
   CharId = 1503,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81503,
@@ -2795,14 +2795,14 @@ r6_0[10763] = {
     "VoiceDes133",
     "VoiceDes032"
   },
-  VoiceId = 10763,
+  VoiceId = 10766,
   VoiceRes = r0_0.RT_6,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_topic_01_2"
   },
   VoiceType = 1,
 }
-r6_0[10764] = {
+r6_0[10767] = {
   CharId = 1503,
   Dialogue = 90240103,
   LockedDes = "VoiceLocked_Dialogue",
@@ -2813,14 +2813,14 @@ r6_0[10764] = {
     "VoiceDes133",
     "VoiceDes033"
   },
-  VoiceId = 10764,
+  VoiceId = 10767,
   VoiceRes = r0_0.RT_57,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_topic_01_3"
   },
   VoiceType = 1,
 }
-r6_0[10765] = {
+r6_0[10768] = {
   CharId = 1503,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81503,
@@ -2830,14 +2830,14 @@ r6_0[10765] = {
     "VoiceDes133",
     "VoiceDes034"
   },
-  VoiceId = 10765,
+  VoiceId = 10768,
   VoiceRes = r0_0.RT_58,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_topic_01_4"
   },
   VoiceType = 1,
 }
-r6_0[10766] = {
+r6_0[10769] = {
   CharId = 1503,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81503,
@@ -2847,14 +2847,14 @@ r6_0[10766] = {
     "VoiceDes133",
     "VoiceDes035"
   },
-  VoiceId = 10766,
+  VoiceId = 10769,
   VoiceRes = r0_0.RT_59,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_topic_01_5"
   },
   VoiceType = 1,
 }
-r6_0[10767] = {
+r6_0[10770] = {
   CharId = 1503,
   Dialogue = 902400012,
   LockedDes = "VoiceLocked_Dialogue",
@@ -2865,14 +2865,14 @@ r6_0[10767] = {
     "VoiceDes134",
     "VoiceDes031"
   },
-  VoiceId = 10767,
+  VoiceId = 10770,
   VoiceRes = r0_0.RT_8,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_topic_02_1"
   },
   VoiceType = 1,
 }
-r6_0[10768] = {
+r6_0[10771] = {
   CharId = 1503,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81503,
@@ -2882,14 +2882,14 @@ r6_0[10768] = {
     "VoiceDes134",
     "VoiceDes032"
   },
-  VoiceId = 10768,
+  VoiceId = 10771,
   VoiceRes = r0_0.RT_10,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_topic_02_2"
   },
   VoiceType = 1,
 }
-r6_0[10769] = {
+r6_0[10772] = {
   CharId = 1503,
   Dialogue = 90240203,
   LockedDes = "VoiceLocked_Dialogue",
@@ -2900,14 +2900,14 @@ r6_0[10769] = {
     "VoiceDes134",
     "VoiceDes033"
   },
-  VoiceId = 10769,
+  VoiceId = 10772,
   VoiceRes = r0_0.RT_61,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_topic_02_3"
   },
   VoiceType = 1,
 }
-r6_0[10770] = {
+r6_0[10773] = {
   CharId = 1503,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81503,
@@ -2917,14 +2917,14 @@ r6_0[10770] = {
     "VoiceDes134",
     "VoiceDes034"
   },
-  VoiceId = 10770,
+  VoiceId = 10773,
   VoiceRes = r0_0.RT_62,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_topic_02_4"
   },
   VoiceType = 1,
 }
-r6_0[10771] = {
+r6_0[10774] = {
   CharId = 1503,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81503,
@@ -2934,14 +2934,14 @@ r6_0[10771] = {
     "VoiceDes134",
     "VoiceDes035"
   },
-  VoiceId = 10771,
+  VoiceId = 10774,
   VoiceRes = r0_0.RT_84,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_topic_02_5"
   },
   VoiceType = 1,
 }
-r6_0[10772] = {
+r6_0[10775] = {
   CharId = 1503,
   Dialogue = 902400013,
   LockedDes = "VoiceLocked_Dialogue",
@@ -2952,14 +2952,14 @@ r6_0[10772] = {
     "VoiceDes135",
     "VoiceDes031"
   },
-  VoiceId = 10772,
+  VoiceId = 10775,
   VoiceRes = r0_0.RT_11,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_topic_03_1"
   },
   VoiceType = 1,
 }
-r6_0[10773] = {
+r6_0[10776] = {
   CharId = 1503,
   Dialogue = 90240302,
   LockedDes = "VoiceLocked_Dialogue",
@@ -2970,14 +2970,14 @@ r6_0[10773] = {
     "VoiceDes135",
     "VoiceDes032"
   },
-  VoiceId = 10773,
+  VoiceId = 10776,
   VoiceRes = r0_0.RT_12,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_topic_03_2"
   },
   VoiceType = 1,
 }
-r6_0[10774] = {
+r6_0[10777] = {
   CharId = 1503,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81503,
@@ -2987,55 +2987,55 @@ r6_0[10774] = {
     "VoiceDes135",
     "VoiceDes033"
   },
-  VoiceId = 10774,
+  VoiceId = 10777,
   VoiceRes = r0_0.RT_65,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_topic_03_3"
   },
   VoiceType = 1,
 }
-r6_0[10775] = {
+r6_0[10778] = {
   CharId = 1503,
   Dialogue = 902400014,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81503,
   UnlockDialogue = 90240401,
   VoiceDes = r0_0.RT_85,
-  VoiceId = 10775,
+  VoiceId = 10778,
   VoiceRes = r0_0.RT_13,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_topic_04_1"
   },
   VoiceType = 1,
 }
-r6_0[10776] = {
+r6_0[10779] = {
   CharId = 1503,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81503,
   UnlockDialogue = 90240402,
   VoiceDes = r0_0.RT_86,
-  VoiceId = 10776,
+  VoiceId = 10779,
   VoiceRes = r0_0.RT_14,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_topic_04_2"
   },
   VoiceType = 1,
 }
-r6_0[10777] = {
+r6_0[10780] = {
   CharId = 1503,
   Dialogue = 90240403,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81503,
   UnlockDialogue = 90240404,
   VoiceDes = r0_0.RT_87,
-  VoiceId = 10777,
+  VoiceId = 10780,
   VoiceRes = r0_0.RT_15,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_topic_04_3"
   },
   VoiceType = 1,
 }
-r6_0[10778] = {
+r6_0[10781] = {
   CharId = 1503,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81503,
@@ -3045,218 +3045,218 @@ r6_0[10778] = {
     "VoiceDes102",
     "VoiceDes034"
   },
-  VoiceId = 10778,
+  VoiceId = 10781,
   VoiceRes = r0_0.RT_83,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_topic_04_4"
   },
   VoiceType = 1,
 }
-r6_0[10779] = {
+r6_0[10782] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_19,
-  VoiceId = 10779,
+  VoiceId = 10782,
   VoiceRes = r0_0.RT_20,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_idle"
   },
   VoiceType = 1,
 }
-r6_0[10782] = {
+r6_0[10785] = {
   CharId = 1503,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81503,
   UnlockDialogue = 90240701,
   VoiceDes = r0_0.RT_26,
-  VoiceId = 10782,
+  VoiceId = 10785,
   VoiceRes = r0_0.RT_25,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_companio_03"
   },
   VoiceType = 1,
 }
-r6_0[10783] = {
+r6_0[10786] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_29,
-  VoiceId = 10783,
+  VoiceId = 10786,
   VoiceRes = r0_0.RT_30,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_appear"
   },
   VoiceType = 2,
 }
-r6_0[10784] = {
+r6_0[10787] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_31,
-  VoiceId = 10784,
+  VoiceId = 10787,
   VoiceRes = r0_0.RT_32,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_lvup"
   },
   VoiceType = 2,
 }
-r6_0[10785] = {
+r6_0[10788] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_33,
-  VoiceId = 10785,
+  VoiceId = 10788,
   VoiceRes = r0_0.RT_34,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_battlestart"
   },
   VoiceType = 2,
 }
-r6_0[10786] = {
+r6_0[10789] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_35,
-  VoiceId = 10786,
+  VoiceId = 10789,
   VoiceRes = r0_0.RT_36,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_battleidle"
   },
   VoiceType = 2,
 }
-r6_0[10787] = {
+r6_0[10790] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_75,
-  VoiceId = 10787,
+  VoiceId = 10790,
   VoiceRes = r0_0.RT_76,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_be_hit_heavy_r01"
   },
   VoiceType = 2,
 }
-r6_0[10788] = {
+r6_0[10791] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_77,
-  VoiceId = 10788,
+  VoiceId = 10791,
   VoiceRes = r0_0.RT_78,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_be_hit_heavy_r02"
   },
   VoiceType = 2,
 }
-r6_0[10789] = {
+r6_0[10792] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_37,
-  VoiceId = 10789,
+  VoiceId = 10792,
   VoiceRes = r0_0.RT_38,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_skill01_r01"
   },
   VoiceType = 2,
 }
-r6_0[10790] = {
+r6_0[10793] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_39,
-  VoiceId = 10790,
+  VoiceId = 10793,
   VoiceRes = r0_0.RT_40,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_skill01_r02"
   },
   VoiceType = 2,
 }
-r6_0[10791] = {
+r6_0[10794] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_41,
-  VoiceId = 10791,
+  VoiceId = 10794,
   VoiceRes = r0_0.RT_42,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_skill02_r01"
   },
   VoiceType = 2,
 }
-r6_0[10792] = {
+r6_0[10795] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_43,
-  VoiceId = 10792,
+  VoiceId = 10795,
   VoiceRes = r0_0.RT_44,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_skill02_r02"
   },
   VoiceType = 2,
 }
-r6_0[10793] = {
+r6_0[10796] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_45,
-  VoiceId = 10793,
+  VoiceId = 10796,
   VoiceRes = r0_0.RT_46,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_skill02_r03"
   },
   VoiceType = 2,
 }
-r6_0[10794] = {
+r6_0[10797] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_47,
-  VoiceId = 10794,
+  VoiceId = 10797,
   VoiceRes = r0_0.RT_48,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_die_r01"
   },
   VoiceType = 2,
 }
-r6_0[10795] = {
+r6_0[10798] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_49,
-  VoiceId = 10795,
+  VoiceId = 10798,
   VoiceRes = r0_0.RT_50,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_die_r02"
   },
   VoiceType = 2,
 }
-r6_0[10796] = {
+r6_0[10799] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_51,
-  VoiceId = 10796,
+  VoiceId = 10799,
   VoiceRes = r0_0.RT_52,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_revive"
   },
   VoiceType = 2,
 }
-r6_0[10797] = {
+r6_0[10800] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_53,
-  VoiceId = 10797,
+  VoiceId = 10800,
   VoiceRes = r0_0.RT_54,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_victory"
   },
   VoiceType = 2,
 }
-r6_0[10798] = {
+r6_0[10801] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_55,
-  VoiceId = 10798,
+  VoiceId = 10801,
   VoiceRes = r0_0.RT_56,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_fail"
   },
   VoiceType = 2,
 }
-r6_0[10799] = {
+r6_0[10802] = {
   CharId = 1503,
   UnitId = 81503,
   VoiceDes = r0_0.RT_27,
-  VoiceId = 10799,
+  VoiceId = 10802,
   VoiceRes = r0_0.RT_28,
   VoiceText = {
     "voice_ch_char_Kezhou_vo_birthday"
@@ -3266,71 +3266,71 @@ r6_0[10799] = {
 r4_0[r5_0] = r6_0
 r5_0 = 1801
 r6_0 = {}
-r6_0[10449] = {
+r6_0[10452] = {
   CharId = 1801,
   GachaVoicePart = 1,
   UnitId = 81801,
   VoiceDes = r0_0.RT_1,
-  VoiceId = 10449,
+  VoiceId = 10452,
   VoiceRes = r0_0.RT_2,
   VoiceText = {
     "voice_ch_char_Feina_vo_gain"
   },
   VoiceType = 1,
 }
-r6_0[10450] = {
+r6_0[10453] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_3,
-  VoiceId = 10450,
+  VoiceId = 10453,
   VoiceRes = r0_0.RT_4,
   VoiceText = {
     "voice_ch_char_Feina_vo_welcome"
   },
   VoiceType = 1,
 }
-r6_0[10451] = {
+r6_0[10454] = {
   CharId = 1801,
   Dialogue = 901500011,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81801,
   UnlockDialogue = 90150101,
   VoiceDes = r0_0.RT_63,
-  VoiceId = 10451,
+  VoiceId = 10454,
   VoiceRes = r0_0.RT_5,
   VoiceText = {
     "voice_ch_char_Feina_vo_topic_01_1"
   },
   VoiceType = 1,
 }
-r6_0[10452] = {
+r6_0[10455] = {
   CharId = 1801,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81801,
   UnlockDialogue = 90150103,
   VoiceDes = r0_0.RT_64,
-  VoiceId = 10452,
+  VoiceId = 10455,
   VoiceRes = r0_0.RT_6,
   VoiceText = {
     "voice_ch_char_Feina_vo_topic_01_2"
   },
   VoiceType = 1,
 }
-r6_0[10453] = {
+r6_0[10456] = {
   CharId = 1801,
   Dialogue = 90150104,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81801,
   UnlockDialogue = 90150105,
   VoiceDes = r0_0.RT_66,
-  VoiceId = 10453,
+  VoiceId = 10456,
   VoiceRes = r0_0.RT_57,
   VoiceText = {
     "voice_ch_char_Feina_vo_topic_01_3"
   },
   VoiceType = 1,
 }
-r6_0[10454] = {
+r6_0[10457] = {
   CharId = 1801,
   Dialogue = 901500012,
   LockedDes = "VoiceLocked_Dialogue",
@@ -3341,14 +3341,14 @@ r6_0[10454] = {
     "VoiceDes104",
     "VoiceDes031"
   },
-  VoiceId = 10454,
+  VoiceId = 10457,
   VoiceRes = r0_0.RT_8,
   VoiceText = {
     "voice_ch_char_Feina_vo_topic_02_1"
   },
   VoiceType = 1,
 }
-r6_0[10455] = {
+r6_0[10458] = {
   CharId = 1801,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81801,
@@ -3358,14 +3358,14 @@ r6_0[10455] = {
     "VoiceDes104",
     "VoiceDes032"
   },
-  VoiceId = 10455,
+  VoiceId = 10458,
   VoiceRes = r0_0.RT_10,
   VoiceText = {
     "voice_ch_char_Feina_vo_topic_02_2"
   },
   VoiceType = 1,
 }
-r6_0[10456] = {
+r6_0[10459] = {
   CharId = 1801,
   Dialogue = 90150204,
   LockedDes = "VoiceLocked_Dialogue",
@@ -3376,14 +3376,14 @@ r6_0[10456] = {
     "VoiceDes104",
     "VoiceDes033"
   },
-  VoiceId = 10456,
+  VoiceId = 10459,
   VoiceRes = r0_0.RT_61,
   VoiceText = {
     "voice_ch_char_Feina_vo_topic_02_3"
   },
   VoiceType = 1,
 }
-r6_0[10457] = {
+r6_0[10460] = {
   CharId = 1801,
   Dialogue = 90150206,
   LockedDes = "VoiceLocked_Dialogue",
@@ -3394,14 +3394,14 @@ r6_0[10457] = {
     "VoiceDes104",
     "VoiceDes034"
   },
-  VoiceId = 10457,
+  VoiceId = 10460,
   VoiceRes = r0_0.RT_62,
   VoiceText = {
     "voice_ch_char_Feina_vo_topic_02_4"
   },
   VoiceType = 1,
 }
-r6_0[10458] = {
+r6_0[10461] = {
   CharId = 1801,
   Dialogue = 901500013,
   LockedDes = "VoiceLocked_Dialogue",
@@ -3412,14 +3412,14 @@ r6_0[10458] = {
     "VoiceDes105",
     "VoiceDes031"
   },
-  VoiceId = 10458,
+  VoiceId = 10461,
   VoiceRes = r0_0.RT_11,
   VoiceText = {
     "voice_ch_char_Feina_vo_topic_03_1"
   },
   VoiceType = 1,
 }
-r6_0[10459] = {
+r6_0[10462] = {
   CharId = 1801,
   Dialogue = 90150303,
   LockedDes = "VoiceLocked_Dialogue",
@@ -3430,14 +3430,14 @@ r6_0[10459] = {
     "VoiceDes105",
     "VoiceDes032"
   },
-  VoiceId = 10459,
+  VoiceId = 10462,
   VoiceRes = r0_0.RT_12,
   VoiceText = {
     "voice_ch_char_Feina_vo_topic_03_2"
   },
   VoiceType = 1,
 }
-r6_0[10460] = {
+r6_0[10463] = {
   CharId = 1801,
   Dialogue = 901500014,
   LockedDes = "VoiceLocked_Dialogue",
@@ -3448,14 +3448,14 @@ r6_0[10460] = {
     "VoiceDes106",
     "VoiceDes031"
   },
-  VoiceId = 10460,
+  VoiceId = 10463,
   VoiceRes = r0_0.RT_13,
   VoiceText = {
     "voice_ch_char_Feina_vo_topic_04_1"
   },
   VoiceType = 1,
 }
-r6_0[10461] = {
+r6_0[10464] = {
   CharId = 1801,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81801,
@@ -3465,14 +3465,14 @@ r6_0[10461] = {
     "VoiceDes106",
     "VoiceDes032"
   },
-  VoiceId = 10461,
+  VoiceId = 10464,
   VoiceRes = r0_0.RT_14,
   VoiceText = {
     "voice_ch_char_Feina_vo_topic_04_2"
   },
   VoiceType = 1,
 }
-r6_0[10462] = {
+r6_0[10465] = {
   CharId = 1801,
   Dialogue = 901500015,
   LockedDes = "VoiceLocked_Dialogue",
@@ -3483,14 +3483,14 @@ r6_0[10462] = {
     "VoiceDes107",
     "VoiceDes031"
   },
-  VoiceId = 10462,
+  VoiceId = 10465,
   VoiceRes = r0_0.RT_16,
   VoiceText = {
     "voice_ch_char_Feina_vo_topic_05_1"
   },
   VoiceType = 1,
 }
-r6_0[10463] = {
+r6_0[10466] = {
   CharId = 1801,
   Dialogue = 90150503,
   LockedDes = "VoiceLocked_Dialogue",
@@ -3501,14 +3501,14 @@ r6_0[10463] = {
     "VoiceDes107",
     "VoiceDes032"
   },
-  VoiceId = 10463,
+  VoiceId = 10466,
   VoiceRes = r0_0.RT_17,
   VoiceText = {
     "voice_ch_char_Feina_vo_topic_05_2"
   },
   VoiceType = 1,
 }
-r6_0[10464] = {
+r6_0[10467] = {
   CharId = 1801,
   Dialogue = 90150505,
   LockedDes = "VoiceLocked_Dialogue",
@@ -3519,112 +3519,112 @@ r6_0[10464] = {
     "VoiceDes107",
     "VoiceDes033"
   },
-  VoiceId = 10464,
+  VoiceId = 10467,
   VoiceRes = r0_0.RT_69,
   VoiceText = {
     "voice_ch_char_Feina_vo_topic_05_3"
   },
   VoiceType = 1,
 }
-r6_0[10465] = {
+r6_0[10468] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_19,
-  VoiceId = 10465,
+  VoiceId = 10468,
   VoiceRes = r0_0.RT_20,
   VoiceText = {
     "voice_ch_char_Feina_vo_idle"
   },
   VoiceType = 1,
 }
-r6_0[10466] = {
+r6_0[10469] = {
   CharId = 1801,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81801,
   UnlockDialogue = 90150601,
   VoiceDes = r0_0.RT_21,
-  VoiceId = 10466,
+  VoiceId = 10469,
   VoiceRes = r0_0.RT_71,
   VoiceText = {
     "voice_ch_char_Feina_vo_companio_01"
   },
   VoiceType = 1,
 }
-r6_0[10467] = {
+r6_0[10470] = {
   CharId = 1801,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81801,
   UnlockDialogue = 90150701,
   VoiceDes = r0_0.RT_24,
-  VoiceId = 10467,
+  VoiceId = 10470,
   VoiceRes = r0_0.RT_72,
   VoiceText = {
     "voice_ch_char_Feina_vo_companio_02"
   },
   VoiceType = 1,
 }
-r6_0[10468] = {
+r6_0[10471] = {
   CharId = 1801,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 81801,
   UnlockDialogue = 90150801,
   VoiceDes = r0_0.RT_26,
-  VoiceId = 10468,
+  VoiceId = 10471,
   VoiceRes = r0_0.RT_25,
   VoiceText = {
     "voice_ch_char_Feina_vo_companio_03"
   },
   VoiceType = 1,
 }
-r6_0[10470] = {
+r6_0[10473] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_29,
-  VoiceId = 10470,
+  VoiceId = 10473,
   VoiceRes = r0_0.RT_30,
   VoiceText = {
     "voice_ch_char_Feina_vo_appear"
   },
   VoiceType = 2,
 }
-r6_0[10471] = {
+r6_0[10474] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_31,
-  VoiceId = 10471,
+  VoiceId = 10474,
   VoiceRes = r0_0.RT_32,
   VoiceText = {
     "voice_ch_char_Feina_vo_lvup"
   },
   VoiceType = 2,
 }
-r6_0[10472] = {
+r6_0[10475] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_33,
-  VoiceId = 10472,
+  VoiceId = 10475,
   VoiceRes = r0_0.RT_34,
   VoiceText = {
     "voice_ch_char_Feina_vo_battlestart"
   },
   VoiceType = 2,
 }
-r6_0[10473] = {
+r6_0[10476] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_35,
-  VoiceId = 10473,
+  VoiceId = 10476,
   VoiceRes = r0_0.RT_36,
   VoiceText = {
     "voice_ch_char_Feina_vo_battleidle"
   },
   VoiceType = 2,
 }
-r6_0[10474] = {
+r6_0[10477] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_75,
-  VoiceId = 10474,
+  VoiceId = 10477,
   VoiceRes = {
     "vo_be_hit_r02"
   },
@@ -3633,132 +3633,132 @@ r6_0[10474] = {
   },
   VoiceType = 2,
 }
-r6_0[10475] = {
+r6_0[10478] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_77,
-  VoiceId = 10475,
+  VoiceId = 10478,
   VoiceRes = r0_0.RT_78,
   VoiceText = {
     "voice_ch_char_Feina_vo_be_hit_heavy_r02"
   },
   VoiceType = 2,
 }
-r6_0[10476] = {
+r6_0[10479] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_37,
-  VoiceId = 10476,
+  VoiceId = 10479,
   VoiceRes = r0_0.RT_38,
   VoiceText = {
     "voice_ch_char_Feina_vo_skill01_r01"
   },
   VoiceType = 2,
 }
-r6_0[10477] = {
+r6_0[10480] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_39,
-  VoiceId = 10477,
+  VoiceId = 10480,
   VoiceRes = r0_0.RT_40,
   VoiceText = {
     "voice_ch_char_Feina_vo_skill01_r02"
   },
   VoiceType = 2,
 }
-r6_0[10478] = {
+r6_0[10481] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_41,
-  VoiceId = 10478,
+  VoiceId = 10481,
   VoiceRes = r0_0.RT_42,
   VoiceText = {
     "voice_ch_char_Feina_vo_skill02_r01"
   },
   VoiceType = 2,
 }
-r6_0[10479] = {
+r6_0[10482] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_43,
-  VoiceId = 10479,
+  VoiceId = 10482,
   VoiceRes = r0_0.RT_44,
   VoiceText = {
     "voice_ch_char_Feina_vo_skill02_r02"
   },
   VoiceType = 2,
 }
-r6_0[10480] = {
+r6_0[10483] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_45,
-  VoiceId = 10480,
+  VoiceId = 10483,
   VoiceRes = r0_0.RT_46,
   VoiceText = {
     "voice_ch_char_Feina_vo_skill02_r03"
   },
   VoiceType = 2,
 }
-r6_0[10481] = {
+r6_0[10484] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_47,
-  VoiceId = 10481,
+  VoiceId = 10484,
   VoiceRes = r0_0.RT_48,
   VoiceText = {
     "voice_ch_char_Feina_vo_die_r01"
   },
   VoiceType = 2,
 }
-r6_0[10482] = {
+r6_0[10485] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_49,
-  VoiceId = 10482,
+  VoiceId = 10485,
   VoiceRes = r0_0.RT_50,
   VoiceText = {
     "voice_ch_char_Feina_vo_die_r02"
   },
   VoiceType = 2,
 }
-r6_0[10483] = {
+r6_0[10486] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_51,
-  VoiceId = 10483,
+  VoiceId = 10486,
   VoiceRes = r0_0.RT_52,
   VoiceText = {
     "voice_ch_char_Feina_vo_revive"
   },
   VoiceType = 2,
 }
-r6_0[10484] = {
+r6_0[10487] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_53,
-  VoiceId = 10484,
+  VoiceId = 10487,
   VoiceRes = r0_0.RT_54,
   VoiceText = {
     "voice_ch_char_Feina_vo_victory"
   },
   VoiceType = 2,
 }
-r6_0[10485] = {
+r6_0[10488] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_55,
-  VoiceId = 10485,
+  VoiceId = 10488,
   VoiceRes = r0_0.RT_56,
   VoiceText = {
     "voice_ch_char_Feina_vo_fail"
   },
   VoiceType = 2,
 }
-r6_0[10486] = {
+r6_0[10489] = {
   CharId = 1801,
   UnitId = 81801,
   VoiceDes = r0_0.RT_27,
-  VoiceId = 10486,
+  VoiceId = 10489,
   VoiceRes = r0_0.RT_28,
   VoiceText = {
     "voice_ch_char_Feina_vo_birthday"
@@ -4794,77 +4794,71 @@ r6_0[10259] = {
   CharId = 2401,
   GachaVoicePart = 1,
   UnitId = 82401,
-  VoiceDes = {
-    "VoiceDes002",
-    "VoiceDes031",
-    "VoiceDes028"
-  },
+  VoiceChar = "Baiheng01",
+  VoiceDes = r0_0.RT_88,
   VoiceId = 10259,
-  VoiceRes = r0_0.RT_92,
+  VoiceRes = r0_0.RT_2,
   VoiceText = {
-    "voice_ch_char_Baiheng_vo_gain_1"
+    "voice_ch_char_Baiheng01_vo_gain"
   },
   VoiceType = 1,
+}
+r6_0[10260] = {
+  CharId = 2401,
+  UnitId = 82401,
+  VoiceChar = "Baiheng01",
+  VoiceDes = r0_0.RT_89,
+  VoiceId = 10260,
+  VoiceRes = r0_0.RT_30,
+  VoiceText = {
+    "voice_ch_char_Baiheng01_vo_appear"
+  },
+  VoiceType = 2,
 }
 r6_0[10261] = {
   CharId = 2401,
   UnitId = 82401,
-  VoiceDes = {
-    "VoiceDes003",
-    "VoiceDes028"
-  },
+  VoiceChar = "Baiheng01",
+  VoiceDes = r0_0.RT_90,
   VoiceId = 10261,
-  VoiceRes = r0_0.RT_4,
+  VoiceRes = r0_0.RT_34,
   VoiceText = {
-    "voice_ch_char_Baiheng_vo_welcome"
+    "voice_ch_char_Baiheng01_vo_battlestart"
   },
-  VoiceType = 1,
+  VoiceType = 2,
 }
 r6_0[10262] = {
   CharId = 2401,
   UnitId = 82401,
-  VoiceDes = {
-    "VoiceDes001",
-    "VoiceDes080",
-    "VoiceDes031",
-    "VoiceDes028"
-  },
+  VoiceChar = "Baiheng01",
+  VoiceDes = r0_0.RT_91,
   VoiceId = 10262,
-  VoiceRes = r0_0.RT_5,
+  VoiceRes = r0_0.RT_42,
   VoiceText = {
-    "voice_ch_char_Baiheng_vo_topic_01_1"
+    "voice_ch_char_Baiheng01_vo_skill02_r01"
   },
-  VoiceType = 1,
+  VoiceType = 2,
 }
 r6_0[10263] = {
   CharId = 2401,
+  GachaVoicePart = 1,
   UnitId = 82401,
-  VoiceDes = {
-    "VoiceDes001",
-    "VoiceDes080",
-    "VoiceDes032",
-    "VoiceDes028"
-  },
+  VoiceDes = r0_0.RT_92,
   VoiceId = 10263,
-  VoiceRes = r0_0.RT_6,
+  VoiceRes = r0_0.RT_93,
   VoiceText = {
-    "voice_ch_char_Baiheng_vo_topic_01_2"
+    "voice_ch_char_Baiheng_vo_gain_1"
   },
   VoiceType = 1,
 }
 r6_0[10264] = {
   CharId = 2401,
   UnitId = 82401,
-  VoiceDes = {
-    "VoiceDes001",
-    "VoiceDes080",
-    "VoiceDes033",
-    "VoiceDes028"
-  },
+  VoiceDes = r0_0.RT_3,
   VoiceId = 10264,
-  VoiceRes = r0_0.RT_57,
+  VoiceRes = r0_0.RT_4,
   VoiceText = {
-    "voice_ch_char_Baiheng_vo_topic_01_3"
+    "voice_ch_char_Baiheng_vo_welcome"
   },
   VoiceType = 1,
 }
@@ -4874,13 +4868,12 @@ r6_0[10265] = {
   VoiceDes = {
     "VoiceDes001",
     "VoiceDes080",
-    "VoiceDes034",
-    "VoiceDes028"
+    "VoiceDes031"
   },
   VoiceId = 10265,
-  VoiceRes = r0_0.RT_58,
+  VoiceRes = r0_0.RT_5,
   VoiceText = {
-    "voice_ch_char_Baiheng_vo_topic_01_4"
+    "voice_ch_char_Baiheng_vo_topic_01_1"
   },
   VoiceType = 1,
 }
@@ -4889,14 +4882,13 @@ r6_0[10266] = {
   UnitId = 82401,
   VoiceDes = {
     "VoiceDes001",
-    "VoiceDes081",
-    "VoiceDes031",
-    "VoiceDes028"
+    "VoiceDes080",
+    "VoiceDes032"
   },
   VoiceId = 10266,
-  VoiceRes = r0_0.RT_8,
+  VoiceRes = r0_0.RT_6,
   VoiceText = {
-    "voice_ch_char_Baiheng_vo_topic_02_1"
+    "voice_ch_char_Baiheng_vo_topic_01_2"
   },
   VoiceType = 1,
 }
@@ -4905,14 +4897,13 @@ r6_0[10267] = {
   UnitId = 82401,
   VoiceDes = {
     "VoiceDes001",
-    "VoiceDes081",
-    "VoiceDes032",
-    "VoiceDes028"
+    "VoiceDes080",
+    "VoiceDes033"
   },
   VoiceId = 10267,
-  VoiceRes = r0_0.RT_10,
+  VoiceRes = r0_0.RT_57,
   VoiceText = {
-    "voice_ch_char_Baiheng_vo_topic_02_2"
+    "voice_ch_char_Baiheng_vo_topic_01_3"
   },
   VoiceType = 1,
 }
@@ -4921,14 +4912,13 @@ r6_0[10268] = {
   UnitId = 82401,
   VoiceDes = {
     "VoiceDes001",
-    "VoiceDes082",
-    "VoiceDes031",
-    "VoiceDes028"
+    "VoiceDes080",
+    "VoiceDes034"
   },
   VoiceId = 10268,
-  VoiceRes = r0_0.RT_11,
+  VoiceRes = r0_0.RT_58,
   VoiceText = {
-    "voice_ch_char_Baiheng_vo_topic_03_1"
+    "voice_ch_char_Baiheng_vo_topic_01_4"
   },
   VoiceType = 1,
 }
@@ -4937,14 +4927,13 @@ r6_0[10269] = {
   UnitId = 82401,
   VoiceDes = {
     "VoiceDes001",
-    "VoiceDes082",
-    "VoiceDes032",
-    "VoiceDes028"
+    "VoiceDes081",
+    "VoiceDes031"
   },
   VoiceId = 10269,
-  VoiceRes = r0_0.RT_12,
+  VoiceRes = r0_0.RT_8,
   VoiceText = {
-    "voice_ch_char_Baiheng_vo_topic_03_2"
+    "voice_ch_char_Baiheng_vo_topic_02_1"
   },
   VoiceType = 1,
 }
@@ -4953,14 +4942,13 @@ r6_0[10270] = {
   UnitId = 82401,
   VoiceDes = {
     "VoiceDes001",
-    "VoiceDes082",
-    "VoiceDes033",
-    "VoiceDes028"
+    "VoiceDes081",
+    "VoiceDes032"
   },
   VoiceId = 10270,
-  VoiceRes = r0_0.RT_65,
+  VoiceRes = r0_0.RT_10,
   VoiceText = {
-    "voice_ch_char_Baiheng_vo_topic_03_3"
+    "voice_ch_char_Baiheng_vo_topic_02_2"
   },
   VoiceType = 1,
 }
@@ -4970,13 +4958,12 @@ r6_0[10271] = {
   VoiceDes = {
     "VoiceDes001",
     "VoiceDes082",
-    "VoiceDes034",
-    "VoiceDes028"
+    "VoiceDes031"
   },
   VoiceId = 10271,
-  VoiceRes = r0_0.RT_67,
+  VoiceRes = r0_0.RT_11,
   VoiceText = {
-    "voice_ch_char_Baiheng_vo_topic_03_4"
+    "voice_ch_char_Baiheng_vo_topic_03_1"
   },
   VoiceType = 1,
 }
@@ -4985,14 +4972,13 @@ r6_0[10272] = {
   UnitId = 82401,
   VoiceDes = {
     "VoiceDes001",
-    "VoiceDes083",
-    "VoiceDes031",
-    "VoiceDes028"
+    "VoiceDes082",
+    "VoiceDes032"
   },
   VoiceId = 10272,
-  VoiceRes = r0_0.RT_13,
+  VoiceRes = r0_0.RT_12,
   VoiceText = {
-    "voice_ch_char_Baiheng_vo_topic_04_1"
+    "voice_ch_char_Baiheng_vo_topic_03_2"
   },
   VoiceType = 1,
 }
@@ -5001,14 +4987,13 @@ r6_0[10273] = {
   UnitId = 82401,
   VoiceDes = {
     "VoiceDes001",
-    "VoiceDes083",
-    "VoiceDes032",
-    "VoiceDes028"
+    "VoiceDes082",
+    "VoiceDes033"
   },
   VoiceId = 10273,
-  VoiceRes = r0_0.RT_14,
+  VoiceRes = r0_0.RT_65,
   VoiceText = {
-    "voice_ch_char_Baiheng_vo_topic_04_2"
+    "voice_ch_char_Baiheng_vo_topic_03_3"
   },
   VoiceType = 1,
 }
@@ -5017,235 +5002,268 @@ r6_0[10274] = {
   UnitId = 82401,
   VoiceDes = {
     "VoiceDes001",
-    "VoiceDes083",
-    "VoiceDes033",
-    "VoiceDes028"
+    "VoiceDes082",
+    "VoiceDes034"
   },
   VoiceId = 10274,
-  VoiceRes = r0_0.RT_15,
+  VoiceRes = r0_0.RT_67,
   VoiceText = {
-    "voice_ch_char_Baiheng_vo_topic_04_3"
+    "voice_ch_char_Baiheng_vo_topic_03_4"
   },
   VoiceType = 1,
 }
 r6_0[10275] = {
   CharId = 2401,
   UnitId = 82401,
-  VoiceDes = r0_0.RT_19,
+  VoiceDes = {
+    "VoiceDes001",
+    "VoiceDes083",
+    "VoiceDes031"
+  },
   VoiceId = 10275,
+  VoiceRes = r0_0.RT_13,
+  VoiceText = {
+    "voice_ch_char_Baiheng_vo_topic_04_1"
+  },
+  VoiceType = 1,
+}
+r6_0[10276] = {
+  CharId = 2401,
+  UnitId = 82401,
+  VoiceDes = {
+    "VoiceDes001",
+    "VoiceDes083",
+    "VoiceDes032"
+  },
+  VoiceId = 10276,
+  VoiceRes = r0_0.RT_14,
+  VoiceText = {
+    "voice_ch_char_Baiheng_vo_topic_04_2"
+  },
+  VoiceType = 1,
+}
+r6_0[10277] = {
+  CharId = 2401,
+  UnitId = 82401,
+  VoiceDes = {
+    "VoiceDes001",
+    "VoiceDes083",
+    "VoiceDes033"
+  },
+  VoiceId = 10277,
+  VoiceRes = r0_0.RT_15,
+  VoiceText = {
+    "voice_ch_char_Baiheng_vo_topic_04_3"
+  },
+  VoiceType = 1,
+}
+r6_0[10278] = {
+  CharId = 2401,
+  UnitId = 82401,
+  VoiceDes = r0_0.RT_19,
+  VoiceId = 10278,
   VoiceRes = r0_0.RT_20,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_idle"
   },
   VoiceType = 1,
 }
-r6_0[10276] = {
+r6_0[10279] = {
   CharId = 2401,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 82401,
   UnlockDialogue = 90110501,
-  VoiceDes = {
-    "VoiceDes001",
-    "VoiceDes041",
-    "VoiceDes028"
-  },
-  VoiceId = 10276,
+  VoiceDes = r0_0.RT_21,
+  VoiceId = 10279,
   VoiceRes = r0_0.RT_71,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_companio_01"
   },
   VoiceType = 1,
 }
-r6_0[10278] = {
+r6_0[10281] = {
   CharId = 2401,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 82401,
   UnlockDialogue = 90110701,
-  VoiceDes = {
-    "VoiceDes001",
-    "VoiceDes043",
-    "VoiceDes028"
-  },
-  VoiceId = 10278,
+  VoiceDes = r0_0.RT_26,
+  VoiceId = 10281,
   VoiceRes = r0_0.RT_25,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_companio_03"
   },
   VoiceType = 1,
 }
-r6_0[10279] = {
+r6_0[10282] = {
   CharId = 2401,
   UnitId = 82401,
   VoiceDes = r0_0.RT_27,
-  VoiceId = 10279,
+  VoiceId = 10282,
   VoiceRes = r0_0.RT_28,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_birthday"
   },
   VoiceType = 1,
 }
-r6_0[10280] = {
+r6_0[10283] = {
   CharId = 2401,
   UnitId = 82401,
   VoiceDes = r0_0.RT_29,
-  VoiceId = 10280,
+  VoiceId = 10283,
   VoiceRes = r0_0.RT_30,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_appear"
   },
   VoiceType = 2,
 }
-r6_0[10281] = {
+r6_0[10284] = {
   CharId = 2401,
   UnitId = 82401,
-  VoiceDes = {
-    "VoiceDes007",
-    "VoiceDes028"
-  },
-  VoiceId = 10281,
+  VoiceDes = r0_0.RT_31,
+  VoiceId = 10284,
   VoiceRes = r0_0.RT_32,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_lvup"
   },
   VoiceType = 2,
 }
-r6_0[10282] = {
+r6_0[10285] = {
   CharId = 2401,
   UnitId = 82401,
   VoiceDes = r0_0.RT_33,
-  VoiceId = 10282,
+  VoiceId = 10285,
   VoiceRes = r0_0.RT_34,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_battlestart"
   },
   VoiceType = 2,
 }
-r6_0[10283] = {
+r6_0[10286] = {
   CharId = 2401,
   UnitId = 82401,
   VoiceDes = r0_0.RT_35,
-  VoiceId = 10283,
+  VoiceId = 10286,
   VoiceRes = r0_0.RT_36,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_battleidle"
   },
   VoiceType = 2,
 }
-r6_0[10284] = {
+r6_0[10287] = {
   CharId = 2401,
   UnitId = 82401,
   VoiceDes = r0_0.RT_75,
-  VoiceId = 10284,
+  VoiceId = 10287,
   VoiceRes = r0_0.RT_76,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_be_hit_heavy_r01"
   },
   VoiceType = 2,
 }
-r6_0[10285] = {
+r6_0[10288] = {
   CharId = 2401,
   UnitId = 82401,
   VoiceDes = r0_0.RT_37,
-  VoiceId = 10285,
+  VoiceId = 10288,
   VoiceRes = r0_0.RT_38,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_skill01_r01"
   },
   VoiceType = 2,
 }
-r6_0[10286] = {
+r6_0[10289] = {
   CharId = 2401,
   UnitId = 82401,
   VoiceDes = r0_0.RT_39,
-  VoiceId = 10286,
+  VoiceId = 10289,
   VoiceRes = r0_0.RT_40,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_skill01_r02"
   },
   VoiceType = 2,
 }
-r6_0[10287] = {
+r6_0[10290] = {
   CharId = 2401,
   UnitId = 82401,
   VoiceDes = r0_0.RT_41,
-  VoiceId = 10287,
+  VoiceId = 10290,
   VoiceRes = r0_0.RT_42,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_skill02_r01"
   },
   VoiceType = 2,
 }
-r6_0[10288] = {
+r6_0[10291] = {
   CharId = 2401,
   UnitId = 82401,
   VoiceDes = r0_0.RT_43,
-  VoiceId = 10288,
+  VoiceId = 10291,
   VoiceRes = r0_0.RT_44,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_skill02_r02"
   },
   VoiceType = 2,
 }
-r6_0[10289] = {
+r6_0[10292] = {
   CharId = 2401,
   UnitId = 82401,
   VoiceDes = r0_0.RT_45,
-  VoiceId = 10289,
+  VoiceId = 10292,
   VoiceRes = r0_0.RT_46,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_skill02_r03"
   },
   VoiceType = 2,
 }
-r6_0[10290] = {
+r6_0[10293] = {
   CharId = 2401,
   UnitId = 82401,
   VoiceDes = r0_0.RT_47,
-  VoiceId = 10290,
+  VoiceId = 10293,
   VoiceRes = r0_0.RT_48,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_die_r01"
   },
   VoiceType = 2,
 }
-r6_0[10291] = {
+r6_0[10294] = {
   CharId = 2401,
   UnitId = 82401,
   VoiceDes = r0_0.RT_49,
-  VoiceId = 10291,
+  VoiceId = 10294,
   VoiceRes = r0_0.RT_50,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_die_r02"
   },
   VoiceType = 2,
 }
-r6_0[10292] = {
+r6_0[10295] = {
   CharId = 2401,
   UnitId = 82401,
   VoiceDes = r0_0.RT_51,
-  VoiceId = 10292,
+  VoiceId = 10295,
   VoiceRes = r0_0.RT_52,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_revive"
   },
   VoiceType = 2,
 }
-r6_0[10293] = {
+r6_0[10296] = {
   CharId = 2401,
   UnitId = 82401,
   VoiceDes = r0_0.RT_53,
-  VoiceId = 10293,
+  VoiceId = 10296,
   VoiceRes = r0_0.RT_54,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_victory"
   },
   VoiceType = 2,
 }
-r6_0[10294] = {
+r6_0[10297] = {
   CharId = 2401,
   UnitId = 82401,
   VoiceDes = r0_0.RT_55,
-  VoiceId = 10294,
+  VoiceId = 10297,
   VoiceRes = r0_0.RT_56,
   VoiceText = {
     "voice_ch_char_Baiheng_vo_fail"
@@ -5284,7 +5302,7 @@ r6_0[10115] = {
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83101,
   UnlockDialogue = 90130101,
-  VoiceDes = r0_0.RT_93,
+  VoiceDes = r0_0.RT_94,
   VoiceId = 10115,
   VoiceRes = r0_0.RT_5,
   VoiceText = {
@@ -5298,7 +5316,7 @@ r6_0[10116] = {
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83101,
   UnlockDialogue = 90130104,
-  VoiceDes = r0_0.RT_94,
+  VoiceDes = r0_0.RT_95,
   VoiceId = 10116,
   VoiceRes = r0_0.RT_6,
   VoiceText = {
@@ -5687,30 +5705,30 @@ r6_0[10145] = {
 r4_0[r5_0] = r6_0
 r5_0 = 3103
 r6_0 = {}
-r6_0[10487] = {
+r6_0[10490] = {
   CharId = 3103,
   GachaVoicePart = 1,
   UnitId = 83103,
   VoiceDes = r0_0.RT_1,
-  VoiceId = 10487,
+  VoiceId = 10490,
   VoiceRes = r0_0.RT_2,
   VoiceText = {
     "voice_ch_char_Yeer_vo_gain"
   },
   VoiceType = 1,
 }
-r6_0[10488] = {
+r6_0[10491] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_3,
-  VoiceId = 10488,
+  VoiceId = 10491,
   VoiceRes = r0_0.RT_4,
   VoiceText = {
     "voice_ch_char_Yeer_vo_welcome"
   },
   VoiceType = 1,
 }
-r6_0[10489] = {
+r6_0[10492] = {
   CharId = 3103,
   Dialogue = 901800011,
   LockedDes = "VoiceLocked_Dialogue",
@@ -5721,14 +5739,14 @@ r6_0[10489] = {
     "VoiceDes094",
     "VoiceDes031"
   },
-  VoiceId = 10489,
+  VoiceId = 10492,
   VoiceRes = r0_0.RT_5,
   VoiceText = {
     "voice_ch_char_Yeer_vo_topic_01_1"
   },
   VoiceType = 1,
 }
-r6_0[10490] = {
+r6_0[10493] = {
   CharId = 3103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83103,
@@ -5738,14 +5756,14 @@ r6_0[10490] = {
     "VoiceDes094",
     "VoiceDes032"
   },
-  VoiceId = 10490,
+  VoiceId = 10493,
   VoiceRes = r0_0.RT_6,
   VoiceText = {
     "voice_ch_char_Yeer_vo_topic_01_2"
   },
   VoiceType = 1,
 }
-r6_0[10491] = {
+r6_0[10494] = {
   CharId = 3103,
   Dialogue = 90180104,
   LockedDes = "VoiceLocked_Dialogue",
@@ -5756,14 +5774,14 @@ r6_0[10491] = {
     "VoiceDes094",
     "VoiceDes033"
   },
-  VoiceId = 10491,
+  VoiceId = 10494,
   VoiceRes = r0_0.RT_57,
   VoiceText = {
     "voice_ch_char_Yeer_vo_topic_01_3"
   },
   VoiceType = 1,
 }
-r6_0[10492] = {
+r6_0[10495] = {
   CharId = 3103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83103,
@@ -5773,14 +5791,14 @@ r6_0[10492] = {
     "VoiceDes094",
     "VoiceDes034"
   },
-  VoiceId = 10492,
+  VoiceId = 10495,
   VoiceRes = r0_0.RT_58,
   VoiceText = {
     "voice_ch_char_Yeer_vo_topic_01_4"
   },
   VoiceType = 1,
 }
-r6_0[10493] = {
+r6_0[10496] = {
   CharId = 3103,
   Dialogue = 901800012,
   LockedDes = "VoiceLocked_Dialogue",
@@ -5791,14 +5809,14 @@ r6_0[10493] = {
     "VoiceDes095",
     "VoiceDes031"
   },
-  VoiceId = 10493,
+  VoiceId = 10496,
   VoiceRes = r0_0.RT_8,
   VoiceText = {
     "voice_ch_char_Yeer_vo_topic_02_1"
   },
   VoiceType = 1,
 }
-r6_0[10494] = {
+r6_0[10497] = {
   CharId = 3103,
   Dialogue = 90180203,
   LockedDes = "VoiceLocked_Dialogue",
@@ -5809,14 +5827,14 @@ r6_0[10494] = {
     "VoiceDes095",
     "VoiceDes032"
   },
-  VoiceId = 10494,
+  VoiceId = 10497,
   VoiceRes = r0_0.RT_10,
   VoiceText = {
     "voice_ch_char_Yeer_vo_topic_02_2"
   },
   VoiceType = 1,
 }
-r6_0[10495] = {
+r6_0[10498] = {
   CharId = 3103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83103,
@@ -5826,14 +5844,14 @@ r6_0[10495] = {
     "VoiceDes095",
     "VoiceDes033"
   },
-  VoiceId = 10495,
+  VoiceId = 10498,
   VoiceRes = r0_0.RT_61,
   VoiceText = {
     "voice_ch_char_Yeer_vo_topic_02_3"
   },
   VoiceType = 1,
 }
-r6_0[10496] = {
+r6_0[10499] = {
   CharId = 3103,
   Dialogue = 901800013,
   LockedDes = "VoiceLocked_Dialogue",
@@ -5844,14 +5862,14 @@ r6_0[10496] = {
     "VoiceDes096",
     "VoiceDes031"
   },
-  VoiceId = 10496,
+  VoiceId = 10499,
   VoiceRes = r0_0.RT_11,
   VoiceText = {
     "voice_ch_char_Yeer_vo_topic_03_1"
   },
   VoiceType = 1,
 }
-r6_0[10497] = {
+r6_0[10500] = {
   CharId = 3103,
   Dialogue = 90180303,
   LockedDes = "VoiceLocked_Dialogue",
@@ -5862,14 +5880,14 @@ r6_0[10497] = {
     "VoiceDes096",
     "VoiceDes032"
   },
-  VoiceId = 10497,
+  VoiceId = 10500,
   VoiceRes = r0_0.RT_12,
   VoiceText = {
     "voice_ch_char_Yeer_vo_topic_03_2"
   },
   VoiceType = 1,
 }
-r6_0[10498] = {
+r6_0[10501] = {
   CharId = 3103,
   Dialogue = 901800014,
   LockedDes = "VoiceLocked_Dialogue",
@@ -5880,14 +5898,14 @@ r6_0[10498] = {
     "VoiceDes097",
     "VoiceDes031"
   },
-  VoiceId = 10498,
+  VoiceId = 10501,
   VoiceRes = r0_0.RT_13,
   VoiceText = {
     "voice_ch_char_Yeer_vo_topic_04_1"
   },
   VoiceType = 1,
 }
-r6_0[10499] = {
+r6_0[10502] = {
   CharId = 3103,
   Dialogue = 90180403,
   LockedDes = "VoiceLocked_Dialogue",
@@ -5898,14 +5916,14 @@ r6_0[10499] = {
     "VoiceDes097",
     "VoiceDes032"
   },
-  VoiceId = 10499,
+  VoiceId = 10502,
   VoiceRes = r0_0.RT_14,
   VoiceText = {
     "voice_ch_char_Yeer_vo_topic_04_2"
   },
   VoiceType = 1,
 }
-r6_0[10500] = {
+r6_0[10503] = {
   CharId = 3103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83103,
@@ -5915,14 +5933,14 @@ r6_0[10500] = {
     "VoiceDes097",
     "VoiceDes033"
   },
-  VoiceId = 10500,
+  VoiceId = 10503,
   VoiceRes = r0_0.RT_15,
   VoiceText = {
     "voice_ch_char_Yeer_vo_topic_04_3"
   },
   VoiceType = 1,
 }
-r6_0[10501] = {
+r6_0[10504] = {
   CharId = 3103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83103,
@@ -5932,93 +5950,93 @@ r6_0[10501] = {
     "VoiceDes097",
     "VoiceDes034"
   },
-  VoiceId = 10501,
+  VoiceId = 10504,
   VoiceRes = r0_0.RT_83,
   VoiceText = {
     "voice_ch_char_Yeer_vo_topic_04_4"
   },
   VoiceType = 1,
 }
-r6_0[10502] = {
+r6_0[10505] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_19,
-  VoiceId = 10502,
+  VoiceId = 10505,
   VoiceRes = r0_0.RT_20,
   VoiceText = {
     "voice_ch_char_Yeer_vo_idle"
   },
   VoiceType = 1,
 }
-r6_0[10503] = {
+r6_0[10506] = {
   CharId = 3103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83103,
   UnlockDialogue = 90180501,
   VoiceDes = r0_0.RT_21,
-  VoiceId = 10503,
+  VoiceId = 10506,
   VoiceRes = r0_0.RT_71,
   VoiceText = {
     "voice_ch_char_Yeer_vo_companio_01"
   },
   VoiceType = 1,
 }
-r6_0[10504] = {
+r6_0[10507] = {
   CharId = 3103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83103,
   UnlockDialogue = 90180601,
   VoiceDes = r0_0.RT_24,
-  VoiceId = 10504,
+  VoiceId = 10507,
   VoiceRes = r0_0.RT_72,
   VoiceText = {
     "voice_ch_char_Yeer_vo_companio_02"
   },
   VoiceType = 1,
 }
-r6_0[10505] = {
+r6_0[10508] = {
   CharId = 3103,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83103,
   UnlockDialogue = 90180701,
   VoiceDes = r0_0.RT_26,
-  VoiceId = 10505,
+  VoiceId = 10508,
   VoiceRes = r0_0.RT_25,
   VoiceText = {
     "voice_ch_char_Yeer_vo_companio_03"
   },
   VoiceType = 1,
 }
-r6_0[10506] = {
+r6_0[10509] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_29,
-  VoiceId = 10506,
+  VoiceId = 10509,
   VoiceRes = r0_0.RT_30,
   VoiceText = {
     "voice_ch_char_Yeer_vo_appear"
   },
   VoiceType = 2,
 }
-r6_0[10507] = {
+r6_0[10510] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_31,
-  VoiceId = 10507,
+  VoiceId = 10510,
   VoiceRes = r0_0.RT_32,
   VoiceText = {
     "voice_ch_char_Yeer_vo_lvup"
   },
   VoiceType = 2,
 }
-r6_0[10508] = {
+r6_0[10511] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = {
     "VoiceDes008",
     "VoiceDes031"
   },
-  VoiceId = 10508,
+  VoiceId = 10511,
   VoiceRes = {
     "vo_battlestart_r01"
   },
@@ -6027,14 +6045,14 @@ r6_0[10508] = {
   },
   VoiceType = 2,
 }
-r6_0[10509] = {
+r6_0[10512] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = {
     "VoiceDes008",
     "VoiceDes032"
   },
-  VoiceId = 10509,
+  VoiceId = 10512,
   VoiceRes = {
     "vo_battlestart_r02"
   },
@@ -6043,154 +6061,154 @@ r6_0[10509] = {
   },
   VoiceType = 2,
 }
-r6_0[10510] = {
+r6_0[10513] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_35,
-  VoiceId = 10510,
+  VoiceId = 10513,
   VoiceRes = r0_0.RT_36,
   VoiceText = {
     "voice_ch_char_Yeer_vo_battleidle"
   },
   VoiceType = 2,
 }
-r6_0[10511] = {
+r6_0[10514] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_75,
-  VoiceId = 10511,
+  VoiceId = 10514,
   VoiceRes = r0_0.RT_76,
   VoiceText = {
     "voice_ch_char_Yeer_vo_be_hit_heavy_r01"
   },
   VoiceType = 2,
 }
-r6_0[10512] = {
+r6_0[10515] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_77,
-  VoiceId = 10512,
+  VoiceId = 10515,
   VoiceRes = r0_0.RT_78,
   VoiceText = {
     "voice_ch_char_Yeer_vo_be_hit_heavy_r02"
   },
   VoiceType = 2,
 }
-r6_0[10513] = {
+r6_0[10516] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_37,
-  VoiceId = 10513,
+  VoiceId = 10516,
   VoiceRes = r0_0.RT_38,
   VoiceText = {
     "voice_ch_char_Yeer_vo_skill01_r01"
   },
   VoiceType = 2,
 }
-r6_0[10514] = {
+r6_0[10517] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_39,
-  VoiceId = 10514,
+  VoiceId = 10517,
   VoiceRes = r0_0.RT_40,
   VoiceText = {
     "voice_ch_char_Yeer_vo_skill01_r02"
   },
   VoiceType = 2,
 }
-r6_0[10515] = {
+r6_0[10518] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_41,
-  VoiceId = 10515,
+  VoiceId = 10518,
   VoiceRes = r0_0.RT_42,
   VoiceText = {
     "voice_ch_char_Yeer_vo_skill02_r01"
   },
   VoiceType = 2,
 }
-r6_0[10516] = {
+r6_0[10519] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_43,
-  VoiceId = 10516,
+  VoiceId = 10519,
   VoiceRes = r0_0.RT_44,
   VoiceText = {
     "voice_ch_char_Yeer_vo_skill02_r02"
   },
   VoiceType = 2,
 }
-r6_0[10517] = {
+r6_0[10520] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_45,
-  VoiceId = 10517,
+  VoiceId = 10520,
   VoiceRes = r0_0.RT_46,
   VoiceText = {
     "voice_ch_char_Yeer_vo_skill02_r03"
   },
   VoiceType = 2,
 }
-r6_0[10518] = {
+r6_0[10521] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_47,
-  VoiceId = 10518,
+  VoiceId = 10521,
   VoiceRes = r0_0.RT_48,
   VoiceText = {
     "voice_ch_char_Yeer_vo_die_r01"
   },
   VoiceType = 2,
 }
-r6_0[10519] = {
+r6_0[10522] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_49,
-  VoiceId = 10519,
+  VoiceId = 10522,
   VoiceRes = r0_0.RT_50,
   VoiceText = {
     "voice_ch_char_Yeer_vo_die_r02"
   },
   VoiceType = 2,
 }
-r6_0[10520] = {
+r6_0[10523] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_51,
-  VoiceId = 10520,
+  VoiceId = 10523,
   VoiceRes = r0_0.RT_52,
   VoiceText = {
     "voice_ch_char_Yeer_vo_revive"
   },
   VoiceType = 2,
 }
-r6_0[10521] = {
+r6_0[10524] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_53,
-  VoiceId = 10521,
+  VoiceId = 10524,
   VoiceRes = r0_0.RT_54,
   VoiceText = {
     "voice_ch_char_Yeer_vo_victory"
   },
   VoiceType = 2,
 }
-r6_0[10522] = {
+r6_0[10525] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_55,
-  VoiceId = 10522,
+  VoiceId = 10525,
   VoiceRes = r0_0.RT_56,
   VoiceText = {
     "voice_ch_char_Yeer_vo_fail"
   },
   VoiceType = 2,
 }
-r6_0[10523] = {
+r6_0[10526] = {
   CharId = 3103,
   UnitId = 83103,
   VoiceDes = r0_0.RT_27,
-  VoiceId = 10523,
+  VoiceId = 10526,
   VoiceRes = r0_0.RT_28,
   VoiceText = {
     "voice_ch_char_Yeer_vo_birthday"
@@ -6200,30 +6218,30 @@ r6_0[10523] = {
 r4_0[r5_0] = r6_0
 r5_0 = 3201
 r6_0 = {}
-r6_0[10524] = {
+r6_0[10527] = {
   CharId = 3201,
   GachaVoicePart = 1,
   UnitId = 83201,
   VoiceDes = r0_0.RT_1,
-  VoiceId = 10524,
+  VoiceId = 10527,
   VoiceRes = r0_0.RT_2,
   VoiceText = {
     "voice_ch_char_Haier_vo_gain"
   },
   VoiceType = 1,
 }
-r6_0[10525] = {
+r6_0[10528] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_3,
-  VoiceId = 10525,
+  VoiceId = 10528,
   VoiceRes = r0_0.RT_4,
   VoiceText = {
     "voice_ch_char_Haier_vo_welcome"
   },
   VoiceType = 1,
 }
-r6_0[10526] = {
+r6_0[10529] = {
   CharId = 3201,
   Dialogue = 900600011,
   LockedDes = "VoiceLocked_Dialogue",
@@ -6234,14 +6252,14 @@ r6_0[10526] = {
     "VoiceDes108",
     "VoiceDes031"
   },
-  VoiceId = 10526,
+  VoiceId = 10529,
   VoiceRes = r0_0.RT_5,
   VoiceText = {
     "voice_ch_char_Haier_vo_topic_01_1"
   },
   VoiceType = 1,
 }
-r6_0[10527] = {
+r6_0[10530] = {
   CharId = 3201,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83201,
@@ -6251,14 +6269,14 @@ r6_0[10527] = {
     "VoiceDes108",
     "VoiceDes032"
   },
-  VoiceId = 10527,
+  VoiceId = 10530,
   VoiceRes = r0_0.RT_6,
   VoiceText = {
     "voice_ch_char_Haier_vo_topic_01_2"
   },
   VoiceType = 1,
 }
-r6_0[10528] = {
+r6_0[10531] = {
   CharId = 3201,
   Dialogue = 90060103,
   LockedDes = "VoiceLocked_Dialogue",
@@ -6269,14 +6287,14 @@ r6_0[10528] = {
     "VoiceDes108",
     "VoiceDes033"
   },
-  VoiceId = 10528,
+  VoiceId = 10531,
   VoiceRes = r0_0.RT_57,
   VoiceText = {
     "voice_ch_char_Haier_vo_topic_01_3"
   },
   VoiceType = 1,
 }
-r6_0[10529] = {
+r6_0[10532] = {
   CharId = 3201,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83201,
@@ -6286,41 +6304,41 @@ r6_0[10529] = {
     "VoiceDes108",
     "VoiceDes034"
   },
-  VoiceId = 10529,
+  VoiceId = 10532,
   VoiceRes = r0_0.RT_58,
   VoiceText = {
     "voice_ch_char_Haier_vo_topic_01_4"
   },
   VoiceType = 1,
 }
-r6_0[10530] = {
+r6_0[10533] = {
   CharId = 3201,
   Dialogue = 900600012,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83201,
   UnlockDialogue = 90060201,
   VoiceDes = r0_0.RT_7,
-  VoiceId = 10530,
+  VoiceId = 10533,
   VoiceRes = r0_0.RT_8,
   VoiceText = {
     "voice_ch_char_Haier_vo_topic_02_1"
   },
   VoiceType = 1,
 }
-r6_0[10531] = {
+r6_0[10534] = {
   CharId = 3201,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83201,
   UnlockDialogue = 90060202,
   VoiceDes = r0_0.RT_9,
-  VoiceId = 10531,
+  VoiceId = 10534,
   VoiceRes = r0_0.RT_10,
   VoiceText = {
     "voice_ch_char_Haier_vo_topic_02_2"
   },
   VoiceType = 1,
 }
-r6_0[10532] = {
+r6_0[10535] = {
   CharId = 3201,
   Dialogue = 90060203,
   LockedDes = "VoiceLocked_Dialogue",
@@ -6331,41 +6349,41 @@ r6_0[10532] = {
     "VoiceDes057",
     "VoiceDes033"
   },
-  VoiceId = 10532,
+  VoiceId = 10535,
   VoiceRes = r0_0.RT_61,
   VoiceText = {
     "voice_ch_char_Haier_vo_topic_02_3"
   },
   VoiceType = 1,
 }
-r6_0[10533] = {
+r6_0[10536] = {
   CharId = 3201,
   Dialogue = 900600013,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83201,
   UnlockDialogue = 90060301,
-  VoiceDes = r0_0.RT_95,
-  VoiceId = 10533,
+  VoiceDes = r0_0.RT_96,
+  VoiceId = 10536,
   VoiceRes = r0_0.RT_11,
   VoiceText = {
     "voice_ch_char_Haier_vo_topic_03_1"
   },
   VoiceType = 1,
 }
-r6_0[10534] = {
+r6_0[10537] = {
   CharId = 3201,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83201,
   UnlockDialogue = 90060302,
-  VoiceDes = r0_0.RT_96,
-  VoiceId = 10534,
+  VoiceDes = r0_0.RT_97,
+  VoiceId = 10537,
   VoiceRes = r0_0.RT_12,
   VoiceText = {
     "voice_ch_char_Haier_vo_topic_03_2"
   },
   VoiceType = 1,
 }
-r6_0[10535] = {
+r6_0[10538] = {
   CharId = 3201,
   Dialogue = 90060303,
   LockedDes = "VoiceLocked_Dialogue",
@@ -6376,14 +6394,14 @@ r6_0[10535] = {
     "VoiceDes109",
     "VoiceDes033"
   },
-  VoiceId = 10535,
+  VoiceId = 10538,
   VoiceRes = r0_0.RT_65,
   VoiceText = {
     "voice_ch_char_Haier_vo_topic_03_3"
   },
   VoiceType = 1,
 }
-r6_0[10536] = {
+r6_0[10539] = {
   CharId = 3201,
   Dialogue = 900600014,
   LockedDes = "VoiceLocked_Dialogue",
@@ -6394,14 +6412,14 @@ r6_0[10536] = {
     "VoiceDes110",
     "VoiceDes031"
   },
-  VoiceId = 10536,
+  VoiceId = 10539,
   VoiceRes = r0_0.RT_13,
   VoiceText = {
     "voice_ch_char_Haier_vo_topic_04_1"
   },
   VoiceType = 1,
 }
-r6_0[10537] = {
+r6_0[10540] = {
   CharId = 3201,
   Dialogue = 90060402,
   LockedDes = "VoiceLocked_Dialogue",
@@ -6412,14 +6430,14 @@ r6_0[10537] = {
     "VoiceDes110",
     "VoiceDes032"
   },
-  VoiceId = 10537,
+  VoiceId = 10540,
   VoiceRes = r0_0.RT_14,
   VoiceText = {
     "voice_ch_char_Haier_vo_topic_04_2"
   },
   VoiceType = 1,
 }
-r6_0[10538] = {
+r6_0[10541] = {
   CharId = 3201,
   Dialogue = 900600015,
   LockedDes = "VoiceLocked_Dialogue",
@@ -6430,14 +6448,14 @@ r6_0[10538] = {
     "VoiceDes111",
     "VoiceDes031"
   },
-  VoiceId = 10538,
+  VoiceId = 10541,
   VoiceRes = r0_0.RT_16,
   VoiceText = {
     "voice_ch_char_Haier_vo_topic_05_1"
   },
   VoiceType = 1,
 }
-r6_0[10539] = {
+r6_0[10542] = {
   CharId = 3201,
   Dialogue = 90060502,
   LockedDes = "VoiceLocked_Dialogue",
@@ -6448,14 +6466,14 @@ r6_0[10539] = {
     "VoiceDes111",
     "VoiceDes032"
   },
-  VoiceId = 10539,
+  VoiceId = 10542,
   VoiceRes = r0_0.RT_17,
   VoiceText = {
     "voice_ch_char_Haier_vo_topic_05_2"
   },
   VoiceType = 1,
 }
-r6_0[10540] = {
+r6_0[10543] = {
   CharId = 3201,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83201,
@@ -6465,244 +6483,244 @@ r6_0[10540] = {
     "VoiceDes111",
     "VoiceDes033"
   },
-  VoiceId = 10540,
+  VoiceId = 10543,
   VoiceRes = r0_0.RT_69,
   VoiceText = {
     "voice_ch_char_Haier_vo_topic_05_3"
   },
   VoiceType = 1,
 }
-r6_0[10541] = {
+r6_0[10544] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_19,
-  VoiceId = 10541,
+  VoiceId = 10544,
   VoiceRes = r0_0.RT_20,
   VoiceText = {
     "voice_ch_char_Haier_vo_idle"
   },
   VoiceType = 1,
 }
-r6_0[10542] = {
+r6_0[10545] = {
   CharId = 3201,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83201,
   UnlockDialogue = 90060601,
   VoiceDes = r0_0.RT_21,
-  VoiceId = 10542,
+  VoiceId = 10545,
   VoiceRes = r0_0.RT_71,
   VoiceText = {
     "voice_ch_char_Haier_vo_companio_01"
   },
   VoiceType = 1,
 }
-r6_0[10543] = {
+r6_0[10546] = {
   CharId = 3201,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83201,
   UnlockDialogue = 90060701,
   VoiceDes = r0_0.RT_24,
-  VoiceId = 10543,
+  VoiceId = 10546,
   VoiceRes = r0_0.RT_72,
   VoiceText = {
     "voice_ch_char_Haier_vo_companio_02"
   },
   VoiceType = 1,
 }
-r6_0[10544] = {
+r6_0[10547] = {
   CharId = 3201,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83201,
   UnlockDialogue = 90060801,
   VoiceDes = r0_0.RT_26,
-  VoiceId = 10544,
+  VoiceId = 10547,
   VoiceRes = r0_0.RT_25,
   VoiceText = {
     "voice_ch_char_Haier_vo_companio_03"
   },
   VoiceType = 1,
 }
-r6_0[10545] = {
+r6_0[10548] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_29,
-  VoiceId = 10545,
+  VoiceId = 10548,
   VoiceRes = r0_0.RT_30,
   VoiceText = {
     "voice_ch_char_Haier_vo_appear"
   },
   VoiceType = 2,
 }
-r6_0[10546] = {
+r6_0[10549] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_31,
-  VoiceId = 10546,
+  VoiceId = 10549,
   VoiceRes = r0_0.RT_32,
   VoiceText = {
     "voice_ch_char_Haier_vo_lvup"
   },
   VoiceType = 2,
 }
-r6_0[10547] = {
+r6_0[10550] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_33,
-  VoiceId = 10547,
+  VoiceId = 10550,
   VoiceRes = r0_0.RT_34,
   VoiceText = {
     "voice_ch_char_Haier_vo_battlestart"
   },
   VoiceType = 2,
 }
-r6_0[10548] = {
+r6_0[10551] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_35,
-  VoiceId = 10548,
+  VoiceId = 10551,
   VoiceRes = r0_0.RT_36,
   VoiceText = {
     "voice_ch_char_Haier_vo_battleidle"
   },
   VoiceType = 2,
 }
-r6_0[10549] = {
+r6_0[10552] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_75,
-  VoiceId = 10549,
+  VoiceId = 10552,
   VoiceRes = r0_0.RT_76,
   VoiceText = {
     "voice_ch_char_Haier_vo_be_hit_heavy_r01"
   },
   VoiceType = 2,
 }
-r6_0[10550] = {
+r6_0[10553] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_77,
-  VoiceId = 10550,
+  VoiceId = 10553,
   VoiceRes = r0_0.RT_78,
   VoiceText = {
     "voice_ch_char_Haier_vo_be_hit_heavy_r02"
   },
   VoiceType = 2,
 }
-r6_0[10551] = {
+r6_0[10554] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_37,
-  VoiceId = 10551,
+  VoiceId = 10554,
   VoiceRes = r0_0.RT_38,
   VoiceText = {
     "voice_ch_char_Haier_vo_skill01_r01"
   },
   VoiceType = 2,
 }
-r6_0[10552] = {
+r6_0[10555] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_39,
-  VoiceId = 10552,
+  VoiceId = 10555,
   VoiceRes = r0_0.RT_40,
   VoiceText = {
     "voice_ch_char_Haier_vo_skill01_r02"
   },
   VoiceType = 2,
 }
-r6_0[10553] = {
+r6_0[10556] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_41,
-  VoiceId = 10553,
+  VoiceId = 10556,
   VoiceRes = r0_0.RT_42,
   VoiceText = {
     "voice_ch_char_Haier_vo_skill02_r01"
   },
   VoiceType = 2,
 }
-r6_0[10554] = {
+r6_0[10557] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_43,
-  VoiceId = 10554,
+  VoiceId = 10557,
   VoiceRes = r0_0.RT_44,
   VoiceText = {
     "voice_ch_char_Haier_vo_skill02_r02"
   },
   VoiceType = 2,
 }
-r6_0[10555] = {
+r6_0[10558] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_45,
-  VoiceId = 10555,
+  VoiceId = 10558,
   VoiceRes = r0_0.RT_46,
   VoiceText = {
     "voice_ch_char_Haier_vo_skill02_r03"
   },
   VoiceType = 2,
 }
-r6_0[10556] = {
+r6_0[10559] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_47,
-  VoiceId = 10556,
+  VoiceId = 10559,
   VoiceRes = r0_0.RT_48,
   VoiceText = {
     "voice_ch_char_Haier_vo_die_r01"
   },
   VoiceType = 2,
 }
-r6_0[10557] = {
+r6_0[10560] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_49,
-  VoiceId = 10557,
+  VoiceId = 10560,
   VoiceRes = r0_0.RT_50,
   VoiceText = {
     "voice_ch_char_Haier_vo_die_r02"
   },
   VoiceType = 2,
 }
-r6_0[10558] = {
+r6_0[10561] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_51,
-  VoiceId = 10558,
+  VoiceId = 10561,
   VoiceRes = r0_0.RT_52,
   VoiceText = {
     "voice_ch_char_Haier_vo_revive"
   },
   VoiceType = 2,
 }
-r6_0[10559] = {
+r6_0[10562] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_53,
-  VoiceId = 10559,
+  VoiceId = 10562,
   VoiceRes = r0_0.RT_54,
   VoiceText = {
     "voice_ch_char_Haier_vo_victory"
   },
   VoiceType = 2,
 }
-r6_0[10560] = {
+r6_0[10563] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_55,
-  VoiceId = 10560,
+  VoiceId = 10563,
   VoiceRes = r0_0.RT_56,
   VoiceText = {
     "voice_ch_char_Haier_vo_fail"
   },
   VoiceType = 2,
 }
-r6_0[10561] = {
+r6_0[10564] = {
   CharId = 3201,
   UnitId = 83201,
   VoiceDes = r0_0.RT_27,
-  VoiceId = 10561,
+  VoiceId = 10564,
   VoiceRes = r0_0.RT_28,
   VoiceText = {
     "voice_ch_char_Haier_vo_birthday"
@@ -6712,19 +6730,19 @@ r6_0[10561] = {
 r4_0[r5_0] = r6_0
 r5_0 = 3301
 r6_0 = {}
-r6_0[10406] = {
+r6_0[10409] = {
   CharId = 3301,
   GachaVoicePart = 1,
   UnitId = 83301,
-  VoiceDes = r0_0.RT_97,
-  VoiceId = 10406,
-  VoiceRes = r0_0.RT_92,
+  VoiceDes = r0_0.RT_92,
+  VoiceId = 10409,
+  VoiceRes = r0_0.RT_93,
   VoiceText = {
     "voice_ch_char_Maer_vo_gain_1"
   },
   VoiceType = 1,
 }
-r6_0[10407] = {
+r6_0[10410] = {
   CharId = 3301,
   GachaVoiceCondition = {
     6007
@@ -6732,7 +6750,7 @@ r6_0[10407] = {
   GachaVoicePart = 2,
   UnitId = 83301,
   VoiceDes = r0_0.RT_98,
-  VoiceId = 10407,
+  VoiceId = 10410,
   VoiceRes = {
     "vo_gain_2"
   },
@@ -6741,18 +6759,18 @@ r6_0[10407] = {
   },
   VoiceType = 1,
 }
-r6_0[10408] = {
+r6_0[10411] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_3,
-  VoiceId = 10408,
+  VoiceId = 10411,
   VoiceRes = r0_0.RT_4,
   VoiceText = {
     "voice_ch_char_Maer_vo_welcome"
   },
   VoiceType = 1,
 }
-r6_0[10409] = {
+r6_0[10412] = {
   CharId = 3301,
   Dialogue = 901700011,
   LockedDes = "VoiceLocked_Dialogue",
@@ -6763,14 +6781,14 @@ r6_0[10409] = {
     "VoiceDes098",
     "VoiceDes031"
   },
-  VoiceId = 10409,
+  VoiceId = 10412,
   VoiceRes = r0_0.RT_5,
   VoiceText = {
     "voice_ch_char_Maer_vo_topic_01_1"
   },
   VoiceType = 1,
 }
-r6_0[10410] = {
+r6_0[10413] = {
   CharId = 3301,
   Dialogue = 90170103,
   LockedDes = "VoiceLocked_Dialogue",
@@ -6781,14 +6799,14 @@ r6_0[10410] = {
     "VoiceDes098",
     "VoiceDes032"
   },
-  VoiceId = 10410,
+  VoiceId = 10413,
   VoiceRes = r0_0.RT_6,
   VoiceText = {
     "voice_ch_char_Maer_vo_topic_01_2"
   },
   VoiceType = 1,
 }
-r6_0[10411] = {
+r6_0[10414] = {
   CharId = 3301,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83301,
@@ -6798,14 +6816,14 @@ r6_0[10411] = {
     "VoiceDes098",
     "VoiceDes033"
   },
-  VoiceId = 10411,
+  VoiceId = 10414,
   VoiceRes = r0_0.RT_57,
   VoiceText = {
     "voice_ch_char_Maer_vo_topic_01_3"
   },
   VoiceType = 1,
 }
-r6_0[10412] = {
+r6_0[10415] = {
   CharId = 3301,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83301,
@@ -6815,14 +6833,14 @@ r6_0[10412] = {
     "VoiceDes098",
     "VoiceDes034"
   },
-  VoiceId = 10412,
+  VoiceId = 10415,
   VoiceRes = r0_0.RT_58,
   VoiceText = {
     "voice_ch_char_Maer_vo_topic_01_4"
   },
   VoiceType = 1,
 }
-r6_0[10413] = {
+r6_0[10416] = {
   CharId = 3301,
   Dialogue = 901700012,
   LockedDes = "VoiceLocked_Dialogue",
@@ -6833,14 +6851,14 @@ r6_0[10413] = {
     "VoiceDes099",
     "VoiceDes031"
   },
-  VoiceId = 10413,
+  VoiceId = 10416,
   VoiceRes = r0_0.RT_8,
   VoiceText = {
     "voice_ch_char_Maer_vo_topic_02_1"
   },
   VoiceType = 1,
 }
-r6_0[10414] = {
+r6_0[10417] = {
   CharId = 3301,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83301,
@@ -6850,14 +6868,14 @@ r6_0[10414] = {
     "VoiceDes099",
     "VoiceDes032"
   },
-  VoiceId = 10414,
+  VoiceId = 10417,
   VoiceRes = r0_0.RT_10,
   VoiceText = {
     "voice_ch_char_Maer_vo_topic_02_2"
   },
   VoiceType = 1,
 }
-r6_0[10415] = {
+r6_0[10418] = {
   CharId = 3301,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83301,
@@ -6867,14 +6885,14 @@ r6_0[10415] = {
     "VoiceDes099",
     "VoiceDes033"
   },
-  VoiceId = 10415,
+  VoiceId = 10418,
   VoiceRes = r0_0.RT_61,
   VoiceText = {
     "voice_ch_char_Maer_vo_topic_02_3"
   },
   VoiceType = 1,
 }
-r6_0[10416] = {
+r6_0[10419] = {
   CharId = 3301,
   Dialogue = 90170205,
   LockedDes = "VoiceLocked_Dialogue",
@@ -6885,14 +6903,14 @@ r6_0[10416] = {
     "VoiceDes099",
     "VoiceDes034"
   },
-  VoiceId = 10416,
+  VoiceId = 10419,
   VoiceRes = r0_0.RT_62,
   VoiceText = {
     "voice_ch_char_Maer_vo_topic_02_4"
   },
   VoiceType = 1,
 }
-r6_0[10417] = {
+r6_0[10420] = {
   CharId = 3301,
   Dialogue = 901700013,
   LockedDes = "VoiceLocked_Dialogue",
@@ -6903,14 +6921,14 @@ r6_0[10417] = {
     "VoiceDes100",
     "VoiceDes031"
   },
-  VoiceId = 10417,
+  VoiceId = 10420,
   VoiceRes = r0_0.RT_11,
   VoiceText = {
     "voice_ch_char_Maer_vo_topic_03_1"
   },
   VoiceType = 1,
 }
-r6_0[10418] = {
+r6_0[10421] = {
   CharId = 3301,
   Dialogue = 90170303,
   LockedDes = "VoiceLocked_Dialogue",
@@ -6921,14 +6939,14 @@ r6_0[10418] = {
     "VoiceDes100",
     "VoiceDes032"
   },
-  VoiceId = 10418,
+  VoiceId = 10421,
   VoiceRes = r0_0.RT_12,
   VoiceText = {
     "voice_ch_char_Maer_vo_topic_03_2"
   },
   VoiceType = 1,
 }
-r6_0[10419] = {
+r6_0[10422] = {
   CharId = 3301,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83301,
@@ -6938,14 +6956,14 @@ r6_0[10419] = {
     "VoiceDes100",
     "VoiceDes033"
   },
-  VoiceId = 10419,
+  VoiceId = 10422,
   VoiceRes = r0_0.RT_65,
   VoiceText = {
     "voice_ch_char_Maer_vo_topic_03_3"
   },
   VoiceType = 1,
 }
-r6_0[10420] = {
+r6_0[10423] = {
   CharId = 3301,
   Dialogue = 901700014,
   LockedDes = "VoiceLocked_Dialogue",
@@ -6956,14 +6974,14 @@ r6_0[10420] = {
     "VoiceDes101",
     "VoiceDes031"
   },
-  VoiceId = 10420,
+  VoiceId = 10423,
   VoiceRes = r0_0.RT_13,
   VoiceText = {
     "voice_ch_char_Maer_vo_topic_04_1"
   },
   VoiceType = 1,
 }
-r6_0[10421] = {
+r6_0[10424] = {
   CharId = 3301,
   Dialogue = 90170403,
   LockedDes = "VoiceLocked_Dialogue",
@@ -6974,14 +6992,14 @@ r6_0[10421] = {
     "VoiceDes101",
     "VoiceDes032"
   },
-  VoiceId = 10421,
+  VoiceId = 10424,
   VoiceRes = r0_0.RT_14,
   VoiceText = {
     "voice_ch_char_Maer_vo_topic_04_2"
   },
   VoiceType = 1,
 }
-r6_0[10422] = {
+r6_0[10425] = {
   CharId = 3301,
   Dialogue = 90170405,
   LockedDes = "VoiceLocked_Dialogue",
@@ -6992,62 +7010,38 @@ r6_0[10422] = {
     "VoiceDes101",
     "VoiceDes033"
   },
-  VoiceId = 10422,
+  VoiceId = 10425,
   VoiceRes = r0_0.RT_15,
   VoiceText = {
     "voice_ch_char_Maer_vo_topic_04_3"
   },
   VoiceType = 1,
 }
-r6_0[10423] = {
+r6_0[10426] = {
   CharId = 3301,
   Dialogue = 901700015,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83301,
   UnlockDialogue = 90170501,
   VoiceDes = r0_0.RT_85,
-  VoiceId = 10423,
+  VoiceId = 10426,
   VoiceRes = r0_0.RT_16,
   VoiceText = {
     "voice_ch_char_Maer_vo_topic_05_1"
   },
   VoiceType = 1,
 }
-r6_0[10424] = {
+r6_0[10427] = {
   CharId = 3301,
   Dialogue = 90170503,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83301,
   UnlockDialogue = 90170504,
   VoiceDes = r0_0.RT_86,
-  VoiceId = 10424,
+  VoiceId = 10427,
   VoiceRes = r0_0.RT_17,
   VoiceText = {
     "voice_ch_char_Maer_vo_topic_05_2"
-  },
-  VoiceType = 1,
-}
-r6_0[10425] = {
-  CharId = 3301,
-  LockedDes = "VoiceLocked_Dialogue",
-  UnitId = 83301,
-  UnlockDialogue = 90170505,
-  VoiceDes = r0_0.RT_87,
-  VoiceId = 10425,
-  VoiceRes = r0_0.RT_69,
-  VoiceText = {
-    "voice_ch_char_Maer_vo_topic_05_3"
-  },
-  VoiceType = 1,
-}
-r6_0[10426] = {
-  CharId = 3301,
-  UnitId = 83301,
-  VoiceDes = r0_0.RT_19,
-  VoiceId = 10426,
-  VoiceRes = r0_0.RT_20,
-  VoiceText = {
-    "voice_ch_char_Maer_vo_idle"
   },
   VoiceType = 1,
 }
@@ -7055,222 +7049,246 @@ r6_0[10428] = {
   CharId = 3301,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83301,
+  UnlockDialogue = 90170505,
+  VoiceDes = r0_0.RT_87,
+  VoiceId = 10428,
+  VoiceRes = r0_0.RT_69,
+  VoiceText = {
+    "voice_ch_char_Maer_vo_topic_05_3"
+  },
+  VoiceType = 1,
+}
+r6_0[10429] = {
+  CharId = 3301,
+  UnitId = 83301,
+  VoiceDes = r0_0.RT_19,
+  VoiceId = 10429,
+  VoiceRes = r0_0.RT_20,
+  VoiceText = {
+    "voice_ch_char_Maer_vo_idle"
+  },
+  VoiceType = 1,
+}
+r6_0[10431] = {
+  CharId = 3301,
+  LockedDes = "VoiceLocked_Dialogue",
+  UnitId = 83301,
   UnlockDialogue = 90170701,
   VoiceDes = r0_0.RT_24,
-  VoiceId = 10428,
+  VoiceId = 10431,
   VoiceRes = r0_0.RT_72,
   VoiceText = {
     "voice_ch_char_Maer_vo_companio_02"
   },
   VoiceType = 1,
 }
-r6_0[10429] = {
+r6_0[10432] = {
   CharId = 3301,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83301,
   UnlockDialogue = 90170801,
   VoiceDes = r0_0.RT_26,
-  VoiceId = 10429,
+  VoiceId = 10432,
   VoiceRes = r0_0.RT_25,
   VoiceText = {
     "voice_ch_char_Maer_vo_companio_03"
   },
   VoiceType = 1,
 }
-r6_0[10430] = {
+r6_0[10433] = {
   CharId = 3301,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 83301,
   UnlockDialogue = 90170901,
   VoiceDes = r0_0.RT_73,
-  VoiceId = 10430,
+  VoiceId = 10433,
   VoiceRes = r0_0.RT_74,
   VoiceText = {
     "voice_ch_char_Maer_vo_companio_04"
   },
   VoiceType = 1,
 }
-r6_0[10432] = {
+r6_0[10435] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_29,
-  VoiceId = 10432,
+  VoiceId = 10435,
   VoiceRes = r0_0.RT_30,
   VoiceText = {
     "voice_ch_char_Maer_vo_appear"
   },
   VoiceType = 2,
 }
-r6_0[10433] = {
+r6_0[10436] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_31,
-  VoiceId = 10433,
+  VoiceId = 10436,
   VoiceRes = r0_0.RT_32,
   VoiceText = {
     "voice_ch_char_Maer_vo_lvup"
   },
   VoiceType = 2,
 }
-r6_0[10434] = {
+r6_0[10437] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_33,
-  VoiceId = 10434,
+  VoiceId = 10437,
   VoiceRes = r0_0.RT_34,
   VoiceText = {
     "voice_ch_char_Maer_vo_battlestart"
   },
   VoiceType = 2,
 }
-r6_0[10435] = {
+r6_0[10438] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_35,
-  VoiceId = 10435,
+  VoiceId = 10438,
   VoiceRes = r0_0.RT_36,
   VoiceText = {
     "voice_ch_char_Maer_vo_battleidle"
   },
   VoiceType = 2,
 }
-r6_0[10436] = {
+r6_0[10439] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_75,
-  VoiceId = 10436,
+  VoiceId = 10439,
   VoiceRes = r0_0.RT_76,
   VoiceText = {
     "voice_ch_char_Maer_vo_be_hit_heavy_r01"
   },
   VoiceType = 2,
 }
-r6_0[10437] = {
+r6_0[10440] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_77,
-  VoiceId = 10437,
+  VoiceId = 10440,
   VoiceRes = r0_0.RT_78,
   VoiceText = {
     "voice_ch_char_Maer_vo_be_hit_heavy_r02"
   },
   VoiceType = 2,
 }
-r6_0[10438] = {
+r6_0[10441] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_37,
-  VoiceId = 10438,
+  VoiceId = 10441,
   VoiceRes = r0_0.RT_38,
   VoiceText = {
     "voice_ch_char_Maer_vo_skill01_r01"
   },
   VoiceType = 2,
 }
-r6_0[10439] = {
+r6_0[10442] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_39,
-  VoiceId = 10439,
+  VoiceId = 10442,
   VoiceRes = r0_0.RT_40,
   VoiceText = {
     "voice_ch_char_Maer_vo_skill01_r02"
   },
   VoiceType = 2,
 }
-r6_0[10440] = {
+r6_0[10443] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_41,
-  VoiceId = 10440,
+  VoiceId = 10443,
   VoiceRes = r0_0.RT_42,
   VoiceText = {
     "voice_ch_char_Maer_vo_skill02_r01"
   },
   VoiceType = 2,
 }
-r6_0[10441] = {
+r6_0[10444] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_43,
-  VoiceId = 10441,
+  VoiceId = 10444,
   VoiceRes = r0_0.RT_44,
   VoiceText = {
     "voice_ch_char_Maer_vo_skill02_r02"
   },
   VoiceType = 2,
 }
-r6_0[10442] = {
+r6_0[10445] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_45,
-  VoiceId = 10442,
+  VoiceId = 10445,
   VoiceRes = r0_0.RT_46,
   VoiceText = {
     "voice_ch_char_Maer_vo_skill02_r03"
   },
   VoiceType = 2,
 }
-r6_0[10443] = {
+r6_0[10446] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_47,
-  VoiceId = 10443,
+  VoiceId = 10446,
   VoiceRes = r0_0.RT_48,
   VoiceText = {
     "voice_ch_char_Maer_vo_die_r01"
   },
   VoiceType = 2,
 }
-r6_0[10444] = {
+r6_0[10447] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_49,
-  VoiceId = 10444,
+  VoiceId = 10447,
   VoiceRes = r0_0.RT_50,
   VoiceText = {
     "voice_ch_char_Maer_vo_die_r02"
   },
   VoiceType = 2,
 }
-r6_0[10445] = {
+r6_0[10448] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_51,
-  VoiceId = 10445,
+  VoiceId = 10448,
   VoiceRes = r0_0.RT_52,
   VoiceText = {
     "voice_ch_char_Maer_vo_revive"
   },
   VoiceType = 2,
 }
-r6_0[10446] = {
+r6_0[10449] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_53,
-  VoiceId = 10446,
+  VoiceId = 10449,
   VoiceRes = r0_0.RT_54,
   VoiceText = {
     "voice_ch_char_Maer_vo_victory"
   },
   VoiceType = 2,
 }
-r6_0[10447] = {
+r6_0[10450] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_55,
-  VoiceId = 10447,
+  VoiceId = 10450,
   VoiceRes = r0_0.RT_56,
   VoiceText = {
     "voice_ch_char_Maer_vo_fail"
   },
   VoiceType = 2,
 }
-r6_0[10448] = {
+r6_0[10451] = {
   CharId = 3301,
   UnitId = 83301,
   VoiceDes = r0_0.RT_27,
-  VoiceId = 10448,
+  VoiceId = 10451,
   VoiceRes = r0_0.RT_28,
   VoiceText = {
     "voice_ch_char_Maer_vo_birthday"
@@ -7280,12 +7298,12 @@ r6_0[10448] = {
 r4_0[r5_0] = r6_0
 r5_0 = 4101
 r6_0 = {}
-r6_0[10611] = {
+r6_0[10614] = {
   CharId = 4101,
   GachaVoicePart = 1,
   UnitId = 84101,
-  VoiceDes = r0_0.RT_97,
-  VoiceId = 10611,
+  VoiceDes = r0_0.RT_92,
+  VoiceId = 10614,
   VoiceRes = {
     "vo_gain_01"
   },
@@ -7294,7 +7312,7 @@ r6_0[10611] = {
   },
   VoiceType = 1,
 }
-r6_0[10612] = {
+r6_0[10615] = {
   CharId = 4101,
   GachaVoiceCondition = {
     100307
@@ -7302,7 +7320,7 @@ r6_0[10612] = {
   GachaVoicePart = 2,
   UnitId = 84101,
   VoiceDes = r0_0.RT_98,
-  VoiceId = 10612,
+  VoiceId = 10615,
   VoiceRes = {
     "vo_gain_02"
   },
@@ -7311,18 +7329,18 @@ r6_0[10612] = {
   },
   VoiceType = 1,
 }
-r6_0[10613] = {
+r6_0[10616] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_3,
-  VoiceId = 10613,
+  VoiceId = 10616,
   VoiceRes = r0_0.RT_4,
   VoiceText = {
     "voice_ch_char_Lise_vo_welcome"
   },
   VoiceType = 1,
 }
-r6_0[10614] = {
+r6_0[10617] = {
   CharId = 4101,
   Dialogue = 902100011,
   LockedDes = "VoiceLocked_Dialogue",
@@ -7334,14 +7352,14 @@ r6_0[10614] = {
     "VoiceDes119",
     "VoiceDes031"
   },
-  VoiceId = 10614,
+  VoiceId = 10617,
   VoiceRes = r0_0.RT_5,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_01_1"
   },
   VoiceType = 1,
 }
-r6_0[10615] = {
+r6_0[10618] = {
   CharId = 4101,
   Dialogue = 90210102,
   LockedDes = "VoiceLocked_Dialogue",
@@ -7353,14 +7371,14 @@ r6_0[10615] = {
     "VoiceDes119",
     "VoiceDes032"
   },
-  VoiceId = 10615,
+  VoiceId = 10618,
   VoiceRes = r0_0.RT_6,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_01_2"
   },
   VoiceType = 1,
 }
-r6_0[10616] = {
+r6_0[10619] = {
   CharId = 4101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84101,
@@ -7371,14 +7389,14 @@ r6_0[10616] = {
     "VoiceDes119",
     "VoiceDes033"
   },
-  VoiceId = 10616,
+  VoiceId = 10619,
   VoiceRes = r0_0.RT_57,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_01_3"
   },
   VoiceType = 1,
 }
-r6_0[10617] = {
+r6_0[10620] = {
   CharId = 4101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84101,
@@ -7389,14 +7407,14 @@ r6_0[10617] = {
     "VoiceDes119",
     "VoiceDes034"
   },
-  VoiceId = 10617,
+  VoiceId = 10620,
   VoiceRes = r0_0.RT_58,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_01_4"
   },
   VoiceType = 1,
 }
-r6_0[10618] = {
+r6_0[10621] = {
   CharId = 4101,
   Dialogue = 902100012,
   LockedDes = "VoiceLocked_Dialogue",
@@ -7408,14 +7426,14 @@ r6_0[10618] = {
     "VoiceDes121",
     "VoiceDes031"
   },
-  VoiceId = 10618,
+  VoiceId = 10621,
   VoiceRes = r0_0.RT_8,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_02_1"
   },
   VoiceType = 1,
 }
-r6_0[10619] = {
+r6_0[10622] = {
   CharId = 4101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84101,
@@ -7426,14 +7444,14 @@ r6_0[10619] = {
     "VoiceDes121",
     "VoiceDes032"
   },
-  VoiceId = 10619,
+  VoiceId = 10622,
   VoiceRes = r0_0.RT_10,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_02_2"
   },
   VoiceType = 1,
 }
-r6_0[10620] = {
+r6_0[10623] = {
   CharId = 4101,
   Dialogue = 90210203,
   LockedDes = "VoiceLocked_Dialogue",
@@ -7445,14 +7463,14 @@ r6_0[10620] = {
     "VoiceDes121",
     "VoiceDes033"
   },
-  VoiceId = 10620,
+  VoiceId = 10623,
   VoiceRes = r0_0.RT_61,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_02_3"
   },
   VoiceType = 1,
 }
-r6_0[10621] = {
+r6_0[10624] = {
   CharId = 4101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84101,
@@ -7463,14 +7481,14 @@ r6_0[10621] = {
     "VoiceDes121",
     "VoiceDes034"
   },
-  VoiceId = 10621,
+  VoiceId = 10624,
   VoiceRes = r0_0.RT_62,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_02_4"
   },
   VoiceType = 1,
 }
-r6_0[10622] = {
+r6_0[10625] = {
   CharId = 4101,
   Dialogue = 902100013,
   LockedDes = "VoiceLocked_Dialogue",
@@ -7482,14 +7500,14 @@ r6_0[10622] = {
     "VoiceDes113",
     "VoiceDes031"
   },
-  VoiceId = 10622,
+  VoiceId = 10625,
   VoiceRes = r0_0.RT_11,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_03_1"
   },
   VoiceType = 1,
 }
-r6_0[10623] = {
+r6_0[10626] = {
   CharId = 4101,
   Dialogue = 90210302,
   LockedDes = "VoiceLocked_Dialogue",
@@ -7501,14 +7519,14 @@ r6_0[10623] = {
     "VoiceDes113",
     "VoiceDes032"
   },
-  VoiceId = 10623,
+  VoiceId = 10626,
   VoiceRes = r0_0.RT_12,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_03_2"
   },
   VoiceType = 1,
 }
-r6_0[10624] = {
+r6_0[10627] = {
   CharId = 4101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84101,
@@ -7519,14 +7537,14 @@ r6_0[10624] = {
     "VoiceDes113",
     "VoiceDes033"
   },
-  VoiceId = 10624,
+  VoiceId = 10627,
   VoiceRes = r0_0.RT_65,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_03_3"
   },
   VoiceType = 1,
 }
-r6_0[10625] = {
+r6_0[10628] = {
   CharId = 4101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84101,
@@ -7537,14 +7555,14 @@ r6_0[10625] = {
     "VoiceDes113",
     "VoiceDes034"
   },
-  VoiceId = 10625,
+  VoiceId = 10628,
   VoiceRes = r0_0.RT_67,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_03_4"
   },
   VoiceType = 1,
 }
-r6_0[10626] = {
+r6_0[10629] = {
   CharId = 4101,
   Dialogue = 902100014,
   LockedDes = "VoiceLocked_Dialogue",
@@ -7556,14 +7574,14 @@ r6_0[10626] = {
     "VoiceDes123",
     "VoiceDes031"
   },
-  VoiceId = 10626,
+  VoiceId = 10629,
   VoiceRes = r0_0.RT_13,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_04_1"
   },
   VoiceType = 1,
 }
-r6_0[10627] = {
+r6_0[10630] = {
   CharId = 4101,
   Dialogue = 90210402,
   LockedDes = "VoiceLocked_Dialogue",
@@ -7575,14 +7593,14 @@ r6_0[10627] = {
     "VoiceDes123",
     "VoiceDes032"
   },
-  VoiceId = 10627,
+  VoiceId = 10630,
   VoiceRes = r0_0.RT_14,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_04_2"
   },
   VoiceType = 1,
 }
-r6_0[10628] = {
+r6_0[10631] = {
   CharId = 4101,
   Dialogue = 902100015,
   LockedDes = "VoiceLocked_Dialogue",
@@ -7594,14 +7612,14 @@ r6_0[10628] = {
     "VoiceDes120",
     "VoiceDes031"
   },
-  VoiceId = 10628,
+  VoiceId = 10631,
   VoiceRes = r0_0.RT_16,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_05_1"
   },
   VoiceType = 1,
 }
-r6_0[10629] = {
+r6_0[10632] = {
   CharId = 4101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84101,
@@ -7612,14 +7630,14 @@ r6_0[10629] = {
     "VoiceDes120",
     "VoiceDes032"
   },
-  VoiceId = 10629,
+  VoiceId = 10632,
   VoiceRes = r0_0.RT_17,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_05_2"
   },
   VoiceType = 1,
 }
-r6_0[10630] = {
+r6_0[10633] = {
   CharId = 4101,
   Dialogue = 90210503,
   LockedDes = "VoiceLocked_Dialogue",
@@ -7631,37 +7649,37 @@ r6_0[10630] = {
     "VoiceDes120",
     "VoiceDes033"
   },
-  VoiceId = 10630,
+  VoiceId = 10633,
   VoiceRes = r0_0.RT_69,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_05_3"
   },
   VoiceType = 1,
 }
-r6_0[10631] = {
+r6_0[10634] = {
   CharId = 4101,
   Dialogue = 902100016,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84101,
   UnlockDialogue = 90210601,
   UnlockOption = 100307,
-  VoiceDes = r0_0.RT_95,
-  VoiceId = 10631,
+  VoiceDes = r0_0.RT_96,
+  VoiceId = 10634,
   VoiceRes = r0_0.RT_18,
   VoiceText = {
     "voice_ch_char_Lise_vo_topic_06_1"
   },
   VoiceType = 1,
 }
-r6_0[10632] = {
+r6_0[10635] = {
   CharId = 4101,
   Dialogue = 90210602,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84101,
   UnlockDialogue = 90210603,
   UnlockOption = 100307,
-  VoiceDes = r0_0.RT_96,
-  VoiceId = 10632,
+  VoiceDes = r0_0.RT_97,
+  VoiceId = 10635,
   VoiceRes = {
     "vo_topic_06_2"
   },
@@ -7670,7 +7688,7 @@ r6_0[10632] = {
   },
   VoiceType = 1,
 }
-r6_0[10633] = {
+r6_0[10636] = {
   CharId = 4101,
   Dialogue = 902100017,
   LockedDes = "VoiceLocked_Dialogue",
@@ -7682,7 +7700,7 @@ r6_0[10633] = {
     "VoiceDes122",
     "VoiceDes031"
   },
-  VoiceId = 10633,
+  VoiceId = 10636,
   VoiceRes = {
     "vo_topic_07_1"
   },
@@ -7691,7 +7709,7 @@ r6_0[10633] = {
   },
   VoiceType = 1,
 }
-r6_0[10634] = {
+r6_0[10637] = {
   CharId = 4101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84101,
@@ -7702,7 +7720,7 @@ r6_0[10634] = {
     "VoiceDes122",
     "VoiceDes032"
   },
-  VoiceId = 10634,
+  VoiceId = 10637,
   VoiceRes = {
     "vo_topic_07_2"
   },
@@ -7711,7 +7729,7 @@ r6_0[10634] = {
   },
   VoiceType = 1,
 }
-r6_0[10635] = {
+r6_0[10638] = {
   CharId = 4101,
   Dialogue = 90210703,
   LockedDes = "VoiceLocked_Dialogue",
@@ -7723,7 +7741,7 @@ r6_0[10635] = {
     "VoiceDes122",
     "VoiceDes033"
   },
-  VoiceId = 10635,
+  VoiceId = 10638,
   VoiceRes = {
     "vo_topic_07_3"
   },
@@ -7732,200 +7750,200 @@ r6_0[10635] = {
   },
   VoiceType = 1,
 }
-r6_0[10636] = {
+r6_0[10639] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_19,
-  VoiceId = 10636,
+  VoiceId = 10639,
   VoiceRes = r0_0.RT_20,
   VoiceText = {
     "voice_ch_char_Lise_vo_idle"
   },
   VoiceType = 1,
 }
-r6_0[10638] = {
+r6_0[10641] = {
   CharId = 4101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84101,
   UnlockDialogue = 90210901,
   VoiceDes = r0_0.RT_24,
-  VoiceId = 10638,
+  VoiceId = 10641,
   VoiceRes = r0_0.RT_72,
   VoiceText = {
     "voice_ch_char_Lise_vo_companio_02"
   },
   VoiceType = 1,
 }
-r6_0[10640] = {
+r6_0[10643] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_29,
-  VoiceId = 10640,
+  VoiceId = 10643,
   VoiceRes = r0_0.RT_30,
   VoiceText = {
     "voice_ch_char_Lise_vo_appear"
   },
   VoiceType = 2,
 }
-r6_0[10641] = {
+r6_0[10644] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_31,
-  VoiceId = 10641,
+  VoiceId = 10644,
   VoiceRes = r0_0.RT_32,
   VoiceText = {
     "voice_ch_char_Lise_vo_lvup"
   },
   VoiceType = 2,
 }
-r6_0[10642] = {
+r6_0[10645] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_33,
-  VoiceId = 10642,
+  VoiceId = 10645,
   VoiceRes = r0_0.RT_34,
   VoiceText = {
     "voice_ch_char_Lise_vo_battlestart"
   },
   VoiceType = 2,
 }
-r6_0[10643] = {
+r6_0[10646] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_35,
-  VoiceId = 10643,
+  VoiceId = 10646,
   VoiceRes = r0_0.RT_36,
   VoiceText = {
     "voice_ch_char_Lise_vo_battleidle"
   },
   VoiceType = 2,
 }
-r6_0[10644] = {
+r6_0[10647] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_75,
-  VoiceId = 10644,
+  VoiceId = 10647,
   VoiceRes = r0_0.RT_76,
   VoiceText = {
     "voice_ch_char_Lise_vo_be_hit_heavy_r01"
   },
   VoiceType = 2,
 }
-r6_0[10645] = {
+r6_0[10648] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_37,
-  VoiceId = 10645,
+  VoiceId = 10648,
   VoiceRes = r0_0.RT_38,
   VoiceText = {
     "voice_ch_char_Lise_vo_skill01_r01"
   },
   VoiceType = 2,
 }
-r6_0[10646] = {
+r6_0[10649] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_39,
-  VoiceId = 10646,
+  VoiceId = 10649,
   VoiceRes = r0_0.RT_40,
   VoiceText = {
     "voice_ch_char_Lise_vo_skill01_r02"
   },
   VoiceType = 2,
 }
-r6_0[10647] = {
+r6_0[10650] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_41,
-  VoiceId = 10647,
+  VoiceId = 10650,
   VoiceRes = r0_0.RT_42,
   VoiceText = {
     "voice_ch_char_Lise_vo_skill02_r01"
   },
   VoiceType = 2,
 }
-r6_0[10648] = {
+r6_0[10651] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_43,
-  VoiceId = 10648,
+  VoiceId = 10651,
   VoiceRes = r0_0.RT_44,
   VoiceText = {
     "voice_ch_char_Lise_vo_skill02_r02"
   },
   VoiceType = 2,
 }
-r6_0[10649] = {
+r6_0[10652] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_45,
-  VoiceId = 10649,
+  VoiceId = 10652,
   VoiceRes = r0_0.RT_46,
   VoiceText = {
     "voice_ch_char_Lise_vo_skill02_r03"
   },
   VoiceType = 2,
 }
-r6_0[10650] = {
+r6_0[10653] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_47,
-  VoiceId = 10650,
+  VoiceId = 10653,
   VoiceRes = r0_0.RT_48,
   VoiceText = {
     "voice_ch_char_Lise_vo_die_r01"
   },
   VoiceType = 2,
 }
-r6_0[10651] = {
+r6_0[10654] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_49,
-  VoiceId = 10651,
+  VoiceId = 10654,
   VoiceRes = r0_0.RT_50,
   VoiceText = {
     "voice_ch_char_Lise_vo_die_r02"
   },
   VoiceType = 2,
 }
-r6_0[10652] = {
+r6_0[10655] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_51,
-  VoiceId = 10652,
+  VoiceId = 10655,
   VoiceRes = r0_0.RT_52,
   VoiceText = {
     "voice_ch_char_Lise_vo_revive"
   },
   VoiceType = 2,
 }
-r6_0[10653] = {
+r6_0[10656] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_53,
-  VoiceId = 10653,
+  VoiceId = 10656,
   VoiceRes = r0_0.RT_54,
   VoiceText = {
     "voice_ch_char_Lise_vo_victory"
   },
   VoiceType = 2,
 }
-r6_0[10654] = {
+r6_0[10657] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_55,
-  VoiceId = 10654,
+  VoiceId = 10657,
   VoiceRes = r0_0.RT_56,
   VoiceText = {
     "voice_ch_char_Lise_vo_fail"
   },
   VoiceType = 2,
 }
-r6_0[10655] = {
+r6_0[10658] = {
   CharId = 4101,
   UnitId = 84101,
   VoiceDes = r0_0.RT_27,
-  VoiceId = 10655,
+  VoiceId = 10658,
   VoiceRes = r0_0.RT_28,
   VoiceText = {
     "voice_ch_char_Lise_vo_birthday"
@@ -7935,12 +7953,12 @@ r6_0[10655] = {
 r4_0[r5_0] = r6_0
 r5_0 = 4102
 r6_0 = {}
-r6_0[10837] = {
+r6_0[10840] = {
   CharId = 4102,
   GachaVoicePart = 1,
   UnitId = 84102,
   VoiceDes = r0_0.RT_1,
-  VoiceId = 10837,
+  VoiceId = 10840,
   VoiceRes = r0_0.RT_2,
   VoiceText = {
     "voice_ch_char_Zhiliu_vo_gain"
@@ -7968,30 +7986,30 @@ r6_0[10186] = {
 r4_0[r5_0] = r6_0
 r5_0 = 4202
 r6_0 = {}
-r6_0[10338] = {
+r6_0[10341] = {
   CharId = 4202,
   GachaVoicePart = 1,
   UnitId = 84202,
   VoiceDes = r0_0.RT_1,
-  VoiceId = 10338,
+  VoiceId = 10341,
   VoiceRes = r0_0.RT_2,
   VoiceText = {
     "voice_ch_char_Landi_vo_gain"
   },
   VoiceType = 1,
 }
-r6_0[10339] = {
+r6_0[10342] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_3,
-  VoiceId = 10339,
+  VoiceId = 10342,
   VoiceRes = r0_0.RT_4,
   VoiceText = {
     "voice_ch_char_Landi_vo_welcome"
   },
   VoiceType = 1,
 }
-r6_0[10340] = {
+r6_0[10343] = {
   CharId = 4202,
   Dialogue = 900800011,
   LockedDes = "VoiceLocked_Dialogue",
@@ -8002,14 +8020,14 @@ r6_0[10340] = {
     "VoiceDes087",
     "VoiceDes031"
   },
-  VoiceId = 10340,
+  VoiceId = 10343,
   VoiceRes = r0_0.RT_5,
   VoiceText = {
     "voice_ch_char_Landi_vo_topic_01_1"
   },
   VoiceType = 1,
 }
-r6_0[10341] = {
+r6_0[10344] = {
   CharId = 4202,
   Dialogue = 90080103,
   LockedDes = "VoiceLocked_Dialogue",
@@ -8020,14 +8038,14 @@ r6_0[10341] = {
     "VoiceDes087",
     "VoiceDes032"
   },
-  VoiceId = 10341,
+  VoiceId = 10344,
   VoiceRes = r0_0.RT_6,
   VoiceText = {
     "voice_ch_char_Landi_vo_topic_01_2"
   },
   VoiceType = 1,
 }
-r6_0[10342] = {
+r6_0[10345] = {
   CharId = 4202,
   Dialogue = 900800012,
   LockedDes = "VoiceLocked_Dialogue",
@@ -8038,14 +8056,14 @@ r6_0[10342] = {
     "VoiceDes088",
     "VoiceDes031"
   },
-  VoiceId = 10342,
+  VoiceId = 10345,
   VoiceRes = r0_0.RT_8,
   VoiceText = {
     "voice_ch_char_Landi_vo_topic_02_1"
   },
   VoiceType = 1,
 }
-r6_0[10343] = {
+r6_0[10346] = {
   CharId = 4202,
   Dialogue = 90080203,
   LockedDes = "VoiceLocked_Dialogue",
@@ -8056,42 +8074,42 @@ r6_0[10343] = {
     "VoiceDes088",
     "VoiceDes032"
   },
-  VoiceId = 10343,
+  VoiceId = 10346,
   VoiceRes = r0_0.RT_10,
   VoiceText = {
     "voice_ch_char_Landi_vo_topic_02_2"
   },
   VoiceType = 1,
 }
-r6_0[10344] = {
+r6_0[10347] = {
   CharId = 4202,
   Dialogue = 900800013,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84202,
   UnlockDialogue = 90080301,
-  VoiceDes = r0_0.RT_93,
-  VoiceId = 10344,
+  VoiceDes = r0_0.RT_94,
+  VoiceId = 10347,
   VoiceRes = r0_0.RT_11,
   VoiceText = {
     "voice_ch_char_Landi_vo_topic_03_1"
   },
   VoiceType = 1,
 }
-r6_0[10345] = {
+r6_0[10348] = {
   CharId = 4202,
   Dialogue = 90080303,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84202,
   UnlockDialogue = 90080304,
-  VoiceDes = r0_0.RT_94,
-  VoiceId = 10345,
+  VoiceDes = r0_0.RT_95,
+  VoiceId = 10348,
   VoiceRes = r0_0.RT_12,
   VoiceText = {
     "voice_ch_char_Landi_vo_topic_03_2"
   },
   VoiceType = 1,
 }
-r6_0[10346] = {
+r6_0[10349] = {
   CharId = 4202,
   Dialogue = 900800014,
   LockedDes = "VoiceLocked_Dialogue",
@@ -8102,14 +8120,14 @@ r6_0[10346] = {
     "VoiceDes089",
     "VoiceDes031"
   },
-  VoiceId = 10346,
+  VoiceId = 10349,
   VoiceRes = r0_0.RT_13,
   VoiceText = {
     "voice_ch_char_Landi_vo_topic_04_1"
   },
   VoiceType = 1,
 }
-r6_0[10347] = {
+r6_0[10350] = {
   CharId = 4202,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84202,
@@ -8119,14 +8137,14 @@ r6_0[10347] = {
     "VoiceDes089",
     "VoiceDes032"
   },
-  VoiceId = 10347,
+  VoiceId = 10350,
   VoiceRes = r0_0.RT_14,
   VoiceText = {
     "voice_ch_char_Landi_vo_topic_04_2"
   },
   VoiceType = 1,
 }
-r6_0[10348] = {
+r6_0[10351] = {
   CharId = 4202,
   Dialogue = 90080404,
   LockedDes = "VoiceLocked_Dialogue",
@@ -8137,244 +8155,244 @@ r6_0[10348] = {
     "VoiceDes089",
     "VoiceDes033"
   },
-  VoiceId = 10348,
+  VoiceId = 10351,
   VoiceRes = r0_0.RT_15,
   VoiceText = {
     "voice_ch_char_Landi_vo_topic_04_3"
   },
   VoiceType = 1,
 }
-r6_0[10349] = {
+r6_0[10352] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_19,
-  VoiceId = 10349,
+  VoiceId = 10352,
   VoiceRes = r0_0.RT_20,
   VoiceText = {
     "voice_ch_char_Landi_vo_idle"
   },
   VoiceType = 1,
 }
-r6_0[10350] = {
+r6_0[10353] = {
   CharId = 4202,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84202,
   UnlockDialogue = 90080501,
   VoiceDes = r0_0.RT_21,
-  VoiceId = 10350,
+  VoiceId = 10353,
   VoiceRes = r0_0.RT_71,
   VoiceText = {
     "voice_ch_char_Landi_vo_companio_01"
   },
   VoiceType = 1,
 }
-r6_0[10351] = {
+r6_0[10354] = {
   CharId = 4202,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84202,
   UnlockDialogue = 90080601,
   VoiceDes = r0_0.RT_24,
-  VoiceId = 10351,
+  VoiceId = 10354,
   VoiceRes = r0_0.RT_72,
   VoiceText = {
     "voice_ch_char_Landi_vo_companio_02"
   },
   VoiceType = 1,
 }
-r6_0[10352] = {
+r6_0[10355] = {
   CharId = 4202,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84202,
   UnlockDialogue = 90080701,
   VoiceDes = r0_0.RT_26,
-  VoiceId = 10352,
+  VoiceId = 10355,
   VoiceRes = r0_0.RT_25,
   VoiceText = {
     "voice_ch_char_Landi_vo_companio_03"
   },
   VoiceType = 1,
 }
-r6_0[10353] = {
+r6_0[10356] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_29,
-  VoiceId = 10353,
+  VoiceId = 10356,
   VoiceRes = r0_0.RT_30,
   VoiceText = {
     "voice_ch_char_Landi_vo_appear"
   },
   VoiceType = 2,
 }
-r6_0[10354] = {
+r6_0[10357] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_31,
-  VoiceId = 10354,
+  VoiceId = 10357,
   VoiceRes = r0_0.RT_32,
   VoiceText = {
     "voice_ch_char_Landi_vo_lvup"
   },
   VoiceType = 2,
 }
-r6_0[10355] = {
+r6_0[10358] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_33,
-  VoiceId = 10355,
+  VoiceId = 10358,
   VoiceRes = r0_0.RT_34,
   VoiceText = {
     "voice_ch_char_Landi_vo_battlestart"
   },
   VoiceType = 2,
 }
-r6_0[10356] = {
+r6_0[10359] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_35,
-  VoiceId = 10356,
+  VoiceId = 10359,
   VoiceRes = r0_0.RT_36,
   VoiceText = {
     "voice_ch_char_Landi_vo_battleidle"
   },
   VoiceType = 2,
 }
-r6_0[10357] = {
+r6_0[10360] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_75,
-  VoiceId = 10357,
+  VoiceId = 10360,
   VoiceRes = r0_0.RT_76,
   VoiceText = {
     "voice_ch_char_Landi_vo_be_hit_heavy_r01"
   },
   VoiceType = 2,
 }
-r6_0[10358] = {
+r6_0[10361] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_77,
-  VoiceId = 10358,
+  VoiceId = 10361,
   VoiceRes = r0_0.RT_78,
   VoiceText = {
     "voice_ch_char_Landi_vo_be_hit_heavy_r02"
   },
   VoiceType = 2,
 }
-r6_0[10359] = {
+r6_0[10362] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_37,
-  VoiceId = 10359,
+  VoiceId = 10362,
   VoiceRes = r0_0.RT_38,
   VoiceText = {
     "voice_ch_char_Landi_vo_skill01_r01"
   },
   VoiceType = 2,
 }
-r6_0[10360] = {
+r6_0[10363] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_39,
-  VoiceId = 10360,
+  VoiceId = 10363,
   VoiceRes = r0_0.RT_40,
   VoiceText = {
     "voice_ch_char_Landi_vo_skill01_r02"
   },
   VoiceType = 2,
 }
-r6_0[10361] = {
+r6_0[10364] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_41,
-  VoiceId = 10361,
+  VoiceId = 10364,
   VoiceRes = r0_0.RT_42,
   VoiceText = {
     "voice_ch_char_Landi_vo_skill02_r01"
   },
   VoiceType = 2,
 }
-r6_0[10362] = {
+r6_0[10365] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_43,
-  VoiceId = 10362,
+  VoiceId = 10365,
   VoiceRes = r0_0.RT_44,
   VoiceText = {
     "voice_ch_char_Landi_vo_skill02_r02"
   },
   VoiceType = 2,
 }
-r6_0[10363] = {
+r6_0[10366] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_45,
-  VoiceId = 10363,
+  VoiceId = 10366,
   VoiceRes = r0_0.RT_46,
   VoiceText = {
     "voice_ch_char_Landi_vo_skill02_r03"
   },
   VoiceType = 2,
 }
-r6_0[10364] = {
+r6_0[10367] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_47,
-  VoiceId = 10364,
+  VoiceId = 10367,
   VoiceRes = r0_0.RT_48,
   VoiceText = {
     "voice_ch_char_Landi_vo_die_r01"
   },
   VoiceType = 2,
 }
-r6_0[10365] = {
+r6_0[10368] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_49,
-  VoiceId = 10365,
+  VoiceId = 10368,
   VoiceRes = r0_0.RT_50,
   VoiceText = {
     "voice_ch_char_Landi_vo_die_r02"
   },
   VoiceType = 2,
 }
-r6_0[10366] = {
+r6_0[10369] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_51,
-  VoiceId = 10366,
+  VoiceId = 10369,
   VoiceRes = r0_0.RT_52,
   VoiceText = {
     "voice_ch_char_Landi_vo_revive"
   },
   VoiceType = 2,
 }
-r6_0[10367] = {
+r6_0[10370] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_53,
-  VoiceId = 10367,
+  VoiceId = 10370,
   VoiceRes = r0_0.RT_54,
   VoiceText = {
     "voice_ch_char_Landi_vo_victory"
   },
   VoiceType = 2,
 }
-r6_0[10368] = {
+r6_0[10371] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_55,
-  VoiceId = 10368,
+  VoiceId = 10371,
   VoiceRes = r0_0.RT_56,
   VoiceText = {
     "voice_ch_char_Landi_vo_fail"
   },
   VoiceType = 2,
 }
-r6_0[10369] = {
+r6_0[10372] = {
   CharId = 4202,
   UnitId = 84202,
   VoiceDes = r0_0.RT_27,
-  VoiceId = 10369,
+  VoiceId = 10372,
   VoiceRes = r0_0.RT_28,
   VoiceText = {
     "voice_ch_char_Landi_vo_birthday"
@@ -8384,30 +8402,30 @@ r6_0[10369] = {
 r4_0[r5_0] = r6_0
 r5_0 = 4301
 r6_0 = {}
-r6_0[10370] = {
+r6_0[10373] = {
   CharId = 4301,
   GachaVoicePart = 1,
   UnitId = 84301,
   VoiceDes = r0_0.RT_1,
-  VoiceId = 10370,
+  VoiceId = 10373,
   VoiceRes = r0_0.RT_2,
   VoiceText = {
     "voice_ch_char_Xibi_vo_gain"
   },
   VoiceType = 1,
 }
-r6_0[10371] = {
+r6_0[10374] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_3,
-  VoiceId = 10371,
+  VoiceId = 10374,
   VoiceRes = r0_0.RT_4,
   VoiceText = {
     "voice_ch_char_Xibi_vo_welcome"
   },
   VoiceType = 1,
 }
-r6_0[10372] = {
+r6_0[10375] = {
   CharId = 4301,
   Dialogue = 900900011,
   LockedDes = "VoiceLocked_Dialogue",
@@ -8418,14 +8436,14 @@ r6_0[10372] = {
     "VoiceDes090",
     "VoiceDes031"
   },
-  VoiceId = 10372,
+  VoiceId = 10375,
   VoiceRes = r0_0.RT_5,
   VoiceText = {
     "voice_ch_char_Xibi_vo_topic_01_1"
   },
   VoiceType = 1,
 }
-r6_0[10373] = {
+r6_0[10376] = {
   CharId = 4301,
   Dialogue = 90090103,
   LockedDes = "VoiceLocked_Dialogue",
@@ -8436,14 +8454,14 @@ r6_0[10373] = {
     "VoiceDes090",
     "VoiceDes032"
   },
-  VoiceId = 10373,
+  VoiceId = 10376,
   VoiceRes = r0_0.RT_6,
   VoiceText = {
     "voice_ch_char_Xibi_vo_topic_01_2"
   },
   VoiceType = 1,
 }
-r6_0[10374] = {
+r6_0[10377] = {
   CharId = 4301,
   Dialogue = 90090105,
   LockedDes = "VoiceLocked_Dialogue",
@@ -8454,14 +8472,14 @@ r6_0[10374] = {
     "VoiceDes090",
     "VoiceDes033"
   },
-  VoiceId = 10374,
+  VoiceId = 10377,
   VoiceRes = r0_0.RT_57,
   VoiceText = {
     "voice_ch_char_Xibi_vo_topic_01_3"
   },
   VoiceType = 1,
 }
-r6_0[10375] = {
+r6_0[10378] = {
   CharId = 4301,
   Dialogue = 900900012,
   LockedDes = "VoiceLocked_Dialogue",
@@ -8472,14 +8490,14 @@ r6_0[10375] = {
     "VoiceDes091",
     "VoiceDes031"
   },
-  VoiceId = 10375,
+  VoiceId = 10378,
   VoiceRes = r0_0.RT_8,
   VoiceText = {
     "voice_ch_char_Xibi_vo_topic_02_1"
   },
   VoiceType = 1,
 }
-r6_0[10376] = {
+r6_0[10379] = {
   CharId = 4301,
   Dialogue = 90090203,
   LockedDes = "VoiceLocked_Dialogue",
@@ -8490,14 +8508,14 @@ r6_0[10376] = {
     "VoiceDes091",
     "VoiceDes032"
   },
-  VoiceId = 10376,
+  VoiceId = 10379,
   VoiceRes = r0_0.RT_10,
   VoiceText = {
     "voice_ch_char_Xibi_vo_topic_02_2"
   },
   VoiceType = 1,
 }
-r6_0[10377] = {
+r6_0[10380] = {
   CharId = 4301,
   Dialogue = 900900013,
   LockedDes = "VoiceLocked_Dialogue",
@@ -8508,14 +8526,14 @@ r6_0[10377] = {
     "VoiceDes092",
     "VoiceDes031"
   },
-  VoiceId = 10377,
+  VoiceId = 10380,
   VoiceRes = r0_0.RT_11,
   VoiceText = {
     "voice_ch_char_Xibi_vo_topic_03_1"
   },
   VoiceType = 1,
 }
-r6_0[10378] = {
+r6_0[10381] = {
   CharId = 4301,
   Dialogue = 90090303,
   LockedDes = "VoiceLocked_Dialogue",
@@ -8526,14 +8544,14 @@ r6_0[10378] = {
     "VoiceDes092",
     "VoiceDes032"
   },
-  VoiceId = 10378,
+  VoiceId = 10381,
   VoiceRes = r0_0.RT_12,
   VoiceText = {
     "voice_ch_char_Xibi_vo_topic_03_2"
   },
   VoiceType = 1,
 }
-r6_0[10379] = {
+r6_0[10382] = {
   CharId = 4301,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84301,
@@ -8543,14 +8561,14 @@ r6_0[10379] = {
     "VoiceDes092",
     "VoiceDes033"
   },
-  VoiceId = 10379,
+  VoiceId = 10382,
   VoiceRes = r0_0.RT_65,
   VoiceText = {
     "voice_ch_char_Xibi_vo_topic_03_3"
   },
   VoiceType = 1,
 }
-r6_0[10380] = {
+r6_0[10383] = {
   CharId = 4301,
   Dialogue = 900900014,
   LockedDes = "VoiceLocked_Dialogue",
@@ -8561,14 +8579,14 @@ r6_0[10380] = {
     "VoiceDes093",
     "VoiceDes031"
   },
-  VoiceId = 10380,
+  VoiceId = 10383,
   VoiceRes = r0_0.RT_13,
   VoiceText = {
     "voice_ch_char_Xibi_vo_topic_04_1"
   },
   VoiceType = 1,
 }
-r6_0[10381] = {
+r6_0[10384] = {
   CharId = 4301,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84301,
@@ -8578,14 +8596,14 @@ r6_0[10381] = {
     "VoiceDes093",
     "VoiceDes032"
   },
-  VoiceId = 10381,
+  VoiceId = 10384,
   VoiceRes = r0_0.RT_14,
   VoiceText = {
     "voice_ch_char_Xibi_vo_topic_04_2"
   },
   VoiceType = 1,
 }
-r6_0[10382] = {
+r6_0[10385] = {
   CharId = 4301,
   Dialogue = 90090404,
   LockedDes = "VoiceLocked_Dialogue",
@@ -8596,34 +8614,21 @@ r6_0[10382] = {
     "VoiceDes093",
     "VoiceDes033"
   },
-  VoiceId = 10382,
+  VoiceId = 10385,
   VoiceRes = r0_0.RT_15,
   VoiceText = {
     "voice_ch_char_Xibi_vo_topic_04_3"
   },
   VoiceType = 1,
 }
-r6_0[10383] = {
+r6_0[10386] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_19,
-  VoiceId = 10383,
+  VoiceId = 10386,
   VoiceRes = r0_0.RT_20,
   VoiceText = {
     "voice_ch_char_Xibi_vo_idle"
-  },
-  VoiceType = 1,
-}
-r6_0[10384] = {
-  CharId = 4301,
-  LockedDes = "VoiceLocked_Dialogue",
-  UnitId = 84301,
-  UnlockDialogue = 90090501,
-  VoiceDes = r0_0.RT_21,
-  VoiceId = 10384,
-  VoiceRes = r0_0.RT_71,
-  VoiceText = {
-    "voice_ch_char_Xibi_vo_companio_01"
   },
   VoiceType = 1,
 }
@@ -8631,16 +8636,29 @@ r6_0[10387] = {
   CharId = 4301,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84301,
+  UnlockDialogue = 90090501,
+  VoiceDes = r0_0.RT_21,
+  VoiceId = 10387,
+  VoiceRes = r0_0.RT_71,
+  VoiceText = {
+    "voice_ch_char_Xibi_vo_companio_01"
+  },
+  VoiceType = 1,
+}
+r6_0[10390] = {
+  CharId = 4301,
+  LockedDes = "VoiceLocked_Dialogue",
+  UnitId = 84301,
   UnlockDialogue = 90090801,
   VoiceDes = r0_0.RT_73,
-  VoiceId = 10387,
+  VoiceId = 10390,
   VoiceRes = r0_0.RT_74,
   VoiceText = {
     "voice_ch_char_Xibi_vo_companio_04"
   },
   VoiceType = 1,
 }
-r6_0[10388] = {
+r6_0[10391] = {
   CharId = 4301,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 84301,
@@ -8649,7 +8667,7 @@ r6_0[10388] = {
     "VoiceDes001",
     "VoiceDes045"
   },
-  VoiceId = 10388,
+  VoiceId = 10391,
   VoiceRes = {
     "vo_companio_06"
   },
@@ -8658,187 +8676,187 @@ r6_0[10388] = {
   },
   VoiceType = 1,
 }
-r6_0[10389] = {
+r6_0[10392] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_29,
-  VoiceId = 10389,
+  VoiceId = 10392,
   VoiceRes = r0_0.RT_30,
   VoiceText = {
     "voice_ch_char_Xibi_vo_appear"
   },
   VoiceType = 2,
 }
-r6_0[10390] = {
+r6_0[10393] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_31,
-  VoiceId = 10390,
+  VoiceId = 10393,
   VoiceRes = r0_0.RT_32,
   VoiceText = {
     "voice_ch_char_Xibi_vo_lvup"
   },
   VoiceType = 2,
 }
-r6_0[10391] = {
+r6_0[10394] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_33,
-  VoiceId = 10391,
+  VoiceId = 10394,
   VoiceRes = r0_0.RT_34,
   VoiceText = {
     "voice_ch_char_Xibi_vo_battlestart"
   },
   VoiceType = 2,
 }
-r6_0[10392] = {
+r6_0[10395] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_35,
-  VoiceId = 10392,
+  VoiceId = 10395,
   VoiceRes = r0_0.RT_36,
   VoiceText = {
     "voice_ch_char_Xibi_vo_battleidle"
   },
   VoiceType = 2,
 }
-r6_0[10393] = {
+r6_0[10396] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_75,
-  VoiceId = 10393,
+  VoiceId = 10396,
   VoiceRes = r0_0.RT_76,
   VoiceText = {
     "voice_ch_char_Xibi_vo_be_hit_heavy_r01"
   },
   VoiceType = 2,
 }
-r6_0[10394] = {
+r6_0[10397] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_77,
-  VoiceId = 10394,
+  VoiceId = 10397,
   VoiceRes = r0_0.RT_78,
   VoiceText = {
     "voice_ch_char_Xibi_vo_be_hit_heavy_r02"
   },
   VoiceType = 2,
 }
-r6_0[10395] = {
+r6_0[10398] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_37,
-  VoiceId = 10395,
+  VoiceId = 10398,
   VoiceRes = r0_0.RT_38,
   VoiceText = {
     "voice_ch_char_Xibi_vo_skill01_r01"
   },
   VoiceType = 2,
 }
-r6_0[10396] = {
+r6_0[10399] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_39,
-  VoiceId = 10396,
+  VoiceId = 10399,
   VoiceRes = r0_0.RT_40,
   VoiceText = {
     "voice_ch_char_Xibi_vo_skill01_r02"
   },
   VoiceType = 2,
 }
-r6_0[10397] = {
+r6_0[10400] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_41,
-  VoiceId = 10397,
+  VoiceId = 10400,
   VoiceRes = r0_0.RT_42,
   VoiceText = {
     "voice_ch_char_Xibi_vo_skill02_r01"
   },
   VoiceType = 2,
 }
-r6_0[10398] = {
+r6_0[10401] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_43,
-  VoiceId = 10398,
+  VoiceId = 10401,
   VoiceRes = r0_0.RT_44,
   VoiceText = {
     "voice_ch_char_Xibi_vo_skill02_r02"
   },
   VoiceType = 2,
 }
-r6_0[10399] = {
+r6_0[10402] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_45,
-  VoiceId = 10399,
+  VoiceId = 10402,
   VoiceRes = r0_0.RT_46,
   VoiceText = {
     "voice_ch_char_Xibi_vo_skill02_r03"
   },
   VoiceType = 2,
 }
-r6_0[10400] = {
+r6_0[10403] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_47,
-  VoiceId = 10400,
+  VoiceId = 10403,
   VoiceRes = r0_0.RT_48,
   VoiceText = {
     "voice_ch_char_Xibi_vo_die_r01"
   },
   VoiceType = 2,
 }
-r6_0[10401] = {
+r6_0[10404] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_49,
-  VoiceId = 10401,
+  VoiceId = 10404,
   VoiceRes = r0_0.RT_50,
   VoiceText = {
     "voice_ch_char_Xibi_vo_die_r02"
   },
   VoiceType = 2,
 }
-r6_0[10402] = {
+r6_0[10405] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_51,
-  VoiceId = 10402,
+  VoiceId = 10405,
   VoiceRes = r0_0.RT_52,
   VoiceText = {
     "voice_ch_char_Xibi_vo_revive"
   },
   VoiceType = 2,
 }
-r6_0[10403] = {
+r6_0[10406] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_53,
-  VoiceId = 10403,
+  VoiceId = 10406,
   VoiceRes = r0_0.RT_54,
   VoiceText = {
     "voice_ch_char_Xibi_vo_victory"
   },
   VoiceType = 2,
 }
-r6_0[10404] = {
+r6_0[10407] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_55,
-  VoiceId = 10404,
+  VoiceId = 10407,
   VoiceRes = r0_0.RT_56,
   VoiceText = {
     "voice_ch_char_Xibi_vo_fail"
   },
   VoiceType = 2,
 }
-r6_0[10405] = {
+r6_0[10408] = {
   CharId = 4301,
   UnitId = 84301,
   VoiceDes = r0_0.RT_27,
-  VoiceId = 10405,
+  VoiceId = 10408,
   VoiceRes = r0_0.RT_28,
   VoiceText = {
     "voice_ch_char_Xibi_vo_birthday"
@@ -8848,79 +8866,79 @@ r6_0[10405] = {
 r4_0[r5_0] = r6_0
 r5_0 = 5101
 r6_0 = {}
-r6_0[10295] = {
+r6_0[10298] = {
   CharId = 5101,
   GachaVoicePart = 1,
   UnitId = 85101,
   VoiceChar = "Songlu01",
   VoiceDes = r0_0.RT_88,
-  VoiceId = 10295,
+  VoiceId = 10298,
   VoiceRes = r0_0.RT_2,
   VoiceText = {
     "voice_ch_char_Songlu01_vo_gain"
   },
   VoiceType = 1,
 }
-r6_0[10296] = {
+r6_0[10299] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceChar = "Songlu01",
   VoiceDes = r0_0.RT_89,
-  VoiceId = 10296,
+  VoiceId = 10299,
   VoiceRes = r0_0.RT_30,
   VoiceText = {
     "voice_ch_char_Songlu01_vo_appear"
   },
   VoiceType = 2,
 }
-r6_0[10297] = {
+r6_0[10300] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceChar = "Songlu01",
   VoiceDes = r0_0.RT_90,
-  VoiceId = 10297,
+  VoiceId = 10300,
   VoiceRes = r0_0.RT_34,
   VoiceText = {
     "voice_ch_char_Songlu01_vo_battlestart"
   },
   VoiceType = 2,
 }
-r6_0[10298] = {
+r6_0[10301] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceChar = "Songlu01",
   VoiceDes = r0_0.RT_91,
-  VoiceId = 10298,
+  VoiceId = 10301,
   VoiceRes = r0_0.RT_42,
   VoiceText = {
     "voice_ch_char_Songlu01_vo_skill02_r01"
   },
   VoiceType = 2,
 }
-r6_0[10299] = {
+r6_0[10302] = {
   CharId = 5101,
   GachaVoicePart = 1,
   UnitId = 85101,
   VoiceDes = r0_0.RT_1,
-  VoiceId = 10299,
+  VoiceId = 10302,
   VoiceRes = r0_0.RT_2,
   VoiceText = {
     "voice_ch_char_Songlu_vo_gain"
   },
   VoiceType = 1,
 }
-r6_0[10300] = {
+r6_0[10303] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_3,
-  VoiceId = 10300,
+  VoiceId = 10303,
   VoiceRes = r0_0.RT_4,
   VoiceText = {
     "voice_ch_char_Songlu_vo_welcome"
   },
   VoiceType = 1,
 }
-r6_0[10301] = {
+r6_0[10304] = {
   CharId = 5101,
   Dialogue = 901200011,
   LockedDes = "VoiceLocked_Dialogue",
@@ -8931,14 +8949,14 @@ r6_0[10301] = {
     "VoiceDes084",
     "VoiceDes031"
   },
-  VoiceId = 10301,
+  VoiceId = 10304,
   VoiceRes = r0_0.RT_5,
   VoiceText = {
     "voice_ch_char_Songlu_vo_topic_01_1"
   },
   VoiceType = 1,
 }
-r6_0[10302] = {
+r6_0[10305] = {
   CharId = 5101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85101,
@@ -8948,14 +8966,14 @@ r6_0[10302] = {
     "VoiceDes084",
     "VoiceDes032"
   },
-  VoiceId = 10302,
+  VoiceId = 10305,
   VoiceRes = r0_0.RT_6,
   VoiceText = {
     "voice_ch_char_Songlu_vo_topic_01_2"
   },
   VoiceType = 1,
 }
-r6_0[10303] = {
+r6_0[10306] = {
   CharId = 5101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85101,
@@ -8965,14 +8983,14 @@ r6_0[10303] = {
     "VoiceDes084",
     "VoiceDes033"
   },
-  VoiceId = 10303,
+  VoiceId = 10306,
   VoiceRes = r0_0.RT_57,
   VoiceText = {
     "voice_ch_char_Songlu_vo_topic_01_3"
   },
   VoiceType = 1,
 }
-r6_0[10304] = {
+r6_0[10307] = {
   CharId = 5101,
   Dialogue = 90120105,
   LockedDes = "VoiceLocked_Dialogue",
@@ -8983,14 +9001,14 @@ r6_0[10304] = {
     "VoiceDes084",
     "VoiceDes034"
   },
-  VoiceId = 10304,
+  VoiceId = 10307,
   VoiceRes = r0_0.RT_58,
   VoiceText = {
     "voice_ch_char_Songlu_vo_topic_01_4"
   },
   VoiceType = 1,
 }
-r6_0[10305] = {
+r6_0[10308] = {
   CharId = 5101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85101,
@@ -9000,69 +9018,69 @@ r6_0[10305] = {
     "VoiceDes084",
     "VoiceDes035"
   },
-  VoiceId = 10305,
+  VoiceId = 10308,
   VoiceRes = r0_0.RT_59,
   VoiceText = {
     "voice_ch_char_Songlu_vo_topic_01_5"
   },
   VoiceType = 1,
 }
-r6_0[10306] = {
+r6_0[10309] = {
   CharId = 5101,
   Dialogue = 901200012,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85101,
   UnlockDialogue = 90120201,
   VoiceDes = r0_0.RT_79,
-  VoiceId = 10306,
+  VoiceId = 10309,
   VoiceRes = r0_0.RT_8,
   VoiceText = {
     "voice_ch_char_Songlu_vo_topic_02_1"
   },
   VoiceType = 1,
 }
-r6_0[10307] = {
+r6_0[10310] = {
   CharId = 5101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85101,
   UnlockDialogue = 90120203,
   VoiceDes = r0_0.RT_80,
-  VoiceId = 10307,
+  VoiceId = 10310,
   VoiceRes = r0_0.RT_10,
   VoiceText = {
     "voice_ch_char_Songlu_vo_topic_02_2"
   },
   VoiceType = 1,
 }
-r6_0[10308] = {
+r6_0[10311] = {
   CharId = 5101,
   Dialogue = 90120204,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85101,
   UnlockDialogue = 90120205,
   VoiceDes = r0_0.RT_81,
-  VoiceId = 10308,
+  VoiceId = 10311,
   VoiceRes = r0_0.RT_61,
   VoiceText = {
     "voice_ch_char_Songlu_vo_topic_02_3"
   },
   VoiceType = 1,
 }
-r6_0[10309] = {
+r6_0[10312] = {
   CharId = 5101,
   Dialogue = 90120206,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85101,
   UnlockDialogue = 90120207,
   VoiceDes = r0_0.RT_82,
-  VoiceId = 10309,
+  VoiceId = 10312,
   VoiceRes = r0_0.RT_62,
   VoiceText = {
     "voice_ch_char_Songlu_vo_topic_02_4"
   },
   VoiceType = 1,
 }
-r6_0[10310] = {
+r6_0[10313] = {
   CharId = 5101,
   Dialogue = 901200013,
   LockedDes = "VoiceLocked_Dialogue",
@@ -9073,14 +9091,14 @@ r6_0[10310] = {
     "VoiceDes085",
     "VoiceDes031"
   },
-  VoiceId = 10310,
+  VoiceId = 10313,
   VoiceRes = r0_0.RT_11,
   VoiceText = {
     "voice_ch_char_Songlu_vo_topic_03_1"
   },
   VoiceType = 1,
 }
-r6_0[10311] = {
+r6_0[10314] = {
   CharId = 5101,
   Dialogue = 90120303,
   LockedDes = "VoiceLocked_Dialogue",
@@ -9091,55 +9109,55 @@ r6_0[10311] = {
     "VoiceDes085",
     "VoiceDes032"
   },
-  VoiceId = 10311,
+  VoiceId = 10314,
   VoiceRes = r0_0.RT_12,
   VoiceText = {
     "voice_ch_char_Songlu_vo_topic_03_2"
   },
   VoiceType = 1,
 }
-r6_0[10312] = {
+r6_0[10315] = {
   CharId = 5101,
   Dialogue = 901200014,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85101,
   UnlockDialogue = 90120401,
   VoiceDes = r0_0.RT_99,
-  VoiceId = 10312,
+  VoiceId = 10315,
   VoiceRes = r0_0.RT_13,
   VoiceText = {
     "voice_ch_char_Songlu_vo_topic_04_1"
   },
   VoiceType = 1,
 }
-r6_0[10313] = {
+r6_0[10316] = {
   CharId = 5101,
   Dialogue = 90120403,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85101,
   UnlockDialogue = 90120404,
   VoiceDes = r0_0.RT_100,
-  VoiceId = 10313,
+  VoiceId = 10316,
   VoiceRes = r0_0.RT_14,
   VoiceText = {
     "voice_ch_char_Songlu_vo_topic_04_2"
   },
   VoiceType = 1,
 }
-r6_0[10314] = {
+r6_0[10317] = {
   CharId = 5101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85101,
   UnlockDialogue = 90120405,
   VoiceDes = r0_0.RT_101,
-  VoiceId = 10314,
+  VoiceId = 10317,
   VoiceRes = r0_0.RT_15,
   VoiceText = {
     "voice_ch_char_Songlu_vo_topic_04_3"
   },
   VoiceType = 1,
 }
-r6_0[10315] = {
+r6_0[10318] = {
   CharId = 5101,
   Dialogue = 901200015,
   LockedDes = "VoiceLocked_Dialogue",
@@ -9150,14 +9168,14 @@ r6_0[10315] = {
     "VoiceDes086",
     "VoiceDes031"
   },
-  VoiceId = 10315,
+  VoiceId = 10318,
   VoiceRes = r0_0.RT_16,
   VoiceText = {
     "voice_ch_char_Songlu_vo_topic_05_1"
   },
   VoiceType = 1,
 }
-r6_0[10316] = {
+r6_0[10319] = {
   CharId = 5101,
   Dialogue = 90120503,
   LockedDes = "VoiceLocked_Dialogue",
@@ -9168,14 +9186,14 @@ r6_0[10316] = {
     "VoiceDes086",
     "VoiceDes032"
   },
-  VoiceId = 10316,
+  VoiceId = 10319,
   VoiceRes = r0_0.RT_17,
   VoiceText = {
     "voice_ch_char_Songlu_vo_topic_05_2"
   },
   VoiceType = 1,
 }
-r6_0[10317] = {
+r6_0[10320] = {
   CharId = 5101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85101,
@@ -9185,233 +9203,233 @@ r6_0[10317] = {
     "VoiceDes086",
     "VoiceDes033"
   },
-  VoiceId = 10317,
+  VoiceId = 10320,
   VoiceRes = r0_0.RT_69,
   VoiceText = {
     "voice_ch_char_Songlu_vo_topic_05_3"
   },
   VoiceType = 1,
 }
-r6_0[10318] = {
+r6_0[10321] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_19,
-  VoiceId = 10318,
+  VoiceId = 10321,
   VoiceRes = r0_0.RT_20,
   VoiceText = {
     "voice_ch_char_Songlu_vo_idle"
   },
   VoiceType = 1,
 }
-r6_0[10319] = {
+r6_0[10322] = {
   CharId = 5101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85101,
   UnlockDialogue = 90120601,
   VoiceDes = r0_0.RT_21,
-  VoiceId = 10319,
+  VoiceId = 10322,
   VoiceRes = r0_0.RT_71,
   VoiceText = {
     "voice_ch_char_Songlu_vo_companio_01"
   },
   VoiceType = 1,
 }
-r6_0[10320] = {
+r6_0[10323] = {
   CharId = 5101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85101,
   UnlockDialogue = 90120701,
   VoiceDes = r0_0.RT_24,
-  VoiceId = 10320,
+  VoiceId = 10323,
   VoiceRes = r0_0.RT_72,
   VoiceText = {
     "voice_ch_char_Songlu_vo_companio_02"
   },
   VoiceType = 1,
 }
-r6_0[10321] = {
+r6_0[10324] = {
   CharId = 5101,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85101,
   UnlockDialogue = 90120801,
   VoiceDes = r0_0.RT_26,
-  VoiceId = 10321,
+  VoiceId = 10324,
   VoiceRes = r0_0.RT_25,
   VoiceText = {
     "voice_ch_char_Songlu_vo_companio_03"
   },
   VoiceType = 1,
 }
-r6_0[10322] = {
+r6_0[10325] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_27,
-  VoiceId = 10322,
+  VoiceId = 10325,
   VoiceRes = r0_0.RT_28,
   VoiceText = {
     "voice_ch_char_Songlu_vo_birthday"
   },
   VoiceType = 1,
 }
-r6_0[10323] = {
+r6_0[10326] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_29,
-  VoiceId = 10323,
+  VoiceId = 10326,
   VoiceRes = r0_0.RT_30,
   VoiceText = {
     "voice_ch_char_Songlu_vo_appear"
   },
   VoiceType = 2,
 }
-r6_0[10324] = {
+r6_0[10327] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_31,
-  VoiceId = 10324,
+  VoiceId = 10327,
   VoiceRes = r0_0.RT_32,
   VoiceText = {
     "voice_ch_char_Songlu_vo_lvup"
   },
   VoiceType = 2,
 }
-r6_0[10325] = {
+r6_0[10328] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_33,
-  VoiceId = 10325,
+  VoiceId = 10328,
   VoiceRes = r0_0.RT_34,
   VoiceText = {
     "voice_ch_char_Songlu_vo_battlestart"
   },
   VoiceType = 2,
 }
-r6_0[10326] = {
+r6_0[10329] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_35,
-  VoiceId = 10326,
+  VoiceId = 10329,
   VoiceRes = r0_0.RT_36,
   VoiceText = {
     "voice_ch_char_Songlu_vo_battleidle"
   },
   VoiceType = 2,
 }
-r6_0[10327] = {
+r6_0[10330] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_75,
-  VoiceId = 10327,
+  VoiceId = 10330,
   VoiceRes = r0_0.RT_76,
   VoiceText = {
     "voice_ch_char_Songlu_vo_be_hit_heavy_r01"
   },
   VoiceType = 2,
 }
-r6_0[10328] = {
+r6_0[10331] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_37,
-  VoiceId = 10328,
+  VoiceId = 10331,
   VoiceRes = r0_0.RT_38,
   VoiceText = {
     "voice_ch_char_Songlu_vo_skill01_r01"
   },
   VoiceType = 2,
 }
-r6_0[10329] = {
+r6_0[10332] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_39,
-  VoiceId = 10329,
+  VoiceId = 10332,
   VoiceRes = r0_0.RT_40,
   VoiceText = {
     "voice_ch_char_Songlu_vo_skill01_r02"
   },
   VoiceType = 2,
 }
-r6_0[10330] = {
+r6_0[10333] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_41,
-  VoiceId = 10330,
+  VoiceId = 10333,
   VoiceRes = r0_0.RT_42,
   VoiceText = {
     "voice_ch_char_Songlu_vo_skill02_r01"
   },
   VoiceType = 2,
 }
-r6_0[10331] = {
+r6_0[10334] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_43,
-  VoiceId = 10331,
+  VoiceId = 10334,
   VoiceRes = r0_0.RT_44,
   VoiceText = {
     "voice_ch_char_Songlu_vo_skill02_r02"
   },
   VoiceType = 2,
 }
-r6_0[10332] = {
+r6_0[10335] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_45,
-  VoiceId = 10332,
+  VoiceId = 10335,
   VoiceRes = r0_0.RT_46,
   VoiceText = {
     "voice_ch_char_Songlu_vo_skill02_r03"
   },
   VoiceType = 2,
 }
-r6_0[10333] = {
+r6_0[10336] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_47,
-  VoiceId = 10333,
+  VoiceId = 10336,
   VoiceRes = r0_0.RT_48,
   VoiceText = {
     "voice_ch_char_Songlu_vo_die_r01"
   },
   VoiceType = 2,
 }
-r6_0[10334] = {
+r6_0[10337] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_49,
-  VoiceId = 10334,
+  VoiceId = 10337,
   VoiceRes = r0_0.RT_50,
   VoiceText = {
     "voice_ch_char_Songlu_vo_die_r02"
   },
   VoiceType = 2,
 }
-r6_0[10335] = {
+r6_0[10338] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_51,
-  VoiceId = 10335,
+  VoiceId = 10338,
   VoiceRes = r0_0.RT_52,
   VoiceText = {
     "voice_ch_char_Songlu_vo_revive"
   },
   VoiceType = 2,
 }
-r6_0[10336] = {
+r6_0[10339] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_53,
-  VoiceId = 10336,
+  VoiceId = 10339,
   VoiceRes = r0_0.RT_54,
   VoiceText = {
     "voice_ch_char_Songlu_vo_victory"
   },
   VoiceType = 2,
 }
-r6_0[10337] = {
+r6_0[10340] = {
   CharId = 5101,
   UnitId = 85101,
   VoiceDes = r0_0.RT_55,
-  VoiceId = 10337,
+  VoiceId = 10340,
   VoiceRes = r0_0.RT_56,
   VoiceText = {
     "voice_ch_char_Songlu_vo_fail"
@@ -9421,30 +9439,30 @@ r6_0[10337] = {
 r4_0[r5_0] = r6_0
 r5_0 = 5102
 r6_0 = {}
-r6_0[10800] = {
+r6_0[10803] = {
   CharId = 5102,
   GachaVoicePart = 1,
   UnitId = 85102,
   VoiceDes = r0_0.RT_1,
-  VoiceId = 10800,
+  VoiceId = 10803,
   VoiceRes = r0_0.RT_2,
   VoiceText = {
     "voice_ch_char_Aote_vo_gain"
   },
   VoiceType = 1,
 }
-r6_0[10801] = {
+r6_0[10804] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_3,
-  VoiceId = 10801,
+  VoiceId = 10804,
   VoiceRes = r0_0.RT_4,
   VoiceText = {
     "voice_ch_char_Aote_vo_welcome"
   },
   VoiceType = 1,
 }
-r6_0[10802] = {
+r6_0[10805] = {
   CharId = 5102,
   Dialogue = 901600011,
   LockedDes = "VoiceLocked_Dialogue",
@@ -9455,14 +9473,14 @@ r6_0[10802] = {
     "VoiceDes142",
     "VoiceDes031"
   },
-  VoiceId = 10802,
+  VoiceId = 10805,
   VoiceRes = r0_0.RT_5,
   VoiceText = {
     "voice_ch_char_Aote_vo_topic_01_1"
   },
   VoiceType = 1,
 }
-r6_0[10803] = {
+r6_0[10806] = {
   CharId = 5102,
   Dialogue = 90160103,
   LockedDes = "VoiceLocked_Dialogue",
@@ -9473,14 +9491,14 @@ r6_0[10803] = {
     "VoiceDes142",
     "VoiceDes032"
   },
-  VoiceId = 10803,
+  VoiceId = 10806,
   VoiceRes = r0_0.RT_6,
   VoiceText = {
     "voice_ch_char_Aote_vo_topic_01_2"
   },
   VoiceType = 1,
 }
-r6_0[10804] = {
+r6_0[10807] = {
   CharId = 5102,
   Dialogue = 901600012,
   LockedDes = "VoiceLocked_Dialogue",
@@ -9491,14 +9509,14 @@ r6_0[10804] = {
     "VoiceDes143",
     "VoiceDes031"
   },
-  VoiceId = 10804,
+  VoiceId = 10807,
   VoiceRes = r0_0.RT_8,
   VoiceText = {
     "voice_ch_char_Aote_vo_topic_02_1"
   },
   VoiceType = 1,
 }
-r6_0[10805] = {
+r6_0[10808] = {
   CharId = 5102,
   Dialogue = 90160203,
   LockedDes = "VoiceLocked_Dialogue",
@@ -9509,14 +9527,14 @@ r6_0[10805] = {
     "VoiceDes143",
     "VoiceDes032"
   },
-  VoiceId = 10805,
+  VoiceId = 10808,
   VoiceRes = r0_0.RT_10,
   VoiceText = {
     "voice_ch_char_Aote_vo_topic_02_2"
   },
   VoiceType = 1,
 }
-r6_0[10806] = {
+r6_0[10809] = {
   CharId = 5102,
   Dialogue = 901600013,
   LockedDes = "VoiceLocked_Dialogue",
@@ -9527,14 +9545,14 @@ r6_0[10806] = {
     "VoiceDes144",
     "VoiceDes031"
   },
-  VoiceId = 10806,
+  VoiceId = 10809,
   VoiceRes = r0_0.RT_11,
   VoiceText = {
     "voice_ch_char_Aote_vo_topic_03_1"
   },
   VoiceType = 1,
 }
-r6_0[10807] = {
+r6_0[10810] = {
   CharId = 5102,
   Dialogue = 90160303,
   LockedDes = "VoiceLocked_Dialogue",
@@ -9545,14 +9563,14 @@ r6_0[10807] = {
     "VoiceDes144",
     "VoiceDes032"
   },
-  VoiceId = 10807,
+  VoiceId = 10810,
   VoiceRes = r0_0.RT_12,
   VoiceText = {
     "voice_ch_char_Aote_vo_topic_03_2"
   },
   VoiceType = 1,
 }
-r6_0[10808] = {
+r6_0[10811] = {
   CharId = 5102,
   Dialogue = 901600014,
   LockedDes = "VoiceLocked_Dialogue",
@@ -9563,14 +9581,14 @@ r6_0[10808] = {
     "VoiceDes145",
     "VoiceDes031"
   },
-  VoiceId = 10808,
+  VoiceId = 10811,
   VoiceRes = r0_0.RT_13,
   VoiceText = {
     "voice_ch_char_Aote_vo_topic_04_1"
   },
   VoiceType = 1,
 }
-r6_0[10809] = {
+r6_0[10812] = {
   CharId = 5102,
   Dialogue = 90160403,
   LockedDes = "VoiceLocked_Dialogue",
@@ -9581,14 +9599,14 @@ r6_0[10809] = {
     "VoiceDes145",
     "VoiceDes032"
   },
-  VoiceId = 10809,
+  VoiceId = 10812,
   VoiceRes = r0_0.RT_14,
   VoiceText = {
     "voice_ch_char_Aote_vo_topic_04_2"
   },
   VoiceType = 1,
 }
-r6_0[10810] = {
+r6_0[10813] = {
   CharId = 5102,
   Dialogue = 901600015,
   LockedDes = "VoiceLocked_Dialogue",
@@ -9599,14 +9617,14 @@ r6_0[10810] = {
     "VoiceDes146",
     "VoiceDes031"
   },
-  VoiceId = 10810,
+  VoiceId = 10813,
   VoiceRes = r0_0.RT_16,
   VoiceText = {
     "voice_ch_char_Aote_vo_topic_05_1"
   },
   VoiceType = 1,
 }
-r6_0[10811] = {
+r6_0[10814] = {
   CharId = 5102,
   Dialogue = 90160503,
   LockedDes = "VoiceLocked_Dialogue",
@@ -9617,14 +9635,14 @@ r6_0[10811] = {
     "VoiceDes146",
     "VoiceDes032"
   },
-  VoiceId = 10811,
+  VoiceId = 10814,
   VoiceRes = r0_0.RT_17,
   VoiceText = {
     "voice_ch_char_Aote_vo_topic_05_2"
   },
   VoiceType = 1,
 }
-r6_0[10812] = {
+r6_0[10815] = {
   CharId = 5102,
   Dialogue = 90160505,
   LockedDes = "VoiceLocked_Dialogue",
@@ -9635,244 +9653,244 @@ r6_0[10812] = {
     "VoiceDes146",
     "VoiceDes033"
   },
-  VoiceId = 10812,
+  VoiceId = 10815,
   VoiceRes = r0_0.RT_69,
   VoiceText = {
     "voice_ch_char_Aote_vo_topic_05_3"
   },
   VoiceType = 1,
 }
-r6_0[10813] = {
+r6_0[10816] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_19,
-  VoiceId = 10813,
+  VoiceId = 10816,
   VoiceRes = r0_0.RT_20,
   VoiceText = {
     "voice_ch_char_Aote_vo_idle"
   },
   VoiceType = 1,
 }
-r6_0[10814] = {
+r6_0[10817] = {
   CharId = 5102,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85102,
   UnlockDialogue = 90160601,
   VoiceDes = r0_0.RT_21,
-  VoiceId = 10814,
+  VoiceId = 10817,
   VoiceRes = r0_0.RT_71,
   VoiceText = {
     "voice_ch_char_Aote_vo_companio_01"
   },
   VoiceType = 1,
 }
-r6_0[10815] = {
+r6_0[10818] = {
   CharId = 5102,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85102,
   UnlockDialogue = 90160701,
   VoiceDes = r0_0.RT_24,
-  VoiceId = 10815,
+  VoiceId = 10818,
   VoiceRes = r0_0.RT_22,
   VoiceText = {
     "voice_ch_char_Aote_vo_companio_02_1"
   },
   VoiceType = 1,
 }
-r6_0[10816] = {
+r6_0[10819] = {
   CharId = 5102,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85102,
   UnlockDialogue = 90160702,
   VoiceDes = r0_0.RT_24,
-  VoiceId = 10816,
+  VoiceId = 10819,
   VoiceRes = r0_0.RT_23,
   VoiceText = {
     "voice_ch_char_Aote_vo_companio_02_2"
   },
   VoiceType = 1,
 }
-r6_0[10820] = {
+r6_0[10823] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_29,
-  VoiceId = 10820,
+  VoiceId = 10823,
   VoiceRes = r0_0.RT_30,
   VoiceText = {
     "voice_ch_char_Aote_vo_appear"
   },
   VoiceType = 2,
 }
-r6_0[10821] = {
+r6_0[10824] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_31,
-  VoiceId = 10821,
+  VoiceId = 10824,
   VoiceRes = r0_0.RT_32,
   VoiceText = {
     "voice_ch_char_Aote_vo_lvup"
   },
   VoiceType = 2,
 }
-r6_0[10822] = {
+r6_0[10825] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_33,
-  VoiceId = 10822,
+  VoiceId = 10825,
   VoiceRes = r0_0.RT_34,
   VoiceText = {
     "voice_ch_char_Aote_vo_battlestart"
   },
   VoiceType = 2,
 }
-r6_0[10823] = {
+r6_0[10826] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_35,
-  VoiceId = 10823,
+  VoiceId = 10826,
   VoiceRes = r0_0.RT_36,
   VoiceText = {
     "voice_ch_char_Aote_vo_battleidle"
   },
   VoiceType = 2,
 }
-r6_0[10824] = {
+r6_0[10827] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_75,
-  VoiceId = 10824,
+  VoiceId = 10827,
   VoiceRes = r0_0.RT_76,
   VoiceText = {
     "voice_ch_char_Aote_vo_be_hit_heavy_r01"
   },
   VoiceType = 2,
 }
-r6_0[10825] = {
+r6_0[10828] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_77,
-  VoiceId = 10825,
+  VoiceId = 10828,
   VoiceRes = r0_0.RT_78,
   VoiceText = {
     "voice_ch_char_Aote_vo_be_hit_heavy_r02"
   },
   VoiceType = 2,
 }
-r6_0[10826] = {
+r6_0[10829] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_37,
-  VoiceId = 10826,
+  VoiceId = 10829,
   VoiceRes = r0_0.RT_38,
   VoiceText = {
     "voice_ch_char_Aote_vo_skill01_r01"
   },
   VoiceType = 2,
 }
-r6_0[10827] = {
+r6_0[10830] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_39,
-  VoiceId = 10827,
+  VoiceId = 10830,
   VoiceRes = r0_0.RT_40,
   VoiceText = {
     "voice_ch_char_Aote_vo_skill01_r02"
   },
   VoiceType = 2,
 }
-r6_0[10828] = {
+r6_0[10831] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_41,
-  VoiceId = 10828,
+  VoiceId = 10831,
   VoiceRes = r0_0.RT_42,
   VoiceText = {
     "voice_ch_char_Aote_vo_skill02_r01"
   },
   VoiceType = 2,
 }
-r6_0[10829] = {
+r6_0[10832] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_43,
-  VoiceId = 10829,
+  VoiceId = 10832,
   VoiceRes = r0_0.RT_44,
   VoiceText = {
     "voice_ch_char_Aote_vo_skill02_r02"
   },
   VoiceType = 2,
 }
-r6_0[10830] = {
+r6_0[10833] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_45,
-  VoiceId = 10830,
+  VoiceId = 10833,
   VoiceRes = r0_0.RT_46,
   VoiceText = {
     "voice_ch_char_Aote_vo_skill02_r03"
   },
   VoiceType = 2,
 }
-r6_0[10831] = {
+r6_0[10834] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_47,
-  VoiceId = 10831,
+  VoiceId = 10834,
   VoiceRes = r0_0.RT_48,
   VoiceText = {
     "voice_ch_char_Aote_vo_die_r01"
   },
   VoiceType = 2,
 }
-r6_0[10832] = {
+r6_0[10835] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_49,
-  VoiceId = 10832,
+  VoiceId = 10835,
   VoiceRes = r0_0.RT_50,
   VoiceText = {
     "voice_ch_char_Aote_vo_die_r02"
   },
   VoiceType = 2,
 }
-r6_0[10833] = {
+r6_0[10836] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_51,
-  VoiceId = 10833,
+  VoiceId = 10836,
   VoiceRes = r0_0.RT_52,
   VoiceText = {
     "voice_ch_char_Aote_vo_revive"
   },
   VoiceType = 2,
 }
-r6_0[10834] = {
+r6_0[10837] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_53,
-  VoiceId = 10834,
+  VoiceId = 10837,
   VoiceRes = r0_0.RT_54,
   VoiceText = {
     "voice_ch_char_Aote_vo_victory"
   },
   VoiceType = 2,
 }
-r6_0[10835] = {
+r6_0[10838] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_55,
-  VoiceId = 10835,
+  VoiceId = 10838,
   VoiceRes = r0_0.RT_56,
   VoiceText = {
     "voice_ch_char_Aote_vo_fail"
   },
   VoiceType = 2,
 }
-r6_0[10836] = {
+r6_0[10839] = {
   CharId = 5102,
   UnitId = 85102,
   VoiceDes = r0_0.RT_27,
-  VoiceId = 10836,
+  VoiceId = 10839,
   VoiceRes = r0_0.RT_28,
   VoiceText = {
     "voice_ch_char_Aote_vo_birthday"
@@ -10451,30 +10469,30 @@ r6_0[10258] = {
 r4_0[r5_0] = r6_0
 r5_0 = 5401
 r6_0 = {}
-r6_0[10711] = {
+r6_0[10714] = {
   CharId = 5401,
   GachaVoicePart = 1,
   UnitId = 85401,
   VoiceDes = r0_0.RT_1,
-  VoiceId = 10711,
+  VoiceId = 10714,
   VoiceRes = r0_0.RT_2,
   VoiceText = {
     "voice_ch_char_Dafu_vo_gain"
   },
   VoiceType = 1,
 }
-r6_0[10712] = {
+r6_0[10715] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_3,
-  VoiceId = 10712,
+  VoiceId = 10715,
   VoiceRes = r0_0.RT_4,
   VoiceText = {
     "voice_ch_char_Dafu_vo_welcome"
   },
   VoiceType = 1,
 }
-r6_0[10713] = {
+r6_0[10716] = {
   CharId = 5401,
   Dialogue = 901900011,
   LockedDes = "VoiceLocked_Dialogue",
@@ -10485,14 +10503,14 @@ r6_0[10713] = {
     "VoiceDes128",
     "VoiceDes031"
   },
-  VoiceId = 10713,
+  VoiceId = 10716,
   VoiceRes = r0_0.RT_5,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_01_1"
   },
   VoiceType = 1,
 }
-r6_0[10714] = {
+r6_0[10717] = {
   CharId = 5401,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85401,
@@ -10502,14 +10520,14 @@ r6_0[10714] = {
     "VoiceDes128",
     "VoiceDes032"
   },
-  VoiceId = 10714,
+  VoiceId = 10717,
   VoiceRes = r0_0.RT_6,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_01_2"
   },
   VoiceType = 1,
 }
-r6_0[10715] = {
+r6_0[10718] = {
   CharId = 5401,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85401,
@@ -10519,14 +10537,14 @@ r6_0[10715] = {
     "VoiceDes128",
     "VoiceDes033"
   },
-  VoiceId = 10715,
+  VoiceId = 10718,
   VoiceRes = r0_0.RT_57,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_01_3"
   },
   VoiceType = 1,
 }
-r6_0[10716] = {
+r6_0[10719] = {
   CharId = 5401,
   Dialogue = 90190104,
   LockedDes = "VoiceLocked_Dialogue",
@@ -10537,14 +10555,14 @@ r6_0[10716] = {
     "VoiceDes128",
     "VoiceDes034"
   },
-  VoiceId = 10716,
+  VoiceId = 10719,
   VoiceRes = r0_0.RT_58,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_01_4"
   },
   VoiceType = 1,
 }
-r6_0[10717] = {
+r6_0[10720] = {
   CharId = 5401,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85401,
@@ -10554,14 +10572,14 @@ r6_0[10717] = {
     "VoiceDes128",
     "VoiceDes035"
   },
-  VoiceId = 10717,
+  VoiceId = 10720,
   VoiceRes = r0_0.RT_59,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_01_5"
   },
   VoiceType = 1,
 }
-r6_0[10718] = {
+r6_0[10721] = {
   CharId = 5401,
   Dialogue = 90190107,
   LockedDes = "VoiceLocked_Dialogue",
@@ -10572,14 +10590,14 @@ r6_0[10718] = {
     "VoiceDes128",
     "VoiceDes036"
   },
-  VoiceId = 10718,
+  VoiceId = 10721,
   VoiceRes = r0_0.RT_60,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_01_6"
   },
   VoiceType = 1,
 }
-r6_0[10719] = {
+r6_0[10722] = {
   CharId = 5401,
   Dialogue = 901900012,
   LockedDes = "VoiceLocked_Dialogue",
@@ -10590,14 +10608,14 @@ r6_0[10719] = {
     "VoiceDes129",
     "VoiceDes031"
   },
-  VoiceId = 10719,
+  VoiceId = 10722,
   VoiceRes = r0_0.RT_8,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_02_1"
   },
   VoiceType = 1,
 }
-r6_0[10720] = {
+r6_0[10723] = {
   CharId = 5401,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85401,
@@ -10607,14 +10625,14 @@ r6_0[10720] = {
     "VoiceDes129",
     "VoiceDes032"
   },
-  VoiceId = 10720,
+  VoiceId = 10723,
   VoiceRes = r0_0.RT_10,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_02_2"
   },
   VoiceType = 1,
 }
-r6_0[10721] = {
+r6_0[10724] = {
   CharId = 5401,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85401,
@@ -10624,14 +10642,14 @@ r6_0[10721] = {
     "VoiceDes129",
     "VoiceDes033"
   },
-  VoiceId = 10721,
+  VoiceId = 10724,
   VoiceRes = r0_0.RT_61,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_02_3"
   },
   VoiceType = 1,
 }
-r6_0[10722] = {
+r6_0[10725] = {
   CharId = 5401,
   Dialogue = 90190204,
   LockedDes = "VoiceLocked_Dialogue",
@@ -10642,14 +10660,14 @@ r6_0[10722] = {
     "VoiceDes129",
     "VoiceDes034"
   },
-  VoiceId = 10722,
+  VoiceId = 10725,
   VoiceRes = r0_0.RT_62,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_02_4"
   },
   VoiceType = 1,
 }
-r6_0[10723] = {
+r6_0[10726] = {
   CharId = 5401,
   Dialogue = 90190206,
   LockedDes = "VoiceLocked_Dialogue",
@@ -10660,14 +10678,14 @@ r6_0[10723] = {
     "VoiceDes129",
     "VoiceDes035"
   },
-  VoiceId = 10723,
+  VoiceId = 10726,
   VoiceRes = r0_0.RT_84,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_02_5"
   },
   VoiceType = 1,
 }
-r6_0[10724] = {
+r6_0[10727] = {
   CharId = 5401,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85401,
@@ -10677,14 +10695,14 @@ r6_0[10724] = {
     "VoiceDes129",
     "VoiceDes036"
   },
-  VoiceId = 10724,
+  VoiceId = 10727,
   VoiceRes = r0_0.RT_102,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_02_6"
   },
   VoiceType = 1,
 }
-r6_0[10725] = {
+r6_0[10728] = {
   CharId = 5401,
   Dialogue = 901900013,
   LockedDes = "VoiceLocked_Dialogue",
@@ -10695,14 +10713,14 @@ r6_0[10725] = {
     "VoiceDes130",
     "VoiceDes031"
   },
-  VoiceId = 10725,
+  VoiceId = 10728,
   VoiceRes = r0_0.RT_11,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_03_1"
   },
   VoiceType = 1,
 }
-r6_0[10726] = {
+r6_0[10729] = {
   CharId = 5401,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85401,
@@ -10712,14 +10730,14 @@ r6_0[10726] = {
     "VoiceDes130",
     "VoiceDes032"
   },
-  VoiceId = 10726,
+  VoiceId = 10729,
   VoiceRes = r0_0.RT_12,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_03_2"
   },
   VoiceType = 1,
 }
-r6_0[10727] = {
+r6_0[10730] = {
   CharId = 5401,
   Dialogue = 90190303,
   LockedDes = "VoiceLocked_Dialogue",
@@ -10730,14 +10748,14 @@ r6_0[10727] = {
     "VoiceDes130",
     "VoiceDes033"
   },
-  VoiceId = 10727,
+  VoiceId = 10730,
   VoiceRes = r0_0.RT_65,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_03_3"
   },
   VoiceType = 1,
 }
-r6_0[10728] = {
+r6_0[10731] = {
   CharId = 5401,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85401,
@@ -10747,14 +10765,14 @@ r6_0[10728] = {
     "VoiceDes130",
     "VoiceDes034"
   },
-  VoiceId = 10728,
+  VoiceId = 10731,
   VoiceRes = r0_0.RT_67,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_03_4"
   },
   VoiceType = 1,
 }
-r6_0[10729] = {
+r6_0[10732] = {
   CharId = 5401,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85401,
@@ -10764,14 +10782,14 @@ r6_0[10729] = {
     "VoiceDes130",
     "VoiceDes035"
   },
-  VoiceId = 10729,
+  VoiceId = 10732,
   VoiceRes = r0_0.RT_68,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_03_5"
   },
   VoiceType = 1,
 }
-r6_0[10730] = {
+r6_0[10733] = {
   CharId = 5401,
   Dialogue = 901900014,
   LockedDes = "VoiceLocked_Dialogue",
@@ -10782,14 +10800,14 @@ r6_0[10730] = {
     "VoiceDes131",
     "VoiceDes031"
   },
-  VoiceId = 10730,
+  VoiceId = 10733,
   VoiceRes = r0_0.RT_13,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_04_1"
   },
   VoiceType = 1,
 }
-r6_0[10731] = {
+r6_0[10734] = {
   CharId = 5401,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85401,
@@ -10799,14 +10817,14 @@ r6_0[10731] = {
     "VoiceDes131",
     "VoiceDes032"
   },
-  VoiceId = 10731,
+  VoiceId = 10734,
   VoiceRes = r0_0.RT_14,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_04_2"
   },
   VoiceType = 1,
 }
-r6_0[10732] = {
+r6_0[10735] = {
   CharId = 5401,
   Dialogue = 90190403,
   LockedDes = "VoiceLocked_Dialogue",
@@ -10817,14 +10835,14 @@ r6_0[10732] = {
     "VoiceDes131",
     "VoiceDes033"
   },
-  VoiceId = 10732,
+  VoiceId = 10735,
   VoiceRes = r0_0.RT_15,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_04_3"
   },
   VoiceType = 1,
 }
-r6_0[10733] = {
+r6_0[10736] = {
   CharId = 5401,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85401,
@@ -10834,14 +10852,14 @@ r6_0[10733] = {
     "VoiceDes131",
     "VoiceDes034"
   },
-  VoiceId = 10733,
+  VoiceId = 10736,
   VoiceRes = r0_0.RT_83,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_04_4"
   },
   VoiceType = 1,
 }
-r6_0[10734] = {
+r6_0[10737] = {
   CharId = 5401,
   Dialogue = 901900015,
   LockedDes = "VoiceLocked_Dialogue",
@@ -10852,14 +10870,14 @@ r6_0[10734] = {
     "VoiceDes132",
     "VoiceDes031"
   },
-  VoiceId = 10734,
+  VoiceId = 10737,
   VoiceRes = r0_0.RT_16,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_05_1"
   },
   VoiceType = 1,
 }
-r6_0[10735] = {
+r6_0[10738] = {
   CharId = 5401,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85401,
@@ -10869,14 +10887,14 @@ r6_0[10735] = {
     "VoiceDes132",
     "VoiceDes032"
   },
-  VoiceId = 10735,
+  VoiceId = 10738,
   VoiceRes = r0_0.RT_17,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_05_2"
   },
   VoiceType = 1,
 }
-r6_0[10736] = {
+r6_0[10739] = {
   CharId = 5401,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85401,
@@ -10886,14 +10904,14 @@ r6_0[10736] = {
     "VoiceDes132",
     "VoiceDes033"
   },
-  VoiceId = 10736,
+  VoiceId = 10739,
   VoiceRes = r0_0.RT_69,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_05_3"
   },
   VoiceType = 1,
 }
-r6_0[10737] = {
+r6_0[10740] = {
   CharId = 5401,
   Dialogue = 90190504,
   LockedDes = "VoiceLocked_Dialogue",
@@ -10904,60 +10922,21 @@ r6_0[10737] = {
     "VoiceDes132",
     "VoiceDes034"
   },
-  VoiceId = 10737,
+  VoiceId = 10740,
   VoiceRes = r0_0.RT_70,
   VoiceText = {
     "voice_ch_char_Dafu_vo_topic_05_4"
   },
   VoiceType = 1,
 }
-r6_0[10738] = {
+r6_0[10741] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_19,
-  VoiceId = 10738,
+  VoiceId = 10741,
   VoiceRes = r0_0.RT_20,
   VoiceText = {
     "voice_ch_char_Dafu_vo_idle"
-  },
-  VoiceType = 1,
-}
-r6_0[10739] = {
-  CharId = 5401,
-  LockedDes = "VoiceLocked_Dialogue",
-  UnitId = 85401,
-  UnlockDialogue = 90190601,
-  VoiceDes = r0_0.RT_21,
-  VoiceId = 10739,
-  VoiceRes = r0_0.RT_71,
-  VoiceText = {
-    "voice_ch_char_Dafu_vo_companio_01"
-  },
-  VoiceType = 1,
-}
-r6_0[10740] = {
-  CharId = 5401,
-  LockedDes = "VoiceLocked_Dialogue",
-  UnitId = 85401,
-  UnlockDialogue = 90190701,
-  VoiceDes = r0_0.RT_24,
-  VoiceId = 10740,
-  VoiceRes = r0_0.RT_72,
-  VoiceText = {
-    "voice_ch_char_Dafu_vo_companio_02"
-  },
-  VoiceType = 1,
-}
-r6_0[10741] = {
-  CharId = 5401,
-  LockedDes = "VoiceLocked_Dialogue",
-  UnitId = 85401,
-  UnlockDialogue = 90190801,
-  VoiceDes = r0_0.RT_26,
-  VoiceId = 10741,
-  VoiceRes = r0_0.RT_25,
-  VoiceText = {
-    "voice_ch_char_Dafu_vo_companio_03"
   },
   VoiceType = 1,
 }
@@ -10965,196 +10944,235 @@ r6_0[10742] = {
   CharId = 5401,
   LockedDes = "VoiceLocked_Dialogue",
   UnitId = 85401,
+  UnlockDialogue = 90190601,
+  VoiceDes = r0_0.RT_21,
+  VoiceId = 10742,
+  VoiceRes = r0_0.RT_71,
+  VoiceText = {
+    "voice_ch_char_Dafu_vo_companio_01"
+  },
+  VoiceType = 1,
+}
+r6_0[10743] = {
+  CharId = 5401,
+  LockedDes = "VoiceLocked_Dialogue",
+  UnitId = 85401,
+  UnlockDialogue = 90190701,
+  VoiceDes = r0_0.RT_24,
+  VoiceId = 10743,
+  VoiceRes = r0_0.RT_72,
+  VoiceText = {
+    "voice_ch_char_Dafu_vo_companio_02"
+  },
+  VoiceType = 1,
+}
+r6_0[10744] = {
+  CharId = 5401,
+  LockedDes = "VoiceLocked_Dialogue",
+  UnitId = 85401,
+  UnlockDialogue = 90190801,
+  VoiceDes = r0_0.RT_26,
+  VoiceId = 10744,
+  VoiceRes = r0_0.RT_25,
+  VoiceText = {
+    "voice_ch_char_Dafu_vo_companio_03"
+  },
+  VoiceType = 1,
+}
+r6_0[10745] = {
+  CharId = 5401,
+  LockedDes = "VoiceLocked_Dialogue",
+  UnitId = 85401,
   UnlockDialogue = 90190901,
   VoiceDes = r0_0.RT_73,
-  VoiceId = 10742,
+  VoiceId = 10745,
   VoiceRes = r0_0.RT_74,
   VoiceText = {
     "voice_ch_char_Dafu_vo_companio_04"
   },
   VoiceType = 1,
 }
-r6_0[10743] = {
+r6_0[10746] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_29,
-  VoiceId = 10743,
+  VoiceId = 10746,
   VoiceRes = r0_0.RT_30,
   VoiceText = {
     "voice_ch_char_Dafu_vo_appear"
   },
   VoiceType = 2,
 }
-r6_0[10744] = {
+r6_0[10747] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_31,
-  VoiceId = 10744,
+  VoiceId = 10747,
   VoiceRes = r0_0.RT_32,
   VoiceText = {
     "voice_ch_char_Dafu_vo_lvup"
   },
   VoiceType = 2,
 }
-r6_0[10745] = {
+r6_0[10748] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_33,
-  VoiceId = 10745,
+  VoiceId = 10748,
   VoiceRes = r0_0.RT_34,
   VoiceText = {
     "voice_ch_char_Dafu_vo_battlestart"
   },
   VoiceType = 2,
 }
-r6_0[10746] = {
+r6_0[10749] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_35,
-  VoiceId = 10746,
+  VoiceId = 10749,
   VoiceRes = r0_0.RT_36,
   VoiceText = {
     "voice_ch_char_Dafu_vo_battleidle"
   },
   VoiceType = 2,
 }
-r6_0[10747] = {
+r6_0[10750] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_75,
-  VoiceId = 10747,
+  VoiceId = 10750,
   VoiceRes = r0_0.RT_76,
   VoiceText = {
     "voice_ch_char_Dafu_vo_be_hit_heavy_r01"
   },
   VoiceType = 2,
 }
-r6_0[10748] = {
+r6_0[10751] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_77,
-  VoiceId = 10748,
+  VoiceId = 10751,
   VoiceRes = r0_0.RT_78,
   VoiceText = {
     "voice_ch_char_Dafu_vo_be_hit_heavy_r02"
   },
   VoiceType = 2,
 }
-r6_0[10749] = {
+r6_0[10752] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_37,
-  VoiceId = 10749,
+  VoiceId = 10752,
   VoiceRes = r0_0.RT_38,
   VoiceText = {
     "voice_ch_char_Dafu_vo_skill01_r01"
   },
   VoiceType = 2,
 }
-r6_0[10750] = {
+r6_0[10753] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_39,
-  VoiceId = 10750,
+  VoiceId = 10753,
   VoiceRes = r0_0.RT_40,
   VoiceText = {
     "voice_ch_char_Dafu_vo_skill01_r02"
   },
   VoiceType = 2,
 }
-r6_0[10751] = {
+r6_0[10754] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_41,
-  VoiceId = 10751,
+  VoiceId = 10754,
   VoiceRes = r0_0.RT_42,
   VoiceText = {
     "voice_ch_char_Dafu_vo_skill02_r01"
   },
   VoiceType = 2,
 }
-r6_0[10752] = {
+r6_0[10755] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_43,
-  VoiceId = 10752,
+  VoiceId = 10755,
   VoiceRes = r0_0.RT_44,
   VoiceText = {
     "voice_ch_char_Dafu_vo_skill02_r02"
   },
   VoiceType = 2,
 }
-r6_0[10753] = {
+r6_0[10756] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_45,
-  VoiceId = 10753,
+  VoiceId = 10756,
   VoiceRes = r0_0.RT_46,
   VoiceText = {
     "voice_ch_char_Dafu_vo_skill02_r03"
   },
   VoiceType = 2,
 }
-r6_0[10754] = {
+r6_0[10757] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_47,
-  VoiceId = 10754,
+  VoiceId = 10757,
   VoiceRes = r0_0.RT_48,
   VoiceText = {
     "voice_ch_char_Dafu_vo_die_r01"
   },
   VoiceType = 2,
 }
-r6_0[10755] = {
+r6_0[10758] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_49,
-  VoiceId = 10755,
+  VoiceId = 10758,
   VoiceRes = r0_0.RT_50,
   VoiceText = {
     "voice_ch_char_Dafu_vo_die_r02"
   },
   VoiceType = 2,
 }
-r6_0[10756] = {
+r6_0[10759] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_51,
-  VoiceId = 10756,
+  VoiceId = 10759,
   VoiceRes = r0_0.RT_52,
   VoiceText = {
     "voice_ch_char_Dafu_vo_revive"
   },
   VoiceType = 2,
 }
-r6_0[10757] = {
+r6_0[10760] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_53,
-  VoiceId = 10757,
+  VoiceId = 10760,
   VoiceRes = r0_0.RT_54,
   VoiceText = {
     "voice_ch_char_Dafu_vo_victory"
   },
   VoiceType = 2,
 }
-r6_0[10758] = {
+r6_0[10761] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_55,
-  VoiceId = 10758,
+  VoiceId = 10761,
   VoiceRes = r0_0.RT_56,
   VoiceText = {
     "voice_ch_char_Dafu_vo_fail"
   },
   VoiceType = 2,
 }
-r6_0[10759] = {
+r6_0[10762] = {
   CharId = 5401,
   UnitId = 85401,
   VoiceDes = r0_0.RT_27,
-  VoiceId = 10759,
+  VoiceId = 10762,
   VoiceRes = r0_0.RT_28,
   VoiceText = {
     "voice_ch_char_Dafu_vo_birthday"

@@ -64641,7 +64641,7 @@ local r0_0 = {
         voice_ch_story_1201_120143_1E139A8F = {
           ProgrammerSoundPath = "event:/voice/ch/story/1201",
           SelectKey = "voice_ch_story_1201_120143_1E139A8F",
-          SoundLength = 3110,
+          SoundLength = 2580,
         },
         voice_ch_story_1201_120144_1E13A8AA = {
           ProgrammerSoundPath = "event:/voice/ch/story/1201",

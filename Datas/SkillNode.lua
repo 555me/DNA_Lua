@@ -7617,6 +7617,7 @@ r4_0[851806] = {
   DisableBlendBone = false,
   NodeId = 851806,
   SkillNodeEffects = {
+    851805,
     851815
   },
 }

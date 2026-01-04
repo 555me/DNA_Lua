@@ -1,83 +1,87 @@
--- filename: @E:/Pack/Branch/OBT10_Geili\Content/Script/BluePrints\Client\Entities\Components\FeiNaMgr.lua
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\Client\Entities\Components\FeiNaMgr.lua
 -- version: lua54
 -- line: [0, 0] id: 0
 return {
-  GetFeiNaProgressRewerd = function(r0_1, r1_1, r2_1, r3_1)
-    -- line: [3, 14] id: 1
-    r0_1:CallServer("GetFeiNaProgressRewerd", function(r0_2, r1_2)
-      -- line: [4, 12] id: 2
-      r0_1.logger.debug("ZJT_ GetFeiNaProgressRewerd ", r0_2, r1_2)
-      if ErrorCode:Check(r0_2) == false then
+  EnterWorld = function(r0_1)
+    -- line: [2, 4] id: 1
+    UIUtils.RefreshFeinaRewardReddot()
+  end,
+  GetFeiNaProgressRewerd = function(r0_2, r1_2, r2_2, r3_2)
+    -- line: [6, 17] id: 2
+    r0_2:CallServer("GetFeiNaProgressRewerd", function(r0_3, r1_3)
+      -- line: [7, 15] id: 3
+      r0_2.logger.debug("ZJT_ GetFeiNaProgressRewerd ", r0_3, r1_3)
+      if ErrorCode:Check(r0_3) == false then
         return 
       end
-      if r1_1 then
-        r1_1(r0_2, r1_2)
+      if r1_2 then
+        r1_2(r0_3, r1_3)
       end
-    end, r2_1, r3_1)
+    end, r2_2, r3_2)
   end,
-  GetAllFeiNaProgressRewerd = function(r0_3, r1_3, r2_3)
-    -- line: [16, 28] id: 3
-    r0_3:CallServer("GetAllFeiNaProgressRewerd", function(r0_4, r1_4)
-      -- line: [17, 25] id: 4
-      r0_3.logger.debug("ZJT_ GetAllFeiNaProgressRewerd ", r0_4, r1_4)
-      if ErrorCode:Check(r0_4) == false then
+  GetAllFeiNaProgressRewerd = function(r0_4, r1_4, r2_4)
+    -- line: [19, 31] id: 4
+    r0_4:CallServer("GetAllFeiNaProgressRewerd", function(r0_5, r1_5)
+      -- line: [20, 28] id: 5
+      r0_4.logger.debug("ZJT_ GetAllFeiNaProgressRewerd ", r0_5, r1_5)
+      if ErrorCode:Check(r0_5) == false then
         return 
       end
-      if r2_3 then
-        r2_3(r0_4, r1_4)
+      if r2_4 then
+        r2_4(r0_5, r1_5)
       end
-    end, r1_3)
+    end, r1_4)
   end,
-  GetFeinaRewardInfo = function(r0_5, r1_5)
-    -- line: [30, 33] id: 5
-    return r0_5.FeiNaDungeonData[r1_5] and r0_5.FeiNaDungeonData[r1_5].RewardsGot
+  GetFeinaRewardInfo = function(r0_6, r1_6)
+    -- line: [33, 36] id: 6
+    return r0_6.FeiNaDungeonData[r1_6] and r0_6.FeiNaDungeonData[r1_6].RewardsGot
   end,
-  IsPassDungeon = function(r0_6, r1_6)
-    -- line: [35, 41] id: 6
-    if not r1_6 then
+  IsPassDungeon = function(r0_7, r1_7)
+    -- line: [38, 44] id: 7
+    if not r1_7 then
       return false
     end
-    local r2_6 = r0_6.Dungeons
-    if r2_6 then
-      r2_6 = r0_6.Dungeons[r1_6] and r0_6.Dungeons[r1_6].IsPass and false
+    local r2_7 = r0_7.Dungeons
+    if r2_7 then
+      r2_7 = r0_7.Dungeons[r1_7] and r0_7.Dungeons[r1_7].IsPass and false
     else
       goto label_16	-- block#5 is visited secondly
     end
-    return r2_6
+    return r2_7
   end,
-  _OnPropChangeFeiNaDungeonData = function(r0_7)
-    -- line: [43, 75] id: 7
-    local r1_7 = GWorld:GetAvatar()
-    if not r1_7 then
+  _OnPropChangeFeiNaDungeonData = function(r0_8)
+    -- line: [46, 78] id: 8
+    local r1_8 = GWorld:GetAvatar()
+    if not r1_8 then
       return 
     end
-    for r6_7, r7_7 in pairs(DataMgr.FeinaEvent) do
-      for r12_7, r13_7 in pairs(r7_7.DungeonId) do
-        local r14_7 = r1_7:GetFeinaRewardInfo(r13_7)
-        if r14_7 then
-          for r19_7, r20_7 in pairs(r14_7) do
-            if r20_7 == 1 then
+    for r6_8, r7_8 in pairs(DataMgr.FeinaEvent) do
+      for r12_8, r13_8 in pairs(r7_8.DungeonId) do
+        local r14_8 = r1_8:GetFeinaRewardInfo(r13_8)
+        if r14_8 then
+          for r19_8, r20_8 in pairs(r14_8) do
+            if r20_8 == 1 then
               if not ReddotManager.GetTreeNode("FeinaEventReward") then
                 ReddotManager.AddNodeEx("FeinaEventReward")
               end
-              local r22_7 = ReddotManager.GetLeafNodeCacheDetail("FeinaEventReward")
-              if not r22_7[r6_7] then
-                r22_7[r6_7] = {}
+              local r22_8 = ReddotManager.GetLeafNodeCacheDetail("FeinaEventReward")
+              if not r22_8[r6_8] then
+                r22_8[r6_8] = {}
               end
-              if not r22_7[r6_7][r13_7] then
-                r22_7[r6_7][r13_7] = {}
+              if not r22_8[r6_8][r13_8] then
+                r22_8[r6_8][r13_8] = {}
               end
-              if not r22_7[r6_7][r13_7][r19_7] then
-                r22_7[r6_7][r13_7][r19_7] = 1
+              if not r22_8[r6_8][r13_8][r19_8] then
+                r22_8[r6_8][r13_8][r19_8] = 1
                 ReddotManager.IncreaseLeafNodeCount("FeinaEventReward")
               end
             end
           end
-          -- close: r15_7
+          -- close: r15_8
         end
       end
-      -- close: r8_7
+      -- close: r8_8
     end
-    -- close: r2_7
+    -- close: r2_8
   end,
 }

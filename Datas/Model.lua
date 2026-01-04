@@ -3643,7 +3643,7 @@ r4_0[85301] = {
   ModelTag = r0_0.RT_52,
   MontageFolder = "/Game/Asset/Char/Player/Char010_Saiqi/Animation/Montage/",
   MontagePrefix = "Saiqi_",
-  SkeletonMeshPath = "Asset/Char/Player/Char010_Saiqi01/Mesh/Saiqi_SP01_SM",
+  SkeletonMeshPath = "Asset/Char/Player/Char010_Saiqi/Mesh/Saiqi_SM",
 }
 r4_0[85401] = {
   AnimInstancePath = "AnimBlueprint\'/Game/AssetDesign/Char/Npc/CharacterNpc/Dafu/ABP_NPC_Dafu.ABP_NPC_Dafu_C\'",

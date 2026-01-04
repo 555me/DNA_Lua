@@ -1,309 +1,324 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\WBP\Play\Widget\Task\NewPlayer\WBP_Play_NewPlayerTask_P_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local M = Class({
+local r0_0 = Class({
   "BluePrints.UI.BP_UIState_C"
 })
-M._components = {
+r0_0._components = {
   "BluePrints.UI.WBP.Play.Widget.Task.NewPlayer.NewPlayerTaskView"
 }
-
-function M:Initialize(Initializer)
-  M.Super.Initialize(self)
-  self.NodeName = "StarterQuest"
-  self.CurPhaseId = nil
-  self.PlayerPhaseId = nil
-  self.IsCurrentPhaseRedPoint = nil
-  self.AllQuestServerData = {}
-  self.AllQuestConfigData = {}
+function r0_0.Initialize(r0_1, r1_1)
+  -- line: [19, 27] id: 1
+  r0_0.Super.Initialize(r0_1)
+  r0_1.NodeName = "StarterQuest"
+  r0_1.CurPhaseId = nil
+  r0_1.PlayerPhaseId = nil
+  r0_1.IsCurrentPhaseRedPoint = nil
+  r0_1.AllQuestServerData = {}
+  r0_1.AllQuestConfigData = {}
 end
-
-function M:Destruct()
-  self.List_Task.OnCreateEmptyContent:Unbind()
-  ReddotManager.RemoveListener(self.NodeName, self)
-  self.Super.Destruct(self)
+function r0_0.Destruct(r0_2)
+  -- line: [28, 32] id: 2
+  r0_2.List_Task.OnCreateEmptyContent:Unbind()
+  ReddotManager.RemoveListener(r0_2.NodeName, r0_2)
+  r0_2.Super.Destruct(r0_2)
 end
-
-function M:InitContent(Parent)
-  self.InitKey = nil
-  local PlayerAvatar = GWorld:GetAvatar()
-  if nil == PlayerAvatar then
-    return
+function r0_0.InitContent(r0_3, r1_3)
+  -- line: [33, 88] id: 3
+  r0_3.InitKey = nil
+  local r2_3 = GWorld:GetAvatar()
+  if r2_3 == nil then
+    return 
   end
-  self.Parent = Parent
-  self.Mobile = "Mobile" == CommonUtils.GetDeviceTypeByPlatformName(self)
-  self:AddInputMethodChangedListen()
-  self:InitQuestData()
-  self:FillWithQuestData(PlayerAvatar)
-  self.MaxPhaseIndex = #self.QuestTabInfo
-  if self.Mobile then
-    self.Btn_CheckReward.Key_RewardPreview:SetVisibility(UIConst.VisibilityOp.Collapsed)
-    self.TaskObjectClass = LoadClass("/Game/UI/WBP/Play/Mobile/Task/NewPlayer/WBP_Play_NewPlayerTaskItem_M.WBP_Play_NewPlayerTaskItem_M")
+  r0_3.Parent = r1_3
+  r0_3.Mobile = CommonUtils.GetDeviceTypeByPlatformName(r0_3) == "Mobile"
+  r0_3:AddInputMethodChangedListen()
+  r0_3:InitQuestData()
+  r0_3:FillWithQuestData(r2_3)
+  r0_3.MaxPhaseIndex = #r0_3.QuestTabInfo
+  if r0_3.Mobile then
+    r0_3.Btn_CheckReward.Key_RewardPreview:SetVisibility(UIConst.VisibilityOp.Collapsed)
+    r0_3.TaskObjectClass = LoadClass("/Game/UI/WBP/Play/Mobile/Task/NewPlayer/WBP_Play_NewPlayerTaskItem_M.WBP_Play_NewPlayerTaskItem_M")
   else
-    self.TaskObjectClass = LoadClass("/Game/UI/WBP/Play/PC/Task/NewPlayer/WBP_Play_NewPlayerTaskItem_P.WBP_Play_NewPlayerTaskItem_P")
+    r0_3.TaskObjectClass = LoadClass("/Game/UI/WBP/Play/PC/Task/NewPlayer/WBP_Play_NewPlayerTaskItem_P.WBP_Play_NewPlayerTaskItem_P")
   end
-  self.List_Task.OnCreateEmptyContent:Bind(self, function(self)
-    local Content = NewObject(self.TaskObjectClass)
-    Content.QuestId = -1
-    Content.Parent = self
-    return Content
+  r0_3.List_Task.OnCreateEmptyContent:Bind(r0_3, function(r0_4)
+    -- line: [50, 55] id: 4
+    local r1_4 = NewObject(r0_4.TaskObjectClass)
+    r1_4.QuestId = -1
+    r1_4.Parent = r0_4
+    return r1_4
   end)
-  if not ReddotManager.GetTreeNode(self.NodeName) then
-    ReddotManager.AddNode(self.NodeName)
+  if not ReddotManager.GetTreeNode(r0_3.NodeName) then
+    ReddotManager.AddNode(r0_3.NodeName)
   end
-  self.Text_NewPlayerSubTitle:SetText(GText("MAIN_UI_STARTERQUEST01"))
-  self.Text_NewPlayerMainTitle:SetText(GText("MAIN_UI_STARTERQUEST02"))
-  self:RefreshPhaseIndex(self.PlayerPhaseId)
-  self:BindAllClickFunction()
-  self.List_Task:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
-  self.List_Task:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
-  self.List_Task:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
-  self.List_Task:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
-  self:AddDispatcher(EventID.UnLoadUI, self, function(self, UIName)
-    if "GetItemPage" == UIName and not self.List_Task:HasFocusedDescendants() then
-      self.List_Task:SetFocus()
-    elseif "ArmoryMain" == UIName then
-      self:HideNpc(false)
+  r0_3.Text_NewPlayerSubTitle:SetText(GText("MAIN_UI_STARTERQUEST01"))
+  r0_3.Text_NewPlayerMainTitle:SetText(GText("MAIN_UI_STARTERQUEST02"))
+  r0_3:RefreshPhaseIndex(r0_3.PlayerPhaseId)
+  r0_3:BindAllClickFunction()
+  r0_3.List_Task:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
+  r0_3.List_Task:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
+  r0_3.List_Task:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
+  r0_3.List_Task:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
+  r0_3:AddDispatcher(EventID.UnLoadUI, r0_3, function(r0_5, r1_5)
+    -- line: [67, 73] id: 5
+    if r1_5 == "GetItemPage" and not r0_5.List_Task:HasFocusedDescendants() then
+      r0_5.List_Task:SetFocus()
+    elseif r1_5 == "ArmoryMain" then
+      r0_5:HideNpc(false)
     end
   end)
-  self:AddDispatcher(EventID.LoadUI, self, function(self, UIName)
-    if "ArmoryMain" == UIName then
-      self:HideNpc(true)
+  r0_3:AddDispatcher(EventID.LoadUI, r0_3, function(r0_6, r1_6)
+    -- line: [74, 78] id: 6
+    if r1_6 == "ArmoryMain" then
+      r0_6:HideNpc(true)
     end
   end)
-  self:AddDispatcher(EventID.AllDailyTaskRewardKey, self, self.OnAllDailyTaskRewardKey)
-  self:AddDispatcher(EventID.EntryReceiveEnterState, self, function()
-    local StyleOfPlay = UIManager(self):GetUIObj("StyleOfPlay")
-    if StyleOfPlay and StyleOfPlay:BP_GetDesiredFocusTarget() == self then
-      self:RefreshPhaseIndex(self.CurPhaseId)
-      self:SetFocus()
+  r0_3:AddDispatcher(EventID.AllDailyTaskRewardKey, r0_3, r0_3.OnAllDailyTaskRewardKey)
+  r0_3:AddDispatcher(EventID.EntryReceiveEnterState, r0_3, function()
+    -- line: [80, 86] id: 7
+    local r0_7 = UIManager(r0_3):GetUIObj("StyleOfPlay")
+    if r0_7 and r0_7:BP_GetDesiredFocusTarget() == r0_3 then
+      r0_3:RefreshPhaseIndex(r0_3.CurPhaseId)
+      r0_3:SetFocus()
     end
   end)
-  self.Left_Reddot:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  r0_3.Left_Reddot:SetVisibility(UIConst.VisibilityOp.Collapsed)
 end
-
-function M:HideNpc(IsHide)
-  local GameInstance = UE4.UGameplayStatics.GetGameInstance(self)
-  local UIManager = GameInstance:GetGameUIManager()
-  UIManager:HideNpcActor(IsHide, "StyleOfPlay")
+function r0_0.HideNpc(r0_8, r1_8)
+  -- line: [89, 93] id: 8
+  UE4.UGameplayStatics.GetGameInstance(r0_8):GetGameUIManager():HideNpcActor(r1_8, "StyleOfPlay")
 end
-
-function M:OnUpdateActivityByAction(ActionName, ...)
-  local ParamId = (...)
-  if "QuestGetReward" == ActionName or "QuestComplete" == ActionName then
-    local PlayerAvatar = GWorld:GetAvatar()
-    if nil ~= PlayerAvatar then
-      local CurrentQuestServerData = PlayerAvatar.StarterQuests[ParamId]
-      local CurrentQuestConfigData = DataMgr.StarterQuestDetail[ParamId]
-      local CurrentPhaseId = CurrentQuestConfigData.QuestPhaseId
-      self.AllQuestServerData[CurrentPhaseId][ParamId] = CurrentQuestServerData
-      self:RefreshTabItemInfo(CurrentPhaseId)
+function r0_0.OnUpdateActivityByAction(r0_9, r1_9, ...)
+  -- line: [95, 120] id: 9
+  ... = ... -- error: untaken top expr
+  local r2_9 = nil	-- notice: implicit variable refs by block#[3, 6, 7, 9]
+  if r1_9 == "QuestGetReward" or r1_9 == "QuestComplete" then
+    local r3_9 = GWorld:GetAvatar()
+    if r3_9 ~= nil then
+      local r6_9 = DataMgr.StarterQuestDetail[r2_9].QuestPhaseId
+      r0_9.AllQuestServerData[r6_9][r2_9] = r3_9.StarterQuests[r2_9]
+      r0_9:RefreshTabItemInfo(r6_9)
     end
-  elseif "QuestGetAllReward" == ActionName then
-    local PlayerAvatar = GWorld:GetAvatar()
-    if nil ~= PlayerAvatar then
-      local QuestIdValue = DataMgr.StarterQuestPhaseMap[ParamId]
-      for _, v in ipairs(QuestIdValue) do
-        self.AllQuestServerData[ParamId][v] = PlayerAvatar.StarterQuests[v]
+  elseif r1_9 == "QuestGetAllReward" then
+    local r3_9 = GWorld:GetAvatar()
+    if r3_9 ~= nil then
+      for r9_9, r10_9 in ipairs(DataMgr.StarterQuestPhaseMap[r2_9]) do
+        r0_9.AllQuestServerData[r2_9][r10_9] = r3_9.StarterQuests[r10_9]
       end
-      self:RefreshTabItemInfo(ParamId)
+      -- close: r5_9
+      r0_9:RefreshTabItemInfo(r2_9)
     end
-  elseif "QuestRefreshReddot" == ActionName then
-    self:RefreshRightBtnReddot()
+  elseif r1_9 == "QuestRefreshReddot" then
+    r0_9:RefreshRightBtnReddot()
   end
 end
-
-function M:RefreshOpInfoByInputDevice(CurInputDevice, CurGamepadName)
-  if CurInputDevice == ECommonInputType.Touch then
-    return
+function r0_0.RefreshOpInfoByInputDevice(r0_10, r1_10, r2_10)
+  -- line: [121, 132] id: 10
+  if r1_10 == ECommonInputType.Touch then
+    return 
   end
-  if CurInputDevice == ECommonInputType.Gamepad and UIUtils.HasAnyFocus(self) and not UIUtils.HasAnyFocus(self.List_Task) then
-    self.List_Task:SetFocus()
+  if r1_10 == ECommonInputType.Gamepad and UIUtils.HasAnyFocus(r0_10) and not UIUtils.HasAnyFocus(r0_10.List_Task) then
+    r0_10.List_Task:SetFocus()
   end
-  self:UpdateUIStyleInPlatform()
-  self.Super.RefreshOpInfoByInputDevice(self, CurInputDevice, CurGamepadName)
+  r0_10:UpdateUIStyleInPlatform()
+  r0_10.Super.RefreshOpInfoByInputDevice(r0_10, r1_10, r2_10)
 end
-
-function M:TryNavigateToIndex(Index)
-  Index = Index or 0
-  self:AddTimer(0.1, function()
-    if self:HasAnyFocus() or self:HasFocusedDescendants() then
-      self.List_Task:NavigateToIndex(Index)
+function r0_0.TryNavigateToIndex(r0_11, r1_11)
+  -- line: [133, 142] id: 11
+  if not r1_11 then
+    r1_11 = 0
+  end
+  r0_11:AddTimer(0.1, function()
+    -- line: [135, 141] id: 12
+    if r0_11:HasAnyFocus() or r0_11:HasFocusedDescendants() then
+      r0_11.List_Task:NavigateToIndex(r1_11)
     else
-      self:ClearLastFocusedWidget()
+      r0_11:ClearLastFocusedWidget()
     end
   end)
 end
-
-function M:SwitchIn()
-  self:TryNavigateToIndex(0)
-  self:UpdateUIStyleInPlatform()
-  self:PlayAnimation(self.In)
+function r0_0.SwitchIn(r0_13)
+  -- line: [143, 146] id: 13
+  r0_13:TryNavigateToIndex(0)
+  r0_13:UpdateUIStyleInPlatform()
 end
-
-function M:OnKeyDown(MyGeometry, InKeyEvent)
-  local InKey = UE4.UKismetInputLibrary.GetKey(InKeyEvent)
-  local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-  local IsEventHandled = false
-  if UE4.UKismetInputLibrary.Key_IsGamepadKey(InKey) then
-    IsEventHandled = self:OnGamePadDown(InKeyName)
+function r0_0.OnKeyDown(r0_14, r1_14, r2_14)
+  -- line: [147, 159] id: 14
+  local r3_14 = UE4.UKismetInputLibrary.GetKey(r2_14)
+  local r4_14 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_14)
+  local r5_14 = false
+  if UE4.UKismetInputLibrary.Key_IsGamepadKey(r3_14) then
+    r5_14 = r0_14:OnGamePadDown(r4_14)
   end
-  if IsEventHandled then
+  if r5_14 then
     return UWidgetBlueprintLibrary.Handled()
   else
     return UWidgetBlueprintLibrary.UnHandled()
   end
 end
-
-function M:OnPreviewKeyDown(MyGeometry, InKeyEvent)
-  local InKey = UE4.UKismetInputLibrary.GetKey(InKeyEvent)
-  local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-  local IsHandled = false
-  if InKeyName == Const.GamepadDPadLeft then
-    if self.Key_Left:IsVisible() then
-      self:RefreshPhaseIndex(self.CurPhaseId - 1)
-      IsHandled = true
-    end
-  elseif InKeyName == Const.GamepadDPadRight and self.Key_Right:IsVisible() then
-    self:RefreshPhaseIndex(self.CurPhaseId + 1)
-    IsHandled = true
+function r0_0.OnPreviewKeyDown(r0_15, r1_15, r2_15)
+  -- line: [160, 179] id: 15
+  local r4_15 = UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_15))
+  local r5_15 = false
+  if r4_15 == Const.GamepadDPadLeft and r0_15.Key_Left:IsVisible() then
+    r0_15:RefreshPhaseIndex(r0_15.CurPhaseId + -1)
+    r5_15 = true
+  elseif r4_15 == Const.GamepadDPadRight and r0_15.Key_Right:IsVisible() then
+    r0_15:RefreshPhaseIndex(r0_15.CurPhaseId + 1)
+    r5_15 = true
   end
-  if IsHandled then
+  if r5_15 then
     return UE4.UWidgetBlueprintLibrary.Handled()
   end
   return UE4.UWidgetBlueprintLibrary.Unhandled()
 end
-
-function M:OnGamePadDown(InKeyName)
-  local IsEventHandled = false
-  if InKeyName == Const.GamepadFaceButtonLeft then
-    self:PreviewRewardBtnClick()
-    IsEventHandled = true
-  elseif InKeyName == Const.GamepadFaceButtonUp then
-    local CanGetAll = self.Btn_Reward:GetVisibility() ~= UIConst.VisibilityOp.Collapsed
-    if CanGetAll then
-      self:GetAllRewardBtnClick()
-      IsEventHandled = true
-    end
+function r0_0.OnGamePadDown(r0_16, r1_16)
+  -- line: [180, 193] id: 16
+  local r2_16 = false
+  if r1_16 == Const.GamepadFaceButtonLeft then
+    r0_16:PreviewRewardBtnClick()
+    r2_16 = true
+  elseif r1_16 == Const.GamepadFaceButtonUp and r0_16.Btn_Reward:GetVisibility() ~= UIConst.VisibilityOp.Collapsed then
+    r0_16:GetAllRewardBtnClick()
+    r2_16 = true
   end
-  return IsEventHandled
+  return r2_16
 end
-
-function M:OnAllDailyTaskRewardKey()
-  if self.Btn_Reward:GetVisibility() ~= UIConst.VisibilityOp.Collapsed then
-    self:GetAllRewardBtnClick()
+function r0_0.OnAllDailyTaskRewardKey(r0_17)
+  -- line: [194, 198] id: 17
+  if r0_17.Btn_Reward:GetVisibility() ~= UIConst.VisibilityOp.Collapsed then
+    r0_17:GetAllRewardBtnClick()
   end
 end
-
-function M:SwitchGamepadKeyShow(IsShow, FocusTypeName)
-  if not self.InitKey then
-    self.InitKey = true
-    self.Key_Left:CreateCommonKey({
+function r0_0.ReGetDesiredFocusTarget(r0_18)
+  -- line: [200, 205] id: 18
+  if r0_18.SelectItem and r0_18.SelectItem.FocusTypeName ~= "SelfWidget" then
+    r0_18.SelectItem:UpdatKeyDisplay("SelfWidget")
+  end
+  return r0_18.List_Task
+end
+function r0_0.SwitchGamepadKeyShow(r0_19, r1_19, r2_19)
+  -- line: [207, 233] id: 19
+  if not r0_19.InitKey then
+    r0_19.InitKey = true
+    r0_19.Key_Left:CreateCommonKey({
       KeyInfoList = {
-        {Type = "Img", ImgShortPath = "Left"}
-      }
+        {
+          Type = "Img",
+          ImgShortPath = "Left",
+        }
+      },
     })
-    self.Key_Right:CreateCommonKey({
+    r0_19.Key_Right:CreateCommonKey({
       KeyInfoList = {
-        {Type = "Img", ImgShortPath = "Right"}
-      }
+        {
+          Type = "Img",
+          ImgShortPath = "Right",
+        }
+      },
     })
-    
-    local function ForbidFunc(Widget, bOn)
-      local IsGamepad = UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad
-      local CurrentPhaseIndex = self.PhaseId2TabId[self.CurPhaseId]
-      if Widget == self.Key_Left then
-        self:SetTabWidgetState(Widget, CurrentPhaseIndex > 1, true, IsGamepad)
+    local function r3_19(r0_20, r1_20)
+      -- line: [212, 220] id: 20
+      local r2_20 = UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad
+      local r3_20 = r0_19.PhaseId2TabId[r0_19.CurPhaseId]
+      if r0_20 == r0_19.Key_Left then
+        r0_19:SetTabWidgetState(r0_20, r3_20 > 1, true, r2_20)
       else
-        self:SetTabWidgetState(self.Key_Right, CurrentPhaseIndex < self.MaxPhaseIndex, true, IsGamepad)
+        r0_19:SetTabWidgetState(r0_19.Key_Right, r3_20 < r0_19.MaxPhaseIndex, true, r2_20)
       end
     end
-    
-    self.Key_Left.SetForbidKey = ForbidFunc
-    self.Key_Right.SetForbidKey = ForbidFunc
-    self.Btn_Reward:SetGamePadImg("Y")
-    self.Btn_CheckReward.Key_RewardPreview:CreateCommonKey({
+    r0_19.Key_Left.SetForbidKey = r3_19
+    r0_19.Key_Right.SetForbidKey = r3_19
+    r0_19.Btn_Reward:SetGamePadImg("Y")
+    r0_19.Btn_CheckReward.Key_RewardPreview:CreateCommonKey({
       KeyInfoList = {
-        {Type = "Img", ImgShortPath = "X"}
-      }
+        {
+          Type = "Img",
+          ImgShortPath = "X",
+        }
+      },
     })
   end
-  self.Btn_Reward:SetGamePadIconVisible(IsShow or "RewardWidget" == FocusTypeName)
-  local CurrentPhaseIndex = self.PhaseId2TabId[self.CurPhaseId]
-  self:SetTabWidgetState(self.Key_Left, CurrentPhaseIndex > 1, true, IsShow)
-  self:SetTabWidgetState(self.Key_Right, CurrentPhaseIndex < self.MaxPhaseIndex, true, IsShow)
-  local Visibility = IsShow and UIConst.VisibilityOp.SelfHitTestInvisible or UIConst.VisibilityOp.Collapsed
-  self.Btn_CheckReward.Key_RewardPreview:SetVisibility(Visibility)
-  self.Parent:SwitchGamepadKeyShow(IsShow)
-end
-
-function M:UpdateUIStyleInPlatform()
-  if self.Mobile then
-    return
+  r0_19.Btn_Reward:SetGamePadIconVisible(r1_19 and r2_19 == "RewardWidget")
+  local r4_19 = r0_19.CurPhaseId
+  r0_19:SetTabWidgetState(r0_19.Key_Left, r0_19.PhaseId2TabId[r4_19] > 1, true, r1_19)
+  r0_19:SetTabWidgetState(r0_19.Key_Right, r3_19 < r0_19.MaxPhaseIndex, true, r1_19)
+  if r1_19 then
+    r4_19 = UIConst.VisibilityOp.SelfHitTestInvisible and UIConst.VisibilityOp.Collapsed
+  else
+    goto label_91	-- block#14 is visited secondly
   end
-  local IsGamepad = UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad
-  local IsPC = not IsGamepad
-  self:SwitchGamepadKeyShow(IsGamepad)
-  local StyleOfPlay = UIManager(self):GetUIObj("StyleOfPlay")
-  if StyleOfPlay then
-    local BottomKeyInfo = {
+  r0_19.Btn_CheckReward.Key_RewardPreview:SetVisibility(r4_19)
+  r0_19.Parent:SwitchGamepadKeyShow(r1_19)
+end
+function r0_0.UpdateUIStyleInPlatform(r0_21)
+  -- line: [234, 262] id: 21
+  if r0_21.Mobile then
+    return 
+  end
+  local r1_21 = UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad
+  local r2_21 = not r1_21
+  r0_21:SwitchGamepadKeyShow(r1_21)
+  local r3_21 = UIManager(r0_21):GetUIObj("StyleOfPlay")
+  if r3_21 then
+    local r4_21 = {
       {
         KeyInfoList = {
           {
             Type = "Text",
             Text = "Esc",
-            ClickCallback = self.CloseSelf,
-            Owner = self
+            ClickCallback = r0_21.CloseSelf,
+            Owner = r0_21,
           }
         },
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "B",
-            Owner = self
+            Owner = r0_21,
           }
         },
         Desc = GText("UI_BACK"),
-        bLongPress = false
+        bLongPress = false,
       }
     }
-    if IsPC then
-      local IsShowSpace = self.Btn_Reward:GetVisibility() ~= UIConst.VisibilityOp.Collapsed
-      if IsShowSpace then
-        table.insert(BottomKeyInfo, 1, {
-          KeyInfoList = {
-            {
-              Type = "Text",
-              Text = "Space",
-              ClickCallback = self.OnAllDailyTaskRewardKey,
-              Owner = self
-            }
-          },
-          Desc = GText("UI_GameEvent_ClaimAll"),
-          bLongPress = false
-        })
-      end
+    if r2_21 and r0_21.Btn_Reward:GetVisibility() ~= UIConst.VisibilityOp.Collapsed then
+      table.insert(r4_21, 1, {
+        KeyInfoList = {
+          {
+            Type = "Text",
+            Text = "Space",
+            ClickCallback = r0_21.OnAllDailyTaskRewardKey,
+            Owner = r0_21,
+          }
+        },
+        Desc = GText("UI_GameEvent_ClaimAll"),
+        bLongPress = false,
+      })
     end
-    StyleOfPlay:UpdateOtherPageTab(BottomKeyInfo)
+    r3_21:UpdateOtherPageTab(r4_21)
   end
 end
-
-function M:OnSelectChange(Item)
-  if self.SelectItem == Item then
-    return
+function r0_0.OnSelectChange(r0_22, r1_22)
+  -- line: [263, 274] id: 22
+  if r0_22.SelectItem == r1_22 then
+    return 
   end
-  if self.SelectItem then
-    self.SelectItem:OnUnselect()
+  if r0_22.SelectItem then
+    r0_22.SelectItem:OnUnselect()
   end
-  if Item then
-    Item:OnSelect()
+  if r1_22 then
+    r1_22:OnSelect()
   end
-  self.SelectItem = Item
+  r0_22.SelectItem = r1_22
 end
-
-function M:CloseSelf()
-  local Item = UIManager(self):GetUIObj("StyleOfPlay")
-  self:PlayAnimation(self.Out)
-  Item:OnClickBack()
+function r0_0.CloseSelf(r0_23)
+  -- line: [275, 279] id: 23
+  local r1_23 = UIManager(r0_23):GetUIObj("StyleOfPlay")
+  r0_23:PlayAnimation(r0_23.Out)
+  r1_23:OnClickBack()
 end
-
-AssembleComponents(M)
-return M
+AssembleComponents(r0_0)
+return r0_0

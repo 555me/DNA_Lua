@@ -2115,73 +2115,93 @@ function r10_0.ShowActionRecover(r0_87)
   -- line: [2070, 2082] id: 87
 end
 function r10_0.GetCharName(r0_88)
-  -- line: [2085, 2094] id: 88
+  -- line: [2085, 2093] id: 88
   if r0_88:IsPlayer() then
     return r0_88:GetNickName()
   elseif r0_88:IsPhantom() then
-    return GText(DataMgr.BattleChar[r0_88.CurrentRoleId].CharName)
+    return r10_0.GetPhantomName(r0_88)
   end
   return "nil"
 end
+function r10_0.GetPhantomName(r0_89)
+  -- line: [2095, 2131] id: 89
+  if not r0_89 or not r0_89:IsPhantom() then
+    return "nil"
+  end
+  local r1_89 = ""
+  local r2_89 = DataMgr.BattleChar[r0_89.CurrentRoleId].CharName
+  if string.find(DataMgr.TextMap_ContentEN[r2_89].ContentEN, "{nickname") and not IsStandAlone(r0_89) then
+    local r3_89 = GameState(r0_89):GetPhantomState(r0_89.Eid)
+    if not r3_89 then
+      local r4_89 = r0_89.PhantomOwner
+      if r4_89 then
+        local r5_89 = GameState(r0_89):GetPlayerState(r4_89.Eid)
+        if r5_89 and r5_89.PlayerName then
+          r1_89 = r5_89.PlayerName
+        end
+      end
+    else
+      local r4_89 = r3_89.OwnerEid
+      if r4_89 then
+        local r5_89 = GameState(r0_89):GetPlayerState(r4_89)
+        if r5_89 and r5_89.PlayerName then
+          r1_89 = r5_89.PlayerName
+        else
+          r1_89 = GText(r2_89)
+        end
+      else
+        r1_89 = "<ERROR>"
+      end
+    end
+  else
+    r1_89 = GText(r2_89)
+  end
+  return r1_89
+end
 function r10_0.UtilsGetCurrentInputType()
-  -- line: [2096, 2102] id: 89
-  local r0_89 = UGameInputModeSubsystem.GetGameInputModeSubsystem(GWorld.GameInstance)
-  if IsValid(r0_89) then
-    return r0_89:GetCurrentInputType()
+  -- line: [2133, 2139] id: 90
+  local r0_90 = UGameInputModeSubsystem.GetGameInputModeSubsystem(GWorld.GameInstance)
+  if IsValid(r0_90) then
+    return r0_90:GetCurrentInputType()
   end
   return ECommonInputType.MouseAndKeyboard
 end
 function r10_0.IsKeyboardInput()
-  -- line: [2104, 2107] id: 90
-  local r0_90 = r10_0.UtilsGetCurrentInputType()
-  local r1_90 = UE4.ECommonInputType.MouseAndKeyboard
-  if r0_90 == r1_90 then
-    r1_90 = CommonUtils.GetDeviceTypeByPlatformName() == "PC"
+  -- line: [2141, 2144] id: 91
+  local r0_91 = r10_0.UtilsGetCurrentInputType()
+  local r1_91 = UE4.ECommonInputType.MouseAndKeyboard
+  if r0_91 == r1_91 then
+    r1_91 = CommonUtils.GetDeviceTypeByPlatformName() == "PC"
   else
     goto label_12	-- block#2 is visited secondly
   end
-  return r1_90
+  return r1_91
 end
 function r10_0.IsGamepadInput()
-  -- line: [2109, 2112] id: 91
+  -- line: [2146, 2149] id: 92
   return r10_0.UtilsGetCurrentInputType() == UE4.ECommonInputType.Gamepad
 end
 function r10_0.IsMobileInput()
-  -- line: [2114, 2116] id: 92
+  -- line: [2151, 2153] id: 93
   return CommonUtils.GetDeviceTypeByPlatformName() == "Mobile"
 end
 function r10_0.IsPCInput()
-  -- line: [2118, 2120] id: 93
+  -- line: [2155, 2157] id: 94
   return CommonUtils.GetDeviceTypeByPlatformName() == "PC"
 end
 function r10_0.UtilsGetCurrentGamepadName()
-  -- line: [2122, 2131] id: 94
+  -- line: [2159, 2168] id: 95
   if CommonUtils.GetDeviceTypeByPlatformName() == "Mobile" then
     return "Generic"
   end
-  local r0_94 = UGameInputModeSubsystem.GetGameInputModeSubsystem(GWorld.GameInstance)
-  if IsValid(r0_94) then
-    return r0_94:GetCurrentGamepadName()
+  local r0_95 = UGameInputModeSubsystem.GetGameInputModeSubsystem(GWorld.GameInstance)
+  if IsValid(r0_95) then
+    return r0_95:GetCurrentGamepadName()
   end
   return "Generic"
 end
-function r10_0.UtilsGetKeyIconPathInGamepad(r0_95, r1_95)
-  -- line: [2135, 2148] id: 95
-  if r1_95 == nil then
-    r1_95 = r10_0.UtilsGetCurrentGamepadName()
-  end
-  local r2_95 = nil
-  local r3_95 = nil
-  local r4_95 = string.gsub(r0_95, " ", "_")
-  if r1_95 == "PS" then
-    r2_95 = "Texture2D\'/Game/UI/Texture/Dynamic/Atlas/Key/PS5/T_Key_%s.T_Key_%s\'"
-  else
-    r2_95 = "Texture2D\'/Game/UI/Texture/Dynamic/Atlas/Key/XBOX/T_Key_%s.T_Key_%s\'"
-  end
-  return string.format(r2_95, r4_95, r4_95)
-end
-function r10_0.UtilsGetKeyIconPathInGamepadByInstruction(r0_96, r1_96)
-  -- line: [2150, 2163] id: 96
+function r10_0.UtilsGetKeyIconPathInGamepad(r0_96, r1_96)
+  -- line: [2172, 2185] id: 96
   if r1_96 == nil then
     r1_96 = r10_0.UtilsGetCurrentGamepadName()
   end
@@ -2189,111 +2209,126 @@ function r10_0.UtilsGetKeyIconPathInGamepadByInstruction(r0_96, r1_96)
   local r3_96 = nil
   local r4_96 = string.gsub(r0_96, " ", "_")
   if r1_96 == "PS" then
-    r2_96 = "Texture2D\'/Game/UI/Texture/Dynamic/Atlas/Instruction/PS5/T_Key_%s.T_Key_%s\'"
+    r2_96 = "Texture2D\'/Game/UI/Texture/Dynamic/Atlas/Key/PS5/T_Key_%s.T_Key_%s\'"
   else
-    r2_96 = "Texture2D\'/Game/UI/Texture/Dynamic/Atlas/Instruction/XBOX/T_Key_%s.T_Key_%s\'"
+    r2_96 = "Texture2D\'/Game/UI/Texture/Dynamic/Atlas/Key/XBOX/T_Key_%s.T_Key_%s\'"
   end
   return string.format(r2_96, r4_96, r4_96)
 end
+function r10_0.UtilsGetKeyIconPathInGamepadByInstruction(r0_97, r1_97)
+  -- line: [2187, 2200] id: 97
+  if r1_97 == nil then
+    r1_97 = r10_0.UtilsGetCurrentGamepadName()
+  end
+  local r2_97 = nil
+  local r3_97 = nil
+  local r4_97 = string.gsub(r0_97, " ", "_")
+  if r1_97 == "PS" then
+    r2_97 = "Texture2D\'/Game/UI/Texture/Dynamic/Atlas/Instruction/PS5/T_Key_%s.T_Key_%s\'"
+  else
+    r2_97 = "Texture2D\'/Game/UI/Texture/Dynamic/Atlas/Instruction/XBOX/T_Key_%s.T_Key_%s\'"
+  end
+  return string.format(r2_97, r4_97, r4_97)
+end
 function r10_0.GetNoneAccessoryIconPath()
-  -- line: [2166, 2168] id: 97
+  -- line: [2203, 2205] id: 98
   return "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_Forbid.T_Armory_Forbid"
 end
-function r10_0.TrySubReddotCacheDetail(r0_98, r1_98)
-  -- line: [2171, 2178] id: 98
-  local r2_98 = tostring(r0_98)
-  local r3_98 = ReddotManager.GetLeafNodeCacheDetail(r1_98)
-  if r3_98 and r3_98[r2_98] then
-    r3_98[r2_98] = false
-    ReddotManager.DecreaseLeafNodeCount(r1_98)
-  end
-end
-function r10_0.TryAddReddotCacheDetail(r0_99, r1_99)
-  -- line: [2180, 2187] id: 99
+function r10_0.TrySubReddotCacheDetail(r0_99, r1_99)
+  -- line: [2208, 2215] id: 99
   local r2_99 = tostring(r0_99)
   local r3_99 = ReddotManager.GetLeafNodeCacheDetail(r1_99)
-  if r3_99 and not r3_99[r2_99] then
-    r3_99[r2_99] = true
-    ReddotManager.IncreaseLeafNodeCount(r1_99)
+  if r3_99 and r3_99[r2_99] then
+    r3_99[r2_99] = false
+    ReddotManager.DecreaseLeafNodeCount(r1_99)
   end
 end
-function r10_0.TrySubReddotCacheDetailNumber(r0_100, r1_100)
-  -- line: [2188, 2195] id: 100
-  local r2_100 = r0_100
+function r10_0.TryAddReddotCacheDetail(r0_100, r1_100)
+  -- line: [2217, 2224] id: 100
+  local r2_100 = tostring(r0_100)
   local r3_100 = ReddotManager.GetLeafNodeCacheDetail(r1_100)
-  if r3_100 and r3_100[r2_100] then
-    r3_100[r2_100] = false
-    ReddotManager.DecreaseLeafNodeCount(r1_100)
+  if r3_100 and not r3_100[r2_100] then
+    r3_100[r2_100] = true
+    ReddotManager.IncreaseLeafNodeCount(r1_100)
   end
 end
-function r10_0.TryAddReddotCacheDetailNumber(r0_101, r1_101)
-  -- line: [2197, 2204] id: 101
+function r10_0.TrySubReddotCacheDetailNumber(r0_101, r1_101)
+  -- line: [2225, 2232] id: 101
   local r2_101 = r0_101
   local r3_101 = ReddotManager.GetLeafNodeCacheDetail(r1_101)
-  if r3_101 and not r3_101[r2_101] then
-    r3_101[r2_101] = true
-    ReddotManager.IncreaseLeafNodeCount(r1_101)
+  if r3_101 and r3_101[r2_101] then
+    r3_101[r2_101] = false
+    ReddotManager.DecreaseLeafNodeCount(r1_101)
   end
 end
-function r10_0.SetReddotTreeLeafNodeCount(r0_102, r1_102)
-  -- line: [2207, 2216] id: 102
-  local r2_102 = ReddotManager.GetTreeNode(r0_102)
-  assert(r2_102, "[jiangtianyi]ReddotManager.SetReddotTreeLeafNodeCount: Failed to find leaf node " .. r0_102)
-  local r3_102 = r2_102.Count
-  if r1_102 < r3_102 then
-    ReddotManager.DecreaseLeafNodeCount(r0_102, r3_102 - r1_102)
-  elseif r3_102 < r1_102 then
-    ReddotManager.IncreaseLeafNodeCount(r0_102, r1_102 - r3_102)
+function r10_0.TryAddReddotCacheDetailNumber(r0_102, r1_102)
+  -- line: [2234, 2241] id: 102
+  local r2_102 = r0_102
+  local r3_102 = ReddotManager.GetLeafNodeCacheDetail(r1_102)
+  if r3_102 and not r3_102[r2_102] then
+    r3_102[r2_102] = true
+    ReddotManager.IncreaseLeafNodeCount(r1_102)
   end
 end
-function r10_0.GetExcelWeaponTagString(r0_103)
-  -- line: [2218, 2233] id: 103
-  local r1_103 = DataMgr.BattleChar[r0_103]
-  local r2_103 = r1_103 and r1_103.ExcelWeaponTags
-  if r2_103 then
-    local r3_103 = nil
-    if type(r2_103) == "table" then
-      r3_103 = GText(DataMgr.WeaponTag[r2_103[1]].WeaponTagTextmap)
-      for r7_103 = 2, #r2_103, 1 do
-        r3_103 = r3_103 .. "/" .. GText(DataMgr.WeaponTag[r2_103[r7_103]].WeaponTagTextmap)
-      end
-    else
-      r3_103 = GText(DataMgr.WeaponTag[r2_103].WeaponTagTextmap)
-    end
-    return r3_103
+function r10_0.SetReddotTreeLeafNodeCount(r0_103, r1_103)
+  -- line: [2244, 2253] id: 103
+  local r2_103 = ReddotManager.GetTreeNode(r0_103)
+  assert(r2_103, "[jiangtianyi]ReddotManager.SetReddotTreeLeafNodeCount: Failed to find leaf node " .. r0_103)
+  local r3_103 = r2_103.Count
+  if r1_103 < r3_103 then
+    ReddotManager.DecreaseLeafNodeCount(r0_103, r3_103 - r1_103)
+  elseif r3_103 < r1_103 then
+    ReddotManager.IncreaseLeafNodeCount(r0_103, r1_103 - r3_103)
   end
 end
-function r10_0.GetExcelWeaponTags(r0_104)
-  -- line: [2235, 2250] id: 104
+function r10_0.GetExcelWeaponTagString(r0_104)
+  -- line: [2255, 2270] id: 104
   local r1_104 = DataMgr.BattleChar[r0_104]
   local r2_104 = r1_104 and r1_104.ExcelWeaponTags
-  local r3_104 = {}
   if r2_104 then
+    local r3_104 = nil
     if type(r2_104) == "table" then
-      table.insert(r3_104, r2_104[1])
+      r3_104 = GText(DataMgr.WeaponTag[r2_104[1]].WeaponTagTextmap)
       for r7_104 = 2, #r2_104, 1 do
-        table.insert(r3_104, r2_104[r7_104])
+        r3_104 = r3_104 .. "/" .. GText(DataMgr.WeaponTag[r2_104[r7_104]].WeaponTagTextmap)
       end
     else
-      table.insert(r3_104, r2_104)
+      r3_104 = GText(DataMgr.WeaponTag[r2_104].WeaponTagTextmap)
     end
     return r3_104
   end
 end
-function r10_0.GetDispathchColorNameByType(r0_105)
-  -- line: [2252, 2262] id: 105
-  if r0_105 == "Battle" then
+function r10_0.GetExcelWeaponTags(r0_105)
+  -- line: [2272, 2287] id: 105
+  local r1_105 = DataMgr.BattleChar[r0_105]
+  local r2_105 = r1_105 and r1_105.ExcelWeaponTags
+  local r3_105 = {}
+  if r2_105 then
+    if type(r2_105) == "table" then
+      table.insert(r3_105, r2_105[1])
+      for r7_105 = 2, #r2_105, 1 do
+        table.insert(r3_105, r2_105[r7_105])
+      end
+    else
+      table.insert(r3_105, r2_105)
+    end
+    return r3_105
+  end
+end
+function r10_0.GetDispathchColorNameByType(r0_106)
+  -- line: [2289, 2299] id: 106
+  if r0_106 == "Battle" then
     return "Red"
-  elseif r0_105 == "Collect" or r0_105 == "Mine" or r0_105 == "Fish" or r0_105 == "Pet" then
+  elseif r0_106 == "Collect" or r0_106 == "Mine" or r0_106 == "Fish" or r0_106 == "Pet" then
     return "Blue"
-  elseif r0_105 == "Benefit" or r0_105 == "Morality" or r0_105 == "Wisdom" or r0_105 == "Empathy" or r0_105 == "Chaos" then
+  elseif r0_106 == "Benefit" or r0_106 == "Morality" or r0_106 == "Wisdom" or r0_106 == "Empathy" or r0_106 == "Chaos" then
     return "Green"
-  elseif r0_105 == "Workaholic" or r0_105 == "Rigorous" or r0_105 == "Skilled" or r0_105 == "Lucky" then
+  elseif r0_106 == "Workaholic" or r0_106 == "Rigorous" or r0_106 == "Skilled" or r0_106 == "Lucky" then
     return "Special"
   end
 end
-function r10_0.NumberToChinese(r0_106)
-  -- line: [2264, 2270] id: 106
+function r10_0.NumberToChinese(r0_107)
+  -- line: [2301, 2307] id: 107
   return ({
     "零",
     "一",
@@ -2305,848 +2340,848 @@ function r10_0.NumberToChinese(r0_106)
     "七",
     "八",
     "九"
-  })[r0_106 + 1]
+  })[r0_107 + 1]
 end
-function r10_0.GenAbyssEntryDesc(r0_107, r1_107, r2_107, r3_107)
-  -- line: [2272, 2291] id: 107
+function r10_0.GenAbyssEntryDesc(r0_108, r1_108, r2_108, r3_108)
+  -- line: [2309, 2328] id: 108
   if not r2_0 then
     r2_0 = require("BluePrints.UI.WBP.Armory.ArmoryUtils")
   end
-  if r3_107 == nil then
-    r3_107 = r2_107 and r3_107
+  if r3_108 == nil then
+    r3_108 = r2_108 and r3_108
   end
-  for r8_107, r9_107 in pairs(r1_107 and {}) do
-    local r10_107 = string.match(r9_107, "%%") and ""
-    local r11_107 = r2_0:_ModAttrGrowDesc2(r9_107, r2_107, r2_107, r10_107) and ""
-    if r11_107 == "" then
-      r11_107 = r5_0.CalcSkillDesc(r9_107, r2_107) .. r10_107
-      if r11_107 then
-        r11_107 = r11_107
+  for r8_108, r9_108 in pairs(r1_108 and {}) do
+    local r10_108 = string.match(r9_108, "%%") and ""
+    local r11_108 = r2_0:_ModAttrGrowDesc2(r9_108, r2_108, r2_108, r10_108) and ""
+    if r11_108 == "" then
+      r11_108 = r5_0.CalcSkillDesc(r9_108, r2_108) .. r10_108
+      if r11_108 then
+        r11_108 = r11_108
       end
     end
-    if r3_107 then
-      local r12_107 = r2_0:_ModAttrGrowDesc2(r9_107, r3_107, r3_107, r10_107) and ""
-      if r12_107 == "" then
-        r12_107 = r5_0.CalcSkillDesc(r9_107, r2_107) .. r10_107
-        if r12_107 then
-          r12_107 = r12_107
+    if r3_108 then
+      local r12_108 = r2_0:_ModAttrGrowDesc2(r9_108, r3_108, r3_108, r10_108) and ""
+      if r12_108 == "" then
+        r12_108 = r5_0.CalcSkillDesc(r9_108, r2_108) .. r10_108
+        if r12_108 then
+          r12_108 = r12_108
         end
       end
-      if r11_107 ~= r12_107 then
-        r11_107 = r11_107 .. "->" .. r12_107
+      if r11_108 ~= r12_108 then
+        r11_108 = r11_108 .. "->" .. r12_108
       end
     end
-    r0_107 = string.gsub(r0_107, "#" .. r8_107, r11_107)
+    r0_108 = string.gsub(r0_108, "#" .. r8_108, r11_108)
   end
-  -- close: r4_107
-  return r0_107
+  -- close: r4_108
+  return r0_108
 end
-function r10_0.GenerateArmoryPreviewParamsBySquadInfo(r0_108, r1_108)
-  -- line: [2293, 2321] id: 108
-  local r2_108 = 1
-  local function r3_108(r0_109, r1_109)
-    -- line: [2295, 2305] id: 109
-    local r2_109 = r0_109.ModData
-    if not r2_109 then
+function r10_0.GenerateArmoryPreviewParamsBySquadInfo(r0_109, r1_109)
+  -- line: [2330, 2358] id: 109
+  local r2_109 = 1
+  local function r3_109(r0_110, r1_110)
+    -- line: [2332, 2342] id: 110
+    local r2_110 = r0_110.ModData
+    if not r2_110 then
       return 
     end
-    if r1_109 then
-      r2_109 = r1_109.ModSlotPolarity and {}
+    if r1_110 then
+      r2_110 = r1_110.ModSlotPolarity and {}
     else
       goto label_9	-- block#4 is visited secondly
     end
-    r0_109.ModSuitIndex = 1
-    r0_109.SlotData = {}
-    for r7_109, r8_109 in ipairs(r0_109.ModData) do
-      r8_109.Uuid = r2_108
-      local r9_109 = r0_109.SlotData
-      local r10_109 = {
-        SlotId = r7_109,
-        Polarity = r2_109[r7_109] and -1,
-        ModEid = r2_108,
+    r0_110.ModSuitIndex = 1
+    r0_110.SlotData = {}
+    for r7_110, r8_110 in ipairs(r0_110.ModData) do
+      r8_110.Uuid = r2_109
+      local r9_110 = r0_110.SlotData
+      local r10_110 = {
+        SlotId = r7_110,
+        Polarity = r2_110[r7_110] and -1,
+        ModEid = r2_109,
       }
-      r9_109[r7_109] = r10_109
-      r2_108 = r2_108 + 1
+      r9_110[r7_110] = r10_110
+      r2_109 = r2_109 + 1
     end
-    -- close: r3_109
+    -- close: r3_110
   end
-  local r5_108 = AvatarUtils:GetDefaultBattleInfo(r0_108.Avatar and GWorld:GetAvatar(), r1_108) and {}
-  r3_108(r5_108.RoleInfo, r1_108.Char)
-  r0_108.PreviewCharInfos = {
-    r5_108.RoleInfo
+  local r5_109 = AvatarUtils:GetDefaultBattleInfo(r0_109.Avatar and GWorld:GetAvatar(), r1_109) and {}
+  r3_109(r5_109.RoleInfo, r1_109.Char)
+  r0_109.PreviewCharInfos = {
+    r5_109.RoleInfo
   }
-  r3_108(r5_108.MeleeWeapon, r1_108.MeleeWeapon)
-  r3_108(r5_108.RangedWeapon, r1_108.RangedWeapon)
-  r0_108.PreviewWeaponInfos = {
-    r5_108.MeleeWeapon,
-    r5_108.RangedWeapon
+  r3_109(r5_109.MeleeWeapon, r1_109.MeleeWeapon)
+  r3_109(r5_109.RangedWeapon, r1_109.RangedWeapon)
+  r0_109.PreviewWeaponInfos = {
+    r5_109.MeleeWeapon,
+    r5_109.RangedWeapon
   }
-  r0_108.PreviewUWeaponInfos = {}
-  if r5_108.UltraWeapons then
-    for r10_108, r11_108 in ipairs(r5_108.UltraWeapons) do
-      r3_108(r11_108, r1_108.UltraWeapons[r10_108])
-      table.insert(r0_108.PreviewUWeaponInfos, r11_108)
+  r0_109.PreviewUWeaponInfos = {}
+  if r5_109.UltraWeapons then
+    for r10_109, r11_109 in ipairs(r5_109.UltraWeapons) do
+      r3_109(r11_109, r1_109.UltraWeapons[r10_109])
+      table.insert(r0_109.PreviewUWeaponInfos, r11_109)
     end
-    -- close: r6_108
+    -- close: r6_109
   end
-  return r0_108
+  return r0_109
 end
-function r10_0.LoadSkillIconById(r0_110)
-  -- line: [2323, 2335] id: 110
-  local r1_110 = DataMgr.Skill[r0_110]
-  local r2_110 = r1_110 and r1_110[1] and r1_110[1][0]
-  local r3_110 = nil
-  if r2_110 then
-    local r4_110 = r2_110.SkillBtnIcon
-    if r4_110 then
-      r3_110 = LoadObject("/Game/UI/Texture/Dynamic/Atlas/Skill/T_" .. r4_110 .. ".T_" .. r4_110)
+function r10_0.LoadSkillIconById(r0_111)
+  -- line: [2360, 2372] id: 111
+  local r1_111 = DataMgr.Skill[r0_111]
+  local r2_111 = r1_111 and r1_111[1] and r1_111[1][0]
+  local r3_111 = nil
+  if r2_111 then
+    local r4_111 = r2_111.SkillBtnIcon
+    if r4_111 then
+      r3_111 = LoadObject("/Game/UI/Texture/Dynamic/Atlas/Skill/T_" .. r4_111 .. ".T_" .. r4_111)
     end
   end
-  if not r3_110 then
-    r3_110 = LoadObject("/Game/UI/Texture/Dynamic/Atlas/Skill/T_Skill_Heitao_Skill01.T_Skill_Heitao_Skill01")
+  if not r3_111 then
+    r3_111 = LoadObject("/Game/UI/Texture/Dynamic/Atlas/Skill/T_Skill_Heitao_Skill01.T_Skill_Heitao_Skill01")
   end
-  return r3_110
+  return r3_111
 end
-function r10_0.CalcWidgetCenter(r0_111)
-  -- line: [2337, 2341] id: 111
-  local r1_111 = r0_111:GetTickSpaceGeometry()
-  return USlateBlueprintLibrary.LocalToAbsolute(r1_111, USlateBlueprintLibrary.GetLocalSize(r1_111) / 2)
+function r10_0.CalcWidgetCenter(r0_112)
+  -- line: [2374, 2378] id: 112
+  local r1_112 = r0_112:GetTickSpaceGeometry()
+  return USlateBlueprintLibrary.LocalToAbsolute(r1_112, USlateBlueprintLibrary.GetLocalSize(r1_112) / 2)
 end
-function r10_0.CheckScrollBoxCanScroll(r0_112)
-  -- line: [2345, 2348] id: 112
-  return r0_112:GetScrollOffsetOfEnd() > 5
+function r10_0.CheckScrollBoxCanScroll(r0_113)
+  -- line: [2382, 2385] id: 113
+  return r0_113:GetScrollOffsetOfEnd() > 5
 end
-function r10_0.ScrollBoxByGamepad(r0_113, r1_113, r2_113, r3_113)
-  -- line: [2355, 2365] id: 113
-  if not r2_113 then
-    r2_113 = 20
+function r10_0.ScrollBoxByGamepad(r0_114, r1_114, r2_114, r3_114)
+  -- line: [2392, 2402] id: 114
+  if not r2_114 then
+    r2_114 = 20
   end
-  if not r3_113 then
-    r3_113 = 5
+  if not r3_114 then
+    r3_114 = 5
   end
-  local r4_113 = UKismetInputLibrary.GetAnalogValue(r1_113) * -1 * r2_113
-  if math.abs(r4_113) < r3_113 then
+  local r4_114 = UKismetInputLibrary.GetAnalogValue(r1_114) * -1 * r2_114
+  if math.abs(r4_114) < r3_114 then
     return 
   end
-  r0_113:SetScrollOffset(math.clamp(r0_113:GetScrollOffset() + r4_113, 0, r0_113:GetScrollOffsetOfEnd()))
+  r0_114:SetScrollOffset(math.clamp(r0_114:GetScrollOffset() + r4_114, 0, r0_114:GetScrollOffsetOfEnd()))
 end
-function r10_0.HasAnyFocus(r0_114)
-  -- line: [2367, 2369] id: 114
-  return r0_114:HasAnyUserFocus() and r0_114:HasFocusedDescendants()
+function r10_0.HasAnyFocus(r0_115)
+  -- line: [2404, 2406] id: 115
+  return r0_115:HasAnyUserFocus() and r0_115:HasFocusedDescendants()
 end
-function r10_0.GetIconListByActionName(r0_115)
-  -- line: [2372, 2386] id: 115
-  local r1_115 = r0_0:Get("GamepadLayout") and tonumber(DataMgr.Option.GamepadPreset.DefaultValue)
-  local r2_115 = nil
-  local r3_115 = DataMgr.GamepadMap[r0_115]
-  if r3_115 then
-    r2_115 = r3_115.GamepadIcon[r1_115]
+function r10_0.GetIconListByActionName(r0_116)
+  -- line: [2409, 2423] id: 116
+  local r1_116 = r0_0:Get("GamepadLayout") and tonumber(DataMgr.Option.GamepadPreset.DefaultValue)
+  local r2_116 = nil
+  local r3_116 = DataMgr.GamepadMap[r0_116]
+  if r3_116 then
+    r2_116 = r3_116.GamepadIcon[r1_116]
   else
-    print(_G.ErrorTag, r0_115, "：此Action没有对应的键位，请检查拼写或检查GamepadSet表里是否有填写")
+    print(_G.ErrorTag, r0_116, "：此Action没有对应的键位，请检查拼写或检查GamepadSet表里是否有填写")
   end
-  if not r2_115 then
-    print(_G.ErrorTag, r0_115, "：目前的预设方案没有对应的键位，请检查GamepadSet表里是否有填写")
+  if not r2_116 then
+    print(_G.ErrorTag, r0_116, "：目前的预设方案没有对应的键位，请检查GamepadSet表里是否有填写")
   else
-    return r2_115
+    return r2_116
   end
 end
-function r10_0.GetIconListByActionNameAndSetNum(r0_116, r1_116)
-  -- line: [2388, 2393] id: 116
-  local r2_116 = DataMgr.GamepadMap[r0_116]
-  if r2_116 then
-    return r2_116.GamepadIcon[r1_116]
+function r10_0.GetIconListByActionNameAndSetNum(r0_117, r1_117)
+  -- line: [2425, 2430] id: 117
+  local r2_117 = DataMgr.GamepadMap[r0_117]
+  if r2_117 then
+    return r2_117.GamepadIcon[r1_117]
   end
 end
-function r10_0.GetTextFont(r0_117)
-  -- line: [2401, 2422] id: 117
-  assert(r0_117:IsA(UTextLayoutWidget), "UIUtils.GetTextFont, 错误，参数TextWidget必须是文本控件")
-  local r1_117 = nil
-  if r0_117:IsA(URichTextBlock) then
-    if r0_117.bOverrideDefaultStyle then
-      r1_117 = r0_117.DefaultTextStyleOverride.Font
+function r10_0.GetTextFont(r0_118)
+  -- line: [2438, 2459] id: 118
+  assert(r0_118:IsA(UTextLayoutWidget), "UIUtils.GetTextFont, 错误，参数TextWidget必须是文本控件")
+  local r1_118 = nil
+  if r0_118:IsA(URichTextBlock) then
+    if r0_118.bOverrideDefaultStyle then
+      r1_118 = r0_118.DefaultTextStyleOverride.Font
     else
-      r1_117 = r0_117.DefaultTextStyle.Font
+      r1_118 = r0_118.DefaultTextStyle.Font
     end
-  elseif r0_117:IsA(UTextBlock) then
-    r1_117 = r0_117.Font
-  elseif r0_117:IsA(UMultiLineEditableText) then
-    r1_117 = r0_117.WidgetStyle.Font
-  elseif r0_117:IsA(UMultiLineEditableTextBox) then
-    r1_117 = r0_117.WidgetStyle.Font
+  elseif r0_118:IsA(UTextBlock) then
+    r1_118 = r0_118.Font
+  elseif r0_118:IsA(UMultiLineEditableText) then
+    r1_118 = r0_118.WidgetStyle.Font
+  elseif r0_118:IsA(UMultiLineEditableTextBox) then
+    r1_118 = r0_118.WidgetStyle.Font
   end
-  if not r1_117 then
+  if not r1_118 then
     GWorld.logger.error("UIUtils.GetTextFont 参数TextWidget是不支持的文本文本控件，其他文本控件类型有需要的再考虑扩展")
   end
-  return r1_117
+  return r1_118
 end
-function r10_0.CheckCdnHide(r0_118, r1_118)
-  -- line: [2424, 2447] id: 118
-  local r2_118 = GWorld:GetAvatar()
-  local r3_118 = {}
-  if r2_118 and r2_118.CdnHideData and r2_118.CdnHideData.game_ui then
-    r3_118 = r2_118.CdnHideData.game_ui
+function r10_0.CheckCdnHide(r0_119, r1_119)
+  -- line: [2461, 2484] id: 119
+  local r2_119 = GWorld:GetAvatar()
+  local r3_119 = {}
+  if r2_119 and r2_119.CdnHideData and r2_119.CdnHideData.game_ui then
+    r3_119 = r2_119.CdnHideData.game_ui
   else
     return false
   end
-  for r8_118, r9_118 in pairs(DataMgr.MainUI) do
-    if r0_118 == r9_118.SystemUIName then
-      for r14_118, r15_118 in pairs(r3_118) do
-        if r15_118.config == false then
-          for r20_118, r21_118 in pairs(r15_118.gameCtrlGameUI) do
-            if r21_118 == r9_118.Name then
-              r10_0.ShowMainUIFobidToast(r9_118)
+  for r8_119, r9_119 in pairs(DataMgr.MainUI) do
+    if r0_119 == r9_119.SystemUIName then
+      for r14_119, r15_119 in pairs(r3_119) do
+        if r15_119.config == false then
+          for r20_119, r21_119 in pairs(r15_119.gameCtrlGameUI) do
+            if r21_119 == r9_119.Name then
+              r10_0.ShowMainUIFobidToast(r9_119)
               return true
             end
           end
-          -- close: r16_118
+          -- close: r16_119
         end
       end
-      -- close: r10_118
+      -- close: r10_119
     end
   end
-  -- close: r4_118
+  -- close: r4_119
   return false
 end
-function r10_0.ShowMainUIFobidToast(r0_119)
-  -- line: [2449, 2460] id: 119
-  if r0_119.UIUnlockRuleName then
-    local r2_119 = DataMgr.UIUnlockRule[r0_119.UIUnlockRuleName].OpenSystemDesc
-    if r2_119 then
-      local r3_119 = GWorld.GameInstance:GetGameUIManager()
-      if r3_119 then
-        r3_119:ShowUITip(UIConst.Tip_CommonToast, r2_119[1])
+function r10_0.ShowMainUIFobidToast(r0_120)
+  -- line: [2486, 2497] id: 120
+  if r0_120.UIUnlockRuleName then
+    local r2_120 = DataMgr.UIUnlockRule[r0_120.UIUnlockRuleName].OpenSystemDesc
+    if r2_120 then
+      local r3_120 = GWorld.GameInstance:GetGameUIManager()
+      if r3_120 then
+        r3_120:ShowUITip(UIConst.Tip_CommonToast, r2_120[1])
       end
     end
   end
 end
-function r10_0.CalcOnelineTextDesireHeight(r0_120)
-  -- line: [2466, 2474] id: 120
-  assert(r0_120:IsA(UTextLayoutWidget), "UIUtils.CalcOnelineTextDesireHeight, 错误，参数TextWidget必须是文本控件")
-  local r1_120 = r10_0.GetTextFont(r0_120)
-  if not r1_120 then
+function r10_0.CalcOnelineTextDesireHeight(r0_121)
+  -- line: [2503, 2511] id: 121
+  assert(r0_121:IsA(UTextLayoutWidget), "UIUtils.CalcOnelineTextDesireHeight, 错误，参数TextWidget必须是文本控件")
+  local r1_121 = r10_0.GetTextFont(r0_121)
+  if not r1_121 then
     return 
   end
-  return r0_120.Margin.Top + r0_120.Margin.Bottom + UUIFunctionLibrary.GetFontHeight(r1_120) * r0_120.LineHeightPercentage
+  return r0_121.Margin.Top + r0_121.Margin.Bottom + UUIFunctionLibrary.GetFontHeight(r1_121) * r0_121.LineHeightPercentage
 end
-function r10_0.SetTextJustificationByLineCount(r0_121, r1_121, r2_121, r3_121)
-  -- line: [2481, 2519] id: 121
-  assert(r0_121:IsA(UTextLayoutWidget), "UIUtils.LayoutTextByLineRule, 错误，参数TextWidget必须是文本控件")
-  local r4_121 = r0_121:GetDesiredSize().Y
-  if r4_121 == 0 then
-    r0_121:ForceLayoutPrepass()
-    r4_121 = r0_121:GetDesiredSize().Y
+function r10_0.SetTextJustificationByLineCount(r0_122, r1_122, r2_122, r3_122)
+  -- line: [2518, 2556] id: 122
+  assert(r0_122:IsA(UTextLayoutWidget), "UIUtils.LayoutTextByLineRule, 错误，参数TextWidget必须是文本控件")
+  local r4_122 = r0_122:GetDesiredSize().Y
+  if r4_122 == 0 then
+    r0_122:ForceLayoutPrepass()
+    r4_122 = r0_122:GetDesiredSize().Y
   end
-  if r4_121 == 0 then
+  if r4_122 == 0 then
     GWorld.logger.error("UIUtils.LayoutTextByLineRule 参数TextWidget没有绘制完或者自身高度就是0，无法判断什么时候该换行")
     return 
   end
-  if not r2_121 then
-    r2_121 = 1
+  if not r2_122 then
+    r2_122 = 1
   end
-  if not r3_121 then
-    r3_121 = {
+  if not r3_122 then
+    r3_122 = {
       ETextJustify.Center,
       ETextJustify.Left
     }
   end
-  if r1_121 then
-    for r9_121, r10_121 in ipairs(r3_121) do
-      if r10_121 == ETextJustify.Center then
-        r0_121:SetJustification(r10_121)
+  if r1_122 then
+    for r9_122, r10_122 in ipairs(r3_122) do
+      if r10_122 == ETextJustify.Center then
+        r0_122:SetJustification(r10_122)
         return 
       end
     end
-    -- close: r5_121
+    -- close: r5_122
   end
-  local r5_121 = 0.5
-  if r10_0.IsGamepadInput() and string.match(r0_121:GetText(), "<img.-%s*></>") then
-    r5_121 = 1
+  local r5_122 = 0.5
+  if r10_0.IsGamepadInput() and string.match(r0_122:GetText(), "<img.-%s*></>") then
+    r5_122 = 1
   end
-  if r4_121 <= r10_0.CalcOnelineTextDesireHeight(r0_121) * (r2_121 + r5_121) then
-    r0_121:SetJustification(r3_121[1])
+  if r4_122 <= r10_0.CalcOnelineTextDesireHeight(r0_122) * (r2_122 + r5_122) then
+    r0_122:SetJustification(r3_122[1])
   else
-    r0_121:SetJustification(r3_121[2])
+    r0_122:SetJustification(r3_122[2])
   end
 end
-function r10_0.LoadPreviewSkillDetails(r0_122, r1_122)
-  -- line: [2522, 2585] id: 122
-  if not r0_122 then
+function r10_0.LoadPreviewSkillDetails(r0_123, r1_123)
+  -- line: [2559, 2622] id: 123
+  if not r0_123 then
     return 
   end
-  if not r1_122 then
-    r1_122 = {}
+  if not r1_123 then
+    r1_123 = {}
   end
-  local r2_122 = DataMgr.SystemUI.SkillDetails
-  local r4_122 = UE4.UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
-  local r5_122 = {}
-  local r6_122 = {}
-  local r7_122 = nil
-  local r8_122 = nil
-  local r9_122 = nil
-  if not IsStandAlone(r4_122) then
-    local r10_122 = GWorld:GetAvatar()
-    for r15_122, r16_122 in pairs(r10_122.Chars) do
-      if r16_122.CharId == r4_122.CurrentRoleId then
-        r5_122 = AvatarUtils:GetCharBattleInfo(r10_122, r16_122, r16_122.ModSuitIndex).RoleInfo
+  local r2_123 = DataMgr.SystemUI.SkillDetails
+  local r4_123 = UE4.UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
+  local r5_123 = {}
+  local r6_123 = {}
+  local r7_123 = nil
+  local r8_123 = nil
+  local r9_123 = nil
+  if not IsStandAlone(r4_123) then
+    local r10_123 = GWorld:GetAvatar()
+    for r15_123, r16_123 in pairs(r10_123.Chars) do
+      if r16_123.CharId == r4_123.CurrentRoleId then
+        r5_123 = AvatarUtils:GetCharBattleInfo(r10_123, r16_123, r16_123.ModSuitIndex).RoleInfo
         break
       end
     end
-    -- close: r11_122
+    -- close: r11_123
   else
-    r9_122 = r4_122.InfoForInit
-    r5_122 = CommonUtils.CopyTable(r4_122.InfoForInit)
+    r9_123 = r4_123.InfoForInit
+    r5_123 = CommonUtils.CopyTable(r4_123.InfoForInit)
   end
-  if r9_122 then
-    if r9_122.MeleeWeapon then
-      r7_122 = CommonUtils.CopyTable(r9_122.MeleeWeapon)
-      if r7_122 then
-        table.insert(r6_122, r7_122)
+  if r9_123 then
+    if r9_123.MeleeWeapon then
+      r7_123 = CommonUtils.CopyTable(r9_123.MeleeWeapon)
+      if r7_123 then
+        table.insert(r6_123, r7_123)
       end
     end
-    if r9_122.RangedWeapon then
-      r8_122 = CommonUtils.CopyTable(r9_122.RangedWeapon)
-      if r8_122 then
-        table.insert(r6_122, r8_122)
+    if r9_123.RangedWeapon then
+      r8_123 = CommonUtils.CopyTable(r9_123.RangedWeapon)
+      if r8_123 then
+        table.insert(r6_123, r8_123)
       end
     end
   end
-  r5_122.ModSuitIndex = r5_122.ModSuitIndex and 1
-  r5_122.SlotData = r5_122.SlotData and {}
-  for r14_122, r15_122 in ipairs(r5_122.ModData and {}) do
-    r5_122.SlotData[r14_122] = r5_122.SlotData[r14_122] and {}
-    local r16_122 = r5_122.SlotData[r14_122]
-    r16_122.SlotId = r16_122.SlotId and r14_122
-    r16_122.Polarity = r16_122.Polarity and -1
-    if not r15_122.Uuid or r15_122.Uuid == "" or r15_122.Uuid == 0 or r15_122.Uuid == -1 then
-      r15_122.Uuid = r14_122
+  r5_123.ModSuitIndex = r5_123.ModSuitIndex and 1
+  r5_123.SlotData = r5_123.SlotData and {}
+  for r14_123, r15_123 in ipairs(r5_123.ModData and {}) do
+    r5_123.SlotData[r14_123] = r5_123.SlotData[r14_123] and {}
+    local r16_123 = r5_123.SlotData[r14_123]
+    r16_123.SlotId = r16_123.SlotId and r14_123
+    r16_123.Polarity = r16_123.Polarity and -1
+    if not r15_123.Uuid or r15_123.Uuid == "" or r15_123.Uuid == 0 or r15_123.Uuid == -1 then
+      r15_123.Uuid = r14_123
     end
-    if not r16_122.ModEid or r16_122.ModEid == "" or r16_122.ModEid == 0 or r16_122.ModEid == -1 then
-      r16_122.ModEid = r15_122.Uuid
+    if not r16_123.ModEid or r16_123.ModEid == "" or r16_123.ModEid == 0 or r16_123.ModEid == -1 then
+      r16_123.ModEid = r15_123.Uuid
     end
   end
-  -- close: r10_122
-  UIManager(r0_122):LoadUI(UIConst.LoadInConfig, r2_122.UIName, r0_122:GetZOrder(), {
-    OnClosedObj = r0_122,
-    OnClosedCallback = r1_122.OnClosedCallback,
+  -- close: r10_123
+  UIManager(r0_123):LoadUI(UIConst.LoadInConfig, r2_123.UIName, r0_123:GetZOrder(), {
+    OnClosedObj = r0_123,
+    OnClosedCallback = r1_123.OnClosedCallback,
     PreviewCharInfos = {
-      r5_122
+      r5_123
     },
-    PreviewWeaponInfos = r6_122,
-    MeleeWeapon = r7_122,
-    RangedWeapon = r8_122,
+    PreviewWeaponInfos = r6_123,
+    MeleeWeapon = r7_123,
+    RangedWeapon = r8_123,
     IsPreviewMode = true,
   })
 end
-function r10_0.GenRougeCombatTermDesc(r0_123, r1_123)
-  -- line: [2587, 2595] id: 123
-  local r2_123 = {
-    r0_123
+function r10_0.GenRougeCombatTermDesc(r0_124, r1_124)
+  -- line: [2624, 2632] id: 124
+  local r2_124 = {
+    r0_124
   }
-  r10_0.AddHyperLink(r2_123, r1_123, 1)
-  local r3_123 = ""
-  for r8_123, r9_123 in ipairs(r2_123) do
-    r3_123 = r3_123 .. r9_123
+  r10_0.AddHyperLink(r2_124, r1_124, 1)
+  local r3_124 = ""
+  for r8_124, r9_124 in ipairs(r2_124) do
+    r3_124 = r3_124 .. r9_124
   end
-  -- close: r4_123
-  return r3_123
+  -- close: r4_124
+  return r3_124
 end
-function r10_0.AddHyperLink(r0_124, r1_124, r2_124)
-  -- line: [2597, 2612] id: 124
-  if #r1_124 < r2_124 then
+function r10_0.AddHyperLink(r0_125, r1_125, r2_125)
+  -- line: [2634, 2649] id: 125
+  if #r1_125 < r2_125 then
     return 
   end
-  local r3_124 = GText(DataMgr.CombatTerm[r1_124[r2_124]].CombatTerm)
-  local r4_124, r5_124, r6_124 = UKismetStringLibrary.Split(r0_124[#r0_124], r3_124)
-  if not r6_124 then
-    r10_0.AddHyperLink(r0_124, r1_124, r2_124 + 1)
+  local r3_125 = GText(DataMgr.CombatTerm[r1_125[r2_125]].CombatTerm)
+  local r4_125, r5_125, r6_125 = UKismetStringLibrary.Split(r0_125[#r0_125], r3_125)
+  if not r6_125 then
+    r10_0.AddHyperLink(r0_125, r1_125, r2_125 + 1)
   else
-    r0_124[#r0_124] = r4_124
-    r10_0.AddHyperLink(r0_124, r1_124, r2_124 + 1)
-    table.insert(r0_124, "<H_Under>" .. r3_124 .. "</>")
-    table.insert(r0_124, r5_124)
-    r10_0.AddHyperLink(r0_124, r1_124, r2_124)
+    r0_125[#r0_125] = r4_125
+    r10_0.AddHyperLink(r0_125, r1_125, r2_125 + 1)
+    table.insert(r0_125, "<H_Under>" .. r3_125 .. "</>")
+    table.insert(r0_125, r5_125)
+    r10_0.AddHyperLink(r0_125, r1_125, r2_125)
   end
 end
-function r10_0.OnDefinitionLinkClicked(r0_125, r1_125, r2_125)
-  -- line: [2618, 2643] id: 125
-  if not r0_125 or not r1_125 or not next(r1_125) then
+function r10_0.OnDefinitionLinkClicked(r0_126, r1_126, r2_126)
+  -- line: [2655, 2680] id: 126
+  if not r0_126 or not r1_126 or not next(r1_126) then
     return 
   end
-  local r3_125 = {
+  local r3_126 = {
     DefinitionItems = {},
   }
-  for r8_125, r9_125 in ipairs(r1_125) do
-    local r10_125 = DataMgr.CombatTerm[r9_125]
-    if r10_125 then
-      if r2_125 == r9_125 then
-        r3_125.CurrentItemIndex = r8_125 + -1
+  for r8_126, r9_126 in ipairs(r1_126) do
+    local r10_126 = DataMgr.CombatTerm[r9_126]
+    if r10_126 then
+      if r2_126 == r9_126 then
+        r3_126.CurrentItemIndex = r8_126 + -1
       end
-      table.insert(r3_125.DefinitionItems, {
-        Index = r8_125 + -1,
-        Name = GText(r10_125.CombatTerm),
-        Des = GText(r10_125.CombatTermExplaination),
+      table.insert(r3_126.DefinitionItems, {
+        Index = r8_126 + -1,
+        Name = GText(r10_126.CombatTerm),
+        Des = GText(r10_126.CombatTermExplaination),
       })
     end
   end
-  -- close: r4_125
-  r0_125.DefinitionWidget = UIManager(r0_125):ShowCommonPopupUI(100266, r3_125)
+  -- close: r4_126
+  r0_126.DefinitionWidget = UIManager(r0_126):ShowCommonPopupUI(100266, r3_126)
 end
-function r10_0.AddDefinitionHyperLink(r0_126, r1_126, r2_126)
-  -- line: [2646, 2665] id: 126
-  if #r1_126 < r2_126 then
+function r10_0.AddDefinitionHyperLink(r0_127, r1_127, r2_127)
+  -- line: [2683, 2702] id: 127
+  if #r1_127 < r2_127 then
     return 
   end
-  if not DataMgr.CombatTerm[r1_126[r2_126]] then
+  if not DataMgr.CombatTerm[r1_127[r2_127]] then
     return 
   end
-  local r4_126 = GText(DataMgr.CombatTerm[r1_126[r2_126]].CombatTerm)
-  local r5_126, r6_126, r7_126 = UKismetStringLibrary.Split(r0_126[#r0_126], r4_126)
-  if not r7_126 then
-    r10_0.AddDefinitionHyperLink(r0_126, r1_126, r2_126 + 1)
+  local r4_127 = GText(DataMgr.CombatTerm[r1_127[r2_127]].CombatTerm)
+  local r5_127, r6_127, r7_127 = UKismetStringLibrary.Split(r0_127[#r0_127], r4_127)
+  if not r7_127 then
+    r10_0.AddDefinitionHyperLink(r0_127, r1_127, r2_127 + 1)
   else
-    r0_126[#r0_126] = r5_126
-    r10_0.AddDefinitionHyperLink(r0_126, r1_126, r2_126 + 1)
-    table.insert(r0_126, table.concat({
+    r0_127[#r0_127] = r5_127
+    r10_0.AddDefinitionHyperLink(r0_127, r1_127, r2_127 + 1)
+    table.insert(r0_127, table.concat({
       "<a href=\"",
-      r1_126[r2_126],
+      r1_127[r2_127],
       "\"",
       " color=\"#E0A24A\">",
-      r4_126,
+      r4_127,
       "</>"
     }))
-    table.insert(r0_126, r6_126)
-    r10_0.AddDefinitionHyperLink(r0_126, r1_126, r2_126)
+    table.insert(r0_127, r6_127)
+    r10_0.AddDefinitionHyperLink(r0_127, r1_127, r2_127)
   end
 end
-function r10_0.SetDefinitionText(r0_127, r1_127)
-  -- line: [2670, 2680] id: 127
-  if not r0_127 or not r1_127 or not r1_127 then
+function r10_0.SetDefinitionText(r0_128, r1_128)
+  -- line: [2707, 2717] id: 128
+  if not r0_128 or not r1_128 or not r1_128 then
     return 
   end
-  local r3_127 = {
-    tostring(r0_127:GetText())
+  local r3_128 = {
+    tostring(r0_128:GetText())
   }
-  r10_0.AddDefinitionHyperLink(r3_127, r1_127, 1)
-  r0_127:SetText(GText(table.concat(r3_127)))
+  r10_0.AddDefinitionHyperLink(r3_128, r1_128, 1)
+  r0_128:SetText(GText(table.concat(r3_128)))
 end
-function r10_0.InitDefinitionTextWidget(r0_128, r1_128, r2_128, r3_128)
-  -- line: [2687, 2707] id: 128
-  if not r0_128 or not r1_128 then
+function r10_0.InitDefinitionTextWidget(r0_129, r1_129, r2_129, r3_129)
+  -- line: [2724, 2744] id: 129
+  if not r0_129 or not r1_129 then
     return 
   end
-  local r5_128 = r1_128:GetDecoratorByClass(UE.UClass.Load("/Game/UI/Blueprint/BP_HyperLinkDecorator.BP_HyperLinkDecorator_C"))
-  if r5_128 then
-    r5_128.BP_OnClicked:Clear()
-    r5_128.BP_OnClicked:Add(r0_128, function(r0_129, r1_129)
-      -- line: [2695, 2702] id: 129
-      if not r0_129 then
+  local r5_129 = r1_129:GetDecoratorByClass(UE.UClass.Load("/Game/UI/Blueprint/BP_HyperLinkDecorator.BP_HyperLinkDecorator_C"))
+  if r5_129 then
+    r5_129.BP_OnClicked:Clear()
+    r5_129.BP_OnClicked:Add(r0_129, function(r0_130, r1_130)
+      -- line: [2732, 2739] id: 130
+      if not r0_130 then
         return 
       end
-      if r3_128 and type(r3_128) == "function" then
-        r3_128(r0_129, r0_128[r2_128], r1_129)
+      if r3_129 and type(r3_129) == "function" then
+        r3_129(r0_130, r0_129[r2_129], r1_130)
       else
-        r10_0.OnDefinitionLinkClicked(r0_128, r0_128[r2_128], r1_129)
+        r10_0.OnDefinitionLinkClicked(r0_129, r0_129[r2_129], r1_130)
       end
     end)
   end
-  r0_128:AddDelayFrameFunc(function()
-    -- line: [2704, 2706] id: 130
-    r10_0.SetDefinitionText(r1_128, r0_128[r2_128])
+  r0_129:AddDelayFrameFunc(function()
+    -- line: [2741, 2743] id: 131
+    r10_0.SetDefinitionText(r1_129, r0_129[r2_129])
   end, 2, "UpdateTargetTextFunc")
 end
-function r10_0.AddPositioningTagToPanel(r0_131, r1_131)
-  -- line: [2709, 2747] id: 131
-  if not r0_131 or not r1_131 then
+function r10_0.AddPositioningTagToPanel(r0_132, r1_132)
+  -- line: [2746, 2784] id: 132
+  if not r0_132 or not r1_132 then
     return 
   end
-  local r2_131 = 0
-  local r3_131 = DataMgr.BattleChar[r1_131]
-  if r3_131 and r3_131.Positioning then
-    local r4_131 = r0_131:GetChildAt(0)
-    if not r4_131 then
+  local r2_132 = 0
+  local r3_132 = DataMgr.BattleChar[r1_132]
+  if r3_132 and r3_132.Positioning then
+    local r4_132 = r0_132:GetChildAt(0)
+    if not r4_132 then
       return 
     end
-    local r5_131 = UIManager(r0_131)
-    local r6_131 = UGameplayStatics.GetObjectClass(r4_131)
-    for r11_131, r12_131 in pairs(r3_131.Positioning) do
-      local r13_131 = DataMgr.Positioning[r12_131]
-      if r13_131 then
-        r4_131 = r0_131:GetChildAt(r2_131)
-        if not r4_131 then
-          r4_131 = r5_131:CreateWidget(r6_131)
-          r0_131:AddChild(r4_131)
+    local r5_132 = UIManager(r0_132)
+    local r6_132 = UGameplayStatics.GetObjectClass(r4_132)
+    for r11_132, r12_132 in pairs(r3_132.Positioning) do
+      local r13_132 = DataMgr.Positioning[r12_132]
+      if r13_132 then
+        r4_132 = r0_132:GetChildAt(r2_132)
+        if not r4_132 then
+          r4_132 = r5_132:CreateWidget(r6_132)
+          r0_132:AddChild(r4_132)
         end
-        if r13_131.Icon then
-          r4_131:SetIcon(LoadObject(r13_131.Icon))
+        if r13_132.Icon then
+          r4_132:SetIcon(LoadObject(r13_132.Icon))
         end
-        r2_131 = r2_131 + 1
+        r2_132 = r2_132 + 1
       end
     end
-    -- close: r7_131
+    -- close: r7_132
   end
-  if r2_131 > 0 then
-    r0_131:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
-    for r9_131 = r0_131:GetChildrenCount() + -1, r2_131, -1 do
-      r0_131:RemoveChildAt(r9_131)
+  if r2_132 > 0 then
+    r0_132:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+    for r9_132 = r0_132:GetChildrenCount() + -1, r2_132, -1 do
+      r0_132:RemoveChildAt(r9_132)
     end
   else
-    r0_131:SetVisibility(UIConst.VisibilityOp.Collapsed)
+    r0_132:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
 end
-function r10_0.GetCharMiniIconPath(r0_132)
-  -- line: [2749, 2752] id: 132
-  local r1_132 = "T_Normal_" .. DataMgr.BattleChar[r0_132].GuideIconImg
-  return "Texture2D\'/Game/UI/Texture/Dynamic/Image/Head/Mini/" .. r1_132 .. "." .. r1_132 .. "\'"
+function r10_0.GetCharMiniIconPath(r0_133)
+  -- line: [2786, 2789] id: 133
+  local r1_133 = "T_Normal_" .. DataMgr.BattleChar[r0_133].GuideIconImg
+  return "Texture2D\'/Game/UI/Texture/Dynamic/Image/Head/Mini/" .. r1_133 .. "." .. r1_133 .. "\'"
 end
-function r10_0.OpenPopupToArmory(r0_133, r1_133)
-  -- line: [2758, 2786] id: 133
-  UIManager(r0_133):ShowCommonPopupUI(100217, {
-    RightCallbackFunction = function(r0_134, r1_134, r2_134)
-      -- line: [2760, 2762] id: 134
-      r2_134.ClickResult = true
+function r10_0.OpenPopupToArmory(r0_134, r1_134)
+  -- line: [2795, 2823] id: 134
+  UIManager(r0_134):ShowCommonPopupUI(100217, {
+    RightCallbackFunction = function(r0_135, r1_135, r2_135)
+      -- line: [2797, 2799] id: 135
+      r2_135.ClickResult = true
     end,
-    RightCallbackObj = r0_133,
-    OnCloseCallbackFunction = function(r0_135, r1_135, r2_135)
-      -- line: [2764, 2778] id: 135
-      if r2_135.ClickResult == true then
+    RightCallbackObj = r0_134,
+    OnCloseCallbackFunction = function(r0_136, r1_136, r2_136)
+      -- line: [2801, 2815] id: 136
+      if r2_136.ClickResult == true then
         DebugPrint("OpenArmoryFromPopup")
         PageJumpUtils:JumpToTargetPageByJumpId(52)
-        if UIManager(r0_133):GetUIObj("ArmoryMain") then
-          UIManager(r0_133):GetUIObj("ArmoryMain").OnCloseDelegate = {
+        if UIManager(r0_134):GetUIObj("ArmoryMain") then
+          UIManager(r0_134):GetUIObj("ArmoryMain").OnCloseDelegate = {
             nil,
             function()
-              -- line: [2770, 2772] id: 136
+              -- line: [2807, 2809] id: 137
               r10_0:OpenPopupToArmory()
             end,
-            r0_133
+            r0_134
           }
         else
           ScreenPrint("没有找到军械库界面，关闭界面后不会打开弹窗。")
         end
       end
     end,
-  }, r0_133)
+  }, r0_134)
 end
-function r10_0.CalculateHoleTitle(r0_137, r1_137)
-  -- line: [2789, 2807] id: 137
-  local r2_137 = nil
-  local r3_137 = nil
-  if r0_137 ~= -1 and DataMgr.Title[r0_137] then
-    r2_137 = DataMgr.Title[r0_137].Name and nil
+function r10_0.CalculateHoleTitle(r0_138, r1_138)
+  -- line: [2826, 2844] id: 138
+  local r2_138 = nil
+  local r3_138 = nil
+  if r0_138 ~= -1 and DataMgr.Title[r0_138] then
+    r2_138 = DataMgr.Title[r0_138].Name and nil
   end
-  if r1_137 ~= -1 and DataMgr.Title[r1_137].Name then
-    r3_137 = DataMgr.Title[r1_137].Name and nil
+  if r1_138 ~= -1 and DataMgr.Title[r1_138].Name then
+    r3_138 = DataMgr.Title[r1_138].Name and nil
   end
-  if r2_137 then
-    r2_137 = GText(r2_137) and ""
+  if r2_138 then
+    r2_138 = GText(r2_138) and ""
   end
-  if r3_137 then
-    r3_137 = GText(r3_137) and ""
+  if r3_138 then
+    r3_138 = GText(r3_138) and ""
   end
-  local r4_137 = r2_137 and ""
-  return r4_137 .. (r3_137 and "")
+  local r4_138 = r2_138 and ""
+  return r4_138 .. (r3_138 and "")
 end
 function r10_0.GetSortedTitleTable()
-  -- line: [2810, 2833] id: 138
-  local r0_138 = GWorld:GetAvatar()
-  local r1_138 = {}
-  local r2_138 = {}
-  for r8_138, r9_138 in pairs(r0_138.Titles) do
-    if DataMgr.Title[r8_138] then
-      local r10_138 = DataMgr.Title[r8_138]
-      local r11_138 = {
-        Name = r10_138.Name,
-        TitleID = r10_138.TitleID,
+  -- line: [2847, 2870] id: 139
+  local r0_139 = GWorld:GetAvatar()
+  local r1_139 = {}
+  local r2_139 = {}
+  for r8_139, r9_139 in pairs(r0_139.Titles) do
+    if DataMgr.Title[r8_139] then
+      local r10_139 = DataMgr.Title[r8_139]
+      local r11_139 = {
+        Name = r10_139.Name,
+        TitleID = r10_139.TitleID,
       }
-      if r10_138.IfSuffix then
-        table.insert(r2_138, r11_138)
+      if r10_139.IfSuffix then
+        table.insert(r2_139, r11_139)
       else
-        table.insert(r1_138, r11_138)
+        table.insert(r1_139, r11_139)
       end
     end
   end
-  -- close: r4_138
-  return r1_138, r2_138
+  -- close: r4_139
+  return r1_139, r2_139
 end
-function r10_0.SetTextColorInMaterialByRarity(r0_139, r1_139, r2_139, r3_139)
-  -- line: [2838, 2854] id: 139
-  local r4_139 = r2_139:GetDynamicFontMaterial()
-  if r3_139 == 5 then
-    r4_139:SetTextureParameterValue("IconTex", r1_139.Img_Text_5)
-  elseif r3_139 == 4 then
-    r4_139:SetTextureParameterValue("IconTex", r1_139.Img_Text_4)
-  elseif r3_139 == 3 then
-    r4_139:SetTextureParameterValue("IconTex", r1_139.Img_Text_3)
-  elseif r3_139 == 2 then
-    r4_139:SetTextureParameterValue("IconTex", r1_139.Img_Text_2)
-  elseif r3_139 == 1 then
-    r4_139:SetTextureParameterValue("IconTex", r1_139.Img_Text_1)
+function r10_0.SetTextColorInMaterialByRarity(r0_140, r1_140, r2_140, r3_140)
+  -- line: [2875, 2891] id: 140
+  local r4_140 = r2_140:GetDynamicFontMaterial()
+  if r3_140 == 5 then
+    r4_140:SetTextureParameterValue("IconTex", r1_140.Img_Text_5)
+  elseif r3_140 == 4 then
+    r4_140:SetTextureParameterValue("IconTex", r1_140.Img_Text_4)
+  elseif r3_140 == 3 then
+    r4_140:SetTextureParameterValue("IconTex", r1_140.Img_Text_3)
+  elseif r3_140 == 2 then
+    r4_140:SetTextureParameterValue("IconTex", r1_140.Img_Text_2)
+  elseif r3_140 == 1 then
+    r4_140:SetTextureParameterValue("IconTex", r1_140.Img_Text_1)
   else
-    r4_139:SetTextureParameterValue("IconTex", r1_139.Img_Text_0)
+    r4_140:SetTextureParameterValue("IconTex", r1_140.Img_Text_0)
   end
 end
-function r10_0.SetTitle(r0_140, r1_140, r2_140)
-  -- line: [2860, 2897] id: 140
-  if r0_140 then
-    r0_140:ClearChildren()
-    r0_140:SetVisibility(UIConst.VisibilityOp.Collapsed)
+function r10_0.SetTitle(r0_141, r1_141, r2_141)
+  -- line: [2897, 2934] id: 141
+  if r0_141 then
+    r0_141:ClearChildren()
+    r0_141:SetVisibility(UIConst.VisibilityOp.Collapsed)
   else
     return 
   end
-  if not r1_140 then
+  if not r1_141 then
     return 
   end
-  local r3_140 = r1_140.TitleBefore
-  local r4_140 = r1_140.TitleAfter
-  local r5_140 = r1_140.TitleFrame
-  if (not r3_140 or r3_140 <= 0) and (not r4_140 or r4_140 <= 0) then
+  local r3_141 = r1_141.TitleBefore
+  local r4_141 = r1_141.TitleAfter
+  local r5_141 = r1_141.TitleFrame
+  if (not r3_141 or r3_141 <= 0) and (not r4_141 or r4_141 <= 0) then
     return 
   end
-  r0_140:SetVisibility(UIConst.VisibilityOp.Visible)
-  local r7_140 = GWorld.GameInstance:GetGameUIManager()
-  if r7_140 and r7_140.LoadTitleFrameWidget then
-    local r8_140 = r7_140:LoadTitleFrameWidget(r5_140 and -1)
-    if r8_140 then
-      if r0_140:AddChild(r8_140) then
-        if r8_140.SetTitleContent then
-          r8_140:SetTitleContent(r3_140, r4_140)
-        elseif r8_140.SetTitle then
-          r8_140:SetTitle(r3_140, r4_140)
-        elseif r8_140.SetEmpty and (not r3_140 or r3_140 <= 0) and (not r4_140 or r4_140 <= 0) then
-          r8_140:SetEmpty()
+  r0_141:SetVisibility(UIConst.VisibilityOp.Visible)
+  local r7_141 = GWorld.GameInstance:GetGameUIManager()
+  if r7_141 and r7_141.LoadTitleFrameWidget then
+    local r8_141 = r7_141:LoadTitleFrameWidget(r5_141 and -1)
+    if r8_141 then
+      if r0_141:AddChild(r8_141) then
+        if r8_141.SetTitleContent then
+          r8_141:SetTitleContent(r3_141, r4_141)
+        elseif r8_141.SetTitle then
+          r8_141:SetTitle(r3_141, r4_141)
+        elseif r8_141.SetEmpty and (not r3_141 or r3_141 <= 0) and (not r4_141 or r4_141 <= 0) then
+          r8_141:SetEmpty()
         end
       end
-      if r2_140 and r8_140.In then
-        r8_140:PlayAnimation(r8_140.In)
+      if r2_141 and r8_141.In then
+        r8_141:PlayAnimation(r8_141.In)
       end
     end
   end
 end
-function r10_0.SetUpScrollBox(r0_141)
-  -- line: [2899, 2911] id: 141
-  if not r0_141 then
+function r10_0.SetUpScrollBox(r0_142)
+  -- line: [2936, 2948] id: 142
+  if not r0_142 then
     DebugPrint("Invalid scroll box parameter")
     return 
   end
   if r10_0.IsMobileInput() then
-    r0_141:SetControlScrollbarInside(false)
+    r0_142:SetControlScrollbarInside(false)
   else
-    r0_141:SetScrollBarVisibility(UIConst.VisibilityOp.Hidden)
-    r0_141:SetControlScrollbarInside(true)
+    r0_142:SetScrollBarVisibility(UIConst.VisibilityOp.Hidden)
+    r0_142:SetControlScrollbarInside(true)
   end
 end
-function r10_0.GetRootUWidget(r0_142)
-  -- line: [2916, 2928] id: 142
-  if not r0_142 then
+function r10_0.GetRootUWidget(r0_143)
+  -- line: [2953, 2965] id: 143
+  if not r0_143 then
     return nil
   end
-  if r0_142.GetUWidgetSoul then
-    return r0_142:GetUWidgetSoul()
-  elseif r0_142.WidgetTree and r0_142.WidgetTree.RootWidget then
-    return r0_142.WidgetTree.RootWidget
+  if r0_143.GetUWidgetSoul then
+    return r0_143:GetUWidgetSoul()
+  elseif r0_143.WidgetTree and r0_143.WidgetTree.RootWidget then
+    return r0_143.WidgetTree.RootWidget
   end
   return nil
 end
-function r10_0.GatFastKeyInfo(r0_143, r1_143, r2_143)
-  -- line: [2930, 2940] id: 143
-  if not r1_143 then
-    r1_143 = "A"
+function r10_0.GatFastKeyInfo(r0_144, r1_144, r2_144)
+  -- line: [2967, 2977] id: 144
+  if not r1_144 then
+    r1_144 = "A"
   end
   return {
     KeyInfoList = {
       {
         Type = "Img",
-        ImgShortPath = r1_143,
+        ImgShortPath = r1_144,
       }
     },
-    Desc = r2_143,
+    Desc = r2_144,
   }
 end
-function r10_0.GetDynamicRewardInfo(r0_144, r1_144)
-  -- line: [2942, 2957] id: 144
-  if not r1_144 then
-    r1_144 = r3_0.NowTime()
+function r10_0.GetDynamicRewardInfo(r0_145, r1_145)
+  -- line: [2979, 2994] id: 145
+  if not r1_145 then
+    r1_145 = r3_0.NowTime()
   end
-  local r2_144 = DataMgr.DynamicReward[r0_144]
-  if not r2_144 then
+  local r2_145 = DataMgr.DynamicReward[r0_145]
+  if not r2_145 then
     return 
   end
-  for r7_144, r8_144 in pairs(r2_144) do
-    if r7_144 <= r1_144 then
-      for r13_144, r14_144 in pairs(r8_144) do
-        if r1_144 <= r13_144 then
-          return r14_144
+  for r7_145, r8_145 in pairs(r2_145) do
+    if r7_145 <= r1_145 then
+      for r13_145, r14_145 in pairs(r8_145) do
+        if r1_145 <= r13_145 then
+          return r14_145
         end
       end
-      -- close: r9_144
+      -- close: r9_145
     end
   end
-  -- close: r3_144
+  -- close: r3_145
 end
-function r10_0.LongPressKey(r0_145, r1_145, r2_145, r3_145)
-  -- line: [2959, 2992] id: 145
-  if r1_145:IsAnimationPlaying(r1_145.LongPress) then
+function r10_0.LongPressKey(r0_146, r1_146, r2_146, r3_146)
+  -- line: [2996, 3029] id: 146
+  if r1_146:IsAnimationPlaying(r1_146.LongPress) then
     return 
   end
-  AudioManager(r1_145):PlayUISound(r1_145, "event:/ui/common/btn_press", "LongPress", nil)
-  r1_145:UnbindAllFromAnimationFinished(r1_145.LongPress)
-  r1_145:BindToAnimationFinished(r1_145.LongPress, function()
-    -- line: [2968, 2985] id: 146
+  AudioManager(r1_146):PlayUISound(r1_146, "event:/ui/common/btn_press", "LongPress", nil)
+  r1_146:UnbindAllFromAnimationFinished(r1_146.LongPress)
+  r1_146:BindToAnimationFinished(r1_146.LongPress, function()
+    -- line: [3005, 3022] id: 147
     ScreenPrint("LongPressKey")
-    if not r1_145.IsLongPressing then
+    if not r1_146.IsLongPressing then
       return 
     end
-    AudioManager(r1_145):StopSound(r1_145, "LongPress")
-    if r2_145 then
-      r2_145()
+    AudioManager(r1_146):StopSound(r1_146, "LongPress")
+    if r2_146 then
+      r2_146()
     end
-    r1_145:PlayAnimation(r1_145.Normal)
-    r1_145.IsLongPressing = false
+    r1_146:PlayAnimation(r1_146.Normal)
+    r1_146.IsLongPressing = false
   end)
-  if not r1_145 then
+  if not r1_146 then
     return 
   end
-  r1_145.IsLongPressing = true
-  r1_145:PlayAnimation(r1_145.LongPress)
+  r1_146.IsLongPressing = true
+  r1_146:PlayAnimation(r1_146.LongPress)
 end
-function r10_0.StopLongPressKey(r0_147, r1_147)
-  -- line: [2994, 3006] id: 147
-  if not r1_147.IsLongPressing then
+function r10_0.StopLongPressKey(r0_148, r1_148)
+  -- line: [3031, 3043] id: 148
+  if not r1_148.IsLongPressing then
     return 
   end
-  AudioManager(r1_147):StopSound(r1_147, "LongPress")
-  r1_147:UnbindAllFromAnimationFinished(r1_147.LongPress)
-  r1_147:StopAllAnimations()
-  r1_147:PlayAnimation(r1_147.Normal)
-  r1_147.IsLongPressing = false
+  AudioManager(r1_148):StopSound(r1_148, "LongPress")
+  r1_148:UnbindAllFromAnimationFinished(r1_148.LongPress)
+  r1_148:StopAllAnimations()
+  r1_148:PlayAnimation(r1_148.Normal)
+  r1_148.IsLongPressing = false
 end
-function r10_0.GetMinAndMaxDisplayedItemIndex(r0_148)
-  -- line: [3009, 3023] id: 148
-  local r1_148 = r0_148:GetDisplayedEntryWidgets():ToTable()
-  local r2_148 = #r1_148
-  local r3_148 = 0
-  for r8_148, r9_148 in ipairs(r1_148) do
-    local r10_148 = r0_148:GetIndexForItem(UUserObjectListEntryLibrary.GetListItemObject(r9_148)) + 1
-    if r10_148 < r2_148 then
-      r2_148 = r10_148
+function r10_0.GetMinAndMaxDisplayedItemIndex(r0_149)
+  -- line: [3046, 3060] id: 149
+  local r1_149 = r0_149:GetDisplayedEntryWidgets():ToTable()
+  local r2_149 = #r1_149
+  local r3_149 = 0
+  for r8_149, r9_149 in ipairs(r1_149) do
+    local r10_149 = r0_149:GetIndexForItem(UUserObjectListEntryLibrary.GetListItemObject(r9_149)) + 1
+    if r10_149 < r2_149 then
+      r2_149 = r10_149
     end
-    if r3_148 < r10_148 then
-      r3_148 = r10_148
+    if r3_149 < r10_149 then
+      r3_149 = r10_149
     end
   end
-  -- close: r4_148
-  return r2_148, r3_148
+  -- close: r4_149
+  return r2_149, r3_149
 end
-function r10_0.OpenMultiplayerChallengeLevelChoose(r0_149)
-  -- line: [3026, 3030] id: 149
-  GWorld.GameInstance:GetGameUIManager():LoadUINew("MultiplayerChallenge", r0_149)
+function r10_0.OpenMultiplayerChallengeLevelChoose(r0_150)
+  -- line: [3063, 3067] id: 150
+  GWorld.GameInstance:GetGameUIManager():LoadUINew("MultiplayerChallenge", r0_150)
 end
-function r10_0.SetFocusSecretly(r0_150)
-  -- line: [3033, 3042] id: 150
-  local r1_150 = UGameInputModeSubsystem.GetGameInputModeSubsystem(r0_150)
-  r1_150:SetNavigateWidgetOpacity(0)
-  r0_150:SetFocus()
-  require("BluePrints.Common.StageTimerMgr").AddTimer(r0_150, 0.25, function()
-    -- line: [3038, 3040] id: 151
-    r1_150:SetNavigateWidgetOpacity(1)
+function r10_0.SetFocusSecretly(r0_151)
+  -- line: [3070, 3079] id: 151
+  local r1_151 = UGameInputModeSubsystem.GetGameInputModeSubsystem(r0_151)
+  r1_151:SetNavigateWidgetOpacity(0)
+  r0_151:SetFocus()
+  require("BluePrints.Common.StageTimerMgr").AddTimer(r0_151, 0.25, function()
+    -- line: [3075, 3077] id: 152
+    r1_151:SetNavigateWidgetOpacity(1)
   end, nil, nil, nil, true, UE4.ETickingGroup.TG_EndPhysics)
 end
-function r10_0.GetRelativePositionInParent(r0_152, r1_152, r2_152)
-  -- line: [3049, 3095] id: 152
-  local r3_152 = r0_152:GetParent() and r0_152
-  local r4_152 = r3_152:GetCachedGeometry()
-  local r5_152 = UE4.USlateBlueprintLibrary.AbsoluteToLocal(r4_152, r1_152)
-  local r6_152 = UE4.USlateBlueprintLibrary.GetLocalSize(r4_152)
-  local r7_152 = r3_152.Slot
-  if r7_152 then
-    local r8_152 = FVector2D(r7_152:GetPosition().X, r7_152:GetPosition().Y)
-    local r9_152 = nil
-    local r10_152 = r0_152:GetCachedGeometry()
-    local r11_152 = nil	-- notice: implicit variable refs by block#[8]
-    if r0_152 then
-      r11_152 = r0_152.RenderTransform.Scale.X
-      if not r11_152 then
+function r10_0.GetRelativePositionInParent(r0_153, r1_153, r2_153)
+  -- line: [3086, 3132] id: 153
+  local r3_153 = r0_153:GetParent() and r0_153
+  local r4_153 = r3_153:GetCachedGeometry()
+  local r5_153 = UE4.USlateBlueprintLibrary.AbsoluteToLocal(r4_153, r1_153)
+  local r6_153 = UE4.USlateBlueprintLibrary.GetLocalSize(r4_153)
+  local r7_153 = r3_153.Slot
+  if r7_153 then
+    local r8_153 = FVector2D(r7_153:GetPosition().X, r7_153:GetPosition().Y)
+    local r9_153 = nil
+    local r10_153 = r0_153:GetCachedGeometry()
+    local r11_153 = nil	-- notice: implicit variable refs by block#[8]
+    if r0_153 then
+      r11_153 = r0_153.RenderTransform.Scale.X
+      if not r11_153 then
         ::label_39::
-        r11_152 = 1
+        r11_153 = 1
       end
     else
       goto label_39	-- block#5 is visited secondly
     end
-    local r12_152 = UE4.USlateBlueprintLibrary.GetLocalSize(r10_152)
-    local r13_152 = r0_152.Slot:GetAnchors()
-    local r14_152 = r0_152.Slot:GetAlignment()
-    if r2_152 == nil then
-      r2_152 = FVector2D(r12_152.X / 2, r12_152.Y / 2)
+    local r12_153 = UE4.USlateBlueprintLibrary.GetLocalSize(r10_153)
+    local r13_153 = r0_153.Slot:GetAnchors()
+    local r14_153 = r0_153.Slot:GetAlignment()
+    if r2_153 == nil then
+      r2_153 = FVector2D(r12_153.X / 2, r12_153.Y / 2)
     end
-    r9_152 = FVector2D(r12_152.X * (r14_152.X - r2_152.X / r12_152.X), r12_152.Y * (r14_152.Y - r2_152.Y / r12_152.Y))
-    return FVector2D(r8_152.X + r5_152.X - r6_152.X * math.max(r13_152.Maximum.X, r13_152.Minimum.X) + r9_152.X + r12_152.X * (1 - r11_152) * (r2_152.X / r12_152.X - 0.5), r8_152.Y + r5_152.Y - r6_152.Y * math.max(r13_152.Maximum.Y, r13_152.Minimum.Y) + r9_152.Y + r12_152.Y * (1 - r11_152) * (r2_152.Y / r12_152.Y - 0.5))
+    r9_153 = FVector2D(r12_153.X * (r14_153.X - r2_153.X / r12_153.X), r12_153.Y * (r14_153.Y - r2_153.Y / r12_153.Y))
+    return FVector2D(r8_153.X + r5_153.X - r6_153.X * math.max(r13_153.Maximum.X, r13_153.Minimum.X) + r9_153.X + r12_153.X * (1 - r11_153) * (r2_153.X / r12_153.X - 0.5), r8_153.Y + r5_153.Y - r6_153.Y * math.max(r13_153.Maximum.Y, r13_153.Minimum.Y) + r9_153.Y + r12_153.Y * (1 - r11_153) * (r2_153.Y / r12_153.Y - 0.5))
   end
-  return r5_152
+  return r5_153
 end
-function r10_0.ConvertScreenToChildLocalPosition(r0_153, r1_153, r2_153, r3_153)
-  -- line: [3102, 3141] id: 153
-  local r5_153 = (r1_153:GetParent() and r1_153):GetCachedGeometry()
-  local r6_153 = UE4.USlateBlueprintLibrary.AbsoluteToLocal(r5_153, r2_153)
-  local r7_153 = UE4.USlateBlueprintLibrary.GetLocalSize(r5_153)
-  local r8_153 = r1_153.Slot
-  if r8_153 then
-    local r9_153 = FVector2D(r8_153:GetPosition().X, r8_153:GetPosition().Y)
-    local r10_153 = UIManager(r0_153):GetWorldPosition(r1_153)
-    local r11_153 = r1_153:GetCachedGeometry()
-    local r12_153 = UE4.USlateBlueprintLibrary.GetAbsoluteSize(r11_153)
-    local r13_153 = UE4.USlateBlueprintLibrary.GetLocalSize(r11_153)
-    local r15_153 = UE4.USlateBlueprintLibrary.AbsoluteToLocal(r5_153, FVector2D(r10_153.X + r12_153.X * r3_153.X / r13_153.X, r10_153.Y + r12_153.Y * r3_153.Y / r13_153.Y))
-    return FVector2D(r9_153.X + r6_153.X - r15_153.X, r9_153.Y + r6_153.Y - r15_153.Y)
+function r10_0.ConvertScreenToChildLocalPosition(r0_154, r1_154, r2_154, r3_154)
+  -- line: [3139, 3178] id: 154
+  local r5_154 = (r1_154:GetParent() and r1_154):GetCachedGeometry()
+  local r6_154 = UE4.USlateBlueprintLibrary.AbsoluteToLocal(r5_154, r2_154)
+  local r7_154 = UE4.USlateBlueprintLibrary.GetLocalSize(r5_154)
+  local r8_154 = r1_154.Slot
+  if r8_154 then
+    local r9_154 = FVector2D(r8_154:GetPosition().X, r8_154:GetPosition().Y)
+    local r10_154 = UIManager(r0_154):GetWorldPosition(r1_154)
+    local r11_154 = r1_154:GetCachedGeometry()
+    local r12_154 = UE4.USlateBlueprintLibrary.GetAbsoluteSize(r11_154)
+    local r13_154 = UE4.USlateBlueprintLibrary.GetLocalSize(r11_154)
+    local r15_154 = UE4.USlateBlueprintLibrary.AbsoluteToLocal(r5_154, FVector2D(r10_154.X + r12_154.X * r3_154.X / r13_154.X, r10_154.Y + r12_154.Y * r3_154.Y / r13_154.Y))
+    return FVector2D(r9_154.X + r6_154.X - r15_154.X, r9_154.Y + r6_154.Y - r15_154.Y)
   end
-  return r6_153
+  return r6_154
 end
 function r10_0.RefreshFeinaRewardReddot()
-  -- line: [3143, 3193] id: 154
-  local r0_154 = GWorld:GetAvatar()
-  if not r0_154 then
+  -- line: [3180, 3230] id: 155
+  local r0_155 = GWorld:GetAvatar()
+  if not r0_155 then
     return 
   end
   if not ReddotManager.GetTreeNode("FeinaEventReward") then
     ReddotManager.AddNodeEx("FeinaEventReward")
   end
   ReddotManager.ClearLeafNodeCount("FeinaEventReward", true)
-  local r2_154 = ReddotManager.GetLeafNodeCacheDetail("FeinaEventReward")
-  for r7_154, r8_154 in pairs(DataMgr.FeinaEvent) do
-    local r9_154 = false
-    for r14_154, r15_154 in pairs(r8_154.DungeonId) do
-      local r16_154 = r0_154:GetFeinaRewardInfo(r15_154)
-      if r16_154 then
-        local r17_154 = false
-        for r22_154, r23_154 in pairs(r16_154) do
-          if r23_154 == 1 then
-            if not r2_154[r7_154] then
-              r2_154[r7_154] = {}
+  local r2_155 = ReddotManager.GetLeafNodeCacheDetail("FeinaEventReward")
+  for r7_155, r8_155 in pairs(DataMgr.FeinaEvent) do
+    local r9_155 = false
+    for r14_155, r15_155 in pairs(r8_155.DungeonId) do
+      local r16_155 = r0_155:GetFeinaRewardInfo(r15_155)
+      if r16_155 then
+        local r17_155 = false
+        for r22_155, r23_155 in pairs(r16_155) do
+          if r23_155 == 1 then
+            if not r2_155[r7_155] then
+              r2_155[r7_155] = {}
             end
-            if not r2_154[r7_154][r15_154] then
-              r2_154[r7_154][r15_154] = {}
+            if not r2_155[r7_155][r15_155] then
+              r2_155[r7_155][r15_155] = {}
             end
-            if not r2_154[r7_154][r15_154][r22_154] then
-              r2_154[r7_154][r15_154][r22_154] = 1
+            if not r2_155[r7_155][r15_155][r22_155] then
+              r2_155[r7_155][r15_155][r22_155] = 1
             end
             ReddotManager.IncreaseLeafNodeCount("FeinaEventReward")
-            r17_154 = true
-            r9_154 = true
-          elseif r23_154 == 2 and r2_154[r7_154] and r2_154[r7_154][r15_154] and r2_154[r7_154][r15_154][r22_154] then
-            r2_154[r7_154][r15_154][r22_154] = nil
+            r17_155 = true
+            r9_155 = true
+          elseif r23_155 == 2 and r2_155[r7_155] and r2_155[r7_155][r15_155] and r2_155[r7_155][r15_155][r22_155] then
+            r2_155[r7_155][r15_155][r22_155] = nil
           end
         end
-        -- close: r18_154
-        if not r17_154 and r2_154[r7_154] and r2_154[r7_154][r15_154] then
-          r2_154[r7_154][r15_154] = nil
+        -- close: r18_155
+        if not r17_155 and r2_155[r7_155] and r2_155[r7_155][r15_155] then
+          r2_155[r7_155][r15_155] = nil
         end
       end
     end
-    -- close: r10_154
-    if not r9_154 and r2_154[r7_154] then
-      r2_154[r7_154] = nil
+    -- close: r10_155
+    if not r9_155 and r2_155[r7_155] then
+      r2_155[r7_155] = nil
     end
   end
-  -- close: r3_154
+  -- close: r3_155
 end
 AssembleComponents(r10_0)
 return r10_0

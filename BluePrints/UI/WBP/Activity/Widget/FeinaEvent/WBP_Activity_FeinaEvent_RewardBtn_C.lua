@@ -1,175 +1,181 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\WBP\Activity\Widget\FeinaEvent\WBP_Activity_FeinaEvent_RewardBtn_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local RewardModel = require("BluePrints.UI.WBP.Activity.Widget.FeinaEvent.WBP_Activity_FeinaEvent_Reward_Model")
-local ActivityUtils = require("Blueprints.UI.WBP.Activity.ActivityUtils")
-local ActivityReddotHelper = require("BluePrints.UI.WBP.Activity.ActivityReddotHelper")
-local M = Class({
+local r0_0 = require("BluePrints.UI.WBP.Activity.Widget.FeinaEvent.WBP_Activity_FeinaEvent_Reward_Model")
+local r1_0 = require("Blueprints.UI.WBP.Activity.ActivityUtils")
+local r2_0 = require("BluePrints.UI.WBP.Activity.ActivityReddotHelper")
+local r3_0 = Class({
   "Blueprints.UI.BP_UIState_C"
 })
-
-function M:Init()
-  self:SetText(GText("PermanenEventReward"))
-  self:BindEventOnClicked(self, self.OpenReward)
-  self.Key_Controller:CreateCommonKey({
+function r3_0.Init(r0_1)
+  -- line: [19, 43] id: 1
+  r0_1:SetText(GText("PermanenEventReward"))
+  r0_1:BindEventOnClicked(r0_1, r0_1.OpenReward)
+  r0_1.Key_Controller:CreateCommonKey({
     KeyInfoList = {
-      {Type = "Img", ImgShortPath = "Y"}
-    }
+      {
+        Type = "Img",
+        ImgShortPath = "Y",
+      }
+    },
   })
-  self.GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(self)
-  self:RefreshOpInfoByInputDevice(self.GameInputModeSubsystem:GetCurrentInputType(), self.GameInputModeSubsystem:GetCurrentGamepadName())
-  if CommonUtils.GetDeviceTypeByPlatformName(self) == "PC" then
-    self:AddInputMethodChangedListen()
+  r0_1.GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(r0_1)
+  r0_1:RefreshOpInfoByInputDevice(r0_1.GameInputModeSubsystem:GetCurrentInputType(), r0_1.GameInputModeSubsystem:GetCurrentGamepadName())
+  if CommonUtils.GetDeviceTypeByPlatformName(r0_1) == "PC" then
+    r0_1:AddInputMethodChangedListen()
   end
   if not ReddotManager.GetTreeNode("FeinaEventReward") then
     ReddotManager.AddNode("FeinaEventReward")
   end
-  if not self.AddListenerFinish then
-    self.AddListenerFinish = true
-    ReddotManager.AddListener("FeinaEventReward", self, self.RefreshReddot)
+  if not r0_1.AddListenerFinish then
+    r0_1.AddListenerFinish = true
+    ReddotManager.AddListener("FeinaEventReward", r0_1, r0_1.RefreshReddot)
   end
-  self:RefreshReddot()
+  r0_1:RefreshReddot()
 end
-
-function M:RefreshReddot()
-  local CacheDetail = ReddotManager.GetLeafNodeCacheDetail("FeinaEventReward")
-  if not CacheDetail then
-    self.Reddot:SetVisibility(ESlateVisibility.Collapsed)
+function r3_0.RefreshReddot(r0_2)
+  -- line: [45, 62] id: 2
+  local r1_2 = ReddotManager.GetLeafNodeCacheDetail("FeinaEventReward")
+  if not r1_2 then
+    r0_2.Reddot:SetVisibility(ESlateVisibility.Collapsed)
   else
-    local IsEmpty = true
-    for _, __ in pairs(CacheDetail) do
-      IsEmpty = false
+    local r2_2 = true
+    for r7_2, r8_2 in pairs(r1_2) do
+      r2_2 = false
       break
     end
-    if not IsEmpty then
-      self.Reddot:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    -- close: r3_2
+    if not r2_2 then
+      r0_2.Reddot:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
     else
-      self.Reddot:SetVisibility(ESlateVisibility.Collapsed)
-      ActivityReddotHelper.TrySubReddotCount(ActivityUtils, CommonConst.FeinaEventId, "Red")
+      r0_2.Reddot:SetVisibility(ESlateVisibility.Collapsed)
+      r2_0.TrySubReddotCount(r1_0, CommonConst.FeinaEventId, "Red")
     end
   end
 end
-
-function M:Construct()
-  self.Btn_Click.OnHovered:Add(self, self.OnBtnHovered)
-  self.Btn_Click.OnUnhovered:Add(self, self.OnBtnUnhovered)
-  self.Btn_Click.OnPressed:Add(self, self.OnBtnPressed)
-  self.Btn_Click.OnReleased:Add(self, self.OnBtnReleased)
-  self.Btn_Click.OnClicked:Add(self, self.OnBtnClicked)
+function r3_0.Construct(r0_3)
+  -- line: [65, 71] id: 3
+  r0_3.Btn_Click.OnHovered:Add(r0_3, r0_3.OnBtnHovered)
+  r0_3.Btn_Click.OnUnhovered:Add(r0_3, r0_3.OnBtnUnhovered)
+  r0_3.Btn_Click.OnPressed:Add(r0_3, r0_3.OnBtnPressed)
+  r0_3.Btn_Click.OnReleased:Add(r0_3, r0_3.OnBtnReleased)
+  r0_3.Btn_Click.OnClicked:Add(r0_3, r0_3.OnBtnClicked)
 end
-
-function M:AddInputMethodChangedListen()
-  if IsValid(self.GameInputModeSubsystem) then
-    self.GameInputModeSubsystem.OnInputMethodChanged:Add(self, self.RefreshOpInfoByInputDevice)
+function r3_0.AddInputMethodChangedListen(r0_4)
+  -- line: [76, 80] id: 4
+  if IsValid(r0_4.GameInputModeSubsystem) then
+    r0_4.GameInputModeSubsystem.OnInputMethodChanged:Add(r0_4, r0_4.RefreshOpInfoByInputDevice)
   end
 end
-
-function M:RemoveInputMethodChangedListen()
-  if IsValid(self.GameInputModeSubsystem) then
-    self.GameInputModeSubsystem.OnInputMethodChanged:Remove(self, self.RefreshOpInfoByInputDevice)
+function r3_0.RemoveInputMethodChangedListen(r0_5)
+  -- line: [82, 86] id: 5
+  if IsValid(r0_5.GameInputModeSubsystem) then
+    r0_5.GameInputModeSubsystem.OnInputMethodChanged:Remove(r0_5, r0_5.RefreshOpInfoByInputDevice)
   end
 end
-
-function M:Destruct()
-  self:RemoveInputMethodChangedListen()
-  self.Super.Destruct(self)
+function r3_0.Destruct(r0_6)
+  -- line: [89, 93] id: 6
+  r0_6:RemoveInputMethodChangedListen()
+  r0_6.Super.Destruct(r0_6)
+  ReddotManager.RemoveListener("FeinaEventReward", r0_6)
 end
-
-function M:SetText(Text)
-  self.Text_Reward:SetText(Text)
+function r3_0.SetText(r0_7, r1_7)
+  -- line: [95, 97] id: 7
+  r0_7.Text_Reward:SetText(r1_7)
 end
-
-function M:BindEventOnClicked(Obj, Func, Params)
-  if not Obj or not Func then
-    return
+function r3_0.BindEventOnClicked(r0_8, r1_8, r2_8, r3_8)
+  -- line: [99, 106] id: 8
+  if not r1_8 or not r2_8 then
+    return 
   end
-  self.Obj = Obj
-  self.Func = Func
-  self.Params = Params
+  r0_8.Obj = r1_8
+  r0_8.Func = r2_8
+  r0_8.Params = r3_8
 end
-
-function M:OnBtnHovered()
-  self.IsHovering = true
-  if self.IsPressing then
-    return
+function r3_0.OnBtnHovered(r0_9)
+  -- line: [108, 115] id: 9
+  r0_9.IsHovering = true
+  if r0_9.IsPressing then
+    return 
   end
-  self:StopAllAnimations()
-  self:PlayAnimation(self.Hover)
+  r0_9:StopAllAnimations()
+  r0_9:PlayAnimation(r0_9.Hover)
 end
-
-function M:OnBtnUnhovered()
-  self.IsHovering = false
-  if not self.IsPressing then
-    self:StopAllAnimations()
-    self:PlayAnimation(self.Unhover)
+function r3_0.OnBtnUnhovered(r0_10)
+  -- line: [117, 123] id: 10
+  r0_10.IsHovering = false
+  if not r0_10.IsPressing then
+    r0_10:StopAllAnimations()
+    r0_10:PlayAnimation(r0_10.Unhover)
   end
 end
-
-function M:OnBtnPressed()
-  self.IsPressing = true
-  self:StopAllAnimations()
-  self:PlayAnimation(self.Press)
+function r3_0.OnBtnPressed(r0_11)
+  -- line: [125, 129] id: 11
+  r0_11.IsPressing = true
+  r0_11:StopAllAnimations()
+  r0_11:PlayAnimation(r0_11.Press)
 end
-
-function M:OnBtnReleased()
-  self.IsPressing = false
-  if not self.IsHovering then
-    self:StopAllAnimations()
-    self:PlayAnimationReverse(self.Normal)
+function r3_0.OnBtnReleased(r0_12)
+  -- line: [131, 140] id: 12
+  r0_12.IsPressing = false
+  if not r0_12.IsHovering then
+    r0_12:StopAllAnimations()
+    r0_12:PlayAnimationReverse(r0_12.Normal)
   else
-    self:StopAllAnimations()
-    self:PlayAnimationReverse(self.Hover)
+    r0_12:StopAllAnimations()
+    r0_12:PlayAnimationReverse(r0_12.Hover)
   end
 end
-
-function M:OnBtnClicked()
-  self:StopAllAnimations()
-  self:PlayAnimation(self.Click)
-  AudioManager(self):PlayUISound(self, "event:/ui/activity/gift_entrance_btn_click", nil, nil)
-  if self.Obj and self.Func then
-    if self.Params then
-      self.Func(self.Obj, table.unpack(self.Params))
+function r3_0.OnBtnClicked(r0_13)
+  -- line: [142, 153] id: 13
+  r0_13:StopAllAnimations()
+  r0_13:PlayAnimation(r0_13.Click)
+  AudioManager(r0_13):PlayUISound(r0_13, "event:/ui/activity/gift_entrance_btn_click", nil, nil)
+  if r0_13.Obj and r0_13.Func then
+    if r0_13.Params then
+      r0_13.Func(r0_13.Obj, table.unpack(r0_13.Params))
     else
-      self.Func(self.Obj)
+      r0_13.Func(r0_13.Obj)
     end
   end
 end
-
-function M:OpenReward()
-  RewardModel:OpenReward(self)
+function r3_0.OpenReward(r0_14)
+  -- line: [155, 157] id: 14
+  r0_0:OpenReward(r0_14)
 end
-
-function M:RefreshOpInfoByInputDevice(CurInputDevice, CurGamepadName)
-  local IsUseKeyAndMouse = CurInputDevice == ECommonInputType.MouseAndKeyboard
-  if IsUseKeyAndMouse then
-    self:InitKeyBoardView()
-  elseif CurInputDevice == ECommonInputType.Gamepad then
-    self:InitGamepadView()
+function r3_0.RefreshOpInfoByInputDevice(r0_15, r1_15, r2_15)
+  -- line: [159, 168] id: 15
+  if r1_15 == ECommonInputType.MouseAndKeyboard then
+    r0_15:InitKeyBoardView()
+  elseif r1_15 == ECommonInputType.Gamepad then
+    r0_15:InitGamepadView()
   end
-  self.CurInputDeviceType = CurInputDevice
+  r0_15.CurInputDeviceType = r1_15
 end
-
-function M:InitKeyBoardView()
-  self.Key_Controller:SetVisibility(UIConst.VisibilityOp.Collapsed)
+function r3_0.InitKeyBoardView(r0_16)
+  -- line: [170, 172] id: 16
+  r0_16.Key_Controller:SetVisibility(UIConst.VisibilityOp.Collapsed)
 end
-
-function M:InitGamepadView()
-  self.Key_Controller:SetVisibility(UIConst.VisibilityOp.Visible)
+function r3_0.InitGamepadView(r0_17)
+  -- line: [174, 176] id: 17
+  r0_17.Key_Controller:SetVisibility(UIConst.VisibilityOp.Visible)
 end
-
-function M:HandleKeyDownOnGamePad(InKeyName)
-  local IsEventHandled = false
-  if InKeyName == UIConst.GamePadKey.FaceButtonTop then
-    IsEventHandled = true
-    self:OnBtnClicked()
+function r3_0.HandleKeyDownOnGamePad(r0_18, r1_18)
+  -- line: [178, 185] id: 18
+  local r2_18 = false
+  if r1_18 == UIConst.GamePadKey.FaceButtonTop then
+    r2_18 = true
+    r0_18:OnBtnClicked()
   end
-  return IsEventHandled
+  return r2_18
 end
-
-function M:OnUpdateSubUIViewStyle(IsEnter)
-  if IsEnter then
-    self.Key_Controller:SetVisibility(UIConst.VisibilityOp.Visible)
+function r3_0.OnUpdateSubUIViewStyle(r0_19, r1_19)
+  -- line: [187, 193] id: 19
+  if r1_19 then
+    r0_19.Key_Controller:SetVisibility(UIConst.VisibilityOp.Visible)
   else
-    self.Key_Controller:SetVisibility(UIConst.VisibilityOp.Collapsed)
+    r0_19.Key_Controller:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
 end
-
-return M
+return r3_0

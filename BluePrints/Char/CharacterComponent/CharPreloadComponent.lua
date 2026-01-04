@@ -1,6 +1,9 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\Char\CharacterComponent\CharPreloadComponent.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local M = Class()
-local WeaponMontageTagsConfig = {
+local r0_0 = Class()
+local r1_0 = {
   "Bow",
   "Cannon",
   "Claymore",
@@ -13,72 +16,72 @@ local WeaponMontageTagsConfig = {
   "Sword",
   "Swordwhip"
 }
-
-function M:PreloadEnable()
-  if self.Owner:IsPlayer() then
+function r0_0.PreloadEnable(r0_1)
+  -- line: [19, 24] id: 1
+  if r0_1.Owner:IsPlayer() then
     return Const.EnablePlayerPreload
   end
   return true
 end
-
-function M:NeedPreloadAssets_Phantom()
+function r0_0.NeedPreloadAssets_Phantom(r0_2)
+  -- line: [46, 48] id: 2
   return Const.EnableDungeonPhantomPreload
 end
-
-function M:InitDistructableBody()
-  self.Owner.DistructableBodyId = self:GetDistructableBodyId()
+function r0_0.InitDistructableBody(r0_3)
+  -- line: [65, 67] id: 3
+  r0_3.Owner.DistructableBodyId = r0_3:GetDistructableBodyId()
 end
-
-function M:GetDistructableBodyId()
-  if not self.Owner:IsRealMonster() or self.Owner:IsPhantom() then
-    return
+function r0_0.GetDistructableBodyId(r0_4)
+  -- line: [69, 74] id: 4
+  if not r0_4.Owner:IsRealMonster() or r0_4.Owner:IsPhantom() then
+    return 
   end
-  return DataMgr.Monster[self.Owner.UnitId].DistructableId
+  return DataMgr.Monster[r0_4.Owner.UnitId].DistructableId
 end
-
-function M:GetPlayerWeaponMontageTags()
-  if not self.Owner:IsPlayer() or not self.Owner.InitSuccess then
-    GWorld.logger.errorlog("主角预加载武器蒙太奇资源, 获取数据失败", self.Owner.CurrentRoleId, self.Owner.InitSuccess)
+function r0_0.GetPlayerWeaponMontageTags(r0_5)
+  -- line: [80, 104] id: 5
+  if not r0_5.Owner:IsPlayer() or not r0_5.Owner.InitSuccess then
+    GWorld.logger.errorlog("主角预加载武器蒙太奇资源, 获取数据失败", r0_5.Owner.CurrentRoleId, r0_5.Owner.InitSuccess)
     return {}
   end
-  local TmpWeaponIds = {}
-  for _, Weapon in pairs(self.Owner.Weapons) do
-    table.insert(TmpWeaponIds, Weapon.WeaponId)
+  local r1_5 = {}
+  for r6_5, r7_5 in pairs(r0_5.Owner.Weapons) do
+    table.insert(r1_5, r7_5.WeaponId)
   end
-  local OutWeaponMontageTags = {}
-  for _, Id in pairs(TmpWeaponIds) do
-    local WeaponData = DataMgr.BattleWeapon[Id]
-    if WeaponData then
-      for _, Tag in pairs(WeaponData.WeaponTag) do
-        if CommonUtils.HasValue(WeaponMontageTagsConfig, Tag) then
-          table.insert(OutWeaponMontageTags, Tag)
+  -- close: r2_5
+  local r2_5 = {}
+  for r7_5, r8_5 in pairs(r1_5) do
+    local r9_5 = DataMgr.BattleWeapon[r8_5]
+    if r9_5 then
+      for r14_5, r15_5 in pairs(r9_5.WeaponTag) do
+        if CommonUtils.HasValue(r1_0, r15_5) then
+          table.insert(r2_5, r15_5)
         end
       end
+      -- close: r10_5
     end
   end
-  return OutWeaponMontageTags
+  -- close: r3_5
+  return r2_5
 end
-
-function M:GetPhantomWeaponIds()
-  local TmpWeaponIds = {}
-  local Info = self.Owner.AvatarInfo
-  if Info and Info.MeleeWeapon then
-    table.insert(TmpWeaponIds, Info.MeleeWeapon.WeaponId)
+function r0_0.GetPhantomWeaponIds(r0_6)
+  -- line: [111, 151] id: 6
+  local r1_6 = {}
+  local r2_6 = r0_6.Owner.AvatarInfo
+  if r2_6 and r2_6.MeleeWeapon then
+    table.insert(r1_6, r2_6.MeleeWeapon.WeaponId)
   else
-    table.insert(TmpWeaponIds, self.Owner:GetMeleeWeaponId())
+    table.insert(r1_6, r0_6.Owner:GetMeleeWeaponId())
   end
-  if Info and Info.RangedWeapon then
-    table.insert(TmpWeaponIds, Info.RangedWeapon.WeaponId)
+  if r2_6 and r2_6.RangedWeapon then
+    table.insert(r1_6, r2_6.RangedWeapon.WeaponId)
+  end
+  if r2_6 and r2_6.UltraWeapon then
+    table.insert(r1_6, r2_6.UltraWeapon.WeaponId)
   else
-    table.insert(TmpWeaponIds, self.Owner:GetRangedWeaponId())
+    table.insert(r1_6, r0_6.Owner:GetUltraWeaponId())
   end
-  if Info and Info.UltraWeapon then
-    table.insert(TmpWeaponIds, Info.UltraWeapon.WeaponId)
-  else
-    table.insert(TmpWeaponIds, self.Owner:GetUltraWeaponId())
-  end
-  table.insert(TmpWeaponIds, self.Owner:GetCondemnWeaponId())
-  return TmpWeaponIds
+  table.insert(r1_6, r0_6.Owner:GetCondemnWeaponId())
+  return r1_6
 end
-
-return M
+return r0_0

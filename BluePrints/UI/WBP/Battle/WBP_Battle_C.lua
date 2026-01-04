@@ -2216,20 +2216,24 @@ function r6_0.InitGameJumpWord(r0_158)
   end
 end
 function r6_0.CheckTheaterEventState(r0_159)
-  -- line: [2247, 2256] id: 159
+  -- line: [2247, 2263] id: 159
   local r1_159 = GWorld:GetAvatar()
-  if not r1_159 then
+  if not r1_159 or r1_159.CurrentRegionId ~= 101901 then
     return 
   end
   r1_159:TheaterPerformStateGet(function(r0_160, r1_160)
-    -- line: [2250, 2254] id: 160
-    if r1_160.IsJoin == true and r0_160 == 0 and (r1_160.State == 0 or r1_160.State == 1) then
-      r0_159:TheaterJoinPerformGame()
+    -- line: [2252, 2261] id: 160
+    if r1_160 and r1_160.IsJoin == true and r0_160 == 0 then
+      if r1_160.State == 0 or r1_160.State == 1 then
+        r0_159:TheaterJoinPerformGame()
+      elseif r1_160.State == 2 then
+        r0_159:TheaterPerformGameStart(CommonConst.TheaterEventId, r1_160.PerformList, true)
+      end
     end
   end)
 end
 function r6_0.TheaterJoinPerformGame(r0_161)
-  -- line: [2258, 2282] id: 161
+  -- line: [2265, 2289] id: 161
   if r0_161.TheaterCheckTimer then
     r0_161:RemoveTimer(r0_161.TheaterCheckTimer)
   end
@@ -2238,7 +2242,7 @@ function r6_0.TheaterJoinPerformGame(r0_161)
     return 
   end
   r1_161:TheaterPerformStateGet(function(r0_162, r1_162)
-    -- line: [2265, 2271] id: 162
+    -- line: [2272, 2278] id: 162
     if r1_162.State == 1 then
       r0_161:TheaterPerformGameStart(CommonConst.TheaterEventId, r1_162.PerformList)
       return 
@@ -2249,12 +2253,12 @@ function r6_0.TheaterJoinPerformGame(r0_161)
   r0_161.TheaterTaskTime.IsInit = true
   r0_161.JoinTheaterGame = true
   r0_161.TheaterCheckTimer = r0_161:AddTimer(1, function()
-    -- line: [2279, 2281] id: 163
+    -- line: [2286, 2288] id: 163
     r0_161:CheckTheaterStartTime()
   end, true, 0, "TheaterTimeCheck", true)
 end
 function r6_0.CheckTheaterStartTime(r0_164)
-  -- line: [2284, 2300] id: 164
+  -- line: [2291, 2307] id: 164
   local r2_164 = os.date("*t", TimeUtils.NowTime())
   local r3_164 = r2_164.min
   local r4_164 = r2_164.sec
@@ -2274,7 +2278,7 @@ function r6_0.CheckTheaterStartTime(r0_164)
   end
 end
 function r6_0.OnTheaterPerformGameNotice(r0_165, r1_165)
-  -- line: [2302, 2316] id: 165
+  -- line: [2309, 2323] id: 165
   local r2_165 = GWorld:GetAvatar()
   if not r2_165 then
     return 
@@ -2288,10 +2292,10 @@ function r6_0.OnTheaterPerformGameNotice(r0_165, r1_165)
     end
   end
 end
-function r6_0.TheaterPerformGameStart(r0_166, r1_166, r2_166)
-  -- line: [2318, 2347] id: 166
-  local r3_166 = GWorld:GetAvatar()
-  if not r3_166 then
+function r6_0.TheaterPerformGameStart(r0_166, r1_166, r2_166, r3_166)
+  -- line: [2325, 2358] id: 166
+  local r4_166 = GWorld:GetAvatar()
+  if not r4_166 then
     return 
   end
   if r0_166.TheaterTaskTime then
@@ -2300,8 +2304,8 @@ function r6_0.TheaterPerformGameStart(r0_166, r1_166, r2_166)
   end
   r0_166.TheaterToast = nil
   r0_166.Pos_Rouge_CountDown:ClearChildren()
-  r3_166:TheaterPerformStateGet(function(r0_167, r1_167)
-    -- line: [2328, 2345] id: 167
+  r4_166:TheaterPerformStateGet(function(r0_167, r1_167)
+    -- line: [2335, 2356] id: 167
     if r0_167 == 0 and r1_167.IsJoin == true then
       local r2_167 = GWorld:GetAvatar()
       if not r2_167 then
@@ -2319,11 +2323,14 @@ function r6_0.TheaterPerformGameStart(r0_166, r1_166, r2_166)
       r0_166.Pos_Rouge_CountDown:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
       r0_166.TheaterToast.IsInit = true
       r0_166.TheaterToast:UpdatePerformList(r2_166)
+      if r3_166 then
+        r0_166.TheaterToast.ReStartPerform = true
+      end
     end
   end)
 end
 function r6_0.TeleportReady(r0_168, r1_168)
-  -- line: [2349, 2389] id: 168
+  -- line: [2360, 2400] id: 168
   local r2_168 = r3_0:GetTaskBarWidget()
   if r2_168 then
     if r1_168 and r1_168 == true then
@@ -2337,10 +2344,10 @@ function r6_0.TeleportReady(r0_168, r1_168)
       r2_168.WBP_Btn_Tips3.Text_Button:SetText(GText("DUNGEON_TELEPORT"))
       r2_168.WBP_Btn_Tips3.Button_Area.OnClicked:Clear()
       r2_168.WBP_Btn_Tips3.Button_Area.OnClicked:Add(r0_168, function()
-        -- line: [2365, 2381] id: 169
+        -- line: [2376, 2392] id: 169
         local r0_169 = {
           RightCallbackFunction = function()
-            -- line: [2368, 2374] id: 170
+            -- line: [2379, 2385] id: 170
             r2_168:PlayAnimation(r2_168.Transmit_Out)
             local r0_170 = UE4.UGameplayStatics.GetPlayerCharacter(r0_168, 0)
             if r0_170 then
@@ -2368,7 +2375,7 @@ function r6_0.TeleportReady(r0_168, r1_168)
   end
 end
 function r6_0.StartTeleportInDungeon(r0_171)
-  -- line: [2391, 2404] id: 171
+  -- line: [2402, 2415] id: 171
   local r1_171 = r3_0:GetTaskBarWidget()
   if r1_171 then
     r1_171.Key_Tips03:AddExecuteLogic(r0_171, r0_171.StopTeleportInDungeon)
@@ -2381,7 +2388,7 @@ function r6_0.StartTeleportInDungeon(r0_171)
   DebugPrint("ayff test press teleport button")
 end
 function r6_0.StopTeleportInDungeon(r0_172, r1_172)
-  -- line: [2406, 2428] id: 172
+  -- line: [2417, 2449] id: 172
   local r2_172 = r3_0:GetTaskBarWidget()
   if r2_172 then
     r0_172.IsShowingTeleportUI = false
@@ -2402,22 +2409,25 @@ function r6_0.StopTeleportInDungeon(r0_172, r1_172)
       r3_172.RPCComponent:NotifyServerStartDelivery()
     end
   end
-  DebugPrint("ayff test release teleport button")
-end
-function r6_0.TeleportRelease(r0_173)
-  -- line: [2430, 2444] id: 173
-  local r1_173 = r3_0:GetTaskBarWidget()
-  if r1_173 then
-    r1_173.Key_Tips03:OnButtonReleased()
-    r1_173.Key_Controller_Tips03:OnButtonReleased()
-  end
-  r0_173:AddTimer(1, function()
-    -- line: [2437, 2443] id: 174
-    local r0_174 = UE4.UGameplayStatics.GetGameState(r0_173)
-    if r0_174 then
-      r0_174.ShouldStopHookInDungeonDelivery = false
+  r0_172:AddTimer(1, function()
+    -- line: [2438, 2447] id: 173
+    local r0_173 = UE4.UGameplayStatics.GetGameState(r0_172)
+    if r0_173 then
+      r0_173.ShouldStopHookInDungeonDelivery = false
+      DebugPrint("ayff test 传送中断，恢复钩锁状态")
+    else
+      DebugPrint("ayff test 传送中断，恢复钩锁状态失败，GameState无效")
     end
   end)
+  DebugPrint("ayff test release teleport button")
+end
+function r6_0.TeleportRelease(r0_174)
+  -- line: [2451, 2457] id: 174
+  local r1_174 = r3_0:GetTaskBarWidget()
+  if r1_174 then
+    r1_174.Key_Tips03:OnButtonReleased()
+    r1_174.Key_Controller_Tips03:OnButtonReleased()
+  end
 end
 AssembleComponents(r6_0)
 return r6_0

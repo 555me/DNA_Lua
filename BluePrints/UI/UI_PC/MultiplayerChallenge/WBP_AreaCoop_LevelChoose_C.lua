@@ -23,7 +23,7 @@ function r0_0.Initialize(r0_1, r1_1)
   r0_1.MonsterIdToItem = {}
 end
 function r0_0.Construct(r0_2)
-  -- line: [31, 66] id: 2
+  -- line: [31, 69] id: 2
   r0_2.Super.Construct(r0_2)
   if r0_2.AddDispatcher then
     r0_2:AddDispatcher(EventID.TeamMatchTimingStart, r0_2, r0_2.TeamMatchTimingStart)
@@ -46,9 +46,12 @@ function r0_0.Construct(r0_2)
   r0_2:InitWidgetInfoInGamePad()
   r0_2:StaticInit()
   r0_2.ScrollBox_Desc:ScrollToStart()
+  if CommonUtils.GetDeviceTypeByPlatformName(r0_2) == "Mobile" then
+    r0_2:InitKeyboardView()
+  end
 end
 function r0_0.Destruct(r0_3)
-  -- line: [68, 77] id: 3
+  -- line: [71, 80] id: 3
   local r1_3 = CommonUtils.GetDeviceTypeByPlatformName(r0_3) == "Mobile"
   local r2_3 = nil	-- notice: implicit variable refs by block#[6]
   if r1_3 then
@@ -68,10 +71,10 @@ function r0_0.Destruct(r0_3)
   end
 end
 function r0_0.ReceiveEnterState(r0_4, r1_4)
-  -- line: [79, 90] id: 4
+  -- line: [82, 93] id: 4
   if r1_4 == 1 then
     r0_4:AddTimer(0.1, function()
-      -- line: [83, 85] id: 5
+      -- line: [86, 88] id: 5
       r0_4:SetFocus()
     end)
     r0_4.DefaultList:RefreshData()
@@ -79,7 +82,7 @@ function r0_0.ReceiveEnterState(r0_4, r1_4)
   r0_0.Super.ReceiveEnterState(r0_4, r1_4)
 end
 function r0_0.OnLoaded(r0_6, r1_6)
-  -- line: [92, 115] id: 6
+  -- line: [95, 118] id: 6
   if type(r1_6) == "table" then
     if r1_6.ChallengeId then
       r1_6 = r1_6.ChallengeId
@@ -97,7 +100,7 @@ function r0_0.OnLoaded(r0_6, r1_6)
   r0_6:InitTeamInfo()
 end
 function r0_0.StaticInit(r0_7)
-  -- line: [117, 155] id: 7
+  -- line: [120, 158] id: 7
   if r0_7.Text_BossRewards then
     r0_7.Text_BossRewards:SetText(GText("UI_HardBoss_Preview"))
   end
@@ -133,13 +136,13 @@ function r0_0.StaticInit(r0_7)
   end
 end
 function r0_0.InitTeamInfo(r0_8)
-  -- line: [157, 183] id: 8
+  -- line: [160, 186] id: 8
   local r1_8 = r0_8:GetAttachWidget()
   if TeamController and TeamController.OpenHeadUI2 and not r0_8.TeamHeadUI then
     r0_8.TeamHeadUI = TeamController:OpenHeadUI2(r1_8)
     if r0_8.TeamHeadUI then
       function r0_8.TeamHeadUI.OnTeamMainFocusChanged(r0_9)
-        -- line: [163, 180] id: 9
+        -- line: [166, 183] id: 9
         local r1_9 = nil	-- notice: implicit variable refs by block#[14]
         if r0_9 then
           r1_9 = "Collapsed"
@@ -171,7 +174,7 @@ function r0_0.InitTeamInfo(r0_8)
   end
 end
 function r0_0.InitDungeonInfo(r0_10)
-  -- line: [185, 212] id: 10
+  -- line: [188, 215] id: 10
   local r1_10 = DataMgr.MultiplayerChallenge[r0_10.ChallengeId]
   local r2_10 = nil
   if r1_10 and type(r1_10.DungeonId) == "table" and #r1_10.DungeonId > 0 then
@@ -198,7 +201,7 @@ function r0_0.InitDungeonInfo(r0_10)
   end
 end
 function r0_0.InitEliteItem(r0_11, r1_11)
-  -- line: [215, 254] id: 11
+  -- line: [218, 257] id: 11
   if not r0_11.EliteItem then
     return 
   end
@@ -232,11 +235,11 @@ function r0_0.InitEliteItem(r0_11, r1_11)
   r0_11.EliteItem:OnListItemObjectSet(r6_11)
 end
 function r0_0.GetCurDungeonId(r0_12)
-  -- line: [256, 260] id: 12
+  -- line: [259, 263] id: 12
   return r0_12.CurSelectedDungeonId
 end
 function r0_0.OnClickChallenge(r0_13)
-  -- line: [263, 292] id: 13
+  -- line: [266, 295] id: 13
   local r1_13 = GWorld:GetAvatar()
   if not r1_13 then
     return 
@@ -261,11 +264,11 @@ function r0_0.OnClickChallenge(r0_13)
   end
 end
 function r0_0.OnClickClose(r0_14)
-  -- line: [294, 296] id: 14
+  -- line: [297, 299] id: 14
   r0_14:OnReturnKeyDown()
 end
 function r0_0.GetAttachWidget(r0_15)
-  -- line: [299, 305] id: 15
+  -- line: [302, 308] id: 15
   local r1_15 = r0_15.Group_Team and r0_15
   if r1_15 and r1_15.SetVisibility then
     r1_15:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
@@ -273,7 +276,7 @@ function r0_0.GetAttachWidget(r0_15)
   return r1_15
 end
 function r0_0.RefreshBtnState(r0_16, r1_16)
-  -- line: [308, 345] id: 16
+  -- line: [311, 348] id: 16
   local r2_16 = r1_16
   if r2_16 == nil and r0_16.IsMatching then
     r2_16 = r0_16:IsMatching()
@@ -324,7 +327,7 @@ function r0_0.RefreshBtnState(r0_16, r1_16)
   end
 end
 function r0_0.IsMatching(r0_17)
-  -- line: [348, 350] id: 17
+  -- line: [351, 353] id: 17
   local r1_17 = TeamController
   if r1_17 then
     r1_17 = TeamController:GetModel():IsMatching() and false
@@ -334,7 +337,7 @@ function r0_0.IsMatching(r0_17)
   return r1_17
 end
 function r0_0.TryEnterDungeon(r0_18, r1_18, r2_18, r3_18, r4_18, r5_18)
-  -- line: [353, 367] id: 18
+  -- line: [356, 370] id: 18
   if not TeamController or not TeamController:DoCheckCanEnterDungeon(r2_18) then
     DebugPrint("DoCheckCanEnterDungeon bTeammateNotReady")
     if TeamController and TeamController:GetModel() then
@@ -347,7 +350,7 @@ function r0_0.TryEnterDungeon(r0_18, r1_18, r2_18, r3_18, r4_18, r5_18)
   r1_18:EnterDungeon(r2_18, r3_18, r4_18, r5_18, r0_18.SquadId and 0)
 end
 function r0_0.HandleEnterDungeonRetCode(r0_19, ...)
-  -- line: [370, 381] id: 19
+  -- line: [373, 384] id: 19
   DebugPrint("EnterDungeonCallback RetCode", r0_19)
   if r0_19 == ErrorCode.RET_SUCCESS then
     return true
@@ -360,7 +363,7 @@ function r0_0.HandleEnterDungeonRetCode(r0_19, ...)
   end
 end
 function r0_0.OnClickChallenge_Multi(r0_20)
-  -- line: [384, 415] id: 20
+  -- line: [387, 418] id: 20
   local r1_20 = GWorld:GetAvatar()
   assert(r1_20, "NO AVATAR")
   if not r1_20:CheckUIUnlocked("Match") then
@@ -381,12 +384,12 @@ function r0_0.OnClickChallenge_Multi(r0_20)
   r0_20:TryEnterMultiDungeon(r2_20)
 end
 function r0_0.TryEnterMultiDungeon(r0_21, r1_21)
-  -- line: [418, 445] id: 21
+  -- line: [421, 448] id: 21
   TeamController:GetModel().bPressedMulti = true
   local r2_21 = GWorld:GetAvatar()
   assert(r2_21, "NO AVATAR")
   r0_21:TryEnterDungeon(r2_21, r1_21, CommonConst.DungeonNetMode.DedicatedServer, function(r0_22, ...)
-    -- line: [427, 441] id: 22
+    -- line: [430, 444] id: 22
     local r1_22 = r0_0.HandleEnterDungeonRetCode(r0_22, ...)
     DebugPrint("@WBP_AreaCoop_LevelChoose_C:OnClickChallenge_Multi", r1_22)
     if r1_22 then
@@ -400,7 +403,7 @@ function r0_0.TryEnterMultiDungeon(r0_21, r1_21)
   r0_21:RefreshBtnState()
 end
 function r0_0.OpenTicketDialog_Solo(r0_23)
-  -- line: [448, 464] id: 23
+  -- line: [451, 467] id: 23
   local r1_23 = r0_23:GetCurDungeonId()
   if not r1_23 then
     return 
@@ -409,7 +412,7 @@ function r0_0.OpenTicketDialog_Solo(r0_23)
     DungeonId = r1_23,
     RightCallbackObj = r0_23,
     RightCallbackFunction = function(r0_24, r1_24)
-      -- line: [456, 460] id: 24
+      -- line: [459, 463] id: 24
       local r2_24 = nil	-- notice: implicit variable refs by block#[4]
       if r1_24 then
         r2_24 = r1_24.Content_1
@@ -431,7 +434,7 @@ function r0_0.OpenTicketDialog_Solo(r0_23)
   }, r0_23)
 end
 function r0_0.OpenTicketDialog_Multi(r0_25)
-  -- line: [467, 482] id: 25
+  -- line: [470, 485] id: 25
   local r1_25 = r0_25:GetCurDungeonId()
   if not r1_25 then
     return 
@@ -440,7 +443,7 @@ function r0_0.OpenTicketDialog_Multi(r0_25)
     DungeonId = r1_25,
     RightCallbackObj = r0_25,
     RightCallbackFunction = function(r0_26, r1_26)
-      -- line: [475, 478] id: 26
+      -- line: [478, 481] id: 26
       local r2_26 = nil	-- notice: implicit variable refs by block#[4]
       if r1_26 then
         r2_26 = r1_26.Content_1
@@ -462,7 +465,7 @@ function r0_0.OpenTicketDialog_Multi(r0_25)
   }, r0_25)
 end
 function r0_0.TeamMatchTimingStart(r0_27)
-  -- line: [485, 493] id: 27
+  -- line: [488, 496] id: 27
   if TeamController and TeamController.GetModel then
     TeamController:GetModel().bPressedSolo = true
     TeamController:GetModel().bPressedMulti = true
@@ -470,7 +473,7 @@ function r0_0.TeamMatchTimingStart(r0_27)
   r0_27:RefreshBtnState(true)
 end
 function r0_0.TeamMatchTimingEnd(r0_28)
-  -- line: [495, 503] id: 28
+  -- line: [498, 506] id: 28
   if TeamController and TeamController.GetModel then
     TeamController:GetModel().bPressedSolo = false
     TeamController:GetModel().bPressedMulti = false
@@ -478,7 +481,7 @@ function r0_0.TeamMatchTimingEnd(r0_28)
   r0_28:RefreshBtnState(false)
 end
 function r0_0.EnterStandalone(r0_29, r1_29)
-  -- line: [506, 565] id: 29
+  -- line: [509, 568] id: 29
   local r2_29 = GWorld:GetAvatar()
   assert(r2_29, "NO AVATAR")
   local r3_29 = r0_29:GetCurDungeonId()
@@ -507,7 +510,7 @@ function r0_0.EnterStandalone(r0_29, r1_29)
     r4_29 = -1
   end
   r0_29:TryEnterDungeon(r2_29, r3_29, CommonConst.DungeonNetMode.Standalone, function(r0_30, ...)
-    -- line: [546, 563] id: 30
+    -- line: [549, 566] id: 30
     if r0_0.HandleEnterDungeonRetCode(r0_30, ...) then
       if r2_29:IsInTeam() then
         UIManager(r0_29):LoadUINew("DungeonMatchTimingBar", r3_29, Const.DUNGEON_MATCH_BAR_STATE.SPONSOR_WAITING_CONFIRM, false)
@@ -522,7 +525,7 @@ function r0_0.EnterStandalone(r0_29, r1_29)
   end, r4_29)
 end
 function r0_0.OnReturnKeyDown(r0_31)
-  -- line: [568, 592] id: 31
+  -- line: [571, 595] id: 31
   if r0_31:IsAnimationPlaying(r0_31.Out) then
     return 
   end
@@ -537,7 +540,7 @@ function r0_0.OnReturnKeyDown(r0_31)
     r0_31:PlayAnimation(r0_31.Out)
     r0_31:UnbindAllFromAnimationFinished(r0_31.Out)
     r0_31:BindToAnimationFinished(r0_31.Out, function()
-      -- line: [586, 588] id: 32
+      -- line: [589, 591] id: 32
       r0_31:Close()
     end)
   else
@@ -545,7 +548,7 @@ function r0_0.OnReturnKeyDown(r0_31)
   end
 end
 function r0_0.EndInteractive(r0_33)
-  -- line: [594, 609] id: 33
+  -- line: [597, 612] id: 33
   local r1_33 = UE4.UGameplayStatics.GetPlayerController(GWorld.GameInstance, 0)
   if not r1_33 then
     return 
@@ -561,7 +564,7 @@ function r0_0.EndInteractive(r0_33)
   end
 end
 function r0_0.OnKeyDown(r0_34, r1_34, r2_34)
-  -- line: [611, 632] id: 34
+  -- line: [614, 635] id: 34
   local r3_34 = false
   local r4_34 = UE4.UKismetInputLibrary.GetKey(r2_34)
   local r5_34 = UE4.UFormulaFunctionLibrary.Key_GetFName(r4_34)
@@ -582,7 +585,7 @@ function r0_0.OnKeyDown(r0_34, r1_34, r2_34)
   return UE4.UWidgetBlueprintLibrary.Handled()
 end
 function r0_0.OnGamePadDown(r0_35, r1_35)
-  -- line: [634, 757] id: 35
+  -- line: [637, 760] id: 35
   r0_35.PressedKeys = r0_35.PressedKeys and {}
   r0_35.PressedKeys[r1_35] = true
   local r2_35 = r0_35.PressedKeys[UIConst.GamePadKey.DPadUp] == true
@@ -658,13 +661,13 @@ function r0_0.OnGamePadDown(r0_35, r1_35)
   return false
 end
 function r0_0.SelectCellFocus(r0_36)
-  -- line: [760, 769] id: 36
+  -- line: [763, 772] id: 36
   if r0_36.SetFocus then
     r0_36:SetFocus()
   end
 end
 function r0_0.OnKeyUp(r0_37, r1_37, r2_37)
-  -- line: [771, 816] id: 37
+  -- line: [774, 819] id: 37
   local r4_37 = UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_37))
   r0_37.PressedKeys = r0_37.PressedKeys and {}
   r0_37.PressedKeys[r4_37] = false
@@ -701,7 +704,7 @@ function r0_0.OnKeyUp(r0_37, r1_37, r2_37)
   return UE4.UWidgetBlueprintLibrary.Handled()
 end
 function r0_0.OnAnalogValueChanged(r0_38, r1_38, r2_38)
-  -- line: [820, 833] id: 38
+  -- line: [823, 836] id: 38
   if UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_38)) == UIConst.GamePadKey.RightAnalogY and r0_38.ScrollBox_Desc and r0_38.ScrollBox_Desc.GetScrollOffset and not r0_38.ScrollBox_Desc:HasFocusedDescendants() then
     local r5_38 = UE4.UKismetInputLibrary.GetAnalogValue(r2_38)
     if r5_38 ~= nil then
@@ -711,7 +714,7 @@ function r0_0.OnAnalogValueChanged(r0_38, r1_38, r2_38)
   return UE4.UWidgetBlueprintLibrary.Handled()
 end
 function r0_0.AddDeltaOffset(r0_39, r1_39)
-  -- line: [836, 850] id: 39
+  -- line: [839, 853] id: 39
   if not r0_39.ScrollBox_Desc or not r0_39.ScrollBox_Desc.GetScrollOffset or not r0_39.ScrollBox_Desc.SetScrollOffset then
     return 
   end
@@ -725,7 +728,7 @@ function r0_0.AddDeltaOffset(r0_39, r1_39)
   r0_39.ScrollBox_Desc:SetScrollOffset(math.min(math.max(r2_39 + (r1_39 and 0), 0), r3_39))
 end
 function r0_0.InitBaseInfo(r0_40)
-  -- line: [858, 879] id: 40
+  -- line: [861, 882] id: 40
   local r1_40 = r1_0:GetTitleName()
   if r0_40.Text_BossLevel and r1_40 then
     r0_40.Text_BossLevel:SetText(GText(r1_40))
@@ -741,7 +744,7 @@ function r0_0.InitBaseInfo(r0_40)
   r0_40:SetImageIcon()
 end
 function r0_0.SetImageIcon(r0_41, r1_41)
-  -- line: [881, 892] id: 41
+  -- line: [884, 895] id: 41
   local r2_41 = r1_0:GetChallengeIconPath()
   if r2_41 ~= nil then
     local r3_41 = LoadObject(r2_41)
@@ -753,14 +756,14 @@ function r0_0.SetImageIcon(r0_41, r1_41)
   end
 end
 function r0_0.OpenDetails(r0_42)
-  -- line: [893, 900] id: 42
+  -- line: [896, 903] id: 42
   UIManager(r0_42):LoadUINew("ItemInformation", {
     Name = r1_0:GetChallengeName(),
     Desc = r1_0:GetChallengeDes(),
   }, "LevelDatail")
 end
 function r0_0.ToggleSquadPresetVisible(r0_43, r1_43)
-  -- line: [904, 912] id: 43
+  -- line: [907, 915] id: 43
   local r2_43 = nil	-- notice: implicit variable refs by block#[4, 6]
   if r1_43 then
     r2_43 = UE4.ESlateVisibility.SelfHitTestInvisible
@@ -779,7 +782,7 @@ function r0_0.ToggleSquadPresetVisible(r0_43, r1_43)
   end
 end
 function r0_0.EnsurePlatformDefaultListLoaded(r0_44)
-  -- line: [914, 996] id: 44
+  -- line: [917, 999] id: 44
   local r1_44 = CommonUtils.GetDeviceTypeByPlatformName(r0_44) == "Mobile"
   local r2_44 = nil	-- notice: implicit variable refs by block#[21, 22, 23]
   if r1_44 then
@@ -862,7 +865,7 @@ function r0_0.EnsurePlatformDefaultListLoaded(r0_44)
   if r5_44 then
     r5_44 = r0_44.DefaultList.OnMenuOpenChangedCallBack
     function r0_44.DefaultList.OnMenuOpenChangedCallBack(r0_45, r1_45)
-      -- line: [982, 989] id: 45
+      -- line: [985, 992] id: 45
       if r0_44.UpdateSquadPresetBottomKey then
         r0_44:UpdateSquadPresetBottomKey()
       end
@@ -879,7 +882,7 @@ function r0_0.EnsurePlatformDefaultListLoaded(r0_44)
   return r5_44
 end
 function r0_0.InitOrRefreshSquadPreset(r0_46, r1_46)
-  -- line: [1000, 1066] id: 46
+  -- line: [1003, 1069] id: 46
   local r2_46 = DataMgr.Dungeon[r1_46]
   if not r2_46 then
     return 
@@ -922,7 +925,7 @@ function r0_0.InitOrRefreshSquadPreset(r0_46, r1_46)
   if r4_46 then
     local r10_46 = r4_46.OnMenuOpenChangedCallBack
     function r4_46.OnMenuOpenChangedCallBack(r0_47, r1_47)
-      -- line: [1046, 1057] id: 47
+      -- line: [1049, 1060] id: 47
       r0_46:UpdateSquadPresetKeyTips(r1_47)
       if r0_46.UpdateSquadPresetBottomKey then
         r0_46:UpdateSquadPresetBottomKey()
@@ -945,7 +948,7 @@ function r0_0.InitOrRefreshSquadPreset(r0_46, r1_46)
   end
 end
 function r0_0.RefreshMonsterInfoList(r0_48, r1_48)
-  -- line: [1068, 1109] id: 48
+  -- line: [1071, 1112] id: 48
   local r2_48 = r1_0:GetMonsterPreviewData(r1_48)
   if not r2_48 or not r2_48.List or #r2_48.List == 0 then
     r0_48.ListView_Monster:SetVisibility(UE4.ESlateVisibility.Collapsed)
@@ -974,7 +977,7 @@ function r0_0.RefreshMonsterInfoList(r0_48, r1_48)
       r12_48.OnAddedToFocusPathEvent = {
         Obj = r12_48,
         Callback = function(r0_49)
-          -- line: [1102, 1104] id: 49
+          -- line: [1105, 1107] id: 49
           r0_48:OnItemFocus(r0_49)
         end,
       }
@@ -984,11 +987,11 @@ function r0_0.RefreshMonsterInfoList(r0_48, r1_48)
   -- close: r5_48
 end
 function r0_0.SelectMonsterInfoItem(r0_50, r1_50)
-  -- line: [1112, 1114] id: 50
+  -- line: [1115, 1117] id: 50
   UIManager(r0_50):LoadUINew("MonsterDetailInfo", r0_50.CurSelectedDungeonId, r0_50, r1_50)
 end
 function r0_0.RefreshRewardsListByDungeon(r0_51, r1_51)
-  -- line: [1116, 1150] id: 51
+  -- line: [1119, 1153] id: 51
   if not r0_51.ListView_Rewards then
     return 
   end
@@ -1015,7 +1018,7 @@ function r0_0.RefreshRewardsListByDungeon(r0_51, r1_51)
     r8_51.OnAddedToFocusPathEvent = {
       Obj = r8_51,
       Callback = function(r0_52)
-        -- line: [1143, 1145] id: 52
+        -- line: [1146, 1148] id: 52
         r0_51:OnItemFocus(r0_52)
       end,
     }
@@ -1023,14 +1026,14 @@ function r0_0.RefreshRewardsListByDungeon(r0_51, r1_51)
   end
 end
 function r0_0.SetTabItemSelection(r0_53, r1_53)
-  -- line: [1154, 1159] id: 53
+  -- line: [1157, 1162] id: 53
   if r0_53.SelectingItem and r0_53.SelectingItem ~= r1_53 and r0_53.SelectingItem.CancelTabSelect then
     r0_53.SelectingItem:CancelTabSelect()
   end
   r0_53.SelectingItem = r1_53
 end
 function r0_0.OnClickChallengeForbid(r0_54)
-  -- line: [1162, 1171] id: 54
+  -- line: [1165, 1174] id: 54
   local r1_54 = r0_54:GetCurDungeonId()
   if not r1_54 then
     return 
@@ -1043,7 +1046,7 @@ function r0_0.OnClickChallengeForbid(r0_54)
   end
 end
 function r0_0.OnCurrentSquadChange(r0_55, r1_55, r2_55, r3_55)
-  -- line: [1174, 1181] id: 55
+  -- line: [1177, 1184] id: 55
   local r4_55 = r1_55 and 0
   r0_55.SquadId = r4_55
   if r2_55 then
@@ -1057,36 +1060,36 @@ function r0_0.OnCurrentSquadChange(r0_55, r1_55, r2_55, r3_55)
   end
 end
 function r0_0.ScrollItemIntoView(r0_56, r1_56)
-  -- line: [1183, 1186] id: 56
+  -- line: [1186, 1189] id: 56
   DebugPrint("ScrollItemIntoView")
   r0_56.ScrollBox_Desc:ScrollWidgetIntoView(r1_56)
 end
 function r0_0.RefreshOpInfoByInputDevice(r0_57, r1_57, r2_57)
-  -- line: [1188, 1188] id: 57
+  -- line: [1191, 1191] id: 57
 end
 function r0_0.OnInputDeviceChanged(r0_58, r1_58, r2_58)
-  -- line: [1190, 1190] id: 58
+  -- line: [1193, 1193] id: 58
 end
 function r0_0.InitWidgetInfoInGamePad(r0_59)
-  -- line: [1193, 1193] id: 59
+  -- line: [1196, 1196] id: 59
 end
 function r0_0.SetKeyWidgetGamePadVisibility(r0_60, r1_60, r2_60)
-  -- line: [1197, 1197] id: 60
+  -- line: [1200, 1200] id: 60
 end
 function r0_0.InitGamepadView(r0_61)
-  -- line: [1199, 1199] id: 61
+  -- line: [1202, 1202] id: 61
 end
 function r0_0.InitKeyboardView(r0_62)
-  -- line: [1201, 1201] id: 62
+  -- line: [1204, 1204] id: 62
 end
 function r0_0.UpdateUIStyleInPlatform(r0_63, r1_63)
-  -- line: [1235, 1235] id: 63
+  -- line: [1238, 1238] id: 63
 end
 function r0_0.UpdateSquadPresetKeyTips(r0_64, r1_64)
-  -- line: [1237, 1237] id: 64
+  -- line: [1240, 1240] id: 64
 end
 function r0_0.SetDungeonExitInfo(r0_65)
-  -- line: [1240, 1244] id: 65
+  -- line: [1243, 1247] id: 65
   GWorld.GameInstance:SetExitDungeonData({
     IsFromRegionMechanism = true,
   })

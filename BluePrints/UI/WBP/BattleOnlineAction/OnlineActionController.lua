@@ -262,18 +262,22 @@ function r2_0.RejectAllInvitations(r0_23)
   end
 end
 function r2_0.SendInvitation(r0_24, r1_24, r2_24)
-  -- line: [357, 379] id: 24
+  -- line: [357, 383] id: 24
   if r0_0:GetActionUniqueId() == nil then
     DebugPrint("缺少了UniqueId，应该是加假数据OnlineAction:OnReceivedRejectApply")
     return 
   end
-  local r3_24 = r0_0:CheckNearbyInfoVaild(r1_24)
+  local r3_24 = r0_0:CheckNearbyInfoVaild(r1_24, r2_24)
   if r3_24 == -1 then
-    UIManager(r0_24):ShowUITip(UIConst.Tip_CommonToast, GText("UI_RegionOnline_Invite_Invalid"))
+    UIManager(r0_24):ShowUITip(UIConst.Tip_CommonToast, GText("UI_RegionOnline_Invite_State"))
     return 
   end
   if r3_24 == -2 then
     UIManager(r0_24):ShowUITip(UIConst.Tip_CommonToast, GText("UI_RegionOnline_Invite_Sitting"))
+    return 
+  end
+  if r3_24 == -3 then
+    UIManager(r0_24):ShowUITip(UIConst.Tip_CommonToast, GText("UI_RegionOnline_SitOccupied"))
     return 
   end
   DebugPrint("OnlineAction:SendInvitation", r1_24)
@@ -282,7 +286,7 @@ function r2_0.SendInvitation(r0_24, r1_24, r2_24)
   end
 end
 function r2_0.SendRejectInvitation(r0_25, r1_25)
-  -- line: [382, 392] id: 25
+  -- line: [386, 396] id: 25
   r0_0:RemoveInvitationInfo(r1_25)
   DebugPrint("OnlineAction:SendRejectInvitation", r1_25)
   if r1_25.UniqueId == nil then
@@ -294,7 +298,7 @@ function r2_0.SendRejectInvitation(r0_25, r1_25)
   end
 end
 function r2_0.SendAcceptInvitation(r0_26, r1_26)
-  -- line: [394, 413] id: 26
+  -- line: [398, 417] id: 26
   r0_0:RemoveInvitationInfo(r1_26)
   DebugPrint("OnlineAction:SendAcceptInvitation", r1_26)
   if r1_26.UniqueId == nil then
@@ -311,7 +315,7 @@ function r2_0.SendAcceptInvitation(r0_26, r1_26)
   r0_26:RejectAllInvitations()
 end
 function r2_0.CheckSeatFree(r0_27, r1_27, r2_27)
-  -- line: [416, 432] id: 27
+  -- line: [420, 436] id: 27
   if not r2_27 then
     r2_27 = r0_0:GetActionUniqueId()
   end
@@ -327,7 +331,7 @@ function r2_0.CheckSeatFree(r0_27, r1_27, r2_27)
   return r5_27
 end
 function r2_0.CheckCanSit(r0_28, r1_28, r2_28, r3_28, r4_28)
-  -- line: [434, 445] id: 28
+  -- line: [438, 449] id: 28
   local r6_28 = nil	-- notice: implicit variable refs by block#[4]
   if r0_0:CheckJoinValid(r2_28, r1_28, r3_28) ~= 0 then
     if r4_28 then
@@ -346,7 +350,7 @@ function r2_0.CheckCanSit(r0_28, r1_28, r2_28, r3_28, r4_28)
   return r6_28
 end
 function r2_0.RealSit(r0_29, r1_29, r2_29, r3_29)
-  -- line: [447, 457] id: 29
+  -- line: [451, 461] id: 29
   local r4_29 = GWorld:GetAvatar().Player and GWorld:GetMainPlayer()
   local r6_29 = UE4.UGameplayStatics.GetGameState(r4_29).RegionOnlineMechanismMap:Find(r1_29)
   local r7_29 = r6_29.ChestInteractiveComponent
@@ -356,7 +360,7 @@ function r2_0.RealSit(r0_29, r1_29, r2_29, r3_29)
   end
 end
 function r2_0.OnReceivedInvitation(r0_30, r1_30, r2_30, r3_30)
-  -- line: [461, 476] id: 30
+  -- line: [465, 480] id: 30
   AudioManager(r0_30):PlayUISound(r0_30.OnlineActionBtn, "event:/ui/common/online_invite_interact_request", "OnlineActionReceived", nil)
   ReddotManager.IncreaseLeafNodeCount("OnlineActionBtn", 1)
   DebugPrint("OnlineAction:OnReceivedInvitation", r1_30, r2_30, r3_30)
@@ -370,7 +374,7 @@ function r2_0.OnReceivedInvitation(r0_30, r1_30, r2_30, r3_30)
   end
 end
 function r2_0.OnReceiveApplyInfo(r0_31, r1_31, r2_31, r3_31)
-  -- line: [478, 494] id: 31
+  -- line: [482, 498] id: 31
   AudioManager(r0_31):PlayUISound(r0_31.OnlineActionBtn, "event:/ui/common/online_invite_interact_request", "OnlineActionReceived", nil)
   ScreenPrint("联机动作收到申请" .. r1_31 .. r2_31 .. r3_31)
   ReddotManager.IncreaseLeafNodeCount("OnlineActionBtn", 1)
@@ -385,26 +389,26 @@ function r2_0.OnReceiveApplyInfo(r0_31, r1_31, r2_31, r3_31)
   end
 end
 function r2_0.OnReceivedRejectInvitation(r0_32, r1_32, r2_32, r3_32)
-  -- line: [496, 502] id: 32
+  -- line: [500, 506] id: 32
   DebugPrint("OnlineAction:OnReceivedRejectInvitation", r1_32, r2_32, r3_32)
 end
 function r2_0.OnReceivedRejectApply(r0_33, r1_33, r2_33, r3_33)
-  -- line: [504, 510] id: 33
+  -- line: [508, 514] id: 33
   DebugPrint("OnlineAction:OnReceivedRejectApply", r1_33, r2_33, r3_33)
   local r5_33 = string.format(GText("UI_RegionOnline_Apply_Refused"), r0_0:GetPlayerName(r1_33))
   AudioManager(r0_33):PlayUISound(r0_33.OnlineActionBtn, "event:/ui/common/online_invite_interact_reject", "OnlineActionRejected", nil)
   UIManager(r0_33):ShowUITip(UIConst.Tip_CommonToast, r5_33)
 end
 function r2_0.OnReceivedOnlineActionApplicationAgree(r0_34, r1_34, r2_34, r3_34)
-  -- line: [512, 514] id: 34
+  -- line: [516, 518] id: 34
   AudioManager(r0_34):PlayUISound(r0_34.OnlineActionBtn, "event:/ui/common/online_invite_interact_accept", "OnlineActionAgreed", nil)
 end
 function r2_0.OnReceivedOnlineActionInvitationAgree(r0_35, r1_35, r2_35, r3_35)
-  -- line: [516, 518] id: 35
+  -- line: [520, 522] id: 35
   AudioManager(r0_35):PlayUISound(r0_35.OnlineActionBtn, "event:/ui/common/online_invite_interact_accept", "OnlineActionAgreed", nil)
 end
 function r2_0.ShowToastByErrorCode(r0_36, r1_36, r2_36)
-  -- line: [520, 528] id: 36
+  -- line: [524, 532] id: 36
   local r3_36 = ""
   if r1_36 then
     r3_36 = GText("UI_RegionOnline_Invitation_Invalid")
@@ -414,7 +418,7 @@ function r2_0.ShowToastByErrorCode(r0_36, r1_36, r2_36)
   UIManager(r0_36):ShowUITip(UIConst.Tip_CommonToast, r3_36)
 end
 function r2_0.Destory(r0_37)
-  -- line: [530, 539] id: 37
+  -- line: [534, 543] id: 37
   DebugPrint("yklua 联机动作相关数据销毁OnlineAction:Destory")
   if r0_37.OnlineActionBtn then
     r0_37:HideBtn()
@@ -424,15 +428,15 @@ function r2_0.Destory(r0_37)
   r2_0.Super.Destory(r0_37)
 end
 function r2_0.GetModel(r0_38)
-  -- line: [541, 543] id: 38
+  -- line: [545, 547] id: 38
   return r0_0
 end
 function r2_0.GetEventName(r0_39)
-  -- line: [545, 547] id: 39
+  -- line: [549, 551] id: 39
   return ""
 end
 function r2_0.GetView(r0_40, r1_40)
-  -- line: [549, 551] id: 40
+  -- line: [553, 555] id: 40
   return r2_0.Super.GetView(r0_40, r1_40, r1_0.UIName)
 end
 return r2_0

@@ -1,103 +1,109 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\WBP\Play\Widget\Daily\WBP_Play_DailyDetailDialog_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local M = Class({
+local r0_0 = Class({
   "BluePrints.UI.UI_PC.Common.Common_Dialog.Common_Dialog_ContentBase"
 })
-
-function M:Construct()
-  M.Super.Construct(self)
+function r0_0.Construct(r0_1)
+  -- line: [15, 24] id: 1
+  r0_0.Super.Construct(r0_1)
   if CommonUtils.GetDeviceTypeByPlatformName() == "Mobile" then
-    self.List_Item:SetControlScrollbarInside(false)
+    r0_1.List_Item:SetControlScrollbarInside(false)
   else
-    self.List_Item:SetScrollbarVisibility(UIConst.VisibilityOp.Collapsed)
-    self.List_Item:SetControlScrollbarInside(true)
+    r0_1.List_Item:SetScrollbarVisibility(UIConst.VisibilityOp.Collapsed)
+    r0_1.List_Item:SetControlScrollbarInside(true)
   end
 end
-
-function M:InitContent(Params, PopupData, Owner)
-  self.Super.InitContent(self, Params, PopupData, Owner)
-  self:BindDialogEvent(DialogEvent.OnTitleTabSelected, self.OnTabSelected)
-  if not Params.DataMap then
-    return
+function r0_0.InitContent(r0_2, r1_2, r2_2, r3_2)
+  -- line: [31, 43] id: 2
+  r0_2.Super.InitContent(r0_2, r1_2, r2_2, r3_2)
+  r0_2:BindDialogEvent(DialogEvent.OnTitleTabSelected, r0_2.OnTabSelected)
+  if not r1_2.DataMap then
+    return 
   end
-  self.DataMap = Params.DataMap
-  if self.DataMap.Tabs then
-    self:InitPage(self.DataMap.Tabs[1])
+  r0_2.DataMap = r1_2.DataMap
+  if r0_2.DataMap.Tabs then
+    r0_2:InitPage(r0_2.DataMap.Tabs[1], true)
   else
-    self:InitPage(self.DataMap)
+    r0_2:InitPage(r0_2.DataMap)
   end
 end
-
-function M:InitPage(DataMap, IsTabPage)
-  self.List_Item:ClearChildren()
-  local Keys = {}
-  for des in pairs(DataMap) do
-    table.insert(Keys, des)
+function r0_0.InitPage(r0_3, r1_3, r2_3)
+  -- line: [45, 81] id: 3
+  r0_3.List_Item:ClearChildren()
+  local r3_3 = {}
+  for r8_3 in pairs(r1_3) do
+    table.insert(r3_3, r8_3)
   end
-  table.sort(Keys, function(a, b)
-    return a < b
+  -- close: r4_3
+  table.sort(r3_3, function(r0_4, r1_4)
+    -- line: [56, 56] id: 4
+    return r0_4 < r1_4
   end)
-  self.ListTiles = {}
-  for i, des in ipairs(Keys) do
-    local RewardList = DataMap[des]
-    local Content = {}
-    Content.RewardList = RewardList
-    Content.des = des
-    Content.ParentWidget = self
-    Content.Index = i
-    Content.IsTabPage = IsTabPage
-    local Item = self:CreateWidgetNew("DailyDetailItem")
-    table.insert(self.ListTiles, Item)
-    self.List_Item:AddChild(Item)
-    Item:Init(Content)
+  r0_3.ListTiles = {}
+  for r8_3, r9_3 in ipairs(r3_3) do
+    local r11_3 = {
+      RewardList = r1_3[r9_3],
+      des = r9_3,
+      ParentWidget = r0_3,
+      Index = r8_3,
+      IsTabPage = r2_3,
+    }
+    local r12_3 = r0_3:CreateWidgetNew("DailyDetailItem")
+    table.insert(r0_3.ListTiles, r12_3)
+    r0_3.List_Item:AddChild(r12_3)
+    r12_3:Init(r11_3)
   end
-  self:AddTimer(0.01, function()
-    self.List_Item:GetChildAt(0):SetFocus()
-    self:ShowGamepadABtn(true)
+  -- close: r4_3
+  r0_3:AddTimer(0.01, function()
+    -- line: [76, 80] id: 5
+    r0_3.List_Item:GetChildAt(0):SetFocus()
+    r0_3:ShowGamepadABtn(true)
   end, false, 0, "__DeputeDetailDialog_List_Drop")
 end
-
-function M:OnTabSelected(TabWidget)
-  local Idx = TabWidget.Idx
-  if Idx and self.DataMap.Tabs and self.DataMap.Tabs[Idx] then
-    self:InitPage(self.DataMap.Tabs[Idx], true)
+function r0_0.OnTabSelected(r0_6, r1_6)
+  -- line: [83, 90] id: 6
+  local r2_6 = r1_6.Idx
+  if r2_6 and r0_6.DataMap.Tabs and r0_6.DataMap.Tabs[r2_6] then
+    r0_6:InitPage(r0_6.DataMap.Tabs[r2_6], true)
   else
-    self:InitPage(self.DataMap, false)
+    r0_6:InitPage(r0_6.DataMap, false)
   end
 end
-
-function M:ShowGamepadABtn(bIsShow)
-  if bIsShow then
-    self.GamepadCheckItemKeyInfo = self.GamepadCheckItemKeyInfo or self:ShowGamepadShortcutBtn({
-      KeyInfoList = {
-        {
-          Type = "Img",
-          ImgShortPath = UIConst.GamePadImgKey.FaceButtonBottom
-        }
-      },
-      Desc = GText("UI_Controller_CheckDetails")
-    })
-  elseif self.GamepadCheckItemKeyInfo then
-    self:HideGamepadShortcut(self.GamepadCheckItemKeyInfo)
-    self.GamepadCheckItemKeyInfo = nil
+function r0_0.ShowGamepadABtn(r0_7, r1_7)
+  -- line: [92, 105] id: 7
+  if r1_7 then
+    local r2_7 = r0_7.GamepadCheckItemKeyInfo
+    if not r2_7 then
+      r2_7 = r0_7:ShowGamepadShortcutBtn({
+        KeyInfoList = {
+          {
+            Type = "Img",
+            ImgShortPath = UIConst.GamePadImgKey.FaceButtonBottom,
+          }
+        },
+        Desc = GText("UI_Controller_CheckDetails"),
+      })
+    end
+    r0_7.GamepadCheckItemKeyInfo = r2_7
+  elseif r0_7.GamepadCheckItemKeyInfo then
+    r0_7:HideGamepadShortcut(r0_7.GamepadCheckItemKeyInfo)
+    r0_7.GamepadCheckItemKeyInfo = nil
   end
 end
-
-function M:OnContentFocusReceived(MyGeometry, InFocusEvent)
-  if self.List_Item:GetChildAt(0) then
-    self.List_Item:GetChildAt(0):SetFocus()
+function r0_0.OnContentFocusReceived(r0_8, r1_8, r2_8)
+  -- line: [107, 114] id: 8
+  if r0_8.List_Item:GetChildAt(0) then
+    r0_8.List_Item:GetChildAt(0):SetFocus()
   end
   return UE4.UWidgetBlueprintLibrary.Unhandled()
 end
-
-function M:OnAnalogValueChanged(MyGeometry, InAnalogInputEvent)
-  local InKey = UE4.UKismetInputLibrary.GetKey(InAnalogInputEvent)
-  local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-  if "Gamepad_RightY" == InKeyName then
-    local a = UKismetInputLibrary.GetAnalogValue(InAnalogInputEvent) * 5
-    local CurScrollOffset = self.List_Item:GetScrollOffset()
-    self.List_Item:SetScrollOffset(CurScrollOffset + a)
+function r0_0.OnAnalogValueChanged(r0_9, r1_9, r2_9)
+  -- line: [116, 125] id: 9
+  if UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_9)) == "Gamepad_RightY" then
+    r0_9.List_Item:SetScrollOffset(r0_9.List_Item:GetScrollOffset() + UKismetInputLibrary.GetAnalogValue(r2_9) * 5)
   end
   return UWidgetBlueprintLibrary.Unhandled()
 end
-
-return M
+return r0_0

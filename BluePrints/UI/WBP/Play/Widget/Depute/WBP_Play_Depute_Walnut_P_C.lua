@@ -1,222 +1,238 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\WBP\Play\Widget\Depute\WBP_Play_Depute_Walnut_P_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local TimeUtils = require("Utils.TimeUtils")
-local WalnutBagController = require("BluePrints.UI.WBP.Walnut.WalnutBag.WalnutBagController")
-local WalnutBagModel = WalnutBagController:GetModel()
-local M = Class({
+local r0_0 = require("Utils.TimeUtils")
+local r2_0 = require("BluePrints.UI.WBP.Walnut.WalnutBag.WalnutBagController"):GetModel()
+local r3_0 = Class({
   "BluePrints.UI.BP_UIState_C"
 })
-
-function M:Construct()
-  M.Super.Construct(self)
-  self:AddDispatcher(EventID.OnDungeonsUpdate, self, self.OnDungeonsUpdate)
-  self:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
-  self:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
-  self:AddInputMethodChangedListen()
+function r3_0.Construct(r0_1)
+  -- line: [18, 33] id: 1
+  r3_0.Super.Construct(r0_1)
+  r0_1:AddDispatcher(EventID.OnDungeonsUpdate, r0_1, r0_1.OnDungeonsUpdate)
+  r0_1:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
+  r0_1:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
+  r0_1:AddInputMethodChangedListen()
 end
-
-function M:OnDungeonsUpdate()
-  self:InitContent()
+function r3_0.OnDungeonsUpdate(r0_2)
+  -- line: [40, 42] id: 2
+  r0_2:InitContent()
 end
-
-function M:RefreshOpInfoByInputDevice(CurInputDevice, CurGamepadName)
-  if CurInputDevice == ECommonInputType.Touch then
-    return
+function r3_0.RefreshOpInfoByInputDevice(r0_3, r1_3, r2_3)
+  -- line: [44, 69] id: 3
+  if r1_3 == ECommonInputType.Touch then
+    return 
   end
-  local IsUseKeyAndMouse = CurInputDevice == ECommonInputType.MouseAndKeyboard
-  local ActiveWidgetIndex = IsUseKeyAndMouse and 0 or 1
-  self.WBP_Com_BtnExplanation:UpdateUIStyleInPlatform(not IsUseKeyAndMouse)
-  if IsUseKeyAndMouse then
-    return
+  local r3_3 = r1_3 == ECommonInputType.MouseAndKeyboard
+  if not r3_3 or not 0 then
+    local r4_3 = 1
+  end
+  r0_3.WBP_Com_BtnExplanation:UpdateUIStyleInPlatform(not r3_3)
+  if r3_3 then
+    return 
   else
-    self.List_Walnut:NavigateToIndex(0)
-  end
-end
-
-function M:OnFocusReceived(MyGeometry, InFocusEvent)
-  self.List_Walnut:NavigateToIndex(0)
-  self:UpdatKeyDisplay()
-  return UE4.UWidgetBlueprintLibrary.Unhandled()
-end
-
-function M:UpdateTimeCountDown()
-  local RemainTimeDict, TimeCount = UIUtils.GetLeftTimeStrStyle2(self.LeftTimeDict)
-  self.Text_WalnutTime:SetText(GText("UI_Walnut_Dungeon_Refresh"))
-  self.Com_Time:SetTimeText(GText("UI_Walnut_Dungeon_Refresh"), RemainTimeDict)
-end
-
-function M:InitContent(Parent)
-  self.List_Walnut:ClearListItems()
-  local Avatar = GWorld:GetAvatar()
-  if nil == Avatar then
-    return
-  end
-  if Parent then
-    self.Parent = Parent
-  end
-  local WalnutSelectDungeonData = {}
-  local DungeonIdMap = {}
-  self.ValidWalnutDungeons = Avatar.Walnuts.ValidWalnutDungeons
-  self.LeftTimeDict = WalnutBagModel:GetDungeonNextRefreshTime()
-  if self:IsExistTimer("UpdateTimeContent") then
-    self:RemoveTimer("UpdateTimeContent")
-  end
-  self:UpdateTimeCountDown()
-  self:AddTimer(1.0, self.UpdateTimeCountDown, true, 0, "UpdateTimeContent", true)
-  for WalnutType, DungeonIds in pairs(self.ValidWalnutDungeons) do
-    local DungeonData = DataMgr.WalnutSelectDungeon[WalnutType]
-    if DungeonData then
-      table.insert(WalnutSelectDungeonData, DungeonData)
-      DungeonIdMap[WalnutType] = DungeonIds
+    local r5_3 = UIManager(r0_3):GetUI("CommonDialog")
+    if r5_3 then
+      r5_3:SetFocus()
+    else
+      r0_3:FocusList_WalnutItem()
     end
   end
-  table.sort(WalnutSelectDungeonData, function(A, B)
-    return A.Sequence < B.Sequence
-  end)
-  for i, DungeonData in ipairs(WalnutSelectDungeonData) do
-    self:AddTimer(0.03 * (i - 1), function()
-      local Content = NewObject(self.LevelCellContentClass)
-      Content.DungeonData = DungeonData
-      Content.DungeonIds = DungeonIdMap[DungeonData.WalnutType]
-      Content.Parent = self
-      self.List_Walnut:AddItem(Content)
-    end, false, 0, nil, true)
-  end
-  self:AddTimer(0.01, function()
-    self.List_Walnut:NavigateToIndex(0)
-    self:UpdatKeyDisplay()
-  end, false, 0, "_Depute_Walnut_List_Walnut")
-  self:InitBtnExplanation()
 end
-
-function M:InitBtnExplanation()
-  local BtnExplanationConfigData = {}
-  BtnExplanationConfigData.ClickCallback = self.OnBtnExplanationClickCallback
-  BtnExplanationConfigData.OwnerWidget = self
-  BtnExplanationConfigData.PopupId = 100224
-  BtnExplanationConfigData.Desc = "UI_Walnut_Gacha_Des"
-  self.WBP_Com_BtnExplanation:Init(BtnExplanationConfigData)
-  self.WBP_Com_BtnExplanation.Com_KeyImg:CreateCommonKey({
+function r3_0.OnFocusReceived(r0_4, r1_4, r2_4)
+  -- line: [71, 78] id: 4
+  r0_4:FocusList_WalnutItem()
+  r0_4:UpdatKeyDisplay()
+  return UE4.UWidgetBlueprintLibrary.Unhandled()
+end
+function r3_0.FocusList_WalnutItem(r0_5)
+  -- line: [80, 88] id: 5
+  local r1_5 = r0_5.List_Walnut:GetItemAt(0)
+  if r1_5.SelfWidget then
+    r1_5.SelfWidget:SetFocus()
+  else
+    r0_5.List_Walnut:NavigateToIndex(0)
+  end
+end
+function r3_0.UpdateTimeCountDown(r0_6)
+  -- line: [90, 94] id: 6
+  local r1_6, r2_6 = UIUtils.GetLeftTimeStrStyle2(r0_6.LeftTimeDict)
+  r0_6.Text_WalnutTime:SetText(GText("UI_Walnut_Dungeon_Refresh"))
+  r0_6.Com_Time:SetTimeText(GText("UI_Walnut_Dungeon_Refresh"), r1_6)
+end
+function r3_0.InitContent(r0_7, r1_7)
+  -- line: [99, 156] id: 7
+  r0_7.List_Walnut:ClearListItems()
+  local r2_7 = GWorld:GetAvatar()
+  if r2_7 == nil then
+    return 
+  end
+  if r1_7 then
+    r0_7.Parent = r1_7
+  end
+  local r3_7 = {}
+  local r4_7 = {}
+  r0_7.ValidWalnutDungeons = r2_7.Walnuts.ValidWalnutDungeons
+  r0_7.LeftTimeDict = r2_0:GetDungeonNextRefreshTime()
+  if r0_7:IsExistTimer("UpdateTimeContent") then
+    r0_7:RemoveTimer("UpdateTimeContent")
+  end
+  r0_7:UpdateTimeCountDown()
+  r0_7:AddTimer(1, r0_7.UpdateTimeCountDown, true, 0, "UpdateTimeContent", true)
+  for r9_7, r10_7 in pairs(r0_7.ValidWalnutDungeons) do
+    local r11_7 = DataMgr.WalnutSelectDungeon[r9_7]
+    if r11_7 then
+      table.insert(r3_7, r11_7)
+      r4_7[r9_7] = r10_7
+    end
+  end
+  -- close: r5_7
+  table.sort(r3_7, function(r0_8, r1_8)
+    -- line: [130, 132] id: 8
+    return r0_8.Sequence < r1_8.Sequence
+  end)
+  for r9_7, r10_7 in ipairs(r3_7) do
+    local r11_7 = NewObject(r0_7.LevelCellContentClass)
+    r11_7.DungeonData = r10_7
+    r11_7.DungeonIds = r4_7[r10_7.WalnutType]
+    r11_7.Parent = r0_7
+    r0_7.List_Walnut:AddItem(r11_7)
+  end
+  -- close: r5_7
+  r0_7:FocusList_WalnutItem()
+  r0_7:UpdatKeyDisplay()
+  r0_7:InitBtnExplanation()
+end
+function r3_0.InitBtnExplanation(r0_9)
+  -- line: [158, 171] id: 9
+  r0_9.WBP_Com_BtnExplanation:Init({
+    ClickCallback = r0_9.OnBtnExplanationClickCallback,
+    OwnerWidget = r0_9,
+    PopupId = 100224,
+    Desc = "UI_Walnut_Gacha_Des",
+  })
+  r0_9.WBP_Com_BtnExplanation.Com_KeyImg:CreateCommonKey({
     KeyInfoList = {
-      {Type = "Img", ImgShortPath = "Menu"}
-    }
+      {
+        Type = "Img",
+        ImgShortPath = "Menu",
+      }
+    },
   })
 end
-
-function M:OnBtnExplanationClickCallback()
+function r3_0.OnBtnExplanationClickCallback(r0_10)
+  -- line: [173, 175] id: 10
   print("lgc@ OnBtnExplanationClickCallback")
 end
-
-function M:UpdatKeyDisplay()
-  local Item = UIManager(self):GetUIObj("StyleOfPlay")
-  if not Item then
-    return
+function r3_0.UpdatKeyDisplay(r0_11)
+  -- line: [178, 237] id: 11
+  local r1_11 = UIManager(r0_11):GetUIObj("StyleOfPlay")
+  if not r1_11 then
+    return 
   end
-  local BottomKeyInfo = {}
-  local ItemUIs = self.List_Walnut:GetDisplayedEntryWidgets()
-  local RestCount = UIUtils.GetListViewContentMaxCount(self.List_Walnut, ItemUIs, false) - self.List_Walnut:GetNumItems()
-  if RestCount >= 0 then
-    BottomKeyInfo = {
+  local r2_11 = {}
+  if UIUtils.GetListViewContentMaxCount(r0_11.List_Walnut, r0_11.List_Walnut:GetDisplayedEntryWidgets(), false) - r0_11.List_Walnut:GetNumItems() >= 0 then
+    r2_11 = {
       {
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "A",
-            Owner = self
+            Owner = r0_11,
           }
         },
         Desc = GText("UI_Tips_Ensure"),
-        bLongPress = false
+        bLongPress = false,
       },
       {
         KeyInfoList = {
           {
             Type = "Text",
             Text = "Esc",
-            ClickCallback = self.Parent.CloseSelf,
-            Owner = self
+            ClickCallback = r0_11.Parent.CloseSelf,
+            Owner = r0_11,
           }
         },
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "B",
-            Owner = self
+            Owner = r0_11,
           }
         },
-        Desc = GText("UI_BACK")
+        Desc = GText("UI_BACK"),
       }
     }
   else
-    BottomKeyInfo = {
+    r2_11 = {
       {
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "RH",
-            Owner = self
+            Owner = r0_11,
           }
         },
         Desc = GText("UI_Controller_Slide"),
-        bLongPress = false
+        bLongPress = false,
       },
       {
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "A",
-            Owner = self
+            Owner = r0_11,
           }
         },
         Desc = GText("UI_Tips_Ensure"),
-        bLongPress = false
+        bLongPress = false,
       },
       {
         KeyInfoList = {
           {
             Type = "Text",
             Text = "Esc",
-            ClickCallback = self.Parent.CloseSelf,
-            Owner = self
+            ClickCallback = r0_11.Parent.CloseSelf,
+            Owner = r0_11,
           }
         },
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "B",
-            Owner = self
+            Owner = r0_11,
           }
         },
-        Desc = GText("UI_BACK")
+        Desc = GText("UI_BACK"),
       }
     }
   end
-  Item:UpdateOtherPageTab(BottomKeyInfo)
+  r1_11:UpdateOtherPageTab(r2_11)
 end
-
-function M:OnAnalogValueChanged(MyGeometry, InAnalogInputEvent)
-  local InKey = UE4.UKismetInputLibrary.GetKey(InAnalogInputEvent)
-  local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-  if "Gamepad_RightX" == InKeyName then
-    local a = UKismetInputLibrary.GetAnalogValue(InAnalogInputEvent) * 2
-    local CurScrollOffset = self.List_Walnut:GetScrollOffset()
-    self.List_Walnut:SetScrollOffset(CurScrollOffset + a)
+function r3_0.OnAnalogValueChanged(r0_12, r1_12, r2_12)
+  -- line: [253, 262] id: 12
+  if UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_12)) == "Gamepad_RightX" then
+    r0_12.List_Walnut:SetScrollOffset(r0_12.List_Walnut:GetScrollOffset() + UKismetInputLibrary.GetAnalogValue(r2_12) * 2)
   end
   return UWidgetBlueprintLibrary.Unhandled()
 end
-
-function M:OnKeyDown(MyGeometry, InKeyEvent)
-  local IsEventHandled = false
-  local InKey = UE4.UKismetInputLibrary.GetKey(InKeyEvent)
-  local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-  if InKeyName == UIConst.GamePadKey.SpecialRight then
-    self.WBP_Com_BtnExplanation:OnBtnClick()
-    IsEventHandled = true
+function r3_0.OnKeyDown(r0_13, r1_13, r2_13)
+  -- line: [264, 282] id: 13
+  local r3_13 = false
+  if UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_13)) == UIConst.GamePadKey.SpecialRight then
+    local r6_13 = UIManager(r0_13):GetUI("CommonDialog")
+    if not r6_13 then
+      r0_13.WBP_Com_BtnExplanation:OnBtnClick()
+    else
+      r6_13:SetFocus()
+    end
+    r3_13 = true
   end
-  if IsEventHandled then
+  if r3_13 then
     return UE4.UWidgetBlueprintLibrary.Handled()
   else
     return UE4.UWidgetBlueprintLibrary.UnHandled()
   end
 end
-
-return M
+return r3_0

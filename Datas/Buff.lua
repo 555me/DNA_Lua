@@ -9815,6 +9815,10 @@ r6_0.AddAttrs = {
     AttrName = "MaxHp",
     Rate = 5,
   },
+  [2] = {
+    AttrName = "MaxES",
+    Rate = 5,
+  },
 }
 r6_0.BuffId = 3010001
 r6_0.MergeRule1 = "Global"

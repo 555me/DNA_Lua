@@ -282,12 +282,6 @@ local r3_0 = {
       endPort = "In",
     },
     {
-      startQuest = "173625750744519733964",
-      startPort = "true",
-      endQuest = "17548788834093001291",
-      endPort = "In",
-    },
-    {
       startQuest = "17371006237003689",
       startPort = "Out",
       endQuest = "17364991215722127437",
@@ -303,12 +297,6 @@ local r3_0 = {
       startQuest = "17346036095084036110",
       startPort = "Out",
       endQuest = "176400066429339833047",
-      endPort = "In",
-    },
-    {
-      startQuest = "17548788834093001291",
-      startPort = "Out",
-      endQuest = "173625754900620438035",
       endPort = "In",
     },
     {
@@ -477,6 +465,24 @@ local r3_0 = {
       startQuest = "1765781772348645212",
       startPort = "Out",
       endQuest = "173625749934719733788",
+      endPort = "In",
+    },
+    {
+      startQuest = "17660453676813857106",
+      startPort = "Out",
+      endQuest = "17660453676813857107",
+      endPort = "In",
+    },
+    {
+      startQuest = "173625750744519733964",
+      startPort = "true",
+      endQuest = "17660453676813857106",
+      endPort = "In",
+    },
+    {
+      startQuest = "17660453676813857107",
+      startPort = "Out",
+      endQuest = "173625754900620438035",
       endPort = "In",
     }
   },
@@ -836,8 +842,8 @@ r4_0["173625752505119734383"] = {
   type = "AsyncSetActorLocationAndRotationNode",
   name = "异步设置玩家位置旋转",
   pos = {
-    x = -1064.5930920151209,
-    y = 2031.4314307013128,
+    x = -870.5930920151209,
+    y = 2033.4314307013128,
   },
   propsData = {
     UnitId = 0,
@@ -854,8 +860,8 @@ r4_0["173625754900620438035"] = {
   type = "AsyncSetActorLocationAndRotationNode",
   name = "异步设置玩家位置旋转",
   pos = {
-    x = -688.2528142588217,
-    y = 2253.0417870632173,
+    x = -678.7791300482953,
+    y = 2259.3575765369014,
   },
   propsData = {
     UnitId = 0,
@@ -872,7 +878,7 @@ r4_0["173625757561421141994"] = {
   type = "AsyncSetActorLocationAndRotationNode",
   name = "异步设置玩家位置旋转",
   pos = {
-    x = -695.4878302019572,
+    x = -682.8562512545888,
     y = 2458.174508135836,
   },
   propsData = {
@@ -1034,8 +1040,8 @@ r5_0 = {
   type = "ActivePlayerSkillsNode",
   name = "失效技能",
   pos = {
-    x = -723.8889078530804,
-    y = 2032.858417159513,
+    x = -529.8889078530804,
+    y = 2034.858417159513,
   },
 }
 r5_0.propsData = {
@@ -1053,8 +1059,8 @@ r5_0 = {
   type = "ActivePlayerSkillsNode",
   name = "失效技能",
   pos = {
-    x = -385.46845330762585,
-    y = 2250.915235341331,
+    x = -383.8895059392048,
+    y = 2258.8099721834365,
   },
 }
 r5_0.propsData = {
@@ -1315,8 +1321,8 @@ r4_0["17548788834093001291"] = {
   type = "SendMessageNode",
   name = "发送消息IntCyanBoat",
   pos = {
-    x = -1002.6624919198453,
-    y = 2261.990164247517,
+    x = -108.37677763413092,
+    y = 2650.5615928189454,
   },
   propsData = {
     MessageType = "GameMode",
@@ -1687,8 +1693,8 @@ r4_0["176535529468750703550"] = {
   type = "SendMessageNode",
   name = "发送消息PP",
   pos = {
-    x = -354.58278911490925,
-    y = 2024.9558041287917,
+    x = -160.58278911490925,
+    y = 2026.9558041287917,
   },
   propsData = {
     MessageType = "GameMode",
@@ -1732,6 +1738,34 @@ r4_0["1765781772348645212"] = {
   },
   propsData = {
     BattlePetId = 901,
+  },
+}
+r4_0["17660453676813857106"] = {
+  key = "17660453676813857106",
+  type = "SendMessageNode",
+  name = "发送消息UnlockBoat",
+  pos = {
+    x = -1170.193058231758,
+    y = 2274.49370881956,
+  },
+  propsData = {
+    MessageType = "GameMode",
+    MessageContent = "ResetBoat",
+    UnitId = -1,
+  },
+}
+r4_0["17660453676813857107"] = {
+  key = "17660453676813857107",
+  type = "SendMessageNode",
+  name = "发送消息ResetWinbell04",
+  pos = {
+    x = -926.1021465634473,
+    y = 2276.1839468580956,
+  },
+  propsData = {
+    MessageType = "GameMode",
+    MessageContent = "ResetWinbell04",
+    UnitId = -1,
   },
 }
 r3_0.nodeData = r4_0
@@ -5314,7 +5348,7 @@ r4_0["176526669804429503037"] = {
   type = "SendMessageNode",
   name = "发送消息",
   pos = {
-    x = 2309.6702276052124,
+    x = 2306.94295487794,
     y = 2069.602358941368,
   },
   propsData = {
@@ -5398,7 +5432,7 @@ r4_0["176535553508350704960"] = {
   type = "SendMessageNode",
   name = "发送消息PP",
   pos = {
-    x = 2871.666666666667,
+    x = 2874.3939393939395,
     y = 2064.666666666667,
   },
   propsData = {

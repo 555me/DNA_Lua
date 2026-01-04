@@ -1,176 +1,198 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\WBP\Play\Widget\Task\WBP_Play_TaskRoot_P_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local M = Class({
+local r0_0 = Class({
   "BluePrints.UI.BP_EMUserWidget_C"
 })
-local ActivityUtils = require("Blueprints.UI.WBP.Activity.ActivityUtils")
-
-function M:Construct()
-  self:InitTab()
+local r1_0 = require("Blueprints.UI.WBP.Activity.ActivityUtils")
+function r0_0.Construct(r0_1)
+  -- line: [17, 19] id: 1
+  r0_1:InitTab()
 end
-
-function M:Destruct()
-  if self.WidgetNameToIndex then
-    for WidgetName, _ in pairs(self.WidgetNameToIndex) do
-      if DataMgr.ReddotNode[WidgetName] then
-        ReddotManager.RemoveListener(WidgetName, self)
+function r0_0.Destruct(r0_2)
+  -- line: [21, 29] id: 2
+  if r0_2.WidgetNameToIndex then
+    for r5_2, r6_2 in pairs(r0_2.WidgetNameToIndex) do
+      if DataMgr.ReddotNode[r5_2] then
+        ReddotManager.RemoveListener(r5_2, r0_2)
       end
     end
+    -- close: r1_2
   end
 end
-
-function M:InitTab()
-  local Avatar = GWorld:GetAvatar()
-  if nil == Avatar then
-    return
+function r0_0.InitTab(r0_3)
+  -- line: [31, 94] id: 3
+  local r1_3 = GWorld:GetAvatar()
+  if r1_3 == nil then
+    return 
   end
-  local SubTabList = {}
-  local PlayTabInfo = {}
-  for _, Data in pairs(DataMgr.PlaySubTab) do
-    if Data.WidgetUI == "PlayTaskRoot" and Data.SubTabUnlockRuleId then
-      local bUnlocked = Avatar:CheckUIUnlocked(Data.SubTabUnlockRuleId)
-      if bUnlocked then
-        table.insert(PlayTabInfo, Data)
-      end
+  local r2_3 = {}
+  local r3_3 = {}
+  for r8_3, r9_3 in pairs(DataMgr.PlaySubTab) do
+    if r9_3.WidgetUI == "PlayTaskRoot" and r9_3.SubTabUnlockRuleId and r1_3:CheckUIUnlocked(r9_3.SubTabUnlockRuleId) then
+      table.insert(r3_3, r9_3)
     end
   end
-  if #PlayTabInfo < 2 then
-    self.Tab:SetVisibility(ESlateVisibility.Collapsed)
+  -- close: r4_3
+  if #r3_3 < 2 then
+    r0_3.Tab:SetVisibility(ESlateVisibility.Collapsed)
   else
-    self.Tab:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    r0_3.Tab:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
   end
-  table.sort(PlayTabInfo, function(a, b)
-    return a.Sequence > b.Sequence
+  table.sort(r3_3, function(r0_4, r1_4)
+    -- line: [53, 55] id: 4
+    return r1_4.Sequence < r0_4.Sequence
   end)
-  self.PlayTabInfo = PlayTabInfo
-  local SelectTabIndex
-  local IsSelectStartQuest = not ActivityUtils.CheckStarterQuestAllDone()
-  for i, Data in ipairs(PlayTabInfo) do
-    local SubTab = {
-      Text = GText(Data.SubTabName),
-      Img = Data.EnterImage,
-      TabId = i
+  r0_3.PlayTabInfo = r3_3
+  local r4_3 = nil
+  local r5_3 = not r1_0.CheckStarterQuestAllDone()
+  for r10_3, r11_3 in ipairs(r3_3) do
+    local r12_3 = {
+      Text = GText(r11_3.SubTabName),
+      Img = r11_3.EnterImage,
+      TabId = r10_3,
     }
-    if Data.SubWidgetUI == "StarterQuest" then
-      if IsSelectStartQuest then
-        SelectTabIndex = i or SelectTabIndex or SelectTabIndex
+    if r11_3.SubWidgetUI == "StarterQuest" and r5_3 then
+      r4_3 = r10_3
+      if r4_3 then
+        r4_3 = r4_3
       end
-    else
-      SelectTabIndex = i
+    elseif not r4_3 then
+      r4_3 = r10_3
     end
-    table.insert(SubTabList, SubTab)
+    table.insert(r2_3, r12_3)
   end
-  self.Tab:Init({
+  -- close: r6_3
+  local r8_3 = {
     LeftKey = "A",
     RightKey = "D",
-    Tabs = SubTabList,
+    Tabs = r2_3,
     ChildWidgetBPPath = "/Game/UI/WBP/Play/Widget/Depute/WBP_Depute_TabSubItem.WBP_Depute_TabSubItem",
     SoundFunc = function()
-      AudioManager(self):PlayUISound(self, "event:/ui/common/click_level_02", nil, nil)
-    end
-  })
-  self.Tab:BindEventOnTabSelected(self, self.OnSubTabChanged)
-  self.Tab:SelectTab(SelectTabIndex or 1)
-  self.WidgetNameToIndex = {}
-  for i, Data in ipairs(PlayTabInfo) do
-    local WidgetName = Data.SubWidgetUI
-    if DataMgr.ReddotNode[WidgetName] then
-      self.WidgetNameToIndex[WidgetName] = i
-      ReddotManager.AddListener(WidgetName, self, self["On" .. WidgetName .. "ReddotChange"])
-    end
-  end
-end
-
-function M:OnStarterQuestReddotChange()
-  self:OnReddotChange("StarterQuest")
-end
-
-function M:OnDailyMainReddotChange()
-  self:OnReddotChange("DailyMain")
-end
-
-function M:OnReddotChange(SystemUIName)
-  local Index = self.WidgetNameToIndex[SystemUIName]
-  if Index then
-    local TreeNode = ReddotManager.GetTreeNode(SystemUIName)
-    local Reddot = false
-    if TreeNode and TreeNode.Count > 0 then
-      Reddot = true
-    end
-    local Item = self.Tab.List_Tab:GetChildAt(math.max(Index - 1, 0))
-    if Item then
-      Item.Reddot:SetVisibility(Reddot and UE4.ESlateVisibility.SelfHitTestInvisible or UE4.ESlateVisibility.Collapsed)
+      -- line: [79, 81] id: 5
+      AudioManager(r0_3):PlayUISound(r0_3, "event:/ui/common/click_level_02", nil, nil)
+    end,
+  }
+  r0_3.Tab:Init(r8_3)
+  r0_3.Tab:BindEventOnTabSelected(r0_3, r0_3.OnSubTabChanged)
+  r0_3.Tab:SelectTab(r4_3 and 1)
+  r0_3.WidgetNameToIndex = {}
+  for r10_3, r11_3 in ipairs(r3_3) do
+    local r12_3 = r11_3.SubWidgetUI
+    if DataMgr.ReddotNode[r12_3] then
+      r0_3.WidgetNameToIndex[r12_3] = r10_3
+      ReddotManager.AddListener(r12_3, r0_3, r0_3["On" .. r12_3 .. "ReddotChange"])
     end
   end
+  -- close: r6_3
 end
-
-function M:OnSubTabChanged(TabWidget)
-  local SubTabData = self.PlayTabInfo[TabWidget.Idx]
-  if not SubTabData then
-    return
-  end
-  self:OnOpenTaskUI(SubTabData.SubWidgetUI)
+function r0_0.OnStarterQuestReddotChange(r0_6)
+  -- line: [95, 97] id: 6
+  r0_6:OnReddotChange("StarterQuest")
 end
-
-function M:OpenTaskUI(UIName)
-  for Index, TabInfo in ipairs(self.PlayTabInfo) do
-    if TabInfo.SubWidgetUI == UIName then
-      self.Tab:SelectTab(Index)
-      return
+function r0_0.OnDailyMainReddotChange(r0_7)
+  -- line: [98, 100] id: 7
+  r0_7:OnReddotChange("DailyMain")
+end
+function r0_0.OnReddotChange(r0_8, r1_8)
+  -- line: [101, 115] id: 8
+  local r2_8 = r0_8.WidgetNameToIndex[r1_8]
+  if r2_8 then
+    local r3_8 = ReddotManager.GetTreeNode(r1_8)
+    local r4_8 = false
+    if r3_8 and r3_8.Count > 0 then
+      r4_8 = true
+    end
+    local r5_8 = r0_8.Tab.List_Tab:GetChildAt(math.max(r2_8 + -1, 0))
+    if r5_8 then
+      local r6_8 = r5_8.Reddot
+      local r8_8 = nil	-- notice: implicit variable refs by block#[8]
+      if r4_8 then
+        r8_8 = UE4.ESlateVisibility.SelfHitTestInvisible
+        if not r8_8 then
+          ::label_36::
+          r8_8 = UE4.ESlateVisibility.Collapsed
+        end
+      else
+        goto label_36	-- block#7 is visited secondly
+      end
+      r6_8:SetVisibility(r8_8)
     end
   end
 end
-
-function M:OnOpenTaskUI(UIName)
-  self.IsHideGamepadKey = nil
-  self.PanelRoot:ClearChildren()
-  if not IsValid(self[UIName]) then
-    self[UIName] = UIManager(self):_CreateWidgetNew(UIName)
+function r0_0.OnSubTabChanged(r0_9, r1_9)
+  -- line: [117, 123] id: 9
+  local r2_9 = r0_9.PlayTabInfo[r1_9.Idx]
+  if not r2_9 then
+    return 
   end
-  local WidgetUI = self[UIName]
-  self.PanelRoot:AddChild(WidgetUI)
-  local Slot = WidgetUI.Slot
-  Slot:SetHorizontalAlignment(EHorizontalAlignment.HAlign_Fill)
-  Slot:SetVerticalAlignment(EVerticalAlignment.VAlign_Fill)
-  if WidgetUI.InitContent then
-    WidgetUI:InitContent(self)
-  end
-  self.CurSubUI = WidgetUI
-  self.CurSubUI:SetFocus()
+  r0_9:OnOpenTaskUI(r2_9.SubWidgetUI)
 end
-
-function M:SwitchIn()
-  if not self.CurSubUI then
-    return
+function r0_0.SubUIJumpFunc(r0_10, r1_10)
+  -- line: [125, 132] id: 10
+  for r6_10, r7_10 in ipairs(r0_10.PlayTabInfo) do
+    if r7_10.SubWidgetUI == r1_10 then
+      r0_10.Tab:SelectTab(r6_10)
+      return 
+    end
   end
-  if self.CurSubUI.SwitchIn then
-    self.CurSubUI:SwitchIn()
+  -- close: r2_10
+end
+function r0_0.OnOpenTaskUI(r0_11, r1_11)
+  -- line: [133, 154] id: 11
+  r0_11.IsHideGamepadKey = nil
+  r0_11.PanelRoot:ClearChildren()
+  if not IsValid(r0_11[r1_11]) then
+    r0_11[r1_11] = UIManager(r0_11):_CreateWidgetNew(r1_11)
+  end
+  local r2_11 = r0_11[r1_11]
+  r0_11.PanelRoot:AddChild(r2_11)
+  local r3_11 = r2_11.Slot
+  r3_11:SetHorizontalAlignment(EHorizontalAlignment.HAlign_Fill)
+  r3_11:SetVerticalAlignment(EVerticalAlignment.VAlign_Fill)
+  if r2_11.InitContent then
+    r2_11:InitContent(r0_11)
+  end
+  r0_11.CurSubUI = r2_11
+  r0_11.CurSubUI:SetFocus()
+  if r2_11.In then
+    r2_11:PlayAnimation(r2_11.In)
   end
 end
-
-function M:SwitchGamepadKeyShow(IsShow)
-  self.Tab:UpdateUIStyleInPlatform(IsShow)
-  self.IsHideGamepadKey = not IsShow
+function r0_0.SwitchIn(r0_12)
+  -- line: [155, 165] id: 12
+  if not r0_12.CurSubUI then
+    return 
+  end
+  if r0_12.CurSubUI.SwitchIn then
+    r0_12.CurSubUI:SwitchIn()
+  end
 end
-
-function M:HandleKeyDown(MyGeometry, InKeyEvent)
-  local InKey = UE4.UKismetInputLibrary.GetKey(InKeyEvent)
-  local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-  local IsEventHandled = false
-  if UE4.UKismetInputLibrary.Key_IsGamepadKey(InKey) then
-    if not self.IsHideGamepadKey then
-      IsEventHandled = self.Tab:Handle_KeyEventOnGamePad(InKeyName)
+function r0_0.SwitchGamepadKeyShow(r0_13, r1_13)
+  -- line: [166, 169] id: 13
+  r0_13.Tab:UpdateUIStyleInPlatform(r1_13)
+  r0_13.IsHideGamepadKey = not r1_13
+end
+function r0_0.HandleKeyDown(r0_14, r1_14, r2_14)
+  -- line: [171, 184] id: 14
+  local r3_14 = UE4.UKismetInputLibrary.GetKey(r2_14)
+  local r4_14 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_14)
+  local r5_14 = false
+  if UE4.UKismetInputLibrary.Key_IsGamepadKey(r3_14) then
+    if not r0_14.IsHideGamepadKey then
+      r5_14 = r0_14.Tab:Handle_KeyEventOnGamePad(r4_14)
     end
   else
-    IsEventHandled = self.Tab:Handle_KeyEventOnPC(InKeyName)
+    r5_14 = r0_14.Tab:Handle_KeyEventOnPC(r4_14)
   end
-  return IsEventHandled
+  return r5_14
 end
-
-function M:BP_GetDesiredFocusTarget()
-  if self.CurSubUI and self.CurSubUI.NodeName == "StarterQuest" and not UIUtils.HasAnyFocus(self.CurSubUI) then
-    return self.CurSubUI.List_Task
+function r0_0.BP_GetDesiredFocusTarget(r0_15)
+  -- line: [185, 190] id: 15
+  if r0_15.CurSubUI and r0_15.CurSubUI.NodeName == "StarterQuest" and not UIUtils.HasAnyFocus(r0_15.CurSubUI) then
+    return r0_15.CurSubUI:ReGetDesiredFocusTarget()
   end
-  return self.CurSubUI or self
+  return r0_15.CurSubUI and r0_15
 end
-
-return M
+return r0_0

@@ -11,7 +11,7 @@ return {
     }
   end,
   UpdatePreviewActor = function(r0_2, r1_2, r2_2)
-    -- line: [13, 47] id: 2
+    -- line: [13, 48] id: 2
     r0_2.Avatar = GWorld:GetAvatar()
     if not r0_2.Avatar then
       return 
@@ -35,6 +35,7 @@ return {
       r0_2:StopActorSound()
       r0_2:UpdateExistingPreviewActor(r1_2)
     end
+    r0_2.PreviewItemData = r1_2
     if r0_2.ActorController and r0_2.ActorController.UpdatePreviewSceneLight then
       if r0_2.SpecialLightGesture and r0_2.SpecialLightGesture[r1_2.TypeId] then
         r0_2.ActorController:UpdatePreviewSceneLight(true)
@@ -44,7 +45,7 @@ return {
     end
   end,
   GenerateActorParams = function(r0_4, r1_4)
-    -- line: [50, 70] id: 4
+    -- line: [51, 71] id: 4
     local r2_4 = r1_4.ItemType
     if r2_4 == "Char" then
       return {
@@ -72,7 +73,7 @@ return {
     return nil
   end,
   _GenerateSkinParams = function(r0_5, r1_5)
-    -- line: [72, 76] id: 5
+    -- line: [73, 77] id: 5
     local r2_5 = DataMgr.Skin[r1_5.TypeId]
     if not r2_5 then
       return nil
@@ -83,7 +84,7 @@ return {
     }
   end,
   _GenerateSkinSeriesParams = function(r0_6, r1_6, r2_6)
-    -- line: [78, 98] id: 6
+    -- line: [79, 99] id: 6
     local r3_6 = r2_6.Chars[r2_6.CurrentChar].CharId
     local r6_6 = Const.DefaultAttributeMaster[r2_6.Sex]
     local r7_6 = nil
@@ -110,7 +111,7 @@ return {
     return r7_6
   end,
   _GenerateWeaponSkinParams = function(r0_7, r1_7)
-    -- line: [100, 104] id: 7
+    -- line: [101, 105] id: 7
     local r2_7 = DataMgr.WeaponSkin[r1_7.TypeId]
     if not r2_7 then
       return nil
@@ -121,7 +122,7 @@ return {
     }
   end,
   _GenerateCharAccessoryParams = function(r0_8, r1_8, r2_8)
-    -- line: [106, 116] id: 8
+    -- line: [107, 117] id: 8
     local r3_8 = DataMgr.CharAccessory[r1_8.TypeId]
     if not r3_8 then
       return nil
@@ -135,7 +136,7 @@ return {
     }
   end,
   _GenerateWeaponAccessoryParams = function(r0_9, r1_9, r2_9)
-    -- line: [118, 144] id: 9
+    -- line: [119, 145] id: 9
     local r3_9 = DataMgr.WeaponAccessory[r1_9.TypeId]
     if not r3_9 then
       return nil
@@ -161,7 +162,7 @@ return {
     return r4_9
   end,
   _GenerateCharGestureParams = function(r0_10, r1_10, r2_10)
-    -- line: [146, 154] id: 10
+    -- line: [147, 155] id: 10
     local r3_10 = r2_10.Chars[r2_10.CurrentChar]
     return {
       Type = "Char",
@@ -169,7 +170,7 @@ return {
     }
   end,
   InitializePreviewActor = function(r0_11, r1_11)
-    -- line: [157, 181] id: 11
+    -- line: [158, 182] id: 11
     r0_11.ActorController = r0_11:CreatePreviewActor(r0_11.Params)
     local r2_11 = r1_11.ItemType
     if r2_11 == "Weapon" or r2_11 == "WeaponSkin" or r2_11 == "WeaponAccessory" then
@@ -192,7 +193,7 @@ return {
     end
   end,
   UpdateExistingPreviewActor = function(r0_12, r1_12)
-    -- line: [184, 203] id: 12
+    -- line: [185, 204] id: 12
     r0_12:CleanupPreviousPreviewEffects()
     local r2_12 = r1_12.ItemType
     if r2_12 == "Char" then
@@ -212,7 +213,7 @@ return {
     end
   end,
   CleanupPreviousPreviewEffects = function(r0_13)
-    -- line: [206, 213] id: 13
+    -- line: [207, 214] id: 13
     r0_13.ActorController:StopPlayerFX()
     r0_13.ActorController:DestoryCreature(CommonConst.CharAccessoryTypes.FX_Dead)
     r0_13.ActorController:DestoryCreature(CommonConst.CharAccessoryTypes.FX_Body)
@@ -221,7 +222,7 @@ return {
     end
   end,
   SetupDefaultCharacterModel = function(r0_14)
-    -- line: [216, 233] id: 14
+    -- line: [217, 234] id: 14
     r0_14.ActorController:HidePlayerActor(r0_14.UIName, false)
     r0_14:HidePlayerWeapon(true)
     r0_14:HideSingleWeapon(true)
@@ -242,7 +243,7 @@ return {
     r0_14.ActorController.ArmoryHelper:SetPlayer(r0_14.ActorController.ArmoryPlayer)
   end,
   SetupInitialCharPreview = function(r0_15, r1_15)
-    -- line: [237, 243] id: 15
+    -- line: [238, 244] id: 15
     r0_15.ActorController:ChangeCharAppearance({
       CharId = DataMgr.Skin[r1_15.TypeId].CharId,
       SkinId = r1_15.TypeId,
@@ -251,7 +252,7 @@ return {
     r0_15.ActorController:SetMontageAndCamera("Char", nil, nil)
   end,
   SetupInitialWeaponPreview = function(r0_16, r1_16)
-    -- line: [245, 249] id: 16
+    -- line: [246, 250] id: 16
     local r2_16 = r0_16.Params.Target:HasTag("Melee")
     if r2_16 then
       r2_16 = "Melee" and "Ranged"
@@ -262,7 +263,7 @@ return {
     r0_16.ActorController.ArmoryHelper.EnableCameraScrolling = false
   end,
   SetupInitialSkinPreview = function(r0_17, r1_17)
-    -- line: [251, 257] id: 17
+    -- line: [252, 258] id: 17
     r0_17.ActorController:ChangeCharAppearance({
       CharId = DataMgr.Skin[r1_17.TypeId].CharId,
       SkinId = r1_17.TypeId,
@@ -271,7 +272,7 @@ return {
     r0_17.ActorController:SetMontageAndCamera("Char", nil, nil)
   end,
   SetupInitialWeaponSkinPreview = function(r0_18, r1_18)
-    -- line: [259, 264] id: 18
+    -- line: [260, 265] id: 18
     r0_18.ActorController:ChangeWeaponSkin(r1_18.TypeId)
     local r2_18 = r0_18.Params.Target:HasTag("Melee")
     if r2_18 then
@@ -283,7 +284,7 @@ return {
     r0_18.ActorController.ArmoryHelper.EnableCameraScrolling = false
   end,
   SetupInitialResourcePreview = function(r0_19, r1_19)
-    -- line: [266, 289] id: 19
+    -- line: [267, 290] id: 19
     local r2_19 = DataMgr.Resource[r1_19.TypeId]
     if r2_19 then
       if r2_19.ResourceSType == "GestureItem" then
@@ -306,7 +307,7 @@ return {
     end
   end,
   ApplyAccessoryPreview = function(r0_20, r1_20)
-    -- line: [295, 314] id: 20
+    -- line: [296, 315] id: 20
     r0_20.ActorController.bPlaySameMontage = true
     r0_20:UpdateAccessoryCamera(r0_20.Params.AccessoryId, r0_20.Params.AccessoryType)
     if r1_20 == "CharAccessory" then
@@ -326,7 +327,7 @@ return {
     end
   end,
   UpdateToCharPreview = function(r0_21, r1_21)
-    -- line: [316, 334] id: 21
+    -- line: [317, 335] id: 21
     r0_21.ActorController:HidePlayerActor(r0_21.UIName, false)
     r0_21:HidePlayerWeapon(true)
     r0_21:HideSingleWeapon(true)
@@ -350,7 +351,7 @@ return {
     r0_21.ActorController:SetMontageAndCamera("Char", nil, nil)
   end,
   UpdateToWeaponPreview = function(r0_22, r1_22)
-    -- line: [336, 346] id: 22
+    -- line: [337, 347] id: 22
     r0_22.ActorController:HidePlayerActor(r0_22.UIName, true)
     r0_22:HidePlayerWeapon(true)
     local r2_22 = r0_22:CreatePreviewTargetData({
@@ -363,7 +364,7 @@ return {
     r0_22.ActorController.ArmoryHelper.EnableCameraScrolling = false
   end,
   UpdateToSkinPreview = function(r0_23, r1_23)
-    -- line: [348, 367] id: 23
+    -- line: [349, 368] id: 23
     r0_23.ActorController:HidePlayerActor(r0_23.UIName, false)
     r0_23:HidePlayerWeapon(true)
     r0_23:HideSingleWeapon(true)
@@ -388,7 +389,7 @@ return {
     r0_23.ActorController:SetMontageAndCamera("Char", nil, nil)
   end,
   UpdateToWeaponSkinPreview = function(r0_24, r1_24)
-    -- line: [369, 380] id: 24
+    -- line: [370, 381] id: 24
     r0_24.ActorController:HidePlayerActor(r0_24.UIName, true)
     r0_24:HidePlayerWeapon(true)
     local r2_24 = r0_24:CreatePreviewTargetData({
@@ -402,12 +403,12 @@ return {
     r0_24.ActorController.ArmoryHelper.EnableCameraScrolling = false
   end,
   UpdateToCharAccessoryPreview = function(r0_25, r1_25)
-    -- line: [382, 385] id: 25
+    -- line: [383, 386] id: 25
     r0_25:SetupDefaultCharacterModel()
     r0_25:ApplyAccessoryPreview("CharAccessory")
   end,
   UpdateToWeaponAccessoryPreview = function(r0_26, r1_26)
-    -- line: [387, 404] id: 26
+    -- line: [388, 405] id: 26
     r0_26.ActorController:HidePlayerActor(r0_26.UIName, true)
     r0_26:HidePlayerWeapon(true)
     r0_26:HideSingleWeapon(false)
@@ -426,14 +427,14 @@ return {
     r0_26.ActorController.ArmoryHelper.EnableCameraScrolling = false
   end,
   UpdateToResourcePreview = function(r0_27, r1_27)
-    -- line: [406, 414] id: 27
+    -- line: [407, 415] id: 27
     r0_27:SetupDefaultCharacterModel()
     r0_27.ActorController:SetArmoryMontageTag(r0_27.ActorController.ArmoryPlayer, "Armory")
     r0_27.ActorController.ArmoryPlayer:InvokeResourceBPFunction(r1_27.TypeId)
     r0_27.ActorController:SetArmoryCameraTag(DataMgr.Resource[r1_27.TypeId].CameraName and "Char", "", "")
   end,
   ClearCharAccessory = function(r0_28)
-    -- line: [416, 427] id: 28
+    -- line: [417, 428] id: 28
     r0_28.ActorController:StopPlayerFX()
     r0_28.ActorController:DestoryCreature(CommonConst.CharAccessoryTypes.FX_Dead)
     r0_28.ActorController:DestoryCreature(CommonConst.CharAccessoryTypes.FX_Body)
@@ -448,7 +449,7 @@ return {
     })
   end,
   ApplySuitPreview = function(r0_29, r1_29)
-    -- line: [433, 463] id: 29
+    -- line: [434, 464] id: 29
     local r2_29 = DataMgr.Reward[r1_29.SuitRewardId[1]]
     if not r2_29 then
       return 
@@ -480,7 +481,7 @@ return {
     r0_29.ActorController:ChangeCharAppearance(r3_29)
   end,
   ApplySingleRewardItem = function(r0_30, r1_30, r2_30, r3_30)
-    -- line: [465, 492] id: 30
+    -- line: [466, 493] id: 30
     if r1_30 == "Skin" then
       r0_30.ActorController:ChangeCharModel(r0_30:CreatePreviewTargetData({
         Type = "Char",
@@ -515,7 +516,7 @@ return {
     end
   end,
   RevertToSingleItemPreview = function(r0_31, r1_31)
-    -- line: [494, 506] id: 31
+    -- line: [495, 507] id: 31
     local r2_31 = r1_31.ItemType
     if r2_31 == "Skin" then
       r0_31:RevertToSkinPreview(r1_31)
@@ -528,7 +529,7 @@ return {
     end
   end,
   RevertToSkinPreview = function(r0_32, r1_32)
-    -- line: [513, 522] id: 32
+    -- line: [514, 523] id: 32
     r0_32.ActorController:ChangeCharAppearance({
       CharId = DataMgr.Skin[r1_32.TypeId].CharId,
       SkinId = r1_32.TypeId,
@@ -540,7 +541,7 @@ return {
     r0_32:HideZoomKey(false)
   end,
   RevertToWeaponSkinPreview = function(r0_33, r1_33)
-    -- line: [525, 536] id: 33
+    -- line: [526, 537] id: 33
     r0_33.ActorController:HidePlayerActor(r0_33.UIName, true)
     r0_33:HidePlayerWeapon(true)
     local r2_33 = r0_33:CreatePreviewTargetData({
@@ -556,7 +557,7 @@ return {
     r0_33:HideZoomKey(true)
   end,
   RevertToCharAccessoryPreview = function(r0_34, r1_34)
-    -- line: [539, 550] id: 34
+    -- line: [540, 551] id: 34
     local r2_34 = DataMgr.CharAccessory[r1_34.TypeId]
     local r3_34 = r0_34.Avatar.Chars[r0_34.Avatar.CurrentChar]
     r0_34.ActorController:ChangeCharModel(r0_34:CreatePreviewTargetData({
@@ -569,7 +570,7 @@ return {
     r0_34:HideZoomKey(false)
   end,
   RevertToWeaponAccessoryPreview = function(r0_35, r1_35)
-    -- line: [553, 570] id: 35
+    -- line: [554, 571] id: 35
     r0_35.ActorController:HidePlayerActor(r0_35.UIName, true)
     local r2_35 = DataMgr.WeaponAccessory[r1_35.TypeId]
     if not r2_35 then
@@ -587,7 +588,7 @@ return {
     r0_35:HideZoomKey(true)
   end,
   SwitchWeaponAccessoryPreview = function(r0_36, r1_36)
-    -- line: [575, 598] id: 36
+    -- line: [576, 599] id: 36
     if not r0_36.ActorController or not r0_36.Avatar then
       return 
     end
@@ -611,7 +612,7 @@ return {
     r0_36.ActorController:ChangeWeaponAccessory(r3_36)
   end,
   ReplayGesture = function(r0_37, r1_37)
-    -- line: [601, 609] id: 37
+    -- line: [602, 610] id: 37
     if not r0_37.ActorController or not r0_37.ActorController.ArmoryPlayer then
       return 
     end
@@ -620,79 +621,89 @@ return {
       r0_37.ActorController.ArmoryPlayer:InvokeResourceBPFunction(r1_37)
     end
   end,
-  HidePlayerWeapon = function(r0_38, r1_38)
-    -- line: [613, 618] id: 38
-    if not r0_38.ActorController:GetPlayerWeaponActor() then
+  ForceUpdateLight = function(r0_38)
+    -- line: [614, 622] id: 38
+    if r0_38.ActorController and r0_38.ActorController.UpdatePreviewSceneLight then
+      if r0_38.PreviewItemData and r0_38.SpecialLightGesture and r0_38.SpecialLightGesture[r0_38.PreviewItemData.TypeId] then
+        r0_38.ActorController:UpdatePreviewSceneLight(true, true)
+      else
+        r0_38.ActorController:UpdatePreviewSceneLight(false, true)
+      end
+    end
+  end,
+  HidePlayerWeapon = function(r0_39, r1_39)
+    -- line: [624, 629] id: 39
+    if not r0_39.ActorController:GetPlayerWeaponActor() then
       return 
     end
-    r0_38.ActorController:GetPlayerWeaponActor():SetActorHideTag(r0_38.UIName, r1_38)
+    r0_39.ActorController:GetPlayerWeaponActor():SetActorHideTag(r0_39.UIName, r1_39)
   end,
-  HideSingleWeapon = function(r0_39, r1_39)
-    -- line: [620, 629] id: 39
-    if not UIManager(r0_39).ShowWeapon then
+  HideSingleWeapon = function(r0_40, r1_40)
+    -- line: [631, 640] id: 40
+    if not UIManager(r0_40).ShowWeapon then
       return 
     end
-    UIManager(r0_39).ShowWeapon:SetActorHideTag(r0_39.UIName, r1_39)
+    UIManager(r0_40).ShowWeapon:SetActorHideTag(r0_40.UIName, r1_40)
   end,
-  HideAllPreviewActor = function(r0_40)
-    -- line: [631, 637] id: 40
-    if r0_40.ActorController then
-      r0_40.ActorController:HidePlayerActor(r0_40.UIName, true)
-      r0_40:HidePlayerWeapon(true)
-      r0_40:HideSingleWeapon(true)
+  HideAllPreviewActor = function(r0_41)
+    -- line: [642, 648] id: 41
+    if r0_41.ActorController then
+      r0_41.ActorController:HidePlayerActor(r0_41.UIName, true)
+      r0_41:HidePlayerWeapon(true)
+      r0_41:HideSingleWeapon(true)
     end
   end,
-  StopActorSound = function(r0_41)
-    -- line: [639, 645] id: 41
-    if r0_41.ActorController and r0_41.ActorController.ArmoryPlayer then
-      r0_41.ActorController:StopPlayerMontage()
-      r0_41.ActorController:StopPlayerFX()
-      r0_41.ActorController.ArmoryPlayer:RemoveAllEffectCreature()
+  StopActorSound = function(r0_42)
+    -- line: [650, 656] id: 42
+    if r0_42.ActorController and r0_42.ActorController.ArmoryPlayer then
+      r0_42.ActorController:StopPlayerMontage()
+      r0_42.ActorController:StopPlayerFX()
+      r0_42.ActorController.ArmoryPlayer:RemoveAllEffectCreature()
     end
   end,
-  SetCameraToDefault = function(r0_42)
-    -- line: [647, 660] id: 42
-    if r0_42.CurrentCameraState == "Default" then
-      return 
-    end
-    local r1_42 = UE4.UGameplayStatics.GetPlayerController(r0_42, 0)
-    local r2_42 = UE4.UGameplayStatics.GetPlayerCharacter(r0_42, 0)
-    local r3_42 = r0_42.ActorController
-    if r1_42 and r2_42 and r3_42 then
-      r1_42:SetViewTargetWithBlend(r2_42)
-      r0_42.CurrentCameraState = "Default"
-    end
-  end,
-  SetCameraToPreviewActor = function(r0_43)
-    -- line: [662, 676] id: 43
-    if r0_43.CurrentCameraState == "Preview" then
+  SetCameraToDefault = function(r0_43)
+    -- line: [658, 671] id: 43
+    if r0_43.CurrentCameraState == "Default" then
       return 
     end
     local r1_43 = UE4.UGameplayStatics.GetPlayerController(r0_43, 0)
-    local r2_43 = r0_43.ActorController
-    if r1_43 and r2_43 then
-      local r3_43 = r2_43:GetViewTarget()
-      if r3_43 then
-        r1_43:SetViewTargetWithBlend(r3_43)
-        r0_43.CurrentCameraState = "Preview"
+    local r2_43 = UE4.UGameplayStatics.GetPlayerCharacter(r0_43, 0)
+    local r3_43 = r0_43.ActorController
+    if r1_43 and r2_43 and r3_43 then
+      r1_43:SetViewTargetWithBlend(r2_43)
+      r0_43.CurrentCameraState = "Default"
+    end
+  end,
+  SetCameraToPreviewActor = function(r0_44)
+    -- line: [673, 687] id: 44
+    if r0_44.CurrentCameraState == "Preview" then
+      return 
+    end
+    local r1_44 = UE4.UGameplayStatics.GetPlayerController(r0_44, 0)
+    local r2_44 = r0_44.ActorController
+    if r1_44 and r2_44 then
+      local r3_44 = r2_44:GetViewTarget()
+      if r3_44 then
+        r1_44:SetViewTargetWithBlend(r3_44)
+        r0_44.CurrentCameraState = "Preview"
       end
     end
   end,
-  DestroyPreviewActor = function(r0_44)
-    -- line: [680, 686] id: 44
-    if r0_44.ActorController then
-      r0_44.ActorController:DestroyMount()
-      r0_44.ActorController:OnDestruct()
-      r0_44.ActorController = nil
+  DestroyPreviewActor = function(r0_45)
+    -- line: [691, 697] id: 45
+    if r0_45.ActorController then
+      r0_45.ActorController:DestroyMount()
+      r0_45.ActorController:OnDestruct()
+      r0_45.ActorController = nil
     end
   end,
-  ClosePreview = function(r0_45)
-    -- line: [688, 697] id: 45
-    if r0_45.ActorController and r0_45.EffectCreatureHideTags then
-      for r5_45, r6_45 in pairs(r0_45.EffectCreatureHideTags) do
-        r0_45.ActorController.ArmoryPlayer:HideAllEffectCreature(r5_45, r6_45)
+  ClosePreview = function(r0_46)
+    -- line: [699, 708] id: 46
+    if r0_46.ActorController and r0_46.EffectCreatureHideTags then
+      for r5_46, r6_46 in pairs(r0_46.EffectCreatureHideTags) do
+        r0_46.ActorController.ArmoryPlayer:HideAllEffectCreature(r5_46, r6_46)
       end
-      -- close: r1_45
+      -- close: r1_46
     end
   end,
   "BluePrints.Common.DelayFrameComponent"

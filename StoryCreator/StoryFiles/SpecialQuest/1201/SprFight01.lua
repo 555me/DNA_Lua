@@ -840,12 +840,12 @@ r5_0.propsData = {
   SoundPath = "event:/ambience/common/pad_noise_rain_plain_heavy",
   ParamKey = "",
   ParamValue = 0,
-  RelatedRegionId = {
+  RelatedRegionId = {},
+  ClientRelatedRegionId = {
     104110,
     104107
   },
-  ClientRelatedRegionId = {},
-  bStoreToServer = true,
+  bStoreToServer = false,
 }
 r4_0["1764933025563984"] = r5_0
 r4_0["176537541467357116590"] = {

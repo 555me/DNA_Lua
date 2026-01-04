@@ -1,335 +1,330 @@
-local MiscUtils = require("Utils.MiscUtils")
-local Component = {}
-
-function Component:EnterWorld()
-end
-
-function Component:GMEnterDsVersion(DungeonId, DSVersion)
-  self:EnterDungeon(DungeonId, 2, nil, nil, nil, {DSVersion = DSVersion})
-end
-
-function Component:CommonPreEnterDungeon()
-  GWorld:CloseWorldRegionState()
-end
-
-function Component:EnterDungeon(DungeonId, DungeonNetMode, OtherCallback, TicketId, SquadId, CustomParams)
-  self:CommonPreEnterDungeon()
-  if not DungeonId then
-    return
-  end
-  local DungeonInfo = DataMgr.Dungeon[DungeonId]
-  if not DungeonInfo then
-    return
-  end
-  
-  local function callback(Ret, ...)
-    self.logger.debug(string.format("EnterDungeon callback, Ret is %s, DungeonId is %s, DungeonNetMode is %s", Ret, DungeonId, DungeonNetMode))
-    if OtherCallback then
-      OtherCallback(Ret, ...)
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\Client\Entities\Components\DungeonMgr.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r0_0 = require("Utils.MiscUtils")
+return {
+  EnterWorld = function(r0_1)
+    -- line: [4, 5] id: 1
+  end,
+  GMEnterDsVersion = function(r0_2, r1_2, r2_2)
+    -- line: [7, 9] id: 2
+    r0_2:EnterDungeon(r1_2, 2, nil, nil, nil, {
+      DSVersion = r2_2,
+    })
+  end,
+  CommonPreEnterDungeon = function(r0_3)
+    -- line: [11, 13] id: 3
+    GWorld:CloseWorldRegionState()
+  end,
+  EnterDungeon = function(r0_4, r1_4, r2_4, r3_4, r4_4, r5_4, r6_4)
+    -- line: [15, 43] id: 4
+    r0_4:CommonPreEnterDungeon()
+    if not r1_4 then
+      return 
     end
-  end
-  
-  local DungeonType = DungeonInfo.DungeonType
-  print(_G.LogTag, "EnterDungeon with DungeonType", DungeonType, DungeonId, TicketId)
-  DungeonNetMode = DungeonNetMode or CommonConst.DungeonNetMode.Standalone
-  CustomParams = CustomParams or {}
-  CustomParams.DSVersion = CustomParams.DSVersion or MiscUtils.GetGameCofingSettings("DSVersion") or 0
-  TicketId = TicketId or -1
-  SquadId = SquadId or 0
-  self:CallServer("ClientEnterDungeon", callback, DungeonId, DungeonNetMode, SquadId, TicketId, CustomParams)
-end
-
-function Component:EnterDungeonAgain(OtherCallback, TicketId, SquadId, CustomParams)
-  DebugPrint("gmy@DungeonMgr Component:EnterDungeonAgain", OtherCallback, TicketId, SquadId, CustomParams)
-  self:CommonPreEnterDungeon()
-  
-  local function callback(Ret, ...)
-    self.logger.debug(string.format("EnterDungeonAgain callback, Ret is %s", Ret))
-    if OtherCallback then
-      OtherCallback(Ret, ...)
+    local r7_4 = DataMgr.Dungeon[r1_4]
+    if not r7_4 then
+      return 
     end
-  end
-  
-  CustomParams = CustomParams or {}
-  CustomParams.DSVersion = CustomParams.DSVersion or Const.DSVersion
-  TicketId = TicketId or -1
-  SquadId = SquadId or 0
-  self:CallServer("ClientEnterDungeonAgain", callback, SquadId, TicketId, CustomParams)
-end
-
-function Component:CancelEnterDungeon(DungeonNetMode)
-  if self:IsInTeam() then
-    self:CallServer("TeamCancelEnterDungeon")
-  else
-    local function callback(Ret)
-      self.logger.debug("CancelEnterDungeon callback, ", Ret)
-      
-      ErrorCode:Check(Ret)
-    end
-    
-    self:CallServer("CancelEnterDungeon", callback, DungeonNetMode)
-  end
-end
-
-function Component:OnCancelEnterDungeon()
-  print(_G.LogTag, "OnCancelEnterDungeon")
-end
-
-function Component:EnterCharTrial(Callback, DungeonId, CharTrialId)
-  self:EnterDungeon(DungeonId, nil, Callback, nil, nil, {Id = CharTrialId})
-end
-
-function Component:EnterCharTrialByEvent(Callback, DungeonId, EventId)
-  self:EnterEventDungeon(Callback, DungeonId, nil, EventId)
-end
-
-function Component:EnterEventDungeon(Callback, DungeonId, SquadId, EventId, CustomParams)
-  self:CommonPreEnterDungeon()
-  if not DungeonId then
-    return
-  end
-  assert(DataMgr.Dungeon[DungeonId])
-  assert(EventId)
-  SquadId = SquadId or 0
-  CustomParams = CustomParams or {}
-  
-  local function cb(Ret, ...)
-    print(_G.LogTag, "EnterEventDungeon callback, ret ", Ret)
-    if Callback then
-      Callback(Ret, ...)
-    end
-  end
-  
-  self:CallServer("EnterEventDungeon", cb, DungeonId, SquadId, EventId, CustomParams)
-end
-
-function Component:OnDungeonFinish(DungeonId, IsWin, Rewards, DungeonRewards, PlayerTime, GameTime, bInterrupt)
-  self.logger.info(string.format("OnDungeonFinish, DungeonId is %d, IsWin is %s, PlayerTime is %s, GameTime is %s", DungeonId, IsWin, PlayerTime, GameTime))
-  self.CacheDSInfo = nil
-  self:ResetCachedDungeonRewards()
-  local UIManger = GWorld.GameInstance:GetGameUIManager()
-  if not UIManger then
-    return
-  end
-  if not self:IsInDungeon2() and not self:IsInHardBoss() then
-    print(_G.LogTag, "LogicServer_OnDungeonFinish Not InDungeon or InHardBoss")
-    return
-  end
-  
-  local function RealOnDungeonFinish()
-    print(_G.LogTag, "LogicServer_OnDungeonFinish RealOnDungeonFinish", DungeonId, IsWin, Rewards, DungeonRewards, PlayerTime, GameTime, bInterrupt)
-    if self.ReconnectTag then
-      EventManager:RemoveEvent(EventID.CloseLoading, self)
-    end
-    GWorld.GameInstance:PushLogicServerCallbackInfo(IsWin, DungeonId, Rewards, DungeonRewards, PlayerTime, GameTime)
-  end
-  
-  if GWorld.GameInstance:GetLoadingUI() then
-    print(_G.LogTag, "LogicServer_OnDungeonFinish GetLoadingUI")
-    self.ReconnectTag = true
-    EventManager:AddEvent(EventID.CloseLoading, self, RealOnDungeonFinish)
-    return
-  end
-  print(_G.LogTag, "LogicServer_OnDungeonFinish OnDungeonFinish")
-  RealOnDungeonFinish()
-end
-
-function Component:NotifyUnCostItems(Items)
-  self.logger.info("NotifyUnCostItems")
-  PrintTable(Items, 3)
-  DebugPrint("thy    NotifyUnCostItems In")
-  GWorld.GameInstance.UnCostItemsInfo = Items
-  local DungeonSettlementView = UIManager(self):GetUI("DungeonSettlement")
-  if DungeonSettlementView then
-    DungeonSettlementView:InitRefundInfo(GWorld.GameInstance.UnCostItemsInfo)
-  end
-end
-
-function Component:UpdateDungeonProgress()
-  print(_G.LogTag, "Avatar UpdateDungeonProgress")
-  self:CallServerMethod("UpdateDungeonProgress")
-end
-
-function Component:ContinueDungeonSettlement(BattleInfo, Callback, TicketId, SquadId)
-  if self:IsInDungeon() then
-    self:EnterDungeon(BattleInfo, nil, Callback, TicketId, SquadId)
-  elseif self:IsInHardBoss() then
-    self:EnterHardBoss(BattleInfo.HardBossId, BattleInfo.DifficultyId, Callback)
-  end
-end
-
-function Component:ExitDungeonSettlement()
-  if self:IsInDungeon() then
-    self:ExitDungeon()
-  elseif self:IsInHardBoss() then
-    self:ExitHardBoss()
-  end
-end
-
-function Component:ExitDungeon()
-  if GWorld:IsListenServer() then
-    self:UnregisterLS()
-  end
-  local PlayerController = UE4.UGameplayStatics.GetPlayerController(GWorld.GameInstance, 0)
-  if PlayerController then
-    PlayerController = PlayerController:Cast(UE4.ASinglePlayerController)
-    if PlayerController then
-      local Player = PlayerController:GetMyPawn()
-      if Player then
-        Player:SetCanInteractiveTrigger(true)
+    local function r8_4(r0_5, ...)
+      -- line: [25, 32] id: 5
+      r0_4.logger.debug(string.format("EnterDungeon callback, Ret is %s, DungeonId is %s, DungeonNetMode is %s", r0_5, r1_4, r2_4))
+      if r3_4 then
+        r3_4(r0_5, ...)
       end
     end
-  end
-  if (GWorld:IsStandAlone() or GWorld:IsClient()) and PlayerController then
-    local PreloadSystem = UE4.USubsystemBlueprintLibrary.GetGameInstanceSubsystem(PlayerController, UE4.URolePreloadGameInstanceSubsystem)
-    if PreloadSystem then
-      PreloadSystem:ReleaseAllCacheBeforeChangeScene(UE.TArray(0))
-      PreloadSystem:ReleaseAllCacheObj()
+    print(_G.LogTag, "EnterDungeon with DungeonType", r7_4.DungeonType, r1_4, r4_4)
+    if not r2_4 then
+      r2_4 = CommonConst.DungeonNetMode.Standalone
     end
-  end
-  self:RecoverRegion_ExitDungeon()
-end
-
-function Component:CheckMoveToTempScene(CurrentDungeonId, IsWin)
-  local GameState = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(GWorld.GameInstance)
-  local LevelLoader = GameState:GetCurrentLevelLoader()
-  if LevelLoader then
-    local PlayerController = UE4.UGameplayStatics.GetPlayerController(GWorld.GameInstance, 0)
-    local PlayerCharacter = PlayerController:GetMyPawn()
-    local PlayerCharacterLocation = PlayerCharacter:K2_GetActorLocation()
-    local PlayerCharacterRotation = PlayerCharacter:K2_GetActorRotation()
-    local LevelId = LevelLoader:GetLevelId(PlayerCharacter)
-    local MapFile, Position, Rotation = LevelLoader:K2_GetArtPathByLevelId(LevelId)
-    local DungeonInfo = DataMgr.Dungeon[CurrentDungeonId]
-    if DungeonInfo and DungeonInfo.ExitLevel then
-      MapFile = DungeonInfo.ExitLevel
-      local EndLocation = FVector(DungeonInfo.ExitPlayerLocation[1], DungeonInfo.ExitPlayerLocation[2], DungeonInfo.ExitPlayerLocation[3])
-      local EndRotaion = FRotator(DungeonInfo.ExitPlayerRotation[2], DungeonInfo.ExitPlayerRotation[3], DungeonInfo.ExitPlayerRotation[1])
-      local SpawnTransform = FTransform(EndRotaion:ToQuat(), EndLocation)
-      GWorld.GameInstance:SetExitLevelEndPointInfo(SpawnTransform)
-      local EndPointSeqEnable, EndPointLocation, EndPointRotation = PlayerCharacter:GetEndPointInfo()
-      if EndPointSeqEnable then
-        EndPointLocation = PlayerCharacterLocation
-        EndPointRotation = PlayerCharacterRotation
-        GWorld.GameInstance:CachePlayerCharacterInfo(EndPointSeqEnable, EndPointLocation, EndPointRotation)
+    if not r6_4 then
+      r6_4 = {}
+    end
+    r6_4.DSVersion = r6_4.DSVersion and r0_0.GetGameCofingSettings("DSVersion") and 0
+    if not r4_4 then
+      r4_4 = -1
+    end
+    if not r5_4 then
+      r5_4 = 0
+    end
+    r0_4:CallServer("ClientEnterDungeon", r8_4, r1_4, r2_4, r5_4, r4_4, r6_4)
+  end,
+  EnterDungeonAgain = function(r0_6, r1_6, r2_6, r3_6)
+    -- line: [46, 62] id: 6
+    DebugPrint("gmy@DungeonMgr Component:EnterDungeonAgain", r1_6, r2_6, r3_6)
+    r0_6:CommonPreEnterDungeon()
+    local function r4_6(r0_7, ...)
+      -- line: [49, 56] id: 7
+      r0_6.logger.debug(string.format("EnterDungeonAgain callback, Ret is %s", r0_7))
+      ErrorCode:Check(r0_7)
+      if r1_6 then
+        r1_6(r0_7, ...)
+      end
+    end
+    if not r3_6 then
+      r3_6 = {}
+    end
+    r3_6.DSVersion = r3_6.DSVersion and Const.DSVersion
+    if not r2_6 then
+      r2_6 = -1
+    end
+    r0_6:CallServer("ClientEnterDungeonAgain", r4_6, r2_6, r3_6)
+  end,
+  CancelEnterDungeon = function(r0_8, r1_8)
+    -- line: [64, 74] id: 8
+    if r0_8:IsInTeam() then
+      r0_8:CallServer("TeamCancelEnterDungeon")
+    else
+      r0_8:CallServer("CancelEnterDungeon", function(r0_9)
+        -- line: [68, 71] id: 9
+        r0_8.logger.debug("CancelEnterDungeon callback, ", r0_9)
+        ErrorCode:Check(r0_9)
+      end, r1_8)
+    end
+  end,
+  OnCancelEnterDungeon = function(r0_10)
+    -- line: [76, 78] id: 10
+    print(_G.LogTag, "OnCancelEnterDungeon")
+  end,
+  EnterCharTrial = function(r0_11, r1_11, r2_11, r3_11)
+    -- line: [80, 82] id: 11
+    r0_11:EnterDungeon(r2_11, nil, r1_11, nil, nil, {
+      Id = r3_11,
+    })
+  end,
+  EnterCharTrialByEvent = function(r0_12, r1_12, r2_12, r3_12)
+    -- line: [84, 86] id: 12
+    r0_12:EnterEventDungeon(r1_12, r2_12, nil, r3_12)
+  end,
+  EnterEventDungeon = function(r0_13, r1_13, r2_13, r3_13, r4_13, r5_13)
+    -- line: [88, 106] id: 13
+    r0_13:CommonPreEnterDungeon()
+    if not r2_13 then
+      return 
+    end
+    assert(DataMgr.Dungeon[r2_13])
+    assert(r4_13)
+    if not r3_13 then
+      r3_13 = 0
+    end
+    if not r5_13 then
+      r5_13 = {}
+    end
+    r0_13:CallServer("EnterEventDungeon", function(r0_14, ...)
+      -- line: [98, 104] id: 14
+      print(_G.LogTag, "EnterEventDungeon callback, ret ", r0_14)
+      if r1_13 then
+        r1_13(r0_14, ...)
+      end
+    end, r2_13, r3_13, r4_13, r5_13)
+  end,
+  OnDungeonFinish = function(r0_15, r1_15, r2_15, r3_15, r4_15, r5_15, r6_15, r7_15)
+    -- line: [108, 142] id: 15
+    r0_15.logger.info(string.format("OnDungeonFinish, DungeonId is %d, IsWin is %s, PlayerTime is %s, GameTime is %s", r1_15, r2_15, r5_15, r6_15))
+    PrintTable({
+      ClientRes = r7_15,
+    }, 10)
+    r0_15.CacheDSInfo = nil
+    r0_15:ResetCachedDungeonRewards()
+    if not GWorld.GameInstance:GetGameUIManager() then
+      return 
+    end
+    if not r0_15:IsInDungeon2() and not r0_15:IsInHardBoss() then
+      print(_G.LogTag, "LogicServer_OnDungeonFinish Not InDungeon or InHardBoss")
+      return 
+    end
+    local function r9_15()
+      -- line: [123, 130] id: 16
+      print(_G.LogTag, "LogicServer_OnDungeonFinish RealOnDungeonFinish", r1_15, r2_15, r3_15, r4_15, r5_15, r6_15)
+      if r0_15.ReconnectTag then
+        EventManager:RemoveEvent(EventID.CloseLoading, r0_15)
+      end
+      GWorld.GameInstance:PushLogicServerCallbackInfo(r2_15, r1_15, r3_15, r4_15, r5_15, r6_15, r7_15)
+    end
+    if GWorld.GameInstance:GetLoadingUI() then
+      print(_G.LogTag, "LogicServer_OnDungeonFinish GetLoadingUI")
+      r0_15.ReconnectTag = true
+      EventManager:AddEvent(EventID.CloseLoading, r0_15, r9_15)
+      return 
+    end
+    print(_G.LogTag, "LogicServer_OnDungeonFinish OnDungeonFinish")
+    r9_15()
+  end,
+  NotifyUnCostItems = function(r0_17, r1_17)
+    -- line: [144, 153] id: 17
+    r0_17.logger.info("NotifyUnCostItems")
+    PrintTable(r1_17, 3)
+    DebugPrint("thy    NotifyUnCostItems In")
+    GWorld.GameInstance.UnCostItemsInfo = r1_17
+    local r2_17 = UIManager(r0_17):GetUI("DungeonSettlement")
+    if r2_17 then
+      r2_17:InitRefundInfo(GWorld.GameInstance.UnCostItemsInfo)
+    end
+  end,
+  UpdateDungeonProgress = function(r0_18)
+    -- line: [155, 158] id: 18
+    print(_G.LogTag, "Avatar UpdateDungeonProgress")
+    r0_18:CallServerMethod("UpdateDungeonProgress")
+  end,
+  ContinueDungeonSettlement = function(r0_19, r1_19, r2_19, r3_19, r4_19)
+    -- line: [161, 167] id: 19
+    if r0_19:IsInDungeon() then
+      r0_19:EnterDungeon(r1_19, nil, r2_19, r3_19, r4_19)
+    elseif r0_19:IsInHardBoss() then
+      r0_19:EnterHardBoss(r1_19.HardBossId, r1_19.DifficultyId, r2_19)
+    end
+  end,
+  ExitDungeonSettlement = function(r0_20)
+    -- line: [169, 175] id: 20
+    if r0_20:IsInDungeon() then
+      r0_20:ExitDungeon()
+    elseif r0_20:IsInHardBoss() then
+      r0_20:ExitHardBoss()
+    end
+  end,
+  ExitDungeon = function(r0_21)
+    -- line: [180, 206] id: 21
+    if GWorld:IsListenServer() then
+      r0_21:UnregisterLS()
+    end
+    local r1_21 = UE4.UGameplayStatics.GetPlayerController(GWorld.GameInstance, 0)
+    if r1_21 then
+      r1_21 = r1_21:Cast(UE4.ASinglePlayerController)
+      if r1_21 then
+        local r2_21 = r1_21:GetMyPawn()
+        if r2_21 then
+          r2_21:SetCanInteractiveTrigger(true)
+        end
+      end
+    end
+    if (GWorld:IsStandAlone() or GWorld:IsClient()) and r1_21 then
+      local r2_21 = UE4.USubsystemBlueprintLibrary.GetGameInstanceSubsystem(r1_21, UE4.URolePreloadGameInstanceSubsystem)
+      if r2_21 then
+        r2_21:ReleaseAllCacheBeforeChangeScene(UE.TArray(0))
+        r2_21:ReleaseAllCacheObj()
+      end
+    end
+    r0_21:RecoverRegion_ExitDungeon()
+  end,
+  CheckMoveToTempScene = function(r0_22, r1_22, r2_22)
+    -- line: [209, 275] id: 22
+    local r4_22 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(GWorld.GameInstance):GetCurrentLevelLoader()
+    if r4_22 then
+      local r5_22 = UE4.UGameplayStatics.GetPlayerController(GWorld.GameInstance, 0)
+      local r6_22 = r5_22:GetMyPawn()
+      local r7_22 = r6_22:K2_GetActorLocation()
+      local r8_22 = r6_22:K2_GetActorRotation()
+      local r10_22, r11_22, r12_22 = r4_22:K2_GetArtPathByLevelId(r4_22:GetLevelId(r6_22))
+      local r13_22 = DataMgr.Dungeon[r1_22]
+      if r13_22 and r13_22.ExitLevel then
+        r10_22 = r13_22.ExitLevel
+        GWorld.GameInstance:SetExitLevelEndPointInfo(FTransform(FRotator(r13_22.ExitPlayerRotation[2], r13_22.ExitPlayerRotation[3], r13_22.ExitPlayerRotation[1]):ToQuat(), FVector(r13_22.ExitPlayerLocation[1], r13_22.ExitPlayerLocation[2], r13_22.ExitPlayerLocation[3])))
+        local r17_22, r18_22, r19_22 = r6_22:GetEndPointInfo()
+        if r17_22 then
+          GWorld.GameInstance:CachePlayerCharacterInfo(r17_22, r7_22, r8_22)
+        end
+      else
+        local r14_22 = UE4.UKismetMathLibrary.MakeTransform(r11_22, r12_22, UE4.UKismetMathLibrary.Vector_One())
+        GWorld.GameInstance:SetFixedStartPoint(UE4.UKismetMathLibrary.InverseTransformLocation(r14_22, r7_22), UE4.UKismetMathLibrary.InverseTransformRotation(r14_22, r8_22), UE4.UKismetMathLibrary.InverseTransformRotation(r14_22, r5_22:GetControlRotation()), r6_22:IsDead())
+        local r16_22, r17_22, r18_22 = r6_22:GetEndPointInfo()
+        if r16_22 then
+          GWorld.GameInstance:CachePlayerCharacterInfo(r16_22, UE4.UKismetMathLibrary.InverseTransformLocation(r14_22, r17_22), UE4.UKismetMathLibrary.InverseTransformRotation(r14_22, r18_22))
+        end
+      end
+      if CommonUtils.GetDeviceTypeByPlatformName(r0_22) == "Mobile" then
+        local r14_22 = string.gsub(r10_22, "/Maps/", "/Maps_Phone/")
+        if UResourceLibrary.CheckResourceExistOnDisk(r14_22) then
+          r10_22 = r14_22
+        end
+      end
+      if r10_22 then
+        r0_22:NotifyServerStatusModify(CommonConst.AvatarStatus.EnterSingleDungeon)
+        UE4.UGameplayStatics.OpenLevel(GWorld.GameInstance, r10_22, true, "EMCUSTOM=TempScene")
+      else
+        print(_G.ErrorTag, "MapFile is null.")
+        return false
       end
     else
-      local LevelTransform = UE4.UKismetMathLibrary.MakeTransform(Position, Rotation, UE4.UKismetMathLibrary.Vector_One())
-      PlayerCharacterLocation = UE4.UKismetMathLibrary.InverseTransformLocation(LevelTransform, PlayerCharacterLocation)
-      PlayerCharacterRotation = UE4.UKismetMathLibrary.InverseTransformRotation(LevelTransform, PlayerCharacterRotation)
-      local ControllerRotation = UE4.UKismetMathLibrary.InverseTransformRotation(LevelTransform, PlayerController:GetControlRotation())
-      GWorld.GameInstance:SetFixedStartPoint(PlayerCharacterLocation, PlayerCharacterRotation, ControllerRotation, PlayerCharacter:IsDead())
-      local EndPointSeqEnable, EndPointLocation, EndPointRotation = PlayerCharacter:GetEndPointInfo()
-      if EndPointSeqEnable then
-        EndPointLocation = UE4.UKismetMathLibrary.InverseTransformLocation(LevelTransform, EndPointLocation)
-        EndPointRotation = UE4.UKismetMathLibrary.InverseTransformRotation(LevelTransform, EndPointRotation)
-        GWorld.GameInstance:CachePlayerCharacterInfo(EndPointSeqEnable, EndPointLocation, EndPointRotation)
-      end
-    end
-    if CommonUtils.GetDeviceTypeByPlatformName(self) == "Mobile" then
-      local tempPath = string.gsub(MapFile, "/Maps/", "/Maps_Phone/")
-      if UResourceLibrary.CheckResourceExistOnDisk(tempPath) then
-        MapFile = tempPath
-      end
-    end
-    if MapFile then
-      self:NotifyServerStatusModify(CommonConst.AvatarStatus.EnterSingleDungeon)
-      UE4.UGameplayStatics.OpenLevel(GWorld.GameInstance, MapFile, true, "EMCUSTOM=TempScene")
-    else
-      print(_G.ErrorTag, "MapFile is null.")
+      print(_G.WarningTag, "LevelLoader is null.")
       return false
     end
-  else
-    print(_G.WarningTag, "LevelLoader is null.")
-    return false
-  end
-  return true
-end
-
-function Component:TryEnterNextProgress(Callback)
-  self:CallServer("TryEnterNextProgress", Callback)
-end
-
-function Component:SaveProgressData(DataTable)
-  print(_G.LogTag, "SaveProgressData")
-  local Character = UE4.UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
-  DataTable.AvatarInitData = Character:GetBattleExtraInfo()
-  local SerializedString = SerializeUtils:Serialize(DataTable)
-  self:CallServerMethod("SaveProgressData", SerializedString)
-end
-
-function Component:RecoverSingleDungeon(AvatarBattleInfo, DataString, PlayerSlice, DungeonId, bEnter, CurrentRewards)
-  print(_G.LogTag, "RecoverSingleDungeon", DungeonId, bEnter)
-  local SerializedTable
-  if "" ~= DataString then
-    SerializedTable = SerializeUtils:UnSerialize(DataString)
-    self.AvatarInitData = SerializedTable.AvatarInitData
-  end
-  local GameInstance = GWorld.GameInstance
-  GameInstance:SetProgressData(SerializedTable, PlayerSlice)
-  self.AvatarBattleInfo = AvatarBattleInfo
-  if not bEnter then
-    return
-  end
-  if CurrentRewards then
-    self:CacheDungeonRewards(CurrentRewards)
-  end
-  WorldTravelSubsystem():ChangeDungeonByDungeonId(DungeonId, CommonConst.DungeonNetMode.Standalone)
-end
-
-function Component:ConsumeAvatarInitData()
-  local result = self.AvatarInitData
-  self.AvatarInitData = nil
-  return result
-end
-
-function Component:SetDungeonDoubleCost(bDoubleCost)
-  self:CallServerMethod("SetDungeonDoubleCost", bDoubleCost)
-end
-
-function Component:SelectTicket(Callback, DungeonId, TicketId)
-  DebugPrint("SelectTicket", DungeonId, TicketId)
-  assert(DungeonId)
-  assert(TicketId)
-  
-  local function cb(ret)
-    DebugPrint("SelectTicket callback", ret)
-    if Callback then
-      Callback(ret)
+    return true
+  end,
+  TryEnterNextProgress = function(r0_23, r1_23)
+    -- line: [277, 279] id: 23
+    r0_23:CallServer("TryEnterNextProgress", r1_23)
+  end,
+  SaveProgressData = function(r0_24, r1_24)
+    -- line: [281, 287] id: 24
+    print(_G.LogTag, "SaveProgressData")
+    r1_24.AvatarInitData = UE4.UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0):GetBattleExtraInfo()
+    r0_24:CallServerMethod("SaveProgressData", SerializeUtils:Serialize(r1_24))
+  end,
+  RecoverSingleDungeon = function(r0_25, r1_25, r2_25, r3_25, r4_25, r5_25, r6_25)
+    -- line: [289, 310] id: 25
+    print(_G.LogTag, "RecoverSingleDungeon", r4_25, r5_25)
+    local r7_25 = nil
+    if r2_25 ~= "" then
+      r7_25 = SerializeUtils:UnSerialize(r2_25)
+      r0_25.AvatarInitData = r7_25.AvatarInitData
     end
-  end
-  
-  self:CallServer("SelectTicketForRunningDungeon", cb, DungeonId, TicketId)
-end
-
-function Component:GMDungeonEventTest(DungeonId, Count)
-  local function Cb(ret1, ret2)
-    DebugPrint("[GMDungeonEventTest] Detail:", CommonUtils.TableToString(ret2))
-    
-    DebugPrint("[GMDungeonEventTest] Count Result:", CommonUtils.TableToString(ret1))
-  end
-  
-  self:CallServer("GMDungeonEventTest", Cb, DungeonId, Count)
-end
-
-function Component:GMSetMustHappenDungenEvent(EventId)
-  self:CallServerMethod("GMSetMustHappenDungenEvent", EventId)
-end
-
-function Component:GMCleanMustHappenDungenEvent()
-  self:CallServerMethod("GMCleanMustHappenDungenEvent")
-end
-
-function Component:GMHappenDungenEvent(EventId, DungeonId)
-  self:CallServerMethod("GMHappenDungenEvent", EventId, DungeonId)
-end
-
-function Component:GMMiniGameTest(PetId, ResourceId, xValue)
-  local function Cb(ret1)
-    DebugPrint("[GMMiniGameTest]", ret1)
-  end
-  
-  self:CallServer("GMMiniGameTest", Cb, PetId, ResourceId, xValue)
-end
-
-return Component
+    GWorld.GameInstance:SetProgressData(r7_25, r3_25)
+    r0_25.AvatarBattleInfo = r1_25
+    if not r5_25 then
+      return 
+    end
+    if r6_25 then
+      r0_25:CacheDungeonRewards(r6_25)
+    end
+    WorldTravelSubsystem():ChangeDungeonByDungeonId(r4_25, CommonConst.DungeonNetMode.Standalone)
+  end,
+  ConsumeAvatarInitData = function(r0_26)
+    -- line: [312, 316] id: 26
+    r0_26.AvatarInitData = nil
+    return r0_26.AvatarInitData
+  end,
+  SetDungeonDoubleCost = function(r0_27, r1_27)
+    -- line: [318, 320] id: 27
+    r0_27:CallServerMethod("SetDungeonDoubleCost", r1_27)
+  end,
+  SelectTicket = function(r0_28, r1_28, r2_28, r3_28)
+    -- line: [322, 333] id: 28
+    DebugPrint("SelectTicket", r2_28, r3_28)
+    assert(r2_28)
+    assert(r3_28)
+    r0_28:CallServer("SelectTicketForRunningDungeon", function(r0_29)
+      -- line: [326, 331] id: 29
+      DebugPrint("SelectTicket callback", r0_29)
+      if r1_28 then
+        r1_28(r0_29)
+      end
+    end, r2_28, r3_28)
+  end,
+  GMDungeonEventTest = function(r0_30, r1_30, r2_30)
+    -- line: [335, 341] id: 30
+    r0_30:CallServer("GMDungeonEventTest", function(r0_31, r1_31)
+      -- line: [336, 339] id: 31
+      DebugPrint("[GMDungeonEventTest] Detail:", CommonUtils.TableToString(r1_31))
+      DebugPrint("[GMDungeonEventTest] Count Result:", CommonUtils.TableToString(r0_31))
+    end, r1_30, r2_30)
+  end,
+  GMSetMustHappenDungenEvent = function(r0_32, r1_32)
+    -- line: [342, 344] id: 32
+    r0_32:CallServerMethod("GMSetMustHappenDungenEvent", r1_32)
+  end,
+  GMCleanMustHappenDungenEvent = function(r0_33)
+    -- line: [345, 347] id: 33
+    r0_33:CallServerMethod("GMCleanMustHappenDungenEvent")
+  end,
+  GMHappenDungenEvent = function(r0_34, r1_34, r2_34)
+    -- line: [348, 350] id: 34
+    r0_34:CallServerMethod("GMHappenDungenEvent", r1_34, r2_34)
+  end,
+  GMMiniGameTest = function(r0_35, r1_35, r2_35, r3_35)
+    -- line: [351, 356] id: 35
+    r0_35:CallServer("GMMiniGameTest", function(r0_36)
+      -- line: [352, 354] id: 36
+      DebugPrint("[GMMiniGameTest]", r0_36)
+    end, r1_35, r2_35, r3_35)
+  end,
+}

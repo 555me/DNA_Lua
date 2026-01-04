@@ -10593,7 +10593,7 @@ end)("ShopItem", {
     StartTime = 1672545600,
     SubTabId = 100041,
     TypeId = 102,
-    TypeNum = 500,
+    TypeNum = 600,
   },
   [10004117] = {
     ItemId = 10004117,

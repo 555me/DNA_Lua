@@ -1,266 +1,271 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\WBP\Play\Widget\Depute\WBP_Play_NewDeputeltem_P_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local M = Class({
+local r0_0 = Class({
   "BluePrints.UI.BP_UIState_C"
 })
-local TypeSort = {
+local r1_0 = {
   Char = 1,
   Weapon = 2,
   Mod = 3,
   Draft = 4,
   Reward = 5,
-  Resource = 6
+  Resource = 6,
 }
-
-function M:Construct()
-  M.Super.Construct(self)
-  self:AddInputMethodChangedListen()
-  self.IsPC = CommonUtils.GetDeviceTypeByPlatformName(self) == "PC"
-  self.Panel_DeputeLevelItem:SetRenderOpacity(0)
-  self.Btn_Click.OnClicked:Add(self, self.OnClicked)
-  self.Btn_Click.OnPressed:Add(self, self.OnPressed)
-  self.Btn_Click.OnReleased:Add(self, self.OnReleased)
-  self:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
-  self:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
-  self.Item1:SetNavigationRuleExplicit(EUINavigation.Right, self.Item2)
-  self.Item2:SetNavigationRuleExplicit(EUINavigation.Right, self.Item3)
-  self.Item3:SetNavigationRuleExplicit(EUINavigation.Right, self.Item1)
-  self.Item1:SetNavigationRuleExplicit(EUINavigation.Left, self.Item3)
-  self.Item2:SetNavigationRuleExplicit(EUINavigation.Left, self.Item1)
-  self.Item3:SetNavigationRuleExplicit(EUINavigation.Left, self.Item2)
-  self:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
+function r0_0.Construct(r0_1)
+  -- line: [24, 49] id: 1
+  r0_0.Super.Construct(r0_1)
+  r0_1:AddInputMethodChangedListen()
+  r0_1.IsPC = CommonUtils.GetDeviceTypeByPlatformName(r0_1) == "PC"
+  r0_1.Panel_DeputeLevelItem:SetRenderOpacity(0)
+  r0_1.Btn_Click.OnClicked:Add(r0_1, r0_1.OnClicked)
+  r0_1.Btn_Click.OnPressed:Add(r0_1, r0_1.OnPressed)
+  r0_1.Btn_Click.OnReleased:Add(r0_1, r0_1.OnReleased)
+  r0_1:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
+  r0_1:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
+  r0_1.Item1:SetNavigationRuleExplicit(EUINavigation.Right, r0_1.Item2)
+  r0_1.Item2:SetNavigationRuleExplicit(EUINavigation.Right, r0_1.Item3)
+  r0_1.Item3:SetNavigationRuleExplicit(EUINavigation.Right, r0_1.Item1)
+  r0_1.Item1:SetNavigationRuleExplicit(EUINavigation.Left, r0_1.Item3)
+  r0_1.Item2:SetNavigationRuleExplicit(EUINavigation.Left, r0_1.Item1)
+  r0_1.Item3:SetNavigationRuleExplicit(EUINavigation.Left, r0_1.Item2)
+  r0_1:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
 end
-
-function M:RefreshOpInfoByInputDevice(CurInputDevice, CurGamepadName)
-  if CurInputDevice == ECommonInputType.Touch then
-    return
+function r0_0.RefreshOpInfoByInputDevice(r0_2, r1_2, r2_2)
+  -- line: [51, 79] id: 2
+  if r1_2 == ECommonInputType.Touch then
+    return 
   end
-  local IsUseKeyAndMouse = CurInputDevice == ECommonInputType.MouseAndKeyboard
-  self.Parent.DeputeTab:UpdateUIStyleInPlatform(not IsUseKeyAndMouse)
-  local StyleOfPlay = UIManager(self):GetUIObj("StyleOfPlay")
-  if StyleOfPlay and StyleOfPlay.ComTab and StyleOfPlay.ComTab.Group_Chat and StyleOfPlay.ComTab.Group_Chat:GetChildAt(0) then
-    StyleOfPlay.ComTab.Group_Chat:GetChildAt(0).bOpen = true
-    StyleOfPlay.ComTab.Group_Chat:GetChildAt(0):HideWSKey(true)
+  local r3_2 = r1_2 == ECommonInputType.MouseAndKeyboard
+  r0_2.Parent.DeputeTab:UpdateUIStyleInPlatform(not r3_2)
+  local r4_2 = UIManager(r0_2):GetUIObj("StyleOfPlay")
+  if r4_2 and r4_2.ComTab and r4_2.ComTab.Group_Chat and r4_2.ComTab.Group_Chat:GetChildAt(0) then
+    r4_2.ComTab.Group_Chat:GetChildAt(0).bOpen = true
+    r4_2.ComTab.Group_Chat:GetChildAt(0):HideWSKey(true)
   end
-  if IsUseKeyAndMouse then
-    if self.Com_Show then
-      self.Com_Show:SetVisibility(ESlateVisibility.Collapsed)
+  if r3_2 then
+    if r0_2.Com_Show then
+      r0_2.Com_Show:SetVisibility(ESlateVisibility.Collapsed)
     end
-    self:StopAnimation(self.Hover)
-    self:PlayAnimation(self.Unhover)
-    self.bIsHovered = false
+    if not r0_2.IsUnLocked then
+      r0_2:StopAnimation(r0_2.Hover)
+      r0_2:PlayAnimation(r0_2.Unhover)
+      r0_2.bIsHovered = false
+    end
   end
-  self.Super.RefreshOpInfoByInputDevice(self, CurInputDevice, CurGamepadName)
+  r0_2.Super.RefreshOpInfoByInputDevice(r0_2, r1_2, r2_2)
 end
-
-function M:OnListItemObjectSet(Content)
-  self.Content = Content
-  self.ChapterId = Content.ChapterId
-  self.Parent = Content.Parent
-  self:InitItemContent()
+function r0_0.OnListItemObjectSet(r0_3, r1_3)
+  -- line: [86, 91] id: 3
+  r0_3.Content = r1_3
+  r0_3.ChapterId = r1_3.ChapterId
+  r0_3.Parent = r1_3.Parent
+  r0_3:InitItemContent()
 end
-
-function M:InitItemContent()
-  local ChapterData = DataMgr.SelectDungeon[self.ChapterId]
-  if not ChapterData then
-    DebugPrint("SL_找不到关卡数据:", self.ChapterId)
-    return
+function r0_0.InitItemContent(r0_4)
+  -- line: [93, 123] id: 4
+  local r1_4 = DataMgr.SelectDungeon[r0_4.ChapterId]
+  if not r1_4 then
+    DebugPrint("SL_找不到关卡数据:", r0_4.ChapterId)
+    return 
   end
-  self.bIsHovered = false
-  local ChapterIcon = LoadObject(ChapterData.Path)
-  local Material = self.Image_Item:GetDynamicMaterial()
-  if Material then
-    Material:SetTextureParameterValue("IconMap", ChapterIcon)
+  r0_4.bIsHovered = false
+  local r2_4 = LoadObject(r1_4.Path)
+  local r3_4 = r0_4.Image_Item:GetDynamicMaterial()
+  if r3_4 then
+    r3_4:SetTextureParameterValue("IconMap", r2_4)
   end
-  self.Text_PlayName:SetText(GText(ChapterData.ChapterName))
-  self.Text_RewardItem:SetText(GText(ChapterData.ChapterSubName))
-  self:PlayAnimation(self.In)
-  if PageJumpUtils:CheckDungeonCondition(ChapterData.Condition) then
-    self.IsUnLocked = false
-    self:PlayAnimation(self.Normal)
-    self.Group_Lock:SetVisibility(ESlateVisibility.Collapsed)
+  r0_4.Text_PlayName:SetText(GText(r1_4.ChapterName))
+  r0_4.Text_RewardItem:SetText(GText(r1_4.ChapterSubName))
+  r0_4:PlayAnimation(r0_4.In)
+  if PageJumpUtils:CheckDungeonCondition(r1_4.Condition) then
+    r0_4.IsUnLocked = false
+    r0_4:PlayAnimation(r0_4.Normal)
+    r0_4.Group_Lock:SetVisibility(ESlateVisibility.Collapsed)
   else
-    self.IsUnLocked = true
-    self:PlayAnimation(self.Lock)
-    self.Group_Lock:SetVisibility(ESlateVisibility.Visible)
+    r0_4.IsUnLocked = true
+    r0_4:PlayAnimation(r0_4.Lock)
+    r0_4.Group_Lock:SetVisibility(ESlateVisibility.Visible)
   end
-  self:RefreshRewardInfoList(ChapterData.RewardViewId)
+  r0_4:RefreshRewardInfoList(r1_4.RewardViewId)
 end
-
-function M:RefreshRewardInfoList(DungeonReward)
-  if not DungeonReward then
+function r0_0.RefreshRewardInfoList(r0_5, r1_5)
+  -- line: [127, 216] id: 5
+  if not r1_5 then
     DebugPrint("SL DungeonReward is nil")
-    return
+    return 
   end
-  local RewardList = RewardUtils:GetRewardViewInfoById(DungeonReward)
-  table.sort(RewardList, function(A, B)
-    if A.Rarity == B.Rarity then
-      if TypeSort[A.Type] and TypeSort[B.Type] then
-        if TypeSort[A.Type] == TypeSort[B.Type] then
-          return A.Id < B.Id
+  local r2_5 = RewardUtils:GetRewardViewInfoById(r1_5)
+  table.sort(r2_5, function(r0_6, r1_6)
+    -- line: [133, 144] id: 6
+    if r0_6.Rarity == r1_6.Rarity then
+      if r1_0[r0_6.Type] and r1_0[r1_6.Type] then
+        if r1_0[r0_6.Type] == r1_0[r1_6.Type] then
+          return r0_6.Id < r1_6.Id
         end
-        return TypeSort[A.Type] < TypeSort[B.Type]
+        return r1_0[r0_6.Type] < r1_0[r1_6.Type]
       end
-      return A.Id < B.Id
+      return r0_6.Id < r1_6.Id
     end
-    return A.Rarity > B.Rarity
+    return r1_6.Rarity < r0_6.Rarity
   end)
-  local maxItems = 3
-  local SelectedRewards = {}
-  for i, ItemData in pairs(RewardList) do
-    if maxItems <= #SelectedRewards then
+  local r3_5 = 3
+  local r4_5 = {}
+  for r9_5, r10_5 in pairs(r2_5) do
+    if r3_5 > #r4_5 then
+      table.insert(r4_5, r10_5)
+    else
       break
     end
-    table.insert(SelectedRewards, ItemData)
   end
-  for i = 1, maxItems do
-    local Cell = self["Item" .. i]
-    if Cell then
-      local Data = SelectedRewards[i]
-      local Content = NewObject(UIUtils.GetCommonItemContentClass())
-      if Data then
-        Content.Id = Data.Id
-        Content.Icon = ItemUtils.GetItemIconPath(Data.Id, Data.Type)
-        Content.ParentWidget = self
-        Content.ItemType = Data.Type
-        Content.Rarity = Data.Rarity or 1
-        Content.IsShowDetails = true
-        Content.UIName = "StyleOfPlay"
-        Content.HandleMouseDown = true
-        Content.bAsyncLoadIcon = true
-        if Data.Quantity then
-          if #Data.Quantity > 1 then
-            Content.Count = Data.Quantity[1]
-            Content.MaxCount = Data.Quantity[2]
+  -- close: r5_5
+  for r8_5 = 1, r3_5, 1 do
+    local r9_5 = r0_5["Item" .. r8_5]
+    if r9_5 then
+      local r10_5 = r4_5[r8_5]
+      local r11_5 = NewObject(UIUtils.GetCommonItemContentClass())
+      if r10_5 then
+        r11_5.Id = r10_5.Id
+        r11_5.Icon = ItemUtils.GetItemIconPath(r10_5.Id, r10_5.Type)
+        r11_5.ParentWidget = r0_5
+        r11_5.ItemType = r10_5.Type
+        r11_5.Rarity = r10_5.Rarity and 1
+        r11_5.IsShowDetails = true
+        r11_5.UIName = "StyleOfPlay"
+        r11_5.HandleMouseDown = true
+        r11_5.bAsyncLoadIcon = true
+        if r10_5.Quantity then
+          if #r10_5.Quantity > 1 then
+            r11_5.Count = r10_5.Quantity[1]
+            r11_5.MaxCount = r10_5.Quantity[2]
           else
-            Content.Count = Data.Quantity[1]
+            r11_5.Count = r10_5.Quantity[1]
           end
         end
-        if not Cell.__OnMenuOpenChanged__ then
-          function Cell.__OnMenuOpenChanged__(_, bIsOpen)
-            self:OnStuffMenuOpenChanged(bIsOpen)
+        if not r9_5.__OnMenuOpenChanged__ then
+          function r9_5.__OnMenuOpenChanged__(r0_7, r1_7)
+            -- line: [185, 187] id: 7
+            r0_5:OnStuffMenuOpenChanged(r1_7)
           end
-          
-          Cell:BindEvents(self, {
-            OnMenuOpenChanged = Cell.__OnMenuOpenChanged__
+          r9_5:BindEvents(r0_5, {
+            OnMenuOpenChanged = r9_5.__OnMenuOpenChanged__,
           })
         end
-        Cell.bIsFocusable = true
-        if Cell.SetVisibility then
-          Cell:SetVisibility(ESlateVisibility.Visible)
+        r9_5.bIsFocusable = true
+        if r9_5.SetVisibility then
+          r9_5:SetVisibility(ESlateVisibility.Visible)
         end
       else
-        Cell.bIsFocusable = false
-        if Cell.SetVisibility then
-          Cell:SetVisibility(ESlateVisibility.HitTestInvisible)
+        r9_5.bIsFocusable = false
+        if r9_5.SetVisibility then
+          r9_5:SetVisibility(ESlateVisibility.HitTestInvisible)
         end
-        local Prev = self["Item" .. i - 1]
-        if Prev and Prev.SetNavigationRuleBase then
-          Prev:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
-          Prev:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
-          Prev:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
-          Prev:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
+        local r12_5 = r0_5["Item" .. r8_5 + -1]
+        if r12_5 and r12_5.SetNavigationRuleBase then
+          r12_5:SetNavigationRuleBase(EUINavigation.Up, EUINavigationRule.Stop)
+          r12_5:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
+          r12_5:SetNavigationRuleBase(EUINavigation.Left, EUINavigationRule.Stop)
+          r12_5:SetNavigationRuleBase(EUINavigation.Right, EUINavigationRule.Stop)
         end
       end
-      Cell:Init(Content)
+      r9_5:Init(r11_5)
     end
   end
 end
-
-function M:OnStuffMenuOpenChanged(bIsOpen)
+function r0_0.OnStuffMenuOpenChanged(r0_8, r1_8)
+  -- line: [218, 227] id: 8
   if UIUtils.UtilsGetCurrentInputType() ~= ECommonInputType.Gamepad then
-    return
+    return 
   end
-  if bIsOpen then
-    self:UpdatKeyDisplay("")
+  if r1_8 then
+    r0_8:UpdatKeyDisplay("")
   else
-    self:UpdatKeyDisplay("RewardWidget")
+    r0_8:UpdatKeyDisplay("RewardWidget")
   end
 end
-
-function M:OnClicked()
-  if self:IsAnimationPlaying(self.In) then
-    return
+function r0_0.OnClicked(r0_9)
+  -- line: [229, 250] id: 9
+  if r0_9:IsAnimationPlaying(r0_9.In) then
+    return 
   end
-  local Avatar = GWorld:GetAvatar()
-  if not Avatar then
+  if not GWorld:GetAvatar() then
     return false
   end
-  local ChapterData = DataMgr.SelectDungeon[self.ChapterId]
-  if ChapterData and PageJumpUtils:CheckDungeonCondition(ChapterData.Condition, true) then
-    if not self.Parent.Root:IsAnimationPlaying(self.Parent.Root.Out) and not self:IsAnimationPlaying(self.Click) then
-      local Item = UIManager(self):GetUIObj("StyleOfPlay")
-      Item.IsOpenSelectLevel = true
-      self.Clicked = true
-      AudioManager(self):PlayUISound(self, "event:/ui/common/click_btn_large", nil, nil)
-      self:StopAllAnimations()
-      self:PlayAnimation(self.Click)
+  local r2_9 = DataMgr.SelectDungeon[r0_9.ChapterId]
+  if r2_9 and PageJumpUtils:CheckDungeonCondition(r2_9.Condition, true) then
+    if not r0_9.Parent.Root:IsAnimationPlaying(r0_9.Parent.Root.Out) and not r0_9:IsAnimationPlaying(r0_9.Click) then
+      UIManager(r0_9):GetUIObj("StyleOfPlay").IsOpenSelectLevel = true
+      r0_9.Clicked = true
+      AudioManager(r0_9):PlayUISound(r0_9, "event:/ui/common/click_btn_large", nil, nil)
+      r0_9:StopAllAnimations()
+      r0_9:PlayAnimation(r0_9.Click)
     end
   else
-    AudioManager(self):PlayUISound(self, "event:/ui/common/click_select_lock", nil, nil)
+    AudioManager(r0_9):PlayUISound(r0_9, "event:/ui/common/click_select_lock", nil, nil)
   end
 end
-
-function M:OnPressed()
-  if self.IsUnLocked or self:IsAnimationPlaying(self.In) then
-    return
+function r0_0.OnPressed(r0_10)
+  -- line: [252, 258] id: 10
+  if r0_10.IsUnLocked or r0_10:IsAnimationPlaying(r0_10.In) then
+    return 
   end
-  self:StopAllAnimations()
-  self:PlayAnimation(self.Press)
+  r0_10:StopAllAnimations()
+  r0_10:PlayAnimation(r0_10.Press)
 end
-
-function M:OnReleased()
-  if self.IsUnLocked or self:IsAnimationPlaying(self.In) then
-    return
+function r0_0.OnReleased(r0_11)
+  -- line: [260, 265] id: 11
+  if r0_11.IsUnLocked or r0_11:IsAnimationPlaying(r0_11.In) then
+    return 
   end
-  self:PlayAnimation(self.Normal)
+  r0_11:PlayAnimation(r0_11.Normal)
 end
-
-function M:OnMouseEnter(MyGeometry, MouseEvent)
-  if self.IsUnLocked or not self.IsPC then
-    return
+function r0_0.OnMouseEnter(r0_12, r1_12, r2_12)
+  -- line: [279, 302] id: 12
+  if r0_12.IsUnLocked or not r0_12.IsPC then
+    return 
   end
-  if self.bIsHovered then
-    return
+  if r0_12.bIsHovered then
+    return 
   end
-  self.bIsHovered = true
-  AudioManager(self):PlayUISound(self, "event:/ui/common/hover_btn_large", nil, nil)
+  r0_12.bIsHovered = true
+  AudioManager(r0_12):PlayUISound(r0_12, "event:/ui/common/hover_btn_large", nil, nil)
   if UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad then
-    self:UpdatKeyDisplay("FocusSelfWidget")
-    if self.IsUnLocked or self:IsAnimationPlaying(self.In) or not self.IsPC then
+    r0_12:UpdatKeyDisplay("FocusSelfWidget")
+    if r0_12.IsUnLocked or r0_12:IsAnimationPlaying(r0_12.In) or not r0_12.IsPC then
       return UE4.UWidgetBlueprintLibrary.Unhandled()
     end
-    self:StopAllAnimations()
-    self:PlayAnimation(self.Hover)
+    r0_12:StopAllAnimations()
+    r0_12:PlayAnimation(r0_12.Hover)
   else
-    self:StopAnimation(self.Unhover)
-    self:PlayAnimation(self.Hover)
+    r0_12:StopAnimation(r0_12.Unhover)
+    r0_12:PlayAnimation(r0_12.Hover)
   end
 end
-
-function M:OnMouseLeave(MyGeometry, MouseEvent)
-  if self.IsUnLocked or not self.IsPC then
-    self.bIsHovered = false
-    return
+function r0_0.OnMouseLeave(r0_13, r1_13, r2_13)
+  -- line: [304, 318] id: 13
+  if r0_13.IsUnLocked or not r0_13.IsPC then
+    r0_13.bIsHovered = false
+    return 
   end
   if UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad then
-    if self:HasFocusedDescendants() or self:HasAnyUserFocus() then
-      return
+    if r0_13:HasFocusedDescendants() or r0_13:HasAnyUserFocus() then
+      return 
     end
-    self.Com_Show:SetVisibility(ESlateVisibility.Collapsed)
+    r0_13.Com_Show:SetVisibility(ESlateVisibility.Collapsed)
   end
-  self.bIsHovered = false
-  self:StopAnimation(self.Hover)
-  self:PlayAnimation(self.Unhover)
+  r0_13.bIsHovered = false
+  r0_13:StopAnimation(r0_13.Hover)
+  r0_13:PlayAnimation(r0_13.Unhover)
 end
-
-function M:OnAnimationFinished(InAnimation)
-  if InAnimation == self.Click then
-    local Item = UIManager(self):GetUIObj("StyleOfPlay")
-    Item.IsOpenSelectLevel = false
-    local SelectLevel = Item:OpenSubUI("DungeonSelect")
-    local DungeonList = DataMgr.SelectDungeon[self.ChapterId].DungeonList
-    SelectLevel:InitLevelList(DungeonList)
-    Item:InitOtherPageTab({
+function r0_0.OnAnimationFinished(r0_14, r1_14)
+  -- line: [320, 362] id: 14
+  if r1_14 == r0_14.Click then
+    local r2_14 = UIManager(r0_14):GetUIObj("StyleOfPlay")
+    r2_14.IsOpenSelectLevel = false
+    local r3_14 = r2_14:OpenSubUI("DungeonSelect")
+    r3_14:InitLevelList(DataMgr.SelectDungeon[r0_14.ChapterId].DungeonList)
+    r2_14:InitOtherPageTab({
       DynamicNode = {
         "Back",
         "ResourceBar",
@@ -269,229 +274,218 @@ function M:OnAnimationFinished(InAnimation)
       BottomKeyInfo = {
         {
           GamePadInfoList = {
-            {Type = "Add"},
-            GamePadSubKeyInfoList = {
-              {
-                Type = "Img",
-                ImgShortPath = "Up",
-                Owner = SelectLevel
-              },
-              {
-                Type = "Img",
-                ImgShortPath = "Y",
-                Owner = SelectLevel
-              }
+            {
+              Type = "Add",
             }
           },
           Desc = GText("UI_CTL_DeputeInfo"),
-          bLongPress = false
+          bLongPress = false,
         },
         {
           KeyInfoList = {
             {
               Type = "Text",
               Text = "Esc",
-              ClickCallback = SelectLevel.OnReturnKeyDown,
-              Owner = SelectLevel
+              ClickCallback = r3_14.OnReturnKeyDown,
+              Owner = r3_14,
             }
           },
           GamePadInfoList = {
             {
               Type = "Img",
               ImgShortPath = "B",
-              Owner = SelectLevel
+              Owner = r3_14,
             }
           },
-          Desc = GText("UI_BACK")
+          Desc = GText("UI_BACK"),
         }
       },
-      OwnerPanel = SelectLevel,
-      BackCallback = SelectLevel.OnReturnKeyDown,
+      OwnerPanel = r3_14,
+      BackCallback = r3_14.OnReturnKeyDown,
       StyleName = "Text",
-      TitleName = GText("UI_Dungeon_TabName")
+      TitleName = GText("UI_Dungeon_TabName"),
     }, nil, true)
     if UIUtils.UtilsGetCurrentInputType() ~= ECommonInputType.Gamepad then
-      return
+      return 
     end
-    SelectLevel:UpdatKeyDisplay("SelfWidget")
-  elseif InAnimation == self.In and self.bIsHovered then
-    self:StopAllAnimations()
-    self:PlayAnimation(self.Hover)
+    r3_14:UpdatKeyDisplay("SelfWidget")
+  elseif r1_14 == r0_14.In and r0_14.bIsHovered and not r0_14.IsUnLocked then
+    r0_14:StopAllAnimations()
+    r0_14:PlayAnimation(r0_14.Hover)
   end
 end
-
-function M:OnKeyDown(MyGeometry, InKeyEvent)
-  local InKey = UE4.UKismetInputLibrary.GetKey(InKeyEvent)
-  local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-  local IsEventHandled = false
-  if UE4.UKismetInputLibrary.Key_IsGamepadKey(InKey) then
-    IsEventHandled = self:OnGamePadDown(InKeyName)
+function r0_0.OnKeyDown(r0_15, r1_15, r2_15)
+  -- line: [364, 376] id: 15
+  local r3_15 = UE4.UKismetInputLibrary.GetKey(r2_15)
+  local r4_15 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_15)
+  local r5_15 = false
+  if UE4.UKismetInputLibrary.Key_IsGamepadKey(r3_15) then
+    r5_15 = r0_15:OnGamePadDown(r4_15)
   end
-  if IsEventHandled then
+  if r5_15 then
     return UWidgetBlueprintLibrary.Handled()
   else
     return UWidgetBlueprintLibrary.UnHandled()
   end
 end
-
-function M:OnGamePadDown(InKeyName)
-  DebugPrint("SL OnGamePadDown is InKeyName", InKeyName)
-  local IsEventHandled = false
-  if "Gamepad_LeftThumbstick" == InKeyName then
-    if not self.Item1:HasAnyUserFocus() or self.Item1:HasFocusedDescendants() then
-      self.Item1:SetFocus()
-      IsEventHandled = true
-      self:UpdatKeyDisplay("RewardWidget")
+function r0_0.OnGamePadDown(r0_16, r1_16)
+  -- line: [378, 415] id: 16
+  DebugPrint("SL OnGamePadDown is InKeyName", r1_16)
+  local r2_16 = false
+  if r1_16 == "Gamepad_LeftThumbstick" then
+    if not r0_16.Item1:HasAnyUserFocus() or r0_16.Item1:HasFocusedDescendants() then
+      r0_16.Item1:SetFocus()
+      r2_16 = true
+      r0_16:UpdatKeyDisplay("RewardWidget")
     else
-      for i = 1, 3 do
-        if self["Item" .. i]:HasFocusedDescendants() or self["Item" .. i]:HasAnyUserFocus() then
-          self:SetFocus()
-          self:UpdatKeyDisplay("SelfWidget")
-          IsEventHandled = false
-          break
+      for r6_16 = 1, 3, 1 do
+        if r0_16["Item" .. r6_16]:HasFocusedDescendants() or r0_16["Item" .. r6_16]:HasAnyUserFocus() then
+          r0_16:SetFocus()
+          r0_16:UpdatKeyDisplay("SelfWidget")
+          r2_16 = false
         end
       end
     end
-  elseif "Gamepad_FaceButton_Right" == InKeyName then
-    for i = 1, 3 do
-      if self["Item" .. i]:HasFocusedDescendants() or self["Item" .. i]:HasAnyUserFocus() then
-        self:SetFocus()
-        self:UpdatKeyDisplay("SelfWidget")
-        IsEventHandled = true
-        break
+  elseif r1_16 == "Gamepad_FaceButton_Right" then
+    for r6_16 = 1, 3, 1 do
+      if r0_16["Item" .. r6_16]:HasFocusedDescendants() or r0_16["Item" .. r6_16]:HasAnyUserFocus() then
+        r0_16:SetFocus()
+        r0_16:UpdatKeyDisplay("SelfWidget")
+        r2_16 = true
       end
     end
   else
-    for i = 1, 3 do
-      if self["Item" .. i]:HasFocusedDescendants() or self["Item" .. i]:HasAnyUserFocus() then
-        IsEventHandled = true
+    for r6_16 = 1, 3, 1 do
+      if r0_16["Item" .. r6_16]:HasFocusedDescendants() or r0_16["Item" .. r6_16]:HasAnyUserFocus() then
+        r2_16 = true
         break
       end
     end
   end
-  return IsEventHandled
+  return r2_16
 end
-
-function M:UpdatKeyDisplay(FocusTypeName)
+function r0_0.UpdatKeyDisplay(r0_17, r1_17)
+  -- line: [419, 526] id: 17
   if UIUtils.UtilsGetCurrentInputType() ~= ECommonInputType.Gamepad then
-    return
+    return 
   end
-  local StyleOfPlay = UIManager(self):GetUIObj("StyleOfPlay")
-  if not StyleOfPlay then
-    return
+  local r2_17 = UIManager(r0_17):GetUIObj("StyleOfPlay")
+  if not r2_17 then
+    return 
   end
-  self.FocusTypeName = FocusTypeName
-  if "RewardWidget" == FocusTypeName then
-    local BottomKeyInfo = {
+  r0_17.FocusTypeName = r1_17
+  if r1_17 == "RewardWidget" then
+    local r3_17 = {
       {
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "A",
-            Owner = self
+            Owner = r0_17,
           }
         },
         Desc = GText("UI_Controller_CheckDetails"),
-        bLongPress = false
+        bLongPress = false,
       },
       {
         KeyInfoList = {
           {
             Type = "Text",
             Text = "Esc",
-            ClickCallback = self.Parent.CloseSelf,
-            Owner = self
+            ClickCallback = r0_17.Parent.CloseSelf,
+            Owner = r0_17,
           }
         },
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "B",
-            Owner = self
+            Owner = r0_17,
           }
         },
-        Desc = GText("UI_BACK")
+        Desc = GText("UI_BACK"),
       }
     }
-    self.Com_Show:SetVisibility(ESlateVisibility.Collapsed)
-    StyleOfPlay.ComTab.Left_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    StyleOfPlay.ComTab.Right_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    self.Parent.DeputeTab:UpdateUIStyleInPlatform(false)
-    if StyleOfPlay.ComTab and StyleOfPlay.ComTab.Group_Chat and StyleOfPlay.ComTab.Group_Chat:GetChildAt(0) then
-      StyleOfPlay.ComTab.Group_Chat:GetChildAt(0).bOpen = false
-      StyleOfPlay.ComTab.Group_Chat:GetChildAt(0):HideWSKey(false)
+    r0_17.Com_Show:SetVisibility(ESlateVisibility.Collapsed)
+    r2_17.ComTab.Left_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r2_17.ComTab.Right_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r2_17.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r2_17.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r0_17.Parent.DeputeTab:UpdateUIStyleInPlatform(false)
+    if r2_17.ComTab and r2_17.ComTab.Group_Chat and r2_17.ComTab.Group_Chat:GetChildAt(0) then
+      r2_17.ComTab.Group_Chat:GetChildAt(0).bOpen = false
+      r2_17.ComTab.Group_Chat:GetChildAt(0):HideWSKey(false)
     end
-    StyleOfPlay.TeamHeadUI.Key_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    StyleOfPlay:UpdateOtherPageTab(BottomKeyInfo)
-  elseif "SelfWidget" == FocusTypeName or "FocusSelfWidget" == FocusTypeName then
-    local BottomKeyInfo = {
+    r2_17.TeamHeadUI.Key_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r2_17:UpdateOtherPageTab(r3_17)
+  elseif r1_17 == "SelfWidget" or r1_17 == "FocusSelfWidget" then
+    local r3_17 = {
       {
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "A",
-            Owner = self
+            Owner = r0_17,
           }
         },
         Desc = GText("UI_Tips_Ensure"),
-        bLongPress = false
+        bLongPress = false,
       },
       {
         KeyInfoList = {
           {
             Type = "Text",
             Text = "Esc",
-            ClickCallback = self.Parent.CloseSelf,
-            Owner = self
+            ClickCallback = r0_17.Parent.CloseSelf,
+            Owner = r0_17,
           }
         },
         GamePadInfoList = {
           {
             Type = "Img",
             ImgShortPath = "B",
-            Owner = self
+            Owner = r0_17,
           }
         },
-        Desc = GText("UI_BACK")
+        Desc = GText("UI_BACK"),
       }
     }
-    self.Com_Show:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-    self.Com_Show:CreateCommonKey({
+    r0_17.Com_Show:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+    r0_17.Com_Show:CreateCommonKey({
       KeyInfoList = {
-        {Type = "Img", ImgShortPath = "LS"}
-      }
+        {
+          Type = "Img",
+          ImgShortPath = "LS",
+        }
+      },
     })
-    StyleOfPlay.ComTab.Left_GamePad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-    StyleOfPlay.ComTab.Right_GamePad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-    StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-    StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-    if StyleOfPlay.ComTab and StyleOfPlay.ComTab.Group_Chat and StyleOfPlay.ComTab.Group_Chat:GetChildAt(0) then
-      StyleOfPlay.ComTab.Group_Chat:GetChildAt(0).bOpen = true
-      StyleOfPlay.ComTab.Group_Chat:GetChildAt(0):HideWSKey(true)
+    r2_17.ComTab.Left_GamePad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    r2_17.ComTab.Right_GamePad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    r2_17.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    r2_17.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    if r2_17.ComTab and r2_17.ComTab.Group_Chat and r2_17.ComTab.Group_Chat:GetChildAt(0) then
+      r2_17.ComTab.Group_Chat:GetChildAt(0).bOpen = true
+      r2_17.ComTab.Group_Chat:GetChildAt(0):HideWSKey(true)
     end
-    StyleOfPlay.TeamHeadUI.Key_GamePad:SetVisibility(UE4.ESlateVisibility.Visible)
-    if self.Parent and self.Parent.DeputeTab then
-      local bIsOther = "SelfWidget" ~= FocusTypeName
-      self.Parent.DeputeTab:UpdateUIStyleInPlatform(true, bIsOther)
+    r2_17.TeamHeadUI.Key_GamePad:SetVisibility(UE4.ESlateVisibility.Visible)
+    if r0_17.Parent and r0_17.Parent.DeputeTab then
+      r0_17.Parent.DeputeTab:UpdateUIStyleInPlatform(true, r1_17 ~= "SelfWidget")
     end
-    StyleOfPlay:UpdateOtherPageTab(BottomKeyInfo)
+    r2_17:UpdateOtherPageTab(r3_17)
   else
-    local BottomKeyInfo = {}
-    StyleOfPlay.ComTab.Left_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    StyleOfPlay.ComTab.Right_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    StyleOfPlay.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    if StyleOfPlay.ComTab and StyleOfPlay.ComTab.Group_Chat and StyleOfPlay.ComTab.Group_Chat:GetChildAt(0) then
-      StyleOfPlay.ComTab.Group_Chat:GetChildAt(0).bOpen = false
-      StyleOfPlay.ComTab.Group_Chat:GetChildAt(0):HideWSKey(false)
+    local r3_17 = {}
+    r2_17.ComTab.Left_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r2_17.ComTab.Right_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r2_17.ComTab.WBP_Com_Tab_ResourceBar.KeyImg_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r2_17.ComTab.WBP_Com_Tab_ResourceBar.Tip_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    if r2_17.ComTab and r2_17.ComTab.Group_Chat and r2_17.ComTab.Group_Chat:GetChildAt(0) then
+      r2_17.ComTab.Group_Chat:GetChildAt(0).bOpen = false
+      r2_17.ComTab.Group_Chat:GetChildAt(0):HideWSKey(false)
     end
-    StyleOfPlay.TeamHeadUI.Key_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
-    self.Com_Show:SetVisibility(ESlateVisibility.Collapsed)
-    self.Parent.DeputeTab:UpdateUIStyleInPlatform(false)
-    StyleOfPlay:UpdateOtherPageTab(BottomKeyInfo)
+    r2_17.TeamHeadUI.Key_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r0_17.Com_Show:SetVisibility(ESlateVisibility.Collapsed)
+    r0_17.Parent.DeputeTab:UpdateUIStyleInPlatform(false)
+    r2_17:UpdateOtherPageTab(r3_17)
   end
 end
-
-return M
+return r0_0

@@ -1,128 +1,139 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\WBP\Play\Widget\Depute\WBP_Play_Depute_Walnut_Item_P_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local M = Class({
+local r0_0 = Class({
   "BluePrints.UI.BP_EMUserWidget_C"
 })
-
-function M:OnListItemObjectSet(Content)
-  self.Root:SetRenderOpacity(0)
-  self.ScrollBox_List:ClearChildren()
-  self.Content = Content
-  self.DungeonData = Content.DungeonData
-  self.DungeonIds = Content.DungeonIds
-  self.Parent = Content.Parent
-  self:InitItemContent()
-  self.ScrollBox_List:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Wrap)
+function r0_0.OnListItemObjectSet(r0_1, r1_1)
+  -- line: [26, 37] id: 1
+  r0_1.Root:SetRenderOpacity(0)
+  r0_1.ScrollBox_List:ClearChildren()
+  r0_1.Content = r1_1
+  r0_1.DungeonData = r1_1.DungeonData
+  r0_1.DungeonIds = r1_1.DungeonIds
+  r0_1.Parent = r1_1.Parent
+  r1_1.SelfWidget = r0_1
+  r0_1:InitItemContent()
+  r0_1.ScrollBox_List:SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Wrap)
 end
-
-function M:SetWalnutTitleMatColor(WalnutType)
-  if 1 == WalnutType then
-    self.TextColor = self.Sx_Text_WalnutTypeTitleMatColor
-    self.ImageBG_LightColor = self.Sx_ImageBG_LightColor
-    self.VX_BGLightColor = self.Sx_VX_BGLightColor
-  elseif 2 == WalnutType then
-    self.TextColor = self.Zl_Text_WalnutTypeTitleMatColor
-    self.ImageBG_LightColor = self.Zl_ImageBG_LightColor
-    self.VX_BGLightColor = self.Zl_VX_BGLightColor
+function r0_0.BP_OnEntryReleased(r0_2)
+  -- line: [39, 43] id: 2
+  if r0_2.Content then
+    r0_2.Content.SelfWidget = nil
+  end
+end
+function r0_0.SetWalnutTitleMatColor(r0_3, r1_3)
+  -- line: [45, 59] id: 3
+  if r1_3 == 1 then
+    r0_3.TextColor = r0_3.Sx_Text_WalnutTypeTitleMatColor
+    r0_3.ImageBG_LightColor = r0_3.Sx_ImageBG_LightColor
+    r0_3.VX_BGLightColor = r0_3.Sx_VX_BGLightColor
+  elseif r1_3 == 2 then
+    r0_3.TextColor = r0_3.Zl_Text_WalnutTypeTitleMatColor
+    r0_3.ImageBG_LightColor = r0_3.Zl_ImageBG_LightColor
+    r0_3.VX_BGLightColor = r0_3.Zl_VX_BGLightColor
   else
-    self.TextColor = self.Hl_Text_WalnutTypeTitleMatColor
-    self.ImageBG_LightColor = self.Hl_ImageBG_LightColor
-    self.VX_BGLightColor = self.Hl_VX_BGLightColor
+    r0_3.TextColor = r0_3.Hl_Text_WalnutTypeTitleMatColor
+    r0_3.ImageBG_LightColor = r0_3.Hl_ImageBG_LightColor
+    r0_3.VX_BGLightColor = r0_3.Hl_VX_BGLightColor
   end
 end
-
-function M:InitItemContent()
-  if not self.DungeonData then
-    return
+function r0_0.InitItemContent(r0_4)
+  -- line: [61, 174] id: 4
+  if not r0_4.DungeonData then
+    return 
   end
-  self.Mobile = "Mobile" == CommonUtils.GetDeviceTypeByPlatformName(CapturePanel)
-  self:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
-  self:PlayAnimation(self.In)
-  local WalnutTypeData = DataMgr.WalnutType[self.DungeonData.WalnutType]
-  if not WalnutTypeData then
-    DebugPrint("Error: WalnutTypeData not found for WalnutType: ", self.DungeonData.WalnutType)
-    return
+  r0_4.Mobile = CommonUtils.GetDeviceTypeByPlatformName(r0_4) == "Mobile"
+  r0_4:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
+  r0_4:PlayAnimation(r0_4.In)
+  local r1_4 = DataMgr.WalnutType[r0_4.DungeonData.WalnutType]
+  if not r1_4 then
+    DebugPrint("Error: WalnutTypeData not found for WalnutType: ", r0_4.DungeonData.WalnutType)
+    return 
   end
-  local Icon = LoadObject(WalnutTypeData.TypeIcon)
-  self.Image_WalnutIcon:SetBrushResourceObject(Icon)
-  self.Text_WalnutTypeTitle:SetText(GText(WalnutTypeData.Name))
-  self.Text_HaveTitle:SetText(GText("UI_NUM_NAME"))
-  self.Text_Open:SetText(GText("UI_Walnut_Dungeon_Opening"))
-  self.ImageBG_LightColor = FLinearColor()
-  self.VX_BGLightColor = FLinearColor()
-  self.TextColor = FLinearColor()
-  self:SetWalnutTitleMatColor(self.DungeonData.WalnutType)
-  self.ImageBG_Light:SetColorAndOpacity(self.ImageBG_LightColor)
-  self.VX_BGLight:SetColorAndOpacity(self.VX_BGLightColor)
-  local Text_WalnutTypeTitleMat = self.Text_WalnutTypeTitle:GetDynamicFontMaterial()
-  Text_WalnutTypeTitleMat:SetVectorParameterValue("MainColor", self.TextColor)
-  local Avatar = GWorld:GetAvatar()
-  if not Avatar then
-    return
+  r0_4.Image_WalnutIcon:SetBrushResourceObject(LoadObject(r1_4.TypeIcon))
+  r0_4.Text_WalnutTypeTitle:SetText(GText(r1_4.Name))
+  r0_4.Text_HaveTitle:SetText(GText("UI_NUM_NAME"))
+  r0_4.Text_Open:SetText(GText("UI_Walnut_Dungeon_Opening"))
+  r0_4.ImageBG_LightColor = FLinearColor()
+  r0_4.VX_BGLightColor = FLinearColor()
+  r0_4.TextColor = FLinearColor()
+  r0_4:SetWalnutTitleMatColor(r0_4.DungeonData.WalnutType)
+  r0_4.ImageBG_Light:SetColorAndOpacity(r0_4.ImageBG_LightColor)
+  r0_4.VX_BGLight:SetColorAndOpacity(r0_4.VX_BGLightColor)
+  r0_4.Text_WalnutTypeTitle:GetDynamicFontMaterial():SetVectorParameterValue("MainColor", r0_4.TextColor)
+  local r4_4 = GWorld:GetAvatar()
+  if not r4_4 then
+    return 
   end
-  self.WalnutsInBag = Avatar.Walnuts.WalnutBag
-  local CurrentCount = 0
-  for WalnutId, Number in pairs(self.WalnutsInBag) do
-    local WalnutData = DataMgr.Walnut[WalnutId]
-    if WalnutData and self.DungeonData.WalnutType == WalnutData.WalnutType then
-      CurrentCount = CurrentCount + Number
+  r0_4.WalnutsInBag = r4_4.Walnuts.WalnutBag
+  local r5_4 = 0
+  for r10_4, r11_4 in pairs(r0_4.WalnutsInBag) do
+    local r12_4 = DataMgr.Walnut[r10_4]
+    if r12_4 and r0_4.DungeonData.WalnutType == r12_4.WalnutType then
+      r5_4 = r5_4 + r11_4
     end
   end
-  self.Text_HaveNum:SetText(CurrentCount)
-  table.sort(self.DungeonIds, function(a, b)
-    local DataA = DataMgr.Dungeon[a]
-    local DataB = DataMgr.Dungeon[b]
-    if not DataA or not DataB then
+  -- close: r6_4
+  r0_4.Text_HaveNum:SetText(r5_4)
+  table.sort(r0_4.DungeonIds, function(r0_5, r1_5)
+    -- line: [140, 149] id: 5
+    local r2_5 = DataMgr.Dungeon[r0_5]
+    local r3_5 = DataMgr.Dungeon[r1_5]
+    if not r2_5 or not r3_5 then
       return false
     end
-    return DataA.DungeonLevel < DataB.DungeonLevel
+    return r2_5.DungeonLevel < r3_5.DungeonLevel
   end)
-  self.ItemTable = {}
-  local ItemNum = 0
-  for _, DungeonId in pairs(self.DungeonIds) do
-    local Data = DataMgr.Dungeon[DungeonId]
-    if not Data then
-      DebugPrint("Error: Cannot find dungeon data for DungeonId:", DungeonId)
+  r0_4.ItemTable = {}
+  local r6_4 = 0
+  for r11_4, r12_4 in pairs(r0_4.DungeonIds) do
+    local r13_4 = DataMgr.Dungeon[r12_4]
+    if not r13_4 then
+      DebugPrint("Error: Cannot find dungeon data for DungeonId:", r12_4)
       break
+    else
+      r6_4 = r6_4 + 1
+      local r14_4 = UIManager(r0_4):_CreateWidgetNew("Walnut_LevelItem")
+      r14_4:Init(r13_4, r0_4.DungeonIds, r1_4, r0_4.DungeonData.WalnutType, r0_4.Parent)
+      r0_4.ScrollBox_List:AddChild(r14_4)
     end
-    ItemNum = ItemNum + 1
-    local Item = UIManager(self):_CreateWidgetNew("Walnut_LevelItem")
-    Item:Init(Data, self.DungeonIds, WalnutTypeData, self.DungeonData.WalnutType, self.Parent)
-    self.ScrollBox_List:AddChild(Item)
   end
-  self.ScrollBox_List:GetChildAt(ItemNum - 1):SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
-  if ItemNum >= 3 then
-    return
+  -- close: r7_4
+  r0_4.ScrollBox_List:GetChildAt(r6_4 + -1):SetNavigationRuleBase(EUINavigation.Down, EUINavigationRule.Stop)
+  if r6_4 >= 3 then
+    return 
   end
-  for i = 1, 3 - ItemNum do
-    local Item = UIManager(self):_CreateWidgetNew("Walnut_LevelItem")
-    Item:Init(nil)
-    self.ScrollBox_List:AddChild(Item)
+  for r10_4 = 1, 3 - r6_4, 1 do
+    local r11_4 = UIManager(r0_4):_CreateWidgetNew("Walnut_LevelItem")
+    r11_4:Init(nil)
+    r0_4.ScrollBox_List:AddChild(r11_4)
   end
 end
-
-function M:OnMouseEnter(MyGeometry, MouseEvent)
-  self.IsEnter = true
-  if self.IsUnLocked or self.Mobile or self:IsAnimationPlaying(self.In) then
-    return
+function r0_0.OnMouseEnter(r0_6, r1_6, r2_6)
+  -- line: [178, 186] id: 6
+  r0_6.IsEnter = true
+  if r0_6.IsUnLocked or r0_6.Mobile or r0_6:IsAnimationPlaying(r0_6.In) then
+    return 
   end
-  AudioManager(self):PlayUISound(self, "event:/ui/common/mihan_camp_hover", nil, nil)
-  self:StopAllAnimations()
-  self:PlayAnimation(self.Hover)
+  AudioManager(r0_6):PlayUISound(r0_6, "event:/ui/common/mihan_camp_hover", nil, nil)
+  r0_6:StopAllAnimations()
+  r0_6:PlayAnimation(r0_6.Hover)
 end
-
-function M:OnMouseLeave(MyGeometry, MouseEvent)
-  self.IsEnter = false
-  if self.IsUnLocked or self.Mobile or self:IsAnimationPlaying(self.In) then
-    return
+function r0_0.OnMouseLeave(r0_7, r1_7, r2_7)
+  -- line: [188, 195] id: 7
+  r0_7.IsEnter = false
+  if r0_7.IsUnLocked or r0_7.Mobile or r0_7:IsAnimationPlaying(r0_7.In) then
+    return 
   end
-  self:StopAllAnimations()
-  self:PlayAnimation(self.Unhover)
+  r0_7:StopAllAnimations()
+  r0_7:PlayAnimation(r0_7.Unhover)
 end
-
-function M:OnFocusReceived(MyGeometry, InFocusEvent)
-  self.ScrollBox_List:GetChildAt(0).Btn_Click:SetFocus()
-  self.Parent:UpdatKeyDisplay()
+function r0_0.OnFocusReceived(r0_8, r1_8, r2_8)
+  -- line: [197, 203] id: 8
+  r0_8.ScrollBox_List:GetChildAt(0).Btn_Click:SetFocus()
+  r0_8.Parent:UpdatKeyDisplay()
   return UE4.UWidgetBlueprintLibrary.Unhandled()
 end
-
-return M
+return r0_0

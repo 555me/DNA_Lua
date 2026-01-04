@@ -117,7 +117,7 @@ return {
     EventManager:FireEvent(EventID.OnLevelDeliverBlackCurtainEnd, r7_7.Eid)
   end,
   CloseCurUI = function(r0_10)
-    -- line: [117, 157] id: 10
+    -- line: [117, 161] id: 10
     local r2_10 = UE4.UGameplayStatics.GetGameInstance(r0_10):GetGameUIManager()
     local r3_10 = r2_10.CurrentUIList:ToTable()
     for r7_10 = #r3_10, 1, -1 do
@@ -144,6 +144,9 @@ return {
         if r8_10 == "TheaterTaskTime" then
           r11_10 = false
         end
+        if r8_10 == "TheaterToast" then
+          r11_10 = false
+        end
         if r11_10 then
           DebugPrint("HandleLevelDeliverBlackCurtainEnd Systemui Close:", r8_10)
           r9_10:Close()
@@ -152,7 +155,7 @@ return {
     end
   end,
   InterruptBlackCurtainEnd = function(r0_11)
-    -- line: [159, 172] id: 11
+    -- line: [163, 176] id: 11
     local r2_11 = UE4.UGameplayStatics.GetGameInstance(r0_11):GetGameUIManager()
     local r3_11 = r2_11:GetUIObj("CommonBlackScreen") and r2_11:GetUIObj("BlackScreenXiaobai")
     if not r3_11 then
@@ -163,7 +166,7 @@ return {
     end
   end,
   HandleLevelDeliverBlackCurtainStart = function(r0_12, r1_12, r2_12)
-    -- line: [174, 250] id: 12
+    -- line: [178, 254] id: 12
     DebugPrint("HandleLevelDeliverBlackCurtainStart")
     AudioManager(r0_12):PlayUISound(r0_12, "event:/ui/common/loading_common", "Loading", nil)
     AudioManager(r0_12):PausePlayBGMCauseIsLoadingOrBlackScreen()
@@ -226,7 +229,7 @@ return {
       r10_12.OutAnimationPlayTime = 0.5
       r10_12.OutAnimationObj = r0_12
       function r10_12.OutAnimationCallback()
-        -- line: [219, 228] id: 13
+        -- line: [223, 232] id: 13
         local r0_13 = r4_12:GetSceneManager()
         local r1_13 = r5_12:GetUIObj("MainTaskIndicator")
         if IsValid(r1_13) then
@@ -252,14 +255,14 @@ return {
     end
   end,
   StopLimitTimeExploreGroup = function(r0_14)
-    -- line: [252, 259] id: 14
+    -- line: [256, 263] id: 14
     if r0_14.EMGameState.ActiveLimitTimeExploreGroup == 0 then
       return 
     end
     r0_14.EMGameState.ExploreGroupMap:FindRef(r0_14.EMGameState.ActiveLimitTimeExploreGroup):FailLimitExplore()
   end,
   AsyncSetPlayerByStartIndex = function(r0_15, r1_15, r2_15, r3_15, r4_15, r5_15, r6_15)
-    -- line: [261, 309] id: 15
+    -- line: [265, 313] id: 15
     r0_15:HandleLevelDeliverBlackCurtainStart(r5_15, r6_15)
     local r7_15 = r0_15:GetLevelLoader()
     local r8_15 = r7_15.WorldCompositionSubSystem
@@ -270,7 +273,7 @@ return {
       r8_15:RequestAsyncTravel(r11_15, r10_15, {
         r0_15,
         function()
-          -- line: [274, 287] id: 16
+          -- line: [278, 291] id: 16
           UE4.UGameplayStatics.GetPlayerCharacter(r0_15, 0):AddDisableInputTag("DeliverBlackCurtain")
           r0_15:HandleLevelDeliverBlackCurtainEnd()
           local r1_16 = GWorld:GetAvatar()
@@ -287,7 +290,7 @@ return {
     end
   end,
   AsyncSetPlayerByLocationAndRotation = function(r0_17, r1_17, r2_17, r3_17, r4_17, r5_17, r6_17)
-    -- line: [311, 352] id: 17
+    -- line: [315, 356] id: 17
     local r7_17 = r0_17:GetLevelLoader()
     r0_17:HandleLevelDeliverBlackCurtainStart(r6_17)
     local r8_17 = r7_17.WorldCompositionSubSystem
@@ -295,7 +298,7 @@ return {
       r8_17:RequestAsyncTravel(UE4.UGameplayStatics.GetPlayerCharacter(r0_17, 0), UE4.UKismetMathLibrary.MakeTransform(r3_17, r4_17, UE4.FVector(1, 1, 1)), {
         r0_17,
         function()
-          -- line: [320, 325] id: 18
+          -- line: [324, 329] id: 18
           UE4.UGameplayStatics.GetPlayerCharacter(r0_17, 0):AddDisableInputTag("DeliverBlackCurtain")
           r0_17:HandleLevelDeliverBlackCurtainEnd()
         end
@@ -304,16 +307,16 @@ return {
     end
   end,
   SetPlayerLocationAndRotation = function(r0_19, r1_19, r2_19)
-    -- line: [354, 357] id: 19
+    -- line: [358, 361] id: 19
     r0_19:GetLevelLoader():GetStartPointByManager(r1_19, r2_19):SetPlayerTrans()
   end,
   PrepareLevelDelivery = function(r0_20, r1_20, r2_20)
-    -- line: [358, 361] id: 20
+    -- line: [362, 365] id: 20
     r0_20.TargetSubRegion = r1_20
     r0_20.TargetSpawnPoint = r2_20
   end,
   HandleLevelDeliver = function(r0_21, r1_21, r2_21, r3_21, r4_21, r5_21, r6_21)
-    -- line: [362, 534] id: 21
+    -- line: [366, 538] id: 21
     r2_21 = tonumber(r2_21)
     r1_21 = tonumber(r1_21)
     r3_21 = tonumber(r3_21)
@@ -391,7 +394,7 @@ return {
         end
       else
         function r19_21()
-          -- line: [426, 445] id: 22
+          -- line: [430, 449] id: 22
           if r8_21.IsWorldLoader then
             if r17_21 == r18_21 then
               local r0_22 = r8_21:GetLevelIdByRegionId(r2_21)
@@ -424,7 +427,7 @@ return {
           end
         end
         local function r20_21()
-          -- line: [449, 458] id: 23
+          -- line: [453, 462] id: 23
           DebugPrint("zwk RealDelivery")
           r9_21:SetInvincible(false, "Delivery")
           r9_21:SetSuperArmor(false, "Delivery")
@@ -436,14 +439,14 @@ return {
         end
         local r23_21 = {
           OnNotifyBegin = function()
-            -- line: [459, 465] id: 24
+            -- line: [463, 469] id: 24
             DebugPrint("zwk OnDeliveryPreLoadingMontageNotifyBegin")
             if not r11_21.AlreadyDeliver then
               r20_21()
             end
           end,
           OnInterrupted = function()
-            -- line: [466, 476] id: 25
+            -- line: [470, 480] id: 25
             DebugPrint("zwk OnDeliveryPreLoadingInterrupted", r11_21.ShouldPlayDeliveryEndMontage, r11_21.AlreadyDeliver)
             if not r11_21.AlreadyDeliver then
               local r0_25 = r9_21:K2_GetActorRotation()
@@ -482,7 +485,7 @@ return {
           end
           r9_21:PlayTeleportAction(r23_21, false, true, false)
           r0_21:AddTimer(5, function()
-            -- line: [511, 519] id: 26
+            -- line: [515, 523] id: 26
             if r9_21 then
               r9_21:SetInvincible(false, "Delivery")
               r9_21:SetSuperArmor(false, "Delivery")
@@ -513,18 +516,18 @@ return {
     return true
   end,
   DeliveryHideWeapon = function(r0_27, r1_27, r2_27)
-    -- line: [536, 540] id: 27
+    -- line: [540, 544] id: 27
     for r7_27, r8_27 in pairs(r1_27.Weapons) do
       r8_27:SetActorHideTag("Delivery", r2_27)
     end
     -- close: r3_27
   end,
   CheckSkipRegionByStartIndex = function(r0_28, r1_28, r2_28)
-    -- line: [542, 545] id: 28
+    -- line: [546, 549] id: 28
     return IsValid(r0_28:GetLevelLoader():GetStartPointByManager(r1_28, r2_28))
   end,
   DeliverByLocationAndRotation = function(r0_29, r1_29, r2_29, r3_29, r4_29)
-    -- line: [547, 566] id: 29
+    -- line: [551, 570] id: 29
     local r5_29 = GWorld:GetAvatar()
     if not r5_29 then
       return 
@@ -542,7 +545,7 @@ return {
     end
   end,
   DelDrop = function(r0_30, r1_30)
-    -- line: [571, 577] id: 30
+    -- line: [575, 581] id: 30
     r0_30.LevelGameMode.DropRule[r1_30] = true
     local r2_30 = GWorld:GetAvatar()
     if r2_30 then
@@ -550,7 +553,7 @@ return {
     end
   end,
   RecoverDrop = function(r0_31, r1_31)
-    -- line: [580, 586] id: 31
+    -- line: [584, 590] id: 31
     r0_31.LevelGameMode.DropRule[r1_31] = false
     local r2_31 = GWorld:GetAvatar()
     if r2_31 then

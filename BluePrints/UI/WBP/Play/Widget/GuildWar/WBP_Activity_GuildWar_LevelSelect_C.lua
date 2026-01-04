@@ -23,7 +23,7 @@ local r8_0 = {
   Resource = 6,
 }
 function r7_0.Construct(r0_1)
-  -- line: [29, 85] id: 1
+  -- line: [29, 87] id: 1
   r7_0.Super.Construct(r0_1)
   r7_0.bOpened = true
   r0_1.Btn_Start:SetText(GText("DUNGEONSINGLE"))
@@ -63,21 +63,23 @@ function r7_0.Construct(r0_1)
   r0_1.Panel_Details_Buff:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
   r0_1.Btn_Start:SetText(GText("DUNGEONSINGLE"))
   r0_1.Text_Title_Score:SetText(GText("RaidDungeon_Base_Point"))
+  r0_1.Text_Consume:SetText(GText("UI_Armory_Trace_Cost"))
+  r0_1.Text_Details_Buff:SetText(GText("UI_Dungeon_More"))
 end
 function r7_0.OnLoaded(r0_2, ...)
-  -- line: [88, 91] id: 2
+  -- line: [90, 93] id: 2
   r7_0.Super.OnLoaded(r0_2, ...)
   r0_2:Init()
 end
 function r7_0.Init(r0_3)
-  -- line: [93, 98] id: 3
+  -- line: [95, 100] id: 3
   r0_3.DungeonList = r0_3:GetCurrentRaidDungeonList()
   if r0_3.DungeonList then
     r0_3:InitLevelList(r0_3.DungeonList)
   end
 end
 function r7_0.Destruct(r0_4)
-  -- line: [100, 107] id: 4
+  -- line: [102, 109] id: 4
   r7_0.Super.Destruct(r0_4)
   r7_0.bOpened = false
   r7_0.SelectedDungeonId = nil
@@ -85,7 +87,7 @@ function r7_0.Destruct(r0_4)
   r0_4.Btn_Ranking:UnBindEventOnClickedByObj(r0_4)
 end
 function r7_0.GetCurrentRaidDungeonList(r0_5)
-  -- line: [109, 140] id: 5
+  -- line: [111, 142] id: 5
   r0_5.RaidSeasons = r0_5:GetRaidSeasons()
   if not r0_5.RaidSeasons then
     DebugPrint("self.RaidSeasons 不存在")
@@ -109,14 +111,14 @@ function r7_0.GetCurrentRaidDungeonList(r0_5)
   end
   -- close: r4_5
   table.sort(r3_5, function(r0_6, r1_6)
-    -- line: [135, 137] id: 6
+    -- line: [137, 139] id: 6
     local r2_6 = r0_6 and 0
     return r2_6 < (r1_6 and 0)
   end)
   return r3_5
 end
 function r7_0.InitLevelList(r0_7, r1_7)
-  -- line: [145, 304] id: 7
+  -- line: [147, 306] id: 7
   AudioManager(r0_7):PlayUISound(r0_7, "event:/ui/armory/open", "Play_DeputeDetail", nil)
   r0_7:SetFocus()
   r0_7.MonsterIdToItem = {}
@@ -221,7 +223,7 @@ function r7_0.InitLevelList(r0_7, r1_7)
     if r0_7.RaidSeasons.MaxPreRaidScore == 0 or r0_7.RaidSeasons.BanState == 1 then
       r0_7.Btn_Ranking:ForbidBtn(true)
       r0_7.Btn_Ranking:BindForbidStateExecuteEvent(r0_7, function()
-        -- line: [286, 288] id: 8
+        -- line: [288, 290] id: 8
         UIManager(r0_7):ShowUITip(UIConst.Tip_CommonToast, GText("RaidDungeon_PreRaid_Abandon_Toast"))
       end)
     end
@@ -238,7 +240,7 @@ function r7_0.InitLevelList(r0_7, r1_7)
   end
 end
 function r7_0.UpdateTicketNum(r0_9)
-  -- line: [307, 344] id: 9
+  -- line: [309, 346] id: 9
   if not r0_9.RaidSeasons:IsRaidTime() then
     return 
   end
@@ -276,7 +278,7 @@ function r7_0.UpdateTicketNum(r0_9)
   })
 end
 function r7_0.IsFirstEnterToday(r0_10)
-  -- line: [346, 362] id: 10
+  -- line: [348, 364] id: 10
   local r1_10 = os.date("%Y-%m-%d")
   local r2_10 = r5_0:Get("GuildWarRewardPopDate", true)
   local r3_10 = nil	-- notice: implicit variable refs by block#[4, 6]
@@ -291,7 +293,7 @@ function r7_0.IsFirstEnterToday(r0_10)
   return r3_10
 end
 function r7_0.InitOtherPageTab(r0_11)
-  -- line: [364, 408] id: 11
+  -- line: [366, 410] id: 11
   local r1_11 = {
     DynamicNode = {
       "Back",
@@ -324,7 +326,7 @@ function r7_0.InitOtherPageTab(r0_11)
     TitleName = GText("Event_Raid_Title"),
     PopupInfoHotKey = "SpecialLeft",
     GetReplyOnBack = function()
-      -- line: [380, 386] id: 12
+      -- line: [382, 388] id: 12
       if r0_11.SelectCell then
         return UWidgetBlueprintLibrary.SetUserFocus(UWidgetBlueprintLibrary.Handled(), r0_11.SelectCell)
       else
@@ -338,7 +340,7 @@ function r7_0.InitOtherPageTab(r0_11)
   r0_11.Tab:Init(r1_11, true)
 end
 function r7_0.SetPanelDetails(r0_13, r1_13)
-  -- line: [412, 497] id: 13
+  -- line: [414, 499] id: 13
   if r1_13 == r0_13.ObtainTabId then
     r0_13.Text_Details:SetText(GText("UI_CTL_Details"))
     if UIUtils.UtilsGetCurrentInputType() == ECommonInputType.Gamepad then
@@ -418,7 +420,7 @@ function r7_0.SetPanelDetails(r0_13, r1_13)
   end
 end
 function r7_0.OnSubTabChanged(r0_14, r1_14)
-  -- line: [499, 526] id: 14
+  -- line: [501, 528] id: 14
   r0_14.CurrentTabIdx = r1_14.Idx
   r0_14:PlayAnimation(r0_14.Switch_Tab)
   if r1_14.Idx == r0_14.ObtainTabId then
@@ -441,7 +443,7 @@ function r7_0.OnSubTabChanged(r0_14, r1_14)
   r0_14:SetPanelDetails(r1_14.Idx)
 end
 function r7_0.ItemMenuAnchorChanged(r0_15, r1_15)
-  -- line: [530, 540] id: 15
+  -- line: [532, 542] id: 15
   if UIUtils.UtilsGetCurrentInputType() ~= ECommonInputType.Gamepad then
     return 
   end
@@ -453,7 +455,7 @@ function r7_0.ItemMenuAnchorChanged(r0_15, r1_15)
   end
 end
 function r7_0.OnClickedLevelCell(r0_16, r1_16)
-  -- line: [544, 573] id: 16
+  -- line: [546, 575] id: 16
   if r0_16.SelectCell ~= nil then
     if r0_16:CheckDungeonCondition(r0_16.SelectCell.DungeonId) then
       r0_16.SelectCell:PlayAnimationReverse(r0_16.SelectCell.Click)
@@ -474,7 +476,7 @@ function r7_0.OnClickedLevelCell(r0_16, r1_16)
   r0_16:InitListCellInfo(r1_16.DungeonId)
 end
 function r7_0.InitListCellInfo(r0_17, r1_17)
-  -- line: [578, 618] id: 17
+  -- line: [580, 620] id: 17
   -- notice: unreachable block#7
   if r0_17.SelectCell then
     r0_17:SelectCellFocus()
@@ -510,7 +512,7 @@ function r7_0.InitListCellInfo(r0_17, r1_17)
   end
 end
 function r7_0.RefreshLevelCellContent(r0_18, r1_18)
-  -- line: [621, 644] id: 18
+  -- line: [623, 646] id: 18
   if not r1_18 then
     DebugPrint("ZDX DungeonId is nil")
     return 
@@ -528,30 +530,30 @@ function r7_0.RefreshLevelCellContent(r0_18, r1_18)
   r0_18:RefreshBtnState()
 end
 function r7_0.OpenRewardDetails(r0_19)
-  -- line: [649, 661] id: 19
+  -- line: [651, 663] id: 19
   AudioManager(r0_19):PlayUISound(r0_19, "event:/ui/common/tip_show_click", nil, nil)
   local r2_19 = UIManager(r0_19):ShowCommonPopupUI(100156, {
     RewardList = r0_19.RewardList,
     CloseBtnCallbackFunction = function()
-      -- line: [655, 657] id: 20
+      -- line: [657, 659] id: 20
       r0_19:SelectCellFocus()
     end,
     AutoFocus = true,
   })
 end
 function r7_0.OpenBuffDetails(r0_21)
-  -- line: [664, 667] id: 21
+  -- line: [666, 669] id: 21
   UIManager(r0_21):LoadUINew("GuildWarEnvironment"):Init(r0_21.RaidBuffIDArry)
 end
 function r7_0.TryOpenRankTopN(r0_22)
-  -- line: [670, 675] id: 22
+  -- line: [672, 677] id: 22
   if r0_22.RankInfo and r0_22.TopNInfo and r0_22.OpenRankTag then
     r0_22.OpenRankTag = nil
     UIManager():LoadUINew("GuildWarRank", r0_22.RankInfo, r0_22.TopNInfo)
   end
 end
 function r7_0.OpenGuildWarRank(r0_23)
-  -- line: [678, 704] id: 23
+  -- line: [680, 706] id: 23
   AudioManager(r0_23):PlayUISound(r0_23, "event:/ui/activity/shop_small_btn_click", nil, nil)
   local r1_23 = GWorld:GetAvatar()
   if not r1_23 then
@@ -560,7 +562,7 @@ function r7_0.OpenGuildWarRank(r0_23)
   r0_23.OpenRankTag = true
   r0_23:BlockAllUIInput(true, "RaidSeasonGetRaidRankinfo")
   r1_23:RaidSeasonGetRaidRankInfo(function(r0_24)
-    -- line: [688, 694] id: 24
+    -- line: [690, 696] id: 24
     r0_23:BlockAllUIInput(false, "RaidSeasonGetRaidRankinfo")
     if not ErrorCode:Check(r0_24) and r0_23 then
       r0_23.RankInfo = {}
@@ -569,7 +571,7 @@ function r7_0.OpenGuildWarRank(r0_23)
   end)
   r0_23:BlockAllUIInput(true, "RaidSeasonGetRaidRankTopN")
   r1_23:RaidSeasonGetRaidRankTopN(function(r0_25)
-    -- line: [697, 703] id: 25
+    -- line: [699, 705] id: 25
     r0_23:BlockAllUIInput(false, "RaidSeasonGetRaidRankTopN")
     if not ErrorCode:Check(r0_25) and r0_23 then
       r0_23.TopNInfo = {}
@@ -578,7 +580,7 @@ function r7_0.OpenGuildWarRank(r0_23)
   end)
 end
 function r7_0.RefreshBuffInfoList(r0_26)
-  -- line: [708, 739] id: 26
+  -- line: [710, 741] id: 26
   r0_26.RaidBuffIDArry = DataMgr.RaidDungeon[r0_26.CurCellDungeonId].RaidBuffID
   if r0_26.RaidBuffIDArry then
     r0_26.WS_Buff:SetActiveWidgetIndex(0)
@@ -598,7 +600,7 @@ function r7_0.RefreshBuffInfoList(r0_26)
   end
 end
 function r7_0.RefreshRewardInfoList(r0_27, r1_27)
-  -- line: [743, 867] id: 27
+  -- line: [745, 869] id: 27
   assert(DataMgr.Dungeon[r1_27], "副本信息不存在:" .. r1_27)
   local r2_27 = GWorld:GetAvatar()
   if not r2_27 then
@@ -628,7 +630,7 @@ function r7_0.RefreshRewardInfoList(r0_27, r1_27)
   end
   local r4_27 = RewardUtils:GetRewardViewInfoById(DataMgr.Dungeon[r1_27].DungeonRewardView)
   local function r5_27(r0_28, r1_28)
-    -- line: [780, 791] id: 28
+    -- line: [782, 793] id: 28
     if r0_28.Rarity == r1_28.Rarity then
       if r8_0[r0_28.Type] and r8_0[r1_28.Type] then
         if r8_0[r0_28.Type] == r8_0[r1_28.Type] then
@@ -691,7 +693,7 @@ function r7_0.RefreshRewardInfoList(r0_27, r1_27)
     r0_27:RemoveTimer(r0_27.NextFrameListEmpty)
   end
   r0_27.NextFrameListEmpty = r0_27:AddTimer(0.01, function()
-    -- line: [853, 866] id: 29
+    -- line: [855, 868] id: 29
     for r4_29 = 1, r0_27.List_Prop:GetNumItems(), 1 do
       local r5_29 = UE4.URuntimeCommonFunctionLibrary.GetEntryWidgetFromItem(r0_27.List_Prop, r4_29 + -1)
       if r5_29 then
@@ -704,7 +706,7 @@ function r7_0.RefreshRewardInfoList(r0_27, r1_27)
   end, false, 0, "GuildWar_LevelSelectListView")
 end
 function r7_0.IsInTimeRange(r0_30, r1_30)
-  -- line: [870, 887] id: 30
+  -- line: [872, 889] id: 30
   local r2_30 = os.time()
   local r3_30 = DataMgr.EventDungeonReward[r1_30]
   if not r3_30 then
@@ -724,13 +726,13 @@ function r7_0.IsInTimeRange(r0_30, r1_30)
   return false
 end
 function r7_0.CreateAndAddEmptyItem(r0_31)
-  -- line: [889, 895] id: 31
+  -- line: [891, 897] id: 31
   local r1_31 = NewObject(UIUtils.GetCommonItemContentClass())
   r1_31.Id = 0
   return r1_31
 end
 function r7_0.OnStuffMenuOpenChanged(r0_32, r1_32)
-  -- line: [897, 916] id: 32
+  -- line: [899, 918] id: 32
   if UIUtils.UtilsGetCurrentInputType() ~= ECommonInputType.Gamepad then
     return 
   end
@@ -765,7 +767,7 @@ function r7_0.OnStuffMenuOpenChanged(r0_32, r1_32)
   end
 end
 function r7_0.OnClickedCell(r0_33, r1_33)
-  -- line: [919, 926] id: 33
+  -- line: [921, 928] id: 33
   if r0_33.SelectLvTabCell ~= nil then
     r0_33.SelectLvTabCell:OnCellUnSelect()
   end
@@ -773,7 +775,7 @@ function r7_0.OnClickedCell(r0_33, r1_33)
   r1_33:SelectCell()
 end
 function r7_0.RefreshMonsterInfoList(r0_34, r1_34)
-  -- line: [930, 959] id: 34
+  -- line: [932, 961] id: 34
   local r2_34 = DataMgr.Dungeon[r1_34]
   if not r2_34 or not r2_34.DungeonMonsters or #r2_34.DungeonMonsters == 0 then
     DebugPrint("ZDX DungeonMonster is nil")
@@ -798,7 +800,7 @@ function r7_0.RefreshMonsterInfoList(r0_34, r1_34)
   -- close: r5_34
 end
 function r7_0.InitMonsterWeakness(r0_35, r1_35)
-  -- line: [962, 992] id: 35
+  -- line: [964, 994] id: 35
   assert(r1_35, "dungeon id is nil")
   local r2_35 = DataMgr.Dungeon[r1_35]
   assert(r2_35, string.format("dungeon id [%d] is wrong, cant find dungeonInfo", r1_35))
@@ -823,7 +825,7 @@ function r7_0.InitMonsterWeakness(r0_35, r1_35)
   end
 end
 function r7_0.OnClickSolo(r0_36)
-  -- line: [996, 1007] id: 36
+  -- line: [998, 1009] id: 36
   if not r0_36.CurSelectedDungeonId then
     DebugPrint("SL CurSelectedDungeonId is nil")
     return 
@@ -835,7 +837,7 @@ function r7_0.OnClickSolo(r0_36)
   r0_36:EnterStandalone()
 end
 function r7_0.EnterStandalone(r0_37)
-  -- line: [1010, 1032] id: 37
+  -- line: [1012, 1034] id: 37
   local r1_37 = {
     Type = "GuildWar",
     JumpId = 69,
@@ -846,7 +848,7 @@ function r7_0.EnterStandalone(r0_37)
   local r2_37 = GWorld:GetAvatar()
   if r2_37 then
     r0_37:TryEnterDungeon(r2_37, r0_37.CurSelectedDungeonId, function(r0_38, ...)
-      -- line: [1022, 1027] id: 38
+      -- line: [1024, 1029] id: 38
       if not r0_37.HandleEnterDungeonRetCode(r0_38, ...) then
         r0_37:PlayAnimation(r0_37.In)
       end
@@ -856,14 +858,14 @@ function r7_0.EnterStandalone(r0_37)
   end
 end
 function r7_0.OnUserScrolled(r0_39)
-  -- line: [1036, 1039] id: 39
+  -- line: [1038, 1041] id: 39
   if r0_0.GetDeviceTypeByPlatformName() == "Mobile" then
     return 
   end
   UIUtils.UpdateScrollBoxArrow(r0_39.ScrollBox_List, r0_39.List_ArrowTop, r0_39.List_ArrowBottom)
 end
 function r7_0.OnReturnKeyDown(r0_40)
-  -- line: [1043, 1050] id: 40
+  -- line: [1045, 1052] id: 40
   AudioManager(r0_40):SetEventSoundParam(r0_40, "Play_DeputeDetail", {
     ToEnd = 1,
   })
@@ -874,13 +876,13 @@ function r7_0.OnReturnKeyDown(r0_40)
   end
 end
 function r7_0.OnAnimationFinished(r0_41, r1_41)
-  -- line: [1052, 1056] id: 41
+  -- line: [1054, 1058] id: 41
   if r1_41 == r0_41.Out then
     r0_41.Super.Close(r0_41)
   end
 end
 function r7_0.RefreshOpInfoByInputDevice(r0_42, r1_42, r2_42)
-  -- line: [1058, 1082] id: 42
+  -- line: [1060, 1084] id: 42
   if r1_42 == ECommonInputType.Touch then
     return 
   end
@@ -898,7 +900,7 @@ function r7_0.RefreshOpInfoByInputDevice(r0_42, r1_42, r2_42)
   r0_42:UpdateUIStyleInPlatform(r3_42)
 end
 function r7_0.UpdatKeyDisplay(r0_43, r1_43)
-  -- line: [1084, 1215] id: 43
+  -- line: [1086, 1217] id: 43
   if r0_0.GetDeviceTypeByPlatformName(r0_43) == "Mobile" then
     return 
   end
@@ -1006,11 +1008,11 @@ function r7_0.UpdatKeyDisplay(r0_43, r1_43)
   end
 end
 function r7_0.SetPanelDetailsVis(r0_44, r1_44)
-  -- line: [1217, 1219] id: 44
+  -- line: [1219, 1221] id: 44
   r0_44.Panel_Details:SetVisibility(r1_44)
 end
 function r7_0.UpdateUIStyleInPlatform(r0_45, r1_45)
-  -- line: [1222, 1276] id: 45
+  -- line: [1224, 1278] id: 45
   if r0_0.GetDeviceTypeByPlatformName(r0_45) == "Mobile" then
     return 
   end
@@ -1063,7 +1065,7 @@ function r7_0.UpdateUIStyleInPlatform(r0_45, r1_45)
   r0_45:SetPanelDetails(r0_45.CurrentTabIdx)
 end
 function r7_0.OnKeyDown(r0_46, r1_46, r2_46)
-  -- line: [1278, 1313] id: 46
+  -- line: [1280, 1315] id: 46
   local r3_46 = UE4.UKismetInputLibrary.GetKey(r2_46)
   local r4_46 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_46)
   local r5_46 = false
@@ -1093,7 +1095,7 @@ function r7_0.OnKeyDown(r0_46, r1_46, r2_46)
   end
 end
 function r7_0.OnGamePadDown(r0_47, r1_47)
-  -- line: [1315, 1409] id: 47
+  -- line: [1317, 1411] id: 47
   DebugPrint("SL OnGamePadDown is InKeyName Detail", r1_47)
   local r2_47 = false
   if r1_47 == "Gamepad_FaceButton_Right" then
@@ -1150,7 +1152,7 @@ function r7_0.OnGamePadDown(r0_47, r1_47)
   return r2_47
 end
 function r7_0.OnPreviewKeyDown(r0_48, r1_48, r2_48)
-  -- line: [1433, 1476] id: 48
+  -- line: [1435, 1478] id: 48
   if r0_48.DefaultList:GetVisibility() == ESlateVisibility.SelfHitTestInvisible and r0_48.DefaultList.IsShow then
     return UWidgetBlueprintLibrary.UnHandled()
   end
@@ -1199,7 +1201,7 @@ function r7_0.OnPreviewKeyDown(r0_48, r1_48, r2_48)
   -- goto label_127
 end
 function r7_0.OnShopBtnClicked(r0_49)
-  -- line: [1478, 1484] id: 49
+  -- line: [1480, 1486] id: 49
   local r1_49 = DataMgr.EventPortal[r0_49.RaidSeasonData.EventId]
   if not r1_49 then
     return 
@@ -1207,10 +1209,10 @@ function r7_0.OnShopBtnClicked(r0_49)
   PageJumpUtils:JumpToTargetPageByJumpId(r1_49.EventShop, r0_49.OnShopClose, r0_49)
 end
 function r7_0.OnShopClose(r0_50)
-  -- line: [1486, 1487] id: 50
+  -- line: [1488, 1489] id: 50
 end
 function r7_0.SelectCellFocus(r0_51)
-  -- line: [1490, 1497] id: 51
+  -- line: [1492, 1499] id: 51
   if not r0_51.SelectCell then
     return 
   end
@@ -1221,41 +1223,41 @@ function r7_0.SelectCellFocus(r0_51)
   end
 end
 function r7_0.IsFocusList(r0_52)
-  -- line: [1499, 1501] id: 52
+  -- line: [1501, 1503] id: 52
   return r0_52.CurrentFocusType == "List"
 end
 function r7_0.OnForbiddenRightBtnClicked(r0_53)
-  -- line: [1504, 1506] id: 53
+  -- line: [1506, 1508] id: 53
   UIManager(r0_53):ShowUITip(UIConst.Tip_CommonToast, "UI_REGISTER_COMINGSOON")
 end
 function r7_0.OnForbiddenLeftBtnClicked(r0_54)
-  -- line: [1508, 1513] id: 54
+  -- line: [1510, 1515] id: 54
   if r0_54.IsComMissing and r0_54.DefaultList:GetVisibility() == ESlateVisibility.SelfHitTestInvisible then
     UIManager(r0_54):ShowUITip(UIConst.Tip_CommonToast, "UI_Squad_Miss_Challenge")
   end
 end
 function r7_0.OnForbiddenDoubleModBtnClicked(r0_55)
-  -- line: [1515, 1519] id: 55
+  -- line: [1517, 1521] id: 55
   if r0_55.IsDoubleMod and r0_55.ContinuousCombat then
     UIManager(r0_55):ShowUITip(UIConst.Tip_CommonToast, "UI_Event_ModDrop_Exhausted")
   end
 end
 function r7_0.OpenGuildWarRewardPop(r0_56)
-  -- line: [1522, 1525] id: 56
+  -- line: [1524, 1527] id: 56
   UIManager(r0_56):LoadUINew("GuildWarRewardPop"):Init()
 end
 function r7_0.OpenGuildWarGroupConfirm(r0_57)
-  -- line: [1528, 1531] id: 57
+  -- line: [1530, 1533] id: 57
   UIManager(r0_57):LoadUINew("GuildWarGroupConfirm"):Init()
 end
 function r7_0.OnCurrentSquadChange(r0_58, r1_58, r2_58)
-  -- line: [1534, 1544] id: 58
+  -- line: [1536, 1546] id: 58
   r0_58.SquadId = r1_58
   r0_58.IsComMissing = r2_58
   r0_58:RefreshBtnState()
 end
 function r7_0.RefreshBtnState(r0_59)
-  -- line: [1546, 1605] id: 59
+  -- line: [1548, 1607] id: 59
   local r1_59 = GWorld:GetAvatar()
   if not r1_59 then
     return 
@@ -1266,7 +1268,7 @@ function r7_0.RefreshBtnState(r0_59)
   if not r0_59:CheckDungeonCondition(r0_59.SelectCell.DungeonId) then
     r0_59.Btn_Start:ForbidBtn(true)
     r0_59.Btn_Start:BindForbidStateExecuteEvent(r0_59, function()
-      -- line: [1559, 1561] id: 60
+      -- line: [1561, 1563] id: 60
       UIManager(r0_59):ShowUITip(UIConst.Tip_CommonToast, GText("RaidDungeon_DungeonLocked_Toast"))
     end)
     return 
@@ -1286,7 +1288,7 @@ function r7_0.RefreshBtnState(r0_59)
       r0_59.Btn_Start:ForbidBtn(true)
       r4_59 = DataMgr.Resource[r0_59.ResId]
       r0_59.Btn_Start:BindForbidStateExecuteEvent(r0_59, function()
-        -- line: [1572, 1575] id: 61
+        -- line: [1574, 1577] id: 61
         UIManager(r0_59):ShowUITip(UIConst.Tip_CommonToast, string.format(GText("RaidDungeon_NoTicket_Toast"), GText(r4_59.ResourceName)))
       end)
       return 
@@ -1307,7 +1309,7 @@ function r7_0.RefreshBtnState(r0_59)
     r4_59:ForbidBtn(true)
     r4_59 = r0_59.Btn_Start
     r4_59:BindForbidStateExecuteEvent(r0_59, function()
-      -- line: [1599, 1599] id: 62
+      -- line: [1601, 1601] id: 62
       UIManager(r0_59):ShowUITip(UIConst.Tip_CommonToast, "UI_TRAINING_FAIL_GUIDWAR")
     end)
     return 
@@ -1316,11 +1318,11 @@ function r7_0.RefreshBtnState(r0_59)
   r4_59:BindEventOnClicked(r0_59, r0_59.OnClickSolo)
 end
 function r7_0.PlayTabSound(r0_63)
-  -- line: [1609, 1611] id: 63
+  -- line: [1611, 1613] id: 63
   AudioManager(r0_63):PlayUISound(r0_63, "event:/ui/common/click_level_03", nil, nil)
 end
 function r7_0.TryEnterDungeon(r0_64, r1_64, r2_64, r3_64)
-  -- line: [1613, 1622] id: 64
+  -- line: [1615, 1624] id: 64
   DebugPrint("SL@M:TryEnterDungeon ", r1_64, r2_64, r0_64.RaidSeasonData.EventId, r3_64)
   if r0_64.DefaultList:GetVisibility() == ESlateVisibility.Collapsed then
     r1_64:EnterEventDungeon(r3_64, r2_64, nil, r0_64.RaidSeasonData.EventId)
@@ -1330,43 +1332,43 @@ function r7_0.TryEnterDungeon(r0_64, r1_64, r2_64, r3_64)
   r0_64.Btn_Start:ForbidBtn(true)
 end
 function r7_0.SelectMonsterInfoItem(r0_65, r1_65)
-  -- line: [1625, 1627] id: 65
+  -- line: [1627, 1629] id: 65
   UIManager(r0_65):LoadUINew("MonsterDetailInfo", r0_65.CurSelectedDungeonId, r0_65, r1_65)
 end
 function r7_0.HandleEnterDungeonRetCode(r0_66, ...)
-  -- line: [1629, 1638] id: 66
+  -- line: [1631, 1640] id: 66
   DebugPrint("SL@M.EnterDungeonCallback RetCode", r0_66)
   ErrorCode:Check(r0_66)
   local r1_66 = r0_66 == ErrorCode.RET_SUCCESS
 end
 function r7_0.OnTeamMatchCancel(r0_67, r1_67)
-  -- line: [1640, 1642] id: 67
+  -- line: [1642, 1644] id: 67
   r0_67.Btn_Start:ForbidBtn(false)
 end
 function r7_0.ReceiveEnterState(r0_68, r1_68)
-  -- line: [1645, 1649] id: 68
+  -- line: [1647, 1651] id: 68
   r0_68.Super.ReceiveEnterState(r0_68, r1_68)
   EventManager:FireEvent(EventID.GuilfWarLevelSelectReceiveEnterState, r1_68)
 end
 function r7_0.OnPreRaidRankInfo(r0_69, r1_69)
-  -- line: [1651, 1653] id: 69
+  -- line: [1653, 1655] id: 69
 end
 function r7_0.OnRaidRankInfo(r0_70, r1_70)
-  -- line: [1655, 1660] id: 70
+  -- line: [1657, 1662] id: 70
   r0_70.RankInfo = r1_70 and {}
   if r0_70.OpenRankTag then
     r0_70:TryOpenRankTopN()
   end
 end
 function r7_0.OnRaidRankInfoTopN(r0_71, r1_71)
-  -- line: [1662, 1667] id: 71
+  -- line: [1664, 1669] id: 71
   r0_71.TopNInfo = r1_71 and {}
   if r0_71.OpenRankTag then
     r0_71:TryOpenRankTopN()
   end
 end
 function r7_0.DisableEscOnDungeonLoading(r0_72)
-  -- line: [1669, 1671] id: 72
+  -- line: [1671, 1673] id: 72
   r0_72.DisableEsc = true
 end
 AssembleComponents(r7_0)

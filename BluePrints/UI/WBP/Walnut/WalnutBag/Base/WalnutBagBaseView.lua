@@ -239,7 +239,7 @@ return {
     end
   end,
   RemoveItemSaleState = function(r0_18, r1_18)
-    -- line: [278, 304] id: 18
+    -- line: [278, 306] id: 18
     local r2_18 = math.tointeger(r1_18)
     local r3_18 = r0_18.DesireSaleWalnutObjList[r2_18]
     local r4_18 = {
@@ -253,19 +253,20 @@ return {
     r3_18.StateTagInfo = r4_18
     r3_18.IsSelect = false
     r0_18.List_Item:GetItemAt(r0_18.ItemId2Index[r2_18] + -1).StateTagInfo = r4_18
-    if r3_18.SelfWidget and r3_18.Uuid == r1_18 then
-      r3_18.SelfWidget:SetSelected(false)
-      r3_18.SelfWidget:SetStuffStyleByStateTag(r3_18)
+    local r6_18 = UE4.URuntimeCommonFunctionLibrary.GetEntryWidgetFromItem(r0_18.List_Item, r0_18.ItemId2Index[r2_18] + -1)
+    if r6_18 and r3_18.Uuid == r1_18 then
+      r6_18:SetSelected(false)
+      r6_18:SetStuffStyleByStateTag(r3_18)
     end
-    local r6_18 = false
-    local r7_18 = DataMgr.Resource[r3_18.UnitId]
+    local r7_18 = false
+    local r8_18 = DataMgr.Resource[r3_18.UnitId]
     if r0_18.CurSelectStuffContent ~= nil then
-      r6_18 = r3_18.Uuid == r0_18.CurSelectStuffContent.Uuid
+      r7_18 = r3_18.Uuid == r0_18.CurSelectStuffContent.Uuid
     else
-      goto label_53	-- block#5 is visited secondly
+      goto label_59	-- block#5 is visited secondly
     end
     r0_18.DesireSaleWalnutObjList[r2_18] = nil
-    if r6_18 then
+    if r7_18 then
       r0_18.List_Item:BP_ClearSelection()
     end
     if tonumber(r1_18) == r0_18.CurSelectContent.Id then
@@ -273,7 +274,7 @@ return {
     end
   end,
   RefreshItemInfo = function(r0_19, r1_19, r2_19)
-    -- line: [306, 313] id: 19
+    -- line: [308, 315] id: 19
     local r3_19 = r0_19.List_Item:GetItemAt(r0_19.ItemId2Index[r2_19] + -1)
     if not r3_19 or not r3_19.SelfWidget then
       return 
@@ -282,13 +283,13 @@ return {
     r0_19.DesireSaleWalnutObjList[r2_19].Num = r1_19
   end,
   RefreshDetail = function(r0_20, r1_20, r2_20)
-    -- line: [315, 316] id: 20
+    -- line: [317, 318] id: 20
   end,
   UpdateSelectInfo = function(r0_21, r1_21)
-    -- line: [318, 319] id: 21
+    -- line: [320, 321] id: 21
   end,
   OnSelectStuffItemChanged = function(r0_22, r1_22, r2_22)
-    -- line: [321, 333] id: 22
+    -- line: [323, 335] id: 22
     if r0_22.GameInputModeSubsystem:GetCurrentInputType() == ECommonInputType.Gamepad then
       r0_22:OnListItemSelected(r1_22, true)
     end
@@ -297,7 +298,7 @@ return {
     end
   end,
   UpdateReddotView = function(r0_23, r1_23)
-    -- line: [335, 365] id: 23
+    -- line: [337, 367] id: 23
     if r1_23.RedDotType then
       r1_23.RedDotType = nil
       if r1_23.SelfWidget then
@@ -328,7 +329,7 @@ return {
     end
   end,
   RefreshAllGridIndex = function(r0_24)
-    -- line: [367, 375] id: 24
+    -- line: [369, 377] id: 24
     for r5_24 = 0, r0_24.List_Item:GetNumItems() + -1, 1 do
       local r6_24 = r0_24.List_Item:GetItemAt(r5_24)
       if r6_24 then
@@ -337,7 +338,7 @@ return {
     end
   end,
   RefreshDetailPanelView = function(r0_25, r1_25)
-    -- line: [377, 388] id: 25
+    -- line: [379, 390] id: 25
     if r1_25 then
       r0_25.Walnut_Detail:SetIsNeedPlayResolveAnim(true)
       r0_25.Walnut_Detail:SetVisibility(UE4.ESlateVisibility.Collapsed)
@@ -349,14 +350,14 @@ return {
     r0_25.WS_Detail:SetActiveWidgetIndex(0)
   end,
   OnHorizontalListViewResizeDone = function(r0_26, r1_26, r2_26)
-    -- line: [391, 396] id: 26
+    -- line: [393, 398] id: 26
     local r3_26 = UWidgetLayoutLibrary.SlotAsCanvasSlot(r0_26.HB_Empty)
     local r4_26 = r3_26:GetOffsets()
     r4_26.Right = r1_26 - r2_26 - r4_26.Left
     r3_26:SetOffsets(r4_26)
   end,
   SetFocus_Lua = function(r0_27)
-    -- line: [399, 412] id: 27
+    -- line: [401, 414] id: 27
     r0_27:RefreshBottomKeyInfo()
     if UIManager(r0_27):GetUIObj("CommonDialog") ~= nil then
       return 
@@ -368,7 +369,7 @@ return {
     end
   end,
   CheckIsCanAddToSaleList = function(r0_28, r1_28, r2_28)
-    -- line: [414, 435] id: 28
+    -- line: [416, 437] id: 28
     if GWorld:GetAvatar() == nil then
       return false
     end
@@ -388,14 +389,14 @@ return {
     return r4_28 == nil
   end,
   ReGenerateBagList = function(r0_29)
-    -- line: [437, 450] id: 29
+    -- line: [439, 452] id: 29
     r0_29:CancelStuffClickAndHideDetail()
     r0_29.List_Item:BP_ClearSelection()
     r0_29.List_Item:ClearListItems()
     r0_29:RefreshList(true, r2_0.AllOptionName.TabClick)
   end,
   UpdateAllItemsStyle = function(r0_30, r1_30)
-    -- line: [452, 462] id: 30
+    -- line: [454, 464] id: 30
     if r1_30 then
       if r0_30:IsExistTimer("DelayToSetItemStyle") then
         r0_30:RemoveTimer("DelayToSetItemStyle")
@@ -406,7 +407,7 @@ return {
     end
   end,
   DelayToSetItemStyle = function(r0_31)
-    -- line: [464, 493] id: 31
+    -- line: [466, 495] id: 31
     for r5_31 = 0, r0_31.List_Item:GetNumItems() + -1, 1 do
       local r6_31 = r0_31.List_Item:GetItemAt(r5_31)
       if r6_31 and r6_31.StuffType ~= "EmptyGrid" then
@@ -425,7 +426,7 @@ return {
         if r0_31.DesireSaleStuffObjList[r6_31.Uuid] ~= nil then
           local r10_31 = UIManager(r0_31):GetUI(r2_0.WalnutSelectUINames)
           local function r11_31()
-            -- line: [480, 482] id: 32
+            -- line: [482, 484] id: 32
           end
           local r12_31 = {
             Name = "IsToChoose",

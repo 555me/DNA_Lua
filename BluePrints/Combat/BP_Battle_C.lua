@@ -254,7 +254,7 @@ function r3_0.ShowBattleErrorLua(r0_21, r1_21)
   r0_21:ShowBattleError(r1_21, true)
 end
 function r3_0.StandardShowBattleErrorLua(r0_22, r1_22, r2_22, r3_22, r4_22)
-  -- line: [300, 389] id: 22
+  -- line: [300, 391] id: 22
   if not r3_22 then
     r3_22 = ""
   end
@@ -328,8 +328,9 @@ function r3_0.StandardShowBattleErrorLua(r0_22, r1_22, r2_22, r3_22, r4_22)
   r11_22 = table.concat(r10_22)
   if UE4.URuntimeCommonFunctionLibrary.IsPlayInEditor(r0_22) then
     ScreenPrint("战斗报错(StandardShowBattleError):\n" .. r11_22)
+  else
+    DebugPrint("战斗报错(StandardShowBattleError):\n" .. r11_22)
   end
-  DebugPrint("战斗报错(StandardShowBattleError):\n" .. r11_22)
   if not GWorld.ErrorDict then
     GWorld.ErrorDict = {}
   end
@@ -361,7 +362,7 @@ function r3_0.StandardShowBattleErrorLua(r0_22, r1_22, r2_22, r3_22, r4_22)
   end
 end
 function r3_0.FillBattleCharacterLog(r0_24, r1_24, r2_24)
-  -- line: [391, 516] id: 24
+  -- line: [393, 518] id: 24
   if not r2_24 then
     return 
   end
@@ -507,7 +508,7 @@ function r3_0.FillBattleCharacterLog(r0_24, r1_24, r2_24)
   end
 end
 function r3_0.FillBattleLog(r0_25, r1_25)
-  -- line: [518, 616] id: 25
+  -- line: [520, 618] id: 25
   local r2_25 = GWorld:GetAvatar()
   table.insert(r1_25, "环境:")
   if IsClient(r0_25) then
@@ -592,7 +593,7 @@ function r3_0.FillBattleLog(r0_25, r1_25)
   r0_25:FillUIInfoLog(r1_25)
 end
 function r3_0.FillDungeonLog(r0_26, r1_26, r2_26)
-  -- line: [618, 694] id: 26
+  -- line: [620, 696] id: 26
   local r3_26 = r2_26.DungeonId
   if not r3_26 or r3_26 <= 0 then
     return 
@@ -652,7 +653,7 @@ function r3_0.FillDungeonLog(r0_26, r1_26, r2_26)
   table.insert(r1_26, "\n")
 end
 function r3_0.FillTimeLog(r0_27, r1_27)
-  -- line: [696, 726] id: 27
+  -- line: [698, 728] id: 27
   local r2_27 = GWorld:GetCurrentTime()
   table.insert(r1_27, "当前World运行时间（进入副本/父区域时间）:")
   local r3_27 = math.floor(r2_27 / 60)
@@ -687,7 +688,7 @@ function r3_0.FillTimeLog(r0_27, r1_27)
   r0_27.LastErrorLogTime = r5_27
 end
 function r3_0.FillUIInfoLog(r0_28, r1_28)
-  -- line: [728, 824] id: 28
+  -- line: [730, 826] id: 28
   local r2_28 = GWorld.GameInstance:GetGameUIManager()
   if IsValid(r2_28) then
     local r3_28 = {
@@ -697,7 +698,7 @@ function r3_0.FillUIInfoLog(r0_28, r1_28)
       "TalkGuideUI"
     }
     local function r4_28(r0_29)
-      -- line: [740, 747] id: 29
+      -- line: [742, 749] id: 29
       for r5_29, r6_29 in ipairs(r3_28) do
         if string.sub(r0_29, 1, string.len(r6_29)) == r6_29 then
           return true
@@ -718,7 +719,7 @@ function r3_0.FillUIInfoLog(r0_28, r1_28)
     end
     -- close: r7_28
     local function r7_28(r0_30, r1_30)
-      -- line: [765, 790] id: 30
+      -- line: [767, 792] id: 30
       local r2_30 = string.rep("  ", r1_30)
       local r3_30 = r0_30.ConfigName and r0_30.WidgetName and "Unknown"
       local r4_30 = r0_30:IsVisible()
@@ -778,7 +779,7 @@ function r3_0.FillUIInfoLog(r0_28, r1_28)
   end
 end
 function r3_0.FillRegionLog(r0_31, r1_31, r2_31, r3_31)
-  -- line: [826, 873] id: 31
+  -- line: [828, 875] id: 31
   local r4_31 = r3_31:GetCurrentRegionId()
   table.insert(r1_31, "子区域ID:")
   table.insert(r1_31, tostring(r4_31))
@@ -820,7 +821,7 @@ function r3_0.FillRegionLog(r0_31, r1_31, r2_31, r3_31)
   end
 end
 function r3_0.ShowBattleError(r0_32, r1_32, r2_32)
-  -- line: [875, 937] id: 32
+  -- line: [877, 940] id: 32
   local r3_32 = UE4.URuntimeCommonFunctionLibrary.IsDistribution()
   local r4_32 = UE4.URuntimeCommonFunctionLibrary.EnableLogInShipping()
   if r3_32 and not r4_32 then
@@ -845,8 +846,9 @@ function r3_0.ShowBattleError(r0_32, r1_32, r2_32)
   r7_32 = table.concat(r6_32)
   if UE4.URuntimeCommonFunctionLibrary.IsPlayInEditor(r0_32) then
     ScreenPrint("战斗报错:\n" .. r7_32)
+  else
+    DebugPrint("战斗报错(ShowBattleError):\n" .. r7_32)
   end
-  DebugPrint("战斗报错(ShowBattleError):\n" .. r7_32)
   if not GWorld.ErrorDict then
     GWorld.ErrorDict = {}
   end
@@ -877,11 +879,11 @@ function r3_0.ShowBattleError(r0_32, r1_32, r2_32)
   end
 end
 function r3_0.GetLimitSeNumEachAttack(r0_33)
-  -- line: [939, 941] id: 33
+  -- line: [942, 944] id: 33
   return Const.EveryAttackLimitSeNum
 end
 function r3_0.InitBannedRecordTags(r0_34)
-  -- line: [943, 953] id: 34
+  -- line: [946, 956] id: 34
   local r1_34 = TArray(FName)
   local r2_34 = r2_0:Get("BannedRecordTags")
   if r2_34 and next(r2_34) then
@@ -893,7 +895,7 @@ function r3_0.InitBannedRecordTags(r0_34)
   r0_34:SetBannedRecordTags(r1_34)
 end
 function r3_0.ShowError_Monster_Inner_Lua(r0_35, r1_35, r2_35)
-  -- line: [955, 1031] id: 35
+  -- line: [958, 1034] id: 35
   if r2_35 == nil then
     r2_35 = "怪物组报错"
   end
@@ -955,7 +957,7 @@ function r3_0.ShowError_Monster_Inner_Lua(r0_35, r1_35, r2_35)
   end
 end
 function r3_0.FillLog_Monster(r0_36, r1_36)
-  -- line: [1033, 1129] id: 36
+  -- line: [1036, 1132] id: 36
   local r2_36 = GWorld:GetAvatar()
   table.insert(r1_36, "环境:")
   if IsClient(r0_36) then
@@ -1047,7 +1049,7 @@ function r3_0.FillLog_Monster(r0_36, r1_36)
   end
 end
 function r3_0.FillCharacterLog_Monster(r0_37, r1_37, r2_37)
-  -- line: [1131, 1193] id: 37
+  -- line: [1134, 1196] id: 37
   if not r2_37 then
     return 
   end
@@ -1076,7 +1078,7 @@ function r3_0.FillCharacterLog_Monster(r0_37, r1_37, r2_37)
   end
 end
 function r3_0.IsInSettlement(r0_38)
-  -- line: [1195, 1197] id: 38
+  -- line: [1198, 1200] id: 38
   return UIManager(r0_38):GetUI("DungeonSettlement") ~= nil
 end
 AssembleComponents(r3_0)

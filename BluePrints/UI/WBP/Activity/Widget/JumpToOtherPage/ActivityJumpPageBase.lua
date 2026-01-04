@@ -376,8 +376,8 @@ function r3_0.GoToMoreClick(r0_23)
       end,
     }
     local r3_23 = {
-      "低级奖励",
-      "高级奖励"
+      GText("UI_Theater_CommonReward"),
+      GText("UI_Theater_PremiumReward")
     }
     local r4_23 = {}
     for r8_23 = 1, #r3_23, 1 do

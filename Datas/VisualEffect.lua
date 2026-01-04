@@ -3692,7 +3692,7 @@ r6_0.EffectParam = {
   },
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_yongzhuangWave_001.NS_Baiheng01_yongzhuangWave_001"
-r6_0.FXPriorityType = 90
+r6_0.FXPriorityType = 100
 r6_0.NotHideInSkillFeature = true
 r6_0.PlayLocation = {
   socket = "root_Armpoint_R",
@@ -3721,7 +3721,7 @@ r6_0.EffectParam = {
   },
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_yongzhuangWave_002.NS_Baiheng01_yongzhuangWave_002"
-r6_0.FXPriorityType = 90
+r6_0.FXPriorityType = 100
 r6_0.NotHideInSkillFeature = true
 r6_0.PlayLocation = {
   socket = "root_Armpoint_L",
@@ -3740,7 +3740,7 @@ r6_0.EffectParam = {
   },
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_yongzhuangWave_003.NS_Baiheng01_yongzhuangWave_003"
-r6_0.FXPriorityType = 90
+r6_0.FXPriorityType = 100
 r6_0.NotHideInSkillFeature = true
 r6_0.PlayLocation = r0_0.RT_100
 r6_0.TickInArmory = true
@@ -3757,7 +3757,7 @@ r6_0.EffectParam = {
   },
 }
 r6_0.EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_yongzhuangWave_004.NS_Baiheng01_yongzhuangWave_004"
-r6_0.FXPriorityType = 90
+r6_0.FXPriorityType = 100
 r6_0.NotHideInSkillFeature = true
 r6_0.PlayLocation = r0_0.RT_100
 r6_0.TickInArmory = true
@@ -3766,7 +3766,7 @@ r4_0[240165] = {
   EffectId = 240165,
   EffectParam = r0_0.RT_102,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_yongzhuanLens_001.NS_Baiheng01_yongzhuanLens_001",
-  FXPriorityType = 90,
+  FXPriorityType = 100,
   NotHideInSkillFeature = true,
   PlayLocation = r0_0.RT_41,
   TickInArmory = true,
@@ -3775,7 +3775,7 @@ r4_0[240166] = {
   EffectId = 240166,
   EffectParam = r0_0.RT_102,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_yongzhuanLens_001.NS_Baiheng01_yongzhuanLens_001",
-  FXPriorityType = 90,
+  FXPriorityType = 100,
   NotHideInSkillFeature = true,
   PlayLocation = r0_0.RT_59,
   TickInArmory = true,
@@ -3783,7 +3783,7 @@ r4_0[240166] = {
 r4_0[240167] = {
   EffectId = 240167,
   EffectPath = "/Game/Asset/Effect/Niagara/Player/Baiheng01/NS_Baiheng01_yongzhuanLens_002.NS_Baiheng01_yongzhuanLens_002",
-  FXPriorityType = 90,
+  FXPriorityType = 100,
   NotHideInSkillFeature = true,
   PlayLocation = r0_0.RT_100,
   TickInArmory = true,

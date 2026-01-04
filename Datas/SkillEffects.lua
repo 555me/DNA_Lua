@@ -2929,189 +2929,193 @@ r0_0.RT_572 = {
   [2] = r0_0.RT_562,
 }
 r0_0.RT_573 = {
+  Function = "PlaySE",
+  SEId = 900402,
+}
+r0_0.RT_574 = {
   BuffId = 850204,
   Function = "AddBuff",
   LastTime = 1.3,
 }
-r0_0.RT_574 = {
+r0_0.RT_575 = {
   BuffId = 850204,
   BySource = true,
   Function = "RemoveBuff",
 }
-r0_0.RT_575 = {
+r0_0.RT_576 = {
   FXId = 40101007,
   Function = "PlayFX",
   NormalToHit = true,
   Overlap = true,
 }
-r0_0.RT_576 = {
+r0_0.RT_577 = {
   [1] = r0_0.RT_565,
-  [2] = r0_0.RT_575,
+  [2] = r0_0.RT_576,
   [3] = r0_0.RT_566,
   [4] = r0_0.RT_567,
 }
-r0_0.RT_577 = {
+r0_0.RT_578 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 5,
 }
-r0_0.RT_578 = {
-  [1] = r0_0.RT_577,
-}
 r0_0.RT_579 = {
+  [1] = r0_0.RT_578,
+}
+r0_0.RT_580 = {
   Delay = 0.4,
   Function = "AddEnergyShield",
   IsOverShield = 1,
   Rate = 0,
   Value = "#1",
 }
-r0_0.RT_580 = {
+r0_0.RT_581 = {
   BaseAttr = "MaxHp",
   DamageType = "Default",
   Delay = 0.4,
   Function = "Heal",
   Rate = "#1",
 }
-r0_0.RT_581 = {
+r0_0.RT_582 = {
   BossValue = 1,
   CauseHit = "LightHit",
   Function = "CutToughness",
   Value = 33,
 }
-r0_0.RT_582 = {
+r0_0.RT_583 = {
   Function = "PlaySE",
   SEId = 410105,
 }
-r0_0.RT_583 = {
+r0_0.RT_584 = {
   AimTarget = true,
   FXId = 410121,
   Function = "PlayFX",
   IsAttached = true,
 }
-r0_0.RT_584 = {
+r0_0.RT_585 = {
   [1] = r0_0.RT_213,
-  [2] = r0_0.RT_581,
+  [2] = r0_0.RT_582,
   [3] = r0_0.RT_123,
 }
-r0_0.RT_585 = {
+r0_0.RT_586 = {
   0,
   0,
   -87
 }
-r0_0.RT_586 = {
+r0_0.RT_587 = {
   Function = "PlaySE",
   SEId = 410207,
 }
-r0_0.RT_587 = {
+r0_0.RT_588 = {
   ATKBase = "ATK_Char",
   CreatureId = 410222,
   Function = "CreateSkillCreature",
   UseSaveLoc = "ZhiliuTD",
 }
-r0_0.RT_588 = {
+r0_0.RT_589 = {
   ATKBase = "ATK_Char",
   CreatureId = 410223,
   Function = "CreateSkillCreature",
   UseSaveLoc = "ZhiliuTD",
 }
-r0_0.RT_589 = {
+r0_0.RT_590 = {
   Function = "PlaySE",
   SEId = 410211,
 }
-r0_0.RT_590 = {
+r0_0.RT_591 = {
   Function = "ExecuteClientPassiveFunction",
   FunctionName = "EndPP",
 }
-r0_0.RT_591 = {
+r0_0.RT_592 = {
   CreatureId = 410225,
   Function = "RemoveSkillCreature",
 }
-r0_0.RT_592 = {
+r0_0.RT_593 = {
   CreatureId = 410245,
   Function = "RemoveSkillCreature",
 }
-r0_0.RT_593 = {
+r0_0.RT_594 = {
   BossValue = 12,
   CauseHit = "HitFly_XY400Z300",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_594 = {
+r0_0.RT_595 = {
   CanBeScaled = true,
   FXId = 410215,
   Function = "PlayFX",
   IsAttached = 1,
 }
-r0_0.RT_595 = {
+r0_0.RT_596 = {
   Function = "PlaySE",
   SEId = 410210,
 }
-r0_0.RT_596 = {
-  [1] = r0_0.RT_213,
-  [2] = r0_0.RT_593,
-  [3] = r0_0.RT_594,
-  [4] = r0_0.RT_595,
-}
 r0_0.RT_597 = {
+  [1] = r0_0.RT_213,
+  [2] = r0_0.RT_594,
+  [3] = r0_0.RT_595,
+  [4] = r0_0.RT_596,
+}
+r0_0.RT_598 = {
   ComboCount = 1,
   Function = "HitCount",
 }
-r0_0.RT_598 = {
-  [1] = r0_0.RT_597,
-}
 r0_0.RT_599 = {
+  [1] = r0_0.RT_598,
+}
+r0_0.RT_600 = {
   DamageType = "TrueDamage",
   Function = "Damage",
   Value = 200,
 }
-r0_0.RT_600 = {
-  [1] = r0_0.RT_599,
+r0_0.RT_601 = {
+  [1] = r0_0.RT_600,
   [2] = r0_0.RT_556,
   [3] = r0_0.RT_557,
   [4] = r0_0.RT_175,
 }
-r0_0.RT_601 = {
-  [1] = r0_0.RT_599,
+r0_0.RT_602 = {
+  [1] = r0_0.RT_600,
   [2] = r0_0.RT_559,
   [3] = r0_0.RT_557,
   [4] = r0_0.RT_175,
 }
-r0_0.RT_602 = {
+r0_0.RT_603 = {
   BuffId = 420111,
   Function = "AddBuff",
   LastTime = -1,
 }
-r0_0.RT_603 = {
+r0_0.RT_604 = {
   Delay = 0.1,
   FXId = 26,
   Function = "PlayFX",
 }
-r0_0.RT_604 = {
+r0_0.RT_605 = {
   "Skill",
   "Skill2",
   "YumingExtra"
 }
-r0_0.RT_605 = {
+r0_0.RT_606 = {
   BaseAttr = "ATK_Char",
-  DamageTag = r0_0.RT_604,
+  DamageTag = r0_0.RT_605,
   Function = "Damage",
   Rate = "#1",
 }
-r0_0.RT_606 = {
+r0_0.RT_607 = {
   BaseChar = "Target",
   FXId = 420103,
   Function = "PlayFX",
 }
-r0_0.RT_607 = {
-  [1] = r0_0.RT_605,
-  [2] = r0_0.RT_606,
-}
 r0_0.RT_608 = {
+  [1] = r0_0.RT_606,
+  [2] = r0_0.RT_607,
+}
+r0_0.RT_609 = {
   BuffId = 420112,
   Function = "AddBuff",
   LastTime = 8,
 }
-r0_0.RT_609 = {
+r0_0.RT_610 = {
   BaseAttr = "DEF",
   DamageTag = r0_0.RT_40,
   DamageType = "EsDamage",
@@ -3119,30 +3123,30 @@ r0_0.RT_609 = {
   Rate = "#1",
   Value = "#2",
 }
-r0_0.RT_610 = {
+r0_0.RT_611 = {
   "Skill",
   "Skill1",
   "XibiSkill01",
   "XibiSkill01SP"
 }
-r0_0.RT_611 = {
+r0_0.RT_612 = {
   CreatureId = 430111,
   Function = "RemoveSkillCreature",
 }
-r0_0.RT_612 = {
+r0_0.RT_613 = {
   CreatureId = 430113,
   Function = "RemoveSkillCreature",
 }
-r0_0.RT_613 = {
+r0_0.RT_614 = {
   CreatureId = 430114,
   Function = "RemoveSkillCreature",
 }
-r0_0.RT_614 = {
-  [1] = r0_0.RT_611,
-  [2] = r0_0.RT_612,
-  [3] = r0_0.RT_613,
-}
 r0_0.RT_615 = {
+  [1] = r0_0.RT_612,
+  [2] = r0_0.RT_613,
+  [3] = r0_0.RT_614,
+}
+r0_0.RT_616 = {
   BaseAttr = "MaxHp",
   DamageTag = r0_0.RT_246,
   DamageType = "Thunder",
@@ -3150,36 +3154,36 @@ r0_0.RT_615 = {
   Rate = "#1",
   Value = "#2",
 }
-r0_0.RT_616 = {
-  [1] = r0_0.RT_615,
-}
 r0_0.RT_617 = {
+  [1] = r0_0.RT_616,
+}
+r0_0.RT_618 = {
   BossValue = 46,
   CauseHit = "HitFly_XY200Z300",
   Function = "CutToughness",
   Value = 33,
 }
-r0_0.RT_618 = {
+r0_0.RT_619 = {
   FXId = 500000306,
   Function = "PlayFX",
 }
-r0_0.RT_619 = {
+r0_0.RT_620 = {
   BaseAttr = "MaxHp",
   BaseChar = "Target",
   DamageType = "Default",
   Function = "Damage",
   Rate = 0.67,
 }
-r0_0.RT_620 = {
+r0_0.RT_621 = {
   -200,
   200
 }
-r0_0.RT_621 = {
+r0_0.RT_622 = {
   CauseHit = "HitFly_XY400Z600",
   Function = "CutToughness",
   Value = 150,
 }
-r0_0.RT_622 = {
+r0_0.RT_623 = {
   BaseAttr = "MaxHp",
   DamageTag = r0_0.RT_179,
   DamageType = "Wind",
@@ -3187,48 +3191,48 @@ r0_0.RT_622 = {
   Rate = "#1",
   Value = "#2",
 }
-r0_0.RT_623 = {
+r0_0.RT_624 = {
   BuffType = 10,
   Function = "RemoveBuff",
   Num = 1,
 }
-r0_0.RT_624 = {
+r0_0.RT_625 = {
   BossValue = 56,
   CauseHit = "HitFly_XY1000Z500",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_625 = {
+r0_0.RT_626 = {
   FXId = 510105,
   Function = "PlayFX",
 }
-r0_0.RT_626 = {
+r0_0.RT_627 = {
   Function = "PlaySE",
   SEId = 510102,
 }
-r0_0.RT_627 = {
+r0_0.RT_628 = {
   "MeleeWord",
   "Skill"
 }
-r0_0.RT_628 = {
+r0_0.RT_629 = {
   BaseAttr = "MaxHp",
-  DamageTag = r0_0.RT_627,
+  DamageTag = r0_0.RT_628,
   DamageType = "Wind",
   Function = "Damage",
   Rate = "#1",
   Value = "#2",
 }
-r0_0.RT_629 = {
+r0_0.RT_630 = {
   BodyAccessoryEffect = true,
   DieEffect = false,
   Function = "AdditionalHitFX",
 }
-r0_0.RT_630 = {
+r0_0.RT_631 = {
   Function = "ExecutePassiveFunction",
   FunctionName = "QuitSkill02",
   PassiveEffectId = 510201,
 }
-r0_0.RT_631 = {
+r0_0.RT_632 = {
   ATK = 1,
   DEF = 1,
   ES = 0,
@@ -3238,8 +3242,8 @@ r0_0.RT_631 = {
   SkillIntensity = 1,
   StrongValue = 0,
 }
-r0_0.RT_632 = {
-  AttrRates = r0_0.RT_631,
+r0_0.RT_633 = {
+  AttrRates = r0_0.RT_632,
   Function = "CreateUnit",
   IsShadow = 1,
   LifeTime = 5,
@@ -3248,1771 +3252,1771 @@ r0_0.RT_632 = {
   UnitId = 530101,
   UnitType = "Monster",
 }
-r0_0.RT_633 = {
+r0_0.RT_634 = {
   Function = "PlaySE",
   SEId = 25,
 }
-r0_0.RT_634 = {
+r0_0.RT_635 = {
   ATKBase = "ATK",
   CreatureId = 530111,
   Delay = 0.05,
   Function = "CreateSkillCreature",
   UseSaveLoc = "SaiqiMissle",
 }
-r0_0.RT_635 = {
-  ATKBase = "ATK",
-  CreatureId = 530111,
-  Delay = 0.1,
-  Function = "CreateSkillCreature",
-  UseSaveLoc = "SaiqiMissle",
-}
 r0_0.RT_636 = {
   ATKBase = "ATK",
   CreatureId = 530111,
-  Delay = 0.15,
+  Delay = 0.1,
   Function = "CreateSkillCreature",
   UseSaveLoc = "SaiqiMissle",
 }
 r0_0.RT_637 = {
   ATKBase = "ATK",
   CreatureId = 530111,
-  Delay = 0.2,
+  Delay = 0.15,
   Function = "CreateSkillCreature",
   UseSaveLoc = "SaiqiMissle",
 }
 r0_0.RT_638 = {
-  "RootSource"
+  ATKBase = "ATK",
+  CreatureId = 530111,
+  Delay = 0.2,
+  Function = "CreateSkillCreature",
+  UseSaveLoc = "SaiqiMissle",
 }
 r0_0.RT_639 = {
+  "RootSource"
+}
+r0_0.RT_640 = {
   Function = "PlaySE",
   SEId = 530102,
 }
-r0_0.RT_640 = {
+r0_0.RT_641 = {
   "Skill",
   "Skill1",
   "SaiqiSkill01"
 }
-r0_0.RT_641 = {
+r0_0.RT_642 = {
   BaseAttr = "ATK_Char",
-  DamageTag = r0_0.RT_640,
+  DamageTag = r0_0.RT_641,
   Function = "Damage",
   Rate = "#1",
 }
-r0_0.RT_642 = {
+r0_0.RT_643 = {
   ATKBase = "ATK",
   CreatureId = 530111,
   Delay = 0.25,
   Function = "CreateSkillCreature",
   UseSaveLoc = "SaiqiMissle",
 }
-r0_0.RT_643 = {
-  ATKBase = "ATK",
-  CreatureId = 530111,
-  Delay = 0.3,
-  Function = "CreateSkillCreature",
-  UseSaveLoc = "SaiqiMissle",
-}
 r0_0.RT_644 = {
   ATKBase = "ATK",
   CreatureId = 530111,
-  Delay = 0.35,
+  Delay = 0.3,
   Function = "CreateSkillCreature",
   UseSaveLoc = "SaiqiMissle",
 }
 r0_0.RT_645 = {
   ATKBase = "ATK",
   CreatureId = 530111,
-  Delay = 0.4,
+  Delay = 0.35,
   Function = "CreateSkillCreature",
   UseSaveLoc = "SaiqiMissle",
 }
 r0_0.RT_646 = {
+  ATKBase = "ATK",
+  CreatureId = 530111,
+  Delay = 0.4,
+  Function = "CreateSkillCreature",
+  UseSaveLoc = "SaiqiMissle",
+}
+r0_0.RT_647 = {
   ClientSkillLogicId = 530101,
   Function = "ExecuteClientSkillLogicFunction",
   FunctionName = "SetShootLoc",
 }
-r0_0.RT_647 = {
+r0_0.RT_648 = {
   BaseAttr = "ATK_Ultra",
   DamageTag = r0_0.RT_343,
   Function = "Damage",
   Rate = "#1",
 }
-r0_0.RT_648 = {
+r0_0.RT_649 = {
   BossValue = 14,
   CauseHit = "LightHit",
   Function = "CutToughness",
   Value = 15,
 }
-r0_0.RT_649 = {
+r0_0.RT_650 = {
   Function = "PlaySE",
   SEId = 530106,
 }
-r0_0.RT_650 = {
+r0_0.RT_651 = {
   BaseAttr = "ATK_Char",
   Function = "Heal",
   Rate = "#1",
   Value = 35,
 }
-r0_0.RT_651 = {
+r0_0.RT_652 = {
   BaseAttr = "MaxSp",
   DamageTag = r0_0.RT_179,
   DamageType = "Wind",
   Function = "Damage",
   Rate = 1,
 }
-r0_0.RT_652 = {
+r0_0.RT_653 = {
   BuffId = 540222,
   Function = "AddBuff",
   LastTime = 12,
 }
-r0_0.RT_653 = {
-  [1] = r0_0.RT_652,
-}
 r0_0.RT_654 = {
-  "PhantomAvoid"
+  [1] = r0_0.RT_653,
 }
 r0_0.RT_655 = {
+  "PhantomAvoid"
+}
+r0_0.RT_656 = {
   BaseAttr = "ATK",
-  DamageTag = r0_0.RT_654,
+  DamageTag = r0_0.RT_655,
   Function = "Damage",
   Rate = 0.1,
 }
-r0_0.RT_656 = {
+r0_0.RT_657 = {
   FXId = 600001,
   Function = "PlayFX",
 }
-r0_0.RT_657 = {
+r0_0.RT_658 = {
   AimTarget = true,
   FXId = 600000402,
   Function = "PlayFX",
   IsAttached = true,
 }
-r0_0.RT_658 = {
+r0_0.RT_659 = {
   "PhantomAvoid",
   "Fade"
 }
-r0_0.RT_659 = {
+r0_0.RT_660 = {
   BaseAttr = "ATK",
-  DamageTag = r0_0.RT_658,
+  DamageTag = r0_0.RT_659,
   Function = "Damage",
   Rate = 0.4,
 }
-r0_0.RT_660 = {
+r0_0.RT_661 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 1.67,
 }
-r0_0.RT_661 = {
+r0_0.RT_662 = {
   FXId = 600009,
   Function = "PlayFX",
 }
-r0_0.RT_662 = {
-  [1] = r0_0.RT_660,
-  [2] = r0_0.RT_661,
+r0_0.RT_663 = {
+  [1] = r0_0.RT_661,
+  [2] = r0_0.RT_662,
   [3] = r0_0.RT_5,
 }
-r0_0.RT_663 = {
+r0_0.RT_664 = {
   BuffId = 600101,
   Function = "AddBuff",
   LastTime = 5,
 }
-r0_0.RT_664 = {
-  [1] = r0_0.RT_663,
-}
 r0_0.RT_665 = {
+  [1] = r0_0.RT_664,
+}
+r0_0.RT_666 = {
   BuffId = 600101,
   BySource = true,
   Function = "RemoveBuff",
 }
-r0_0.RT_666 = {
-  [1] = r0_0.RT_665,
-}
 r0_0.RT_667 = {
+  [1] = r0_0.RT_666,
+}
+r0_0.RT_668 = {
   "hit1",
   "hit2",
   "hit3"
 }
-r0_0.RT_668 = {
+r0_0.RT_669 = {
   FXId = 600203,
   Function = "PlayFX",
   Overlap = true,
 }
-r0_0.RT_669 = {
+r0_0.RT_670 = {
   Function = "PlaySE",
   SEId = 600201,
 }
-r0_0.RT_670 = {
+r0_0.RT_671 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 1.57,
 }
-r0_0.RT_671 = {
+r0_0.RT_672 = {
   FXId = 600203,
   Function = "PlayFX",
   NormalToHit = true,
   Overlap = true,
 }
-r0_0.RT_672 = {
+r0_0.RT_673 = {
   Function = "PlaySE",
   SEId = 600201,
   SceneSe = true,
 }
-r0_0.RT_673 = {
-  [1] = r0_0.RT_671,
-  [2] = r0_0.RT_672,
-}
 r0_0.RT_674 = {
+  [1] = r0_0.RT_672,
+  [2] = r0_0.RT_673,
+}
+r0_0.RT_675 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 2.67,
 }
-r0_0.RT_675 = {
+r0_0.RT_676 = {
   BaseAttr = "MaxHp",
   Function = "Heal",
   Rate = 0.3,
 }
-r0_0.RT_676 = {
+r0_0.RT_677 = {
   BaseAttr = "MaxHp",
   Function = "Heal",
   Rate = 0.5,
 }
-r0_0.RT_677 = {
+r0_0.RT_678 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 2.1,
 }
-r0_0.RT_678 = {
-  [1] = r0_0.RT_677,
-  [2] = r0_0.RT_661,
+r0_0.RT_679 = {
+  [1] = r0_0.RT_678,
+  [2] = r0_0.RT_662,
   [3] = r0_0.RT_5,
 }
-r0_0.RT_679 = {
+r0_0.RT_680 = {
   Function = "PlaySE",
   SEId = 600401,
 }
-r0_0.RT_680 = {
+r0_0.RT_681 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 2.5,
 }
-r0_0.RT_681 = {
+r0_0.RT_682 = {
   CauseHit = "HitFly_XY1200Z1000",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_682 = {
+r0_0.RT_683 = {
   CauseHit = "LightHit_300",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_683 = {
+r0_0.RT_684 = {
   BuffId = 600501,
   Function = "AddBuff",
   LastTime = 3,
 }
-r0_0.RT_684 = {
+r0_0.RT_685 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 4,
 }
-r0_0.RT_685 = {
+r0_0.RT_686 = {
   CauseHit = "LightHit_300",
   Function = "CutToughness",
-}
-r0_0.RT_686 = {
-  Function = "PlaySE",
-  SEId = 600701,
 }
 r0_0.RT_687 = {
   Function = "PlaySE",
   SEId = 600701,
-  SceneSe = true,
 }
 r0_0.RT_688 = {
+  Function = "PlaySE",
+  SEId = 600701,
+  SceneSe = true,
+}
+r0_0.RT_689 = {
   BaseAttr = "MaxHP",
   DamageType = "TrueDamage",
   Function = "Damage",
   Rate = 0.5,
 }
-r0_0.RT_689 = {
-  [1] = r0_0.RT_688,
-  [2] = r0_0.RT_10,
-  [3] = r0_0.RT_686,
-}
 r0_0.RT_690 = {
+  [1] = r0_0.RT_689,
+  [2] = r0_0.RT_10,
+  [3] = r0_0.RT_687,
+}
+r0_0.RT_691 = {
   CauseHit = "HitFly_XY800Z1000",
   Function = "CutToughness",
 }
-r0_0.RT_691 = {
+r0_0.RT_692 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 1.85,
 }
-r0_0.RT_692 = {
+r0_0.RT_693 = {
   FXId = 600704,
   Function = "PlayFX",
 }
-r0_0.RT_693 = {
+r0_0.RT_694 = {
   0,
   800,
   0
 }
-r0_0.RT_694 = {
+r0_0.RT_695 = {
   BaseAttr = "ATK_Char",
   DamageTag = r0_0.RT_551,
   Function = "Damage",
   Rate = 3,
 }
-r0_0.RT_695 = {
+r0_0.RT_696 = {
   FXId = 6011,
   Function = "PlayFX",
 }
-r0_0.RT_696 = {
+r0_0.RT_697 = {
   FXId = 601202,
   Function = "PlayFX",
   NormalToHit = true,
   Overlap = true,
 }
-r0_0.RT_697 = {
+r0_0.RT_698 = {
   BuffId = 6000301,
   Function = "AddBuff",
   LastTime = 5,
 }
-r0_0.RT_698 = {
+r0_0.RT_699 = {
   Function = "PlaySE",
   SEId = 600203,
 }
-r0_0.RT_699 = {
+r0_0.RT_700 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 0.43,
 }
-r0_0.RT_700 = {
+r0_0.RT_701 = {
   CauseHit = "LightHit_100",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_701 = {
+r0_0.RT_702 = {
   Function = "PlaySE",
   SEId = 600303,
 }
-r0_0.RT_702 = {
+r0_0.RT_703 = {
   BaseAttr = "MaxHp",
   DamageType = "TrueDamage",
   Function = "Damage",
   Rate = 2,
 }
-r0_0.RT_703 = {
+r0_0.RT_704 = {
   Function = "PlaySE",
   SEId = 601502,
 }
-r0_0.RT_704 = {
+r0_0.RT_705 = {
   Function = "PlaySE",
   SEId = 601503,
 }
-r0_0.RT_705 = {
+r0_0.RT_706 = {
   FXId = 601504,
   Function = "PlayFX",
 }
-r0_0.RT_706 = {
+r0_0.RT_707 = {
   FXId = 601603,
   Function = "PlayFX",
   Overlap = true,
 }
-r0_0.RT_707 = {
+r0_0.RT_708 = {
   Function = "PlaySE",
   SEId = 601601,
 }
-r0_0.RT_708 = {
+r0_0.RT_709 = {
   FXId = 601606,
   Function = "PlayFX",
   NormalToHit = true,
   Overlap = true,
 }
-r0_0.RT_709 = {
-  [1] = r0_0.RT_708,
-}
 r0_0.RT_710 = {
+  [1] = r0_0.RT_709,
+}
+r0_0.RT_711 = {
   Function = "PlaySE",
   SEId = 601701,
 }
-r0_0.RT_711 = {
-  [1] = r0_0.RT_660,
-  [2] = r0_0.RT_661,
-  [3] = r0_0.RT_710,
-}
 r0_0.RT_712 = {
+  [1] = r0_0.RT_661,
+  [2] = r0_0.RT_662,
+  [3] = r0_0.RT_711,
+}
+r0_0.RT_713 = {
   CreatureId = 60200,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_713 = {
-  [1] = r0_0.RT_712,
-  [2] = r0_0.RT_712,
-  [3] = r0_0.RT_712,
-  [4] = r0_0.RT_712,
-  [5] = r0_0.RT_712,
-  [6] = r0_0.RT_712,
-  [7] = r0_0.RT_712,
-  [8] = r0_0.RT_712,
-}
 r0_0.RT_714 = {
+  [1] = r0_0.RT_713,
+  [2] = r0_0.RT_713,
+  [3] = r0_0.RT_713,
+  [4] = r0_0.RT_713,
+  [5] = r0_0.RT_713,
+  [6] = r0_0.RT_713,
+  [7] = r0_0.RT_713,
+  [8] = r0_0.RT_713,
+}
+r0_0.RT_715 = {
   FXId = 6022,
   Function = "PlayFX",
 }
-r0_0.RT_715 = {
+r0_0.RT_716 = {
   CauseHit = "LightHit_100",
   Function = "CutToughness",
   Value = 15,
 }
-r0_0.RT_716 = {
+r0_0.RT_717 = {
   CreatureId = 60202,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_717 = {
-  [1] = r0_0.RT_716,
-  [2] = r0_0.RT_716,
-  [3] = r0_0.RT_716,
-  [4] = r0_0.RT_716,
-  [5] = r0_0.RT_716,
-  [6] = r0_0.RT_716,
-  [7] = r0_0.RT_716,
-  [8] = r0_0.RT_716,
-}
 r0_0.RT_718 = {
+  [1] = r0_0.RT_717,
+  [2] = r0_0.RT_717,
+  [3] = r0_0.RT_717,
+  [4] = r0_0.RT_717,
+  [5] = r0_0.RT_717,
+  [6] = r0_0.RT_717,
+  [7] = r0_0.RT_717,
+  [8] = r0_0.RT_717,
+}
+r0_0.RT_719 = {
   CreatureId = 60301,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_719 = {
+r0_0.RT_720 = {
   CreatureId = 60303,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_720 = {
+r0_0.RT_721 = {
   CauseHit = "HitFly_XY200Z300",
   Function = "CutToughness",
   Value = 20,
 }
-r0_0.RT_721 = {
+r0_0.RT_722 = {
   CreatureId = 700101,
   ExtraRotation = 105,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_722 = {
+r0_0.RT_723 = {
   FXId = 700104,
   Function = "PlayFX",
   IsAttached = true,
 }
-r0_0.RT_723 = {
-  [1] = r0_0.RT_721,
-  [2] = r0_0.RT_722,
-}
 r0_0.RT_724 = {
+  [1] = r0_0.RT_722,
+  [2] = r0_0.RT_723,
+}
+r0_0.RT_725 = {
   FXId = 600006,
   Function = "PlayFX",
   Overlap = true,
 }
-r0_0.RT_725 = {
+r0_0.RT_726 = {
   Function = "PlaySE",
   SEId = 1001,
 }
-r0_0.RT_726 = {
+r0_0.RT_727 = {
   FXId = 600006,
   Function = "PlayFX",
   NormalToHit = true,
   Overlap = true,
 }
-r0_0.RT_727 = {
+r0_0.RT_728 = {
   Function = "PlaySE",
   SEId = 1001,
   SceneSe = true,
 }
-r0_0.RT_728 = {
+r0_0.RT_729 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 1.53,
 }
-r0_0.RT_729 = {
-  [1] = r0_0.RT_728,
+r0_0.RT_730 = {
+  [1] = r0_0.RT_729,
   [2] = r0_0.RT_4,
 }
-r0_0.RT_730 = {
+r0_0.RT_731 = {
   -25,
   -90,
   0
 }
-r0_0.RT_731 = {
+r0_0.RT_732 = {
   FXId = 600008,
   Function = "PlayFX",
-  FxRotator = r0_0.RT_730,
+  FxRotator = r0_0.RT_731,
   IsFaceToChar = true,
 }
-r0_0.RT_732 = {
+r0_0.RT_733 = {
   30,
   -90,
   0
 }
-r0_0.RT_733 = {
-  FXId = 600008,
-  Function = "PlayFX",
-  FxRotator = r0_0.RT_732,
-  IsFaceToChar = true,
-}
 r0_0.RT_734 = {
   FXId = 600008,
   Function = "PlayFX",
+  FxRotator = r0_0.RT_733,
   IsFaceToChar = true,
 }
 r0_0.RT_735 = {
+  FXId = 600008,
+  Function = "PlayFX",
+  IsFaceToChar = true,
+}
+r0_0.RT_736 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 0.18,
 }
-r0_0.RT_736 = {
+r0_0.RT_737 = {
   FXId = 700302,
   Function = "PlayFX",
   NormalToHit = true,
 }
-r0_0.RT_737 = {
+r0_0.RT_738 = {
   "hit1",
   "hit2",
   "hit3",
   "hit4"
 }
-r0_0.RT_738 = {
+r0_0.RT_739 = {
   FXId = 600007,
   Function = "PlayFX",
 }
-r0_0.RT_739 = {
+r0_0.RT_740 = {
   10,
   -90,
   0
 }
-r0_0.RT_740 = {
+r0_0.RT_741 = {
   FXId = 600008,
   Function = "PlayFX",
-  FxRotator = r0_0.RT_739,
+  FxRotator = r0_0.RT_740,
   IsFaceToChar = true,
 }
-r0_0.RT_741 = {
+r0_0.RT_742 = {
   CauseHit = "HitFly_XY1000Z1000",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_742 = {
+r0_0.RT_743 = {
   BuffId = 700501,
   Function = "AddBuff",
   LastTime = -1,
 }
-r0_0.RT_743 = {
-  [1] = r0_0.RT_742,
-}
 r0_0.RT_744 = {
+  [1] = r0_0.RT_743,
+}
+r0_0.RT_745 = {
   BuffId = 700501,
   Function = "RemoveBuff",
 }
-r0_0.RT_745 = {
-  [1] = r0_0.RT_744,
-}
 r0_0.RT_746 = {
+  [1] = r0_0.RT_745,
+}
+r0_0.RT_747 = {
   BuffId = 700502,
   Function = "AddBuff",
   LastTime = -1,
 }
-r0_0.RT_747 = {
-  [1] = r0_0.RT_746,
-}
 r0_0.RT_748 = {
+  [1] = r0_0.RT_747,
+}
+r0_0.RT_749 = {
   BaseAttr = "MaxHp",
   DamageType = "TrueDamage",
   Function = "Damage",
   Rate = 1,
 }
-r0_0.RT_749 = {
-  [1] = r0_0.RT_748,
-}
 r0_0.RT_750 = {
-  [1] = r0_0.RT_358,
-  [2] = r0_0.RT_10,
-  [3] = r0_0.RT_738,
+  [1] = r0_0.RT_749,
 }
 r0_0.RT_751 = {
+  [1] = r0_0.RT_358,
+  [2] = r0_0.RT_10,
+  [3] = r0_0.RT_739,
+}
+r0_0.RT_752 = {
   Function = "PlaySE",
   SEId = 700804,
 }
-r0_0.RT_752 = {
+r0_0.RT_753 = {
   FXId = 700802,
   Function = "PlayFX",
   NormalToHit = true,
 }
-r0_0.RT_753 = {
+r0_0.RT_754 = {
   CauseHit = "HitFly_XY600Z1000",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_754 = {
+r0_0.RT_755 = {
   CauseHit = "LightHit_200",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_755 = {
+r0_0.RT_756 = {
   Tag = 6,
 }
-r0_0.RT_756 = {
+r0_0.RT_757 = {
   Function = "EffectFunction",
   FunctionName = "SelfLocation",
-  Vars = r0_0.RT_755,
+  Vars = r0_0.RT_756,
 }
-r0_0.RT_757 = {
+r0_0.RT_758 = {
   Distance = 700,
   MaxNum = 4,
   Radius = 1000,
 }
-r0_0.RT_758 = {
+r0_0.RT_759 = {
   Function = "EffectFunction",
   FunctionName = "RandomAreaLocation",
-  Vars = r0_0.RT_757,
+  Vars = r0_0.RT_758,
 }
-r0_0.RT_759 = {
+r0_0.RT_760 = {
   CauseHit = "HitFly_XY800Z1000",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_760 = {
+r0_0.RT_761 = {
   Function = "PlaySE",
   SEId = 700901,
 }
-r0_0.RT_761 = {
-  [1] = r0_0.RT_660,
-  [2] = r0_0.RT_661,
-  [3] = r0_0.RT_760,
-}
 r0_0.RT_762 = {
+  [1] = r0_0.RT_661,
+  [2] = r0_0.RT_662,
+  [3] = r0_0.RT_761,
+}
+r0_0.RT_763 = {
   0,
   0,
   -50
 }
-r0_0.RT_763 = {
+r0_0.RT_764 = {
   Function = "PlaySE",
   SEId = 701001,
 }
-r0_0.RT_764 = {
+r0_0.RT_765 = {
   FXId = 701006,
   Function = "PlayFX",
 }
-r0_0.RT_765 = {
+r0_0.RT_766 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 1.39,
 }
-r0_0.RT_766 = {
+r0_0.RT_767 = {
   FXId = 701304,
   Function = "PlayFX",
   NormalToHit = true,
 }
-r0_0.RT_767 = {
+r0_0.RT_768 = {
   Function = "SaveLoc",
   TargetType = "Target",
 }
-r0_0.RT_768 = {
-  [1] = r0_0.RT_767,
-}
 r0_0.RT_769 = {
+  [1] = r0_0.RT_768,
+}
+r0_0.RT_770 = {
   0,
   20,
   40
 }
-r0_0.RT_770 = {
+r0_0.RT_771 = {
   FXId = 701504,
   Function = "PlayFX",
 }
-r0_0.RT_771 = {
+r0_0.RT_772 = {
   BaseAttr = "MaxHP",
   DamageType = "TrueDamage",
   Function = "Damage",
   Rate = 1,
 }
-r0_0.RT_772 = {
-  [1] = r0_0.RT_771,
-}
 r0_0.RT_773 = {
+  [1] = r0_0.RT_772,
+}
+r0_0.RT_774 = {
   Function = "PlaySE",
   SEId = 701602,
 }
-r0_0.RT_774 = {
+r0_0.RT_775 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 0.8,
 }
-r0_0.RT_775 = {
+r0_0.RT_776 = {
   Function = "PlaySE",
   SEId = 800101,
 }
-r0_0.RT_776 = {
+r0_0.RT_777 = {
   Function = "PlaySE",
   SEId = 800102,
 }
-r0_0.RT_777 = {
+r0_0.RT_778 = {
   [1] = r0_0.RT_3,
   [2] = r0_0.RT_4,
-  [3] = r0_0.RT_776,
-}
-r0_0.RT_778 = {
-  BaseAttr = "ATK",
-  Function = "Damage",
-  Rate = 1.6,
+  [3] = r0_0.RT_777,
 }
 r0_0.RT_779 = {
   BaseAttr = "ATK",
   Function = "Damage",
-  Rate = 3,
+  Rate = 1.6,
 }
 r0_0.RT_780 = {
+  BaseAttr = "ATK",
+  Function = "Damage",
+  Rate = 3,
+}
+r0_0.RT_781 = {
   CauseHit = "LightHit_400",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_781 = {
+r0_0.RT_782 = {
   FXId = 850001,
   Function = "PlayFX",
 }
-r0_0.RT_782 = {
+r0_0.RT_783 = {
   CauseHit = "LightHit_150",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_783 = {
-  [1] = r0_0.RT_779,
-  [2] = r0_0.RT_781,
-  [3] = r0_0.RT_782,
-  [4] = r0_0.RT_5,
-}
 r0_0.RT_784 = {
-  [1] = r0_0.RT_16,
-  [2] = r0_0.RT_781,
-  [3] = r0_0.RT_782,
+  [1] = r0_0.RT_780,
+  [2] = r0_0.RT_782,
+  [3] = r0_0.RT_783,
   [4] = r0_0.RT_5,
 }
 r0_0.RT_785 = {
+  [1] = r0_0.RT_16,
+  [2] = r0_0.RT_782,
+  [3] = r0_0.RT_783,
+  [4] = r0_0.RT_5,
+}
+r0_0.RT_786 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 2.3,
 }
-r0_0.RT_786 = {
-  [1] = r0_0.RT_785,
-  [2] = r0_0.RT_781,
-  [3] = r0_0.RT_682,
-  [4] = r0_0.RT_5,
-}
 r0_0.RT_787 = {
-  [1] = r0_0.RT_22,
-  [2] = r0_0.RT_781,
-  [3] = r0_0.RT_682,
+  [1] = r0_0.RT_786,
+  [2] = r0_0.RT_782,
+  [3] = r0_0.RT_683,
   [4] = r0_0.RT_5,
 }
 r0_0.RT_788 = {
+  [1] = r0_0.RT_22,
+  [2] = r0_0.RT_782,
+  [3] = r0_0.RT_683,
+  [4] = r0_0.RT_5,
+}
+r0_0.RT_789 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 4.5,
 }
-r0_0.RT_789 = {
-  [1] = r0_0.RT_788,
-  [2] = r0_0.RT_781,
-  [3] = r0_0.RT_782,
+r0_0.RT_790 = {
+  [1] = r0_0.RT_789,
+  [2] = r0_0.RT_782,
+  [3] = r0_0.RT_783,
   [4] = r0_0.RT_5,
 }
-r0_0.RT_790 = {
+r0_0.RT_791 = {
   CreatureId = 850011,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_791 = {
-  [1] = r0_0.RT_790,
-}
 r0_0.RT_792 = {
+  [1] = r0_0.RT_791,
+}
+r0_0.RT_793 = {
   CreatureId = 850011,
   Function = "RemoveSkillCreature",
 }
-r0_0.RT_793 = {
-  [1] = r0_0.RT_792,
-}
 r0_0.RT_794 = {
-  [1] = r0_0.RT_3,
-  [2] = r0_0.RT_781,
-  [3] = r0_0.RT_782,
-  [4] = r0_0.RT_5,
+  [1] = r0_0.RT_793,
 }
 r0_0.RT_795 = {
+  [1] = r0_0.RT_3,
+  [2] = r0_0.RT_782,
+  [3] = r0_0.RT_783,
+  [4] = r0_0.RT_5,
+}
+r0_0.RT_796 = {
   CreatureId = 850012,
   Function = "CreateSkillCreature",
   UseSaveLoc = "SwordDashLocStart",
 }
-r0_0.RT_796 = {
+r0_0.RT_797 = {
   CreatureId = 850012,
   Delay = 0.3,
   Function = "CreateSkillCreature",
   UseSaveLoc = "SwordDashLocMid",
 }
-r0_0.RT_797 = {
+r0_0.RT_798 = {
   CreatureId = 850012,
   Delay = 0.6,
   Function = "CreateSkillCreature",
   UseSaveLoc = "SwordDashLocEnd",
 }
-r0_0.RT_798 = {
-  [1] = r0_0.RT_795,
-  [2] = r0_0.RT_796,
-  [3] = r0_0.RT_797,
-}
 r0_0.RT_799 = {
-  [1] = r0_0.RT_3,
-  [2] = r0_0.RT_781,
-  [3] = r0_0.RT_682,
-  [4] = r0_0.RT_5,
+  [1] = r0_0.RT_796,
+  [2] = r0_0.RT_797,
+  [3] = r0_0.RT_798,
 }
 r0_0.RT_800 = {
+  [1] = r0_0.RT_3,
+  [2] = r0_0.RT_782,
+  [3] = r0_0.RT_683,
+  [4] = r0_0.RT_5,
+}
+r0_0.RT_801 = {
   0,
   0,
   -100
 }
-r0_0.RT_801 = {
+r0_0.RT_802 = {
   Delay = 0.1,
   FXId = 850002,
   Function = "PlayFX",
 }
-r0_0.RT_802 = {
+r0_0.RT_803 = {
   CauseHit = "LightHit_100",
   Delay = 0.1,
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_803 = {
+r0_0.RT_804 = {
   50,
   -50,
   0
 }
-r0_0.RT_804 = {
+r0_0.RT_805 = {
   50,
   50,
   0
 }
-r0_0.RT_805 = {
+r0_0.RT_806 = {
   FXId = 850002,
   Function = "PlayFX",
 }
-r0_0.RT_806 = {
-  [1] = r0_0.RT_674,
-  [2] = r0_0.RT_805,
-  [3] = r0_0.RT_700,
-}
 r0_0.RT_807 = {
+  [1] = r0_0.RT_675,
+  [2] = r0_0.RT_806,
+  [3] = r0_0.RT_701,
+}
+r0_0.RT_808 = {
   BoneName = "head",
   DanmakuTemplateId = 850051,
   Duration = 3,
   Function = "CreateDanmaku",
 }
-r0_0.RT_808 = {
-  [1] = r0_0.RT_807,
-}
 r0_0.RT_809 = {
+  [1] = r0_0.RT_808,
+}
+r0_0.RT_810 = {
   FXId = 850011,
   Function = "PlayFX",
   NormalToHit = true,
   Overlap = true,
 }
-r0_0.RT_810 = {
-  [1] = r0_0.RT_496,
-  [2] = r0_0.RT_809,
-  [3] = r0_0.RT_805,
-}
 r0_0.RT_811 = {
+  [1] = r0_0.RT_496,
+  [2] = r0_0.RT_810,
+  [3] = r0_0.RT_806,
+}
+r0_0.RT_812 = {
   CantLockTime = 0.8,
   Function = "CameraUnlock",
 }
-r0_0.RT_812 = {
-  [1] = r0_0.RT_811,
-}
 r0_0.RT_813 = {
+  [1] = r0_0.RT_812,
+}
+r0_0.RT_814 = {
   Function = "SetSelfLoc",
   SaveLocTag = "BornLoc",
   TargetCenterLoc = "SavedLoc",
 }
-r0_0.RT_814 = {
-  [1] = r0_0.RT_813,
-}
 r0_0.RT_815 = {
+  [1] = r0_0.RT_814,
+}
+r0_0.RT_816 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 5.5,
 }
-r0_0.RT_816 = {
-  [1] = r0_0.RT_815,
-  [2] = r0_0.RT_781,
+r0_0.RT_817 = {
+  [1] = r0_0.RT_816,
+  [2] = r0_0.RT_782,
   [3] = r0_0.RT_39,
 }
-r0_0.RT_817 = {
+r0_0.RT_818 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 0.4,
 }
-r0_0.RT_818 = {
-  [1] = r0_0.RT_817,
-  [2] = r0_0.RT_805,
-}
 r0_0.RT_819 = {
+  [1] = r0_0.RT_818,
+  [2] = r0_0.RT_806,
+}
+r0_0.RT_820 = {
   CauseHit = "BossXibi_Skill07",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_820 = {
-  [1] = r0_0.RT_815,
-  [2] = r0_0.RT_819,
-}
 r0_0.RT_821 = {
-  "hit7"
+  [1] = r0_0.RT_816,
+  [2] = r0_0.RT_820,
 }
 r0_0.RT_822 = {
+  "hit7"
+}
+r0_0.RT_823 = {
   0,
   0,
   350
 }
-r0_0.RT_823 = {
+r0_0.RT_824 = {
   FixLocation = true,
   FixLocationEndZ = -2000,
   FixLocationStartZ = 100,
   Function = "SetSelfLoc",
-  LocOffset = r0_0.RT_822,
+  LocOffset = r0_0.RT_823,
   TargetCenterLoc = "SavedLoc",
 }
-r0_0.RT_824 = {
-  [1] = r0_0.RT_823,
-}
 r0_0.RT_825 = {
-  "hit8"
+  [1] = r0_0.RT_824,
 }
 r0_0.RT_826 = {
+  "hit8"
+}
+r0_0.RT_827 = {
   CauseHit = "BossXibi_Skill08",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_827 = {
+r0_0.RT_828 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 0.25,
 }
-r0_0.RT_828 = {
-  [1] = r0_0.RT_827,
-  [2] = r0_0.RT_805,
-}
 r0_0.RT_829 = {
-  "MajoDodge"
+  [1] = r0_0.RT_828,
+  [2] = r0_0.RT_806,
 }
 r0_0.RT_830 = {
+  "MajoDodge"
+}
+r0_0.RT_831 = {
   BaseAttr = "ATK",
-  DamageTag = r0_0.RT_829,
+  DamageTag = r0_0.RT_830,
   Function = "Damage",
   Rate = 0.7,
 }
-r0_0.RT_831 = {
+r0_0.RT_832 = {
   CauseHit = "LightHit_120",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_832 = {
+r0_0.RT_833 = {
   Function = "PlaySE",
   SEId = 850107,
 }
-r0_0.RT_833 = {
-  [1] = r0_0.RT_830,
-  [2] = r0_0.RT_831,
-  [3] = r0_0.RT_832,
-}
 r0_0.RT_834 = {
+  [1] = r0_0.RT_831,
+  [2] = r0_0.RT_832,
+  [3] = r0_0.RT_833,
+}
+r0_0.RT_835 = {
   CauseHit = "BossLizhan_Skill02",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_835 = {
+r0_0.RT_836 = {
   Function = "PlaySE",
   SEId = 850108,
 }
-r0_0.RT_836 = {
+r0_0.RT_837 = {
   BaseAttr = "ATK",
-  DamageTag = r0_0.RT_829,
+  DamageTag = r0_0.RT_830,
   Function = "Damage",
   Rate = 1.2,
 }
-r0_0.RT_837 = {
-  [1] = r0_0.RT_836,
-  [2] = r0_0.RT_834,
-  [3] = r0_0.RT_835,
-}
 r0_0.RT_838 = {
+  [1] = r0_0.RT_837,
+  [2] = r0_0.RT_835,
+  [3] = r0_0.RT_836,
+}
+r0_0.RT_839 = {
   BaseAttr = "ATK",
-  DamageTag = r0_0.RT_829,
+  DamageTag = r0_0.RT_830,
   Function = "Damage",
   Rate = 0.9,
 }
-r0_0.RT_839 = {
+r0_0.RT_840 = {
   FXId = 850313,
   Function = "PlayFX",
 }
-r0_0.RT_840 = {
+r0_0.RT_841 = {
   BaseAttr = "ATK",
-  DamageTag = r0_0.RT_829,
+  DamageTag = r0_0.RT_830,
   Function = "Damage",
   Rate = 0.3,
 }
-r0_0.RT_841 = {
+r0_0.RT_842 = {
   BaseAttr = "ATK",
-  DamageTag = r0_0.RT_829,
+  DamageTag = r0_0.RT_830,
   Function = "Damage",
   Rate = 0.6,
 }
-r0_0.RT_842 = {
+r0_0.RT_843 = {
   CauseHit = "LightHit_60",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_843 = {
+r0_0.RT_844 = {
   Function = "PlayFX",
   FxRotator = r0_0.RT_178,
   IsFaceToChar = true,
   WeaponFXGroupName = "Hit",
 }
-r0_0.RT_844 = {
+r0_0.RT_845 = {
   Function = "PlaySE",
   SEId = 850211,
 }
-r0_0.RT_845 = {
+r0_0.RT_846 = {
   [1] = r0_0.RT_22,
   [2] = r0_0.RT_110,
-  [3] = r0_0.RT_843,
-  [4] = r0_0.RT_844,
+  [3] = r0_0.RT_844,
+  [4] = r0_0.RT_845,
 }
-r0_0.RT_846 = {
+r0_0.RT_847 = {
   3,
   -90,
   0
 }
-r0_0.RT_847 = {
+r0_0.RT_848 = {
   Function = "PlayFX",
-  FxRotator = r0_0.RT_846,
+  FxRotator = r0_0.RT_847,
   IsFaceToChar = true,
   WeaponFXGroupName = "Hit",
 }
-r0_0.RT_848 = {
-  [1] = r0_0.RT_779,
-  [2] = r0_0.RT_110,
-  [3] = r0_0.RT_847,
-  [4] = r0_0.RT_844,
-}
 r0_0.RT_849 = {
-  [1] = r0_0.RT_779,
-  [2] = r0_0.RT_700,
-  [3] = r0_0.RT_844,
+  [1] = r0_0.RT_780,
+  [2] = r0_0.RT_110,
+  [3] = r0_0.RT_848,
+  [4] = r0_0.RT_845,
 }
 r0_0.RT_850 = {
+  [1] = r0_0.RT_780,
+  [2] = r0_0.RT_701,
+  [3] = r0_0.RT_845,
+}
+r0_0.RT_851 = {
   0,
   0,
   140
 }
-r0_0.RT_851 = {
+r0_0.RT_852 = {
   CreatureId = 850207,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_850,
-}
-r0_0.RT_852 = {
-  [1] = r0_0.RT_851,
+  Location = r0_0.RT_851,
 }
 r0_0.RT_853 = {
-  CreatureId = 850210,
-  Function = "CreateSkillCreature",
-  Location = r0_0.RT_850,
+  [1] = r0_0.RT_852,
 }
 r0_0.RT_854 = {
-  [1] = r0_0.RT_853,
+  CreatureId = 850210,
+  Function = "CreateSkillCreature",
+  Location = r0_0.RT_851,
 }
 r0_0.RT_855 = {
+  [1] = r0_0.RT_854,
+}
+r0_0.RT_856 = {
   Function = "PlaySE",
   SEId = 850232,
 }
-r0_0.RT_856 = {
+r0_0.RT_857 = {
   [1] = r0_0.RT_16,
   [2] = r0_0.RT_110,
-  [3] = r0_0.RT_855,
-}
-r0_0.RT_857 = {
-  [1] = r0_0.RT_684,
-  [2] = r0_0.RT_754,
-  [3] = r0_0.RT_318,
-  [4] = r0_0.RT_844,
+  [3] = r0_0.RT_856,
 }
 r0_0.RT_858 = {
+  [1] = r0_0.RT_685,
+  [2] = r0_0.RT_755,
+  [3] = r0_0.RT_318,
+  [4] = r0_0.RT_845,
+}
+r0_0.RT_859 = {
   Function = "PlayFX",
   FxRotator = r0_0.RT_57,
   IsFaceToChar = true,
   WeaponFXGroupName = "Hit",
 }
-r0_0.RT_859 = {
-  [1] = r0_0.RT_779,
-  [2] = r0_0.RT_700,
-  [3] = r0_0.RT_858,
-  [4] = r0_0.RT_844,
-}
 r0_0.RT_860 = {
-  BuffId = 850202,
-  Function = "AddBuff",
-  LastTime = 99,
+  [1] = r0_0.RT_780,
+  [2] = r0_0.RT_701,
+  [3] = r0_0.RT_859,
+  [4] = r0_0.RT_845,
 }
 r0_0.RT_861 = {
-  BuffId = 850206,
+  BuffId = 850202,
   Function = "AddBuff",
   LastTime = 99,
 }
 r0_0.RT_862 = {
-  BuffId = 850207,
+  BuffId = 850206,
   Function = "AddBuff",
   LastTime = 99,
 }
 r0_0.RT_863 = {
-  BuffId = 850208,
+  BuffId = 850207,
   Function = "AddBuff",
   LastTime = 99,
 }
 r0_0.RT_864 = {
-  BuffId = 850209,
+  BuffId = 850208,
   Function = "AddBuff",
   LastTime = 99,
 }
 r0_0.RT_865 = {
-  [1] = r0_0.RT_861,
-  [2] = r0_0.RT_862,
-  [3] = r0_0.RT_863,
-  [4] = r0_0.RT_864,
+  BuffId = 850209,
+  Function = "AddBuff",
+  LastTime = 99,
 }
 r0_0.RT_866 = {
-  "hit13"
+  [1] = r0_0.RT_862,
+  [2] = r0_0.RT_863,
+  [3] = r0_0.RT_864,
+  [4] = r0_0.RT_865,
 }
 r0_0.RT_867 = {
+  "hit13"
+}
+r0_0.RT_868 = {
   BuffId = 850202,
   Function = "RemoveBuff",
 }
-r0_0.RT_868 = {
+r0_0.RT_869 = {
   BuffId = 850206,
   Function = "RemoveBuff",
 }
-r0_0.RT_869 = {
+r0_0.RT_870 = {
   BuffId = 850207,
   Function = "RemoveBuff",
 }
-r0_0.RT_870 = {
+r0_0.RT_871 = {
   BuffId = 850208,
   Function = "RemoveBuff",
 }
-r0_0.RT_871 = {
+r0_0.RT_872 = {
   BuffId = 850209,
   Function = "RemoveBuff",
 }
-r0_0.RT_872 = {
-  [1] = r0_0.RT_867,
-  [2] = r0_0.RT_868,
-  [3] = r0_0.RT_869,
-  [4] = r0_0.RT_870,
-  [5] = r0_0.RT_871,
-}
 r0_0.RT_873 = {
-  0,
-  600,
-  400
+  [1] = r0_0.RT_868,
+  [2] = r0_0.RT_869,
+  [3] = r0_0.RT_870,
+  [4] = r0_0.RT_871,
+  [5] = r0_0.RT_872,
 }
 r0_0.RT_874 = {
-  CreatureId = 850201,
-  Direction = r0_0.RT_873,
-  Function = "CreateSkillCreature",
+  0,
+  600,
+  400
 }
 r0_0.RT_875 = {
-  [1] = r0_0.RT_874,
+  CreatureId = 850201,
+  Direction = r0_0.RT_874,
+  Function = "CreateSkillCreature",
 }
 r0_0.RT_876 = {
+  [1] = r0_0.RT_875,
+}
+r0_0.RT_877 = {
   0,
   600,
   -400
 }
-r0_0.RT_877 = {
+r0_0.RT_878 = {
   CreatureId = 850202,
-  Direction = r0_0.RT_876,
+  Direction = r0_0.RT_877,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_878 = {
-  [1] = r0_0.RT_877,
-}
 r0_0.RT_879 = {
+  [1] = r0_0.RT_878,
+}
+r0_0.RT_880 = {
   0,
   -600,
   400
 }
-r0_0.RT_880 = {
+r0_0.RT_881 = {
   CreatureId = 850204,
-  Direction = r0_0.RT_879,
+  Direction = r0_0.RT_880,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_881 = {
-  [1] = r0_0.RT_880,
-}
 r0_0.RT_882 = {
+  [1] = r0_0.RT_881,
+}
+r0_0.RT_883 = {
   0,
   -600,
   -400
 }
-r0_0.RT_883 = {
+r0_0.RT_884 = {
   CreatureId = 850205,
-  Direction = r0_0.RT_882,
+  Direction = r0_0.RT_883,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_884 = {
-  [1] = r0_0.RT_883,
-}
 r0_0.RT_885 = {
+  [1] = r0_0.RT_884,
+}
+r0_0.RT_886 = {
   Function = "PlaySE",
   SEId = 850262,
 }
-r0_0.RT_886 = {
+r0_0.RT_887 = {
   FixLocationEndZ = -3500,
   Function = "SaveLoc",
   IsOnGround = true,
   TargetType = "Target",
 }
-r0_0.RT_887 = {
+r0_0.RT_888 = {
   Distance = 600,
 }
-r0_0.RT_888 = {
+r0_0.RT_889 = {
   Function = "EffectFunction",
   FunctionName = "RelativeLocationToTarget",
-  Vars = r0_0.RT_887,
+  Vars = r0_0.RT_888,
 }
-r0_0.RT_889 = {
+r0_0.RT_890 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 0.3,
 }
-r0_0.RT_890 = {
-  [1] = r0_0.RT_889,
-  [2] = r0_0.RT_754,
+r0_0.RT_891 = {
+  [1] = r0_0.RT_890,
+  [2] = r0_0.RT_755,
   [3] = r0_0.RT_319,
 }
-r0_0.RT_891 = {
-  [1] = r0_0.RT_886,
-}
 r0_0.RT_892 = {
-  CreatureId = 850213,
-  Function = "CreateSkillCreature",
-  Location = r0_0.RT_762,
-  UseSaveLoc = "",
+  [1] = r0_0.RT_887,
 }
 r0_0.RT_893 = {
-  CreatureId = 850211,
+  CreatureId = 850213,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_762,
+  Location = r0_0.RT_763,
   UseSaveLoc = "",
 }
 r0_0.RT_894 = {
-  [1] = r0_0.RT_779,
-  [2] = r0_0.RT_322,
+  CreatureId = 850211,
+  Function = "CreateSkillCreature",
+  Location = r0_0.RT_763,
+  UseSaveLoc = "",
 }
 r0_0.RT_895 = {
-  [1] = r0_0.RT_573,
+  [1] = r0_0.RT_780,
+  [2] = r0_0.RT_322,
 }
 r0_0.RT_896 = {
   [1] = r0_0.RT_574,
 }
 r0_0.RT_897 = {
+  [1] = r0_0.RT_575,
+}
+r0_0.RT_898 = {
   Function = "CreateUnit",
   LifeTime = 15,
   UnitId = 850291,
   UnitType = "MechanismSummon",
 }
-r0_0.RT_898 = {
-  [1] = r0_0.RT_897,
-}
 r0_0.RT_899 = {
+  [1] = r0_0.RT_898,
+}
+r0_0.RT_900 = {
   "hit3",
   "hit5",
   "hit7",
   "hit9"
 }
-r0_0.RT_900 = {
+r0_0.RT_901 = {
   "hit4",
   "hit6",
   "hit8",
   "hit10"
 }
-r0_0.RT_901 = {
+r0_0.RT_902 = {
   CreatureId = 850212,
   Function = "CreateSkillCreature",
   UseSaveLoc = "",
 }
-r0_0.RT_902 = {
-  [1] = r0_0.RT_901,
-}
 r0_0.RT_903 = {
+  [1] = r0_0.RT_902,
+}
+r0_0.RT_904 = {
   Function = "PlaySE",
   SEId = 850292,
 }
-r0_0.RT_904 = {
+r0_0.RT_905 = {
   "hit11"
 }
-r0_0.RT_905 = {
+r0_0.RT_906 = {
   CreatureId = 850208,
   Function = "CreateSkillCreature",
   UseSaveLoc = "",
 }
-r0_0.RT_906 = {
-  [1] = r0_0.RT_905,
-}
 r0_0.RT_907 = {
-  [1] = r0_0.RT_779,
-  [2] = r0_0.RT_681,
-  [3] = r0_0.RT_253,
+  [1] = r0_0.RT_906,
 }
 r0_0.RT_908 = {
-  [1] = r0_0.RT_684,
-  [2] = r0_0.RT_753,
+  [1] = r0_0.RT_780,
+  [2] = r0_0.RT_682,
   [3] = r0_0.RT_253,
 }
 r0_0.RT_909 = {
-  "hit12"
+  [1] = r0_0.RT_685,
+  [2] = r0_0.RT_754,
+  [3] = r0_0.RT_253,
 }
 r0_0.RT_910 = {
+  "hit12"
+}
+r0_0.RT_911 = {
   CantLockTime = 6,
   Function = "CameraUnlock",
 }
-r0_0.RT_911 = {
-  [1] = r0_0.RT_910,
-}
 r0_0.RT_912 = {
+  [1] = r0_0.RT_911,
+}
+r0_0.RT_913 = {
   CantLockTime = 1.5,
   Function = "CameraUnlock",
 }
-r0_0.RT_913 = {
-  [1] = r0_0.RT_912,
-}
 r0_0.RT_914 = {
-  [1] = r0_0.RT_779,
-  [2] = r0_0.RT_844,
-  [3] = r0_0.RT_754,
+  [1] = r0_0.RT_913,
 }
 r0_0.RT_915 = {
-  [1] = r0_0.RT_16,
-  [2] = r0_0.RT_681,
-  [3] = r0_0.RT_844,
+  [1] = r0_0.RT_780,
+  [2] = r0_0.RT_845,
+  [3] = r0_0.RT_755,
 }
 r0_0.RT_916 = {
-  [1] = r0_0.RT_779,
-  [2] = r0_0.RT_681,
-  [3] = r0_0.RT_844,
+  [1] = r0_0.RT_16,
+  [2] = r0_0.RT_682,
+  [3] = r0_0.RT_845,
 }
 r0_0.RT_917 = {
-  CreatureId = 850211,
-  Function = "CreateSkillCreature",
-  Location = r0_0.RT_762,
-  UseSaveLoc = "1",
+  [1] = r0_0.RT_780,
+  [2] = r0_0.RT_682,
+  [3] = r0_0.RT_845,
 }
 r0_0.RT_918 = {
   CreatureId = 850211,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_762,
-  UseSaveLoc = "2",
+  Location = r0_0.RT_763,
+  UseSaveLoc = "1",
 }
 r0_0.RT_919 = {
   CreatureId = 850211,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_762,
-  UseSaveLoc = "3",
+  Location = r0_0.RT_763,
+  UseSaveLoc = "2",
 }
 r0_0.RT_920 = {
   CreatureId = 850211,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_762,
-  UseSaveLoc = "4",
+  Location = r0_0.RT_763,
+  UseSaveLoc = "3",
 }
 r0_0.RT_921 = {
-  CreatureId = 850213,
+  CreatureId = 850211,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_762,
-  UseSaveLoc = "1",
+  Location = r0_0.RT_763,
+  UseSaveLoc = "4",
 }
 r0_0.RT_922 = {
   CreatureId = 850213,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_762,
-  UseSaveLoc = "2",
+  Location = r0_0.RT_763,
+  UseSaveLoc = "1",
 }
 r0_0.RT_923 = {
   CreatureId = 850213,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_762,
-  UseSaveLoc = "3",
+  Location = r0_0.RT_763,
+  UseSaveLoc = "2",
 }
 r0_0.RT_924 = {
   CreatureId = 850213,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_762,
-  UseSaveLoc = "4",
+  Location = r0_0.RT_763,
+  UseSaveLoc = "3",
 }
 r0_0.RT_925 = {
+  CreatureId = 850213,
+  Function = "CreateSkillCreature",
+  Location = r0_0.RT_763,
+  UseSaveLoc = "4",
+}
+r0_0.RT_926 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 0.7,
 }
-r0_0.RT_926 = {
+r0_0.RT_927 = {
   CauseHit = "BossShijingzhe_Effect850301",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_927 = {
+r0_0.RT_928 = {
   FXId = 850312,
   Function = "PlayFX",
 }
-r0_0.RT_928 = {
+r0_0.RT_929 = {
   Function = "PlaySE",
   SEId = 850322,
 }
-r0_0.RT_929 = {
-  [1] = r0_0.RT_778,
-  [2] = r0_0.RT_926,
-  [3] = r0_0.RT_927,
-  [4] = r0_0.RT_928,
-}
 r0_0.RT_930 = {
+  [1] = r0_0.RT_779,
+  [2] = r0_0.RT_927,
+  [3] = r0_0.RT_928,
+  [4] = r0_0.RT_929,
+}
+r0_0.RT_931 = {
   CauseHit = "BossShijingzhe_Effect850302",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_931 = {
-  [1] = r0_0.RT_778,
-  [2] = r0_0.RT_930,
-  [3] = r0_0.RT_927,
-  [4] = r0_0.RT_928,
-}
 r0_0.RT_932 = {
+  [1] = r0_0.RT_779,
+  [2] = r0_0.RT_931,
+  [3] = r0_0.RT_928,
+  [4] = r0_0.RT_929,
+}
+r0_0.RT_933 = {
   CreatureId = 850305,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_933 = {
-  [1] = r0_0.RT_932,
-}
 r0_0.RT_934 = {
+  [1] = r0_0.RT_933,
+}
+r0_0.RT_935 = {
   CauseHit = "BossShijingzhe_Effect850304",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_935 = {
+r0_0.RT_936 = {
   Function = "PlaySE",
   SEId = 850320,
 }
-r0_0.RT_936 = {
-  [1] = r0_0.RT_16,
-  [2] = r0_0.RT_934,
-  [3] = r0_0.RT_927,
-  [4] = r0_0.RT_935,
-}
 r0_0.RT_937 = {
+  [1] = r0_0.RT_16,
+  [2] = r0_0.RT_935,
+  [3] = r0_0.RT_928,
+  [4] = r0_0.RT_936,
+}
+r0_0.RT_938 = {
   CreatureId = 850301,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_938 = {
-  [1] = r0_0.RT_937,
-}
 r0_0.RT_939 = {
+  [1] = r0_0.RT_938,
+}
+r0_0.RT_940 = {
   CreatureId = 850301,
   Function = "RemoveSkillCreature",
 }
-r0_0.RT_940 = {
-  [1] = r0_0.RT_939,
-}
 r0_0.RT_941 = {
+  [1] = r0_0.RT_940,
+}
+r0_0.RT_942 = {
   BoneName = "head",
   DanmakuTemplateId = 850303,
   Duration = 7,
   Function = "CreateDanmaku",
 }
-r0_0.RT_942 = {
-  [1] = r0_0.RT_941,
-}
 r0_0.RT_943 = {
+  [1] = r0_0.RT_942,
+}
+r0_0.RT_944 = {
   CauseHit = "BossShijingzhe_Effect850316",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_944 = {
+r0_0.RT_945 = {
   CauseHit = "BossShijingzhe_Effect850320",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_945 = {
-  [1] = r0_0.RT_14,
-  [2] = r0_0.RT_944,
-  [3] = r0_0.RT_927,
-  [4] = r0_0.RT_928,
-}
 r0_0.RT_946 = {
+  [1] = r0_0.RT_14,
+  [2] = r0_0.RT_945,
+  [3] = r0_0.RT_928,
+  [4] = r0_0.RT_929,
+}
+r0_0.RT_947 = {
   CreatureId = 850305,
   Function = "RemoveSkillCreature",
 }
-r0_0.RT_947 = {
-  [1] = r0_0.RT_946,
-}
 r0_0.RT_948 = {
+  [1] = r0_0.RT_947,
+}
+r0_0.RT_949 = {
   -350,
   300,
   0
 }
-r0_0.RT_949 = {
+r0_0.RT_950 = {
   50,
   0,
   0
 }
-r0_0.RT_950 = {
+r0_0.RT_951 = {
   "hit98",
   "hit99"
 }
-r0_0.RT_951 = {
+r0_0.RT_952 = {
   BaseAttr = "ATK",
   Function = "Damage",
   JumpWordHide = true,
   Rate = 999,
 }
-r0_0.RT_952 = {
-  [1] = r0_0.RT_951,
-}
 r0_0.RT_953 = {
+  [1] = r0_0.RT_952,
+}
+r0_0.RT_954 = {
   Function = "PlaySE",
   SEId = 850321,
 }
-r0_0.RT_954 = {
+r0_0.RT_955 = {
   Radius = 1500,
 }
-r0_0.RT_955 = {
+r0_0.RT_956 = {
   Function = "EffectFunction",
   FunctionName = "RandomAreaLocation_Shijingzhe",
-  Vars = r0_0.RT_954,
+  Vars = r0_0.RT_955,
 }
-r0_0.RT_956 = {
+r0_0.RT_957 = {
   CreatureId = 850312,
   Function = "CreateSkillCreature",
   UseSaveLoc = "1",
 }
-r0_0.RT_957 = {
+r0_0.RT_958 = {
   CreatureId = 850319,
   Function = "CreateSkillCreature",
   UseSaveLoc = "4",
 }
-r0_0.RT_958 = {
+r0_0.RT_959 = {
   CreatureId = 850320,
   Function = "CreateSkillCreature",
   UseSaveLoc = "5",
 }
-r0_0.RT_959 = {
+r0_0.RT_960 = {
   CreatureId = 850318,
   Function = "CreateSkillCreature",
   UseSaveLoc = "3",
 }
-r0_0.RT_960 = {
+r0_0.RT_961 = {
   CreatureId = 850321,
   Function = "CreateSkillCreature",
   UseSaveLoc = "6",
 }
-r0_0.RT_961 = {
+r0_0.RT_962 = {
   CreatureId = 850322,
   Function = "CreateSkillCreature",
   UseSaveLoc = "7",
 }
-r0_0.RT_962 = {
-  [1] = r0_0.RT_955,
-  [2] = r0_0.RT_959,
-  [3] = r0_0.RT_960,
-  [4] = r0_0.RT_961,
-}
 r0_0.RT_963 = {
+  [1] = r0_0.RT_956,
+  [2] = r0_0.RT_960,
+  [3] = r0_0.RT_961,
+  [4] = r0_0.RT_962,
+}
+r0_0.RT_964 = {
   CreatureId = 850323,
   Function = "CreateSkillCreature",
   UseSaveLoc = "8",
 }
-r0_0.RT_964 = {
+r0_0.RT_965 = {
   CreatureId = 850303,
   Function = "CreateSkillCreature",
   UseSaveLoc = "1",
 }
-r0_0.RT_965 = {
+r0_0.RT_966 = {
   CreatureId = 850313,
   Function = "CreateSkillCreature",
   UseSaveLoc = "2",
 }
-r0_0.RT_966 = {
+r0_0.RT_967 = {
   CreatureId = 850314,
   Function = "CreateSkillCreature",
   UseSaveLoc = "3",
 }
-r0_0.RT_967 = {
+r0_0.RT_968 = {
   CreatureId = 850315,
   Function = "CreateSkillCreature",
   UseSaveLoc = "4",
 }
-r0_0.RT_968 = {
+r0_0.RT_969 = {
   CreatureId = 850317,
   Function = "CreateSkillCreature",
   UseSaveLoc = "2",
 }
-r0_0.RT_969 = {
+r0_0.RT_970 = {
   CreatureId = 850303,
   Function = "TriggerSkillCreatureTriggerEvent",
 }
-r0_0.RT_970 = {
+r0_0.RT_971 = {
   CreatureId = 850313,
   Function = "TriggerSkillCreatureTriggerEvent",
 }
-r0_0.RT_971 = {
+r0_0.RT_972 = {
   CreatureId = 850314,
   Function = "TriggerSkillCreatureTriggerEvent",
 }
-r0_0.RT_972 = {
+r0_0.RT_973 = {
   CreatureId = 850315,
   Function = "TriggerSkillCreatureTriggerEvent",
 }
-r0_0.RT_973 = {
-  [1] = r0_0.RT_969,
-  [2] = r0_0.RT_970,
-  [3] = r0_0.RT_971,
-  [4] = r0_0.RT_972,
-}
 r0_0.RT_974 = {
+  [1] = r0_0.RT_970,
+  [2] = r0_0.RT_971,
+  [3] = r0_0.RT_972,
+  [4] = r0_0.RT_973,
+}
+r0_0.RT_975 = {
   BoneName = "head",
   DanmakuTemplateId = 850301,
   Duration = 3.5,
   Function = "CreateDanmaku",
 }
-r0_0.RT_975 = {
-  [1] = r0_0.RT_974,
-}
 r0_0.RT_976 = {
+  [1] = r0_0.RT_975,
+}
+r0_0.RT_977 = {
   FXId = 850320,
   Function = "PlayFX",
 }
-r0_0.RT_977 = {
-  [1] = r0_0.RT_22,
-  [2] = r0_0.RT_944,
-  [3] = r0_0.RT_927,
-  [4] = r0_0.RT_928,
-}
 r0_0.RT_978 = {
+  [1] = r0_0.RT_22,
+  [2] = r0_0.RT_945,
+  [3] = r0_0.RT_928,
+  [4] = r0_0.RT_929,
+}
+r0_0.RT_979 = {
   -50,
   0,
   0
 }
-r0_0.RT_979 = {
+r0_0.RT_980 = {
   -350,
   -200,
   0
 }
-r0_0.RT_980 = {
+r0_0.RT_981 = {
   -50,
   -50,
   0
 }
-r0_0.RT_981 = {
+r0_0.RT_982 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 0.6,
 }
-r0_0.RT_982 = {
+r0_0.RT_983 = {
   350,
   -200,
   0
 }
-r0_0.RT_983 = {
+r0_0.RT_984 = {
   0,
   0,
   -150
 }
-r0_0.RT_984 = {
+r0_0.RT_985 = {
   CauseHit = "BossShijingzhe_Effect850322",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_985 = {
+r0_0.RT_986 = {
   FXId = 600000,
   Function = "PlayFX",
   Overlap = true,
 }
-r0_0.RT_986 = {
+r0_0.RT_987 = {
   BuffId = 207,
   Function = "AddBuff",
   LastTime = 5,
 }
-r0_0.RT_987 = {
+r0_0.RT_988 = {
   EventName = "OnBeforeGrabHit",
   Function = "TriggerBattleEvent",
 }
-r0_0.RT_988 = {
-  [1] = r0_0.RT_986,
-  [2] = r0_0.RT_987,
-}
 r0_0.RT_989 = {
-  [1] = r0_0.RT_16,
+  [1] = r0_0.RT_987,
+  [2] = r0_0.RT_988,
 }
 r0_0.RT_990 = {
-  [1] = r0_0.RT_774,
-  [2] = r0_0.RT_930,
-  [3] = r0_0.RT_927,
-  [4] = r0_0.RT_935,
+  [1] = r0_0.RT_16,
 }
 r0_0.RT_991 = {
+  [1] = r0_0.RT_775,
+  [2] = r0_0.RT_931,
+  [3] = r0_0.RT_928,
+  [4] = r0_0.RT_936,
+}
+r0_0.RT_992 = {
   CantLockTime = -1,
   Function = "CameraUnlock",
 }
-r0_0.RT_992 = {
+r0_0.RT_993 = {
   0,
   0,
   600
 }
-r0_0.RT_993 = {
+r0_0.RT_994 = {
   90,
   0,
   0
 }
-r0_0.RT_994 = {
+r0_0.RT_995 = {
   CreatureId = 850324,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_992,
-  Rotation = r0_0.RT_993,
+  Location = r0_0.RT_993,
+  Rotation = r0_0.RT_994,
 }
-r0_0.RT_995 = {
+r0_0.RT_996 = {
   CreatureId = 850306,
   Function = "RemoveSkillCreature",
 }
-r0_0.RT_996 = {
-  [1] = r0_0.RT_774,
-  [2] = r0_0.RT_930,
-  [3] = r0_0.RT_927,
-  [4] = r0_0.RT_928,
-}
 r0_0.RT_997 = {
-  DEF = 2,
-  MaxHp = 0.1,
+  [1] = r0_0.RT_775,
+  [2] = r0_0.RT_931,
+  [3] = r0_0.RT_928,
+  [4] = r0_0.RT_929,
 }
 r0_0.RT_998 = {
   DEF = 2,
-  MaxHp = 0.18,
+  MaxHp = 0.1,
 }
 r0_0.RT_999 = {
-  -100,
-  -100,
-  0
+  DEF = 2,
+  MaxHp = 0.18,
 }
 r0_0.RT_1000 = {
-  100,
-  100,
+  -100,
+  -100,
   0
 }
 r0_0.RT_1001 = {
+  100,
+  100,
+  0
+}
+r0_0.RT_1002 = {
   ATK = 1,
   DEF = 1,
   ES = 1,
@@ -5020,8 +5024,8 @@ r0_0.RT_1001 = {
   MaxES = 1,
   MaxHp = 0.1,
 }
-r0_0.RT_1002 = {
-  AttrRates = r0_0.RT_1001,
+r0_0.RT_1003 = {
+  AttrRates = r0_0.RT_1002,
   FormationId = 850401,
   Function = "CreateUnit",
   LifeTime = 9999,
@@ -5030,260 +5034,260 @@ r0_0.RT_1002 = {
   UnitId = 8504003,
   UnitType = "Monster",
 }
-r0_0.RT_1003 = {
-  AttrRates = r0_0.RT_1001,
+r0_0.RT_1004 = {
+  AttrRates = r0_0.RT_1002,
   AutoAttach = 1,
   Function = "CreateUnit",
   LifeTime = 9999,
   UnitId = 850402,
   UnitType = "MechanismSummon",
 }
-r0_0.RT_1004 = {
+r0_0.RT_1005 = {
   BuffId = 6000205,
   Function = "AddBuff",
   LastTime = 9999,
 }
-r0_0.RT_1005 = {
+r0_0.RT_1006 = {
   BuffId = 850406,
   Function = "AddBuff",
   LastTime = 10,
 }
-r0_0.RT_1006 = {
+r0_0.RT_1007 = {
   Function = "PlaySE",
   SEId = 850409,
-}
-r0_0.RT_1007 = {
-  BaseAttr = "ATK",
-  Function = "Damage",
-  Rate = 1.3,
 }
 r0_0.RT_1008 = {
   BaseAttr = "ATK",
   Function = "Damage",
-  Rate = 6,
+  Rate = 1.3,
 }
 r0_0.RT_1009 = {
+  BaseAttr = "ATK",
+  Function = "Damage",
+  Rate = 6,
+}
+r0_0.RT_1010 = {
   CauseHit = "LightHit_40",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_1010 = {
+r0_0.RT_1011 = {
   Function = "PlaySE",
   SEId = 850402,
 }
-r0_0.RT_1011 = {
+r0_0.RT_1012 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 8,
 }
-r0_0.RT_1012 = {
+r0_0.RT_1013 = {
   BuffId = 850403,
   Function = "AddBuff",
   LastTime = 100000,
 }
-r0_0.RT_1013 = {
-  [1] = r0_0.RT_1012,
-}
 r0_0.RT_1014 = {
-  [1] = r0_0.RT_502,
-  [2] = r0_0.RT_1010,
+  [1] = r0_0.RT_1013,
 }
 r0_0.RT_1015 = {
+  [1] = r0_0.RT_502,
+  [2] = r0_0.RT_1011,
+}
+r0_0.RT_1016 = {
   CantLockTime = 20,
   Function = "CameraUnlock",
 }
-r0_0.RT_1016 = {
+r0_0.RT_1017 = {
   -400,
   300,
   200
 }
-r0_0.RT_1017 = {
+r0_0.RT_1018 = {
   0,
   300,
   200
 }
-r0_0.RT_1018 = {
+r0_0.RT_1019 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 0.15,
 }
-r0_0.RT_1019 = {
+r0_0.RT_1020 = {
   Function = "PlaySE",
   MeleeHitLevel = "Normal",
   SEId = 503,
 }
-r0_0.RT_1020 = {
-  [1] = r0_0.RT_3,
-  [2] = r0_0.RT_682,
-  [3] = r0_0.RT_1019,
-}
 r0_0.RT_1021 = {
   [1] = r0_0.RT_3,
-  [2] = r0_0.RT_754,
-  [3] = r0_0.RT_1019,
+  [2] = r0_0.RT_683,
+  [3] = r0_0.RT_1020,
 }
 r0_0.RT_1022 = {
-  [1] = r0_0.RT_22,
-  [2] = r0_0.RT_754,
-  [3] = r0_0.RT_1019,
+  [1] = r0_0.RT_3,
+  [2] = r0_0.RT_755,
+  [3] = r0_0.RT_1020,
 }
 r0_0.RT_1023 = {
+  [1] = r0_0.RT_22,
+  [2] = r0_0.RT_755,
+  [3] = r0_0.RT_1020,
+}
+r0_0.RT_1024 = {
   "hit2",
   "hit3"
 }
-r0_0.RT_1024 = {
-  [1] = r0_0.RT_33,
-  [2] = r0_0.RT_700,
-  [3] = r0_0.RT_1019,
-}
 r0_0.RT_1025 = {
   [1] = r0_0.RT_33,
-  [2] = r0_0.RT_682,
-  [3] = r0_0.RT_1019,
+  [2] = r0_0.RT_701,
+  [3] = r0_0.RT_1020,
 }
 r0_0.RT_1026 = {
-  [1] = r0_0.RT_22,
-  [2] = r0_0.RT_35,
-  [3] = r0_0.RT_1019,
+  [1] = r0_0.RT_33,
+  [2] = r0_0.RT_683,
+  [3] = r0_0.RT_1020,
 }
 r0_0.RT_1027 = {
+  [1] = r0_0.RT_22,
+  [2] = r0_0.RT_35,
+  [3] = r0_0.RT_1020,
+}
+r0_0.RT_1028 = {
   Function = "PlaySE",
   SEId = 850510,
 }
-r0_0.RT_1028 = {
+r0_0.RT_1029 = {
   [1] = r0_0.RT_7,
   [2] = r0_0.RT_550,
-  [3] = r0_0.RT_1027,
+  [3] = r0_0.RT_1028,
 }
-r0_0.RT_1029 = {
+r0_0.RT_1030 = {
   BuffId = 850503,
   Function = "AddBuff",
   LastTime = -1,
 }
-r0_0.RT_1030 = {
-  [1] = r0_0.RT_16,
-  [2] = r0_0.RT_1029,
-  [3] = r0_0.RT_1027,
-  [4] = r0_0.RT_700,
-}
 r0_0.RT_1031 = {
+  [1] = r0_0.RT_16,
+  [2] = r0_0.RT_1030,
+  [3] = r0_0.RT_1028,
+  [4] = r0_0.RT_701,
+}
+r0_0.RT_1032 = {
   CantLockTime = 1,
   Function = "CameraUnlock",
 }
-r0_0.RT_1032 = {
-  [1] = r0_0.RT_1031,
-}
 r0_0.RT_1033 = {
+  [1] = r0_0.RT_1032,
+}
+r0_0.RT_1034 = {
   0,
   0,
   -270
 }
-r0_0.RT_1034 = {
+r0_0.RT_1035 = {
   FormationId = 850501,
   Function = "BossSPSaveLocs",
-  Location = r0_0.RT_1033,
+  Location = r0_0.RT_1034,
   SetSaveLocs = "First",
 }
-r0_0.RT_1035 = {
-  [1] = r0_0.RT_774,
-  [2] = r0_0.RT_754,
-  [3] = r0_0.RT_1027,
-}
 r0_0.RT_1036 = {
+  [1] = r0_0.RT_775,
+  [2] = r0_0.RT_755,
+  [3] = r0_0.RT_1028,
+}
+r0_0.RT_1037 = {
   500,
   0,
   500
 }
-r0_0.RT_1037 = {
+r0_0.RT_1038 = {
   CreatureId = 850503,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_1036,
-}
-r0_0.RT_1038 = {
-  [1] = r0_0.RT_1037,
+  Location = r0_0.RT_1037,
 }
 r0_0.RT_1039 = {
+  [1] = r0_0.RT_1038,
+}
+r0_0.RT_1040 = {
   CreatureId = 850503,
   Function = "RemoveSkillCreature",
 }
-r0_0.RT_1040 = {
-  [1] = r0_0.RT_1039,
-}
 r0_0.RT_1041 = {
+  [1] = r0_0.RT_1040,
+}
+r0_0.RT_1042 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 1.1,
 }
-r0_0.RT_1042 = {
+r0_0.RT_1043 = {
   CauseHit = "HitFly_XY0Z300",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_1043 = {
-  [1] = r0_0.RT_1041,
-  [2] = r0_0.RT_1042,
-  [3] = r0_0.RT_1019,
-}
 r0_0.RT_1044 = {
-  [1] = r0_0.RT_16,
-  [2] = r0_0.RT_741,
-  [3] = r0_0.RT_1027,
+  [1] = r0_0.RT_1042,
+  [2] = r0_0.RT_1043,
+  [3] = r0_0.RT_1020,
 }
 r0_0.RT_1045 = {
-  FormationId = 850502,
-  Function = "BossSPSaveLocs",
-  Location = r0_0.RT_1033,
-  SetSaveLocs = "Fire",
+  [1] = r0_0.RT_16,
+  [2] = r0_0.RT_742,
+  [3] = r0_0.RT_1028,
 }
 r0_0.RT_1046 = {
-  CreatureId = 850515,
-  Function = "CreateSkillCreature",
-  Location = r0_0.RT_1033,
-  UseRelativeOffset = true,
-  UseSaveLoc = "Fire1",
+  FormationId = 850502,
+  Function = "BossSPSaveLocs",
+  Location = r0_0.RT_1034,
+  SetSaveLocs = "Fire",
 }
 r0_0.RT_1047 = {
   CreatureId = 850515,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_1033,
+  Location = r0_0.RT_1034,
   UseRelativeOffset = true,
-  UseSaveLoc = "Fire2",
+  UseSaveLoc = "Fire1",
 }
 r0_0.RT_1048 = {
   CreatureId = 850515,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_1033,
+  Location = r0_0.RT_1034,
   UseRelativeOffset = true,
-  UseSaveLoc = "Fire3",
+  UseSaveLoc = "Fire2",
 }
 r0_0.RT_1049 = {
   CreatureId = 850515,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_1033,
+  Location = r0_0.RT_1034,
+  UseRelativeOffset = true,
+  UseSaveLoc = "Fire3",
+}
+r0_0.RT_1050 = {
+  CreatureId = 850515,
+  Function = "CreateSkillCreature",
+  Location = r0_0.RT_1034,
   UseRelativeOffset = true,
   UseSaveLoc = "Fire4",
 }
-r0_0.RT_1050 = {
-  [1] = r0_0.RT_1045,
-  [2] = r0_0.RT_1046,
-  [3] = r0_0.RT_1047,
-  [4] = r0_0.RT_1048,
-  [5] = r0_0.RT_1049,
-}
 r0_0.RT_1051 = {
-  [1] = r0_0.RT_16,
-  [2] = r0_0.RT_754,
-  [3] = r0_0.RT_1027,
+  [1] = r0_0.RT_1046,
+  [2] = r0_0.RT_1047,
+  [3] = r0_0.RT_1048,
+  [4] = r0_0.RT_1049,
+  [5] = r0_0.RT_1050,
 }
 r0_0.RT_1052 = {
+  [1] = r0_0.RT_16,
+  [2] = r0_0.RT_755,
+  [3] = r0_0.RT_1028,
+}
+r0_0.RT_1053 = {
   CauseHit = "BossLianhuo_Effect850507",
   Function = "GrabHit",
 }
-r0_0.RT_1053 = {
-  [1] = r0_0.RT_1052,
+r0_0.RT_1054 = {
+  [1] = r0_0.RT_1053,
   [2] = r0_0.RT_496,
 }
-r0_0.RT_1054 = {
+r0_0.RT_1055 = {
   "hit2",
   "hit4",
   "hit6",
@@ -5291,24 +5295,24 @@ r0_0.RT_1054 = {
   "hit10",
   "hit12"
 }
-r0_0.RT_1055 = {
+r0_0.RT_1056 = {
   CreatureId = 850504,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_1056 = {
-  [1] = r0_0.RT_1055,
-}
 r0_0.RT_1057 = {
+  [1] = r0_0.RT_1056,
+}
+r0_0.RT_1058 = {
   Function = "PlaySE",
   MeleeHitLevel = "Heavy",
   SEId = 503,
 }
-r0_0.RT_1058 = {
-  [1] = r0_0.RT_1041,
-  [2] = r0_0.RT_754,
-  [3] = r0_0.RT_1057,
-}
 r0_0.RT_1059 = {
+  [1] = r0_0.RT_1042,
+  [2] = r0_0.RT_755,
+  [3] = r0_0.RT_1058,
+}
+r0_0.RT_1060 = {
   "hit3",
   "hit5",
   "hit7",
@@ -5316,821 +5320,813 @@ r0_0.RT_1059 = {
   "hit11",
   "hit13"
 }
-r0_0.RT_1060 = {
+r0_0.RT_1061 = {
   CreatureId = 850504,
   Function = "RemoveSkillCreature",
 }
-r0_0.RT_1061 = {
-  [1] = r0_0.RT_1060,
-}
 r0_0.RT_1062 = {
-  "hit14"
+  [1] = r0_0.RT_1061,
 }
 r0_0.RT_1063 = {
+  "hit14"
+}
+r0_0.RT_1064 = {
   CreatureId = 850505,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_1064 = {
-  [1] = r0_0.RT_1063,
-}
 r0_0.RT_1065 = {
-  "hit16"
+  [1] = r0_0.RT_1064,
 }
 r0_0.RT_1066 = {
-  "hit17"
+  "hit16"
 }
 r0_0.RT_1067 = {
-  [1] = r0_0.RT_991,
+  "hit17"
 }
 r0_0.RT_1068 = {
-  Function = "CameraRelock",
+  [1] = r0_0.RT_992,
 }
 r0_0.RT_1069 = {
+  Function = "CameraRelock",
+}
+r0_0.RT_1070 = {
   "hit20",
   "hit24"
 }
-r0_0.RT_1070 = {
+r0_0.RT_1071 = {
   Distance = 600,
   MaxNum = 3,
   Radius = 700,
 }
-r0_0.RT_1071 = {
+r0_0.RT_1072 = {
   Function = "EffectFunction",
   FunctionName = "RandomAreaLocation",
-  Vars = r0_0.RT_1070,
-}
-r0_0.RT_1072 = {
-  [1] = r0_0.RT_1071,
+  Vars = r0_0.RT_1071,
 }
 r0_0.RT_1073 = {
-  "hit21",
-  "hit25"
+  [1] = r0_0.RT_1072,
 }
 r0_0.RT_1074 = {
-  CreatureId = 850509,
-  Function = "CreateSkillCreature",
-  UseSaveLoc = "1",
+  "hit21",
+  "hit25"
 }
 r0_0.RT_1075 = {
   CreatureId = 850509,
   Function = "CreateSkillCreature",
-  UseSaveLoc = "2",
+  UseSaveLoc = "1",
 }
 r0_0.RT_1076 = {
   CreatureId = 850509,
   Function = "CreateSkillCreature",
-  UseSaveLoc = "3",
+  UseSaveLoc = "2",
 }
 r0_0.RT_1077 = {
-  [1] = r0_0.RT_1074,
-  [2] = r0_0.RT_1075,
-  [3] = r0_0.RT_1076,
+  CreatureId = 850509,
+  Function = "CreateSkillCreature",
+  UseSaveLoc = "3",
 }
 r0_0.RT_1078 = {
+  [1] = r0_0.RT_1075,
+  [2] = r0_0.RT_1076,
+  [3] = r0_0.RT_1077,
+}
+r0_0.RT_1079 = {
   "hit19",
   "hit23"
 }
-r0_0.RT_1079 = {
+r0_0.RT_1080 = {
   CreatureId = 850509,
   Function = "CreateSkillCreature",
   UseSaveLoc = "",
 }
-r0_0.RT_1080 = {
-  [1] = r0_0.RT_1079,
-}
 r0_0.RT_1081 = {
+  [1] = r0_0.RT_1080,
+}
+r0_0.RT_1082 = {
   BuffId = 6000205,
   Function = "AddBuff",
   LastTime = -1,
 }
-r0_0.RT_1082 = {
+r0_0.RT_1083 = {
   "hit26"
 }
-r0_0.RT_1083 = {
+r0_0.RT_1084 = {
   BuffId = 6000205,
   Function = "RemoveBuff",
 }
-r0_0.RT_1084 = {
-  [1] = r0_0.RT_981,
-  [2] = r0_0.RT_1019,
-}
 r0_0.RT_1085 = {
-  [1] = r0_0.RT_7,
-  [2] = r0_0.RT_754,
-  [3] = r0_0.RT_1019,
+  [1] = r0_0.RT_982,
+  [2] = r0_0.RT_1020,
 }
 r0_0.RT_1086 = {
+  [1] = r0_0.RT_7,
+  [2] = r0_0.RT_755,
+  [3] = r0_0.RT_1020,
+}
+r0_0.RT_1087 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 1.4,
 }
-r0_0.RT_1087 = {
-  [1] = r0_0.RT_1086,
-  [2] = r0_0.RT_682,
-  [3] = r0_0.RT_1019,
-}
 r0_0.RT_1088 = {
-  "hit24"
+  [1] = r0_0.RT_1087,
+  [2] = r0_0.RT_683,
+  [3] = r0_0.RT_1020,
 }
 r0_0.RT_1089 = {
+  "hit24"
+}
+r0_0.RT_1090 = {
   CreatureId = 850510,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_1090 = {
-  [1] = r0_0.RT_1089,
-}
 r0_0.RT_1091 = {
+  [1] = r0_0.RT_1090,
+}
+r0_0.RT_1092 = {
   CauseHit = "LightHit_200",
   Function = "CutToughness",
   Value = 10,
 }
-r0_0.RT_1092 = {
+r0_0.RT_1093 = {
   BuffId = 6000209,
   Function = "AddBuff",
   LastTime = -1,
 }
-r0_0.RT_1093 = {
+r0_0.RT_1094 = {
   BuffId = 6000209,
   Function = "RemoveBuff",
 }
-r0_0.RT_1094 = {
+r0_0.RT_1095 = {
   BaseAttr = "ATK",
-  DamageTag = r0_0.RT_829,
+  DamageTag = r0_0.RT_830,
   Function = "Damage",
   Rate = 0.4,
 }
-r0_0.RT_1095 = {
+r0_0.RT_1096 = {
   Function = "PlaySE",
   SEId = 850601,
 }
-r0_0.RT_1096 = {
+r0_0.RT_1097 = {
   BaseAttr = "ATK",
-  DamageTag = r0_0.RT_829,
+  DamageTag = r0_0.RT_830,
   Function = "Damage",
   Rate = 1.5,
 }
-r0_0.RT_1097 = {
+r0_0.RT_1098 = {
   CauseHit = "HitFly_XY600Z300",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_1098 = {
-  [1] = r0_0.RT_1096,
-  [2] = r0_0.RT_1095,
+r0_0.RT_1099 = {
+  [1] = r0_0.RT_1097,
+  [2] = r0_0.RT_1096,
   [3] = r0_0.RT_72,
   [4] = r0_0.RT_38,
-  [5] = r0_0.RT_1097,
+  [5] = r0_0.RT_1098,
 }
-r0_0.RT_1099 = {
+r0_0.RT_1100 = {
   "hit3",
   "hit4"
 }
-r0_0.RT_1100 = {
+r0_0.RT_1101 = {
   CauseHit = "LightHit_200",
   Function = "CutToughness",
 }
-r0_0.RT_1101 = {
+r0_0.RT_1102 = {
   Function = "PlaySE",
   SEId = 850916,
 }
-r0_0.RT_1102 = {
+r0_0.RT_1103 = {
   [1] = r0_0.RT_16,
   [2] = r0_0.RT_17,
-  [3] = r0_0.RT_1101,
-}
-r0_0.RT_1103 = {
-  BaseAttr = "ATK",
-  Function = "Damage",
-  Rate = 1.9,
+  [3] = r0_0.RT_1102,
 }
 r0_0.RT_1104 = {
   BaseAttr = "ATK",
   Function = "Damage",
-  Rate = 0.9,
+  Rate = 1.9,
 }
 r0_0.RT_1105 = {
-  [1] = r0_0.RT_1104,
-  [2] = r0_0.RT_17,
-  [3] = r0_0.RT_1101,
+  BaseAttr = "ATK",
+  Function = "Damage",
+  Rate = 0.9,
 }
 r0_0.RT_1106 = {
+  [1] = r0_0.RT_1105,
+  [2] = r0_0.RT_17,
+  [3] = r0_0.RT_1102,
+}
+r0_0.RT_1107 = {
   FXId = 850923,
   Function = "PlayFX",
   NormalToHit = true,
   Overlap = true,
 }
-r0_0.RT_1107 = {
-  [1] = r0_0.RT_1106,
-}
 r0_0.RT_1108 = {
+  [1] = r0_0.RT_1107,
+}
+r0_0.RT_1109 = {
   Falloff = 0.1,
   Function = "CameraShake",
   IsSceneCameraShake = true,
   OuterRadius = 2000,
   ShakeClass = "BP_Camera_BossTuosi_Burst",
 }
-r0_0.RT_1109 = {
+r0_0.RT_1110 = {
   Function = "PlaySE",
   SEId = 850919,
 }
-r0_0.RT_1110 = {
+r0_0.RT_1111 = {
   CauseHit = "HitFly_XY2000Z1000",
   Function = "CutToughness",
 }
-r0_0.RT_1111 = {
+r0_0.RT_1112 = {
   Function = "PlaySE",
   SEId = 850920,
 }
-r0_0.RT_1112 = {
+r0_0.RT_1113 = {
   CantLockTime = 13,
   Function = "CameraUnlock",
 }
-r0_0.RT_1113 = {
+r0_0.RT_1114 = {
   FXId = 850903,
   Function = "PlayFX",
 }
-r0_0.RT_1114 = {
+r0_0.RT_1115 = {
   Function = "PlaySE",
   SEId = 851003,
 }
-r0_0.RT_1115 = {
+r0_0.RT_1116 = {
   BuffId = 851001,
   Function = "AddBuff",
   LastTime = 5,
 }
-r0_0.RT_1116 = {
+r0_0.RT_1117 = {
   Function = "PlaySE",
   SEId = 851004,
 }
-r0_0.RT_1117 = {
-  [1] = r0_0.RT_1115,
-}
 r0_0.RT_1118 = {
+  [1] = r0_0.RT_1116,
+}
+r0_0.RT_1119 = {
   ATK = 1,
   DEF = 0,
   MaxHp = 0.06,
 }
-r0_0.RT_1119 = {
+r0_0.RT_1120 = {
   Function = "PlaySE",
   SEId = 851009,
 }
-r0_0.RT_1120 = {
+r0_0.RT_1121 = {
   Function = "PlaySE",
   SEId = 851010,
 }
-r0_0.RT_1121 = {
+r0_0.RT_1122 = {
   [1] = r0_0.RT_16,
   [2] = r0_0.RT_10,
-  [3] = r0_0.RT_1119,
-  [4] = r0_0.RT_1120,
+  [3] = r0_0.RT_1120,
+  [4] = r0_0.RT_1121,
 }
-r0_0.RT_1122 = {
+r0_0.RT_1123 = {
   Function = "PlaySE",
   SEId = 851012,
 }
-r0_0.RT_1123 = {
+r0_0.RT_1124 = {
   CantLockTime = 18,
   Function = "CameraUnlock",
 }
-r0_0.RT_1124 = {
+r0_0.RT_1125 = {
   Function = "PlaySE",
   SEId = 851016,
 }
-r0_0.RT_1125 = {
+r0_0.RT_1126 = {
   DanmakuTemplateId = 851004,
   Duration = 20,
   Function = "CreateDanmaku",
 }
-r0_0.RT_1126 = {
-  [1] = r0_0.RT_1125,
-}
 r0_0.RT_1127 = {
+  [1] = r0_0.RT_1126,
+}
+r0_0.RT_1128 = {
   CauseHit = "LightHit_100",
   Function = "CutToughness",
 }
-r0_0.RT_1128 = {
+r0_0.RT_1129 = {
   [1] = r0_0.RT_16,
   [2] = r0_0.RT_10,
-  [3] = r0_0.RT_1120,
+  [3] = r0_0.RT_1121,
 }
-r0_0.RT_1129 = {
+r0_0.RT_1130 = {
   CreatureId = 851013,
   Function = "CreateSkillCreature",
   SetSavelocAsTarget = "19",
   UseSaveLoc = "25",
 }
-r0_0.RT_1130 = {
-  [1] = r0_0.RT_1129,
-}
 r0_0.RT_1131 = {
+  [1] = r0_0.RT_1130,
+}
+r0_0.RT_1132 = {
   CreatureId = 851013,
   Function = "CreateSkillCreature",
   SetSavelocAsTarget = "20",
   UseSaveLoc = "25",
 }
-r0_0.RT_1132 = {
-  [1] = r0_0.RT_1131,
-}
 r0_0.RT_1133 = {
+  [1] = r0_0.RT_1132,
+}
+r0_0.RT_1134 = {
   CreatureId = 851013,
   Function = "CreateSkillCreature",
   SetSavelocAsTarget = "21",
   UseSaveLoc = "25",
 }
-r0_0.RT_1134 = {
-  [1] = r0_0.RT_1133,
-}
 r0_0.RT_1135 = {
-  "hit9"
+  [1] = r0_0.RT_1134,
 }
 r0_0.RT_1136 = {
+  "hit9"
+}
+r0_0.RT_1137 = {
   CreatureId = 851013,
   Function = "CreateSkillCreature",
   SetSavelocAsTarget = "22",
   UseSaveLoc = "25",
 }
-r0_0.RT_1137 = {
-  [1] = r0_0.RT_1136,
-}
 r0_0.RT_1138 = {
+  [1] = r0_0.RT_1137,
+}
+r0_0.RT_1139 = {
   BuffId = 851101,
   Function = "AddBuff",
   LastTime = 10,
 }
-r0_0.RT_1139 = {
-  [1] = r0_0.RT_16,
-  [2] = r0_0.RT_1100,
-  [3] = r0_0.RT_1138,
-}
 r0_0.RT_1140 = {
-  [1] = r0_0.RT_1138,
+  [1] = r0_0.RT_16,
+  [2] = r0_0.RT_1101,
+  [3] = r0_0.RT_1139,
 }
 r0_0.RT_1141 = {
+  [1] = r0_0.RT_1139,
+}
+r0_0.RT_1142 = {
   ATK = 1,
   DEF = 0,
   MaxHp = 0.02,
 }
-r0_0.RT_1142 = {
+r0_0.RT_1143 = {
   Function = "PlaySE",
   SEId = 851202,
 }
-r0_0.RT_1143 = {
+r0_0.RT_1144 = {
   CauseHit = "BossLinen_Skill06",
   Function = "CutToughness",
   Value = 100,
 }
-r0_0.RT_1144 = {
+r0_0.RT_1145 = {
   CreatureId = 851208,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_1145 = {
-  [1] = r0_0.RT_1144,
-  [2] = r0_0.RT_1144,
-  [3] = r0_0.RT_1144,
-  [4] = r0_0.RT_1144,
-  [5] = r0_0.RT_1144,
-  [6] = r0_0.RT_1144,
-}
 r0_0.RT_1146 = {
+  [1] = r0_0.RT_1145,
+  [2] = r0_0.RT_1145,
+  [3] = r0_0.RT_1145,
+  [4] = r0_0.RT_1145,
+  [5] = r0_0.RT_1145,
+  [6] = r0_0.RT_1145,
+}
+r0_0.RT_1147 = {
   FXId = 851212,
   Function = "PlayFX",
 }
-r0_0.RT_1147 = {
+r0_0.RT_1148 = {
   Function = "PlaySE",
   SEId = 851201,
 }
-r0_0.RT_1148 = {
+r0_0.RT_1149 = {
   CreatureId = 851203,
   Delay = 0.167,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_1149 = {
+r0_0.RT_1150 = {
   CauseHit = "LightHit",
   Function = "CutToughness",
   Value = 30,
 }
-r0_0.RT_1150 = {
+r0_0.RT_1151 = {
   FXId = 851205,
   Function = "PlayFX",
 }
-r0_0.RT_1151 = {
+r0_0.RT_1152 = {
   FXId = 851204,
   Function = "PlayFX",
   NormalToHit = true,
   Overlap = true,
 }
-r0_0.RT_1152 = {
+r0_0.RT_1153 = {
   ATK = 1,
   DEF = 1,
   MaxHp = 0.007,
 }
-r0_0.RT_1153 = {
-  [1] = r0_0.RT_16,
-  [2] = r0_0.RT_1143,
-  [3] = r0_0.RT_1147,
-}
 r0_0.RT_1154 = {
+  [1] = r0_0.RT_16,
+  [2] = r0_0.RT_1144,
+  [3] = r0_0.RT_1148,
+}
+r0_0.RT_1155 = {
   CauseHit = "BossLinen_Skill07",
   Function = "CutToughness",
   Value = 50,
 }
-r0_0.RT_1155 = {
+r0_0.RT_1156 = {
   BuffId = 851201,
   Function = "AddBuff",
   LastTime = -1,
 }
-r0_0.RT_1156 = {
+r0_0.RT_1157 = {
   Function = "AddTnToMax",
 }
-r0_0.RT_1157 = {
-  [1] = r0_0.RT_1155,
-  [2] = r0_0.RT_1156,
-}
 r0_0.RT_1158 = {
-  ATK = 1,
-  DEF = 1,
-  MaxHp = 0.01,
+  [1] = r0_0.RT_1156,
+  [2] = r0_0.RT_1157,
 }
 r0_0.RT_1159 = {
   ATK = 1,
   DEF = 1,
-  MaxHp = 0.02,
+  MaxHp = 0.01,
 }
 r0_0.RT_1160 = {
-  [1] = r0_0.RT_7,
-  [2] = r0_0.RT_1143,
-  [3] = r0_0.RT_1147,
+  ATK = 1,
+  DEF = 1,
+  MaxHp = 0.02,
 }
 r0_0.RT_1161 = {
+  [1] = r0_0.RT_7,
+  [2] = r0_0.RT_1144,
+  [3] = r0_0.RT_1148,
+}
+r0_0.RT_1162 = {
   BaseAttr = "ATK",
   DamageTag = r0_0.RT_343,
   Function = "Damage",
   Rate = 0.6,
 }
-r0_0.RT_1162 = {
+r0_0.RT_1163 = {
   CreatureId = 8512908,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_1163 = {
-  [1] = r0_0.RT_1162,
-  [2] = r0_0.RT_1162,
-  [3] = r0_0.RT_1162,
-  [4] = r0_0.RT_1162,
-  [5] = r0_0.RT_1162,
-  [6] = r0_0.RT_1162,
-}
 r0_0.RT_1164 = {
+  [1] = r0_0.RT_1163,
+  [2] = r0_0.RT_1163,
+  [3] = r0_0.RT_1163,
+  [4] = r0_0.RT_1163,
+  [5] = r0_0.RT_1163,
+  [6] = r0_0.RT_1163,
+}
+r0_0.RT_1165 = {
   CreatureId = 8512903,
   Delay = 0.167,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_1165 = {
+r0_0.RT_1166 = {
   BaseAttr = "MaxHp",
   BaseChar = "Target",
   DamageType = "TrueDamage",
   Function = "Damage",
   Rate = 0.1,
 }
-r0_0.RT_1166 = {
-  [1] = r0_0.RT_1165,
-}
 r0_0.RT_1167 = {
+  [1] = r0_0.RT_1166,
+}
+r0_0.RT_1168 = {
   Function = "PlaySE",
   SEId = 851301,
 }
-r0_0.RT_1168 = {
+r0_0.RT_1169 = {
   -8.89,
   153.32,
   50
 }
-r0_0.RT_1169 = {
+r0_0.RT_1170 = {
   CreatureId = 851302,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_1168,
-}
-r0_0.RT_1170 = {
-  [1] = r0_0.RT_1169,
+  Location = r0_0.RT_1169,
 }
 r0_0.RT_1171 = {
+  [1] = r0_0.RT_1170,
+}
+r0_0.RT_1172 = {
   FXId = 851303,
   Function = "PlayFX",
   Overlap = true,
 }
-r0_0.RT_1172 = {
+r0_0.RT_1173 = {
   FXId = 851303,
   Function = "PlayFX",
   NormalToHit = true,
   Overlap = true,
 }
-r0_0.RT_1173 = {
-  [1] = r0_0.RT_1172,
-}
 r0_0.RT_1174 = {
+  [1] = r0_0.RT_1173,
+}
+r0_0.RT_1175 = {
   CreatureId = 851304,
   Function = "CreateSkillCreature",
   SetSavelocAsTarget = "End1",
   UseSaveLoc = "StartCenter",
 }
-r0_0.RT_1175 = {
+r0_0.RT_1176 = {
   CreatureId = 851304,
   Function = "CreateSkillCreature",
   SetSavelocAsTarget = "End2",
   UseSaveLoc = "StartCenter",
 }
-r0_0.RT_1176 = {
+r0_0.RT_1177 = {
   CreatureId = 851304,
   Function = "CreateSkillCreature",
   SetSavelocAsTarget = "End3",
   UseSaveLoc = "StartCenter",
 }
-r0_0.RT_1177 = {
+r0_0.RT_1178 = {
   CreatureId = 851304,
   Function = "CreateSkillCreature",
   SetSavelocAsTarget = "End4",
   UseSaveLoc = "StartCenter",
 }
-r0_0.RT_1178 = {
+r0_0.RT_1179 = {
   CreatureId = 851304,
   Function = "CreateSkillCreature",
   SetSavelocAsTarget = "End5",
   UseSaveLoc = "StartCenter",
 }
-r0_0.RT_1179 = {
+r0_0.RT_1180 = {
   CreatureId = 851304,
   Function = "CreateSkillCreature",
   SetSavelocAsTarget = "End6",
   UseSaveLoc = "StartCenter",
 }
-r0_0.RT_1180 = {
+r0_0.RT_1181 = {
   BaseChar = "Self",
   Function = "PlaySE",
   SEId = 851307,
 }
-r0_0.RT_1181 = {
+r0_0.RT_1182 = {
   Function = "PlaySE",
   SEId = 851309,
 }
-r0_0.RT_1182 = {
+r0_0.RT_1183 = {
   FXId = 851311,
   Function = "PlayFX",
 }
-r0_0.RT_1183 = {
-  [1] = r0_0.RT_1182,
-}
 r0_0.RT_1184 = {
+  [1] = r0_0.RT_1183,
+}
+r0_0.RT_1185 = {
   Function = "EffectFunction",
   FunctionName = "Mon_BossShenpan_Skill03BulletLoc",
 }
-r0_0.RT_1185 = {
+r0_0.RT_1186 = {
   CreatureId = 851402,
   Function = "CreateSkillCreature",
   SetSavelocAsTarget = "Skill03Right01",
 }
-r0_0.RT_1186 = {
+r0_0.RT_1187 = {
   CreatureId = 851411,
   Delay = 0.3,
   Function = "CreateSkillCreature",
   SetSavelocAsTarget = "Skill03Right02",
 }
-r0_0.RT_1187 = {
+r0_0.RT_1188 = {
   CreatureId = 851403,
   Delay = 0.1,
   Function = "CreateSkillCreature",
   SetSavelocAsTarget = "Skill03Left01",
 }
-r0_0.RT_1188 = {
+r0_0.RT_1189 = {
   CreatureId = 851412,
   Delay = 0.2,
   Function = "CreateSkillCreature",
   SetSavelocAsTarget = "Skill03Left02",
 }
-r0_0.RT_1189 = {
-  [1] = r0_0.RT_1184,
-  [2] = r0_0.RT_1185,
-  [3] = r0_0.RT_1186,
-  [4] = r0_0.RT_1187,
-  [5] = r0_0.RT_1188,
-}
 r0_0.RT_1190 = {
+  [1] = r0_0.RT_1185,
+  [2] = r0_0.RT_1186,
+  [3] = r0_0.RT_1187,
+  [4] = r0_0.RT_1188,
+  [5] = r0_0.RT_1189,
+}
+r0_0.RT_1191 = {
   CauseHit = "LightHit_400",
   Function = "CutToughness",
 }
-r0_0.RT_1191 = {
+r0_0.RT_1192 = {
   Function = "PlaySE",
   SEId = 851408,
 }
-r0_0.RT_1192 = {
+r0_0.RT_1193 = {
   Function = "PlaySE",
   SEId = 851519,
 }
-r0_0.RT_1193 = {
+r0_0.RT_1194 = {
   [1] = r0_0.RT_3,
   [2] = r0_0.RT_10,
-  [3] = r0_0.RT_661,
-  [4] = r0_0.RT_1192,
+  [3] = r0_0.RT_662,
+  [4] = r0_0.RT_1193,
 }
-r0_0.RT_1194 = {
+r0_0.RT_1195 = {
   Function = "PlaySE",
   SEId = 851507,
 }
-r0_0.RT_1195 = {
+r0_0.RT_1196 = {
   0,
   175,
   455
 }
-r0_0.RT_1196 = {
+r0_0.RT_1197 = {
   FXId = 851504,
   Function = "PlayFX",
 }
-r0_0.RT_1197 = {
+r0_0.RT_1198 = {
   Function = "EffectFunction",
   FunctionName = "Mon_BossJushi_Skill08Bullet",
 }
-r0_0.RT_1198 = {
+r0_0.RT_1199 = {
   BoneName = "ShoulderLaserR2",
   DanmakuTemplateId = 851506,
   Duration = 2,
   Function = "CreateDanmaku",
 }
-r0_0.RT_1199 = {
+r0_0.RT_1200 = {
   BoneName = "ShoulderLaserL2",
   DanmakuTemplateId = 851506,
   Duration = 2,
   Function = "CreateDanmaku",
 }
-r0_0.RT_1200 = {
+r0_0.RT_1201 = {
   FXId = 851510,
   Function = "PlayFX",
   Overlap = true,
 }
-r0_0.RT_1201 = {
+r0_0.RT_1202 = {
   [1] = r0_0.RT_3,
   [2] = r0_0.RT_10,
-  [3] = r0_0.RT_661,
-}
-r0_0.RT_1202 = {
-  [1] = r0_0.RT_753,
-  [2] = r0_0.RT_3,
-  [3] = r0_0.RT_661,
+  [3] = r0_0.RT_662,
 }
 r0_0.RT_1203 = {
-  [1] = r0_0.RT_827,
-  [2] = r0_0.RT_10,
-  [3] = r0_0.RT_661,
+  [1] = r0_0.RT_754,
+  [2] = r0_0.RT_3,
+  [3] = r0_0.RT_662,
 }
 r0_0.RT_1204 = {
+  [1] = r0_0.RT_828,
+  [2] = r0_0.RT_10,
+  [3] = r0_0.RT_662,
+}
+r0_0.RT_1205 = {
   Function = "PlaySE",
   SEId = 851701,
 }
-r0_0.RT_1205 = {
-  [1] = r0_0.RT_3,
-  [2] = r0_0.RT_1127,
-  [3] = r0_0.RT_1204,
-}
 r0_0.RT_1206 = {
+  [1] = r0_0.RT_3,
+  [2] = r0_0.RT_1128,
+  [3] = r0_0.RT_1205,
+}
+r0_0.RT_1207 = {
   Function = "PlaySE",
   SEId = 851702,
 }
-r0_0.RT_1207 = {
-  [1] = r0_0.RT_779,
-  [2] = r0_0.RT_1100,
-  [3] = r0_0.RT_1204,
-}
 r0_0.RT_1208 = {
-  [1] = r0_0.RT_779,
-  [2] = r0_0.RT_753,
-  [3] = r0_0.RT_1206,
+  [1] = r0_0.RT_780,
+  [2] = r0_0.RT_1101,
+  [3] = r0_0.RT_1205,
 }
 r0_0.RT_1209 = {
-  [1] = r0_0.RT_3,
-  [2] = r0_0.RT_753,
+  [1] = r0_0.RT_780,
+  [2] = r0_0.RT_754,
+  [3] = r0_0.RT_1207,
 }
 r0_0.RT_1210 = {
-  CreatureId = 851805,
-  Function = "CreateSkillCreature",
-  UseSaveLoc = "1",
+  [1] = r0_0.RT_3,
+  [2] = r0_0.RT_754,
 }
 r0_0.RT_1211 = {
   CreatureId = 851805,
   Function = "CreateSkillCreature",
-  UseSaveLoc = "2",
+  UseSaveLoc = "1",
 }
 r0_0.RT_1212 = {
   CreatureId = 851805,
   Function = "CreateSkillCreature",
-  UseSaveLoc = "5",
+  UseSaveLoc = "2",
 }
 r0_0.RT_1213 = {
   CreatureId = 851805,
   Function = "CreateSkillCreature",
-  UseSaveLoc = "6",
+  UseSaveLoc = "5",
 }
 r0_0.RT_1214 = {
   CreatureId = 851805,
   Function = "CreateSkillCreature",
-  UseSaveLoc = "3",
+  UseSaveLoc = "6",
 }
 r0_0.RT_1215 = {
   CreatureId = 851805,
   Function = "CreateSkillCreature",
-  UseSaveLoc = "4",
+  UseSaveLoc = "3",
 }
 r0_0.RT_1216 = {
   CreatureId = 851805,
   Function = "CreateSkillCreature",
-  UseSaveLoc = "7",
+  UseSaveLoc = "4",
 }
 r0_0.RT_1217 = {
   CreatureId = 851805,
   Function = "CreateSkillCreature",
-  UseSaveLoc = "8",
+  UseSaveLoc = "7",
 }
 r0_0.RT_1218 = {
-  [1] = r0_0.RT_16,
-  [2] = r0_0.RT_10,
-}
-r0_0.RT_1219 = {
   CreatureId = 851805,
   Function = "CreateSkillCreature",
-  UseSaveLoc = "9",
+  UseSaveLoc = "8",
+}
+r0_0.RT_1219 = {
+  [1] = r0_0.RT_16,
+  [2] = r0_0.RT_10,
 }
 r0_0.RT_1220 = {
   CreatureId = 851805,
   Function = "CreateSkillCreature",
-  UseSaveLoc = "10",
+  UseSaveLoc = "9",
 }
 r0_0.RT_1221 = {
   CreatureId = 851805,
   Function = "CreateSkillCreature",
-  UseSaveLoc = "13",
+  UseSaveLoc = "10",
 }
 r0_0.RT_1222 = {
   CreatureId = 851805,
   Function = "CreateSkillCreature",
-  UseSaveLoc = "11",
+  UseSaveLoc = "13",
 }
 r0_0.RT_1223 = {
   CreatureId = 851805,
   Function = "CreateSkillCreature",
-  UseSaveLoc = "14",
+  UseSaveLoc = "11",
 }
 r0_0.RT_1224 = {
   CreatureId = 851805,
   Function = "CreateSkillCreature",
-  UseSaveLoc = "12",
+  UseSaveLoc = "14",
 }
 r0_0.RT_1225 = {
   CreatureId = 851805,
   Function = "CreateSkillCreature",
-  UseSaveLoc = "15",
+  UseSaveLoc = "12",
 }
 r0_0.RT_1226 = {
   CreatureId = 851805,
   Function = "CreateSkillCreature",
-  UseSaveLoc = "16",
+  UseSaveLoc = "15",
 }
 r0_0.RT_1227 = {
+  CreatureId = 851805,
+  Function = "CreateSkillCreature",
+  UseSaveLoc = "16",
+}
+r0_0.RT_1228 = {
   FXId = 851901,
   Function = "PlayFX",
   Overlap = true,
 }
-r0_0.RT_1228 = {
+r0_0.RT_1229 = {
   [1] = r0_0.RT_3,
   [2] = r0_0.RT_10,
-  [3] = r0_0.RT_1227,
+  [3] = r0_0.RT_1228,
 }
-r0_0.RT_1229 = {
+r0_0.RT_1230 = {
   CauseHit = "HitFly_XY0Z300",
   Function = "CutToughness",
 }
-r0_0.RT_1230 = {
+r0_0.RT_1231 = {
   FXId = 900406,
   Function = "PlayFX",
 }
-r0_0.RT_1231 = {
+r0_0.RT_1232 = {
   CreatureId = 851903,
   Function = "CreateSkillCreature",
   UseSaveLoc = "LFront",
 }
-r0_0.RT_1232 = {
+r0_0.RT_1233 = {
   FXId = 851902,
   Function = "PlayFX",
 }
-r0_0.RT_1233 = {
+r0_0.RT_1234 = {
   [1] = r0_0.RT_22,
   [2] = r0_0.RT_10,
-  [3] = r0_0.RT_1232,
-}
-r0_0.RT_1234 = {
-  [1] = r0_0.RT_702,
+  [3] = r0_0.RT_1233,
 }
 r0_0.RT_1235 = {
-  Function = "CreateUnit",
-  MaxSummonCount = 2,
-  SingleSummonCount = 1,
-  UnitId = 8519005,
-  UnitType = "Monster",
-  UseSaveLoc = "Skill05L",
+  [1] = r0_0.RT_703,
 }
 r0_0.RT_1236 = {
   Function = "CreateUnit",
@@ -6138,14 +6134,22 @@ r0_0.RT_1236 = {
   SingleSummonCount = 1,
   UnitId = 8519005,
   UnitType = "Monster",
-  UseSaveLoc = "Skill05M",
+  UseSaveLoc = "Skill05L",
 }
 r0_0.RT_1237 = {
+  Function = "CreateUnit",
+  MaxSummonCount = 2,
+  SingleSummonCount = 1,
+  UnitId = 8519005,
+  UnitType = "Monster",
+  UseSaveLoc = "Skill05M",
+}
+r0_0.RT_1238 = {
   CreatureId = 851915,
   Function = "CreateSkillCreature",
   UseSaveLoc = "LFront",
 }
-r0_0.RT_1238 = {
+r0_0.RT_1239 = {
   Function = "CreateUnit",
   MaxSummonCount = 2,
   SingleSummonCount = 1,
@@ -6153,22 +6157,22 @@ r0_0.RT_1238 = {
   UnitType = "Monster",
   UseSaveLoc = "Skill05R",
 }
-r0_0.RT_1239 = {
+r0_0.RT_1240 = {
   CreatureId = 851919,
   Function = "CreateSkillCreature",
   UseSaveLoc = "RFront",
 }
-r0_0.RT_1240 = {
+r0_0.RT_1241 = {
   CreatureId = 851920,
   Function = "CreateSkillCreature",
   UseSaveLoc = "RFront",
 }
-r0_0.RT_1241 = {
+r0_0.RT_1242 = {
   Hp = 1,
   MaxHp = 0.03,
 }
-r0_0.RT_1242 = {
-  AttrRates = r0_0.RT_1241,
+r0_0.RT_1243 = {
+  AttrRates = r0_0.RT_1242,
   Function = "CreateUnit",
   MaxSummonCount = 3,
   SingleSummonCount = 1,
@@ -6176,8 +6180,8 @@ r0_0.RT_1242 = {
   UnitType = "Monster",
   UseSaveLoc = "8519302",
 }
-r0_0.RT_1243 = {
-  AttrRates = r0_0.RT_1241,
+r0_0.RT_1244 = {
+  AttrRates = r0_0.RT_1242,
   Function = "CreateUnit",
   MaxSummonCount = 9,
   SingleSummonCount = 1,
@@ -6185,8 +6189,8 @@ r0_0.RT_1243 = {
   UnitType = "Monster",
   UseSaveLoc = "8519310",
 }
-r0_0.RT_1244 = {
-  AttrRates = r0_0.RT_1241,
+r0_0.RT_1245 = {
+  AttrRates = r0_0.RT_1242,
   Function = "CreateUnit",
   MaxSummonCount = 3,
   SingleSummonCount = 1,
@@ -6194,8 +6198,8 @@ r0_0.RT_1244 = {
   UnitType = "Monster",
   UseSaveLoc = "8519304",
 }
-r0_0.RT_1245 = {
-  AttrRates = r0_0.RT_1241,
+r0_0.RT_1246 = {
+  AttrRates = r0_0.RT_1242,
   Function = "CreateUnit",
   MaxSummonCount = 9,
   SingleSummonCount = 1,
@@ -6203,8 +6207,8 @@ r0_0.RT_1245 = {
   UnitType = "Monster",
   UseSaveLoc = "8519301",
 }
-r0_0.RT_1246 = {
-  AttrRates = r0_0.RT_1241,
+r0_0.RT_1247 = {
+  AttrRates = r0_0.RT_1242,
   Function = "CreateUnit",
   MaxSummonCount = 9,
   SingleSummonCount = 1,
@@ -6212,8 +6216,8 @@ r0_0.RT_1246 = {
   UnitType = "Monster",
   UseSaveLoc = "8519303",
 }
-r0_0.RT_1247 = {
-  AttrRates = r0_0.RT_1241,
+r0_0.RT_1248 = {
+  AttrRates = r0_0.RT_1242,
   Function = "CreateUnit",
   MaxSummonCount = 9,
   SingleSummonCount = 1,
@@ -6221,8 +6225,8 @@ r0_0.RT_1247 = {
   UnitType = "Monster",
   UseSaveLoc = "8519305",
 }
-r0_0.RT_1248 = {
-  AttrRates = r0_0.RT_1241,
+r0_0.RT_1249 = {
+  AttrRates = r0_0.RT_1242,
   Function = "CreateUnit",
   MaxSummonCount = 9,
   SingleSummonCount = 1,
@@ -6230,8 +6234,8 @@ r0_0.RT_1248 = {
   UnitType = "Monster",
   UseSaveLoc = "8519307",
 }
-r0_0.RT_1249 = {
-  AttrRates = r0_0.RT_1241,
+r0_0.RT_1250 = {
+  AttrRates = r0_0.RT_1242,
   Function = "CreateUnit",
   MaxSummonCount = 9,
   SingleSummonCount = 1,
@@ -6239,8 +6243,8 @@ r0_0.RT_1249 = {
   UnitType = "Monster",
   UseSaveLoc = "8519308",
 }
-r0_0.RT_1250 = {
-  AttrRates = r0_0.RT_1241,
+r0_0.RT_1251 = {
+  AttrRates = r0_0.RT_1242,
   Function = "CreateUnit",
   MaxSummonCount = 9,
   SingleSummonCount = 1,
@@ -6248,8 +6252,8 @@ r0_0.RT_1250 = {
   UnitType = "Monster",
   UseSaveLoc = "8519309",
 }
-r0_0.RT_1251 = {
-  AttrRates = r0_0.RT_1241,
+r0_0.RT_1252 = {
+  AttrRates = r0_0.RT_1242,
   Function = "CreateUnit",
   MaxSummonCount = 9,
   SingleSummonCount = 1,
@@ -6257,8 +6261,8 @@ r0_0.RT_1251 = {
   UnitType = "Monster",
   UseSaveLoc = "8519302",
 }
-r0_0.RT_1252 = {
-  AttrRates = r0_0.RT_1241,
+r0_0.RT_1253 = {
+  AttrRates = r0_0.RT_1242,
   Function = "CreateUnit",
   MaxSummonCount = 9,
   SingleSummonCount = 1,
@@ -6266,8 +6270,8 @@ r0_0.RT_1252 = {
   UnitType = "Monster",
   UseSaveLoc = "8519304",
 }
-r0_0.RT_1253 = {
-  AttrRates = r0_0.RT_1241,
+r0_0.RT_1254 = {
+  AttrRates = r0_0.RT_1242,
   Function = "CreateUnit",
   MaxSummonCount = 9,
   SingleSummonCount = 1,
@@ -6275,98 +6279,90 @@ r0_0.RT_1253 = {
   UnitType = "Monster",
   UseSaveLoc = "8519306",
 }
-r0_0.RT_1254 = {
+r0_0.RT_1255 = {
   [1] = r0_0.RT_16,
   [2] = r0_0.RT_10,
-  [3] = r0_0.RT_805,
+  [3] = r0_0.RT_806,
 }
-r0_0.RT_1255 = {
+r0_0.RT_1256 = {
   CauseHit = "HitFly_XY0Z800",
   Function = "CutToughness",
 }
-r0_0.RT_1256 = {
-  [1] = r0_0.RT_3,
-  [2] = r0_0.RT_1255,
-}
 r0_0.RT_1257 = {
+  [1] = r0_0.RT_3,
+  [2] = r0_0.RT_1256,
+}
+r0_0.RT_1258 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200502,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1258 = {
+r0_0.RT_1259 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200520,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1259 = {
+r0_0.RT_1260 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200503,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1260 = {
+r0_0.RT_1261 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200504,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1261 = {
+r0_0.RT_1262 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200505,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1262 = {
+r0_0.RT_1263 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200506,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1263 = {
+r0_0.RT_1264 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200508,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1264 = {
+r0_0.RT_1265 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200509,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1265 = {
+r0_0.RT_1266 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200510,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1266 = {
+r0_0.RT_1267 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200507,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1267 = {
+r0_0.RT_1268 = {
   [1] = r0_0.RT_3,
 }
-r0_0.RT_1268 = {
+r0_0.RT_1269 = {
   BattlePointID = 85200801,
   Function = "SetSelfLoc",
   TargetCenterLoc = "BattlePoint",
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1269 = {
-  [1] = r0_0.RT_1268,
-}
 r0_0.RT_1270 = {
-  Function = "CreateUnit",
-  MaxSummonCount = 3,
-  SingleSummonCount = 1,
-  UnitId = 8520003,
-  UnitType = "Monster",
-  UseSaveLoc = "85200902",
+  [1] = r0_0.RT_1269,
 }
 r0_0.RT_1271 = {
   Function = "CreateUnit",
@@ -6374,7 +6370,7 @@ r0_0.RT_1271 = {
   SingleSummonCount = 1,
   UnitId = 8520003,
   UnitType = "Monster",
-  UseSaveLoc = "85200903",
+  UseSaveLoc = "85200902",
 }
 r0_0.RT_1272 = {
   Function = "CreateUnit",
@@ -6382,335 +6378,343 @@ r0_0.RT_1272 = {
   SingleSummonCount = 1,
   UnitId = 8520003,
   UnitType = "Monster",
-  UseSaveLoc = "85200901",
+  UseSaveLoc = "85200903",
 }
 r0_0.RT_1273 = {
+  Function = "CreateUnit",
+  MaxSummonCount = 3,
+  SingleSummonCount = 1,
+  UnitId = 8520003,
+  UnitType = "Monster",
+  UseSaveLoc = "85200901",
+}
+r0_0.RT_1274 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200802,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1274 = {
+r0_0.RT_1275 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200820,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1275 = {
+r0_0.RT_1276 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200803,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1276 = {
+r0_0.RT_1277 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200804,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1277 = {
+r0_0.RT_1278 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200805,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1278 = {
+r0_0.RT_1279 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200806,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1279 = {
+r0_0.RT_1280 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200808,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1280 = {
+r0_0.RT_1281 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200809,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1281 = {
+r0_0.RT_1282 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200810,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1282 = {
+r0_0.RT_1283 = {
   CreatureId = 852008,
   Function = "CreateSkillCreature",
   UseBattlePointID = 85200807,
   UseBattlePointRotation = 1,
 }
-r0_0.RT_1283 = {
+r0_0.RT_1284 = {
   0,
   0,
   -130
 }
-r0_0.RT_1284 = {
+r0_0.RT_1285 = {
   FXId = 900038,
   Function = "PlayFX",
 }
-r0_0.RT_1285 = {
-  [1] = r0_0.RT_3,
-  [2] = r0_0.RT_682,
-  [3] = r0_0.RT_1284,
-}
 r0_0.RT_1286 = {
   [1] = r0_0.RT_3,
-  [2] = r0_0.RT_682,
+  [2] = r0_0.RT_683,
+  [3] = r0_0.RT_1285,
 }
 r0_0.RT_1287 = {
+  [1] = r0_0.RT_3,
+  [2] = r0_0.RT_683,
+}
+r0_0.RT_1288 = {
   0,
   0,
   -120
 }
-r0_0.RT_1288 = {
+r0_0.RT_1289 = {
   CauseHit = "HitFly_XY300Z800",
   Function = "CutToughness",
 }
-r0_0.RT_1289 = {
-  [1] = r0_0.RT_3,
-  [2] = r0_0.RT_1288,
-}
 r0_0.RT_1290 = {
-  [1] = r0_0.RT_7,
-  [2] = r0_0.RT_4,
-  [3] = r0_0.RT_1288,
+  [1] = r0_0.RT_3,
+  [2] = r0_0.RT_1289,
 }
 r0_0.RT_1291 = {
+  [1] = r0_0.RT_7,
+  [2] = r0_0.RT_4,
+  [3] = r0_0.RT_1289,
+}
+r0_0.RT_1292 = {
   CauseHit = "HitFly_XY600Z1000",
   Function = "CutToughness",
   Value = 150,
 }
-r0_0.RT_1292 = {
+r0_0.RT_1293 = {
   0,
   0,
   1900
 }
-r0_0.RT_1293 = {
+r0_0.RT_1294 = {
   CreatureId = 900001,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_1292,
+  Location = r0_0.RT_1293,
   UseSaveLoc = "",
 }
-r0_0.RT_1294 = {
+r0_0.RT_1295 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 0.01,
 }
-r0_0.RT_1295 = {
+r0_0.RT_1296 = {
   BaseAttr = "MaxHp",
   BaseChar = "Target",
   DamageType = "Default",
   Function = "Damage",
   Rate = 0.05,
 }
-r0_0.RT_1296 = {
+r0_0.RT_1297 = {
   BuffId = 5000020,
   Function = "AddBuff",
   LastTime = 1.3,
 }
-r0_0.RT_1297 = {
+r0_0.RT_1298 = {
   BaseAttr = "MaxHp",
   BaseChar = "Target",
   DamageType = "TrueDamage",
   Function = "Damage",
   Rate = 0.35,
 }
-r0_0.RT_1298 = {
+r0_0.RT_1299 = {
   BaseChar = "Target",
   FXId = 900074,
   Function = "PlayFX",
   IsAttached = true,
 }
-r0_0.RT_1299 = {
+r0_0.RT_1300 = {
   CauseHit = "LightHit",
   Function = "CutToughness",
   Value = 300,
 }
-r0_0.RT_1300 = {
+r0_0.RT_1301 = {
   BaseAttr = "ATK",
   DamageType = "TrueDamage",
   Function = "Damage",
   Rate = 10,
 }
-r0_0.RT_1301 = {
+r0_0.RT_1302 = {
   CauseHit = "HitFly_XY800Z1000",
   Function = "CutToughness",
   Value = 300,
 }
-r0_0.RT_1302 = {
-  [1] = r0_0.RT_1294,
-}
 r0_0.RT_1303 = {
+  [1] = r0_0.RT_1295,
+}
+r0_0.RT_1304 = {
   Function = "PlaySE",
   SEId = 111,
 }
-r0_0.RT_1304 = {
+r0_0.RT_1305 = {
   FXId = 900062,
   Function = "PlayFX",
   Overlap = true,
 }
-r0_0.RT_1305 = {
+r0_0.RT_1306 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 0,
   Value = 1,
 }
-r0_0.RT_1306 = {
+r0_0.RT_1307 = {
   CauseHit = "HitFly_XY600Z1000",
   Function = "CutToughness",
 }
-r0_0.RT_1307 = {
-  [1] = r0_0.RT_1305,
-  [2] = r0_0.RT_1306,
-}
 r0_0.RT_1308 = {
+  [1] = r0_0.RT_1306,
+  [2] = r0_0.RT_1307,
+}
+r0_0.RT_1309 = {
   CauseHit = "HitFly_XY600Z1000",
   Function = "CutToughness",
   Value = 500,
 }
-r0_0.RT_1309 = {
+r0_0.RT_1310 = {
   BaseAttr = "ATK",
   Function = "Damage",
   Rate = 1.65,
 }
-r0_0.RT_1310 = {
+r0_0.RT_1311 = {
   Function = "PlaySE",
   SEId = 900101,
 }
-r0_0.RT_1311 = {
+r0_0.RT_1312 = {
   Function = "PlaySE",
   SEId = 900201,
 }
-r0_0.RT_1312 = {
+r0_0.RT_1313 = {
   Function = "PlaySE",
   MeleeHitLevel = "light",
   SEId = 502,
 }
-r0_0.RT_1313 = {
-  [1] = r0_0.RT_23,
-  [2] = r0_0.RT_661,
-  [3] = r0_0.RT_39,
-  [4] = r0_0.RT_1312,
-}
 r0_0.RT_1314 = {
+  [1] = r0_0.RT_23,
+  [2] = r0_0.RT_662,
+  [3] = r0_0.RT_39,
+  [4] = r0_0.RT_1313,
+}
+r0_0.RT_1315 = {
   Function = "PlaySE",
   MeleeHitLevel = "light",
   SEId = 504,
 }
-r0_0.RT_1315 = {
+r0_0.RT_1316 = {
   CreatureId = 900701,
   Function = "CreateSkillCreature",
 }
-r0_0.RT_1316 = {
-  [1] = r0_0.RT_1315,
-}
 r0_0.RT_1317 = {
+  [1] = r0_0.RT_1316,
+}
+r0_0.RT_1318 = {
   FXId = 900702,
   Function = "PlayFX",
   Overlap = true,
 }
-r0_0.RT_1318 = {
+r0_0.RT_1319 = {
   Function = "PlaySE",
   SEId = 900701,
 }
-r0_0.RT_1319 = {
-  [1] = r0_0.RT_3,
-  [2] = r0_0.RT_1317,
-  [3] = r0_0.RT_1318,
-}
 r0_0.RT_1320 = {
+  [1] = r0_0.RT_3,
+  [2] = r0_0.RT_1318,
+  [3] = r0_0.RT_1319,
+}
+r0_0.RT_1321 = {
   FXId = 900702,
   Function = "PlayFX",
   NormalToHit = true,
   Overlap = true,
 }
-r0_0.RT_1321 = {
-  [1] = r0_0.RT_1320,
-}
 r0_0.RT_1322 = {
+  [1] = r0_0.RT_1321,
+}
+r0_0.RT_1323 = {
   CreatureId = 950004,
   Function = "CreateSkillCreature",
   Location = r0_0.RT_420,
 }
-r0_0.RT_1323 = {
+r0_0.RT_1324 = {
   CreatureId = 950011,
   Function = "CreateSkillCreature",
   Location = r0_0.RT_420,
 }
-r0_0.RT_1324 = {
+r0_0.RT_1325 = {
   Function = "PlaySE",
   SEId = 950102,
 }
-r0_0.RT_1325 = {
+r0_0.RT_1326 = {
   [1] = r0_0.RT_16,
   [2] = r0_0.RT_4,
-  [3] = r0_0.RT_1324,
+  [3] = r0_0.RT_1325,
 }
-r0_0.RT_1326 = {
+r0_0.RT_1327 = {
   CauseHit = "HitFly_XY200Z300",
   Function = "CutToughness",
   Value = 1,
 }
-r0_0.RT_1327 = {
-  [1] = r0_0.RT_3,
-  [2] = r0_0.RT_1326,
-}
 r0_0.RT_1328 = {
+  [1] = r0_0.RT_3,
+  [2] = r0_0.RT_1327,
+}
+r0_0.RT_1329 = {
   CauseHit = "LightHit",
   Function = "CutToughness",
   Value = 1,
 }
-r0_0.RT_1329 = {
+r0_0.RT_1330 = {
   Function = "PlaySE",
   SEId = 950701,
 }
-r0_0.RT_1330 = {
+r0_0.RT_1331 = {
   [1] = r0_0.RT_3,
   [2] = r0_0.RT_4,
-  [3] = r0_0.RT_1329,
+  [3] = r0_0.RT_1330,
 }
-r0_0.RT_1331 = {
+r0_0.RT_1332 = {
   Function = "PlaySE",
   SEId = 980101,
 }
-r0_0.RT_1332 = {
+r0_0.RT_1333 = {
   [1] = r0_0.RT_16,
   [2] = r0_0.RT_10,
-  [3] = r0_0.RT_1331,
+  [3] = r0_0.RT_1332,
 }
-r0_0.RT_1333 = {
+r0_0.RT_1334 = {
   Function = "PlaySE",
   SEId = 980201,
 }
-r0_0.RT_1334 = {
-  [1] = r0_0.RT_660,
-  [2] = r0_0.RT_1100,
-  [3] = r0_0.RT_1333,
-}
 r0_0.RT_1335 = {
-  [1] = r0_0.RT_660,
-  [2] = r0_0.RT_1127,
-  [3] = r0_0.RT_1333,
+  [1] = r0_0.RT_661,
+  [2] = r0_0.RT_1101,
+  [3] = r0_0.RT_1334,
 }
 r0_0.RT_1336 = {
+  [1] = r0_0.RT_661,
+  [2] = r0_0.RT_1128,
+  [3] = r0_0.RT_1334,
+}
+r0_0.RT_1337 = {
   Function = "PlaySE",
   SEId = 980301,
 }
-r0_0.RT_1337 = {
+r0_0.RT_1338 = {
   BuffId = 980501,
   Function = "AddBuff",
   LastTime = -1,
 }
-r0_0.RT_1338 = {
-  [1] = r0_0.RT_1337,
+r0_0.RT_1339 = {
+  [1] = r0_0.RT_1338,
 }
 local r2_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
-  -- line: [6709, 6709] id: 1
+  -- line: [6713, 6713] id: 1
   return r1_1
 end
 local r3_0 = "SkillEffects"
@@ -6960,12 +6964,12 @@ r5_0.TaskId = 41
 r4_0[41] = r5_0
 r4_0[42] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_598,
+  TaskEffects = r0_0.RT_599,
   TaskId = 42,
 }
 r4_0[43] = {
   TargetFilter = "RootSource",
-  TaskEffects = r0_0.RT_598,
+  TaskEffects = r0_0.RT_599,
   TaskId = 43,
 }
 r5_0 = {
@@ -8809,7 +8813,7 @@ r6_0.TaskEffects = {
     Function = "AddBuff",
     LastTime = 10,
   },
-  [2] = r0_0.RT_579,
+  [2] = r0_0.RT_580,
   [3] = {
     BaseChar = "Target",
     Delay = 0.4,
@@ -8839,7 +8843,7 @@ r6_0 = {
   TargetFilter = "AlmostAllFrd",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_580,
+  [1] = r0_0.RT_581,
   [2] = {
     BaseChar = "Target",
     Delay = 0.4,
@@ -9139,7 +9143,7 @@ r6_0 = {
   TargetFilter = "AlmostAllFrd",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_579,
+  [1] = r0_0.RT_580,
   [2] = {
     Delay = 0.4,
     Function = "AddSp",
@@ -9180,7 +9184,7 @@ r6_0.TaskEffects = {
     Function = "AddBuff",
     LastTime = 15,
   },
-  [2] = r0_0.RT_580,
+  [2] = r0_0.RT_581,
 }
 r6_0.TaskId = 41501
 r4_0[41501] = r6_0
@@ -9526,7 +9530,7 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 60100,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_693,
+    Location = r0_0.RT_694,
   },
 }
 r6_0.TaskId = 60100
@@ -9534,8 +9538,8 @@ r4_0[60100] = r6_0
 r4_0[60101] = {
   TargetFilter = "Char_Cylinder_Large",
   TaskEffects = {
-    [1] = r0_0.RT_694,
-    [2] = r0_0.RT_695,
+    [1] = r0_0.RT_695,
+    [2] = r0_0.RT_696,
   },
   TaskId = 60101,
 }
@@ -9546,7 +9550,7 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 60102,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_693,
+    Location = r0_0.RT_694,
   },
 }
 r6_0.TaskId = 60102
@@ -9561,7 +9565,7 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 6,
   },
-  [2] = r0_0.RT_695,
+  [2] = r0_0.RT_696,
 }
 r6_0.TaskId = 60103
 r4_0[60103] = r6_0
@@ -9578,7 +9582,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 60104
 r4_0[60104] = r6_0
 r4_0[60200] = {
-  TaskEffects = r0_0.RT_713,
+  TaskEffects = r0_0.RT_714,
   TaskId = 60200,
 }
 r6_0 = {
@@ -9591,13 +9595,13 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 2,
   },
-  [2] = r0_0.RT_714,
-  [3] = r0_0.RT_715,
+  [2] = r0_0.RT_715,
+  [3] = r0_0.RT_716,
 }
 r6_0.TaskId = 60201
 r4_0[60201] = r6_0
 r4_0[60202] = {
-  TaskEffects = r0_0.RT_717,
+  TaskEffects = r0_0.RT_718,
   TaskId = 60202,
 }
 r6_0 = {
@@ -9610,8 +9614,8 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 4,
   },
-  [2] = r0_0.RT_714,
-  [3] = r0_0.RT_715,
+  [2] = r0_0.RT_715,
+  [3] = r0_0.RT_716,
 }
 r6_0.TaskId = 60203
 r4_0[60203] = r6_0
@@ -9633,11 +9637,11 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 60204
 r4_0[60204] = r6_0
 r4_0[60205] = {
-  TaskEffects = r0_0.RT_713,
+  TaskEffects = r0_0.RT_714,
   TaskId = 60205,
 }
 r4_0[60206] = {
-  TaskEffects = r0_0.RT_717,
+  TaskEffects = r0_0.RT_718,
   TaskId = 60206,
 }
 r6_0 = {
@@ -9653,16 +9657,16 @@ r6_0.TaskId = 60300
 r4_0[60300] = r6_0
 r4_0[60301] = {
   TaskEffects = {
-    [1] = r0_0.RT_718,
-    [2] = r0_0.RT_718,
-    [3] = r0_0.RT_718,
+    [1] = r0_0.RT_719,
+    [2] = r0_0.RT_719,
+    [3] = r0_0.RT_719,
   },
   TaskId = 60301,
 }
 r4_0[60302] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_694,
+    [1] = r0_0.RT_695,
     [2] = r0_0.RT_251,
   },
   TaskId = 60302,
@@ -9680,9 +9684,9 @@ r6_0.TaskId = 60303
 r4_0[60303] = r6_0
 r4_0[60304] = {
   TaskEffects = {
-    [1] = r0_0.RT_719,
-    [2] = r0_0.RT_719,
-    [3] = r0_0.RT_719,
+    [1] = r0_0.RT_720,
+    [2] = r0_0.RT_720,
+    [3] = r0_0.RT_720,
   },
   TaskId = 60304,
 }
@@ -9712,7 +9716,7 @@ r6_0.TaskEffects = {
     FXId = 6041,
     Function = "PlayFX",
   },
-  [3] = r0_0.RT_720,
+  [3] = r0_0.RT_721,
 }
 r6_0.TaskId = 60400
 r4_0[60400] = r6_0
@@ -9730,7 +9734,7 @@ r6_0.TaskEffects = {
     FXId = 6043,
     Function = "PlayFX",
   },
-  [3] = r0_0.RT_720,
+  [3] = r0_0.RT_721,
 }
 r6_0.TaskId = 60401
 r4_0[60401] = r6_0
@@ -9838,13 +9842,13 @@ r4_0[90011] = r6_0
 r4_0[90012] = {
   HatredIncrement = 40,
   TargetFilter = "Char_Sphere_large",
-  TaskEffects = r0_0.RT_600,
+  TaskEffects = r0_0.RT_601,
   TaskId = 90012,
 }
 r4_0[90013] = {
   HatredIncrement = 40,
   TargetFilter = "Char_Sphere_large",
-  TaskEffects = r0_0.RT_601,
+  TaskEffects = r0_0.RT_602,
   TaskId = 90013,
 }
 r6_0 = {}
@@ -16980,7 +16984,7 @@ r4_0[410114] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_180,
-    [2] = r0_0.RT_581,
+    [2] = r0_0.RT_582,
     [3] = r0_0.RT_123,
     [4] = r0_0.RT_290,
     [5] = r0_0.RT_291,
@@ -16992,10 +16996,10 @@ r4_0[410115] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_180,
-    [2] = r0_0.RT_581,
+    [2] = r0_0.RT_582,
     [3] = r0_0.RT_123,
     [4] = r0_0.RT_290,
-    [5] = r0_0.RT_582,
+    [5] = r0_0.RT_583,
   },
   TaskId = 410115,
 }
@@ -17098,8 +17102,8 @@ r6_0.TaskEffects = {
     Function = "AddBuff",
     LastTime = 6,
   },
-  [3] = r0_0.RT_581,
-  [4] = r0_0.RT_583,
+  [3] = r0_0.RT_582,
+  [4] = r0_0.RT_584,
   [5] = r0_0.RT_123,
 }
 r6_0.TaskId = 410122
@@ -17115,8 +17119,8 @@ r6_0.TaskEffects = {
     Function = "AddBuff",
     LastTime = 6,
   },
-  [3] = r0_0.RT_581,
-  [4] = r0_0.RT_583,
+  [3] = r0_0.RT_582,
+  [4] = r0_0.RT_584,
   [5] = r0_0.RT_123,
 }
 r6_0.TaskId = 410123
@@ -17126,15 +17130,15 @@ r4_0[410124] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_213,
-    [2] = r0_0.RT_581,
-    [3] = r0_0.RT_583,
+    [2] = r0_0.RT_582,
+    [3] = r0_0.RT_584,
     [4] = r0_0.RT_123,
   },
   TaskId = 410124,
 }
 r4_0[410125] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_584,
+  TaskEffects = r0_0.RT_585,
   TaskId = 410125,
 }
 r6_0 = {
@@ -17155,7 +17159,7 @@ r6_0.TaskEffects = {
     Function = "CutToughness",
     Value = 90,
   },
-  [5] = r0_0.RT_582,
+  [5] = r0_0.RT_583,
 }
 r6_0.TaskId = 410126
 r4_0[410126] = r6_0
@@ -17181,7 +17185,7 @@ r6_0.TaskId = 410131
 r4_0[410131] = r6_0
 r4_0[410141] = {
   TargetFilter = "Char_Sphere_Small_Trgt",
-  TaskEffects = r0_0.RT_584,
+  TaskEffects = r0_0.RT_585,
   TaskId = 410141,
 }
 r6_0 = {
@@ -17191,7 +17195,7 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 410201,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_585,
+    Location = r0_0.RT_586,
   },
 }
 r6_0.TaskId = 410211
@@ -17229,7 +17233,7 @@ r6_0.TaskEffects = {
     OuterRadius = 500,
     ShakeClass = "BP_Camera_Zhiliu_Skill02",
   },
-  [4] = r0_0.RT_586,
+  [4] = r0_0.RT_587,
 }
 r6_0.TaskId = 410213
 r4_0[410213] = r6_0
@@ -17246,7 +17250,7 @@ r6_0.TaskEffects = {
     Function = "CutToughness",
     Value = 100,
   },
-  [3] = r0_0.RT_586,
+  [3] = r0_0.RT_587,
 }
 r6_0.TaskId = 410214
 r4_0[410214] = r6_0
@@ -17297,7 +17301,7 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 410211,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_585,
+    Location = r0_0.RT_586,
   },
 }
 r6_0.TaskId = 410221
@@ -17533,8 +17537,8 @@ r6_0.TaskEffects = {
     Function = "CreateSkillCreature",
     UseSaveLoc = "ZhiliuTD",
   },
-  [2] = r0_0.RT_587,
-  [3] = r0_0.RT_588,
+  [2] = r0_0.RT_588,
+  [3] = r0_0.RT_589,
   [4] = {
     ATKBase = "ATK_Char",
     CreatureId = 410224,
@@ -17567,7 +17571,7 @@ r6_0.TaskEffects = {
     Function = "CutToughness",
     Value = 100,
   },
-  [3] = r0_0.RT_589,
+  [3] = r0_0.RT_590,
 }
 r6_0.TaskId = 410243
 r4_0[410243] = r6_0
@@ -17585,7 +17589,7 @@ r6_0.TaskEffects = {
     FXId = 410216,
     Function = "PlayFX",
   },
-  [3] = r0_0.RT_590,
+  [3] = r0_0.RT_591,
 }
 r6_0.TaskId = 410244
 r4_0[410244] = r6_0
@@ -17601,7 +17605,7 @@ r6_0.TaskEffects = {
     Function = "CutToughness",
     Value = 100,
   },
-  [3] = r0_0.RT_589,
+  [3] = r0_0.RT_590,
 }
 r6_0.TaskId = 410245
 r4_0[410245] = r6_0
@@ -17622,8 +17626,8 @@ r6_0 = {
   SkillEffectSourceFlag = "RootSource",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_591,
-  [2] = r0_0.RT_592,
+  [1] = r0_0.RT_592,
+  [2] = r0_0.RT_593,
   [3] = {
     ATKBase = "ATK_Char",
     CreatureId = 410225,
@@ -17635,7 +17639,7 @@ r4_0[410247] = r6_0
 r4_0[410248] = {
   AllowSkillRangeModify = true,
   TargetFilter = "Char_Cylinder_Middle",
-  TaskEffects = r0_0.RT_596,
+  TaskEffects = r0_0.RT_597,
   TaskId = 410248,
 }
 r6_0 = {
@@ -17654,7 +17658,7 @@ r4_0[410249] = r6_0
 r4_0[410250] = {
   AllowSkillRangeModify = true,
   TargetFilter = "Char_Cylinder_Middle",
-  TaskEffects = r0_0.RT_596,
+  TaskEffects = r0_0.RT_597,
   TaskId = 410250,
 }
 r6_0 = {
@@ -17671,7 +17675,7 @@ r6_0.TaskId = 410251
 r4_0[410251] = r6_0
 r4_0[410252] = {
   TaskEffects = {
-    [1] = r0_0.RT_592,
+    [1] = r0_0.RT_593,
   },
   TaskId = 410252,
 }
@@ -17704,8 +17708,8 @@ r6_0.TaskEffects = {
     Function = "CreateSkillCreature",
     UseSaveLoc = "ZhiliuTD",
   },
-  [2] = r0_0.RT_587,
-  [3] = r0_0.RT_588,
+  [2] = r0_0.RT_588,
+  [3] = r0_0.RT_589,
   [4] = {
     ATKBase = "ATK_Char",
     CreatureId = 410244,
@@ -17740,7 +17744,7 @@ r6_0.TaskEffects = {
     FXId = 410236,
     Function = "PlayFX",
   },
-  [3] = r0_0.RT_590,
+  [3] = r0_0.RT_591,
 }
 r6_0.TaskId = 410264
 r4_0[410264] = r6_0
@@ -17748,8 +17752,8 @@ r6_0 = {
   SkillEffectSourceFlag = "RootSource",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_591,
-  [2] = r0_0.RT_592,
+  [1] = r0_0.RT_592,
+  [2] = r0_0.RT_593,
   [3] = {
     ATKBase = "ATK_Char",
     CreatureId = 410245,
@@ -17763,7 +17767,7 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_602,
+  [1] = r0_0.RT_603,
   [2] = {
     BuffId = 420114,
     Condition = 420102,
@@ -17884,7 +17888,7 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_602,
+  [1] = r0_0.RT_603,
   [2] = {
     BuffCount = 2,
     BuffId = 420114,
@@ -17937,7 +17941,7 @@ r6_0.TaskEffects = {
     Function = "CutToughness",
     Value = 33,
   },
-  [3] = r0_0.RT_603,
+  [3] = r0_0.RT_604,
   [4] = {
     Condition = 100,
     Dilation = 0,
@@ -17949,12 +17953,12 @@ r6_0.TaskId = 420122
 r4_0[420122] = r6_0
 r4_0[420123] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_607,
+  TaskEffects = r0_0.RT_608,
   TaskId = 420123,
 }
 r4_0[420124] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_607,
+  TaskEffects = r0_0.RT_608,
   TaskId = 420124,
 }
 r6_0 = {
@@ -17991,7 +17995,7 @@ r4_0[420133] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_213,
-    [2] = r0_0.RT_606,
+    [2] = r0_0.RT_607,
     [3] = r0_0.RT_123,
   },
   TaskId = 420133,
@@ -18017,7 +18021,7 @@ r4_0[420141] = {
   NotifyName = r0_0.RT_221,
   TargetFilter = "AlmostAllFrd",
   TaskEffects = {
-    [1] = r0_0.RT_608,
+    [1] = r0_0.RT_609,
   },
   TaskId = 420141,
 }
@@ -18026,7 +18030,7 @@ r6_0 = {
   TargetFilter = "AlmostAllFrd",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_608,
+  [1] = r0_0.RT_609,
   [2] = {
     BuffId = 420113,
     Function = "AddBuff",
@@ -18163,7 +18167,7 @@ r6_0.TaskEffects = {
     Function = "CutToughness",
     Value = 100,
   },
-  [3] = r0_0.RT_603,
+  [3] = r0_0.RT_604,
 }
 r6_0.TaskId = 420214
 r4_0[420214] = r6_0
@@ -18204,7 +18208,7 @@ r6_0 = {
   TargetFilter = "Char_Sphere_Middle_Trgt",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_609,
+  [1] = r0_0.RT_610,
   [2] = {
     BossValue = 16,
     CauseHit = "HitFly_XY200Z300",
@@ -18217,7 +18221,7 @@ r6_0.TaskEffects = {
     FXId = 420221,
     Function = "PlayFX",
   },
-  [4] = r0_0.RT_603,
+  [4] = r0_0.RT_604,
 }
 r6_0.TaskId = 420223
 r4_0[420223] = r6_0
@@ -18227,14 +18231,14 @@ r6_0 = {
   TargetFilter = "Char_Sphere_Middle_Trgt",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_609,
+  [1] = r0_0.RT_610,
   [2] = {
     BossValue = 16,
     CauseHit = "LightHit",
     Function = "CutToughness",
     Value = 33,
   },
-  [3] = r0_0.RT_603,
+  [3] = r0_0.RT_604,
 }
 r6_0.TaskId = 420224
 r4_0[420224] = r6_0
@@ -18371,7 +18375,7 @@ r6_0.TargetFilter = "CreatureShape"
 r6_0.TaskEffects = {
   [1] = {
     BaseAttr = "MaxHp",
-    DamageTag = r0_0.RT_610,
+    DamageTag = r0_0.RT_611,
     DamageType = "Thunder",
     Function = "Damage",
     Rate = "#1",
@@ -18395,7 +18399,7 @@ r6_0.TaskId = 430115
 r4_0[r5_0] = r6_0
 r4_0[430116] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_614,
+  TaskEffects = r0_0.RT_615,
   TaskId = 430116,
 }
 r6_0 = {
@@ -18444,7 +18448,7 @@ r6_0.TaskEffects = {
   [1] = {
     BaseAttr = "MaxHp",
     Condition = 430105,
-    DamageTag = r0_0.RT_610,
+    DamageTag = r0_0.RT_611,
     DamageType = "Thunder",
     Function = "Damage",
     Rate = "#1",
@@ -18471,7 +18475,7 @@ r6_0.TaskId = 430119
 r4_0[r5_0] = r6_0
 r4_0[430120] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_614,
+  TaskEffects = r0_0.RT_615,
   TaskId = 430120,
 }
 r6_0 = {
@@ -18505,7 +18509,7 @@ r4_0[430121] = r6_0
 r4_0[430122] = {
   HatredIncrement = 40,
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_616,
+  TaskEffects = r0_0.RT_617,
   TaskId = 430122,
 }
 r6_0 = {
@@ -18518,8 +18522,8 @@ r6_0 = {
   },
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_615,
-  [2] = r0_0.RT_617,
+  [1] = r0_0.RT_616,
+  [2] = r0_0.RT_618,
   [3] = {
     FXId = 430153,
     Function = "PlayFX",
@@ -18534,7 +18538,7 @@ r4_0[430123] = r6_0
 r4_0[430125] = {
   HatredIncrement = 40,
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_616,
+  TaskEffects = r0_0.RT_617,
   TaskId = 430125,
 }
 r6_0 = {
@@ -18589,11 +18593,11 @@ r4_0[510101] = {
   HatredIncrement = 40,
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_622,
-    [2] = r0_0.RT_623,
-    [3] = r0_0.RT_624,
-    [4] = r0_0.RT_625,
-    [5] = r0_0.RT_626,
+    [1] = r0_0.RT_623,
+    [2] = r0_0.RT_624,
+    [3] = r0_0.RT_625,
+    [4] = r0_0.RT_626,
+    [5] = r0_0.RT_627,
   },
   TaskId = 510101,
 }
@@ -18603,15 +18607,15 @@ r6_0 = {
   TargetFilter = "Char_Cylinder_Middle",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_622,
-  [2] = r0_0.RT_623,
-  [3] = r0_0.RT_624,
+  [1] = r0_0.RT_623,
+  [2] = r0_0.RT_624,
+  [3] = r0_0.RT_625,
   [4] = {
     FXId = 510101,
     Function = "PlayFX",
   },
-  [5] = r0_0.RT_625,
-  [6] = r0_0.RT_626,
+  [5] = r0_0.RT_626,
+  [6] = r0_0.RT_627,
 }
 r6_0.TaskId = 510102
 r4_0[510102] = r6_0
@@ -18654,7 +18658,7 @@ r6_0 = {
   TargetFilter = "Char_Cylinder_Middle",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_622,
+  [1] = r0_0.RT_623,
   [2] = {
     BossValue = 56,
     CauseHit = "HitFly_Force_Songlu",
@@ -18666,8 +18670,8 @@ r6_0.TaskEffects = {
     FXId = 510121,
     Function = "PlayFX",
   },
-  [4] = r0_0.RT_625,
-  [5] = r0_0.RT_626,
+  [4] = r0_0.RT_626,
+  [5] = r0_0.RT_627,
 }
 r6_0.TaskId = 510113
 r4_0[510113] = r6_0
@@ -18845,8 +18849,8 @@ r6_0.TaskEffects = {
     Function = "CutToughness",
     Value = 100,
   },
-  [3] = r0_0.RT_625,
-  [4] = r0_0.RT_626,
+  [3] = r0_0.RT_626,
+  [4] = r0_0.RT_627,
 }
 r6_0.TaskId = 510126
 r4_0[510126] = r6_0
@@ -18874,7 +18878,7 @@ r6_0 = {
   TargetFilter = "Char_Cylinder_Small",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_628,
+  [1] = r0_0.RT_629,
   [2] = {
     BossValue = 14,
     CauseHit = "HitFly_XY400Z300_F",
@@ -18882,8 +18886,8 @@ r6_0.TaskEffects = {
     Value = 40,
   },
   [3] = r0_0.RT_42,
-  [4] = r0_0.RT_629,
-  [5] = r0_0.RT_626,
+  [4] = r0_0.RT_630,
+  [5] = r0_0.RT_627,
 }
 r6_0.TaskId = 510141
 r4_0[510141] = r6_0
@@ -18893,7 +18897,7 @@ r6_0 = {
   TargetFilter = "Char_Cylinder_Small",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_628,
+  [1] = r0_0.RT_629,
   [2] = {
     BossValue = 14,
     CauseHit = "HitFly_XY400Z300_F",
@@ -18901,8 +18905,8 @@ r6_0.TaskEffects = {
     Value = 60,
   },
   [3] = r0_0.RT_42,
-  [4] = r0_0.RT_629,
-  [5] = r0_0.RT_626,
+  [4] = r0_0.RT_630,
+  [5] = r0_0.RT_627,
 }
 r6_0.TaskId = 510142
 r4_0[510142] = r6_0
@@ -18918,16 +18922,16 @@ r6_0 = {
   TargetFilter = "Char_Cylinder_Middle",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_628,
+  [1] = r0_0.RT_629,
   [2] = {
     BossValue = 14,
     CauseHit = "HitFly_XY1000Z500",
     Function = "CutToughness",
     Value = 60,
   },
-  [3] = r0_0.RT_625,
-  [4] = r0_0.RT_629,
-  [5] = r0_0.RT_626,
+  [3] = r0_0.RT_626,
+  [4] = r0_0.RT_630,
+  [5] = r0_0.RT_627,
 }
 r6_0.TaskId = 510152
 r4_0[510152] = r6_0
@@ -18941,7 +18945,7 @@ r6_0.TaskEffects = {
     Function = "AddBuff",
     LastTime = "#1",
   },
-  [2] = r0_0.RT_630,
+  [2] = r0_0.RT_631,
 }
 r6_0.TaskId = 510211
 r4_0[510211] = r6_0
@@ -18974,7 +18978,7 @@ r6_0.TaskEffects = {
     Function = "AddBuff",
     LastTime = "#1",
   },
-  [2] = r0_0.RT_630,
+  [2] = r0_0.RT_631,
 }
 r6_0.TaskId = 510213
 r4_0[510213] = r6_0
@@ -19091,34 +19095,34 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_632,
+  [1] = r0_0.RT_633,
   [2] = {
     BuffId = 305,
     Function = "AddBuff",
     LastTime = 0.3,
   },
-  [3] = r0_0.RT_633,
+  [3] = r0_0.RT_634,
   [4] = r0_0.RT_265,
 }
 r6_0.TaskId = 530111
 r4_0[530111] = r6_0
 r4_0[530112] = {
   TaskEffects = {
-    [1] = r0_0.RT_634,
-    [2] = r0_0.RT_634,
-    [3] = r0_0.RT_635,
-    [4] = r0_0.RT_635,
-    [5] = r0_0.RT_636,
-    [6] = r0_0.RT_636,
-    [7] = r0_0.RT_637,
-    [8] = r0_0.RT_637,
+    [1] = r0_0.RT_635,
+    [2] = r0_0.RT_635,
+    [3] = r0_0.RT_636,
+    [4] = r0_0.RT_636,
+    [5] = r0_0.RT_637,
+    [6] = r0_0.RT_637,
+    [7] = r0_0.RT_638,
+    [8] = r0_0.RT_638,
   },
   TaskId = 530112,
 }
 r6_0 = {
   AllowSkillRangeModify = true,
   HatredIncrement = 40,
-  NotifyName = r0_0.RT_638,
+  NotifyName = r0_0.RT_639,
   TargetFilter = "Char_Sphere_Middle",
 }
 r6_0.TaskEffects = {
@@ -19133,7 +19137,7 @@ r4_0[530113] = r6_0
 r6_0 = {
   AllowSkillRangeModify = true,
   HatredIncrement = 40,
-  NotifyName = r0_0.RT_638,
+  NotifyName = r0_0.RT_639,
   TargetFilter = "Char_Sphere_Middle",
 }
 r6_0.TaskEffects = {
@@ -19145,7 +19149,7 @@ r6_0.TaskEffects = {
     Value = 100,
   },
   [3] = r0_0.RT_42,
-  [4] = r0_0.RT_639,
+  [4] = r0_0.RT_640,
 }
 r6_0.TaskId = 530114
 r4_0[530114] = r6_0
@@ -19154,7 +19158,7 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_641,
+  [1] = r0_0.RT_642,
   [2] = {
     BossValue = 7,
     CauseHit = "HitFly_XY200Z300",
@@ -19167,7 +19171,7 @@ r6_0.TaskEffects = {
     Function = "AddBuff",
     LastTime = 10,
   },
-  [5] = r0_0.RT_639,
+  [5] = r0_0.RT_640,
 }
 r6_0.TaskId = 530115
 r4_0[530115] = r6_0
@@ -19176,7 +19180,7 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_641,
+  [1] = r0_0.RT_642,
   [2] = {
     FXId = 530141,
     Function = "PlayFX",
@@ -19187,21 +19191,21 @@ r4_0[530116] = r6_0
 r4_0[530117] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_632,
-    [2] = r0_0.RT_633,
+    [1] = r0_0.RT_633,
+    [2] = r0_0.RT_634,
   },
   TaskId = 530117,
 }
 r4_0[530118] = {
   TaskEffects = {
-    [1] = r0_0.RT_642,
-    [2] = r0_0.RT_642,
-    [3] = r0_0.RT_643,
-    [4] = r0_0.RT_643,
-    [5] = r0_0.RT_644,
-    [6] = r0_0.RT_644,
-    [7] = r0_0.RT_645,
-    [8] = r0_0.RT_645,
+    [1] = r0_0.RT_643,
+    [2] = r0_0.RT_643,
+    [3] = r0_0.RT_644,
+    [4] = r0_0.RT_644,
+    [5] = r0_0.RT_645,
+    [6] = r0_0.RT_645,
+    [7] = r0_0.RT_646,
+    [8] = r0_0.RT_646,
   },
   TaskId = 530118,
 }
@@ -19280,7 +19284,7 @@ r8_0[1] = {
     530131
   },
 }
-r8_0[2] = r0_0.RT_646
+r8_0[2] = r0_0.RT_647
 r6_0[r7_0] = r8_0
 r6_0.TaskId = 530123
 r4_0[r5_0] = r6_0
@@ -19290,15 +19294,15 @@ r6_0 = {
   TargetFilter = "Saiqi_Skill02_Shoot",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_647,
-  [2] = r0_0.RT_648,
+  [1] = r0_0.RT_648,
+  [2] = r0_0.RT_649,
   [3] = {
     FXId = 530107,
     Function = "PlayFX",
     Overlap = true,
   },
   [4] = r0_0.RT_42,
-  [5] = r0_0.RT_649,
+  [5] = r0_0.RT_650,
 }
 r6_0.TaskId = 530124
 r4_0[530124] = r6_0
@@ -19308,8 +19312,8 @@ r6_0 = {
   TargetFilter = "Saiqi_Skill02_Shoot",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_647,
-  [2] = r0_0.RT_648,
+  [1] = r0_0.RT_648,
+  [2] = r0_0.RT_649,
   [3] = {
     FXId = 530107,
     Function = "PlayFX",
@@ -19318,7 +19322,7 @@ r6_0.TaskEffects = {
     RefinedOverlap = true,
   },
   [4] = r0_0.RT_42,
-  [5] = r0_0.RT_649,
+  [5] = r0_0.RT_650,
 }
 r6_0.TaskId = 530125
 r4_0[530125] = r6_0
@@ -19345,7 +19349,7 @@ r6_0.TaskEffects = {
     Overlap = true,
     RefinedOverlap = true,
   },
-  [2] = r0_0.RT_649,
+  [2] = r0_0.RT_650,
 }
 r6_0.TaskId = 530127
 r4_0[530127] = r6_0
@@ -19372,7 +19376,7 @@ r6_0 = {
   TargetFilter = "ShootingTargets",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_646,
+  [1] = r0_0.RT_647,
   [2] = {
     ATKBase = "ATK_Ultra",
     AimSkeletal = "hit1",
@@ -19490,7 +19494,7 @@ r6_0 = {
   TargetFilter = "AlmostAllFrd",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_650,
+  [1] = r0_0.RT_651,
   [2] = {
     BuffId = 540121,
     Function = "AddBuff",
@@ -19537,7 +19541,7 @@ r6_0 = {
   TargetFilter = "AlmostAllFrd",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_650,
+  [1] = r0_0.RT_651,
   [2] = {
     BuffId = 540122,
     Function = "AddBuff",
@@ -19592,8 +19596,8 @@ r6_0 = {
   TargetFilter = "Char_Cylinder_Large",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_651,
-  [2] = r0_0.RT_617,
+  [1] = r0_0.RT_652,
+  [2] = r0_0.RT_618,
   [3] = {
     BuffId = 540211,
     Function = "AddBuff",
@@ -19653,7 +19657,7 @@ r6_0 = {
   TargetFilter = "Char_Cylinder_Large",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_651,
+  [1] = r0_0.RT_652,
   [2] = {
     Function = "GatherTargets",
     GatherSpeed = 2000,
@@ -19699,7 +19703,7 @@ r6_0.TaskEffects = {
     Rate = 1,
     Value = 35,
   },
-  [2] = r0_0.RT_652,
+  [2] = r0_0.RT_653,
 }
 r6_0.TaskId = 540231
 r4_0[540231] = r6_0
@@ -19717,20 +19721,20 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 1,
   },
-  [2] = r0_0.RT_617,
+  [2] = r0_0.RT_618,
 }
 r6_0.TaskId = 540232
 r4_0[540232] = r6_0
 r4_0[540241] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "AlmostAllFrd",
-  TaskEffects = r0_0.RT_653,
+  TaskEffects = r0_0.RT_654,
   TaskId = 540241,
 }
 r4_0[540242] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "AlmostAllFrd",
-  TaskEffects = r0_0.RT_653,
+  TaskEffects = r0_0.RT_654,
   TaskId = 540242,
 }
 r6_0 = {
@@ -19753,8 +19757,8 @@ r6_0 = {
   TargetFilter = "Char_Cylinder_Large",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_651,
-  [2] = r0_0.RT_617,
+  [1] = r0_0.RT_652,
+  [2] = r0_0.RT_618,
   [3] = {
     Function = "ExecutePassiveFunction",
     FunctionName = "Skill2ComboRemove",
@@ -19796,13 +19800,13 @@ r4_0[600003] = r6_0
 r4_0[600101] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_230_200_180",
-  TaskEffects = r0_0.RT_662,
+  TaskEffects = r0_0.RT_663,
   TaskId = 600101,
 }
 r4_0[600102] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_230_200_180",
-  TaskEffects = r0_0.RT_662,
+  TaskEffects = r0_0.RT_663,
   TaskId = 600102,
 }
 r6_0 = {
@@ -19844,16 +19848,16 @@ r6_0.TaskId = 600105
 r4_0[600105] = r6_0
 r4_0[600106] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_664,
+  TaskEffects = r0_0.RT_665,
   TaskId = 600106,
 }
 r4_0[600107] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_666,
+  TaskEffects = r0_0.RT_667,
   TaskId = 600107,
 }
 r6_0 = {
-  NotifyName = r0_0.RT_667,
+  NotifyName = r0_0.RT_668,
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
@@ -19910,32 +19914,32 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 0.14,
   },
-  [2] = r0_0.RT_668,
-  [3] = r0_0.RT_669,
+  [2] = r0_0.RT_669,
+  [3] = r0_0.RT_670,
 }
 r6_0.TaskId = 600204
 r4_0[600204] = r6_0
 r4_0[600205] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_670,
-    [2] = r0_0.RT_668,
-    [3] = r0_0.RT_669,
+    [1] = r0_0.RT_671,
+    [2] = r0_0.RT_669,
+    [3] = r0_0.RT_670,
   },
   TaskId = 600205,
 }
 r4_0[600206] = {
-  TaskEffects = r0_0.RT_673,
+  TaskEffects = r0_0.RT_674,
   TaskId = 600206,
 }
 r4_0[600207] = {
-  TaskEffects = r0_0.RT_673,
+  TaskEffects = r0_0.RT_674,
   TaskId = 600207,
 }
 r4_0[600209] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_230_200_180",
-  TaskEffects = r0_0.RT_662,
+  TaskEffects = r0_0.RT_663,
   TaskId = 600209,
 }
 r6_0 = {
@@ -19943,7 +19947,7 @@ r6_0 = {
   TargetFilter = "Mon_Cylinder_150_400_360",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_674,
+  [1] = r0_0.RT_675,
   [2] = {
     FXId = 600303,
     Function = "PlayFX",
@@ -19956,7 +19960,7 @@ r4_0[600302] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Sphere_800_360_OtFr_01",
   TaskEffects = {
-    [1] = r0_0.RT_675,
+    [1] = r0_0.RT_676,
     [2] = r0_0.RT_520,
   },
   TaskId = 600302,
@@ -19965,7 +19969,7 @@ r4_0[600303] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_676,
+    [1] = r0_0.RT_677,
     [2] = r0_0.RT_520,
   },
   TaskId = 600303,
@@ -19986,7 +19990,7 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_674,
+  [1] = r0_0.RT_675,
   [2] = {
     FXId = 600305,
     Function = "PlayFX",
@@ -20013,13 +20017,13 @@ r4_0[600306] = r6_0
 r4_0[600401] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_300_200_180",
-  TaskEffects = r0_0.RT_678,
+  TaskEffects = r0_0.RT_679,
   TaskId = 600401,
 }
 r4_0[600402] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_300_200_180",
-  TaskEffects = r0_0.RT_678,
+  TaskEffects = r0_0.RT_679,
   TaskId = 600402,
 }
 r6_0 = {
@@ -20043,18 +20047,18 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 3.54,
   },
-  [2] = r0_0.RT_661,
-  [3] = r0_0.RT_679,
+  [2] = r0_0.RT_662,
+  [3] = r0_0.RT_680,
 }
 r6_0.TaskId = 600404
 r4_0[600404] = r6_0
 r4_0[600405] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_680,
-    [2] = r0_0.RT_681,
-    [3] = r0_0.RT_661,
-    [4] = r0_0.RT_679,
+    [1] = r0_0.RT_681,
+    [2] = r0_0.RT_682,
+    [3] = r0_0.RT_662,
+    [4] = r0_0.RT_680,
   },
   TaskId = 600405,
 }
@@ -20072,8 +20076,8 @@ r4_0[600406] = r6_0
 r4_0[600407] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_682,
-    [2] = r0_0.RT_661,
+    [1] = r0_0.RT_683,
+    [2] = r0_0.RT_662,
   },
   TaskId = 600407,
 }
@@ -20087,9 +20091,9 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 7,
   },
-  [2] = r0_0.RT_681,
-  [3] = r0_0.RT_661,
-  [4] = r0_0.RT_679,
+  [2] = r0_0.RT_682,
+  [3] = r0_0.RT_662,
+  [4] = r0_0.RT_680,
 }
 r6_0.TaskId = 600408
 r4_0[600408] = r6_0
@@ -20116,7 +20120,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_22,
-  [2] = r0_0.RT_683,
+  [2] = r0_0.RT_684,
   [3] = {
     FXId = 600502,
     Function = "PlayFX",
@@ -20171,7 +20175,7 @@ r4_0[600504] = r6_0
 r4_0[600505] = {
   TargetFilter = "Mon_Cylinder_200_40_360_NoMch",
   TaskEffects = {
-    [1] = r0_0.RT_683,
+    [1] = r0_0.RT_684,
   },
   TaskId = 600505,
 }
@@ -20275,8 +20279,8 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_684,
-  [2] = r0_0.RT_685,
+  [1] = r0_0.RT_685,
+  [2] = r0_0.RT_686,
   [3] = {
     FXId = 600603,
     Function = "PlayFX",
@@ -20304,13 +20308,13 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_674,
+  [1] = r0_0.RT_675,
   [2] = {
     FXId = 600702,
     Function = "PlayFX",
     Overlap = true,
   },
-  [3] = r0_0.RT_686,
+  [3] = r0_0.RT_687,
 }
 r6_0.TaskId = 600702
 r4_0[600702] = r6_0
@@ -20324,7 +20328,7 @@ r6_0.TaskEffects = {
     NormalToHit = true,
     Overlap = true,
   },
-  [2] = r0_0.RT_687,
+  [2] = r0_0.RT_688,
 }
 r6_0.TaskId = 600703
 r4_0[600703] = r6_0
@@ -20342,32 +20346,32 @@ r6_0.TaskId = 600704
 r4_0[600704] = r6_0
 r4_0[600705] = {
   TargetFilter = "Mon_Sphere_400_360_OtFr",
-  TaskEffects = r0_0.RT_689,
+  TaskEffects = r0_0.RT_690,
   TaskId = 600705,
 }
 r4_0[600706] = {
   TargetFilter = "Mon_Sphere_400_360",
   TaskEffects = {
-    [1] = r0_0.RT_577,
-    [2] = r0_0.RT_690,
-    [3] = r0_0.RT_686,
+    [1] = r0_0.RT_578,
+    [2] = r0_0.RT_691,
+    [3] = r0_0.RT_687,
   },
   TaskId = 600706,
 }
 r4_0[600707] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_691,
-    [2] = r0_0.RT_692,
-    [3] = r0_0.RT_686,
+    [1] = r0_0.RT_692,
+    [2] = r0_0.RT_693,
+    [3] = r0_0.RT_687,
   },
   TaskId = 600707,
 }
 r4_0[600708] = {
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_692,
-    [2] = r0_0.RT_687,
+    [1] = r0_0.RT_693,
+    [2] = r0_0.RT_688,
   },
   TaskId = 600708,
 }
@@ -20420,16 +20424,16 @@ r4_0[601202] = r6_0
 r4_0[601203] = {
   TargetFilter = "Mon_Cylinder_300_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_670,
-    [2] = r0_0.RT_696,
-    [3] = r0_0.RT_697,
-    [4] = r0_0.RT_698,
+    [1] = r0_0.RT_671,
+    [2] = r0_0.RT_697,
+    [3] = r0_0.RT_698,
+    [4] = r0_0.RT_699,
   },
   TaskId = 601203,
 }
 r6_0 = {}
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_696,
+  [1] = r0_0.RT_697,
   [2] = {
     Function = "PlaySE",
     SEId = 600203,
@@ -20439,7 +20443,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 601204
 r4_0[601204] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_667,
+  NotifyName = r0_0.RT_668,
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
@@ -20454,10 +20458,10 @@ r4_0[601205] = r6_0
 r4_0[601206] = {
   TargetFilter = "Mon_Cylinder_300_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_699,
-    [2] = r0_0.RT_696,
-    [3] = r0_0.RT_697,
-    [4] = r0_0.RT_698,
+    [1] = r0_0.RT_700,
+    [2] = r0_0.RT_697,
+    [3] = r0_0.RT_698,
+    [4] = r0_0.RT_699,
   },
   TaskId = 601206,
 }
@@ -20500,13 +20504,13 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_674,
+  [1] = r0_0.RT_675,
   [2] = {
     FXId = 601302,
     Function = "PlayFX",
   },
-  [3] = r0_0.RT_700,
-  [4] = r0_0.RT_701,
+  [3] = r0_0.RT_701,
+  [4] = r0_0.RT_702,
 }
 r6_0.TaskId = 601303
 r4_0[601303] = r6_0
@@ -20514,9 +20518,9 @@ r4_0[601304] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_500_400_90",
   TaskEffects = {
-    [1] = r0_0.RT_674,
-    [2] = r0_0.RT_700,
-    [3] = r0_0.RT_701,
+    [1] = r0_0.RT_675,
+    [2] = r0_0.RT_701,
+    [3] = r0_0.RT_702,
   },
   TaskId = 601304,
 }
@@ -20524,9 +20528,9 @@ r4_0[601401] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_300_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_677,
-    [2] = r0_0.RT_656,
-    [3] = r0_0.RT_697,
+    [1] = r0_0.RT_678,
+    [2] = r0_0.RT_657,
+    [3] = r0_0.RT_698,
     [4] = r0_0.RT_5,
   },
   TaskId = 601401,
@@ -20535,11 +20539,11 @@ r4_0[601402] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_300_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_677,
-    [2] = r0_0.RT_656,
-    [3] = r0_0.RT_697,
+    [1] = r0_0.RT_678,
+    [2] = r0_0.RT_657,
+    [3] = r0_0.RT_698,
     [4] = r0_0.RT_5,
-    [5] = r0_0.RT_679,
+    [5] = r0_0.RT_680,
   },
   TaskId = 601402,
 }
@@ -20547,10 +20551,10 @@ r4_0[601403] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Sphere_400_360",
   TaskEffects = {
-    [1] = r0_0.RT_577,
-    [2] = r0_0.RT_681,
-    [3] = r0_0.RT_656,
-    [4] = r0_0.RT_697,
+    [1] = r0_0.RT_578,
+    [2] = r0_0.RT_682,
+    [3] = r0_0.RT_657,
+    [4] = r0_0.RT_698,
   },
   TaskId = 601403,
 }
@@ -20558,9 +20562,9 @@ r4_0[601404] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Sphere_400_360_OtFr",
   TaskEffects = {
-    [1] = r0_0.RT_577,
-    [2] = r0_0.RT_681,
-    [3] = r0_0.RT_656,
+    [1] = r0_0.RT_578,
+    [2] = r0_0.RT_682,
+    [3] = r0_0.RT_657,
   },
   TaskId = 601404,
 }
@@ -20569,14 +20573,14 @@ r6_0 = {
   TargetFilter = "Mon_Sphere_2500_360",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_577,
-  [2] = r0_0.RT_656,
+  [1] = r0_0.RT_578,
+  [2] = r0_0.RT_657,
   [3] = {
     BuffId = 30400017,
     Function = "AddBuff",
     LastTime = -1,
   },
-  [4] = r0_0.RT_679,
+  [4] = r0_0.RT_680,
 }
 r6_0.TaskId = 601405
 r4_0[601405] = r6_0
@@ -20584,8 +20588,8 @@ r4_0[601406] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_702,
-    [2] = r0_0.RT_656,
+    [1] = r0_0.RT_703,
+    [2] = r0_0.RT_657,
   },
   TaskId = 601406,
 }
@@ -20605,13 +20609,13 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_674,
+  [1] = r0_0.RT_675,
   [2] = {
     FXId = 601502,
     Function = "PlayFX",
     Overlap = true,
   },
-  [3] = r0_0.RT_703,
+  [3] = r0_0.RT_704,
 }
 r6_0.TaskId = 601502
 r4_0[601502] = r6_0
@@ -20643,34 +20647,34 @@ r4_0[601504] = r6_0
 r4_0[601505] = {
   TargetFilter = "Mon_Sphere_400_360_OtFr",
   TaskEffects = {
-    [1] = r0_0.RT_688,
+    [1] = r0_0.RT_689,
     [2] = r0_0.RT_10,
-    [3] = r0_0.RT_704,
+    [3] = r0_0.RT_705,
   },
   TaskId = 601505,
 }
 r4_0[601506] = {
   TargetFilter = "Mon_Sphere_400_360",
   TaskEffects = {
-    [1] = r0_0.RT_577,
-    [2] = r0_0.RT_690,
-    [3] = r0_0.RT_704,
+    [1] = r0_0.RT_578,
+    [2] = r0_0.RT_691,
+    [3] = r0_0.RT_705,
   },
   TaskId = 601506,
 }
 r4_0[601507] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_691,
-    [2] = r0_0.RT_705,
-    [3] = r0_0.RT_703,
+    [1] = r0_0.RT_692,
+    [2] = r0_0.RT_706,
+    [3] = r0_0.RT_704,
   },
   TaskId = 601507,
 }
 r4_0[601508] = {
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_705,
+    [1] = r0_0.RT_706,
   },
   TaskId = 601508,
 }
@@ -20687,7 +20691,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 601509
 r4_0[601509] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_667,
+  NotifyName = r0_0.RT_668,
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
@@ -20738,27 +20742,27 @@ r4_0[601603] = r6_0
 r4_0[601604] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_699,
-    [2] = r0_0.RT_706,
-    [3] = r0_0.RT_707,
+    [1] = r0_0.RT_700,
+    [2] = r0_0.RT_707,
+    [3] = r0_0.RT_708,
   },
   TaskId = 601604,
 }
 r4_0[601605] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_670,
-    [2] = r0_0.RT_706,
-    [3] = r0_0.RT_707,
+    [1] = r0_0.RT_671,
+    [2] = r0_0.RT_707,
+    [3] = r0_0.RT_708,
   },
   TaskId = 601605,
 }
 r4_0[601606] = {
-  TaskEffects = r0_0.RT_709,
+  TaskEffects = r0_0.RT_710,
   TaskId = 601606,
 }
 r4_0[601607] = {
-  TaskEffects = r0_0.RT_709,
+  TaskEffects = r0_0.RT_710,
   TaskId = 601607,
 }
 r6_0 = {
@@ -20766,8 +20770,8 @@ r6_0 = {
   TargetFilter = "Mon_Cylinder_230_200_180",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_660,
-  [2] = r0_0.RT_661,
+  [1] = r0_0.RT_661,
+  [2] = r0_0.RT_662,
   [3] = {
     Function = "PlaySE",
     SEId = 601602,
@@ -20778,13 +20782,13 @@ r4_0[601609] = r6_0
 r4_0[601701] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_230_200_180",
-  TaskEffects = r0_0.RT_711,
+  TaskEffects = r0_0.RT_712,
   TaskId = 601701,
 }
 r4_0[601702] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_230_200_180",
-  TaskEffects = r0_0.RT_711,
+  TaskEffects = r0_0.RT_712,
   TaskId = 601702,
 }
 r6_0 = {
@@ -20830,24 +20834,24 @@ r6_0.TaskId = 601705
 r4_0[601705] = r6_0
 r4_0[601706] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_664,
+  TaskEffects = r0_0.RT_665,
   TaskId = 601706,
 }
 r4_0[601707] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_666,
+  TaskEffects = r0_0.RT_667,
   TaskId = 601707,
 }
 r4_0[700101] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_723,
+  TaskEffects = r0_0.RT_724,
   TaskId = 700101,
 }
 r4_0[700102] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_723,
+  TaskEffects = r0_0.RT_724,
   TaskId = 700102,
 }
 r6_0 = {
@@ -20859,16 +20863,16 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 0.75,
   },
-  [2] = r0_0.RT_724,
-  [3] = r0_0.RT_725,
+  [2] = r0_0.RT_725,
+  [3] = r0_0.RT_726,
 }
 r6_0.TaskId = 700103
 r4_0[700103] = r6_0
 r4_0[700104] = {
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_726,
-    [2] = r0_0.RT_727,
+    [1] = r0_0.RT_727,
+    [2] = r0_0.RT_728,
   },
   TaskId = 700104,
 }
@@ -20895,7 +20899,7 @@ r6_0.TaskEffects = {
     CreatureId = 700101,
     Function = "CreateSkillCreature",
   },
-  [2] = r0_0.RT_722,
+  [2] = r0_0.RT_723,
 }
 r6_0.TaskId = 700107
 r4_0[700107] = r6_0
@@ -20916,13 +20920,13 @@ r4_0[700108] = r6_0
 r4_0[700109] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_200_180",
-  TaskEffects = r0_0.RT_729,
+  TaskEffects = r0_0.RT_730,
   TaskId = 700109,
 }
 r4_0[700110] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_200_180",
-  TaskEffects = r0_0.RT_729,
+  TaskEffects = r0_0.RT_730,
   TaskId = 700110,
 }
 r6_0 = {
@@ -20966,8 +20970,8 @@ r4_0[700201] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_660,
-    [2] = r0_0.RT_731,
+    [1] = r0_0.RT_661,
+    [2] = r0_0.RT_732,
     [3] = r0_0.RT_5,
   },
   TaskId = 700201,
@@ -20976,8 +20980,8 @@ r4_0[700202] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_660,
-    [2] = r0_0.RT_733,
+    [1] = r0_0.RT_661,
+    [2] = r0_0.RT_734,
     [3] = r0_0.RT_5,
   },
   TaskId = 700202,
@@ -20986,9 +20990,9 @@ r4_0[700203] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_230_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_660,
+    [1] = r0_0.RT_661,
     [2] = r0_0.RT_110,
-    [3] = r0_0.RT_734,
+    [3] = r0_0.RT_735,
     [4] = r0_0.RT_5,
   },
   TaskId = 700203,
@@ -21038,7 +21042,7 @@ r6_0.TaskEffects = r8_0
 r6_0.TaskId = 700224
 r4_0[700224] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_667,
+  NotifyName = r0_0.RT_668,
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
@@ -21053,14 +21057,14 @@ r4_0[700301] = r6_0
 r4_0[700302] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_735,
-    [2] = r0_0.RT_736,
-    [3] = r0_0.RT_725,
+    [1] = r0_0.RT_736,
+    [2] = r0_0.RT_737,
+    [3] = r0_0.RT_726,
   },
   TaskId = 700302,
 }
 r6_0 = {
-  NotifyName = r0_0.RT_737,
+  NotifyName = r0_0.RT_738,
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
@@ -21077,17 +21081,17 @@ r6_0 = {
   TargetFilter = "Mon_Sphere_400_360",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_577,
+  [1] = r0_0.RT_578,
   [2] = {
     FXId = 700304,
     Function = "PlayFX",
   },
-  [3] = r0_0.RT_738,
+  [3] = r0_0.RT_739,
 }
 r6_0.TaskId = 700304
 r4_0[700304] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_737,
+  NotifyName = r0_0.RT_738,
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
@@ -21104,7 +21108,7 @@ r4_0[700306] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_728,
+    [1] = r0_0.RT_729,
     [2] = r0_0.RT_4,
     [3] = r0_0.RT_5,
   },
@@ -21120,27 +21124,27 @@ r6_0.TaskEffects = {
     Function = "CutToughness",
     Value = 100,
   },
-  [3] = r0_0.RT_738,
+  [3] = r0_0.RT_739,
 }
 r6_0.TaskId = 700307
 r4_0[700307] = r6_0
 r4_0[700308] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_200_180",
-  TaskEffects = r0_0.RT_729,
+  TaskEffects = r0_0.RT_730,
   TaskId = 700308,
 }
 r4_0[700309] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_200_180",
-  TaskEffects = r0_0.RT_729,
+  TaskEffects = r0_0.RT_730,
   TaskId = 700309,
 }
 r4_0[700312] = {
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_736,
-    [2] = r0_0.RT_727,
+    [1] = r0_0.RT_737,
+    [2] = r0_0.RT_728,
   },
   TaskId = 700312,
 }
@@ -21148,9 +21152,9 @@ r4_0[700321] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_728,
+    [1] = r0_0.RT_729,
     [2] = r0_0.RT_4,
-    [3] = r0_0.RT_700,
+    [3] = r0_0.RT_701,
     [4] = r0_0.RT_5,
   },
   TaskId = 700321,
@@ -21186,7 +21190,7 @@ r8_0[3] = {
   FXId = 700305,
   Function = "PlayFX",
 }
-r8_0[4] = r0_0.RT_738
+r8_0[4] = r0_0.RT_739
 r8_0[5] = {
   BuffId = 6000113,
   Function = "AddBuff",
@@ -21205,7 +21209,7 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = r0_0.RT_496,
   [2] = r0_0.RT_110,
-  [3] = r0_0.RT_738,
+  [3] = r0_0.RT_739,
   [4] = {
     Function = "PlaySE",
     SEId = 700315,
@@ -21218,7 +21222,7 @@ r4_0[700401] = {
   TargetFilter = "Mon_Cylinder_230_200_180",
   TaskEffects = {
     [1] = r0_0.RT_7,
-    [2] = r0_0.RT_740,
+    [2] = r0_0.RT_741,
     [3] = r0_0.RT_5,
   },
   TaskId = 700401,
@@ -21261,7 +21265,7 @@ r4_0[700405] = {
   TargetFilter = "Mon_Cylinder_150_50_90",
   TaskEffects = {
     [1] = r0_0.RT_7,
-    [2] = r0_0.RT_741,
+    [2] = r0_0.RT_742,
     [3] = r0_0.RT_4,
     [4] = r0_0.RT_5,
   },
@@ -21282,18 +21286,18 @@ r4_0[700406] = r6_0
 r4_0[700501] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Jt_Commander_Cylinder_1500_500_360",
-  TaskEffects = r0_0.RT_743,
+  TaskEffects = r0_0.RT_744,
   TaskId = 700501,
 }
 r4_0[700502] = {
   TargetFilter = "Jt_Commander_Cylinder_1500_500_360",
-  TaskEffects = r0_0.RT_745,
+  TaskEffects = r0_0.RT_746,
   TaskId = 700502,
 }
 r4_0[700503] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_747,
+  TaskEffects = r0_0.RT_748,
   TaskId = 700503,
 }
 r6_0 = {
@@ -21376,7 +21380,7 @@ r6_0.TaskEffects = {
     Function = "AddBuff",
     LastTime = 1.5,
   },
-  [4] = r0_0.RT_738,
+  [4] = r0_0.RT_739,
 }
 r6_0.TaskId = 700722
 r4_0[700722] = r6_0
@@ -21398,21 +21402,21 @@ r4_0[700731] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Jt_BlastRobot_NoTrolly",
   TaskEffects = {
-    [1] = r0_0.RT_660,
-    [2] = r0_0.RT_738,
+    [1] = r0_0.RT_661,
+    [2] = r0_0.RT_739,
   },
   TaskId = 700731,
 }
 r4_0[700732] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Jt_BlastRobot_OnlyTrolly",
-  TaskEffects = r0_0.RT_578,
+  TaskEffects = r0_0.RT_579,
   TaskId = 700732,
 }
 r4_0[700733] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_749,
+  TaskEffects = r0_0.RT_750,
   TaskId = 700733,
 }
 r6_0 = {
@@ -21427,20 +21431,20 @@ r6_0.TaskEffects = {
     Rate = 510,
   },
   [2] = r0_0.RT_110,
-  [3] = r0_0.RT_738,
+  [3] = r0_0.RT_739,
 }
 r6_0.TaskId = 700741
 r4_0[700741] = r6_0
 r4_0[700742] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Sphere_600_360",
-  TaskEffects = r0_0.RT_750,
+  TaskEffects = r0_0.RT_751,
   TaskId = 700742,
 }
 r4_0[700743] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_749,
+  TaskEffects = r0_0.RT_750,
   TaskId = 700743,
 }
 r6_0 = {
@@ -21455,20 +21459,20 @@ r6_0.TaskEffects = {
     Rate = 1,
   },
   [2] = r0_0.RT_110,
-  [3] = r0_0.RT_738,
+  [3] = r0_0.RT_739,
 }
 r6_0.TaskId = 700751
 r4_0[700751] = r6_0
 r4_0[700752] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Sphere_600_360",
-  TaskEffects = r0_0.RT_750,
+  TaskEffects = r0_0.RT_751,
   TaskId = 700752,
 }
 r4_0[700753] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_749,
+  TaskEffects = r0_0.RT_750,
   TaskId = 700753,
 }
 r4_0[700801] = {
@@ -21476,7 +21480,7 @@ r4_0[700801] = {
   TargetFilter = "Mon_Cylinder_300_200_180",
   TaskEffects = {
     [1] = r0_0.RT_22,
-    [2] = r0_0.RT_751,
+    [2] = r0_0.RT_752,
     [3] = r0_0.RT_110,
   },
   TaskId = 700801,
@@ -21498,8 +21502,8 @@ r4_0[700803] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_752,
-    [3] = r0_0.RT_753,
+    [2] = r0_0.RT_753,
+    [3] = r0_0.RT_754,
     [4] = r0_0.RT_486,
   },
   TaskId = 700803,
@@ -21508,9 +21512,9 @@ r4_0[700804] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_300_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_680,
-    [2] = r0_0.RT_751,
-    [3] = r0_0.RT_754,
+    [1] = r0_0.RT_681,
+    [2] = r0_0.RT_752,
+    [3] = r0_0.RT_755,
   },
   TaskId = 700804,
 }
@@ -21525,8 +21529,8 @@ r6_0 = {
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_756,
-  [2] = r0_0.RT_758,
+  [1] = r0_0.RT_757,
+  [2] = r0_0.RT_759,
   [3] = {
     CreatureId = 700802,
     Function = "CreateSkillCreature",
@@ -21565,7 +21569,7 @@ r4_0[700807] = {
   TaskEffects = {
     [1] = r0_0.RT_16,
     [2] = r0_0.RT_485,
-    [3] = r0_0.RT_759,
+    [3] = r0_0.RT_760,
     [4] = r0_0.RT_486,
   },
   TaskId = 700807,
@@ -21580,7 +21584,7 @@ r6_0.TaskEffects = {
     Function = "PlayFX",
     NormalToHit = true,
   },
-  [3] = r0_0.RT_759,
+  [3] = r0_0.RT_760,
   [4] = r0_0.RT_486,
 }
 r6_0.TaskId = 700808
@@ -21589,7 +21593,7 @@ r4_0[700809] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_650_200_100",
   TaskEffects = {
-    [1] = r0_0.RT_680,
+    [1] = r0_0.RT_681,
     [2] = r0_0.RT_110,
     [3] = r0_0.RT_486,
   },
@@ -21611,18 +21615,18 @@ r4_0[700810] = r6_0
 r4_0[700811] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Jt_Commander_Cylinder_1500_500_360",
-  TaskEffects = r0_0.RT_743,
+  TaskEffects = r0_0.RT_744,
   TaskId = 700811,
 }
 r4_0[700812] = {
   TargetFilter = "Jt_Commander_Cylinder_1500_500_360",
-  TaskEffects = r0_0.RT_745,
+  TaskEffects = r0_0.RT_746,
   TaskId = 700812,
 }
 r4_0[700813] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_747,
+  TaskEffects = r0_0.RT_748,
   TaskId = 700813,
 }
 r4_0[700814] = {
@@ -21630,8 +21634,8 @@ r4_0[700814] = {
   TargetFilter = "Mon_Cylinder_150_50_90",
   TaskEffects = {
     [1] = r0_0.RT_3,
-    [2] = r0_0.RT_751,
-    [3] = r0_0.RT_700,
+    [2] = r0_0.RT_752,
+    [3] = r0_0.RT_701,
   },
   TaskId = 700814,
 }
@@ -21639,7 +21643,7 @@ r4_0[700815] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_752,
+    [2] = r0_0.RT_753,
     [3] = r0_0.RT_486,
   },
   TaskId = 700815,
@@ -21672,13 +21676,13 @@ r4_0[700817] = r6_0
 r4_0[700901] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_230_200_40",
-  TaskEffects = r0_0.RT_761,
+  TaskEffects = r0_0.RT_762,
   TaskId = 700901,
 }
 r4_0[700902] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_230_200_40",
-  TaskEffects = r0_0.RT_761,
+  TaskEffects = r0_0.RT_762,
   TaskId = 700902,
 }
 r6_0 = {
@@ -21686,8 +21690,8 @@ r6_0 = {
   TargetFilter = "Mon_Cylinder_230_200_40",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_660,
-  [2] = r0_0.RT_661,
+  [1] = r0_0.RT_661,
+  [2] = r0_0.RT_662,
   [3] = r0_0.RT_10,
   [4] = {
     Function = "PlaySE",
@@ -21703,7 +21707,7 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 700901,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_762,
+    Location = r0_0.RT_763,
   },
 }
 r6_0.TaskId = 700904
@@ -21723,9 +21727,9 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_660,
+  [1] = r0_0.RT_661,
   [2] = r0_0.RT_10,
-  [3] = r0_0.RT_661,
+  [3] = r0_0.RT_662,
   [4] = {
     Function = "PlaySE",
     SEId = 700903,
@@ -21755,7 +21759,7 @@ r6_0.TaskEffects = {
     Function = "PlayFX",
     Overlap = true,
   },
-  [3] = r0_0.RT_763,
+  [3] = r0_0.RT_764,
 }
 r6_0.TaskId = 701002
 r4_0[701002] = r6_0
@@ -21796,7 +21800,7 @@ r6_0.TaskEffects = {
     Function = "PlayFX",
     Overlap = true,
   },
-  [3] = r0_0.RT_763,
+  [3] = r0_0.RT_764,
 }
 r6_0.TaskId = 701005
 r4_0[701005] = r6_0
@@ -21824,8 +21828,8 @@ r4_0[701008] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Sphere_800_360_OtFr",
   TaskEffects = {
-    [1] = r0_0.RT_675,
-    [2] = r0_0.RT_764,
+    [1] = r0_0.RT_676,
+    [2] = r0_0.RT_765,
   },
   TaskId = 701008,
 }
@@ -21833,8 +21837,8 @@ r4_0[701009] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_676,
-    [2] = r0_0.RT_764,
+    [1] = r0_0.RT_677,
+    [2] = r0_0.RT_765,
   },
   TaskId = 701009,
 }
@@ -21868,8 +21872,8 @@ r4_0[701201] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_765,
-    [2] = r0_0.RT_731,
+    [1] = r0_0.RT_766,
+    [2] = r0_0.RT_732,
     [3] = r0_0.RT_5,
   },
   TaskId = 701201,
@@ -21878,8 +21882,8 @@ r4_0[701202] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_765,
-    [2] = r0_0.RT_733,
+    [1] = r0_0.RT_766,
+    [2] = r0_0.RT_734,
     [3] = r0_0.RT_5,
   },
   TaskId = 701202,
@@ -21888,9 +21892,9 @@ r4_0[701203] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_230_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_765,
+    [1] = r0_0.RT_766,
     [2] = r0_0.RT_110,
-    [3] = r0_0.RT_734,
+    [3] = r0_0.RT_735,
     [4] = r0_0.RT_5,
   },
   TaskId = 701203,
@@ -21917,7 +21921,7 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 0.54,
   },
-  [2] = r0_0.RT_766,
+  [2] = r0_0.RT_767,
   [3] = {
     Function = "PlaySE",
     SEId = 700322,
@@ -21928,12 +21932,12 @@ r4_0[701302] = r6_0
 r4_0[701303] = {
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_766,
+    [1] = r0_0.RT_767,
   },
   TaskId = 701303,
 }
 r6_0 = {
-  NotifyName = r0_0.RT_737,
+  NotifyName = r0_0.RT_738,
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
@@ -21950,13 +21954,13 @@ r6_0 = {
   TargetFilter = "Mon_Sphere_400_360",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_577,
+  [1] = r0_0.RT_578,
   [2] = {
     FXId = 701303,
     Function = "PlayFX",
   },
-  [3] = r0_0.RT_738,
-  [4] = r0_0.RT_754,
+  [3] = r0_0.RT_739,
+  [4] = r0_0.RT_755,
   [5] = {
     Function = "PlaySE",
     SEId = 700324,
@@ -21970,8 +21974,8 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_7,
-  [2] = r0_0.RT_740,
-  [3] = r0_0.RT_754,
+  [2] = r0_0.RT_741,
+  [3] = r0_0.RT_755,
   [4] = {
     Function = "PlaySE",
     SEId = 700401,
@@ -22009,7 +22013,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_14,
-  [2] = r0_0.RT_682,
+  [2] = r0_0.RT_683,
   [3] = {
     FXId = 701401,
     Function = "PlayFX",
@@ -22025,7 +22029,7 @@ r4_0[701404] = r6_0
 r4_0[701501] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_768,
+  TaskEffects = r0_0.RT_769,
   TaskId = 701501,
 }
 r6_0 = {
@@ -22036,14 +22040,14 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 701501,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_769,
+    Location = r0_0.RT_770,
     SetSavelocAsTarget = "",
   },
   [2] = {
     CreatureId = 701501,
     Delay = 0.1,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_769,
+    Location = r0_0.RT_770,
     SetSavelocAsTarget = "",
   },
 }
@@ -22053,13 +22057,13 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_674,
+  [1] = r0_0.RT_675,
   [2] = {
     FXId = 701502,
     Function = "PlayFX",
     Overlap = true,
   },
-  [3] = r0_0.RT_686,
+  [3] = r0_0.RT_687,
 }
 r6_0.TaskId = 701503
 r4_0[701503] = r6_0
@@ -22073,7 +22077,7 @@ r6_0.TaskEffects = {
     NormalToHit = true,
     Overlap = true,
   },
-  [2] = r0_0.RT_687,
+  [2] = r0_0.RT_688,
 }
 r6_0.TaskId = 701504
 r4_0[701504] = r6_0
@@ -22085,14 +22089,14 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 701502,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_769,
+    Location = r0_0.RT_770,
   },
 }
 r6_0.TaskId = 701505
 r4_0[701505] = r6_0
 r4_0[701506] = {
   TargetFilter = "Mon_Sphere_400_360_OtFr",
-  TaskEffects = r0_0.RT_689,
+  TaskEffects = r0_0.RT_690,
   TaskId = 701506,
 }
 r6_0 = {
@@ -22104,23 +22108,23 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 15,
   },
-  [2] = r0_0.RT_690,
-  [3] = r0_0.RT_686,
+  [2] = r0_0.RT_691,
+  [3] = r0_0.RT_687,
 }
 r6_0.TaskId = 701507
 r4_0[701507] = r6_0
 r4_0[701508] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_691,
-    [2] = r0_0.RT_770,
-    [3] = r0_0.RT_686,
+    [1] = r0_0.RT_692,
+    [2] = r0_0.RT_771,
+    [3] = r0_0.RT_687,
   },
   TaskId = 701508,
 }
 r4_0[701509] = {
   TaskEffects = {
-    [1] = r0_0.RT_770,
+    [1] = r0_0.RT_771,
   },
   TaskId = 701509,
 }
@@ -22153,7 +22157,7 @@ r4_0[701511] = r6_0
 r4_0[701512] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "RootSource",
-  TaskEffects = r0_0.RT_772,
+  TaskEffects = r0_0.RT_773,
   TaskId = 701512,
 }
 r6_0 = {
@@ -22250,8 +22254,8 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 0.1,
   },
-  [2] = r0_0.RT_621,
-  [3] = r0_0.RT_773,
+  [2] = r0_0.RT_622,
+  [3] = r0_0.RT_774,
   [4] = {
     FXId = 701603,
     Function = "PlayFX",
@@ -22264,7 +22268,7 @@ r4_0[701606] = {
   TaskEffects = {
     [1] = r0_0.RT_496,
     [2] = r0_0.RT_10,
-    [3] = r0_0.RT_773,
+    [3] = r0_0.RT_774,
   },
   TaskId = 701606,
 }
@@ -22297,28 +22301,28 @@ r4_0[800102] = r6_0
 r4_0[800103] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_774,
-    [2] = r0_0.RT_724,
-    [3] = r0_0.RT_775,
+    [1] = r0_0.RT_775,
+    [2] = r0_0.RT_725,
+    [3] = r0_0.RT_776,
   },
   TaskId = 800103,
 }
 r4_0[800104] = {
   TaskEffects = {
-    [1] = r0_0.RT_726,
+    [1] = r0_0.RT_727,
   },
   TaskId = 800104,
 }
 r4_0[800105] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_200_180",
-  TaskEffects = r0_0.RT_777,
+  TaskEffects = r0_0.RT_778,
   TaskId = 800105,
 }
 r4_0[800106] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_200_180",
-  TaskEffects = r0_0.RT_777,
+  TaskEffects = r0_0.RT_778,
   TaskId = 800106,
 }
 r6_0 = {
@@ -22338,9 +22342,9 @@ r4_0[800107] = r6_0
 r4_0[800108] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_778,
-    [2] = r0_0.RT_724,
-    [3] = r0_0.RT_775,
+    [1] = r0_0.RT_779,
+    [2] = r0_0.RT_725,
+    [3] = r0_0.RT_776,
   },
   TaskId = 800108,
 }
@@ -22424,7 +22428,7 @@ r4_0[800210] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "Mon_Cylinder_300_200_360",
   TaskEffects = {
-    [1] = r0_0.RT_779,
+    [1] = r0_0.RT_780,
     [2] = r0_0.RT_4,
     [3] = r0_0.RT_10,
     [4] = r0_0.RT_5,
@@ -22519,7 +22523,7 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_780,
+  [1] = r0_0.RT_781,
   [2] = r0_0.RT_3,
   [3] = {
     Function = "PlaySE",
@@ -22533,7 +22537,7 @@ r6_0 = {
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_675,
+  [1] = r0_0.RT_676,
   [2] = {
     FXId = 800305,
     Function = "PlayFX",
@@ -22544,76 +22548,76 @@ r4_0[800306] = r6_0
 r4_0[850011] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossXibi_Skill01_Whip01",
-  TaskEffects = r0_0.RT_783,
+  TaskEffects = r0_0.RT_784,
   TaskId = 850011,
 }
 r4_0[850012] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossXibi_Skill01_Whip02",
-  TaskEffects = r0_0.RT_784,
+  TaskEffects = r0_0.RT_785,
   TaskId = 850012,
 }
 r4_0[850013] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossXibi_Dash_Whip01",
-  TaskEffects = r0_0.RT_787,
+  TaskEffects = r0_0.RT_788,
   TaskId = 850013,
 }
 r4_0[850014] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossXibi_Dash_Whip02",
-  TaskEffects = r0_0.RT_787,
+  TaskEffects = r0_0.RT_788,
   TaskId = 850014,
 }
 r4_0[850015] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "BossXibi_Dash_Sword",
-  TaskEffects = r0_0.RT_784,
+  TaskEffects = r0_0.RT_785,
   TaskId = 850015,
 }
 r4_0[850016] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_791,
+  TaskEffects = r0_0.RT_792,
   TaskId = 850016,
 }
 r4_0[850017] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_793,
+  TaskEffects = r0_0.RT_794,
   TaskId = 850017,
 }
 r4_0[850018] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_794,
+  TaskEffects = r0_0.RT_795,
   TaskId = 850018,
 }
 r4_0[850021] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossXibi_Skill02_Sword01",
-  TaskEffects = r0_0.RT_784,
+  TaskEffects = r0_0.RT_785,
   TaskId = 850021,
 }
 r4_0[850022] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossXibi_Skill02_Sword02",
-  TaskEffects = r0_0.RT_783,
+  TaskEffects = r0_0.RT_784,
   TaskId = 850022,
 }
 r4_0[850023] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossXibi_Dash_Whip01",
-  TaskEffects = r0_0.RT_799,
+  TaskEffects = r0_0.RT_800,
   TaskId = 850023,
 }
 r4_0[850024] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossXibi_Dash_Whip02",
-  TaskEffects = r0_0.RT_799,
+  TaskEffects = r0_0.RT_800,
   TaskId = 850024,
 }
 r4_0[850025] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "BossXibi_Dash_Sword",
-  TaskEffects = r0_0.RT_784,
+  TaskEffects = r0_0.RT_785,
   TaskId = 850025,
 }
 r6_0 = {
@@ -22630,98 +22634,98 @@ r6_0.TaskId = 850041
 r4_0[850041] = r6_0
 r4_0[850042] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_806,
+  TaskEffects = r0_0.RT_807,
   TaskId = 850042,
 }
 r4_0[850051] = {
   NotifyName = r0_0.RT_2,
-  TaskEffects = r0_0.RT_808,
+  TaskEffects = r0_0.RT_809,
   TaskId = 850051,
 }
 r4_0[850052] = {
   TargetFilter = "Mon_Sphere_200_360",
-  TaskEffects = r0_0.RT_810,
+  TaskEffects = r0_0.RT_811,
   TaskId = 850052,
 }
 r4_0[850061] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_812,
+  TaskEffects = r0_0.RT_813,
   TaskId = 850061,
 }
 r4_0[850062] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_814,
+  TaskEffects = r0_0.RT_815,
   TaskId = 850062,
 }
 r4_0[850063] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossXibi_Skill06_Donut01",
-  TaskEffects = r0_0.RT_816,
+  TaskEffects = r0_0.RT_817,
   TaskId = 850063,
 }
 r4_0[850064] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossXibi_Skill06_Donut02",
-  TaskEffects = r0_0.RT_816,
+  TaskEffects = r0_0.RT_817,
   TaskId = 850064,
 }
 r4_0[850065] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "BossXibi_Skill06_Donut03",
-  TaskEffects = r0_0.RT_816,
+  TaskEffects = r0_0.RT_817,
   TaskId = 850065,
 }
 r4_0[850071] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossXibi_Skill07",
-  TaskEffects = r0_0.RT_820,
+  TaskEffects = r0_0.RT_821,
   TaskId = 850071,
 }
 r4_0[850081] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossXibi_Dash_Whip01",
-  TaskEffects = r0_0.RT_787,
+  TaskEffects = r0_0.RT_788,
   TaskId = 850081,
 }
 r4_0[850082] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossXibi_Dash_Whip02",
-  TaskEffects = r0_0.RT_787,
+  TaskEffects = r0_0.RT_788,
   TaskId = 850082,
 }
 r4_0[850083] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossXibi_Dash_Sword",
-  TaskEffects = r0_0.RT_784,
+  TaskEffects = r0_0.RT_785,
   TaskId = 850083,
 }
 r4_0[850084] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_768,
+  TaskEffects = r0_0.RT_769,
   TaskId = 850084,
 }
 r4_0[850085] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_812,
+  TaskEffects = r0_0.RT_813,
   TaskId = 850085,
 }
 r4_0[850086] = {
   NotifyName = r0_0.RT_505,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_824,
+  TaskEffects = r0_0.RT_825,
   TaskId = 850086,
 }
 r4_0[850087] = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
   TargetFilter = "BossXibi_Skill08_Jump",
   TaskEffects = {
-    [1] = r0_0.RT_779,
-    [2] = r0_0.RT_805,
-    [3] = r0_0.RT_826,
+    [1] = r0_0.RT_780,
+    [2] = r0_0.RT_806,
+    [3] = r0_0.RT_827,
     [4] = r0_0.RT_5,
   },
   TaskId = 850087,
@@ -22729,25 +22733,25 @@ r4_0[850087] = {
 r4_0[850201] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossSaiqi_Skill01_Cylinder_450_200_270",
-  TaskEffects = r0_0.RT_845,
+  TaskEffects = r0_0.RT_846,
   TaskId = 850201,
 }
 r4_0[850202] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossSaiqi_Skill01_Cylinder_450_200_270",
-  TaskEffects = r0_0.RT_848,
+  TaskEffects = r0_0.RT_849,
   TaskId = 850202,
 }
 r4_0[850203] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossSaiqi_Skill01_Cylinder_450_200_270",
-  TaskEffects = r0_0.RT_849,
+  TaskEffects = r0_0.RT_850,
   TaskId = 850203,
 }
 r4_0[850204] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_852,
+  TaskEffects = r0_0.RT_853,
   TaskId = 850204,
 }
 r4_0[850205] = {
@@ -22755,82 +22759,82 @@ r4_0[850205] = {
   TaskEffects = {
     [1] = r0_0.RT_16,
     [2] = r0_0.RT_110,
-    [3] = r0_0.RT_844,
+    [3] = r0_0.RT_845,
   },
   TaskId = 850205,
 }
 r4_0[850206] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_854,
+  TaskEffects = r0_0.RT_855,
   TaskId = 850206,
 }
 r4_0[850207] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_856,
+  TaskEffects = r0_0.RT_857,
   TaskId = 850207,
 }
 r4_0[850208] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossSaiqi_Skill04_Cylinder_300_200_360",
-  TaskEffects = r0_0.RT_857,
+  TaskEffects = r0_0.RT_858,
   TaskId = 850208,
 }
 r4_0[850209] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossSaiqi_Skill13_Cylinder_300_200_360",
-  TaskEffects = r0_0.RT_859,
+  TaskEffects = r0_0.RT_860,
   TaskId = 850209,
 }
 r4_0[850210] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_860,
+    [1] = r0_0.RT_861,
   },
   TaskId = 850210,
 }
 r4_0[850211] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_865,
+  TaskEffects = r0_0.RT_866,
   TaskId = 850211,
 }
 r4_0[850212] = {
-  NotifyName = r0_0.RT_866,
+  NotifyName = r0_0.RT_867,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_872,
+  TaskEffects = r0_0.RT_873,
   TaskId = 850212,
 }
 r4_0[850213] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_875,
+  TaskEffects = r0_0.RT_876,
   TaskId = 850213,
 }
 r4_0[850214] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_878,
+  TaskEffects = r0_0.RT_879,
   TaskId = 850214,
 }
 r4_0[850215] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_881,
+  TaskEffects = r0_0.RT_882,
   TaskId = 850215,
 }
 r4_0[850216] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_884,
+  TaskEffects = r0_0.RT_885,
   TaskId = 850216,
 }
 r4_0[850217] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_925,
-    [2] = r0_0.RT_885,
+    [1] = r0_0.RT_926,
+    [2] = r0_0.RT_886,
   },
   TaskId = 850217,
 }
@@ -22838,8 +22842,8 @@ r4_0[850218] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_886,
-    [2] = r0_0.RT_888,
+    [1] = r0_0.RT_887,
+    [2] = r0_0.RT_889,
   },
   TaskId = 850218,
 }
@@ -22858,26 +22862,26 @@ r6_0.TaskId = 850219
 r4_0[850219] = r6_0
 r4_0[850220] = {
   TargetFilter = "BossSaiqi_Skill07_Cylinder_300_800_360",
-  TaskEffects = r0_0.RT_890,
+  TaskEffects = r0_0.RT_891,
   TaskId = 850220,
 }
 r4_0[850221] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 850221,
 }
 r4_0[850222] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_893,
+    [1] = r0_0.RT_894,
   },
   TaskId = 850222,
 }
 r4_0[850223] = {
   TargetFilter = "Mon_Sphere_300_360",
-  TaskEffects = r0_0.RT_894,
+  TaskEffects = r0_0.RT_895,
   TaskId = 850223,
 }
 r6_0 = {
@@ -22895,125 +22899,125 @@ r6_0.TaskId = 850224
 r4_0[850224] = r6_0
 r4_0[850225] = {
   TargetFilter = "LaserTarget",
-  TaskEffects = r0_0.RT_895,
+  TaskEffects = r0_0.RT_896,
   TaskId = 850225,
 }
 r4_0[850226] = {
   TargetFilter = "LaserTarget",
-  TaskEffects = r0_0.RT_896,
+  TaskEffects = r0_0.RT_897,
   TaskId = 850226,
 }
 r4_0[850227] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_898,
+  TaskEffects = r0_0.RT_899,
   TaskId = 850227,
 }
 r4_0[850228] = {
-  NotifyName = r0_0.RT_899,
+  NotifyName = r0_0.RT_900,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 850228,
 }
 r4_0[850229] = {
-  NotifyName = r0_0.RT_900,
+  NotifyName = r0_0.RT_901,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_902,
+  TaskEffects = r0_0.RT_903,
   TaskId = 850229,
 }
 r4_0[850230] = {
   TargetFilter = "Mon_Sphere_300_360",
   TaskEffects = {
     [1] = r0_0.RT_22,
-    [2] = r0_0.RT_903,
+    [2] = r0_0.RT_904,
   },
   TaskId = 850230,
 }
 r4_0[850231] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 850231,
 }
 r4_0[850232] = {
-  NotifyName = r0_0.RT_904,
+  NotifyName = r0_0.RT_905,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_906,
+  TaskEffects = r0_0.RT_907,
   TaskId = 850232,
 }
 r4_0[850233] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Mon_Sphere_300_360",
-  TaskEffects = r0_0.RT_907,
+  TaskEffects = r0_0.RT_908,
   TaskId = 850233,
 }
 r4_0[850234] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_908,
+  TaskEffects = r0_0.RT_909,
   TaskId = 850234,
 }
 r4_0[850235] = {
-  NotifyName = r0_0.RT_909,
+  NotifyName = r0_0.RT_910,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_911,
+  TaskEffects = r0_0.RT_912,
   TaskId = 850235,
 }
 r4_0[850236] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_913,
+  TaskEffects = r0_0.RT_914,
   TaskId = 850236,
 }
 r4_0[850237] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossSaiqi_Skill01_Cylinder_450_200_270",
-  TaskEffects = r0_0.RT_914,
+  TaskEffects = r0_0.RT_915,
   TaskId = 850237,
 }
 r4_0[850238] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 850238,
 }
 r4_0[850239] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Mon_Sphere_300_360",
-  TaskEffects = r0_0.RT_915,
+  TaskEffects = r0_0.RT_916,
   TaskId = 850239,
 }
 r4_0[850240] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Mon_Sphere_300_360",
-  TaskEffects = r0_0.RT_916,
+  TaskEffects = r0_0.RT_917,
   TaskId = 850240,
 }
 r4_0[850301] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Skill01_L",
-  TaskEffects = r0_0.RT_929,
+  TaskEffects = r0_0.RT_930,
   TaskId = 850301,
 }
 r4_0[850302] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Skill02_Cylinder01",
-  TaskEffects = r0_0.RT_931,
+  TaskEffects = r0_0.RT_932,
   TaskId = 850302,
 }
 r4_0[850303] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_933,
+  TaskEffects = r0_0.RT_934,
   TaskId = 850303,
 }
 r4_0[850304] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Skill03_Cylinder_1000_200_360",
-  TaskEffects = r0_0.RT_936,
+  TaskEffects = r0_0.RT_937,
   TaskId = 850304,
 }
 r4_0[850305] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_938,
+  TaskEffects = r0_0.RT_939,
   TaskId = 850305,
 }
 r6_0 = {
@@ -23026,14 +23030,14 @@ r6_0.TaskEffects = {
     Function = "CutToughness",
     Value = 100,
   },
-  [3] = r0_0.RT_927,
-  [4] = r0_0.RT_928,
+  [3] = r0_0.RT_928,
+  [4] = r0_0.RT_929,
 }
 r6_0.TaskId = 850306
 r4_0[850306] = r6_0
 r4_0[850307] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_940,
+  TaskEffects = r0_0.RT_941,
   TaskId = 850307,
 }
 r4_0[850308] = {
@@ -23041,23 +23045,23 @@ r4_0[850308] = {
   TaskEffects = {
     [1] = r0_0.RT_22,
     [2] = r0_0.RT_110,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_928,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_929,
   },
   TaskId = 850308,
 }
 r4_0[850309] = {
   NotifyName = r0_0.RT_2,
-  TaskEffects = r0_0.RT_942,
+  TaskEffects = r0_0.RT_943,
   TaskId = 850309,
 }
 r4_0[850310] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_3,
-    [2] = r0_0.RT_943,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_928,
+    [2] = r0_0.RT_944,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_929,
   },
   TaskId = 850310,
 }
@@ -23085,16 +23089,16 @@ r4_0[850312] = {
   TargetFilter = "BossShijingzhe_Target",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_753,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_928,
+    [2] = r0_0.RT_754,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_929,
   },
   TaskId = 850312,
 }
 r4_0[850313] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 850313,
 }
 r6_0 = {
@@ -23111,41 +23115,41 @@ r8_0[1] = {
     Radius = 1500,
   },
 }
-r8_0[2] = r0_0.RT_964
-r8_0[3] = r0_0.RT_965
-r8_0[4] = r0_0.RT_966
-r8_0[5] = r0_0.RT_967
+r8_0[2] = r0_0.RT_965
+r8_0[3] = r0_0.RT_966
+r8_0[4] = r0_0.RT_967
+r8_0[5] = r0_0.RT_968
 r6_0.TaskEffects = r8_0
 r6_0.TaskId = 850314
 r4_0[850314] = r6_0
 r4_0[850315] = {
   NotifyName = r0_0.RT_12,
-  TaskEffects = r0_0.RT_973,
+  TaskEffects = r0_0.RT_974,
   TaskId = 850315,
 }
 r4_0[850316] = {
   TargetFilter = "BossShijingzhe_Cylinder_100_100_360",
   TaskEffects = {
     [1] = r0_0.RT_3,
-    [2] = r0_0.RT_943,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_935,
+    [2] = r0_0.RT_944,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_936,
   },
   TaskId = 850316,
 }
 r4_0[850317] = {
   NotifyName = r0_0.RT_2,
-  TaskEffects = r0_0.RT_975,
+  TaskEffects = r0_0.RT_976,
   TaskId = 850317,
 }
 r4_0[850318] = {
   TargetFilter = "BossShijingzhe_Target",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_926,
-    [3] = r0_0.RT_985,
-    [4] = r0_0.RT_927,
-    [5] = r0_0.RT_953,
+    [2] = r0_0.RT_927,
+    [3] = r0_0.RT_986,
+    [4] = r0_0.RT_928,
+    [5] = r0_0.RT_954,
   },
   TaskId = 850318,
 }
@@ -23154,31 +23158,31 @@ r4_0[850319] = {
   TargetFilter = "BossShijingzhe_Skill01_R",
   TaskEffects = {
     [1] = r0_0.RT_7,
-    [2] = r0_0.RT_926,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_928,
+    [2] = r0_0.RT_927,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_929,
   },
   TaskId = 850319,
 }
 r4_0[850320] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossShijingzhe_Skill02_Cylinder02",
-  TaskEffects = r0_0.RT_945,
+  TaskEffects = r0_0.RT_946,
   TaskId = 850320,
 }
 r4_0[850321] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Cylinder_320_250_360",
-  TaskEffects = r0_0.RT_931,
+  TaskEffects = r0_0.RT_932,
   TaskId = 850321,
 }
 r4_0[850322] = {
   TargetFilter = "BossShijingzhe_Cylinder_1000_200_360",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_984,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_928,
+    [2] = r0_0.RT_985,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_929,
   },
   TaskId = 850322,
 }
@@ -23190,7 +23194,7 @@ r6_0.TaskEffects = {
     CreatureId = 850303,
     Function = "CreateSkillCreature",
   },
-  [2] = r0_0.RT_995,
+  [2] = r0_0.RT_996,
 }
 r6_0.TaskId = 850323
 r4_0[850323] = r6_0
@@ -23204,7 +23208,7 @@ r6_0.TaskEffects = {
     Function = "CutToughness",
     Value = 100,
   },
-  [3] = r0_0.RT_927,
+  [3] = r0_0.RT_928,
 }
 r6_0.TaskId = 850324
 r4_0[850324] = r6_0
@@ -23224,7 +23228,7 @@ r4_0[850325] = r6_0
 r4_0[850326] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Skill05_RushPillar",
-  TaskEffects = r0_0.RT_952,
+  TaskEffects = r0_0.RT_953,
   TaskId = 850326,
 }
 r6_0 = {
@@ -23282,19 +23286,19 @@ r4_0[850330] = r6_0
 r4_0[850331] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Cylinder_skill12_L",
-  TaskEffects = r0_0.RT_977,
+  TaskEffects = r0_0.RT_978,
   TaskId = 850331,
 }
 r4_0[850332] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Cylinder_skill12_R",
-  TaskEffects = r0_0.RT_977,
+  TaskEffects = r0_0.RT_978,
   TaskId = 850332,
 }
 r4_0[850333] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossShijingzhe_Skill03_Cylinder_1000_200_360",
-  TaskEffects = r0_0.RT_936,
+  TaskEffects = r0_0.RT_937,
   TaskId = 850333,
 }
 r4_0[850334] = {
@@ -23302,9 +23306,9 @@ r4_0[850334] = {
   TargetFilter = "BossShijingzhe_Cylinder_600_350_360",
   TaskEffects = {
     [1] = r0_0.RT_3,
-    [2] = r0_0.RT_934,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_928,
+    [2] = r0_0.RT_935,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_929,
   },
   TaskId = 850334,
 }
@@ -23313,9 +23317,9 @@ r4_0[850335] = {
   TargetFilter = "BossShijingzhe_Skill07_Cylinder01",
   TaskEffects = {
     [1] = r0_0.RT_3,
-    [2] = r0_0.RT_926,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_928,
+    [2] = r0_0.RT_927,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_929,
   },
   TaskId = 850335,
 }
@@ -23352,7 +23356,7 @@ r6_0.TaskId = 850336
 r4_0[r5_0] = r6_0
 r4_0[850337] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_947,
+  TaskEffects = r0_0.RT_948,
   TaskId = 850337,
 }
 r4_0[850338] = {
@@ -23360,9 +23364,9 @@ r4_0[850338] = {
   TargetFilter = "BossShijingzhe_Skill07_Cylinder02",
   TaskEffects = {
     [1] = r0_0.RT_22,
-    [2] = r0_0.RT_926,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_928,
+    [2] = r0_0.RT_927,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_929,
   },
   TaskId = 850338,
 }
@@ -23370,10 +23374,10 @@ r4_0[850339] = {
   TargetFilter = "BossShijingzhe_Target",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_930,
-    [3] = r0_0.RT_985,
-    [4] = r0_0.RT_927,
-    [5] = r0_0.RT_935,
+    [2] = r0_0.RT_931,
+    [3] = r0_0.RT_986,
+    [4] = r0_0.RT_928,
+    [5] = r0_0.RT_936,
   },
   TaskId = 850339,
 }
@@ -23382,9 +23386,9 @@ r4_0[850340] = {
   TargetFilter = "BossShijingzhe_Skill07_Cylinder03",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_934,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_928,
+    [2] = r0_0.RT_935,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_929,
   },
   TaskId = 850340,
 }
@@ -23397,7 +23401,7 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 0.334,
   },
-  [2] = r0_0.RT_927,
+  [2] = r0_0.RT_928,
 }
 r6_0.TaskId = 850341
 r4_0[850341] = r6_0
@@ -23405,14 +23409,14 @@ r6_0 = {
   TargetFilter = "Mon_Cylinder_150_400_360",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_995,
+  [1] = r0_0.RT_996,
   [2] = {
     FXId = 850311,
     Function = "PlayFX",
     NormalToHit = true,
     Overlap = true,
   },
-  [3] = r0_0.RT_889,
+  [3] = r0_0.RT_890,
   [4] = {
     CauseHit = "LightHit_60",
     Function = "CutToughness",
@@ -23422,7 +23426,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 850342
 r4_0[850342] = r6_0
 r4_0[850343] = {
-  NotifyName = r0_0.RT_950,
+  NotifyName = r0_0.RT_951,
   TargetFilter = "BossShijingzhe_Skill03_Cylinder_1000_200_360",
   TaskEffects = {
     [1] = r0_0.RT_496,
@@ -23432,19 +23436,19 @@ r4_0[850343] = {
 r4_0[850344] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Skill11_Donut01",
-  TaskEffects = r0_0.RT_996,
+  TaskEffects = r0_0.RT_997,
   TaskId = 850344,
 }
 r4_0[850345] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossShijingzhe_Skill11_Donut02",
-  TaskEffects = r0_0.RT_996,
+  TaskEffects = r0_0.RT_997,
   TaskId = 850345,
 }
 r4_0[850346] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossShijingzhe_Skill11_Donut03",
-  TaskEffects = r0_0.RT_996,
+  TaskEffects = r0_0.RT_997,
   TaskId = 850346,
 }
 r6_0 = {
@@ -23488,7 +23492,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = {
-    AttrRates = r0_0.RT_997,
+    AttrRates = r0_0.RT_998,
     Function = "CreateUnit",
     MaxSummonCount = 1,
     SingleSummonCount = 1,
@@ -23496,7 +23500,7 @@ r6_0.TaskEffects = {
     UnitType = "MechanismSummon",
   },
   [2] = {
-    AttrRates = r0_0.RT_998,
+    AttrRates = r0_0.RT_999,
     Function = "CreateUnit",
     MaxSummonCount = 1,
     SingleSummonCount = 1,
@@ -23504,7 +23508,7 @@ r6_0.TaskEffects = {
     UnitType = "MechanismSummon",
   },
   [3] = {
-    AttrRates = r0_0.RT_997,
+    AttrRates = r0_0.RT_998,
     Function = "CreateUnit",
     MaxSummonCount = 1,
     SingleSummonCount = 1,
@@ -23512,7 +23516,7 @@ r6_0.TaskEffects = {
     UnitType = "MechanismSummon",
   },
   [4] = {
-    AttrRates = r0_0.RT_998,
+    AttrRates = r0_0.RT_999,
     Function = "CreateUnit",
     MaxSummonCount = 1,
     SingleSummonCount = 1,
@@ -23525,19 +23529,19 @@ r4_0[850350] = r6_0
 r4_0[850351] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Skill11_Donut01_Pillar",
-  TaskEffects = r0_0.RT_952,
+  TaskEffects = r0_0.RT_953,
   TaskId = 850351,
 }
 r4_0[850352] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossShijingzhe_Skill11_Donut02_Pillar",
-  TaskEffects = r0_0.RT_952,
+  TaskEffects = r0_0.RT_953,
   TaskId = 850352,
 }
 r4_0[850353] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossShijingzhe_Skill11_Donut03_Pillar",
-  TaskEffects = r0_0.RT_952,
+  TaskEffects = r0_0.RT_953,
   TaskId = 850353,
 }
 r6_0 = {
@@ -23605,12 +23609,12 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 850402,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_999,
+    Location = r0_0.RT_1000,
   },
   [2] = {
     CreatureId = 850402,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_980,
+    Location = r0_0.RT_981,
   },
   [3] = {
     CreatureId = 850402,
@@ -23619,12 +23623,12 @@ r6_0.TaskEffects = {
   [4] = {
     CreatureId = 850402,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_804,
+    Location = r0_0.RT_805,
   },
   [5] = {
     CreatureId = 850402,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1000,
+    Location = r0_0.RT_1001,
   },
 }
 r6_0.TaskId = 850405
@@ -23646,9 +23650,9 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1002,
+  [1] = r0_0.RT_1003,
   [2] = {
-    AttrRates = r0_0.RT_1001,
+    AttrRates = r0_0.RT_1002,
     FormationId = 850402,
     Function = "CreateUnit",
     LifeTime = 9999,
@@ -23657,8 +23661,8 @@ r6_0.TaskEffects = {
     UnitId = 8504004,
     UnitType = "Monster",
   },
-  [3] = r0_0.RT_1003,
-  [4] = r0_0.RT_1004,
+  [3] = r0_0.RT_1004,
+  [4] = r0_0.RT_1005,
 }
 r6_0.TaskId = 850407
 r4_0[850407] = r6_0
@@ -23689,7 +23693,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 850408
 r4_0[850408] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_667,
+  NotifyName = r0_0.RT_668,
   TargetFilter = "Mon_Cylinder_300_200_180",
 }
 r6_0.TaskEffects = {
@@ -23698,9 +23702,9 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 2.8,
   },
-  [2] = r0_0.RT_842,
-  [3] = r0_0.RT_1005,
-  [4] = r0_0.RT_1006,
+  [2] = r0_0.RT_843,
+  [3] = r0_0.RT_1006,
+  [4] = r0_0.RT_1007,
 }
 r6_0.TaskId = 850409
 r4_0[850409] = r6_0
@@ -23714,9 +23718,9 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 3.2,
   },
-  [2] = r0_0.RT_754,
-  [3] = r0_0.RT_1005,
-  [4] = r0_0.RT_1006,
+  [2] = r0_0.RT_755,
+  [3] = r0_0.RT_1006,
+  [4] = r0_0.RT_1007,
 }
 r6_0.TaskId = 850410
 r4_0[850410] = r6_0
@@ -23747,9 +23751,9 @@ r4_0[850411] = r6_0
 r4_0[850412] = {
   TargetFilter = "Mon_Cylinder_300_200_360",
   TaskEffects = {
-    [1] = r0_0.RT_1007,
-    [2] = r0_0.RT_1005,
-    [3] = r0_0.RT_1006,
+    [1] = r0_0.RT_1008,
+    [2] = r0_0.RT_1006,
+    [3] = r0_0.RT_1007,
   },
   TaskId = 850412,
 }
@@ -23763,9 +23767,9 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 4.8,
   },
-  [2] = r0_0.RT_1005,
-  [3] = r0_0.RT_842,
-  [4] = r0_0.RT_1006,
+  [2] = r0_0.RT_1006,
+  [3] = r0_0.RT_843,
+  [4] = r0_0.RT_1007,
 }
 r6_0.TaskId = 850413
 r4_0[850413] = r6_0
@@ -23785,10 +23789,10 @@ r4_0[850414] = r6_0
 r4_0[850415] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_1008,
-    [2] = r0_0.RT_1005,
-    [3] = r0_0.RT_1009,
-    [4] = r0_0.RT_1010,
+    [1] = r0_0.RT_1009,
+    [2] = r0_0.RT_1006,
+    [3] = r0_0.RT_1010,
+    [4] = r0_0.RT_1011,
   },
   TaskId = 850415,
 }
@@ -23796,17 +23800,17 @@ r4_0[850416] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Sphere_200_360",
   TaskEffects = {
-    [1] = r0_0.RT_1011,
-    [2] = r0_0.RT_754,
-    [3] = r0_0.RT_1005,
-    [4] = r0_0.RT_1010,
+    [1] = r0_0.RT_1012,
+    [2] = r0_0.RT_755,
+    [3] = r0_0.RT_1006,
+    [4] = r0_0.RT_1011,
   },
   TaskId = 850416,
 }
 r4_0[850417] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_768,
+  TaskEffects = r0_0.RT_769,
   TaskId = 850417,
 }
 r4_0[850418] = {
@@ -23844,7 +23848,7 @@ r4_0[850421] = r6_0
 r4_0[850422] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_768,
+  TaskEffects = r0_0.RT_769,
   TaskId = 850422,
 }
 r6_0 = {
@@ -23862,13 +23866,13 @@ r4_0[850423] = r6_0
 r4_0[850424] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1013,
+  TaskEffects = r0_0.RT_1014,
   TaskId = 850424,
 }
 r4_0[850425] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1013,
+  TaskEffects = r0_0.RT_1014,
   TaskId = 850425,
 }
 r6_0 = {
@@ -23889,7 +23893,7 @@ r6_0 = {
   TargetFilter = "Mon_Sphere_400_360",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1008,
+  [1] = r0_0.RT_1009,
   [2] = {
     FXId = 530106,
     Function = "PlayFX",
@@ -23914,8 +23918,8 @@ r6_0 = {
   TargetFilter = "BossSaiqi02_Cylinder_750_2500_360",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_889,
-  [2] = r0_0.RT_754,
+  [1] = r0_0.RT_890,
+  [2] = r0_0.RT_755,
   [3] = {
     Function = "PlaySE",
     SEId = 850420,
@@ -23927,8 +23931,8 @@ r4_0[850430] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "Mon_Sphere_200_360",
   TaskEffects = {
-    [1] = r0_0.RT_1011,
-    [2] = r0_0.RT_759,
+    [1] = r0_0.RT_1012,
+    [2] = r0_0.RT_760,
   },
   TaskId = 850430,
 }
@@ -23936,7 +23940,7 @@ r4_0[850431] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "Mon_Sphere_300_360",
   TaskEffects = {
-    [1] = r0_0.RT_684,
+    [1] = r0_0.RT_685,
     [2] = r0_0.RT_39,
   },
   TaskId = 850431,
@@ -24049,7 +24053,7 @@ r6_0.TaskId = 850438
 r4_0[r5_0] = r6_0
 r4_0[850439] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1014,
+  TaskEffects = r0_0.RT_1015,
   TaskId = 850439,
 }
 r6_0 = {
@@ -24066,7 +24070,7 @@ r6_0.TaskId = 850440
 r4_0[850440] = r6_0
 r4_0[850441] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1014,
+  TaskEffects = r0_0.RT_1015,
   TaskId = 850441,
 }
 r4_0[850442] = {
@@ -24106,7 +24110,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = {
-    AttrRates = r0_0.RT_1001,
+    AttrRates = r0_0.RT_1002,
     FormationId = 850402,
     Function = "CreateUnit",
     LifeTime = 9999,
@@ -24116,7 +24120,7 @@ r6_0.TaskEffects = {
     UnitType = "Monster",
   },
   [2] = {
-    AttrRates = r0_0.RT_1001,
+    AttrRates = r0_0.RT_1002,
     FormationId = 850404,
     Function = "CreateUnit",
     LifeTime = 9999,
@@ -24125,8 +24129,8 @@ r6_0.TaskEffects = {
     UnitId = 8504004,
     UnitType = "Monster",
   },
-  [3] = r0_0.RT_1003,
-  [4] = r0_0.RT_1004,
+  [3] = r0_0.RT_1004,
+  [4] = r0_0.RT_1005,
 }
 r6_0.TaskId = 850445
 r4_0[850445] = r6_0
@@ -24135,9 +24139,9 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1002,
+  [1] = r0_0.RT_1003,
   [2] = {
-    AttrRates = r0_0.RT_1001,
+    AttrRates = r0_0.RT_1002,
     FormationId = 850403,
     Function = "CreateUnit",
     LifeTime = 9999,
@@ -24146,8 +24150,8 @@ r6_0.TaskEffects = {
     UnitId = 8504004,
     UnitType = "Monster",
   },
-  [3] = r0_0.RT_1003,
-  [4] = r0_0.RT_1004,
+  [3] = r0_0.RT_1004,
+  [4] = r0_0.RT_1005,
 }
 r6_0.TaskId = 850446
 r4_0[850446] = r6_0
@@ -24155,7 +24159,7 @@ r4_0[850447] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_1015,
+    [1] = r0_0.RT_1016,
   },
   TaskId = 850447,
 }
@@ -24166,7 +24170,7 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 850406,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1016,
+    Location = r0_0.RT_1017,
     Rotation = r0_0.RT_323,
   },
 }
@@ -24179,7 +24183,7 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 850406,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1017,
+    Location = r0_0.RT_1018,
   },
 }
 r6_0.TaskId = 850449
@@ -24191,7 +24195,7 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 850406,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1017,
+    Location = r0_0.RT_1018,
     Rotation = r0_0.RT_126,
   },
 }
@@ -24216,7 +24220,7 @@ r8_0[1] = {
 r8_0[2] = {
   CreatureId = 850406,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_1016,
+  Location = r0_0.RT_1017,
   Rotation = r0_0.RT_126,
 }
 r6_0[r7_0] = r8_0
@@ -24229,7 +24233,7 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 850406,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1017,
+    Location = r0_0.RT_1018,
     Rotation = r0_0.RT_324,
   },
 }
@@ -24237,7 +24241,7 @@ r6_0.TaskId = 850452
 r4_0[850452] = r6_0
 r5_0 = 850453
 r6_0 = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
 }
 r7_0 = "TaskEffects"
 r8_0 = {}
@@ -24265,13 +24269,13 @@ r6_0[r7_0] = r8_0
 r6_0.TaskId = 850453
 r4_0[r5_0] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_825,
+  NotifyName = r0_0.RT_826,
 }
 r6_0.TaskEffects = {
   [1] = {
     CreatureId = 850406,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1017,
+    Location = r0_0.RT_1018,
     Rotation = r0_0.RT_323,
   },
 }
@@ -24325,12 +24329,12 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 850408,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_999,
+    Location = r0_0.RT_1000,
   },
   [2] = {
     CreatureId = 850408,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_980,
+    Location = r0_0.RT_981,
   },
   [3] = {
     CreatureId = 850408,
@@ -24339,12 +24343,12 @@ r6_0.TaskEffects = {
   [4] = {
     CreatureId = 850408,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_804,
+    Location = r0_0.RT_805,
   },
   [5] = {
     CreatureId = 850408,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1000,
+    Location = r0_0.RT_1001,
   },
 }
 r6_0.TaskId = 850457
@@ -24353,7 +24357,7 @@ r4_0[850458] = {
   TargetFilter = "Mon_Cylinder_300_200_360",
   TaskEffects = {
     [1] = r0_0.RT_3,
-    [2] = r0_0.RT_1009,
+    [2] = r0_0.RT_1010,
   },
   TaskId = 850458,
 }
@@ -24437,21 +24441,21 @@ r4_0[r5_0] = r6_0
 r4_0[850466] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_1018,
-    [2] = r0_0.RT_885,
+    [1] = r0_0.RT_1019,
+    [2] = r0_0.RT_886,
   },
   TaskId = 850466,
 }
 r4_0[850501] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossLianhuo_Skill01_Cylinder_01",
-  TaskEffects = r0_0.RT_1020,
+  TaskEffects = r0_0.RT_1021,
   TaskId = 850501,
 }
 r4_0[850502] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossLianhuo_Skill01_Cylinder_02",
-  TaskEffects = r0_0.RT_1021,
+  TaskEffects = r0_0.RT_1022,
   TaskId = 850502,
 }
 r4_0[850503] = {
@@ -24460,38 +24464,38 @@ r4_0[850503] = {
   TaskEffects = {
     [1] = r0_0.RT_16,
     [2] = r0_0.RT_550,
-    [3] = r0_0.RT_1019,
+    [3] = r0_0.RT_1020,
   },
   TaskId = 850503,
 }
 r4_0[850504] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossLianhuo_Skill02_Cylinder_01",
-  TaskEffects = r0_0.RT_1022,
+  TaskEffects = r0_0.RT_1023,
   TaskId = 850504,
 }
 r4_0[850505] = {
-  NotifyName = r0_0.RT_1023,
+  NotifyName = r0_0.RT_1024,
   TargetFilter = "BossLianhuo_Skill02_Cylinder_02",
-  TaskEffects = r0_0.RT_1024,
+  TaskEffects = r0_0.RT_1025,
   TaskId = 850505,
 }
 r4_0[850506] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossLianhuo_Skill02_Cylinder_03",
-  TaskEffects = r0_0.RT_1025,
+  TaskEffects = r0_0.RT_1026,
   TaskId = 850506,
 }
 r4_0[850507] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "BossLianhuo_Skill02_Cylinder_03",
-  TaskEffects = r0_0.RT_1026,
+  TaskEffects = r0_0.RT_1027,
   TaskId = 850507,
 }
 r4_0[850508] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossLianhuo_Skill03_Cylinder",
-  TaskEffects = r0_0.RT_1028,
+  TaskEffects = r0_0.RT_1029,
   TaskId = 850508,
 }
 r6_0 = {
@@ -24529,27 +24533,27 @@ r6_0.TaskEffects = {
     Function = "PlayFX",
     Overlap = true,
   },
-  [3] = r0_0.RT_1027,
+  [3] = r0_0.RT_1028,
 }
 r6_0.TaskId = 850511
 r4_0[850511] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_1023,
+  NotifyName = r0_0.RT_1024,
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1034,
+  [1] = r0_0.RT_1035,
   [2] = {
     CreatureId = 850502,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1033,
+    Location = r0_0.RT_1034,
     UseRelativeOffset = true,
     UseSaveLoc = "First1",
   },
   [3] = {
     CreatureId = 850502,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1033,
+    Location = r0_0.RT_1034,
     UseRelativeOffset = true,
     UseSaveLoc = "First2",
   },
@@ -24559,18 +24563,18 @@ r4_0[850512] = r6_0
 r4_0[850513] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1038,
+  TaskEffects = r0_0.RT_1039,
   TaskId = 850513,
 }
 r4_0[850514] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1043,
+  TaskEffects = r0_0.RT_1044,
   TaskId = 850514,
 }
 r4_0[850515] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 850515,
 }
 r6_0 = {
@@ -24588,21 +24592,21 @@ r6_0.TaskId = 850516
 r4_0[850516] = r6_0
 r4_0[850517] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1035,
+  TaskEffects = r0_0.RT_1036,
   TaskId = 850517,
 }
 r4_0[850518] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossLianhuo_Skill06_Cylinder",
-  TaskEffects = r0_0.RT_1044,
+  TaskEffects = r0_0.RT_1045,
   TaskId = 850518,
 }
 r4_0[850519] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossLianhuo_Skill07_Select",
   TaskEffects = {
-    [1] = r0_0.RT_1091,
-    [2] = r0_0.RT_1027,
+    [1] = r0_0.RT_1092,
+    [2] = r0_0.RT_1028,
   },
   TaskId = 850519,
 }
@@ -24616,7 +24620,7 @@ r6_0.TaskEffects = {
     Function = "AddBuff",
     LastTime = 2.4,
   },
-  [2] = r0_0.RT_987,
+  [2] = r0_0.RT_988,
 }
 r6_0.TaskId = 850520
 r4_0[850520] = r6_0
@@ -24624,7 +24628,7 @@ r4_0[850521] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossLianhuo_Skill07_GetActor",
   TaskEffects = {
-    [1] = r0_0.RT_1091,
+    [1] = r0_0.RT_1092,
     [2] = r0_0.RT_496,
   },
   TaskId = 850521,
@@ -24639,7 +24643,7 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 2.2,
   },
-  [2] = r0_0.RT_681,
+  [2] = r0_0.RT_682,
 }
 r6_0.TaskId = 850522
 r4_0[850522] = r6_0
@@ -24665,29 +24669,29 @@ r6_0.TaskEffects = {
     Function = "ActiveStaticCreator",
     StaticCreatorId = 1660021,
   },
-  [2] = r0_0.RT_1015,
+  [2] = r0_0.RT_1016,
 }
 r6_0.TaskId = 850524
 r4_0[850524] = r6_0
 r4_0[850525] = {
-  NotifyName = r0_0.RT_1054,
+  NotifyName = r0_0.RT_1055,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1056,
+  TaskEffects = r0_0.RT_1057,
   TaskId = 850525,
 }
 r4_0[850526] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1058,
+  TaskEffects = r0_0.RT_1059,
   TaskId = 850526,
 }
 r4_0[850527] = {
-  NotifyName = r0_0.RT_1059,
+  NotifyName = r0_0.RT_1060,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1061,
+  TaskEffects = r0_0.RT_1062,
   TaskId = 850527,
 }
 r6_0 = {
-  NotifyName = r0_0.RT_1066,
+  NotifyName = r0_0.RT_1067,
   TargetFilter = "AlmostAllEnemy",
 }
 r6_0.TaskEffects = {
@@ -24695,7 +24699,7 @@ r6_0.TaskEffects = {
     Function = "InactiveStaticCreator",
     StaticCreatorId = 1660021,
   },
-  [2] = r0_0.RT_1068,
+  [2] = r0_0.RT_1069,
 }
 r6_0.TaskId = 850528
 r4_0[850528] = r6_0
@@ -24706,25 +24710,25 @@ r4_0[850529] = {
     "hit22"
   },
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 850529,
 }
 r4_0[850530] = {
-  NotifyName = r0_0.RT_1065,
+  NotifyName = r0_0.RT_1066,
   TargetFilter = "BossLianhuo_Skill08_Cylinder",
-  TaskEffects = r0_0.RT_1044,
+  TaskEffects = r0_0.RT_1045,
   TaskId = 850530,
 }
 r4_0[850531] = {
-  NotifyName = r0_0.RT_1062,
+  NotifyName = r0_0.RT_1063,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1064,
+  TaskEffects = r0_0.RT_1065,
   TaskId = 850531,
 }
 r4_0[850532] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_768,
+  TaskEffects = r0_0.RT_769,
   TaskId = 850532,
 }
 r6_0 = {
@@ -24735,7 +24739,7 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 850506,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "",
   },
 }
@@ -24745,8 +24749,8 @@ r6_0 = {
   TargetFilter = "BossLianhuo_Skill07_Select",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_986,
-  [2] = r0_0.RT_987,
+  [1] = r0_0.RT_987,
+  [2] = r0_0.RT_988,
   [3] = {
     BuffId = 850504,
     Function = "AddBuff",
@@ -24758,43 +24762,43 @@ r4_0[850534] = r6_0
 r4_0[850535] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossLianhuo_Skill07_GetActor",
-  TaskEffects = r0_0.RT_1053,
+  TaskEffects = r0_0.RT_1054,
   TaskId = 850535,
 }
 r4_0[850536] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossLianhuo_Skill07_GetActor",
-  TaskEffects = r0_0.RT_989,
+  TaskEffects = r0_0.RT_990,
   TaskId = 850536,
 }
 r4_0[850537] = {
   TargetFilter = "BossLianhuo_Skill08_Field",
   TaskEffects = {
-    [1] = r0_0.RT_817,
-    [2] = r0_0.RT_1027,
+    [1] = r0_0.RT_818,
+    [2] = r0_0.RT_1028,
   },
   TaskId = 850537,
 }
 r4_0[850538] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossLianhuo_Skill12_Rectangle",
-  TaskEffects = r0_0.RT_1085,
+  TaskEffects = r0_0.RT_1086,
   TaskId = 850538,
 }
 r4_0[850539] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossLianhuo_Skill02_Cylinder_01",
-  TaskEffects = r0_0.RT_1087,
+  TaskEffects = r0_0.RT_1088,
   TaskId = 850539,
 }
 r4_0[850540] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1084,
+  TaskEffects = r0_0.RT_1085,
   TaskId = 850540,
 }
 r4_0[850541] = {
   TargetFilter = "Mon_Sphere_200_360",
-  TaskEffects = r0_0.RT_1084,
+  TaskEffects = r0_0.RT_1085,
   TaskId = 850541,
 }
 r6_0 = {
@@ -24802,32 +24806,32 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1045,
+  [1] = r0_0.RT_1046,
   [2] = {
     CreatureId = 850508,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1033,
+    Location = r0_0.RT_1034,
     UseRelativeOffset = true,
     UseSaveLoc = "Fire1",
   },
   [3] = {
     CreatureId = 850508,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1033,
+    Location = r0_0.RT_1034,
     UseRelativeOffset = true,
     UseSaveLoc = "Fire2",
   },
   [4] = {
     CreatureId = 850508,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1033,
+    Location = r0_0.RT_1034,
     UseRelativeOffset = true,
     UseSaveLoc = "Fire3",
   },
   [5] = {
     CreatureId = 850508,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1033,
+    Location = r0_0.RT_1034,
     UseRelativeOffset = true,
     UseSaveLoc = "Fire4",
   },
@@ -24837,41 +24841,41 @@ r4_0[850542] = r6_0
 r4_0[850543] = {
   TargetFilter = "BossLianhuo_Skill06_Cylinder_02",
   TaskEffects = {
-    [1] = r0_0.RT_1018,
-    [2] = r0_0.RT_1027,
+    [1] = r0_0.RT_1019,
+    [2] = r0_0.RT_1028,
   },
   TaskId = 850543,
 }
 r4_0[850544] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1032,
+  TaskEffects = r0_0.RT_1033,
   TaskId = 850544,
 }
 r4_0[850545] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1040,
+  TaskEffects = r0_0.RT_1041,
   TaskId = 850545,
 }
 r4_0[850546] = {
-  NotifyName = r0_0.RT_1066,
+  NotifyName = r0_0.RT_1067,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1067,
+  TaskEffects = r0_0.RT_1068,
   TaskId = 850546,
 }
 r4_0[850547] = {
-  NotifyName = r0_0.RT_1073,
+  NotifyName = r0_0.RT_1074,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1077,
+  TaskEffects = r0_0.RT_1078,
   TaskId = 850547,
 }
 r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_817,
-  [2] = r0_0.RT_1019,
+  [1] = r0_0.RT_818,
+  [2] = r0_0.RT_1020,
   [3] = {
     FXId = 850510,
     Function = "PlayFX",
@@ -24884,19 +24888,19 @@ r4_0[850548] = r6_0
 r4_0[850549] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossLianhuo_Skill06_Cylinder",
-  TaskEffects = r0_0.RT_1051,
+  TaskEffects = r0_0.RT_1052,
   TaskId = 850549,
 }
 r4_0[850550] = {
-  NotifyName = r0_0.RT_1078,
+  NotifyName = r0_0.RT_1079,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1080,
+  TaskEffects = r0_0.RT_1081,
   TaskId = 850550,
 }
 r4_0[850551] = {
-  NotifyName = r0_0.RT_1088,
+  NotifyName = r0_0.RT_1089,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1090,
+  TaskEffects = r0_0.RT_1091,
   TaskId = 850551,
 }
 r4_0[850552] = {
@@ -24905,24 +24909,24 @@ r4_0[850552] = {
   },
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_1081,
-    [2] = r0_0.RT_1092,
+    [1] = r0_0.RT_1082,
+    [2] = r0_0.RT_1093,
   },
   TaskId = 850552,
 }
 r4_0[850553] = {
-  NotifyName = r0_0.RT_1082,
+  NotifyName = r0_0.RT_1083,
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_1083,
-    [2] = r0_0.RT_1093,
+    [1] = r0_0.RT_1084,
+    [2] = r0_0.RT_1094,
   },
   TaskId = 850553,
 }
 r4_0[850554] = {
-  NotifyName = r0_0.RT_1069,
+  NotifyName = r0_0.RT_1070,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1072,
+  TaskEffects = r0_0.RT_1073,
   TaskId = 850554,
 }
 r6_0 = {
@@ -24945,7 +24949,7 @@ r6_0 = {
 }
 r7_0 = "TaskEffects"
 r8_0 = {
-  [1] = r0_0.RT_1094,
+  [1] = r0_0.RT_1095,
 }
 r8_0[2] = {
   Function = "PlayFX",
@@ -24957,8 +24961,8 @@ r8_0[2] = {
   IsFaceToChar = true,
   WeaponFXGroupName = "Hit2",
 }
-r8_0[3] = r0_0.RT_700
-r8_0[4] = r0_0.RT_1095
+r8_0[3] = r0_0.RT_701
+r8_0[4] = r0_0.RT_1096
 r6_0[r7_0] = r8_0
 r6_0.TaskId = 850601
 r4_0[r5_0] = r6_0
@@ -24967,7 +24971,7 @@ r6_0 = {
   TargetFilter = "Mon_Cylinder_300_200_180",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1094,
+  [1] = r0_0.RT_1095,
   [2] = {
     Delay = 0.1,
     Function = "PlayFX",
@@ -24975,8 +24979,8 @@ r6_0.TaskEffects = {
     IsFaceToChar = true,
     WeaponFXGroupName = "Hit2",
   },
-  [3] = r0_0.RT_700,
-  [4] = r0_0.RT_1095,
+  [3] = r0_0.RT_701,
+  [4] = r0_0.RT_1096,
 }
 r6_0.TaskId = 850602
 r4_0[850602] = r6_0
@@ -24985,13 +24989,13 @@ r6_0 = {
   TargetFilter = "Mon_Cylinder_300_200_360",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1094,
+  [1] = r0_0.RT_1095,
   [2] = {
     FXId = 850601,
     Function = "PlayFX",
   },
-  [3] = r0_0.RT_700,
-  [4] = r0_0.RT_1095,
+  [3] = r0_0.RT_701,
+  [4] = r0_0.RT_1096,
 }
 r6_0.TaskId = 850603
 r4_0[850603] = r6_0
@@ -25002,7 +25006,7 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = {
     BaseAttr = "ATK",
-    DamageTag = r0_0.RT_829,
+    DamageTag = r0_0.RT_830,
     Function = "Damage",
     Rate = 1,
   },
@@ -25018,20 +25022,20 @@ r6_0.TaskEffects = {
     Function = "CutToughness",
     Value = 100,
   },
-  [4] = r0_0.RT_1095,
+  [4] = r0_0.RT_1096,
 }
 r6_0.TaskId = 850604
 r4_0[850604] = r6_0
 r4_0[850605] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_300_200_180",
-  TaskEffects = r0_0.RT_1098,
+  TaskEffects = r0_0.RT_1099,
   TaskId = 850605,
 }
 r4_0[850606] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Mon_Cylinder_300_200_360",
-  TaskEffects = r0_0.RT_1098,
+  TaskEffects = r0_0.RT_1099,
   TaskId = 850606,
 }
 r6_0 = {
@@ -25041,12 +25045,12 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = {
     BaseAttr = "ATK",
-    DamageTag = r0_0.RT_829,
+    DamageTag = r0_0.RT_830,
     Function = "Damage",
     Rate = 2,
   },
-  [2] = r0_0.RT_1097,
-  [3] = r0_0.RT_1095,
+  [2] = r0_0.RT_1098,
+  [3] = r0_0.RT_1096,
 }
 r6_0.TaskId = 850607
 r4_0[850607] = r6_0
@@ -25057,21 +25061,21 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = {
     BaseAttr = "ATK",
-    DamageTag = r0_0.RT_829,
+    DamageTag = r0_0.RT_830,
     Function = "Damage",
     Rate = 2.5,
   },
-  [2] = r0_0.RT_1097,
-  [3] = r0_0.RT_1095,
+  [2] = r0_0.RT_1098,
+  [3] = r0_0.RT_1096,
 }
 r6_0.TaskId = 850608
 r4_0[850608] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_1099,
+  NotifyName = r0_0.RT_1100,
   TargetFilter = "Mon_Cylinder_300_200_360",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1094,
+  [1] = r0_0.RT_1095,
   [2] = {
     Delay = 0.05,
     Function = "PlayFX",
@@ -25079,7 +25083,7 @@ r6_0.TaskEffects = {
     IsFaceToChar = true,
     WeaponFXGroupName = "Hit2",
   },
-  [3] = r0_0.RT_1095,
+  [3] = r0_0.RT_1096,
 }
 r6_0.TaskId = 850609
 r4_0[850609] = r6_0
@@ -25089,7 +25093,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_3,
-  [2] = r0_0.RT_1100,
+  [2] = r0_0.RT_1101,
   [3] = {
     Function = "PlaySE",
     SEId = 850912,
@@ -25102,8 +25106,8 @@ r6_0 = {
   TargetFilter = "BossTuosi_Skill01_Cylinder02",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1041,
-  [2] = r0_0.RT_1100,
+  [1] = r0_0.RT_1042,
+  [2] = r0_0.RT_1101,
   [3] = {
     Function = "PlaySE",
     SEId = 850913,
@@ -25159,12 +25163,12 @@ r6_0.TaskId = 850906
 r4_0[850906] = r6_0
 r4_0[850907] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1102,
+  TaskEffects = r0_0.RT_1103,
   TaskId = 850907,
 }
 r4_0[850908] = {
   TargetFilter = "BossTuosi_Skill04_Box",
-  TaskEffects = r0_0.RT_1102,
+  TaskEffects = r0_0.RT_1103,
   TaskId = 850908,
 }
 r6_0 = {
@@ -25182,16 +25186,16 @@ r6_0.TaskId = 850909
 r4_0[850909] = r6_0
 r4_0[850910] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1102,
+  TaskEffects = r0_0.RT_1103,
   TaskId = 850910,
 }
 r4_0[850911] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossTuosi_Skill06_Cylinder01",
   TaskEffects = {
-    [1] = r0_0.RT_774,
+    [1] = r0_0.RT_775,
     [2] = r0_0.RT_10,
-    [3] = r0_0.RT_1101,
+    [3] = r0_0.RT_1102,
   },
   TaskId = 850911,
 }
@@ -25200,32 +25204,32 @@ r6_0 = {
   TargetFilter = "BossTuosi_Skill06_Cylinder02",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_774,
+  [1] = r0_0.RT_775,
   [2] = {
     CauseHit = "HitFly_XY300Z1000",
     Function = "CutToughness",
   },
-  [3] = r0_0.RT_1101,
+  [3] = r0_0.RT_1102,
 }
 r6_0.TaskId = 850912
 r4_0[850912] = r6_0
 r4_0[850913] = {
   TargetFilter = "BossTuosi_Skill06_BoxRotate0",
   TaskEffects = {
-    [1] = r0_0.RT_1103,
+    [1] = r0_0.RT_1104,
     [2] = r0_0.RT_17,
-    [3] = r0_0.RT_1101,
+    [3] = r0_0.RT_1102,
   },
   TaskId = 850913,
 }
 r4_0[850914] = {
   TargetFilter = "BossTuosi_Skill06_BoxRotate+45",
-  TaskEffects = r0_0.RT_1105,
+  TaskEffects = r0_0.RT_1106,
   TaskId = 850914,
 }
 r4_0[850915] = {
   TargetFilter = "BossTuosi_Skill06_BoxRotate-45",
-  TaskEffects = r0_0.RT_1105,
+  TaskEffects = r0_0.RT_1106,
   TaskId = 850915,
 }
 r6_0 = {
@@ -25248,12 +25252,12 @@ r4_0[850917] = {
     [1] = r0_0.RT_33,
     [2] = r0_0.RT_10,
     [3] = r0_0.RT_506,
-    [4] = r0_0.RT_1101,
+    [4] = r0_0.RT_1102,
   },
   TaskId = 850917,
 }
 r4_0[850918] = {
-  TaskEffects = r0_0.RT_1107,
+  TaskEffects = r0_0.RT_1108,
   TaskId = 850918,
 }
 r6_0 = {
@@ -25306,8 +25310,8 @@ r4_0[850922] = {
   TaskEffects = {
     [1] = r0_0.RT_16,
     [2] = r0_0.RT_17,
-    [3] = r0_0.RT_1108,
-    [4] = r0_0.RT_1109,
+    [3] = r0_0.RT_1109,
+    [4] = r0_0.RT_1110,
   },
   TaskId = 850922,
 }
@@ -25315,9 +25319,9 @@ r6_0 = {
   TargetFilter = "BossTuosi_Skill08_AroundBurstCylinder",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1104,
+  [1] = r0_0.RT_1105,
   [2] = r0_0.RT_17,
-  [3] = r0_0.RT_1108,
+  [3] = r0_0.RT_1109,
   [4] = {
     Function = "PlaySE",
     SEId = 850917,
@@ -25342,9 +25346,9 @@ r4_0[850927] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_33,
-    [2] = r0_0.RT_1110,
+    [2] = r0_0.RT_1111,
     [3] = r0_0.RT_506,
-    [4] = r0_0.RT_1109,
+    [4] = r0_0.RT_1110,
   },
   TaskId = 850927,
 }
@@ -25371,7 +25375,7 @@ r4_0[850930] = {
   TaskEffects = {
     [1] = r0_0.RT_496,
     [2] = r0_0.RT_506,
-    [3] = r0_0.RT_1111,
+    [3] = r0_0.RT_1112,
   },
   TaskId = 850930,
 }
@@ -25398,7 +25402,7 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = {
     CreatureId = 850904,
-    Direction = r0_0.RT_949,
+    Direction = r0_0.RT_950,
     Function = "CreateSkillCreature",
     Location = r0_0.RT_193,
   },
@@ -25411,7 +25415,7 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = {
     CreatureId = 850905,
-    Direction = r0_0.RT_949,
+    Direction = r0_0.RT_950,
     Function = "CreateSkillCreature",
     Location = r0_0.RT_193,
   },
@@ -25424,7 +25428,7 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = {
     CreatureId = 850906,
-    Direction = r0_0.RT_949,
+    Direction = r0_0.RT_950,
     Function = "CreateSkillCreature",
     Location = r0_0.RT_193,
   },
@@ -25437,7 +25441,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_16,
-  [2] = r0_0.RT_1100,
+  [2] = r0_0.RT_1101,
   [3] = {
     Function = "PlaySE",
     SEId = 850915,
@@ -25462,12 +25466,12 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_16,
-  [2] = r0_0.RT_1110,
+  [2] = r0_0.RT_1111,
   [3] = {
     FXId = 850904,
     Function = "PlayFX",
   },
-  [4] = r0_0.RT_1109,
+  [4] = r0_0.RT_1110,
 }
 r6_0.TaskId = 850940
 r4_0[850940] = r6_0
@@ -25475,23 +25479,23 @@ r4_0[850941] = {
   NotifyName = r0_0.RT_523,
   TargetFilter = "BossTuosi_Skill07_Hit",
   TaskEffects = {
-    [1] = r0_0.RT_1041,
-    [2] = r0_0.RT_1100,
-    [3] = r0_0.RT_1101,
+    [1] = r0_0.RT_1042,
+    [2] = r0_0.RT_1101,
+    [3] = r0_0.RT_1102,
   },
   TaskId = 850941,
 }
 r4_0[850942] = {
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_1092,
+    [1] = r0_0.RT_1093,
   },
   TaskId = 850942,
 }
 r4_0[850943] = {
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_1093,
+    [1] = r0_0.RT_1094,
   },
   TaskId = 850943,
 }
@@ -25499,14 +25503,14 @@ r4_0[850944] = {
   NotifyName = r0_0.RT_505,
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_1112,
+    [1] = r0_0.RT_1113,
   },
   TaskId = 850944,
 }
 r4_0[850945] = {
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_1113,
+    [1] = r0_0.RT_1114,
   },
   TaskId = 850945,
 }
@@ -25592,25 +25596,25 @@ r4_0[850953] = {
   TaskEffects = {
     [1] = r0_0.RT_14,
     [2] = r0_0.RT_17,
-    [3] = r0_0.RT_1101,
+    [3] = r0_0.RT_1102,
   },
   TaskId = 850953,
 }
 r4_0[850954] = {
   TargetFilter = "BossTuosi_Skill05_Box02",
   TaskEffects = {
-    [1] = r0_0.RT_1007,
+    [1] = r0_0.RT_1008,
     [2] = r0_0.RT_17,
-    [3] = r0_0.RT_1101,
+    [3] = r0_0.RT_1102,
   },
   TaskId = 850954,
 }
 r4_0[850955] = {
   TargetFilter = "BossTuosi_Skill05_Box03",
   TaskEffects = {
-    [1] = r0_0.RT_774,
+    [1] = r0_0.RT_775,
     [2] = r0_0.RT_17,
-    [3] = r0_0.RT_1101,
+    [3] = r0_0.RT_1102,
   },
   TaskId = 850955,
 }
@@ -25650,10 +25654,10 @@ r4_0[850958] = r6_0
 r4_0[850959] = {
   TargetFilter = "Mon_Sphere_100_360",
   TaskEffects = {
-    [1] = r0_0.RT_889,
+    [1] = r0_0.RT_890,
     [2] = r0_0.RT_10,
-    [3] = r0_0.RT_661,
-    [4] = r0_0.RT_1111,
+    [3] = r0_0.RT_662,
+    [4] = r0_0.RT_1112,
   },
   TaskId = 850959,
 }
@@ -25697,7 +25701,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_16,
-  [2] = r0_0.RT_1100,
+  [2] = r0_0.RT_1101,
   [3] = {
     Function = "PlaySE",
     SEId = 851002,
@@ -25710,8 +25714,8 @@ r4_0[851003] = {
   TargetFilter = "BossHeilong_Skill02_Cylinder_Right",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_1100,
-    [3] = r0_0.RT_1114,
+    [2] = r0_0.RT_1101,
+    [3] = r0_0.RT_1115,
   },
   TaskId = 851003,
 }
@@ -25719,7 +25723,7 @@ r4_0[851004] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_1114,
+    [2] = r0_0.RT_1115,
   },
   TaskId = 851004,
 }
@@ -25753,9 +25757,9 @@ r4_0[851007] = {
   TargetFilter = "BossHeilong_Skill04_Cylinder_In",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_1115,
-    [3] = r0_0.RT_621,
-    [4] = r0_0.RT_1116,
+    [2] = r0_0.RT_1116,
+    [3] = r0_0.RT_622,
+    [4] = r0_0.RT_1117,
   },
   TaskId = 851007,
 }
@@ -25763,20 +25767,20 @@ r4_0[851008] = {
   TargetFilter = "BossHeilong_Skill04_Cylinder_Out",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_1115,
-    [3] = r0_0.RT_685,
-    [4] = r0_0.RT_1116,
+    [2] = r0_0.RT_1116,
+    [3] = r0_0.RT_686,
+    [4] = r0_0.RT_1117,
   },
   TaskId = 851008,
 }
 r4_0[851009] = {
   TargetFilter = "BossHeilong_Skill04_Cylinder_In",
-  TaskEffects = r0_0.RT_1117,
+  TaskEffects = r0_0.RT_1118,
   TaskId = 851009,
 }
 r4_0[851010] = {
   TargetFilter = "BossHeilong_Skill04_Cylinder_Out",
-  TaskEffects = r0_0.RT_1117,
+  TaskEffects = r0_0.RT_1118,
   TaskId = 851010,
 }
 r6_0 = {
@@ -25785,7 +25789,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = {
-    AttrRates = r0_0.RT_1118,
+    AttrRates = r0_0.RT_1119,
     Function = "CreateUnit",
     LifeTime = 30,
     MaxSummonCount = 3,
@@ -25795,7 +25799,7 @@ r6_0.TaskEffects = {
     UseSaveLoc = "FireBall1",
   },
   [2] = {
-    AttrRates = r0_0.RT_1118,
+    AttrRates = r0_0.RT_1119,
     Function = "CreateUnit",
     LifeTime = 30,
     MaxSummonCount = 3,
@@ -25810,7 +25814,7 @@ r4_0[851011] = r6_0
 r4_0[851012] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossHeilong_Skill06_Cylinder",
-  TaskEffects = r0_0.RT_1121,
+  TaskEffects = r0_0.RT_1122,
   TaskId = 851012,
 }
 r6_0 = {
@@ -25818,12 +25822,12 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_16,
-  [2] = r0_0.RT_1100,
+  [2] = r0_0.RT_1101,
   [3] = {
     FXId = 851006,
     Function = "PlayFX",
   },
-  [4] = r0_0.RT_1119,
+  [4] = r0_0.RT_1120,
 }
 r6_0.TaskId = 851013
 r4_0[851013] = r6_0
@@ -25844,7 +25848,7 @@ r4_0[851015] = {
   TargetFilter = "BTTarget",
   TaskEffects = {
     [1] = r0_0.RT_19,
-    [2] = r0_0.RT_888,
+    [2] = r0_0.RT_889,
   },
   TaskId = 851015,
 }
@@ -25856,7 +25860,7 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 851004,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_762,
+    Location = r0_0.RT_763,
     UseSaveLoc = "HeilongStrom01",
   },
 }
@@ -25896,8 +25900,8 @@ r4_0[851020] = {
   TargetFilter = "Mon_Sphere_400_360",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_1100,
-    [3] = r0_0.RT_1122,
+    [2] = r0_0.RT_1101,
+    [3] = r0_0.RT_1123,
   },
   TaskId = 851020,
 }
@@ -25929,16 +25933,16 @@ r4_0[851022] = r6_0
 r4_0[851023] = {
   TargetFilter = "Mon_Sphere_600_360",
   TaskEffects = {
-    [1] = r0_0.RT_577,
-    [2] = r0_0.RT_1100,
-    [3] = r0_0.RT_1122,
+    [1] = r0_0.RT_578,
+    [2] = r0_0.RT_1101,
+    [3] = r0_0.RT_1123,
   },
   TaskId = 851023,
 }
 r4_0[851024] = {
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_676,
+    [1] = r0_0.RT_677,
   },
   TaskId = 851024,
 }
@@ -25952,7 +25956,7 @@ r6_0.TaskEffects = {
     Function = "AddBuff",
     LastTime = 18,
   },
-  [2] = r0_0.RT_1123,
+  [2] = r0_0.RT_1124,
 }
 r6_0.TaskId = 851025
 r4_0[851025] = r6_0
@@ -25960,14 +25964,14 @@ r4_0[851026] = {
   TargetFilter = "BossHeilong_Skill08_Cylinder",
   TaskEffects = {
     [1] = r0_0.RT_3,
-    [2] = r0_0.RT_1124,
+    [2] = r0_0.RT_1125,
   },
   TaskId = 851026,
 }
 r4_0[851027] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1126,
+  TaskEffects = r0_0.RT_1127,
   TaskId = 851027,
 }
 r6_0 = {
@@ -26001,7 +26005,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = {
-    AttrRates = r0_0.RT_1118,
+    AttrRates = r0_0.RT_1119,
     Function = "CreateUnit",
     LifeTime = 30,
     MaxSummonCount = 3,
@@ -26011,7 +26015,7 @@ r6_0.TaskEffects = {
     UseSaveLoc = "IceBall1",
   },
   [2] = {
-    AttrRates = r0_0.RT_1118,
+    AttrRates = r0_0.RT_1119,
     Function = "CreateUnit",
     LifeTime = 30,
     MaxSummonCount = 3,
@@ -26021,7 +26025,7 @@ r6_0.TaskEffects = {
     UseSaveLoc = "IceBall2",
   },
   [3] = {
-    AttrRates = r0_0.RT_1118,
+    AttrRates = r0_0.RT_1119,
     Function = "CreateUnit",
     LifeTime = 30,
     MaxSummonCount = 3,
@@ -26065,7 +26069,7 @@ r4_0[851032] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_3,
-    [2] = r0_0.RT_1127,
+    [2] = r0_0.RT_1128,
   },
   TaskId = 851032,
 }
@@ -26144,7 +26148,7 @@ r6_0.TaskEffects = {
     Function = "AddBuff",
     LastTime = 13,
   },
-  [2] = r0_0.RT_1112,
+  [2] = r0_0.RT_1113,
 }
 r6_0.TaskId = 851038
 r4_0[851038] = r6_0
@@ -26179,21 +26183,21 @@ r4_0[851039] = r6_0
 r4_0[851040] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_1127,
+    [1] = r0_0.RT_1128,
   },
   TaskId = 851040,
 }
 r4_0[851041] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossHeilong_Skill06_Cylinder",
-  TaskEffects = r0_0.RT_1128,
+  TaskEffects = r0_0.RT_1129,
   TaskId = 851041,
 }
 r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_659,
+  [1] = r0_0.RT_660,
   [2] = r0_0.RT_10,
   [3] = {
     Function = "PlaySE",
@@ -26205,46 +26209,46 @@ r4_0[851042] = r6_0
 r4_0[851043] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_659,
+    [1] = r0_0.RT_660,
     [2] = r0_0.RT_10,
-    [3] = r0_0.RT_1124,
+    [3] = r0_0.RT_1125,
   },
   TaskId = 851043,
 }
 r4_0[851044] = {
   NotifyName = r0_0.RT_505,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1130,
+  TaskEffects = r0_0.RT_1131,
   TaskId = 851044,
 }
 r4_0[851045] = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1132,
+  TaskEffects = r0_0.RT_1133,
   TaskId = 851045,
 }
 r4_0[851046] = {
-  NotifyName = r0_0.RT_825,
+  NotifyName = r0_0.RT_826,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1134,
+  TaskEffects = r0_0.RT_1135,
   TaskId = 851046,
 }
 r4_0[851047] = {
-  NotifyName = r0_0.RT_1135,
+  NotifyName = r0_0.RT_1136,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1137,
+  TaskEffects = r0_0.RT_1138,
   TaskId = 851047,
 }
 r4_0[851048] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossHeilong02_Skill06_Cylinder",
-  TaskEffects = r0_0.RT_1121,
+  TaskEffects = r0_0.RT_1122,
   TaskId = 851048,
 }
 r4_0[851049] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossHeilong02_Skill06_Cylinder",
-  TaskEffects = r0_0.RT_1128,
+  TaskEffects = r0_0.RT_1129,
   TaskId = 851049,
 }
 r6_0 = {
@@ -26262,51 +26266,51 @@ r4_0[851101] = r6_0
 r4_0[851102] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossHeilong_Skill02_Cylinder_Left",
-  TaskEffects = r0_0.RT_1139,
+  TaskEffects = r0_0.RT_1140,
   TaskId = 851102,
 }
 r4_0[851103] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossHeilong_Skill02_Cylinder_Right",
-  TaskEffects = r0_0.RT_1139,
+  TaskEffects = r0_0.RT_1140,
   TaskId = 851103,
 }
 r4_0[851104] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_1138,
+    [2] = r0_0.RT_1139,
   },
   TaskId = 851104,
 }
 r4_0[851105] = {
   TargetFilter = "BossBailong_Skill04_Rectangle_Left",
-  TaskEffects = r0_0.RT_1139,
+  TaskEffects = r0_0.RT_1140,
   TaskId = 851105,
 }
 r4_0[851106] = {
   TargetFilter = "BossBailong_Skill04_Rectangle_Middle",
-  TaskEffects = r0_0.RT_1139,
+  TaskEffects = r0_0.RT_1140,
   TaskId = 851106,
 }
 r4_0[851107] = {
   TargetFilter = "BossBailong_Skill04_Rectangle_Right",
-  TaskEffects = r0_0.RT_1139,
+  TaskEffects = r0_0.RT_1140,
   TaskId = 851107,
 }
 r4_0[851108] = {
   TargetFilter = "BossBailong_Skill04_Rectangle_Middle",
-  TaskEffects = r0_0.RT_1140,
+  TaskEffects = r0_0.RT_1141,
   TaskId = 851108,
 }
 r4_0[851109] = {
   TargetFilter = "BossBailong_Skill04_Rectangle_Left",
-  TaskEffects = r0_0.RT_1140,
+  TaskEffects = r0_0.RT_1141,
   TaskId = 851109,
 }
 r4_0[851110] = {
   TargetFilter = "BossBailong_Skill04_Rectangle_Right",
-  TaskEffects = r0_0.RT_1140,
+  TaskEffects = r0_0.RT_1141,
   TaskId = 851110,
 }
 r6_0 = {
@@ -26315,7 +26319,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = {
-    AttrRates = r0_0.RT_1141,
+    AttrRates = r0_0.RT_1142,
     Function = "CreateUnit",
     LifeTime = 30,
     MaxSummonCount = 3,
@@ -26325,7 +26329,7 @@ r6_0.TaskEffects = {
     UseSaveLoc = "IceBall1",
   },
   [2] = {
-    AttrRates = r0_0.RT_1141,
+    AttrRates = r0_0.RT_1142,
     Function = "CreateUnit",
     LifeTime = 30,
     MaxSummonCount = 3,
@@ -26335,7 +26339,7 @@ r6_0.TaskEffects = {
     UseSaveLoc = "IceBall2",
   },
   [3] = {
-    AttrRates = r0_0.RT_1141,
+    AttrRates = r0_0.RT_1142,
     Function = "CreateUnit",
     LifeTime = 30,
     MaxSummonCount = 3,
@@ -26360,15 +26364,15 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 851112
 r4_0[851112] = r6_0
 r4_0[851113] = {
-  NotifyName = r0_0.RT_737,
+  NotifyName = r0_0.RT_738,
   TargetFilter = "BossBailong_Skill08_Cylinder",
-  TaskEffects = r0_0.RT_989,
+  TaskEffects = r0_0.RT_990,
   TaskId = 851113,
 }
 r4_0[851114] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1126,
+  TaskEffects = r0_0.RT_1127,
   TaskId = 851114,
 }
 r6_0 = {
@@ -26400,7 +26404,7 @@ r4_0[851116] = r6_0
 r4_0[851117] = {
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_986,
+    [1] = r0_0.RT_987,
   },
   TaskId = 851117,
 }
@@ -26459,25 +26463,25 @@ r4_0[851121] = r6_0
 r4_0[851122] = {
   NotifyName = r0_0.RT_505,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1134,
+  TaskEffects = r0_0.RT_1135,
   TaskId = 851122,
 }
 r4_0[851123] = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1137,
+  TaskEffects = r0_0.RT_1138,
   TaskId = 851123,
 }
 r4_0[851124] = {
-  NotifyName = r0_0.RT_825,
+  NotifyName = r0_0.RT_826,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1130,
+  TaskEffects = r0_0.RT_1131,
   TaskId = 851124,
 }
 r4_0[851125] = {
-  NotifyName = r0_0.RT_1135,
+  NotifyName = r0_0.RT_1136,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1132,
+  TaskEffects = r0_0.RT_1133,
   TaskId = 851125,
 }
 r4_0[851201] = {
@@ -26486,7 +26490,7 @@ r4_0[851201] = {
   TaskEffects = {
     [1] = r0_0.RT_22,
     [2] = r0_0.RT_39,
-    [3] = r0_0.RT_1142,
+    [3] = r0_0.RT_1143,
   },
   TaskId = 851201,
 }
@@ -26511,8 +26515,8 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 2.4,
   },
-  [2] = r0_0.RT_1143,
-  [3] = r0_0.RT_1142,
+  [2] = r0_0.RT_1144,
+  [3] = r0_0.RT_1143,
 }
 r6_0.TaskId = 851203
 r4_0[851203] = r6_0
@@ -26530,21 +26534,21 @@ r4_0[851204] = r6_0
 r4_0[851206] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1145,
+  TaskEffects = r0_0.RT_1146,
   TaskId = 851206,
 }
 r6_0 = {
   TargetFilter = "BossLinen_Skill02_Scene",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_925,
+  [1] = r0_0.RT_926,
   [2] = {
     CauseHit = "BossLinen_Skill02",
     Function = "CutToughness",
     Value = 30,
   },
-  [3] = r0_0.RT_1146,
-  [4] = r0_0.RT_1147,
+  [3] = r0_0.RT_1147,
+  [4] = r0_0.RT_1148,
 }
 r6_0.TaskId = 851207
 r4_0[851207] = r6_0
@@ -26564,7 +26568,7 @@ r6_0.TaskEffects = {
     Function = "CutToughness",
     Value = 20,
   },
-  [4] = r0_0.RT_1147,
+  [4] = r0_0.RT_1148,
 }
 r6_0.TaskId = 851208
 r4_0[851208] = r6_0
@@ -26577,7 +26581,7 @@ r6_0.TaskEffects = {
     CreatureId = 851202,
     Function = "CreateSkillCreature",
   },
-  [2] = r0_0.RT_1148,
+  [2] = r0_0.RT_1149,
   [3] = {
     CreatureId = 851204,
     Delay = 0.333,
@@ -26641,7 +26645,7 @@ r6_0.TaskEffects = {
     Delay = 0.133,
     Function = "CreateSkillCreature",
   },
-  [7] = r0_0.RT_1148,
+  [7] = r0_0.RT_1149,
   [8] = {
     CreatureId = 851207,
     Delay = 0.2,
@@ -26653,10 +26657,10 @@ r4_0[851213] = r6_0
 r4_0[851214] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_889,
-    [2] = r0_0.RT_1149,
-    [3] = r0_0.RT_1150,
-    [4] = r0_0.RT_1147,
+    [1] = r0_0.RT_890,
+    [2] = r0_0.RT_1150,
+    [3] = r0_0.RT_1151,
+    [4] = r0_0.RT_1148,
   },
   TaskId = 851214,
 }
@@ -26664,14 +26668,14 @@ r6_0 = {
   TargetFilter = "BossLinen_Skill03_Scene1",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1151,
+  [1] = r0_0.RT_1152,
   [2] = r0_0.RT_496,
   [3] = {
     CauseHit = "LightHit_100",
     Function = "CutToughness",
     Value = 20,
   },
-  [4] = r0_0.RT_1147,
+  [4] = r0_0.RT_1148,
 }
 r6_0.TaskId = 851215
 r4_0[851215] = r6_0
@@ -26754,14 +26758,14 @@ r6_0.TaskEffects = {
     Function = "CutToughness",
     Value = 50,
   },
-  [3] = r0_0.RT_1147,
+  [3] = r0_0.RT_1148,
 }
 r6_0.TaskId = 851222
 r4_0[851222] = r6_0
 r4_0[851223] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 851223,
 }
 r6_0 = {
@@ -26783,7 +26787,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = {
-    AttrRates = r0_0.RT_1152,
+    AttrRates = r0_0.RT_1153,
     Function = "CreateUnit",
     LifeTime = 30,
     MaxSummonCount = 3,
@@ -26792,7 +26796,7 @@ r6_0.TaskEffects = {
     UnitType = "Monster",
   },
   [2] = {
-    AttrRates = r0_0.RT_1152,
+    AttrRates = r0_0.RT_1153,
     Delay = 0.02,
     Function = "CreateUnit",
     LifeTime = 30,
@@ -26818,12 +26822,12 @@ r6_0.TaskId = 851226
 r4_0[851226] = r6_0
 r4_0[851227] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1153,
+  TaskEffects = r0_0.RT_1154,
   TaskId = 851227,
 }
 r4_0[851228] = {
   TargetFilter = "BossLinen_Skill06_Scene2",
-  TaskEffects = r0_0.RT_1153,
+  TaskEffects = r0_0.RT_1154,
   TaskId = 851228,
 }
 r6_0 = {
@@ -26891,24 +26895,24 @@ r4_0[851232] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_33,
-    [2] = r0_0.RT_1154,
-    [3] = r0_0.RT_1147,
+    [2] = r0_0.RT_1155,
+    [3] = r0_0.RT_1148,
   },
   TaskId = 851232,
 }
 r4_0[851233] = {
   TargetFilter = "BossLinen_Skill07_Scene",
   TaskEffects = {
-    [1] = r0_0.RT_1008,
-    [2] = r0_0.RT_1154,
-    [3] = r0_0.RT_1147,
+    [1] = r0_0.RT_1009,
+    [2] = r0_0.RT_1155,
+    [3] = r0_0.RT_1148,
   },
   TaskId = 851233,
 }
 r4_0[851236] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1157,
+  TaskEffects = r0_0.RT_1158,
   TaskId = 851236,
 }
 r6_0 = {
@@ -26936,7 +26940,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = {
-    AttrRates = r0_0.RT_1158,
+    AttrRates = r0_0.RT_1159,
     Function = "CreateUnit",
     LifeTime = -1,
     MaxSummonCount = 3,
@@ -26946,7 +26950,7 @@ r6_0.TaskEffects = {
     UseSaveLoc = "Skill08_1",
   },
   [2] = {
-    AttrRates = r0_0.RT_1152,
+    AttrRates = r0_0.RT_1153,
     Function = "CreateUnit",
     LifeTime = -1,
     MaxSummonCount = 3,
@@ -26956,7 +26960,7 @@ r6_0.TaskEffects = {
     UseSaveLoc = "Skill08_2",
   },
   [3] = {
-    AttrRates = r0_0.RT_1159,
+    AttrRates = r0_0.RT_1160,
     Function = "CreateUnit",
     LifeTime = -1,
     MaxSummonCount = 2,
@@ -26966,7 +26970,7 @@ r6_0.TaskEffects = {
     UseSaveLoc = "Skill08_3",
   },
   [4] = {
-    AttrRates = r0_0.RT_1158,
+    AttrRates = r0_0.RT_1159,
     Function = "CreateUnit",
     LifeTime = -1,
     MaxSummonCount = 3,
@@ -26984,7 +26988,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = {
-    AttrRates = r0_0.RT_1152,
+    AttrRates = r0_0.RT_1153,
     Function = "CreateUnit",
     LifeTime = -1,
     MaxSummonCount = 3,
@@ -26994,7 +26998,7 @@ r6_0.TaskEffects = {
     UseSaveLoc = "Skill08_5",
   },
   [2] = {
-    AttrRates = r0_0.RT_1159,
+    AttrRates = r0_0.RT_1160,
     Function = "CreateUnit",
     LifeTime = -1,
     MaxSummonCount = 2,
@@ -27004,7 +27008,7 @@ r6_0.TaskEffects = {
     UseSaveLoc = "Skill08_6",
   },
   [3] = {
-    AttrRates = r0_0.RT_1158,
+    AttrRates = r0_0.RT_1159,
     Function = "CreateUnit",
     LifeTime = -1,
     MaxSummonCount = 3,
@@ -27014,7 +27018,7 @@ r6_0.TaskEffects = {
     UseSaveLoc = "Skill08_7",
   },
   [4] = {
-    AttrRates = r0_0.RT_1152,
+    AttrRates = r0_0.RT_1153,
     Function = "CreateUnit",
     LifeTime = -1,
     MaxSummonCount = 3,
@@ -27109,13 +27113,13 @@ r6_0 = {
   TargetFilter = "BossLinen_Skill03_Scene1",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_827,
+  [1] = r0_0.RT_828,
   [2] = {
     CauseHit = "BossLinen_Skill11",
     Function = "CutToughness",
     Value = 30,
   },
-  [3] = r0_0.RT_1147,
+  [3] = r0_0.RT_1148,
 }
 r6_0.TaskId = 851245
 r4_0[851245] = r6_0
@@ -27125,7 +27129,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = {
-    AttrRates = r0_0.RT_1158,
+    AttrRates = r0_0.RT_1159,
     Function = "CreateUnit",
     LifeTime = -1,
     MaxSummonCount = 5,
@@ -27134,7 +27138,7 @@ r6_0.TaskEffects = {
     UnitType = "Monster",
   },
   [2] = {
-    AttrRates = r0_0.RT_1158,
+    AttrRates = r0_0.RT_1159,
     Delay = 0.3,
     Function = "CreateUnit",
     LifeTime = -1,
@@ -27144,7 +27148,7 @@ r6_0.TaskEffects = {
     UnitType = "Monster",
   },
   [3] = {
-    AttrRates = r0_0.RT_1158,
+    AttrRates = r0_0.RT_1159,
     Delay = 0.6,
     Function = "CreateUnit",
     LifeTime = -1,
@@ -27195,11 +27199,11 @@ r4_0[851251] = r6_0
 r4_0[851252] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_827,
-    [2] = r0_0.RT_839,
-    [3] = r0_0.RT_976,
-    [4] = r0_0.RT_1147,
-    [5] = r0_0.RT_1149,
+    [1] = r0_0.RT_828,
+    [2] = r0_0.RT_840,
+    [3] = r0_0.RT_977,
+    [4] = r0_0.RT_1148,
+    [5] = r0_0.RT_1150,
   },
   TaskId = 851252,
 }
@@ -27213,16 +27217,16 @@ r6_0.TaskEffects = {
     NormalToHit = true,
     Overlap = true,
   },
-  [2] = r0_0.RT_889,
-  [3] = r0_0.RT_1147,
-  [4] = r0_0.RT_1149,
+  [2] = r0_0.RT_890,
+  [3] = r0_0.RT_1148,
+  [4] = r0_0.RT_1150,
 }
 r6_0.TaskId = 851253
 r4_0[851253] = r6_0
 r4_0[851254] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1157,
+  TaskEffects = r0_0.RT_1158,
   TaskId = 851254,
 }
 r6_0 = {
@@ -27264,7 +27268,7 @@ r4_0[851255] = r6_0
 r4_0[851256] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1145,
+  TaskEffects = r0_0.RT_1146,
   TaskId = 851256,
 }
 r6_0 = {
@@ -27353,17 +27357,17 @@ r6_0.TaskId = 851261
 r4_0[851261] = r6_0
 r4_0[851262] = {
   TargetFilter = "BossLinen_Skill06_Scene1",
-  TaskEffects = r0_0.RT_1160,
+  TaskEffects = r0_0.RT_1161,
   TaskId = 851262,
 }
 r4_0[851263] = {
   TargetFilter = "BossLinen_Skill06_Scene2",
-  TaskEffects = r0_0.RT_1160,
+  TaskEffects = r0_0.RT_1161,
   TaskId = 851263,
 }
 r4_0[851264] = {
   TargetFilter = "BossLinen_Skill06_Scene3",
-  TaskEffects = r0_0.RT_1160,
+  TaskEffects = r0_0.RT_1161,
   TaskId = 851264,
 }
 r6_0 = {
@@ -27427,9 +27431,9 @@ r4_0[851267] = r6_0
 r4_0[851268] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_1161,
+    [1] = r0_0.RT_1162,
     [2] = r0_0.RT_110,
-    [3] = r0_0.RT_1147,
+    [3] = r0_0.RT_1148,
   },
   TaskId = 851268,
 }
@@ -27624,8 +27628,8 @@ r4_0[851284] = r6_0
 r4_0[851285] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_1161,
-    [2] = r0_0.RT_1147,
+    [1] = r0_0.RT_1162,
+    [2] = r0_0.RT_1148,
   },
   TaskId = 851285,
 }
@@ -27703,7 +27707,7 @@ r6_0.TaskEffects = {
     Function = "CutToughness",
     Value = 100,
   },
-  [3] = r0_0.RT_1147,
+  [3] = r0_0.RT_1148,
 }
 r6_0.TaskId = 851290
 r4_0[851290] = r6_0
@@ -27783,12 +27787,12 @@ r6_0.TaskId = 851292
 r4_0[851292] = r6_0
 r4_0[851296] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1166,
+  TaskEffects = r0_0.RT_1167,
   TaskId = 851296,
 }
 r4_0[851297] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1166,
+  TaskEffects = r0_0.RT_1167,
   TaskId = 851297,
 }
 r6_0 = {
@@ -27810,9 +27814,9 @@ r4_0[851301] = {
   TargetFilter = "BossKuxiu_Attack",
   TaskEffects = {
     [1] = r0_0.RT_3,
-    [2] = r0_0.RT_1100,
-    [3] = r0_0.RT_661,
-    [4] = r0_0.RT_1167,
+    [2] = r0_0.RT_1101,
+    [3] = r0_0.RT_662,
+    [4] = r0_0.RT_1168,
   },
   TaskId = 851301,
 }
@@ -27826,8 +27830,8 @@ r6_0.TaskEffects = {
     CauseHit = "BossKuxiu_Skill01",
     Function = "CutToughness",
   },
-  [3] = r0_0.RT_661,
-  [4] = r0_0.RT_1167,
+  [3] = r0_0.RT_662,
+  [4] = r0_0.RT_1168,
 }
 r6_0.TaskId = 851302
 r4_0[851302] = r6_0
@@ -27851,7 +27855,7 @@ r6_0.TaskId = 851303
 r4_0[r5_0] = r6_0
 r4_0[851304] = {
   NotifyName = r0_0.RT_9,
-  TaskEffects = r0_0.RT_1170,
+  TaskEffects = r0_0.RT_1171,
   TaskId = 851304,
 }
 r4_0[851305] = {
@@ -27859,26 +27863,26 @@ r4_0[851305] = {
   TargetFilter = "BossKuxiu_Attack",
   TaskEffects = {
     [1] = r0_0.RT_3,
-    [2] = r0_0.RT_1100,
-    [3] = r0_0.RT_661,
+    [2] = r0_0.RT_1101,
+    [3] = r0_0.RT_662,
   },
   TaskId = 851305,
 }
 r4_0[851306] = {
   NotifyName = r0_0.RT_9,
-  TaskEffects = r0_0.RT_1170,
+  TaskEffects = r0_0.RT_1171,
   TaskId = 851306,
 }
 r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1103,
+  [1] = r0_0.RT_1104,
   [2] = {
     CauseHit = "BossKuxiu_ShockWave",
     Function = "CutToughness",
   },
-  [3] = r0_0.RT_661,
+  [3] = r0_0.RT_662,
   [4] = {
     Function = "PlaySE",
     SEId = 851303,
@@ -27920,8 +27924,8 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_22,
-  [2] = r0_0.RT_1100,
-  [3] = r0_0.RT_1171,
+  [2] = r0_0.RT_1101,
+  [3] = r0_0.RT_1172,
   [4] = {
     Function = "PlaySE",
     SEId = 851306,
@@ -27930,7 +27934,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 851309
 r4_0[851309] = r6_0
 r4_0[851310] = {
-  TaskEffects = r0_0.RT_1173,
+  TaskEffects = r0_0.RT_1174,
   TaskId = 851310,
 }
 r6_0 = {
@@ -27942,13 +27946,13 @@ r6_0.TaskEffects = {
     Function = "EffectFunction",
     FunctionName = "Mon_BossKuxiu_Skill05BulletLoc",
   },
-  [2] = r0_0.RT_1174,
-  [3] = r0_0.RT_1175,
-  [4] = r0_0.RT_1176,
-  [5] = r0_0.RT_1177,
-  [6] = r0_0.RT_1178,
-  [7] = r0_0.RT_1179,
-  [8] = r0_0.RT_1180,
+  [2] = r0_0.RT_1175,
+  [3] = r0_0.RT_1176,
+  [4] = r0_0.RT_1177,
+  [5] = r0_0.RT_1178,
+  [6] = r0_0.RT_1179,
+  [7] = r0_0.RT_1180,
+  [8] = r0_0.RT_1181,
 }
 r6_0.TaskId = 851311
 r4_0[851311] = r6_0
@@ -27957,13 +27961,13 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_22,
-  [2] = r0_0.RT_1100,
+  [2] = r0_0.RT_1101,
   [3] = {
     FXId = 851313,
     Function = "PlayFX",
     Overlap = true,
   },
-  [4] = r0_0.RT_1181,
+  [4] = r0_0.RT_1182,
 }
 r6_0.TaskId = 851312
 r4_0[851312] = r6_0
@@ -28006,18 +28010,18 @@ r4_0[851315] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_22,
-    [2] = r0_0.RT_1100,
-    [3] = r0_0.RT_1171,
-    [4] = r0_0.RT_1181,
+    [2] = r0_0.RT_1101,
+    [3] = r0_0.RT_1172,
+    [4] = r0_0.RT_1182,
   },
   TaskId = 851315,
 }
 r4_0[851316] = {
-  TaskEffects = r0_0.RT_1173,
+  TaskEffects = r0_0.RT_1174,
   TaskId = 851316,
 }
 r4_0[851317] = {
-  TaskEffects = r0_0.RT_1183,
+  TaskEffects = r0_0.RT_1184,
   TaskId = 851317,
 }
 r6_0 = {
@@ -28039,13 +28043,13 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 851318
 r4_0[851318] = r6_0
 r4_0[851319] = {
-  TaskEffects = r0_0.RT_1183,
+  TaskEffects = r0_0.RT_1184,
   TaskId = 851319,
 }
 r4_0[851320] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_768,
+  TaskEffects = r0_0.RT_769,
   TaskId = 851320,
 }
 r6_0 = {
@@ -28077,7 +28081,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_22,
-  [2] = r0_0.RT_1100,
+  [2] = r0_0.RT_1101,
   [3] = {
     FXId = 851308,
     Function = "PlayFX",
@@ -28218,7 +28222,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_22,
-  [2] = r0_0.RT_1100,
+  [2] = r0_0.RT_1101,
   [3] = {
     FXId = 851314,
     Function = "PlayFX",
@@ -28236,13 +28240,13 @@ r6_0.TaskEffects = {
     Function = "EffectFunction",
     FunctionName = "Mon_BossKuxiu_Skill05BulletLoc2",
   },
-  [2] = r0_0.RT_1174,
-  [3] = r0_0.RT_1175,
-  [4] = r0_0.RT_1176,
-  [5] = r0_0.RT_1177,
-  [6] = r0_0.RT_1178,
-  [7] = r0_0.RT_1179,
-  [8] = r0_0.RT_1180,
+  [2] = r0_0.RT_1175,
+  [3] = r0_0.RT_1176,
+  [4] = r0_0.RT_1177,
+  [5] = r0_0.RT_1178,
+  [6] = r0_0.RT_1179,
+  [7] = r0_0.RT_1180,
+  [8] = r0_0.RT_1181,
 }
 r6_0.TaskId = 851333
 r4_0[851333] = r6_0
@@ -28303,7 +28307,7 @@ r6_0.TaskId = 851404
 r4_0[851404] = r6_0
 r4_0[851405] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_768,
+  TaskEffects = r0_0.RT_769,
   TaskId = 851405,
 }
 r6_0 = {
@@ -28334,8 +28338,8 @@ r6_0 = {
   TargetFilter = "Mon_Sphere_50_360",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_981,
-  [2] = r0_0.RT_1100,
+  [1] = r0_0.RT_982,
+  [2] = r0_0.RT_1101,
   [3] = {
     FXId = 851406,
     Function = "PlayFX",
@@ -28359,15 +28363,15 @@ r4_0[851409] = r6_0
 r4_0[851410] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1189,
+  TaskEffects = r0_0.RT_1190,
   TaskId = 851410,
 }
 r6_0 = {
   TargetFilter = "Mon_Sphere_100_360",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1104,
-  [2] = r0_0.RT_1100,
+  [1] = r0_0.RT_1105,
+  [2] = r0_0.RT_1101,
   [3] = {
     FXId = 851408,
     Function = "PlayFX",
@@ -28425,7 +28429,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 851415
 r4_0[851415] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
@@ -28451,16 +28455,16 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 851417
 r4_0[851417] = r6_0
 r4_0[851418] = {
-  NotifyName = r0_0.RT_825,
+  NotifyName = r0_0.RT_826,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1189,
+  TaskEffects = r0_0.RT_1190,
   TaskId = 851418,
 }
 r4_0[851419] = {
   TargetFilter = "BossShenpan_GroundHit",
   TaskEffects = {
     [1] = r0_0.RT_22,
-    [2] = r0_0.RT_1100,
+    [2] = r0_0.RT_1101,
   },
   TaskId = 851419,
 }
@@ -28468,10 +28472,10 @@ r4_0[851420] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShenpan_Skill07",
   TaskEffects = {
-    [1] = r0_0.RT_680,
-    [2] = r0_0.RT_1190,
-    [3] = r0_0.RT_661,
-    [4] = r0_0.RT_1191,
+    [1] = r0_0.RT_681,
+    [2] = r0_0.RT_1191,
+    [3] = r0_0.RT_662,
+    [4] = r0_0.RT_1192,
   },
   TaskId = 851420,
 }
@@ -28485,9 +28489,9 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 3.5,
   },
-  [2] = r0_0.RT_1190,
-  [3] = r0_0.RT_661,
-  [4] = r0_0.RT_1191,
+  [2] = r0_0.RT_1191,
+  [3] = r0_0.RT_662,
+  [4] = r0_0.RT_1192,
 }
 r6_0.TaskId = 851421
 r4_0[851421] = r6_0
@@ -28505,13 +28509,13 @@ r4_0[851422] = r6_0
 r4_0[851501] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossJushi_Skill01_Cylinder",
-  TaskEffects = r0_0.RT_1193,
+  TaskEffects = r0_0.RT_1194,
   TaskId = 851501,
 }
 r4_0[851502] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossJushi_Skill02_Cylinder",
-  TaskEffects = r0_0.RT_1193,
+  TaskEffects = r0_0.RT_1194,
   TaskId = 851502,
 }
 r6_0 = {
@@ -28519,7 +28523,7 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1031,
+  [1] = r0_0.RT_1032,
   [2] = {
     FixLocation = true,
     FixLocationZ = 160,
@@ -28587,7 +28591,7 @@ r6_0.TaskEffects = {
     Function = "PlayFX",
     Overlap = true,
   },
-  [3] = r0_0.RT_1194,
+  [3] = r0_0.RT_1195,
 }
 r6_0.TaskId = 851505
 r4_0[851505] = r6_0
@@ -28621,7 +28625,7 @@ r4_0[851508] = {
   TaskEffects = {
     [1] = r0_0.RT_496,
     [2] = r0_0.RT_506,
-    [3] = r0_0.RT_1194,
+    [3] = r0_0.RT_1195,
   },
   TaskId = 851508,
 }
@@ -28665,7 +28669,7 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 851502,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1195,
+    Location = r0_0.RT_1196,
   },
 }
 r6_0.TaskId = 851512
@@ -28676,7 +28680,7 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = r0_0.RT_22,
   [2] = r0_0.RT_10,
-  [3] = r0_0.RT_1196,
+  [3] = r0_0.RT_1197,
   [4] = {
     Function = "PlaySE",
     SEId = 851511,
@@ -28689,7 +28693,7 @@ r6_0 = {
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1197,
+  [1] = r0_0.RT_1198,
   [2] = {
     CreatureId = 851503,
     Function = "CreateSkillCreature",
@@ -28712,7 +28716,7 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 851504,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1195,
+    Location = r0_0.RT_1196,
   },
 }
 r6_0.TaskId = 851515
@@ -28755,8 +28759,8 @@ r6_0.TaskEffects = {
     CreatureId = 851508,
     Function = "CreateSkillCreature",
   },
-  [5] = r0_0.RT_1198,
-  [6] = r0_0.RT_1199,
+  [5] = r0_0.RT_1199,
+  [6] = r0_0.RT_1200,
 }
 r6_0.TaskId = 851517
 r4_0[851517] = r6_0
@@ -28781,8 +28785,8 @@ r6_0.TaskEffects = {
     CreatureId = 851512,
     Function = "CreateSkillCreature",
   },
-  [5] = r0_0.RT_1198,
-  [6] = r0_0.RT_1199,
+  [5] = r0_0.RT_1199,
+  [6] = r0_0.RT_1200,
 }
 r6_0.TaskId = 851518
 r4_0[851518] = r6_0
@@ -28790,7 +28794,7 @@ r6_0 = {
   TargetFilter = "Mon_Sphere_50_360",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_981,
+  [1] = r0_0.RT_982,
   [2] = r0_0.RT_10,
   [3] = {
     FXId = 851508,
@@ -28827,7 +28831,7 @@ r6_0 = {
   TargetFilter = "BossJushi_Skill07_Burst",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1103,
+  [1] = r0_0.RT_1104,
   [2] = r0_0.RT_10,
   [3] = {
     Function = "PlaySE",
@@ -28883,7 +28887,7 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = r0_0.RT_3,
   [2] = r0_0.RT_10,
-  [3] = r0_0.RT_1200,
+  [3] = r0_0.RT_1201,
   [4] = {
     Function = "PlaySE",
     SEId = 851518,
@@ -28962,7 +28966,7 @@ r6_0 = {
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1197,
+  [1] = r0_0.RT_1198,
   [2] = {
     CreatureId = 851503,
     Function = "CreateSkillCreature",
@@ -28982,7 +28986,7 @@ r6_0 = {
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1197,
+  [1] = r0_0.RT_1198,
   [2] = {
     CreatureId = 851503,
     Function = "CreateSkillCreature",
@@ -29002,7 +29006,7 @@ r6_0 = {
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1197,
+  [1] = r0_0.RT_1198,
   [2] = {
     CreatureId = 851503,
     Function = "CreateSkillCreature",
@@ -29022,7 +29026,7 @@ r6_0 = {
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1197,
+  [1] = r0_0.RT_1198,
   [2] = {
     CreatureId = 851503,
     Function = "CreateSkillCreature",
@@ -29052,7 +29056,7 @@ r4_0[851536] = r6_0
 r4_0[851603] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossFuer_Skill02",
-  TaskEffects = r0_0.RT_1201,
+  TaskEffects = r0_0.RT_1202,
   TaskId = 851603,
 }
 r6_0 = {
@@ -29137,7 +29141,7 @@ r4_0[851609] = r6_0
 r4_0[851610] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_768,
+  TaskEffects = r0_0.RT_769,
   TaskId = 851610,
 }
 r6_0 = {
@@ -29366,20 +29370,20 @@ r4_0[851626] = r6_0
 r4_0[851627] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_753,
+    [1] = r0_0.RT_754,
   },
   TaskId = 851627,
 }
 r4_0[851630] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossFuer_Skill06_Rectangle",
-  TaskEffects = r0_0.RT_1202,
+  TaskEffects = r0_0.RT_1203,
   TaskId = 851630,
 }
 r4_0[851631] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_768,
+  TaskEffects = r0_0.RT_769,
   TaskId = 851631,
 }
 r6_0 = {
@@ -29396,7 +29400,7 @@ r4_0[851632] = r6_0
 r4_0[851635] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "BossFuer_Skill06_Cylinder",
-  TaskEffects = r0_0.RT_1201,
+  TaskEffects = r0_0.RT_1202,
   TaskId = 851635,
 }
 r6_0 = {
@@ -29483,7 +29487,7 @@ r4_0[851642] = r6_0
 r4_0[851643] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossFuer_Skill01_1",
-  TaskEffects = r0_0.RT_1203,
+  TaskEffects = r0_0.RT_1204,
   TaskId = 851643,
 }
 r6_0 = {}
@@ -29507,36 +29511,36 @@ r4_0[851645] = r6_0
 r4_0[851646] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossFuer_Skill01_2",
-  TaskEffects = r0_0.RT_1203,
+  TaskEffects = r0_0.RT_1204,
   TaskId = 851646,
 }
 r4_0[851647] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossFuer_Skill01_3",
-  TaskEffects = r0_0.RT_1203,
+  TaskEffects = r0_0.RT_1204,
   TaskId = 851647,
 }
 r4_0[851648] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossFuer_Skill01_4",
-  TaskEffects = r0_0.RT_1203,
+  TaskEffects = r0_0.RT_1204,
   TaskId = 851648,
 }
 r4_0[851649] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "BossFuer_Skill01_5",
-  TaskEffects = r0_0.RT_1203,
+  TaskEffects = r0_0.RT_1204,
   TaskId = 851649,
 }
 r4_0[851650] = {
   NotifyName = r0_0.RT_505,
   TargetFilter = "BossFuer_Skill01_6",
-  TaskEffects = r0_0.RT_1203,
+  TaskEffects = r0_0.RT_1204,
   TaskId = 851650,
 }
 r4_0[851651] = {
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1202,
+  TaskEffects = r0_0.RT_1203,
   TaskId = 851651,
 }
 r6_0 = {
@@ -29566,14 +29570,14 @@ r4_0[851654] = {
   TaskEffects = {
     [1] = r0_0.RT_10,
     [2] = r0_0.RT_3,
-    [3] = r0_0.RT_661,
+    [3] = r0_0.RT_662,
   },
   TaskId = 851654,
 }
 r4_0[851701] = {
-  NotifyName = r0_0.RT_667,
+  NotifyName = r0_0.RT_668,
   TargetFilter = "Mon_Cylinder_300_200_180",
-  TaskEffects = r0_0.RT_1205,
+  TaskEffects = r0_0.RT_1206,
   TaskId = 851701,
 }
 r6_0 = {
@@ -29593,7 +29597,7 @@ r4_0[851703] = {
   TaskEffects = {
     [1] = r0_0.RT_3,
     [2] = r0_0.RT_10,
-    [3] = r0_0.RT_1206,
+    [3] = r0_0.RT_1207,
   },
   TaskId = 851703,
 }
@@ -29602,43 +29606,43 @@ r4_0[851704] = {
   TargetFilter = "Mon_Cylinder_300_200_180",
   TaskEffects = {
     [1] = r0_0.RT_3,
-    [2] = r0_0.RT_1100,
-    [3] = r0_0.RT_1204,
+    [2] = r0_0.RT_1101,
+    [3] = r0_0.RT_1205,
   },
   TaskId = 851704,
 }
 r4_0[851705] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_400_200_360",
-  TaskEffects = r0_0.RT_1207,
+  TaskEffects = r0_0.RT_1208,
   TaskId = 851705,
 }
 r4_0[851706] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Mon_Sphere_500_360",
   TaskEffects = {
-    [1] = r0_0.RT_779,
-    [2] = r0_0.RT_753,
-    [3] = r0_0.RT_1204,
+    [1] = r0_0.RT_780,
+    [2] = r0_0.RT_754,
+    [3] = r0_0.RT_1205,
   },
   TaskId = 851706,
 }
 r4_0[851707] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_300_200_180",
-  TaskEffects = r0_0.RT_1207,
+  TaskEffects = r0_0.RT_1208,
   TaskId = 851707,
 }
 r4_0[851708] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Mon_Sphere_400_360",
-  TaskEffects = r0_0.RT_1208,
+  TaskEffects = r0_0.RT_1209,
   TaskId = 851708,
 }
 r4_0[851709] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Sphere_400_360",
-  TaskEffects = r0_0.RT_1208,
+  TaskEffects = r0_0.RT_1209,
   TaskId = 851709,
 }
 r6_0 = {
@@ -29669,15 +29673,15 @@ r4_0[851711] = {
     "hit3"
   },
   TargetFilter = "Mon_Cylinder_300_200_180",
-  TaskEffects = r0_0.RT_1205,
+  TaskEffects = r0_0.RT_1206,
   TaskId = 851711,
 }
 r4_0[851712] = {
   TargetFilter = "Mon_Sphere_200_360",
   TaskEffects = {
     [1] = r0_0.RT_3,
-    [2] = r0_0.RT_1127,
-    [3] = r0_0.RT_1206,
+    [2] = r0_0.RT_1128,
+    [3] = r0_0.RT_1207,
   },
   TaskId = 851712,
 }
@@ -29688,7 +29692,7 @@ r4_0[851713] = {
   TaskId = 851713,
 }
 r6_0 = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
@@ -29746,7 +29750,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_3,
-  [2] = r0_0.RT_753,
+  [2] = r0_0.RT_754,
   [3] = {
     Function = "PlaySE",
     SEId = 851812,
@@ -29768,7 +29772,7 @@ r6_0 = {
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_756,
+  [1] = r0_0.RT_757,
   [2] = {
     CreatureId = 851803,
     Function = "CreateSkillCreature",
@@ -29779,7 +29783,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 851806
 r4_0[851806] = r6_0
 r6_0 = {
-  TargetFilter = "BossJuque_Skill01_Cylinder",
+  TargetFilter = "Mon_Sphere_200_360",
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_3,
@@ -29793,8 +29797,8 @@ r6_0.TaskId = 851807
 r4_0[851807] = r6_0
 r4_0[851808] = {
   NotifyName = r0_0.RT_12,
-  TargetFilter = "Mon_Cylinder_300_200_180",
-  TaskEffects = r0_0.RT_1209,
+  TargetFilter = "BossJuque_Skill01_Cylinder",
+  TaskEffects = r0_0.RT_1210,
   TaskId = 851808,
 }
 r6_0 = {
@@ -29802,8 +29806,8 @@ r6_0 = {
   TargetFilter = "BossRobot_Skill02_Cylinder",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_779,
-  [2] = r0_0.RT_753,
+  [1] = r0_0.RT_780,
+  [2] = r0_0.RT_754,
   [3] = {
     Function = "PlaySE",
     SEId = 851803,
@@ -29900,7 +29904,7 @@ r6_0 = {
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_756,
+  [1] = r0_0.RT_757,
   [2] = {
     CreatureId = 851801,
     Function = "CreateSkillCreature",
@@ -29915,8 +29919,8 @@ r6_0 = {
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_756,
-  [2] = r0_0.RT_758,
+  [1] = r0_0.RT_757,
+  [2] = r0_0.RT_759,
   [3] = {
     CreatureId = 851804,
     Function = "CreateSkillCreature",
@@ -29951,12 +29955,12 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 851814
 r4_0[851814] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_2,
+  NotifyName = r0_0.RT_9,
   TargetFilter = "BossRobot_Skill06_Cylinder",
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_16,
-  [2] = r0_0.RT_753,
+  [2] = r0_0.RT_754,
   [3] = {
     Function = "PlaySE",
     SEId = 851807,
@@ -29974,7 +29978,7 @@ r6_0.TaskEffects = {
     Function = "PlayFX",
     Overlap = true,
   },
-  [3] = r0_0.RT_753,
+  [3] = r0_0.RT_754,
   [4] = {
     Function = "PlaySE",
     SEId = 851809,
@@ -29986,10 +29990,10 @@ r4_0[851817] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_1210,
-    [2] = r0_0.RT_1211,
-    [3] = r0_0.RT_1212,
-    [4] = r0_0.RT_1213,
+    [1] = r0_0.RT_1211,
+    [2] = r0_0.RT_1212,
+    [3] = r0_0.RT_1213,
+    [4] = r0_0.RT_1214,
   },
   TaskId = 851817,
 }
@@ -29997,10 +30001,10 @@ r4_0[851818] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_1214,
-    [2] = r0_0.RT_1215,
-    [3] = r0_0.RT_1216,
-    [4] = r0_0.RT_1217,
+    [1] = r0_0.RT_1215,
+    [2] = r0_0.RT_1216,
+    [3] = r0_0.RT_1217,
+    [4] = r0_0.RT_1218,
   },
   TaskId = 851818,
 }
@@ -30018,13 +30022,13 @@ r6_0.TaskId = 851819
 r4_0[851819] = r6_0
 r4_0[851820] = {
   TargetFilter = "BossJuque_Creature_Rectangle",
-  TaskEffects = r0_0.RT_1218,
+  TaskEffects = r0_0.RT_1219,
   TaskId = 851820,
 }
 r4_0[851821] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_768,
+  TaskEffects = r0_0.RT_769,
   TaskId = 851821,
 }
 r6_0 = {
@@ -30035,7 +30039,7 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 851806,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_992,
+    Location = r0_0.RT_993,
     UseSaveLoc = "",
   },
 }
@@ -30043,14 +30047,14 @@ r6_0.TaskId = 851822
 r4_0[851822] = r6_0
 r4_0[851823] = {
   TargetFilter = "Mon_Cylinder_500_40_360",
-  TaskEffects = r0_0.RT_1218,
+  TaskEffects = r0_0.RT_1219,
   TaskId = 851823,
 }
 r4_0[851824] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_1210,
+    [1] = r0_0.RT_1211,
   },
   TaskId = 851824,
 }
@@ -30058,8 +30062,8 @@ r4_0[851825] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_1211,
-    [2] = r0_0.RT_1212,
+    [1] = r0_0.RT_1212,
+    [2] = r0_0.RT_1213,
   },
   TaskId = 851825,
 }
@@ -30067,9 +30071,9 @@ r4_0[851826] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_1214,
-    [2] = r0_0.RT_1213,
-    [3] = r0_0.RT_1219,
+    [1] = r0_0.RT_1215,
+    [2] = r0_0.RT_1214,
+    [3] = r0_0.RT_1220,
   },
   TaskId = 851826,
 }
@@ -30077,10 +30081,10 @@ r4_0[851827] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_1215,
-    [2] = r0_0.RT_1216,
-    [3] = r0_0.RT_1220,
-    [4] = r0_0.RT_1221,
+    [1] = r0_0.RT_1216,
+    [2] = r0_0.RT_1217,
+    [3] = r0_0.RT_1221,
+    [4] = r0_0.RT_1222,
   },
   TaskId = 851827,
 }
@@ -30088,9 +30092,9 @@ r4_0[851828] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_1217,
-    [2] = r0_0.RT_1222,
-    [3] = r0_0.RT_1223,
+    [1] = r0_0.RT_1218,
+    [2] = r0_0.RT_1223,
+    [3] = r0_0.RT_1224,
   },
   TaskId = 851828,
 }
@@ -30098,21 +30102,21 @@ r4_0[851829] = {
   NotifyName = r0_0.RT_505,
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_1224,
-    [2] = r0_0.RT_1225,
+    [1] = r0_0.RT_1225,
+    [2] = r0_0.RT_1226,
   },
   TaskId = 851829,
 }
 r4_0[851830] = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_1226,
+    [1] = r0_0.RT_1227,
   },
   TaskId = 851830,
 }
 r6_0 = {
-  NotifyName = r0_0.RT_825,
+  NotifyName = r0_0.RT_826,
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
@@ -30125,7 +30129,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 851831
 r4_0[851831] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_1135,
+  NotifyName = r0_0.RT_1136,
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
@@ -30151,7 +30155,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 851833
 r4_0[851833] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_904,
+  NotifyName = r0_0.RT_905,
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
@@ -30165,7 +30169,7 @@ r6_0.TaskId = 851834
 r4_0[851834] = r6_0
 r4_0[851835] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1209,
+  TaskEffects = r0_0.RT_1210,
   TaskId = 851835,
 }
 r6_0 = {
@@ -30177,7 +30181,7 @@ r6_0.TaskEffects = {
     Function = "AddBuff",
     LastTime = 99,
   },
-  [2] = r0_0.RT_1123,
+  [2] = r0_0.RT_1124,
 }
 r6_0.TaskId = 851836
 r4_0[851836] = r6_0
@@ -30195,80 +30199,80 @@ r4_0[851837] = r6_0
 r4_0[851838] = {
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_1210,
-    [2] = r0_0.RT_1212,
-    [3] = r0_0.RT_1219,
-    [4] = r0_0.RT_1221,
+    [1] = r0_0.RT_1211,
+    [2] = r0_0.RT_1213,
+    [3] = r0_0.RT_1220,
+    [4] = r0_0.RT_1222,
   },
   TaskId = 851838,
 }
 r4_0[851839] = {
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_1211,
-    [2] = r0_0.RT_1213,
-    [3] = r0_0.RT_1220,
-    [4] = r0_0.RT_1223,
+    [1] = r0_0.RT_1212,
+    [2] = r0_0.RT_1214,
+    [3] = r0_0.RT_1221,
+    [4] = r0_0.RT_1224,
   },
   TaskId = 851839,
 }
 r4_0[851840] = {
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_1214,
-    [2] = r0_0.RT_1216,
-    [3] = r0_0.RT_1222,
-    [4] = r0_0.RT_1225,
+    [1] = r0_0.RT_1215,
+    [2] = r0_0.RT_1217,
+    [3] = r0_0.RT_1223,
+    [4] = r0_0.RT_1226,
   },
   TaskId = 851840,
 }
 r4_0[851841] = {
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_1215,
-    [2] = r0_0.RT_1217,
-    [3] = r0_0.RT_1224,
-    [4] = r0_0.RT_1226,
+    [1] = r0_0.RT_1216,
+    [2] = r0_0.RT_1218,
+    [3] = r0_0.RT_1225,
+    [4] = r0_0.RT_1227,
   },
   TaskId = 851841,
 }
 r4_0[851842] = {
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_1210,
-    [2] = r0_0.RT_1211,
-    [3] = r0_0.RT_1214,
-    [4] = r0_0.RT_1215,
+    [1] = r0_0.RT_1211,
+    [2] = r0_0.RT_1212,
+    [3] = r0_0.RT_1215,
+    [4] = r0_0.RT_1216,
   },
   TaskId = 851842,
 }
 r4_0[851843] = {
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_1212,
-    [2] = r0_0.RT_1213,
-    [3] = r0_0.RT_1216,
-    [4] = r0_0.RT_1217,
+    [1] = r0_0.RT_1213,
+    [2] = r0_0.RT_1214,
+    [3] = r0_0.RT_1217,
+    [4] = r0_0.RT_1218,
   },
   TaskId = 851843,
 }
 r4_0[851844] = {
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_1219,
-    [2] = r0_0.RT_1220,
-    [3] = r0_0.RT_1222,
-    [4] = r0_0.RT_1224,
+    [1] = r0_0.RT_1220,
+    [2] = r0_0.RT_1221,
+    [3] = r0_0.RT_1223,
+    [4] = r0_0.RT_1225,
   },
   TaskId = 851844,
 }
 r4_0[851845] = {
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_1221,
-    [2] = r0_0.RT_1223,
-    [3] = r0_0.RT_1225,
-    [4] = r0_0.RT_1226,
+    [1] = r0_0.RT_1222,
+    [2] = r0_0.RT_1224,
+    [3] = r0_0.RT_1226,
+    [4] = r0_0.RT_1227,
   },
   TaskId = 851845,
 }
@@ -30350,7 +30354,7 @@ r6_0.TaskId = 851848
 r4_0[851848] = r6_0
 r4_0[851849] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1209,
+  TaskEffects = r0_0.RT_1210,
   TaskId = 851849,
 }
 r6_0 = {
@@ -30415,7 +30419,7 @@ r6_0.TaskId = 851901
 r4_0[851901] = r6_0
 r4_0[851902] = {
   TargetFilter = "Mon_Sphere_50_360",
-  TaskEffects = r0_0.RT_1228,
+  TaskEffects = r0_0.RT_1229,
   TaskId = 851902,
 }
 r6_0 = {
@@ -30472,7 +30476,7 @@ r4_0[851908] = {
   TargetFilter = "BossLiecheHand_Skill01",
   TaskEffects = {
     [1] = r0_0.RT_3,
-    [2] = r0_0.RT_1229,
+    [2] = r0_0.RT_1230,
   },
   TaskId = 851908,
 }
@@ -30526,7 +30530,7 @@ r4_0[851910] = {
   TargetFilter = "Mon_Sphere_100_360",
   TaskEffects = {
     [1] = r0_0.RT_22,
-    [2] = r0_0.RT_1171,
+    [2] = r0_0.RT_1172,
   },
   TaskId = 851910,
 }
@@ -30537,8 +30541,8 @@ r4_0[851912] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_676,
-    [2] = r0_0.RT_1230,
+    [1] = r0_0.RT_677,
+    [2] = r0_0.RT_1231,
   },
   TaskId = 851912,
 }
@@ -30547,7 +30551,7 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1231,
+  [1] = r0_0.RT_1232,
   [2] = {
     CreatureId = 851903,
     Delay = 2,
@@ -30568,7 +30572,7 @@ r4_0[851914] = {
   TaskEffects = {
     [1] = r0_0.RT_3,
     [2] = r0_0.RT_10,
-    [3] = r0_0.RT_1200,
+    [3] = r0_0.RT_1201,
   },
   TaskId = 851914,
 }
@@ -30761,13 +30765,13 @@ r6_0.TaskId = 851919
 r4_0[851919] = r6_0
 r4_0[851920] = {
   TargetFilter = "BossLieche_Skill07Step01",
-  TaskEffects = r0_0.RT_1233,
+  TaskEffects = r0_0.RT_1234,
   TaskId = 851920,
 }
 r4_0[851921] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1234,
+  TaskEffects = r0_0.RT_1235,
   TaskId = 851921,
 }
 r6_0 = {
@@ -30791,8 +30795,8 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1235,
-  [2] = r0_0.RT_1236,
+  [1] = r0_0.RT_1236,
+  [2] = r0_0.RT_1237,
   [3] = {
     Function = "CreateUnit",
     MaxSummonCount = 1,
@@ -30810,7 +30814,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_3,
-  [2] = r0_0.RT_1229,
+  [2] = r0_0.RT_1230,
   [3] = {
     FXId = 851908,
     Function = "PlayFX",
@@ -30836,7 +30840,7 @@ r6_0.TaskId = 851925
 r4_0[851925] = r6_0
 r4_0[851926] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1234,
+  TaskEffects = r0_0.RT_1235,
   TaskId = 851926,
 }
 r6_0 = {
@@ -30844,7 +30848,7 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1237,
+  [1] = r0_0.RT_1238,
   [2] = {
     CreatureId = 851915,
     Delay = 2,
@@ -30878,7 +30882,7 @@ r6_0.TaskId = 851929
 r4_0[851929] = r6_0
 r4_0[851930] = {
   TargetFilter = "BossLieche_Skill07Step01",
-  TaskEffects = r0_0.RT_1233,
+  TaskEffects = r0_0.RT_1234,
   TaskId = 851930,
 }
 r6_0 = {
@@ -30886,7 +30890,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_22,
-  [2] = r0_0.RT_1229,
+  [2] = r0_0.RT_1230,
   [3] = {
     FXId = 851903,
     Function = "PlayFX",
@@ -30899,7 +30903,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_22,
-  [2] = r0_0.RT_1229,
+  [2] = r0_0.RT_1230,
   [3] = {
     FXId = 851906,
     Function = "PlayFX",
@@ -30921,7 +30925,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_22,
-  [2] = r0_0.RT_1229,
+  [2] = r0_0.RT_1230,
   [3] = {
     FXId = 851905,
     Function = "PlayFX",
@@ -30943,7 +30947,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_22,
-  [2] = r0_0.RT_1229,
+  [2] = r0_0.RT_1230,
   [3] = {
     FXId = 851904,
     Function = "PlayFX",
@@ -30974,7 +30978,7 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1235,
+  [1] = r0_0.RT_1236,
   [2] = {
     Function = "CreateUnit",
     MaxSummonCount = 1,
@@ -30983,7 +30987,7 @@ r6_0.TaskEffects = {
     UnitType = "Monster",
     UseSaveLoc = "Skill05M",
   },
-  [3] = r0_0.RT_1238,
+  [3] = r0_0.RT_1239,
 }
 r6_0.TaskId = 851938
 r4_0[851938] = r6_0
@@ -31000,8 +31004,8 @@ r6_0.TaskEffects = {
     UnitType = "Monster",
     UseSaveLoc = "Skill05L",
   },
-  [2] = r0_0.RT_1236,
-  [3] = r0_0.RT_1238,
+  [2] = r0_0.RT_1237,
+  [3] = r0_0.RT_1239,
 }
 r6_0.TaskId = 851939
 r4_0[851939] = r6_0
@@ -31019,7 +31023,7 @@ r6_0.TaskId = 851940
 r4_0[851940] = r6_0
 r4_0[851941] = {
   TargetFilter = "Mon_Sphere_50_360",
-  TaskEffects = r0_0.RT_1228,
+  TaskEffects = r0_0.RT_1229,
   TaskId = 851941,
 }
 r6_0 = {
@@ -31051,7 +31055,7 @@ r6_0.TaskId = 851943
 r4_0[851943] = r6_0
 r4_0[851944] = {
   TargetFilter = "BossLiecheCore_Skill02Burst",
-  TaskEffects = r0_0.RT_1233,
+  TaskEffects = r0_0.RT_1234,
   TaskId = 851944,
 }
 r6_0 = {
@@ -31110,11 +31114,11 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 851949
 r4_0[851949] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1239,
+  [1] = r0_0.RT_1240,
   [2] = {
     CreatureId = 851919,
     Delay = 2,
@@ -31131,11 +31135,11 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 851950
 r4_0[851950] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_825,
+  NotifyName = r0_0.RT_826,
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1240,
+  [1] = r0_0.RT_1241,
   [2] = {
     CreatureId = 851920,
     Delay = 2,
@@ -31171,11 +31175,11 @@ r6_0.TaskEffects = r8_0
 r6_0.TaskId = 851952
 r4_0[851952] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1239,
+  [1] = r0_0.RT_1240,
   [2] = {
     CreatureId = 851919,
     Delay = 0.2,
@@ -31192,11 +31196,11 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 851953
 r4_0[851953] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_825,
+  NotifyName = r0_0.RT_826,
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1240,
+  [1] = r0_0.RT_1241,
   [2] = {
     CreatureId = 851920,
     Delay = 0.2,
@@ -31217,7 +31221,7 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1231,
+  [1] = r0_0.RT_1232,
   [2] = {
     CreatureId = 851903,
     Delay = 0.2,
@@ -31238,7 +31242,7 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1237,
+  [1] = r0_0.RT_1238,
   [2] = {
     CreatureId = 851915,
     Delay = 0.2,
@@ -31360,10 +31364,10 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1242,
-  [2] = r0_0.RT_1244,
+  [1] = r0_0.RT_1243,
+  [2] = r0_0.RT_1245,
   [3] = {
-    AttrRates = r0_0.RT_1241,
+    AttrRates = r0_0.RT_1242,
     Function = "CreateUnit",
     MaxSummonCount = 3,
     SingleSummonCount = 1,
@@ -31371,13 +31375,13 @@ r6_0.TaskEffects = {
     UnitType = "Monster",
     UseSaveLoc = "8519306",
   },
-  [4] = r0_0.RT_1245,
-  [5] = r0_0.RT_1246,
-  [6] = r0_0.RT_1247,
-  [7] = r0_0.RT_1248,
-  [8] = r0_0.RT_1249,
-  [9] = r0_0.RT_1250,
-  [10] = r0_0.RT_1243,
+  [4] = r0_0.RT_1246,
+  [5] = r0_0.RT_1247,
+  [6] = r0_0.RT_1248,
+  [7] = r0_0.RT_1249,
+  [8] = r0_0.RT_1250,
+  [9] = r0_0.RT_1251,
+  [10] = r0_0.RT_1244,
 }
 r6_0.TaskId = 851963
 r4_0[851963] = r6_0
@@ -31386,7 +31390,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = {
-    AttrRates = r0_0.RT_1241,
+    AttrRates = r0_0.RT_1242,
     Function = "CreateUnit",
     MaxSummonCount = 3,
     SingleSummonCount = 1,
@@ -31395,7 +31399,7 @@ r6_0.TaskEffects = {
     UseSaveLoc = "8519303",
   },
   [2] = {
-    AttrRates = r0_0.RT_1241,
+    AttrRates = r0_0.RT_1242,
     Function = "CreateUnit",
     MaxSummonCount = 3,
     SingleSummonCount = 1,
@@ -31404,7 +31408,7 @@ r6_0.TaskEffects = {
     UseSaveLoc = "8519305",
   },
   [3] = {
-    AttrRates = r0_0.RT_1241,
+    AttrRates = r0_0.RT_1242,
     Function = "CreateUnit",
     MaxSummonCount = 3,
     SingleSummonCount = 1,
@@ -31412,13 +31416,13 @@ r6_0.TaskEffects = {
     UnitType = "Monster",
     UseSaveLoc = "8519307",
   },
-  [4] = r0_0.RT_1245,
-  [5] = r0_0.RT_1251,
-  [6] = r0_0.RT_1252,
-  [7] = r0_0.RT_1253,
-  [8] = r0_0.RT_1249,
-  [9] = r0_0.RT_1250,
-  [10] = r0_0.RT_1243,
+  [4] = r0_0.RT_1246,
+  [5] = r0_0.RT_1252,
+  [6] = r0_0.RT_1253,
+  [7] = r0_0.RT_1254,
+  [8] = r0_0.RT_1250,
+  [9] = r0_0.RT_1251,
+  [10] = r0_0.RT_1244,
 }
 r6_0.TaskId = 851964
 r4_0[851964] = r6_0
@@ -31426,9 +31430,9 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1242,
+  [1] = r0_0.RT_1243,
   [2] = {
-    AttrRates = r0_0.RT_1241,
+    AttrRates = r0_0.RT_1242,
     Function = "CreateUnit",
     MaxSummonCount = 3,
     SingleSummonCount = 1,
@@ -31437,7 +31441,7 @@ r6_0.TaskEffects = {
     UseSaveLoc = "8519308",
   },
   [3] = {
-    AttrRates = r0_0.RT_1241,
+    AttrRates = r0_0.RT_1242,
     Function = "CreateUnit",
     MaxSummonCount = 3,
     SingleSummonCount = 1,
@@ -31445,13 +31449,13 @@ r6_0.TaskEffects = {
     UnitType = "Monster",
     UseSaveLoc = "8519310",
   },
-  [4] = r0_0.RT_1245,
-  [5] = r0_0.RT_1246,
-  [6] = r0_0.RT_1247,
-  [7] = r0_0.RT_1248,
-  [8] = r0_0.RT_1252,
-  [9] = r0_0.RT_1250,
-  [10] = r0_0.RT_1253,
+  [4] = r0_0.RT_1246,
+  [5] = r0_0.RT_1247,
+  [6] = r0_0.RT_1248,
+  [7] = r0_0.RT_1249,
+  [8] = r0_0.RT_1253,
+  [9] = r0_0.RT_1251,
+  [10] = r0_0.RT_1254,
 }
 r6_0.TaskId = 851965
 r4_0[851965] = r6_0
@@ -31460,7 +31464,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = {
-    AttrRates = r0_0.RT_1241,
+    AttrRates = r0_0.RT_1242,
     Function = "CreateUnit",
     MaxSummonCount = 3,
     SingleSummonCount = 1,
@@ -31468,9 +31472,9 @@ r6_0.TaskEffects = {
     UnitType = "Monster",
     UseSaveLoc = "8519301",
   },
-  [2] = r0_0.RT_1244,
+  [2] = r0_0.RT_1245,
   [3] = {
-    AttrRates = r0_0.RT_1241,
+    AttrRates = r0_0.RT_1242,
     Function = "CreateUnit",
     MaxSummonCount = 3,
     SingleSummonCount = 1,
@@ -31478,13 +31482,13 @@ r6_0.TaskEffects = {
     UnitType = "Monster",
     UseSaveLoc = "8519309",
   },
-  [4] = r0_0.RT_1251,
-  [5] = r0_0.RT_1246,
-  [6] = r0_0.RT_1247,
-  [7] = r0_0.RT_1248,
-  [8] = r0_0.RT_1249,
-  [9] = r0_0.RT_1253,
-  [10] = r0_0.RT_1243,
+  [4] = r0_0.RT_1252,
+  [5] = r0_0.RT_1247,
+  [6] = r0_0.RT_1248,
+  [7] = r0_0.RT_1249,
+  [8] = r0_0.RT_1250,
+  [9] = r0_0.RT_1254,
+  [10] = r0_0.RT_1244,
 }
 r6_0.TaskId = 851966
 r4_0[851966] = r6_0
@@ -31598,17 +31602,17 @@ r6_0.TaskId = 851975
 r4_0[851975] = r6_0
 r4_0[851976] = {
   TargetFilter = "BossLiecheCore_Skill05Burst1",
-  TaskEffects = r0_0.RT_1254,
+  TaskEffects = r0_0.RT_1255,
   TaskId = 851976,
 }
 r4_0[851977] = {
   TargetFilter = "BossLiecheCore_Skill05Burst2",
-  TaskEffects = r0_0.RT_1254,
+  TaskEffects = r0_0.RT_1255,
   TaskId = 851977,
 }
 r4_0[851978] = {
   TargetFilter = "BossLiecheCore_Skill05Burst3",
-  TaskEffects = r0_0.RT_1254,
+  TaskEffects = r0_0.RT_1255,
   TaskId = 851978,
 }
 r6_0 = {
@@ -31782,14 +31786,14 @@ r6_0.TaskEffects = {
     CauseHit = "HitFly_XY0Z3000",
     Function = "CutToughness",
   },
-  [3] = r0_0.RT_1200,
+  [3] = r0_0.RT_1201,
 }
 r6_0.TaskId = 852004
 r4_0[852004] = r6_0
 r4_0[852005] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossAida_Skill02_BoxL",
-  TaskEffects = r0_0.RT_1256,
+  TaskEffects = r0_0.RT_1257,
   TaskId = 852005,
 }
 r6_0 = {
@@ -31809,34 +31813,34 @@ r4_0[852007] = {
   TaskEffects = {
     [1] = r0_0.RT_3,
     [2] = r0_0.RT_10,
-    [3] = r0_0.RT_1196,
+    [3] = r0_0.RT_1197,
   },
   TaskId = 852007,
 }
 r4_0[852008] = {
   TargetFilter = "BossAida_Skill04_Box1",
-  TaskEffects = r0_0.RT_1256,
+  TaskEffects = r0_0.RT_1257,
   TaskId = 852008,
 }
 r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1257,
-  [2] = r0_0.RT_1259,
-  [3] = r0_0.RT_1260,
-  [4] = r0_0.RT_1261,
-  [5] = r0_0.RT_1262,
+  [1] = r0_0.RT_1258,
+  [2] = r0_0.RT_1260,
+  [3] = r0_0.RT_1261,
+  [4] = r0_0.RT_1262,
+  [5] = r0_0.RT_1263,
   [6] = {
     CreatureId = 852009,
     Function = "CreateSkillCreature",
     UseBattlePointID = 85200507,
     UseBattlePointRotation = 1,
   },
-  [7] = r0_0.RT_1263,
-  [8] = r0_0.RT_1264,
-  [9] = r0_0.RT_1265,
-  [10] = r0_0.RT_1258,
+  [7] = r0_0.RT_1264,
+  [8] = r0_0.RT_1265,
+  [9] = r0_0.RT_1266,
+  [10] = r0_0.RT_1259,
 }
 r6_0.TaskId = 852009
 r4_0[852009] = r6_0
@@ -31850,15 +31854,15 @@ r6_0.TaskEffects = {
     UseBattlePointID = 85200502,
     UseBattlePointRotation = 1,
   },
-  [2] = r0_0.RT_1259,
-  [3] = r0_0.RT_1260,
-  [4] = r0_0.RT_1261,
-  [5] = r0_0.RT_1262,
-  [6] = r0_0.RT_1266,
-  [7] = r0_0.RT_1263,
-  [8] = r0_0.RT_1264,
-  [9] = r0_0.RT_1265,
-  [10] = r0_0.RT_1258,
+  [2] = r0_0.RT_1260,
+  [3] = r0_0.RT_1261,
+  [4] = r0_0.RT_1262,
+  [5] = r0_0.RT_1263,
+  [6] = r0_0.RT_1267,
+  [7] = r0_0.RT_1264,
+  [8] = r0_0.RT_1265,
+  [9] = r0_0.RT_1266,
+  [10] = r0_0.RT_1259,
 }
 r6_0.TaskId = 852010
 r4_0[852010] = r6_0
@@ -31866,8 +31870,8 @@ r4_0[852011] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_3,
-    [2] = r0_0.RT_1255,
-    [3] = r0_0.RT_1200,
+    [2] = r0_0.RT_1256,
+    [3] = r0_0.RT_1201,
   },
   TaskId = 852011,
 }
@@ -31888,7 +31892,7 @@ r4_0[852013] = r6_0
 r4_0[852014] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossAida_Skill02_BoxR",
-  TaskEffects = r0_0.RT_1256,
+  TaskEffects = r0_0.RT_1257,
   TaskId = 852014,
 }
 r6_0 = {
@@ -31934,7 +31938,7 @@ r6_0.TaskId = 852017
 r4_0[852017] = r6_0
 r4_0[852018] = {
   TargetFilter = "BossAida_Skill07_Box1",
-  TaskEffects = r0_0.RT_1267,
+  TaskEffects = r0_0.RT_1268,
   TaskId = 852018,
 }
 r6_0 = {
@@ -31953,7 +31957,7 @@ r6_0.TaskId = 852019
 r4_0[852019] = r6_0
 r4_0[852020] = {
   TargetFilter = "BossAida_Skill07_Box2",
-  TaskEffects = r0_0.RT_1267,
+  TaskEffects = r0_0.RT_1268,
   TaskId = 852020,
 }
 r6_0 = {
@@ -32010,7 +32014,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 852024
 r4_0[852024] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
@@ -32026,8 +32030,8 @@ r4_0[852025] = r6_0
 r4_0[852026] = {
   TargetFilter = "BossTuosi_Skill08_AroundBurstCylinder",
   TaskEffects = {
-    [1] = r0_0.RT_1104,
-    [2] = r0_0.RT_1113,
+    [1] = r0_0.RT_1105,
+    [2] = r0_0.RT_1114,
   },
   TaskId = 852026,
 }
@@ -32035,14 +32039,14 @@ r4_0[852027] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_33,
-    [2] = r0_0.RT_1110,
+    [2] = r0_0.RT_1111,
   },
   TaskId = 852027,
 }
 r4_0[852029] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1269,
+  TaskEffects = r0_0.RT_1270,
   TaskId = 852029,
 }
 r6_0 = {
@@ -32143,7 +32147,7 @@ r8_0[2] = {
     0,
     -1000
   },
-  Rotation = r0_0.RT_993,
+  Rotation = r0_0.RT_994,
   UseSaveLoc = "Skill08",
 }
 r8_0[3] = {
@@ -32155,7 +32159,7 @@ r8_0[3] = {
     500,
     -1000
   },
-  Rotation = r0_0.RT_993,
+  Rotation = r0_0.RT_994,
   UseSaveLoc = "Skill08",
 }
 r8_0[4] = {
@@ -32167,7 +32171,7 @@ r8_0[4] = {
     500,
     -1000
   },
-  Rotation = r0_0.RT_993,
+  Rotation = r0_0.RT_994,
   UseSaveLoc = "Skill08",
 }
 r8_0[5] = {
@@ -32179,7 +32183,7 @@ r8_0[5] = {
     0,
     -1000
   },
-  Rotation = r0_0.RT_993,
+  Rotation = r0_0.RT_994,
   UseSaveLoc = "Skill08",
 }
 r8_0[6] = {
@@ -32191,7 +32195,7 @@ r8_0[6] = {
     -500,
     -1000
   },
-  Rotation = r0_0.RT_993,
+  Rotation = r0_0.RT_994,
   UseSaveLoc = "Skill08",
 }
 r6_0[r7_0] = r8_0
@@ -32199,7 +32203,7 @@ r6_0.TaskId = 852033
 r4_0[r5_0] = r6_0
 r4_0[852034] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1256,
+  TaskEffects = r0_0.RT_1257,
   TaskId = 852034,
 }
 r6_0 = {
@@ -32214,8 +32218,8 @@ r6_0.TaskEffects = {
     UnitType = "Monster",
     UseSaveLoc = "85200901",
   },
-  [2] = r0_0.RT_1270,
-  [3] = r0_0.RT_1271,
+  [2] = r0_0.RT_1271,
+  [3] = r0_0.RT_1272,
 }
 r6_0.TaskId = 852035
 r4_0[852035] = r6_0
@@ -32231,8 +32235,8 @@ r6_0.TaskEffects = {
     UnitType = "Monster",
     UseSaveLoc = "85200902",
   },
-  [2] = r0_0.RT_1272,
-  [3] = r0_0.RT_1271,
+  [2] = r0_0.RT_1273,
+  [3] = r0_0.RT_1272,
 }
 r6_0.TaskId = 852036
 r4_0[852036] = r6_0
@@ -32248,13 +32252,13 @@ r6_0.TaskEffects = {
     UnitType = "Monster",
     UseSaveLoc = "85200903",
   },
-  [2] = r0_0.RT_1270,
-  [3] = r0_0.RT_1272,
+  [2] = r0_0.RT_1271,
+  [3] = r0_0.RT_1273,
 }
 r6_0.TaskId = 852037
 r4_0[852037] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_904,
+  NotifyName = r0_0.RT_905,
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
@@ -32487,7 +32491,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 852053
 r4_0[852053] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
@@ -32501,7 +32505,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 852054
 r4_0[852054] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_825,
+  NotifyName = r0_0.RT_826,
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
@@ -32515,7 +32519,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 852055
 r4_0[852055] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_1135,
+  NotifyName = r0_0.RT_1136,
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
@@ -32547,7 +32551,7 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 852023,
     Function = "CreateSkillCreature",
-    Rotation = r0_0.RT_993,
+    Rotation = r0_0.RT_994,
   },
 }
 r6_0.TaskId = 852058
@@ -32574,7 +32578,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 852060
 r4_0[852060] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_904,
+  NotifyName = r0_0.RT_905,
 }
 r6_0.TaskEffects = {
   [1] = {
@@ -32591,7 +32595,7 @@ r4_0[852062] = {
   TaskId = 852062,
 }
 r6_0 = {
-  NotifyName = r0_0.RT_909,
+  NotifyName = r0_0.RT_910,
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
@@ -32622,21 +32626,21 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1257,
+  [1] = r0_0.RT_1258,
   [2] = {
     CreatureId = 852009,
     Function = "CreateSkillCreature",
     UseBattlePointID = 85200503,
     UseBattlePointRotation = 1,
   },
-  [3] = r0_0.RT_1260,
-  [4] = r0_0.RT_1261,
-  [5] = r0_0.RT_1262,
-  [6] = r0_0.RT_1266,
-  [7] = r0_0.RT_1263,
-  [8] = r0_0.RT_1264,
-  [9] = r0_0.RT_1265,
-  [10] = r0_0.RT_1258,
+  [3] = r0_0.RT_1261,
+  [4] = r0_0.RT_1262,
+  [5] = r0_0.RT_1263,
+  [6] = r0_0.RT_1267,
+  [7] = r0_0.RT_1264,
+  [8] = r0_0.RT_1265,
+  [9] = r0_0.RT_1266,
+  [10] = r0_0.RT_1259,
 }
 r6_0.TaskId = 852064
 r4_0[852064] = r6_0
@@ -32644,21 +32648,21 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1257,
-  [2] = r0_0.RT_1259,
+  [1] = r0_0.RT_1258,
+  [2] = r0_0.RT_1260,
   [3] = {
     CreatureId = 852009,
     Function = "CreateSkillCreature",
     UseBattlePointID = 85200504,
     UseBattlePointRotation = 1,
   },
-  [4] = r0_0.RT_1261,
-  [5] = r0_0.RT_1262,
-  [6] = r0_0.RT_1266,
-  [7] = r0_0.RT_1263,
-  [8] = r0_0.RT_1264,
-  [9] = r0_0.RT_1265,
-  [10] = r0_0.RT_1258,
+  [4] = r0_0.RT_1262,
+  [5] = r0_0.RT_1263,
+  [6] = r0_0.RT_1267,
+  [7] = r0_0.RT_1264,
+  [8] = r0_0.RT_1265,
+  [9] = r0_0.RT_1266,
+  [10] = r0_0.RT_1259,
 }
 r6_0.TaskId = 852065
 r4_0[852065] = r6_0
@@ -32666,21 +32670,21 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1257,
-  [2] = r0_0.RT_1259,
-  [3] = r0_0.RT_1260,
+  [1] = r0_0.RT_1258,
+  [2] = r0_0.RT_1260,
+  [3] = r0_0.RT_1261,
   [4] = {
     CreatureId = 852009,
     Function = "CreateSkillCreature",
     UseBattlePointID = 85200505,
     UseBattlePointRotation = 1,
   },
-  [5] = r0_0.RT_1262,
-  [6] = r0_0.RT_1266,
-  [7] = r0_0.RT_1263,
-  [8] = r0_0.RT_1264,
-  [9] = r0_0.RT_1265,
-  [10] = r0_0.RT_1258,
+  [5] = r0_0.RT_1263,
+  [6] = r0_0.RT_1267,
+  [7] = r0_0.RT_1264,
+  [8] = r0_0.RT_1265,
+  [9] = r0_0.RT_1266,
+  [10] = r0_0.RT_1259,
 }
 r6_0.TaskId = 852066
 r4_0[852066] = r6_0
@@ -32688,21 +32692,21 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1257,
-  [2] = r0_0.RT_1259,
-  [3] = r0_0.RT_1260,
-  [4] = r0_0.RT_1261,
+  [1] = r0_0.RT_1258,
+  [2] = r0_0.RT_1260,
+  [3] = r0_0.RT_1261,
+  [4] = r0_0.RT_1262,
   [5] = {
     CreatureId = 852009,
     Function = "CreateSkillCreature",
     UseBattlePointID = 85200506,
     UseBattlePointRotation = 1,
   },
-  [6] = r0_0.RT_1266,
-  [7] = r0_0.RT_1263,
-  [8] = r0_0.RT_1264,
-  [9] = r0_0.RT_1265,
-  [10] = r0_0.RT_1258,
+  [6] = r0_0.RT_1267,
+  [7] = r0_0.RT_1264,
+  [8] = r0_0.RT_1265,
+  [9] = r0_0.RT_1266,
+  [10] = r0_0.RT_1259,
 }
 r6_0.TaskId = 852067
 r4_0[852067] = r6_0
@@ -32786,7 +32790,7 @@ r4_0[852072] = r6_0
 r4_0[852073] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1269,
+  TaskEffects = r0_0.RT_1270,
   TaskId = 852073,
 }
 r6_0 = {
@@ -32803,12 +32807,12 @@ r6_0.TaskId = 852074
 r4_0[852074] = r6_0
 r4_0[852075] = {
   TargetFilter = "BossAida_Skill17_Cylinder1",
-  TaskEffects = r0_0.RT_1256,
+  TaskEffects = r0_0.RT_1257,
   TaskId = 852075,
 }
 r4_0[852076] = {
   TargetFilter = "BossAida_Skill17_Cylinder1_OtFr",
-  TaskEffects = r0_0.RT_772,
+  TaskEffects = r0_0.RT_773,
   TaskId = 852076,
 }
 r6_0 = {
@@ -33095,28 +33099,28 @@ r4_0[852089] = r6_0
 r4_0[852090] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1269,
+  TaskEffects = r0_0.RT_1270,
   TaskId = 852090,
 }
 r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1273,
-  [2] = r0_0.RT_1275,
-  [3] = r0_0.RT_1276,
-  [4] = r0_0.RT_1277,
-  [5] = r0_0.RT_1278,
+  [1] = r0_0.RT_1274,
+  [2] = r0_0.RT_1276,
+  [3] = r0_0.RT_1277,
+  [4] = r0_0.RT_1278,
+  [5] = r0_0.RT_1279,
   [6] = {
     CreatureId = 852009,
     Function = "CreateSkillCreature",
     UseBattlePointID = 85200807,
     UseBattlePointRotation = 1,
   },
-  [7] = r0_0.RT_1279,
-  [8] = r0_0.RT_1280,
-  [9] = r0_0.RT_1281,
-  [10] = r0_0.RT_1274,
+  [7] = r0_0.RT_1280,
+  [8] = r0_0.RT_1281,
+  [9] = r0_0.RT_1282,
+  [10] = r0_0.RT_1275,
 }
 r6_0.TaskId = 852091
 r4_0[852091] = r6_0
@@ -33130,15 +33134,15 @@ r6_0.TaskEffects = {
     UseBattlePointID = 85200802,
     UseBattlePointRotation = 1,
   },
-  [2] = r0_0.RT_1275,
-  [3] = r0_0.RT_1276,
-  [4] = r0_0.RT_1277,
-  [5] = r0_0.RT_1278,
-  [6] = r0_0.RT_1282,
-  [7] = r0_0.RT_1279,
-  [8] = r0_0.RT_1280,
-  [9] = r0_0.RT_1281,
-  [10] = r0_0.RT_1274,
+  [2] = r0_0.RT_1276,
+  [3] = r0_0.RT_1277,
+  [4] = r0_0.RT_1278,
+  [5] = r0_0.RT_1279,
+  [6] = r0_0.RT_1283,
+  [7] = r0_0.RT_1280,
+  [8] = r0_0.RT_1281,
+  [9] = r0_0.RT_1282,
+  [10] = r0_0.RT_1275,
 }
 r6_0.TaskId = 852092
 r4_0[852092] = r6_0
@@ -33146,21 +33150,21 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1273,
+  [1] = r0_0.RT_1274,
   [2] = {
     CreatureId = 852009,
     Function = "CreateSkillCreature",
     UseBattlePointID = 85200803,
     UseBattlePointRotation = 1,
   },
-  [3] = r0_0.RT_1276,
-  [4] = r0_0.RT_1277,
-  [5] = r0_0.RT_1278,
-  [6] = r0_0.RT_1282,
-  [7] = r0_0.RT_1279,
-  [8] = r0_0.RT_1280,
-  [9] = r0_0.RT_1281,
-  [10] = r0_0.RT_1274,
+  [3] = r0_0.RT_1277,
+  [4] = r0_0.RT_1278,
+  [5] = r0_0.RT_1279,
+  [6] = r0_0.RT_1283,
+  [7] = r0_0.RT_1280,
+  [8] = r0_0.RT_1281,
+  [9] = r0_0.RT_1282,
+  [10] = r0_0.RT_1275,
 }
 r6_0.TaskId = 852093
 r4_0[852093] = r6_0
@@ -33168,21 +33172,21 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1273,
-  [2] = r0_0.RT_1275,
+  [1] = r0_0.RT_1274,
+  [2] = r0_0.RT_1276,
   [3] = {
     CreatureId = 852009,
     Function = "CreateSkillCreature",
     UseBattlePointID = 85200804,
     UseBattlePointRotation = 1,
   },
-  [4] = r0_0.RT_1277,
-  [5] = r0_0.RT_1278,
-  [6] = r0_0.RT_1282,
-  [7] = r0_0.RT_1279,
-  [8] = r0_0.RT_1280,
-  [9] = r0_0.RT_1281,
-  [10] = r0_0.RT_1274,
+  [4] = r0_0.RT_1278,
+  [5] = r0_0.RT_1279,
+  [6] = r0_0.RT_1283,
+  [7] = r0_0.RT_1280,
+  [8] = r0_0.RT_1281,
+  [9] = r0_0.RT_1282,
+  [10] = r0_0.RT_1275,
 }
 r6_0.TaskId = 852094
 r4_0[852094] = r6_0
@@ -33190,21 +33194,21 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1273,
-  [2] = r0_0.RT_1275,
-  [3] = r0_0.RT_1276,
+  [1] = r0_0.RT_1274,
+  [2] = r0_0.RT_1276,
+  [3] = r0_0.RT_1277,
   [4] = {
     CreatureId = 852009,
     Function = "CreateSkillCreature",
     UseBattlePointID = 85200805,
     UseBattlePointRotation = 1,
   },
-  [5] = r0_0.RT_1278,
-  [6] = r0_0.RT_1282,
-  [7] = r0_0.RT_1279,
-  [8] = r0_0.RT_1280,
-  [9] = r0_0.RT_1281,
-  [10] = r0_0.RT_1274,
+  [5] = r0_0.RT_1279,
+  [6] = r0_0.RT_1283,
+  [7] = r0_0.RT_1280,
+  [8] = r0_0.RT_1281,
+  [9] = r0_0.RT_1282,
+  [10] = r0_0.RT_1275,
 }
 r6_0.TaskId = 852095
 r4_0[852095] = r6_0
@@ -33212,21 +33216,21 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1273,
-  [2] = r0_0.RT_1275,
-  [3] = r0_0.RT_1276,
-  [4] = r0_0.RT_1277,
+  [1] = r0_0.RT_1274,
+  [2] = r0_0.RT_1276,
+  [3] = r0_0.RT_1277,
+  [4] = r0_0.RT_1278,
   [5] = {
     CreatureId = 852009,
     Function = "CreateSkillCreature",
     UseBattlePointID = 85200806,
     UseBattlePointRotation = 1,
   },
-  [6] = r0_0.RT_1282,
-  [7] = r0_0.RT_1279,
-  [8] = r0_0.RT_1280,
-  [9] = r0_0.RT_1281,
-  [10] = r0_0.RT_1274,
+  [6] = r0_0.RT_1283,
+  [7] = r0_0.RT_1280,
+  [8] = r0_0.RT_1281,
+  [9] = r0_0.RT_1282,
+  [10] = r0_0.RT_1275,
 }
 r6_0.TaskId = 852096
 r4_0[852096] = r6_0
@@ -33272,7 +33276,7 @@ r4_0[852099] = {
   TaskEffects = {
     [1] = r0_0.RT_33,
     [2] = r0_0.RT_506,
-    [3] = r0_0.RT_1101,
+    [3] = r0_0.RT_1102,
   },
   TaskId = 852099,
 }
@@ -33295,14 +33299,14 @@ r6_0.TaskId = 900001
 r4_0[900001] = r6_0
 r4_0[900002] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1209,
+  TaskEffects = r0_0.RT_1210,
   TaskId = 900002,
 }
 r4_0[900003] = {
   TargetFilter = "Mech_Bomb_MonAndSelf",
   TaskEffects = {
-    [1] = r0_0.RT_577,
-    [2] = r0_0.RT_753,
+    [1] = r0_0.RT_578,
+    [2] = r0_0.RT_754,
   },
   TaskId = 900003,
 }
@@ -33310,7 +33314,7 @@ r6_0 = {
   TargetFilter = "Mech_Bomb_MonAndSelf",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_577,
+  [1] = r0_0.RT_578,
   [2] = {
     CauseHit = "HitFly_XY600Z1000",
     Function = "CutToughness",
@@ -33322,8 +33326,8 @@ r4_0[900004] = r6_0
 r4_0[900005] = {
   TargetFilter = "Mech_Bomb_MonAndSelf",
   TaskEffects = {
-    [1] = r0_0.RT_577,
-    [2] = r0_0.RT_1291,
+    [1] = r0_0.RT_578,
+    [2] = r0_0.RT_1292,
   },
   TaskId = 900005,
 }
@@ -33355,21 +33359,21 @@ r4_0[900007] = r6_0
 r4_0[900008] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_1293,
-    [2] = r0_0.RT_682,
+    [1] = r0_0.RT_1294,
+    [2] = r0_0.RT_683,
   },
   TaskId = 900008,
 }
 r4_0[900009] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_768,
+  TaskEffects = r0_0.RT_769,
   TaskId = 900009,
 }
 r4_0[900010] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_3,
-    [2] = r0_0.RT_1291,
+    [2] = r0_0.RT_1292,
   },
   TaskId = 900010,
 }
@@ -33401,7 +33405,7 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1294,
+  [1] = r0_0.RT_1295,
   [2] = {
     CauseHit = "HitFly_XY0Z1000",
     Function = "CutToughness",
@@ -33413,7 +33417,7 @@ r4_0[900013] = r6_0
 r4_0[900014] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_1294,
+    [1] = r0_0.RT_1295,
     [2] = r0_0.RT_110,
   },
   TaskId = 900014,
@@ -33440,8 +33444,8 @@ r6_0.TaskEffects = {
     NormalToHit = true,
     Overlap = true,
   },
-  [2] = r0_0.RT_680,
-  [3] = r0_0.RT_682,
+  [2] = r0_0.RT_681,
+  [3] = r0_0.RT_683,
 }
 r6_0.TaskId = 900016
 r4_0[900016] = r6_0
@@ -33493,10 +33497,10 @@ r6_0.TaskEffects = {
   [1] = {
     Function = "EffectFunction",
     FunctionName = "RandomLocation",
-    Vars = r0_0.RT_954,
+    Vars = r0_0.RT_955,
   },
-  [2] = r0_0.RT_1293,
-  [3] = r0_0.RT_682,
+  [2] = r0_0.RT_1294,
+  [3] = r0_0.RT_683,
 }
 r6_0.TaskId = 900020
 r4_0[900020] = r6_0
@@ -33540,7 +33544,7 @@ r4_0[900022] = r6_0
 r4_0[900023] = {
   TargetFilter = "Mech_PlayerSingle",
   TaskEffects = {
-    [1] = r0_0.RT_1295,
+    [1] = r0_0.RT_1296,
   },
   TaskId = 900023,
 }
@@ -33549,16 +33553,16 @@ r4_0[900024] = {
   TaskEffects = {
     [1] = r0_0.RT_16,
     [2] = r0_0.RT_550,
-    [3] = r0_0.RT_1296,
+    [3] = r0_0.RT_1297,
   },
   TaskId = 900024,
 }
 r4_0[900025] = {
   TargetFilter = "Mech_Target_OtFr",
   TaskEffects = {
-    [1] = r0_0.RT_1297,
+    [1] = r0_0.RT_1298,
     [2] = r0_0.RT_550,
-    [3] = r0_0.RT_1296,
+    [3] = r0_0.RT_1297,
   },
   TaskId = 900025,
 }
@@ -33570,7 +33574,7 @@ r6_0.TaskEffects = {
     Function = "Heal",
     Value = 800,
   },
-  [2] = r0_0.RT_1298,
+  [2] = r0_0.RT_1299,
 }
 r6_0.TaskId = 900026
 r4_0[900026] = r6_0
@@ -33603,7 +33607,7 @@ r6_0.TaskEffects = {
     Function = "Heal",
     Value = 300,
   },
-  [2] = r0_0.RT_1298,
+  [2] = r0_0.RT_1299,
 }
 r6_0.TaskId = 900029
 r4_0[900029] = r6_0
@@ -33621,7 +33625,7 @@ r6_0.TaskId = 900030
 r4_0[900030] = r6_0
 r4_0[900031] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1166,
+  TaskEffects = r0_0.RT_1167,
   TaskId = 900031,
 }
 r6_0 = {
@@ -33633,14 +33637,14 @@ r6_0.TaskEffects = {
     Function = "AddBuff",
     LastTime = 100000,
   },
-  [2] = r0_0.RT_1295,
+  [2] = r0_0.RT_1296,
 }
 r6_0.TaskId = 900032
 r4_0[900032] = r6_0
 r4_0[900040] = {
   TargetFilter = "Mech_TouchBomb_Player",
   TaskEffects = {
-    [1] = r0_0.RT_1284,
+    [1] = r0_0.RT_1285,
     [2] = r0_0.RT_502,
   },
   TaskId = 900040,
@@ -33654,7 +33658,7 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 999,
   },
-  [2] = r0_0.RT_1299,
+  [2] = r0_0.RT_1300,
 }
 r6_0.TaskId = 900041
 r4_0[900041] = r6_0
@@ -33666,15 +33670,15 @@ r6_0.TaskEffects = {
     FXId = 900039,
     Function = "PlayFX",
   },
-  [2] = r0_0.RT_1294,
+  [2] = r0_0.RT_1295,
 }
 r6_0.TaskId = 900042
 r4_0[900042] = r6_0
 r4_0[900043] = {
   TargetFilter = "Mech_TouchBomb_Monster",
   TaskEffects = {
-    [1] = r0_0.RT_1300,
-    [2] = r0_0.RT_1301,
+    [1] = r0_0.RT_1301,
+    [2] = r0_0.RT_1302,
   },
   TaskId = 900043,
 }
@@ -33682,8 +33686,8 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1300,
-  [2] = r0_0.RT_1301,
+  [1] = r0_0.RT_1301,
+  [2] = r0_0.RT_1302,
   [3] = {
     Function = "PlaySE",
     SEId = 9000405,
@@ -33695,21 +33699,21 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1300,
+  [1] = r0_0.RT_1301,
   [2] = {
     FXId = 900042,
     Function = "PlayFX",
     IsAttached = true,
   },
-  [3] = r0_0.RT_1301,
+  [3] = r0_0.RT_1302,
 }
 r6_0.TaskId = 900045
 r4_0[900045] = r6_0
 r4_0[900046] = {
   TargetFilter = "Mech_RockBomb_Player",
   TaskEffects = {
-    [1] = r0_0.RT_1294,
-    [2] = r0_0.RT_1301,
+    [1] = r0_0.RT_1295,
+    [2] = r0_0.RT_1302,
   },
   TaskId = 900046,
 }
@@ -33717,18 +33721,18 @@ r6_0 = {
   TargetFilter = "Mech_RockBomb_Monster",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1300,
+  [1] = r0_0.RT_1301,
   [2] = {
     FXId = 900040,
     Function = "PlayFX",
   },
-  [3] = r0_0.RT_1301,
+  [3] = r0_0.RT_1302,
 }
 r6_0.TaskId = 900047
 r4_0[900047] = r6_0
 r4_0[900048] = {
   TargetFilter = "Mech_BallBomb_Player",
-  TaskEffects = r0_0.RT_1302,
+  TaskEffects = r0_0.RT_1303,
   TaskId = 900048,
 }
 r6_0 = {
@@ -33752,15 +33756,15 @@ r4_0[900050] = {
   TargetFilter = "LaserTarget",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_1303,
+    [2] = r0_0.RT_1304,
   },
   TaskId = 900050,
 }
 r4_0[900051] = {
   TargetFilter = "Mech_Target_OtFr",
   TaskEffects = {
-    [1] = r0_0.RT_1297,
-    [2] = r0_0.RT_1303,
+    [1] = r0_0.RT_1298,
+    [2] = r0_0.RT_1304,
   },
   TaskId = 900051,
 }
@@ -33784,8 +33788,8 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_735,
-  [2] = r0_0.RT_1304,
+  [1] = r0_0.RT_736,
+  [2] = r0_0.RT_1305,
   [3] = {
     Function = "PlaySE",
     SEId = 9000602,
@@ -33795,7 +33799,7 @@ r6_0.TaskId = 900062
 r4_0[900062] = r6_0
 r4_0[900063] = {
   TaskEffects = {
-    [1] = r0_0.RT_1304,
+    [1] = r0_0.RT_1305,
   },
   TaskId = 900063,
 }
@@ -33810,14 +33814,14 @@ r6_0.TaskId = 900064
 r4_0[900064] = r6_0
 r4_0[900070] = {
   TargetFilter = "Mech_IceBomb_Player",
-  TaskEffects = r0_0.RT_1302,
+  TaskEffects = r0_0.RT_1303,
   TaskId = 900070,
 }
 r6_0 = {
   TargetFilter = "Mech_IceBomb_Monster",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1294,
+  [1] = r0_0.RT_1295,
   [2] = {
     FXId = 900043,
     Function = "PlayFX",
@@ -33915,7 +33919,7 @@ r6_0.TaskId = 900077
 r4_0[900077] = r6_0
 r4_0[900078] = {
   TargetFilter = "Mech_Bomb_Player",
-  TaskEffects = r0_0.RT_1307,
+  TaskEffects = r0_0.RT_1308,
   TaskId = 900078,
 }
 r6_0 = {
@@ -33928,7 +33932,7 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 50,
   },
-  [2] = r0_0.RT_1308,
+  [2] = r0_0.RT_1309,
 }
 r6_0.TaskId = 900079
 r4_0[900079] = r6_0
@@ -33941,15 +33945,15 @@ r6_0.TaskEffects = {
     Function = "CreateSkillCreature",
     UseSaveLoc = "",
   },
-  [2] = r0_0.RT_682,
+  [2] = r0_0.RT_683,
 }
 r6_0.TaskId = 900080
 r4_0[900080] = r6_0
 r4_0[900081] = {
   TargetFilter = "Mon_Cylinder_300_200_360",
   TaskEffects = {
-    [1] = r0_0.RT_680,
-    [2] = r0_0.RT_1308,
+    [1] = r0_0.RT_681,
+    [2] = r0_0.RT_1309,
   },
   TaskId = 900081,
 }
@@ -33968,7 +33972,7 @@ r6_0.TaskEffects = {
     Rate = 0,
     Value = 10,
   },
-  [2] = r0_0.RT_753,
+  [2] = r0_0.RT_754,
 }
 r6_0.TaskId = 900083
 r4_0[900083] = r6_0
@@ -34001,7 +34005,7 @@ r6_0.TaskId = 900085
 r4_0[900085] = r6_0
 r4_0[900086] = {
   TargetFilter = "Mech_Bomb",
-  TaskEffects = r0_0.RT_1307,
+  TaskEffects = r0_0.RT_1308,
   TaskId = 900086,
 }
 r6_0 = {
@@ -34013,7 +34017,7 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 50,
   },
-  [2] = r0_0.RT_1308,
+  [2] = r0_0.RT_1309,
 }
 r6_0.TaskId = 900087
 r4_0[900087] = r6_0
@@ -34021,9 +34025,9 @@ r4_0[900101] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_230_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_1309,
-    [2] = r0_0.RT_661,
-    [3] = r0_0.RT_1310,
+    [1] = r0_0.RT_1310,
+    [2] = r0_0.RT_662,
+    [3] = r0_0.RT_1311,
   },
   TaskId = 900101,
 }
@@ -34031,9 +34035,9 @@ r4_0[900102] = {
   NotifyName = r0_0.RT_523,
   TargetFilter = "Mon_Cylinder_230_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_1041,
-    [2] = r0_0.RT_661,
-    [3] = r0_0.RT_1310,
+    [1] = r0_0.RT_1042,
+    [2] = r0_0.RT_662,
+    [3] = r0_0.RT_1311,
   },
   TaskId = 900102,
 }
@@ -34047,9 +34051,9 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 2.75,
   },
-  [2] = r0_0.RT_661,
+  [2] = r0_0.RT_662,
   [3] = r0_0.RT_110,
-  [4] = r0_0.RT_1310,
+  [4] = r0_0.RT_1311,
 }
 r6_0.TaskId = 900103
 r4_0[900103] = r6_0
@@ -34070,13 +34074,13 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1007,
+  [1] = r0_0.RT_1008,
   [2] = {
     FXId = 900202,
     Function = "PlayFX",
     Overlap = true,
   },
-  [3] = r0_0.RT_1311,
+  [3] = r0_0.RT_1312,
 }
 r6_0.TaskId = 900202
 r4_0[900202] = r6_0
@@ -34095,16 +34099,16 @@ r4_0[900204] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_230_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_1309,
-    [2] = r0_0.RT_661,
-    [3] = r0_0.RT_1311,
+    [1] = r0_0.RT_1310,
+    [2] = r0_0.RT_662,
+    [3] = r0_0.RT_1312,
   },
   TaskId = 900204,
 }
 r4_0[900301] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_230_200_180",
-  TaskEffects = r0_0.RT_1313,
+  TaskEffects = r0_0.RT_1314,
   TaskId = 900301,
 }
 r6_0 = {
@@ -34160,7 +34164,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 900304
 r4_0[900304] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_667,
+  NotifyName = r0_0.RT_668,
   TargetFilter = "Mon_Cylinder_230_200_180",
 }
 r6_0.TaskEffects = {
@@ -34170,15 +34174,15 @@ r6_0.TaskEffects = {
     Rate = 1.935,
   },
   [2] = r0_0.RT_39,
-  [3] = r0_0.RT_661,
-  [4] = r0_0.RT_1312,
+  [3] = r0_0.RT_662,
+  [4] = r0_0.RT_1313,
 }
 r6_0.TaskId = 900305
 r4_0[900305] = r6_0
 r4_0[900401] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_768,
+  TaskEffects = r0_0.RT_769,
   TaskId = 900401,
 }
 r6_0 = {
@@ -34243,7 +34247,7 @@ r6_0 = {
   TargetFilter = "BTTarget",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_758,
+  [1] = r0_0.RT_759,
   [2] = {
     CreatureId = 900405,
     Function = "CreateSkillCreature",
@@ -34301,14 +34305,14 @@ r6_0.TaskEffects = {
     Function = "Heal",
     Rate = 0.2,
   },
-  [2] = r0_0.RT_1230,
+  [2] = r0_0.RT_1231,
 }
 r6_0.TaskId = 900408
 r4_0[900408] = r6_0
 r4_0[900501] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_230_200_180",
-  TaskEffects = r0_0.RT_1313,
+  TaskEffects = r0_0.RT_1314,
   TaskId = 900501,
 }
 r6_0 = {
@@ -34327,10 +34331,10 @@ r4_0[900502] = r6_0
 r4_0[900503] = {
   TargetFilter = "Mon_Sphere_300_360",
   TaskEffects = {
-    [1] = r0_0.RT_680,
+    [1] = r0_0.RT_681,
     [2] = r0_0.RT_18,
     [3] = r0_0.RT_495,
-    [4] = r0_0.RT_656,
+    [4] = r0_0.RT_657,
   },
   TaskId = 900503,
 }
@@ -34340,14 +34344,14 @@ r4_0[900504] = {
   TaskEffects = {
     [1] = r0_0.RT_358,
     [2] = r0_0.RT_18,
-    [3] = r0_0.RT_656,
+    [3] = r0_0.RT_657,
   },
   TaskId = 900504,
 }
 r4_0[900505] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_749,
+  TaskEffects = r0_0.RT_750,
   TaskId = 900505,
 }
 r4_0[900506] = {
@@ -34355,9 +34359,9 @@ r4_0[900506] = {
   TargetFilter = "Mon_Cylinder_230_200_180",
   TaskEffects = {
     [1] = r0_0.RT_22,
-    [2] = r0_0.RT_661,
+    [2] = r0_0.RT_662,
     [3] = r0_0.RT_39,
-    [4] = r0_0.RT_1312,
+    [4] = r0_0.RT_1313,
   },
   TaskId = 900506,
 }
@@ -34365,9 +34369,9 @@ r4_0[900507] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "SQ_Baozha_Skill03_Sphere",
   TaskEffects = {
-    [1] = r0_0.RT_779,
+    [1] = r0_0.RT_780,
     [2] = r0_0.RT_18,
-    [3] = r0_0.RT_656,
+    [3] = r0_0.RT_657,
   },
   TaskId = 900507,
 }
@@ -34376,7 +34380,7 @@ r4_0[900508] = {
   TaskEffects = {
     [1] = r0_0.RT_358,
     [2] = r0_0.RT_10,
-    [3] = r0_0.RT_656,
+    [3] = r0_0.RT_657,
   },
   TaskId = 900508,
 }
@@ -34385,9 +34389,9 @@ r4_0[900601] = {
   TargetFilter = "Mon_Cylinder_230_200_180",
   TaskEffects = {
     [1] = r0_0.RT_23,
-    [2] = r0_0.RT_661,
+    [2] = r0_0.RT_662,
     [3] = r0_0.RT_39,
-    [4] = r0_0.RT_1314,
+    [4] = r0_0.RT_1315,
   },
   TaskId = 900601,
 }
@@ -34396,9 +34400,9 @@ r4_0[900602] = {
   TargetFilter = "Mon_Cylinder_230_200_180",
   TaskEffects = {
     [1] = r0_0.RT_7,
-    [2] = r0_0.RT_661,
+    [2] = r0_0.RT_662,
     [3] = r0_0.RT_39,
-    [4] = r0_0.RT_1314,
+    [4] = r0_0.RT_1315,
   },
   TaskId = 900602,
 }
@@ -34407,9 +34411,9 @@ r4_0[900603] = {
   TargetFilter = "Mon_Cylinder_230_200_180",
   TaskEffects = {
     [1] = r0_0.RT_22,
-    [2] = r0_0.RT_661,
+    [2] = r0_0.RT_662,
     [3] = r0_0.RT_39,
-    [4] = r0_0.RT_1314,
+    [4] = r0_0.RT_1315,
   },
   TaskId = 900603,
 }
@@ -34439,10 +34443,10 @@ r4_0[900605] = r6_0
 r4_0[900606] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_1103,
+    [1] = r0_0.RT_1104,
     [2] = r0_0.RT_10,
     [3] = r0_0.RT_4,
-    [4] = r0_0.RT_1314,
+    [4] = r0_0.RT_1315,
   },
   TaskId = 900606,
 }
@@ -34523,10 +34527,10 @@ r4_0[900612] = r6_0
 r4_0[900613] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_680,
+    [1] = r0_0.RT_681,
     [2] = r0_0.RT_10,
     [3] = r0_0.RT_4,
-    [4] = r0_0.RT_1314,
+    [4] = r0_0.RT_1315,
   },
   TaskId = 900613,
 }
@@ -34569,7 +34573,7 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = {
     Function = "SetSelfLoc",
-    LocOffset = r0_0.RT_949,
+    LocOffset = r0_0.RT_950,
     TargetCenterLoc = "SavedLoc",
   },
 }
@@ -34614,41 +34618,41 @@ r4_0[900620] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "Mon_Cylinder_230_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_680,
-    [2] = r0_0.RT_661,
+    [1] = r0_0.RT_681,
+    [2] = r0_0.RT_662,
     [3] = r0_0.RT_39,
-    [4] = r0_0.RT_1314,
+    [4] = r0_0.RT_1315,
   },
   TaskId = 900620,
 }
 r4_0[900701] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1316,
+  TaskEffects = r0_0.RT_1317,
   TaskId = 900701,
 }
 r4_0[900702] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1319,
+  TaskEffects = r0_0.RT_1320,
   TaskId = 900702,
 }
 r4_0[900703] = {
-  TaskEffects = r0_0.RT_1321,
+  TaskEffects = r0_0.RT_1322,
   TaskId = 900703,
 }
 r4_0[900704] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1316,
+  TaskEffects = r0_0.RT_1317,
   TaskId = 900704,
 }
 r4_0[900705] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1319,
+  TaskEffects = r0_0.RT_1320,
   TaskId = 900705,
 }
 r4_0[900706] = {
-  TaskEffects = r0_0.RT_1321,
+  TaskEffects = r0_0.RT_1322,
   TaskId = 900706,
 }
 r6_0 = {
@@ -34667,7 +34671,7 @@ r6_0 = {
   TargetFilter = "Mon_Sphere_100_360",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_779,
+  [1] = r0_0.RT_780,
   [2] = {
     FXId = 900704,
     Function = "PlayFX",
@@ -34680,8 +34684,8 @@ r6_0 = {
   TargetFilter = "Mon_Cylinder_230_200_180",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_660,
-  [2] = r0_0.RT_661,
+  [1] = r0_0.RT_661,
+  [2] = r0_0.RT_662,
   [3] = r0_0.RT_10,
   [4] = {
     Function = "PlaySE",
@@ -34693,11 +34697,11 @@ r4_0[900709] = r6_0
 r4_0[950001] = {
   NotifyName = r0_0.RT_2,
   TaskEffects = {
-    [1] = r0_0.RT_1322,
-    [2] = r0_0.RT_1322,
-    [3] = r0_0.RT_1322,
-    [4] = r0_0.RT_1322,
-    [5] = r0_0.RT_1322,
+    [1] = r0_0.RT_1323,
+    [2] = r0_0.RT_1323,
+    [3] = r0_0.RT_1323,
+    [4] = r0_0.RT_1323,
+    [5] = r0_0.RT_1323,
   },
   TaskId = 950001,
 }
@@ -34727,7 +34731,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 950003
 r4_0[950003] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_737,
+  NotifyName = r0_0.RT_738,
 }
 r6_0.TaskEffects = {
   [1] = {
@@ -34740,7 +34744,7 @@ r6_0.TaskEffects = {
     Function = "CreateSkillCreature",
     Location = r0_0.RT_420,
   },
-  [3] = r0_0.RT_1322,
+  [3] = r0_0.RT_1323,
 }
 r6_0.TaskId = 950004
 r4_0[950004] = r6_0
@@ -34966,9 +34970,9 @@ r4_0[950018] = r6_0
 r4_0[950019] = {
   NotifyName = r0_0.RT_2,
   TaskEffects = {
-    [1] = r0_0.RT_1323,
-    [2] = r0_0.RT_1323,
-    [3] = r0_0.RT_1323,
+    [1] = r0_0.RT_1324,
+    [2] = r0_0.RT_1324,
+    [3] = r0_0.RT_1324,
   },
   TaskId = 950019,
 }
@@ -34976,7 +34980,7 @@ r6_0 = {
   TargetFilter = "Mon_Sphere_300_360",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1299,
+  [1] = r0_0.RT_1300,
   [2] = {
     FXId = 950005,
     Function = "PlayFX",
@@ -35029,29 +35033,29 @@ r6_0.TaskId = 950024
 r4_0[950024] = r6_0
 r4_0[950025] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_749,
+  TaskEffects = r0_0.RT_750,
   TaskId = 950025,
 }
 r4_0[950101] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_200_180",
-  TaskEffects = r0_0.RT_1325,
+  TaskEffects = r0_0.RT_1326,
   TaskId = 950101,
 }
 r4_0[950102] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_200_180",
-  TaskEffects = r0_0.RT_1325,
+  TaskEffects = r0_0.RT_1326,
   TaskId = 950102,
 }
 r4_0[950103] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Mon_Cylinder_150_200_180",
-  TaskEffects = r0_0.RT_1325,
+  TaskEffects = r0_0.RT_1326,
   TaskId = 950103,
 }
 r6_0 = {
-  NotifyName = r0_0.RT_1099,
+  NotifyName = r0_0.RT_1100,
   TargetFilter = "Mon_Cylinder_150_200_180",
 }
 r6_0.TaskEffects = {
@@ -35062,7 +35066,7 @@ r6_0.TaskEffects = {
     Value = 100,
   },
   [3] = r0_0.RT_4,
-  [4] = r0_0.RT_1324,
+  [4] = r0_0.RT_1325,
 }
 r6_0.TaskId = 950104
 r4_0[950104] = r6_0
@@ -35083,7 +35087,7 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_779,
+  [1] = r0_0.RT_780,
   [2] = r0_0.RT_10,
   [3] = {
     FXId = 950102,
@@ -35129,7 +35133,7 @@ r4_0[950109] = r6_0
 r4_0[950110] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_749,
+  TaskEffects = r0_0.RT_750,
   TaskId = 950110,
 }
 r5_0 = 950401
@@ -35208,19 +35212,19 @@ r4_0[r5_0] = r6_0
 r4_0[950405] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "NEWuyou_Skill02Burst1",
-  TaskEffects = r0_0.RT_1327,
+  TaskEffects = r0_0.RT_1328,
   TaskId = 950405,
 }
 r4_0[950406] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "NEWuyou_Skill02Burst2",
-  TaskEffects = r0_0.RT_1327,
+  TaskEffects = r0_0.RT_1328,
   TaskId = 950406,
 }
 r4_0[950407] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "NEWuyou_Skill02Burst3",
-  TaskEffects = r0_0.RT_1327,
+  TaskEffects = r0_0.RT_1328,
   TaskId = 950407,
 }
 r6_0 = {
@@ -35242,7 +35246,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_22,
-  [2] = r0_0.RT_1328,
+  [2] = r0_0.RT_1329,
   [3] = {
     FXId = 950501,
     Function = "PlayFX",
@@ -35254,8 +35258,8 @@ r4_0[950502] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Sphere_300_360",
   TaskEffects = {
-    [1] = r0_0.RT_774,
-    [2] = r0_0.RT_1326,
+    [1] = r0_0.RT_775,
+    [2] = r0_0.RT_1327,
   },
   TaskId = 950502,
 }
@@ -35264,7 +35268,7 @@ r4_0[950601] = {
   TargetFilter = "Mon_Cylinder_400_200_180",
   TaskEffects = {
     [1] = r0_0.RT_14,
-    [2] = r0_0.RT_1328,
+    [2] = r0_0.RT_1329,
   },
   TaskId = 950601,
 }
@@ -35285,21 +35289,21 @@ r4_0[950602] = r6_0
 r4_0[950701] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_200_180",
-  TaskEffects = r0_0.RT_1330,
+  TaskEffects = r0_0.RT_1331,
   TaskId = 950701,
 }
 r4_0[950702] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_200_180",
-  TaskEffects = r0_0.RT_1330,
+  TaskEffects = r0_0.RT_1331,
   TaskId = 950702,
 }
 r4_0[980101] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_230_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_660,
-    [2] = r0_0.RT_1331,
+    [1] = r0_0.RT_661,
+    [2] = r0_0.RT_1332,
   },
   TaskId = 980101,
 }
@@ -35308,23 +35312,23 @@ r4_0[980102] = {
   TargetFilter = "Mon_Cylinder_230_200_180",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_1331,
+    [2] = r0_0.RT_1332,
   },
   TaskId = 980102,
 }
 r4_0[980103] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "Mon_Cylinder_230_200_180",
-  TaskEffects = r0_0.RT_1332,
+  TaskEffects = r0_0.RT_1333,
   TaskId = 980103,
 }
 r4_0[980104] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_300_200_180",
   TaskEffects = {
-    [1] = r0_0.RT_660,
+    [1] = r0_0.RT_661,
     [2] = r0_0.RT_10,
-    [3] = r0_0.RT_1331,
+    [3] = r0_0.RT_1332,
   },
   TaskId = 980104,
 }
@@ -35333,28 +35337,28 @@ r4_0[980105] = {
   TargetFilter = "Mon_Cylinder_300_200_180",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_1127,
-    [3] = r0_0.RT_1331,
+    [2] = r0_0.RT_1128,
+    [3] = r0_0.RT_1332,
   },
   TaskId = 980105,
 }
 r4_0[980106] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "Mon_Cylinder_300_200_180",
-  TaskEffects = r0_0.RT_1332,
+  TaskEffects = r0_0.RT_1333,
   TaskId = 980106,
 }
 r4_0[980107] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_772,
+  TaskEffects = r0_0.RT_773,
   TaskId = 980107,
 }
 r4_0[980108] = {
   TargetFilter = "Mon_Sphere_400_360_Fr",
   TaskEffects = {
-    [1] = r0_0.RT_688,
-    [2] = r0_0.RT_621,
-    [3] = r0_0.RT_686,
+    [1] = r0_0.RT_689,
+    [2] = r0_0.RT_622,
+    [3] = r0_0.RT_687,
   },
   TaskId = 980108,
 }
@@ -35363,40 +35367,40 @@ r4_0[980109] = {
   TaskEffects = {
     [1] = r0_0.RT_496,
     [2] = r0_0.RT_10,
-    [3] = r0_0.RT_686,
+    [3] = r0_0.RT_687,
   },
   TaskId = 980109,
 }
 r4_0[980201] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_230_300_90",
-  TaskEffects = r0_0.RT_1334,
+  TaskEffects = r0_0.RT_1335,
   TaskId = 980201,
 }
 r4_0[980202] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_230_200_180",
-  TaskEffects = r0_0.RT_1335,
+  TaskEffects = r0_0.RT_1336,
   TaskId = 980202,
 }
 r4_0[980203] = {
   NotifyName = r0_0.RT_523,
   TargetFilter = "Mon_Cylinder_300_200_180",
-  TaskEffects = r0_0.RT_1335,
+  TaskEffects = r0_0.RT_1336,
   TaskId = 980203,
 }
 r4_0[980204] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Rectangle_80_200_100",
-  TaskEffects = r0_0.RT_1334,
+  TaskEffects = r0_0.RT_1335,
   TaskId = 980204,
 }
 r4_0[980301] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_50_90",
   TaskEffects = {
-    [1] = r0_0.RT_660,
-    [2] = r0_0.RT_1336,
+    [1] = r0_0.RT_661,
+    [2] = r0_0.RT_1337,
   },
   TaskId = 980301,
 }
@@ -35405,7 +35409,7 @@ r4_0[980302] = {
   TargetFilter = "Mon_Cylinder_150_50_90",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_1336,
+    [2] = r0_0.RT_1337,
   },
   TaskId = 980302,
 }
@@ -35413,9 +35417,9 @@ r4_0[980303] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_150_50_90",
   TaskEffects = {
-    [1] = r0_0.RT_660,
+    [1] = r0_0.RT_661,
     [2] = r0_0.RT_10,
-    [3] = r0_0.RT_1336,
+    [3] = r0_0.RT_1337,
   },
   TaskId = 980303,
 }
@@ -35436,7 +35440,7 @@ r4_0[980305] = {
   TaskEffects = {
     [1] = r0_0.RT_16,
     [2] = r0_0.RT_10,
-    [3] = r0_0.RT_1336,
+    [3] = r0_0.RT_1337,
   },
   TaskId = 980305,
 }
@@ -35445,21 +35449,21 @@ r4_0[980306] = {
   TargetFilter = "Mon_Cylinder_150_50_90",
   TaskEffects = {
     [1] = r0_0.RT_7,
-    [2] = r0_0.RT_1127,
-    [3] = r0_0.RT_1336,
+    [2] = r0_0.RT_1128,
+    [3] = r0_0.RT_1337,
   },
   TaskId = 980306,
 }
 r4_0[980401] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1338,
+  TaskEffects = r0_0.RT_1339,
   TaskId = 980401,
 }
 r4_0[980501] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1338,
+  TaskEffects = r0_0.RT_1339,
   TaskId = 980501,
 }
 r6_0 = {
@@ -35478,7 +35482,7 @@ r4_0[980702] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_3,
-    [2] = r0_0.RT_685,
+    [2] = r0_0.RT_686,
   },
   TaskId = 980702,
 }
@@ -42944,13 +42948,13 @@ r4_0[4200106] = r6_0
 r4_0[4200107] = {
   HatredIncrement = 40,
   TargetFilter = "Char_Sphere_large",
-  TaskEffects = r0_0.RT_600,
+  TaskEffects = r0_0.RT_601,
   TaskId = 4200107,
 }
 r4_0[4200108] = {
   HatredIncrement = 40,
   TargetFilter = "Char_Sphere_large",
-  TaskEffects = r0_0.RT_601,
+  TaskEffects = r0_0.RT_602,
   TaskId = 4200108,
 }
 r6_0 = {
@@ -43004,92 +43008,92 @@ r4_0[4200203] = r6_0
 r4_0[8500111] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossXibi_Skill01_Whip01",
-  TaskEffects = r0_0.RT_783,
+  TaskEffects = r0_0.RT_784,
   TaskId = 8500111,
 }
 r4_0[8500112] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossXibi_Skill01_Whip02",
-  TaskEffects = r0_0.RT_784,
+  TaskEffects = r0_0.RT_785,
   TaskId = 8500112,
 }
 r4_0[8500113] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossXibi_Dash_Whip01",
-  TaskEffects = r0_0.RT_786,
+  TaskEffects = r0_0.RT_787,
   TaskId = 8500113,
 }
 r4_0[8500114] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossXibi_Dash_Whip02",
-  TaskEffects = r0_0.RT_787,
+  TaskEffects = r0_0.RT_788,
   TaskId = 8500114,
 }
 r4_0[8500115] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "BossXibi_Dash_Sword",
-  TaskEffects = r0_0.RT_789,
+  TaskEffects = r0_0.RT_790,
   TaskId = 8500115,
 }
 r4_0[8500116] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_791,
+  TaskEffects = r0_0.RT_792,
   TaskId = 8500116,
 }
 r4_0[8500117] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_793,
+  TaskEffects = r0_0.RT_794,
   TaskId = 8500117,
 }
 r4_0[8500118] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_794,
+  TaskEffects = r0_0.RT_795,
   TaskId = 8500118,
 }
 r4_0[8500119] = {
   NotifyName = r0_0.RT_505,
-  TaskEffects = r0_0.RT_798,
+  TaskEffects = r0_0.RT_799,
   TaskId = 8500119,
 }
 r4_0[8500121] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossXibi_Skill02_Sword01",
-  TaskEffects = r0_0.RT_784,
+  TaskEffects = r0_0.RT_785,
   TaskId = 8500121,
 }
 r4_0[8500122] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossXibi_Skill02_Sword02",
-  TaskEffects = r0_0.RT_783,
+  TaskEffects = r0_0.RT_784,
   TaskId = 8500122,
 }
 r4_0[8500123] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossXibi_Dash_Whip01",
-  TaskEffects = r0_0.RT_799,
+  TaskEffects = r0_0.RT_800,
   TaskId = 8500123,
 }
 r4_0[8500124] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossXibi_Dash_Whip02",
-  TaskEffects = r0_0.RT_799,
+  TaskEffects = r0_0.RT_800,
   TaskId = 8500124,
 }
 r4_0[8500125] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "BossXibi_Dash_Sword",
-  TaskEffects = r0_0.RT_784,
+  TaskEffects = r0_0.RT_785,
   TaskId = 8500125,
 }
 r4_0[8500126] = {
   NotifyName = r0_0.RT_505,
-  TaskEffects = r0_0.RT_798,
+  TaskEffects = r0_0.RT_799,
   TaskId = 8500126,
 }
 r4_0[8500131] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_768,
+  TaskEffects = r0_0.RT_769,
   TaskId = 8500131,
 }
 r6_0 = {
@@ -43100,7 +43104,7 @@ r6_0.TaskEffects = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "",
   },
 }
@@ -43116,8 +43120,8 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 5,
   },
-  [2] = r0_0.RT_801,
-  [3] = r0_0.RT_802,
+  [2] = r0_0.RT_802,
+  [3] = r0_0.RT_803,
 }
 r6_0.TaskId = 8500133
 r4_0[8500133] = r6_0
@@ -43127,42 +43131,42 @@ r6_0.TaskEffects = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder101",
   },
   [2] = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder102",
   },
   [3] = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder103",
   },
   [4] = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder104",
   },
   [5] = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder105",
   },
   [6] = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder106",
   },
 }
@@ -43174,42 +43178,42 @@ r6_0.TaskEffects = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder201",
   },
   [2] = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder202",
   },
   [3] = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder203",
   },
   [4] = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder204",
   },
   [5] = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder205",
   },
   [6] = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder206",
   },
 }
@@ -43221,42 +43225,42 @@ r6_0.TaskEffects = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder301",
   },
   [2] = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder302",
   },
   [3] = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder303",
   },
   [4] = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder304",
   },
   [5] = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder305",
   },
   [6] = {
     CreatureId = 850031,
     Delay = 0.6,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_800,
+    Location = r0_0.RT_801,
     UseSaveLoc = "FieldThunder306",
   },
 }
@@ -43268,7 +43272,7 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = {
     CreatureId = 850042,
-    Direction = r0_0.RT_803,
+    Direction = r0_0.RT_804,
     DirectionBase = "Creature",
     Function = "CreateSkillCreature",
   },
@@ -43279,7 +43283,7 @@ r6_0.TaskEffects = {
   },
   [3] = {
     CreatureId = 850042,
-    Direction = r0_0.RT_804,
+    Direction = r0_0.RT_805,
     DirectionBase = "Creature",
     Function = "CreateSkillCreature",
   },
@@ -43288,7 +43292,7 @@ r6_0.TaskId = 8500141
 r4_0[8500141] = r6_0
 r4_0[8500142] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_806,
+  TaskEffects = r0_0.RT_807,
   TaskId = 8500142,
 }
 r6_0 = {
@@ -43301,49 +43305,49 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 3,
   },
-  [2] = r0_0.RT_801,
-  [3] = r0_0.RT_802,
+  [2] = r0_0.RT_802,
+  [3] = r0_0.RT_803,
 }
 r6_0.TaskId = 8500143
 r4_0[8500143] = r6_0
 r4_0[8500151] = {
   NotifyName = r0_0.RT_2,
-  TaskEffects = r0_0.RT_808,
+  TaskEffects = r0_0.RT_809,
   TaskId = 8500151,
 }
 r4_0[8500152] = {
   TargetFilter = "Mon_Sphere_200_360",
-  TaskEffects = r0_0.RT_810,
+  TaskEffects = r0_0.RT_811,
   TaskId = 8500152,
 }
 r4_0[8500161] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_812,
+  TaskEffects = r0_0.RT_813,
   TaskId = 8500161,
 }
 r4_0[8500162] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_814,
+  TaskEffects = r0_0.RT_815,
   TaskId = 8500162,
 }
 r4_0[8500163] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossXibi_Skill06_Donut01",
-  TaskEffects = r0_0.RT_816,
+  TaskEffects = r0_0.RT_817,
   TaskId = 8500163,
 }
 r4_0[8500164] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossXibi_Skill06_Donut02",
-  TaskEffects = r0_0.RT_816,
+  TaskEffects = r0_0.RT_817,
   TaskId = 8500164,
 }
 r4_0[8500165] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "BossXibi_Skill06_Donut03",
-  TaskEffects = r0_0.RT_816,
+  TaskEffects = r0_0.RT_817,
   TaskId = 8500165,
 }
 r6_0 = {
@@ -43384,68 +43388,68 @@ r6_0.TaskId = 8500167
 r4_0[8500167] = r6_0
 r4_0[8500168] = {
   TargetFilter = "BossXibi_Skill06_Field01",
-  TaskEffects = r0_0.RT_818,
+  TaskEffects = r0_0.RT_819,
   TaskId = 8500168,
 }
 r4_0[8500169] = {
   TargetFilter = "BossXibi_Skill06_Field02",
-  TaskEffects = r0_0.RT_818,
+  TaskEffects = r0_0.RT_819,
   TaskId = 8500169,
 }
 r4_0[8500171] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossXibi_Skill07",
-  TaskEffects = r0_0.RT_820,
+  TaskEffects = r0_0.RT_821,
   TaskId = 8500171,
 }
 r4_0[8500181] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossXibi_Dash_Whip01",
-  TaskEffects = r0_0.RT_786,
+  TaskEffects = r0_0.RT_787,
   TaskId = 8500181,
 }
 r4_0[8500182] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossXibi_Dash_Whip02",
-  TaskEffects = r0_0.RT_786,
+  TaskEffects = r0_0.RT_787,
   TaskId = 8500182,
 }
 r4_0[8500183] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossXibi_Dash_Sword",
-  TaskEffects = r0_0.RT_789,
+  TaskEffects = r0_0.RT_790,
   TaskId = 8500183,
 }
 r4_0[8500184] = {
   NotifyName = r0_0.RT_13,
-  TaskEffects = r0_0.RT_798,
+  TaskEffects = r0_0.RT_799,
   TaskId = 8500184,
 }
 r4_0[8500185] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_768,
+  TaskEffects = r0_0.RT_769,
   TaskId = 8500185,
 }
 r4_0[8500186] = {
   NotifyName = r0_0.RT_505,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_812,
+  TaskEffects = r0_0.RT_813,
   TaskId = 8500186,
 }
 r4_0[8500187] = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_824,
+  TaskEffects = r0_0.RT_825,
   TaskId = 8500187,
 }
 r4_0[8500188] = {
-  NotifyName = r0_0.RT_825,
+  NotifyName = r0_0.RT_826,
   TargetFilter = "BossXibi_Skill08_Jump",
   TaskEffects = {
-    [1] = r0_0.RT_788,
-    [2] = r0_0.RT_805,
-    [3] = r0_0.RT_826,
+    [1] = r0_0.RT_789,
+    [2] = r0_0.RT_806,
+    [3] = r0_0.RT_827,
     [4] = r0_0.RT_5,
   },
   TaskId = 8500188,
@@ -43453,19 +43457,19 @@ r4_0[8500188] = {
 r4_0[8500191] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossXibi_StageSkill_Donut01",
-  TaskEffects = r0_0.RT_816,
+  TaskEffects = r0_0.RT_817,
   TaskId = 8500191,
 }
 r4_0[8500192] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossXibi_StageSkill_Donut02",
-  TaskEffects = r0_0.RT_816,
+  TaskEffects = r0_0.RT_817,
   TaskId = 8500192,
 }
 r4_0[8500193] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "BossXibi_StageSkill_Donut03",
-  TaskEffects = r0_0.RT_816,
+  TaskEffects = r0_0.RT_817,
   TaskId = 8500193,
 }
 r6_0 = {
@@ -43487,7 +43491,7 @@ r6_0.TaskId = 8500194
 r4_0[8500194] = r6_0
 r4_0[8500195] = {
   TargetFilter = "BossXibi_StageSkill_Field01",
-  TaskEffects = r0_0.RT_828,
+  TaskEffects = r0_0.RT_829,
   TaskId = 8500195,
 }
 r6_0 = {
@@ -43509,7 +43513,7 @@ r6_0.TaskId = 8500196
 r4_0[8500196] = r6_0
 r4_0[8500197] = {
   TargetFilter = "BossXibi_StageSkill_Field02",
-  TaskEffects = r0_0.RT_828,
+  TaskEffects = r0_0.RT_829,
   TaskId = 8500197,
 }
 r6_0 = {
@@ -43531,13 +43535,13 @@ r6_0.TaskId = 8500198
 r4_0[8500198] = r6_0
 r4_0[8500199] = {
   TargetFilter = "BossXibi_StageSkill_Field03",
-  TaskEffects = r0_0.RT_828,
+  TaskEffects = r0_0.RT_829,
   TaskId = 8500199,
 }
 r4_0[8501101] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossLizhan_Skill01_HalfCylinder",
-  TaskEffects = r0_0.RT_833,
+  TaskEffects = r0_0.RT_834,
   TaskId = 8501101,
 }
 r6_0 = {
@@ -43547,19 +43551,19 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = {
     BaseAttr = "ATK",
-    DamageTag = r0_0.RT_829,
+    DamageTag = r0_0.RT_830,
     Function = "Damage",
     Rate = 1.1,
   },
-  [2] = r0_0.RT_834,
-  [3] = r0_0.RT_835,
+  [2] = r0_0.RT_835,
+  [3] = r0_0.RT_836,
 }
 r6_0.TaskId = 8501102
 r4_0[8501102] = r6_0
 r4_0[8501106] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossLizhan_Skill02_Cylinder",
-  TaskEffects = r0_0.RT_837,
+  TaskEffects = r0_0.RT_838,
   TaskId = 8501106,
 }
 r6_0 = {
@@ -43585,16 +43589,16 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = {
     BaseAttr = "ATK",
-    DamageTag = r0_0.RT_829,
+    DamageTag = r0_0.RT_830,
     Function = "Damage",
     Rate = 1.25,
   },
-  [2] = r0_0.RT_831,
+  [2] = r0_0.RT_832,
   [3] = {
     FXId = 850103,
     Function = "PlayFX",
   },
-  [4] = r0_0.RT_835,
+  [4] = r0_0.RT_836,
 }
 r6_0.TaskId = 8501112
 r4_0[8501112] = r6_0
@@ -43618,12 +43622,12 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = {
     BaseAttr = "ATK",
-    DamageTag = r0_0.RT_829,
+    DamageTag = r0_0.RT_830,
     Function = "Damage",
     Rate = 0.8,
   },
-  [2] = r0_0.RT_682,
-  [3] = r0_0.RT_835,
+  [2] = r0_0.RT_683,
+  [3] = r0_0.RT_836,
 }
 r6_0.TaskId = 8501116
 r4_0[8501116] = r6_0
@@ -43632,13 +43636,13 @@ r6_0 = {
   TargetFilter = "BossLizhan_Skill04_HalfCylinder",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_838,
+  [1] = r0_0.RT_839,
   [2] = {
     CauseHit = "BossLizhan_Skill04",
     Function = "CutToughness",
     Value = 100,
   },
-  [3] = r0_0.RT_835,
+  [3] = r0_0.RT_836,
 }
 r6_0.TaskId = 8501117
 r4_0[8501117] = r6_0
@@ -43696,13 +43700,13 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = {
     BaseAttr = "ATK",
-    DamageTag = r0_0.RT_829,
+    DamageTag = r0_0.RT_830,
     Function = "Damage",
     Rate = 0.85,
   },
-  [2] = r0_0.RT_782,
-  [3] = r0_0.RT_839,
-  [4] = r0_0.RT_835,
+  [2] = r0_0.RT_783,
+  [3] = r0_0.RT_840,
+  [4] = r0_0.RT_836,
 }
 r6_0.TaskId = 8501122
 r4_0[8501122] = r6_0
@@ -43716,8 +43720,8 @@ r6_0.TaskEffects = {
     NormalToHit = true,
     Overlap = true,
   },
-  [2] = r0_0.RT_840,
-  [3] = r0_0.RT_835,
+  [2] = r0_0.RT_841,
+  [3] = r0_0.RT_836,
 }
 r6_0.TaskId = 8501123
 r4_0[8501123] = r6_0
@@ -43731,9 +43735,9 @@ r4_0[8501131] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossLizhan_Skill04_Cylinder",
   TaskEffects = {
-    [1] = r0_0.RT_841,
-    [2] = r0_0.RT_831,
-    [3] = r0_0.RT_835,
+    [1] = r0_0.RT_842,
+    [2] = r0_0.RT_832,
+    [3] = r0_0.RT_836,
   },
   TaskId = 8501131,
 }
@@ -43741,9 +43745,9 @@ r4_0[8501132] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossLizhan_Skill07_Cylinder_120",
   TaskEffects = {
-    [1] = r0_0.RT_838,
-    [2] = r0_0.RT_834,
-    [3] = r0_0.RT_835,
+    [1] = r0_0.RT_839,
+    [2] = r0_0.RT_835,
+    [3] = r0_0.RT_836,
   },
   TaskId = 8501132,
 }
@@ -43775,7 +43779,7 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = {
     BaseAttr = "ATK",
-    DamageTag = r0_0.RT_829,
+    DamageTag = r0_0.RT_830,
     Function = "Damage",
     Rate = 1.8,
   },
@@ -43784,7 +43788,7 @@ r6_0.TaskEffects = {
     Function = "CutToughness",
     Value = 100,
   },
-  [3] = r0_0.RT_832,
+  [3] = r0_0.RT_833,
 }
 r6_0.TaskId = 8501135
 r4_0[8501135] = r6_0
@@ -43792,9 +43796,9 @@ r4_0[8501146] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossLizhan_Skill04_Cylinder",
   TaskEffects = {
-    [1] = r0_0.RT_841,
-    [2] = r0_0.RT_842,
-    [3] = r0_0.RT_835,
+    [1] = r0_0.RT_842,
+    [2] = r0_0.RT_843,
+    [3] = r0_0.RT_836,
   },
   TaskId = 8501146,
 }
@@ -43814,9 +43818,9 @@ r4_0[8501147] = r6_0
 r4_0[8501148] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_836,
-    [2] = r0_0.RT_839,
-    [3] = r0_0.RT_835,
+    [1] = r0_0.RT_837,
+    [2] = r0_0.RT_840,
+    [3] = r0_0.RT_836,
   },
   TaskId = 8501148,
 }
@@ -43830,8 +43834,8 @@ r6_0.TaskEffects = {
     NormalToHit = true,
     Overlap = true,
   },
-  [2] = r0_0.RT_840,
-  [3] = r0_0.RT_835,
+  [2] = r0_0.RT_841,
+  [3] = r0_0.RT_836,
 }
 r6_0.TaskId = 8501149
 r4_0[8501149] = r6_0
@@ -43866,7 +43870,7 @@ r4_0[r5_0] = r6_0
 r4_0[8501153] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossLizhan_Skill11_Cylinder",
-  TaskEffects = r0_0.RT_837,
+  TaskEffects = r0_0.RT_838,
   TaskId = 8501153,
 }
 r6_0 = {
@@ -43897,31 +43901,31 @@ r4_0[8501157] = r6_0
 r4_0[8501161] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossLizhan_Skill01_HalfCylinder",
-  TaskEffects = r0_0.RT_833,
+  TaskEffects = r0_0.RT_834,
   TaskId = 8501161,
 }
 r4_0[8502101] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossSaiqi_Skill01_Cylinder_450_200_270",
-  TaskEffects = r0_0.RT_845,
+  TaskEffects = r0_0.RT_846,
   TaskId = 8502101,
 }
 r4_0[8502102] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossSaiqi_Skill01_Cylinder_450_200_270",
-  TaskEffects = r0_0.RT_848,
+  TaskEffects = r0_0.RT_849,
   TaskId = 8502102,
 }
 r4_0[8502103] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossSaiqi_Skill01_Cylinder_450_200_270",
-  TaskEffects = r0_0.RT_849,
+  TaskEffects = r0_0.RT_850,
   TaskId = 8502103,
 }
 r4_0[8502104] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_852,
+  TaskEffects = r0_0.RT_853,
   TaskId = 8502104,
 }
 r6_0 = {
@@ -43940,24 +43944,24 @@ r4_0[8502105] = r6_0
 r4_0[8502106] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_854,
+  TaskEffects = r0_0.RT_855,
   TaskId = 8502106,
 }
 r4_0[8502107] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_856,
+  TaskEffects = r0_0.RT_857,
   TaskId = 8502107,
 }
 r4_0[8502108] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossSaiqi_Skill04_Cylinder_300_200_360",
-  TaskEffects = r0_0.RT_857,
+  TaskEffects = r0_0.RT_858,
   TaskId = 8502108,
 }
 r4_0[8502109] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossSaiqi_Skill13_Cylinder_300_200_360",
-  TaskEffects = r0_0.RT_859,
+  TaskEffects = r0_0.RT_860,
   TaskId = 8502109,
 }
 r6_0 = {
@@ -43965,7 +43969,7 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_860,
+  [1] = r0_0.RT_861,
   [2] = {
     BuffId = 850210,
     Function = "AddBuff",
@@ -43977,44 +43981,44 @@ r4_0[8502110] = r6_0
 r4_0[8502111] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_865,
+  TaskEffects = r0_0.RT_866,
   TaskId = 8502111,
 }
 r4_0[8502112] = {
-  NotifyName = r0_0.RT_866,
+  NotifyName = r0_0.RT_867,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_872,
+  TaskEffects = r0_0.RT_873,
   TaskId = 8502112,
 }
 r4_0[8502113] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_875,
+  TaskEffects = r0_0.RT_876,
   TaskId = 8502113,
 }
 r4_0[8502114] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_878,
+  TaskEffects = r0_0.RT_879,
   TaskId = 8502114,
 }
 r4_0[8502115] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_881,
+  TaskEffects = r0_0.RT_882,
   TaskId = 8502115,
 }
 r4_0[8502116] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_884,
+  TaskEffects = r0_0.RT_885,
   TaskId = 8502116,
 }
 r4_0[8502117] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_22,
-    [2] = r0_0.RT_885,
+    [2] = r0_0.RT_886,
   },
   TaskId = 8502117,
 }
@@ -44023,8 +44027,8 @@ r6_0 = {
   TargetFilter = "BTTarget",
 }
 r8_0 = {
-  [1] = r0_0.RT_886,
-  [2] = r0_0.RT_888,
+  [1] = r0_0.RT_887,
+  [2] = r0_0.RT_889,
 }
 r8_0[3] = {
   Function = "EffectFunction",
@@ -44062,27 +44066,27 @@ r6_0.TaskId = 8502119
 r4_0[8502119] = r6_0
 r4_0[8502120] = {
   TargetFilter = "BossSaiqi_Skill07_Cylinder_300_800_360",
-  TaskEffects = r0_0.RT_890,
+  TaskEffects = r0_0.RT_891,
   TaskId = 8502120,
 }
 r4_0[8502121] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 8502121,
 }
 r4_0[8502122] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_892,
-    [2] = r0_0.RT_893,
+    [1] = r0_0.RT_893,
+    [2] = r0_0.RT_894,
   },
   TaskId = 8502122,
 }
 r4_0[8502123] = {
   TargetFilter = "Mon_Sphere_300_360",
-  TaskEffects = r0_0.RT_894,
+  TaskEffects = r0_0.RT_895,
   TaskId = 8502123,
 }
 r6_0 = {
@@ -44101,104 +44105,104 @@ r6_0.TaskId = 8502124
 r4_0[8502124] = r6_0
 r4_0[8502125] = {
   TargetFilter = "LaserTarget",
-  TaskEffects = r0_0.RT_895,
+  TaskEffects = r0_0.RT_896,
   TaskId = 8502125,
 }
 r4_0[8502126] = {
   TargetFilter = "LaserTarget",
-  TaskEffects = r0_0.RT_896,
+  TaskEffects = r0_0.RT_897,
   TaskId = 8502126,
 }
 r4_0[8502127] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_898,
+  TaskEffects = r0_0.RT_899,
   TaskId = 8502127,
 }
 r4_0[8502128] = {
-  NotifyName = r0_0.RT_899,
+  NotifyName = r0_0.RT_900,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 8502128,
 }
 r4_0[8502129] = {
-  NotifyName = r0_0.RT_900,
+  NotifyName = r0_0.RT_901,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_902,
+  TaskEffects = r0_0.RT_903,
   TaskId = 8502129,
 }
 r4_0[8502130] = {
   TargetFilter = "Mon_Sphere_300_360",
   TaskEffects = {
-    [1] = r0_0.RT_779,
-    [2] = r0_0.RT_903,
+    [1] = r0_0.RT_780,
+    [2] = r0_0.RT_904,
   },
   TaskId = 8502130,
 }
 r4_0[8502131] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 8502131,
 }
 r4_0[8502132] = {
-  NotifyName = r0_0.RT_904,
+  NotifyName = r0_0.RT_905,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_906,
+  TaskEffects = r0_0.RT_907,
   TaskId = 8502132,
 }
 r4_0[8502133] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Mon_Sphere_300_360",
-  TaskEffects = r0_0.RT_907,
+  TaskEffects = r0_0.RT_908,
   TaskId = 8502133,
 }
 r4_0[8502134] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_908,
+  TaskEffects = r0_0.RT_909,
   TaskId = 8502134,
 }
 r4_0[8502135] = {
-  NotifyName = r0_0.RT_909,
+  NotifyName = r0_0.RT_910,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_911,
+  TaskEffects = r0_0.RT_912,
   TaskId = 8502135,
 }
 r4_0[8502136] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_913,
+  TaskEffects = r0_0.RT_914,
   TaskId = 8502136,
 }
 r4_0[8502137] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossSaiqi_Skill01_Cylinder_450_200_270",
-  TaskEffects = r0_0.RT_914,
+  TaskEffects = r0_0.RT_915,
   TaskId = 8502137,
 }
 r4_0[8502138] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 8502138,
 }
 r4_0[8502139] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Mon_Sphere_300_360",
-  TaskEffects = r0_0.RT_915,
+  TaskEffects = r0_0.RT_916,
   TaskId = 8502139,
 }
 r4_0[8502140] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Mon_Sphere_300_360",
-  TaskEffects = r0_0.RT_916,
+  TaskEffects = r0_0.RT_917,
   TaskId = 8502140,
 }
 r4_0[8502141] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Sphere_600_360",
   TaskEffects = {
-    [1] = r0_0.RT_577,
+    [1] = r0_0.RT_578,
     [2] = r0_0.RT_322,
   },
   TaskId = 8502141,
@@ -44226,9 +44230,9 @@ r4_0[8502144] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_400_200_360",
   TaskEffects = {
-    [1] = r0_0.RT_684,
-    [2] = r0_0.RT_682,
-    [3] = r0_0.RT_844,
+    [1] = r0_0.RT_685,
+    [2] = r0_0.RT_683,
+    [3] = r0_0.RT_845,
   },
   TaskId = 8502144,
 }
@@ -44287,14 +44291,14 @@ r4_0[8502148] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_33,
-    [2] = r0_0.RT_885,
+    [2] = r0_0.RT_886,
   },
   TaskId = 8502148,
 }
 r4_0[8502149] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 8502149,
 }
 r6_0 = {
@@ -44320,9 +44324,9 @@ r8_0[2] = {
     Y = 0,
   },
 }
-r8_0[3] = r0_0.RT_917
-r8_0[4] = r0_0.RT_918
-r8_0[5] = r0_0.RT_893
+r8_0[3] = r0_0.RT_918
+r8_0[4] = r0_0.RT_919
+r8_0[5] = r0_0.RT_894
 r6_0.TaskEffects = r8_0
 r6_0.TaskId = 8502150
 r4_0[8502150] = r6_0
@@ -44349,8 +44353,8 @@ r8_0[2] = {
     Y = -700,
   },
 }
-r8_0[3] = r0_0.RT_919
-r8_0[4] = r0_0.RT_920
+r8_0[3] = r0_0.RT_920
+r8_0[4] = r0_0.RT_921
 r6_0.TaskEffects = r8_0
 r6_0.TaskId = 8502151
 r4_0[8502151] = r6_0
@@ -44358,12 +44362,12 @@ r4_0[8502152] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_758,
-    [2] = r0_0.RT_893,
-    [3] = r0_0.RT_917,
-    [4] = r0_0.RT_918,
-    [5] = r0_0.RT_919,
-    [6] = r0_0.RT_920,
+    [1] = r0_0.RT_759,
+    [2] = r0_0.RT_894,
+    [3] = r0_0.RT_918,
+    [4] = r0_0.RT_919,
+    [5] = r0_0.RT_920,
+    [6] = r0_0.RT_921,
   },
   TaskId = 8502152,
 }
@@ -44372,7 +44376,7 @@ r6_0 = {
   TargetFilter = "Self",
 }
 r8_0 = {
-  [1] = r0_0.RT_886,
+  [1] = r0_0.RT_887,
 }
 r8_0[2] = {
   Function = "EffectFunction",
@@ -44449,9 +44453,9 @@ r4_0[8502157] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_921,
-    [2] = r0_0.RT_922,
-    [3] = r0_0.RT_892,
+    [1] = r0_0.RT_922,
+    [2] = r0_0.RT_923,
+    [3] = r0_0.RT_893,
   },
   TaskId = 8502157,
 }
@@ -44459,8 +44463,8 @@ r4_0[8502158] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_923,
-    [2] = r0_0.RT_924,
+    [1] = r0_0.RT_924,
+    [2] = r0_0.RT_925,
   },
   TaskId = 8502158,
 }
@@ -44468,11 +44472,11 @@ r4_0[8502159] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BTTarget",
   TaskEffects = {
-    [1] = r0_0.RT_892,
-    [2] = r0_0.RT_921,
-    [3] = r0_0.RT_922,
-    [4] = r0_0.RT_923,
-    [5] = r0_0.RT_924,
+    [1] = r0_0.RT_893,
+    [2] = r0_0.RT_922,
+    [3] = r0_0.RT_923,
+    [4] = r0_0.RT_924,
+    [5] = r0_0.RT_925,
   },
   TaskId = 8502159,
 }
@@ -44621,7 +44625,7 @@ r4_0[8502165] = {
   TargetFilter = "BossSaiqi_Skill23_Cylinder_1000_1000_360",
   TaskEffects = {
     [1] = r0_0.RT_33,
-    [2] = r0_0.RT_780,
+    [2] = r0_0.RT_781,
     [3] = r0_0.RT_322,
   },
   TaskId = 8502165,
@@ -44629,13 +44633,13 @@ r4_0[8502165] = {
 r4_0[8503101] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Skill01_L",
-  TaskEffects = r0_0.RT_929,
+  TaskEffects = r0_0.RT_930,
   TaskId = 8503101,
 }
 r4_0[8503106] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Skill01_R",
-  TaskEffects = r0_0.RT_929,
+  TaskEffects = r0_0.RT_930,
   TaskId = 8503106,
 }
 r4_0[8503111] = {
@@ -44643,32 +44647,32 @@ r4_0[8503111] = {
   TargetFilter = "BossShijingzhe_Skill02_Cylinder01",
   TaskEffects = {
     [1] = r0_0.RT_7,
-    [2] = r0_0.RT_930,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_928,
+    [2] = r0_0.RT_931,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_929,
   },
   TaskId = 8503111,
 }
 r4_0[8503112] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossShijingzhe_Skill02_Cylinder02",
-  TaskEffects = r0_0.RT_945,
+  TaskEffects = r0_0.RT_946,
   TaskId = 8503112,
 }
 r4_0[8503116] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_933,
+  TaskEffects = r0_0.RT_934,
   TaskId = 8503116,
 }
 r4_0[8503117] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_947,
+  TaskEffects = r0_0.RT_948,
   TaskId = 8503117,
 }
 r4_0[8503118] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Cylinder_320_250_360",
-  TaskEffects = r0_0.RT_931,
+  TaskEffects = r0_0.RT_932,
   TaskId = 8503118,
 }
 r5_0 = 8503119
@@ -44686,7 +44690,7 @@ r8_0[1] = {
   },
   DirectionBase = "Creature",
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_948,
+  Location = r0_0.RT_949,
 }
 r8_0[2] = {
   CreatureId = 850307,
@@ -44697,45 +44701,45 @@ r8_0[2] = {
   },
   DirectionBase = "Creature",
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_948,
+  Location = r0_0.RT_949,
 }
 r8_0[3] = {
   CreatureId = 850307,
-  Direction = r0_0.RT_949,
+  Direction = r0_0.RT_950,
   DirectionBase = "Creature",
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_948,
+  Location = r0_0.RT_949,
 }
-r8_0[4] = r0_0.RT_935
+r8_0[4] = r0_0.RT_936
 r6_0[r7_0] = r8_0
 r6_0.TaskId = 8503119
 r4_0[r5_0] = r6_0
 r4_0[8503121] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Skill03_Cylinder_1000_200_360",
-  TaskEffects = r0_0.RT_936,
+  TaskEffects = r0_0.RT_937,
   TaskId = 8503121,
 }
 r4_0[8503122] = {
-  NotifyName = r0_0.RT_950,
+  NotifyName = r0_0.RT_951,
   TargetFilter = "BossShijingzhe_Skill03_Cylinder_1000_200_360",
   TaskEffects = r0_0.RT_504,
   TaskId = 8503122,
 }
 r4_0[8503126] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_938,
+  TaskEffects = r0_0.RT_939,
   TaskId = 8503126,
 }
 r4_0[8503127] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_940,
+  TaskEffects = r0_0.RT_941,
   TaskId = 8503127,
 }
 r4_0[8503128] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Skill05_RushPillar",
-  TaskEffects = r0_0.RT_952,
+  TaskEffects = r0_0.RT_953,
   TaskId = 8503128,
 }
 r4_0[8503129] = {
@@ -44743,15 +44747,15 @@ r4_0[8503129] = {
   TargetFilter = "BossShijingzhe_Cylinder_600_350_360",
   TaskEffects = {
     [1] = r0_0.RT_14,
-    [2] = r0_0.RT_934,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_928,
+    [2] = r0_0.RT_935,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_929,
   },
   TaskId = 8503129,
 }
 r4_0[8503131] = {
   NotifyName = r0_0.RT_2,
-  TaskEffects = r0_0.RT_942,
+  TaskEffects = r0_0.RT_943,
   TaskId = 8503131,
 }
 r4_0[8503132] = {
@@ -44759,9 +44763,9 @@ r4_0[8503132] = {
   TargetFilter = "BossShijingzhe_Skill07_Cylinder01",
   TaskEffects = {
     [1] = r0_0.RT_22,
-    [2] = r0_0.RT_926,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_953,
+    [2] = r0_0.RT_927,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_954,
   },
   TaskId = 8503132,
 }
@@ -44770,9 +44774,9 @@ r4_0[8503133] = {
   TargetFilter = "BossShijingzhe_Skill07_Cylinder02",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_926,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_953,
+    [2] = r0_0.RT_927,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_954,
   },
   TaskId = 8503133,
 }
@@ -44780,10 +44784,10 @@ r4_0[8503134] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossShijingzhe_Skill07_Cylinder03",
   TaskEffects = {
-    [1] = r0_0.RT_680,
-    [2] = r0_0.RT_934,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_953,
+    [1] = r0_0.RT_681,
+    [2] = r0_0.RT_935,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_954,
   },
   TaskId = 8503134,
 }
@@ -44791,52 +44795,52 @@ r4_0[8503136] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_955,
-    [2] = r0_0.RT_956,
-    [3] = r0_0.RT_957,
-    [4] = r0_0.RT_958,
+    [1] = r0_0.RT_956,
+    [2] = r0_0.RT_957,
+    [3] = r0_0.RT_958,
+    [4] = r0_0.RT_959,
   },
   TaskId = 8503136,
 }
 r4_0[8503137] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_962,
+  TaskEffects = r0_0.RT_963,
   TaskId = 8503137,
 }
 r4_0[8503138] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_955,
-    [2] = r0_0.RT_956,
-    [3] = r0_0.RT_957,
-    [4] = r0_0.RT_958,
-    [5] = r0_0.RT_963,
+    [1] = r0_0.RT_956,
+    [2] = r0_0.RT_957,
+    [3] = r0_0.RT_958,
+    [4] = r0_0.RT_959,
+    [5] = r0_0.RT_964,
   },
   TaskId = 8503138,
 }
 r4_0[8503139] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_962,
+  TaskEffects = r0_0.RT_963,
   TaskId = 8503139,
 }
 r4_0[8503140] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_955,
-    [2] = r0_0.RT_956,
-    [3] = r0_0.RT_968,
-    [4] = r0_0.RT_963,
+    [1] = r0_0.RT_956,
+    [2] = r0_0.RT_957,
+    [3] = r0_0.RT_969,
+    [4] = r0_0.RT_964,
   },
   TaskId = 8503140,
 }
 r4_0[8503141] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 8503141,
 }
 r6_0 = {
@@ -44853,37 +44857,37 @@ r8_0[1] = {
     Radius = 1000,
   },
 }
-r8_0[2] = r0_0.RT_964
-r8_0[3] = r0_0.RT_965
-r8_0[4] = r0_0.RT_966
-r8_0[5] = r0_0.RT_967
+r8_0[2] = r0_0.RT_965
+r8_0[3] = r0_0.RT_966
+r8_0[4] = r0_0.RT_967
+r8_0[5] = r0_0.RT_968
 r6_0.TaskEffects = r8_0
 r6_0.TaskId = 8503142
 r4_0[8503142] = r6_0
 r4_0[8503143] = {
   NotifyName = r0_0.RT_12,
-  TaskEffects = r0_0.RT_973,
+  TaskEffects = r0_0.RT_974,
   TaskId = 8503143,
 }
 r4_0[8503144] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossShijingzhe_Skill03_Cylinder_1000_200_360",
-  TaskEffects = r0_0.RT_936,
+  TaskEffects = r0_0.RT_937,
   TaskId = 8503144,
 }
 r4_0[8503145] = {
   TargetFilter = "BossShijingzhe_Cylinder_1000_200_360",
   TaskEffects = {
-    [1] = r0_0.RT_779,
-    [2] = r0_0.RT_934,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_935,
+    [1] = r0_0.RT_780,
+    [2] = r0_0.RT_935,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_936,
   },
   TaskId = 8503145,
 }
 r4_0[8503146] = {
   NotifyName = r0_0.RT_2,
-  TaskEffects = r0_0.RT_975,
+  TaskEffects = r0_0.RT_976,
   TaskId = 8503146,
 }
 r5_0 = 8503147
@@ -44909,15 +44913,15 @@ r6_0 = {
   TargetFilter = "BossShijingzhe_Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_827,
+  [1] = r0_0.RT_828,
   [2] = {
     CauseHit = "LightHit_60",
     Function = "CutToughness",
     Value = 30,
   },
-  [3] = r0_0.RT_839,
-  [4] = r0_0.RT_976,
-  [5] = r0_0.RT_935,
+  [3] = r0_0.RT_840,
+  [4] = r0_0.RT_977,
+  [5] = r0_0.RT_936,
 }
 r6_0.TaskId = 8503148
 r4_0[8503148] = r6_0
@@ -44952,13 +44956,13 @@ r8_0[3] = {
   CreatureId = 850316,
   Function = "CreateSkillCreature",
   Location = r0_0.RT_242,
-  Rotation = r0_0.RT_804,
+  Rotation = r0_0.RT_805,
 }
 r8_0[4] = {
   CreatureId = 850316,
   Function = "CreateSkillCreature",
   Location = r0_0.RT_242,
-  Rotation = r0_0.RT_803,
+  Rotation = r0_0.RT_804,
 }
 r6_0[r7_0] = r8_0
 r6_0.TaskId = 8503151
@@ -45056,7 +45060,7 @@ r4_0[r5_0] = r6_0
 r4_0[8503156] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Cylinder_skill12_L",
-  TaskEffects = r0_0.RT_977,
+  TaskEffects = r0_0.RT_978,
   TaskId = 8503156,
 }
 r6_0 = {
@@ -45065,24 +45069,24 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = {
     CreatureId = 850307,
-    Direction = r0_0.RT_978,
+    Direction = r0_0.RT_979,
     DirectionBase = "Creature",
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_979,
+    Location = r0_0.RT_980,
   },
   [2] = {
     CreatureId = 850307,
-    Direction = r0_0.RT_980,
+    Direction = r0_0.RT_981,
     DirectionBase = "Creature",
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_979,
+    Location = r0_0.RT_980,
   },
   [3] = {
     CreatureId = 850307,
     Direction = r0_0.RT_426,
     DirectionBase = "Creature",
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_979,
+    Location = r0_0.RT_980,
   },
 }
 r6_0.TaskId = 8503157
@@ -45090,17 +45094,17 @@ r4_0[8503157] = r6_0
 r4_0[8503158] = {
   TargetFilter = "BossShijingzhe_Target",
   TaskEffects = {
-    [1] = r0_0.RT_981,
-    [2] = r0_0.RT_930,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_928,
+    [1] = r0_0.RT_982,
+    [2] = r0_0.RT_931,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_929,
   },
   TaskId = 8503158,
 }
 r4_0[8503161] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Cylinder_skill12_R",
-  TaskEffects = r0_0.RT_977,
+  TaskEffects = r0_0.RT_978,
   TaskId = 8503161,
 }
 r5_0 = 8503162
@@ -45111,10 +45115,10 @@ r7_0 = "TaskEffects"
 r8_0 = {
   [1] = {
     CreatureId = 850307,
-    Direction = r0_0.RT_978,
+    Direction = r0_0.RT_979,
     DirectionBase = "Creature",
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_982,
+    Location = r0_0.RT_983,
   },
 }
 r8_0[2] = {
@@ -45126,14 +45130,14 @@ r8_0[2] = {
   },
   DirectionBase = "Creature",
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_982,
+  Location = r0_0.RT_983,
 }
 r8_0[3] = {
   CreatureId = 850307,
   Direction = r0_0.RT_425,
   DirectionBase = "Creature",
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_982,
+  Location = r0_0.RT_983,
 }
 r6_0[r7_0] = r8_0
 r6_0.TaskId = 8503162
@@ -45145,22 +45149,22 @@ r6_0.TaskEffects = {
   [1] = {
     CreatureId = 850308,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_983,
+    Location = r0_0.RT_984,
   },
   [2] = {
     CreatureId = 850309,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_983,
+    Location = r0_0.RT_984,
   },
   [3] = {
     CreatureId = 850310,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_983,
+    Location = r0_0.RT_984,
   },
   [4] = {
     CreatureId = 850311,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_983,
+    Location = r0_0.RT_984,
   },
 }
 r6_0.TaskId = 8503166
@@ -45169,9 +45173,9 @@ r4_0[8503167] = {
   TargetFilter = "BossShijingzhe_Sphere_3000_360_NoMch",
   TaskEffects = {
     [1] = r0_0.RT_33,
-    [2] = r0_0.RT_657,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_935,
+    [2] = r0_0.RT_658,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_936,
   },
   TaskId = 8503167,
 }
@@ -45230,16 +45234,16 @@ r4_0[8503174] = r6_0
 r4_0[8503176] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 8503176,
 }
 r4_0[8503177] = {
   TargetFilter = "BossShijingzhe_Cylinder_600_200_360",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_984,
-    [3] = r0_0.RT_927,
-    [4] = r0_0.RT_935,
+    [2] = r0_0.RT_985,
+    [3] = r0_0.RT_928,
+    [4] = r0_0.RT_936,
   },
   TaskId = 8503177,
 }
@@ -45260,7 +45264,7 @@ r4_0[8503181] = r6_0
 r4_0[8503182] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Skill13_Select",
-  TaskEffects = r0_0.RT_988,
+  TaskEffects = r0_0.RT_989,
   TaskId = 8503182,
 }
 r6_0 = {
@@ -45279,77 +45283,77 @@ r4_0[8503183] = r6_0
 r4_0[8503184] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "Boss_Grab_GetActorByEid",
-  TaskEffects = r0_0.RT_989,
+  TaskEffects = r0_0.RT_990,
   TaskId = 8503184,
 }
 r4_0[8503185] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Skill13_Howl_Pillar",
-  TaskEffects = r0_0.RT_952,
+  TaskEffects = r0_0.RT_953,
   TaskId = 8503185,
 }
 r4_0[8503186] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossShijingzhe_Skill11_Donut01",
-  TaskEffects = r0_0.RT_990,
+  TaskEffects = r0_0.RT_991,
   TaskId = 8503186,
 }
 r4_0[8503187] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossShijingzhe_Skill11_Donut02",
-  TaskEffects = r0_0.RT_990,
+  TaskEffects = r0_0.RT_991,
   TaskId = 8503187,
 }
 r4_0[8503188] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossShijingzhe_Skill11_Donut03",
-  TaskEffects = r0_0.RT_990,
+  TaskEffects = r0_0.RT_991,
   TaskId = 8503188,
 }
 r4_0[8503191] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 8503191,
 }
 r4_0[8503192] = {
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_955,
-    [2] = r0_0.RT_956,
-    [3] = r0_0.RT_958,
+    [1] = r0_0.RT_956,
+    [2] = r0_0.RT_957,
+    [3] = r0_0.RT_959,
   },
   TaskId = 8503192,
 }
 r4_0[8503193] = {
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_962,
+  TaskEffects = r0_0.RT_963,
   TaskId = 8503193,
 }
 r4_0[8503194] = {
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_955,
-    [2] = r0_0.RT_956,
-    [3] = r0_0.RT_959,
-    [4] = r0_0.RT_958,
-    [5] = r0_0.RT_961,
+    [1] = r0_0.RT_956,
+    [2] = r0_0.RT_957,
+    [3] = r0_0.RT_960,
+    [4] = r0_0.RT_959,
+    [5] = r0_0.RT_962,
   },
   TaskId = 8503194,
 }
 r4_0[8503195] = {
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_955,
-    [2] = r0_0.RT_968,
-    [3] = r0_0.RT_957,
-    [4] = r0_0.RT_960,
-    [5] = r0_0.RT_963,
+    [1] = r0_0.RT_956,
+    [2] = r0_0.RT_969,
+    [3] = r0_0.RT_958,
+    [4] = r0_0.RT_961,
+    [5] = r0_0.RT_964,
   },
   TaskId = 8503195,
 }
 r4_0[8503196] = {
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 8503196,
 }
 r6_0 = {
@@ -45391,7 +45395,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 8503201
 r4_0[8503201] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
@@ -45420,7 +45424,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 8503203
 r4_0[8503203] = r6_0
 r6_0 = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
@@ -45441,7 +45445,7 @@ r6_0.TaskEffects = {
     Function = "AddBuff",
     LastTime = 31,
   },
-  [2] = r0_0.RT_991,
+  [2] = r0_0.RT_992,
 }
 r6_0.TaskId = 8503205
 r4_0[8503205] = r6_0
@@ -45460,9 +45464,9 @@ r4_0[8503206] = r6_0
 r4_0[8503207] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_778,
+    [1] = r0_0.RT_779,
     [2] = r0_0.RT_110,
-    [3] = r0_0.RT_953,
+    [3] = r0_0.RT_954,
   },
   TaskId = 8503207,
 }
@@ -45470,10 +45474,10 @@ r4_0[8503208] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_994,
-    [2] = r0_0.RT_994,
-    [3] = r0_0.RT_994,
-    [4] = r0_0.RT_994,
+    [1] = r0_0.RT_995,
+    [2] = r0_0.RT_995,
+    [3] = r0_0.RT_995,
+    [4] = r0_0.RT_995,
   },
   TaskId = 8503208,
 }
@@ -45528,7 +45532,7 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 7.3,
   },
-  [2] = r0_0.RT_935,
+  [2] = r0_0.RT_936,
 }
 r6_0.TaskId = 8503211
 r4_0[8503211] = r6_0
@@ -45543,13 +45547,13 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 1,
   },
-  [2] = r0_0.RT_935,
+  [2] = r0_0.RT_936,
 }
 r6_0.TaskId = 8503212
 r4_0[8503212] = r6_0
 r5_0 = 8503213
 r6_0 = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
 }
 r7_0 = "TaskEffects"
 r8_0 = {}
@@ -45630,7 +45634,7 @@ r6_0.TaskId = 8503213
 r4_0[r5_0] = r6_0
 r5_0 = 8503214
 r6_0 = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
 }
 r7_0 = "TaskEffects"
 r8_0 = {}
@@ -45719,7 +45723,7 @@ r6_0.TaskId = 8503214
 r4_0[r5_0] = r6_0
 r5_0 = 8503215
 r6_0 = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
 }
 r7_0 = "TaskEffects"
 r8_0 = {}
@@ -45808,7 +45812,7 @@ r6_0.TaskId = 8503215
 r4_0[r5_0] = r6_0
 r5_0 = 8503216
 r6_0 = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
 }
 r7_0 = "TaskEffects"
 r8_0 = {}
@@ -45897,7 +45901,7 @@ r6_0.TaskId = 8503216
 r4_0[r5_0] = r6_0
 r5_0 = 8503217
 r6_0 = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
 }
 r7_0 = "TaskEffects"
 r8_0 = {}
@@ -45986,7 +45990,7 @@ r6_0.TaskId = 8503217
 r4_0[r5_0] = r6_0
 r5_0 = 8503218
 r6_0 = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
 }
 r7_0 = "TaskEffects"
 r8_0 = {}
@@ -46076,7 +46080,7 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 0.07,
   },
-  [2] = r0_0.RT_935,
+  [2] = r0_0.RT_936,
 }
 r6_0.TaskId = 8503219
 r4_0[8503219] = r6_0
@@ -46085,7 +46089,7 @@ r4_0[8503220] = {
     "hit93"
   },
   TargetFilter = "BossShijingzhe_Skill15_ClearPillar",
-  TaskEffects = r0_0.RT_952,
+  TaskEffects = r0_0.RT_953,
   TaskId = 8503220,
 }
 r5_0 = 8503221
@@ -46124,13 +46128,13 @@ r4_0[8503222] = r6_0
 r4_0[8505101] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossLianhuo_Skill01_Cylinder_01",
-  TaskEffects = r0_0.RT_1020,
+  TaskEffects = r0_0.RT_1021,
   TaskId = 8505101,
 }
 r4_0[8505102] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossLianhuo_Skill01_Cylinder_02",
-  TaskEffects = r0_0.RT_1021,
+  TaskEffects = r0_0.RT_1022,
   TaskId = 8505102,
 }
 r4_0[8505103] = {
@@ -46139,56 +46143,56 @@ r4_0[8505103] = {
   TaskEffects = {
     [1] = r0_0.RT_16,
     [2] = r0_0.RT_550,
-    [3] = r0_0.RT_1029,
+    [3] = r0_0.RT_1030,
   },
   TaskId = 8505103,
 }
 r4_0[8505104] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossLianhuo_Skill01_Cross",
-  TaskEffects = r0_0.RT_1030,
+  TaskEffects = r0_0.RT_1031,
   TaskId = 8505104,
 }
 r4_0[8505105] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossLianhuo_Skill02_Cylinder_01",
-  TaskEffects = r0_0.RT_1022,
+  TaskEffects = r0_0.RT_1023,
   TaskId = 8505105,
 }
 r4_0[8505106] = {
-  NotifyName = r0_0.RT_1023,
+  NotifyName = r0_0.RT_1024,
   TargetFilter = "BossLianhuo_Skill02_Cylinder_02",
-  TaskEffects = r0_0.RT_1024,
+  TaskEffects = r0_0.RT_1025,
   TaskId = 8505106,
 }
 r4_0[8505107] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossLianhuo_Skill02_Cylinder_03",
-  TaskEffects = r0_0.RT_1025,
+  TaskEffects = r0_0.RT_1026,
   TaskId = 8505107,
 }
 r4_0[8505108] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "BossLianhuo_Skill02_Cylinder_03",
-  TaskEffects = r0_0.RT_1026,
+  TaskEffects = r0_0.RT_1027,
   TaskId = 8505108,
 }
 r4_0[8505109] = {
   NotifyName = r0_0.RT_505,
   TargetFilter = "BossLianhuo_Skill01_Cross",
-  TaskEffects = r0_0.RT_1030,
+  TaskEffects = r0_0.RT_1031,
   TaskId = 8505109,
 }
 r4_0[8505110] = {
-  NotifyName = r0_0.RT_821,
+  NotifyName = r0_0.RT_822,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_812,
+  TaskEffects = r0_0.RT_813,
   TaskId = 8505110,
 }
 r4_0[8505111] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossLianhuo_Skill03_Cylinder",
-  TaskEffects = r0_0.RT_1028,
+  TaskEffects = r0_0.RT_1029,
   TaskId = 8505111,
 }
 r6_0 = {
@@ -46206,7 +46210,7 @@ r6_0.TaskId = 8505112
 r4_0[8505112] = r6_0
 r4_0[8505113] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 8505113,
 }
 r6_0 = {
@@ -46236,26 +46240,26 @@ r6_0.TaskEffects = {
     UnitId = 850502,
     UnitType = "MechanismSummon",
   },
-  [3] = r0_0.RT_1027,
+  [3] = r0_0.RT_1028,
 }
 r6_0.TaskId = 8505115
 r4_0[8505115] = r6_0
 r4_0[8505116] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1032,
+  TaskEffects = r0_0.RT_1033,
   TaskId = 8505116,
 }
 r6_0 = {
-  NotifyName = r0_0.RT_1023,
+  NotifyName = r0_0.RT_1024,
   TargetFilter = "Self",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_1034,
+  [1] = r0_0.RT_1035,
   [2] = {
     CreatureId = 850502,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1033,
+    Location = r0_0.RT_1034,
     Rotation = r0_0.RT_174,
     UseRelativeOffset = true,
     UseSaveLoc = "First1",
@@ -46263,7 +46267,7 @@ r6_0.TaskEffects = {
   [3] = {
     CreatureId = 850502,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1033,
+    Location = r0_0.RT_1034,
     Rotation = r0_0.RT_174,
     UseRelativeOffset = true,
     UseSaveLoc = "First2",
@@ -46273,36 +46277,36 @@ r6_0.TaskId = 8505117
 r4_0[8505117] = r6_0
 r4_0[8505118] = {
   TargetFilter = "Mon_Cylinder_300_200_360",
-  TaskEffects = r0_0.RT_1035,
+  TaskEffects = r0_0.RT_1036,
   TaskId = 8505118,
 }
 r4_0[8505119] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1038,
+  TaskEffects = r0_0.RT_1039,
   TaskId = 8505119,
 }
 r4_0[8505120] = {
   NotifyName = r0_0.RT_405,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1040,
+  TaskEffects = r0_0.RT_1041,
   TaskId = 8505120,
 }
 r4_0[8505121] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1043,
+  TaskEffects = r0_0.RT_1044,
   TaskId = 8505121,
 }
 r4_0[8505122] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossLianhuo_Skill02_Cylinder_03",
-  TaskEffects = r0_0.RT_1025,
+  TaskEffects = r0_0.RT_1026,
   TaskId = 8505122,
 }
 r4_0[8505123] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 8505123,
 }
 r6_0 = {
@@ -46320,41 +46324,41 @@ r6_0.TaskId = 8505124
 r4_0[8505124] = r6_0
 r4_0[8505125] = {
   TargetFilter = "BossLianhuo_Skill05_Cross",
-  TaskEffects = r0_0.RT_1035,
+  TaskEffects = r0_0.RT_1036,
   TaskId = 8505125,
 }
 r4_0[8505126] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossLianhuo_Skill06_Cylinder",
-  TaskEffects = r0_0.RT_1044,
+  TaskEffects = r0_0.RT_1045,
   TaskId = 8505126,
 }
 r4_0[8505127] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1050,
+  TaskEffects = r0_0.RT_1051,
   TaskId = 8505127,
 }
 r4_0[8505128] = {
   TargetFilter = "BossLianhuo_Skill06_Cylinder_02",
   TaskEffects = {
-    [1] = r0_0.RT_1018,
-    [2] = r0_0.RT_1027,
-    [3] = r0_0.RT_1029,
-    [4] = r0_0.RT_700,
+    [1] = r0_0.RT_1019,
+    [2] = r0_0.RT_1028,
+    [3] = r0_0.RT_1030,
+    [4] = r0_0.RT_701,
   },
   TaskId = 8505128,
 }
 r4_0[8505129] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossLianhuo_Skill06_Cylinder",
-  TaskEffects = r0_0.RT_1051,
+  TaskEffects = r0_0.RT_1052,
   TaskId = 8505129,
 }
 r4_0[8505130] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_768,
+  TaskEffects = r0_0.RT_769,
   TaskId = 8505130,
 }
 r6_0 = {
@@ -46372,19 +46376,19 @@ r6_0.TaskId = 8505131
 r4_0[8505131] = r6_0
 r4_0[8505132] = {
   TargetFilter = "BossLianhuo_Skill07_Select",
-  TaskEffects = r0_0.RT_988,
+  TaskEffects = r0_0.RT_989,
   TaskId = 8505132,
 }
 r4_0[8505133] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossLianhuo_Skill07_GetActor",
-  TaskEffects = r0_0.RT_1053,
+  TaskEffects = r0_0.RT_1054,
   TaskId = 8505133,
 }
 r4_0[8505134] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossLianhuo_Skill07_GetActor",
-  TaskEffects = r0_0.RT_989,
+  TaskEffects = r0_0.RT_990,
   TaskId = 8505134,
 }
 r6_0 = {
@@ -46396,25 +46400,25 @@ r6_0.TaskEffects = {
     Function = "ActiveStaticCreator",
     StaticCreatorId = 1660122,
   },
-  [2] = r0_0.RT_1015,
+  [2] = r0_0.RT_1016,
 }
 r6_0.TaskId = 8505135
 r4_0[8505135] = r6_0
 r4_0[8505136] = {
-  NotifyName = r0_0.RT_1054,
+  NotifyName = r0_0.RT_1055,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1056,
+  TaskEffects = r0_0.RT_1057,
   TaskId = 8505136,
 }
 r4_0[8505137] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1058,
+  TaskEffects = r0_0.RT_1059,
   TaskId = 8505137,
 }
 r4_0[8505138] = {
-  NotifyName = r0_0.RT_1059,
+  NotifyName = r0_0.RT_1060,
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1061,
+  TaskEffects = r0_0.RT_1062,
   TaskId = 8505138,
 }
 r4_0[8505139] = {
@@ -46424,29 +46428,29 @@ r4_0[8505139] = {
     "hit22"
   },
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_891,
+  TaskEffects = r0_0.RT_892,
   TaskId = 8505139,
 }
 r4_0[8505140] = {
-  NotifyName = r0_0.RT_1062,
+  NotifyName = r0_0.RT_1063,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1064,
+  TaskEffects = r0_0.RT_1065,
   TaskId = 8505140,
 }
 r4_0[8505141] = {
-  NotifyName = r0_0.RT_1065,
+  NotifyName = r0_0.RT_1066,
   TargetFilter = "BossLianhuo_Skill08_Cylinder",
-  TaskEffects = r0_0.RT_1044,
+  TaskEffects = r0_0.RT_1045,
   TaskId = 8505141,
 }
 r4_0[8505142] = {
-  NotifyName = r0_0.RT_1066,
+  NotifyName = r0_0.RT_1067,
   TargetFilter = "AlmostAllEnemy",
-  TaskEffects = r0_0.RT_1067,
+  TaskEffects = r0_0.RT_1068,
   TaskId = 8505142,
 }
 r6_0 = {
-  NotifyName = r0_0.RT_1066,
+  NotifyName = r0_0.RT_1067,
   TargetFilter = "AlmostAllEnemy",
 }
 r6_0.TaskEffects = {
@@ -46454,33 +46458,33 @@ r6_0.TaskEffects = {
     Function = "InactiveStaticCreator",
     StaticCreatorId = 1660122,
   },
-  [2] = r0_0.RT_1068,
+  [2] = r0_0.RT_1069,
 }
 r6_0.TaskId = 8505143
 r4_0[8505143] = r6_0
 r4_0[8505144] = {
-  NotifyName = r0_0.RT_1069,
+  NotifyName = r0_0.RT_1070,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1072,
+  TaskEffects = r0_0.RT_1073,
   TaskId = 8505144,
 }
 r4_0[8505145] = {
-  NotifyName = r0_0.RT_1073,
+  NotifyName = r0_0.RT_1074,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1077,
+  TaskEffects = r0_0.RT_1078,
   TaskId = 8505145,
 }
 r4_0[8505146] = {
-  NotifyName = r0_0.RT_1078,
+  NotifyName = r0_0.RT_1079,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1080,
+  TaskEffects = r0_0.RT_1081,
   TaskId = 8505146,
 }
 r4_0[8505147] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_817,
-    [2] = r0_0.RT_1019,
+    [1] = r0_0.RT_818,
+    [2] = r0_0.RT_1020,
   },
   TaskId = 8505147,
 }
@@ -46490,26 +46494,26 @@ r4_0[8505148] = {
   },
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_1081,
+    [1] = r0_0.RT_1082,
   },
   TaskId = 8505148,
 }
 r4_0[8505149] = {
-  NotifyName = r0_0.RT_1082,
+  NotifyName = r0_0.RT_1083,
   TargetFilter = "Self",
   TaskEffects = {
-    [1] = r0_0.RT_1083,
+    [1] = r0_0.RT_1084,
   },
   TaskId = 8505149,
 }
 r4_0[8505150] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1084,
+  TaskEffects = r0_0.RT_1085,
   TaskId = 8505150,
 }
 r4_0[8505151] = {
   TargetFilter = "Mon_Sphere_200_360",
-  TaskEffects = r0_0.RT_1084,
+  TaskEffects = r0_0.RT_1085,
   TaskId = 8505151,
 }
 r6_0 = {
@@ -46528,19 +46532,19 @@ r4_0[8505152] = r6_0
 r4_0[8505153] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "BossLianhuo_Skill12_Rectangle",
-  TaskEffects = r0_0.RT_1085,
+  TaskEffects = r0_0.RT_1086,
   TaskId = 8505153,
 }
 r4_0[8505154] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossLianhuo_Skill02_Cylinder_01",
-  TaskEffects = r0_0.RT_1087,
+  TaskEffects = r0_0.RT_1088,
   TaskId = 8505154,
 }
 r4_0[8505155] = {
-  NotifyName = r0_0.RT_1088,
+  NotifyName = r0_0.RT_1089,
   TargetFilter = "BTTarget",
-  TaskEffects = r0_0.RT_1090,
+  TaskEffects = r0_0.RT_1091,
   TaskId = 8505155,
 }
 r6_0 = {
@@ -46635,7 +46639,7 @@ r4_0[8505161] = {
     "hit28"
   },
   TargetFilter = "Self",
-  TaskEffects = r0_0.RT_1050,
+  TaskEffects = r0_0.RT_1051,
   TaskId = 8505161,
 }
 r5_0 = 8505162
@@ -46673,22 +46677,22 @@ r4_0[8512901] = {
   TargetFilter = "BossLinen_Skill01",
   TaskEffects = {
     [1] = r0_0.RT_3,
-    [2] = r0_0.RT_1142,
+    [2] = r0_0.RT_1143,
   },
   TaskId = 8512901,
 }
 r4_0[8512906] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1163,
+  TaskEffects = r0_0.RT_1164,
   TaskId = 8512906,
 }
 r4_0[8512907] = {
   TargetFilter = "BossLinen_Skill02_Scene",
   TaskEffects = {
     [1] = r0_0.RT_496,
-    [2] = r0_0.RT_1146,
-    [3] = r0_0.RT_1147,
+    [2] = r0_0.RT_1147,
+    [3] = r0_0.RT_1148,
   },
   TaskId = 8512907,
 }
@@ -46701,7 +46705,7 @@ r6_0.TaskEffects = {
     CreatureId = 8512902,
     Function = "CreateSkillCreature",
   },
-  [2] = r0_0.RT_1164,
+  [2] = r0_0.RT_1165,
   [3] = {
     CreatureId = 8512904,
     Delay = 0.333,
@@ -46765,7 +46769,7 @@ r6_0.TaskEffects = {
     Delay = 0.133,
     Function = "CreateSkillCreature",
   },
-  [7] = r0_0.RT_1164,
+  [7] = r0_0.RT_1165,
   [8] = {
     CreatureId = 8512907,
     Delay = 0.2,
@@ -46778,24 +46782,24 @@ r4_0[8512914] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_496,
-    [2] = r0_0.RT_1150,
-    [3] = r0_0.RT_1147,
+    [2] = r0_0.RT_1151,
+    [3] = r0_0.RT_1148,
   },
   TaskId = 8512914,
 }
 r4_0[8512915] = {
   TargetFilter = "BossLinen_Skill03_Scene1",
   TaskEffects = {
-    [1] = r0_0.RT_1151,
+    [1] = r0_0.RT_1152,
     [2] = r0_0.RT_496,
-    [3] = r0_0.RT_1147,
+    [3] = r0_0.RT_1148,
   },
   TaskId = 8512915,
 }
 r4_0[8512956] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1163,
+  TaskEffects = r0_0.RT_1164,
   TaskId = 8512956,
 }
 r6_0 = {
@@ -46873,7 +46877,7 @@ r6_0.TaskEffects = {
 r6_0.TaskId = 8512992
 r4_0[8512992] = r6_0
 r4_0[8520100] = {
-  TaskEffects = r0_0.RT_1107,
+  TaskEffects = r0_0.RT_1108,
   TaskId = 8520100,
 }
 r6_0 = {
@@ -47016,27 +47020,27 @@ r6_0.TaskId = 8520109
 r4_0[8520109] = r6_0
 r4_0[8520110] = {
   TargetFilter = "BossAida_Skill23_Sphere1",
-  TaskEffects = r0_0.RT_1256,
+  TaskEffects = r0_0.RT_1257,
   TaskId = 8520110,
 }
 r4_0[8520111] = {
   TargetFilter = "BossAida_Skill23_Sphere2",
-  TaskEffects = r0_0.RT_1256,
+  TaskEffects = r0_0.RT_1257,
   TaskId = 8520111,
 }
 r4_0[8520112] = {
   TargetFilter = "BossAida_Skill23_Sphere3",
-  TaskEffects = r0_0.RT_1256,
+  TaskEffects = r0_0.RT_1257,
   TaskId = 8520112,
 }
 r4_0[8520113] = {
   TargetFilter = "BossAida_Skill23_Sphere4",
-  TaskEffects = r0_0.RT_1256,
+  TaskEffects = r0_0.RT_1257,
   TaskId = 8520113,
 }
 r4_0[8520114] = {
   TargetFilter = "BossAida_Skill23_Sphere5",
-  TaskEffects = r0_0.RT_1256,
+  TaskEffects = r0_0.RT_1257,
   TaskId = 8520114,
 }
 r4_0[8520115] = {
@@ -47114,13 +47118,13 @@ r4_0[8520121] = r6_0
 r4_0[8521001] = {
   NotifyName = r0_0.RT_523,
   TargetFilter = "Mon_Cylinder_300_200_180",
-  TaskEffects = r0_0.RT_1267,
+  TaskEffects = r0_0.RT_1268,
   TaskId = 8521001,
 }
 r4_0[8521002] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_300_200_360",
-  TaskEffects = r0_0.RT_1256,
+  TaskEffects = r0_0.RT_1257,
   TaskId = 8521002,
 }
 r6_0 = {
@@ -47136,35 +47140,35 @@ r6_0.TaskEffects = {
   [2] = {
     CreatureId = 852101,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1283,
+    Location = r0_0.RT_1284,
     UseRelativeOffset = true,
     UseSaveLoc = "Target1",
   },
   [3] = {
     CreatureId = 852101,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1283,
+    Location = r0_0.RT_1284,
     UseRelativeOffset = true,
     UseSaveLoc = "Target2",
   },
   [4] = {
     CreatureId = 852101,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1283,
+    Location = r0_0.RT_1284,
     UseRelativeOffset = true,
     UseSaveLoc = "Target3",
   },
   [5] = {
     CreatureId = 852101,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1283,
+    Location = r0_0.RT_1284,
     UseRelativeOffset = true,
     UseSaveLoc = "Target4",
   },
   [6] = {
     CreatureId = 852101,
     Function = "CreateSkillCreature",
-    Location = r0_0.RT_1283,
+    Location = r0_0.RT_1284,
     UseRelativeOffset = true,
     UseSaveLoc = "Target5",
   },
@@ -47173,13 +47177,13 @@ r6_0.TaskId = 8521003
 r4_0[8521003] = r6_0
 r4_0[8521004] = {
   TargetFilter = "Mon_Cylinder_150_400_360",
-  TaskEffects = r0_0.RT_1285,
+  TaskEffects = r0_0.RT_1286,
   TaskId = 8521004,
 }
 r4_0[8521005] = {
-  NotifyName = r0_0.RT_1023,
+  NotifyName = r0_0.RT_1024,
   TargetFilter = "Mon_Cylinder_300_200_180",
-  TaskEffects = r0_0.RT_1286,
+  TaskEffects = r0_0.RT_1287,
   TaskId = 8521005,
 }
 r6_0 = {
@@ -47203,15 +47207,15 @@ r4_0[8521007] = {
   TaskId = 8521007,
 }
 r4_0[8521008] = {
-  NotifyName = r0_0.RT_1023,
+  NotifyName = r0_0.RT_1024,
   TargetFilter = "Mon_Cylinder_300_200_180",
-  TaskEffects = r0_0.RT_1286,
+  TaskEffects = r0_0.RT_1287,
   TaskId = 8521008,
 }
 r4_0[8521009] = {
   NotifyName = r0_0.RT_2,
   TargetFilter = "Mon_Cylinder_300_200_180",
-  TaskEffects = r0_0.RT_1256,
+  TaskEffects = r0_0.RT_1257,
   TaskId = 8521009,
 }
 r6_0 = {
@@ -47231,28 +47235,28 @@ r8_0[1] = {
 r8_0[2] = {
   CreatureId = 852103,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_1287,
+  Location = r0_0.RT_1288,
   UseRelativeOffset = true,
   UseSaveLoc = "1",
 }
 r8_0[3] = {
   CreatureId = 852103,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_1287,
+  Location = r0_0.RT_1288,
   UseRelativeOffset = true,
   UseSaveLoc = "2",
 }
 r8_0[4] = {
   CreatureId = 852103,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_1287,
+  Location = r0_0.RT_1288,
   UseRelativeOffset = true,
   UseSaveLoc = "3",
 }
 r8_0[5] = {
   CreatureId = 852103,
   Function = "CreateSkillCreature",
-  Location = r0_0.RT_1287,
+  Location = r0_0.RT_1288,
   UseRelativeOffset = true,
   UseSaveLoc = "4",
 }
@@ -47261,7 +47265,7 @@ r6_0.TaskId = 8521010
 r4_0[8521010] = r6_0
 r4_0[8521011] = {
   TargetFilter = "Mon_Cylinder_150_400_360",
-  TaskEffects = r0_0.RT_1285,
+  TaskEffects = r0_0.RT_1286,
   TaskId = 8521011,
 }
 r4_0[8522001] = {
@@ -47276,7 +47280,7 @@ r6_0 = {
 }
 r6_0.TaskEffects = {
   [1] = r0_0.RT_3,
-  [2] = r0_0.RT_685,
+  [2] = r0_0.RT_686,
   [3] = {
     Function = "EffectFunction",
     FunctionName = "Mon_BossTuisheng_Skill02Hit1",
@@ -47315,7 +47319,7 @@ r4_0[8522006] = {
 r4_0[8522007] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "Mon_Cylinder_400_200_360",
-  TaskEffects = r0_0.RT_1256,
+  TaskEffects = r0_0.RT_1257,
   TaskId = 8522007,
 }
 r6_0 = {
@@ -47358,13 +47362,13 @@ r8_0[3] = {
     BoolValue = true,
   },
 }
-r8_0[4] = r0_0.RT_1196
+r8_0[4] = r0_0.RT_1197
 r6_0.TaskEffects = r8_0
 r6_0.TaskId = 8522009
 r4_0[8522009] = r6_0
 r4_0[8522010] = {
   TaskEffects = {
-    [1] = r0_0.RT_1196,
+    [1] = r0_0.RT_1197,
   },
   TaskId = 8522010,
 }
@@ -47430,7 +47434,7 @@ r6_0.TaskId = 8522015
 r4_0[8522015] = r6_0
 r4_0[8522016] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1267,
+  TaskEffects = r0_0.RT_1268,
   TaskId = 8522016,
 }
 r6_0 = {}
@@ -47439,13 +47443,13 @@ r6_0.TaskEffects = {
     CreatureId = 852206,
     Function = "CreateSkillCreature",
   },
-  [2] = r0_0.RT_1196,
+  [2] = r0_0.RT_1197,
 }
 r6_0.TaskId = 8522017
 r4_0[8522017] = r6_0
 r4_0[8522018] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1267,
+  TaskEffects = r0_0.RT_1268,
   TaskId = 8522018,
 }
 r4_0[8522019] = {
@@ -47473,12 +47477,12 @@ r6_0.TaskId = 8522021
 r4_0[8522021] = r6_0
 r4_0[8522022] = {
   TargetFilter = "Mon_Cylinder_500_400_360",
-  TaskEffects = r0_0.RT_1289,
+  TaskEffects = r0_0.RT_1290,
   TaskId = 8522022,
 }
 r4_0[8522023] = {
   TargetFilter = "Mon_Cylinder_800_400_360",
-  TaskEffects = r0_0.RT_1267,
+  TaskEffects = r0_0.RT_1268,
   TaskId = 8522023,
 }
 r4_0[8523001] = {
@@ -47496,7 +47500,7 @@ r4_0[8523002] = {
 r4_0[8523003] = {
   NotifyName = r0_0.RT_12,
   TargetFilter = "BossJishi_Attack01",
-  TaskEffects = r0_0.RT_1289,
+  TaskEffects = r0_0.RT_1290,
   TaskId = 8523003,
 }
 r4_0[8523004] = {
@@ -47543,7 +47547,7 @@ r6_0.TaskId = 8523007
 r4_0[8523007] = r6_0
 r4_0[8523008] = {
   TargetFilter = "Target",
-  TaskEffects = r0_0.RT_1290,
+  TaskEffects = r0_0.RT_1291,
   TaskId = 8523008,
 }
 r6_0 = {
@@ -47563,7 +47567,7 @@ r4_0[8523009] = r6_0
 r4_0[8523010] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossJishi_Attack02",
-  TaskEffects = r0_0.RT_1256,
+  TaskEffects = r0_0.RT_1257,
   TaskId = 8523010,
 }
 r4_0[8523013] = {
@@ -47580,7 +47584,7 @@ r4_0[8523013] = {
 r4_0[8523014] = {
   NotifyName = r0_0.RT_9,
   TargetFilter = "BossJishi_Attack02",
-  TaskEffects = r0_0.RT_1290,
+  TaskEffects = r0_0.RT_1291,
   TaskId = 8523014,
 }
 r6_0 = {
@@ -47730,7 +47734,7 @@ r4_0[8523028] = {
 r4_0[8523029] = {
   NotifyName = r0_0.RT_13,
   TargetFilter = "BossJishi_Attack01",
-  TaskEffects = r0_0.RT_1289,
+  TaskEffects = r0_0.RT_1290,
   TaskId = 8523029,
 }
 r6_0 = {
@@ -49309,23 +49313,23 @@ r6_0.TaskEffects = {
     Overlap = true,
   },
   [3] = r0_0.RT_566,
-  [4] = r0_0.RT_567,
+  [4] = r0_0.RT_573,
 }
 r6_0.TaskId = 401020014
 r4_0[401020014] = r6_0
 r4_0[401020015] = {
   TargetFilter = "LaserTarget",
   TaskEffects = {
-    [1] = r0_0.RT_573,
-    [2] = r0_0.RT_573,
+    [1] = r0_0.RT_574,
+    [2] = r0_0.RT_574,
   },
   TaskId = 401020015,
 }
 r4_0[401020016] = {
   TargetFilter = "LaserTarget",
   TaskEffects = {
-    [1] = r0_0.RT_574,
-    [2] = r0_0.RT_574,
+    [1] = r0_0.RT_575,
+    [2] = r0_0.RT_575,
   },
   TaskId = 401020016,
 }
@@ -49396,7 +49400,7 @@ r6_0.TaskId = 401020027
 r4_0[401020027] = r6_0
 r4_0[401020028] = {
   TargetFilter = "Mon_Sphere_800_360",
-  TaskEffects = r0_0.RT_576,
+  TaskEffects = r0_0.RT_577,
   TaskId = 401020028,
 }
 r6_0 = {}
@@ -49412,7 +49416,7 @@ r6_0.TaskId = 401020029
 r4_0[401020029] = r6_0
 r4_0[401020030] = {
   TargetFilter = "Mon_Sphere_800_360",
-  TaskEffects = r0_0.RT_576,
+  TaskEffects = r0_0.RT_577,
   TaskId = 401020030,
 }
 r6_0 = {}
@@ -49437,13 +49441,13 @@ r6_0.TaskEffects = {
     Overlap = true,
   },
   [3] = r0_0.RT_566,
-  [4] = r0_0.RT_567,
+  [4] = r0_0.RT_573,
 }
 r6_0.TaskId = 401020032
 r4_0[401020032] = r6_0
 r4_0[401020033] = {
   TargetFilter = "Mon_Cylinder_400_200_360",
-  TaskEffects = r0_0.RT_578,
+  TaskEffects = r0_0.RT_579,
   TaskId = 401020033,
 }
 r6_0 = {
@@ -49547,7 +49551,7 @@ r6_0.TaskEffects = {
     Function = "Damage",
     Rate = 25,
   },
-  [2] = r0_0.RT_618,
+  [2] = r0_0.RT_619,
 }
 r6_0.TaskId = 500000306
 r4_0[500000306] = r6_0
@@ -49577,7 +49581,7 @@ r4_0[500000307] = r6_0
 r4_0[500000309] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_619,
+    [1] = r0_0.RT_620,
   },
   TaskId = 500000309,
 }
@@ -49627,8 +49631,8 @@ r8_0[1] = {
   CreateWithoutTarget = false,
   CreatureId = 500000401,
   Function = "CreateSkillCreature",
-  RandomVelocityX = r0_0.RT_620,
-  RandomVelocityY = r0_0.RT_620,
+  RandomVelocityX = r0_0.RT_621,
+  RandomVelocityY = r0_0.RT_621,
   RandomVelocityZ = {
     400,
     400
@@ -49640,8 +49644,8 @@ r4_0[r5_0] = r6_0
 r4_0[500000402] = {
   TargetFilter = "Target",
   TaskEffects = {
-    [1] = r0_0.RT_619,
-    [2] = r0_0.RT_618,
+    [1] = r0_0.RT_620,
+    [2] = r0_0.RT_619,
   },
   TaskId = 500000402,
 }
@@ -49649,7 +49653,7 @@ r4_0[500000403] = {
   TargetFilter = "Target",
   TaskEffects = {
     [1] = r0_0.RT_16,
-    [2] = r0_0.RT_621,
+    [2] = r0_0.RT_622,
   },
   TaskId = 500000403,
 }
@@ -49687,7 +49691,7 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_655,
+  [1] = r0_0.RT_656,
   [2] = {
     BuffId = 6000102,
     Function = "AddBuff",
@@ -49752,7 +49756,7 @@ r8_0[1] = {
   Rate = 0.65,
 }
 r8_0[2] = r0_0.RT_35
-r8_0[3] = r0_0.RT_656
+r8_0[3] = r0_0.RT_657
 r6_0[r7_0] = r8_0
 r6_0.TaskId = 600000201
 r4_0[r5_0] = r6_0
@@ -49802,8 +49806,8 @@ r4_0[600000401] = r6_0
 r4_0[600000402] = {
   TargetFilter = "Mon_Sphere_200_360_NoMch",
   TaskEffects = {
-    [1] = r0_0.RT_655,
-    [2] = r0_0.RT_657,
+    [1] = r0_0.RT_656,
+    [2] = r0_0.RT_658,
     [3] = r0_0.RT_121,
   },
   TaskId = 600000402,
@@ -49920,7 +49924,7 @@ r6_0 = {
   TargetFilter = "Target",
 }
 r6_0.TaskEffects = {
-  [1] = r0_0.RT_659,
+  [1] = r0_0.RT_660,
   [2] = {
     Function = "AddSp",
     SpChange = -3,
@@ -50146,7 +50150,7 @@ r6_0 = {
 r6_0.TaskEffects = {
   [1] = {
     BaseAttr = "ATK",
-    DamageTag = r0_0.RT_654,
+    DamageTag = r0_0.RT_655,
     Function = "Damage",
     Rate = 0.65,
   },

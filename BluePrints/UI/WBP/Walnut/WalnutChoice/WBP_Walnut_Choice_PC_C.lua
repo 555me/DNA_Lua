@@ -1,672 +1,687 @@
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\UI\WBP\Walnut\WalnutChoice\WBP_Walnut_Choice_PC_C.lua
+-- version: lua54
+-- line: [0, 0] id: 0
 require("UnLua")
-local M = Class({
+local r0_0 = Class({
   "BluePrints.UI.BP_UIState_C"
 })
-local EWalnutChoiceGamepadState = {
+local r1_0 = {
   WalnutList = 0,
   TeamList = 1,
   PlayerBubble = 2,
   WalnutReward = 3,
   WalnutRewardPercent = 4,
   WalnutRewardDetail = 5,
-  Access = 6
+  Access = 6,
 }
-
-function M:Construct()
-  self:CommonConstruct()
+function r0_0.Construct(r0_1)
+  -- line: [29, 31] id: 1
+  r0_1:CommonConstruct()
 end
-
-function M:OnLoaded(...)
-  M.Super.OnLoaded(self, ...)
-  self:Init(...)
-  self:AddTimer(0.3, function()
-    self.List_WalnutItem:SetFocus()
+function r0_0.Destruct(r0_2)
+  -- line: [33, 35] id: 2
+  TeamController:UnRegisterEvent(r0_2)
+end
+function r0_0.OnLoaded(r0_3, ...)
+  -- line: [36, 43] id: 3
+  r0_0.Super.OnLoaded(r0_3, ...)
+  r0_3:Init(...)
+  r0_3:AddTimer(0.3, function()
+    -- line: [40, 42] id: 4
+    r0_3.List_WalnutItem:SetFocus()
   end, false, 0, "NextFrameFocus")
 end
-
-function M:Init(User, ...)
-  if not User or "" == User then
-    return
+function r0_0.Init(r0_5, r1_5, ...)
+  -- line: [45, 64] id: 5
+  if not r1_5 or r1_5 == "" then
+    return 
   end
-  if not self._components then
-    if User == CommonConst.WalnutUser.Depute then
-      self._components = {
+  if not r0_5._components then
+    if r1_5 == CommonConst.WalnutUser.Depute then
+      r0_5._components = {
         "BluePrints.UI.WBP.Walnut.WalnutChoice.WBP_Depute_Walnut_ChoiceComp_C"
       }
-    elseif User == CommonConst.WalnutUser.Dungeon then
-      self._components = {
+    elseif r1_5 == CommonConst.WalnutUser.Dungeon then
+      r0_5._components = {
         "BluePrints.UI.WBP.Walnut.WalnutChoice.WBP_Dungeon_Walnut_ChoiceComp_C"
       }
-    elseif User == CommonConst.WalnutUser.Settlement then
-      self._components = {
+    elseif r1_5 == CommonConst.WalnutUser.Settlement then
+      r0_5._components = {
         "BluePrints.UI.WBP.Walnut.WalnutChoice.WBP_Settlement_Walnut_ChoiceComp_C"
       }
     end
-    AssembleComponents(self)
+    AssembleComponents(r0_5)
   end
-  self:InitComp(...)
+  r0_5:InitComp(...)
 end
-
-function M:CommonConstruct()
-  AudioManager(self):PlayUISound(self, "event:/ui/common/mihan_level_before_choose_show", "WalnutChoiceShow", nil)
-  self.Btn_No:SetText(GText("UI_Walnut_Giveup"))
-  self.Btn_Yes:SetText(GText("UI_CONFIRM_SELECTION"))
-  self.Text_Choose_Single:SetText(GText("UI_Walnut_Choice"))
-  self.Text_Choose_Multi:SetText(GText("UI_Walnut_Choice"))
-  self.Text_Selected:SetText(GText("UI_Walnut_Select"))
-  self.State_Mine.Text_State:SetText(GText("UI_Walnut_Selecting"))
-  self.WBP_Walnut_PlayerState_1.Text_State:SetText(GText("UI_Walnut_Selecting"))
-  self.WBP_Walnut_PlayerState_2.Text_State:SetText(GText("UI_Walnut_Selecting"))
-  self.WBP_Walnut_PlayerState.Text_State:SetText(GText("UI_Walnut_Selecting"))
-  self.GameState = UE4.UGameplayStatics.GetGameState(self)
-  if self.GameState:IsInDungeon() then
-    self.IsInDungeon = true
-    self.Panel_No:SetVisibility(UE4.ESlateVisibility.Collapsed)
+function r0_0.CommonConstruct(r0_6)
+  -- line: [67, 108] id: 6
+  AudioManager(r0_6):PlayUISound(r0_6, "event:/ui/common/mihan_level_before_choose_show", "WalnutChoiceShow", nil)
+  r0_6.Btn_No:SetText(GText("UI_Walnut_Giveup"))
+  r0_6.Btn_Yes:SetText(GText("UI_CONFIRM_SELECTION"))
+  r0_6.Text_Choose_Single:SetText(GText("UI_Walnut_Choice"))
+  r0_6.Text_Choose_Multi:SetText(GText("UI_Walnut_Choice"))
+  r0_6.Text_Selected:SetText(GText("UI_Walnut_Select"))
+  r0_6.State_Mine.Text_State:SetText(GText("UI_Walnut_Selecting"))
+  r0_6.WBP_Walnut_PlayerState_1.Text_State:SetText(GText("UI_Walnut_Selecting"))
+  r0_6.WBP_Walnut_PlayerState_2.Text_State:SetText(GText("UI_Walnut_Selecting"))
+  r0_6.WBP_Walnut_PlayerState.Text_State:SetText(GText("UI_Walnut_Selecting"))
+  r0_6.GameState = UE4.UGameplayStatics.GetGameState(r0_6)
+  if r0_6.GameState:IsInDungeon() then
+    r0_6.IsInDungeon = true
+    r0_6.Panel_No:SetVisibility(UE4.ESlateVisibility.Collapsed)
   else
-    self.IsInDungeon = false
-    self.Panel_No:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    r0_6.IsInDungeon = false
+    r0_6.Panel_No:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
   end
   if GWorld.GameInstance:IsInTempScene() then
-    self.IsInSettlement = true
-    self.Panel_No:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    r0_6.IsInSettlement = true
+    r0_6.Panel_No:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
   end
-  self.HasSelect = false
-  self.WalnutPlate:SetNoWalnut(false)
-  self.CurrentSelectContent = nil
-  self.RealChoice = nil
-  self.List_WalnutItem:ClearListItems()
-  self.WidgetSwitcher_State:SetActiveWidgetIndex(0)
-  self.Panel_Multi:SetVisibility(UE4.ESlateVisibility.Collapsed)
-  self.Panel_Yes:SetVisibility(ESlateVisibility.Visible)
-  self.State = 0
-  self:InitCommonKey()
-  self.WalnutChoiceFinish = 0
+  r0_6.HasSelect = false
+  r0_6.WalnutPlate:SetNoWalnut(false)
+  r0_6.CurrentSelectContent = nil
+  r0_6.RealChoice = nil
+  r0_6.List_WalnutItem:ClearListItems()
+  r0_6.WidgetSwitcher_State:SetActiveWidgetIndex(0)
+  r0_6.Panel_Multi:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  r0_6.Panel_Yes:SetVisibility(ESlateVisibility.Visible)
+  r0_6.State = 0
+  r0_6:InitCommonKey()
+  r0_6.WalnutChoiceFinish = 0
+  TeamController:RegisterEvent(r0_6, function(r0_7, r1_7, ...)
+    -- line: [103, 107] id: 7
+    if r1_7 == TeamCommon.EventId.TeamOnInit or r1_7 == TeamCommon.EventId.TeamLeave then
+      r0_7:Close()
+    end
+  end)
 end
-
-function M:StandaloneConstruct()
-  self.Panel_Multi:SetVisibility(UE4.ESlateVisibility.Collapsed)
-  self.Text_Choose_Single:SetText(GText("UI_Walnut_Choice"))
-  self.Panel_Text_Single:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+function r0_0.StandaloneConstruct(r0_8)
+  -- line: [110, 114] id: 8
+  r0_8.Panel_Multi:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  r0_8.Text_Choose_Single:SetText(GText("UI_Walnut_Choice"))
+  r0_8.Panel_Text_Single:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
 end
-
-function M:MultiConstruct()
-  self.Panel_Multi:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-  self.Panel_Text_Single:SetVisibility(UE4.ESlateVisibility.Collapsed)
+function r0_0.MultiConstruct(r0_9)
+  -- line: [116, 119] id: 9
+  r0_9.Panel_Multi:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+  r0_9.Panel_Text_Single:SetVisibility(UE4.ESlateVisibility.Collapsed)
 end
-
-function M:ShowTimerPanel(IsShow)
-  if IsShow then
-    self.Panel_Text_Multi:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+function r0_0.ShowTimerPanel(r0_10, r1_10)
+  -- line: [121, 127] id: 10
+  if r1_10 then
+    r0_10.Panel_Text_Multi:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
   else
-    self.Panel_Text_Multi:SetVisibility(UE4.ESlateVisibility.Collapsed)
+    r0_10.Panel_Text_Multi:SetVisibility(UE4.ESlateVisibility.Collapsed)
   end
 end
-
-function M:InitWalnuts()
-  local Avatar = GWorld:GetAvatar()
-  if nil == Avatar then
-    return
+function r0_0.InitWalnuts(r0_11)
+  -- line: [129, 178] id: 11
+  local r1_11 = GWorld:GetAvatar()
+  if r1_11 == nil then
+    return 
   end
-  self:CreateAndAddForbidItem()
-  local CurrentCount = 1
-  local WalnutItemsToAdd = {}
-  self.WalnutsInBag = Avatar.Walnuts.WalnutBag
-  for WalnutId, Number in pairs(self.WalnutsInBag) do
-    if Number > 0 then
-      local WalnutData = DataMgr.Walnut[WalnutId]
-      if WalnutData then
-        local WalnutSelectDungeonData = DataMgr.WalnutSelectDungeon[WalnutData.WalnutType]
-        local CanSelectDungeonId = WalnutSelectDungeonData.DungeonId
-        for _, DungeonId in pairs(CanSelectDungeonId) do
-          if DungeonId == self.CurrentDungeonId then
-            table.insert(WalnutItemsToAdd, {
-              WalnutId = WalnutId,
-              Number = Number,
-              WalnutData = WalnutData
+  r0_11:CreateAndAddForbidItem()
+  local r2_11 = 1
+  local r3_11 = {}
+  r0_11.WalnutsInBag = r1_11.Walnuts.WalnutBag
+  for r8_11, r9_11 in pairs(r0_11.WalnutsInBag) do
+    if r9_11 > 0 then
+      local r10_11 = DataMgr.Walnut[r8_11]
+      if r10_11 then
+        for r17_11, r18_11 in pairs(DataMgr.WalnutSelectDungeon[r10_11.WalnutType].DungeonId) do
+          if r18_11 == r0_11.CurrentDungeonId then
+            table.insert(r3_11, {
+              WalnutId = r8_11,
+              Number = r9_11,
+              WalnutData = r10_11,
             })
             break
           end
         end
+        -- close: r13_11
       end
     end
   end
-  table.sort(WalnutItemsToAdd, function(A, B)
-    return A.WalnutId < B.WalnutId
+  -- close: r4_11
+  table.sort(r3_11, function(r0_12, r1_12)
+    -- line: [162, 164] id: 12
+    return r0_12.WalnutId < r1_12.WalnutId
   end)
-  for _, WalnutInfo in ipairs(WalnutItemsToAdd) do
-    self:CreateAndAddWalnutItem(WalnutInfo.WalnutId, WalnutInfo.Number)
+  for r8_11, r9_11 in ipairs(r3_11) do
+    r0_11:CreateAndAddWalnutItem(r9_11.WalnutId, r9_11.Number)
   end
-  self:AddTimer(0.01, function()
-    local WalnutItemUIs = self.List_WalnutItem:GetDisplayedEntryWidgets()
-    local RestCount = UIUtils.GetListViewContentMaxCount(self.List_WalnutItem, WalnutItemUIs, true) - WalnutItemUIs:Length()
-    for i = 1, RestCount do
-      self:CreateAndAddEmptyItem()
+  -- close: r4_11
+  r0_11:AddTimer(0.01, function()
+    -- line: [171, 177] id: 13
+    local r0_13 = r0_11.List_WalnutItem:GetDisplayedEntryWidgets()
+    for r5_13 = 1, UIUtils.GetListViewContentMaxCount(r0_11.List_WalnutItem, r0_13, true) - r0_13:Length(), 1 do
+      r0_11:CreateAndAddEmptyItem()
     end
   end, false, 0, "PaddingWalnutListView")
 end
-
-function M:ShowChooseSuccessToast(SelectContent)
+function r0_0.ShowChooseSuccessToast(r0_14, r1_14)
+  -- line: [180, 199] id: 14
   DebugPrint("ShowChooseSuccessToast")
-  if self.HasSelect then
-  else
-    self.HasSelect = true
+  if not r0_14.HasSelect then
+    r0_14.HasSelect = true
   end
-  self:SetWalnutContentRealChoice(self.RealChoice, false)
-  self:SetWalnutContentRealChoice(SelectContent, true)
-  self.RealChoice = SelectContent
-  self.Btn_Yes:SetText(GText("UI_CONFIRM_SELECTION"))
-  if self.RealChoice == self.CurrentSelectContent then
-    self.WidgetSwitcher_State:SetActiveWidgetIndex(1)
-  end
-end
-
-function M:SetWalnutContentRealChoice(Content, IsRealChoice)
-  if Content then
-    local SelectNeedCount
-    if IsRealChoice then
-      SelectNeedCount = GText("UI_Walnut_Select")
-    end
-    Content.SelectNeedCount = SelectNeedCount
-    if Content.SelfWidget then
-      Content.SelfWidget:SetSelectNum(SelectNeedCount)
-    end
+  r0_14:SetWalnutContentRealChoice(r0_14.RealChoice, false)
+  r0_14:SetWalnutContentRealChoice(r1_14, true)
+  r0_14.RealChoice = r1_14
+  r0_14.Btn_Yes:SetText(GText("UI_CONFIRM_SELECTION"))
+  if r0_14.RealChoice == r0_14.CurrentSelectContent then
+    r0_14.WidgetSwitcher_State:SetActiveWidgetIndex(1)
   end
 end
-
-function M:OnListItemClicked(Content)
-  if Content.IsEmpty then
-    return
-  end
-  if self.RealChoice == Content and self.HasSelect then
-    self.WidgetSwitcher_State:SetActiveWidgetIndex(1)
-  else
-    self.WidgetSwitcher_State:SetActiveWidgetIndex(0)
-  end
-  if self.CurrentSelectContent == Content then
-    return
-  end
-  if self.CurrentSelectContent then
-    self.CurrentSelectContent.IsSelect = false
-    if self.CurrentSelectContent.SelfWidget then
-      self.CurrentSelectContent.SelfWidget:SetSelected(false, true)
+function r0_0.SetWalnutContentRealChoice(r0_15, r1_15, r2_15)
+  -- line: [201, 212] id: 15
+  if r1_15 then
+    local r3_15 = nil
+    if r2_15 then
+      r3_15 = GText("UI_Walnut_Select")
+    end
+    r1_15.SelectNeedCount = r3_15
+    if r1_15.SelfWidget then
+      r1_15.SelfWidget:SetSelectNum(r3_15)
     end
   end
-  if Content then
-    Content.IsSelect = true
-    if Content.SelfWidget then
-      Content.SelfWidget:SetSelected(true, true)
-      if Content.IsForbid then
-        AudioManager(self):PlayUISound(self, "event:/ui/common/mihan_level_before_choose_select_none", nil, nil)
+end
+function r0_0.OnListItemClicked(r0_16, r1_16)
+  -- line: [214, 255] id: 16
+  if r1_16.IsEmpty then
+    return 
+  end
+  if r0_16.RealChoice == r1_16 and r0_16.HasSelect then
+    r0_16.WidgetSwitcher_State:SetActiveWidgetIndex(1)
+  else
+    local r2_16 = UGameplayStatics.GetGameState(r0_16)
+    if not r0_16.HasSelect or not r2_16:IsInDungeon() then
+      r0_16.WidgetSwitcher_State:SetActiveWidgetIndex(0)
+    end
+  end
+  if r0_16.CurrentSelectContent == r1_16 then
+    return 
+  end
+  if r0_16.CurrentSelectContent then
+    r0_16.CurrentSelectContent.IsSelect = false
+    if r0_16.CurrentSelectContent.SelfWidget then
+      r0_16.CurrentSelectContent.SelfWidget:SetSelected(false, true)
+    end
+  end
+  if r1_16 then
+    r1_16.IsSelect = true
+    if r1_16.SelfWidget then
+      r1_16.SelfWidget:SetSelected(true, true)
+      if r1_16.IsForbid then
+        AudioManager(r0_16):PlayUISound(r0_16, "event:/ui/common/mihan_level_before_choose_select_none", nil, nil)
       else
-        AudioManager(self):PlayUISound(self, "event:/ui/common/mihan_level_before_choose_select", nil, nil)
+        AudioManager(r0_16):PlayUISound(r0_16, "event:/ui/common/mihan_level_before_choose_select", nil, nil)
       end
     end
   end
-  self.CurrentSelectContent = Content
-  if not Content.Id then
-    self.WalnutPlate:SetNoWalnut(true)
+  r0_16.CurrentSelectContent = r1_16
+  if not r1_16.Id then
+    r0_16.WalnutPlate:SetNoWalnut(true)
   else
-    self.WalnutPlate:SetWalnutContent(Content.Id, true)
+    r0_16.WalnutPlate:SetWalnutContent(r1_16.Id, true)
   end
 end
-
-function M:BindEvents()
-  self.Btn_Yes.Button_Area.OnClicked:Clear()
-  self.Btn_No.Button_Area.OnClicked:Clear()
-  self.Btn_Yes.Button_Area.OnClicked:Add(self, self.OnClickButtonYes)
-  self.Btn_No.Button_Area.OnClicked:Add(self, self.OnClickButtonNo)
-  self.List_WalnutItem.BP_OnItemClicked:Add(self, self.OnListItemClicked)
-  self.WalnutPlate.Ordinal_1st.MainUI = self
-  self.WalnutPlate.Ordinal_2nd.MainUI = self
-  self.WalnutPlate.Ordinal_3rd.MainUI = self
-  self.WalnutPlate.MainUI = self
-  self.WalnutPlate.Reward_1st.MainUI = self
-  self.WalnutPlate.Reward_2nd.MainUI = self
-  self.WalnutPlate.Reward_2nd_2.MainUI = self
-  self.WalnutPlate.Reward_3rd_1.MainUI = self
-  self.WalnutPlate.Reward_3rd_2.MainUI = self
-  self.WalnutPlate.Reward_3rd_3.MainUI = self
-  self:AddDispatcher(EventID.InterruptWalnutSelect, self, self.OnInterruptWalnutSelect)
+function r0_0.BindEvents(r0_17)
+  -- line: [257, 278] id: 17
+  r0_17.Btn_Yes.Button_Area.OnClicked:Clear()
+  r0_17.Btn_No.Button_Area.OnClicked:Clear()
+  r0_17.Btn_Yes.Button_Area.OnClicked:Add(r0_17, r0_17.OnClickButtonYes)
+  r0_17.Btn_No.Button_Area.OnClicked:Add(r0_17, r0_17.OnClickButtonNo)
+  r0_17.List_WalnutItem.BP_OnItemClicked:Add(r0_17, r0_17.OnListItemClicked)
+  r0_17.WalnutPlate.Ordinal_1st.MainUI = r0_17
+  r0_17.WalnutPlate.Ordinal_2nd.MainUI = r0_17
+  r0_17.WalnutPlate.Ordinal_3rd.MainUI = r0_17
+  r0_17.WalnutPlate.MainUI = r0_17
+  r0_17.WalnutPlate.Reward_1st.MainUI = r0_17
+  r0_17.WalnutPlate.Reward_2nd.MainUI = r0_17
+  r0_17.WalnutPlate.Reward_2nd_2.MainUI = r0_17
+  r0_17.WalnutPlate.Reward_3rd_1.MainUI = r0_17
+  r0_17.WalnutPlate.Reward_3rd_2.MainUI = r0_17
+  r0_17.WalnutPlate.Reward_3rd_3.MainUI = r0_17
+  r0_17:AddDispatcher(EventID.InterruptWalnutSelect, r0_17, r0_17.OnInterruptWalnutSelect)
 end
-
-function M:CreateAndAddForbidItem()
-  local Content = NewObject(UIUtils.GetCommonItemContentClass())
-  Content.Icon = "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_Forbid.T_Armory_Forbid"
-  Content.IsSelect = true
-  Content.Id = -1
-  Content.ItemName = GText("UI_Walnut_Not_Select")
-  Content.IsForbid = true
-  Content.bDisableCommonClick = true
-  self.List_WalnutItem:AddItem(Content)
-  self.CurrentSelectContent = Content
-  self.RealChoice = self.CurrentSelectContent
-  self:OnListItemClicked(Content)
+function r0_0.CreateAndAddForbidItem(r0_18)
+  -- line: [280, 294] id: 18
+  local r1_18 = NewObject(UIUtils.GetCommonItemContentClass())
+  r1_18.Icon = "/Game/UI/Texture/Dynamic/Atlas/Armory/T_Armory_Forbid.T_Armory_Forbid"
+  r1_18.IsSelect = true
+  r1_18.Id = -1
+  r1_18.ItemName = GText("UI_Walnut_Not_Select")
+  r1_18.IsForbid = true
+  r1_18.bDisableCommonClick = true
+  r0_18.List_WalnutItem:AddItem(r1_18)
+  r0_18.CurrentSelectContent = r1_18
+  r0_18.RealChoice = r0_18.CurrentSelectContent
+  r0_18:OnListItemClicked(r1_18)
 end
-
-function M:CreateAndAddEmptyItem()
-  local Content = NewObject(UIUtils.GetCommonItemContentClass())
-  Content.IsEmpty = true
-  self.List_WalnutItem:AddItem(Content)
+function r0_0.CreateAndAddEmptyItem(r0_19)
+  -- line: [296, 300] id: 19
+  local r1_19 = NewObject(UIUtils.GetCommonItemContentClass())
+  r1_19.IsEmpty = true
+  r0_19.List_WalnutItem:AddItem(r1_19)
 end
-
-function M:CreateAndAddWalnutItem(WalnutId, Number)
-  DebugPrint("CreateAndAddWalnutItem WalnutId: ", WalnutId, "Number: ", Number)
-  local Content = NewObject(UIUtils.GetCommonItemContentClass())
-  local WalnutData = DataMgr.Walnut[WalnutId]
-  local WalnutType = WalnutData.WalnutType
-  local WalnutTypeData = DataMgr.WalnutType[WalnutType]
-  Content.Rarity = WalnutData.Rarity or 1
-  Content.Icon = WalnutTypeData.Icon
-  Content.Parent = self
-  Content.Count = Number
-  Content.Id = WalnutId
-  Content.ItemType = "Walnut"
-  Content.bDisableCommonClick = true
-  self.List_WalnutItem:AddItem(Content)
+function r0_0.CreateAndAddWalnutItem(r0_20, r1_20, r2_20)
+  -- line: [302, 317] id: 20
+  DebugPrint("CreateAndAddWalnutItem WalnutId: ", r1_20, "Number: ", r2_20)
+  local r3_20 = NewObject(UIUtils.GetCommonItemContentClass())
+  local r4_20 = DataMgr.Walnut[r1_20]
+  local r6_20 = DataMgr.WalnutType[r4_20.WalnutType]
+  r3_20.Rarity = r4_20.Rarity and 1
+  r3_20.Icon = r6_20.Icon
+  r3_20.Parent = r0_20
+  r3_20.Count = r2_20
+  r3_20.Id = r1_20
+  r3_20.ItemType = "Walnut"
+  r3_20.bDisableCommonClick = true
+  r0_20.List_WalnutItem:AddItem(r3_20)
 end
-
-function M:OnAnimationFinished(Animation)
-  if Animation == self.Auto_Out then
-    if not self.IsInDungeon and self.IsStandAlone and self.SelectYes then
+function r0_0.OnAnimationFinished(r0_21, r1_21)
+  -- line: [319, 327] id: 21
+  if r1_21 == r0_21.Auto_Out then
+    if not r0_21.IsInDungeon and r0_21.IsStandAlone and r0_21.SelectYes then
       EventManager:FireEvent(EventID.SelectedWalnut)
-    elseif self.IsInSettlement and self.IsStandAlone and self.SelectYes then
+    elseif r0_21.IsInSettlement and r0_21.IsStandAlone and r0_21.SelectYes then
       EventManager:FireEvent(EventID.SelectedWalnut)
     end
   end
 end
-
-function M:ChangeStateIcon(Widget, IsNone, ImgPath)
-  if IsNone then
-    Widget.Panel_Img:SetActiveWidgetIndex(4)
+function r0_0.ChangeStateIcon(r0_22, r1_22, r2_22, r3_22)
+  -- line: [329, 337] id: 22
+  if r2_22 then
+    r1_22.Panel_Img:SetActiveWidgetIndex(4)
   else
-    local WalnutImg = LoadObject(ImgPath)
-    Widget.Img_Item:GetDynamicMaterial():SetTextureParameterValue("IconMap", WalnutImg)
-    Widget.Panel_Img:SetActiveWidgetIndex(0)
+    r1_22.Img_Item:GetDynamicMaterial():SetTextureParameterValue("IconMap", LoadObject(r3_22))
+    r1_22.Panel_Img:SetActiveWidgetIndex(0)
   end
 end
-
-function M:OnItemWalnutClicked(ItemWalnut)
-  local WalnutId = ItemWalnut.WalnutId
-  if not WalnutId or WalnutId <= 0 then
-    return
+function r0_0.OnItemWalnutClicked(r0_23, r1_23)
+  -- line: [339, 349] id: 23
+  local r2_23 = r1_23.WalnutId
+  if not r2_23 or r2_23 <= 0 then
+    return 
   end
-  if not UIManager(self):GetUIObj("WalnutRewardDialog") then
-    self.DetailWidget = UIManager(self):LoadUINew("WalnutRewardDialog", WalnutId, "WalnutChoice")
-    self.DetailWidget.WalnutChoice = true
+  if not UIManager(r0_23):GetUIObj("WalnutRewardDialog") then
+    r0_23.DetailWidget = UIManager(r0_23):LoadUINew("WalnutRewardDialog", r2_23, "WalnutChoice")
+    r0_23.DetailWidget.WalnutChoice = true
   end
 end
-
-function M:ChangeSelectedHead(TeamHead)
-  if TeamHead == self.SelectedHead then
-    return
+function r0_0.ChangeSelectedHead(r0_24, r1_24)
+  -- line: [351, 359] id: 24
+  if r1_24 == r0_24.SelectedHead then
+    return 
   end
-  if self.SelectedHead then
-    self.SelectedHead:OnReleaseSelected(true)
+  if r0_24.SelectedHead then
+    r0_24.SelectedHead:OnReleaseSelected(true)
   end
-  self.SelectedHead = TeamHead
+  r0_24.SelectedHead = r1_24
 end
-
-function M:InitComp(...)
+function r0_0.InitComp(r0_25, ...)
+  -- line: [363, 364] id: 25
 end
-
-function M:InitTeamHeads(...)
+function r0_0.InitTeamHeads(r0_26, ...)
+  -- line: [367, 368] id: 26
 end
-
-function M:ReceiveTeammateChoose(...)
+function r0_0.ReceiveTeammateChoose(r0_27, ...)
+  -- line: [371, 372] id: 27
 end
-
-function M:PlayWalnutReady()
+function r0_0.PlayWalnutReady(r0_28)
+  -- line: [375, 376] id: 28
 end
-
-function M:OnClickButtonNo()
-  AudioManager(self):PlayUISound(self, "event:/ui/common/click_btn_cancel", nil, nil)
+function r0_0.OnClickButtonNo(r0_29)
+  -- line: [378, 380] id: 29
+  AudioManager(r0_29):PlayUISound(r0_29, "event:/ui/common/click_btn_cancel", nil, nil)
 end
-
-function M:OnClickButtonYes()
-  AudioManager(self):PlayUISound(self, "event:/ui/common/click_btn_confirm", nil, nil)
-  local WalnutId = self.CurrentSelectContent.Id
-  if nil == WalnutId then
-    WalnutId = -1
+function r0_0.OnClickButtonYes(r0_30)
+  -- line: [382, 394] id: 30
+  AudioManager(r0_30):PlayUISound(r0_30, "event:/ui/common/click_btn_confirm", nil, nil)
+  local r1_30 = r0_30.CurrentSelectContent.Id
+  if r1_30 == nil then
+    r1_30 = -1
   end
-  local Avatar = GWorld:GetAvatar()
-  Avatar:SelectWalnut(self:ShowChooseSuccessToast(self.CurrentSelectContent), self.CurrentDungeonId, WalnutId)
+  GWorld:GetAvatar():SelectWalnut(r0_30:ShowChooseSuccessToast(r0_30.CurrentSelectContent), r0_30.CurrentDungeonId, r1_30)
 end
-
-function M:SelectWalnutById(WalnutId)
-  local WalnutItems = self.List_WalnutItem:GetListItems()
-  for i = 1, WalnutItems:Length() do
-    local Content = WalnutItems:Get(i)
-    if Content and Content.Id and Content.Id == WalnutId then
-      self.List_WalnutItem:SetSelectedIndex(i - 1)
-      self:OnListItemClicked(Content)
-      self.List_WalnutItem:ScrollIndexIntoView(i - 1)
+function r0_0.SelectWalnutById(r0_31, r1_31)
+  -- line: [396, 413] id: 31
+  local r2_31 = r0_31.List_WalnutItem:GetListItems()
+  for r6_31 = 1, r2_31:Length(), 1 do
+    local r7_31 = r2_31:Get(r6_31)
+    if r7_31 and r7_31.Id and r7_31.Id == r1_31 then
+      r0_31.List_WalnutItem:SetSelectedIndex(r6_31 + -1)
+      r0_31:OnListItemClicked(r7_31)
+      r0_31.List_WalnutItem:ScrollIndexIntoView(r6_31 + -1)
       return true
     end
   end
   return false
 end
-
-function M:OnInterruptWalnutSelect()
-  self:Close()
+function r0_0.OnInterruptWalnutSelect(r0_32)
+  -- line: [415, 417] id: 32
+  r0_32:Close()
 end
-
-function M:InitGameInputMode()
+function r0_0.InitGameInputMode(r0_33)
+  -- line: [438, 451] id: 33
   DebugPrint("InitGameInputMode")
-  if not self.Panel_Key_GamePad then
-    return
+  if not r0_33.Panel_Key_GamePad then
+    return 
   end
-  local PlayerController = UE4.UGameplayStatics.GetPlayerController(self, 0)
-  self.GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(PlayerController)
-  self.IsFocusInit = false
-  if IsValid(self.GameInputModeSubsystem) then
-    self:InitCommonKey()
-    self:RefreshOpInfoByInputDevice(self.GameInputModeSubsystem:GetCurrentInputType(), self.GameInputModeSubsystem:GetCurrentGamepadName())
-    self.GameInputModeSubsystem.OnInputMethodChanged:Add(self, self.RefreshOpInfoByInputDevice)
+  r0_33.GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(UE4.UGameplayStatics.GetPlayerController(r0_33, 0))
+  r0_33.IsFocusInit = false
+  if IsValid(r0_33.GameInputModeSubsystem) then
+    r0_33:InitCommonKey()
+    r0_33:RefreshOpInfoByInputDevice(r0_33.GameInputModeSubsystem:GetCurrentInputType(), r0_33.GameInputModeSubsystem:GetCurrentGamepadName())
+    r0_33.GameInputModeSubsystem.OnInputMethodChanged:Add(r0_33, r0_33.RefreshOpInfoByInputDevice)
   end
 end
-
-function M:RefreshOpInfoByInputDevice(CurInputDevice, CurGamepadName)
-  DebugPrint("RefreshOpInfoByInputDevice", CurInputDevice, CurGamepadName)
-  if self.CurInputDeviceType == CurInputDevice then
-    return
+function r0_0.RefreshOpInfoByInputDevice(r0_34, r1_34, r2_34)
+  -- line: [453, 477] id: 34
+  DebugPrint("RefreshOpInfoByInputDevice", r1_34, r2_34)
+  if r0_34.CurInputDeviceType == r1_34 then
+    return 
   end
-  local IsUseKeyAndMouse = CurInputDevice == ECommonInputType.MouseAndKeyboard
-  if IsUseKeyAndMouse then
-    self:GamePadToPC()
-    if self._ItemSelectionChangeBound then
-      self.List_WalnutItem.BP_OnItemSelectionChanged:Remove(self, self.OnListItemClicked)
-      self._ItemSelectionChangeBound = false
+  if r1_34 == ECommonInputType.MouseAndKeyboard then
+    r0_34:GamePadToPC()
+    if r0_34._ItemSelectionChangeBound then
+      r0_34.List_WalnutItem.BP_OnItemSelectionChanged:Remove(r0_34, r0_34.OnListItemClicked)
+      r0_34._ItemSelectionChangeBound = false
     end
   else
-    self:PCToGamepad()
-    if not self._ItemSelectionChangeBound or self._ItemSelectionChangeBound == false then
-      self.List_WalnutItem.BP_OnItemSelectionChanged:Add(self, self.OnListItemClicked)
-      self._ItemSelectionChangeBound = true
+    r0_34:PCToGamepad()
+    if not r0_34._ItemSelectionChangeBound or r0_34._ItemSelectionChangeBound == false then
+      r0_34.List_WalnutItem.BP_OnItemSelectionChanged:Add(r0_34, r0_34.OnListItemClicked)
+      r0_34._ItemSelectionChangeBound = true
     end
   end
-  self.CurInputDeviceType = CurInputDevice
-  self.Super.RefreshOpInfoByInputDevice(self, CurInputDevice, CurGamepadName)
+  r0_34.CurInputDeviceType = r1_34
+  r0_34.Super.RefreshOpInfoByInputDevice(r0_34, r1_34, r2_34)
 end
-
-function M:InitCommonKey()
-  if not self.Panel_Key_GamePad then
-    return
+function r0_0.InitCommonKey(r0_35)
+  -- line: [479, 488] id: 35
+  if not r0_35.Panel_Key_GamePad then
+    return 
   end
-  self.Panel_Key_GamePad:ClearChildren()
-  for i = 1, 3 do
-    local MenuKeyWidget = self:CreateWidgetNew("ComKeyTextDesc")
-    self.Panel_Key_GamePad:AddChild(MenuKeyWidget)
+  r0_35.Panel_Key_GamePad:ClearChildren()
+  for r4_35 = 1, 3, 1 do
+    r0_35.Panel_Key_GamePad:AddChild(r0_35:CreateWidgetNew("ComKeyTextDesc"))
   end
 end
-
-function M:UpdateCommonKeys(...)
-  if not self.Panel_Key_GamePad then
-    return
+function r0_0.UpdateCommonKeys(r0_36, ...)
+  -- line: [490, 512] id: 36
+  if not r0_36.Panel_Key_GamePad then
+    return 
   end
-  local Param = {
+  local r1_36 = {
     ...
   }
-  for i = 0, 2 do
-    local CurerentKey = self.Panel_Key_GamePad:GetChildAt(i)
-    if Param[i * 2 + 1] ~= nil and Param[i * 2 + 2] ~= nil then
-      CurerentKey:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-      CurerentKey:CreateCommonKey({
+  for r5_36 = 0, 2, 1 do
+    local r6_36 = r0_36.Panel_Key_GamePad:GetChildAt(r5_36)
+    if r1_36[r5_36 * 2 + 1] ~= nil and r1_36[r5_36 * 2 + 2] ~= nil then
+      r6_36:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+      r6_36:CreateCommonKey({
         KeyInfoList = {
           {
             Type = "Img",
-            ImgShortPath = Param[i * 2 + 1]
+            ImgShortPath = r1_36[r5_36 * 2 + 1],
           }
         },
-        Desc = Param[i * 2 + 2]
+        Desc = r1_36[r5_36 * 2 + 2],
       })
     else
-      CurerentKey:SetVisibility(UE4.ESlateVisibility.Collapsed)
+      r6_36:SetVisibility(UE4.ESlateVisibility.Collapsed)
     end
   end
 end
-
-function M:GamePadToPC()
-  if not self.Panel_Key_GamePad then
-    return
+function r0_0.GamePadToPC(r0_37)
+  -- line: [514, 519] id: 37
+  if not r0_37.Panel_Key_GamePad then
+    return 
   end
-  self.Panel_Key_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  r0_37.Panel_Key_GamePad:SetVisibility(UE4.ESlateVisibility.Collapsed)
 end
-
-function M:PCToGamepad()
-  if not self.Panel_Key_GamePad then
-    return
+function r0_0.PCToGamepad(r0_38)
+  -- line: [521, 558] id: 38
+  if not r0_38.Panel_Key_GamePad then
+    return 
   end
-  self.Panel_Key_GamePad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-  if self.DetailWidget and self.DetailWidget.WalnutChoice == true then
-    self.DetailWidget.State = 0
-    self.DetailWidget:PCToGamepad()
-    self.DetailWidget:SetFocus()
+  r0_38.Panel_Key_GamePad:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+  if r0_38.DetailWidget and r0_38.DetailWidget.WalnutChoice == true then
+    r0_38.DetailWidget.State = 0
+    r0_38.DetailWidget:PCToGamepad()
+    r0_38.DetailWidget:SetFocus()
   else
-    self.State = 0
-    self.List_WalnutItem:SetFocus()
+    r0_38.State = 0
+    r0_38.List_WalnutItem:SetFocus()
   end
-  if 0 == self.State then
-    if self.IsStandAlone then
-      self:UpdateCommonKeys("LS", GText("UI_Controller_CheckReward"))
+  if r0_38.State == 0 then
+    if r0_38.IsStandAlone then
+      r0_38:UpdateCommonKeys("LS", GText("UI_Controller_CheckReward"))
     else
-      self:UpdateCommonKeys("LS", GText("UI_Controller_CheckReward"), "RS", GText("UI_Controller_CheckTeam"))
+      r0_38:UpdateCommonKeys("LS", GText("UI_Controller_CheckReward"), "RS", GText("UI_Controller_CheckTeam"))
     end
   end
 end
-
-function M:OnKeyDown(MyGeometry, InKeyEvent)
-  local InKey = UE4.UKismetInputLibrary.GetKey(InKeyEvent)
-  local InKeyName = UE4.UFormulaFunctionLibrary.Key_GetFName(InKey)
-  local IsEventHandled = false
-  local PlayerController = UE4.UGameplayStatics.GetPlayerController(self, 0)
-  self.GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(PlayerController)
-  if UE4.UKismetInputLibrary.Key_IsGamepadKey(InKey) then
-    if 1 == self.WalnutChoiceFinish then
-      if "Gamepad_RightThumbstick" == InKeyName then
-        self.NavigateWidget = self.GameInputModeSubsystem:GetNavigateWidget()
-        self.NavigateWidget:SetRenderOpacity(1)
-        if not self.IsStandAlone and 0 == self.State then
-          self.State_Mine.Team_Head.Head_Team.Button_Area:SetFocus()
-          self.State = 7
-          self:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"))
-          IsEventHandled = true
+function r0_0.OnKeyDown(r0_39, r1_39, r2_39)
+  -- line: [605, 722] id: 39
+  local r3_39 = UE4.UKismetInputLibrary.GetKey(r2_39)
+  local r4_39 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_39)
+  local r5_39 = false
+  r0_39.GameInputModeSubsystem = UGameInputModeSubsystem.GetGameInputModeSubsystem(UE4.UGameplayStatics.GetPlayerController(r0_39, 0))
+  if UE4.UKismetInputLibrary.Key_IsGamepadKey(r3_39) then
+    if r0_39.WalnutChoiceFinish == 1 then
+      if r4_39 == "Gamepad_RightThumbstick" then
+        r0_39.NavigateWidget = r0_39.GameInputModeSubsystem:GetNavigateWidget()
+        r0_39.NavigateWidget:SetRenderOpacity(1)
+        if not r0_39.IsStandAlone and r0_39.State == 0 then
+          r0_39.State_Mine.Team_Head.Head_Team.Button_Area:SetFocus()
+          r0_39.State = 7
+          r0_39:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"))
+          r5_39 = true
         end
-      elseif "Gamepad_FaceButton_Right" == InKeyName then
-        IsEventHandled = true
+      elseif r4_39 == "Gamepad_FaceButton_Right" then
+        r5_39 = true
       end
-    elseif "Gamepad_Special_Right" == InKeyName then
-    elseif "Gamepad_LeftThumbstick" == InKeyName then
-      if 0 == self.State and self.CurrentSelectContent.Id ~= nil and -1 ~= self.CurrentSelectContent.Id then
-        self.WalnutPlate.Reward_1st.Button_Area:SetFocus()
-        self.State = 2
-        self:UpdateCommonKeys("A", GText("UI_Controller_CheckDetails"), "B", GText("UI_Tips_Close"))
-        IsEventHandled = true
-      end
-    elseif "Gamepad_RightThumbstick" == InKeyName then
-      if not self.IsStandAlone and 0 == self.State then
-        self.State_Mine.Team_Head.Head_Team.Button_Area:SetFocus()
-        self.State = 7
-        self.Btn_No:SetGamePadVisibility(UE4.ESlateVisibility.Collapsed)
-        self.Btn_Yes:SetGamePadVisibility(UE4.ESlateVisibility.Collapsed)
-        self:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
-        IsEventHandled = true
-      end
-      IsEventHandled = true
-    elseif "Gamepad_FaceButton_Right" == InKeyName then
-      if 2 == self.State or 7 == self.State then
-        self.State = 0
-        self.List_WalnutItem:SetFocus()
-        self.Btn_No:SetGamePadVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-        self.Btn_Yes:SetGamePadVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-        if self.IsStandAlone then
-          self:UpdateCommonKeys("LS", GText("UI_Controller_CheckReward"))
-        else
-          self:UpdateCommonKeys("LS", GText("UI_Controller_CheckReward"), "RS", GText("UI_Controller_CheckTeam"))
+    elseif r4_39 ~= "Gamepad_Special_Right" then
+      if r4_39 == "Gamepad_LeftThumbstick" and r0_39.State == 0 then
+        if r0_39.CurrentSelectContent.Id ~= nil and r0_39.CurrentSelectContent.Id ~= -1 then
+          r0_39.WalnutPlate.Reward_1st.Button_Area:SetFocus()
+          r0_39.State = 2
+          r0_39:UpdateCommonKeys("A", GText("UI_Controller_CheckDetails"), "B", GText("UI_Tips_Close"))
         end
-      elseif 4 == self.State then
-        self.State = 7
-        self:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
-        if self.State_Mine.Team_Head.Head_Anchor:HasFocusedDescendants() then
-          self.State_Mine.Team_Head.Head_Team.Button_Area:SetFocus()
-        elseif self.WBP_Walnut_PlayerState_1.Team_Head.Head_Anchor:HasFocusedDescendants() then
-          self.WBP_Walnut_PlayerState_1.Team_Head.Head_Team.Button_Area:SetFocus()
-        elseif self.WBP_Walnut_PlayerState_2.Team_Head.Head_Anchor:HasFocusedDescendants() then
-          self.WBP_Walnut_PlayerState_2.Team_Head.Head_Team.Button_Area:SetFocus()
-        elseif self.WBP_Walnut_PlayerState.Team_Head.Head_Anchor:HasFocusedDescendants() then
-          self.WBP_Walnut_PlayerState.Team_Head.Head_Team.Button_Area:SetFocus()
+        r5_39 = true
+      elseif r4_39 == "Gamepad_RightThumbstick" then
+        if not r0_39.IsStandAlone and r0_39.State == 0 then
+          r0_39.State_Mine.Team_Head.Head_Team.Button_Area:SetFocus()
+          r0_39.State = 7
+          r0_39.Btn_No:SetGamePadVisibility(UE4.ESlateVisibility.Collapsed)
+          r0_39.Btn_Yes:SetGamePadVisibility(UE4.ESlateVisibility.Collapsed)
+          r0_39:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
+          r5_39 = true
         end
-      elseif 1 == self.State then
-        if self.WalnutPlate.Ordinal_1st.Tips_MenuAnchor:HasFocusedDescendants() then
-          self.WalnutPlate.Ordinal_1st:SetFocus()
-        elseif self.WalnutPlate.Ordinal_2nd.Tips_MenuAnchor:HasFocusedDescendants() then
-          self.WalnutPlate.Ordinal_2nd:SetFocus()
-        elseif self.WalnutPlate.Ordinal_3rd.Tips_MenuAnchor:HasFocusedDescendants() then
-          self.WalnutPlate.Ordinal_3rd:SetFocus()
-        else
-          self.State = 0
-          self.List_WalnutItem:SetFocus()
-          if self.IsStandAlone then
-            self:UpdateCommonKeys("LS", GText("UI_Controller_CheckReward"))
+        r5_39 = true
+      elseif r4_39 == "Gamepad_FaceButton_Right" then
+        if r0_39.State == 2 or r0_39.State == 7 then
+          r0_39.State = 0
+          r0_39.List_WalnutItem:SetFocus()
+          r0_39.Btn_No:SetGamePadVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+          r0_39.Btn_Yes:SetGamePadVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+          if r0_39.IsStandAlone then
+            r0_39:UpdateCommonKeys("LS", GText("UI_Controller_CheckReward"))
           else
-            self:UpdateCommonKeys("LS", GText("UI_Controller_CheckReward"), "RS", GText("UI_Controller_CheckTeam"))
+            r0_39:UpdateCommonKeys("LS", GText("UI_Controller_CheckReward"), "RS", GText("UI_Controller_CheckTeam"))
           end
+        elseif r0_39.State == 4 then
+          r0_39.State = 7
+          r0_39:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
+          if r0_39.State_Mine.Team_Head.Head_Anchor:HasFocusedDescendants() then
+            r0_39.State_Mine.Team_Head.Head_Team.Button_Area:SetFocus()
+          elseif r0_39.WBP_Walnut_PlayerState_1.Team_Head.Head_Anchor:HasFocusedDescendants() then
+            r0_39.WBP_Walnut_PlayerState_1.Team_Head.Head_Team.Button_Area:SetFocus()
+          elseif r0_39.WBP_Walnut_PlayerState_2.Team_Head.Head_Anchor:HasFocusedDescendants() then
+            r0_39.WBP_Walnut_PlayerState_2.Team_Head.Head_Team.Button_Area:SetFocus()
+          elseif r0_39.WBP_Walnut_PlayerState.Team_Head.Head_Anchor:HasFocusedDescendants() then
+            r0_39.WBP_Walnut_PlayerState.Team_Head.Head_Team.Button_Area:SetFocus()
+          end
+        elseif r0_39.State == 1 then
+          if r0_39.WalnutPlate.Ordinal_1st.Tips_MenuAnchor:HasFocusedDescendants() then
+            r0_39.WalnutPlate.Ordinal_1st:SetFocus()
+          elseif r0_39.WalnutPlate.Ordinal_2nd.Tips_MenuAnchor:HasFocusedDescendants() then
+            r0_39.WalnutPlate.Ordinal_2nd:SetFocus()
+          elseif r0_39.WalnutPlate.Ordinal_3rd.Tips_MenuAnchor:HasFocusedDescendants() then
+            r0_39.WalnutPlate.Ordinal_3rd:SetFocus()
+          else
+            r0_39.State = 0
+            r0_39.List_WalnutItem:SetFocus()
+            if r0_39.IsStandAlone then
+              r0_39:UpdateCommonKeys("LS", GText("UI_Controller_CheckReward"))
+            else
+              r0_39:UpdateCommonKeys("LS", GText("UI_Controller_CheckReward"), "RS", GText("UI_Controller_CheckTeam"))
+            end
+          end
+        elseif r0_39.State == 0 then
+          r0_39:OnClickButtonNo()
         end
-      elseif 0 == self.State then
-        self:OnClickButtonNo()
+        r5_39 = true
       end
-      IsEventHandled = true
     end
-  elseif "Escape" == InKeyName and self.CloseByEscape and self:CloseByEscape() then
-    IsEventHandled = true
+  elseif r4_39 == "Escape" and r0_39.CloseByEscape and r0_39:CloseByEscape() then
+    r5_39 = true
   end
-  if IsEventHandled then
+  if r5_39 then
     return UE4.UWidgetBlueprintLibrary.Handled()
   else
     return UE4.UWidgetBlueprintLibrary.UnHandled()
   end
 end
-
-function M:Close()
-  if self.DetailWidget and self.DetailWidget.WalnutChoice then
-    self.DetailWidget:Close()
+function r0_0.Close(r0_40)
+  -- line: [724, 735] id: 40
+  if r0_40.DetailWidget and r0_40.DetailWidget.WalnutChoice then
+    r0_40.DetailWidget:Close()
   end
-  self.NavigateWidget = self.GameInputModeSubsystem:GetNavigateWidget()
-  self.NavigateWidget:SetRenderOpacity(1)
-  AudioManager(self):SetEventSoundParam(self, "WalnutChoiceShow", {ToEnd = 1})
-  self.Super.Close(self)
+  if CommonUtils.GetDeviceTypeByPlatformName(r0_40) ~= "Mobile" then
+    r0_40.NavigateWidget = r0_40.GameInputModeSubsystem:GetNavigateWidget()
+    r0_40.NavigateWidget:SetRenderOpacity(1)
+  end
+  AudioManager(r0_40):SetEventSoundParam(r0_40, "WalnutChoiceShow", {
+    ToEnd = 1,
+  })
+  r0_40.Super.Close(r0_40)
 end
-
-function M:OnClickYes()
-  if self.GameInputModeSubsystem:GetCurrentInputType() == ECommonInputType.Gamepad and 0 == self.State then
-    self:OnClickButtonYes()
+function r0_0.OnClickYes(r0_41)
+  -- line: [737, 743] id: 41
+  if r0_41.GameInputModeSubsystem:GetCurrentInputType() == ECommonInputType.Gamepad and r0_41.State == 0 then
+    r0_41:OnClickButtonYes()
   end
 end
-
-function M:FocusOnWalnut()
-  local Walnut = self.List_WalnutItem:GetDisplayedEntryWidgets()[1]
-  if self.List_WalnutItem:HasFocusedDescendants() then
-    if Walnut:HasAnyUserFocus() then
-      if self.IsStandAlone == true then
-        self:UpdateCommonKeys()
+function r0_0.FocusOnWalnut(r0_42)
+  -- line: [745, 765] id: 42
+  local r1_42 = r0_42.List_WalnutItem:GetDisplayedEntryWidgets()[1]
+  if r0_42.List_WalnutItem:HasFocusedDescendants() then
+    if r1_42:HasAnyUserFocus() then
+      if r0_42.IsStandAlone == true then
+        r0_42:UpdateCommonKeys()
       else
-        self:UpdateCommonKeys("RS", GText("UI_Controller_CheckTeam"))
+        r0_42:UpdateCommonKeys("RS", GText("UI_Controller_CheckTeam"))
       end
-    elseif self.IsStandAlone == true then
-      self:UpdateCommonKeys("LS", GText("UI_Controller_CheckReward"))
+    elseif r0_42.IsStandAlone == true then
+      r0_42:UpdateCommonKeys("LS", GText("UI_Controller_CheckReward"))
     else
-      self:UpdateCommonKeys("LS", GText("UI_Controller_CheckReward"), "RS", GText("UI_Controller_CheckTeam"))
+      r0_42:UpdateCommonKeys("LS", GText("UI_Controller_CheckReward"), "RS", GText("UI_Controller_CheckTeam"))
     end
   end
 end
-
-function M:NavigateP1Right()
-  if self.State_Mine.Team_Head.Head_Team.Button_Area:HasAnyUserFocus() then
-    if self.State_Mine.Item_Walnut.State ~= nil and 1 == self.State_Mine.Item_Walnut.State then
-      self.State_Mine.Item_Walnut.Button_Area:SetFocus()
-      self:UpdateCommonKeys("A", GText("UI_Controller_CheckDetails"), "B", GText("UI_Tips_Close"))
+function r0_0.NavigateP1Right(r0_43)
+  -- line: [767, 781] id: 43
+  if r0_43.State_Mine.Team_Head.Head_Team.Button_Area:HasAnyUserFocus() then
+    if r0_43.State_Mine.Item_Walnut.State ~= nil and r0_43.State_Mine.Item_Walnut.State == 1 then
+      r0_43.State_Mine.Item_Walnut.Button_Area:SetFocus()
+      r0_43:UpdateCommonKeys("A", GText("UI_Controller_CheckDetails"), "B", GText("UI_Tips_Close"))
     else
-      self.WBP_Walnut_PlayerState_1.Team_Head.Head_Team.Button_Area:SetFocus()
-      self:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
+      r0_43.WBP_Walnut_PlayerState_1.Team_Head.Head_Team.Button_Area:SetFocus()
+      r0_43:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
     end
   else
-    self.WBP_Walnut_PlayerState_1.Team_Head.Head_Team.Button_Area:SetFocus()
-    self:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
+    r0_43.WBP_Walnut_PlayerState_1.Team_Head.Head_Team.Button_Area:SetFocus()
+    r0_43:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
   end
   return true
 end
-
-function M:NavigateP2Right()
-  if self.WBP_Walnut_PlayerState_1.Team_Head.Head_Team.Button_Area:HasAnyUserFocus() then
-    if self.WBP_Walnut_PlayerState_1.Item_Walnut.State ~= nil and 1 == self.WBP_Walnut_PlayerState_1.Item_Walnut.State then
-      self.WBP_Walnut_PlayerState_1.Item_Walnut.Button_Area:SetFocus()
-      self:UpdateCommonKeys("A", GText("UI_Controller_CheckDetails"), "B", GText("UI_Tips_Close"))
+function r0_0.NavigateP2Right(r0_44)
+  -- line: [783, 797] id: 44
+  if r0_44.WBP_Walnut_PlayerState_1.Team_Head.Head_Team.Button_Area:HasAnyUserFocus() then
+    if r0_44.WBP_Walnut_PlayerState_1.Item_Walnut.State ~= nil and r0_44.WBP_Walnut_PlayerState_1.Item_Walnut.State == 1 then
+      r0_44.WBP_Walnut_PlayerState_1.Item_Walnut.Button_Area:SetFocus()
+      r0_44:UpdateCommonKeys("A", GText("UI_Controller_CheckDetails"), "B", GText("UI_Tips_Close"))
     else
-      self.WBP_Walnut_PlayerState_2.Team_Head.Head_Team.Button_Area:SetFocus()
-      self:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
+      r0_44.WBP_Walnut_PlayerState_2.Team_Head.Head_Team.Button_Area:SetFocus()
+      r0_44:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
     end
   else
-    self.WBP_Walnut_PlayerState_2.Team_Head.Head_Team.Button_Area:SetFocus()
-    self:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
+    r0_44.WBP_Walnut_PlayerState_2.Team_Head.Head_Team.Button_Area:SetFocus()
+    r0_44:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
   end
   return true
 end
-
-function M:NavigateP2Left()
-  if self.WBP_Walnut_PlayerState_1.Item_Walnut.Button_Area:HasAnyUserFocus() then
-    self.WBP_Walnut_PlayerState_1.Team_Head.Head_Team.Button_Area:SetFocus()
-    self:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
-  elseif self.State_Mine.Item_Walnut.State ~= nil and 1 == self.State_Mine.Item_Walnut.State then
-    self.State_Mine.Item_Walnut.Button_Area:SetFocus()
-    self:UpdateCommonKeys("A", GText("UI_Controller_CheckDetails"), "B", GText("UI_Tips_Close"))
+function r0_0.NavigateP2Left(r0_45)
+  -- line: [799, 813] id: 45
+  if r0_45.WBP_Walnut_PlayerState_1.Item_Walnut.Button_Area:HasAnyUserFocus() then
+    r0_45.WBP_Walnut_PlayerState_1.Team_Head.Head_Team.Button_Area:SetFocus()
+    r0_45:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
+  elseif r0_45.State_Mine.Item_Walnut.State ~= nil and r0_45.State_Mine.Item_Walnut.State == 1 then
+    r0_45.State_Mine.Item_Walnut.Button_Area:SetFocus()
+    r0_45:UpdateCommonKeys("A", GText("UI_Controller_CheckDetails"), "B", GText("UI_Tips_Close"))
   else
-    self.State_Mine.Team_Head.Head_Team.Button_Area:SetFocus()
-    self:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
+    r0_45.State_Mine.Team_Head.Head_Team.Button_Area:SetFocus()
+    r0_45:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
   end
   return true
 end
-
-function M:NavigateP3Right()
-  if self.WBP_Walnut_PlayerState_2.Team_Head.Head_Team.Button_Area:HasAnyUserFocus() then
-    if self.WBP_Walnut_PlayerState_2.Item_Walnut.State ~= nil and 1 == self.WBP_Walnut_PlayerState_2.Item_Walnut.State then
-      self.WBP_Walnut_PlayerState_2.Item_Walnut.Button_Area:SetFocus()
-      self:UpdateCommonKeys("A", GText("UI_Controller_CheckDetails"), "B", GText("UI_Tips_Close"))
+function r0_0.NavigateP3Right(r0_46)
+  -- line: [815, 829] id: 46
+  if r0_46.WBP_Walnut_PlayerState_2.Team_Head.Head_Team.Button_Area:HasAnyUserFocus() then
+    if r0_46.WBP_Walnut_PlayerState_2.Item_Walnut.State ~= nil and r0_46.WBP_Walnut_PlayerState_2.Item_Walnut.State == 1 then
+      r0_46.WBP_Walnut_PlayerState_2.Item_Walnut.Button_Area:SetFocus()
+      r0_46:UpdateCommonKeys("A", GText("UI_Controller_CheckDetails"), "B", GText("UI_Tips_Close"))
     else
-      self.WBP_Walnut_PlayerState.Team_Head.Head_Team.Button_Area:SetFocus()
-      self:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
+      r0_46.WBP_Walnut_PlayerState.Team_Head.Head_Team.Button_Area:SetFocus()
+      r0_46:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
     end
   else
-    self.WBP_Walnut_PlayerState.Team_Head.Head_Team.Button_Area:SetFocus()
-    self:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
+    r0_46.WBP_Walnut_PlayerState.Team_Head.Head_Team.Button_Area:SetFocus()
+    r0_46:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
   end
   return true
 end
-
-function M:NavigateP3Left()
-  if self.WBP_Walnut_PlayerState_2.Item_Walnut.Button_Area:HasAnyUserFocus() then
-    self.WBP_Walnut_PlayerState_2.Team_Head.Head_Team.Button_Area:SetFocus()
-    self:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
-  elseif self.WBP_Walnut_PlayerState_1.Item_Walnut.State ~= nil and 1 == self.WBP_Walnut_PlayerState_1.Item_Walnut.State then
-    self.WBP_Walnut_PlayerState_1.Item_Walnut.Button_Area:SetFocus()
-    self:UpdateCommonKeys("A", GText("UI_Controller_CheckDetails"), "B", GText("UI_Tips_Close"))
+function r0_0.NavigateP3Left(r0_47)
+  -- line: [831, 845] id: 47
+  if r0_47.WBP_Walnut_PlayerState_2.Item_Walnut.Button_Area:HasAnyUserFocus() then
+    r0_47.WBP_Walnut_PlayerState_2.Team_Head.Head_Team.Button_Area:SetFocus()
+    r0_47:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
+  elseif r0_47.WBP_Walnut_PlayerState_1.Item_Walnut.State ~= nil and r0_47.WBP_Walnut_PlayerState_1.Item_Walnut.State == 1 then
+    r0_47.WBP_Walnut_PlayerState_1.Item_Walnut.Button_Area:SetFocus()
+    r0_47:UpdateCommonKeys("A", GText("UI_Controller_CheckDetails"), "B", GText("UI_Tips_Close"))
   else
-    self.WBP_Walnut_PlayerState_1.Team_Head.Head_Team.Button_Area:SetFocus()
-    self:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
+    r0_47.WBP_Walnut_PlayerState_1.Team_Head.Head_Team.Button_Area:SetFocus()
+    r0_47:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
   end
   return true
 end
-
-function M:NavigateP4Left()
-  if self.WBP_Walnut_PlayerState.Item_Walnut.Button_Area:HasAnyUserFocus() then
-    self.WBP_Walnut_PlayerState.Team_Head.Head_Team.Button_Area:SetFocus()
-    self:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
-  elseif self.WBP_Walnut_PlayerState_2.Item_Walnut.State ~= nil and 1 == self.WBP_Walnut_PlayerState_2.Item_Walnut.State then
-    self.WBP_Walnut_PlayerState_2.Item_Walnut.Button_Area:SetFocus()
-    self:UpdateCommonKeys("A", GText("UI_Controller_CheckDetails"), "B", GText("UI_Tips_Close"))
+function r0_0.NavigateP4Left(r0_48)
+  -- line: [847, 861] id: 48
+  if r0_48.WBP_Walnut_PlayerState.Item_Walnut.Button_Area:HasAnyUserFocus() then
+    r0_48.WBP_Walnut_PlayerState.Team_Head.Head_Team.Button_Area:SetFocus()
+    r0_48:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
+  elseif r0_48.WBP_Walnut_PlayerState_2.Item_Walnut.State ~= nil and r0_48.WBP_Walnut_PlayerState_2.Item_Walnut.State == 1 then
+    r0_48.WBP_Walnut_PlayerState_2.Item_Walnut.Button_Area:SetFocus()
+    r0_48:UpdateCommonKeys("A", GText("UI_Controller_CheckDetails"), "B", GText("UI_Tips_Close"))
   else
-    self.WBP_Walnut_PlayerState_2.Team_Head.Head_Team.Button_Area:SetFocus()
-    self:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
+    r0_48.WBP_Walnut_PlayerState_2.Team_Head.Head_Team.Button_Area:SetFocus()
+    r0_48:UpdateCommonKeys("A", GText("UI_Controller_CheckPlayer"), "B", GText("UI_Tips_Close"))
   end
   return true
 end
-
-return M
+return r0_0

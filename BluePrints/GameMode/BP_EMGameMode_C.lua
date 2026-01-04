@@ -2437,7 +2437,7 @@ function r6_0.InitDungeonRandomEvent(r0_176, r1_176)
   if r7_176 then
     r7_176:ServerMulticast("DungeonEventRealHappend", r3_176, r2_176.Uid)
   else
-    r2_176:CallServerMethod("DungeonEventRealHappend", r3_176)
+    r2_176:CallServerMethod("DungeonEventRealHappend", r3_176, r2_176.Uid)
   end
 end
 function r6_0.InitDungeonRandomEventPet(r0_177, r1_177)

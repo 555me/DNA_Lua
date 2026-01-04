@@ -587,6 +587,7 @@ r3_0.FeinaEventReward = {
   IsLeaf = true,
   Name = "FeinaEventReward",
   Type = 0,
+  bInvokeEveryTime = true,
 }
 r3_0.ForgeEntry = {
   Name = "ForgeEntry",

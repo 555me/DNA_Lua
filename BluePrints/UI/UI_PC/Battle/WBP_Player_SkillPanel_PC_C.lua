@@ -695,7 +695,10 @@ function r1_0.UpdatePlayerWeaponInfo(r0_36)
   r0_36:UpdateBulletInfo(r0_36.RangedWeapon)
 end
 function r1_0.UpdateBulletInfo(r0_37, r1_37)
-  -- line: [687, 762] id: 37
+  -- line: [687, 765] id: 37
+  if not IsValid(r1_37) then
+    return 
+  end
   local r2_37 = r1_37:GetAttr("MagazineBulletNum")
   local r3_37 = r1_37:GetAttr("BulletNum")
   local r4_37 = r2_37 + r3_37
@@ -761,12 +764,12 @@ function r1_0.UpdateBulletInfo(r0_37, r1_37)
   end
 end
 function r1_0.UpdatePlayerExclusiveSkill(r0_38)
-  -- line: [764, 770] id: 38
+  -- line: [767, 773] id: 38
   r0_38.Battle_Skill_1:RefreshSkillStyleInTimer("Skill1")
   r0_38.Battle_Skill_2:RefreshSkillStyleInTimer("Skill2")
 end
 function r1_0.UpdatePlayerSupportSkill(r0_39)
-  -- line: [772, 795] id: 39
+  -- line: [775, 798] id: 39
   if not IsValid(r0_39.OwnerPlayer) or r0_39.SupportSkillState == "Lock" or r0_39.bSupportSkillUnlock == false then
     return 
   end
@@ -788,7 +791,7 @@ function r1_0.UpdatePlayerSupportSkill(r0_39)
   r0_39:HandleSupportButtonState()
 end
 function r1_0.HandleSupportButtonState(r0_40)
-  -- line: [797, 815] id: 40
+  -- line: [800, 818] id: 40
   if r0_40.LastSupportSkillState ~= r0_40.SupportSkillState then
     if r0_40.SupportSkillState == "InCDTime" then
       r0_40.Assist_Skill_Icon:SetRenderOpacity(0.5)
@@ -805,7 +808,7 @@ function r1_0.HandleSupportButtonState(r0_40)
   r0_40.LastSupportSkillState = r0_40.SupportSkillState
 end
 function r1_0.UpdatePlayerDodgeSkill(r0_41)
-  -- line: [817, 849] id: 41
+  -- line: [820, 852] id: 41
   if r0_41.Dodge_Skill:GetVisibility() == ESlateVisibility.Collapsed or not IsValid(r0_41.OwnerPlayer) then
     return 
   end
@@ -835,7 +838,7 @@ function r1_0.UpdatePlayerDodgeSkill(r0_41)
   r0_41.AvoidRemainTimes = r2_41
 end
 function r1_0.OnSupportSkillActionInput(r0_42)
-  -- line: [851, 866] id: 42
+  -- line: [854, 869] id: 42
   if r0_42.SupportSkillState == "Lock" then
     return 
   end
@@ -846,7 +849,7 @@ function r1_0.OnSupportSkillActionInput(r0_42)
   end
 end
 function r1_0.OnDodgeActionInput(r0_43)
-  -- line: [868, 878] id: 43
+  -- line: [871, 881] id: 43
   if r0_43.AvoidRemainTimes > 0 and not EMUIAnimationSubsystem:EMAnimationIsPlaying(r0_43, r0_43.Dodge_Click) then
     EMUIAnimationSubsystem:EMPlayAnimation(r0_43, r0_43.Dodge_Click)
   elseif not EMUIAnimationSubsystem:EMAnimationIsPlaying(r0_43, r0_43.Dodge_Disable) then
@@ -854,7 +857,7 @@ function r1_0.OnDodgeActionInput(r0_43)
   end
 end
 function r1_0.OnUpdateMaxSp(r0_44, r1_44)
-  -- line: [880, 889] id: 44
+  -- line: [883, 892] id: 44
   if not r1_44 then
     return 
   end
@@ -865,7 +868,7 @@ function r1_0.OnUpdateMaxSp(r0_44, r1_44)
   UE4.UWidgetLayoutLibrary.SlotAsCanvasSlot(r0_44.Bar_Shield):SetSize(r0_44.MyFVector2D)
 end
 function r1_0.OnUpdateCharSp(r0_45, r1_45, r2_45, r3_45)
-  -- line: [891, 940] id: 45
+  -- line: [894, 943] id: 45
   if not IsValid(r0_45.OwnerPlayer) then
     return 
   end
@@ -909,7 +912,7 @@ function r1_0.OnUpdateCharSp(r0_45, r1_45, r2_45, r3_45)
   end
 end
 function r1_0.OnUpdateSkillEfficiency(r0_46, r1_46)
-  -- line: [942, 954] id: 46
+  -- line: [945, 957] id: 46
   if not IsValid(r0_46.OwnerPlayer) then
     return 
   end
@@ -922,7 +925,7 @@ function r1_0.OnUpdateSkillEfficiency(r0_46, r1_46)
   r0_46.Battle_Skill_2:UpdateSkillEfficiency("Skill2", r2_46)
 end
 function r1_0.OnUpdateBuffSpModify(r0_47)
-  -- line: [956, 964] id: 47
+  -- line: [959, 967] id: 47
   if not IsValid(r0_47.OwnerPlayer) then
     return 
   end
@@ -931,7 +934,7 @@ function r1_0.OnUpdateBuffSpModify(r0_47)
   r0_47.Battle_Skill_2:UpdateBuffSpModify("Skill2", r1_47)
 end
 function r1_0.PlayAddSpAnim(r0_48, r1_48)
-  -- line: [966, 975] id: 48
+  -- line: [969, 978] id: 48
   if Battle(r0_48):GetEntity(r1_48) ~= r0_48.OwnerPlayer then
     return 
   end
@@ -941,7 +944,7 @@ function r1_0.PlayAddSpAnim(r0_48, r1_48)
   EMUIAnimationSubsystem:EMPlayAnimation(r0_48, r0_48.Energy_Return)
 end
 function r1_0.OnWeaponBulletNotEnough(r0_49)
-  -- line: [977, 1008] id: 49
+  -- line: [980, 1011] id: 49
   local r1_49 = nil
   if r0_49.OwnerPlayer.BuffManager.UseSummonWeapon ~= -1 then
     if CommonUtils.HasValue(DataMgr.BattleWeapon[r0_49.OwnerPlayer.UltraWeapon.WeaponId].WeaponTag, "Ranged") then
@@ -970,11 +973,11 @@ function r1_0.OnWeaponBulletNotEnough(r0_49)
   end
 end
 function r1_0.OnChargeWeaponBullet(r0_50)
-  -- line: [1010, 1012] id: 50
+  -- line: [1013, 1015] id: 50
   r0_50:UpdatePlayerWeaponInfo()
 end
 function r1_0.IsWeaponBulletNotEnough(r0_51, r1_51)
-  -- line: [1014, 1035] id: 51
+  -- line: [1017, 1038] id: 51
   local r2_51 = nil
   if IsValid(r0_51.OwnerPlayer) then
     r2_51 = r0_51.OwnerPlayer:GetSkill(r0_51.OwnerPlayer:GetSkillByType(UE.ESkillType.Shooting))
@@ -995,13 +998,13 @@ function r1_0.IsWeaponBulletNotEnough(r0_51, r1_51)
   return false
 end
 function r1_0.OnFireActionInputPressed(r0_52)
-  -- line: [1037, 1042] id: 52
+  -- line: [1040, 1045] id: 52
   if r0_52.OwnerPlayer.CurrentSkillId == r0_52.OwnerPlayer:GetSkillByType(UE.ESkillType.Reload) and not EMUIAnimationSubsystem:EMAnimationIsPlaying(r0_52, r0_52.No_Bullets) then
     EMUIAnimationSubsystem:EMPlayAnimation(r0_52, r0_52.No_Bullets)
   end
 end
 function r1_0.GetPlayerRoleId(r0_53)
-  -- line: [1044, 1058] id: 53
+  -- line: [1047, 1061] id: 53
   if not IsValid(r0_53.OwnerPlayer) then
     r0_53.OwnerPlayer = UE4.UGameplayStatics.GetPlayerCharacter(r0_53, 0)
   end
@@ -1016,7 +1019,7 @@ function r1_0.GetPlayerRoleId(r0_53)
   end
 end
 function r1_0.OnSwitchRole(r0_54)
-  -- line: [1060, 1067] id: 54
+  -- line: [1063, 1070] id: 54
   r0_54.PlayerMainRoleId = r0_54:GetPlayerRoleId()
   if r0_54.PlayerMainRoleId then
     r0_54:RefreshSkillConfig()
@@ -1025,11 +1028,11 @@ function r1_0.OnSwitchRole(r0_54)
   end
 end
 function r1_0.OnSwitchPet(r0_55)
-  -- line: [1069, 1071] id: 55
+  -- line: [1072, 1074] id: 55
   r0_55:RefreshSupportSkillIcon()
 end
 function r1_0.InitSupportSkill(r0_56)
-  -- line: [1074, 1093] id: 56
+  -- line: [1077, 1096] id: 56
   r0_56.bSupportSkillUnlock = false
   local r1_56 = GWorld:GetAvatar()
   r0_56.SupportUIUnlockRuleId = DataMgr.UIUnlockRule.PetSkill.UIUnlockRuleId
@@ -1040,7 +1043,7 @@ function r1_0.InitSupportSkill(r0_56)
         r0_56:PlayAnimationForward(r0_56.Lock_In)
       end
       r0_56.SupportUnlockKey = r1_56:BindOnUIFirstTimeUnlock(r0_56.SupportUIUnlockRuleId, function()
-        -- line: [1085, 1088] id: 57
+        -- line: [1088, 1091] id: 57
         r0_56.bSupportSkillUnlock = true
         r0_56:ChangeSkillButtonState(ESkillName.Skill3, "UnLock")
       end)
@@ -1050,7 +1053,7 @@ function r1_0.InitSupportSkill(r0_56)
   end
 end
 function r1_0.PlayGuideRemind(r0_58, r1_58)
-  -- line: [1095, 1108] id: 58
+  -- line: [1098, 1111] id: 58
   local r2_58 = nil
   if r1_58 == "Skill1" then
     r2_58 = r0_58.Battle_Skill_1
@@ -1065,7 +1068,7 @@ function r1_0.PlayGuideRemind(r0_58, r1_58)
   end
 end
 function r1_0.StopGuideRemind(r0_59, r1_59)
-  -- line: [1110, 1123] id: 59
+  -- line: [1113, 1126] id: 59
   local r2_59 = nil
   if r1_59 == "Skill1" then
     r2_59 = r0_59.Battle_Skill_1
@@ -1080,7 +1083,7 @@ function r1_0.StopGuideRemind(r0_59, r1_59)
   end
 end
 function r1_0.ClearRemainAnim(r0_60)
-  -- line: [1125, 1147] id: 60
+  -- line: [1128, 1150] id: 60
   EMUIAnimationSubsystem:EMPlayAnimation(r0_60, r0_60.Deduct_MP)
   if r0_60.VX_RotLine:GetVisibility() == ESlateVisibility.SelfHitTestInvisible and not r0_60:IsAnimationPlaying(r0_60.UnLock) then
     r0_60:PlayAnimationForward(r0_60.UnLock)
@@ -1097,7 +1100,7 @@ function r1_0.ClearRemainAnim(r0_60)
   end
 end
 function r1_0.OnPropEffectReplaceSkill(r0_61, r1_61, r2_61)
-  -- line: [1149, 1161] id: 61
+  -- line: [1152, 1164] id: 61
   if r1_61 == ESkillName.Fire then
     r0_61.Overlay_Organ:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
     EMUIAnimationSubsystem:EMStopAnimation(r0_61, r0_61.Weapon_Normal)
@@ -1113,7 +1116,7 @@ function r1_0.OnPropEffectReplaceSkill(r0_61, r1_61, r2_61)
   end
 end
 function r1_0.OnPropEffectEndReplaceSkill(r0_62, r1_62)
-  -- line: [1163, 1173] id: 62
+  -- line: [1166, 1176] id: 62
   if r1_62 == ESkillName.Fire then
     r0_62.Overlay_Organ:SetVisibility(ESlateVisibility.Collapsed)
     EMUIAnimationSubsystem:EMStopAnimation(r0_62, r0_62.Weapon_Ban)
@@ -1128,7 +1131,7 @@ function r1_0.OnPropEffectEndReplaceSkill(r0_62, r1_62)
   end
 end
 function r1_0.OnIconLoadFinish(r0_63, r1_63)
-  -- line: [1175, 1189] id: 63
+  -- line: [1178, 1192] id: 63
   if not r1_63 or not IsValid(r0_63) then
     return 
   end
@@ -1146,7 +1149,7 @@ function r1_0.OnIconLoadFinish(r0_63, r1_63)
   end
 end
 function r1_0.OnIconLoadFinishWithId(r0_64, r1_64, r2_64)
-  -- line: [1191, 1200] id: 64
+  -- line: [1194, 1203] id: 64
   if not r1_64 or not IsValid(r0_64) or r2_64 ~= r0_64.LoadWeaponIconID then
     return 
   end
@@ -1157,7 +1160,7 @@ function r1_0.OnIconLoadFinishWithId(r0_64, r1_64, r2_64)
   end
 end
 function r1_0.OnSupportIconLoadFinish(r0_65, r1_65)
-  -- line: [1202, 1207] id: 65
+  -- line: [1205, 1210] id: 65
   if not r1_65 or not IsValid(r0_65) then
     return 
   end
@@ -1165,20 +1168,20 @@ function r1_0.OnSupportIconLoadFinish(r0_65, r1_65)
   r0_65.VX_skillIcon:GetDynamicMaterial():SetTextureParameterValue("Mask", r1_65)
 end
 function r1_0.DodgeNormalAnim(r0_66)
-  -- line: [1210, 1215] id: 66
+  -- line: [1213, 1218] id: 66
   r0_66.Dodge_Icon:SetRenderOpacity(1)
   r0_66.Bg01_1:SetRenderOpacity(1)
   r0_66.Charge_Num:SetColorAndOpacity(UE4.UUIFunctionLibrary.StringToSlateColor("FEFFD2FF"))
   r0_66.Image_BanDodgeSkill:SetVisibility(ESlateVisibility.Collapsed)
 end
 function r1_0.DodgeForbidAnim(r0_67)
-  -- line: [1218, 1222] id: 67
+  -- line: [1221, 1225] id: 67
   r0_67.Dodge_Icon:SetRenderOpacity(0.3)
   r0_67.Bg01_1:SetRenderOpacity(1)
   r0_67.Charge_Num:SetColorAndOpacity(UE4.UUIFunctionLibrary.StringToSlateColor("DD1C45FF"))
 end
 function r1_0.OnEnableBattleMount(r0_68, r1_68)
-  -- line: [1225, 1233] id: 68
+  -- line: [1228, 1236] id: 68
   if not r1_68:IsMainPlayer() then
     return 
   end
@@ -1188,7 +1191,7 @@ function r1_0.OnEnableBattleMount(r0_68, r1_68)
   end
 end
 function r1_0.OnDisableBattleMount(r0_69, r1_69)
-  -- line: [1235, 1243] id: 69
+  -- line: [1238, 1246] id: 69
   if not r1_69:IsMainPlayer() then
     return 
   end
