@@ -316,14 +316,14 @@ function r0_0.OnPlayerLeaveOccupation(r0_25, r1_25, r2_25)
   -- close: r3_25
 end
 function r0_0.OnOneOccupationSucceed(r0_26, r1_26)
-  -- line: [356, 387] id: 26
+  -- line: [356, 389] id: 26
   r0_26:SetOccupationFinishNum(r0_26:GetOccupationFinishNum() + 1)
   DebugPrint("SynthesisComponent: OnOneOccupationSucceed ", r0_26:GetOccupationFinishNum())
   GWorld:DSBLog("Info", "SynthesisComponent: OnOneOccupationSucceed Num:" .. r0_26:GetOccupationFinishNum(), "GameMode")
   r0_26.GameMode:TriggerGameModeEvent("Event_OnOneOccupationSucceed")
   for r6_26, r7_26 in pairs(r0_26.GameMode:GetAllPlayer()) do
     local r8_26 = r0_26.OccupateGuide[r7_26.Eid]
-    if r8_26.CurrentOccupationEid == r1_26.Eid then
+    if r8_26 and r8_26.CurrentOccupationEid == r1_26.Eid then
       r8_26.CurrentOccupationEid = 0
       for r13_26, r14_26 in pairs(r8_26.List) do
         if r13_26 ~= r1_26.Eid then
@@ -333,7 +333,9 @@ function r0_0.OnOneOccupationSucceed(r0_26, r1_26)
       -- close: r9_26
     end
     r0_26.GameMode.EMGameState:RemoveGuideEid(r1_26.Eid, r7_26.Eid)
-    r8_26[r1_26.Eid] = nil
+    if r8_26 then
+      r8_26[r1_26.Eid] = nil
+    end
   end
   -- close: r2_26
   if r0_26.IsOccupationFinishEventTriggered then
@@ -348,20 +350,20 @@ function r0_0.OnOneOccupationSucceed(r0_26, r1_26)
   end
 end
 function r0_0.SetOccupationFinishNum(r0_27, r1_27)
-  -- line: [389, 391] id: 27
+  -- line: [391, 393] id: 27
   r0_27.GameMode.EMGameState:SetOccupationFinishNum(r1_27)
 end
 function r0_0.GetOccupationFinishNum(r0_28)
-  -- line: [393, 395] id: 28
+  -- line: [395, 397] id: 28
   return r0_28.GameMode.EMGameState.OccupationFinishNum
 end
 function r0_0.InitCrackMission(r0_29)
-  -- line: [400, 404] id: 29
+  -- line: [402, 406] id: 29
   r0_29:SetKeySubmitNum(0)
   r0_29.GameMode:NotifyClientShowDungeonTaskNew(r0_29.IconPathYellow, r0_29.TextTitle, "DUNGEON_SYNTHESIS_116")
 end
 function r0_0.OnExplosionMonTimer(r0_30)
-  -- line: [406, 414] id: 30
+  -- line: [408, 416] id: 30
   if not r0_30.GameMode.EMGameState:CheckGameModeStateEnable() then
     DebugPrint("SynthesisComponent: ExplosionMonTimerEnd DungeonEndEnd")
     r0_30:RemoveTimer("ExplosionMonTimer")
@@ -371,7 +373,7 @@ function r0_0.OnExplosionMonTimer(r0_30)
   r0_30.GameMode:TriggerGameModeEvent("Event_OnExplosionMonsterTimerCountdown")
 end
 function r0_0.OnKeyDelivered(r0_31, r1_31)
-  -- line: [416, 429] id: 31
+  -- line: [418, 431] id: 31
   r0_31:SetKeySubmitNum(r0_31:GetKeySubmitNum() + 1)
   DebugPrint("SynthesisComponent: OnKeyDelivered", r0_31:GetKeySubmitNum())
   r0_31.GameMode:TriggerGameModeEvent("Event_OnKeyDelivered", r0_31:GetKeySubmitNum())
@@ -385,18 +387,18 @@ function r0_0.OnKeyDelivered(r0_31, r1_31)
   end
 end
 function r0_0.OnDefenceCoreActive_Crack(r0_32, r1_32)
-  -- line: [431, 436] id: 32
+  -- line: [433, 438] id: 32
   r0_32:AddTimer(r0_32.BlastMonInterval, r0_32.OnExplosionMonTimer, true, 0, "ExplosionMonTimer")
   r0_32.GameMode:AddDungeonEvent("SynthesisCrack")
   r0_32.GameMode:NotifyClientShowDungeonTaskNew(r0_32.IconPathYellow, r0_32.TextTitle, "DUNGEON_SYNTHESIS_117")
   r0_32.GameMode.EMGameState:SetDungeonUIState(Const.EDungeonUIState.OnTarget)
 end
 function r0_0.SetKeySubmitNum(r0_33, r1_33)
-  -- line: [438, 440] id: 33
+  -- line: [440, 442] id: 33
   r0_33.GameMode.EMGameState:SetKeySubmitNum(r1_33)
 end
 function r0_0.GetKeySubmitNum(r0_34)
-  -- line: [442, 444] id: 34
+  -- line: [444, 446] id: 34
   return r0_34.GameMode.EMGameState.KeySubmitNum
 end
 return r0_0

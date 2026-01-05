@@ -115,12 +115,13 @@ function r4_0.TryStartOutAirWallCheck(r0_5, r1_5)
 end
 function r4_0.TryCheckBornPosTimer(r0_7)
   -- line: [133, 165] id: 7
-  -- notice: unreachable block#11
+  -- notice: unreachable block#12
   local r1_7 = UE4.UGameplayStatics.GetGameMode(r0_7)
   if not r1_7 then
     return 
   end
-  if not r1_7:GetLevelLoader():CheckIsRougeLike() then
+  local r2_7 = r1_7:GetLevelLoader()
+  if not r2_7 or not r2_7:CheckIsRougeLike() then
     return 
   end
   local r3_7 = r0_7.bInPool

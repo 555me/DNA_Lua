@@ -441,7 +441,7 @@ return {
     EventManager:FireEvent(EventID.StartRougeCanonMiniGame)
   end,
   EndRougeCanonMiniGame = function(r0_37, r1_37)
-    -- line: [503, 523] id: 37
+    -- line: [503, 527] id: 37
     r0_37:EndInteractive()
     r0_37:RemoveTimer("RougeCanonStartCountDown")
     r0_37:RemoveTimer("RougeCanonShowToast")
@@ -452,26 +452,30 @@ return {
     end
     local r3_37 = r0_37:GetWaveStartBP()
     if r3_37 then
-      r3_37:OnOutAnimationEnd()
+      if r3_37:GetParent() then
+        r3_37:OnOutAnimationEnd()
+      else
+        r3_37:Close()
+      end
     end
     EventManager:FireEvent(EventID.EndRougeCanonMiniGame)
     r0_37:TriggerRougeLikePassEvent("Canon", r0_37:GetCanonScore(), r1_37)
     r0_37:PostCustomEvent("CanonGameEnd")
   end,
   RealStartRougeCanon = function(r0_38)
-    -- line: [525, 528] id: 38
+    -- line: [529, 532] id: 38
     r0_38:PostCustomEvent("CanonGameMonsterStart")
     r0_38:StartRougeCanonTimer()
   end,
   StartRougeCanonTimer = function(r0_39)
-    -- line: [530, 550] id: 39
+    -- line: [534, 554] id: 39
     local r1_39 = UIManager(r0_39):GetUIObj("BattleMain")
     if IsValid(r1_39) then
       r1_39:StartRougeCanonCountDown()
     end
     r0_39.RougeCanonTime = r0_39.TotalTime
     r0_39:AddTimer(0.1, function()
-      -- line: [536, 548] id: 40
+      -- line: [540, 552] id: 40
       r0_39.RougeCanonTime = r0_39.RougeCanonTime - 0.1
       if r0_39.RougeCanonTime < 0 then
         r0_39.RougeCanonTime = 0
@@ -486,7 +490,7 @@ return {
     end, true, 0, "RougeCanonTimer")
   end,
   EndInteractive = function(r0_41)
-    -- line: [552, 563] id: 41
+    -- line: [556, 567] id: 41
     local r1_41 = UE4.UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
     if r1_41 then
       local r2_41 = r1_41.MechanismEid
@@ -499,13 +503,13 @@ return {
     end
   end,
   GetWaveStartBP = function(r0_42)
-    -- line: [565, 572] id: 42
+    -- line: [569, 576] id: 42
     local r1_42 = UIManager(r0_42):GetUIObj("WaveStartBP") and UIManager(r0_42):LoadUINew("WaveStartBP")
     r1_42:SetVisibility(UE4.ESlateVisibility.HitTestInvisible)
     return r1_42
   end,
   OnWaveStart = function(r0_43)
-    -- line: [574, 592] id: 43
+    -- line: [578, 596] id: 43
     local r1_43 = 1
     local r2_43 = r0_43:GetWaveStartBP()
     if r2_43 then
@@ -517,31 +521,31 @@ return {
         r2_43.Close
       })
       r0_43:AddTimer(r0_43.Countdown, function()
-        -- line: [582, 586] id: 44
+        -- line: [586, 590] id: 44
         r2_43:SetVisibility(ESlateVisibility.HitTestInvisible)
         r2_43:PlayInAnimation()
         r0_43:RealStartRougeCanon()
       end, false, 0, "RougeCanonStartCountDown")
       r0_43:AddTimer(r0_43.Countdown + r1_43, function()
-        -- line: [587, 589] id: 45
+        -- line: [591, 593] id: 45
         r2_43:PlayOutAnimation()
       end, false, 0, "RougeCanonShowToast")
     end
     r0_43:ShowCountDown()
   end,
   ShowCountDown = function(r0_46)
-    -- line: [594, 600] id: 46
+    -- line: [598, 604] id: 46
     (UIManager(r0_46):GetUIObj("GuideCountDown") and UIManager(r0_46):LoadUINew("GuideCountDown")):InitializeData(r0_46.Countdown)
   end,
   StartRougeMorseMiniGame = function(r0_47, r1_47)
-    -- line: [605, 611] id: 47
+    -- line: [609, 615] id: 47
     local r2_47 = DataMgr.MorseMiniGame[r1_47]
     assert(r2_47, "MorseMiniGame读表不存在，MiniGameId:" .. r1_47)
     r0_47.CurMorseMiniGameId = r1_47
     UIManager(r0_47):LoadUINew("Morse", r2_47.Difficulty, r2_47.TotalTime, r0_47, r0_47.EndRougeMiniGame)
   end,
   EndRougeMorseMiniGame = function(r0_48, r1_48)
-    -- line: [613, 626] id: 48
+    -- line: [617, 630] id: 48
     assert(r0_48.CurMorseMiniGameId, "CurMorseMiniGameId不存在！")
     local r2_48 = DataMgr.MorseMiniGame[r0_48.CurMorseMiniGameId]
     local r3_48 = 0
@@ -553,7 +557,7 @@ return {
     r0_48:TriggerRougeLikePassEvent("Morse", r3_48, r1_48)
   end,
   FillRougeLikeErrorLog = function(r0_49, r1_49)
-    -- line: [630, 650] id: 49
+    -- line: [634, 654] id: 49
     table.insert(r1_49, "副本状态GameModeState: " .. EGameModeState:GetNameByValue(r0_49.GameState.GameModeState) .. "\n")
     table.insert(r1_49, "当前副本是否结算: " .. tostring(r0_49:IsDungeonInSettlement()) .. "\n")
     table.insert(r1_49, "战斗关进度：" .. tostring(r0_49.EMGameState.RougeBattleCount) .. "/" .. tostring(r0_49.EMGameState.RougeBattleMaxNum) .. "\n")

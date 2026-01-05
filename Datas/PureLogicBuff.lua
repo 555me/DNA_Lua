@@ -2499,7 +2499,7 @@ r6_0.AddAttrs = {
   [1] = {
     AttrName = "DamageRate",
     DamageTag = "Weapon",
-    IndividualRateZone = 1,
+    RateZone = "AbyssDown",
     Value = -0.5,
   },
   [2] = {
@@ -2533,7 +2533,7 @@ r6_0.AddAttrs = {
   [1] = {
     AttrName = "DamageRate",
     DamageTag = "Skill",
-    IndividualRateZone = 1,
+    RateZone = "AbyssDown",
     Value = -0.25,
   },
   [2] = r0_0.RT_11,

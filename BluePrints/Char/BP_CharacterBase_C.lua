@@ -973,18 +973,20 @@ function r6_0.CanLeaveTag_Lua(r0_100, r1_100)
 end
 function r6_0.EnableTeleport_Lua(r0_101, r1_101)
   -- line: [2633, 2653] id: 101
-  local r2_101 = UGameplayStatics.GetPlayerCharacter(r0_101, 0)
-  if ((r2_101 and r2_101.PlayerState)).ActivatedDungeonDeliveryPointId == -1 then
-    return false
-  end
-  local r4_101 = r2_101:GetCharacterTag()
-  if r4_101 == "Hook" or r4_101 == "HitFly" then
-    if r1_101 == false then
-      EventManager:FireEvent(EventID.OnTeleportReady, true)
-      DebugPrint("ayff test  : stop teleport due to tag ", r4_101)
-    elseif r1_101 == true then
-      EventManager:FireEvent(EventID.OnTeleportReady, false)
-      DebugPrint("ayff test  : enable teleport due to tag ", r4_101)
+  if r0_101:IsMainPlayer() then
+    local r2_101 = r0_101.PlayerState
+    if not r2_101 or r2_101.ActivatedDungeonDeliveryPointId == -1 then
+      return false
+    end
+    local r3_101 = r0_101:GetCharacterTag()
+    if r3_101 == "Hook" or r3_101 == "HitFly" then
+      if r1_101 == false then
+        EventManager:FireEvent(EventID.OnTeleportReady, true)
+        DebugPrint("ayff test  : stop teleport due to tag ", r3_101)
+      elseif r1_101 == true then
+        EventManager:FireEvent(EventID.OnTeleportReady, false)
+        DebugPrint("ayff test  : enable teleport due to tag ", r3_101)
+      end
     end
   end
   return false

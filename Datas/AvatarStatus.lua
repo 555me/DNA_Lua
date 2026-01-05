@@ -315,7 +315,7 @@ r3_0[16] = {
   },
 }
 r3_0[17] = {
-  Priority = 2,
+  Priority = 1,
   StatusId = 17,
   StatusName = "InTheaterPerform",
   TurnList = {
@@ -328,6 +328,7 @@ r3_0[17] = {
     7,
     8,
     9,
+    10,
     11,
     12,
     13,

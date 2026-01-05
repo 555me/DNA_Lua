@@ -8,6 +8,9 @@ end)("DamageRateZone", {
   Abyss = {
     RateZone = "Abyss",
   },
+  AbyssDown = {
+    RateZone = "AbyssDown",
+  },
   Almighty = {
     RateZone = "Almighty",
   },

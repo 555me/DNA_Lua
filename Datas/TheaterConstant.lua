@@ -63,7 +63,7 @@ end)("TheaterConstant", {
   },
   Reward2ReqNum = {
     ConstantName = "Reward2ReqNum",
-    ConstantValue = 3,
+    ConstantValue = 1,
   },
   RewardMax = {
     ConstantName = "RewardMax",
