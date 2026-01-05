@@ -993,21 +993,23 @@ function r0_0.BuildBottomKeyInfo(r0_43)
   end
 end
 function r0_0.OnBackKeyDown(r0_44)
-  -- line: [990, 996] id: 44
-  if r0_44.bRoleListOpen then
+  -- line: [990, 998] id: 44
+  if r0_44.bSelfHidden then
+    r0_44:OnHideUIKeyDown()
+  elseif r0_44.bRoleListOpen then
     r0_44:CloseRoleListPanel()
   else
     r0_44:ExitSkin()
   end
 end
 function r0_0.OnConfirmKeyDown(r0_45)
-  -- line: [999, 1003] id: 45
+  -- line: [1001, 1005] id: 45
   if r0_45.Btn_Confirm.IsEnabled ~= false then
     r0_45:OnConfirmClicked()
   end
 end
 function r0_0.OnGamepadConfirmKeyDonw(r0_46, r1_46)
-  -- line: [1005, 1011] id: 46
+  -- line: [1007, 1013] id: 46
   if r0_46:IsGamepadInput() then
     r0_46:OnConfirmKeyDown()
   else
@@ -1015,7 +1017,7 @@ function r0_0.OnGamepadConfirmKeyDonw(r0_46, r1_46)
   end
 end
 function r0_0.OnHideUIKeyDown(r0_47)
-  -- line: [1014, 1031] id: 47
+  -- line: [1016, 1033] id: 47
   r0_47.bSelfHidden = not r0_47.bSelfHidden
   if r0_47.bSelfHidden then
     r0_47:SetRenderOpacity(0)
@@ -1032,31 +1034,31 @@ function r0_0.OnHideUIKeyDown(r0_47)
   end
 end
 function r0_0.OnCameraScrollBackwardKeyDown(r0_48)
-  -- line: [1034, 1038] id: 48
+  -- line: [1036, 1040] id: 48
   if not r0_48.bSelfHidden then
     r0_48:ScrollCamera(1)
   end
 end
 function r0_0.OnCameraScrollForwardKeyDown(r0_49)
-  -- line: [1039, 1043] id: 49
+  -- line: [1041, 1045] id: 49
   if not r0_49.bSelfHidden then
     r0_49:ScrollCamera(-1)
   end
 end
 function r0_0.InitSelectiveListing(r0_50)
-  -- line: [1045, 1110] id: 50
+  -- line: [1047, 1112] id: 50
   if r0_50.bSelectiveInited then
     return 
   end
   r0_50.bSelectiveInited = true
   r0_50.TileView_Select_Role.BP_OnItemClicked:Clear()
   r0_50.TileView_Select_Role.BP_OnItemClicked:Add(r0_50, function(r0_51, r1_51)
-    -- line: [1050, 1052] id: 51
+    -- line: [1052, 1054] id: 51
     r0_51:OnTileRoleItemClicked(r1_51)
   end)
   r0_50.TileView_Select_Role.BP_OnItemSelectionChanged:Clear()
   r0_50.TileView_Select_Role.BP_OnItemSelectionChanged:Add(r0_50, function(r0_52, r1_52, r2_52)
-    -- line: [1055, 1059] id: 52
+    -- line: [1057, 1061] id: 52
     if r2_52 and r0_52:IsGamepadInput() and r1_52 and r1_52 ~= r0_52.CurRoleContent then
       r0_52:OnRoleListItemClicked(r1_52)
     end
@@ -1082,7 +1084,7 @@ function r0_0.InitSelectiveListing(r0_50)
   r0_50:FillSelectiveTileView()
 end
 function r0_0.BuildFilterContents(r0_53)
-  -- line: [1112, 1151] id: 53
+  -- line: [1114, 1153] id: 53
   r0_53.EMListView_Filter:ClearListItems()
   r0_53.FilterContents = {}
   r0_53.SelectedFilterContents = {}
@@ -1120,18 +1122,18 @@ function r0_0.BuildFilterContents(r0_53)
   r0_53.EMListView_Filter:RegenerateAllEntries()
 end
 function r0_0.OnFilterEntryInitialized(r0_54, r1_54, r2_54)
-  -- line: [1154, 1182] id: 54
+  -- line: [1156, 1184] id: 54
   if r2_54 and r2_54.SetIsSelected then
     r2_54:SetIsSelected(r1_54.IsSelected == true)
     r1_54.UI = r2_54
   end
 end
 function r0_0.GetSelectiveSourceContents(r0_55)
-  -- line: [1184, 1186] id: 55
+  -- line: [1186, 1188] id: 55
   return r0_55.RoleItemContentsArray and {}
 end
 function r0_0.FillSelectiveTileView(r0_56)
-  -- line: [1188, 1226] id: 56
+  -- line: [1190, 1228] id: 56
   local r1_56 = r0_56:GetSelectiveSourceContents()
   local r2_56 = r0_56.CurrentFilterTag
   r0_56.TileView_Select_Role:ClearListItems()
@@ -1186,7 +1188,7 @@ function r0_0.FillSelectiveTileView(r0_56)
   end
 end
 function r0_0.SetIsEmpty(r0_57, r1_57)
-  -- line: [1228, 1234] id: 57
+  -- line: [1230, 1236] id: 57
   if r1_57 then
     r0_57.Com_EmptyBg:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
   else
@@ -1194,11 +1196,11 @@ function r0_0.SetIsEmpty(r0_57, r1_57)
   end
 end
 function r0_0.OnTileRoleItemClicked(r0_58, r1_58)
-  -- line: [1236, 1238] id: 58
+  -- line: [1238, 1240] id: 58
   r0_58:OnRoleListItemClicked(r1_58)
 end
 function r0_0.OnFilterListItemClicked(r0_59, r1_59)
-  -- line: [1240, 1262] id: 59
+  -- line: [1242, 1264] id: 59
   if r1_59.Tag == r0_59.CurrentFilterTag then
     return 
   end
@@ -1223,10 +1225,10 @@ function r0_0.OnFilterListItemClicked(r0_59, r1_59)
   r0_59:FillSelectiveTileView()
 end
 function r0_0.OnSelectiveSortChanged(r0_60)
-  -- line: [1264, 1270] id: 60
+  -- line: [1266, 1272] id: 60
 end
 function r0_0.CreateFilters(r0_61, r1_61, r2_61, r3_61, r4_61)
-  -- line: [1272, 1283] id: 61
+  -- line: [1274, 1285] id: 61
   local r5_61 = {}
   for r10_61, r11_61 in ipairs(r1_61) do
     local r12_61 = table.insert
@@ -1243,7 +1245,7 @@ function r0_0.CreateFilters(r0_61, r1_61, r2_61, r3_61, r4_61)
   return r5_61
 end
 function r0_0.HasSkin(r0_62, r1_62, r2_62)
-  -- line: [1286, 1311] id: 62
+  -- line: [1288, 1313] id: 62
   if not r1_62 or not r2_62 then
     return false
   end
@@ -1272,7 +1274,7 @@ function r0_0.HasSkin(r0_62, r1_62, r2_62)
   return false
 end
 function r0_0.HasWeaponSkin(r0_63, r1_63)
-  -- line: [1314, 1322] id: 63
+  -- line: [1316, 1324] id: 63
   if not r1_63 then
     return false
   end
@@ -1283,7 +1285,7 @@ function r0_0.HasWeaponSkin(r0_63, r1_63)
   end
 end
 function r0_0.HasAccessory(r0_64, r1_64, r2_64)
-  -- line: [1324, 1336] id: 64
+  -- line: [1326, 1338] id: 64
   local r3_64 = GWorld:GetAvatar()
   if not r3_64 then
     return false
@@ -1300,7 +1302,7 @@ function r0_0.HasAccessory(r0_64, r1_64, r2_64)
   return false
 end
 function r0_0.RefreshDetailPanel(r0_65)
-  -- line: [1338, 1436] id: 65
+  -- line: [1340, 1438] id: 65
   local r1_65 = r0_65.CurRoleContent
   local r2_65 = r1_65.UnitId
   local r3_65 = r0_65.CharId2SkinId[r2_65] and r0_65.InitSkinId
@@ -1395,7 +1397,7 @@ function r0_0.RefreshDetailPanel(r0_65)
   end
 end
 function r0_0.OnConfirmClicked(r0_66)
-  -- line: [1440, 1529] id: 66
+  -- line: [1442, 1531] id: 66
   local r1_66 = nil
   if r0_66.Params.Type == "SkinSelect" then
     local r2_66 = r0_66.CurRoleContent
@@ -1441,7 +1443,7 @@ function r0_0.OnConfirmClicked(r0_66)
     r0_66.SecondConfirmPopup = UIManager(r0_66):ShowCommonPopupUI(r1_66, {
       RightCallbackObj = r0_66,
       RightCallbackFunction = function()
-        -- line: [1496, 1501] id: 67
+        -- line: [1498, 1503] id: 67
         if r0_66._ApplyingSkin then
           return 
         end
@@ -1451,11 +1453,11 @@ function r0_0.OnConfirmClicked(r0_66)
       end,
       LeftCallbackObj = r0_66,
       LeftCallbackFunction = function()
-        -- line: [1503, 1503] id: 68
+        -- line: [1505, 1505] id: 68
       end,
       CloseBtnCallbackObj = r0_66,
       CloseBtnCallbackFunction = function()
-        -- line: [1505, 1505] id: 69
+        -- line: [1507, 1507] id: 69
       end,
       ShortText = r9_66,
       LongText = r9_66,
@@ -1480,7 +1482,7 @@ function r0_0.OnConfirmClicked(r0_66)
   end
 end
 function r0_0.OnConfirmClicked_WeaponSkin(r0_70)
-  -- line: [1531, 1600] id: 70
+  -- line: [1533, 1602] id: 70
   if r0_70.Params.Type == "SelectWeaponSkin" then
     local r1_70 = r0_70.CurRoleContent
     local r2_70 = r1_70.Id
@@ -1518,7 +1520,7 @@ function r0_0.OnConfirmClicked_WeaponSkin(r0_70)
     r0_70.SecondConfirmPopup = UIManager(r0_70):ShowCommonPopupUI(r4_70, {
       RightCallbackObj = r0_70,
       RightCallbackFunction = function()
-        -- line: [1579, 1584] id: 71
+        -- line: [1581, 1586] id: 71
         if r0_70._ApplyingSkin then
           return 
         end
@@ -1528,11 +1530,11 @@ function r0_0.OnConfirmClicked_WeaponSkin(r0_70)
       end,
       LeftCallbackObj = r0_70,
       LeftCallbackFunction = function()
-        -- line: [1586, 1586] id: 72
+        -- line: [1588, 1588] id: 72
       end,
       CloseBtnCallbackObj = r0_70,
       CloseBtnCallbackFunction = function()
-        -- line: [1588, 1588] id: 73
+        -- line: [1590, 1590] id: 73
       end,
       ShortText = r6_70,
       LongText = r6_70,
@@ -1545,7 +1547,7 @@ function r0_0.OnConfirmClicked_WeaponSkin(r0_70)
   end
 end
 function r0_0.OnConfirmClicked_CharSkin(r0_74)
-  -- line: [1602, 1671] id: 74
+  -- line: [1604, 1673] id: 74
   if r0_74.Params.Type == "SelectSkin" then
     local r1_74 = r0_74.CurRoleContent
     local r2_74 = r1_74.SkinId
@@ -1583,7 +1585,7 @@ function r0_0.OnConfirmClicked_CharSkin(r0_74)
     r0_74.SecondConfirmPopup = UIManager(r0_74):ShowCommonPopupUI(r5_74, {
       RightCallbackObj = r0_74,
       RightCallbackFunction = function()
-        -- line: [1650, 1655] id: 75
+        -- line: [1652, 1657] id: 75
         if r0_74._ApplyingSkin then
           return 
         end
@@ -1593,11 +1595,11 @@ function r0_0.OnConfirmClicked_CharSkin(r0_74)
       end,
       LeftCallbackObj = r0_74,
       LeftCallbackFunction = function()
-        -- line: [1657, 1657] id: 76
+        -- line: [1659, 1659] id: 76
       end,
       CloseBtnCallbackObj = r0_74,
       CloseBtnCallbackFunction = function()
-        -- line: [1659, 1659] id: 77
+        -- line: [1661, 1661] id: 77
       end,
       ShortText = r7_74,
       LongText = r7_74,
@@ -1610,7 +1612,7 @@ function r0_0.OnConfirmClicked_CharSkin(r0_74)
   end
 end
 function r0_0.OnConfirmClicked_Accessory(r0_78)
-  -- line: [1673, 1743] id: 78
+  -- line: [1675, 1745] id: 78
   if r0_78.Params.Type == "SelectCharAccessory" or r0_78.Params.Type == "SelectWeaponAccessory" then
     local r1_78 = r0_78.CurRoleContent
     local r2_78 = r1_78.Id
@@ -1655,7 +1657,7 @@ function r0_0.OnConfirmClicked_Accessory(r0_78)
     r0_78.SecondConfirmPopup = UIManager(r0_78):ShowCommonPopupUI(r5_78, {
       RightCallbackObj = r0_78,
       RightCallbackFunction = function()
-        -- line: [1722, 1727] id: 79
+        -- line: [1724, 1729] id: 79
         if r0_78._ApplyingSkin then
           return 
         end
@@ -1665,11 +1667,11 @@ function r0_0.OnConfirmClicked_Accessory(r0_78)
       end,
       LeftCallbackObj = r0_78,
       LeftCallbackFunction = function()
-        -- line: [1729, 1729] id: 80
+        -- line: [1731, 1731] id: 80
       end,
       CloseBtnCallbackObj = r0_78,
       CloseBtnCallbackFunction = function()
-        -- line: [1731, 1731] id: 81
+        -- line: [1733, 1733] id: 81
       end,
       ShortText = r7_78,
       LongText = r7_78,
@@ -1682,7 +1684,7 @@ function r0_0.OnConfirmClicked_Accessory(r0_78)
   end
 end
 function r0_0.OnConfirmClicked_Gesture(r0_82)
-  -- line: [1745, 1821] id: 82
+  -- line: [1747, 1823] id: 82
   if r0_82.Params.Type == "SelectGestureItem" then
     local r1_82 = GWorld:GetAvatar()
     if not r1_82 then
@@ -1728,7 +1730,7 @@ function r0_0.OnConfirmClicked_Gesture(r0_82)
     r0_82.SecondConfirmPopup = UIManager(r0_82):ShowCommonPopupUI(r6_82, {
       RightCallbackObj = r0_82,
       RightCallbackFunction = function()
-        -- line: [1800, 1805] id: 83
+        -- line: [1802, 1807] id: 83
         if r0_82._ApplyingSkin then
           return 
         end
@@ -1738,11 +1740,11 @@ function r0_0.OnConfirmClicked_Gesture(r0_82)
       end,
       LeftCallbackObj = r0_82,
       LeftCallbackFunction = function()
-        -- line: [1807, 1807] id: 84
+        -- line: [1809, 1809] id: 84
       end,
       CloseBtnCallbackObj = r0_82,
       CloseBtnCallbackFunction = function()
-        -- line: [1809, 1809] id: 85
+        -- line: [1811, 1811] id: 85
       end,
       ShortText = r8_82,
       LongText = r8_82,
@@ -1755,7 +1757,7 @@ function r0_0.OnConfirmClicked_Gesture(r0_82)
   end
 end
 function r0_0.DoApplySkinOptReward(r0_86, r1_86)
-  -- line: [1823, 1883] id: 86
+  -- line: [1825, 1885] id: 86
   DebugPrint("WBP_CharSkinPreview_C DoApplySkinOptReward", r1_86.CharId, r1_86.SkinId, r1_86.SkinOptRewardId, r1_86.bHasSkin)
   local r2_86 = GWorld:GetAvatar()
   if not r2_86 then
@@ -1792,13 +1794,13 @@ function r0_0.DoApplySkinOptReward(r0_86, r1_86)
   }
   DebugPrint("WBP_CharSkinPreview_C DoApplySkinOptReward 调用RPC UseOptResourceInBag", r3_86, r8_86)
   r2_86:UseOptResourceInBag(r3_86, r9_86, function(r0_87)
-    -- line: [1857, 1877] id: 87
+    -- line: [1859, 1879] id: 87
     DebugPrint("WBP_CharSkinPreview_C DoApplySkinOptReward 回调成功", r0_87, r3_86, r5_86, r8_86, r6_86)
     if r0_87 == ErrorCode.RET_SUCCESS then
       local r1_87 = UIManager(r0_86):GetUIObj("BagMain")
       if r1_87 then
         r1_87:AddTimer(0.3, function()
-          -- line: [1863, 1872] id: 88
+          -- line: [1865, 1874] id: 88
           if r6_86 then
             UIUtils.ShowGetItemPage(CommonConst.ItemType.Resource, DataMgr.Skin[r5_86].RegainItemId, DataMgr.Skin[r5_86].RegainItemNum, nil, nil, nil, nil, true, true)
           else
@@ -1812,7 +1814,7 @@ function r0_0.DoApplySkinOptReward(r0_86, r1_86)
   r0_86:Close()
 end
 function r0_0.DoApplyWeaponSkinOptReward(r0_89, r1_89)
-  -- line: [1885, 1945] id: 89
+  -- line: [1887, 1947] id: 89
   DebugPrint("WBP_CharSkinPreview_C DoApplyWeaponSkinOptReward", r1_89.SkinId, r1_89.WeaponSkinOptRewardId, r1_89.bHasSkin)
   local r2_89 = GWorld:GetAvatar()
   if not r2_89 then
@@ -1849,13 +1851,13 @@ function r0_0.DoApplyWeaponSkinOptReward(r0_89, r1_89)
   }
   DebugPrint("WBP_CharSkinPreview_C DoApplyWeaponSkinOptReward 调用RPC UseOptResourceInBag", r3_89, r8_89)
   r2_89:UseOptResourceInBag(r3_89, r9_89, function(r0_90)
-    -- line: [1919, 1939] id: 90
+    -- line: [1921, 1941] id: 90
     DebugPrint("WBP_CharSkinPreview_C DoApplyWeaponSkinOptReward 回调成功", r0_90, r3_89, r5_89, r8_89, r6_89)
     if r0_90 == ErrorCode.RET_SUCCESS then
       local r1_90 = UIManager(r0_89):GetUIObj("BagMain")
       if r1_90 then
         r1_90:AddTimer(0.3, function()
-          -- line: [1925, 1934] id: 91
+          -- line: [1927, 1936] id: 91
           if r6_89 then
             UIUtils.ShowGetItemPage(CommonConst.ItemType.Resource, DataMgr.WeaponSkin[r5_89].RegainItemId, DataMgr.WeaponSkin[r5_89].RegainItemNum, nil, nil, nil, nil, true, true)
           else
@@ -1869,7 +1871,7 @@ function r0_0.DoApplyWeaponSkinOptReward(r0_89, r1_89)
   r0_89:Close()
 end
 function r0_0.DoApplyCharSkinOptReward(r0_92, r1_92)
-  -- line: [1947, 2007] id: 92
+  -- line: [1949, 2009] id: 92
   DebugPrint("WBP_CharSkinPreview_C DoApplyWeaponSkinOptReward", r1_92.SkinId, r1_92.CharSkinOptRewardId, r1_92.bHasSkin)
   local r2_92 = GWorld:GetAvatar()
   if not r2_92 then
@@ -1906,13 +1908,13 @@ function r0_0.DoApplyCharSkinOptReward(r0_92, r1_92)
   }
   DebugPrint("WBP_CharSkinPreview_C DoApplyWeaponSkinOptReward 调用RPC UseOptResourceInBag", r3_92, r8_92)
   r2_92:UseOptResourceInBag(r3_92, r9_92, function(r0_93)
-    -- line: [1981, 2001] id: 93
+    -- line: [1983, 2003] id: 93
     DebugPrint("WBP_CharSkinPreview_C DoApplyWeaponSkinOptReward 回调成功", r0_93, r3_92, r5_92, r8_92, r6_92)
     if r0_93 == ErrorCode.RET_SUCCESS then
       local r1_93 = UIManager(r0_92):GetUIObj("BagMain")
       if r1_93 then
         r1_93:AddTimer(0, function()
-          -- line: [1987, 1996] id: 94
+          -- line: [1989, 1998] id: 94
           if r6_92 then
             UIUtils.ShowGetItemPage(CommonConst.ItemType.Resource, DataMgr.Skin[r5_92].RegainItemId, DataMgr.Skin[r5_92].RegainItemNum, nil, nil, nil, nil, true, true)
           else
@@ -1926,7 +1928,7 @@ function r0_0.DoApplyCharSkinOptReward(r0_92, r1_92)
   r0_92:Close()
 end
 function r0_0.DoApplyAccessoryOptReward(r0_95, r1_95)
-  -- line: [2009, 2070] id: 95
+  -- line: [2011, 2072] id: 95
   DebugPrint("WBP_CharSkinPreview_C DoApplyAccessoryOptReward", r1_95.SkinId, r1_95.AccessoryOptRewardId, r1_95.bHasSkin)
   local r2_95 = GWorld:GetAvatar()
   if not r2_95 then
@@ -1964,13 +1966,13 @@ function r0_0.DoApplyAccessoryOptReward(r0_95, r1_95)
   }
   DebugPrint("WBP_CharSkinPreview_C DoApplyAccessoryOptReward 调用RPC UseOptResourceInBag", r3_95, r9_95)
   r2_95:UseOptResourceInBag(r3_95, r10_95, function(r0_96)
-    -- line: [2044, 2064] id: 96
+    -- line: [2046, 2066] id: 96
     DebugPrint("WBP_CharSkinPreview_C DoApplyWeaponSkinOptReward 回调成功", r0_96, r3_95, r5_95, r9_95, r6_95)
     if r0_96 == ErrorCode.RET_SUCCESS then
       local r1_96 = UIManager(r0_95):GetUIObj("BagMain")
       if r1_96 then
         r1_96:AddTimer(0.3, function()
-          -- line: [2050, 2059] id: 97
+          -- line: [2052, 2061] id: 97
           if r6_95 then
             UIUtils.ShowGetItemPage(CommonConst.ItemType.Resource, DataMgr[r7_95][r5_95].RegainItemId, DataMgr[r7_95][r5_95].RegainItemNum, nil, nil, nil, nil, true, true)
           else
@@ -1984,7 +1986,7 @@ function r0_0.DoApplyAccessoryOptReward(r0_95, r1_95)
   r0_95:Close()
 end
 function r0_0.DoApplyGestureOptReward(r0_98, r1_98)
-  -- line: [2072, 2133] id: 98
+  -- line: [2074, 2135] id: 98
   DebugPrint("WBP_CharSkinPreview_C DoApplyAccessoryOptReward", r1_98.SkinId, r1_98.ResourceId, r1_98.bHasSkin)
   local r2_98 = GWorld:GetAvatar()
   if not r2_98 then
@@ -2022,13 +2024,13 @@ function r0_0.DoApplyGestureOptReward(r0_98, r1_98)
   }
   DebugPrint("WBP_CharSkinPreview_C DoApplyAccessoryOptReward 调用RPC UseOptResourceInBag", r3_98, r9_98)
   r2_98:UseOptResourceInBag(r3_98, r10_98, function(r0_99)
-    -- line: [2107, 2127] id: 99
+    -- line: [2109, 2129] id: 99
     DebugPrint("WBP_CharSkinPreview_C DoApplyWeaponSkinOptReward 回调成功", r0_99, r3_98, r4_98, r9_98, r5_98)
     if r0_99 == ErrorCode.RET_SUCCESS then
       local r1_99 = UIManager(r0_98):GetUIObj("BagMain")
       if r1_99 then
         r1_99:AddTimer(0.3, function()
-          -- line: [2113, 2122] id: 100
+          -- line: [2115, 2124] id: 100
           if r5_98 then
             UIUtils.ShowGetItemPage(CommonConst.ItemType.Resource, DataMgr[r6_98][r4_98].RegainItemId, DataMgr[r6_98][r4_98].RegainItemNum, nil, nil, nil, nil, true, true)
           else
@@ -2042,7 +2044,7 @@ function r0_0.DoApplyGestureOptReward(r0_98, r1_98)
   r0_98:Close()
 end
 function r0_0.ToggleRoleListPanel(r0_101)
-  -- line: [2137, 2143] id: 101
+  -- line: [2139, 2145] id: 101
   if r0_101.bRoleListOpen then
     r0_101:CloseRoleListPanel()
   else
@@ -2050,7 +2052,7 @@ function r0_0.ToggleRoleListPanel(r0_101)
   end
 end
 function r0_0.PlayRoleListAnimation(r0_102)
-  -- line: [2147, 2154] id: 102
+  -- line: [2149, 2156] id: 102
   DebugPrint("gmy@WBP_CharSkinPreview_C M:PlayRoleListAnimation", r0_102.Change_List)
   r0_102:StopAllAnimations()
   if r0_102.Change_List then
@@ -2058,7 +2060,7 @@ function r0_0.PlayRoleListAnimation(r0_102)
   end
 end
 function r0_0.PlayTabAnimation(r0_103)
-  -- line: [2157, 2163] id: 103
+  -- line: [2159, 2165] id: 103
   DebugPrint("gmy@WBP_CharSkinPreview_C M:PlayTabAnimation", r0_103.Change_Tab)
   r0_103:StopAllAnimations()
   if r0_103.Change_Tab then
@@ -2066,7 +2068,7 @@ function r0_0.PlayTabAnimation(r0_103)
   end
 end
 function r0_0.ResetFilterToDefault(r0_104)
-  -- line: [2166, 2222] id: 104
+  -- line: [2168, 2224] id: 104
   DebugPrint("gmy@WBP_CharSkinPreview_C M:ResetFilterToDefault", r0_104.CurrentFilterTag)
   if not r0_104.EMListView_Filter or not r0_104.EMListView_Filter.GetListItems then
     r0_104.CurrentFilterTag = "ALL"
@@ -2118,7 +2120,7 @@ function r0_0.ResetFilterToDefault(r0_104)
   end
 end
 function r0_0.OpenRoleListPanel(r0_105)
-  -- line: [2224, 2241] id: 105
+  -- line: [2226, 2243] id: 105
   if r0_105.bRoleListOpen then
     return 
   end
@@ -2135,7 +2137,7 @@ function r0_0.OpenRoleListPanel(r0_105)
   r0_105.bConsumeFocused = false
 end
 function r0_0.CloseRoleListPanel(r0_106)
-  -- line: [2243, 2260] id: 106
+  -- line: [2245, 2262] id: 106
   if not r0_106.bRoleListOpen then
     return 
   end
@@ -2155,7 +2157,7 @@ function r0_0.CloseRoleListPanel(r0_106)
   r0_106.bConsumeFocused = false
 end
 function r0_0.ApplyRoleListVisibility(r0_107)
-  -- line: [2262, 2306] id: 107
+  -- line: [2264, 2308] id: 107
   DebugPrint("gmy@WBP_CharSkinPreview_C M:ApplyRoleListVisibility", r0_107.bRoleListOpen)
   local r1_107 = r0_107.bRoleListOpen
   local r2_107 = ESlateVisibility.SelfHitTestInvisible
@@ -2252,7 +2254,7 @@ function r0_0.ApplyRoleListVisibility(r0_107)
   end
 end
 function r0_0.OnAnalogValueChanged(r0_108, r1_108, r2_108)
-  -- line: [2308, 2317] id: 108
+  -- line: [2310, 2319] id: 108
   if UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_108)) == "Gamepad_RightX" and r4_0:GetModelData("BagActorController") then
     r4_0:GetModelData("BagActorController"):OnDragging({
       X = UKismetInputLibrary.GetAnalogValue(r2_108) * 10,
@@ -2262,11 +2264,11 @@ function r0_0.OnAnalogValueChanged(r0_108, r1_108, r2_108)
   return UIUtils.Unhandled
 end
 function r0_0.IsGamepadInput(r0_109)
-  -- line: [2320, 2322] id: 109
+  -- line: [2322, 2324] id: 109
   return r0_109.GameInputModeSubsystem:GetCurrentInputType() == ECommonInputType.Gamepad
 end
 function r0_0.PopupUIGamepadSetting(r0_110)
-  -- line: [2324, 2363] id: 110
+  -- line: [2326, 2365] id: 110
   r0_110.SecondConfirmPopup.OpenTipsButtonIndex = r0_110.SecondConfirmPopup:InitGamepadShortcut({
     KeyInfoList = {
       {
@@ -2306,7 +2308,7 @@ function r0_0.PopupUIGamepadSetting(r0_110)
   end
 end
 function r0_0.OnContentKeyDown(r0_111, r1_111, r2_111)
-  -- line: [2365, 2391] id: 111
+  -- line: [2367, 2393] id: 111
   local r4_111 = UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_111))
   local r5_111 = false
   local r6_111 = r0_111.Item:GetChildAt(0)
@@ -2328,11 +2330,11 @@ function r0_0.OnContentKeyDown(r0_111, r1_111, r2_111)
   return r5_111
 end
 function r0_0.OnFocusReceivedEvent(r0_112)
-  -- line: [2393, 2395] id: 112
+  -- line: [2395, 2397] id: 112
   r0_112.IsFromListContent = true
 end
 function r0_0.InitWeaponParams(r0_113)
-  -- line: [2398, 2426] id: 113
+  -- line: [2400, 2428] id: 113
   r0_113.Switch_Type:SetActiveWidgetIndex(1)
   if r0_113.Params then
     r0_113.BehaviorType = r0_113.Params.Type
@@ -2357,7 +2359,7 @@ function r0_0.InitWeaponParams(r0_113)
   r0_113:InitWeaponSkinList()
 end
 function r0_0.InitWeaponSkinList(r0_114)
-  -- line: [2428, 2472] id: 114
+  -- line: [2430, 2474] id: 114
   r0_114.WeaponSkinContents = {}
   for r6_114, r7_114 in pairs(DataMgr.OptReward[r0_114.WeaponSkinOptRewardId].Id) do
     local r8_114 = DataMgr.WeaponSkin[r7_114]
@@ -2388,7 +2390,7 @@ function r0_0.InitWeaponSkinList(r0_114)
   end
   -- close: r2_114
   table.sort(r0_114.WeaponSkinContents, function(r0_115, r1_115)
-    -- line: [2461, 2470] id: 115
+    -- line: [2463, 2472] id: 115
     local r2_115 = r0_115.bHasGot
     if r2_115 then
       r2_115 = 1 and 0
@@ -2410,7 +2412,7 @@ function r0_0.InitWeaponSkinList(r0_114)
   r0_114:InitSkinList(r0_114.WeaponSkinContents)
 end
 function r0_0.InitSkinList(r0_116, r1_116)
-  -- line: [2474, 2508] id: 116
+  -- line: [2476, 2510] id: 116
   r0_116.FilteredContents = r1_116
   r0_116.List_Skin:ClearListItems()
   r0_116:UpdateAccessoryDetails(r1_116[1])
@@ -2440,7 +2442,7 @@ function r0_0.InitSkinList(r0_116, r1_116)
   end
 end
 function r0_0.InitCharParams(r0_117)
-  -- line: [2512, 2540] id: 117
+  -- line: [2514, 2542] id: 117
   r0_117.Switch_Type:SetActiveWidgetIndex(1)
   if r0_117.Params then
     r0_117.BehaviorType = r0_117.Params.Type
@@ -2465,7 +2467,7 @@ function r0_0.InitCharParams(r0_117)
   r0_117:InitCharSkinList()
 end
 function r0_0.InitCharSkinList(r0_118)
-  -- line: [2542, 2585] id: 118
+  -- line: [2544, 2587] id: 118
   r0_118.CharSkinContents = {}
   for r6_118, r7_118 in pairs(DataMgr.OptReward[r0_118.CharSkinOptRewardId].Id) do
     local r8_118 = DataMgr.Skin[r7_118]
@@ -2495,7 +2497,7 @@ function r0_0.InitCharSkinList(r0_118)
   end
   -- close: r2_118
   table.sort(r0_118.CharSkinContents, function(r0_119, r1_119)
-    -- line: [2574, 2583] id: 119
+    -- line: [2576, 2585] id: 119
     local r2_119 = r0_119.bHasGot
     if r2_119 then
       r2_119 = 1 and 0
@@ -2517,7 +2519,7 @@ function r0_0.InitCharSkinList(r0_118)
   r0_118:InitSkinList(r0_118.CharSkinContents)
 end
 function r0_0.InitAccessoryParams(r0_120)
-  -- line: [2589, 2628] id: 120
+  -- line: [2591, 2630] id: 120
   r0_120.Switch_Type:SetActiveWidgetIndex(2)
   if r0_120.Params then
     r0_120.BehaviorType = r0_120.Params.Type
@@ -2559,7 +2561,7 @@ function r0_0.InitAccessoryParams(r0_120)
   r0_120:InitAccessoryList()
 end
 function r0_0.CreateCharAccessoryContent(r0_121, r1_121)
-  -- line: [2630, 2665] id: 121
+  -- line: [2632, 2667] id: 121
   if not GWorld:GetAvatar() then
     return 
   end
@@ -2594,7 +2596,7 @@ function r0_0.CreateCharAccessoryContent(r0_121, r1_121)
   end
 end
 function r0_0.InitAccessoryList(r0_122)
-  -- line: [2667, 2677] id: 122
+  -- line: [2669, 2679] id: 122
   local r2_122 = {}
   for r6_122 = 1, #r0_122.AccessoryContents, 1 do
     local r7_122 = r0_122.AccessoryContents[r6_122]
@@ -2605,11 +2607,11 @@ function r0_0.InitAccessoryList(r0_122)
   r0_122:InitList(r2_122)
 end
 function r0_0.InitList(r0_123, r1_123)
-  -- line: [2679, 2720] id: 123
+  -- line: [2681, 2722] id: 123
   r0_123.FilteredContents = r1_123
   r0_123.TileView_Pendant:ClearListItems()
   table.sort(r1_123, function(r0_124, r1_124)
-    -- line: [2684, 2693] id: 124
+    -- line: [2686, 2695] id: 124
     local r2_124 = r0_124.ItemName
     if r2_124 then
       r2_124 = r0_124.ItemName
@@ -2656,7 +2658,7 @@ function r0_0.InitList(r0_123, r1_123)
   end
 end
 function r0_0.InitWeaponAccessoryParams(r0_125)
-  -- line: [2724, 2764] id: 125
+  -- line: [2726, 2766] id: 125
   r0_125.Switch_Type:SetActiveWidgetIndex(2)
   if r0_125.Params then
     r0_125.BehaviorType = r0_125.Params.Type
@@ -2698,7 +2700,7 @@ function r0_0.InitWeaponAccessoryParams(r0_125)
   r0_125:InitAccessoryList()
 end
 function r0_0.CreateWeaponAccessoryContent(r0_126, r1_126)
-  -- line: [2766, 2801] id: 126
+  -- line: [2768, 2803] id: 126
   if not GWorld:GetAvatar() then
     return 
   end
@@ -2733,7 +2735,7 @@ function r0_0.CreateWeaponAccessoryContent(r0_126, r1_126)
   end
 end
 function r0_0.InitGestureItemParams(r0_127)
-  -- line: [2805, 2844] id: 127
+  -- line: [2807, 2846] id: 127
   r0_127.Switch_Type:SetActiveWidgetIndex(2)
   if r0_127.Params then
     r0_127.BehaviorType = r0_127.Params.Type
@@ -2775,7 +2777,7 @@ function r0_0.InitGestureItemParams(r0_127)
   r0_127:InitGestureList()
 end
 function r0_0.CreateGestureContent(r0_128, r1_128)
-  -- line: [2846, 2879] id: 128
+  -- line: [2848, 2881] id: 128
   -- notice: unreachable block#16
   if r1_128 then
     local r2_128 = true
@@ -2822,7 +2824,7 @@ function r0_0.CreateGestureContent(r0_128, r1_128)
   end
 end
 function r0_0.InitGestureList(r0_129)
-  -- line: [2881, 2891] id: 129
+  -- line: [2883, 2893] id: 129
   local r2_129 = {}
   for r6_129 = 1, #r0_129.GestureContents, 1 do
     local r7_129 = r0_129.GestureContents[r6_129]
@@ -2833,7 +2835,7 @@ function r0_0.InitGestureList(r0_129)
   r0_129:InitList(r2_129)
 end
 function r0_0.OnAccessoryItemClicked(r0_130, r1_130)
-  -- line: [2895, 2901] id: 130
+  -- line: [2897, 2903] id: 130
   if r1_130.AccessoryType == "Gesture" then
     r0_130:TrySelectGestureItem(r1_130)
   else
@@ -2841,7 +2843,7 @@ function r0_0.OnAccessoryItemClicked(r0_130, r1_130)
   end
 end
 function r0_0.TrySelectAccessoryItem(r0_131, r1_131)
-  -- line: [2903, 2912] id: 131
+  -- line: [2905, 2914] id: 131
   if r0_131.ComparedContent == r1_131 or not r1_131.Icon then
     return 
   end
@@ -2852,7 +2854,7 @@ function r0_0.TrySelectAccessoryItem(r0_131, r1_131)
   r0_131:SelectAccessoryItem(r1_131)
 end
 function r0_0.SelectAccessoryItem(r0_132, r1_132)
-  -- line: [2914, 2938] id: 132
+  -- line: [2916, 2940] id: 132
   r3_0:SetItemIsSelected(r0_132.ComparedContent, false)
   r0_132.ComparedContent = r1_132
   r3_0:SetItemIsSelected(r0_132.ComparedContent, true)
@@ -2878,7 +2880,7 @@ function r0_0.SelectAccessoryItem(r0_132, r1_132)
   end
 end
 function r0_0.UpdateAccessoryDetails(r0_133, r1_133)
-  -- line: [2940, 2993] id: 133
+  -- line: [2942, 2995] id: 133
   if not r1_133 then
     r1_133 = r0_133.TileView_Pendant:GetItemAt(0)
   end
@@ -2942,7 +2944,7 @@ function r0_0.UpdateAccessoryDetails(r0_133, r1_133)
   end
 end
 function r0_0.TrySelectGestureItem(r0_134, r1_134)
-  -- line: [2995, 3004] id: 134
+  -- line: [2997, 3006] id: 134
   if r0_134.ComparedContent == r1_134 or not r1_134.Icon then
     return 
   end
@@ -2953,7 +2955,7 @@ function r0_0.TrySelectGestureItem(r0_134, r1_134)
   r0_134:SelectGestureItem(r1_134)
 end
 function r0_0.SelectGestureItem(r0_135, r1_135)
-  -- line: [3006, 3019] id: 135
+  -- line: [3008, 3021] id: 135
   r3_0:SetItemIsSelected(r0_135.ComparedContent, false)
   r0_135.ComparedContent = r1_135
   r3_0:SetItemIsSelected(r0_135.ComparedContent, true)
@@ -2968,7 +2970,7 @@ function r0_0.SelectGestureItem(r0_135, r1_135)
   r0_135:UpdateGestureDetails(r1_135)
 end
 function r0_0.UpdateGestureDetails(r0_136, r1_136)
-  -- line: [3021, 3069] id: 136
+  -- line: [3023, 3071] id: 136
   if not r1_136 then
     r1_136 = r0_136.TileView_Pendant:GetItemAt(0)
   end
@@ -3027,7 +3029,7 @@ function r0_0.UpdateGestureDetails(r0_136, r1_136)
   end
 end
 function r0_0.UpdateGesturePreview(r0_137, r1_137)
-  -- line: [3071, 3094] id: 137
+  -- line: [3073, 3096] id: 137
   local r2_137 = DataMgr.Resource[r1_137.Id]
   local r3_137 = GWorld:GetAvatar()
   if not r3_137 then
@@ -3053,11 +3055,11 @@ function r0_0.UpdateGesturePreview(r0_137, r1_137)
   end
 end
 function r0_0.OnSkinItemClicked(r0_138, r1_138)
-  -- line: [3098, 3100] id: 138
+  -- line: [3100, 3102] id: 138
   r0_138:TrySelectSkinItem(r1_138)
 end
 function r0_0.TrySelectSkinItem(r0_139, r1_139)
-  -- line: [3102, 3111] id: 139
+  -- line: [3104, 3113] id: 139
   if r0_139.ComparedContent == r1_139 or not r1_139.Icon then
     return 
   end
@@ -3068,7 +3070,7 @@ function r0_0.TrySelectSkinItem(r0_139, r1_139)
   r0_139:SelectSkinItem(r1_139)
 end
 function r0_0.SelectSkinItem(r0_140, r1_140)
-  -- line: [3113, 3143] id: 140
+  -- line: [3115, 3145] id: 140
   if not r1_140 then
     return 
   end
@@ -3086,7 +3088,7 @@ function r0_0.SelectSkinItem(r0_140, r1_140)
       r2_140.Widget:SetIsSelected(r2_140.IsSelect)
     else
       r0_140:AddTimer(0.01, function()
-        -- line: [3128, 3130] id: 141
+        -- line: [3130, 3132] id: 141
         r2_140.Widget:SetIsSelected(r2_140.IsSelect)
       end)
     end
@@ -3102,7 +3104,7 @@ function r0_0.SelectSkinItem(r0_140, r1_140)
   end
 end
 function r0_0.UpdatePreviewWeaponSkinActorForContent(r0_142, r1_142)
-  -- line: [3146, 3155] id: 142
+  -- line: [3148, 3157] id: 142
   r4_0:GetModelData("BagActorController"):ChangeSingleWeapon(r0_142:CreatePreviewTargetData({
     Type = "Weapon",
     SkinId = r1_142.Id,
@@ -3112,7 +3114,7 @@ function r0_0.UpdatePreviewWeaponSkinActorForContent(r0_142, r1_142)
   r0_142.IsPreviewMode = true
 end
 function r0_0.UpdatePreviewCharSkinActorForContent(r0_143, r1_143)
-  -- line: [3158, 3173] id: 143
+  -- line: [3160, 3175] id: 143
   local r2_143 = r0_143:CreatePreviewTargetData({
     Type = "Char",
     SkinId = r1_143.SkinId,
@@ -3133,7 +3135,7 @@ function r0_0.UpdatePreviewCharSkinActorForContent(r0_143, r1_143)
   r0_143.IsPreviewMode = true
 end
 function r0_0.UpdateWeaponSkinDetails(r0_144, r1_144)
-  -- line: [3175, 3227] id: 144
+  -- line: [3177, 3229] id: 144
   if not r1_144 then
     r1_144 = r0_144.List_Skin:GetItemAt(0)
   end
@@ -3195,7 +3197,7 @@ function r0_0.UpdateWeaponSkinDetails(r0_144, r1_144)
   end
 end
 function r0_0.UpdateCharSkinDetails(r0_145, r1_145)
-  -- line: [3229, 3295] id: 145
+  -- line: [3231, 3297] id: 145
   local r2_145 = DataMgr.Skin[r1_145.SkinId]
   if not r2_145 then
     return 
@@ -3269,7 +3271,7 @@ function r0_0.UpdateCharSkinDetails(r0_145, r1_145)
   end
 end
 function r0_0.InitConsumeInfo(r0_146)
-  -- line: [3298, 3323] id: 146
+  -- line: [3300, 3325] id: 146
   if r0_146.Params.Type == "BattlePassPreview" or r0_146.Params.Type == "ShopRecommend" then
     return 
   end
@@ -3284,7 +3286,7 @@ function r0_0.InitConsumeInfo(r0_146)
   r0_146.WBP_Com_Cost.Key:SetVisibility(ESlateVisibility.Collapsed)
 end
 function r0_0.OnTabChangeClicked(r0_147, r1_147)
-  -- line: [3326, 3338] id: 147
+  -- line: [3328, 3340] id: 147
   if not GWorld:GetAvatar() then
     return 
   end
@@ -3295,7 +3297,7 @@ function r0_0.OnTabChangeClicked(r0_147, r1_147)
   end
 end
 function r0_0.UpdateSkinNameFontByRarity(r0_148, r1_148)
-  -- line: [3340, 3352] id: 148
+  -- line: [3342, 3354] id: 148
   local r3_148 = ({
     [6] = r0_148.Font_Red,
     [5] = r0_148.Font_Gold,
