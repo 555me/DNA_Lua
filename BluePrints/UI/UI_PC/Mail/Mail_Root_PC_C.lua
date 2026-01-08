@@ -1184,7 +1184,7 @@ function r2_0.GetMailRewardIds(r0_76, r1_76)
   return r2_76
 end
 function r2_0.OnGetMailRewards(r0_77, r1_77, r2_77, r3_77)
-  -- line: [1142, 1172] id: 77
+  -- line: [1142, 1171] id: 77
   if r1_77 == ErrorCode.RET_SUCCESS then
     r0_77:BlockAllUIInput(false)
     if r0_77.NormalMailList[r2_77] then
@@ -1197,14 +1197,14 @@ function r2_0.OnGetMailRewards(r0_77, r1_77, r2_77, r3_77)
     end
     local r4_77 = r0_77:GetMailRewardIds(r3_77)
     r0_77.GamePadState = "GetItemPage"
-    UIUtils.ShowGetItemPageAndOpenBagIfNeeded(nil, nil, nil, r4_77, false, function(r0_78)
-      -- line: [1155, 1158] id: 78
-      r0_77:ResetFocusState()
-      r0_77:CheckHaveRewardToReceive(r0_77.CurContent.RewardGot)
-    end, r0_77)
-    r0_77:SetTileListGotState()
     r0_77.CurContent.RewardGot = 1
     r0_77.CurContent.MailReaded = 1
+    UIUtils.ShowGetItemPageAndOpenBagIfNeeded(nil, nil, nil, r4_77, false, function(r0_78)
+      -- line: [1157, 1159] id: 78
+      r0_77:ResetFocusState()
+    end, r0_77)
+    r0_77:SetTileListGotState()
+    r0_77:CheckHaveRewardToReceive(r0_77.CurContent.RewardGot)
     if not r0_77:CheckHaveRewardToReceiveAll() then
       r0_77.Parent:RefreshTabBottomKey()
     end
@@ -1216,14 +1216,14 @@ function r2_0.OnGetMailRewards(r0_77, r1_77, r2_77, r3_77)
   end
 end
 function r2_0.OnGetAllMailReward(r0_79, r1_79, r2_79)
-  -- line: [1174, 1188] id: 79
+  -- line: [1173, 1187] id: 79
   if r1_79 == ErrorCode.RET_SUCCESS then
     r0_79:BlockAllUIInput(false)
     if r2_79 then
       local r3_79 = r0_79:GetMailRewardIds(r2_79)
       r0_79.GamePadState = "GetItemPage"
       UIUtils.ShowGetItemPageAndOpenBagIfNeeded(nil, nil, nil, r3_79, false, function()
-        -- line: [1180, 1182] id: 80
+        -- line: [1179, 1181] id: 80
         r0_79:ResetFocusState()
       end, r0_79)
     end
@@ -1233,16 +1233,18 @@ function r2_0.OnGetAllMailReward(r0_79, r1_79, r2_79)
   end
 end
 function r2_0.OnMarkMailStar(r0_81, r1_81, r2_81, r3_81)
-  -- line: [1190, 1207] id: 81
+  -- line: [1189, 1208] id: 81
   if r1_81 == ErrorCode.RET_SUCCESS then
     r0_81:BlockAllUIInput(false)
     r0_81.StarUniqueId = r2_81
+    r0_81:CheckHaveRewardToReceive(1)
     if r0_81.NormalMailList[r2_81].RewardGot ~= 1 and r0_81.NormalMailList[r2_81].ItemList[1] then
       local r4_81 = r0_81:GetMailRewardIds(r2_81)
       r0_81.NormalMailList[r2_81].RewardGot = 1
       r0_81.GamePadState = "GetItemPage"
+      r0_81.bMarkMailStar = true
       UIUtils.ShowGetItemPageAndOpenBagIfNeeded(nil, nil, nil, r4_81, false, function(r0_82)
-        -- line: [1198, 1200] id: 82
+        -- line: [1199, 1201] id: 82
         r0_81:PlayStarAnim()
       end, r0_81)
     else
@@ -1253,7 +1255,7 @@ function r2_0.OnMarkMailStar(r0_81, r1_81, r2_81, r3_81)
   end
 end
 function r2_0.PlayStarAnim(r0_83)
-  -- line: [1209, 1232] id: 83
+  -- line: [1210, 1234] id: 83
   r0_83:PlayAnimation(r0_83.Collect)
   r0_83.CurContent.IsStar = true
   r0_83.NormalMailList[r0_83.StarUniqueId].IsStar = true
@@ -1268,15 +1270,16 @@ function r2_0.PlayStarAnim(r0_83)
     r0_83:RemoveTimer("StarMail")
   end
   r0_83:AddTimer(r0_83.CurContent.SelfWidget.List_Collect:GetEndTime(), function()
-    -- line: [1224, 1229] id: 84
+    -- line: [1225, 1231] id: 84
     r0_83:BlockAllUIInput(false)
     r0_83:ResetFocusState()
     r0_83:OnMailListTabClicked(r0_83.NowTabId, r2_83, true)
     r0_83:UpdateMailNum()
+    r0_83.bMarkMailStar = false
   end, false, 0, "StarMail", true)
 end
 function r2_0.OnCancelMailStar(r0_85, r1_85, r2_85)
-  -- line: [1235, 1261] id: 85
+  -- line: [1237, 1263] id: 85
   if r1_85 == ErrorCode.RET_SUCCESS then
     r0_85:PlayAnimation(r0_85.UnCollect)
     r0_85.CurContent.IsStar = false
@@ -1291,7 +1294,7 @@ function r2_0.OnCancelMailStar(r0_85, r1_85, r2_85)
       r0_85:RemoveTimer("CancelStar")
     end
     r0_85:AddTimer(r0_85.UnCollect:GetEndTime(), function()
-      -- line: [1250, 1255] id: 86
+      -- line: [1252, 1257] id: 86
       r0_85:BlockAllUIInput(false)
       r0_85:OnMailListTabClicked(r0_85.NowTabId, r4_85, r0_85.NowTabId == 1)
       r0_85:UpdateMailNum()
@@ -1302,7 +1305,7 @@ function r2_0.OnCancelMailStar(r0_85, r1_85, r2_85)
   end
 end
 function r2_0.OnMarkMailReaded(r0_87, r1_87, r2_87)
-  -- line: [1263, 1290] id: 87
+  -- line: [1265, 1292] id: 87
   if r1_87 == ErrorCode.RET_SUCCESS then
     local r3_87 = nil
     if r0_87:GetMailInfo(r0_87.CurContent).MailReward == nil then
@@ -1330,13 +1333,13 @@ function r2_0.OnMarkMailReaded(r0_87, r1_87, r2_87)
   end
 end
 function r2_0.OnDeleteMail(r0_88, r1_88, r2_88)
-  -- line: [1292, 1296] id: 88
+  -- line: [1294, 1298] id: 88
   r0_88:BlockAllUIInput(false)
   UIManager(r0_88):ShowUITip(UIConst.Tip_CommonTop, GText("UI_Mail_Delete_Success"))
   r0_88:InitMailMain()
 end
 function r2_0.HandleAvatarRet(r0_89, r1_89)
-  -- line: [1298, 1306] id: 89
+  -- line: [1300, 1308] id: 89
   r0_89:BlockAllUIInput(false)
   if DataMgr.ErrorCode[r1_89] then
     UIManager(r0_89):ShowError(r1_89)
@@ -1345,9 +1348,9 @@ function r2_0.HandleAvatarRet(r0_89, r1_89)
   end
 end
 function r2_0.PlayInAnim(r0_90)
-  -- line: [1308, 1310] id: 90
+  -- line: [1310, 1312] id: 90
 end
 function r2_0.PlayOutAnim(r0_91)
-  -- line: [1312, 1314] id: 91
+  -- line: [1314, 1316] id: 91
 end
 return r2_0
