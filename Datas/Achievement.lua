@@ -6272,7 +6272,7 @@ r4_0[10010101] = {
   AchievementId = 10010101,
   AchievementName = "UI_Achievement_Name_10010101",
   AchievementRarity = 3,
-  AchievementReward = 7001,
+  AchievementReward = 7480,
   AchievementType = 10,
   TargetId = r0_0.RT_3,
   TargetProgress = 20,
@@ -6298,7 +6298,7 @@ r4_0[10010103] = {
   AchievementRequire = {
     10010102
   },
-  AchievementReward = 7003,
+  AchievementReward = 7481,
   AchievementType = 10,
   TargetId = r0_0.RT_3,
   TargetProgress = 100,
@@ -7260,7 +7260,7 @@ r4_0[160010103] = {
   AchievementRequire = {
     160010102
   },
-  AchievementReward = 7003,
+  AchievementReward = 7482,
   AchievementType = 10,
   TargetId = r0_0.RT_51,
   TargetProgress = 75,

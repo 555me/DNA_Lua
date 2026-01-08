@@ -2532,7 +2532,6 @@ r6_0 = {}
 r6_0.AddAttrs = {
   [1] = {
     AttrName = "DamageRate",
-    DamageTag = "Skill",
     RateZone = "AbyssDown",
     Value = -0.25,
   },
