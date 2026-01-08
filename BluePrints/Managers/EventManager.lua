@@ -561,6 +561,7 @@ r0_0.OnHomeBaseeBtnShowNewClue = "OnHomeBaseeBtnShowNewClue"
 r0_0.OnNewDetectiveQuestion = "OnNewDetectiveQuestion"
 r0_0.OnDetectiveRefreshProgress = "OnDetectiveRefreshProgress"
 r0_0.OnTheaterJoinPerformGame = "OnTheaterJoinPerformGame"
+r0_0.OnTheaterJoinPerformGameFail = "OnTheaterJoinPerformGameFail"
 r0_0.OnTheaterPerformGameStart = "OnTheaterPerformGameStart"
 r0_0.OnTheaterPerformGameEnd = "OnTheaterPerformGameEnd"
 r0_0.OnTheaterLevelStart = "OnTheaterLevelStart"
@@ -614,7 +615,7 @@ r0_0.OnSwitchRendering = "OnSwitchRendering"
 local r1_0 = {
   List = nil,
   New = function(r0_1)
-    -- line: [902, 911] id: 1
+    -- line: [903, 912] id: 1
     local r1_1 = {}
     setmetatable(r1_1, r0_1)
     r0_1.__index = r0_1
@@ -625,7 +626,7 @@ local r1_0 = {
     return r1_1
   end,
   Add = function(r0_2, r1_2, r2_2)
-    -- line: [913, 926] id: 2
+    -- line: [914, 927] id: 2
     if not r0_2.List[r1_2] then
       r0_2.List[r1_2] = {}
       r0_2.FuncMap[r1_2] = {}
@@ -637,7 +638,7 @@ local r1_0 = {
     end
   end,
   Remove = function(r0_3, r1_3)
-    -- line: [928, 940] id: 3
+    -- line: [929, 941] id: 3
     if r0_3.List[r1_3] then
       r0_3.NowCount = r0_3.NowCount - #r0_3.List[r1_3]
     end
@@ -645,7 +646,7 @@ local r1_0 = {
     r0_3.FuncMap[r1_3] = nil
   end,
   CheckIsLeak = function(r0_4, r1_4, r2_4)
-    -- line: [943, 977] id: 4
+    -- line: [944, 978] id: 4
     local r3_4 = 0
     if r0_4.LastCount ~= 0 and r0_4.LastCount < r0_4.NowCount and r2_4 then
       local r4_4 = {}
@@ -679,7 +680,7 @@ local r1_0 = {
     r0_4.LastCount = r0_4.NowCount
   end,
   Invoke = function(r0_5, ...)
-    -- line: [979, 1032] id: 5
+    -- line: [980, 1033] id: 5
     local r1_5 = {}
     local r2_5 = {}
     local r10_5 = nil	-- notice: implicit variable refs by block#[18]
@@ -725,11 +726,11 @@ local r1_0 = {
       for r16_5, r17_5 in ipairs(r9_5[2]) do
         try({
           exec = function()
-            -- line: [1020, 1022] id: 6
+            -- line: [1021, 1023] id: 6
             r17_5(r10_5, table.unpack(r3_5))
           end,
           catch = function(r0_7)
-            -- line: [1023, 1025] id: 7
+            -- line: [1024, 1026] id: 7
             GWorld.logger.error(Traceback(ErrorTag, r0_7, true))
           end,
         })
@@ -746,7 +747,7 @@ local r1_0 = {
     -- close: r4_5
   end,
   RemoveAll = function(r0_8)
-    -- line: [1034, 1036] id: 8
+    -- line: [1035, 1037] id: 8
     r0_8.List = {}
   end,
 }
@@ -754,7 +755,7 @@ local r2_0 = {}
 _G.EventManager = r2_0
 r2_0.EventDic = {}
 function r2_0.AddEvent(r0_9, r1_9, r2_9, r3_9)
-  -- line: [1043, 1056] id: 9
+  -- line: [1044, 1057] id: 9
   if not r2_9 then
     Traceback(ErrorTag, "EventManager:AddEvent，事件的对象不能为空！！！")
     return 
@@ -769,7 +770,7 @@ function r2_0.AddEvent(r0_9, r1_9, r2_9, r3_9)
   r0_9.EventDic[r1_9]:Add(r2_9, r3_9)
 end
 function r2_0.RemoveEvent(r0_10, r1_10, r2_10)
-  -- line: [1058, 1066] id: 10
+  -- line: [1059, 1067] id: 10
   if not r2_10 then
     Traceback(ErrorTag, "EventManager:RemoveEvent，事件的对象不能为空！！！")
     return 
@@ -779,13 +780,13 @@ function r2_0.RemoveEvent(r0_10, r1_10, r2_10)
   end
 end
 function r2_0.FireEvent(r0_11, r1_11, ...)
-  -- line: [1068, 1072] id: 11
+  -- line: [1069, 1073] id: 11
   if r0_11.EventDic[r1_11] ~= nil then
     r0_11.EventDic[r1_11]:Invoke(...)
   end
 end
 function r2_0.CheckIsLeak(r0_12)
-  -- line: [1074, 1083] id: 12
+  -- line: [1075, 1084] id: 12
   local r1_12 = true
   if not GWorld.IsDev then
     return 

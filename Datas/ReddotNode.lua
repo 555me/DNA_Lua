@@ -573,6 +573,7 @@ r3_0.ExperienceItem = {
   IsLeaf = true,
   Name = "ExperienceItem",
   NodeModuleName = "Experience",
+  RuleId = "PlayerLevel",
   Type = 0,
   bInvokeEveryTime = true,
 }

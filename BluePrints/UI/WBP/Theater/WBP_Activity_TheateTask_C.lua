@@ -6,12 +6,11 @@ local r0_0 = Class({
   "BluePrints.UI.BP_UIState_C"
 })
 function r0_0.Construct(r0_1)
-  -- line: [13, 16] id: 1
+  -- line: [13, 15] id: 1
   r0_1.RegionId = nil
-  r0_1:InitUI()
 end
 function r0_0.InitUI(r0_2)
-  -- line: [18, 35] id: 2
+  -- line: [17, 34] id: 2
   local r1_2 = GWorld:GetAvatar()
   if not r1_2 then
     return 
@@ -23,61 +22,90 @@ function r0_0.InitUI(r0_2)
   r0_2.WBP_Com_Time:SetTimeText("", r5_2)
   r0_2:StartCountdownTimer()
 end
-function r0_0.CalculateRemainTimeToNextHour(r0_3)
-  -- line: [37, 54] id: 3
-  local r2_3 = os.date("*t", TimeUtils.NowTime())
-  local r5_3 = r2_3.min * 60 + r2_3.sec
-  local r6_3 = nil
-  if r5_3 <= 1800 then
-    r6_3 = 1800
-  else
-    r6_3 = 3600
-  end
-  return r6_3 - r5_3
+function r0_0.InitFailUI(r0_3)
+  -- line: [36, 48] id: 3
+  r0_3.JoinCountDown = true
+  r0_3.Text_Title:SetText(GText("TheaterOnline_Game_Name"))
+  r0_3.Text_Progress:SetText(GText("TheaterOnline_Game_Sign_Waiting"))
+  local r4_3, r5_3 = UIUtils.GetLeftTimeStrStyle2(TimeUtils.NowTime() + r0_3:CalculateRemainTimeToAvailableJoin())
+  r0_3.WBP_Com_Time:SetTimeText("", r4_3)
+  r0_3:StartCountdownTimer()
 end
-function r0_0.StartCountdownTimer(r0_4)
-  -- line: [56, 66] id: 4
-  if r0_4.CountdownTimer then
-    r0_4:RemoveTimer(r0_4.CountdownTimer)
+function r0_0.CalculateRemainTimeToNextHour(r0_4)
+  -- line: [50, 67] id: 4
+  local r2_4 = os.date("*t", TimeUtils.NowTime())
+  local r5_4 = r2_4.min * 60 + r2_4.sec
+  local r6_4 = nil
+  if r5_4 <= 1800 then
+    r6_4 = 1800
+  else
+    r6_4 = 3600
   end
-  r0_4.CountdownTimer = r0_4:AddTimer(1, function()
-    -- line: [63, 65] id: 5
-    r0_4:UpdateCountdown()
+  return r6_4 - r5_4
+end
+function r0_0.CalculateRemainTimeToAvailableJoin(r0_5)
+  -- line: [69, 77] id: 5
+  local r1_5 = DataMgr.TheaterConstant.NpcInteractON.ConstantValue
+  local r2_5 = TimeUtils.NowTime()
+  if r2_5 % 1800 <= r1_5 then
+    return r1_5 - r2_5 % 1800
+  end
+  return 0
+end
+function r0_0.StartCountdownTimer(r0_6)
+  -- line: [79, 89] id: 6
+  if r0_6.CountdownTimer then
+    r0_6:RemoveTimer(r0_6.CountdownTimer)
+  end
+  r0_6.CountdownTimer = r0_6:AddTimer(1, function()
+    -- line: [86, 88] id: 7
+    r0_6:UpdateCountdown()
   end, true, 0, "TheaterCountdown", true)
 end
-function r0_0.UpdateCountdown(r0_6)
-  -- line: [68, 98] id: 6
-  local r1_6 = TimeUtils.NowTime()
-  local r2_6 = r0_6:CalculateRemainTimeToNextHour()
-  if r2_6 <= 0 then
-    if r0_6.CountdownTimer then
-      r0_6:RemoveTimer(r0_6.CountdownTimer)
-      r0_6.CountdownTimer = nil
-    end
-    r0_6:Close()
+function r0_0.UpdateCountdown(r0_8)
+  -- line: [91, 127] id: 8
+  local r1_8 = TimeUtils.NowTime()
+  local r2_8 = nil
+  if r0_8.JoinCountDown then
+    r2_8 = r0_8:CalculateRemainTimeToAvailableJoin()
   else
-    local r4_6, r5_6 = UIUtils.GetLeftTimeStrStyle2(r1_6 + r2_6)
-    r0_6.WBP_Com_Time:SetTimeText("", r4_6)
+    r2_8 = r0_8:CalculateRemainTimeToNextHour()
   end
-  local r3_6 = GWorld:GetAvatar()
-  if not r3_6 then
+  if r2_8 <= 0 then
+    if r0_8.CountdownTimer then
+      r0_8:RemoveTimer(r0_8.CountdownTimer)
+      r0_8.CountdownTimer = nil
+    end
+    r0_8:Close()
+  else
+    local r4_8, r5_8 = UIUtils.GetLeftTimeStrStyle2(r1_8 + r2_8)
+    r0_8.WBP_Com_Time:SetTimeText("", r4_8)
+  end
+  local r3_8 = GWorld:GetAvatar()
+  if not r3_8 then
     return 
   end
-  local r4_6 = r3_6.CurrentRegionId
-  if not UE4.UGameplayStatics.GetGameState(GWorld.GameInstance):IsInRegion() or r4_6 ~= 101901 or r3_6:IsInHardBoss() then
-    DebugPrint("ayff 离开剧院区域，关闭剧院活动倒计时 regionid:", r4_6)
-    r0_6:SetVisibility(UE4.ESlateVisibility.Collapsed)
+  local r4_8 = r3_8.CurrentRegionId
+  if not UE4.UGameplayStatics.GetGameState(GWorld.GameInstance):IsInRegion() or r4_8 ~= 101901 then
+    r0_8:Close()
+  elseif r3_8:IsInHardBoss() then
+    r0_8:SetVisibility(UE4.ESlateVisibility.Collapsed)
   else
-    r0_6:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+    r0_8:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
   end
 end
-function r0_0.Close(r0_7)
-  -- line: [100, 108] id: 7
-  if r0_7.CountdownTimer then
-    r0_7:RemoveTimer(r0_7.CountdownTimer)
-    r0_7.CountdownTimer = nil
+function r0_0.Close(r0_9)
+  -- line: [129, 144] id: 9
+  local r1_9 = UIManager(r0_9):GetUI("BattleMain")
+  if r1_9 and r1_9.TheaterCheckTimer then
+    r1_9:RemoveTimer(r1_9.TheaterCheckTimer)
+    r1_9.TheaterCheckTimer = nil
   end
-  r0_7.IsInit = true
-  r0_7.Super.Close(r0_7)
+  if r0_9.CountdownTimer then
+    r0_9:RemoveTimer(r0_9.CountdownTimer)
+    r0_9.CountdownTimer = nil
+  end
+  r0_9.IsInit = true
+  r0_9.Super.Close(r0_9)
 end
 return r0_0

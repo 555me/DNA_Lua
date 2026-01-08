@@ -79,12 +79,24 @@ r0_0.RT_16 = {
   End = "76828C0045C719129F357880960C1AAE",
 }
 r0_0.RT_17 = {
-  End = "F09E9E7B45697E0AF3627C9FF38F01A2",
+  Option_281 = "56B7C1C045101E31A2BBAD84D43CAF84",
+  Option_282 = "2F65012C448211F784D8139F997774CF",
 }
 r0_0.RT_18 = {
-  End = "56132B7447EE9FE9A08BB190401F69F4",
+  120223281,
+  120223282
 }
 r0_0.RT_19 = {
+  [120223281] = "Option_281",
+  [120223282] = "Option_282",
+}
+r0_0.RT_20 = {
+  End = "F09E9E7B45697E0AF3627C9FF38F01A2",
+}
+r0_0.RT_21 = {
+  End = "56132B7447EE9FE9A08BB190401F69F4",
+}
+r0_0.RT_22 = {
   12022001,
   12022002,
   12022003,
@@ -102,11 +114,11 @@ r0_0.RT_19 = {
   12022015,
   12022016
 }
-r0_0.RT_20 = {
-  DialogueIds = r0_0.RT_19,
+r0_0.RT_23 = {
+  DialogueIds = r0_0.RT_22,
 }
 local r2_0 = (DataMgr and {}).ReadOnly and function(r0_1, r1_1)
-  -- line: [106, 106] id: 1
+  -- line: [118, 118] id: 1
   return r1_1
 end
 local r3_0 = "FlowExport"
@@ -917,19 +929,18 @@ r6_0.NodeParams = {
 r6_0.NodeType = "FlowNode_Dialogue"
 r6_0.TalkId = 120127
 r4_0[r5_0] = r6_0
-r5_0 = "2F65012C448211F784D8139F997774CF"
-r6_0 = {
+r5_0 = {
   Connect = r0_0.RT_11,
   GUID = "2F65012C448211F784D8139F997774CF",
 }
-r6_0.NodeParams = {
+r5_0.NodeParams = {
   DialogueIds = {
     12022330
   },
 }
-r6_0.NodeType = "FlowNode_Dialogue"
-r6_0.TalkId = 120223
-r4_0[r5_0] = r6_0
+r5_0.NodeType = "FlowNode_Dialogue"
+r5_0.TalkId = 120223
+r4_0["2F65012C448211F784D8139F997774CF"] = r5_0
 r5_0 = "336F2C5E46ECE7BE370CACB85611884D"
 r6_0 = {
   Connect = {
@@ -1716,19 +1727,18 @@ r6_0.NodeParams = {
 r6_0.NodeType = "FlowNode_Dialogue"
 r6_0.TalkId = 120180
 r4_0[r5_0] = r6_0
-r5_0 = "56B7C1C045101E31A2BBAD84D43CAF84"
-r6_0 = {
+r5_0 = {
   Connect = r0_0.RT_11,
   GUID = "56B7C1C045101E31A2BBAD84D43CAF84",
 }
-r6_0.NodeParams = {
+r5_0.NodeParams = {
   DialogueIds = {
     12022329
   },
 }
-r6_0.NodeType = "FlowNode_Dialogue"
-r6_0.TalkId = 120223
-r4_0[r5_0] = r6_0
+r5_0.NodeType = "FlowNode_Dialogue"
+r5_0.TalkId = 120223
+r4_0["56B7C1C045101E31A2BBAD84D43CAF84"] = r5_0
 r5_0 = "581B0E91438649ACDD25F9AEDEFA99F3"
 r6_0 = {
   Connect = {
@@ -1782,27 +1792,16 @@ r6_0.NodeParams = {
 r6_0.NodeType = "FlowNode_Dialogue"
 r6_0.TalkId = 120120
 r4_0[r5_0] = r6_0
-r5_0 = "5CFC752649CB2D466D108B9A2E657497"
-r6_0 = {
-  Connect = {
-    Option_281 = "56B7C1C045101E31A2BBAD84D43CAF84",
-    Option_282 = "2F65012C448211F784D8139F997774CF",
-  },
+r4_0["5CFC752649CB2D466D108B9A2E657497"] = {
+  Connect = r0_0.RT_17,
   GUID = "5CFC752649CB2D466D108B9A2E657497",
-}
-r6_0.NodeParams = {
-  DialogueIds = {
-    120223281,
-    120223282
+  NodeParams = {
+    DialogueIds = r0_0.RT_18,
+    OptionOutput = r0_0.RT_19,
   },
-  OptionOutput = {
-    [120223281] = "Option_281",
-    [120223282] = "Option_282",
-  },
+  NodeType = "FlowNode_Option",
+  TalkId = 120223,
 }
-r6_0.NodeType = "FlowNode_Option"
-r6_0.TalkId = 120223
-r4_0[r5_0] = r6_0
 r5_0 = "5E191E1641CD31A4F807EA983436CBC6"
 r6_0 = {
   Connect = {
@@ -1884,7 +1883,8 @@ r6_0.NodeParams = {
 r6_0.NodeType = "FlowNode_Dialogue"
 r6_0.TalkId = 120131
 r4_0[r5_0] = r6_0
-r5_0 = {
+r5_0 = "6360BC3743A687BD235C58943BF38404"
+r6_0 = {
   Connect = {
     Option_101 = "B68FB3D8406558AE876050A495953A7D",
     Option_102 = "2E6D22BC4138440F01144498DA65976E",
@@ -1893,7 +1893,7 @@ r5_0 = {
   },
   GUID = "6360BC3743A687BD235C58943BF38404",
 }
-r5_0.NodeParams = {
+r6_0.NodeParams = {
   DialogueIds = {
     120127104,
     120127101,
@@ -1907,9 +1907,9 @@ r5_0.NodeParams = {
     [120127104] = "Option_104",
   },
 }
-r5_0.NodeType = "FlowNode_Option"
-r5_0.TalkId = 120127
-r4_0["6360BC3743A687BD235C58943BF38404"] = r5_0
+r6_0.NodeType = "FlowNode_Option"
+r6_0.TalkId = 120127
+r4_0[r5_0] = r6_0
 r5_0 = {
   Connect = {
     End = "CBB892724592D0939237109F6B33866A",
@@ -2704,7 +2704,7 @@ r6_0.TalkId = 120126
 r4_0[r5_0] = r6_0
 r5_0 = "9481A4454666B7CA137DAD9C137DC5F1"
 r6_0 = {
-  Connect = r0_0.RT_17,
+  Connect = r0_0.RT_20,
   GUID = "9481A4454666B7CA137DAD9C137DC5F1",
 }
 r6_0.NodeParams = {
@@ -2983,7 +2983,7 @@ r6_0.TalkId = 120230
 r4_0[r5_0] = r6_0
 r5_0 = "A467AE37450CE945856BE49A117AAC93"
 r6_0 = {
-  Connect = r0_0.RT_18,
+  Connect = r0_0.RT_21,
   GUID = "A467AE37450CE945856BE49A117AAC93",
 }
 r6_0.NodeParams = {
@@ -3041,7 +3041,7 @@ r4_0.A704BB9B40981F05B2729CA6DABBAC09 = {
     End = "515C97924F45ED725A0365917F472520",
   },
   GUID = "A704BB9B40981F05B2729CA6DABBAC09",
-  NodeParams = r0_0.RT_20,
+  NodeParams = r0_0.RT_23,
   NodeType = "FlowNode_Dialogue",
   TalkId = 120220,
 }
@@ -3159,7 +3159,7 @@ r4_0.AFCAFBDD49325D06DE01B4B4AC5A3345 = {
     End = "D02FAD75420C2E856E62ACABE899C09B",
   },
   GUID = "AFCAFBDD49325D06DE01B4B4AC5A3345",
-  NodeParams = r0_0.RT_20,
+  NodeParams = r0_0.RT_23,
   NodeType = "FlowNode_Dialogue",
   TalkId = 120220,
 }
@@ -3283,7 +3283,7 @@ r4_0[r5_0] = r6_0
 r5_0 = "B896D077462877497B13D3B264D72A41"
 r6_0 = {
   Connect = {
-    End = "5CFC752649CB2D466D108B9A2E657497",
+    End = "EF467BD8411DD2E1D47E4C9D8ED36E2B",
   },
   GUID = "B896D077462877497B13D3B264D72A41",
 }
@@ -3931,7 +3931,7 @@ r4_0.ED5755C14BC3F620742F6280748682CC = {
   TalkId = 120159,
 }
 r4_0.EE04DD1444D1FE85167A0E8BA1D0204D = {
-  Connect = r0_0.RT_17,
+  Connect = r0_0.RT_20,
   GUID = "EE04DD1444D1FE85167A0E8BA1D0204D",
   NodeParams = {
     DialogueIds = r0_0.RT_1,
@@ -3945,6 +3945,21 @@ r4_0.EE6B7D33429EB047C61F61AC6DC1E4F1 = {
   NodeType = "FlowNode_TalkFinish",
   TalkId = 511500,
 }
+r6_0 = {
+  Connect = r0_0.RT_17,
+  GUID = "EF467BD8411DD2E1D47E4C9D8ED36E2B",
+}
+r6_0.NodeParams = {
+  DialogueIds = r0_0.RT_18,
+  OptionFailOutPut = {
+    [120223281] = "Fail_281",
+    [120223282] = "Fail_282",
+  },
+  OptionOutput = r0_0.RT_19,
+}
+r6_0.NodeType = "FlowNode_ImpressingOption"
+r6_0.TalkId = 120223
+r4_0.EF467BD8411DD2E1D47E4C9D8ED36E2B = r6_0
 r4_0.EF861C7F4E37EA204C974F80D07073A4 = {
   Connect = {
     Out = "4600871841FEDCFD3808D7B9A36C2B33",
@@ -4128,7 +4143,7 @@ r4_0.F6ADA971484C0CC6CF11C49B37C922FA = {
 }
 r5_0 = "F6F5171D45C99C728EF11A8CDE26708C"
 r6_0 = {
-  Connect = r0_0.RT_18,
+  Connect = r0_0.RT_21,
   GUID = "F6F5171D45C99C728EF11A8CDE26708C",
 }
 r6_0.NodeParams = {

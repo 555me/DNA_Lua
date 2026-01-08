@@ -39,7 +39,7 @@ end)("TheaterConstant", {
   },
   NpcInteractON = {
     ConstantName = "NpcInteractON",
-    ConstantValue = 600,
+    ConstantValue = 385,
   },
   NpcbCreatorID = {
     ConstantName = "NpcbCreatorID",

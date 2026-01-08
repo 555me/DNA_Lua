@@ -44,7 +44,7 @@ function r6_0.Construct(r0_1)
   r0_1.PlayInOutSystems = {}
 end
 function r6_0.OnLoaded(r0_4, ...)
-  -- line: [47, 190] id: 4
+  -- line: [47, 191] id: 4
   r0_4.Super.OnLoaded(r0_4, ...)
   r0_4:TryRecoverUI()
   r0_4:InitUID()
@@ -123,13 +123,14 @@ function r6_0.OnLoaded(r0_4, ...)
   r0_4:AddDispatcher(EventID.OnHomeBaseeBtnShowNewClue, r0_4, r0_4.OnHomeBaseeBtnShowNewClue)
   r0_4:AddDispatcher(EventID.OnEnableGuideBookKey, r0_4, r0_4.EnableGuideBookKey)
   r0_4:AddDispatcher(EventID.OnTheaterJoinPerformGame, r0_4, r0_4.TheaterJoinPerformGame)
+  r0_4:AddDispatcher(EventID.OnTheaterJoinPerformGameFail, r0_4, r0_4.TheaterJoinPerformGameFail)
   r0_4:AddDispatcher(EventID.OnTheaterPerformGameStart, r0_4, r0_4.TheaterPerformGameStart)
   r0_4:AddDispatcher(EventID.OnTheaterPerformGameNotice, r0_4, r0_4.OnTheaterPerformGameNotice)
   r0_4:AddDispatcher(EventID.OnTeleportReady, r0_4, r0_4.TeleportReady)
   local r1_4 = DataMgr.ReddotNode.Quest.Name
   if GWorld:GetAvatar() then
     ReddotManager.AddListenerEx(r1_4, r0_4, function(r0_5, r1_5, r2_5, r3_5)
-      -- line: [111, 117] id: 5
+      -- line: [112, 118] id: 5
       if r1_5 > 0 then
         r0_5.Btn_Task.Common_Item_Subsize_New_PC:SetVisibility(UE4.ESlateVisibility.HitTestInvisible)
       else
@@ -187,7 +188,7 @@ function r6_0.OnLoaded(r0_4, ...)
   r0_4:CheckTheaterEventState()
 end
 function r6_0.GetOrAddWidget(r0_6, r1_6, r2_6)
-  -- line: [192, 204] id: 6
+  -- line: [193, 205] id: 6
   local r3_6 = r2_6:GetChildAt(0)
   if r3_6 then
     return r3_6
@@ -202,17 +203,17 @@ function r6_0.GetOrAddWidget(r0_6, r1_6, r2_6)
   return r4_6
 end
 function r6_0.GetWidget(r0_7, r1_7, r2_7)
-  -- line: [206, 209] id: 7
+  -- line: [207, 210] id: 7
   return r2_7:GetChildAt(0)
 end
 function r6_0.RefreshOpInfoByInputDevice(r0_8, r1_8, r2_8)
-  -- line: [212, 216] id: 8
+  -- line: [213, 217] id: 8
   r0_8.CurInputDeviceType = r0_0.UtilsGetCurrentInputType()
   r0_8.CurGamepadName = r0_0.UtilsGetCurrentGamepadName()
   r0_8:InitKeyTip()
 end
 function r6_0.InitWithMainCharacter(r0_9)
-  -- line: [219, 234] id: 9
+  -- line: [220, 235] id: 9
   local r1_9 = UE4.UGameplayStatics.GetPlayerCharacter(r0_9, 0)
   if not r1_9 then
     return false
@@ -220,7 +221,7 @@ function r6_0.InitWithMainCharacter(r0_9)
   r0_9.HUD_MainBar:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
   r0_9.HUD_MainBar:InitConfig(r1_9)
   r0_9:AddTimer(0.5, function()
-    -- line: [225, 229] id: 10
+    -- line: [226, 230] id: 10
     if not r1_9:CheckCanChangeToMaster() then
       r0_9:ShowOrHideMainPlayerBloodUI(true, "ChangeRoleToMaster")
     end
@@ -229,16 +230,16 @@ function r6_0.InitWithMainCharacter(r0_9)
   return true
 end
 function r6_0.GetOrAddDynamicEventWidget(r0_11)
-  -- line: [236, 239] id: 11
+  -- line: [237, 240] id: 11
   r0_11.Pos_DynamicEvent:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
   return r0_11:GetOrAddWidget("DynamicEvent", r0_11.Pos_DynamicEvent)
 end
 function r6_0.GetDynamicEventWidget(r0_12)
-  -- line: [241, 243] id: 12
+  -- line: [242, 244] id: 12
   return r0_12:GetWidget("DynamicEvent", r0_12.Pos_DynamicEvent)
 end
 function r6_0.AddTempleRightKeyTextDesc(r0_13)
-  -- line: [255, 269] id: 13
+  -- line: [256, 270] id: 13
   r0_13.ForbidInfo = r0_13:TempleForbidSkills(DataMgr.Temple[UE4.UGameplayStatics.GetGameState(r0_13).DungeonId].FbdRule)
   if not r0_13.ForbidInfo then
     return 
@@ -251,7 +252,7 @@ function r6_0.AddTempleRightKeyTextDesc(r0_13)
   end
 end
 function r6_0.InitTrainingKeyTip(r0_14)
-  -- line: [273, 295] id: 14
+  -- line: [274, 296] id: 14
   local r1_14 = UE4.UGameplayStatics.GetPlayerCharacter(r0_14, 0)
   local r2_14 = UE4.UGameplayStatics.GetGameMode(r0_14)
   local r3_14 = UE4.UGameplayStatics.GetGameState(r0_14)
@@ -269,7 +270,7 @@ function r6_0.InitTrainingKeyTip(r0_14)
   end
 end
 function r6_0.InitTrailKeyTip(r0_15)
-  -- line: [297, 349] id: 15
+  -- line: [298, 350] id: 15
   local r1_15 = UE4.UGameplayStatics.GetPlayerCharacter(r0_15, 0)
   local r2_15 = UE4.UGameplayStatics.GetGameMode(r0_15)
   local r3_15 = UE4.UGameplayStatics.GetGameState(r0_15)
@@ -312,7 +313,7 @@ function r6_0.InitTrailKeyTip(r0_15)
   end
 end
 function r6_0.UnInitTrainingKeyTip(r0_16)
-  -- line: [351, 363] id: 16
+  -- line: [352, 364] id: 16
   local r1_16 = UE4.UGameplayStatics.GetPlayerCharacter(r0_16, 0)
   r0_16.Pos_KeyTip:ClearChildren()
   if r1_16.UIModePlatform == "Mobile" then
@@ -324,7 +325,7 @@ function r6_0.UnInitTrainingKeyTip(r0_16)
   end
 end
 function r6_0.UnInitTrialKeyTip(r0_17)
-  -- line: [365, 371] id: 17
+  -- line: [366, 372] id: 17
   local r1_17 = UE4.UGameplayStatics.GetPlayerCharacter(r0_17, 0)
   r0_17.Pos_KeyTip:ClearChildren()
   if r1_17.UIModePlatform == "Mobile" then
@@ -332,7 +333,7 @@ function r6_0.UnInitTrialKeyTip(r0_17)
   end
 end
 function r6_0.UnInitTemple(r0_18)
-  -- line: [373, 379] id: 18
+  -- line: [374, 380] id: 18
   local r1_18 = r3_0:GetTaskBarWidget()
   if r1_18 then
     r1_18:SetUIVisibilityTag("Temple", false)
@@ -340,7 +341,7 @@ function r6_0.UnInitTemple(r0_18)
   end
 end
 function r6_0.InitKeyTip(r0_19)
-  -- line: [381, 410] id: 19
+  -- line: [382, 411] id: 19
   local r1_19 = UE4.UGameplayStatics.GetPlayerCharacter(r0_19, 0)
   local r2_19 = UE4.UGameplayStatics.GetGameMode(r0_19)
   local r3_19 = UE4.UGameplayStatics.GetGameState(r0_19)
@@ -365,7 +366,7 @@ function r6_0.InitKeyTip(r0_19)
   r0_19:InitChatKeyTip()
 end
 function r6_0.InitCommonKey(r0_20, r1_20, r2_20)
-  -- line: [412, 451] id: 20
+  -- line: [413, 452] id: 20
   local r3_20 = UE4.UGameplayStatics.GetGameMode(r0_20)
   local r4_20 = UE4.UGameplayStatics.GetGameState(r0_20)
   if r3_20 ~= nil and r4_20 ~= nil and r4_20.GameModeType == "Training" then
@@ -388,7 +389,7 @@ function r6_0.InitCommonKey(r0_20, r1_20, r2_20)
       Desc = GText("UI_DUNGEON_DES_TRAINING_" .. r2_20),
     })
     r1_20:AddExecuteLogic(r0_20, function()
-      -- line: [432, 432] id: 21
+      -- line: [433, 433] id: 21
       r0_20:OnTrainingRightKeyClicked(r2_20)
     end)
   end
@@ -412,7 +413,7 @@ function r6_0.InitCommonKey(r0_20, r1_20, r2_20)
   end
 end
 function r6_0.SetOverrideInfo(r0_22, r1_22, r2_22)
-  -- line: [453, 465] id: 22
+  -- line: [454, 466] id: 22
   if r0_22.SizeBox_Map then
     r0_22.SizeBox_Map:SetWidthOverride(r1_22)
   end
@@ -428,7 +429,7 @@ function r6_0.SetOverrideInfo(r0_22, r1_22, r2_22)
   end
 end
 function r6_0.TempleForbidSkills(r0_23, r1_23)
-  -- line: [467, 488] id: 23
+  -- line: [468, 489] id: 23
   if not r1_23 then
     return 
   end
@@ -475,7 +476,7 @@ function r6_0.TempleForbidSkills(r0_23, r1_23)
   return r3_23
 end
 function r6_0.AddTrainingRightKeyListeners(r0_24)
-  -- line: [490, 509] id: 24
+  -- line: [491, 510] id: 24
   if r0_24.IsInTraining then
     return 
   end
@@ -507,7 +508,7 @@ function r6_0.AddTrainingRightKeyListeners(r0_24)
   r0_24.IsInTraining = true
 end
 function r6_0.RemoveTrainingRightKeyListeners(r0_25)
-  -- line: [511, 524] id: 25
+  -- line: [512, 525] id: 25
   r0_25:StopListeningForInputAction("TrainingOpenSetup", EInputEvent.IE_Pressed)
   r0_25:StopListeningForInputAction("TrainingCharacterSkills", EInputEvent.IE_Pressed)
   r0_25:StopListeningForInputAction("TrainingKillMonsters", EInputEvent.IE_Pressed)
@@ -535,7 +536,7 @@ function r6_0.RemoveTrainingRightKeyListeners(r0_25)
   })
 end
 function r6_0.AddRougeKeyListeners(r0_26)
-  -- line: [526, 530] id: 26
+  -- line: [527, 531] id: 26
   r0_26:RemoveRougeKeyListeners()
   r0_26:ListenForInputAction("RougeOpenBag", EInputEvent.IE_Pressed, false, {
     r0_26,
@@ -543,11 +544,11 @@ function r6_0.AddRougeKeyListeners(r0_26)
   })
 end
 function r6_0.RemoveRougeKeyListeners(r0_27)
-  -- line: [532, 534] id: 27
+  -- line: [533, 535] id: 27
   r0_27:StopListeningForInputAction("RougeOpenBag", EInputEvent.IE_Pressed)
 end
 function r6_0.OnTrainingRightKeyClicked(r0_28, r1_28)
-  -- line: [536, 544] id: 28
+  -- line: [537, 545] id: 28
   if r1_28 == 1 then
     r0_28:TrainingOpenSetup()
   elseif r1_28 == 2 then
@@ -557,7 +558,7 @@ function r6_0.OnTrainingRightKeyClicked(r0_28, r1_28)
   end
 end
 function r6_0.AddTrialRightKeyListeners(r0_29)
-  -- line: [546, 553] id: 29
+  -- line: [547, 554] id: 29
   r0_29:RemoveTrialRightKeyListeners()
   r0_29:ListenForInputAction("TrainingCharacterSkills", EInputEvent.IE_Pressed, false, {
     r0_29,
@@ -569,27 +570,27 @@ function r6_0.AddTrialRightKeyListeners(r0_29)
   })
 end
 function r6_0.RemoveTrialRightKeyListeners(r0_30)
-  -- line: [555, 559] id: 30
+  -- line: [556, 560] id: 30
   r0_30:StopListeningForInputAction("TrainingCharacterSkills", EInputEvent.IE_Pressed)
   r0_30:StopListeningForInputAction("OpenTask", EInputEvent.IE_Pressed)
 end
 function r6_0.OnTrialRightKeyClicked(r0_31, r1_31)
-  -- line: [561, 565] id: 31
+  -- line: [562, 566] id: 31
   if r1_31 == 2 then
     r0_31:TrialCharacterSkills()
   end
 end
 function r6_0.TrialCharacterSkills(r0_32)
-  -- line: [567, 569] id: 32
+  -- line: [568, 570] id: 32
   r0_0.LoadPreviewSkillDetails(r0_32, {
     OnClosedCallback = function()
-      -- line: [568, 568] id: 33
+      -- line: [569, 569] id: 33
       r0_32:PlayInAnim()
     end,
   })
 end
 function r6_0.OnTempleEnter(r0_34)
-  -- line: [571, 588] id: 34
+  -- line: [572, 589] id: 34
   local r1_34 = UE4.UGameplayStatics.GetGameInstance(r0_34)
   if r1_34:GetGameUIManager() == nil then
     return 
@@ -607,12 +608,12 @@ function r6_0.OnTempleEnter(r0_34)
   r0_34.Pos_DynamicEvent:SetVisibility(ESlateVisibility.Collapsed)
 end
 function r6_0.ShowCountDown(r0_35, r1_35, r2_35, r3_35)
-  -- line: [590, 593] id: 35
+  -- line: [591, 594] id: 35
   r1_35:SetVisibility(ESlateVisibility.SelfHitTestInvisible)
   r1_35:InitTempleCountDown(r2_35, r3_35)
 end
 function r6_0.OnTempleDelayStart(r0_36, r1_36, r2_36, r3_36)
-  -- line: [595, 603] id: 36
+  -- line: [596, 604] id: 36
   DebugPrint("zwk OnTempleDelayStart", r1_36, r2_36, r3_36)
   r0_36.Pos_TempleTime:ClearChildren()
   r0_36.CurDelayUI = r0_36:CreateWidgetNew("DungeonTempleTime")
@@ -621,14 +622,14 @@ function r6_0.OnTempleDelayStart(r0_36, r1_36, r2_36, r3_36)
   r0_36.CurDelayUI:InitTempleDelayTimeUI(r2_36, r1_36, r3_36)
 end
 function r6_0.OnTempleDelayEnd(r0_37)
-  -- line: [605, 610] id: 37
+  -- line: [606, 611] id: 37
   DebugPrint("zwk OnTempleDelayEnd")
   if r0_37.CurDelayUI then
     r0_37.CurDelayUI:CloseDungeonUI()
   end
 end
 function r6_0.GetTrainingComp(r0_38)
-  -- line: [612, 619] id: 38
+  -- line: [613, 620] id: 38
   local r1_38 = UE4.UGameplayStatics.GetGameMode(r0_38)
   if r1_38 then
     return r1_38:GetDungeonComponent()
@@ -636,28 +637,28 @@ function r6_0.GetTrainingComp(r0_38)
   return nil
 end
 function r6_0.TrainingOpenSetup(r0_39)
-  -- line: [621, 623] id: 39
+  -- line: [622, 624] id: 39
   r0_39:GetTrainingComp():TrainingOpenSetup()
 end
 function r6_0.TrainingCharacterSkills(r0_40)
-  -- line: [625, 627] id: 40
+  -- line: [626, 628] id: 40
   r0_40:GetTrainingComp():TrainingCharacterSkills()
 end
 function r6_0.TrainingKillMonsters(r0_41)
-  -- line: [629, 632] id: 41
+  -- line: [630, 633] id: 41
   AudioManager(r0_41):PlayUISound(r0_41, "event:/ui/common/btn_killer_all", nil, nil)
   r0_41:GetTrainingComp():TrainingKillMonsters()
 end
 function r6_0.TrainingSetPlayerInvincible(r0_42)
-  -- line: [634, 636] id: 42
+  -- line: [635, 637] id: 42
   r0_42:GetTrainingComp():TrainingSetPlayerInvincible()
 end
 function r6_0.TrainingDisableMonsterAI(r0_43)
-  -- line: [638, 640] id: 43
+  -- line: [639, 641] id: 43
   r0_43:GetTrainingComp():TrainingDisableMonsterAI()
 end
 function r6_0.InitUID(r0_44)
-  -- line: [642, 651] id: 44
+  -- line: [643, 652] id: 44
   r0_44.Text_BottomTips:SetText(GText("UI_Loading_Testing"))
   local r1_44 = GWorld:GetAvatar()
   if r1_44 and r1_44.Uid ~= 0 then
@@ -668,14 +669,14 @@ function r6_0.InitUID(r0_44)
   end
 end
 function r6_0.InitEsc(r0_45)
-  -- line: [653, 659] id: 45
+  -- line: [654, 660] id: 45
   r0_45.Btn_Esc.bForceInvisible = nil
   r0_45.Btn_Esc.Btn_top.OnClicked:Add(r0_45, r0_45.OpenCommonSetup)
   r0_45.Btn_Esc:LoadImage(11)
   r0_45:_RefreshEscReddot()
 end
 function r6_0.Destruct(r0_46)
-  -- line: [661, 675] id: 46
+  -- line: [662, 676] id: 46
   for r5_46, r6_46 in pairs(r0_46.TeammateEidSet and {}) do
     r0_46:RemoveTeammateUI(r5_46, r6_46)
   end
@@ -691,7 +692,7 @@ function r6_0.Destruct(r0_46)
   r6_0.Super.Destruct(r0_46)
 end
 function r6_0.InitDataPhone(r0_47)
-  -- line: [677, 696] id: 47
+  -- line: [678, 697] id: 47
   if r0_47.Battery then
     local r1_47 = r0_47.Battery.HB_Battery
     local r3_47 = UUCloudGameInstanceSubsystem.IsCloudGame()
@@ -726,12 +727,12 @@ function r6_0.InitDataPhone(r0_47)
   r0_47:AddTimer(5, r0_47.UpdateDataPhone, true)
 end
 function r6_0.UpdateDataPhone(r0_48)
-  -- line: [698, 701] id: 48
+  -- line: [699, 702] id: 48
   r0_48:SetBattery(UE4.UUIFunctionLibrary.GetBatteryLevel(), r0_48.BatteryLevel)
   r0_48:UpdateSignalStrength(r0_48.SignalStrength)
 end
 function r6_0.SetBattery(r0_49, r1_49, r2_49)
-  -- line: [703, 720] id: 49
+  -- line: [704, 721] id: 49
   if r1_49 and not r2_49 then
     if r1_49 <= 20 then
       r0_49.Battery:PlayAnimation(r0_49.Battery.Low_Battery)
@@ -750,7 +751,7 @@ function r6_0.SetBattery(r0_49, r1_49, r2_49)
   end
 end
 function r6_0.UpdateSignalStrength(r0_50, r1_50)
-  -- line: [722, 758] id: 50
+  -- line: [723, 759] id: 50
   local r2_50 = UE4.UMobilePatchingLibrary.HasActiveWiFiConnection()
   local r3_50 = r0_50.Battery.Switcher_Net
   local r5_50 = nil	-- notice: implicit variable refs by block#[3]
@@ -819,7 +820,7 @@ function r6_0.UpdateSignalStrength(r0_50, r1_50)
   r0_50.SignalStrength = r6_50
 end
 function r6_0.ExitHardBossBattle(r0_51)
-  -- line: [760, 775] id: 51
+  -- line: [761, 776] id: 51
   local r1_51 = UIManager(r0_51):GetUIObj("CommonDialog")
   if r1_51 then
     r1_51:Close()
@@ -835,7 +836,7 @@ function r6_0.ExitHardBossBattle(r0_51)
   end
 end
 function r6_0.ExitHardBattle(r0_52)
-  -- line: [777, 790] id: 52
+  -- line: [778, 791] id: 52
   local r1_52 = UIManager(r0_52):GetUIObj("CommonDialog")
   if r1_52 then
     r1_52:Close()
@@ -849,7 +850,7 @@ function r6_0.ExitHardBattle(r0_52)
   EventManager:FireEvent(EventID.OnSpecialQuestFail, "Exit")
 end
 function r6_0.ContinueBattle(r0_53)
-  -- line: [792, 799] id: 53
+  -- line: [793, 800] id: 53
   r0_53:SetInputUIOnly(false)
   local r1_53 = UE4.UGameplayStatics.GetPlayerCharacter(r0_53, 0)
   if IsStandAlone(r1_53) then
@@ -857,7 +858,7 @@ function r6_0.ContinueBattle(r0_53)
   end
 end
 function r6_0.OpenCommonSetup(r0_54)
-  -- line: [802, 813] id: 54
+  -- line: [803, 814] id: 54
   if TeamController:IsTeamPopupBarOpenInGamepad() then
     return 
   end
@@ -868,19 +869,19 @@ function r6_0.OpenCommonSetup(r0_54)
   r0_54:OpenSystemByAction("OpenCommonSetup")
 end
 function r6_0.OnPressGamePadRightSpecial(r0_55)
-  -- line: [814, 838] id: 55
+  -- line: [815, 839] id: 55
   DebugPrint("正在打开多人动作界面")
   local r1_55 = r0_55:GetOnlineActionBtn()
   if r1_55 then
     r0_0:LongPressKey(r1_55.Key_OnlineAction_GamePad, function()
-      -- line: [818, 821] id: 56
+      -- line: [819, 822] id: 56
       require("BluePrints.UI.WBP.BattleOnlineAction.OnlineActionController"):OpenView()
     end, 1)
     return 
   end
 end
 function r6_0.OnReleaseGmaePadRightSpecial(r0_57)
-  -- line: [840, 854] id: 57
+  -- line: [841, 855] id: 57
   local r1_57 = require("BluePrints.UI.WBP.BattleOnlineAction.OnlineActionController")
   if not r1_57.MainPage or not r1_57.MainPage:IsVisible() then
     local r2_57 = r0_57:GetOnlineActionBtn()
@@ -891,7 +892,7 @@ function r6_0.OnReleaseGmaePadRightSpecial(r0_57)
   end
 end
 function r6_0.GetOnlineActionBtn(r0_58)
-  -- line: [856, 864] id: 58
+  -- line: [857, 865] id: 58
   local r2_58 = require("BluePrints.UI.WBP.BattleOnlineAction.OnlineActionController").OnlineActionBtn and r0_58.OnlineActionBtn
   if IsValid(r2_58) and r2_58:IsVisible() then
     return r2_58
@@ -899,15 +900,15 @@ function r6_0.GetOnlineActionBtn(r0_58)
   return false
 end
 function r6_0.OpenSystemEntrance(r0_59)
-  -- line: [865, 867] id: 59
+  -- line: [866, 868] id: 59
   r0_59:OpenSystemByAction("OpenSystemEntrance")
 end
 function r6_0.CloseSystemEntrance(r0_60)
-  -- line: [869, 871] id: 60
+  -- line: [870, 872] id: 60
   r0_60:OpenSystemByAction("CloseSystemEntrance")
 end
 function r6_0.ShowSystemEntrance(r0_61)
-  -- line: [873, 883] id: 61
+  -- line: [874, 884] id: 61
   r0_61.IsShowSystemEntrance = true
   for r4_61 = 0, r0_61.ListView:GetNumItems() + -1, 1 do
     local r5_61 = r0_61.ListView:GetItemAt(r4_61)
@@ -918,7 +919,7 @@ function r6_0.ShowSystemEntrance(r0_61)
   r0_61.Btn_Task:ShowSystemEntranceOnGamePadInput(r0_61.IsShowSystemEntrance)
 end
 function r6_0.CloseSystemEntrance(r0_62)
-  -- line: [885, 895] id: 62
+  -- line: [886, 896] id: 62
   r0_62.IsShowSystemEntrance = false
   for r4_62 = 0, r0_62.ListView:GetNumItems() + -1, 1 do
     local r5_62 = r0_62.ListView:GetItemAt(r4_62)
@@ -929,7 +930,7 @@ function r6_0.CloseSystemEntrance(r0_62)
   r0_62.Btn_Task:ShowSystemEntranceOnGamePadInput(r0_62.IsShowSystemEntrance)
 end
 function r6_0.OpenArmory(r0_63)
-  -- line: [897, 908] id: 63
+  -- line: [898, 909] id: 63
   local r1_63 = UE4.UGameplayStatics.GetGameState(r0_63)
   if r1_63 and r1_63.GameModeType == "Trial" then
     local r2_63 = UE4.UGameplayStatics.GetGameMode(r0_63)
@@ -941,43 +942,43 @@ function r6_0.OpenArmory(r0_63)
   end
 end
 function r6_0.OpenBag(r0_64)
-  -- line: [910, 912] id: 64
+  -- line: [911, 913] id: 64
   r0_64:OpenSystemByAction("OpenBag")
 end
 function r6_0.OpenPlay(r0_65)
-  -- line: [914, 916] id: 65
+  -- line: [915, 917] id: 65
   r0_65:OpenSystemByAction("OpenPlay")
 end
 function r6_0.OpenTaskPanel(r0_66)
-  -- line: [918, 920] id: 66
+  -- line: [919, 921] id: 66
   r0_66:OpenSystemByAction("OpenTask")
 end
 function r6_0.OpenGuideBook(r0_67)
-  -- line: [922, 924] id: 67
+  -- line: [923, 925] id: 67
   r0_67:OpenSystemByAction("OpenGuideBook")
 end
 function r6_0.OpenBattlePass(r0_68)
-  -- line: [926, 928] id: 68
+  -- line: [927, 929] id: 68
   r0_68:OpenSystemByAction("OpenBattlePass")
 end
 function r6_0.OpenEvent(r0_69)
-  -- line: [930, 932] id: 69
+  -- line: [931, 933] id: 69
   r0_69:OpenSystemByAction("OpenEvent")
 end
 function r6_0.OpenForge(r0_70)
-  -- line: [934, 936] id: 70
+  -- line: [935, 937] id: 70
   r0_70:OpenSystemByAction("OpenForge")
 end
 function r6_0.OpenGacha(r0_71)
-  -- line: [938, 940] id: 71
+  -- line: [939, 941] id: 71
   r0_71:OpenSystemByAction("OpenGacha")
 end
 function r6_0.OpenRogueShop(r0_72)
-  -- line: [942, 945] id: 72
+  -- line: [943, 946] id: 72
   r0_72:GetGameInstance():GetGameUIManager():LoadUINew("RougeBag")
 end
 function r6_0.OpenSystemByAction(r0_73, r1_73, r2_73, ...)
-  -- line: [949, 990] id: 73
+  -- line: [950, 991] id: 73
   if not UIManager(r0_73):TryOpenSystem("BattleHUD") then
     return 
   end
@@ -1021,7 +1022,7 @@ function r6_0.OpenSystemByAction(r0_73, r1_73, r2_73, ...)
   end
 end
 function r6_0.AddTeammateUI(r0_74, r1_74, r2_74, r3_74)
-  -- line: [994, 1063] id: 74
+  -- line: [995, 1064] id: 74
   if GameState(r0_74).GameModeType == "Party" then
     DebugPrint("TeamSyncDebug  Party模式不创建队友血条UI", r1_74)
     return 
@@ -1101,7 +1102,7 @@ function r6_0.AddTeammateUI(r0_74, r1_74, r2_74, r3_74)
   r0_74.TeammateEidSet[r1_74] = r5_74
 end
 function r6_0.RemoveTeammateUI(r0_75, r1_75, r2_75)
-  -- line: [1065, 1084] id: 75
+  -- line: [1066, 1085] id: 75
   if r0_75:RemoveBattleTeamBloodBar(r1_75) then
     return 
   end
@@ -1111,7 +1112,7 @@ function r6_0.RemoveTeammateUI(r0_75, r1_75, r2_75)
   r2_75:BindToAnimationFinished(r2_75.Out, {
     r2_75,
     function()
-      -- line: [1073, 1076] id: 76
+      -- line: [1074, 1077] id: 76
       r2_75:UnbindAllFromAnimationFinished(r2_75.Out)
       r0_75.VB_Teammate_Phantom:RemoveChild(r2_75)
     end
@@ -1124,7 +1125,7 @@ function r6_0.RemoveTeammateUI(r0_75, r1_75, r2_75)
   end
 end
 function r6_0.UpdateRedDotStates(r0_77)
-  -- line: [1087, 1095] id: 77
+  -- line: [1088, 1096] id: 77
   DebugPrint("Tianyi@ UpdateRedDotStates")
   for r6_77, r7_77 in ipairs(r0_77.ListView:GetDisplayedEntryWidgets():ToTable()) do
     r7_77:UpdateRedDot()
@@ -1133,7 +1134,7 @@ function r6_0.UpdateRedDotStates(r0_77)
   r0_77.Btn_Task:RefreshNewClueUI()
 end
 function r6_0.InitConditionMapSystem(r0_78)
-  -- line: [1098, 1114] id: 78
+  -- line: [1099, 1115] id: 78
   r0_78.BattleEntry = r0_78:CreateWidgetNew("BattleEntry")
   r0_78.Pos_Entry:ClearChildren()
   r0_78.Pos_Entry:AddChild(r0_78.BattleEntry)
@@ -1152,7 +1153,7 @@ function r6_0.InitConditionMapSystem(r0_78)
   r0_78:AddDispatcher(EventID.OnAvatarStatusUpdate, r0_78, r0_78.OnAvatarStatusUpdate)
 end
 function r6_0.OnConditionComplete(r0_79, r1_79)
-  -- line: [1116, 1123] id: 79
+  -- line: [1117, 1124] id: 79
   if #r0_79.ConditionMapping == 0 then
     return 
   end
@@ -1161,11 +1162,11 @@ function r6_0.OnConditionComplete(r0_79, r1_79)
   end
 end
 function r6_0.OnAvatarStatusUpdate(r0_80, r1_80, r2_80)
-  -- line: [1125, 1127] id: 80
+  -- line: [1126, 1128] id: 80
   r0_80:InitMainUIInBigWorld()
 end
 function r6_0.InitMainUIInBigWorld(r0_81)
-  -- line: [1129, 1138] id: 81
+  -- line: [1130, 1139] id: 81
   r0_81.IsInHomebase = false
   local r1_81 = GWorld:GetAvatar()
   if r1_81 and r1_81:CheckSubRegionType(r1_81:GetCurrentRegionId(), CommonConst.SubRegionType.Home) and r1_81:IsInBigWorld() then
@@ -1176,7 +1177,7 @@ function r6_0.InitMainUIInBigWorld(r0_81)
   end
 end
 function r6_0.InitHomeBaseMain(r0_82)
-  -- line: [1140, 1155] id: 82
+  -- line: [1141, 1156] id: 82
   r0_82:InitBtnList()
   if not r0_82.SignBoardNpcLoadComplete then
     r0_82:TriggerSignBoardNpc()
@@ -1188,13 +1189,13 @@ function r6_0.InitHomeBaseMain(r0_82)
     r0_82:AddDispatcher(EventID.OnCharSkinChanged, r0_82, r0_82.OnCharSkinChange)
     r0_82:AddDispatcher(EventID.OnCharColorsChanged, r0_82, r0_82.OnCharColorsChanged)
     r0_82:AddDispatcher(EventID.OnWindowResized, r0_82, function(r0_83)
-      -- line: [1151, 1153] id: 83
+      -- line: [1152, 1154] id: 83
       r0_83.bRebuildChatSimple = true
     end)
   end
 end
 function r6_0.InitBtnList(r0_84)
-  -- line: [1157, 1192] id: 84
+  -- line: [1158, 1193] id: 84
   local r1_84 = DataMgr.MainUI
   local r2_84 = GWorld:GetAvatar()
   if not r2_84 then
@@ -1232,7 +1233,7 @@ function r6_0.InitBtnList(r0_84)
   r0_84:InitEsc()
 end
 function r6_0.InitGuideBookBtn(r0_85)
-  -- line: [1194, 1205] id: 85
+  -- line: [1195, 1206] id: 85
   if r0_85:CheckUIUnlock(DataMgr.MainUI[13].UIUnlockRuleName) then
     r0_85.Btn_GuideBook:LoadImage(13)
     r0_85.Btn_GuideBook.Btn_top.OnClicked:Add(r0_85, r0_85.OpenGuideBook)
@@ -1244,7 +1245,7 @@ function r6_0.InitGuideBookBtn(r0_85)
   end
 end
 function r6_0.InitTaskPanelBtn(r0_86)
-  -- line: [1207, 1244] id: 86
+  -- line: [1208, 1245] id: 86
   local r1_86 = GWorld:GetAvatar()
   if not r1_86 then
     return 
@@ -1277,7 +1278,7 @@ function r6_0.InitTaskPanelBtn(r0_86)
   end
 end
 function r6_0.CheckUIUnlock(r0_87, r1_87)
-  -- line: [1246, 1255] id: 87
+  -- line: [1247, 1256] id: 87
   local r3_87 = DataMgr.UIUnlockRule[r1_87].UIUnlockRuleId
   local r4_87 = GWorld:GetAvatar()
   if r4_87 and r3_87 then
@@ -1287,11 +1288,11 @@ function r6_0.CheckUIUnlock(r0_87, r1_87)
   end
 end
 function r6_0.InitSystemEntrance(r0_88)
-  -- line: [1257, 1290] id: 88
+  -- line: [1258, 1291] id: 88
   local r1_88 = UE4.LoadClass("/Game/UI/WBP/Battle/Widget/WBP_Main_Btnlist_Content.WBP_Main_Btnlist_Content_C")
   r0_88.ListView:ClearListItems()
   table.sort(r0_88.SystemSortList, function(r0_89, r1_89)
-    -- line: [1260, 1262] id: 89
+    -- line: [1261, 1263] id: 89
     return r1_89.Sequence < r0_89.Sequence
   end)
   local r2_88 = GWorld:GetAvatar()
@@ -1319,7 +1320,7 @@ function r6_0.InitSystemEntrance(r0_88)
   end
 end
 function r6_0.TriggerSignBoardNpc(r0_90)
-  -- line: [1292, 1316] id: 90
+  -- line: [1293, 1317] id: 90
   local r1_90 = GWorld:GetAvatar()
   local r3_90 = UE4.UGameplayStatics.GetGameState(r0_90).StaticCreatorMap:ToTable()
   local r4_90 = {
@@ -1350,7 +1351,7 @@ function r6_0.TriggerSignBoardNpc(r0_90)
 end
 local r7_0 = UE.EStoryLogType.NPC
 function r6_0.SetSignBoardNpcIdle(r0_91)
-  -- line: [1318, 1355] id: 91
+  -- line: [1319, 1356] id: 91
   local r1_91 = GWorld:GetAvatar()
   if r1_91 == nil then
     return 
@@ -1362,7 +1363,7 @@ function r6_0.SetSignBoardNpcIdle(r0_91)
       if r9_91 and r9_91.ShowAnimationId then
         local r11_91 = r9_91.ShowAnimationId[r7_91]
         r2_91:GetNpcInfoAsync(r8_91, function(r0_92)
-          -- line: [1330, 1350] id: 92
+          -- line: [1331, 1351] id: 92
           if not IsValid(r0_92) then
             UStoryLogUtils.PrintToFeiShu(GWorld.GameInstance, r7_0, "看板娘Npc加载失败", string.format("NpcId: %d 加载失败，确认下是该看板娘被删除或者其他原因", r8_91 and -1))
             return 
@@ -1388,7 +1389,7 @@ function r6_0.SetSignBoardNpcIdle(r0_91)
   r0_91.SignBoardNpcLoadComplete = true
 end
 function r6_0.OnCharAccessoryChange(r0_93, r1_93, r2_93)
-  -- line: [1357, 1387] id: 93
+  -- line: [1358, 1388] id: 93
   -- notice: unreachable block#13
   if r1_93 == ErrorCode.RET_SUCCESS then
     local r3_93 = GWorld:GetAvatar()
@@ -1408,7 +1409,7 @@ function r6_0.OnCharAccessoryChange(r0_93, r1_93, r2_93)
           local r15_93 = r12_93.ShowAnimationId
           local r16_93 = r15_93 and r15_93[r10_93]
           r14_93:GetNpcInfoAsync(r11_93, function(r0_94)
-            -- line: [1372, 1381] id: 94
+            -- line: [1373, 1382] id: 94
             if not IsValid(r0_94) then
               return 
             end
@@ -1429,7 +1430,7 @@ function r6_0.OnCharAccessoryChange(r0_93, r1_93, r2_93)
   end
 end
 function r6_0.OnCharColorsChanged(r0_95, r1_95, r2_95)
-  -- line: [1389, 1396] id: 95
+  -- line: [1390, 1397] id: 95
   if r1_95 == ErrorCode.RET_SUCCESS then
     local r3_95 = DataMgr.Skin[r2_95]
     if not r3_95 then
@@ -1439,7 +1440,7 @@ function r6_0.OnCharColorsChanged(r0_95, r1_95, r2_95)
   end
 end
 function r6_0.OnCharSkinChange(r0_96, r1_96, r2_96)
-  -- line: [1398, 1407] id: 96
+  -- line: [1399, 1408] id: 96
   if r1_96 == ErrorCode.RET_SUCCESS then
     local r3_96 = GWorld:GetAvatar()
     if not r3_96 then
@@ -1453,7 +1454,7 @@ function r6_0.OnCharSkinChange(r0_96, r1_96, r2_96)
   end
 end
 function r6_0.UpdateSignBoardNpcSkin(r0_97, r1_97)
-  -- line: [1409, 1442] id: 97
+  -- line: [1410, 1443] id: 97
   local r2_97 = GWorld:GetAvatar()
   local r3_97 = nil
   for r8_97, r9_97 in pairs(r2_97.Chars) do
@@ -1471,7 +1472,7 @@ function r6_0.UpdateSignBoardNpcSkin(r0_97, r1_97)
         if r10_97.ShowAnimationId then
           local r14_97 = r10_97.ShowAnimationId[r8_97]
           r12_97:GetNpcInfoAsync(r9_97, function(r0_98)
-            -- line: [1427, 1436] id: 98
+            -- line: [1428, 1437] id: 98
             if not IsValid(r0_98) then
               return 
             end
@@ -1494,9 +1495,9 @@ function r6_0.UpdateSignBoardNpcSkin(r0_97, r1_97)
   -- close: r8_97
 end
 function r6_0.OnHomeBaseBtnPlayAnim(r0_99, r1_99, r2_99)
-  -- line: [1445, 1452] id: 99
+  -- line: [1446, 1453] id: 99
   r0_99:AddTimer(0.01, function()
-    -- line: [1446, 1451] id: 100
+    -- line: [1447, 1452] id: 100
     for r5_100, r6_100 in ipairs(r0_99.ListView:GetDisplayedEntryWidgets():ToTable()) do
       r6_100:OnHomeBaseBtnPlayAnim(r1_99, r2_99)
     end
@@ -1504,7 +1505,7 @@ function r6_0.OnHomeBaseBtnPlayAnim(r0_99, r1_99, r2_99)
   end, nil, nil, nil, false)
 end
 function r6_0.OnSwitchRole(r0_101)
-  -- line: [1453, 1462] id: 101
+  -- line: [1454, 1463] id: 101
   for r4_101 = 0, r0_101.ListView:GetNumItems() + -1, 1 do
     local r5_101 = r0_101.ListView:GetItemAt(r4_101)
     if r5_101 and r5_101.BtnId == CommonConst.ArmoryEnterId and r5_101.SelfWidget then
@@ -1513,7 +1514,7 @@ function r6_0.OnSwitchRole(r0_101)
   end
 end
 function r6_0.OnSystemUIUnLoad(r0_102, r1_102)
-  -- line: [1464, 1477] id: 102
+  -- line: [1465, 1478] id: 102
   r0_102:RemovePlayInOutSystems(r1_102)
   local r2_102 = DataMgr.SystemUI[r1_102]
   if r2_102 and r2_102.IsHideBattleUnit and r2_102.IsHideBattleUnit ~= UIConst.EnumHideBattleUnitStyle.NormalShowAndHideAll and r2_102.IsHideBattleUnit ~= UIConst.EnumHideBattleUnitStyle.NormalShowAndHideAllExceptSelf then
@@ -1525,7 +1526,7 @@ function r6_0.OnSystemUIUnLoad(r0_102, r1_102)
   r0_102:UnLoadSystem(r1_102)
 end
 function r6_0.UnLoadSystem(r0_103, r1_103)
-  -- line: [1479, 1498] id: 103
+  -- line: [1480, 1499] id: 103
   local r2_103 = DataMgr.MainUI
   local r3_103 = false
   r0_103:RemovePlayInOutSystems(r1_103)
@@ -1546,7 +1547,7 @@ function r6_0.UnLoadSystem(r0_103, r1_103)
   return r3_103
 end
 function r6_0.CheckNeedPlayInOutAnim(r0_104, r1_104)
-  -- line: [1500, 1508] id: 104
+  -- line: [1501, 1509] id: 104
   if r1_104 == CommonConst.ArmoryEnterId then
     return false
   elseif r1_104 == r1_0.MainUIId then
@@ -1555,7 +1556,7 @@ function r6_0.CheckNeedPlayInOutAnim(r0_104, r1_104)
   return true
 end
 function r6_0.TryRecoverUI(r0_105)
-  -- line: [1510, 1520] id: 105
+  -- line: [1511, 1521] id: 105
   local r1_105 = UE4.UGameplayStatics.GetPlayerCharacter(r0_105, 0)
   if IsValid(r1_105) and r1_105.IsImmersionModel then
     r0_105:SetVisibility(UIConst.VisibilityOp.Collapsed)
@@ -1569,7 +1570,7 @@ function r6_0.TryRecoverUI(r0_105)
   return true
 end
 function r6_0.PlayInAnim(r0_106)
-  -- line: [1522, 1544] id: 106
+  -- line: [1523, 1545] id: 106
   if r0_106:CheckPlayInOutSystems() then
     return 
   end
@@ -1579,7 +1580,7 @@ function r6_0.PlayInAnim(r0_106)
   r0_106:BindToAnimationFinished(r0_106.In, {
     r0_106,
     function()
-      -- line: [1528, 1531] id: 107
+      -- line: [1529, 1532] id: 107
       r0_106:UnbindAllFromAnimationFinished(r0_106.In)
     end
   })
@@ -1592,7 +1593,7 @@ function r6_0.PlayInAnim(r0_106)
   end
 end
 function r6_0._RefreshEscReddot(r0_108)
-  -- line: [1546, 1558] id: 108
+  -- line: [1547, 1559] id: 108
   local r1_108 = ReddotManager.GetTreeNode("BattleMainMenu")
   if r1_108 then
     r1_108:TryFireOnCountChange(r1_108.Count, true)
@@ -1602,7 +1603,7 @@ function r6_0._RefreshEscReddot(r0_108)
   end
 end
 function r6_0.AddPlayInOutSystems(r0_109, r1_109)
-  -- line: [1560, 1568] id: 109
+  -- line: [1561, 1569] id: 109
   if r1_109 == nil then
     return 
   end
@@ -1612,7 +1613,7 @@ function r6_0.AddPlayInOutSystems(r0_109, r1_109)
   r0_109.PlayInOutSystems[r1_109] = true
 end
 function r6_0.RemovePlayInOutSystems(r0_110, r1_110)
-  -- line: [1571, 1579] id: 110
+  -- line: [1572, 1580] id: 110
   if r1_110 == nil then
     return 
   end
@@ -1622,7 +1623,7 @@ function r6_0.RemovePlayInOutSystems(r0_110, r1_110)
   return true
 end
 function r6_0.CheckPlayInOutSystems(r0_111)
-  -- line: [1581, 1590] id: 111
+  -- line: [1582, 1591] id: 111
   for r5_111, r6_111 in pairs(r0_111.PlayInOutSystems) do
     if r6_111 then
       DebugPrint("--jzn---系统" .. r5_111 .. "还未关闭,无需播放主界面的In")
@@ -1634,7 +1635,7 @@ function r6_0.CheckPlayInOutSystems(r0_111)
   return false
 end
 function r6_0.PlayOutAnim(r0_112, r1_112, r2_112, r3_112)
-  -- line: [1592, 1610] id: 112
+  -- line: [1593, 1611] id: 112
   DebugPrint("-----Jzn---主界面 out-------")
   r0_112:SetUIVisibilityTag("PlayBattleAni", true)
   r0_112:StopAnimation(r0_112.In)
@@ -1648,14 +1649,14 @@ function r6_0.PlayOutAnim(r0_112, r1_112, r2_112, r3_112)
   r0_112:BindToAnimationFinished(r0_112.Out, {
     r0_112,
     function()
-      -- line: [1604, 1608] id: 113
+      -- line: [1605, 1609] id: 113
       r0_112.IsPlayOutAnim = false
       r0_112:SetVisibility(UE4.ESlateVisibility.Collapsed)
     end
   })
 end
 function r6_0.PlayDeathMaskIn(r0_114)
-  -- line: [1613, 1619] id: 114
+  -- line: [1614, 1620] id: 114
   local r1_114 = r0_114:GetOrAddWidget("DeathMask", r0_114.Pos_Death)
   if r1_114 then
     r1_114:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
@@ -1663,7 +1664,7 @@ function r6_0.PlayDeathMaskIn(r0_114)
   end
 end
 function r6_0.PlayDeathMaskOut(r0_115)
-  -- line: [1621, 1633] id: 115
+  -- line: [1622, 1634] id: 115
   local r1_115 = r0_115:GetOrAddWidget("DeathMask", r0_115.Pos_Death)
   if r1_115 then
     if r1_115.Panel_Death:GetVisibility() == UE4.ESlateVisibility.Visible then
@@ -1675,7 +1676,7 @@ function r6_0.PlayDeathMaskOut(r0_115)
   end
 end
 function r6_0.ShowPlayerDeadUI(r0_116)
-  -- line: [1636, 1658] id: 116
+  -- line: [1637, 1659] id: 116
   if UIManager(r0_116):GetUI(UE4.UGameplayStatics.GetPlayerCharacter(r0_116, 0):GetCurRecoveryUIName()) then
     r0_116:ShowOrHideMainPlayerBloodUI(false, "Dead")
     r0_116:HideSubSystem("Char_Skill", "Dead", true)
@@ -1692,7 +1693,7 @@ function r6_0.ShowPlayerDeadUI(r0_116)
   end
 end
 function r6_0.HidePlayerDeadUI(r0_117)
-  -- line: [1661, 1701] id: 117
+  -- line: [1662, 1702] id: 117
   r0_117:ShowOrHideMainPlayerBloodUI(true, "Dead")
   r0_117:HideSubSystem("Char_Skill", "Dead", false)
   r0_117.Char_Skill:OnUpdateCharSp(nil, UE4.UGameplayStatics.GetPlayerCharacter(r0_117, 0))
@@ -1735,7 +1736,7 @@ function r6_0.HidePlayerDeadUI(r0_117)
   end
 end
 function r6_0.ShowBattleFortUI(r0_118)
-  -- line: [1704, 1725] id: 118
+  -- line: [1705, 1726] id: 118
   local r1_118 = UIManager(r0_118):GetUI("BattleFort")
   if r1_118 then
     if r1_118.HideUITable then
@@ -1759,7 +1760,7 @@ function r6_0.ShowBattleFortUI(r0_118)
   end
 end
 function r6_0.HideBattleFortUI(r0_119)
-  -- line: [1728, 1751] id: 119
+  -- line: [1729, 1752] id: 119
   local r1_119 = UIManager(r0_119):GetUI("BattleFort")
   if r1_119 then
     if r1_119.HideUITable then
@@ -1785,7 +1786,7 @@ function r6_0.HideBattleFortUI(r0_119)
   end
 end
 function r6_0.ShowFeinaEventHUD(r0_120)
-  -- line: [1753, 1774] id: 120
+  -- line: [1754, 1775] id: 120
   local r1_120 = UIManager(r0_120):LoadUINew("FeinaEventHUD")
   if r1_120 then
     if r1_120.HideUITable then
@@ -1807,7 +1808,7 @@ function r6_0.ShowFeinaEventHUD(r0_120)
   end
 end
 function r6_0.HideFeinaEventHUD(r0_121)
-  -- line: [1776, 1798] id: 121
+  -- line: [1777, 1799] id: 121
   local r1_121 = UIManager(r0_121):GetUI("FeinaEventHUD")
   if r1_121 then
     if r1_121.HideUITable then
@@ -1830,14 +1831,14 @@ function r6_0.HideFeinaEventHUD(r0_121)
   end
 end
 function r6_0.ShowOrHideMainPlayerBloodUI(r0_122, r1_122, r2_122)
-  -- line: [1800, 1805] id: 122
+  -- line: [1801, 1806] id: 122
   DebugPrint("WBP_Battle_C:ShowOrHideMainPlayerBloodUI", r1_122, r2_122)
   if r0_122.HUD_MainBar then
     r0_122.HUD_MainBar:SetUIVisibilityTag(r2_122, not r1_122)
   end
 end
 function r6_0.ShowOrHideTeamDataTag(r0_123, r1_123)
-  -- line: [1807, 1824] id: 123
+  -- line: [1808, 1825] id: 123
   local r2_123 = nil
   if CommonUtils.GetDeviceTypeByPlatformName(r0_123) == "Mobile" then
     r2_123 = nil
@@ -1854,7 +1855,7 @@ function r6_0.ShowOrHideTeamDataTag(r0_123, r1_123)
   end
 end
 function r6_0.SetUIVisibilityTag(r0_124, r1_124, r2_124)
-  -- line: [1837, 1879] id: 124
+  -- line: [1838, 1880] id: 124
   if not IsValid(r0_124) then
     return 
   end
@@ -1893,11 +1894,11 @@ function r6_0.SetUIVisibilityTag(r0_124, r1_124, r2_124)
   end
 end
 function r6_0.OnBattleMapClose(r0_125)
-  -- line: [1881, 1883] id: 125
+  -- line: [1882, 1884] id: 125
   r0_125.Battle_Map:OnClickClose()
 end
 function r6_0.SetVisibility(r0_126, r1_126)
-  -- line: [1885, 1892] id: 126
+  -- line: [1886, 1893] id: 126
   r0_126.Overridden.SetVisibility(r0_126, r1_126)
   if IsValid(r0_126.Joystick) then
     r0_126.Joystick:SetTouchVisibilityFromBattle(r1_126)
@@ -1906,7 +1907,7 @@ function r6_0.SetVisibility(r0_126, r1_126)
   end
 end
 function r6_0.ShowInstructionInfo(r0_127, r1_127, r2_127)
-  -- line: [1894, 1921] id: 127
+  -- line: [1895, 1922] id: 127
   local r3_127 = CommonUtils:GetDeviceTypeByPlatformName(r0_127)
   r0_127.Pos_Instruction:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
   local r4_127 = r0_127.Pos_Instruction:GetChildAt(0)
@@ -1931,14 +1932,14 @@ function r6_0.ShowInstructionInfo(r0_127, r1_127, r2_127)
   end
 end
 function r6_0.HideDynamicEventUI(r0_128)
-  -- line: [1923, 1929] id: 128
+  -- line: [1924, 1930] id: 128
   local r1_128 = r0_128:GetOrAddDynamicEventWidget()
   if r1_128 then
     r1_128:SetVisibility(UE4.ESlateVisibility.Collapsed)
   end
 end
 function r6_0.OnTeammateDie(r0_129, r1_129)
-  -- line: [1931, 1937] id: 129
+  -- line: [1932, 1938] id: 129
   local r2_129 = UE4.UGameplayStatics.GetPlayerCharacter(r0_129, 0)
   local r3_129 = Battle(r0_129):GetEntity(r1_129)
   if r2_129.Eid ~= r1_129 then
@@ -1946,7 +1947,7 @@ function r6_0.OnTeammateDie(r0_129, r1_129)
   end
 end
 function r6_0.OnTeammateRecovery(r0_130, r1_130)
-  -- line: [1939, 1954] id: 130
+  -- line: [1940, 1955] id: 130
   local r2_130 = UE4.UGameplayStatics.GetPlayerCharacter(r0_130, 0)
   local r3_130 = Battle(r0_130):GetEntity(r1_130)
   if r2_130.Eid ~= r1_130 then
@@ -1963,7 +1964,7 @@ function r6_0.OnTeammateRecovery(r0_130, r1_130)
   end
 end
 function r6_0.CreatTakeAimIndicator(r0_131)
-  -- line: [1956, 1966] id: 131
+  -- line: [1957, 1967] id: 131
   r0_131.TakeAimIndicator = r0_131:CreateWidgetNew("TakeAimIndicator")
   if r0_131.TakeAimIndicator then
     local r1_131 = r0_131.Pos_Aim:AddChildToOverlay(r0_131.TakeAimIndicator)
@@ -1974,19 +1975,19 @@ function r6_0.CreatTakeAimIndicator(r0_131)
   end
 end
 function r6_0.EndAim(r0_132)
-  -- line: [1968, 1970] id: 132
+  -- line: [1969, 1971] id: 132
   r0_132.Pos_Aim:ClearChildren()
 end
 function r6_0.GetTakeAimIndicator(r0_133)
-  -- line: [1972, 1974] id: 133
+  -- line: [1973, 1975] id: 133
   return r0_133.TakeAimIndicator
 end
 function r6_0.OnKeyDown(r0_134, r1_134, r2_134)
-  -- line: [1976, 1978] id: 134
+  -- line: [1977, 1979] id: 134
   return r0_0.Unhandled
 end
 function r6_0.OnPreviewKeyDown(r0_135, r1_135, r2_135)
-  -- line: [1980, 1992] id: 135
+  -- line: [1981, 1993] id: 135
   local r4_135 = UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_135))
   if r4_135 == UIConst.GamePadKey.DPadDown or r4_135 == UIConst.GamePadKey.DPadUp or r4_135 == UIConst.GamePadKey.DPadRight or r4_135 == UIConst.GamePadKey.DPadLeft then
     return r0_0.Handled
@@ -1994,7 +1995,7 @@ function r6_0.OnPreviewKeyDown(r0_135, r1_135, r2_135)
   return r0_0.Unhandled
 end
 function r6_0.StartRougeCanonCountDown(r0_136)
-  -- line: [1994, 2000] id: 136
+  -- line: [1995, 2001] id: 136
   r0_136.Pos_Rouge_CountDown:ClearChildren()
   r0_136.RougeGameCountDown = r0_136:CreateWidgetNew("RougeGameCountDown")
   r0_136.Pos_Rouge_CountDown:AddChild(r0_136.RougeGameCountDown)
@@ -2002,18 +2003,18 @@ function r6_0.StartRougeCanonCountDown(r0_136)
   r0_136.Pos_Rouge_CountDown:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
 end
 function r6_0.RefreshRougeGameCountDown(r0_137, r1_137)
-  -- line: [2002, 2006] id: 137
+  -- line: [2003, 2007] id: 137
   if r0_137.RougeGameCountDown then
     r0_137.RougeGameCountDown:RefreshTime(r1_137)
   end
 end
 function r6_0.OnEndRougeCanonMiniGame(r0_138)
-  -- line: [2008, 2011] id: 138
+  -- line: [2009, 2012] id: 138
   r0_138.Pos_Rouge_CountDown:ClearChildren()
   r0_138.Pos_Rouge_CountDown:SetVisibility(UIConst.VisibilityOp.Collapsed)
 end
 function r6_0.HideSubSystem(r0_139, r1_139, r2_139, r3_139)
-  -- line: [2013, 2033] id: 139
+  -- line: [2014, 2034] id: 139
   if not r2_139 or not r1_139 then
     return 
   end
@@ -2035,13 +2036,13 @@ function r6_0.HideSubSystem(r0_139, r1_139, r2_139, r3_139)
   end
 end
 function r6_0.SetSubSystemVisibility(r0_140, r1_140, r2_140)
-  -- line: [2035, 2041] id: 140
+  -- line: [2036, 2042] id: 140
   if r0_140[r1_140] and not r0_140:IsSubSystemHide(r1_140) then
     r0_140[r1_140]:SetVisibility(r2_140)
   end
 end
 function r6_0.IsSubSystemHide(r0_141, r1_141)
-  -- line: [2043, 2054] id: 141
+  -- line: [2044, 2055] id: 141
   if not r1_141 or not r0_141[r1_141] then
     DebugPrint("System Does Not Exist. Name: ", r1_141)
     return 
@@ -2054,7 +2055,7 @@ function r6_0.IsSubSystemHide(r0_141, r1_141)
   end
 end
 function r6_0.OnTempleRightUI(r0_142)
-  -- line: [2056, 2071] id: 142
+  -- line: [2057, 2072] id: 142
   r0_142.Group_Temple:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
   r0_142.Pos_TempleRight:ClearChildren()
   r0_142.TempleRightUI = r0_142:CreateWidgetNew("DungeonTempleRight")
@@ -2067,20 +2068,20 @@ function r6_0.OnTempleRightUI(r0_142)
   end
 end
 function r6_0.OnPartyEnter(r0_143)
-  -- line: [2073, 2078] id: 143
+  -- line: [2074, 2079] id: 143
   local r1_143 = r3_0:GetTaskBarWidget()
   if r1_143 then
     r1_143:SetUIVisibilityTag("Party", true)
   end
 end
 function r6_0.OnPartyProgressStart(r0_144)
-  -- line: [2080, 2084] id: 144
+  -- line: [2081, 2085] id: 144
   r0_144.PartyProgress = r0_144:CreateWidgetNew("PartyProgress")
   r0_144.PartyProgress:ConstructInfo()
   r0_144.Pos_TempleProgress:AddChild(r0_144.PartyProgress)
 end
 function r6_0.OnModBookQuestFinished(r0_145, r1_145)
-  -- line: [2087, 2096] id: 145
+  -- line: [2088, 2097] id: 145
   DebugPrint("zwk OnModBookQuestFinished", r1_145)
   if not r0_145.ModArchives then
     r0_145.ModArchives = TArray(0)
@@ -2091,11 +2092,11 @@ function r6_0.OnModBookQuestFinished(r0_145, r1_145)
   end
 end
 function r6_0.ShowModBookTips(r0_146, r1_146)
-  -- line: [2099, 2102] id: 146
+  -- line: [2100, 2103] id: 146
   UIManager(r0_146):LoadUINew("ModArchiveTaskTips", r0_146, r1_146)
 end
 function r6_0.OnPreModArchiveFinished(r0_147, r1_147)
-  -- line: [2105, 2113] id: 147
+  -- line: [2106, 2114] id: 147
   if r0_147.ModArchives then
     r0_147.ModArchives:RemoveItem(r1_147)
   end
@@ -2104,7 +2105,7 @@ function r6_0.OnPreModArchiveFinished(r0_147, r1_147)
   end
 end
 function r6_0.OnNotifyShowLargeCountDown(r0_148, r1_148, r2_148)
-  -- line: [2115, 2130] id: 148
+  -- line: [2116, 2131] id: 148
   local r3_148 = UE4.UGameplayStatics.GetGameInstance(r0_148)
   if r3_148:GetGameUIManager() == nil then
     return 
@@ -2120,7 +2121,7 @@ function r6_0.OnNotifyShowLargeCountDown(r0_148, r1_148, r2_148)
   r0_148:ShowCountDown(r6_148, r1_148 + 1, r2_148)
 end
 function r6_0.EMAfterInitialize(r0_149)
-  -- line: [2134, 2164] id: 149
+  -- line: [2135, 2165] id: 149
   r6_0.Super.EMAfterInitialize(r0_149)
   r0_149.Platform = CommonUtils.GetDeviceTypeByPlatformName(GWorld.GameInstance)
   if r0_149.Platform == CommonConst.CLIENT_DEVICE_TYPE.MOBILE then
@@ -2141,14 +2142,14 @@ function r6_0.EMAfterInitialize(r0_149)
   end
 end
 function r6_0.OnHomeBaseeBtnShowNewClue(r0_150, r1_150)
-  -- line: [2169, 2173] id: 150
+  -- line: [2170, 2174] id: 150
   r0_150:AddTimer(5, function()
-    -- line: [2170, 2172] id: 151
+    -- line: [2171, 2173] id: 151
     r0_150.Btn_Task:OnHomeBaseeBtnShowNewClue(r1_150)
   end, nil, nil, nil, false)
 end
 function r6_0.OnNewDetectiveQuestion(r0_152, r1_152, r2_152)
-  -- line: [2175, 2199] id: 152
+  -- line: [2176, 2200] id: 152
   local r3_152 = DataMgr.DetectiveQuestion[r1_152]
   if not r3_152 then
     return 
@@ -2158,7 +2159,7 @@ function r6_0.OnNewDetectiveQuestion(r0_152, r1_152, r2_152)
   end
   local r4_152 = nil
   r0_152:AddTimer(1, function()
-    -- line: [2185, 2195] id: 153
+    -- line: [2186, 2196] id: 153
     r4_152 = UIManager(r0_152):CreateWidget("WidgetBlueprint\'/Game/UI/WBP/Reasoning/Widget/WBP_Reasoning_Toast.WBP_Reasoning_Toast\'", true)
     r4_152.Text_Title:SetText(GText(r3_152.Tips))
     r4_152.Text_Status:SetText(GText("Minigame_Textmap_100301"))
@@ -2169,23 +2170,23 @@ function r6_0.OnNewDetectiveQuestion(r0_152, r1_152, r2_152)
     AudioManager(r0_152):PlayUISound(r0_152, "event:/ui/common/tuili_clue_toast", nil, nil)
   end, nil, nil, nil, false)
   r0_152:AddTimer(3, function()
-    -- line: [2196, 2198] id: 154
+    -- line: [2197, 2199] id: 154
     r4_152:PlayAnimation(r4_152.Out)
   end, nil, nil, nil, false)
 end
 function r6_0.CreateFortBack(r0_155)
-  -- line: [2202, 2207] id: 155
+  -- line: [2203, 2208] id: 155
   r0_155.Pos_FortBack:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
   r0_155.Pos_FortBack:ClearChildren()
   return r0_155:GetOrAddWidget("FortBackKey", r0_155.Pos_FortBack)
 end
 function r6_0.DestoryFortBack(r0_156)
-  -- line: [2209, 2212] id: 156
+  -- line: [2210, 2213] id: 156
   r0_156.Pos_FortBack:SetVisibility(UIConst.VisibilityOp.Collapsed)
   r0_156.Pos_FortBack:ClearChildren()
 end
 function r6_0.EnableGuideBookKey(r0_157, r1_157)
-  -- line: [2215, 2221] id: 157
+  -- line: [2216, 2222] id: 157
   if r1_157 then
     r0_157:ListenForInputAction("OpenGuideBook", EInputEvent.IE_Pressed, false, {
       r0_157,
@@ -2196,7 +2197,7 @@ function r6_0.EnableGuideBookKey(r0_157, r1_157)
   end
 end
 function r6_0.InitGameJumpWord(r0_158)
-  -- line: [2223, 2251] id: 158
+  -- line: [2224, 2252] id: 158
   local r1_158 = USubsystemBlueprintLibrary.GetWorldSubsystem(r0_158, UJumpWordManager)
   if r1_158 then
     local r2_158 = "DamageTextAmount"
@@ -2226,13 +2227,13 @@ function r6_0.InitGameJumpWord(r0_158)
   end
 end
 function r6_0.CheckTheaterEventState(r0_159)
-  -- line: [2253, 2269] id: 159
+  -- line: [2254, 2270] id: 159
   local r1_159 = GWorld:GetAvatar()
   if not r1_159 or r1_159.CurrentRegionId ~= 101901 then
     return 
   end
   r1_159:TheaterPerformStateGet(function(r0_160, r1_160)
-    -- line: [2258, 2267] id: 160
+    -- line: [2259, 2268] id: 160
     if r1_160 and r1_160.IsJoin == true and r0_160 == 0 then
       if r1_160.State == 0 or r1_160.State == 1 then
         r0_159:TheaterJoinPerformGame()
@@ -2243,7 +2244,7 @@ function r6_0.CheckTheaterEventState(r0_159)
   end)
 end
 function r6_0.TheaterJoinPerformGame(r0_161)
-  -- line: [2271, 2295] id: 161
+  -- line: [2272, 2293] id: 161
   if r0_161.TheaterCheckTimer then
     r0_161:RemoveTimer(r0_161.TheaterCheckTimer)
   end
@@ -2252,7 +2253,7 @@ function r6_0.TheaterJoinPerformGame(r0_161)
     return 
   end
   r1_161:TheaterPerformStateGet(function(r0_162, r1_162)
-    -- line: [2278, 2284] id: 162
+    -- line: [2279, 2285] id: 162
     if r1_162.State == 1 then
       r0_161:TheaterPerformGameStart(CommonConst.TheaterEventId, r1_162.PerformList)
       return 
@@ -2261,169 +2262,158 @@ function r6_0.TheaterJoinPerformGame(r0_161)
   r0_161.TheaterTaskTime = UIManager(r0_161):LoadUINew("TheaterTaskTime")
   r0_161.Task:AddChild(r0_161.TheaterTaskTime)
   r0_161.TheaterTaskTime.IsInit = true
+  r0_161.TheaterTaskTime:InitUI()
   r0_161.JoinTheaterGame = true
-  r0_161.TheaterCheckTimer = r0_161:AddTimer(1, function()
-    -- line: [2292, 2294] id: 163
-    r0_161:CheckTheaterStartTime()
-  end, true, 0, "TheaterTimeCheck", true)
 end
-function r6_0.CheckTheaterStartTime(r0_164)
-  -- line: [2297, 2313] id: 164
-  local r2_164 = os.date("*t", TimeUtils.NowTime())
-  local r3_164 = r2_164.min
-  local r4_164 = r2_164.sec
-  local r5_164 = nil	-- notice: implicit variable refs by block#[6]
-  if r3_164 ~= 0 or r4_164 ~= 0 then
-    if r3_164 == 30 then
-      r5_164 = r4_164 == 0
-    else
-      goto label_18	-- block#4 is visited secondly
-    end
-  else
-    goto label_19	-- block#5 is visited secondly
-  end
-  if r5_164 and r0_164.TheaterCheckTimer then
-    r0_164:RemoveTimer(r0_164.TheaterCheckTimer)
-    r0_164.TheaterCheckTimer = nil
-  end
-end
-function r6_0.OnTheaterPerformGameNotice(r0_165, r1_165)
-  -- line: [2315, 2329] id: 165
-  local r2_165 = GWorld:GetAvatar()
-  if not r2_165 then
+function r6_0.TheaterJoinPerformGameFail(r0_163)
+  -- line: [2295, 2302] id: 163
+  if r0_163.TheaterTaskTime then
     return 
   end
-  if UE4.UGameplayStatics.GetGameState(GWorld.GameInstance):IsInRegion() and r2_165.CurrentRegionId ~= 101901 then
-    for r7_165 = 0, r0_165.ListView:GetNumItems() + -1, 1 do
-      local r8_165 = r0_165.ListView:GetItemAt(r7_165)
-      if r8_165 and r8_165.BtnId == 19 and r8_165.SelfWidget then
-        r8_165.SelfWidget:RefreshNewTheaterUI()
+  DebugPrint("ayff test 加入剧院表演失败，显示失败UI time")
+  r0_163.TheaterTaskTime = UIManager(r0_163):LoadUINew("TheaterTaskTime")
+  r0_163.Task:AddChild(r0_163.TheaterTaskTime)
+  r0_163.TheaterTaskTime.IsInit = true
+  r0_163.TheaterTaskTime:InitFailUI()
+end
+function r6_0.OnTheaterPerformGameNotice(r0_164, r1_164)
+  -- line: [2304, 2318] id: 164
+  local r2_164 = GWorld:GetAvatar()
+  if not r2_164 then
+    return 
+  end
+  local r3_164 = UE4.UGameplayStatics.GetGameState(GWorld.GameInstance)
+  if not r2_164:IsInHardBoss() and r3_164:IsInRegion() and r2_164.CurrentRegionId ~= 101901 then
+    for r7_164 = 0, r0_164.ListView:GetNumItems() + -1, 1 do
+      local r8_164 = r0_164.ListView:GetItemAt(r7_164)
+      if r8_164 and r8_164.BtnId == 19 and r8_164.SelfWidget then
+        r8_164.SelfWidget:RefreshNewTheaterUI()
       end
     end
   end
 end
-function r6_0.TheaterPerformGameStart(r0_166, r1_166, r2_166, r3_166)
-  -- line: [2331, 2364] id: 166
-  local r4_166 = GWorld:GetAvatar()
-  if not r4_166 then
+function r6_0.TheaterPerformGameStart(r0_165, r1_165, r2_165, r3_165)
+  -- line: [2320, 2353] id: 165
+  local r4_165 = GWorld:GetAvatar()
+  if not r4_165 then
     return 
   end
-  if r0_166.TheaterTaskTime then
-    r0_166.Task:RemoveChild(r0_166.TheaterTaskTime)
-    r0_166.TheaterTaskTime:Close()
+  if r0_165.TheaterTaskTime then
+    r0_165.Task:RemoveChild(r0_165.TheaterTaskTime)
+    r0_165.TheaterTaskTime:Close()
   end
-  r0_166.TheaterToast = nil
-  r0_166.Pos_Rouge_CountDown:ClearChildren()
-  r4_166:TheaterPerformStateGet(function(r0_167, r1_167)
-    -- line: [2341, 2362] id: 167
-    if r0_167 == 0 and r1_167.IsJoin == true then
-      local r2_167 = GWorld:GetAvatar()
-      if not r2_167 then
+  r0_165.TheaterToast = nil
+  r0_165.Pos_Rouge_CountDown:ClearChildren()
+  r4_165:TheaterPerformStateGet(function(r0_166, r1_166)
+    -- line: [2330, 2351] id: 166
+    if r0_166 == 0 and r1_166.IsJoin == true then
+      local r2_166 = GWorld:GetAvatar()
+      if not r2_166 then
         return 
       end
-      local r3_167 = UE4.UGameplayStatics.GetGameState(GWorld.GameInstance)
-      local r4_167 = r2_167.CurrentRegionId
-      if not r3_167:IsInRegion() or r4_167 ~= 101901 then
-        DebugPrint("ayff test 当前不在剧院区域 RegionId:", r4_167)
+      local r3_166 = UE4.UGameplayStatics.GetGameState(GWorld.GameInstance)
+      local r4_166 = r2_166.CurrentRegionId
+      if not r3_166:IsInRegion() or r4_166 ~= 101901 or r2_166:IsInHardBoss() then
+        DebugPrint("ayff test 当前不在剧院区域 RegionId:", r4_166)
         return 
       end
-      r0_166.TheaterToast = UIManager(r0_166):LoadUINew("TheaterToast")
-      r0_166.TheaterToast.ParentWidget = r0_166
-      r0_166.Pos_Rouge_CountDown:AddChild(r0_166.TheaterToast)
-      r0_166.Pos_Rouge_CountDown:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
-      r0_166.TheaterToast.IsInit = true
-      r0_166.TheaterToast:UpdatePerformList(r2_166)
-      if r3_166 then
-        r0_166.TheaterToast.ReStartPerform = true
+      r0_165.TheaterToast = UIManager(r0_165):LoadUINew("TheaterToast")
+      r0_165.TheaterToast.ParentWidget = r0_165
+      r0_165.Pos_Rouge_CountDown:AddChild(r0_165.TheaterToast)
+      r0_165.Pos_Rouge_CountDown:SetVisibility(UE4.ESlateVisibility.SelfHitTestInvisible)
+      r0_165.TheaterToast.IsInit = true
+      r0_165.TheaterToast:UpdatePerformList(r2_165)
+      if r3_165 then
+        r0_165.TheaterToast.ReStartPerform = true
       end
     end
   end)
 end
-function r6_0.TeleportReady(r0_168, r1_168)
-  -- line: [2366, 2406] id: 168
-  local r2_168 = r3_0:GetTaskBarWidget()
-  if r2_168 then
-    if r1_168 and r1_168 == true then
-      r0_168:StopTeleportInDungeon(true)
+function r6_0.TeleportReady(r0_167, r1_167)
+  -- line: [2355, 2395] id: 167
+  local r2_167 = r3_0:GetTaskBarWidget()
+  if r2_167 then
+    if r1_167 and r1_167 == true then
+      r0_167:StopTeleportInDungeon(true)
       return 
     end
-    r2_168:SetTeleportBubble(true)
-    r0_168.IsShowingTeleportUI = true
-    if r2_168.Platform == "Mobile" then
-      r2_168.WBP_Btn_Tips3:SetVisibility(UE4.ESlateVisibility.Visable)
-      r2_168.WBP_Btn_Tips3.Text_Button:SetText(GText("DUNGEON_TELEPORT"))
-      r2_168.WBP_Btn_Tips3.Button_Area.OnClicked:Clear()
-      r2_168.WBP_Btn_Tips3.Button_Area.OnClicked:Add(r0_168, function()
-        -- line: [2382, 2398] id: 169
-        local r0_169 = {
+    r2_167:SetTeleportBubble(true)
+    r0_167.IsShowingTeleportUI = true
+    if r2_167.Platform == "Mobile" then
+      r2_167.WBP_Btn_Tips3:SetVisibility(UE4.ESlateVisibility.Visable)
+      r2_167.WBP_Btn_Tips3.Text_Button:SetText(GText("DUNGEON_TELEPORT"))
+      r2_167.WBP_Btn_Tips3.Button_Area.OnClicked:Clear()
+      r2_167.WBP_Btn_Tips3.Button_Area.OnClicked:Add(r0_167, function()
+        -- line: [2371, 2387] id: 168
+        local r0_168 = {
           RightCallbackFunction = function()
-            -- line: [2385, 2391] id: 170
-            r2_168:PlayAnimation(r2_168.Transmit_Out)
-            local r0_170 = UE4.UGameplayStatics.GetPlayerCharacter(r0_168, 0)
-            if r0_170 then
-              r0_170.RPCComponent:NotifyServerStartDelivery()
+            -- line: [2374, 2380] id: 169
+            r2_167:PlayAnimation(r2_167.Transmit_Out)
+            local r0_169 = UE4.UGameplayStatics.GetPlayerCharacter(r0_167, 0)
+            if r0_169 then
+              r0_169.RPCComponent:NotifyServerStartDelivery()
             end
           end,
           LeftCallbackFunction = nil,
           CloseBtnCallbackFunction = nil,
           AutoFocus = true,
         }
-        r2_168:RefreshTeleportBubble(true)
-        UIManager(r0_168):ShowCommonPopupUI(100267, r0_169, r0_168)
+        r2_167:RefreshTeleportBubble(true)
+        UIManager(r0_167):ShowCommonPopupUI(100267, r0_168, r0_167)
       end)
-    elseif r2_168.Platform == "PC" then
-      r2_168.Text_Tips04:SetText(GText("DUNGEON_TELEPORT_LONGPRESS"))
-      r0_168:ListenForInputAction("Recovery", EInputEvent.IE_Pressed, false, {
-        r0_168,
-        r0_168.StartTeleportInDungeon
+    elseif r2_167.Platform == "PC" then
+      r2_167.Text_Tips04:SetText(GText("DUNGEON_TELEPORT_LONGPRESS"))
+      r0_167:ListenForInputAction("Recovery", EInputEvent.IE_Pressed, false, {
+        r0_167,
+        r0_167.StartTeleportInDungeon
       })
-      r0_168:ListenForInputAction("Recovery", EInputEvent.IE_Released, false, {
-        r0_168,
-        r0_168.TeleportRelease
+      r0_167:ListenForInputAction("Recovery", EInputEvent.IE_Released, false, {
+        r0_167,
+        r0_167.TeleportRelease
       })
     end
   end
 end
-function r6_0.StartTeleportInDungeon(r0_171)
-  -- line: [2408, 2421] id: 171
-  local r1_171 = r3_0:GetTaskBarWidget()
-  if r1_171 then
-    r1_171.Key_Tips03:AddExecuteLogic(r0_171, r0_171.StopTeleportInDungeon)
-    local r2_171 = DataMgr.GlobalConstant.TeleportPressTime.ConstantValue and 1
-    r1_171.Key_Tips03:OnButtonPressed(nil, true, 0, r2_171)
-    r1_171.Key_Controller_Tips03:OnButtonPressed(nil, true, 0, r2_171)
-    r1_171:RefreshTeleportBubble(true)
-    UE4.UGameplayStatics.GetGameState(r0_171).ShouldStopHookInDungeonDelivery = true
+function r6_0.StartTeleportInDungeon(r0_170)
+  -- line: [2397, 2410] id: 170
+  local r1_170 = r3_0:GetTaskBarWidget()
+  if r1_170 then
+    r1_170.Key_Tips03:AddExecuteLogic(r0_170, r0_170.StopTeleportInDungeon)
+    local r2_170 = DataMgr.GlobalConstant.TeleportPressTime.ConstantValue and 1
+    r1_170.Key_Tips03:OnButtonPressed(nil, true, 0, r2_170)
+    r1_170.Key_Controller_Tips03:OnButtonPressed(nil, true, 0, r2_170)
+    r1_170:RefreshTeleportBubble(true)
+    UE4.UGameplayStatics.GetGameState(r0_170).ShouldStopHookInDungeonDelivery = true
   end
   DebugPrint("ayff test press teleport button")
 end
-function r6_0.StopTeleportInDungeon(r0_172, r1_172)
-  -- line: [2423, 2455] id: 172
-  local r2_172 = r3_0:GetTaskBarWidget()
-  if r2_172 then
-    r0_172.IsShowingTeleportUI = false
-    if r1_172 == true then
-      r2_172:PlayAnimation(r2_172.Transmit_Out)
-      r0_172:StopListeningForInputAction("Recovery", EInputEvent.IE_Pressed)
-      r0_172:StopListeningForInputAction("Recovery", EInputEvent.IE_Released)
+function r6_0.StopTeleportInDungeon(r0_171, r1_171)
+  -- line: [2412, 2444] id: 171
+  local r2_171 = r3_0:GetTaskBarWidget()
+  if r2_171 then
+    r0_171.IsShowingTeleportUI = false
+    if r1_171 == true then
+      r2_171:PlayAnimation(r2_171.Transmit_Out)
+      r0_171:StopListeningForInputAction("Recovery", EInputEvent.IE_Pressed)
+      r0_171:StopListeningForInputAction("Recovery", EInputEvent.IE_Released)
       return 
     end
-    r2_172:PlayAnimation(r2_172.Transmit_Out)
-    r0_172:StopListeningForInputAction("Recovery", EInputEvent.IE_Pressed)
-    r0_172:StopListeningForInputAction("Recovery", EInputEvent.IE_Released)
-    local r3_172 = UE4.UGameplayStatics.GetPlayerCharacter(r0_172, 0)
-    local r4_172 = r3_172:GetCharacterTag()
-    if r4_172 == "Hook" or r4_172 == "HitFly" then
+    r2_171:PlayAnimation(r2_171.Transmit_Out)
+    r0_171:StopListeningForInputAction("Recovery", EInputEvent.IE_Pressed)
+    r0_171:StopListeningForInputAction("Recovery", EInputEvent.IE_Released)
+    local r3_171 = UE4.UGameplayStatics.GetPlayerCharacter(r0_171, 0)
+    local r4_171 = r3_171:GetCharacterTag()
+    if r4_171 == "Hook" or r4_171 == "HitFly" then
       DebugPrint("ayff test 传送中断，角色处于钩锁或被击飞状态，无法传送")
     else
-      r3_172.RPCComponent:NotifyServerStartDelivery()
+      r3_171.RPCComponent:NotifyServerStartDelivery()
     end
   end
-  r0_172:AddTimer(1, function()
-    -- line: [2444, 2453] id: 173
-    local r0_173 = UE4.UGameplayStatics.GetGameState(r0_172)
-    if r0_173 then
-      r0_173.ShouldStopHookInDungeonDelivery = false
+  r0_171:AddTimer(1, function()
+    -- line: [2433, 2442] id: 172
+    local r0_172 = UE4.UGameplayStatics.GetGameState(r0_171)
+    if r0_172 then
+      r0_172.ShouldStopHookInDungeonDelivery = false
       DebugPrint("ayff test 传送中断，恢复钩锁状态")
     else
       DebugPrint("ayff test 传送中断，恢复钩锁状态失败，GameState无效")
@@ -2431,12 +2421,12 @@ function r6_0.StopTeleportInDungeon(r0_172, r1_172)
   end)
   DebugPrint("ayff test release teleport button")
 end
-function r6_0.TeleportRelease(r0_174)
-  -- line: [2457, 2463] id: 174
-  local r1_174 = r3_0:GetTaskBarWidget()
-  if r1_174 then
-    r1_174.Key_Tips03:OnButtonReleased()
-    r1_174.Key_Controller_Tips03:OnButtonReleased()
+function r6_0.TeleportRelease(r0_173)
+  -- line: [2446, 2452] id: 173
+  local r1_173 = r3_0:GetTaskBarWidget()
+  if r1_173 then
+    r1_173.Key_Tips03:OnButtonReleased()
+    r1_173.Key_Controller_Tips03:OnButtonReleased()
   end
 end
 AssembleComponents(r6_0)

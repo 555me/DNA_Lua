@@ -33,13 +33,13 @@ function r0_0.IsCanInteractive(r0_3, r1_3)
   return false
 end
 function r0_0.StartInteractive(r0_5, r1_5)
-  -- line: [35, 53] id: 5
+  -- line: [35, 57] id: 5
   local r2_5 = GWorld:GetAvatar()
   if not r2_5 then
     return 
   end
   r2_5:TheaterJoinPerformGame(function(r0_6, r1_6)
-    -- line: [40, 51] id: 6
+    -- line: [40, 55] id: 6
     local r2_6 = DataMgr.ErrorCode[r0_6]
     if r2_6 then
       r2_6 = DataMgr.ErrorCode[r0_6].ErrorCodeContent and GText("报名成功")
@@ -52,13 +52,16 @@ function r0_0.StartInteractive(r0_5, r1_5)
       r0_5.bIsAccept = true
       EventManager:FireEvent(EventID.OnTheaterJoinPerformGame)
       return 
+    elseif r0_6 == ErrorCode.RET_THEATER_PERFORMGAME_NOT_JOIN_TIME then
+      UIManager(r0_5):ShowUITip("CommonToastMain", GText("TheaterOnline_Game_Sign_Fail"), 3)
+      EventManager:FireEvent(EventID.OnTheaterJoinPerformGameFail)
     else
       UIManager(r0_5):ShowUITip("CommonToastMain", GText("TheaterOnline_Game_Sign_Fail"), 3)
     end
   end)
 end
 function r0_0.BtnPressed(r0_7, r1_7)
-  -- line: [55, 57] id: 7
+  -- line: [59, 61] id: 7
   r0_7:StartInteractive(r1_7)
 end
 return r0_0
