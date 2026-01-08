@@ -629,6 +629,39 @@ end
 function r4_0.CommonOnEMActorDestroy(r0_56, r1_56)
   -- line: [1189, 1202] id: 56
 end
+function r4_0.AddPhantomBattleAchieve(r0_57, r1_57, r2_57, r3_57, r4_57)
+  -- line: [1205, 1237] id: 57
+  if not IsStandAlone(r0_57) then
+    return 
+  end
+  if not r2_57.KillTarget then
+    return 
+  end
+  if not r3_57 or not r3_57:IsPhantom() then
+    local r5_57 = false
+    if r3_57 and r3_57:IsSummonMonster() then
+      local r6_57 = r3_57:GetRootSource()
+      if r6_57 and r6_57:IsPhantom() then
+        r5_57 = true
+      end
+    end
+    if not r5_57 then
+      return 
+    end
+  end
+  local r5_57 = UE4.URuntimeCommonFunctionLibrary.GetPlayerAchievementObject(r1_57)
+  if r5_57 then
+    if r0_57.UnitId == 8510001 then
+      r5_57:UploadTargetValue(2203, 1)
+    end
+    if r0_57.UnitId == 8518001 then
+      r5_57:UploadTargetValue(2204, 1)
+    end
+    if r0_57.UnitId == 8517001 then
+      r5_57:UploadTargetValue(2205, 1)
+    end
+  end
+end
 AssembleComponents(r4_0)
 if r4_0.TickComponent then
   AMonsterCharacter.SetHasLuaComponentTick(true)

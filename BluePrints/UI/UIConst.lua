@@ -348,11 +348,6 @@ r2_0.BossBlood = {
   allowmulti = false,
   resource = r0_0.BOSSBLOOD,
 }
-r2_0.DungenonExcavation = {
-  popup = false,
-  addtostack = true,
-  resource = r0_0.DUNGEONEXCAVATION,
-}
 r2_0.GachaMain = {
   popup = true,
   addtostack = false,

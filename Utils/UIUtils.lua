@@ -637,8 +637,8 @@ function r10_0.StopListViewFramingInAnimation(r0_22, r1_22)
 end
 function r10_0.UpdateListReddot(r0_23, r1_23, r2_23, r3_23, r4_23, r5_23)
   -- line: [706, 807] id: 23
-  -- notice: unreachable block#41
   -- notice: unreachable block#45
+  -- notice: unreachable block#41
   if not r0_23 then
     return 
   end
@@ -2765,7 +2765,7 @@ function r10_0.SetDefinitionText(r0_128, r1_128)
   r0_128:SetText(GText(table.concat(r3_128)))
 end
 function r10_0.InitDefinitionTextWidget(r0_129, r1_129, r2_129, r3_129)
-  -- line: [2724, 2744] id: 129
+  -- line: [2724, 2747] id: 129
   if not r0_129 or not r1_129 then
     return 
   end
@@ -2785,12 +2785,15 @@ function r10_0.InitDefinitionTextWidget(r0_129, r1_129, r2_129, r3_129)
     end)
   end
   r0_129:AddDelayFrameFunc(function()
-    -- line: [2741, 2743] id: 131
+    -- line: [2741, 2746] id: 131
+    if r0_129 and r0_129.bSkipDefinitionAutoInit then
+      return 
+    end
     r10_0.SetDefinitionText(r1_129, r0_129[r2_129])
   end, 2, "UpdateTargetTextFunc")
 end
 function r10_0.AddPositioningTagToPanel(r0_132, r1_132)
-  -- line: [2746, 2784] id: 132
+  -- line: [2749, 2787] id: 132
   if not r0_132 or not r1_132 then
     return 
   end
@@ -2829,20 +2832,20 @@ function r10_0.AddPositioningTagToPanel(r0_132, r1_132)
   end
 end
 function r10_0.GetCharMiniIconPath(r0_133)
-  -- line: [2786, 2789] id: 133
+  -- line: [2789, 2792] id: 133
   local r1_133 = "T_Normal_" .. DataMgr.BattleChar[r0_133].GuideIconImg
   return "Texture2D\'/Game/UI/Texture/Dynamic/Image/Head/Mini/" .. r1_133 .. "." .. r1_133 .. "\'"
 end
 function r10_0.OpenPopupToArmory(r0_134, r1_134)
-  -- line: [2795, 2823] id: 134
+  -- line: [2798, 2826] id: 134
   UIManager(r0_134):ShowCommonPopupUI(100217, {
     RightCallbackFunction = function(r0_135, r1_135, r2_135)
-      -- line: [2797, 2799] id: 135
+      -- line: [2800, 2802] id: 135
       r2_135.ClickResult = true
     end,
     RightCallbackObj = r0_134,
     OnCloseCallbackFunction = function(r0_136, r1_136, r2_136)
-      -- line: [2801, 2815] id: 136
+      -- line: [2804, 2818] id: 136
       if r2_136.ClickResult == true then
         DebugPrint("OpenArmoryFromPopup")
         PageJumpUtils:JumpToTargetPageByJumpId(52)
@@ -2850,7 +2853,7 @@ function r10_0.OpenPopupToArmory(r0_134, r1_134)
           UIManager(r0_134):GetUIObj("ArmoryMain").OnCloseDelegate = {
             nil,
             function()
-              -- line: [2807, 2809] id: 137
+              -- line: [2810, 2812] id: 137
               r10_0:OpenPopupToArmory()
             end,
             r0_134
@@ -2863,7 +2866,7 @@ function r10_0.OpenPopupToArmory(r0_134, r1_134)
   }, r0_134)
 end
 function r10_0.CalculateHoleTitle(r0_138, r1_138)
-  -- line: [2826, 2844] id: 138
+  -- line: [2829, 2847] id: 138
   local r2_138 = nil
   local r3_138 = nil
   if r0_138 ~= -1 and DataMgr.Title[r0_138] then
@@ -2882,7 +2885,7 @@ function r10_0.CalculateHoleTitle(r0_138, r1_138)
   return r4_138 .. (r3_138 and "")
 end
 function r10_0.GetSortedTitleTable()
-  -- line: [2847, 2870] id: 139
+  -- line: [2850, 2873] id: 139
   local r0_139 = GWorld:GetAvatar()
   local r1_139 = {}
   local r2_139 = {}
@@ -2904,7 +2907,7 @@ function r10_0.GetSortedTitleTable()
   return r1_139, r2_139
 end
 function r10_0.SetTextColorInMaterialByRarity(r0_140, r1_140, r2_140, r3_140)
-  -- line: [2875, 2891] id: 140
+  -- line: [2878, 2894] id: 140
   local r4_140 = r2_140:GetDynamicFontMaterial()
   if r3_140 == 5 then
     r4_140:SetTextureParameterValue("IconTex", r1_140.Img_Text_5)
@@ -2921,7 +2924,7 @@ function r10_0.SetTextColorInMaterialByRarity(r0_140, r1_140, r2_140, r3_140)
   end
 end
 function r10_0.SetTitle(r0_141, r1_141, r2_141)
-  -- line: [2897, 2934] id: 141
+  -- line: [2900, 2937] id: 141
   if r0_141 then
     r0_141:ClearChildren()
     r0_141:SetVisibility(UIConst.VisibilityOp.Collapsed)
@@ -2958,7 +2961,7 @@ function r10_0.SetTitle(r0_141, r1_141, r2_141)
   end
 end
 function r10_0.SetUpScrollBox(r0_142)
-  -- line: [2936, 2948] id: 142
+  -- line: [2939, 2951] id: 142
   if not r0_142 then
     DebugPrint("Invalid scroll box parameter")
     return 
@@ -2971,7 +2974,7 @@ function r10_0.SetUpScrollBox(r0_142)
   end
 end
 function r10_0.GetRootUWidget(r0_143)
-  -- line: [2953, 2965] id: 143
+  -- line: [2956, 2968] id: 143
   if not r0_143 then
     return nil
   end
@@ -2983,7 +2986,7 @@ function r10_0.GetRootUWidget(r0_143)
   return nil
 end
 function r10_0.GatFastKeyInfo(r0_144, r1_144, r2_144)
-  -- line: [2967, 2977] id: 144
+  -- line: [2970, 2980] id: 144
   if not r1_144 then
     r1_144 = "A"
   end
@@ -2998,7 +3001,7 @@ function r10_0.GatFastKeyInfo(r0_144, r1_144, r2_144)
   }
 end
 function r10_0.GetDynamicRewardInfo(r0_145, r1_145)
-  -- line: [2979, 2994] id: 145
+  -- line: [2982, 2997] id: 145
   if not r1_145 then
     r1_145 = r3_0.NowTime()
   end
@@ -3019,14 +3022,14 @@ function r10_0.GetDynamicRewardInfo(r0_145, r1_145)
   -- close: r3_145
 end
 function r10_0.LongPressKey(r0_146, r1_146, r2_146, r3_146)
-  -- line: [2996, 3029] id: 146
+  -- line: [2999, 3032] id: 146
   if r1_146:IsAnimationPlaying(r1_146.LongPress) then
     return 
   end
   AudioManager(r1_146):PlayUISound(r1_146, "event:/ui/common/btn_press", "LongPress", nil)
   r1_146:UnbindAllFromAnimationFinished(r1_146.LongPress)
   r1_146:BindToAnimationFinished(r1_146.LongPress, function()
-    -- line: [3005, 3022] id: 147
+    -- line: [3008, 3025] id: 147
     ScreenPrint("LongPressKey")
     if not r1_146.IsLongPressing then
       return 
@@ -3045,7 +3048,7 @@ function r10_0.LongPressKey(r0_146, r1_146, r2_146, r3_146)
   r1_146:PlayAnimation(r1_146.LongPress)
 end
 function r10_0.StopLongPressKey(r0_148, r1_148)
-  -- line: [3031, 3043] id: 148
+  -- line: [3034, 3046] id: 148
   if not r1_148.IsLongPressing then
     return 
   end
@@ -3056,7 +3059,7 @@ function r10_0.StopLongPressKey(r0_148, r1_148)
   r1_148.IsLongPressing = false
 end
 function r10_0.GetMinAndMaxDisplayedItemIndex(r0_149)
-  -- line: [3046, 3060] id: 149
+  -- line: [3049, 3063] id: 149
   local r1_149 = r0_149:GetDisplayedEntryWidgets():ToTable()
   local r2_149 = #r1_149
   local r3_149 = 0
@@ -3073,21 +3076,21 @@ function r10_0.GetMinAndMaxDisplayedItemIndex(r0_149)
   return r2_149, r3_149
 end
 function r10_0.OpenMultiplayerChallengeLevelChoose(r0_150)
-  -- line: [3063, 3067] id: 150
+  -- line: [3066, 3070] id: 150
   GWorld.GameInstance:GetGameUIManager():LoadUINew("MultiplayerChallenge", r0_150)
 end
 function r10_0.SetFocusSecretly(r0_151)
-  -- line: [3070, 3079] id: 151
+  -- line: [3073, 3082] id: 151
   local r1_151 = UGameInputModeSubsystem.GetGameInputModeSubsystem(r0_151)
   r1_151:SetNavigateWidgetOpacity(0)
   r0_151:SetFocus()
   require("BluePrints.Common.StageTimerMgr").AddTimer(r0_151, 0.25, function()
-    -- line: [3075, 3077] id: 152
+    -- line: [3078, 3080] id: 152
     r1_151:SetNavigateWidgetOpacity(1)
   end, nil, nil, nil, true, UE4.ETickingGroup.TG_EndPhysics)
 end
 function r10_0.GetRelativePositionInParent(r0_153, r1_153, r2_153)
-  -- line: [3086, 3132] id: 153
+  -- line: [3089, 3135] id: 153
   local r3_153 = r0_153:GetParent() and r0_153
   local r4_153 = r3_153:GetCachedGeometry()
   local r5_153 = UE4.USlateBlueprintLibrary.AbsoluteToLocal(r4_153, r1_153)
@@ -3119,7 +3122,7 @@ function r10_0.GetRelativePositionInParent(r0_153, r1_153, r2_153)
   return r5_153
 end
 function r10_0.ConvertScreenToChildLocalPosition(r0_154, r1_154, r2_154, r3_154)
-  -- line: [3139, 3178] id: 154
+  -- line: [3142, 3181] id: 154
   local r5_154 = (r1_154:GetParent() and r1_154):GetCachedGeometry()
   local r6_154 = UE4.USlateBlueprintLibrary.AbsoluteToLocal(r5_154, r2_154)
   local r7_154 = UE4.USlateBlueprintLibrary.GetLocalSize(r5_154)
@@ -3136,7 +3139,7 @@ function r10_0.ConvertScreenToChildLocalPosition(r0_154, r1_154, r2_154, r3_154)
   return r6_154
 end
 function r10_0.RefreshFeinaRewardReddot()
-  -- line: [3180, 3230] id: 155
+  -- line: [3183, 3233] id: 155
   local r0_155 = GWorld:GetAvatar()
   if not r0_155 then
     return 

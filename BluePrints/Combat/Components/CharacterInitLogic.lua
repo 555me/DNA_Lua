@@ -981,18 +981,32 @@ return {
     r0_52.InteractiveTriggerComponent:SetInteractiveTriggerDistance(r1_52)
   end,
   CreatePhantomBySquad = function(r0_53, r1_53, r2_53)
-    -- line: [1159, 1168] id: 53
-    local r3_53 = r2_53.AvatarInfos[r1_53].PhantomInfo
-    if r3_53 then
-      for r8_53, r9_53 in ipairs(r3_53) do
-        if next(r9_53.RoleInfo) then
-          r0_53:CreatePhantom(r9_53.RoleInfo.RoleId, 1, r9_53, {
+    -- line: [1159, 1185] id: 53
+    if r2_53 == nil or r1_53 == nil then
+      DebugPrint("gmy@CharacterInitLogic Component:CreatePhantomBySquad", "invalid params", r1_53)
+      return 
+    end
+    local r3_53 = r2_53.AvatarInfos
+    if r3_53 == nil then
+      DebugPrint("gmy@CharacterInitLogic Component:CreatePhantomBySquad", "invalid AvatarInfos", r1_53)
+      return 
+    end
+    local r4_53 = r3_53[r1_53]
+    if r4_53 == nil then
+      DebugPrint("gmy@CharacterInitLogic Component:CreatePhantomBySquad", "invalid AvatarInfo", r1_53)
+      return 
+    end
+    local r5_53 = r4_53.PhantomInfo
+    if r5_53 then
+      for r10_53, r11_53 in ipairs(r5_53) do
+        if r11_53.RoleInfo and r11_53.RoleInfo.RoleId then
+          r0_53:CreatePhantom(r11_53.RoleInfo.RoleId, 1, r11_53, {
             IsSpawnBySquad = 1,
-            TeamIndex = r8_53,
+            TeamIndex = r10_53,
           })
         end
       end
-      -- close: r4_53
+      -- close: r6_53
     end
   end,
 }

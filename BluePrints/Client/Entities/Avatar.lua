@@ -1,14 +1,15 @@
-local Class = _G.TypeClass
-local AvatarEntity = require("BluePrints.Client.Wrapper.Entity").AvatarEntity
-local Assemble = require("NetworkEngine.Common.Assemble")
-local HeroUSDKUtils = require("Utils.HeroUSDKUtils")
-local TimeUtils = require("Utils.TimeUtils")
-local MiscUtils = require("Utils.MiscUtils")
-local EMCache = require("EMCache.EMCache")
-local pb = require("pb")
-local Avatar = Class("Avatar", AvatarEntity)
-Avatar.__Props__ = "BluePrints.Client.Implements.Avatar"
-Avatar.__Component__ = {
+-- filename: @C:/Pack/Branch/geili11\Content/Script/BluePrints\Client\Entities\Avatar.lua
+-- version: lua54
+-- line: [0, 0] id: 0
+local r2_0 = require("NetworkEngine.Common.Assemble")
+local r3_0 = require("Utils.HeroUSDKUtils")
+local r4_0 = require("Utils.TimeUtils")
+local r5_0 = require("Utils.MiscUtils")
+local r6_0 = require("EMCache.EMCache")
+local r7_0 = require("pb")
+local r8_0 = _G.TypeClass("Avatar", require("BluePrints.Client.Wrapper.Entity").AvatarEntity)
+r8_0.__Props__ = "BluePrints.Client.Implements.Avatar"
+r8_0.__Component__ = {
   "BluePrints.Client.Entities.Components.EntityBase",
   "BluePrints.Client.Entities.Components.AvatarInfo",
   "BluePrints.Client.Entities.Components.Others",
@@ -94,337 +95,356 @@ Avatar.__Component__ = {
   "BluePrints.Client.Entities.Components.TitleComp",
   "BluePrints.Client.Entities.Components.DoubleModDrop",
   "BluePrints.Client.Entities.Components.SettlementOnlineMgr",
-  "BluePrints.Client.Entities.Components.TheaterActivity"
+  "BluePrints.Client.Entities.Components.TheaterActivity",
+  "BluePrints.Client.Entities.Components.RaidSeasonMgr",
+  "BluePrints.Client.Entities.Components.MountMgr",
+  "BluePrints.Client.Entities.Components.WebJumpMgr"
 }
-
-function Avatar:Init(eid)
-  Avatar.Super.Init(self, eid)
-  self.bClientEntity = true
-  local content_path = UE4.UKismetSystemLibrary.GetProjectContentDirectory()
-  assert(pb.loadufsfile(content_path .. "Script/NetworkEngine/Proto/pb/Attr.pb"))
-  self.AttrTypes = {}
-  for name, basename, type in pb.types() do
-    self.AttrTypes[basename] = true
+function r8_0.Init(r0_1, r1_1)
+  -- line: [107, 117] id: 1
+  r8_0.Super.Init(r0_1, r1_1)
+  r0_1.bClientEntity = true
+  assert(r7_0.loadufsfile(UE4.UKismetSystemLibrary.GetProjectContentDirectory() .. "Script/NetworkEngine/Proto/pb/Attr.pb"))
+  r0_1.AttrTypes = {}
+  for r7_1, r8_1, r9_1 in r7_0.types() do
+    r0_1.AttrTypes[r8_1] = true
   end
+  -- close: r3_1
 end
-
-function Avatar:OnBecomePlayer()
-  Avatar.Super.OnBecomePlayer(self)
-  local BP_Avatar = GWorld.GameInstance:GetAvatar()
-  if BP_Avatar then
-    BP_Avatar:SetClientAvatar(self)
+function r8_0.OnBecomePlayer(r0_2)
+  -- line: [119, 134] id: 2
+  r8_0.Super.OnBecomePlayer(r0_2)
+  local r1_2 = GWorld.GameInstance:GetAvatar()
+  if r1_2 then
+    r1_2:SetClientAvatar(r0_2)
   else
     assert(false, "登录出错，Avatar为空，8成你是用打包环境去运行工程了，回退你的仓库")
   end
   MissionIndicatorManager.TrackingSpecialSideQuestChainId = nil
   SystemGuideManager:AddListenerSystemGuide()
-  self:EnterWorld()
-  self:QueryHotfix()
-  AudioManager(self):SetVoiceGender()
+  r0_2:EnterWorld()
+  r0_2:QueryHotfix()
+  AudioManager(r0_2):SetVoiceGender()
 end
-
-function Avatar:QueryHotfix()
-  local index = GWorld.HotfixDataIndex or 0
-  self:CallServerMethod("QueryHotfix", index)
+function r8_0.QueryHotfix(r0_3)
+  -- line: [136, 139] id: 3
+  r0_3:CallServerMethod("QueryHotfix", GWorld.HotfixDataIndex and 0)
 end
-
-function Avatar:OnQueryHotfixSuccess(HotfixScript, HotfixIndex)
-  self.logger.debug("OnQueryHotfixSuccess", HotfixScript, HotfixIndex)
-  local index = GWorld.HotfixDataIndex or 0
-  if HotfixIndex and HotfixIndex > index then
-    require("HotFix").ExecHotFix(HotfixIndex, HotfixScript)
-    GWorld.HotfixDataIndex = HotfixIndex
+function r8_0.OnQueryHotfixSuccess(r0_4, r1_4, r2_4)
+  -- line: [141, 149] id: 4
+  r0_4.logger.debug("OnQueryHotfixSuccess", r1_4, r2_4)
+  local r3_4 = GWorld.HotfixDataIndex and 0
+  if r2_4 and r3_4 < r2_4 then
+    require("HotFix").ExecHotFix(r2_4, r1_4)
+    GWorld.HotfixDataIndex = r2_4
   end
 end
-
-function Avatar:OnRefreshLogin(TimeOffset, TimeZone, IsNewAvatar)
-  TimeUtils.SetTimeOffset(TimeOffset)
-  TimeUtils.SetServerTimeZone(TimeZone)
-  self:LoginSuccess()
-  local HeroUSDKSubsystem = HeroUSDKSubsystem()
-  if IsNewAvatar then
-    HeroUSDKSubsystem:HeroSDKRoleCreate(HeroUSDKUtils.GenHeroHDCGameRoleInfo())
+function r8_0.OnRefreshLogin(r0_5, r1_5, r2_5, r3_5)
+  -- line: [151, 160] id: 5
+  r4_0.SetTimeOffset(r1_5)
+  r4_0.SetServerTimeZone(r2_5)
+  r0_5:LoginSuccess()
+  local r4_5 = HeroUSDKSubsystem()
+  if r3_5 then
+    r4_5:HeroSDKRoleCreate(r3_0.GenHeroHDCGameRoleInfo())
   end
 end
-
-function Avatar:OnRelayLogin(TimeOffset, TimeZone, IsNewAvatar)
-  TimeUtils.SetTimeOffset(TimeOffset)
-  TimeUtils.SetServerTimeZone(TimeZone)
-  self:LoginSuccess()
+function r8_0.OnRelayLogin(r0_6, r1_6, r2_6, r3_6)
+  -- line: [162, 166] id: 6
+  r4_0.SetTimeOffset(r1_6)
+  r4_0.SetServerTimeZone(r2_6)
+  r0_6:LoginSuccess()
 end
-
-function Avatar:LoginSuccess()
-  self:RefreshWeapon()
-  self:InitGameSetting()
+function r8_0.LoginSuccess(r0_7)
+  -- line: [168, 182] id: 7
+  r0_7:RefreshWeapon()
+  r0_7:InitGameSetting()
   SystemGuideManager:InitCondition()
-  
-  local function callback()
+  local function r1_7()
+    -- line: [172, 175] id: 8
     EventManager:FireEvent(EventID.OnLoginSuccess)
     GWorld.GameInstance:OnLoginSuccess()
   end
-  
-  local locaUselName = UE.UKismetSystemLibrary:GetPlatformUserName()
-  self.logger.debug("LoginSuccess", GWorld.EnterMode, locaUselName)
-  self:CallServer("OnLoginSuccess", callback, GWorld.EnterMode, locaUselName)
-  if self.Hostnum == 399 then
-    self:CallServerMethod("SetIp", UEMGameInstance.GetOuterIp())
+  local r2_7 = UE.UKismetSystemLibrary:GetPlatformUserName()
+  r0_7.logger.debug("LoginSuccess", GWorld.EnterMode, r2_7)
+  r0_7:CallServer("OnLoginSuccess", r1_7, GWorld.EnterMode, r2_7)
+  if r0_7.Hostnum == 399 then
+    r0_7:CallServerMethod("SetIp", UEMGameInstance.GetOuterIp())
   end
 end
-
-function Avatar:SA_LOG(log_type, event_name, infos)
-  self:CallServerMethod("Client_SA_LOG", log_type, event_name, infos)
+function r8_0.SA_LOG(r0_9, r1_9, r2_9, r3_9)
+  -- line: [184, 186] id: 9
+  r0_9:CallServerMethod("Client_SA_LOG", r1_9, r2_9, r3_9)
 end
-
-function Avatar:LeaveWorld()
-  local BP_Avatar = GWorld.GameInstance:GetAvatar()
-  if BP_Avatar then
-    BP_Avatar:SetClientAvatar(nil)
+function r8_0.LeaveWorld(r0_10)
+  -- line: [188, 193] id: 10
+  local r1_10 = GWorld.GameInstance:GetAvatar()
+  if r1_10 then
+    r1_10:SetClientAvatar(nil)
   end
 end
-
-function Avatar:UseCDK(CDK, InCallback)
-  local function Cb(ErrCode, Items)
-    self.logger.debug("UseCDK", ErrorCode:Name(ErrCode), CommonUtils.TableToString(Items))
-    
-    if InCallback then
-      InCallback(ErrCode, Items)
+function r8_0.UseCDK(r0_11, r1_11, r2_11)
+  -- line: [195, 203] id: 11
+  r0_11:CallServer("UseCDK", function(r0_12, r1_12)
+    -- line: [196, 201] id: 12
+    r0_11.logger.debug("UseCDK", ErrorCode:Name(r0_12), CommonUtils.TableToString(r1_12))
+    if r2_11 then
+      r2_11(r0_12, r1_12)
     end
-  end
-  
-  self:CallServer("UseCDK", Cb, CDK)
+  end, r1_11)
 end
-
-function Avatar:RequestSetNowTime(NowTime)
-  local function cb(ret, timestamp)
-    if ret == ErrorCode.RET_SUCCESS then
-      TimeUtils.OnRequestSetNowTime(timestamp)
+function r8_0.RequestSetNowTime(r0_13, r1_13)
+  -- line: [205, 212] id: 13
+  r0_13:CallServer("RequestSetNowTime", function(r0_14, r1_14)
+    -- line: [206, 210] id: 14
+    if r0_14 == ErrorCode.RET_SUCCESS then
+      r4_0.OnRequestSetNowTime(r1_14)
     end
+  end, r1_13)
+end
+function r8_0.CheckTimeAcceleration(r0_15)
+  -- line: [214, 217] id: 15
+  DebugPrint("CheckTimeAcceleration", r4_0.NowTime())
+  r0_15:CallServerMethod("CheckTimeAcceleration")
+end
+function r8_0.AceReceiveData(r0_16, r1_16, r2_16)
+  -- line: [218, 227] id: 16
+  DebugPrint("AceReceiveData", r1_16, r2_16)
+  local r3_16 = USubsystemBlueprintLibrary.GetGameInstanceSubsystem(GWorld.GameInstance, UACESubsystem)
+  if not r3_16 then
+    return 
   end
-  
-  self:CallServer("RequestSetNowTime", cb, NowTime)
+  r3_16:ReceivePacketFromServer(r5_0.StringToByteTable(r1_16))
 end
-
-function Avatar:CheckTimeAcceleration()
-  DebugPrint("CheckTimeAcceleration", TimeUtils.NowTime())
-  self:CallServerMethod("CheckTimeAcceleration")
+function r8_0.QueryVersionControl(r0_17, r1_17)
+  -- line: [229, 238] id: 17
+  r0_17:CallServer("QueryVersionControl", function(r0_18)
+    -- line: [230, 235] id: 18
+    DebugPrint("QueryVersionControl", r0_18)
+    if r1_17 then
+      r1_17(r0_18)
+    end
+  end)
 end
-
-function Avatar:AceReceiveData(Data, Len)
-  DebugPrint("AceReceiveData", Data, Len)
-  local ACESubsystem = USubsystemBlueprintLibrary.GetGameInstanceSubsystem(GWorld.GameInstance, UACESubsystem)
-  if not ACESubsystem then
-    return
-  end
-  local ByteTable = MiscUtils.StringToByteTable(Data)
-  ACESubsystem:ReceivePacketFromServer(ByteTable)
+function r8_0._OnPropChangeCurrentChar(r0_19)
+  -- line: [240, 242] id: 19
+  r0_19.NeedRefreshPlayer = true
 end
-
-function Avatar:_OnPropChangeCurrentChar()
-  self.NeedRefreshPlayer = true
-end
-
-function Avatar:OnEntityInitSuccess()
+function r8_0.OnEntityInitSuccess(r0_20)
+  -- line: [243, 245] id: 20
   DebugPrint("Avatar:OnEntityInitSuccess")
 end
-
-function Avatar:_OnPropChangeCurrentPet()
-  self.NeedRefreshPlayer = true
-  DebugPrint("Avatar:_OnPropChangeCurrentPet self.NeedRefreshPlayer:", self.NeedRefreshPlayer)
+function r8_0._OnPropChangeCurrentPet(r0_21)
+  -- line: [246, 249] id: 21
+  r0_21.NeedRefreshPlayer = true
+  DebugPrint("Avatar:_OnPropChangeCurrentPet self.NeedRefreshPlayer:", r0_21.NeedRefreshPlayer)
 end
-
-function Avatar:_OnPropChangePets(keys)
-  self.NeedRefreshPlayer = true
-  DebugPrint("Avatar:_OnPropChangePets", CommonUtils.TableToString(keys))
+function r8_0._OnPropChangePets(r0_22, r1_22)
+  -- line: [251, 265] id: 22
+  r0_22.NeedRefreshPlayer = true
+  DebugPrint("Avatar:_OnPropChangePets", CommonUtils.TableToString(r1_22))
 end
-
-function Avatar:_OnPropChangeMeleeWeapon()
-  self.NeedRefreshPlayer = true
+function r8_0._OnPropChangeMeleeWeapon(r0_23)
+  -- line: [266, 268] id: 23
+  r0_23.NeedRefreshPlayer = true
 end
-
-function Avatar:_OnPropChangeRangedWeapon()
-  self.NeedRefreshPlayer = true
+function r8_0._OnPropChangeRangedWeapon(r0_24)
+  -- line: [270, 272] id: 24
+  r0_24.NeedRefreshPlayer = true
 end
-
-function Avatar:_OnPropChangeLevel()
-  local GameMode = UE.UGameplayStatics.GetGameMode(GWorld.GameInstance)
-  if GameMode and GameMode:Cast(UE4.AEMGameMode) and GameMode:IsInRegion() then
-    GameMode:UpdateRegionGameModeLevel()
+function r8_0._OnPropChangeLevel(r0_25)
+  -- line: [274, 293] id: 25
+  local r1_25 = UE.UGameplayStatics.GetGameMode(GWorld.GameInstance)
+  if r1_25 and r1_25:Cast(UE4.AEMGameMode) and r1_25:IsInRegion() then
+    r1_25:UpdateRegionGameModeLevel()
   end
-  for _, Info in pairs(DataMgr.PlayerLevelUp) do
-    if Info.PlayerLevel <= self.Level and not self.LevelRewardsGot[Info.PlayerLevel] then
-      local Node = ReddotManager.GetTreeNode("ExperienceItem")
-      if not Node then
+  for r6_25, r7_25 in pairs(DataMgr.PlayerLevelUp) do
+    if r7_25.PlayerLevel <= r0_25.Level and not r0_25.LevelRewardsGot[r7_25.PlayerLevel] then
+      if not ReddotManager.GetTreeNode("ExperienceItem") then
         ReddotManager.AddNode("ExperienceItem")
       end
-      local CacheDetail = ReddotManager.GetLeafNodeCacheDetail("ExperienceItem")
-      if not CacheDetail[Info.PlayerLevel] then
-        CacheDetail[Info.PlayerLevel] = 1
+      local r9_25 = ReddotManager.GetLeafNodeCacheDetail("ExperienceItem")
+      if not r9_25[r7_25.PlayerLevel] then
+        r9_25[r7_25.PlayerLevel] = 1
         ReddotManager.IncreaseLeafNodeCount("ExperienceItem")
       end
     end
   end
+  -- close: r2_25
   EventManager:FireEvent(EventID.OnPlayerLevelUp)
 end
-
-function Avatar:_OnPropChangeMailUniqueID()
+function r8_0._OnPropChangeMailUniqueID(r0_26)
+  -- line: [295, 297] id: 26
   EventManager:FireEvent(EventID.OnChangePropMailUniqueID)
 end
-
-function Avatar:_OnPropChangeActionPoint()
+function r8_0._OnPropChangeActionPoint(r0_27)
+  -- line: [299, 301] id: 27
   EventManager:FireEvent(EventID.OnChangeActionPoint, CommonConst.ActionPoint)
 end
-
-function Avatar:_OnPropChangeChars(keys)
-  self.NeedRefreshPlayer = true
-  if 1 == CommonUtils.Size(keys) then
-    local char = self.Chars[keys[1]]
-    if char then
-      char:_Init()
+function r8_0._OnPropChangeChars(r0_28, r1_28)
+  -- line: [303, 311] id: 28
+  r0_28.NeedRefreshPlayer = true
+  if CommonUtils.Size(r1_28) == 1 then
+    local r2_28 = r0_28.Chars[r1_28[1]]
+    if r2_28 then
+      r2_28:_Init()
     end
   end
 end
-
-function Avatar:PrintServerLog(...)
+function r8_0.PrintServerLog(r0_29, ...)
+  -- line: [312, 314] id: 29
   DebugPrint("Avatar:PrintServerLog", ...)
 end
-
-function Avatar:_OnPropChangeCommonChars(keys)
-  self.NeedRefreshPlayer = true
+function r8_0._OnPropChangeCommonChars(r0_30, r1_30)
+  -- line: [316, 318] id: 30
+  r0_30.NeedRefreshPlayer = true
 end
-
-function Avatar:_OnPropChangeWeapons(keys)
-  self.NeedRefreshPlayer = true
+function r8_0._OnPropChangeWeapons(r0_31, r1_31)
+  -- line: [320, 322] id: 31
+  r0_31.NeedRefreshPlayer = true
 end
-
-function Avatar:_OnPropChangeUWeapons(keys)
-  self.NeedRefreshPlayer = true
+function r8_0._OnPropChangeUWeapons(r0_32, r1_32)
+  -- line: [324, 326] id: 32
+  r0_32.NeedRefreshPlayer = true
 end
-
-function Avatar:_OnPropChangeMods(keys)
-  self.NeedRefreshPlayer = true
+function r8_0._OnPropChangeMods(r0_33, r1_33)
+  -- line: [328, 330] id: 33
+  r0_33.NeedRefreshPlayer = true
 end
-
-function Avatar:ResetNeedRefreshPlayer()
-  self.NeedRefreshPlayer = false
+function r8_0.ResetNeedRefreshPlayer(r0_34)
+  -- line: [332, 334] id: 34
+  r0_34.NeedRefreshPlayer = false
 end
-
-function Avatar:GetNeedRefreshPlayer()
-  return self.NeedRefreshPlayer
+function r8_0.GetNeedRefreshPlayer(r0_35)
+  -- line: [336, 338] id: 35
+  return r0_35.NeedRefreshPlayer
 end
-
-function Avatar:_OnPropChangeResources(keys)
-  if 1 == CommonUtils.Size(keys) then
-    local ResourceId = keys[1]
-    EventManager:FireEvent(EventID.OnPropSetResources, ResourceId)
+function r8_0._OnPropChangeResources(r0_36, r1_36)
+  -- line: [340, 345] id: 36
+  if CommonUtils.Size(r1_36) == 1 then
+    EventManager:FireEvent(EventID.OnPropSetResources, r1_36[1])
   end
 end
-
-function Avatar:_OnPropChangeWheels(keys)
+function r8_0._OnPropChangeWheels(r0_37, r1_37)
+  -- line: [347, 349] id: 37
   EventManager:FireEvent(EventID.OnPropChangeWheels)
 end
-
-function Avatar:ResetOnReconnect()
+function r8_0.ResetOnReconnect(r0_38)
+  -- line: [351, 352] id: 38
 end
-
-function Avatar:ClientTest(...)
-  self.logger.debug("ClientTest")
-  local t = TimeUtils.NowTime()
-  self.logger.debug(t)
-  self.logger.debug(TimeUtils.TimestampToData(t))
-  self.logger.debug(TimeUtils.TimeToStr(t))
-  
-  local function callback(result)
-    PrintTable({result = result}, 3)
-  end
-  
-  self:CallServer("ClientTest", callback)
+function r8_0.ClientTest(r0_39, ...)
+  -- line: [356, 366] id: 39
+  r0_39.logger.debug("ClientTest")
+  local r1_39 = r4_0.NowTime()
+  r0_39.logger.debug(r1_39)
+  r0_39.logger.debug(r4_0.TimestampToData(r1_39))
+  r0_39.logger.debug(r4_0.TimeToStr(r1_39))
+  r0_39:CallServer("ClientTest", function(r0_40)
+    -- line: [362, 364] id: 40
+    PrintTable({
+      result = r0_40,
+    }, 3)
+  end)
 end
-
-function Avatar:CallbackTest()
-  self.logger.debug("111111111111111111111 CallbackTest")
+function r8_0.CallbackTest(r0_41)
+  -- line: [368, 370] id: 41
+  r0_41.logger.debug("111111111111111111111 CallbackTest")
 end
-
-function Avatar:OnTestAutoBattle(ret, data, DSLog)
-  print(_G.LogTag, "OnTestAutoBattle", ret, data, DSLog)
+function r8_0.OnTestAutoBattle(r0_42, r1_42, r2_42, r3_42)
+  -- line: [373, 375] id: 42
+  print(_G.LogTag, "OnTestAutoBattle", r1_42, r2_42, r3_42)
 end
-
-function Avatar:tt(GachaId)
-  self:DrawSkinGacha(tonumber(GachaId), 10)
+function r8_0.tt(r0_43, r1_43)
+  -- line: [377, 381] id: 43
+  r0_43:CallServerMethod("AddWalnut", 1000, 1)
+  r0_43:CallServerMethod("AddWalnut", 1001, 1)
 end
-
-function Avatar:SetHomeBaseBGM(BGMId)
-  local function cb(ret)
-    print(_G.LogTag, "SetHomeBaseBGM", ret)
-  end
-  
-  self:CallServer("SetHomeBaseBGM", cb, BGMId)
+function r8_0.SetHomeBaseBGM(r0_44, r1_44)
+  -- line: [383, 388] id: 44
+  r0_44:CallServer("SetHomeBaseBGM", function(r0_45)
+    -- line: [384, 386] id: 45
+    print(_G.LogTag, "SetHomeBaseBGM", r0_45)
+  end, r1_44)
 end
-
-function Avatar:SendToFeishuForBattle(msg, msg_title)
-  self:CallServerMethod("SendToFeishuForBattle", msg, msg_title)
+function r8_0.SendToFeishuForBattle(r0_46, r1_46, r2_46)
+  -- line: [390, 392] id: 46
+  r0_46:CallServerMethod("SendToFeishuForBattle", r1_46, r2_46)
 end
-
-function Avatar:SendToFeishuForJQ(msg, msg_title)
-  self:CallServerMethod("SendToFeishuForJQ", msg, msg_title)
+function r8_0.SendToFeishuForJQ(r0_47, r1_47, r2_47)
+  -- line: [394, 396] id: 47
+  r0_47:CallServerMethod("SendToFeishuForJQ", r1_47, r2_47)
 end
-
-function Avatar:SendToFeiShuForMonster(msg, msg_title)
-  local LocalUser = UE.UKismetSystemLibrary:GetPlatformUserName()
-  local res_msg = "设备名：" .. LocalUser .. "\n" .. msg
-  self:CallServerMethod("SendToFeiShuForMonster", msg, msg_title)
+function r8_0.SendToFeiShuForMonster(r0_48, r1_48, r2_48)
+  -- line: [398, 402] id: 48
+  local r4_48 = "设备名：" .. UE.UKismetSystemLibrary:GetPlatformUserName() .. "\n" .. r1_48
+  r0_48:CallServerMethod("SendToFeiShuForMonster", r1_48, r2_48)
 end
-
-function Avatar:SendToFeiShuForRegionMgr(msg, msg_title)
-  self:CallServerMethod("SendToFeiShuForRegionMgr", msg, msg_title)
+function r8_0.SendToFeiShuForRegionMgr(r0_49, r1_49, r2_49)
+  -- line: [404, 406] id: 49
+  r0_49:CallServerMethod("SendToFeiShuForRegionMgr", r1_49, r2_49)
 end
-
-function Avatar:SendToFeishuForRougeLike(msg, msg_title)
-  self:CallServerMethod("SendToFeishuForRougeLike", msg, msg_title)
+function r8_0.SendToFeishuForRougeLike(r0_50, r1_50, r2_50)
+  -- line: [408, 410] id: 50
+  r0_50:CallServerMethod("SendToFeishuForRougeLike", r1_50, r2_50)
 end
-
-function Avatar:SendToFeishuForCombatMonitor(msg)
-  self:CallServerMethod("SendToFeishuForCombatMonitor", msg)
+function r8_0.SendToFeishuForCombatMonitor(r0_51, r1_51)
+  -- line: [412, 414] id: 51
 end
-
-function Avatar:SendTraceToQaWeb(trace_type, describe_info)
-  self:CallServerMethod("SendTraceToQaWeb", trace_type, describe_info)
+function r8_0.SendTraceToQaWeb(r0_52, r1_52, r2_52)
+  -- line: [427, 429] id: 52
+  r0_52:CallServerMethod("SendTraceToQaWeb", r1_52, r2_52)
 end
-
-function Avatar:NotifyOpenCrashSight()
+function r8_0.NotifyOpenCrashSight(r0_53)
+  -- line: [431, 442] id: 53
   print(_G.LogTag, "NotifyOpenCrashSight")
-  local IsOpenCrashSight = EMCache:Get("IsOpenCrashSight")
-  if not IsOpenCrashSight then
-    EMCache:Set("IsOpenCrashSight", true)
-    EMCache:SaveAll()
+  if not r6_0:Get("IsOpenCrashSight") then
+    r6_0:Set("IsOpenCrashSight", true)
+    r6_0:SaveAll()
     if GWorld.GameInstance then
       GWorld.GameInstance:InitCrashSight()
     end
   end
 end
-
-function Avatar:SaveCreatePhantomInfo(RoleId, BTIndex, Info, ExtraInfo, Level)
-  if not self.PhantomCreateInfo then
-    self.PhantomCreateInfo = {}
+function r8_0.SaveCreatePhantomInfo(r0_54, r1_54, r2_54, r3_54, r4_54, r5_54)
+  -- line: [444, 455] id: 54
+  if not r0_54.PhantomCreateInfo then
+    r0_54.PhantomCreateInfo = {}
   end
-  if not self.PhantomCreateInfo[RoleId] then
-    self.PhantomCreateInfo[RoleId] = {}
+  if not r0_54.PhantomCreateInfo[r1_54] then
+    r0_54.PhantomCreateInfo[r1_54] = {}
   end
-  self.PhantomCreateInfo[RoleId].BTIndex = BTIndex
-  self.PhantomCreateInfo[RoleId].Info = Info
-  self.PhantomCreateInfo[RoleId].ExtraInfo = ExtraInfo
-  self.PhantomCreateInfo[RoleId].Level = Level
+  r0_54.PhantomCreateInfo[r1_54].BTIndex = r2_54
+  r0_54.PhantomCreateInfo[r1_54].Info = r3_54
+  r0_54.PhantomCreateInfo[r1_54].ExtraInfo = r4_54
+  r0_54.PhantomCreateInfo[r1_54].Level = r5_54
 end
-
-function Avatar:ClearCreatePhantomInfo(PhantomRoleId)
-  if not self.PhantomCreateInfo then
-    return
+function r8_0.ClearCreatePhantomInfo(r0_55, r1_55)
+  -- line: [457, 465] id: 55
+  if not r0_55.PhantomCreateInfo then
+    return 
   end
-  if not self.PhantomCreateInfo[PhantomRoleId] then
-    return
+  if not r0_55.PhantomCreateInfo[r1_55] then
+    return 
   end
-  self.PhantomCreateInfo[PhantomRoleId] = nil
+  r0_55.PhantomCreateInfo[r1_55] = nil
 end
-
-Assemble.AssembleComponents(Avatar)
-Assemble.FormatProperties(Avatar)
-return Avatar
+function r8_0.NotifyAppStoreRatingJump(r0_56)
+  -- line: [467, 483] id: 56
+  local r1_56 = UE.AHotUpdateGameMode.IsGlobalPak()
+  local r2_56 = UE4.UUIFunctionLibrary.GetDevicePlatformName(r0_56)
+  if not r1_56 and r2_56 == "IOS" then
+    if HeroUSDKSubsystem():IsHeroSDKEnable() then
+      HeroUSDKSubsystem():AppRatingWithType(0, "")
+    end
+    DebugPrint("NotifyAppStoreRatingJump China IOS Platform")
+    return 
+  end
+  if GWorld.GameInstance then
+    GWorld.GameInstance:GetGameUIManager():LoadUINew("GameReview")
+  else
+    DebugPrint("NotifyAppStoreRatingJump GWorld.GameInstance is nil")
+  end
+end
+r2_0.AssembleComponents(r8_0)
+r2_0.FormatProperties(r8_0)
+return r8_0
