@@ -13271,6 +13271,22 @@ r6_0.ConditionMap = {
 }
 r6_0.Remark = "小小研究者三阶段解锁"
 r4_0[r5_0] = r6_0
+r5_0 = 20023001
+r6_0 = {
+  ConditionId = 20023001,
+  ConditionLogic = "AND",
+}
+r6_0.ConditionMap = {
+  MechanismState = {
+    {
+      1191512,
+      0,
+      602
+    }
+  },
+}
+r6_0.Remark = "火灾案支线1-调频机关"
+r4_0[r5_0] = r6_0
 r5_0 = 20023300
 r6_0 = {
   ConditionId = 20023300,

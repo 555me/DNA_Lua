@@ -58,6 +58,7 @@ r0_0.MonsterNeedCache = Const.MonsterNeedCache
 r0_0.bSpawnAIUnitAddToEventQueue = Const.bSpawnAIUnitAddToEventQueue
 r0_0.RegionPlayerInterType = "Biography"
 r0_0.RegionPlayerInterId = 100032
+r0_0.CheatReportInterval = -1000000
 r0_0.bCloseWeaponMovementSync = Const.bCloseWeaponMovementSync
 r0_0.bCloseBodyAccessoryItemMovementSync = Const.bCloseBodyAccessoryItemMovementSync
 r0_0.bWeaponAndAccessoryItemHcc = Const.bWeaponAndAccessoryItemHcc
@@ -130,7 +131,7 @@ r0_0.MapMobileReplacePath = "Maps_Phone"
 r0_0.bConditionalSkipMonsterReplication = true
 return setmetatable({}, {
   __index = function(r0_1, r1_1)
-    -- line: [193, 201] id: 1
+    -- line: [194, 202] id: 1
     local r2_1 = rawget(r0_0, r1_1)
     if r2_1 then
       return r2_1
@@ -138,7 +139,7 @@ return setmetatable({}, {
     return rawget(r0_1, "EMLuaConstCpp").TempVars[r1_1]
   end,
   __newindex = function(r0_2, r1_2, r2_2)
-    -- line: [202, 208] id: 2
+    -- line: [203, 209] id: 2
     r0_0[r1_2] = r2_2
     local r3_2 = rawget(r0_2, "EMLuaConstCpp")
     if r3_2 then
@@ -146,7 +147,7 @@ return setmetatable({}, {
     end
   end,
   __pairs = function(r0_3)
-    -- line: [209, 209] id: 3
+    -- line: [210, 210] id: 3
     return pairs(r0_0)
   end,
 })

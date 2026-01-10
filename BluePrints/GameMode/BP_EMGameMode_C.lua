@@ -1333,16 +1333,17 @@ function r6_0.ExecuteLogicBetweenRounds(r0_101)
   end
 end
 function r6_0.ExecuteLogicStartDungeonVote(r0_102)
-  -- line: [1661, 1668] id: 102
+  -- line: [1661, 1669] id: 102
   r0_102:UpdateDungeonProgress()
   if r0_102:CheckDungeonProgressIsMaxRound() then
     return 
   end
+  r0_102:RecordProgressDataWithStageInfo("OnVoteBegin")
   r0_102:TriggerDungeonComponentFun("TriggerDungeonVoteBegin")
   r0_102:SetGamePaused("GameModeState", true)
 end
 function r6_0.ExecuteNextStepOfDungeonVote(r0_103)
-  -- line: [1670, 1677] id: 103
+  -- line: [1671, 1678] id: 103
   if r0_103:IsTicketDungeon() then
     r0_103:TriggerShowTicket()
   else
@@ -1350,7 +1351,7 @@ function r6_0.ExecuteNextStepOfDungeonVote(r0_103)
   end
 end
 function r6_0.ExecuteNextStepOfTicket(r0_104)
-  -- line: [1679, 1690] id: 104
+  -- line: [1680, 1691] id: 104
   r0_104.EMGameState.IsInSelectTicket = false
   r0_104.EMGameState.NextTicketPlayer:Clear()
   UE.UMapSyncHelper.SyncMap(r0_104.EMGameState, "NextTicketPlayer")
@@ -1361,15 +1362,15 @@ function r6_0.ExecuteNextStepOfTicket(r0_104)
   end
 end
 function r6_0.BpOnTimerEnd_OnDungeonVoteBegin(r0_105)
-  -- line: [1692, 1694] id: 105
+  -- line: [1693, 1695] id: 105
   r0_105.EMGameState:DealDungeonVoteResult()
 end
 function r6_0.BpOnTimerEnd_SelectTicket(r0_106)
-  -- line: [1696, 1698] id: 106
+  -- line: [1697, 1699] id: 106
   r0_106.EMGameState:DealDungeonTicketResult()
 end
 function r6_0.IsEndlessDungeon(r0_107)
-  -- line: [1700, 1708] id: 107
+  -- line: [1701, 1709] id: 107
   if r0_107.IsDungeonTypeEndless == nil then
     local r1_107 = DataMgr.Dungeon[r0_107.DungeonId]
     if r1_107 then
@@ -1379,7 +1380,7 @@ function r6_0.IsEndlessDungeon(r0_107)
   return r0_107.IsDungeonTypeEndless
 end
 function r6_0.DungeonFinish_OnPlayerRealDead(r0_108, r1_108)
-  -- line: [1720, 1737] id: 108
+  -- line: [1721, 1738] id: 108
   local r2_108 = GWorld:GetAvatar()
   if r2_108 and r2_108:IsInRougeLike() then
     DebugPrint("EMGameMode:DungeonFinish_OnPlayerRealDead RougeLike")
@@ -1397,7 +1398,7 @@ function r6_0.DungeonFinish_OnPlayerRealDead(r0_108, r1_108)
   end
 end
 function r6_0.IsDungeonInSettlement(r0_109)
-  -- line: [1739, 1754] id: 109
+  -- line: [1740, 1755] id: 109
   if not r0_109.EMGameState:CheckGameModeStateEnable() then
     DebugPrint("BP_EMGameMode_C:副本状态不正确 多次触发副本结算")
     return true
@@ -1410,7 +1411,7 @@ function r6_0.IsDungeonInSettlement(r0_109)
   return false
 end
 function r6_0.TriggerDungeonWin(r0_110)
-  -- line: [1757, 1764] id: 110
+  -- line: [1758, 1765] id: 110
   DebugPrint("BP_EMGameMode_C:TriggerDungeonWin 副本胜利")
   if r0_110:IsDungeonInSettlement() then
     return 
@@ -1418,7 +1419,7 @@ function r6_0.TriggerDungeonWin(r0_110)
   r0_110.LevelGameMode:TriggerDungeFinish(true)
 end
 function r6_0.TriggerDungeonFailed(r0_111)
-  -- line: [1767, 1774] id: 111
+  -- line: [1768, 1775] id: 111
   DebugPrint("BP_EMGameMode_C:TriggerDungeonFailed 副本失败")
   if r0_111:IsDungeonInSettlement() then
     return 
@@ -1426,7 +1427,7 @@ function r6_0.TriggerDungeonFailed(r0_111)
   r0_111.LevelGameMode:TriggerDungeFinish(false)
 end
 function r6_0.TriggerExitDungeon(r0_112, r1_112)
-  -- line: [1777, 1784] id: 112
+  -- line: [1778, 1785] id: 112
   DebugPrint("BP_EMGameMode_C:TriggerExitDungeon: Exit Battle + HardBoss", r1_112)
   if r0_112:IsDungeonInSettlement() then
     return 
@@ -1434,7 +1435,7 @@ function r6_0.TriggerExitDungeon(r0_112, r1_112)
   r0_112.LevelGameMode:TriggerDungeFinish(r1_112)
 end
 function r6_0.TriggerPlayerWin(r0_113, r1_113, r2_113)
-  -- line: [1788, 1801] id: 113
+  -- line: [1789, 1802] id: 113
   DebugPrint("BP_EMGameMode_C:TriggerPlayerWin 玩家成功 撤离")
   if r0_113:IsDungeonInSettlement() then
     return 
@@ -1447,7 +1448,7 @@ function r6_0.TriggerPlayerWin(r0_113, r1_113, r2_113)
   r0_113.LevelGameMode:TriggerPlayerFinish(true, r1_113)
 end
 function r6_0.TriggerPlayerFailed(r0_114, r1_114)
-  -- line: [1804, 1815] id: 114
+  -- line: [1805, 1816] id: 114
   DebugPrint("BP_EMGameMode_C:TriggerPlayerFailed 玩家失败 撤离")
   if r0_114:IsDungeonInSettlement() then
     return 
@@ -1459,12 +1460,12 @@ function r6_0.TriggerPlayerFailed(r0_114, r1_114)
   r0_114.LevelGameMode:TriggerPlayerFinish(false, r1_114)
 end
 function r6_0.ForceFinishPlayerByFailed(r0_115, r1_115)
-  -- line: [1820, 1823] id: 115
+  -- line: [1821, 1824] id: 115
   DebugPrint("BP_EMGameMode_C:ForceFinishPlayerByFailed 强制玩家以失败结算")
   r0_115.LevelGameMode:TriggerPlayerFinish(false, r1_115)
 end
 function r6_0.TriggerDungeFinish(r0_116, r1_116)
-  -- line: [1827, 1838] id: 116
+  -- line: [1828, 1839] id: 116
   GWorld:DSBLog("Info", "TriggerDungeFinish IsWin:" .. tostring(r1_116), "GameMode")
   r0_116:TriggerDungeonOnEnd(r1_116)
   if r1_116 and r0_116:IsWalnutDungeon() and not r0_116:IsEndlessDungeon() then
@@ -1474,7 +1475,7 @@ function r6_0.TriggerDungeFinish(r0_116, r1_116)
   end
 end
 function r6_0.TriggerRealDungeFinish(r0_117, r1_117)
-  -- line: [1840, 1858] id: 117
+  -- line: [1841, 1859] id: 117
   local r2_117 = DataMgr.Dungeon[r0_117.DungeonId]
   if r1_117 then
     if r2_117 and r2_117.DungeonWinMode == r0_0.DungeonWinMode.Single then
@@ -1494,7 +1495,7 @@ function r6_0.TriggerRealDungeFinish(r0_117, r1_117)
   r0_117:TriggerPlayerFinish(r1_117)
 end
 function r6_0.TriggerPlayerFinish(r0_118, r1_118, r2_118)
-  -- line: [1862, 1894] id: 118
+  -- line: [1863, 1895] id: 118
   GWorld:DSBLog("Info", "TriggerPlayerFinish IsWin:" .. tostring(r1_118), "GameMode")
   DebugPrint("TriggerPlayerFinish 玩家结算，结算状态：", r1_118)
   if IsStandAlone(r0_118) or r5_0.IsListenServer(r0_118) then
@@ -1518,7 +1519,7 @@ function r6_0.TriggerPlayerFinish(r0_118, r1_118, r2_118)
   end
 end
 function r6_0.SendTimeDistCheatalert(r0_119, r1_119, r2_119, r3_119, r4_119, r5_119, r6_119, r7_119)
-  -- line: [1895, 1934] id: 119
+  -- line: [1896, 1935] id: 119
   local r8_119 = "检测到非法信息:  "
   local r9_119 = r0_119:CollectAlertBaseInfo(r1_119)
   if r9_119.DungeonId then
@@ -1556,7 +1557,7 @@ function r6_0.SendTimeDistCheatalert(r0_119, r1_119, r2_119, r3_119, r4_119, r5_
   r10_119:SendToFeishuForCombatMonitor(r8_119)
 end
 function r6_0.CollectAlertBaseInfo(r0_120, r1_120)
-  -- line: [1935, 1951] id: 120
+  -- line: [1936, 1952] id: 120
   local r2_120 = {}
   if not r0_120.LevelGameMode then
     print(_G.LogTag, "CollectAlertBaseInfo LevelGameMode is nil")
@@ -1574,7 +1575,7 @@ function r6_0.CollectAlertBaseInfo(r0_120, r1_120)
   return r2_120
 end
 function r6_0.NotifyClientFightAttributeData(r0_121, r1_121)
-  -- line: [1954, 1984] id: 121
+  -- line: [1955, 1985] id: 121
   if not IsDedicatedServer(r0_121) then
     return 
   end
@@ -1604,7 +1605,7 @@ function r6_0.NotifyClientFightAttributeData(r0_121, r1_121)
   r2_121:RefreshFightAttributeData()
 end
 function r6_0.NotifyClientGameEnd(r0_122, r1_122, r2_122)
-  -- line: [1987, 2039] id: 122
+  -- line: [1988, 2040] id: 122
   if not r2_122 or #r2_122 == 0 then
     for r6_122 = 1, r0_122:GetPlayerNum(), 1 do
       local r7_122 = r6_122 + -1
@@ -1629,7 +1630,7 @@ function r6_0.NotifyClientGameEnd(r0_122, r1_122, r2_122)
     end
   else
     local function r3_122(r0_123)
-      -- line: [2016, 2033] id: 123
+      -- line: [2017, 2034] id: 123
       local r1_123 = UE4.URuntimeCommonFunctionLibrary.GetPlayerControllerByAvatarEid(r0_122, r0_123)
       if not r1_123 then
         DebugPrint("Controller is Not Exist")
@@ -1651,7 +1652,7 @@ function r6_0.NotifyClientGameEnd(r0_122, r1_122, r2_122)
   end
 end
 function r6_0.SimplifyInfoForInit(r0_124, r1_124)
-  -- line: [2041, 2048] id: 124
+  -- line: [2042, 2049] id: 124
   if r1_124 == nil then
     DebugPrint("Error SimplifyInfoForInit InfoForInit is nil")
     return r1_124
@@ -1660,7 +1661,7 @@ function r6_0.SimplifyInfoForInit(r0_124, r1_124)
   return r1_124
 end
 function r6_0.GetScenePlayersInfo(r0_125, r1_125)
-  -- line: [2051, 2117] id: 125
+  -- line: [2052, 2118] id: 125
   local r2_125 = {}
   if r0_125.EMGameState.GameModeType == "Party" then
     local r3_125 = r0_125.EMGameState.PartyPlayerOrdinal
@@ -1724,7 +1725,7 @@ function r6_0.GetScenePlayersInfo(r0_125, r1_125)
   return r4_125
 end
 function r6_0.TriggerEnterEndPlayer(r0_126, r1_126)
-  -- line: [2120, 2135] id: 126
+  -- line: [2121, 2136] id: 126
   local r2_126 = UE4.URuntimeCommonFunctionLibrary.GetPlayerControllerByAvatarEid(r0_126, r1_126)
   if r2_126 and r2_126:IsPlayEnd() then
     DebugPrint("TriggerEnterEndPlayer 玩家已结算：", r1_126)
@@ -1741,17 +1742,17 @@ function r6_0.TriggerEnterEndPlayer(r0_126, r1_126)
   end
 end
 function r6_0.OnMiniGameSuccess(r0_127, r1_127, r2_127)
-  -- line: [2137, 2140] id: 127
+  -- line: [2138, 2141] id: 127
   r0_127.Overridden.OnMiniGameSuccess(r0_127, r1_127, r2_127)
   r0_127:TriggerDungeonComponentFun("OnMiniGameSuccess", r1_127, r2_127)
 end
 function r6_0.OnDefenceCoreActive(r0_128, r1_128)
-  -- line: [2142, 2145] id: 128
+  -- line: [2143, 2146] id: 128
   r0_128.Overridden.OnDefenceCoreActive(r0_128, r1_128)
   r0_128:TriggerDungeonComponentFun("OnDefenceCoreActive", r1_128)
 end
 function r6_0.OnMiniGameFail(r0_129, r1_129, r2_129)
-  -- line: [2147, 2155] id: 129
+  -- line: [2148, 2156] id: 129
   if not r0_129:IsSubGameMode() then
     if not r0_129.MiniGameFailedTime[r1_129] then
       r0_129.MiniGameFailedTime[r1_129] = 0
@@ -1761,11 +1762,11 @@ function r6_0.OnMiniGameFail(r0_129, r1_129, r2_129)
   r0_129.Overridden.OnMiniGameFail(r0_129, r1_129, r2_129)
 end
 function r6_0.OnDefenceCoreDead(r0_130, r1_130)
-  -- line: [2157, 2160] id: 130
+  -- line: [2158, 2161] id: 130
   r0_130.Overridden.OnDefenceCoreDead(r0_130, r1_130)
 end
 function r6_0.ChangeFallTriggersActive(r0_131, r1_131, r2_131)
-  -- line: [2162, 2170] id: 131
+  -- line: [2163, 2171] id: 131
   for r7_131, r8_131 in pairs(r1_131) do
     for r13_131, r14_131 in pairs(r0_131.EMGameState.FallTriggersArray) do
       if r14_131.FallTriggerId == r8_131 then
@@ -1777,9 +1778,9 @@ function r6_0.ChangeFallTriggersActive(r0_131, r1_131, r2_131)
   -- close: r3_131
 end
 function r6_0.AsyncLoadTargetLevel(r0_132, r1_132, r2_132)
-  -- line: [2242, 2273] id: 132
+  -- line: [2243, 2274] id: 132
   local function r3_132()
-    -- line: [2243, 2245] id: 133
+    -- line: [2244, 2246] id: 133
     r1_132:AsyncPrintHello()
   end
   local r4_132 = r0_132.EMGameState:GetTargetPoint(r2_132)
@@ -1800,7 +1801,7 @@ function r6_0.AsyncLoadTargetLevel(r0_132, r1_132, r2_132)
   end
   local r8_132 = r0_132:GetLevelLoader()
   r8_132:BindArtLevelLoadedCompleteCallback(r6_132, function()
-    -- line: [2263, 2270] id: 134
+    -- line: [2264, 2271] id: 134
     UE4.UGameplayStatics.GetGameInstance(r0_132):CloseLoadingUI()
     r1_132:AsyncPrintHello()
     if r8_132 then
@@ -1810,7 +1811,7 @@ function r6_0.AsyncLoadTargetLevel(r0_132, r1_132, r2_132)
   r8_132:LoadArtLevel(r6_132)
 end
 function r6_0.SetActorLocationAndRotationByTransform(r0_135, r1_135, r2_135, r3_135, r4_135)
-  -- line: [2275, 2331] id: 135
+  -- line: [2276, 2332] id: 135
   if not r4_135 then
     r4_135 = false
   end
@@ -1854,7 +1855,7 @@ function r6_0.SetActorLocationAndRotationByTransform(r0_135, r1_135, r2_135, r3_
   return true
 end
 function r6_0.EMSetActorLocationAndRotation(r0_136, r1_136, r2_136, r3_136, r4_136)
-  -- line: [2333, 2395] id: 136
+  -- line: [2334, 2396] id: 136
   if not r4_136 then
     r4_136 = false
   end
@@ -1906,16 +1907,16 @@ function r6_0.EMSetActorLocationAndRotation(r0_136, r1_136, r2_136, r3_136, r4_1
   return true
 end
 function r6_0.SetPlayerCharacterForceIdle(r0_137, r1_137)
-  -- line: [2397, 2404] id: 137
+  -- line: [2398, 2405] id: 137
   r1_137:ResetIdle()
   r1_137:DisableInput(UE4.UGameplayStatics.GetPlayerController(r0_137, 0))
   r0_137:AddTimer(0.2, function()
-    -- line: [2400, 2402] id: 138
+    -- line: [2401, 2403] id: 138
     r1_137:EnableInput(UE4.UGameplayStatics.GetPlayerController(r0_137, 0))
   end)
 end
 function r6_0.GetRespawnRuleName(r0_139, r1_139)
-  -- line: [2406, 2457] id: 139
+  -- line: [2407, 2458] id: 139
   DebugPrint("Tianyi@ GetRespawnRuleName begin")
   local r2_139 = "Default"
   local r3_139 = r0_139.DunegeonId
@@ -1960,7 +1961,7 @@ function r6_0.GetRespawnRuleName(r0_139, r1_139)
   return r2_139
 end
 function r6_0.GetRespawnRule(r0_140, r1_140, r2_140)
-  -- line: [2460, 2468] id: 140
+  -- line: [2461, 2469] id: 140
   local r3_140 = nil
   if r2_140 then
     return DataMgr.RespawnRule[r2_140] and DataMgr.RespawnRule.CommonSolo
@@ -1968,7 +1969,7 @@ function r6_0.GetRespawnRule(r0_140, r1_140, r2_140)
   return DataMgr.RespawnRule[r0_140:GetRespawnRuleName(r1_140)]
 end
 function r6_0.InitEntityRecoveryData(r0_141, r1_141)
-  -- line: [2470, 2478] id: 141
+  -- line: [2471, 2479] id: 141
   r1_141:ClearSkillRecoverTargets()
   r1_141:SetAttr("AdditionalRecoverTime", 0)
   if r1_141:IsPlayer() then
@@ -1978,7 +1979,7 @@ function r6_0.InitEntityRecoveryData(r0_141, r1_141)
   end
 end
 function r6_0.CheckEntityCanRecover(r0_142, r1_142)
-  -- line: [2516, 2526] id: 142
+  -- line: [2517, 2527] id: 142
   if r1_142:IsPlayer() then
     return r0_142:CheckPlayerCanRecover(r1_142)
   elseif r1_142:IsPhantom() then
@@ -1990,7 +1991,7 @@ function r6_0.CheckEntityCanRecover(r0_142, r1_142)
   end
 end
 function r6_0.CheckPlayerCanRecover(r0_143, r1_143)
-  -- line: [2528, 2537] id: 143
+  -- line: [2529, 2538] id: 143
   local r2_143 = r1_143:GetRecoveryCount()
   local r3_143 = r1_143:GetRecoveryMaxCount()
   local r4_143 = nil	-- notice: implicit variable refs by block#[4]
@@ -2002,7 +2003,7 @@ function r6_0.CheckPlayerCanRecover(r0_143, r1_143)
   return r4_143
 end
 function r6_0.CheckPhantomCanRecover(r0_144, r1_144)
-  -- line: [2539, 2549] id: 144
+  -- line: [2540, 2550] id: 144
   local r2_144 = GWorld:GetAvatar()
   if r2_144 and r2_144:IsRealInBigWorld() and not r2_144:IsInHardBoss() then
     return false
@@ -2018,18 +2019,18 @@ function r6_0.CheckPhantomCanRecover(r0_144, r1_144)
   return r5_144
 end
 function r6_0.CheckMonsterCanRecover(r0_145, r1_145)
-  -- line: [2552, 2554] id: 145
+  -- line: [2553, 2555] id: 145
   return true
 end
 function r6_0.TriggerGenerateReward(r0_146, r1_146, r2_146, r3_146, r4_146)
-  -- line: [2566, 2571] id: 146
+  -- line: [2567, 2572] id: 146
   if r1_146.ToTable then
     r1_146 = r1_146:ToTable()
   end
   r0_146.EMGameState.EventMgr:TriggerGenerateReward(r1_146, r2_146, r3_146, r4_146)
 end
 function r6_0.ActiveMonsterBuff(r0_147, r1_147, r2_147)
-  -- line: [2596, 2601] id: 147
+  -- line: [2597, 2602] id: 147
   if not r0_147.MonsterAddBuffRule then
     r0_147.MonsterAddBuffRule = {}
   end
@@ -2039,11 +2040,11 @@ function r6_0.ActiveMonsterBuff(r0_147, r1_147, r2_147)
   })
 end
 function r6_0.DestroyMonsterBuff(r0_148)
-  -- line: [2603, 2605] id: 148
+  -- line: [2604, 2606] id: 148
   r0_148.MonsterAddBuffRule = nil
 end
 function r6_0.TriggerMechanismFieldCreature(r0_149, r1_149, r2_149, r3_149, r4_149, r5_149)
-  -- line: [2616, 2629] id: 149
+  -- line: [2617, 2630] id: 149
   for r9_149 = 1, r1_149:Length(), 1 do
     local r10_149 = r1_149:GetRef(r9_149)
     local r11_149 = r0_149.EMGameState.FeildCreatureMap:FindRef(r10_149)
@@ -2055,21 +2056,21 @@ function r6_0.TriggerMechanismFieldCreature(r0_149, r1_149, r2_149, r3_149, r4_1
   end
 end
 function r6_0.HideUIInScreen(r0_150, r1_150, r2_150)
-  -- line: [2631, 2636] id: 150
+  -- line: [2632, 2637] id: 150
   if not r0_150.EMGameState then
     return 
   end
   r0_150.EMGameState:HideUIInScreen(r1_150, r2_150)
 end
 function r6_0.SetContinuedPCGuideVisibility(r0_151, r1_151, r2_151)
-  -- line: [2638, 2643] id: 151
+  -- line: [2639, 2644] id: 151
   if not r0_151.EMGameState then
     return 
   end
   r0_151.EMGameState:RealSetContinuedPCGuideVisibility(r1_151, r2_151)
 end
 function r6_0.UpdatePlayerCharacterEndPointInfo(r0_152, r1_152, r2_152)
-  -- line: [2645, 2671] id: 152
+  -- line: [2646, 2672] id: 152
   if not r2_152 then
     r2_152 = UE4.UGameplayStatics.GetPlayerController(r1_152)
   end
@@ -2090,7 +2091,7 @@ function r6_0.UpdatePlayerCharacterEndPointInfo(r0_152, r1_152, r2_152)
   end
 end
 function r6_0.AddPickUpSuccessCallback(r0_153, r1_153, r2_153, r3_153)
-  -- line: [2673, 2681] id: 153
+  -- line: [2674, 2682] id: 153
   if not r0_153.PickUpSuccessCallback then
     r0_153.PickUpSuccessCallback = {}
   end
@@ -2100,45 +2101,45 @@ function r6_0.AddPickUpSuccessCallback(r0_153, r1_153, r2_153, r3_153)
   r0_153.PickUpSuccessCallback[r1_153][r2_153] = r3_153
 end
 function r6_0.RemovePickUpSuccessCallback(r0_154, r1_154, r2_154)
-  -- line: [2683, 2687] id: 154
+  -- line: [2684, 2688] id: 154
   if r0_154.PickUpSuccessCallback and r0_154.PickUpSuccessCallback[r1_154] then
     r0_154.PickUpSuccessCallback[r1_154][r2_154] = nil
   end
 end
 function r6_0.AddMiniGameSuccessCallback(r0_155, r1_155, r2_155)
-  -- line: [2689, 2694] id: 155
+  -- line: [2690, 2695] id: 155
   if not r0_155.MiniGameSuccessCallback then
     r0_155.MiniGameSuccessCallback = {}
   end
   r0_155.MiniGameSuccessCallback[r1_155] = r2_155
 end
 function r6_0.RemoveMiniGameSuccessCallback(r0_156, r1_156, r2_156)
-  -- line: [2696, 2700] id: 156
+  -- line: [2697, 2701] id: 156
   if r0_156.MiniGameSuccessCallback then
     r0_156.MiniGameSuccessCallback[r1_156] = nil
   end
 end
 function r6_0.RunStory(r0_157, r1_157, r2_157, r3_157, r4_157)
-  -- line: [2702, 2705] id: 157
+  -- line: [2703, 2706] id: 157
   DebugPrint("StoryPathStoryPathStoryPathStoryPath", r1_157)
   GWorld.StoryMgr:RunStory(r1_157, r2_157, nil, r3_157, r4_157)
 end
 function r6_0.PickUpForAllPlayers(r0_158, r1_158, r2_158, r3_158, r4_158, r5_158, r6_158, r7_158)
-  -- line: [2707, 2713] id: 158
+  -- line: [2708, 2714] id: 158
   for r11_158 = 0, r0_158:GetPlayerNum() + -1, 1 do
     local r13_158 = UE4.UGameplayStatics.GetPlayerController(r0_158, r11_158):GetMyPawn()
     r13_158[r1_158](r13_158, r2_158, r3_158, r4_158, r5_158, r6_158, r7_158)
   end
 end
 function r6_0.CollectGameModeTimerHandle(r0_159, r1_159)
-  -- line: [2716, 2721] id: 159
+  -- line: [2717, 2722] id: 159
   if not r0_159.GameModeTimerSet then
     r0_159.GameModeTimerSet = UE4.TSet(UE4.FTimerHandle())
   end
   r0_159.GameModeTimerSet:Add(r1_159)
 end
 function r6_0.PauseGameModeTimer(r0_160)
-  -- line: [2723, 2742] id: 160
+  -- line: [2724, 2743] id: 160
   r0_160.CurPauseGameModeTimerMap = {}
   if r0_160.GameModeTimerSet and r0_160.GameModeTimerSet:Num() > 0 then
     local r1_160 = {}
@@ -2159,7 +2160,7 @@ function r6_0.PauseGameModeTimer(r0_160)
   end
 end
 function r6_0.UnPauseGameModeTimer(r0_161)
-  -- line: [2744, 2756] id: 161
+  -- line: [2745, 2757] id: 161
   if r0_161.CurPauseGameModeTimerMap == nil or IsEmptyTable(r0_161.CurPauseGameModeTimerMap) then
     return 
   end
@@ -2172,11 +2173,11 @@ function r6_0.UnPauseGameModeTimer(r0_161)
   r0_161.CurPauseGameModeTimerMap = {}
 end
 function r6_0.GetActor2ManualId(r0_162, r1_162)
-  -- line: [2759, 2762] id: 162
+  -- line: [2760, 2763] id: 162
   return r0_162.LevelGameMode.BPBornRegionActor:FindRef(r1_162)
 end
 function r6_0.TriggerMechanismWindCreator(r0_163, r1_163, r2_163, r3_163)
-  -- line: [2764, 2775] id: 163
+  -- line: [2765, 2776] id: 163
   for r7_163 = 1, r1_163:Length(), 1 do
     local r9_163 = r0_163.LevelGameMode.BPBornRegionActor:FindRef(r1_163:GetRef(r7_163))
     if r9_163 then
@@ -2187,11 +2188,11 @@ function r6_0.TriggerMechanismWindCreator(r0_163, r1_163, r2_163, r3_163)
   end
 end
 function r6_0.EMActorDestroy_Lua(r0_164, r1_164, r2_164)
-  -- line: [2817, 2819] id: 164
+  -- line: [2818, 2820] id: 164
   r1_164:EMActorDestroy(r2_164)
 end
 function r6_0.GetMonsterCustomLoc(r0_165, r1_165)
-  -- line: [2821, 2860] id: 165
+  -- line: [2822, 2861] id: 165
   if r0_165:IsInRegion() then
     DebugPrint("Error!!! 区域出现Boss被卸载瞬移！请检查！ ViewLocation : ", URuntimeCommonFunctionLibrary.GetViewPortLocation(r1_165))
     return FVector(0, 0, 0)
@@ -2228,7 +2229,7 @@ function r6_0.GetMonsterCustomLoc(r0_165, r1_165)
   end
 end
 function r6_0.UploadTargetValues(r0_166, r1_166, r2_166)
-  -- line: [2862, 2874] id: 166
+  -- line: [2863, 2875] id: 166
   local r3_166 = GWorld:GetAvatar()
   if r3_166 then
     r3_166:TriggerTarget(r1_166)
@@ -2240,7 +2241,7 @@ function r6_0.UploadTargetValues(r0_166, r1_166, r2_166)
   end
 end
 function r6_0.GetAvatarInfo(r0_167, r1_167)
-  -- line: [2877, 2890] id: 167
+  -- line: [2878, 2891] id: 167
   if IsStandAlone(r0_167) or r5_0.IsListenServer(r0_167) then
     return GWorld:GetAvatar()
   elseif IsDedicatedServer(r0_167) then
@@ -2256,7 +2257,7 @@ function r6_0.GetAvatarInfo(r0_167, r1_167)
   end
 end
 function r6_0.TriggerSpawnPet(r0_168)
-  -- line: [2892, 2930] id: 168
+  -- line: [2893, 2931] id: 168
   if r0_168.EMGameState.PetDefenceFail == true then
     r0_168.EMGameState:ShowDungeonError("TriggerSpawnPet 宠物防御已经失败，不再创建", Const.DungeonErrorType.Pet, Const.DungeonErrorTitle.Process)
     return 
@@ -2293,7 +2294,7 @@ function r6_0.TriggerSpawnPet(r0_168)
   r0_168.PetMonsterCreated = true
 end
 function r6_0.GetPetCreatorNearestToExit(r0_169, r1_169)
-  -- line: [2932, 2954] id: 169
+  -- line: [2933, 2955] id: 169
   local r2_169 = r0_169:GetLevelLoader()
   if not r2_169 then
     r0_169.EMGameState:ShowDungeonError("TriggerSpawnPet 拿不到LevelLoader", Const.DungeonErrorType.Pet, Const.DungeonErrorTitle.FindObject)
@@ -2315,7 +2316,7 @@ function r6_0.GetPetCreatorNearestToExit(r0_169, r1_169)
   return r5_169
 end
 function r6_0.GetPetCreatorNearestToFirstPlayer(r0_170, r1_170)
-  -- line: [2956, 2984] id: 170
+  -- line: [2957, 2985] id: 170
   if not r0_170:GetLevelLoader() then
     r0_170.EMGameState:ShowDungeonError("TriggerSpawnPet 拿不到LevelLoader", Const.DungeonErrorType.Pet, Const.DungeonErrorTitle.FindObject)
     return nil
@@ -2341,7 +2342,7 @@ function r6_0.GetPetCreatorNearestToFirstPlayer(r0_170, r1_170)
   return r7_170
 end
 function r6_0.ShowPetDefenseDynamicEvent(r0_171, r1_171, r2_171, r3_171, r4_171)
-  -- line: [2986, 2992] id: 171
+  -- line: [2987, 2993] id: 171
   r0_171.EMGameState:SetPetEventName(r1_171)
   r0_171.EMGameState:SetPetEventDescribe(r2_171)
   r0_171.EMGameState:SetPetEventSuccess(r3_171)
@@ -2349,7 +2350,7 @@ function r6_0.ShowPetDefenseDynamicEvent(r0_171, r1_171, r2_171, r3_171, r4_171)
   r0_171.LevelGameMode:AddDungeonEvent("ShowPetDefenseDynamicEvent")
 end
 function r6_0.ShowPetDefenseProgress(r0_172, r1_172, r2_172, r3_172, r4_172)
-  -- line: [2994, 3007] id: 172
+  -- line: [2995, 3008] id: 172
   r0_172.EMGameState:SetPetEventName(r1_172)
   r0_172.EMGameState:SetPetEventDescribe(r2_172)
   if r0_172:IsSubGameMode() then
@@ -2364,7 +2365,7 @@ function r6_0.ShowPetDefenseProgress(r0_172, r1_172, r2_172, r3_172, r4_172)
   r0_172.LevelGameMode:AddDungeonEvent("ShowPetDefenseProgress")
 end
 function r6_0.HidePetDefenseProgress(r0_173, r1_173)
-  -- line: [3009, 3018] id: 173
+  -- line: [3010, 3019] id: 173
   r0_173.EMGameState:SetPetSuccess(r1_173)
   r0_173.EMGameState:SetPetDefenceFail(not r1_173)
   r0_173.LevelGameMode:RemoveDungeonEvent("ShowPetDefenseDynamicEvent")
@@ -2375,13 +2376,13 @@ function r6_0.HidePetDefenseProgress(r0_173, r1_173)
   end
 end
 function r6_0.UpdatePetDefenseProgress(r0_174)
-  -- line: [3020, 3024] id: 174
+  -- line: [3021, 3025] id: 174
   if IsStandAlone(r0_174) then
     r0_174.EMGameState:OnRep_PetDefenceKilled()
   end
 end
 function r6_0.HandleJoinMidwayDungeonRandomEvent(r0_175, r1_175)
-  -- line: [3026, 3045] id: 175
+  -- line: [3027, 3046] id: 175
   DebugPrint("[BP_EMGameMode_C:HandleJoinMidwayDungeonRandomEvent] Start")
   local r2_175 = GWorld:GetDSEntity()
   if not r2_175 then
@@ -2399,7 +2400,7 @@ function r6_0.HandleJoinMidwayDungeonRandomEvent(r0_175, r1_175)
   DebugPrint("[BP_EMGameMode_C:HandleJoinMidwayDungeonRandomEvent] End")
 end
 function r6_0.InitDungeonRandomEvent(r0_176, r1_176)
-  -- line: [3047, 3089] id: 176
+  -- line: [3048, 3090] id: 176
   if r0_176.HasInitDungeonEvent then
     r0_176:HandleJoinMidwayDungeonRandomEvent(r1_176)
     return 
@@ -2441,7 +2442,7 @@ function r6_0.InitDungeonRandomEvent(r0_176, r1_176)
   end
 end
 function r6_0.InitDungeonRandomEventPet(r0_177, r1_177)
-  -- line: [3091, 3108] id: 177
+  -- line: [3092, 3109] id: 177
   DebugPrint("[BP_EMGameMode_C:InitDungeonRandomEventPet] Start <PetId>", r1_177.PetId)
   local r2_177 = GWorld:GetDSEntity()
   if r2_177 then
@@ -2460,17 +2461,17 @@ function r6_0.InitDungeonRandomEventPet(r0_177, r1_177)
   r0_177.DungeonRandomEventDefenceCoreId = DataMgr.Pet[r1_177.PetId].DefenceCoreID
 end
 function r6_0.InitDungeonRandomEventTreasure(r0_178, r1_178)
-  -- line: [3110, 3113] id: 178
+  -- line: [3111, 3114] id: 178
   DebugPrint("[BP_EMGameMode_C:InitDungeonRandomEventTreasure] Start")
   r0_178.NeedTreasureMonster = true
 end
 function r6_0.InitDungeonRandomEventButcher(r0_179, r1_179)
-  -- line: [3115, 3118] id: 179
+  -- line: [3116, 3119] id: 179
   DebugPrint("[BP_EMGameMode_C:InitDungeonRandomEventButcher] Start")
   r0_179.NeedButcherMonster = true
 end
 function r6_0.JudgeEscapeMechanismArray(r0_180, r1_180)
-  -- line: [3120, 3126] id: 180
+  -- line: [3121, 3127] id: 180
   if r1_180:Num() <= 0 then
     DebugPrint("Error: 找不到撤离机关。")
   elseif r1_180:Num() > 1 then
@@ -2478,7 +2479,7 @@ function r6_0.JudgeEscapeMechanismArray(r0_180, r1_180)
   end
 end
 function r6_0.GetEscapeMechanismLocation(r0_181)
-  -- line: [3128, 3156] id: 181
+  -- line: [3129, 3157] id: 181
   local r1_181 = r0_181.EMGameState.MechanismMap:FindRef("ExitTrigger")
   if r1_181 ~= nil then
     r1_181 = r1_181.Array
@@ -2509,7 +2510,7 @@ function r6_0.GetEscapeMechanismLocation(r0_181)
   return nil
 end
 function r6_0.GetEscapeMechanismActor(r0_182)
-  -- line: [3158, 3170] id: 182
+  -- line: [3159, 3171] id: 182
   local r1_182 = r0_182.EMGameState.MechanismMap:FindRef("ExitTrigger")
   if r1_182 == nil then
     DebugPrint("Error: 找不到撤离机关。")
@@ -2524,7 +2525,7 @@ function r6_0.GetEscapeMechanismActor(r0_182)
   return nil
 end
 function r6_0.GetPickupUnitPreloadTable(r0_183)
-  -- line: [3172, 3181] id: 183
+  -- line: [3173, 3182] id: 183
   if r0_183.EMGameState.GameModeType == "Blank" then
     return nil
   end
@@ -2535,7 +2536,7 @@ function r6_0.GetPickupUnitPreloadTable(r0_183)
   return nil
 end
 function r6_0.GetAvatarBuffs(r0_184, r1_184)
-  -- line: [3183, 3191] id: 184
+  -- line: [3184, 3192] id: 184
   for r6_184, r7_184 in pairs(r0_184.AvatarInfos) do
     DebugPrint("Tianyi@ AvatarEid = " .. r6_184)
     for r13_184, r14_184 in pairs(r7_184.Buffs) do
@@ -2546,7 +2547,7 @@ function r6_0.GetAvatarBuffs(r0_184, r1_184)
   -- close: r2_184
 end
 function r6_0.TriggerBattleAchievementUploadOnDungeonEnd(r0_185, r1_185)
-  -- line: [3193, 3209] id: 185
+  -- line: [3194, 3210] id: 185
   if IsStandAlone(r0_185) then
     local r2_185 = GWorld:GetAvatar()
     if r2_185 then
@@ -2562,12 +2563,12 @@ function r6_0.TriggerBattleAchievementUploadOnDungeonEnd(r0_185, r1_185)
   end
 end
 function r6_0.NotifyGameModePlayerDead(r0_186, r1_186)
-  -- line: [3211, 3214] id: 186
+  -- line: [3212, 3215] id: 186
   r0_186:TriggerDungeonComponentFun("OnPlayerDead")
   r0_186:PlayerOnDead(r1_186)
 end
 function r6_0.DestroyActorsByUnitLabels_Lua(r0_187, r1_187)
-  -- line: [3216, 3223] id: 187
+  -- line: [3217, 3224] id: 187
   local r2_187 = GWorld:GetAvatar()
   if r2_187 then
     for r7_187, r8_187 in pairs(r1_187:ToTable()) do
@@ -2577,7 +2578,7 @@ function r6_0.DestroyActorsByUnitLabels_Lua(r0_187, r1_187)
   end
 end
 function r6_0.GetRegionIdByLocation(r0_188, ...)
-  -- line: [3225, 3229] id: 188
+  -- line: [3226, 3230] id: 188
   local r1_188 = r0_188:GetLevelLoader()
   if not r1_188 then
     return 
@@ -2585,7 +2586,7 @@ function r6_0.GetRegionIdByLocation(r0_188, ...)
   return r1_188:GetRegionIdByLocation(...)
 end
 function r6_0.ActivateDynamicQuestEvent(r0_189)
-  -- line: [3231, 3251] id: 189
+  -- line: [3232, 3252] id: 189
   local r1_189 = GWorld:GetAvatar()
   if r1_189 and r1_189.DynamicQuests and #r1_189.DynamicQuests then
     for r6_189, r7_189 in pairs(r1_189.DynamicQuests) do
@@ -2604,7 +2605,7 @@ function r6_0.ActivateDynamicQuestEvent(r0_189)
   end
 end
 function r6_0.IsRegionAllReady(r0_190)
-  -- line: [3253, 3257] id: 190
+  -- line: [3254, 3258] id: 190
   local r1_190 = r0_190:GetRegionDataMgrSubSystem()
   if not r1_190 then
     return false
@@ -2612,7 +2613,7 @@ function r6_0.IsRegionAllReady(r0_190)
   return r1_190:IsRegionAllReady()
 end
 function r6_0.TriggerTarget(r0_191, r1_191, r2_191, r3_191)
-  -- line: [3259, 3274] id: 191
+  -- line: [3260, 3275] id: 191
   local r4_191 = GWorld:GetAvatar()
   if r4_191 then
     r4_191:ServerTargetFinish(r1_191, r2_191, 1)
@@ -2627,7 +2628,7 @@ function r6_0.TriggerTarget(r0_191, r1_191, r2_191, r3_191)
   end
 end
 function r6_0.ActiveNewTargetPointAOITrigger_Region(r0_192, r1_192)
-  -- line: [3276, 3297] id: 192
+  -- line: [3277, 3298] id: 192
   if r1_192 ~= Const.Hijack then
     GWorld.logger.error("ActiveNewTargetPointAOITrigger_Region 接口当前只支持 Hijack Type")
     return 
@@ -2651,7 +2652,7 @@ function r6_0.ActiveNewTargetPointAOITrigger_Region(r0_192, r1_192)
   -- close: r2_192
 end
 function r6_0.DisactiveNewTargetPointAOITrigger_Region(r0_193, r1_193)
-  -- line: [3299, 3308] id: 193
+  -- line: [3300, 3309] id: 193
   if not r0_193.NewTargetPointAOITriggerList or not r0_193.NewTargetPointAOITriggerList[r1_193] then
     return 
   end
@@ -2661,11 +2662,11 @@ function r6_0.DisactiveNewTargetPointAOITrigger_Region(r0_193, r1_193)
   -- close: r2_193
 end
 function r6_0.OnAllPlayersVoted(r0_194)
-  -- line: [3310, 3312] id: 194
+  -- line: [3311, 3313] id: 194
   r0_194:TriggerDungeonComponentFun("OnAllPlayersVoted")
 end
 function r6_0.InitMonsterFramingNodeSetting(r0_195, r1_195)
-  -- line: [3314, 3322] id: 195
+  -- line: [3315, 3323] id: 195
   r1_195.Type = EFramingType.ByReplicateNum
   r1_195.DistanceToCull = 4500
   r1_195.DistanceToCull_FastShare = 15000
@@ -2675,7 +2676,7 @@ function r6_0.InitMonsterFramingNodeSetting(r0_195, r1_195)
   r1_195.SkipMovementReplicationFactor = 1
 end
 function r6_0.GetPlayerEidByAvatarEidStr(r0_196, r1_196)
-  -- line: [3324, 3331] id: 196
+  -- line: [3325, 3332] id: 196
   local r2_196 = UE4.URuntimeCommonFunctionLibrary.GetPlayerStateByAvatarEid(GWorld.GameInstance, r1_196)
   if r2_196 then
     return r2_196.Eid
@@ -2684,7 +2685,7 @@ function r6_0.GetPlayerEidByAvatarEidStr(r0_196, r1_196)
   end
 end
 function r6_0.SetGameStatePetRandomDailyCount(r0_197)
-  -- line: [3333, 3346] id: 197
+  -- line: [3334, 3347] id: 197
   local r1_197 = GWorld:GetAvatar()
   if not r1_197 then
     return 
@@ -2697,7 +2698,7 @@ function r6_0.SetGameStatePetRandomDailyCount(r0_197)
   r0_197.EMGameState.RegionRandomPetLimitedDailyCount = DataMgr.GlobalConstant.PetRareDailyLimit.ConstantValue - r2_197
 end
 function r6_0.GetRegionCharAvgLevel(r0_198)
-  -- line: [3348, 3389] id: 198
+  -- line: [3349, 3390] id: 198
   local r1_198 = GWorld:GetAvatar()
   if not r1_198 then
     return 99
@@ -2708,7 +2709,7 @@ function r6_0.GetRegionCharAvgLevel(r0_198)
   local r2_198 = {}
   local r3_198 = 3
   local function r4_198(r0_199)
-    -- line: [3359, 3374] id: 199
+    -- line: [3360, 3375] id: 199
     if #r2_198 < r3_198 then
       table.insert(r2_198, r0_199)
     else
@@ -2740,7 +2741,7 @@ function r6_0.GetRegionCharAvgLevel(r0_198)
   return r6_198
 end
 function r6_0.UpdateServerTimeOfDay(r0_200, r1_200)
-  -- line: [3391, 3397] id: 200
+  -- line: [3392, 3398] id: 200
   local r2_200 = GWorld:GetAvatar()
   if not r2_200 then
     return 
@@ -2748,7 +2749,7 @@ function r6_0.UpdateServerTimeOfDay(r0_200, r1_200)
   r2_200:SetTimeOfDay(r1_200)
 end
 function r6_0.GetServerTimeOfDay(r0_201)
-  -- line: [3399, 3405] id: 201
+  -- line: [3400, 3406] id: 201
   local r1_201 = GWorld:GetAvatar()
   if not r1_201 then
     return 12
@@ -2756,7 +2757,7 @@ function r6_0.GetServerTimeOfDay(r0_201)
   return r1_201.TimeOfDay
 end
 function r6_0.SetPlayerInvincible(r0_202, r1_202, r2_202)
-  -- line: [3407, 3418] id: 202
+  -- line: [3408, 3419] id: 202
   if not IsValid(r1_202) then
     return 
   end
@@ -2768,7 +2769,7 @@ function r6_0.SetPlayerInvincible(r0_202, r1_202, r2_202)
   end
 end
 function r6_0.PausePhantomBTByPlayer(r0_203, r1_203, r2_203, r3_203)
-  -- line: [3420, 3439] id: 203
+  -- line: [3421, 3440] id: 203
   if not IsValid(r1_203) then
     return 
   end
