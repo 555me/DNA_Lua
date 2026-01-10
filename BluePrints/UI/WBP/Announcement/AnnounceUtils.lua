@@ -336,34 +336,17 @@ function r5_0.ParseHTMLContent(r0_23, r1_23)
   return r1_23
 end
 function r5_0._ResetReddot(r0_24)
-  -- line: [323, 342] id: 24
+  -- line: [323, 331] id: 24
   if not ReddotManager.GetTreeNode(DataMgr.ReddotNode.AnnouncementItems.Name) then
     ReddotManager.AddNode(DataMgr.ReddotNode.AnnouncementItems.Name)
   end
-  for r6_24, r7_24 in ipairs({
-    "ActivityAnnouncement",
-    "SystemAnnouncement",
-    "NewsAnnouncement"
-  }) do
-    ReddotManager.ClearLeafNodeCount(r7_24)
-    local r8_24 = ReddotManager.GetLeafNodeCacheDetail(r7_24)
-    local r9_24 = {}
-    for r14_24, r15_24 in pairs(r8_24) do
-      if r15_24 then
-        table.insert(r9_24, r14_24)
-      end
-    end
-    -- close: r10_24
-    for r14_24, r15_24 in ipairs(r9_24) do
-      r8_24[r15_24] = nil
-    end
-    -- close: r10_24
-  end
-  -- close: r2_24
+  ReddotManager.ClearLeafNodeCount("ActivityAnnouncement")
+  ReddotManager.ClearLeafNodeCount("SystemAnnouncement")
+  ReddotManager.ClearLeafNodeCount("NewsAnnouncement")
   ReddotManager.ClearLeafNodeCount("AnnouncementDirty")
 end
 function r5_0._TryAddReddotCacheDetail(r0_25, r1_25)
-  -- line: [344, 355] id: 25
+  -- line: [333, 344] id: 25
   local r2_25 = tostring(r1_25.NoticeID)
   local r3_25 = r5_0:GetReddotNameByConf(r1_25)
   local r4_25 = ReddotManager.GetLeafNodeCacheDetail(r3_25)
@@ -376,7 +359,7 @@ function r5_0._TryAddReddotCacheDetail(r0_25, r1_25)
   end
 end
 function r5_0.GetReddotNameByConf(r0_26, r1_26)
-  -- line: [357, 365] id: 26
+  -- line: [346, 354] id: 26
   if r1_26.TabTag == r1_0.TabTag.Activity then
     return "ActivityAnnouncement"
   elseif r1_26.TabTag == r1_0.TabTag.System then
@@ -386,7 +369,7 @@ function r5_0.GetReddotNameByConf(r0_26, r1_26)
   end
 end
 function r5_0.TrySubReddotCacheDetail(r0_27, r1_27)
-  -- line: [367, 377] id: 27
+  -- line: [356, 366] id: 27
   local r2_27 = tostring(r1_27.NoticeID)
   local r3_27 = r5_0:GetReddotNameByConf(r1_27)
   local r4_27 = ReddotManager.GetLeafNodeCacheDetail(r3_27)
@@ -397,7 +380,7 @@ function r5_0.TrySubReddotCacheDetail(r0_27, r1_27)
   r5_0:_UpdateAnnouncementReddotState()
 end
 function r5_0._SyncReddotCache(r0_28)
-  -- line: [379, 392] id: 28
+  -- line: [368, 381] id: 28
   local r1_28 = ReddotManager.GetLeafNodeCacheDetail("SystemAnnouncement")
   local r2_28 = ReddotManager.GetLeafNodeCacheDetail("ActivityAnnouncement")
   local r3_28 = ReddotManager.GetLeafNodeCacheDetail("NewsAnnouncement")
@@ -411,7 +394,7 @@ function r5_0._SyncReddotCache(r0_28)
   r5_0:_RealSyncReddotCache(r3_28, r4_28, "NewsAnnouncement")
 end
 function r5_0._RealSyncReddotCache(r0_29, r1_29, r2_29, r3_29)
-  -- line: [394, 400] id: 29
+  -- line: [383, 389] id: 29
   for r8_29, r9_29 in pairs(r1_29 and {}) do
     if not r2_29[r8_29] or r5_0:GetReddotNameByConf(r2_29[r8_29]) ~= r3_29 then
       r1_29[r8_29] = nil
@@ -420,7 +403,7 @@ function r5_0._RealSyncReddotCache(r0_29, r1_29, r2_29, r3_29)
   -- close: r4_29
 end
 function r5_0._UpdateAnnouncementReddotState(r0_30)
-  -- line: [402, 420] id: 30
+  -- line: [391, 409] id: 30
   local r1_30 = false
   for r6_30, r7_30 in ipairs(r6_0) do
     for r13_30, r14_30 in pairs(ReddotManager.GetLeafNodeCacheDetail(r7_30) and {}) do
@@ -443,7 +426,7 @@ function r5_0._UpdateAnnouncementReddotState(r0_30)
   return r1_30
 end
 function r5_0._GetLocalAnnouncement(r0_31)
-  -- line: [424, 449] id: 31
+  -- line: [413, 438] id: 31
   if not DataMgr.SystemNotice then
     return 
   end
@@ -490,7 +473,7 @@ function r5_0._GetLocalAnnouncement(r0_31)
   -- close: r1_31
 end
 function r5_0.GetAnnouncementDataAsync(r0_32, r1_32, r2_32, r3_32)
-  -- line: [451, 568] id: 32
+  -- line: [440, 557] id: 32
   if GWorld:GetAvatar() then
     if not r5_0._AnnouncementDirty then
       return 
@@ -517,10 +500,10 @@ function r5_0.GetAnnouncementDataAsync(r0_32, r1_32, r2_32, r3_32)
   r5_0:_ResetReddot()
   DebugPrint("[Laixiaoyang] M:GetAnnoucementDataAsync 拉取后台游戏公告数据...")
   r3_0:GetGameNotice(r3_32, function(r0_33)
-    -- line: [478, 564] id: 33
+    -- line: [467, 553] id: 33
     try({
       exec = function()
-        -- line: [480, 551] id: 34
+        -- line: [469, 540] id: 34
         if IsEmptyTable(r0_33) then
           DebugPrint(WarningTag, LXYTag, "公告Json解析不出内容")
           return 
@@ -581,11 +564,11 @@ function r5_0.GetAnnouncementDataAsync(r0_32, r1_32, r2_32, r3_32)
         -- close: r0_34
       end,
       catch = function(r0_35)
-        -- line: [552, 554] id: 35
+        -- line: [541, 543] id: 35
         print(ErrorTag, r0_35 .. "\n" .. debug.traceback())
       end,
       final = function()
-        -- line: [555, 562] id: 36
+        -- line: [544, 551] id: 36
         r0_32:_SortConfs()
         r0_32:_SyncReddotCache()
         if r5_0.PendingCo then
@@ -600,14 +583,14 @@ function r5_0.GetAnnouncementDataAsync(r0_32, r1_32, r2_32, r3_32)
   end
 end
 function r5_0.MarkDirty(r0_37, r1_37)
-  -- line: [573, 578] id: 37
+  -- line: [562, 567] id: 37
   r5_0._AnnouncementDirty = r1_37
   if r1_37 then
     DebugPrint("[zhangyuhang] M:MakeDirty 准备重新请求公告")
   end
 end
 function r5_0.UpdateAnnouncementDataInGame(r0_38)
-  -- line: [580, 587] id: 38
+  -- line: [569, 576] id: 38
   local r1_38 = GWorld:GetAvatar()
   if r1_38 then
     r5_0:GetAnnouncementDataAsync_UseWeb(r1_0.ShowTag.InGame, nil, r1_38.Hostnum)
@@ -616,7 +599,7 @@ function r5_0.UpdateAnnouncementDataInGame(r0_38)
   return r5_0:_UpdateAnnouncementReddotState()
 end
 function r5_0._CacheLastConf(r0_39)
-  -- line: [589, 594] id: 39
+  -- line: [578, 583] id: 39
   r5_0.LastConfs = {}
   for r5_39, r6_39 in ipairs(r5_0.Confs) do
     r5_0.LastConfs[r6_39.NoticeID] = r6_39
@@ -624,9 +607,9 @@ function r5_0._CacheLastConf(r0_39)
   -- close: r1_39
 end
 function r5_0._SortConfs(r0_40)
-  -- line: [596, 603] id: 40
+  -- line: [585, 592] id: 40
   table.sort(r5_0.Confs, function(r0_41, r1_41)
-    -- line: [597, 601] id: 41
+    -- line: [586, 590] id: 41
     if r0_41.Local ~= r1_41.Local then
       return r0_41.Local < r1_41.Local
     end
@@ -639,7 +622,7 @@ function r5_0._SortConfs(r0_40)
   end)
 end
 function r5_0.GetAnnouncementDataAsync_UseWeb(r0_42, r1_42, r2_42, r3_42)
-  -- line: [605, 657] id: 42
+  -- line: [594, 646] id: 42
   if GWorld:GetAvatar() then
     if not r5_0._AnnouncementDirty then
       return 
@@ -664,10 +647,10 @@ function r5_0.GetAnnouncementDataAsync_UseWeb(r0_42, r1_42, r2_42, r3_42)
   r5_0:_ResetReddot()
   DebugPrint("[Laixiaoyang] M:GetAnnoucementDataAsync 拉取后台游戏公告数据...")
   r3_0:GetGameNotice(r3_42, function(r0_43)
-    -- line: [630, 653] id: 43
+    -- line: [619, 642] id: 43
     try({
       exec = function()
-        -- line: [632, 640] id: 44
+        -- line: [621, 629] id: 44
         if IsEmptyTable(r0_43) then
           DebugPrint(WarningTag, LXYTag, "公告Json解析不出内容")
           return 
@@ -678,11 +661,11 @@ function r5_0.GetAnnouncementDataAsync_UseWeb(r0_42, r1_42, r2_42, r3_42)
         -- close: r0_44
       end,
       catch = function(r0_45)
-        -- line: [641, 643] id: 45
+        -- line: [630, 632] id: 45
         print(ErrorTag, r0_45 .. "\n" .. debug.traceback())
       end,
       final = function()
-        -- line: [644, 651] id: 46
+        -- line: [633, 640] id: 46
         r0_42:_SortConfs()
         r0_42:_SyncReddotCache()
         if r5_0.PendingCo then
@@ -697,7 +680,7 @@ function r5_0.GetAnnouncementDataAsync_UseWeb(r0_42, r1_42, r2_42, r3_42)
   end
 end
 function r5_0._AddNewConf(r0_47, r1_47, r2_47)
-  -- line: [660, 722] id: 47
+  -- line: [649, 711] id: 47
   if r5_0.AddedConfIds[r1_47.UniqueId] then
     return 
   end
@@ -754,7 +737,7 @@ function r5_0._AddNewConf(r0_47, r1_47, r2_47)
   table.insert(r5_0.Confs, r3_47)
 end
 function r5_0.IsExpired(r0_48, r1_48)
-  -- line: [728, 740] id: 48
+  -- line: [717, 729] id: 48
   if not r1_48.EndTimestamp then
     return false
   end
@@ -769,14 +752,14 @@ function r5_0.IsExpired(r0_48, r1_48)
   return r3_48
 end
 function r5_0.IsFutureNotice(r0_49, r1_49)
-  -- line: [742, 746] id: 49
+  -- line: [731, 735] id: 49
   if not r1_49.StartTimestamp then
     return false
   end
   return os.time() < r1_49.StartTimestamp
 end
 function r5_0._ParseContent(r0_50, r1_50, r2_50)
-  -- line: [748, 769] id: 50
+  -- line: [737, 758] id: 50
   r1_50.NoticeContent = ""
   r1_50.NoticeTitle = ""
   for r7_50, r8_50 in pairs(r2_50.Content and {}) do
@@ -800,7 +783,7 @@ function r5_0._ParseContent(r0_50, r1_50, r2_50)
   -- close: r3_50
 end
 function r5_0._ParseShowTag(r0_51, r1_51, r2_51)
-  -- line: [771, 785] id: 51
+  -- line: [760, 774] id: 51
   if r4_0.IsNilOrEmpty(r2_51.ClientOnly.noticeType) then
     r1_51.ShowTags = {
       1,
@@ -824,7 +807,7 @@ function r5_0._ParseShowTag(r0_51, r1_51, r2_51)
 end
 r5_0.bIndepChannel = false
 function r5_0.CheckChannel(r0_52, r1_52)
-  -- line: [788, 819] id: 52
+  -- line: [777, 808] id: 52
   -- notice: unreachable block#7
   local r2_52 = r2_0.HeroUSDKSubsystem():GetChannelId()
   if not r2_52 then
@@ -868,13 +851,13 @@ function r5_0.CheckChannel(r0_52, r1_52)
   return false
 end
 function r5_0.ResetConf(r0_53)
-  -- line: [821, 825] id: 53
+  -- line: [810, 814] id: 53
   r5_0.bInit = false
   r5_0.Confs = {}
   r5_0.AddedConfIds = {}
 end
 function r5_0.CheckSubChannel(r0_54, r1_54)
-  -- line: [827, 852] id: 54
+  -- line: [816, 841] id: 54
   -- notice: unreachable block#5
   if r5_0.bIndepChannel then
     DebugPrint("独立渠道忽略子渠道检测...")
@@ -911,7 +894,7 @@ function r5_0.CheckSubChannel(r0_54, r1_54)
   return false
 end
 function r5_0.CheckPlatform(r0_55, r1_55)
-  -- line: [869, 875] id: 55
+  -- line: [858, 864] id: 55
   r1_55 = tonumber(r1_55)
   if r1_0.PlatformName == DataMgr.ChannelInfo[r1_55].OS then
     return true
@@ -919,11 +902,11 @@ function r5_0.CheckPlatform(r0_55, r1_55)
   return false
 end
 function r5_0.ResetNew(r0_56)
-  -- line: [879, 881] id: 56
+  -- line: [868, 870] id: 56
   r5_0.HasNewAdd = false
 end
 function r5_0.TrySetServerAreaNew(r0_57, r1_57)
-  -- line: [884, 895] id: 57
+  -- line: [873, 884] id: 57
   local r2_57 = r0_0:Get("VisitedHostTableForAnnouncement") and {}
   if r2_57["Server" .. r1_57] ~= nil then
     return 
@@ -933,7 +916,7 @@ function r5_0.TrySetServerAreaNew(r0_57, r1_57)
   r5_0.HasNewAdd = true
 end
 function r5_0._ActivateScheduledNotices(r0_58)
-  -- line: [898, 913] id: 58
+  -- line: [887, 902] id: 58
   local r1_58 = {}
   for r6_58, r7_58 in pairs(r5_0.FutureConfs and {}) do
     if not r5_0:IsFutureNotice(r7_58.Info) then
@@ -952,7 +935,7 @@ function r5_0._ActivateScheduledNotices(r0_58)
   end
 end
 function r5_0._RemoveExpiredNotices(r0_59)
-  -- line: [916, 925] id: 59
+  -- line: [905, 914] id: 59
   for r4_59 = #r5_0.Confs, 1, -1 do
     local r5_59 = r5_0.Confs[r4_59]
     if r5_0:IsExpired(r5_59) then
@@ -962,7 +945,7 @@ function r5_0._RemoveExpiredNotices(r0_59)
   end
 end
 function r5_0.FilterConfForUI(r0_60, r1_60, r2_60)
-  -- line: [927, 938] id: 60
+  -- line: [916, 927] id: 60
   r5_0:_ActivateScheduledNotices()
   r5_0:_RemoveExpiredNotices()
   local r3_60 = {}
@@ -976,7 +959,7 @@ function r5_0.FilterConfForUI(r0_60, r1_60, r2_60)
 end
 r5_0.AnnounceMainUI = nil
 function r5_0.OpenAnnouncementMain(r0_61, r1_61, r2_61, r3_61, r4_61, r5_61)
-  -- line: [941, 979] id: 61
+  -- line: [930, 968] id: 61
   if r5_0.bFontLoading then
     UIManager(GWorld.GameInstance):ShowUITip(UIConst.Tip_CommonToast, GText("UI_Toast_NetDelay"))
     return 
@@ -1016,20 +999,20 @@ function r5_0.OpenAnnouncementMain(r0_61, r1_61, r2_61, r3_61, r4_61, r5_61)
   r5_0.AnnounceMainUI = UIManager(GWorld.GameInstance):ShowCommonPopupUI(100134, r8_61, r4_61, r5_61)
 end
 function r5_0.TryCloseAnnounceMainUI(r0_62)
-  -- line: [981, 986] id: 62
+  -- line: [970, 975] id: 62
   if IsValid(r5_0.AnnounceMainUI) then
     r5_0.AnnounceMainUI:Close()
     r0_62:ClearAnnounceMainUI()
   end
 end
 function r5_0.ClearAnnounceMainUI(r0_63)
-  -- line: [988, 990] id: 63
+  -- line: [977, 979] id: 63
   r5_0.AnnounceMainUI = nil
 end
 function r5_0.UrlDecode(r0_64, r1_64)
-  -- line: [992, 997] id: 64
+  -- line: [981, 986] id: 64
   r1_64 = string.gsub(r1_64, "%%(%x%x)", function(r0_65)
-    -- line: [993, 995] id: 65
+    -- line: [982, 984] id: 65
     return string.char(tonumber(r0_65, 16))
   end)
   return r1_64

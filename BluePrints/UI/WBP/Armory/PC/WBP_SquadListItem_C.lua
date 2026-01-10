@@ -230,7 +230,10 @@ function r1_0.OnBtnAddUnhovered(r0_21)
   r0_21:PlayAnimation(r0_21.Add_UnHover)
 end
 function r1_0.OnMouseButtonDown(r0_22, r1_22, r2_22)
-  -- line: [289, 321] id: 22
+  -- line: [289, 324] id: 22
+  if r0_22.Owner.CurInputDeviceType == ECommonInputType.Touch then
+    return r2_0
+  end
   r0_22.bClickBegin = true
   if not r0_22.IsAddSquad then
     AudioManager(r0_22):PlayUISound(nil, "event:/ui/common/click_btn_large", nil, nil)
@@ -243,7 +246,7 @@ function r1_0.OnMouseButtonDown(r0_22, r1_22, r2_22)
     r0_22.StartDrag = false
     r0_22.StartDragCountDown = r0_22.StartDragTime
     r0_22:AddTimer(0.1, function()
-      -- line: [304, 316] id: 23
+      -- line: [307, 319] id: 23
       if not r0_22.IsPressingItem then
         DebugPrint("OnDragDetected fail")
         r0_22:RemoveTimer("DragDelay")
@@ -260,7 +263,10 @@ function r1_0.OnMouseButtonDown(r0_22, r1_22, r2_22)
   return UE4.UWidgetBlueprintLibrary.CaptureMouse(UE.UWidgetBlueprintLibrary.DetectDragIfPressed(r2_22, r0_22, UE.EKeys.LeftMouseButton), r0_22)
 end
 function r1_0.OnMouseButtonUp(r0_24, r1_24, r2_24)
-  -- line: [323, 336] id: 24
+  -- line: [326, 342] id: 24
+  if r0_24.Owner.CurInputDeviceType == ECommonInputType.Touch then
+    return r2_0
+  end
   r0_24.Owner:GetSquadWidgetInSquadList(r0_24.Owner.CurSelectSquadIndex):HideAllArrow()
   if not r0_24.bClickBegin then
     return r2_0
@@ -274,23 +280,32 @@ function r1_0.OnMouseButtonUp(r0_24, r1_24, r2_24)
   return r2_0
 end
 function r1_0.OnMouseMove(r0_25, r1_25, r2_25)
-  -- line: [338, 344] id: 25
+  -- line: [344, 353] id: 25
   if r0_25.Owner.IsDraging then
+  end
+  if r0_25.Owner.CurInputDeviceType == ECommonInputType.Touch then
+    return r2_0
   end
   return UE4.UWidgetBlueprintLibrary.ReleaseMouseCapture(UE4.UWidgetBlueprintLibrary.DetectDragIfPressed(r2_25, r0_25, EKeys.LeftMouseButton))
 end
 function r1_0.OnMouseEnter(r0_26, r1_26, r2_26)
-  -- line: [346, 353] id: 26
+  -- line: [355, 365] id: 26
   if r0_26.Owner.IsDraging then
     return 
+  end
+  if r0_26.Owner.CurInputDeviceType == ECommonInputType.Touch then
+    return r2_0
   end
   if not r0_26.IsSelect and r0_0 == "PC" then
     r0_26:PlayAnimation(r0_26.Hover)
   end
 end
 function r1_0.OnMouseLeave(r0_27, r1_27, r2_27)
-  -- line: [355, 366] id: 27
+  -- line: [367, 381] id: 27
   if r0_27.Owner.IsDraging then
+  end
+  if r0_27.Owner.CurInputDeviceType == ECommonInputType.Touch then
+    return r2_0
   end
   r0_27.IsPressingItem = false
   if not r0_27.IsSelect and r0_0 == "PC" then
@@ -300,7 +315,7 @@ function r1_0.OnMouseLeave(r0_27, r1_27, r2_27)
   end
 end
 function r1_0.OnTouchStarted(r0_28, r1_28, r2_28)
-  -- line: [370, 400] id: 28
+  -- line: [385, 419] id: 28
   local r3_28 = UE.UWidgetBlueprintLibrary.DetectDragIfPressed(r2_28, r0_28, UE.FKey("Touch"))
   r0_28.bClickBegin = true
   if r0_28.Owner.CurSelectSquadIndex ~= r0_28.Index then
@@ -310,7 +325,7 @@ function r1_0.OnTouchStarted(r0_28, r1_28, r2_28)
     r0_28.StartDrag = false
     r0_28.StartDragCountDown = r0_28.StartDragTime
     r0_28:AddTimer(0.1, function()
-      -- line: [382, 396] id: 29
+      -- line: [397, 415] id: 29
       if not r0_28.IsPressingItem then
         DebugPrint("OnDragDetected fail")
         r0_28:RemoveTimer("DragDelay")
@@ -319,6 +334,10 @@ function r1_0.OnTouchStarted(r0_28, r1_28, r2_28)
       DebugPrint("self.StartDragCountDown ", r0_28.StartDragCountDown)
       r0_28.StartDragCountDown = math.max(r0_28.StartDragCountDown - 0.1, 0)
       if r0_28.StartDragCountDown <= 0 then
+        if r0_28.Owner.IsTouchMoving then
+          r0_28:RemoveTimer("DragDelay")
+          return 
+        end
         r0_28.StartDrag = true
         DebugPrint("self.StartDragCountDown 0")
         r0_28:CheckArrowState()
@@ -328,258 +347,273 @@ function r1_0.OnTouchStarted(r0_28, r1_28, r2_28)
   end
   return r3_28
 end
-function r1_0.OnTouchEnded(r0_30, r1_30, r2_30)
-  -- line: [402, 416] id: 30
-  DebugPrint("OnTouchEnded")
-  r0_30.Owner:GetSquadWidgetInSquadList(r0_30.Owner.CurSelectSquadIndex):HideAllArrow()
-  if not r0_30.bClickBegin then
-    return r2_0
+function r1_0.OnTouchMoved(r0_30, r1_30, r2_30)
+  -- line: [423, 436] id: 30
+  local r3_30 = UE4.UKismetInputLibrary.PointerEvent_GetScreenSpacePosition(PointerEvent)
+  if not r0_30.Owner.PreMousPos then
+    r0_30.Owner.PreMousPos = r3_30
   end
-  r0_30.bClickBegin = false
-  if r0_30.Owner.CurSelectSquadIndex ~= r0_30.Index then
-    r0_30.Owner:SelectCurSquadInSquadList(r0_30.Index)
+  if UKismetMathLibrary.Vector_Distance2D(r0_30.Owner.PreMousPos, r3_30) > 10 then
+    r0_30.Owner.IsTouchMoving = true
+  else
+    r0_30.Owner.IsTouchMoving = false
   end
-  r0_30.IsPressingItem = false
+  r0_30.Owner.PreMousPos = r3_30
   return r2_0
 end
-function r1_0.InitAsDragUI(r0_31, r1_31)
-  -- line: [420, 449] id: 31
-  r0_31.LinkWidgets = {}
-  r0_31.ActiveLinkWidgets = {}
-  r0_31.Panel_Add:SetVisibility(ESlateVisibility.Collapsed)
-  for r7_31, r8_31 in pairs(r1_31.Panel_Normal:GetAllChildren():ToTable()) do
-    r8_31:GetName()
-    r8_31:SetVisibility(UIConst.VisibilityOp.Collapsed)
+function r1_0.OnTouchEnded(r0_31, r1_31, r2_31)
+  -- line: [438, 453] id: 31
+  DebugPrint("OnTouchEnded")
+  r0_31.Owner.IsTouchMoving = false
+  r0_31.Owner:GetSquadWidgetInSquadList(r0_31.Owner.CurSelectSquadIndex):HideAllArrow()
+  if not r0_31.bClickBegin then
+    return r2_0
   end
-  -- close: r3_31
-  r0_31.SquadInfo = r1_31.SquadInfo
-  r0_31:InitItem()
-  r0_31:HideOrShowItemUIInfo(true)
-  r0_31:PlayAnimation(r0_31.Select)
-  r0_31.Melee:PlayAnimation(r0_31.Melee.Click)
-  r0_31.Ranged:PlayAnimation(r0_31.Ranged.Click)
-  local r3_31 = r1_31.SquadInfo.CharId
-  local r4_31 = r0_31.Icon_Avatar:GetDynamicMaterial()
-  if r4_31 then
-    r4_31:SetTextureParameterValue("IconMap", LoadObject(DataMgr.Char[r3_31].Icon))
+  r0_31.bClickBegin = false
+  if r0_31.Owner.CurSelectSquadIndex ~= r0_31.Index then
+    r0_31.Owner:SelectCurSquadInSquadList(r0_31.Index)
   end
-  r0_31.Text_Name:SetText(r1_31.SquadInfo.Name and GText("Squad_DefaultName1"))
-  r0_31:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
-  r0_31:SetRenderScale(FVector2D(1, 1))
+  r0_31.IsPressingItem = false
+  return r2_0
 end
-function r1_0.CreateDragUI(r0_32)
-  -- line: [451, 455] id: 32
-  local r1_32 = UIManager(r0_32):_CreateWidgetNew("SquadListItem")
-  r1_32:InitAsDragUI(r0_32)
-  return r1_32
+function r1_0.InitAsDragUI(r0_32, r1_32)
+  -- line: [457, 486] id: 32
+  r0_32.LinkWidgets = {}
+  r0_32.ActiveLinkWidgets = {}
+  r0_32.Panel_Add:SetVisibility(ESlateVisibility.Collapsed)
+  for r7_32, r8_32 in pairs(r1_32.Panel_Normal:GetAllChildren():ToTable()) do
+    r8_32:GetName()
+    r8_32:SetVisibility(UIConst.VisibilityOp.Collapsed)
+  end
+  -- close: r3_32
+  r0_32.SquadInfo = r1_32.SquadInfo
+  r0_32:InitItem()
+  r0_32:HideOrShowItemUIInfo(true)
+  r0_32:PlayAnimation(r0_32.Select)
+  r0_32.Melee:PlayAnimation(r0_32.Melee.Click)
+  r0_32.Ranged:PlayAnimation(r0_32.Ranged.Click)
+  local r3_32 = r1_32.SquadInfo.CharId
+  local r4_32 = r0_32.Icon_Avatar:GetDynamicMaterial()
+  if r4_32 then
+    r4_32:SetTextureParameterValue("IconMap", LoadObject(DataMgr.Char[r3_32].Icon))
+  end
+  r0_32.Text_Name:SetText(r1_32.SquadInfo.Name and GText("Squad_DefaultName1"))
+  r0_32:SetVisibility(UIConst.VisibilityOp.HitTestInvisible)
+  r0_32:SetRenderScale(FVector2D(1, 1))
 end
-function r1_0.OnDragDetected(r0_33, r1_33, r2_33)
-  -- line: [457, 479] id: 33
-  r0_33.Owner:GetSquadWidgetInSquadList(r0_33.Owner.CurSelectSquadIndex):HideAllArrow()
-  if r0_33.Owner.CurSelectSquadIndex ~= r0_33.Index or not r0_33.StartDrag then
+function r1_0.CreateDragUI(r0_33)
+  -- line: [488, 492] id: 33
+  local r1_33 = UIManager(r0_33):_CreateWidgetNew("SquadListItem")
+  r1_33:InitAsDragUI(r0_33)
+  return r1_33
+end
+function r1_0.OnDragDetected(r0_34, r1_34, r2_34)
+  -- line: [494, 516] id: 34
+  r0_34.Owner:GetSquadWidgetInSquadList(r0_34.Owner.CurSelectSquadIndex):HideAllArrow()
+  if r0_34.Owner.CurSelectSquadIndex ~= r0_34.Index or not r0_34.StartDrag then
     return 
   end
-  r0_33.bClickBegin = false
-  r0_33.Owner.IsDraging = true
-  local r3_33 = NewObject(UIUtils.GetCommonDragDropOperationClass())
-  r3_33.DefaultDragVisual = r0_33:CreateDragUI()
-  r3_33.Pivot = UE.EDragPivot.CenterCenter
-  r3_33.Index = r0_33.Index
-  r3_33.FakeIndex = r0_33.FakeIndex
-  r3_33.Tag = "SquadListItem"
-  r3_33.Payload = r0_33.Content
-  r3_33.Owner = r0_33.Owner
-  r0_33:HideOrShowItemUIInfo(false)
-  r0_33.Owner:SwitchAddSquadItemVisibility(false)
-  return r3_33
+  r0_34.bClickBegin = false
+  r0_34.Owner.IsDraging = true
+  local r3_34 = NewObject(UIUtils.GetCommonDragDropOperationClass())
+  r3_34.DefaultDragVisual = r0_34:CreateDragUI()
+  r3_34.Pivot = UE.EDragPivot.CenterCenter
+  r3_34.Index = r0_34.Index
+  r3_34.FakeIndex = r0_34.FakeIndex
+  r3_34.Tag = "SquadListItem"
+  r3_34.Payload = r0_34.Content
+  r3_34.Owner = r0_34.Owner
+  r0_34:HideOrShowItemUIInfo(false)
+  r0_34.Owner:SwitchAddSquadItemVisibility(false)
+  return r3_34
 end
-function r1_0.OnDragEnter(r0_34, r1_34, r2_34, r3_34)
-  -- line: [482, 503] id: 34
-  if r0_34.Owner.IsDraging then
-  end
-  if nil and not nil then
-    goto label_7	-- block#2 is visited secondly
-  end
-  if r3_34.FakeIndex == 1 then
-    r3_34.DefaultDragVisual:OnlyShowDownArrow()
-    r3_34.DefaultDragVisual:PlayDownArrowAnimation()
-  elseif r3_34.FakeIndex < r0_34.Owner.SquadListLen then
-    r3_34.DefaultDragVisual:ShowAllArrow()
-    r3_34.DefaultDragVisual:PlayUpArrowAnimation()
-    r3_34.DefaultDragVisual:PlayDownArrowAnimation()
-  else
-    r3_34.DefaultDragVisual:OnlyShowUpArrow()
-    r3_34.DefaultDragVisual:PlayUpArrowAnimation()
-  end
-  return true
-end
-function r1_0.OnDragLeave(r0_35, r1_35, r2_35)
-  -- line: [506, 531] id: 35
+function r1_0.OnDragEnter(r0_35, r1_35, r2_35, r3_35)
+  -- line: [519, 540] id: 35
   if r0_35.Owner.IsDraging then
   end
   if nil and not nil then
     goto label_7	-- block#2 is visited secondly
   end
-  local r4_35 = UIManager(r0_35):GetUIObj("SquadMainUINew").List_Default:GetTickSpaceGeometry()
-  local r5_35 = UE4.UKismetInputLibrary.PointerEvent_GetScreenSpacePosition(r1_35)
-  if r0_35.Offset then
-    r5_35.X = r5_35.X + r0_35.Offset
-  end
-  if not UE4.USlateBlueprintLibrary.IsUnderLocation(r4_35, r5_35) then
-    r2_35.DefaultDragVisual:SetVisibility(ESlateVisibility.Collapsed)
-    r0_35.Owner.IsDraging = false
-    r0_35.StartDrag = false
-    r0_35.Owner.IsInSortState = false
-    r0_35.Owner.IsOutBound = true
-    r0_35:UpdateListView()
-    r0_35.Owner:HideOrShowItemInDraging()
+  if r3_35.FakeIndex == 1 then
+    r3_35.DefaultDragVisual:OnlyShowDownArrow()
+    r3_35.DefaultDragVisual:PlayDownArrowAnimation()
+  elseif r3_35.FakeIndex < r0_35.Owner.SquadListLen then
+    r3_35.DefaultDragVisual:ShowAllArrow()
+    r3_35.DefaultDragVisual:PlayUpArrowAnimation()
+    r3_35.DefaultDragVisual:PlayDownArrowAnimation()
+  else
+    r3_35.DefaultDragVisual:OnlyShowUpArrow()
+    r3_35.DefaultDragVisual:PlayUpArrowAnimation()
   end
   return true
 end
-function r1_0.OnDragCancelled(r0_36, r1_36, r2_36)
-  -- line: [534, 546] id: 36
-  r0_36.Owner.IsDraging = false
-  r0_36.StartDrag = false
-  r2_36.DefaultDragVisual:HideAllArrow()
-  if not r0_36.Owner.IsOutBound then
+function r1_0.OnDragLeave(r0_36, r1_36, r2_36)
+  -- line: [543, 568] id: 36
+  if r0_36.Owner.IsDraging then
+  end
+  if nil and not nil then
+    goto label_7	-- block#2 is visited secondly
+  end
+  local r4_36 = UIManager(r0_36):GetUIObj("SquadMainUINew").List_Default:GetTickSpaceGeometry()
+  local r5_36 = UE4.UKismetInputLibrary.PointerEvent_GetScreenSpacePosition(r1_36)
+  if r0_36.Offset then
+    r5_36.X = r5_36.X + r0_36.Offset
+  end
+  if not UE4.USlateBlueprintLibrary.IsUnderLocation(r4_36, r5_36) then
+    r2_36.DefaultDragVisual:SetVisibility(ESlateVisibility.Collapsed)
+    r0_36.Owner.IsDraging = false
+    r0_36.StartDrag = false
+    r0_36.Owner.IsInSortState = false
+    r0_36.Owner.IsOutBound = true
     r0_36:UpdateListView()
     r0_36.Owner:HideOrShowItemInDraging()
   end
-  r0_36.Owner.IsOutBound = false
-  r0_36.Owner:SwitchAddSquadItemVisibility(true)
   return true
 end
-function r1_0.OnDrop(r0_37, r1_37, r2_37, r3_37)
-  -- line: [549, 559] id: 37
+function r1_0.OnDragCancelled(r0_37, r1_37, r2_37)
+  -- line: [571, 583] id: 37
   r0_37.Owner.IsDraging = false
   r0_37.StartDrag = false
-  r3_37.DefaultDragVisual:HideAllArrow()
-  r0_37.Owner:HideOrShowItemInDraging()
+  r2_37.DefaultDragVisual:HideAllArrow()
+  if not r0_37.Owner.IsOutBound then
+    r0_37:UpdateListView()
+    r0_37.Owner:HideOrShowItemInDraging()
+  end
+  r0_37.Owner.IsOutBound = false
   r0_37.Owner:SwitchAddSquadItemVisibility(true)
-  r0_37:UpdateListView()
   return true
 end
-function r1_0.OnDragOver(r0_38, r1_38, r2_38, r3_38)
-  -- line: [562, 614] id: 38
-  if not r0_38.Owner.IsDraging then
+function r1_0.OnDrop(r0_38, r1_38, r2_38, r3_38)
+  -- line: [586, 596] id: 38
+  r0_38.Owner.IsDraging = false
+  r0_38.StartDrag = false
+  r3_38.DefaultDragVisual:HideAllArrow()
+  r0_38.Owner:HideOrShowItemInDraging()
+  r0_38.Owner:SwitchAddSquadItemVisibility(true)
+  r0_38:UpdateListView()
+  return true
+end
+function r1_0.OnDragOver(r0_39, r1_39, r2_39, r3_39)
+  -- line: [599, 651] id: 39
+  if not r0_39.Owner.IsDraging then
     return true
   end
-  local r4_38 = r0_38.Owner.List_Default
-  local r6_38 = USlateBlueprintLibrary.AbsoluteToLocal(r4_38:GetCachedGeometry(), UE4.UKismetInputLibrary.PointerEvent_GetScreenSpacePosition(r2_38))
-  local r7_38 = USlateBlueprintLibrary.GetLocalSize(r4_38:GetCachedGeometry())
-  local r9_38 = r6_38.Y + r4_38:GetScrollOffset()
-  local r10_38, r11_38 = r0_38:GetListViewSize(r4_38)
-  local r13_38 = math.clamp(math.floor(r9_38 / r11_38), 0, r0_38.Owner.SquadListLen) + 1
-  local r14_38 = r3_38.FakeIndex
-  if r13_38 > 5 then
-    r13_38 = r13_38 + -1
+  local r4_39 = r0_39.Owner.List_Default
+  local r6_39 = USlateBlueprintLibrary.AbsoluteToLocal(r4_39:GetCachedGeometry(), UE4.UKismetInputLibrary.PointerEvent_GetScreenSpacePosition(r2_39))
+  local r7_39 = USlateBlueprintLibrary.GetLocalSize(r4_39:GetCachedGeometry())
+  local r9_39 = r6_39.Y + r4_39:GetScrollOffset()
+  local r10_39, r11_39 = r0_39:GetListViewSize(r4_39)
+  local r13_39 = math.clamp(math.floor(r9_39 / r11_39), 0, r0_39.Owner.SquadListLen) + 1
+  local r14_39 = r3_39.FakeIndex
+  if r13_39 > 5 then
+    r13_39 = r13_39 + -1
   end
-  if math.abs(r14_38 - r13_38) == 1 then
-    r0_38:ChangeTwoItemInListView(r4_38, r14_38, r13_38, r3_38)
+  if math.abs(r14_39 - r13_39) == 1 then
+    r0_39:ChangeTwoItemInListView(r4_39, r14_39, r13_39, r3_39)
   end
-  if r3_38.FakeIndex == 1 then
-    r3_38.DefaultDragVisual:OnlyShowDownArrow()
-    r3_38.DefaultDragVisual:PlayDownArrowAnimation()
-  elseif r3_38.FakeIndex < r3_38.Owner.SquadListLen then
-    r3_38.DefaultDragVisual:ShowAllArrow()
-    r3_38.DefaultDragVisual:PlayUpArrowAnimation()
-    r3_38.DefaultDragVisual:PlayDownArrowAnimation()
+  if r3_39.FakeIndex == 1 then
+    r3_39.DefaultDragVisual:OnlyShowDownArrow()
+    r3_39.DefaultDragVisual:PlayDownArrowAnimation()
+  elseif r3_39.FakeIndex < r3_39.Owner.SquadListLen then
+    r3_39.DefaultDragVisual:ShowAllArrow()
+    r3_39.DefaultDragVisual:PlayUpArrowAnimation()
+    r3_39.DefaultDragVisual:PlayDownArrowAnimation()
   else
-    r3_38.DefaultDragVisual:OnlyShowUpArrow()
-    r3_38.DefaultDragVisual:PlayUpArrowAnimation()
+    r3_39.DefaultDragVisual:OnlyShowUpArrow()
+    r3_39.DefaultDragVisual:PlayUpArrowAnimation()
   end
   return true
 end
-function r1_0.ChangeTwoItemInListView(r0_39, r1_39, r2_39, r3_39, r4_39)
-  -- line: [617, 655] id: 39
-  local r5_39 = r1_39:GetListItems()
-  r3_39 = math.min(r3_39, r0_39.Owner.SquadMax)
-  if r5_39[r3_39].IsAddSquad then
+function r1_0.ChangeTwoItemInListView(r0_40, r1_40, r2_40, r3_40, r4_40)
+  -- line: [654, 692] id: 40
+  local r5_40 = r1_40:GetListItems()
+  r3_40 = math.min(r3_40, r0_40.Owner.SquadMax)
+  if r5_40[r3_40].IsAddSquad then
     return 
   end
-  local r6_39 = r0_39.Owner:GetSquadContent(r2_39)
-  local r7_39 = r0_39.Owner:GetSquadContent(r3_39)
-  if r6_39 and r7_39 then
-    DebugPrint("DragItem", r6_39.FakeIndex, r6_39.SquadInfo.CharId)
-    DebugPrint("NewItem", r7_39.FakeIndex, r7_39.SquadInfo.CharId)
-    if r2_39 < r3_39 then
-      r6_39:MoveDown()
-      r7_39:MoveUp()
+  local r6_40 = r0_40.Owner:GetSquadContent(r2_40)
+  local r7_40 = r0_40.Owner:GetSquadContent(r3_40)
+  if r6_40 and r7_40 then
+    DebugPrint("DragItem", r6_40.FakeIndex, r6_40.SquadInfo.CharId)
+    DebugPrint("NewItem", r7_40.FakeIndex, r7_40.SquadInfo.CharId)
+    if r2_40 < r3_40 then
+      r6_40:MoveDown()
+      r7_40:MoveUp()
     else
-      r6_39:MoveUp()
-      r7_39:MoveDown()
+      r6_40:MoveUp()
+      r7_40:MoveDown()
     end
-    r6_39:SetIndex(r3_39)
-    r7_39:SetIndex(r2_39)
+    r6_40:SetIndex(r3_40)
+    r7_40:SetIndex(r2_40)
   else
-    DebugPrint("DragItem or NewItem is nil", r6_39, r7_39)
+    DebugPrint("DragItem or NewItem is nil", r6_40, r7_40)
   end
-  if r4_39 then
-    r4_39.FakeIndex = r3_39
+  if r4_40 then
+    r4_40.FakeIndex = r3_40
   end
-  r0_39.Owner.CurSelectSquadIndex = r3_39
-  GWorld:GetAvatar():SwitchSquad(nil, r0_39, r2_39, r3_39)
+  r0_40.Owner.CurSelectSquadIndex = r3_40
+  GWorld:GetAvatar():SwitchSquad(nil, r0_40, r2_40, r3_40)
 end
-function r1_0.UpdateListView(r0_40)
-  -- line: [657, 664] id: 40
-  r0_40.Owner:PlayAnimation(r0_40.Owner.UpdateList)
-  r0_40:AddDelayFrameFunc(function()
-    -- line: [660, 663] id: 41
-    r0_40.Owner:SwitchToSquadList(false)
+function r1_0.UpdateListView(r0_41)
+  -- line: [694, 701] id: 41
+  r0_41.Owner:PlayAnimation(r0_41.Owner.UpdateList)
+  r0_41:AddDelayFrameFunc(function()
+    -- line: [697, 700] id: 42
+    r0_41.Owner:SwitchToSquadList(false)
   end, 8, "DelayUpdateListView")
 end
-function r1_0.GetListViewSize(r0_42, r1_42)
-  -- line: [667, 680] id: 42
-  local r2_42 = GWorld.GameInstance:GetGameUIManager()
-  local r3_42 = r2_42:GetWidgetRenderSize(r1_42)
-  local r4_42 = r1_42:GetParent()
-  if r4_42:Cast(UScrollBox) then
-    r3_42 = r2_42:GetWidgetRenderSize(r4_42)
-  end
-  r0_42.Offset = (r3_42.X - r2_42:GetWidgetRenderSize(r0_42.BG).X) / 2
-  return r3_42.Y, r2_42:GetWidgetRenderSize(r0_42.BG).Y
-end
-function r1_0.GetItemRenderSizeXY(r0_43, r1_43)
-  -- line: [682, 685] id: 43
+function r1_0.GetListViewSize(r0_43, r1_43)
+  -- line: [704, 717] id: 43
   local r2_43 = GWorld.GameInstance:GetGameUIManager()
-  return r2_43:GetWidgetRenderSize(r1_43).X, r2_43:GetWidgetRenderSize(r1_43).Y
+  local r3_43 = r2_43:GetWidgetRenderSize(r1_43)
+  local r4_43 = r1_43:GetParent()
+  if r4_43:Cast(UScrollBox) then
+    r3_43 = r2_43:GetWidgetRenderSize(r4_43)
+  end
+  r0_43.Offset = (r3_43.X - r2_43:GetWidgetRenderSize(r0_43.BG).X) / 2
+  return r3_43.Y, r2_43:GetWidgetRenderSize(r0_43.BG).Y
 end
-function r1_0.CheckArrowState(r0_44)
-  -- line: [691, 704] id: 44
-  if r0_44.FakeIndex == 1 then
-    r0_44:OnlyShowDownArrow()
-    r0_44:PlayDownArrowAnimation()
-  elseif r0_44.FakeIndex < r0_44.Owner.SquadListLen then
-    r0_44:ShowAllArrow()
-    r0_44:PlayUpArrowAnimation()
-    r0_44:PlayDownArrowAnimation()
+function r1_0.GetItemRenderSizeXY(r0_44, r1_44)
+  -- line: [719, 722] id: 44
+  local r2_44 = GWorld.GameInstance:GetGameUIManager()
+  return r2_44:GetWidgetRenderSize(r1_44).X, r2_44:GetWidgetRenderSize(r1_44).Y
+end
+function r1_0.CheckArrowState(r0_45)
+  -- line: [728, 741] id: 45
+  if r0_45.FakeIndex == 1 then
+    r0_45:OnlyShowDownArrow()
+    r0_45:PlayDownArrowAnimation()
+  elseif r0_45.FakeIndex < r0_45.Owner.SquadListLen then
+    r0_45:ShowAllArrow()
+    r0_45:PlayUpArrowAnimation()
+    r0_45:PlayDownArrowAnimation()
   else
-    r0_44:OnlyShowUpArrow()
-    r0_44:PlayUpArrowAnimation()
+    r0_45:OnlyShowUpArrow()
+    r0_45:PlayUpArrowAnimation()
   end
 end
-function r1_0.OnFocusReceived(r0_45, r1_45, r2_45)
-  -- line: [706, 733] id: 45
-  if r0_45.Owner.CurInputDeviceType and r0_45.Owner.CurInputDeviceType == ECommonInputType.Gamepad then
-    if r0_45.Owner.IsInSortState then
-      r0_45.Owner:FocusOnSquadListInSortState()
+function r1_0.OnFocusReceived(r0_46, r1_46, r2_46)
+  -- line: [743, 770] id: 46
+  if r0_46.Owner.CurInputDeviceType and r0_46.Owner.CurInputDeviceType == ECommonInputType.Gamepad then
+    if r0_46.Owner.IsInSortState then
+      r0_46.Owner:FocusOnSquadListInSortState()
       return r3_0
     else
-      r0_45.Owner.IsOnlyPlayAnimation = false
-      r0_45.Owner:SelectCurSquad(r0_45.Index)
-      if r0_45.IsAddSquad then
-        r0_45.Owner.IsAddSquadDefault = true
-        r0_45.Owner:InitBottomTab(false, 2)
-        r0_45.Owner.FocusInAddSquad = true
+      r0_46.Owner.IsOnlyPlayAnimation = false
+      r0_46.Owner:SelectCurSquad(r0_46.Index)
+      if r0_46.IsAddSquad then
+        r0_46.Owner.IsAddSquadDefault = true
+        r0_46.Owner:InitBottomTab(false, 2)
+        r0_46.Owner.FocusInAddSquad = true
         return r3_0
       else
-        r0_45.Owner.CurSelectSquadIndex = r0_45.Index
-        r0_45.Owner:GetSquadWidgetInSquadList(r0_45.Owner.CurSelectSquadIndex):CheckSortIcon()
-        if r0_45.Owner.IsAddSquadDefault then
-          r0_45.Owner.IsAddSquadDefault = false
-          r0_45.Owner:InitBottomTab(true, 2)
+        r0_46.Owner.CurSelectSquadIndex = r0_46.Index
+        r0_46.Owner:GetSquadWidgetInSquadList(r0_46.Owner.CurSelectSquadIndex):CheckSortIcon()
+        if r0_46.Owner.IsAddSquadDefault then
+          r0_46.Owner.IsAddSquadDefault = false
+          r0_46.Owner:InitBottomTab(true, 2)
         end
-        r0_45:CheckSortIcon()
+        r0_46:CheckSortIcon()
         return r2_0
       end
     end

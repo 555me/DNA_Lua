@@ -1079,7 +1079,7 @@ function r5_0.CloseAllTips(r0_64)
   end
 end
 function r5_0.SwitchToSquadList(r0_65, r1_65)
-  -- line: [1053, 1121] id: 65
+  -- line: [1053, 1123] id: 65
   r0_65:SwitchLeftWidgetByIndex(1)
   r0_65.IsInEditor = false
   r0_65:UpdateSquadListInfo()
@@ -1095,8 +1095,10 @@ function r5_0.SwitchToSquadList(r0_65, r1_65)
   r0_65:InitCurSquadInfo()
   r0_65:SelectCurSquadInSquadList(nil, true)
   r0_65.List_Default:DisableScroll(true)
-  r0_65.ScrollBox_0:SetScrollBarVisibility(ESlateVisibility.Collapsed)
-  r0_65.ScrollBox_0:SetControlScrollbarInside(false)
+  r0_65.List_Default:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
+  r0_65.EMScrollBox_0:SetVisibility(UIConst.VisibilityOp.Visible)
+  r0_65.EMScrollBox_0:SetScrollBarVisibility(ESlateVisibility.Collapsed)
+  r0_65.EMScrollBox_0:SetControlScrollbarInside(false)
   if r0_65.IsInSortState then
     r0_65:SwitchGamePadIconVisibilityBySortState(false)
   else
@@ -1107,7 +1109,7 @@ function r5_0.SwitchToSquadList(r0_65, r1_65)
   end
   r0_65.Text_Has:SetText(r0_65.SquadListLen)
   r0_65:AddDelayFrameFunc(function()
-    -- line: [1093, 1120] id: 66
+    -- line: [1095, 1122] id: 66
     r0_65:PlayAllSlotRefreshAnimation()
     if r0_65.SquadListLen < r0_65.CurSelectSquadIndex then
       r0_65.CurSelectSquadIndex = r0_65.SquadListLen
@@ -1131,7 +1133,7 @@ function r5_0.SwitchToSquadList(r0_65, r1_65)
   end, 2, "DelayShow")
 end
 function r5_0.InitSquadListUI(r0_67)
-  -- line: [1123, 1130] id: 67
+  -- line: [1125, 1132] id: 67
   if r0_67.SquadListLen > 1 then
     r0_67.Text_SortTip:SetVisibility(ESlateVisibility.Visible)
   else
@@ -1140,11 +1142,11 @@ function r5_0.InitSquadListUI(r0_67)
   r0_67.Btn_Delete:SetVisibility(ESlateVisibility.Visible)
 end
 function r5_0.SelectCurSquadInSquadList(r0_68, r1_68, r2_68)
-  -- line: [1133, 1144] id: 68
+  -- line: [1135, 1146] id: 68
   r0_68.CurSelectSquadIndex = r1_68 and r0_68.CurSelectSquadIndex and 1
   r0_68.NeedRemove = false
   r0_68:AddTimer(0.1, function()
-    -- line: [1136, 1143] id: 69
+    -- line: [1138, 1145] id: 69
     if r0_68:GetSquadWidgetInSquadList(r0_68.CurSelectSquadIndex) and not r0_68.NeedRemove then
       r0_68.IsOnlyPlayAnimation = r2_68
       r0_68:SelectCurSquad(r0_68.CurSelectSquadIndex)
@@ -1154,7 +1156,7 @@ function r5_0.SelectCurSquadInSquadList(r0_68, r1_68, r2_68)
   end, true, 0, "SelectCurSquad", true)
 end
 function r5_0.UpdateSquadListInfo(r0_70)
-  -- line: [1147, 1175] id: 70
+  -- line: [1149, 1177] id: 70
   r0_70.SquadInfoList = {}
   r0_70.SquadListLen = 0
   r0_70:UpdateSquadListFromAvatar()
@@ -1185,7 +1187,7 @@ function r5_0.UpdateSquadListInfo(r0_70)
   -- close: r1_70
 end
 function r5_0.UpdateSquadListFromAvatar(r0_71)
-  -- line: [1178, 1185] id: 71
+  -- line: [1180, 1187] id: 71
   local r1_71 = GWorld:GetAvatar()
   if not r1_71 then
     return 
@@ -1194,7 +1196,7 @@ function r5_0.UpdateSquadListFromAvatar(r0_71)
   r0_71.SquadList = r0_71.Avatar.Squad
 end
 function r5_0.UpdateSquadList(r0_72)
-  -- line: [1188, 1212] id: 72
+  -- line: [1190, 1214] id: 72
   r0_72.List_Default:SetAllowOverscroll(r0_72.List_Default:IsDisableScroll())
   r0_72.List_Default:ClearListItems()
   for r6_72, r7_72 in pairs(r0_72.SquadInfoList) do
@@ -1219,7 +1221,7 @@ function r5_0.UpdateSquadList(r0_72)
   end
 end
 function r5_0.CheckSquadListArr(r0_73)
-  -- line: [1214, 1227] id: 73
+  -- line: [1216, 1229] id: 73
   if r0_73.SquadListLen > 1 then
     r0_73.CanvasPanel_1:SetVisibility(ESlateVisibility.Visible)
   else
@@ -1234,7 +1236,7 @@ function r5_0.CheckSquadListArr(r0_73)
   end
 end
 function r5_0.ClickSelectSquadItem(r0_74, r1_74)
-  -- line: [1230, 1254] id: 74
+  -- line: [1232, 1256] id: 74
   DebugPrint("thy    点击预设阵容列表时的回调", r0_74.CurSelectSquadIndex, r1_74, r0_74.IsDraging)
   if r0_74.IsInEditor then
     return 
@@ -1259,7 +1261,7 @@ function r5_0.ClickSelectSquadItem(r0_74, r1_74)
   r0_74:UpdateSlotIcon()
 end
 function r5_0.AddSquad(r0_75)
-  -- line: [1257, 1269] id: 75
+  -- line: [1259, 1271] id: 75
   DebugPrint("thy    新添加一个预设阵容的回调")
   r0_75.SquadInfo = nil
   r0_75:ClearAllSlots(true)
@@ -1272,21 +1274,21 @@ function r5_0.AddSquad(r0_75)
   r0_75:PlayAnimation(r0_75.Auto_In)
 end
 function r5_0.ResetAllSlotsClickState(r0_76)
-  -- line: [1272, 1276] id: 76
+  -- line: [1274, 1278] id: 76
   for r5_76, r6_76 in pairs(r0_76.RightSlots) do
     r6_76.IsClicking = false
   end
   -- close: r1_76
 end
 function r5_0.ClearAllSlots(r0_77, r1_77)
-  -- line: [1279, 1283] id: 77
+  -- line: [1281, 1285] id: 77
   for r6_77, r7_77 in pairs(r0_77.RightSlots) do
     r7_77:ClearSlot(r1_77)
   end
   -- close: r2_77
 end
 function r5_0.WeakClearAllSlots(r0_78)
-  -- line: [1286, 1292] id: 78
+  -- line: [1288, 1294] id: 78
   for r5_78, r6_78 in pairs(r0_78.RightSlots) do
     if r6_78.WeakClearSlotInfo then
       r6_78:WeakClearSlotInfo()
@@ -1295,7 +1297,7 @@ function r5_0.WeakClearAllSlots(r0_78)
   -- close: r1_78
 end
 function r5_0.SwitchToSelectItemList(r0_79, r1_79, r2_79)
-  -- line: [1299, 1344] id: 79
+  -- line: [1301, 1346] id: 79
   if r0_79.CurSlot and r0_79.CurSlot ~= r1_79 then
     if r0_79.CurSlot.PlayNormalAnimation then
       r0_79.CurSlot:PlayNormalAnimation()
@@ -1322,13 +1324,13 @@ function r5_0.SwitchToSelectItemList(r0_79, r1_79, r2_79)
   r0_79.Btn_Save:ForbidBtn(r0_79:CheckForceSlotIsLack() and not r0_79:CheckChangeSquadInfo())
   r0_79.Btn_Delete:SetVisibility(ESlateVisibility.Collapsed)
   r0_79:AddDelayFrameFunc(function()
-    -- line: [1338, 1341] id: 80
+    -- line: [1340, 1343] id: 80
     r0_79:FocusOnRightDetailPanel()
   end, 2, "DelayFocusItem")
   r0_79:PlayAnimation(r0_79.Left_In)
 end
 function r5_0.UpdateSlotIcon(r0_81)
-  -- line: [1346, 1355] id: 81
+  -- line: [1348, 1357] id: 81
   for r5_81, r6_81 in pairs(r0_81.RightSlots) do
     if r6_81.AddDelelteIcon then
       r6_81:AddDelelteIcon()
@@ -1340,12 +1342,12 @@ function r5_0.UpdateSlotIcon(r0_81)
   -- close: r1_81
 end
 function r5_0.BindEventInListView(r0_82)
-  -- line: [1358, 1361] id: 82
+  -- line: [1360, 1363] id: 82
   r0_82.List_Build.List_Select.BP_OnItemClicked:Remove(r0_82, r0_82.ClickListItem)
   r0_82.List_Build.List_Select.BP_OnItemClicked:Add(r0_82, r0_82.ClickListItem)
 end
 function r5_0.ShowOrHidePhantomWeaponUI(r0_83)
-  -- line: [1364, 1373] id: 83
+  -- line: [1366, 1375] id: 83
   if r0_83:IsSubstringContained(r0_83:CurSlotNameToRightSlotsKey(r0_83.CurSlot:GetName()), "PhantomWeapon") then
     r0_83.List_Build.Image_WeaponBG:SetVisibility(ESlateVisibility.Visible)
     r0_83.List_Build.Tab_Primary:SetVisibility(ESlateVisibility.Visible)
@@ -1355,7 +1357,7 @@ function r5_0.ShowOrHidePhantomWeaponUI(r0_83)
   end
 end
 function r5_0.UpdateRightDetailPanel(r0_84)
-  -- line: [1376, 1462] id: 84
+  -- line: [1378, 1464] id: 84
   r0_84:WeakClearAllSlots()
   r0_84.Text_DefaultName:SetText(r0_84.CurSquadInfo.Name)
   r0_84.Avatar = GWorld:GetAvatar()
@@ -1418,14 +1420,14 @@ function r5_0.UpdateRightDetailPanel(r0_84)
   }
   r0_84.Roulette:InitSlot(r9_84)
   r0_84:AddDelayFrameFunc(function()
-    -- line: [1455, 1459] id: 85
+    -- line: [1457, 1461] id: 85
     if r0_84.IsOpenAddSquad then
       r0_84:AddSquad()
     end
   end, 1, "AddSquadDelay")
 end
 function r5_0.GetWeaponTypeById(r0_86, r1_86)
-  -- line: [1464, 1479] id: 86
+  -- line: [1466, 1481] id: 86
   if not r1_86 then
     DebugPrint("thy    GetWeaponTypeById 没有提供武器Id")
     return 
@@ -1443,11 +1445,11 @@ function r5_0.GetWeaponTypeById(r0_86, r1_86)
   return "Melee"
 end
 function r5_0.InitItemVarInfo(r0_87, r1_87)
-  -- line: [1482, 1485] id: 87
+  -- line: [1484, 1487] id: 87
   r0_87.CurSlotType = r1_87
 end
 function r5_0.FillSelectiveList(r0_88)
-  -- line: [1488, 1508] id: 88
+  -- line: [1490, 1510] id: 88
   r0_88.List_Build:BindEvents(r0_88, {
     OnListItemClicked = r0_88.ClickListItem,
     SortFuncion = r0_88.SortItemContents,
@@ -1466,7 +1468,7 @@ function r5_0.FillSelectiveList(r0_88)
   })
 end
 function r5_0.CreateFilters(r0_89, r1_89, r2_89, r3_89)
-  -- line: [1511, 1521] id: 89
+  -- line: [1513, 1523] id: 89
   local r4_89 = {}
   for r9_89, r10_89 in ipairs(r1_89) do
     table.insert(r4_89, {
@@ -1479,7 +1481,7 @@ function r5_0.CreateFilters(r0_89, r1_89, r2_89, r3_89)
   return r4_89
 end
 function r5_0.FilterItemContents(r0_90, r1_90, r2_90)
-  -- line: [1524, 1557] id: 90
+  -- line: [1526, 1559] id: 90
   local r3_90 = r0_90.CurSlotType
   local r4_90 = r0_90.SlotType2DataType[r3_90]
   local r5_90 = {}
@@ -1487,20 +1489,20 @@ function r5_0.FilterItemContents(r0_90, r1_90, r2_90)
   local r7_90 = nil	-- notice: implicit variable refs by block#[5, 7]
   if r4_90 == "Char" then
     function r7_90(r0_91, r1_91)
-      -- line: [1531, 1534] id: 91
+      -- line: [1533, 1536] id: 91
       return r0_91 == DataMgr.BattleChar[r1_91.UnitId].Attribute
     end
     r6_90 = r7_90
   elseif r4_90 == "Weapon" then
     r7_90 = r0_0:GetAvatar()
     function r6_90(r0_92, r1_92)
-      -- line: [1537, 1540] id: 92
+      -- line: [1539, 1542] id: 92
       return r7_90.Weapons[r1_92.Uuid]:HasTag(r0_92)
     end
     -- close: r7_90
   elseif r4_90 == "Pet" then
     function r7_90()
-      -- line: [1542, 1544] id: 93
+      -- line: [1544, 1546] id: 93
       return true
     end
     r6_90 = r7_90
@@ -1521,7 +1523,7 @@ function r5_0.FilterItemContents(r0_90, r1_90, r2_90)
   return r5_90
 end
 function r5_0.SortItemContents(r0_94, r1_94, r2_94, r3_94)
-  -- line: [1560, 1569] id: 94
+  -- line: [1562, 1571] id: 94
   local r4_94 = r0_94[r0_94.CurSlotType .. "Main_CurContent"] and r0_94[r0_94.CurSlotType .. "Main_CmpContent"]
   local r5_94 = {
     r0_94.OrderByAttrNames[r2_94]
@@ -1535,7 +1537,7 @@ function r5_0.SortItemContents(r0_94, r1_94, r2_94, r3_94)
   r0_0:SortItemContents(r1_94, r5_94, r3_94, r4_94)
 end
 function r5_0.SetItemSelectState(r0_95, r1_95, r2_95)
-  -- line: [1571, 1586] id: 95
+  -- line: [1573, 1588] id: 95
   if r1_95 then
     r1_95.IsSelected = r2_95
     if r1_95.SelfWidget then
@@ -1562,7 +1564,7 @@ function r5_0.SetItemSelectState(r0_95, r1_95, r2_95)
   end
 end
 function r5_0.ClickListItem(r0_96, r1_96)
-  -- line: [1589, 1628] id: 96
+  -- line: [1591, 1630] id: 96
   if r1_96.Uuid == nil or r1_96.Uuid == "" then
     return 
   end
@@ -1589,7 +1591,7 @@ function r5_0.ClickListItem(r0_96, r1_96)
   r0_96:OpenTips()
 end
 function r5_0.HandleOnlyChooseItemIcon(r0_97, r1_97)
-  -- line: [1631, 1679] id: 97
+  -- line: [1633, 1681] id: 97
   if r0_97.CurSlot.Type == "Char" then
     if not r1_97.IsSelected then
       if r0_97.CurClickItemInfo then
@@ -1636,19 +1638,19 @@ function r5_0.HandleOnlyChooseItemIcon(r0_97, r1_97)
   end
 end
 function r5_0.ClearSlotCachedData(r0_98)
-  -- line: [1681, 1685] id: 98
+  -- line: [1683, 1687] id: 98
   for r5_98, r6_98 in pairs(r0_98.RightSlots) do
     r6_98.CachedOnlyShowItem = nil
   end
   -- close: r1_98
 end
 function r5_0.CachedOnlyShowChooseItemInSlot(r0_99, r1_99, r2_99)
-  -- line: [1687, 1690] id: 99
+  -- line: [1689, 1692] id: 99
   r0_99:ClearSlotCachedData()
   r1_99.CachedOnlyShowItem = r2_99
 end
 function r5_0.CheckCachedOnlyShowItem(r0_100, r1_100)
-  -- line: [1692, 1699] id: 100
+  -- line: [1694, 1701] id: 100
   for r6_100, r7_100 in pairs(r0_100.RightSlots) do
     if r7_100.CachedOnlyShowItem and r7_100.CachedOnlyShowItem == r1_100 then
       return r7_100
@@ -1658,7 +1660,7 @@ function r5_0.CheckCachedOnlyShowItem(r0_100, r1_100)
   return nil
 end
 function r5_0.CheckContentIsSet(r0_101, r1_101)
-  -- line: [1701, 1708] id: 101
+  -- line: [1703, 1710] id: 101
   for r6_101, r7_101 in pairs(r0_101.RightSlots) do
     if r7_101.ItemInfo == r1_101 then
       return r7_101
@@ -1668,7 +1670,7 @@ function r5_0.CheckContentIsSet(r0_101, r1_101)
   return nil
 end
 function r5_0.CheckSlotTypeIsAboutMainRole(r0_102, r1_102)
-  -- line: [1711, 1718] id: 102
+  -- line: [1713, 1720] id: 102
   for r6_102, r7_102 in pairs(r0_102.PlayerAboutSlots) do
     if r1_102 == r7_102 then
       return true
@@ -1678,26 +1680,26 @@ function r5_0.CheckSlotTypeIsAboutMainRole(r0_102, r1_102)
   return false
 end
 function r5_0.OnBGClick(r0_103)
-  -- line: [1720, 1723] id: 103
+  -- line: [1722, 1725] id: 103
   r0_103:CloseTips()
   return r4_0.Unhandled
 end
 function r5_0.CloseTips(r0_104, r1_104)
-  -- line: [1725, 1757] id: 104
+  -- line: [1727, 1759] id: 104
   if r0_104.Pos_Tips:GetChildAt(0) then
     r0_104.IsPetTipsOpen = false
     r0_104:InitBottomTab(false, 2)
     r0_104:UnbindFromAnimationFinished(r0_104.Tips_Out, {
       r0_104,
       function()
-        -- line: [1729, 1731] id: 105
+        -- line: [1731, 1733] id: 105
         r0_104.Panel_Tips:SetVisibility(ESlateVisibility.Collapsed)
       end
     })
     r0_104:BindToAnimationFinished(r0_104.Tips_Out, {
       r0_104,
       function()
-        -- line: [1732, 1734] id: 106
+        -- line: [1734, 1736] id: 106
         r0_104.Panel_Tips:SetVisibility(ESlateVisibility.Collapsed)
       end
     })
@@ -1720,7 +1722,7 @@ function r5_0.CloseTips(r0_104, r1_104)
   r0_104:FocusOnItemList()
 end
 function r5_0.RevertAllItemIcon(r0_107)
-  -- line: [1759, 1774] id: 107
+  -- line: [1761, 1776] id: 107
   r0_107:SetItemSelectState(r0_107.CurClickItemInfo, false)
   for r5_107, r6_107 in pairs(r0_107.RightSlots) do
     if r6_107.CachedOnlyShowItem then
@@ -1739,7 +1741,7 @@ function r5_0.RevertAllItemIcon(r0_107)
   r0_107.PreContent = nil
 end
 function r5_0.OpenTips(r0_108)
-  -- line: [1776, 1804] id: 108
+  -- line: [1778, 1806] id: 108
   r0_108.Pos_Tips:ClearChildren()
   r0_108.SquadItemTip = r0_108:CreateWidgetNew("SquadItemTips")
   r0_108.Pos_Tips:AddChild(r0_108.SquadItemTip)
@@ -1763,7 +1765,7 @@ function r5_0.OpenTips(r0_108)
   r0_108:SetCurFocusArea("Tip")
 end
 function r5_0.GoToArmory(r0_109)
-  -- line: [1807, 1904] id: 109
+  -- line: [1809, 1906] id: 109
   AudioManager(r0_109):PlayUISound(nil, "event:/ui/common/click_btn_confirm", nil, nil)
   local r1_109 = UE4.UGameplayStatics.GetPlayerCharacter(GWorld.GameInstance, 0)
   local r2_109 = r1_109:CharacterInTag("Skill") and r1_109:IsSafeToCancelSkill()
@@ -1785,7 +1787,7 @@ function r5_0.GoToArmory(r0_109)
       OnCloseDelegate = {
         r0_109,
         function()
-          -- line: [1830, 1836] id: 110
+          -- line: [1832, 1838] id: 110
           if not r0_109.CurSquadInfo.Char or r0_109.CurSquadInfo.Char == "" then
             r0_109:HideOrShowModel(true)
           else
@@ -1861,11 +1863,11 @@ function r5_0.GoToArmory(r0_109)
   UIManager(r0_109):LoadUINew("ArmoryDetail", r3_109)
 end
 function r5_0.HideOrShowModel(r0_111, r1_111)
-  -- line: [1906, 1908] id: 111
+  -- line: [1908, 1910] id: 111
   r0_111.ActorController.ArmoryPlayer:SetActorHideTag("SuqadRole", r1_111)
 end
 function r5_0.MakeSureCallback(r0_112, r1_112)
-  -- line: [1911, 1946] id: 112
+  -- line: [1913, 1948] id: 112
   local r2_112, r3_112 = r0_112:IsNeedPhantomIcon()
   local r4_112 = {
     ItemInfo = r0_112.CurClickItemInfo,
@@ -1905,7 +1907,7 @@ function r5_0.MakeSureCallback(r0_112, r1_112)
   r0_112:CloseTips(true)
 end
 function r5_0.CheckIsMainRoleWeapon(r0_113, r1_113)
-  -- line: [1949, 1956] id: 113
+  -- line: [1951, 1958] id: 113
   for r6_113, r7_113 in pairs(r0_113.PlayerForceSlot) do
     if r7_113 == r1_113 then
       return true
@@ -1915,14 +1917,14 @@ function r5_0.CheckIsMainRoleWeapon(r0_113, r1_113)
   return false
 end
 function r5_0.WeaponIsValidForSlot(r0_114)
-  -- line: [1959, 1966] id: 114
+  -- line: [1961, 1968] id: 114
   if r0_114:CheckSlotTypeIsAboutMainRole(r0_114.PreSlot) and r0_114.PreSlot and r0_114.CurSlot.Params.Type ~= r0_114.PreSlot.Type then
     return false
   end
   return true
 end
 function r5_0.PopChangeRoleToastByType(r0_115, r1_115)
-  -- line: [1968, 1981] id: 115
+  -- line: [1970, 1983] id: 115
   local r2_115 = r0_115.CurSlot:GetName()
   local r3_115, r4_115 = r0_115:IsSubstringContained(r2_115, "Head_Phantom0")
   local r5_115, r6_115 = r0_115:IsSubstringContained(r2_115, "Weapon_Phantom0")
@@ -1937,21 +1939,21 @@ function r5_0.PopChangeRoleToastByType(r0_115, r1_115)
   end
 end
 function r5_0.GetCharName(r0_116, r1_116)
-  -- line: [1983, 1985] id: 116
+  -- line: [1985, 1987] id: 116
   return DataMgr.Char[r1_116] and DataMgr.Char[r1_116].CharName
 end
 function r5_0.GetWeaponName(r0_117, r1_117)
-  -- line: [1987, 1989] id: 117
+  -- line: [1989, 1991] id: 117
   return DataMgr.Weapon[r1_117] and DataMgr.Weapon[r1_117].WeaponName
 end
 function r5_0.IsNeedPhantomIcon(r0_118)
-  -- line: [1991, 1994] id: 118
+  -- line: [1993, 1996] id: 118
   local r3_118 = r0_118.CurSlot:GetName()
   r3_118, r4_118 = r0_118:IsSubstringContained(r3_118, "Weapon_Phantom")
   return r3_118, r4_118
 end
 function r5_0.IsSubstringContained(r0_119, r1_119, r2_119)
-  -- line: [1996, 2002] id: 119
+  -- line: [1998, 2004] id: 119
   local r3_119, r4_119 = string.find(r1_119, r2_119)
   if r3_119 ~= nil then
     return r3_119 ~= nil, string.sub(r1_119, -1)
@@ -1959,7 +1961,7 @@ function r5_0.IsSubstringContained(r0_119, r1_119, r2_119)
   return nil, nil
 end
 function r5_0.CheckSelectItemIsRepeatInCurAllSlot(r0_120)
-  -- line: [2004, 2012] id: 120
+  -- line: [2006, 2014] id: 120
   for r5_120, r6_120 in pairs(r0_120.RightSlots) do
     if r6_120:GetItemId() == r0_120.CurClickItemInfo.Uuid and r6_120:GetName() ~= r0_120.CurSlot:GetName() and r5_120 ~= "WheelIndex" then
       r0_120.PreSlot = r6_120
@@ -1970,7 +1972,7 @@ function r5_0.CheckSelectItemIsRepeatInCurAllSlot(r0_120)
   return false
 end
 function r5_0.InitSelectiveList(r0_121)
-  -- line: [2015, 2040] id: 121
+  -- line: [2017, 2042] id: 121
   r0_121.OrderByDisplayNames = {
     "UI_LEVEL_SELECT",
     "UI_RARITY_NAME"
@@ -2003,7 +2005,7 @@ function r5_0.InitSelectiveList(r0_121)
   -- close: r1_121
 end
 function r5_0.SwitchToRouletteList(r0_122)
-  -- line: [2047, 2058] id: 122
+  -- line: [2049, 2060] id: 122
   r0_122:SwitchLeftWidgetByIndex(3)
   r0_122.IsInEditor = true
   r0_122:SwitchBtnPanel()
@@ -2015,7 +2017,7 @@ function r5_0.SwitchToRouletteList(r0_122)
   r0_122:InitBottomTab(false, 2)
 end
 function r5_0.GetWheelNum(r0_123)
-  -- line: [2061, 2070] id: 123
+  -- line: [2063, 2072] id: 123
   r0_123.Avatar = GWorld:GetAvatar()
   r0_123.WheelNum = nil
   if r0_123.Avatar then
@@ -2027,7 +2029,7 @@ function r5_0.GetWheelNum(r0_123)
   r0_123.WheelNum = r0_123.WheelNum and 3
 end
 function r5_0.UpdateRouletteUI(r0_124)
-  -- line: [2073, 2087] id: 124
+  -- line: [2075, 2089] id: 124
   r0_124.Text_Roulette:SetText(GText("UI_Squad_ChooseSuit"))
   r0_124.List_Roulette:SetAllowOverscroll(r0_124.List_Default:IsDisableScroll())
   r0_124.List_Roulette:ClearListItems()
@@ -2041,14 +2043,14 @@ function r5_0.UpdateRouletteUI(r0_124)
   end
 end
 function r5_0.UpdateWheelArr(r0_125, r1_125)
-  -- line: [2090, 2095] id: 125
+  -- line: [2092, 2097] id: 125
   if not r0_125.WheelArr or #r0_125.WheelArr == 3 then
     r0_125.WheelArr = {}
   end
   table.insert(r0_125.WheelArr, r1_125)
 end
 function r5_0.UpdateRouletteSlot(r0_126, r1_126)
-  -- line: [2098, 2107] id: 126
+  -- line: [2100, 2109] id: 126
   r0_126.Roulette:ChangeWheelIndex(r1_126)
   for r5_126 = 1, r0_126.WheelNum, 1 do
     if r5_126 ~= r1_126 then
@@ -2059,7 +2061,7 @@ function r5_0.UpdateRouletteSlot(r0_126, r1_126)
   end
 end
 function r5_0.Handle_OnPCDown(r0_127, r1_127)
-  -- line: [2114, 2134] id: 127
+  -- line: [2116, 2136] id: 127
   if r1_127 == "Escape" then
     r0_127:OnBackKeyDown()
     return true
@@ -2077,14 +2079,14 @@ function r5_0.Handle_OnPCDown(r0_127, r1_127)
   return false
 end
 function r5_0.OnUpdateUIStyleByInputTypeChange(r0_128, r1_128, r2_128)
-  -- line: [2137, 2144] id: 128
+  -- line: [2139, 2146] id: 128
   r0_128.CurInputDeviceType = r1_128
   r0_128.CurGamepadName = r2_128
   r0_128:InitUI()
   r0_128:SwitchSlotDeleteIconVisible()
 end
 function r5_0.SwitchSlotDeleteIconVisible(r0_129)
-  -- line: [2146, 2152] id: 129
+  -- line: [2148, 2154] id: 129
   for r5_129, r6_129 in pairs(r0_129.RightSlots) do
     if r6_129.AddDelelteIcon then
       r6_129:AddDelelteIcon()
@@ -2093,12 +2095,12 @@ function r5_0.SwitchSlotDeleteIconVisible(r0_129)
   -- close: r1_129
 end
 function r5_0.InitUI(r0_130)
-  -- line: [2154, 2183] id: 130
+  -- line: [2156, 2185] id: 130
   if r0_130.CurInputDeviceType == ECommonInputType.MouseAndKeyboard or r0_130.CurInputDeviceType == ECommonInputType.Touch then
     r0_130:UpdateGamepadIcon()
     r0_130.IsInSortState = false
     r0_130:AddDelayFrameFunc(function()
-      -- line: [2161, 2167] id: 131
+      -- line: [2163, 2169] id: 131
       r0_130:SwitchAddSquadItemVisibility(true)
       if r0_130:GetSquadWidgetInSquadList(r0_130.CurSelectSquadIndex) then
         r0_130:GetSquadWidgetInSquadList(r0_130.CurSelectSquadIndex):HideAllArrow()
@@ -2107,7 +2109,7 @@ function r5_0.InitUI(r0_130)
     return 
   end
   r0_130:AddDelayFrameFunc(function()
-    -- line: [2172, 2181] id: 132
+    -- line: [2174, 2183] id: 132
     r0_130.CurGamepadArea = nil
     r0_130.IsInSortState = false
     r0_130:SwitchGamePadIconVisibilityBySortState(true)
@@ -2119,14 +2121,14 @@ function r5_0.InitUI(r0_130)
   end, 2, "SwitchGamePad")
 end
 function r5_0.RegisterBtnIconInGampad(r0_133)
-  -- line: [2186, 2191] id: 133
+  -- line: [2188, 2193] id: 133
   r0_133.Btn_Edit:SetDefaultGamePadImg("X")
   r0_133.Btn_Save:SetDefaultGamePadImg("X")
   r0_133.Btn_Cancel:SetDefaultGamePadImg("B")
   r0_133.Btn_Armory:SetDefaultGamePadImg("View")
 end
 function r5_0.UpdateGamepadIcon(r0_134, r1_134, r2_134, r3_134, r4_134)
-  -- line: [2194, 2241] id: 134
+  -- line: [2196, 2243] id: 134
   if r0_134.Key_Controller_Sort then
     r0_134.Key_Controller_Sort:CreateCommonKey({
       KeyInfoList = {
@@ -2181,7 +2183,7 @@ function r5_0.UpdateGamepadIcon(r0_134, r1_134, r2_134, r3_134, r4_134)
   end
 end
 function r5_0.FocusOnSquadList(r0_135)
-  -- line: [2244, 2264] id: 135
+  -- line: [2246, 2266] id: 135
   if r0_135.CurInputDeviceType ~= ECommonInputType.Gamepad then
     return 
   end
@@ -2196,7 +2198,7 @@ function r5_0.FocusOnSquadList(r0_135)
   r0_135:InitBottomTab(true, 2)
 end
 function r5_0.FocusOnSquadListInSortState(r0_136)
-  -- line: [2267, 2283] id: 136
+  -- line: [2269, 2285] id: 136
   if r0_136.CurInputDeviceType ~= ECommonInputType.Gamepad then
     return 
   end
@@ -2208,7 +2210,7 @@ function r5_0.FocusOnSquadListInSortState(r0_136)
   r0_136:UpdateGamepadIcon()
 end
 function r5_0.FocusOnRightDetailPanel(r0_137)
-  -- line: [2286, 2323] id: 137
+  -- line: [2288, 2325] id: 137
   if r0_137.CurInputDeviceType ~= ECommonInputType.Gamepad then
     return 
   end
@@ -2237,7 +2239,7 @@ function r5_0.FocusOnRightDetailPanel(r0_137)
   r0_137:InitBottomTab(false, 3)
 end
 function r5_0.FocusOnItemList(r0_138)
-  -- line: [2326, 2359] id: 138
+  -- line: [2328, 2361] id: 138
   if r0_138.CurInputDeviceType ~= ECommonInputType.Gamepad then
     return 
   end
@@ -2265,7 +2267,7 @@ function r5_0.FocusOnItemList(r0_138)
   r0_138:UpdateGamepadIcon()
 end
 function r5_0.CheckHasTip(r0_139)
-  -- line: [2362, 2396] id: 139
+  -- line: [2364, 2398] id: 139
   if r0_139.CurInputDeviceType ~= ECommonInputType.Gamepad then
     return 
   end
@@ -2298,12 +2300,12 @@ function r5_0.CheckHasTip(r0_139)
   end
 end
 function r5_0.SetCurFocusArea(r0_140, r1_140)
-  -- line: [2399, 2402] id: 140
+  -- line: [2401, 2404] id: 140
   r0_140.CurGamepadArea = r1_140
   DebugPrint("thy   SetCurFocusArea", r0_140.CurGamepadArea)
 end
 function r5_0.SquadListMoveInGamePadWithDPad(r0_141, r1_141)
-  -- line: [2406, 2426] id: 141
+  -- line: [2408, 2428] id: 141
   if r0_141.CurGamepadArea == "SquadListInSort" then
     local r2_141 = r0_141.IsInSortState
     if r2_141 then
@@ -2316,7 +2318,7 @@ function r5_0.SquadListMoveInGamePadWithDPad(r0_141, r1_141)
         r0_141:GetSquadWidgetInSquadList(r0_141.CurSelectSquadIndex):HideAllArrow()
         r0_141:PlayAnimation(r0_141.UpdateList)
         r0_141:AddDelayFrameFunc(function()
-          -- line: [2416, 2418] id: 142
+          -- line: [2418, 2420] id: 142
           r0_141:GetSquadWidgetInSquadList(r0_141.CurSelectSquadIndex):ChangeTwoItemInListView(r0_141.List_Default, r0_141.CurSelectSquadIndex, r2_141)
         end, 5, "DelayChange")
       else
@@ -2329,11 +2331,11 @@ function r5_0.SquadListMoveInGamePadWithDPad(r0_141, r1_141)
   return true
 end
 function r5_0.CheckIsInItemList(r0_143)
-  -- line: [2429, 2431] id: 143
+  -- line: [2431, 2433] id: 143
   return r0_143.List_Build.List_Select:HasFocusedDescendants() and r0_143.List_Roulette:HasFocusedDescendants()
 end
 function r5_0.SwitchAddSquadItemVisibility(r0_144, r1_144)
-  -- line: [2433, 2451] id: 144
+  -- line: [2435, 2453] id: 144
   if r0_144.SquadListLen == r0_144.SquadMax or r0_144.SquadListLen == 1 then
     return 
   end
@@ -2353,7 +2355,7 @@ function r5_0.SwitchAddSquadItemVisibility(r0_144, r1_144)
   end
 end
 function r5_0.Handle_OnGamePadDown(r0_145, r1_145)
-  -- line: [2454, 2643] id: 145
+  -- line: [2456, 2645] id: 145
   if r1_145 == "Gamepad_FaceButton_Right" then
     if r0_145.Pos_Tips:GetChildAt(0) then
       r0_145:CloseTips()
@@ -2522,7 +2524,7 @@ function r5_0.Handle_OnGamePadDown(r0_145, r1_145)
   return false
 end
 function r5_0.CheckLeftStickKeyName(r0_146)
-  -- line: [2646, 2663] id: 146
+  -- line: [2648, 2665] id: 146
   local r1_146 = nil
   if r0_146.MoveDeltaX and r0_146.MoveDeltaX ~= 0 then
     if r0_146.MoveDeltaX > 0.5 then
@@ -2541,7 +2543,7 @@ function r5_0.CheckLeftStickKeyName(r0_146)
   return r1_146
 end
 function r5_0.OnAnalogValueChanged(r0_147, r1_147, r2_147)
-  -- line: [2666, 2678] id: 147
+  -- line: [2668, 2680] id: 147
   local r4_147 = UE4.UFormulaFunctionLibrary.Key_GetFName(UE4.UKismetInputLibrary.GetKey(r2_147))
   r0_147.MoveDeltaX = 0
   r0_147.MoveDeltaY = 0
@@ -2554,7 +2556,7 @@ function r5_0.OnAnalogValueChanged(r0_147, r1_147, r2_147)
   return r0_147.Unhandle
 end
 function r5_0.OnKeyDown(r0_148, r1_148, r2_148)
-  -- line: [2681, 2695] id: 148
+  -- line: [2683, 2697] id: 148
   local r3_148 = false
   local r4_148 = UE4.UKismetInputLibrary.GetKey(r2_148)
   local r5_148 = UE4.UFormulaFunctionLibrary.Key_GetFName(r4_148)
@@ -2570,7 +2572,7 @@ function r5_0.OnKeyDown(r0_148, r1_148, r2_148)
   end
 end
 function r5_0.OnPreviewKeyDown(r0_149, r1_149, r2_149)
-  -- line: [2697, 2725] id: 149
+  -- line: [2699, 2727] id: 149
   local r3_149 = UE4.UKismetInputLibrary.GetKey(r2_149)
   local r4_149 = UE4.UFormulaFunctionLibrary.Key_GetFName(r3_149)
   local r5_149 = false
@@ -2597,11 +2599,11 @@ function r5_0.OnPreviewKeyDown(r0_149, r1_149, r2_149)
   return UE4.UWidgetBlueprintLibrary.Unhandled()
 end
 function r5_0.CreateCDTimer(r0_150)
-  -- line: [2727, 2737] id: 150
+  -- line: [2729, 2739] id: 150
   r0_150.IsInCd = true
   r0_150.CdTime = 1
   r0_150:AddTimer(0.1, function()
-    -- line: [2730, 2736] id: 151
+    -- line: [2732, 2738] id: 151
     r0_150.CdTime = r0_150.CdTime - 0.1
     if r0_150.CdTime < 0 then
       r0_150.IsInCd = false
@@ -2610,9 +2612,9 @@ function r5_0.CreateCDTimer(r0_150)
   end, true, 0, "CD", true)
 end
 function r5_0.OnFocusReceived(r0_152, r1_152, r2_152)
-  -- line: [2739, 2749] id: 152
+  -- line: [2741, 2751] id: 152
   r0_152:AddDelayFrameFunc(function()
-    -- line: [2741, 2747] id: 153
+    -- line: [2743, 2749] id: 153
     if r0_152.IsInEditor then
       r0_152:FocusOnRightDetailPanel()
     else
@@ -2622,7 +2624,7 @@ function r5_0.OnFocusReceived(r0_152, r1_152, r2_152)
   return true
 end
 function r5_0.ReceiveEnterState(r0_154, r1_154)
-  -- line: [2751, 2767] id: 154
+  -- line: [2753, 2769] id: 154
   r0_154.Super.ReceiveEnterState(r0_154, r1_154)
   if r0_154.IsInEditor then
     if r0_154.CurSlot and r0_154.CurType then

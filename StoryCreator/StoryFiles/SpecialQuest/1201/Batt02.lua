@@ -4799,12 +4799,6 @@ r3_0 = {
       endPort = "Success",
     },
     {
-      startQuest = "1753348573061710311",
-      startPort = "QuestStart",
-      endQuest = "1753348573062710326",
-      endPort = "In",
-    },
-    {
       startQuest = "1753348573062710326",
       startPort = "false",
       endQuest = "1753348573061710312",
@@ -4817,27 +4811,9 @@ r3_0 = {
       endPort = "In",
     },
     {
-      startQuest = "176511137727210889027",
-      startPort = "Out",
-      endQuest = "176511137727210889024",
-      endPort = "In",
-    },
-    {
-      startQuest = "176511137727210889024",
-      startPort = "Out",
-      endQuest = "176511137727210889025",
-      endPort = "In",
-    },
-    {
       startQuest = "176511137727210889025",
       startPort = "Out",
       endQuest = "176312691283926062978",
-      endPort = "In",
-    },
-    {
-      startQuest = "176511137727210889024",
-      startPort = "Out",
-      endQuest = "176511137727210889023",
       endPort = "In",
     },
     {
@@ -4853,33 +4829,9 @@ r3_0 = {
       endPort = "In",
     },
     {
-      startQuest = "1753348573062710326",
-      startPort = "true",
-      endQuest = "176528100003730808758",
-      endPort = "In",
-    },
-    {
-      startQuest = "176528100003730808758",
-      startPort = "true",
-      endQuest = "176511137727210889027",
-      endPort = "In",
-    },
-    {
       startQuest = "176511137727210889025",
       startPort = "Out",
       endQuest = "176312693279126063457",
-      endPort = "In",
-    },
-    {
-      startQuest = "176312693279126063457",
-      startPort = "Out",
-      endQuest = "1753428977597668612",
-      endPort = "In",
-    },
-    {
-      startQuest = "176528100003730808758",
-      startPort = "false",
-      endQuest = "1753428977597668612",
       endPort = "In",
     },
     {
@@ -4911,6 +4863,66 @@ r3_0 = {
       startPort = "false",
       endQuest = "1753348573061710313",
       endPort = "Fail",
+    },
+    {
+      startQuest = "17675241306444975",
+      startPort = "Out",
+      endQuest = "17675240455292704",
+      endPort = "In",
+    },
+    {
+      startQuest = "176528100003730808758",
+      startPort = "true",
+      endQuest = "176511137727210889024",
+      endPort = "In",
+    },
+    {
+      startQuest = "176511137727210889024",
+      startPort = "Out",
+      endQuest = "176511137727210889025",
+      endPort = "In",
+    },
+    {
+      startQuest = "176511137727210889027",
+      startPort = "Out",
+      endQuest = "17675241306444975",
+      endPort = "In",
+    },
+    {
+      startQuest = "1753348573062710326",
+      startPort = "true",
+      endQuest = "176511137727210889027",
+      endPort = "In",
+    },
+    {
+      startQuest = "17675240455292704",
+      startPort = "Out",
+      endQuest = "176528100003730808758",
+      endPort = "In",
+    },
+    {
+      startQuest = "1753348573061710311",
+      startPort = "QuestStart",
+      endQuest = "1753348573062710326",
+      endPort = "In",
+    },
+    {
+      startQuest = "1753348573062710326",
+      startPort = "true",
+      endQuest = "176511137727210889023",
+      endPort = "In",
+    },
+    {
+      startQuest = "176312693279126063457",
+      startPort = "Out",
+      endQuest = "1753428977597668612",
+      endPort = "In",
+    },
+    {
+      startQuest = "176528100003730808758",
+      startPort = "false",
+      endQuest = "1753428977597668612",
+      endPort = "In",
     }
   },
 }
@@ -4920,8 +4932,8 @@ r4_0["1753348573061710311"] = {
   type = "QuestStartNode",
   name = "QuestStart",
   pos = {
-    x = -454.38775105183765,
-    y = 284.7714733666746,
+    x = -2049.779055399664,
+    y = 230.3095168449355,
   },
   propsData = {
     ModeType = 0,
@@ -4996,8 +5008,8 @@ r4_0["1753348573061710318"] = {
   type = "SetVarNode",
   name = "设置变量值",
   pos = {
-    x = 2413.6553556554886,
-    y = 667.7963311767815,
+    x = 2772.1259438907828,
+    y = 669.0904488238402,
   },
   propsData = {
     VarName = "East01Batt02Phase",
@@ -5010,8 +5022,8 @@ r6_0 = {
   type = "ExecuteBlueprintFunctionCheckVarNode",
   name = "变量=4",
   pos = {
-    x = -163.9172873450396,
-    y = 273.7640679207677,
+    x = -1520.46930597858,
+    y = 234.8199685418857,
   },
 }
 r6_0.propsData = {
@@ -5031,8 +5043,8 @@ r4_0["1753348573062710338"] = {
   type = "UpdateTaskBarAndTaskMainNode",
   name = "更新任务目标节点",
   pos = {
-    x = 2002.73919199425,
-    y = -252.07615451563765,
+    x = 1985.5963348513928,
+    y = -132.07615451563765,
   },
   propsData = {
     NewDescription = "Description_Batt02_04_05",
@@ -5045,8 +5057,8 @@ r4_0["1753428977597668612"] = {
   type = "WaitingMechanismEnterStateNode",
   name = "等待交互Xingshibei",
   pos = {
-    x = 2111.5338336087334,
-    y = 676.5937485249974,
+    x = 2441.5338336087334,
+    y = 666.946689701468,
   },
   propsData = {
     CreateType = "StaticCreator",
@@ -5061,8 +5073,8 @@ r6_0 = {
   type = "TalkNode",
   name = "对话节点",
   pos = {
-    x = 1712.784847149597,
-    y = 56.90881990000955,
+    x = 1230.64199000674,
+    y = 29.05167704286669,
   },
 }
 r6_0.propsData = {
@@ -5082,8 +5094,8 @@ r4_0["176312693279126063457"] = {
   type = "SetVarNode",
   name = "设置变量值",
   pos = {
-    x = 1691.0429764429057,
-    y = 275.37037658377994,
+    x = 1493.9001193000486,
+    y = 266.7989480123514,
   },
   propsData = {
     VarName = "Batt02Xingshibei02",
@@ -5095,8 +5107,8 @@ r4_0["176511137727210889023"] = {
   type = "UpdateTaskBarAndTaskMainNode",
   name = "更新任务目标节点",
   pos = {
-    x = 1294.9639943662373,
-    y = 71.7324264200733,
+    x = -1108.253874721197,
+    y = -142.53895437304664,
   },
   propsData = {
     NewDescription = "Description_Batt02_04_03",
@@ -5109,8 +5121,8 @@ r4_0["176511137727210889024"] = {
   type = "GoToNode",
   name = "前往",
   pos = {
-    x = 955.619895790101,
-    y = 273.843822784275,
+    x = 409.85385024144693,
+    y = 236.22477516522736,
   },
   propsData = {
     GuideUIEnable = true,
@@ -5124,8 +5136,8 @@ r4_0["176511137727210889025"] = {
   type = "WaitingMechanismEnterStateNode",
   name = "等待交互Xingshibei",
   pos = {
-    x = 1293.4063508648605,
-    y = 267.14099145251794,
+    x = 892.226226641258,
+    y = 260.3397492164931,
   },
   propsData = {
     CreateType = "StaticCreator",
@@ -5141,8 +5153,8 @@ r6_0 = {
   type = "SwitchMechanismStateNode",
   name = "切换机关状态",
   pos = {
-    x = 641.2754673169586,
-    y = 73.68016099251412,
+    x = -1108.320805974967,
+    y = 19.45655850804205,
   },
 }
 r6_0.propsData = {
@@ -5159,8 +5171,8 @@ r4_0["176511137727210889027"] = {
   type = "SendMessageNode",
   name = "消息StoneInOrder04Awake",
   pos = {
-    x = 633.4543702386436,
-    y = 251.93542214003543,
+    x = -1108.641903053282,
+    y = 226.6869749350664,
   },
   propsData = {
     MessageType = "GameMode",
@@ -5173,8 +5185,8 @@ r4_0["176511137727210889028"] = {
   type = "WaitingMechanismEnterStateNode",
   name = "等待机关进入状态",
   pos = {
-    x = 646.4015019051443,
-    y = -193.3369664019988,
+    x = 769.4967400003824,
+    y = -332.14649021152263,
   },
   propsData = {
     CreateType = "StaticCreator",
@@ -5189,8 +5201,8 @@ r4_0["17652685317396003"] = {
   type = "SendMessageNode",
   name = "StoneInOrder04Reset",
   pos = {
-    x = 953.881723539618,
-    y = 1497.0383467152042,
+    x = 951.7388663967608,
+    y = 1494.895489572347,
   },
   propsData = {
     MessageType = "GameMode",
@@ -5204,8 +5216,8 @@ r6_0 = {
   type = "ExecuteBlueprintFunctionCheckVarNode",
   name = "变量Batt02Xingshibei02",
   pos = {
-    x = 344.10526315789474,
-    y = 254.21052631578945,
+    x = -108.87610330173263,
+    y = 235.94965675057207,
   },
 }
 r6_0.propsData = {
@@ -5256,6 +5268,44 @@ r6_0.propsData = {
   },
 }
 r4_0[r5_0] = r6_0
+r4_0["17675240455292704"] = {
+  key = "17675240455292704",
+  type = "SendMessageNode",
+  name = "消息StoneInOrder04Unlock",
+  pos = {
+    x = -463.7798163887983,
+    y = 249.37118131005263,
+  },
+  propsData = {
+    MessageType = "GameMode",
+    MessageContent = "StoneInOrder04Unlock",
+    UnitId = -1,
+  },
+}
+r4_0["17675240736493288"] = {
+  key = "17675240736493288",
+  type = "WaitOfTimeNode",
+  name = "延迟等待",
+  pos = {
+    x = 749.0980304020919,
+    y = -132.6901540936741,
+  },
+  propsData = {
+    WaitTime = 0,
+  },
+}
+r4_0["17675241306444975"] = {
+  key = "17675241306444975",
+  type = "WaitOfTimeNode",
+  name = "延迟等待",
+  pos = {
+    x = -784.2003650430426,
+    y = 240.25967849174228,
+  },
+  propsData = {
+    WaitTime = 1,
+  },
+}
 r3_0.nodeData = r4_0
 r4_0 = {}
 r4_0["176511138657810889389"] = {
@@ -5535,21 +5585,9 @@ r3_0 = {
       endPort = "In",
     },
     {
-      startQuest = "176312640036926054740",
-      startPort = "Out",
-      endQuest = "176312419540926042480",
-      endPort = "In",
-    },
-    {
       startQuest = "176312640036926054739",
       startPort = "false",
       endQuest = "176528115391430811829",
-      endPort = "In",
-    },
-    {
-      startQuest = "176312640036926054739",
-      startPort = "false",
-      endQuest = "176312419540926042480",
       endPort = "In",
     },
     {
@@ -5569,6 +5607,18 @@ r3_0 = {
       startPort = "false",
       endQuest = "176312402111826038912",
       endPort = "Fail",
+    },
+    {
+      startQuest = "176312640036926054740",
+      startPort = "Out",
+      endQuest = "176312419540926042480",
+      endPort = "In",
+    },
+    {
+      startQuest = "176312640036926054739",
+      startPort = "false",
+      endQuest = "176312419540926042480",
+      endPort = "In",
     }
   },
 }
@@ -5654,8 +5704,8 @@ r4_0["176312419540926042480"] = {
   type = "WaitingMechanismEnterStateNode",
   name = "机关-完成",
   pos = {
-    x = 1956.1073289854307,
-    y = 511.5874303529959,
+    x = 2198.1073289854307,
+    y = 515.5874303529959,
   },
   propsData = {
     CreateType = "StaticCreator",
@@ -5734,8 +5784,8 @@ r4_0["176312616118226053879"] = {
   type = "GoToNode",
   name = "前往",
   pos = {
-    x = 2358.026005592064,
-    y = 513.7139015159821,
+    x = 2472.026005592064,
+    y = 509.7139015159821,
   },
   propsData = {
     GuideUIEnable = true,

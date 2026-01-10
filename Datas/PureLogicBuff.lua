@@ -2533,7 +2533,7 @@ r6_0.AddAttrs = {
   [1] = {
     AttrName = "DamageRate",
     RateZone = "AbyssDown",
-    Value = -0.25,
+    Value = -0.12,
   },
   [2] = r0_0.RT_11,
 }

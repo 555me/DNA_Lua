@@ -1438,272 +1438,298 @@ function r0_0.GetIsEnableScriptDetectionCheck(r0_72)
   end
   return r4_72
 end
-function r0_0.StartScriptDetectionCheck(r0_73, r1_73)
-  -- line: [1707, 1730] id: 73
-  local r2_73 = false
-  local r3_73 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_73)
-  if r3_73 and r3_73:IsInDungeon() then
-    r2_73 = true
+function r0_0.GetScriptDetectionConditionMet_OnMouse(r0_73, r1_73, r2_73)
+  -- line: [1706, 1728] id: 73
+  DebugPrint("GetScriptDetectionConditionMet_OnMouse DungeonType:", r1_73, " DungeonId:", r2_73)
+  local r3_73 = {
+    "ExtermPro"
+  }
+  local r4_73 = {
+    90108,
+    90604,
+    60702,
+    62702,
+    64702
+  }
+  local r5_73 = true
+  for r10_73, r11_73 in ipairs(r3_73) do
+    if r1_73 == r11_73 then
+      r5_73 = false
+      break
+    end
   end
-  if r1_73 == Const.ScriptDetectionCheckType.OnMouse then
-    local r4_73 = false
-    if r2_73 then
-      r4_73 = r3_73.GameModeType ~= "ExtermPro"
+  -- close: r6_73
+  if r5_73 then
+    for r10_73, r11_73 in ipairs(r4_73) do
+      if r2_73 == r11_73 then
+        r5_73 = false
+        break
+      end
     end
-    if r4_73 then
-      r0_73.bNeedRecordThisTurn = false
-      r0_73.CurrentMouseLocation2D = UE4.UWidgetLayoutLibrary.GetMousePositionOnViewport(r0_73)
-      r0_73:StartScriptDetectionCheck_OnMouse()
-    end
-  elseif r1_73 == Const.ScriptDetectionCheckType.OnKeyboard and r2_73 then
-    r0_73:StartScriptDetectionCheck_OnKeyboard()
+    -- close: r6_73
+  end
+  return r5_73
+end
+function r0_0.StartScriptDetectionCheck(r0_74, r1_74)
+  -- line: [1732, 1752] id: 74
+  local r2_74 = false
+  local r3_74 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_74)
+  if r3_74 and r3_74:IsInDungeon() then
+    r2_74 = true
+  end
+  if r1_74 == Const.ScriptDetectionCheckType.OnMouse and r2_74 and r0_74:GetScriptDetectionConditionMet_OnMouse(r3_74.GameModeType, r3_74.DungeonId) then
+    r0_74.bNeedRecordThisTurn = false
+    r0_74.CurrentMouseLocation2D = UE4.UWidgetLayoutLibrary.GetMousePositionOnViewport(r0_74)
+    r0_74:StartScriptDetectionCheck_OnMouse()
+  elseif r1_74 == Const.ScriptDetectionCheckType.OnKeyboard and r2_74 then
+    r0_74:StartScriptDetectionCheck_OnKeyboard()
   end
 end
-function r0_0.StartScriptDetectionCheck_OnMouse(r0_74)
-  -- line: [1733, 1754] id: 74
-  if not r0_74.ScriptDetectionCheck_OnMouse_Timer then
-    r0_74.ScriptDetectionCheck_OnMouse_Timer = r0_74:AddTimer(1, function()
-      -- line: [1735, 1752] id: 75
+function r0_0.StartScriptDetectionCheck_OnMouse(r0_75)
+  -- line: [1755, 1776] id: 75
+  if not r0_75.ScriptDetectionCheck_OnMouse_Timer then
+    r0_75.ScriptDetectionCheck_OnMouse_Timer = r0_75:AddTimer(1, function()
+      -- line: [1757, 1774] id: 76
       -- notice: unreachable block#10
-      local r0_75 = true
-      local r1_75 = r0_74:IsGameWindowActivated()
-      local r2_75 = UE4.UWidgetLayoutLibrary.GetMousePositionOnViewport(r0_74)
-      if r0_74.CurrentMouseLocation2D ~= nil then
-        r0_75 = UE4.UKismetMathLibrary.EqualEqual_Vector2DVector2D(r0_74.CurrentMouseLocation2D, r2_75, 0.001)
+      local r0_76 = true
+      local r1_76 = r0_75:IsGameWindowActivated()
+      local r2_76 = UE4.UWidgetLayoutLibrary.GetMousePositionOnViewport(r0_75)
+      if r0_75.CurrentMouseLocation2D ~= nil then
+        r0_76 = UE4.UKismetMathLibrary.EqualEqual_Vector2DVector2D(r0_75.CurrentMouseLocation2D, r2_76, 0.001)
       end
-      if r0_74.CurrentCheckCountInScene < 10 then
-        if not r0_75 and r1_75 then
-          r0_74:EndScriptDetectionCheck_OnMouse(false)
+      if r0_75.CurrentCheckCountInScene < 10 then
+        if not r0_76 and r1_76 then
+          r0_75:EndScriptDetectionCheck_OnMouse(false)
         end
       else
-        local r3_75 = r0_75
-        if r3_75 then
-          if not r0_75 then
-            r3_75 = not r1_75
+        local r3_76 = r0_76
+        if r3_76 then
+          if not r0_76 then
+            r3_76 = not r1_76
           else
-            r3_75 = false
+            r3_76 = false
           end
         end
-        r0_74:EndScriptDetectionCheck_OnMouse(r3_75)
+        r0_75:EndScriptDetectionCheck_OnMouse(r3_76)
       end
-      r0_74.CurrentCheckCountInScene = r0_74.CurrentCheckCountInScene + 1
+      r0_75.CurrentCheckCountInScene = r0_75.CurrentCheckCountInScene + 1
     end, true, nil, "ScriptDetectionCheck_OnMouse_Timer")
   end
 end
-function r0_0.EndScriptDetectionCheck_OnMouse(r0_76, r1_76)
-  -- line: [1758, 1765] id: 76
-  if r0_76.ScriptDetectionCheck_OnMouse_Timer then
-    r0_76.bNeedRecordThisTurn = r1_76
-    r0_76:RemoveTimer(r0_76.ScriptDetectionCheck_OnMouse_Timer)
-    r0_76.ScriptDetectionCheck_OnMouse_Timer = nil
-    r0_76.CurrentCheckCountInScene = 0
+function r0_0.EndScriptDetectionCheck_OnMouse(r0_77, r1_77)
+  -- line: [1780, 1787] id: 77
+  if r0_77.ScriptDetectionCheck_OnMouse_Timer then
+    r0_77.bNeedRecordThisTurn = r1_77
+    r0_77:RemoveTimer(r0_77.ScriptDetectionCheck_OnMouse_Timer)
+    r0_77.ScriptDetectionCheck_OnMouse_Timer = nil
+    r0_77.CurrentCheckCountInScene = 0
   end
 end
-function r0_0.StartScriptDetectionCheck_OnKeyboard(r0_77)
-  -- line: [1767, 1778] id: 77
-  if r0_77.SDCKeyboardOverTimeTimer then
-    r0_77:RemoveTimer(r0_77.SDCKeyboardOverTimeTimer)
+function r0_0.StartScriptDetectionCheck_OnKeyboard(r0_78)
+  -- line: [1789, 1800] id: 78
+  if r0_78.SDCKeyboardOverTimeTimer then
+    r0_78:RemoveTimer(r0_78.SDCKeyboardOverTimeTimer)
   end
-  r0_77.SDCKeyboardOverTimeTimer = r0_77:AddTimer(r5_0, function()
-    -- line: [1772, 1774] id: 78
-    r0_77:EndScriptDetectionCheck_OnKeyboard()
+  r0_78.SDCKeyboardOverTimeTimer = r0_78:AddTimer(r5_0, function()
+    -- line: [1794, 1796] id: 79
+    r0_78:EndScriptDetectionCheck_OnKeyboard()
   end, false)
-  r0_77.bEnableKeyboardSDC = true
-  r0_77.KeyList = {}
+  r0_78.bEnableKeyboardSDC = true
+  r0_78.KeyList = {}
 end
-function r0_0.EndScriptDetectionCheck_OnKeyboard(r0_79)
-  -- line: [1780, 1803] id: 79
-  if r0_79.SDCKeyboardOverTimeTimer then
-    r0_79:RemoveTimer(r0_79.SDCKeyboardOverTimeTimer)
-    r0_79.SDCKeyboardOverTimeTimer = nil
+function r0_0.EndScriptDetectionCheck_OnKeyboard(r0_80)
+  -- line: [1802, 1825] id: 80
+  if r0_80.SDCKeyboardOverTimeTimer then
+    r0_80:RemoveTimer(r0_80.SDCKeyboardOverTimeTimer)
+    r0_80.SDCKeyboardOverTimeTimer = nil
   end
-  if r0_79.bEnableKeyboardSDC then
-    local r1_79 = UE4.UGameplayStatics.GetGameInstance(r0_79)
-    if r1_79 and r0_79.KeyList and r7_0 <= #r0_79.KeyList then
-      local r2_79 = r0_79:GetKeyListFingerprints(r0_79.KeyList)
-      if r2_79 then
-        r1_79.KeyListRecord[r2_79] = (r1_79.KeyListRecord[r2_79] and 0) + 1
-        if r6_0 <= r1_79.KeyListRecord[r2_79] then
-          r0_79:ReportScriptDetection_Keyboard(r2_79)
+  if r0_80.bEnableKeyboardSDC then
+    local r1_80 = UE4.UGameplayStatics.GetGameInstance(r0_80)
+    if r1_80 and r0_80.KeyList and r7_0 <= #r0_80.KeyList then
+      local r2_80 = r0_80:GetKeyListFingerprints(r0_80.KeyList)
+      if r2_80 then
+        r1_80.KeyListRecord[r2_80] = (r1_80.KeyListRecord[r2_80] and 0) + 1
+        if r6_0 <= r1_80.KeyListRecord[r2_80] then
+          r0_80:ReportScriptDetection_Keyboard(r2_80)
         end
       end
     end
-    r0_79.bEnableKeyboardSDC = false
-    r0_79.KeyList = nil
+    r0_80.bEnableKeyboardSDC = false
+    r0_80.KeyList = nil
   end
 end
-function r0_0.ReceivedInputKey(r0_80, r1_80, r2_80)
-  -- line: [1806, 1821] id: 80
-  local r3_80 = r1_80.KeyName
-  if UIConst.MouseButton[r3_80] then
+function r0_0.ReceivedInputKey(r0_81, r1_81, r2_81)
+  -- line: [1828, 1843] id: 81
+  local r3_81 = r1_81.KeyName
+  if UIConst.MouseButton[r3_81] then
     return 
   end
-  if r0_80.bEnableKeyboardSDC then
-    local r4_80 = UE4.UGameplayStatics.GetTimeSeconds(r0_80)
-    local r5_80 = r0_80.KeyList and {}
-    r0_80.KeyList = r5_80
-    r5_80[#r5_80 + 1] = {
-      r3_80,
-      r2_80,
-      r4_80
+  if r0_81.bEnableKeyboardSDC then
+    local r4_81 = UE4.UGameplayStatics.GetTimeSeconds(r0_81)
+    local r5_81 = r0_81.KeyList and {}
+    r0_81.KeyList = r5_81
+    r5_81[#r5_81 + 1] = {
+      r3_81,
+      r2_81,
+      r4_81
     }
   end
 end
-function r0_0.ReportScriptDetection_Keyboard(r0_81, r1_81)
-  -- line: [1823, 1849] id: 81
+function r0_0.ReportScriptDetection_Keyboard(r0_82, r1_82)
+  -- line: [1845, 1871] id: 82
   if GWorld:GetAvatar() then
-    local r3_81 = UE4.UGameplayStatics.GetGameInstance(r0_81)
-    local r4_81 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_81)
-    if r3_81 and r4_81 then
-      local r5_81 = r4_81.DungeonId
-      local r6_81 = DataMgr.Dungeon[r5_81]
-      if r6_81 then
-        local r7_81 = r6_81.DungeonType and 0
-        local r8_81 = 0
-        local r9_81 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_81)
-        if IsValid(r9_81) then
-          r8_81 = r9_81.DungeonProgress
+    local r3_82 = UE4.UGameplayStatics.GetGameInstance(r0_82)
+    local r4_82 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_82)
+    if r3_82 and r4_82 then
+      local r5_82 = r4_82.DungeonId
+      local r6_82 = DataMgr.Dungeon[r5_82]
+      if r6_82 then
+        local r7_82 = r6_82.DungeonType and 0
+        local r8_82 = 0
+        local r9_82 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_82)
+        if IsValid(r9_82) then
+          r8_82 = r9_82.DungeonProgress
         end
-        r0_81:ReportCheatMsg(CommonConst.MonitorCheatType.Keyboard, string.format(r8_0, r5_81, r7_81, r8_81, r3_81.KeyListRecord[r1_81] and 0))
+        r0_82:ReportCheatMsg(CommonConst.MonitorCheatType.Keyboard, string.format(r8_0, r5_82, r7_82, r8_82, r3_82.KeyListRecord[r1_82] and 0))
       end
     end
   end
 end
-function r0_0.UpdateIfRecordThisTurnValue(r0_82)
-  -- line: [1852, 1867] id: 82
-  if r0_82.CurrentMouseLocation2D == nil then
-    r0_82.bNeedRecordThisTurn = false
+function r0_0.UpdateIfRecordThisTurnValue(r0_83)
+  -- line: [1874, 1889] id: 83
+  if r0_83.CurrentMouseLocation2D == nil then
+    r0_83.bNeedRecordThisTurn = false
     return 
   end
-  if not r0_82.bNeedRecordThisTurn then
+  if not r0_83.bNeedRecordThisTurn then
     DebugPrint("ScriptDetection== UpdateIfRecordThisTurnValue: 当前结果不需要最后校验, 已经是移动过鼠标的状态了！")
     return 
   end
-  r0_82.bNeedRecordThisTurn = UE4.UKismetMathLibrary.EqualEqual_Vector2DVector2D(r0_82.CurrentMouseLocation2D, UE4.UWidgetLayoutLibrary.GetMousePositionOnViewport(r0_82), 0.001)
+  r0_83.bNeedRecordThisTurn = UE4.UKismetMathLibrary.EqualEqual_Vector2DVector2D(r0_83.CurrentMouseLocation2D, UE4.UWidgetLayoutLibrary.GetMousePositionOnViewport(r0_83), 0.001)
 end
-function r0_0.CheckAndSendRecordToServer_OnMouse(r0_83)
-  -- line: [1870, 1906] id: 83
+function r0_0.CheckAndSendRecordToServer_OnMouse(r0_84)
+  -- line: [1892, 1928] id: 84
   if not GWorld:GetAvatar() then
     return 
   end
-  if r0_83.bNeedRecordThisTurn then
-    local r2_83 = UE4.UGameplayStatics.GetGameInstance(r0_83)
-    r2_83.ScriptDetectionCheckRecordNum = r2_83.ScriptDetectionCheckRecordNum + 1
-    DebugPrint("ScriptDetection== CheckAndSendRecordToServer_OnMouse: 未检测到鼠标移动，疑似使用脚本进行游戏操作，移除检测Timer，并且记录次数：", r2_83.ScriptDetectionCheckRecordNum)
-    if r2_83.ScriptDetectionCheckRecordNum >= 5 then
+  if r0_84.bNeedRecordThisTurn then
+    local r2_84 = UE4.UGameplayStatics.GetGameInstance(r0_84)
+    r2_84.ScriptDetectionCheckRecordNum = r2_84.ScriptDetectionCheckRecordNum + 1
+    DebugPrint("ScriptDetection== CheckAndSendRecordToServer_OnMouse: 未检测到鼠标移动，疑似使用脚本进行游戏操作，移除检测Timer，并且记录次数：", r2_84.ScriptDetectionCheckRecordNum)
+    if r2_84.ScriptDetectionCheckRecordNum >= 5 then
       DebugPrint("ScriptDetection== CheckAndSendRecordToServer_OnMouse: 脚本检测上报，当前累计次数超过5次")
-      local r3_83 = "MonitorType: ScriptDetection "
-      local r4_83 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_83)
-      if r4_83 then
-        local r5_83 = r4_83.DungeonId
-        if r5_83 then
-          r3_83 = r3_83 .. "DungeonID: " .. r5_83 .. "  "
-          local r6_83 = DataMgr.Dungeon[r5_83]
-          if r6_83 then
-            if r6_83.DungeonType then
-              r3_83 = r3_83 .. "DungeonType: " .. r6_83.DungeonType .. "  "
+      local r3_84 = "MonitorType: ScriptDetection "
+      local r4_84 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_84)
+      if r4_84 then
+        local r5_84 = r4_84.DungeonId
+        if r5_84 then
+          r3_84 = r3_84 .. "DungeonID: " .. r5_84 .. "  "
+          local r6_84 = DataMgr.Dungeon[r5_84]
+          if r6_84 then
+            if r6_84.DungeonType then
+              r3_84 = r3_84 .. "DungeonType: " .. r6_84.DungeonType .. "  "
             end
-            if r6_83.DungeonLevel then
-              r3_83 = r3_83 .. "DungeonLevel: " .. r6_83.DungeonLevel .. "  "
+            if r6_84.DungeonLevel then
+              r3_84 = r3_84 .. "DungeonLevel: " .. r6_84.DungeonLevel .. "  "
             end
           end
         end
-        r3_83 = r3_83 .. "Detection threshold for unoperated duration: 10s  "
+        r3_84 = r3_84 .. "Detection threshold for unoperated duration: 10s  "
       end
-      r0_83:ReportCheatMsg(CommonConst.MonitorCheatType.Mouse, r3_83)
+      r0_84:ReportCheatMsg(CommonConst.MonitorCheatType.Mouse, r3_84)
     end
   else
     DebugPrint("ScriptDetection== CheckAndSendRecordToServer_OnMouse: 检测到结束前鼠标有过移动, 判定未使用脚本进行游戏操作, 若有临时记录数据也不算次数")
   end
 end
-function r0_0.OnDungeonEnd_ToSceneManager(r0_84, r1_84, r2_84, r3_84)
-  -- line: [1913, 1924] id: 84
-  DebugPrint("OnDungeonEnd_ToSceneManager: 副本结束通知，当前副本类型：", r3_84)
-  if r0_84:GetIsEnableScriptDetectionCheck() then
-    if r3_84 ~= "ExtermPro" then
-      r0_84:UpdateIfRecordThisTurnValue()
-      r0_84:CheckAndSendRecordToServer_OnMouse()
+function r0_0.OnDungeonEnd_ToSceneManager(r0_85, r1_85, r2_85, r3_85, r4_85)
+  -- line: [1936, 1948] id: 85
+  DebugPrint("OnDungeonEnd_ToSceneManager: 副本结束通知，当前副本类型：", r3_85, r4_85)
+  if r0_85:GetIsEnableScriptDetectionCheck() then
+    if r0_85:GetScriptDetectionConditionMet_OnMouse(r3_85, r4_85) then
+      r0_85:UpdateIfRecordThisTurnValue()
+      r0_85:CheckAndSendRecordToServer_OnMouse()
     end
-    r0_84:EndScriptDetectionCheck_OnKeyboard()
+    r0_85:EndScriptDetectionCheck_OnKeyboard()
   end
 end
-function r0_0.GetLogMask(r0_85)
-  -- line: [1926, 1928] id: 85
+function r0_0.GetLogMask(r0_86)
+  -- line: [1950, 1952] id: 86
   return _G.LogTag
 end
-function r0_0.CaluCurGuideNeedShowPos(r0_86, r1_86, r2_86, r3_86)
-  -- line: [1937, 1952] id: 86
-  if r0_86:GetLevelLoader() == nil then
+function r0_0.CaluCurGuideNeedShowPos(r0_87, r1_87, r2_87, r3_87)
+  -- line: [1961, 1976] id: 87
+  if r0_87:GetLevelLoader() == nil then
     return false, nil
   end
-  local r4_86 = r0_86.Guide2NextLevelIdMaps:Find(r1_86)
-  local r5_86 = r0_86.Guide2InDoorNameMaps:Find(r1_86)
-  if r4_86 ~= nil and r5_86 ~= nil then
-    return r0_86.LevelLoader.LevelPathfinding:GetTargetActorGuideLocation(r4_86, r5_86, r2_86, r3_86)
+  local r4_87 = r0_87.Guide2NextLevelIdMaps:Find(r1_87)
+  local r5_87 = r0_87.Guide2InDoorNameMaps:Find(r1_87)
+  if r4_87 ~= nil and r5_87 ~= nil then
+    return r0_87.LevelLoader.LevelPathfinding:GetTargetActorGuideLocation(r4_87, r5_87, r2_87, r3_87)
   end
   return false
 end
-function r0_0.AddFoorBox(r0_87, r1_87)
-  -- line: [1954, 1957] id: 87
-  if not r0_87.FloorBoxArray then
-    r0_87.FloorBoxArray = {}
+function r0_0.AddFoorBox(r0_88, r1_88)
+  -- line: [1978, 1981] id: 88
+  if not r0_88.FloorBoxArray then
+    r0_88.FloorBoxArray = {}
   end
-  table.insert(r0_87.FloorBoxArray, r1_87)
+  table.insert(r0_88.FloorBoxArray, r1_88)
 end
-function r0_0.AddMinimapDoor(r0_88, r1_88)
-  -- line: [1959, 1962] id: 88
-  if not r0_88.MinimapDoorArray then
-    r0_88.MinimapDoorArray = {}
+function r0_0.AddMinimapDoor(r0_89, r1_89)
+  -- line: [1983, 1986] id: 89
+  if not r0_89.MinimapDoorArray then
+    r0_89.MinimapDoorArray = {}
   end
-  table.insert(r0_88.MinimapDoorArray, r1_88)
+  table.insert(r0_89.MinimapDoorArray, r1_89)
 end
-function r0_0.DelaySetFullScreen_Lua(r0_89, r1_89, r2_89)
-  -- line: [1965, 1974] id: 89
-  r0_89:AddTimer(0.1, function()
-    -- line: [1966, 1973] id: 90
-    local r0_90 = UE4.UGameUserSettings:GetGameUserSettings()
-    if r0_90 then
+function r0_0.DelaySetFullScreen_Lua(r0_90, r1_90, r2_90)
+  -- line: [1989, 1998] id: 90
+  r0_90:AddTimer(0.1, function()
+    -- line: [1990, 1997] id: 91
+    local r0_91 = UE4.UGameUserSettings:GetGameUserSettings()
+    if r0_91 then
       DebugPrint("@zyh DelaySetFullScreen_Lua执行")
-      r0_90:SetFullscreenMode(r2_89)
-      r0_90:ApplySettings(false)
+      r0_91:SetFullscreenMode(r2_90)
+      r0_91:ApplySettings(false)
     end
   end, false)
 end
-function r0_0.CleanSpecialMonsterInfo(r0_91, r1_91)
-  -- line: [1976, 1980] id: 91
-  if r1_91 then
-    r0_91.SpecialMonsterInfo[r1_91] = nil
+function r0_0.CleanSpecialMonsterInfo(r0_92, r1_92)
+  -- line: [2000, 2004] id: 92
+  if r1_92 then
+    r0_92.SpecialMonsterInfo[r1_92] = nil
   end
 end
-function r0_0.GetKeyListFingerprints(r0_92, r1_92)
-  -- line: [1982, 1987] id: 92
-  return r2_0.sha1(r0_92:SerializeInputSequence(r1_92))
+function r0_0.GetKeyListFingerprints(r0_93, r1_93)
+  -- line: [2006, 2011] id: 93
+  return r2_0.sha1(r0_93:SerializeInputSequence(r1_93))
 end
-function r0_0.SerializeInputSequence(r0_93, r1_93)
-  -- line: [1989, 2008] id: 93
-  local r2_93 = {}
-  local r3_93 = 1
-  for r8_93, r9_93 in ipairs(r1_93) do
-    local r10_93 = 0
-    if r8_93 > 1 then
-      r10_93 = math.floor(((r9_93[3] - r1_93[r8_93 + -1][3]) / r4_0 + 0.5)) * r4_0
+function r0_0.SerializeInputSequence(r0_94, r1_94)
+  -- line: [2013, 2032] id: 94
+  local r2_94 = {}
+  local r3_94 = 1
+  for r8_94, r9_94 in ipairs(r1_94) do
+    local r10_94 = 0
+    if r8_94 > 1 then
+      r10_94 = math.floor(((r9_94[3] - r1_94[r8_94 + -1][3]) / r4_0 + 0.5)) * r4_0
     end
-    r2_93[r3_93] = r9_93[1]
-    r2_93[r3_93 + 1] = r9_93[2]
-    r2_93[r3_93 + 2] = r10_93
-    r3_93 = r3_93 + 3
+    r2_94[r3_94] = r9_94[1]
+    r2_94[r3_94 + 1] = r9_94[2]
+    r2_94[r3_94 + 2] = r10_94
+    r3_94 = r3_94 + 3
   end
-  -- close: r4_93
-  return table.concat(r2_93, "|")
+  -- close: r4_94
+  return table.concat(r2_94, "|")
 end
-function r0_0.ReportCheatMsg(r0_94, r1_94, r2_94)
-  -- line: [2010, 2022] id: 94
-  local r3_94 = GWorld:GetAvatar()
-  if not r3_94 then
+function r0_0.ReportCheatMsg(r0_95, r1_95, r2_95)
+  -- line: [2034, 2046] id: 95
+  local r3_95 = GWorld:GetAvatar()
+  if not r3_95 then
     return 
   end
-  r3_94:CallServerMethod("SendCheatMsgToServer", r1_94, r3_0.encode({
-    CheatMsg = r2_94,
+  r3_95:CallServerMethod("SendCheatMsgToServer", r1_95, r3_0.encode({
+    CheatMsg = r2_95,
   }))
 end
 AssembleComponents(r0_0)

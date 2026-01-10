@@ -289,7 +289,7 @@ function r9_0.OnPlayerControllerGameEnd(r0_30, r1_30, r2_30, r3_30)
   local r4_30 = UE4.UGameplayStatics.GetGameState(r0_30)
   local r5_30 = r0_30:GetSceneManager()
   if r5_30 ~= nil then
-    r5_30:OnDungeonEnd_ToSceneManager(r1_30, r2_30, r4_30.GameModeType)
+    r5_30:OnDungeonEnd_ToSceneManager(r1_30, r2_30, r4_30.GameModeType, r4_30.DungeonId)
   end
   if r4_30.GameModeType == "Training" or r4_30.GameModeType == "Trial" then
     DebugPrint("DungeonSettlement: 训练场或角色试玩玩法，直接退出副本")
