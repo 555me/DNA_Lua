@@ -96,7 +96,7 @@ function r4_0.TryStartOutAirWallCheck(r0_5, r1_5)
         r0_5.CheckOutAirDoorBoxTransform.Scale3D = FVector(1, 1, 1)
         local r1_6 = UE4.UKismetMathLibrary.InverseTransformLocation(r0_5.CheckOutAirDoorBoxTransform, r0_5:K2_GetActorLocation())
         if r0_5.CheckOutAirBoxLocal.X < r1_6.X or r1_6.X < -r0_5.CheckOutAirBoxLocal.X or r0_5.CheckOutAirBoxLocal.Y < r1_6.Y or r1_6.Y < -r0_5.CheckOutAirBoxLocal.Y or r0_5.CheckOutAirBoxLocal.Z < r1_6.Z or r1_6.Z < -r0_5.CheckOutAirBoxLocal.Z then
-          if r0_5.TimeCount < 15 then
+          if r0_5.TimeCount < 10 then
             r0_5.TimeCount = r0_5.TimeCount + 1
           else
             r0_5.TimeCount = 0
@@ -629,36 +629,21 @@ end
 function r4_0.CommonOnEMActorDestroy(r0_56, r1_56)
   -- line: [1189, 1202] id: 56
 end
-function r4_0.AddPhantomBattleAchieve(r0_57, r1_57, r2_57, r3_57, r4_57)
-  -- line: [1205, 1237] id: 57
+function r4_0.AddPhantomBattleAchieve(r0_57, r1_57)
+  -- line: [1205, 1222] id: 57
   if not IsStandAlone(r0_57) then
     return 
   end
-  if not r2_57.KillTarget then
-    return 
-  end
-  if not r3_57 or not r3_57:IsPhantom() then
-    local r5_57 = false
-    if r3_57 and r3_57:IsSummonMonster() then
-      local r6_57 = r3_57:GetRootSource()
-      if r6_57 and r6_57:IsPhantom() then
-        r5_57 = true
-      end
-    end
-    if not r5_57 then
-      return 
-    end
-  end
-  local r5_57 = UE4.URuntimeCommonFunctionLibrary.GetPlayerAchievementObject(r1_57)
-  if r5_57 then
+  local r2_57 = UE4.URuntimeCommonFunctionLibrary.GetPlayerAchievementObject(r1_57)
+  if r2_57 then
     if r0_57.UnitId == 8510001 then
-      r5_57:UploadTargetValue(2203, 1)
+      r2_57:UploadTargetValue(2203, 1)
     end
     if r0_57.UnitId == 8518001 then
-      r5_57:UploadTargetValue(2204, 1)
+      r2_57:UploadTargetValue(2204, 1)
     end
     if r0_57.UnitId == 8517001 then
-      r5_57:UploadTargetValue(2205, 1)
+      r2_57:UploadTargetValue(2205, 1)
     end
   end
 end

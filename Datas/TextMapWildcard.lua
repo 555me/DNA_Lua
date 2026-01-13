@@ -153,6 +153,10 @@ end)("TextMapWildcard", {
     TextMapId = "HomePianoDes_1004005",
     WildcardClassification = "Story",
   },
+  MOD_Type_Name_Changeling01 = {
+    TextMapId = "MOD_Type_Name_Changeling01",
+    WildcardClassification = "Story",
+  },
   MOD_Type_Name_FeatheredSnake01 = {
     TextMapId = "MOD_Type_Name_FeatheredSnake01",
     WildcardClassification = "Story",
@@ -871,6 +875,10 @@ end)("TextMapWildcard", {
   },
   UI_FNNpc_Name_AnimalNvzhu = {
     TextMapId = "UI_FNNpc_Name_AnimalNvzhu",
+    WildcardClassification = "Story",
+  },
+  UI_FORGING_CURRENT = {
+    TextMapId = "UI_FORGING_CURRENT",
     WildcardClassification = "Story",
   },
   UI_Fishing_FishingBookTotal = {

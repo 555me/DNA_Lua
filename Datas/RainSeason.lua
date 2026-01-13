@@ -14,7 +14,7 @@ r3_0[1001] = {
     [1000] = 300315,
   },
   RaidPointToRewradMaxTime = 750,
-  RaidRankCount = 5000,
+  RaidRankCount = 1000,
   RaidSeason = 1001,
   RaidTime = 173,
   Shop = "RaidShopSeason01",

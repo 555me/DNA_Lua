@@ -12581,7 +12581,7 @@ r4_0[90173] = {
   DungeonDoorBP = "/Game/BluePrints/Item/Door/BP_AutoDoor_Quarry",
   DungeonID = 90173,
   DungeonInitGuideUnitId = {
-    6002017,
+    6002016,
     6013015
   },
   DungeonJsonFile = "/Game/Script/Datas/Houdini_data/Chapter01/DefenceMove",
@@ -12630,7 +12630,7 @@ r4_0[90174] = {
   DungeonDoorBP = "/Game/BluePrints/Item/Door/BP_AutoDoor_Quarry",
   DungeonID = 90174,
   DungeonInitGuideUnitId = {
-    6013015,
+    6001011,
     6007016
   },
   DungeonJsonFile = "/Game/Script/Datas/Houdini_data/Chapter01/DefenceMove",
@@ -12679,7 +12679,7 @@ r4_0[90175] = {
   DungeonDoorBP = "/Game/BluePrints/Item/Door/BP_AutoDoor",
   DungeonID = 90175,
   DungeonInitGuideUnitId = {
-    6007016,
+    6002017,
     6004012
   },
   DungeonJsonFile = "/Game/Script/Datas/Houdini_data/Prologue/DefenceMove",
@@ -12728,7 +12728,7 @@ r4_0[90176] = {
   DungeonDoorBP = "/Game/BluePrints/Item/Door/BP_AutoDoor",
   DungeonID = 90176,
   DungeonInitGuideUnitId = {
-    6004012,
+    6013015,
     6002016
   },
   DungeonJsonFile = "/Game/Script/Datas/Houdini_data/Prologue/DefenceMove",
@@ -12777,7 +12777,7 @@ r4_0[90177] = {
   DungeonDoorBP = "/Game/BluePrints/Item/Door/BP_AutoDoor",
   DungeonID = 90177,
   DungeonInitGuideUnitId = {
-    6002016,
+    6007016,
     6001011
   },
   DungeonJsonFile = "/Game/Script/Datas/Houdini_data/Prologue/DefenceMove",
@@ -12826,7 +12826,7 @@ r4_0[90178] = {
   DungeonDoorBP = "/Game/BluePrints/Item/Door/BP_AutoDoor",
   DungeonID = 90178,
   DungeonInitGuideUnitId = {
-    6001011,
+    6004012,
     6004020
   },
   DungeonJsonFile = "/Game/Script/Datas/Houdini_data/Prologue/DefenceMove",

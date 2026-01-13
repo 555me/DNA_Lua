@@ -9,9 +9,9 @@ local r2_0 = require("sha1")
 local r3_0 = require("rapidjson")
 local r4_0 = 0.3
 local r5_0 = 30
-local r6_0 = 5
-local r7_0 = 6
-local r8_0 = "MonitorType: ScriptDetection [KeyBoardRepeatDetection] DungeonId: %d, DungeonType = %s, RoundNum: %d, RepeatTime: %d."
+local r6_0 = 20
+local r7_0 = 10
+local r8_0 = "MonitorType: ScriptDetection [KeyBoardRepeatDetection] DungeonId: %d, DungeonType = %s, RoundNum: %d, RepeatTime: %d, KeyCount: %d."
 function r0_0.DebugPrint(r0_1, ...)
   -- line: [27, 29] id: 1
   DebugPrint("SceneManagerComponent", ...)
@@ -1538,7 +1538,7 @@ function r0_0.StartScriptDetectionCheck_OnKeyboard(r0_78)
   r0_78.KeyList = {}
 end
 function r0_0.EndScriptDetectionCheck_OnKeyboard(r0_80)
-  -- line: [1802, 1825] id: 80
+  -- line: [1802, 1826] id: 80
   if r0_80.SDCKeyboardOverTimeTimer then
     r0_80:RemoveTimer(r0_80.SDCKeyboardOverTimeTimer)
     r0_80.SDCKeyboardOverTimeTimer = nil
@@ -1548,9 +1548,10 @@ function r0_0.EndScriptDetectionCheck_OnKeyboard(r0_80)
     if r1_80 and r0_80.KeyList and r7_0 <= #r0_80.KeyList then
       local r2_80 = r0_80:GetKeyListFingerprints(r0_80.KeyList)
       if r2_80 then
+        local r3_80 = #r0_80.KeyList
         r1_80.KeyListRecord[r2_80] = (r1_80.KeyListRecord[r2_80] and 0) + 1
         if r6_0 <= r1_80.KeyListRecord[r2_80] then
-          r0_80:ReportScriptDetection_Keyboard(r2_80)
+          r0_80:ReportScriptDetection_Keyboard(r2_80, r3_80)
         end
       end
     end
@@ -1559,7 +1560,7 @@ function r0_0.EndScriptDetectionCheck_OnKeyboard(r0_80)
   end
 end
 function r0_0.ReceivedInputKey(r0_81, r1_81, r2_81)
-  -- line: [1828, 1843] id: 81
+  -- line: [1829, 1844] id: 81
   local r3_81 = r1_81.KeyName
   if UIConst.MouseButton[r3_81] then
     return 
@@ -1575,28 +1576,32 @@ function r0_0.ReceivedInputKey(r0_81, r1_81, r2_81)
     }
   end
 end
-function r0_0.ReportScriptDetection_Keyboard(r0_82, r1_82)
-  -- line: [1845, 1871] id: 82
+function r0_0.ReportScriptDetection_Keyboard(r0_82, r1_82, r2_82)
+  -- line: [1846, 1873] id: 82
   if GWorld:GetAvatar() then
-    local r3_82 = UE4.UGameplayStatics.GetGameInstance(r0_82)
-    local r4_82 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_82)
-    if r3_82 and r4_82 then
-      local r5_82 = r4_82.DungeonId
-      local r6_82 = DataMgr.Dungeon[r5_82]
-      if r6_82 then
-        local r7_82 = r6_82.DungeonType and 0
-        local r8_82 = 0
-        local r9_82 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_82)
-        if IsValid(r9_82) then
-          r8_82 = r9_82.DungeonProgress
+    local r4_82 = UE4.UGameplayStatics.GetGameInstance(r0_82)
+    local r5_82 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_82)
+    if r4_82 and r5_82 then
+      local r6_82 = r5_82.DungeonId
+      local r7_82 = DataMgr.Dungeon[r6_82]
+      if r7_82 then
+        local r8_82 = r7_82.DungeonType and 0
+        local r9_82 = 0
+        local r10_82 = UE4.URuntimeCommonFunctionLibrary.GetCurrentGameState(r0_82)
+        if IsValid(r10_82) then
+          r9_82 = r10_82.DungeonProgress
         end
-        r0_82:ReportCheatMsg(CommonConst.MonitorCheatType.Keyboard, string.format(r8_0, r5_82, r7_82, r8_82, r3_82.KeyListRecord[r1_82] and 0))
+        local r11_82 = r4_82.KeyListRecord[r1_82] and 0
+        if not r2_82 then
+          r2_82 = 0
+        end
+        r0_82:ReportCheatMsg(CommonConst.MonitorCheatType.Keyboard, string.format(r8_0, r6_82, r8_82, r9_82, r11_82, r2_82))
       end
     end
   end
 end
 function r0_0.UpdateIfRecordThisTurnValue(r0_83)
-  -- line: [1874, 1889] id: 83
+  -- line: [1876, 1891] id: 83
   if r0_83.CurrentMouseLocation2D == nil then
     r0_83.bNeedRecordThisTurn = false
     return 
@@ -1608,7 +1613,7 @@ function r0_0.UpdateIfRecordThisTurnValue(r0_83)
   r0_83.bNeedRecordThisTurn = UE4.UKismetMathLibrary.EqualEqual_Vector2DVector2D(r0_83.CurrentMouseLocation2D, UE4.UWidgetLayoutLibrary.GetMousePositionOnViewport(r0_83), 0.001)
 end
 function r0_0.CheckAndSendRecordToServer_OnMouse(r0_84)
-  -- line: [1892, 1928] id: 84
+  -- line: [1894, 1930] id: 84
   if not GWorld:GetAvatar() then
     return 
   end
@@ -1643,7 +1648,7 @@ function r0_0.CheckAndSendRecordToServer_OnMouse(r0_84)
   end
 end
 function r0_0.OnDungeonEnd_ToSceneManager(r0_85, r1_85, r2_85, r3_85, r4_85)
-  -- line: [1936, 1948] id: 85
+  -- line: [1938, 1950] id: 85
   DebugPrint("OnDungeonEnd_ToSceneManager: 副本结束通知，当前副本类型：", r3_85, r4_85)
   if r0_85:GetIsEnableScriptDetectionCheck() then
     if r0_85:GetScriptDetectionConditionMet_OnMouse(r3_85, r4_85) then
@@ -1654,11 +1659,11 @@ function r0_0.OnDungeonEnd_ToSceneManager(r0_85, r1_85, r2_85, r3_85, r4_85)
   end
 end
 function r0_0.GetLogMask(r0_86)
-  -- line: [1950, 1952] id: 86
+  -- line: [1952, 1954] id: 86
   return _G.LogTag
 end
 function r0_0.CaluCurGuideNeedShowPos(r0_87, r1_87, r2_87, r3_87)
-  -- line: [1961, 1976] id: 87
+  -- line: [1963, 1978] id: 87
   if r0_87:GetLevelLoader() == nil then
     return false, nil
   end
@@ -1670,23 +1675,23 @@ function r0_0.CaluCurGuideNeedShowPos(r0_87, r1_87, r2_87, r3_87)
   return false
 end
 function r0_0.AddFoorBox(r0_88, r1_88)
-  -- line: [1978, 1981] id: 88
+  -- line: [1980, 1983] id: 88
   if not r0_88.FloorBoxArray then
     r0_88.FloorBoxArray = {}
   end
   table.insert(r0_88.FloorBoxArray, r1_88)
 end
 function r0_0.AddMinimapDoor(r0_89, r1_89)
-  -- line: [1983, 1986] id: 89
+  -- line: [1985, 1988] id: 89
   if not r0_89.MinimapDoorArray then
     r0_89.MinimapDoorArray = {}
   end
   table.insert(r0_89.MinimapDoorArray, r1_89)
 end
 function r0_0.DelaySetFullScreen_Lua(r0_90, r1_90, r2_90)
-  -- line: [1989, 1998] id: 90
+  -- line: [1991, 2000] id: 90
   r0_90:AddTimer(0.1, function()
-    -- line: [1990, 1997] id: 91
+    -- line: [1992, 1999] id: 91
     local r0_91 = UE4.UGameUserSettings:GetGameUserSettings()
     if r0_91 then
       DebugPrint("@zyh DelaySetFullScreen_Lua执行")
@@ -1696,17 +1701,17 @@ function r0_0.DelaySetFullScreen_Lua(r0_90, r1_90, r2_90)
   end, false)
 end
 function r0_0.CleanSpecialMonsterInfo(r0_92, r1_92)
-  -- line: [2000, 2004] id: 92
+  -- line: [2002, 2006] id: 92
   if r1_92 then
     r0_92.SpecialMonsterInfo[r1_92] = nil
   end
 end
 function r0_0.GetKeyListFingerprints(r0_93, r1_93)
-  -- line: [2006, 2011] id: 93
+  -- line: [2008, 2013] id: 93
   return r2_0.sha1(r0_93:SerializeInputSequence(r1_93))
 end
 function r0_0.SerializeInputSequence(r0_94, r1_94)
-  -- line: [2013, 2032] id: 94
+  -- line: [2015, 2034] id: 94
   local r2_94 = {}
   local r3_94 = 1
   for r8_94, r9_94 in ipairs(r1_94) do
@@ -1723,7 +1728,7 @@ function r0_0.SerializeInputSequence(r0_94, r1_94)
   return table.concat(r2_94, "|")
 end
 function r0_0.ReportCheatMsg(r0_95, r1_95, r2_95)
-  -- line: [2034, 2046] id: 95
+  -- line: [2036, 2048] id: 95
   local r3_95 = GWorld:GetAvatar()
   if not r3_95 then
     return 

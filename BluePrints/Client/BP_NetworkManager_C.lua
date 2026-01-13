@@ -9,7 +9,7 @@ function r0_0.Initialize(r0_1, r1_1)
   print(_G.LogTag, "BP_NetworkManager_C:Initialize")
 end
 function r0_0.LogoutEvent(r0_2)
-  -- line: [17, 34] id: 2
+  -- line: [17, 38] id: 2
   local r1_2 = USubsystemBlueprintLibrary.GetGameInstanceSubsystem(GWorld.GameInstance, UEMSentrySubsystem)
   if r1_2 then
     r1_2:Logout()
@@ -22,9 +22,12 @@ function r0_0.LogoutEvent(r0_2)
   if r3_2 then
     r3_2:Logout()
   end
+  if GWorld.GameInstance and GWorld.GameInstance.KeyListRecord then
+    GWorld.GameInstance.KeyListRecord = {}
+  end
 end
 function r0_0.DisconnectAndShowUI(r0_3, r1_3)
-  -- line: [37, 157] id: 3
+  -- line: [41, 161] id: 3
   local r2_3 = "Error"
   local r3_3 = GWorld:GetAvatar()
   if r3_3 then
@@ -54,7 +57,7 @@ function r0_0.DisconnectAndShowUI(r0_3, r1_3)
   elseif r6_3 == CommonConst.KickAvatarType.KICK_AVATAR_BAN or r6_3 == ErrorCode.RET_LOGIN_BY_LIMIT_AVATAR then
     UIManager(r0_3):ShowDisconnectUIConfirm(100051, true, {
       ShortText = string.format(GText("UI_COMMONPOP_TEXT_100052"), tonumber(r2_3) and 0, (function(r0_4)
-        -- line: [70, 82] id: 4
+        -- line: [74, 86] id: 4
         r0_4 = tostring(r0_4)
         if r0_4 == "1" then
           return GText("UI_COMMONPOP_TEXT_100052_1")
@@ -130,19 +133,19 @@ function r0_0.DisconnectAndShowUI(r0_3, r1_3)
   end
 end
 function r0_0.DisconnectAndReturnLogin(r0_5)
-  -- line: [160, 165] id: 5
+  -- line: [164, 169] id: 5
   r0_5:Disconnect()
   r0_5:TryToGoToLoginScene()
   r0_5:LogoutEvent()
 end
 function r0_0.TryToGoToLoginScene(r0_6)
-  -- line: [167, 184] id: 6
+  -- line: [171, 188] id: 6
   GWorld.GameInstance:ClearExitDungeonData()
   r0_6:EndReConnect(false)
   HeroUSDKSubsystem():TryToGoToLoginScene()
 end
 function r0_0.SendResolutionTrack(r0_7)
-  -- line: [186, 201] id: 7
+  -- line: [190, 205] id: 7
   local r1_7 = {}
   local r3_7 = GWorld.GameInstance:GetSceneManager():GetWindowSize()
   local r4_7 = UE4.UGameUserSettings:GetGameUserSettings():GetFullscreenMode()
@@ -157,7 +160,7 @@ function r0_0.SendResolutionTrack(r0_7)
   HeroUSDKSubsystem(r0_7):UploadTrackLog_Lua("display_settings", r1_7)
 end
 function r0_0.OnDisconnectAndLoginAgain(r0_8)
-  -- line: [203, 225] id: 8
+  -- line: [207, 229] id: 8
   r0_8:SendResolutionTrack()
   r0_8:Disconnect()
   local r1_8 = HeroUSDKSubsystem().UserInfo.sdkUserId == ""
@@ -171,7 +174,7 @@ function r0_0.OnDisconnectAndLoginAgain(r0_8)
   WorldTravelSubsystem():ChangeSceneByAssetPath(Const.DefaultLoginSceneFile)
 end
 function r0_0.ShowNetDisconnectUIConfirm(r0_9, r1_9)
-  -- line: [227, 258] id: 9
+  -- line: [231, 262] id: 9
   DebugPrint("lgc@BP_NetworkManager_C:ShowNetDisconnectUIConfirm RetCode", tostring(r1_9))
   local r2_9 = true
   if GWorld.GameInstance:GetLoadingUI() then
@@ -199,7 +202,7 @@ function r0_0.ShowNetDisconnectUIConfirm(r0_9, r1_9)
   end
 end
 function r0_0.UpdateNetDisconnectUIConfirm(r0_10)
-  -- line: [260, 276] id: 10
+  -- line: [264, 280] id: 10
   if GWorld.GameInstance:GetGameUIManager():GetUIObj("NetDisConnectedDialog") == nil then
     return 
   end
@@ -214,7 +217,7 @@ function r0_0.UpdateNetDisconnectUIConfirm(r0_10)
   end
 end
 function r0_0.StartShowReConnectUI(r0_11)
-  -- line: [278, 288] id: 11
+  -- line: [282, 292] id: 11
   if not GWorld.GameInstance:GetLoadingUI() and UGameplayStatics.GetCurrentLevelName(r0_11) == "Login" then
     return 
   end
@@ -226,12 +229,12 @@ function r0_0.StartShowReConnectUI(r0_11)
   end
 end
 function r0_0.ConnectSuccess(r0_12)
-  -- line: [290, 293] id: 12
+  -- line: [294, 297] id: 12
   DebugPrint("NetworkMgr:ConnectSuccess")
   r0_12:EndReConnect(true)
 end
 function r0_0.EndReConnect(r0_13, r1_13, r2_13)
-  -- line: [295, 327] id: 13
+  -- line: [299, 331] id: 13
   if not r2_13 then
     DebugPrint("NetworkMgr:EndReConnect")
   end

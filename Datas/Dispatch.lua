@@ -3996,7 +3996,7 @@ r4_0[308314] = {
   ExcId = {
     308334
   },
-  PlayerLevel = r0_0.RT_5,
+  PlayerLevel = r0_0.RT_6,
   Rarity = 3,
   RegionId = 1041,
   RewardId = {
@@ -4019,7 +4019,7 @@ r4_0[308315] = {
   ExcId = {
     308335
   },
-  PlayerLevel = r0_0.RT_6,
+  PlayerLevel = r0_0.RT_17,
   Rarity = 3,
   RegionId = 1041,
   RewardId = {
@@ -4042,7 +4042,7 @@ r4_0[308334] = {
   ExcId = {
     308314
   },
-  PlayerLevel = r0_0.RT_5,
+  PlayerLevel = r0_0.RT_6,
   Rarity = 3,
   RegionId = 1041,
   RewardId = {
@@ -4065,7 +4065,7 @@ r4_0[308335] = {
   ExcId = {
     308315
   },
-  PlayerLevel = r0_0.RT_6,
+  PlayerLevel = r0_0.RT_17,
   Rarity = 3,
   RegionId = 1041,
   RewardId = {
