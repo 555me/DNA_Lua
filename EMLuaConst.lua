@@ -35,6 +35,7 @@ end
 r0_0.AndroidPreloadCoefficient = 1.2
 r0_0.PcPreloadCoefficient = 1
 r0_0.IosPreloadCoefficient = 1
+r0_0.CalcEquipATKThreshold = 10000000
 r0_0.RegionPreloadSupportSceneId = Const.RegionPreloadSupportSceneId
 r0_0.RegionStoryPreloadSupportSceneId = Const.RegionStoryPreloadSupportSceneId
 r0_0.EnableCacheSummonID = Const.EnableCacheSummonID
@@ -131,7 +132,7 @@ r0_0.MapMobileReplacePath = "Maps_Phone"
 r0_0.bConditionalSkipMonsterReplication = true
 return setmetatable({}, {
   __index = function(r0_1, r1_1)
-    -- line: [194, 202] id: 1
+    -- line: [195, 203] id: 1
     local r2_1 = rawget(r0_0, r1_1)
     if r2_1 then
       return r2_1
@@ -139,7 +140,7 @@ return setmetatable({}, {
     return rawget(r0_1, "EMLuaConstCpp").TempVars[r1_1]
   end,
   __newindex = function(r0_2, r1_2, r2_2)
-    -- line: [203, 209] id: 2
+    -- line: [204, 210] id: 2
     r0_0[r1_2] = r2_2
     local r3_2 = rawget(r0_2, "EMLuaConstCpp")
     if r3_2 then
@@ -147,7 +148,7 @@ return setmetatable({}, {
     end
   end,
   __pairs = function(r0_3)
-    -- line: [210, 210] id: 3
+    -- line: [211, 211] id: 3
     return pairs(r0_0)
   end,
 })

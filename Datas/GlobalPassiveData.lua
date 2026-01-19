@@ -170,7 +170,7 @@ r4_0[20206] = {
   Camp = "Monster",
   ID = 20206,
   Vars = {
-    Buff = 2010205,
+    Buff = 2010206,
     Condition = "Tag",
     DamageTag = "Dot",
   },

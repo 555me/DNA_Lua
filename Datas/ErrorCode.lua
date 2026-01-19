@@ -4945,7 +4945,7 @@ end)("ErrorCode", {
     ContentEN = "Insufficient Embers",
     ContentJP = "エンバー不足",
     ContentKR = "잿불 부족",
-    ContentTC = "餘燼不足",
+    ContentTC = "余燼不足",
     ErrorCodeContent = "余烬不足",
     ErrorCodeId = 27006,
   },
