@@ -80,6 +80,9 @@ r0_0.IsOpenBulletCreature = Const.IsOpenBulletCreature
 r0_0.IsOpenSkillCreature = Const.IsOpenSkillCreature
 r0_0.IsOpenCreatureECS = Const.IsOpenCreatureECS
 r0_0.MaxFilterDisSquare = 225000000
+r0_0.NotifyStateOverriden = {
+  "AnimNotifyState_HitCapsuleFollow"
+}
 r0_0.bOpenComputeBattleAchievement = false
 r0_0.MaxBatteryOneChar = Const.MaxBatteryOneChar
 r0_0.MaxCrackKeyOneChar = Const.MaxCrackKeyOneChar

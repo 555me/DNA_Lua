@@ -647,6 +647,11 @@ function r4_0.AddPhantomBattleAchieve(r0_57, r1_57)
     end
   end
 end
+function r4_0.SetHitCapsuleBeginplayState(r0_58, r1_58)
+  -- line: [1224, 1227] id: 58
+  DebugPrint("@gulinan SetHitCapsuleBeginplayState " .. tostring(r1_58))
+  r0_58.bHitCapsuleBeginplay = r1_58
+end
 AssembleComponents(r4_0)
 if r4_0.TickComponent then
   AMonsterCharacter.SetHasLuaComponentTick(true)

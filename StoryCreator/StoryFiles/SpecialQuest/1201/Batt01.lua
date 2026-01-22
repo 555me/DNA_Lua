@@ -3579,18 +3579,6 @@ r3_0 = {
       endPort = "In",
     },
     {
-      startQuest = "17630396399033721676",
-      startPort = "true",
-      endQuest = "17630396323013721368",
-      endPort = "In",
-    },
-    {
-      startQuest = "17630396323013721368",
-      startPort = "Out",
-      endQuest = "17630396906183723613",
-      endPort = "In",
-    },
-    {
       startQuest = "17630405644633729565",
       startPort = "Out",
       endQuest = "17630405644633729563",
@@ -3615,39 +3603,15 @@ r3_0 = {
       endPort = "Success",
     },
     {
-      startQuest = "17630396399033721676",
-      startPort = "true",
-      endQuest = "17630434515137102749",
-      endPort = "In",
-    },
-    {
       startQuest = "17630434515137102749",
       startPort = "Out",
       endQuest = "17630402753553724919",
       endPort = "In",
     },
     {
-      startQuest = "17630396399033721676",
-      startPort = "false",
-      endQuest = "176304851128213170783",
-      endPort = "In",
-    },
-    {
-      startQuest = "17630396906183723613",
-      startPort = "Out",
-      endQuest = "176304851128213170783",
-      endPort = "In",
-    },
-    {
       startQuest = "17630405644633729565",
       startPort = "Out",
       endQuest = "17630405644633729566",
-      endPort = "In",
-    },
-    {
-      startQuest = "17630396399033721676",
-      startPort = "true",
-      endQuest = "17650373194095116371",
       endPort = "In",
     },
     {
@@ -3660,12 +3624,6 @@ r3_0 = {
       startQuest = "17630395495923719518",
       startPort = "true",
       endQuest = "17650374728685119961",
-      endPort = "In",
-    },
-    {
-      startQuest = "17650374728685119961",
-      startPort = "Out",
-      endQuest = "17630396399033721676",
       endPort = "In",
     },
     {
@@ -3691,6 +3649,30 @@ r3_0 = {
       startPort = "Out",
       endQuest = "17630394636463716942",
       endPort = "Fail",
+    },
+    {
+      startQuest = "17650374728685119961",
+      startPort = "Out",
+      endQuest = "17630396323013721368",
+      endPort = "In",
+    },
+    {
+      startQuest = "17650374728685119961",
+      startPort = "Out",
+      endQuest = "17630434515137102749",
+      endPort = "In",
+    },
+    {
+      startQuest = "17650374728685119961",
+      startPort = "Out",
+      endQuest = "17650373194095116371",
+      endPort = "In",
+    },
+    {
+      startQuest = "17630396323013721368",
+      startPort = "Out",
+      endQuest = "176304851128213170783",
+      endPort = "In",
     }
   },
 }
@@ -3805,8 +3787,8 @@ r4_0["17630396323013721368"] = {
   type = "WaitingMechanismEnterStateNode",
   name = "机关-完成",
   pos = {
-    x = 1799.3390945929657,
-    y = 72.23262868388835,
+    x = 1795.3390945929657,
+    y = 138.23262868388835,
   },
   propsData = {
     CreateType = "StaticCreator",
@@ -3822,8 +3804,8 @@ r6_0 = {
   type = "ExecuteBlueprintFunctionCheckVarNode",
   name = "变量判断-机关",
   pos = {
-    x = 1473.1294566630484,
-    y = 154.83803827751208,
+    x = 2075.1294566630486,
+    y = 444.83803827751206,
   },
 }
 r6_0.propsData = {
@@ -3863,8 +3845,8 @@ r4_0["17630396906183723613"] = {
   type = "SetVarNode",
   name = "设置变量值",
   pos = {
-    x = 2086.1698906356805,
-    y = 78.27332368354061,
+    x = 1562.1698906356805,
+    y = 460.27332368354064,
   },
   propsData = {
     VarName = "Batt01Xingshibei02",
@@ -3971,8 +3953,8 @@ r6_0 = {
   type = "SwitchMechanismStateNode",
   name = "切换机关状态",
   pos = {
-    x = 2763.9619947400874,
-    y = 231.87223527891305,
+    x = 2755.9619947400874,
+    y = 217.87223527891305,
   },
 }
 r6_0.propsData = {
@@ -3989,8 +3971,8 @@ r4_0["17630434515137102749"] = {
   type = "WaitingMechanismEnterStateNode",
   name = "机关-完成",
   pos = {
-    x = 1807.812782853615,
-    y = -102.64075453980053,
+    x = 1799.812782853615,
+    y = -104.64075453980053,
   },
   propsData = {
     CreateType = "StaticCreator",
@@ -4005,8 +3987,8 @@ r4_0["176304851128213170783"] = {
   type = "WaitOfTimeNode",
   name = "延迟等待",
   pos = {
-    x = 2483.0070251438324,
-    y = 223.35138489970723,
+    x = 2477.0070251438324,
+    y = 195.35138489970723,
   },
   propsData = {
     WaitTime = 0.1,
@@ -4061,8 +4043,8 @@ r4_0["17650374728685119961"] = {
   type = "SendMessageNode",
   name = "消息StoneInOrder02Unlock",
   pos = {
-    x = 1161.13141025641,
-    y = 163.9185691759226,
+    x = 1167.13141025641,
+    y = 153.9185691759226,
   },
   propsData = {
     MessageType = "GameMode",

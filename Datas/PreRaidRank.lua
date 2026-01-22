@@ -9,8 +9,8 @@ local r2_0 = "PreRaidRank"
 local r3_0 = {}
 r3_0[1] = {
   IsOnline = {
-    true,
-    true,
+    false,
+    false,
     false,
     false,
     false

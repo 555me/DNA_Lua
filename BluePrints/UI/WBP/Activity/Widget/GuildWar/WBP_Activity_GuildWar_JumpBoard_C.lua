@@ -186,11 +186,10 @@ function r1_0.RefreshPreRaidRewardGot(r0_17, r1_17)
   if not r2_17 then
     return 
   end
-  local r3_17 = r2_17.RaidSeasons[r2_17.CurrentRaidSeasonId]
-  if not r3_17 then
+  if not r2_17.RaidSeasons[r2_17.CurrentRaidSeasonId] then
     return 
   end
-  if r3_17.PreRaidGroupId > 0 and not r3_17:IsPreRaidRewardGot() then
+  if r0_17:CanGetPreRaidReward() then
     r1_17.Btn_GainReward:SetVisibility(UIConst.VisibilityOp.SelfHitTestInvisible)
     r1_17.Btn_GainReward:Init(r0_17, r0_17.OnRewardGotBtnClicked)
   else
@@ -211,140 +210,148 @@ function r1_0.InitRaidRankText(r0_18, r1_18)
     r2_18:SetVisibility(UIConst.VisibilityOp.Collapsed)
   end
 end
-function r1_0.OnRewardGotBtnClicked(r0_19)
-  -- line: [224, 258] id: 19
-  AudioManager(r0_19):PlayUISound(r0_19, "event:/ui/activity/shop_small_btn_click", "", nil)
-  local function r1_19(r0_20, r1_20)
-    -- line: [226, 253] id: 20
-    if r0_19.RootWidget and r0_19.RootWidget.BlockAllUIInput then
-      r0_19.RootWidget:BlockAllUIInput(false)
+function r1_0.CanGetPreRaidReward(r0_19)
+  -- line: [225, 244] id: 19
+  local r1_19 = GWorld:GetAvatar()
+  if not r1_19 then
+    return false
+  end
+  local r2_19 = r1_19.RaidSeasons[r1_19.CurrentRaidSeasonId]
+  if not r2_19 then
+    return false
+  end
+  if r2_19.PreRaidGroupId <= 0 then
+    return false
+  end
+  return not r2_19:IsPreRaidRewardGot()
+end
+function r1_0.OnRewardGotBtnClicked(r0_20)
+  -- line: [247, 286] id: 20
+  if not r0_20:CanGetPreRaidReward() then
+    return 
+  end
+  AudioManager(r0_20):PlayUISound(r0_20, "event:/ui/activity/shop_small_btn_click", "", nil)
+  local function r1_20(r0_21, r1_21)
+    -- line: [254, 281] id: 21
+    if r0_20.RootWidget and r0_20.RootWidget.BlockAllUIInput then
+      r0_20.RootWidget:BlockAllUIInput(false)
     end
-    r0_19:RefreshPreRaidRewardGot(r0_19.WB_OfficialBoard)
-    if not ErrorCode:Check(r0_20) then
+    r0_20:RefreshPreRaidRewardGot(r0_20.WB_OfficialBoard)
+    if not ErrorCode:Check(r0_21) then
       return 
     end
-    local r2_20 = DataMgr.PreRaidRank[1]
-    local r3_20 = r0_19.Avatar.RaidSeasons[r0_19.Avatar.CurrentRaidSeasonId]
-    if not r3_20 or not r3_20.PreRaidGroupId then
+    local r2_21 = DataMgr.PreRaidRank[1]
+    local r3_21 = r0_20.Avatar.RaidSeasons[r0_20.Avatar.CurrentRaidSeasonId]
+    if not r3_21 or not r3_21.PreRaidGroupId then
       DebugPrint("获取不到预选赛分组信息!")
       return 
     end
-    local r5_20 = RewardUtils:GetRewards(r2_20.RankReward[r3_20.PreRaidGroupId], nil)
-    if r0_19.GameInputModeSubsystem:GetCurrentInputType() == ECommonInputType.Gamepad then
-      r0_19:AddTimer(0.8, function()
-        -- line: [247, 249] id: 21
-        UIManager(r0_19):LoadUINew("GetItemPage", nil, nil, nil, r5_20, r0_19.PlayOutAnim, r0_19, true)
+    local r5_21 = RewardUtils:GetRewards(r2_21.RankReward[r3_21.PreRaidGroupId], nil)
+    if r0_20.GameInputModeSubsystem:GetCurrentInputType() == ECommonInputType.Gamepad then
+      r0_20:AddTimer(0.8, function()
+        -- line: [275, 277] id: 22
+        UIManager(r0_20):LoadUINew("GetItemPage", nil, nil, nil, r5_21, r0_20.PlayOutAnim, r0_20, true)
       end)
     else
-      UIManager(r0_19):LoadUINew("GetItemPage", nil, nil, nil, r5_20, r0_19.PlayOutAnim, r0_19, true)
+      UIManager(r0_20):LoadUINew("GetItemPage", nil, nil, nil, r5_21, r0_20.PlayOutAnim, r0_20, true)
     end
   end
-  if r0_19.RootWidget and r0_19.RootWidget.BlockAllUIInput then
-    r0_19.RootWidget:BlockAllUIInput(true)
+  if r0_20.RootWidget and r0_20.RootWidget.BlockAllUIInput then
+    r0_20.RootWidget:BlockAllUIInput(true)
   end
-  r0_19.Avatar:RaidSeasonGetPreRankReward(r1_19)
+  r0_20.Avatar:RaidSeasonGetPreRankReward(r1_20)
 end
-function r1_0.OnRewardPreviewClicked(r0_22, r1_22)
-  -- line: [260, 264] id: 22
-  AudioManager(r0_22):PlayUISound(r0_22, "event:/ui/activity/shop_small_btn_click", "", nil)
-  UIManager(r0_22):LoadUINew("GuildWarRewardPop"):Init()
+function r1_0.OnRewardPreviewClicked(r0_23, r1_23)
+  -- line: [288, 292] id: 23
+  AudioManager(r0_23):PlayUISound(r0_23, "event:/ui/activity/shop_small_btn_click", "", nil)
+  UIManager(r0_23):LoadUINew("GuildWarRewardPop"):Init()
 end
-function r1_0.SetRankTextureImage(r0_23, r1_23, r2_23)
-  -- line: [266, 273] id: 23
-  local r3_23 = r2_23 and 0
-  if r3_23 < 0 or type(r3_23) ~= "number" then
-    r3_23 = 0
+function r1_0.SetRankTextureImage(r0_24, r1_24, r2_24)
+  -- line: [294, 301] id: 24
+  local r3_24 = r2_24 and 0
+  if r3_24 < 0 or type(r3_24) ~= "number" then
+    r3_24 = 0
   end
-  r1_23.Icon_Rank:SetBrush(r0_23["Rank_" .. r3_23])
+  r1_24.Icon_Rank:SetBrush(r0_24["Rank_" .. r3_24])
 end
-function r1_0.PadZero(r0_24, r1_24)
-  -- line: [275, 277] id: 24
-  local r2_24 = nil	-- notice: implicit variable refs by block#[3]
-  if r1_24 < 10 then
-    r2_24 = "0" .. tostring(r1_24)
-    if not r2_24 then
+function r1_0.PadZero(r0_25, r1_25)
+  -- line: [303, 305] id: 25
+  local r2_25 = nil	-- notice: implicit variable refs by block#[3]
+  if r1_25 < 10 then
+    r2_25 = "0" .. tostring(r1_25)
+    if not r2_25 then
       ::label_9::
-      r2_24 = tostring(r1_24)
+      r2_25 = tostring(r1_25)
     end
   else
     goto label_9	-- block#2 is visited secondly
   end
-  return r2_24
+  return r2_25
 end
-function r1_0.GetDateText(r0_25, r1_25)
-  -- line: [279, 285] id: 25
-  if type(r1_25) ~= "number" then
+function r1_0.GetDateText(r0_26, r1_26)
+  -- line: [307, 313] id: 26
+  if type(r1_26) ~= "number" then
     return 
   end
-  local r2_25 = TimeUtils.TimestampToDataObj(r1_25)
+  local r2_26 = TimeUtils.TimestampToDataObj(r1_26)
   return table.concat({
-    r2_25.year,
+    r2_26.year,
     "-",
-    r0_25:PadZero(r2_25.month),
+    r0_26:PadZero(r2_26.month),
     "-",
-    r0_25:PadZero(r2_25.day)
+    r0_26:PadZero(r2_26.day)
   })
 end
-function r1_0.AddInputMethodChangedListen(r0_26)
-  -- line: [287, 291] id: 26
-  if IsValid(r0_26.GameInputModeSubsystem) then
-    r0_26.GameInputModeSubsystem.OnInputMethodChanged:Add(r0_26, r0_26.RefreshOpInfoByInputDevice)
-  end
-end
-function r1_0.RemoveInputMethodChangedListen(r0_27)
-  -- line: [293, 297] id: 27
+function r1_0.AddInputMethodChangedListen(r0_27)
+  -- line: [315, 319] id: 27
   if IsValid(r0_27.GameInputModeSubsystem) then
-    r0_27.GameInputModeSubsystem.OnInputMethodChanged:Remove(r0_27, r0_27.RefreshOpInfoByInputDevice)
+    r0_27.GameInputModeSubsystem.OnInputMethodChanged:Add(r0_27, r0_27.RefreshOpInfoByInputDevice)
   end
 end
-function r1_0.RefreshOpInfoByInputDevice(r0_28, r1_28, r2_28)
-  -- line: [299, 306] id: 28
-  if r1_28 == ECommonInputType.MouseAndKeyboard then
-    r0_28:InitKeyBoardView()
-  elseif r1_28 == ECommonInputType.Gamepad then
-    r0_28:InitGamepadView()
+function r1_0.RemoveInputMethodChangedListen(r0_28)
+  -- line: [321, 325] id: 28
+  if IsValid(r0_28.GameInputModeSubsystem) then
+    r0_28.GameInputModeSubsystem.OnInputMethodChanged:Remove(r0_28, r0_28.RefreshOpInfoByInputDevice)
   end
 end
-function r1_0.InitKeyBoardView(r0_29)
-  -- line: [308, 321] id: 29
+function r1_0.RefreshOpInfoByInputDevice(r0_29, r1_29, r2_29)
+  -- line: [327, 334] id: 29
+  if r1_29 == ECommonInputType.MouseAndKeyboard then
+    r0_29:InitKeyBoardView()
+  elseif r1_29 == ECommonInputType.Gamepad then
+    r0_29:InitGamepadView()
+  end
+end
+function r1_0.InitKeyBoardView(r0_30)
+  -- line: [336, 343] id: 30
   if r0_0.IsPreRaidTime() then
-    r0_29.WB_QualificationBoard.WS_Controller:SetActiveWidget(r0_29.WB_QualificationBoard.Btn_Check)
+    r0_30.WB_QualificationBoard.WS_Controller:SetActiveWidget(r0_30.WB_QualificationBoard.Btn_Check)
     return 
   end
-  local r1_29 = r0_29.Avatar.RaidSeasons[r0_29.Avatar.CurrentRaidSeasonId]
-  if not r1_29 then
-    return 
-  end
-  if not r1_29:IsPreRaidRewardGot() then
-    r0_29.WB_OfficialBoard.Btn_GainReward.Key_Controller:SetVisibility(UIConst.VisibilityOp.Collapsed)
-  end
+  r0_30.WB_OfficialBoard.Btn_GainReward.Key_Controller:SetVisibility(UIConst.VisibilityOp.Collapsed)
 end
-function r1_0.InitGamepadView(r0_30)
-  -- line: [323, 336] id: 30
+function r1_0.InitGamepadView(r0_31)
+  -- line: [345, 354] id: 31
   if r0_0.IsPreRaidTime() then
-    r0_30.WB_QualificationBoard.WS_Controller:SetActiveWidget(r0_30.WB_QualificationBoard.Key_Reward)
+    r0_31.WB_QualificationBoard.WS_Controller:SetActiveWidget(r0_31.WB_QualificationBoard.Key_Reward)
     return 
   end
-  local r1_30 = r0_30.Avatar.RaidSeasons[r0_30.Avatar.CurrentRaidSeasonId]
-  if not r1_30 then
-    return 
-  end
-  if not r1_30:IsPreRaidRewardGot() then
-    r0_30.WB_OfficialBoard.Btn_GainReward.Key_Controller:SetVisibility(UIConst.VisibilityOp.Visible)
+  if r0_31:CanGetPreRaidReward() then
+    r0_31.WB_OfficialBoard.Btn_GainReward.Key_Controller:SetVisibility(UIConst.VisibilityOp.Visible)
   end
 end
-function r1_0.HandleKeyDownOnGamePad(r0_31, r1_31)
-  -- line: [338, 349] id: 31
-  local r2_31 = false
-  if r1_31 == UIConst.GamePadKey.SpecialLeft then
-    r2_31 = true
+function r1_0.HandleKeyDownOnGamePad(r0_32, r1_32)
+  -- line: [356, 367] id: 32
+  local r2_32 = false
+  if r1_32 == UIConst.GamePadKey.SpecialLeft then
+    r2_32 = true
     if r0_0.IsPreRaidTime() then
-      r0_31:OnRewardPreviewClicked()
+      r0_32:OnRewardPreviewClicked()
     else
-      r0_31:OnRewardGotBtnClicked()
+      r0_32:OnRewardGotBtnClicked()
     end
   end
-  return r2_31
+  return r2_32
 end
 AssembleComponents(r1_0)
 return r1_0
